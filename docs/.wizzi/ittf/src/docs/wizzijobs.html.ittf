@@ -1,0 +1,13 @@
+﻿html
+    $global
+        var dollar = '$';
+    $
+        var art = {
+            title: 'Wizzi jobs'
+        };
+    
+    article(&art)
+    
+        $include ./wizzijobs/introduction
+        $include ./wizzijobs/wfjob
+        $include ./wizzijobs/runnerServer

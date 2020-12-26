@@ -1,0 +1,11 @@
+﻿html
+    $global
+        var dollar = '$';
+    $
+        var art = {
+            title: 'mTrees'
+        };
+    
+    article(&art)
+    
+        $include ./wizzifactoryclass/introduction

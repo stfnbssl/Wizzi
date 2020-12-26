@@ -1,0 +1,31 @@
+a
+    $params name
+    $if name === 'mTree' || name === 'mTrees' || name.toLowerCase() === 'tree structures'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/mtrees.html
+    $elif name === 'ITTF document'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/ittfdocuments.html
+    $elif name === 'ITTF documents'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/ittfdocuments.html
+    $elif name === 'Wizzi model'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/wizzimodels.html
+    $elif name === 'Wizzi models'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/wizzimodels.html
+    $elif name === 'Wizzi schema'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/wizzischemas.html
+    $elif name === 'Wizzi schemas'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/wizzischemas.html
+    $elif name === 'wizzi.WizziFactory'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/wizzifactoryclass.html
+    $elif name.toLowerCase() === 'artifact generations'
+        a ${name}
+            href ${pkg.Params.baseUrl}/docs/artifacts.html
+    $else
+        h1 ERROR to-docs unknown ${name}

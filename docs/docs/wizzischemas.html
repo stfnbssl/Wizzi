@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+<head>
+    <link href="http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+    <link href="../styles/article.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="flexbox">
+            <div class="center-on-mobiles">
+                <h1>
+                    <a href="/" class="logo"><img src="https://wizzifactory.github.io/images/logo.svg" width="140" height="65" alt="Wizzi Logo" />
+                    </a>
+                </h1>
+            </div>
+            <nav class="main-nav hide-on-mobiles">
+                <ul>
+                    <li><a href="https://wizzifactory.github.io/">Home</a>
+                    </li>
+                    <li class="current"><a href="https://wizzifactory.github.io/docs/concepts.html">Docs</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/resources/index.html">Resources</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/packy/index.html">Packy</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/news/index.html">News</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="search hide-on-mobiles">
+                <form class="searchbox">
+                        <svg xmlns='http://www.w3.org/2000/svg' id='sbx-icon-search-13' width='12' height='12' viewBox='0 0 40 40'>
+                            <path d='M26.806 29.012a16.312 16.312 0 0 1-10.427 3.746C7.332 32.758 0 25.425 0 16.378 0 7.334 7.333 0 16.38 0c9.045 0 16.378 7.333 16.378 16.38 0 3.96-1.406 7.593-3.746 10.426L39.547 37.34c.607.608.61 1.59-.004 2.203a1.56 1.56 0 0 1-2.202.004L26.807 29.012zm-10.427.627c7.322 0 13.26-5.938 13.26-13.26 0-7.324-5.938-13.26-13.26-13.26-7.324 0-13.26 5.936-13.26 13.26 0 7.322 5.936 13.26 13.26 13.26z' style='fill-rule:evenodd;'></path>
+                        </svg>
+                    <input type="search" id="docsearch" name="search" placeholder="Search the docs…" autocomplete="off" class="searchbox__input ds-input" spellcheck="false" />
+                </form>
+            </div>
+            <div class="meta hide-on-mobiles">
+                <ul>
+                    <li><a href="https://github.com/wizzifactory/wizzi">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="doc-container">
+        <div class="w-4-5">
+            <article>
+                <div id class="doc-title">
+                    Wizzi schemas</div>
+                <div class="doc-summary">
+                    <p>A Wizzi schema applies a type definition to the nodes of an 
+                        <a href="https://wizzifactory.github.io/docs/mtrees.html">mTree</a>
+                        <span> and describes the classes of a </span>
+                        <a href="https://wizzifactory.github.io/docs/wizzimodels.html">Wizzi model</a>
+                        <span> that can load that mTree type.</span>
+                    </p>
+                    <p>It is the core modeling tool of the Wizzi factory.</p>
+                    <p>A Wizzi schema has its own Wizzi model, of type `wfschema`, implemented by the `
+                        <a href="https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-core/dist">wizzi-core</a>
+                        <span>` plugin. It is used by the artifacts of the `wizzi-core` plugin to generate the javascript modules of the Wizzi model it describes.</span>
+                    </p>
+                    <p>Wizzi schemas are codified as ITTF documents of type `wfschema`.</p>
+                    <div class='ittf-panel'>
+                    <div class='ittf-panel-title'>Sample 'rdbms' wizzi schema</div>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">wfschema</span><span class="pp-pln"> rdbms</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">e</span><span class="pp-pln"> catalog</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">r</span><span class="pp-pln"> table/s</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">e</span><span class="pp-pln"> table</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">    </span><span class="pp-tag">r</span><span class="pp-pln"> column/s</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">    </span><span class="pp-tag">r</span><span class="pp-pln"> index/es</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">  </span><span class="pp-tag">e</span><span class="pp-pln"> column</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">    </span><span class="pp-tag">a</span><span class="pp-pln"> type</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">    </span><span class="pp-tag">a</span><span class="pp-pln"> caption</span></div><div class="L0"><span class="pp-ln">  10 </span><span class="pp-pln">    </span><span class="pp-tag">a</span><span class="pp-pln"> defaultValue</span></div><div class="L1"><span class="pp-ln">  11 </span><span class="pp-pln">      </span><span class="pp-tag">tag</span><span class="pp-pln"> default</span></div><div class="L2"><span class="pp-ln">  12 </span><span class="pp-pln">  </span><span class="pp-tag">e</span><span class="pp-pln"> index</span></div><div class="L3"><span class="pp-ln">  13 </span><span class="pp-pln">    </span><span class="pp-tag">a</span><span class="pp-pln"> primary</span></div><div class="L4"><span class="pp-ln">  14 </span><span class="pp-pln">      </span><span class="pp-tag">type</span><span class="pp-pln"> boolean</span></div><div class="L5"><span class="pp-ln">  15 </span><span class="pp-pln">    </span><span class="pp-tag">a</span><span class="pp-pln"> unique</span></div><div class="L6"><span class="pp-ln">  16 </span><span class="pp-pln">      </span><span class="pp-tag">type</span><span class="pp-pln"> boolean</span></div><div class="L7"><span class="pp-ln">  17 </span><span class="pp-pln">    </span><span class="pp-tag">r</span><span class="pp-pln"> column/s</span></div></div>
+                    </code></pre></div>
+                    <div class='ittf-panel'>
+                    <div class='ittf-panel-title'>Sample 'rdbms' ITTF document conformant to the above wfschema</div>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">rdbms</span><span class="pp-pln"> School</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">table</span><span class="pp-pln"> Student</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">column</span><span class="pp-pln"> Id</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">      </span><span class="pp-tag">type</span><span class="pp-pln"> integer</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">    </span><span class="pp-tag">column</span><span class="pp-pln"> Name</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">      </span><span class="pp-tag">type</span><span class="pp-pln"> string</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">    </span><span class="pp-tag">index</span><span class="pp-pln"> Student-PK</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">      </span><span class="pp-tag">primary</span><span class="pp-pln"> true</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">      </span><span class="pp-tag">column</span><span class="pp-pln"> Id</span></div><div class="L0"><span class="pp-ln">  10 </span><span class="pp-pln">  </span><span class="pp-tag">table</span><span class="pp-pln"> Course</span></div><div class="L1"><span class="pp-ln">  11 </span><span class="pp-pln">    </span><span class="pp-tag">column</span><span class="pp-pln"> Id</span></div><div class="L2"><span class="pp-ln">  12 </span><span class="pp-pln">      </span><span class="pp-tag">type</span><span class="pp-pln"> integer</span></div><div class="L3"><span class="pp-ln">  13 </span><span class="pp-pln">    </span><span class="pp-tag">column</span><span class="pp-pln"> Title</span></div><div class="L4"><span class="pp-ln">  14 </span><span class="pp-pln">      </span><span class="pp-tag">type</span><span class="pp-pln"> string</span></div><div class="L5"><span class="pp-ln">  15 </span><span class="pp-pln">    </span><span class="pp-tag">index</span><span class="pp-pln"> Student-PK</span></div><div class="L6"><span class="pp-ln">  16 </span><span class="pp-pln">      </span><span class="pp-tag">primary</span><span class="pp-pln"> true</span></div><div class="L7"><span class="pp-ln">  17 </span><span class="pp-pln">      </span><span class="pp-tag">column</span><span class="pp-pln"> Id</span></div></div>
+                    </code></pre></div>
+                </div>
+            </article>
+            <article>
+                <div id class="doc-title">
+                    The "wfschema" schema</div>
+                <div class="doc-summary">
+                    <p>The wfschema, implemented by the wizzi-core plugin, is the meta model of a wizzi schema. It models a wizzi schema with the same semantic with which a wizzi schema models a Wizzi Model.</p>
+                    <p>This documentation section has a circularity that may give an headache. It documents a schema that describe a schema using the same schema notation of the documented schema.</p>
+                    <p>Some hints may help.</p>
+                    <ul>
+                        <li>A wizzi schema describes a model in terms of element types, with attributes, and relations between elements. Elements can extend super elements. Relations, that do not have attributes, can be of kind parent-children (one-to-many, the default) or parent-singlechild (one-to-one).</li>
+                        <li>Elements are described in a flat list. Relations hierarchy and element derivations are inferred from definitions.</li>
+                        <li>The root element can be declared using the element attribute 'isRoot'. If not declared the root element is the first of the list.</li>
+                        <li>Elements and attributes may have an optional tag attribute that defines a name alias shorter or with an easier mnemonic. wfschema examples:<ul>
+                            <li>'e' for 'element'</li>
+                            <li>'a' for 'attribute'</li>
+                            <li>'r' for 'relation'</li>
+                        </ul>
+                        </li>
+                        <li>Node names of mTree nodes simply map to an element or attribute tag (or name, if a tag is not declared).</li>
+                    </ul>
+                    <ul>The wfschema elements are
+                        <li>wfschema</li>
+                        <li>exportTo</li>
+                        <li>require</li>
+                        <li>element</li>
+                        <li>attribute, string, boolean, integer, float, date</li>
+                        <li>relation</li>
+                        <li>restrict, enum, minLength, maxLength, minValue, maxValue, regexp</li>
+                        <li>method, function</li>
+                        <li>parameter</li>
+                    </ul>
+                    <h3>wfschema element</h3>
+                    <p>The root element of a 'wfschema'.</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> wfschema `name`</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> require/s</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> exportTo/s</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> element/s</span></div></div>
+                    </code></pre></div>
+                    <h3>exportTo element</h3>
+                    <p>An exportTo element causes the insertion in the Wizzi Model classes of the prototype functions for exporting the tree data structure of the model in the requested format
+                        <ul>
+                            <li>toJson()</li>
+                            <li>toXml()</li>
+                        </ul>
+                    </p>
+                    <p>The entire Wizzi Model can be exported calling this methods on the root element.</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">e</span><span class="pp-pln"> export-to [json|xml]</span></div></div>
+                    </code></pre></div>
+                    <h3>require element</h3>
+                    <p>A Wizzi Model can contain user defined methods and functions, that could need to import objects from other modules. This element allow to insert require statements in the generated Wizzi Model module.</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> require `import-name`</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> declareVar `name`</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> declare-var</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">    </span><span class="pp-tag">optional</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">    </span><span class="pp-tag">default</span><span class="pp-pln"> `import-name`</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> invoke `invoke-string`</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">    </span><span class="pp-tag">optional</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> kind [module]</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">    </span><span class="pp-tag">#</span><span class="pp-pln"> At now we have only one kind, and this attribute is superflous.</span></div><div class="L0"><span class="pp-ln">  10 </span><span class="pp-pln">    </span><span class="pp-tag">#</span><span class="pp-pln"> Other kinds could be added in the future.</span></div><div class="L1"><span class="pp-ln">  11 </span><span class="pp-pln">    </span><span class="pp-tag">optional</span></div><div class="L2"><span class="pp-ln">  12 </span><span class="pp-pln">    </span><span class="pp-tag">default</span><span class="pp-pln"> module</span></div></div>
+                    </code></pre></div>
+                    <p>The generated statement is built in this way:</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">var</span><span class="pp-pln"> `declareVar` = require('`import-name`')[`invoke`]</span></div></div>
+                    </code></pre></div>
+                    <p>Example</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">require</span><span class="pp-pln"> wizzi-utils</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">declare-var</span><span class="pp-pln"> verify</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">    </span><span class="pp-tag">invoke</span><span class="pp-pln"> .verify</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">  </span><span class="pp-tag">generates:</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">    </span><span class="pp-tag">var</span><span class="pp-pln"> verify = require('wizzi-utils').verify</span></div></div>
+                    </code></pre></div>
+                    <h3>Element element</h3>
+                    <p>Describes an element type of the schema.</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> element `name` [: `super-element-name`]</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> e</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> super `super-element-name`</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> tag `tag`</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> xmlTag `tag`</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> xml-tag</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">  </span><span class="pp-tag">boolean</span><span class="pp-pln"> isAbstract</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> is-abstract</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">    </span><span class="pp-tag">default-when-declared</span><span class="pp-pln"> true</span></div><div class="L0"><span class="pp-ln">  10 </span><span class="pp-pln">  </span><span class="pp-tag">boolean</span><span class="pp-pln"> isRoot</span></div><div class="L1"><span class="pp-ln">  11 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> is-root</span></div><div class="L2"><span class="pp-ln">  12 </span><span class="pp-pln">    </span><span class="pp-tag">default-when-declared</span><span class="pp-pln"> true</span></div><div class="L3"><span class="pp-ln">  13 </span><span class="pp-pln">  </span><span class="pp-tag">boolean</span><span class="pp-pln"> nameIsRequired</span></div><div class="L4"><span class="pp-ln">  14 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> name-is-required</span></div><div class="L5"><span class="pp-ln">  15 </span><span class="pp-pln">    </span><span class="pp-tag">default-when-declared</span><span class="pp-pln"> true</span></div><div class="L6"><span class="pp-ln">  16 </span><span class="pp-pln">  </span><span class="pp-tag">boolean</span><span class="pp-pln"> addToChildren</span></div><div class="L7"><span class="pp-ln">  17 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> add-to-children</span></div><div class="L8"><span class="pp-ln">  18 </span><span class="pp-pln">    </span><span class="pp-tag">default-when-declared</span><span class="pp-pln"> true</span></div><div class="L9"><span class="pp-ln">  19 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> attribute/s</span></div><div class="L0"><span class="pp-ln">  20 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> relation/s</span></div><div class="L1"><span class="pp-ln">  21 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> method/s</span></div></div>
+                    </code></pre></div>
+                    <h3>Relation element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> relation `related-element-name`[-`plural-suffix-a`]/`plural-suffix-b`</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">#</span><span class="pp-pln"> Examples</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">#</span><span class="pp-pln"> r column/s (element: column, collection: columns)</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">#</span><span class="pp-pln"> r propert-y/ies (element: property, collection: properties)</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> r</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">  </span><span class="pp-tag">boolean</span><span class="pp-pln"> oneToOne</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> one-to-one</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">    </span><span class="pp-tag">default-when-declared</span><span class="pp-pln"> true</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">  </span><span class="pp-tag">boolean</span><span class="pp-pln"> noGet</span></div><div class="L0"><span class="pp-ln">  10 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> no-get</span></div><div class="L1"><span class="pp-ln">  11 </span><span class="pp-pln">    </span><span class="pp-tag">default-when-declared</span><span class="pp-pln"> true</span></div></div>
+                    </code></pre></div>
+                    <p>Example:</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">e</span><span class="pp-pln"> table : dbitem</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">r</span><span class="pp-pln"> column/s</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">    </span><span class="pp-tag">r</span><span class="pp-pln"> propert-y/ies</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">    </span><span class="pp-tag">r</span><span class="pp-pln"> displayLayout</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">      </span><span class="pp-tag">one-to-one</span></div></div>
+                    </code></pre></div>
+                    <p>related-element-name plus the eventual plural-suffix-a must give the name of an element defined in the schema (that is the related element); in the example: column, property, displayLayout.</p>
+                    <h3>attribute element</h3>
+                    <p>Describes an attribute of an element</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> attribute `name`</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> a</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> tag `tag`</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> xmlTag `tag`</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> xml-tag</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> type [string|integer|float|boolean|date]</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">    </span><span class="pp-tag">default</span><span class="pp-pln"> string</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> default `default-value`</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">  </span><span class="pp-tag">string</span><span class="pp-pln"> defaultWhenDeclared `default-value`</span></div><div class="L0"><span class="pp-ln">  10 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> default-when-declared</span></div><div class="L1"><span class="pp-ln">  11 </span><span class="pp-pln">  </span><span class="pp-tag">boolean</span><span class="pp-pln"> isDatatype</span></div><div class="L2"><span class="pp-ln">  12 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> is-datatype</span></div><div class="L3"><span class="pp-ln">  13 </span><span class="pp-pln">    </span><span class="pp-tag">default-when-declared</span><span class="pp-pln"> true</span></div><div class="L4"><span class="pp-ln">  14 </span><span class="pp-pln">  </span><span class="pp-tag">boolean</span><span class="pp-pln"> isRequired</span></div><div class="L5"><span class="pp-ln">  15 </span><span class="pp-pln">    </span><span class="pp-tag">tag</span><span class="pp-pln"> is-required</span></div><div class="L6"><span class="pp-ln">  16 </span><span class="pp-pln">    </span><span class="pp-tag">default-when-declared</span><span class="pp-pln"> true</span></div><div class="L7"><span class="pp-ln">  17 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> restrict/s</span></div></div>
+                    </code></pre></div>
+                    <h3>string element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> string `attribut-name` : attribute</span></div></div>
+                    </code></pre></div>
+                    <h3>boolean element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> boolean `attribut-name` : attribute</span></div></div>
+                    </code></pre></div>
+                    <h3>integer element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> integer `attribut-name` : attribute</span></div></div>
+                    </code></pre></div>
+                    <h3>float element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> float `attribut-name` : attribute</span></div></div>
+                    </code></pre></div>
+                    <h3>date element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> date `attribut-name` : attribute</span></div></div>
+                    </code></pre></div>
+                    <h3>restrict element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> restrict</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">is-abstract</span></div></div>
+                    </code></pre></div>
+                    <h3>enum element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> enum `enum-value` : restrict</span></div></div>
+                    </code></pre></div>
+                    <h3>maxLength element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> maxLength `value` : restrict</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> max-length</span></div></div>
+                    </code></pre></div>
+                    <h3>minLength element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> minLength `value` : restrict</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> min-length</span></div></div>
+                    </code></pre></div>
+                    <h3>maxValue element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> maxValue `value` : restrict</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> max-value</span></div></div>
+                    </code></pre></div>
+                    <h3>minValue element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> minValue `value` : restrict</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> min-value</span></div></div>
+                    </code></pre></div>
+                    <h3>regexp element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> regexp `value` : restrict</span></div></div>
+                    </code></pre></div>
+                    <h3>method element</h3>
+                    <p>Declares a method that will be added to the element class. A method can access and manipulate the entire Wizzi Model, having access to the 'this.wzRoot()' method of the `schema-name`Base class.</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> method `name`</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> m</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> param/s</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> statement/s</span></div></div>
+                    </code></pre></div>
+                    <h3>param element</h3>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> param `name`</span></div></div>
+                    </code></pre></div>
+                    <h3>statement element</h3>
+                    <p>The statement element uses a subset of the schema 'js' implemented by the plugin wizzi-js.</p>
+                    <h3>function element</h3>
+                    <p>Declares a method that will be added to the module and will be a private function for methods of the model instances.</p>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">e</span><span class="pp-pln"> function `name`</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">tag</span><span class="pp-pln"> m</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> param/s</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">r</span><span class="pp-pln"> statement/s</span></div></div>
+                    </code></pre></div>
+                </div>
+            </article>
+            <article>
+                <div id class="doc-title">
+                    Internal schemas</div>
+                <div class="doc-summary">
+                    <p>There are some common document types that have great flexibility for the definition of context data, and would be usefull to apply to those documents the templating power of mTrees without the hassle of a wizzi schema.</p>
+                    <ul>
+                        <li>Text</li>
+                        <li>Xml</li>
+                        <li>Json</li>
+                        <li>Ittf itself.</li>
+                    </ul>
+                    <p>Respecting a few coding rules these type of documents can be built using the composition and template commands of ittf documents.</p>
+                    <p>The production manager of the wizzi factory recognizes the following internal schemas
+                        <ul>
+                            <li>text</li>
+                            <li>xml</li>
+                            <li>json</li>
+                            <li>ittf</li>
+                        </ul>
+                    </p>
+                    <p>A wizzi job or a an api call to the wizzi factory may use these schema names in any place where a wizzi schema can be used.</p>
+                </div>
+            </article>
+            <article>
+                <div id class="doc-title">
+                    Json pseudo schema</div>
+                <div class="doc-summary">
+                    <div class='ittf-panel'>
+                    <div class='ittf-panel-title'>Sample json ittf document</div>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">{</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">name</span><span class="pp-pln"> "v3-docs"</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">version</span><span class="pp-pln"> "0.0.1"</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">description</span><span class="pp-pln"> "Wizzi factory documentation."</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">  </span><span class="pp-tag">scripts</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">    </span><span class="pp-tag">{</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">      </span><span class="pp-tag">test</span><span class="pp-pln"> "mocha tests/**/*.js"</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">      </span><span class="pp-tag">start</span><span class="pp-pln"> "node index"</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">  </span><span class="pp-tag">dependencies</span></div><div class="L0"><span class="pp-ln">  10 </span><span class="pp-pln">    </span><span class="pp-tag">{</span></div><div class="L1"><span class="pp-ln">  11 </span><span class="pp-pln">      </span><span class="pp-tag">async</span><span class="pp-pln"> "^2.4.0"</span></div><div class="L2"><span class="pp-ln">  12 </span><span class="pp-pln">      </span><span class="pp-tag">json-stringify-safe</span><span class="pp-pln"> "^5.0.1"</span></div><div class="L3"><span class="pp-ln">  13 </span><span class="pp-pln">      </span><span class="pp-tag">...</span></div><div class="L4"><span class="pp-ln">  14 </span><span class="pp-pln">  </span><span class="pp-tag">sampleArray</span></div><div class="L5"><span class="pp-ln">  15 </span><span class="pp-pln">    </span><span class="pp-tag">[</span></div><div class="L6"><span class="pp-ln">  16 </span><span class="pp-pln">      </span><span class="pp-tag">'alfa'</span></div><div class="L7"><span class="pp-ln">  17 </span><span class="pp-pln">      </span><span class="pp-tag">'beta'</span></div></div>
+                    </code></pre></div>
+                    <ul>Coding rules
+                        <li>The root node must be an open graph.</li>
+                        <li>Ittf node names may contain<ul>
+                            <li>Property names.</li>
+                            <li>Open graph for start of object.</li>
+                            <li>Open bracket for start of array.</li>
+                            <li>Array elements primitive values.</li>
+                        </ul>
+                        </li>
+                        <li>Ittf node values must contain property values when the node name is a property name, nothing in the other cases.</li>
+                    </ul>
+                    <p>( It is assumed that one knows
+                        <a href="http://www.json.org/">json format rules</a>
+                        <span>)</span>
+                    </p>
+                </div>
+            </article>
+            <article>
+                <div id class="doc-title">
+                    Xml pseudo schema</div>
+                <div class="doc-summary">
+                    <div class='ittf-panel'>
+                    <div class='ittf-panel-title'>Sample xml ittf document</div>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">profile</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">@</span><span class="pp-pln"> name </span><span class="pp-kwd">${</span><span class="pp-expr">user.name</span><span class="pp-kwd">}</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">@</span><span class="pp-pln"> age </span><span class="pp-kwd">${</span><span class="pp-expr">user.age</span><span class="pp-kwd">}</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">friends</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">    </span><span class="pp-kwd">$foreach</span><span class="pp-pln"> friend in user.friends</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">      </span><span class="pp-tag">friend</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">        </span><span class="pp-tag">@</span><span class="pp-pln"> name </span><span class="pp-kwd">${</span><span class="pp-expr">friend.name</span><span class="pp-kwd">}</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">        </span><span class="pp-tag">@</span><span class="pp-pln"> age </span><span class="pp-kwd">${</span><span class="pp-expr">friend.age</span><span class="pp-kwd">}</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">  </span><span class="pp-tag">address</span></div><div class="L0"><span class="pp-ln">  10 </span><span class="pp-pln">    </span><span class="pp-tag">@</span><span class="pp-pln"> street </span><span class="pp-kwd">${</span><span class="pp-expr">user.street</span><span class="pp-kwd">}</span></div><div class="L1"><span class="pp-ln">  11 </span><span class="pp-pln">    </span><span class="pp-tag">@</span><span class="pp-pln"> city </span><span class="pp-kwd">${</span><span class="pp-expr">user.city</span><span class="pp-kwd">}</span></div></div>
+                    </code></pre></div>
+                    <ul>Rules
+                        <li>Ittf node names may contain<ul>
+                            <li>element names for elements</li>
+                            <li>simbol @ for attributes</li>
+                        </ul>
+                        </li>
+                        <li>Ittf node values may contain<ul>
+                            <li>nothing for elements</li>
+                            <li>name and value separated by a blank for attributes</li>
+                        </ul>
+                        </li>
+                    </ul>
+                    <p>( It is assumed that one knows
+                        <a href="https://google.github.io/styleguide/xmlstyle.html">xml format rules</a>
+                        <span>)</span>
+                    </p>
+                </div>
+            </article>
+            <article>
+                <div id class="doc-title">
+                    Text pseudo schema</div>
+                <div class="doc-summary">
+                    <p>A text ittf document is a bit out of standard. It is a common text document that can break the rule of only one root node. It can use any node command or expression of an ittf document. A preprocessor transforms the text in a standard ittf tree structure. After the buildup of the mTree the 'text/document' artifact generator recreates the textual format.</p>
+                    <h4>Example of text mixin for a license file</h4>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-kwd">$params</span><span class="pp-pln"> copy, license</span></div></div>
+                    </code></pre></div>
+                    <h4>The mixin transformed by the prepocessor in a standard format</h4>
+                    <div class='ittf-panel'>
+                    <pre class='prettyprint'><code>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">text</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-kwd">$params</span><span class="pp-pln"> copy, license</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">+</span><span class="pp-pln"> MIT License</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">  </span><span class="pp-tag">+</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">  </span><span class="pp-tag">+</span><span class="pp-pln"> Copyright (c) 2015 The Wizzi Team</span></div><div class="L6"><span class="pp-ln">   6 </span><span class="pp-pln">  </span><span class="pp-tag">+</span></div><div class="L7"><span class="pp-ln">   7 </span><span class="pp-pln">  </span><span class="pp-kwd">$if</span><span class="pp-expr"> license === 'mit'</span></div><div class="L8"><span class="pp-ln">   8 </span><span class="pp-pln">    </span><span class="pp-kwd">$include</span><span class="pp-mix frag-to-link-a"> mit_license_text</span></div><div class="L9"><span class="pp-ln">   9 </span><span class="pp-pln">  </span><span class="pp-kwd">$elif</span><span class="pp-pln"> ...</span></div></div>
+                    </code></pre></div>
+                </div>
+            </article>
+            <article>
+                <div id class="doc-title">
+                    Ittf pseudo schema</div>
+                <div class="doc-summary">
+                    <p>Using the ittf pseudo schema may increases the plasticity of a generation process.</p>
+                    <p>We can load complex untyped ittf documents into an mTree and obtain as a result an in-memory simple tree structure of nodes with a name, a value and a childs collection, that can generate a new ittf document.</p>
+                    <p>We can chain complex mTrees buildups until we get the final ittf document to load into a Wizzi Model for artifact generation.</p>
+                </div>
+            </article>
+        </div>
+        <div class="w-1-5">
+            <div class="aside-right">
+                <div style="padding-top: 40px;"></div>
+                <ul>
+                    <li><a href="https://wizzifactory.github.io/docs/concepts.html">Concepts</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/docs/ittfdocuments.html">Ittf documents</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/docs/jswizzi.html">JsWizzi</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/docs/mtrees.html">mTrees</a>
+                    </li>
+                    <li class="current"><a href="https://wizzifactory.github.io/docs/wizzischemas.html">Wizzi schemas</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/docs/wizzimodels.html">Wizzi models</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/docs/artifacts.html">Artifacts</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/docs/wizzifactoryclass.html">Wizzi factory class</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/docs/wizzijobs.html">Wizzi jobs</a>
+                    </li>
+                    <li><a href="https://wizzifactory.github.io/docs/wizziplugins.html">Wizzi plugins</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

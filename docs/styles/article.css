@@ -734,7 +734,7 @@ pre.prettyprint ol {
 }
 @font-face {
     font-family: 'Material Icons';
-    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://wizzifactory.github.io/fonts/MaterialIcons-Regular.woff2) format('woff2'), url(https://wizzifactory.github.io/fonts/MaterialIcons-Regular.woff) format('woff'), url(https://wizzifactory.github.io/fonts/MaterialIcons-Regular.ttf) format('truetype');
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://stfnbssl.github.io/wizzi/fonts/MaterialIcons-Regular.woff2) format('woff2'), url(https://stfnbssl.github.io/wizzi/fonts/MaterialIcons-Regular.woff) format('woff'), url(https://stfnbssl.github.io/wizzi/fonts/MaterialIcons-Regular.ttf) format('truetype');
     font-style: normal;
     font-weight: 400;
     /** For IE6-8 */

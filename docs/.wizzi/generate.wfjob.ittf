@@ -1,8 +1,7 @@
 ﻿wfjob wizzifactory.github.io
 	
 	$
-		var pkgName = 'wizzifactory.github.io';
-		var ittf_meta_folder      = path.join(__dirname, 'ittf', 'meta');
+		var pkgName = 'stfnbssl.github.io/wizzi/docs';
         var ittf_models_folder    = path.join(__dirname, 'ittf', 'models');
 		var ittf_src_folder       = path.join(__dirname, 'ittf', 'src');
 		var ittf_root_folder      = path.join(__dirname, 'ittf', 'root');

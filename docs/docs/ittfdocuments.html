@@ -9,21 +9,21 @@
         <div class="flexbox">
             <div class="center-on-mobiles">
                 <h1>
-                    <a href="/" class="logo"><img src="https://wizzifactory.github.io/images/logo.svg" width="140" height="65" alt="Wizzi Logo" />
+                    <a href="/" class="logo"><img src="https://stfnbssl.github.io/wizzi/images/logo.svg" width="140" height="65" alt="Wizzi Logo" />
                     </a>
                 </h1>
             </div>
             <nav class="main-nav hide-on-mobiles">
                 <ul>
-                    <li><a href="https://wizzifactory.github.io/">Home</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/">Home</a>
                     </li>
-                    <li class="current"><a href="https://wizzifactory.github.io/docs/concepts.html">Docs</a>
+                    <li class="current"><a href="https://stfnbssl.github.io/wizzi/docs/concepts.html">Docs</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/resources/index.html">Resources</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/resources/index.html">Resources</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/packy/index.html">Packy</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/packy/index.html">Packy</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/news/index.html">News</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/news/index.html">News</a>
                     </li>
                 </ul>
             </nav>
@@ -70,13 +70,13 @@
                     <p>A line is made of a node-name and a node-value separated by a white-char (space or tab).</p>
                     <div class='ittf-panel'>
                     <pre class='prettyprint'><code>
-                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">name</span><span class="pp-pln"> value</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">name</span><span class="pp-pln"> value</span></div></div>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">name</span><span class="pp-pln"> value</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">    </span><span class="pp-tag">name</span><span class="pp-pln"> value</span></div></div>
                     </code></pre></div>
                     <p>Node-values always are trimmed, you cannot have a node-value that starts or ends with a white-char sequence.</p>
                     <p>When loaded, both these nodes will containg the 'value' string in the node-value.</p>
                     <div class='ittf-panel'>
                     <pre class='prettyprint'><code>
-                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">name1</span><span class="pp-pln"> value</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">name2</span><span class="pp-pln"> value</span></div></div>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">name1</span><span class="pp-pln"> value</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">    </span><span class="pp-tag">name2</span><span class="pp-pln"> value</span></div></div>
                     </code></pre></div>
                     <p>The node hierarchy is built calculating the indentation of node-names in a text line. Every tab or every 4 space chars preeceding a node-name count for one level of indentation.</p>
                     <p>The node-name of the first line (the root node-name) must have indentation zero. The root node-name must start at column 1 (1-based) of the first row.</p>
@@ -85,7 +85,7 @@
                     <div class='ittf-panel'>
                     <div class='ittf-panel-title'>Sample ITTF document with two root nodes.</div>
                     <pre class='prettyprint'><code>
-                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-kwd">$group</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">root1</span><span class="pp-pln"> value1</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">  </span><span class="pp-tag">root2</span><span class="pp-pln"> value2</span></div></div>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-kwd">$group</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">    </span><span class="pp-tag">root1</span><span class="pp-pln"> value1</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">root2</span><span class="pp-pln"> value2</span></div></div>
                     </code></pre></div>
                     <p>A line becomes a node which parent is the first preceeding line with a lesser indentation.</p>
                     <p>Phisical text lines may have line continuatios and a 'logical' line may contain many phisical lines. There are three pre-defined node-names that allow line continuation:
@@ -98,7 +98,7 @@
                     <div class='ittf-panel'>
                     <div class='ittf-panel-title'>Line continuation sample.  Both 'name1' and 'name2' have the same value.</div>
                     <pre class='prettyprint'><code>
-                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">-</span><span class="pp-pln"> root</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">-</span><span class="pp-pln"> name1 I am</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> a single</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> line</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">  </span><span class="pp-tag">-</span><span class="pp-pln"> name2 I am a single line</span></div></div>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">-</span><span class="pp-pln"> root</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> name1 I am</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">        </span><span class="pp-tag">-</span><span class="pp-pln"> a single</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">        </span><span class="pp-tag">-</span><span class="pp-pln"> line</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> name2 I am a single line</span></div></div>
                     </code></pre></div>
                     <p>Node names and values are text strings by design, and never require quotes (they are unquoted by the lexer). The wizzi factory is a text manipulator. If the semantic of a node-value require that it is treated as a different type (boolean, integer, float or date), that can be done using wizzi schemas, that apply types to the tree structure resulting from loading an ittf document (see mTrees).</p>
                     <p>One exception to this rule is when an argument is passed to a mixed ittf document, and will become part of its evaluation context. Types different from string can be usefull in jswizzi statements and expessions. The '$params' node command, that declares the parameters received by a mixed ittf document, may assign a type to passed arguments.</p>
@@ -150,7 +150,7 @@
                     <h3>$foreach repeat node command</h3>
                     <div class='ittf-panel'>
                     <pre class='prettyprint'><code>
-                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">-</span><span class="pp-pln"> ...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">-</span><span class="pp-pln"> $foreach item-name in collection-name</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> ... node branch ...</span></div></div>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">-</span><span class="pp-pln"> ...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> $foreach item-name in collection-name</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">        </span><span class="pp-tag">-</span><span class="pp-pln"> ... node branch ...</span></div></div>
                     </code></pre></div>
                     <p>Descendant nodes of this node command are a repeat template; item-name is user defined and collection-name is a jswizzi expression that evaluates to an iterable javascript object, in scope in the local or global jsWizziContext.</p>
                     <p>The var statement that declares item-name is auto-generated.</p>
@@ -161,14 +161,14 @@
                     <p>TODO make the limit of 10000 iterations configurable and an optional parameter of the loadMTree function.</p>
                     <div class='ittf-panel'>
                     <pre class='prettyprint'><code>
-                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">-</span><span class="pp-pln"> ...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">-</span><span class="pp-pln"> $while jswizzi-expression</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> ... node branch ...</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> $ jswizzi-exit-condition-change</span></div></div>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">-</span><span class="pp-pln"> ...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> $while jswizzi-expression</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">        </span><span class="pp-tag">-</span><span class="pp-pln"> ... node branch ...</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">        </span><span class="pp-tag">-</span><span class="pp-pln"> $ jswizzi-exit-condition-change</span></div></div>
                     </code></pre></div>
                     <h3>$break, $continue repeat node commands</h3>
                     <p>This statements have the same meaning than in javascript but operate breaking or continuing the template repetition.</p>
                     <p>A label for continuation is not implemented.</p>
                     <div class='ittf-panel'>
                     <pre class='prettyprint'><code>
-                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">-</span><span class="pp-pln"> ...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">  </span><span class="pp-tag">-</span><span class="pp-pln"> $foreach ... | $while ...</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> $break empty-value</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> ...</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> $continue empty-value</span></div></div>
+                    <div><div class="L1"><span class="pp-ln">   1 </span><span class="pp-pln"></span><span class="pp-tag">-</span><span class="pp-pln"> ...</span></div><div class="L2"><span class="pp-ln">   2 </span><span class="pp-pln">    </span><span class="pp-tag">-</span><span class="pp-pln"> $foreach ... | $while ...</span></div><div class="L3"><span class="pp-ln">   3 </span><span class="pp-pln">        </span><span class="pp-tag">-</span><span class="pp-pln"> $break empty-value</span></div><div class="L4"><span class="pp-ln">   4 </span><span class="pp-pln">        </span><span class="pp-tag">-</span><span class="pp-pln"> ...</span></div><div class="L5"><span class="pp-ln">   5 </span><span class="pp-pln">        </span><span class="pp-tag">-</span><span class="pp-pln"> $continue empty-value</span></div></div>
                     </code></pre></div>
                 </div>
             </article>
@@ -177,25 +177,25 @@
             <div class="aside-right">
                 <div style="padding-top: 40px;"></div>
                 <ul>
-                    <li><a href="https://wizzifactory.github.io/docs/concepts.html">Concepts</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/concepts.html">Concepts</a>
                     </li>
-                    <li class="current"><a href="https://wizzifactory.github.io/docs/ittfdocuments.html">Ittf documents</a>
+                    <li class="current"><a href="https://stfnbssl.github.io/wizzi/docs/ittfdocuments.html">Ittf documents</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/docs/jswizzi.html">JsWizzi</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/jswizzi.html">JsWizzi</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/docs/mtrees.html">mTrees</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/mtrees.html">mTrees</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/docs/wizzischemas.html">Wizzi schemas</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/wizzischemas.html">Wizzi schemas</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/docs/wizzimodels.html">Wizzi models</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/wizzimodels.html">Wizzi models</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/docs/artifacts.html">Artifacts</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/artifacts.html">Artifacts</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/docs/wizzifactoryclass.html">Wizzi factory class</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/wizzifactoryclass.html">Wizzi factory class</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/docs/wizzijobs.html">Wizzi jobs</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/wizzijobs.html">Wizzi jobs</a>
                     </li>
-                    <li><a href="https://wizzifactory.github.io/docs/wizziplugins.html">Wizzi plugins</a>
+                    <li><a href="https://stfnbssl.github.io/wizzi/docs/wizziplugins.html">Wizzi plugins</a>
                     </li>
                 </ul>
             </div>

@@ -1,17 +1,17 @@
 {
     $
-        // var baseUrl = 'http://127.0.0.1:5501';
+        var baseUrl = 'http://127.0.0.1:5500/docs';
         // var baseUrl = "https://wizzifactory.github.io";
-        var baseUrl = "https://stfnbssl.github.io/wizzi";
+        // var baseUrl = "https://stfnbssl.github.io/wizzi";
 
-	name "wizzifactory.github.io"
+	name "wizzi.github.io"
 	version "0.7.1"
-	description "Wizzi factory github page"
+	description "Wizzi github page"
 	author "Stefano Bassoli"
 	license "MIT"
 
     { Params
-        title "Wizzi factory"
+        title "Wizzi"
         baseUrl "${baseUrl}"
 
     { Section

@@ -112,9 +112,12 @@
 								_ callback
 									new Error("Root is not an object. Prop: " + prop + ', root: ' + root)
                         var ac = getAttribsAndChilds(root)
+                        var propx = prop
+                        if prop == 'viewBox'
+                            set propx = prop
                         set wizziTree =
                             { 
-                                @ tag prop
+                                @ tag propx
                                 @ attribs
                                     [ 
                                 @ children

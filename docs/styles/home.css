@@ -307,7 +307,7 @@ p {
 }
 #showcase .bg-logo {
     position: absolute;
-    background: #444 url('https://stfnbssl.github.io/wizzi/images/logo.svg');
+    background: #444 url('http://127.0.0.1:5500/docs/images/logo.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -318,7 +318,7 @@ p {
 }
 #showcase .bg-image {
     position: absolute;
-    background: #444 url(https://stfnbssl.github.io/wizzi/images/showcase.png);
+    background: #444 url(http://127.0.0.1:5500/docs/images/showcase.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -528,10 +528,6 @@ p {
     text-decoration: none;
 }
 @media (min-width: 700px) {
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
-    }
     .grid2 {
         display: grid;
         grid-template-columns: 1fr repeat(2, minmax(auto, 40em)) 1fr;

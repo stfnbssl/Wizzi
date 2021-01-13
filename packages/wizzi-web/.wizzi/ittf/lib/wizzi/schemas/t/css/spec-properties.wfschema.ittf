@@ -115,8 +115,10 @@
 	e break-before : property
 	e break-inside : property
 	e caption-side : property
+    e caret-color : property
 	e clear : property
 	e clip : property
+    e clip-path : property
 	e color : property
 	e columns : property
 	e column-count : property
@@ -282,6 +284,7 @@
 	e resize : property
 	e richness : property
 	e right : property
+    e scrollbar-width
 	e speak-header : property
 	e speak-numeral : property
 	e speak-punctuation : property
@@ -300,7 +303,8 @@
 	e text-decoration-style : property
 	e text-decoration-color : property
 	e text-decoration-skip : property
-	e text-indent : property
+	e text-fill-color : property
+    e text-indent : property
 	e text-overflow : property
 	e text-rendering : property
 	e text-shadow : property

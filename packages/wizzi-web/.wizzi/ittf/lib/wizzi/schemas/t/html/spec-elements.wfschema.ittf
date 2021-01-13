@@ -200,6 +200,7 @@
 		a hreflang
 		a type
 		a sizes
+        a as
 	e main : element
 	e map : element
 		a name
@@ -261,7 +262,8 @@
 	e param : element
 		a name
 		a value
-	e pre : element
+	e picture : element
+    e pre : element
 	e progress : element
 		a value
 		a max
@@ -296,7 +298,10 @@
 		a size
 	e small : element
 	e source : element
-		a src
+		a media
+        a src
+        a srcset
+        a sizes
 		a type
 	e span : element
 	e strong : element

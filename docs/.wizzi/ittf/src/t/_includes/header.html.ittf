@@ -7,7 +7,7 @@ $group
                 $if page.sectionTitle !== 'Home'
                     h1
                         a
-                            href /
+                            href ${pkg.Params.baseUrl}
                             class logo
                             img
                                 src ${pkg.Params.baseUrl}/images/logo.svg
@@ -48,4 +48,4 @@ $group
                 ul
                     li
                         a GitHub
-                            href https://github.com/wizzifactory/wizzi
+                            href https://github.com/stfnbssl/wizzi

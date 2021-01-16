@@ -13,96 +13,85 @@ html
                 . bg-image
                 . content-wrap
             . showcase-sub-title
-                + An open, general purpose, language agnostic and data driven code generator.
+                + A processor of textual tree data structures
+                br
+                + A software artifact generator
 		
 		main
 			id main
 			
-			_includes/section-grid-content( section-a, Building code processing data structures
-				p Computing has advanced tremendously thank to new open and interoperable tools and programming languages.
-				p Computing handles data structures and is itself described by data.
-				p A program  source is a human friendly representation of an Abstract Syntax Tree, a data structure that 
-					+ represents the computations of the program. 
-				p Wizzi is a new tool for describing, composing and processing data structures
-					+ in the form of both declarative and imperative code. 
-				p It is aimed at those development tasks where programming can be driven by data.
+			_includes/section-grid-content( section-a, Produce artifacts processing source streams of indented text
+				p Wizzi allow you to merge and manipulate textual trees of data.
+                    br
+				    + Sources can be schemed and when loaded may expose functions on data.
+                    br
+                    + You can merge source and context data.
+                    br 
+                    + Artifact productions can be driven by data.
 
 			_includes/section-grid-ul( section-b
-				_includes/card-img( Design code as data, https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?cs=srgb&dl=business-charts-commerce-265087.jpg&fm=jpg
+                $*
+				_includes/card-img( Design sources as data, https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?cs=srgb&dl=business-charts-commerce-265087.jpg&fm=jpg
 					p In Wizzi human friendly representations of tree data structures drive data transformations and code generations.
 					p To wizzify code promotes the design of code as a reusable data structure.
+                *$
 					
-				_includes/card-img( Wizzify sources, https://images.pexels.com/photos/574077/pexels-photo-574077.jpeg?cs=srgb&dl=code-coding-computer-574077.jpg&fm=jpg
-					p Wizzi sources are human readable streams named ITTF Documents. 
-					p ITTF stands for Indented Text Tree Format,
-						+ a tree data structure where nodes are name/value pairs.
-					p Wizzified code is templatable and computable.
+				_includes/card( Sources, 
+					p Sources are editable streams of Ittf (Indented Text Tree Format) documents,
+						+ a tree data structure where nodes are lines of name/value pairs.
 
-				_includes/card-img( Apply templates, https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?cs=srgb&dl=business-charts-commerce-265087.jpg&fm=jpg
-					p ITTF Documents can include and merge other ITTF Documents. Are templates that can be merged with context data.
-						+ Can be scripted.
-					p The ITTF Processor is a script and template engine that transforms source streams into mTree objects.
+				_includes/card( Templates
+					p Ittf documents are templates, can be merged with context data, can be scripted 
+                        \b and can include and merge other Ittf documents.
+					p The Ittf processor is a script and template engine that transforms textual source streams into mTree memory objects.
 
-				_includes/card-img( Apply schematas, https://images.pexels.com/photos/261628/pexels-photo-261628.jpeg?cs=srgb&dl=access-adult-blur-261628.jpg&fm=jpg
-					p After composition, domain specific schematas can be applied to mTrees, creating dynamic models that become context objects
-						+ for code generations or in cascade new data compositions.
+				_includes/card( Schemas
+					p Domain specific schemas can be applied to mTrees, creating dynamic context objects
+						+ for data merging and generations.
 
-				_includes/card-img( Automate generations, https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?cs=srgb&dl=business-charts-commerce-265087.jpg&fm=jpg
-					p Ittf Processing and code generations can be automated chaining tasks in Wizzi Jobs. 
-					p A Wizzi Job is the task runner of Wizzi. 
+				_includes/card( Automate generations
+					p Generations can be automated chaining tasks in Wizzi Jobs. 
 
-			_includes/section-grid-content( section-a2, Developing in a connected world
-				p Nowadays programming is migrating to the cloud.
-				p Wizzi is designed to operate in the browser and to use cloud Git repositories as data sources and destinations.
-				p Web Hooks an CI Tools may integrate Wizzi in a cloud development environment.
-
-			_includes/section-grid-ul( section-b2
-				_includes/card-img( The Browser is the IDE, https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?cs=srgb&dl=business-charts-commerce-265087.jpg&fm=jpg
-					p Wizzi adopts BrowserFS to use the browser as a file system.
-				_includes/card-img( Git is the code DB, https://images.pexels.com/photos/574077/pexels-photo-574077.jpeg?cs=srgb&dl=code-coding-computer-574077.jpg&fm=jpg
-					p Wizzi uses isomorphic-git, an in-browser Git API, to manage source documents in the cloud.
-				_includes/card-img( Web Hooks and CI, https://images.pexels.com/photos/574077/pexels-photo-574077.jpeg?cs=srgb&dl=code-coding-computer-574077.jpg&fm=jpg
-					p Generated artifacts commited to a Git Repository can be immediately integrated thanks to Web Hooks and Continuous integration tools.
 
 			_includes/section-grid-content( section-a3, Main components
-				p Wizzi is a javascript application designed to run in the browser and on NodeJs servers.
-				p Its main components process sources that may target any programming language or any other printable text format.
-				p User created schemata, transformers and generators target domain specific outputs.
+				p Wizzi is a javascript Api that can run localy, on NodeJs servers or in the browser.
+				p It is language agnostic.
+				p User created schemas, transformers and generators target domain specific artifacts.
 
 			_includes/section-grid-ul( section-b3, grid2
-				_includes/card( Ittf Documents
-					p Wizzi source documents.
-					p Represent code and any textual data format as a tree data structure.
+				_includes/card( Ittf document
+					p Wizzi source document.
+					p Represents code and data as a textual indented tree data structure.
 					p Composable, templeatable, scriptable.
-					link( more, ${pkg.Params.baseUrl}/docs/ittfdocuments.html)
-				_includes/card( Wizzi Schemas
-					p Formal descriptions of data structures, similar to XML Schemas.
-					p Describe and generate Wizzi Model Doms that load and validate ITTF Documents.
+					link( more, ${pkg.Params.baseUrl}/docs/Ittfdocuments.html)
+				_includes/card( Wizzi schema
+					p Formal description of a type of Ittf document, similar to XML Schema.
+					p Drives the generation of a Wizzi Model Dom that load and validate the Ittf document of its type.
                     link( more, ${pkg.Params.baseUrl}/docs/wizzischemas.html)
-				_includes/card( Wizzi Models
-					p Instances of Wizzi Model Doms loaded with processed ITTF Documents.
-					p Act as context objects in artifact generations and ITTF processings.
+				_includes/card( Wizzi model
+					p Instance of a Wizzi Model Dom.
+					p When loaded with a Ittf document can be used as a context object in generations.
                     link( more, ${pkg.Params.baseUrl}/docs/wizzimodels.html)
-				_includes/card( Model Transformers
-					p Transform Wizzi Models.
+				_includes/card( Model transformer
+					p Transforms a Wizzi Model.
                     link( more, ${pkg.Params.baseUrl}/docs/modeltransformers.html)
-				_includes/card( Artifact Generators
-					p Transform Wizzi Models into software artifacts.
+				_includes/card( Artifact generator
+					p Generates a software artifact merging data from Wizzi models.
                     link( more, ${pkg.Params.baseUrl}/docs/artifacts.html)
-				_includes/card( Wizzi Factory
+				_includes/card( Wizzi factory
 					p The main API component of Wizzi.
 					p Loads plugins, processes sources, execute generations, run jobs.
                     link( more, ${pkg.Params.baseUrl}/docs/wizzifactoryclass.html)
-				_includes/card( Wizzi Jobs
-					p Sequence of generation tasks run by the Wizzi Factory.
+				_includes/card( Wizzi job
+					p Sequence of generation tasks run by the Wizzi factory.
                     link( more, ${pkg.Params.baseUrl}/docs/wizzijobs.html)
-				_includes/card( Wizzi Plugins
-					p Implement domain specific schemas, transformers and generators.
+				_includes/card( Wizzi plugin
+					p Implementation of domain specific schemas, transformers and generators.
                     link( more, ${pkg.Params.baseUrl}/docs/wizziplugins.html)
 
 			_includes/section-grid-content( section-a4, A pluggable architecture
-				p Wizzi is made of general purpose kernel modules and an ecosystem of domain specific plugins.
-				p Plugins are the horse work of code generations.
+				p Wizzi is made of an ecosystem of domain specific plugins.
+				p Plugins are the horse work of generations.
 				p Core and default plugins support the creation of user generated plugins.
 				
 
@@ -111,11 +100,11 @@ html
 				_includes/card( Core plugins
 					p The `
                         to-plugin( wizzi-core )
-                        span ` plugin contains schemata and artifacts used by the kernel modules.
+                        span ` plugin contains schemas and artifacts used by the kernel modules.
                     link( more, ${pkg.Params.baseUrl}/docs/wizziplugins.html#coreplugins)
 				
 				_includes/card( Default plugins
-					p Three plugins, available in the Npm registry, have been created to be used as starters:
+					p Default plugins, available in the Npm registry, can be used as starters:
 						+ the `
                         to-plugin( wizzi-js )
                         span `, the `
@@ -127,13 +116,25 @@ html
                     link( more, ${pkg.Params.baseUrl}/docs/wizziplugins.html#defaultplugins)
 				
 				_includes/card( Npm plugins
-					p Plugin authors can contribute their plugins to the community packaging and publishing them to the Npm registry.
+					p Plugin authors can contribute their plugins publishing them to the Npm registry.
 					p Public Wizzi plugins should be prefixed with 'wizzi-plugin-'.
                     link( more, ${pkg.Params.baseUrl}/docs/wizziplugins.html#npmplugins)
 				
 				_includes/card( Local plugins
 					p User generated plugins can be declared by path to the Wizzi factory and may remain locals to user projects.
                     link( more, ${pkg.Params.baseUrl}/docs/wizziplugins.html#localplugins)
+
+			_includes/section-grid-content( section-a2, Developing in a connected world
+				p Wizzi is designed to operate in the browser and to use cloud Git repositories as data sources and destinations.
+				p Web Hooks an CI Tools may integrate Wizzi in a cloud development environment.
+
+			_includes/section-grid-ul( section-b2
+				_includes/card( The Browser is the IDE
+					p Wizzi adopts BrowserFS to use the browser as a file system.
+				_includes/card( Git is the code DB
+					p Wizzi uses isomorphic-git, an in-browser Git API, to manage source documents in the cloud.
+				_includes/card( Web Hooks and CI
+					p Generated artifacts commited to a Git Repository can be immediately integrated thanks to Web Hooks and Continuous integration tools.
 
 			$*
 			section

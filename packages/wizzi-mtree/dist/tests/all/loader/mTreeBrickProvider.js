@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\mTreeBrickProvider.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\mTreeBrickProvider.js.ittf
 */
 'use strict';
 
@@ -27,7 +27,7 @@ function getFSDocumentStore(callback) {
 
 var MTreeBrickProvider = require('../../../lib/loader/mTreeBrickProvider');
 var errors = require('../../../lib/errors');
-var mocks = require('../mocks/misc');
+var mocks = require('../../mocks/misc');
 
 function evaluate(uri, callback) {
     var loadContext = {

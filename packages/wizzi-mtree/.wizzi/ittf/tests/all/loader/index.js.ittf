@@ -1,7 +1,7 @@
 ﻿base_test( index )
 	
 	$append imports
-		var mocks = require('../mocks/misc')
+		var mocks = require('../../mocks/misc')
 		var file = require('wizzi-utils').file
 		var stringify = require('json-stringify-safe')
 		var loader = require('../../../lib/loader')
@@ -70,7 +70,7 @@
 				@ __productionManager mocks.ProductionManager
 				@ __ittfDocumentStore store
 			f_cb_no_err( result )
-				log 'should get an RepoIOError error.err', err
+				# log 'should get an RepoIOError error.err', err
 				tobe_string( err.name, RepoIOError )
 				_ done()
 

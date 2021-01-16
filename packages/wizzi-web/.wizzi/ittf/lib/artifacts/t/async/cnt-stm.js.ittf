@@ -1,7 +1,8 @@
-﻿set cnt.stm.${name}
-	$params name
-	function
-		param model
-		param ctx
-		param callback
-		$hook
+﻿$group
+    $params name
+    set cnt.stm.${name}
+        function
+            param model
+            param ctx
+            param callback
+            $hook

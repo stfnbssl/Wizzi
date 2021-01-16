@@ -6,7 +6,6 @@
 	import util
 	import async
 	var stringify = require('json-stringify-safe')
-	var inspect = require('object-inspect')
 	var verify = require('wizzi-utils').verify
 	var vfile = require('wizzi-utils').vfile
 	var file = vfile()

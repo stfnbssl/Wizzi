@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\html\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\html\document\gen\main.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -243,7 +243,7 @@ md.stm.html = function(model, ctx, callback) {
         if (!!ctx.values.forVueTemplate == false) {
             ctx.w('</html>');
         }
-        return callback(null, true);
+        callback(null, true);
     });
 };
 md.stm.jsBabel = function(model, ctx, callback) {
@@ -258,7 +258,7 @@ md.stm.jsBabel = function(model, ctx, callback) {
         js_statement.gen(item, ctx);
     }
     ctx.w("</script>");
-    return callback(null, true);
+    callback(null, true);
 };
 md.stm.cssInclude = function(model, ctx, callback) {
     ctx.write('<style');
@@ -279,12 +279,12 @@ md.stm.cssInclude = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w("</style>");
-            return callback(null, true);
+            callback(null, true);
         });
     }
     else {
         ctx.w("</style>");
-        return callback(null, true);
+        callback(null, true);
     }
 };
 md.stm.script = function(model, ctx, callback) {
@@ -307,7 +307,7 @@ md.stm.script = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w("</script>");
-            return callback(null, true);
+            callback(null, true);
         });
     }
     else {
@@ -318,7 +318,7 @@ md.stm.script = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w("</script>");
-            return callback(null, true);
+            callback(null, true);
         });
     }
 };
@@ -341,12 +341,12 @@ md.stm.jsInclude = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w("</script>");
-            return callback(null, true);
+            callback(null, true);
         });
     }
     else {
         ctx.w("</script>");
-        return callback(null, true);
+        callback(null, true);
     }
 };
 md.stm.readyInclude = function(model, ctx, callback) {
@@ -372,7 +372,7 @@ md.stm.readyInclude = function(model, ctx, callback) {
                 ctx.deindent();
                 ctx.w('});');
                 ctx.w("</script>");
-                return callback(null, true);
+                callback(null, true);
             })
         }
         else {
@@ -385,13 +385,13 @@ md.stm.readyInclude = function(model, ctx, callback) {
                 ctx.deindent();
                 ctx.w('};');
                 ctx.w("</script>");
-                return callback(null, true);
+                callback(null, true);
             });
         }
     }
     else {
         ctx.w("</script>");
-        return callback(null, true);
+        callback(null, true);
     }
 };
 md.stm.img = function(model, ctx, callback) {
@@ -403,11 +403,11 @@ md.stm.img = function(model, ctx, callback) {
                 if (err) {
                     return callback(err);
                 }
-                return callback(null, true);
+                callback(null, true);
             });
     }
     else {
-        return callback(null, false);
+        callback(null, false);
     }
 };
 md.stm.svgInclude = function(model, ctx, callback) {
@@ -417,11 +417,11 @@ md.stm.svgInclude = function(model, ctx, callback) {
                 if (err) {
                     return callback(err);
                 }
-                return callback(null, true);
+                callback(null, true);
             });
     }
     else {
-        return callback(null, false);
+        callback(null, false);
     }
 };
 md.stm.jsonObjectInclude = function(model, ctx, callback) {
@@ -433,11 +433,11 @@ md.stm.jsonObjectInclude = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w('</script>');
-            return callback(null, true);
+            callback(null, true);
         });
     }
     else {
-        return callback(null, false);
+        callback(null, false);
     }
 };
 md.stm.jsonArrayInclude = function(model, ctx, callback) {
@@ -449,11 +449,11 @@ md.stm.jsonArrayInclude = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w('</script>');
-            return callback(null, true);
+            callback(null, true);
         });
     }
     else {
-        return callback(null, false);
+        callback(null, false);
     }
 };
 md.stm.lorem = function(model, ctx, callback) {
@@ -468,7 +468,7 @@ md.stm.lorem = function(model, ctx, callback) {
         paragraphUpperBound: model.maxSentences
     });
     ctx.w(string);
-    return callback(null, true);
+    callback(null, true);
 };
 md.stm.ready = function(model, ctx, callback) {
     ctx.w("<script>");
@@ -497,7 +497,7 @@ md.stm.ready = function(model, ctx, callback) {
     }
     ctx.deindent();
     ctx.w("</script>");
-    return callback(null, true);
+    callback(null, true);
 };
 md.stm.ittfPanel = function(model, ctx, callback) {
     ctx.w("<div class='ittf-panel'>");
@@ -511,13 +511,13 @@ md.stm.ittfPanel = function(model, ctx, callback) {
         }
         ctx.w("<div>" + result.ittfPretty + '</div>');
         ctx.w("</code></pre></div>");
-        return callback(null, true);
+        callback(null, true);
     });
 };
 md.stm.comment = function(model, ctx, callback) {
     if (ctx.__iscode) {
         ctx.w("// " + model.wzName);
-        return callback(null, true);
+        callback(null, true);
     }
     if (model.elements.length == 0) {
         if (ctx.__inside_comment) {
@@ -527,7 +527,7 @@ md.stm.comment = function(model, ctx, callback) {
             ctx.w("<!-- " + model.wzName + " -->");
         }
         ctx.__needs_crlf = false;
-        return callback(null, true);
+        callback(null, true);
     }
     var enter_inside_comment = ctx.__inside_comment;
     if (!ctx.__inside_comment) {
@@ -550,7 +550,7 @@ md.stm.comment = function(model, ctx, callback) {
             ctx.w(' -->');
         }
         ctx.__needs_crlf = false;
-        return callback(null, true);
+        callback(null, true);
     });
 };
 function prettifyIttf(mTreeData, callback) {

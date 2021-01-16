@@ -1,6 +1,6 @@
 # wizzi-core
 
-A Wizzi Factory plugin with core schemas and artifact generators.
+A Wizzi plugin with core schemas and artifact generators. This plugin is integrated in the Wizzi API..
 
 ## Work still in progress
 

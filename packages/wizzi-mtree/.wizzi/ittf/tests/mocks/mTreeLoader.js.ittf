@@ -4,10 +4,10 @@
 	import url
 	import util
 	var mocks = require('./misc')
-	var MTreeBrickProvider = require('../../../lib/loader/mTreeBrickProvider')
-    var mixer = require('../../../lib/loader/mixer')
-	var appender = require('../../../lib/loader/appender')
-	var evaluator = require('../../../lib/loader/evaluator')
+	var MTreeBrickProvider = require('../../lib/loader/mTreeBrickProvider')
+    var mixer = require('../../lib/loader/mixer')
+	var appender = require('../../lib/loader/appender')
+	var evaluator = require('../../lib/loader/evaluator')
 
 	set module.exports
 		function

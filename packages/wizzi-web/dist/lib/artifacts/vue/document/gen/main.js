@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\vue\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\vue\document\gen\main.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -42,7 +42,7 @@ md.gen = function gen(model, ctx, callback) {
             return callback(err);
         }
         console.log(myname, 'exit err', err);
-        return callback(null, ctx);
+        callback(null, ctx);
     })
 };
 function getGenItem(ctx) {
@@ -53,7 +53,7 @@ function getGenItem(ctx) {
                     if (err) {
                         return callback(err);
                     }
-                    return callback(null);
+                    callback(null);
                 });
             }
             else {
@@ -85,7 +85,7 @@ function genItems(items, ctx, options, callback) {
         if (indent) {
             ctx.deindent();
         }
-        return callback(null);
+        callback(null);
     });
 }
 stm.vue = function(model, ctx, callback) {

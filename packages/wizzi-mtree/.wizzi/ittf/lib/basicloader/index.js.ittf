@@ -3,7 +3,7 @@
 
 	#
 		# This basic loader is for testing plugins.
-		# The loadMTreeBrick function loads an mTree from a 
+		# The loadMTree function loads an mTree from a 
 		# single IttfDocument without include, mix, append and evaluate.
 		# Does not require a loadContext.
 		# The IttfDocument must be stored in the
@@ -15,27 +15,27 @@
 	var file = require('./file')
     var liner = require('./liner')
     var nodifier = require('./nodifier')
-	var MTreeBrick = require('./mTreeBrick').MTreeBrick
+	var MTree = require('./mTree').MTree
     
 	var md
         set module.exports =
             { 
     
-	set md.loadMTreeBrick
-        function loadMTreeBrick
+	set md.loadMTree
+        function loadMTree
             string primaryIttfDocumentUri
 			param notUsed
             callback
 
 			if typeof(callback) !== 'function'
                 throw 
-                    new Error("wizzi-mtree/lib/basicloader/loadMTreeBrick. A callback is required. Uri: " + primaryIttfDocumentUri)
+                    new Error("wizzi-mtree/lib/basicloader/loadMTree. A callback is required. Uri: " + primaryIttfDocumentUri)
 
 			var sourceText 
 				_ file.read
 					@ primaryIttfDocumentUri
 
-			var mTree = new MTreeBrick(primaryIttfDocumentUri)
+			var mTree = new MTree(primaryIttfDocumentUri)
 			_ mTree.load
 				@ sourceText
 				{

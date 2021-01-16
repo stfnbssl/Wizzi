@@ -11,7 +11,7 @@
 	+
 	it-async should load an ittfdocument with no frills
 			
-		_ loader.loadMTreeBrick
+		_ loader.loadMTree
 			@ ittfSource
 			@ null
 			f_cb_test( mTreeBrick )

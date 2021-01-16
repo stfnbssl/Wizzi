@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\errors.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\errors.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -83,8 +83,8 @@ md.JsWizziTypeError = JsWizziTypeError;
 
 md.esprimaNodeErrorLines = function(description, node, source, json) {
     if (node && node.loc) {
-        console.log('jswizzi.errors.esprimaNodeErrorLines.source', source);
-        console.log('jswizzi.errors.esprimaNodeErrorLines.node.loc', node.loc);
+        // log 'jswizzi.errors.esprimaNodeErrorLines.source', source
+        // log 'jswizzi.errors.esprimaNodeErrorLines.node.loc', node.loc
         return wizziUtils.errors.getErrorLines({
                 row: node.loc.start.line, 
                 col: node.loc.start.column, 

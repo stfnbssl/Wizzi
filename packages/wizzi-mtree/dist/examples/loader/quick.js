@@ -1,13 +1,12 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader\quick.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader\quick.js.ittf
 */
 'use strict';
 var path = require('path');
 var util = require('util');
 var async = require('async');
 var stringify = require('json-stringify-safe');
-var inspect = require('object-inspect');
 var verify = require('wizzi-utils').verify;
 var vfile = require('wizzi-utils').vfile;
 var file = vfile();

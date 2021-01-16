@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\index.js.ittf
 */
 'use strict';
 
@@ -25,7 +25,7 @@ function getFSDocumentStore(callback) {
     });
 }
 
-var mocks = require('../mocks/misc');
+var mocks = require('../../mocks/misc');
 var file = require('wizzi-utils').file;
 var stringify = require('json-stringify-safe');
 var loader = require('../../../lib/loader');
@@ -105,7 +105,7 @@ describe("index", function() {
             __productionManager: mocks.ProductionManager, 
             __ittfDocumentStore: store
         }, function(err, result) {
-            console.log('should get an RepoIOError error.err', err);
+            // log 'should get an RepoIOError error.err', err
             expect(err.name).to.be.a('string');
             expect(err.name).to.be('RepoIOError');
             done();

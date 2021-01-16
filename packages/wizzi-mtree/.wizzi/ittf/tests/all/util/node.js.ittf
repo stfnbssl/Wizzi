@@ -13,23 +13,23 @@
 				_ ittfTree.createFrom
                     @ item.original
                     f_cb( original )
-                        log 'original', original.toString()
+                        # log 'original', original.toString()
                         _ ittfTree.createFrom
                             @ item.expected
                             f_cb( expected )
                                 var toremove = original.find(item.name)
                                 _ node.remove
                                     @ toremove
-                                log 'toremove', toremove.toString()
-                                log 'original after', original.toString()
-                                log 'expected', expected.toString()
+                                # log 'toremove', toremove.toString()
+                                # log 'original after', original.toString()
+                                # log 'expected', expected.toString()
                                 tobe_true( original.equals(expected) )
 
 			if item.action === 'replace'
 				_ ittfTree.createFrom
                     @ item.original
                     f_cb( original )
-                        log 'original', original.toString()
+                        # log 'original', original.toString()
                         _ ittfTree.createFrom
                             @ item.replacer
                             f_cb( replacer )
@@ -37,13 +37,13 @@
                                     @ item.expected
                                     f_cb( expected )
                                         var toreplace = original.find(item.name)
-                                        log 'toreplace', toreplace.toString()
+                                        # log 'toreplace', toreplace.toString()
                                         _ node.replace
                                             @ toreplace
                                             @ [replacer]
-                                        log 'replacer', replacer.toString()
-                                        log 'original after', original.toString()
-                                        log 'expected', expected.toString()
+                                        # log 'replacer', replacer.toString()
+                                        # log 'original after', original.toString()
+                                        # log 'expected', expected.toString()
                                         tobe_true( original.equals(expected) )
 
 	it should find node commands
@@ -52,13 +52,13 @@
 				_ ittfTree.createFrom
                     @ item.original
                     f_cb( original )
-                        log 'original', original.toString()
+                        # log 'original', original.toString()
                         var found
                             _ node.findIttfCommand
                                 @ original
                                 @ item.value
                                 @ item.name
-                        log 'findCommand.name,value,found', item.name, item.value, found && found.id
+                        # log 'findCommand.name,value,found', item.name, item.value, found && found.id
                         tobe_object( found )
                         tobe_eql( item.expected, found.id )
 			

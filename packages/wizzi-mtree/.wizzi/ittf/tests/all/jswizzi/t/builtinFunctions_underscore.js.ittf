@@ -54,7 +54,7 @@
 				@ code 'var x = [{p1: "d"}, {p1: "a"}, {p1: "c"}, {p1: "b"}]; return _.filter(x, "p1", "c");'
 				@ expected [{p1: "c"}]
 			{
-				@ code 'var x = ["b", "a", "a", "b"]; return _.unique(x);'
+				@ code 'var x = ["b", "a", "a", "b"]; return _.unique(_.sort(x));'
 				@ expected ['a', 'b']
 
 

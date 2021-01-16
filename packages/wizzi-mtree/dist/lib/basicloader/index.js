@@ -1,12 +1,12 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\basicloader\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\basicloader\index.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
 /**
      This basic loader is for testing plugins.
-     The loadMTreeBrick function loads an mTree from a
+     The loadMTree function loads an mTree from a
      single IttfDocument without include, mix, append and evaluate.
      Does not require a loadContext.
      The IttfDocument must be stored in the
@@ -18,24 +18,24 @@ var path = require('path');
 var file = require('./file');
 var liner = require('./liner');
 var nodifier = require('./nodifier');
-var MTreeBrick = require('./mTreeBrick').MTreeBrick;
+var MTree = require('./mTree').MTree;
 var md = module.exports = {};
-md.loadMTreeBrick = function loadMTreeBrick(primaryIttfDocumentUri, notUsed, callback) {
+md.loadMTree = function loadMTree(primaryIttfDocumentUri, notUsed, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
-            error('InvalidArgument', 'loadMTreeBrick', 'The callback parameter must be a function. Received: ' + callback)
+            error('InvalidArgument', 'loadMTree', 'The callback parameter must be a function. Received: ' + callback)
         );
     };
     if (verify.isNotEmpty(primaryIttfDocumentUri) === false) {
         return callback(error(
-            'InvalidArgument', 'loadMTreeBrick', { parameter: 'primaryIttfDocumentUri', message: 'The primaryIttfDocumentUri parameter must be a string. Received: ' + primaryIttfDocumentUri }
+            'InvalidArgument', 'loadMTree', { parameter: 'primaryIttfDocumentUri', message: 'The primaryIttfDocumentUri parameter must be a string. Received: ' + primaryIttfDocumentUri }
         ));
     }
     if (typeof(callback) !== 'function') {
-        throw new Error("wizzi-mtree/lib/basicloader/loadMTreeBrick. A callback is required. Uri: " + primaryIttfDocumentUri);
+        throw new Error("wizzi-mtree/lib/basicloader/loadMTree. A callback is required. Uri: " + primaryIttfDocumentUri);
     }
     var sourceText = file.read(primaryIttfDocumentUri);
-    var mTree = new MTreeBrick(primaryIttfDocumentUri);
+    var mTree = new MTree(primaryIttfDocumentUri);
     mTree.load(sourceText, {
         sourceKey: 's1'
     });

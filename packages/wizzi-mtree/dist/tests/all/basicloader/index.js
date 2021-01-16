@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\basicloader\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\basicloader\index.js.ittf
 */
 'use strict';
 
@@ -56,7 +56,7 @@ describe("basicloader", function() {
     var ittfSource = path.join(__dirname, 'data', 'doc1.tests.ittf');
     
     it("should load an ittfdocument with no frills", function(done) {
-        loader.loadMTreeBrick(ittfSource, null, function(err, mTreeBrick) {
+        loader.loadMTree(ittfSource, null, function(err, mTreeBrick) {
             if (err) {
                 console.log('err', err);
                 throw new Error(err.message);

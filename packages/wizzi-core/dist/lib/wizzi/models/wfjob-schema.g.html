@@ -96,6 +96,8 @@
                 <h5>Description</h5>
                 <div>
                     <span>The root element of the wfjob schema. &nbsp;</span>
+                    <span>The base path for the source models used by this "wfjob". &nbsp;</span>
+                    <span>The base folder path for the generated artifacts. &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -119,11 +121,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>The base path for the source models used by this "wfjob". &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>destBaseFolder</td>
@@ -132,11 +130,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>The base folder path for the generated artifacts. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>title</td>
@@ -297,6 +291,13 @@
                     <span>property that exposes the model. &nbsp;</span>
                     <span>A "model" will be loaded once, and will be reused if &nbsp;</span>
                     <span>referenced in many evaluations. &nbsp;</span>
+                    <span>A filepath where the loaded model must be dumped for test. &nbsp;</span>
+                    <span>The model must implement the toJson method. See the "exportTo" attribute in wizzischema root nodes. &nbsp;</span>
+                    <span>When declared the loaded model is JSON.stringyfied and written &nbsp;</span>
+                    <span>to the "dumpFile" filepath. &nbsp;</span>
+                    <span>The name of the context property that will expose the loaded model. &nbsp;</span>
+                    <span>When declared on the "model" element means that the model will be globally available &nbsp;</span>
+                    <span>for all the transformations of the job. &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -389,14 +390,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>A filepath where the loaded model must be dumped for test. &nbsp;</span>
-                                        <span>The model must implement the toJson method. See the "exportTo" attribute in wizzischema root nodes. &nbsp;</span>
-                                        <span>When declared the loaded model is JSON.stringyfied and written &nbsp;</span>
-                                        <span>to the "dumpFile" filepath. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>exportName</td>
@@ -405,13 +399,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>The name of the context property that will expose the loaded model. &nbsp;</span>
-                                        <span>When declared on the "model" element means that the model will be globally available &nbsp;</span>
-                                        <span>for all the transformations of the job. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -472,112 +460,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <h5>Description</h5>
-                <div>
-                    <span>Can be a child element of a "model" element, an "artifact" element and a "transformer" element. &nbsp;</span>
-                </div>
-                <h5>Attributes</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Tag</th>
-                                <th>Type</th>
-                                <th>Default</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>exportName</td>
-                                <td>export-name</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>The name of the context property that will expose the loaded model during &nbsp;</span>
-                                        <span>an evaluation. Overrides the name of the "model" that is the default export name. &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>transformer</td>
-                                <td>transformers</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <span>A model may have one or more transformers. &nbsp;</span>
-                                    <span>Transformers are chained and the output of a transformation &nbsp;</span>
-                                    <span>is the input for the next one. &nbsp;</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>modelCollection</td>
-                                <td>modelCollections</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <span>TODO This is a one-to-one relation, not yet implemented. &nbsp;</span>
-                                    <span>Single items of a collection contained in the "model" may act as a context property &nbsp;</span>
-                                    <span>for artifacts where each collection item generates a separate artifact. &nbsp;</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>comment</td>
-                                <td>comments</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <h5>Methods</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Signature</th>
-                                <th>Statements</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>wzinitialize</div>
-                                </td>
-                                <td>
-                                    <div>if this.modelCollections.length > 0;</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
                 <table id="element_modelCollection" class="pretty-table">
                     <thead>
                         <tr>
@@ -598,80 +480,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <h5>Description</h5>
-                <div>
-                    <span>Single items of a collection contained in a "model" may act as data contexts &nbsp;</span>
-                    <span>of artifacts where each collection item generates a separate artifact. &nbsp;</span>
-                    <span>This element, contained in a "modelRef" element, specifies: &nbsp;</span>
-                    <span>. the collection name: the IttfNodeValue of this element &nbsp;</span>
-                    <span>. the export name of the collection item when acting as a context property: the "item-name" attribute &nbsp;</span>
-                    <span>. the property names of the collection item that will be used to build the destination path &nbsp;</span>
-                    <span>of the artifact: the "pathTemplateValues" child elements &nbsp;</span>
-                </div>
-                <h5>Attributes</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Tag</th>
-                                <th>Type</th>
-                                <th>Default</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>itemName</td>
-                                <td>item-name</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>The export name of a collection item when acting as a context property. &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>pathTemplateValue</td>
-                                <td>pathTemplateValues</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>comment</td>
-                                <td>comments</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
                 <table id="element_pathTemplateValue" class="pretty-table">
                     <thead>
                         <tr>
@@ -692,93 +500,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <h5>Attributes</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Tag</th>
-                                <th>Type</th>
-                                <th>Default</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>attribute</td>
-                                <td>attribute</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>The property of the context object (a collection item) containing the value which will replace &nbsp;</span>
-                                        <span>the "token" value in the generated artifact path template. &nbsp;</span>
-                                        <span>Is alternative to "function" &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>function</td>
-                                <td>function</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>The function of the context object (a collection item) that returns the value which will replace &nbsp;</span>
-                                        <span>the "token" value in the generated artifact path template. &nbsp;</span>
-                                        <span>Is alternative to "attribute" &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>token</td>
-                                <td>token</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>The token that will be replaced by the value returned accessing "attribute" or calling "function" &nbsp;</span>
-                                        <span>on a context object. &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>comment</td>
-                                <td>comments</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
                 <table id="element_transformer" class="pretty-table">
                     <thead>
                         <tr>
@@ -804,6 +525,9 @@
                     <span>A model transformer. &nbsp;</span>
                     <span>The ittf node value is the transformer name {wizzischema}/{transformer} &nbsp;</span>
                     <span>to be found in {wizziPackage}/artifacts/{wizzischema}/{transformer}/trans/main.js &nbsp;</span>
+                    <span>A filepath where the transformed model must be dumped for test. &nbsp;</span>
+                    <span>When declared the transformed model is JSON.stringified and written &nbsp;</span>
+                    <span>to the "dumpFile" filepath. &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -827,13 +551,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>A filepath where the transformed model must be dumped for test. &nbsp;</span>
-                                        <span>When declared the transformed model is JSON.stringified and written &nbsp;</span>
-                                        <span>to the "dumpFile" filepath. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -931,6 +649,22 @@
                     <span> &nbsp;</span>
                     <span>will produce an artifact of path .../app/db/userDatalayer.js, and as many as the items in the tables collection. &nbsp;</span>
                     <span> &nbsp;</span>
+                    <span>Indicator that the mTree buildup script must be 'compiled' for javascript &nbsp;</span>
+                    <span>and loaded with a 'require-from-string' function instead of &nbsp;</span>
+                    <span>being submitted to js-wizzi. &nbsp;</span>
+                    <span>Indicator that the artifact source is a wizzi factory job, alias a wizzi model of schema 'wfjob'. &nbsp;</span>
+                    <span>The job will be executed before any other artifact production of the current wfjob. &nbsp;</span>
+                    <span>This could be autodected from the schema, but autodetection would forbid other uses or transformations &nbsp;</span>
+                    <span>of a "wfjob" model, so the indicator is required. &nbsp;</span>
+                    <span>Indicator that the artifact source is a wizzi schema, alias a wizzi model of schema 'wfschema' &nbsp;</span>
+                    <span>and that the generation of the artifacts for the wizzi model described by the wfschema is requested. &nbsp;</span>
+                    <span>This could be autodected from the schema, but autodetection would forbid other uses or transformations &nbsp;</span>
+                    <span>of a "wfschema" model, so the indicator is required. &nbsp;</span>
+                    <span>The artifact source file path, 'src', is the default relative destination path &nbsp;</span>
+                    <span>of the generated artifact. When set, this attribute overrides the default. &nbsp;</span>
+                    <span>It can be an absolute or relative path. &nbsp;</span>
+                    <span>If the artifact is a code write generation the 'destPath' attribute is required. &nbsp;</span>
+                    <span>No artifact should be emitted. Front matter properties are collected. &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -1044,13 +778,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>Indicator that the mTree buildup script must be 'compiled' for javascript &nbsp;</span>
-                                        <span>and loaded with a 'require-from-string' function instead of &nbsp;</span>
-                                        <span>being submitted to js-wizzi. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>isWfJob</td>
@@ -1059,14 +787,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>Indicator that the artifact source is a wizzi factory job, alias a wizzi model of schema 'wfjob'. &nbsp;</span>
-                                        <span>The job will be executed before any other artifact production of the current wfjob. &nbsp;</span>
-                                        <span>This could be autodected from the schema, but autodetection would forbid other uses or transformations &nbsp;</span>
-                                        <span>of a "wfjob" model, so the indicator is required. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>isWfModelType</td>
@@ -1075,14 +796,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>Indicator that the artifact source is a wizzi schema, alias a wizzi model of schema 'wfschema' &nbsp;</span>
-                                        <span>and that the generation of the artifacts for the wizzi model described by the wfschema is requested. &nbsp;</span>
-                                        <span>This could be autodected from the schema, but autodetection would forbid other uses or transformations &nbsp;</span>
-                                        <span>of a "wfschema" model, so the indicator is required. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>generator</td>
@@ -1106,14 +820,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>The artifact source file path, 'src', is the default relative destination path &nbsp;</span>
-                                        <span>of the generated artifact. When set, this attribute overrides the default. &nbsp;</span>
-                                        <span>It can be an absolute or relative path. &nbsp;</span>
-                                        <span>If the artifact is a code write generation the 'destPath' attribute is required. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>extension</td>
@@ -1150,11 +857,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>No artifact should be emitted. Front matter properties are collected. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1231,6 +934,9 @@
                 <h5>Description</h5>
                 <div>
                     <span>A line is a group of artifacts having the same source "cwdFolder". &nbsp;</span>
+                    <span>The source folder of the artifact templates of this line. &nbsp;</span>
+                    <span>The destination folder of the generated artifacts of this line. &nbsp;</span>
+                    <span>Overrides the attribute "destFolder" of the "production" element. &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -1254,11 +960,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>The source folder of the artifact templates of this line. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>destFolder</td>
@@ -1267,12 +969,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>The destination folder of the generated artifacts of this line. &nbsp;</span>
-                                        <span>Overrides the attribute "destFolder" of the "production" element. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1332,35 +1029,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <h5>Description</h5>
-                <div>
-                    <span>A reference to a line. &nbsp;</span>
-                </div>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>comment</td>
-                                <td>comments</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
                 <table id="element_production" class="pretty-table">
                     <thead>
                         <tr>
@@ -1385,6 +1053,7 @@
                 <div>
                     <span>A job execution unit that generates a set of Software artifacts &nbsp;</span>
                     <span>into one destination folder. &nbsp;</span>
+                    <span>The destination folder of the generated artifacts. &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -1408,11 +1077,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>The destination folder of the generated artifacts. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1722,181 +1387,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <h5>Description</h5>
-                <div>
-                    <span>An execution of a child process using &nbsp;</span>
-                    <span>-> child_process.execFile(file[, args][, options][, callback]) &nbsp;</span>
-                </div>
-                <h5>Attributes</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Tag</th>
-                                <th>Type</th>
-                                <th>Default</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>exePath</td>
-                                <td>exe-path</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>The path to the executable. &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>title</td>
-                                <td>title</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>A short description of the execution. &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>cwd</td>
-                                <td>cwd</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>Current working directory of the child process. &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>encoding</td>
-                                <td>encoding</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>Default: 'utf8' &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>timeout</td>
-                                <td>timeout</td>
-                                <td>integer</td>
-                                <td>0</td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div>
-                                        <span>Default: 0 &nbsp;</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>__options</td>
-                                <td>__options</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>__args</td>
-                                <td>__args</td>
-                                <td>string</td>
-                                <td>string</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>arg</td>
-                                <td>args</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>env</td>
-                                <td>envs</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>comment</td>
-                                <td>comments</td>
-                                <td>one-to-many</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <h5>Methods</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Signature</th>
-                                <th>Statements</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div>wzinitialize</div>
-                                </td>
-                                <td>
-                                    <div>var options = {};</div>
-                                    <div>if this.cwd && this.cwd.length > 0;</div>
-                                    <div>if this.encoding && this.encoding.length > 0;</div>
-                                    <div>if this.timeout > 0;</div>
-                                    <div>if this.envs.length > 0;</div>
-                                    <div>set this.__options = options;</div>
-                                    <div>set this.__args = [];</div>
-                                    <div>foreach arg in this.args;</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
             </div>
         </div>
     </body>

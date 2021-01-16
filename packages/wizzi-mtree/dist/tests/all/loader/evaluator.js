@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\evaluator.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\evaluator.js.ittf
 */
 'use strict';
 
@@ -25,7 +25,7 @@ function getFSDocumentStore(callback) {
     });
 }
 
-var mocks = require('../mocks/misc');
+var mocks = require('../../mocks/misc');
 var MTreeBrickProvider = require('../../../lib/loader/mTreeBrickProvider');
 var mixer = require('../../../lib/loader/mixer');
 var appender = require('../../../lib/loader/appender');

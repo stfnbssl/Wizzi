@@ -212,7 +212,7 @@
 						@ src
 			else
 				return 
-					_ error
+					_ errorMsg
 						@ 'PathError'
 						@ "The src attribute of the artifact element: " + src + ' is a relative path. A cwd attribute is required on the line element.'
 						@ node
@@ -234,7 +234,7 @@
 						@ src
 			else
 				return 
-					_ error
+					_ errorMsg
 						@ 'PathError'
 						@ "The src attribute of the model element: " + src + ' is a relative path. A models-base-folder attribute is required on the wfjob element.'
 						@ node

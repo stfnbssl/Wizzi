@@ -1,7 +1,6 @@
 ﻿module
 	kind jsfile
 
-	# VIA var file = require('../../fs/file')
 	var liner = require('./liner')
 	var nodifier = require('./nodifier')
 
@@ -10,7 +9,6 @@
 		param options
 		param callback
 
-		# VIA var reader = options.file || file
 		var reader = options.file
 		_ reader.read
 			@ ittfDocumentUri

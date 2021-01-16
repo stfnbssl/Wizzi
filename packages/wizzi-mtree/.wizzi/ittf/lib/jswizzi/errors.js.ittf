@@ -40,8 +40,8 @@
 			param source
 			param json
             if node && node.loc
-                log 'jswizzi.errors.esprimaNodeErrorLines.source', source
-                log 'jswizzi.errors.esprimaNodeErrorLines.node.loc', node.loc
+                # log 'jswizzi.errors.esprimaNodeErrorLines.source', source
+                # log 'jswizzi.errors.esprimaNodeErrorLines.node.loc', node.loc
                 return
                     _ wizziUtils.errors.getErrorLines
                         {

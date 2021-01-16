@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-web\.wizzi\ittf\lib\wizzi\models\html-mtree-preprocessor.g.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\wizzi\models\html-mtree-preprocessor.g.js.ittf
 */
 'use strict';
 var HtmlJsPreprocessor = require('./html-js-mtre-preprocessor.g');
@@ -160,20 +160,6 @@ function inferJsonObjectInclude(node) {
 function inferJsonArrayInclude(node) {
     if (node.n === 'json' && childNameIsOneOf(node, ['['])) {
         return true;
-    }
-    return false;
-}
-function childNameIsOneOf(node, names) {
-    var i, i_items=node.children, i_len=node.children.length, child;
-    for (i=0; i<i_len; i++) {
-        child = node.children[i];
-        var j, j_items=names, j_len=names.length, name;
-        for (j=0; j<j_len; j++) {
-            name = names[j];
-            if (child.n === name) {
-                return true;
-            }
-        }
     }
     return false;
 }

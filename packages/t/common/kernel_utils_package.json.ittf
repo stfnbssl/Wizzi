@@ -21,12 +21,12 @@
 			$if license == 'MIT'
 			{
 				type "MIT"
-				url "https://github.com/wizzifactory/wizzi-mono/tree/master/license.txt"
+				url "https://github.com/stfnbssl/wizzi/tree/master/license.txt"
 	
 	repository
 		{
 			type "git"
-			url "https://github.com/wizzifactory/wizzi-mono/tree/master/packages/${pkgName}"
+			url "https://github.com/stfnbssl/wizzi/tree/master/packages/${pkgName}"
 
 	engines
 		{

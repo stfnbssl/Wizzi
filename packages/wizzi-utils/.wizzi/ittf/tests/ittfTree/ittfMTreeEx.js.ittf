@@ -12,7 +12,7 @@
 				@ 'basic.tests.ittf'
 			{
 			f_cb_test( result )
-				log? result
+				# log? result
 				tobe_object( result )
 				tobe_string( result.name, alfa )
 				tobe_array( result.children, 2 )
@@ -38,7 +38,7 @@
 									{
 										@ n 'a'
 			f_cb_test( result )
-				log? result
+				# log? result
 				tobe_object( result )
 				tobe_string( result.name, alfa )
 				tobe_array( result.children, 2 )
@@ -62,7 +62,7 @@
 							{
 								@ name 'a'
 			f_cb_test( result )
-				log? result
+				# log? result
 				tobe_object( result )
 				tobe_string( result.name, alfa )
 				tobe_array( result.children, 2 )
@@ -81,7 +81,7 @@
 						@ name 'beta'
 						@ value 'i am:${'$'}{name}.'
 			f_cb_test( result )
-				log? result
+				# log? result
 				tobe_object( result )
 				tobe_string( result.name, alfa )
 				tobe_array( result.children, 1 )

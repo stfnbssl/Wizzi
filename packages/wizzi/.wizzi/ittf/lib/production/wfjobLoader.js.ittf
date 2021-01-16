@@ -122,7 +122,7 @@
 
 	$include wfjobLoader/asyncRecurseWfjobLoad
 
-	function error
+	function errorMsg
 		param code
 		param message
 		param node

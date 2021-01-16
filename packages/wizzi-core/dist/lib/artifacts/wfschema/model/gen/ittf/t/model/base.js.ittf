@@ -14,7 +14,8 @@ $group
 
 		m wzSourceFilepath
 			param sourceKey
-			return this.wzRoot().loadHistory.getIttfDocumentUri(sourceKey)
+            var sk = sourceKey || this.wzSourceLineInfo.sourceKey
+			return this.wzRoot().loadHistory.getIttfDocumentUri(sk)
 
 		m wzSourceErrorLines
 			param node

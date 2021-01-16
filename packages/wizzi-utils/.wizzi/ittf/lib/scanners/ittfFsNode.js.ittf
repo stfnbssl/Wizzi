@@ -65,7 +65,7 @@
 			set this.basename = this.parts[this.parts.length -1]
 			set this.dirname = this.segments.join('/')
 			if !options.isDirectory
-				set this.schema = detectSchema(this.basename)
+                set this.schema = detectSchema(this.basename)
 				set this.isFragment = isTFragment(this.parts)
 			else
 				set this.isTFolder = this.basename.toLowerCase() === 't'
@@ -101,7 +101,7 @@
 			var r = this.root()
 			if r === this
 				_ this.setIds
-				_ this.analize()
+				_ this.analize2()
 			if !this.isDirectory && !this.isFragment
 				var schema = r.info.schemas[this.schema]
 				if !schema

@@ -10,12 +10,12 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/wizzifactory/wizzi-mono/tree/master/license.txt"
+            "url": "https://github.com/stfnbssl/wizzi/tree/master/license.txt"
         }
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/wizzifactory/wizzi-mono/tree/master/packages/wizzifactory.github.io"
+        "url": "https://github.com/stfnbssl/wizzi/tree/master/packages/wizzifactory.github.io"
     },
     "engines": {
         "node": ">=0.10.28",

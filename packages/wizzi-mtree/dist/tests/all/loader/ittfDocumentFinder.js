@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\ittfDocumentFinder.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\ittfDocumentFinder.js.ittf
 */
 'use strict';
 
@@ -25,7 +25,7 @@ function getFSDocumentStore(callback) {
     });
 }
 
-var mocks = require('../mocks/misc');
+var mocks = require('../../mocks/misc');
 var IttfDocumentFinder = require('../../../lib/loader/ittfDocumentFinder');
 
 function evaluate(uri, callback) {
@@ -69,7 +69,7 @@ describe("ittfDocumentFinder", function() {
         ittfDocumentFinder.resolvePath({
             ittfDocumentUri: path.join(__dirname, 'dummy.tests.ittf')
         }, function(err, result) {
-            console.log('should get an IttfNotFound error.err', err);
+            // log 'should get an IttfNotFound error.err', err
             expect(err.name).to.be.a('string');
             expect(err.name).to.be('IttfNotFound');
             expect(err.__is_error).to.be(true);

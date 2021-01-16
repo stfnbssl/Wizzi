@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\jsWizziRunner.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\jsWizziRunner.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -446,7 +446,7 @@ runner.UnaryExpression = function(node, ctx) {
         exp = runner(node.argument, ctx);
         if (exp && exp.__is_error) {
             // log 'wizzi-mtree-jsWizziRunner.__is_error CallExpression argument', exp
-            if (exp.name === 'JsWizziError-ReferenceError') {
+            if (exp.data && exp.data.errorName === 'ReferenceError') {
                 exp = undefined;
             }
             else {
@@ -717,7 +717,7 @@ runner.CallExpression = function(node, ctx) {
     }
     if (node.callee.type === 'Identifier') {
         var f = ctx.getFunction(node.callee.name);
-        console.log('wizzi-mtree.jsWizziRunner.CallExpression.node.callee.name', node.callee.name, f);
+        // log 'wizzi-mtree.jsWizziRunner.CallExpression.node.callee.name', node.callee.name, f
         if (f == null) {
             f = ctx.getValue(node.callee.name);
             if (f != null && verify.isFunction(f)) {

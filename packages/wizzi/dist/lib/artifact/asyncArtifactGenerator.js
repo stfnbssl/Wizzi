@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi\.wizzi\ittf\lib\artifact\asyncArtifactGenerator.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\artifact\asyncArtifactGenerator.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -276,15 +276,6 @@ var AsyncArtifactGenerator = {
         new genInfo.generator.gen(genInfo.mainSourceModel, genInfo.genContext, callback);
     }
 };
-function error(message, method) {
-    var err = {
-        __is_error: true, 
-        message: message, 
-        source: "wizzi/lib/artifact/asyncArtifactGenerator.js/" + method
-    };
-    logme(err);
-    return err;
-}
 
 module.exports = {
     AsyncArtifactGenerator: AsyncArtifactGenerator

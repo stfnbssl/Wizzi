@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\liner.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\liner.js.ittf
 */
 'use strict';
 
@@ -122,7 +122,7 @@ describe("liner", function() {
         ].join('\n'), {
             sourceKey: 'f1'
         });
-        console.log('should skip comments liner lines', lines);
+        // log 'should skip comments liner lines', lines
         expect(lines).to.be.an('array');
         expect(lines.length).to.be(4);
         expect(lines[0].indent).to.be.a('number');
@@ -156,7 +156,7 @@ describe("liner", function() {
         ].join('\n'), {
             sourceKey: 'f1'
         });
-        console.log('should skip comments liner lines', lines);
+        // log 'should skip comments liner lines', lines
         expect(lines).to.be.an('array');
         expect(lines.length).to.be(4);
         expect(lines[0].indent).to.be.a('number');
@@ -186,7 +186,7 @@ describe("liner", function() {
         ].join('\n'), {
             sourceKey: 'f1'
         });
-        console.log('should skip comments liner lines', lines);
+        // log 'should skip comments liner lines', lines
         expect(lines).to.be.an('array');
         expect(lines.length).to.be(3);
         expect(lines[0].indent).to.be.a('number');
@@ -202,7 +202,7 @@ describe("liner", function() {
             '    node1 value1', 
             '    `my ${name}`'
         ].join('\n');
-        console.log('source', source);
+        // log 'source', source
         var lines = liner(source, {
             sourceKey: 'f1'
         });
@@ -230,11 +230,11 @@ describe("liner", function() {
             '    node2 ' + template, 
             '    node3 value2'
         ].join('\n');
-        console.log('should escape javascript string macro delimiters with escapes.source', source);
+        // log 'should escape javascript string macro delimiters with escapes.source', source
         var lines = liner(source, {
             sourceKey: 'f1'
         });
-        console.log('should escape javascript string macro delimiters with escapes.lines', lines, 'template_expected', template_expected);
+        // log 'should escape javascript string macro delimiters with escapes.lines', lines, 'template_expected', template_expected
         expect(lines).to.be.an('array');
         expect(lines.length).to.be(4);
         expect(lines[0].indent).to.be.a('number');

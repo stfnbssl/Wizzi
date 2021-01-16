@@ -13,7 +13,7 @@
 		var added
 			_ root.addDocument('root/readme.md.ittf')
 		# log 'root', root
-		tobe_true(added)
+		tobe_object(added)
 		tobe_array(root.folders, 0)
 		tobe_array(root.documents, 1)
 		tobe_string(root.documents[0].schema, md)
@@ -26,7 +26,7 @@
 		var added
 			_ root.addDocument('root/t/title.md.ittf')
 		# log 'root', root
-		tobe_true(added)
+		tobe_object(added)
 		tobe_array(root.folders, 1)
 		tobe_array(root.documents, 1)
 		tobe_true(root.folders[0].isTFolder)
@@ -46,7 +46,7 @@
 
 	it-async should write an ittf
 		var ittf = new ittfMTreeEx('wzpackage')
-		_ root.toIttf(ittf)
+		_ root.toIttf2(ittf)
 		_ ittf.writeFile
 			_ path.join
 				@ __dirname

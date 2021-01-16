@@ -1,13 +1,12 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader.js.ittf
 */
 'use strict';
 var path = require('path');
 var util = require('util');
 var async = require('async');
 var stringify = require('json-stringify-safe');
-var inspect = require('object-inspect');
 var verify = require('wizzi-utils').verify;
 var vfile = require('wizzi-utils').vfile;
 var file = vfile();
@@ -49,16 +48,24 @@ var loader = function(step_callback) {
     function step_1(file, callback) {
         console.log('EXAMPLE.loader.start');
         var loadMTree = packageIndex.createLoadMTree(repo.getCreateFilesystemStore());
+        console.log('EXAMPLE.loader.loading ittf/load_compile.html.ittf');
         loadMTree(path.join(__dirname, 'ittf', 'load_compile.html.ittf'), {
             __productionManager: mocks.getProductionManager(), 
             mTreeBuildUpContext: {
                 tree: {
                     id: 1, 
-                    title: 'a', 
+                    title: 'root node 1', 
                     children: [
                         {
                             id: 11, 
-                            title: 'aa', 
+                            title: 'node 1.1', 
+                            children: [
+                                
+                            ]
+                        }, 
+                        {
+                            id: 12, 
+                            title: 'node 1.3', 
                             children: [
                                 
                             ]
@@ -83,6 +90,7 @@ var loader = function(step_callback) {
                 }
                 throw new Error(err.message);
             }
+            console.log('EXAMPLE.loader.loaded.succesfully ittf/load_compile.html.ittf');
             console.log("EXAMPLE.loader.mTree.loadHistory", mTree.loadHistory);
             var el = mTree.loadHistory.getIttfDocumentErrorLines('f1', {
                 row: 7, 
@@ -91,6 +99,7 @@ var loader = function(step_callback) {
             }, true);
             console.log("EXAMPLE.loader.mTree.loadHistory.getIttfDocumentErrorLines", el);
             file.write(path.join(__dirname, 'outputs', 'load_compile.html.ittf'), mTree.toIttf());
+            console.log("EXAMPLE.loader.written outputs/ittf/load_compile.html.ittf");
             callback(null);
         });
     }

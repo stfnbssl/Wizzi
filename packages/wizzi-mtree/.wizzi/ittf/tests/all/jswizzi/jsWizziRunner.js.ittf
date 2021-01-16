@@ -87,16 +87,16 @@
             iif code.indexOf('return ') > -1
                 then 'var result = function dummy() { ' + code + ' }();'
                 else 'var result = ' + code + ';'
-        log 'runExpression.scriptCode', scriptCode
+        # log 'runExpression.scriptCode', scriptCode
         var hr
 			_ jsWizziRunner.run
                 @ scriptCode
 				@ jsWizziContext
 				{
 					@ verbose false
-		log 'runExpression.hr', hr
+		# log 'runExpression.hr', hr
         if hr instanceof Error 
 			throw hr
-        log 'runExpression.result', jsWizziContext.getValue('result')
+        # log 'runExpression.result', jsWizziContext.getValue('result')
 		# return the 'result' var from the context
 		return jsWizziContext.getValue('result')

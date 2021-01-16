@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\ittfTree\asisLoader.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\ittfTree\asisLoader.js.ittf
 */
 'use strict';
 
@@ -18,12 +18,14 @@ var asIsLoader = require('../../lib/ittfTree/asIsLoader');
 
 describe("asIsLoader", function() {
     it("should load an ittf tree as is", function(done) {
-        asIsLoader(path.join(__dirname, 'ittf', 'basic.tests.ittf'), {}, function(err, result) {
+        asIsLoader(path.join(__dirname, 'ittf', 'basic.tests.ittf'), {
+            file: file
+        }, function(err, result) {
             if (err) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            // log? result
+            console.log("result" + " " + util.inspect(result, { depth: null } ))
             expect(result).to.be.an('object');
             done();
         });

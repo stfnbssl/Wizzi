@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\jswizzi\jsWizziRunner.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\jswizzi\jsWizziRunner.js.ittf
 */
 'use strict';
 
@@ -377,7 +377,7 @@ describe("jsWizziRunner", function() {
             expected: [{p1: "c"}]
         }, 
         {
-            code: 'var x = ["b", "a", "a", "b"]; return _.unique(x);', 
+            code: 'var x = ["b", "a", "a", "b"]; return _.unique(_.sort(x));', 
             expected: ['a', 'b']
         }
     ];
@@ -478,15 +478,15 @@ describe("jsWizziRunner", function() {
         var jsWizziContext = new JsWizziContext();
         // run the expression embedded in a var declaration 'result'
         var scriptCode = code.indexOf('return ') > -1 ? 'var result = function dummy() { ' + code + ' }();' : 'var result = ' + code + ';';
-        console.log('runExpression.scriptCode', scriptCode);
+        // log 'runExpression.scriptCode', scriptCode
         var hr = jsWizziRunner.run(scriptCode, jsWizziContext, {
             verbose: false
         });
-        console.log('runExpression.hr', hr);
+        // log 'runExpression.hr', hr
         if (hr instanceof Error) {
             throw hr;
         }
-        console.log('runExpression.result', jsWizziContext.getValue('result'));
+        // log 'runExpression.result', jsWizziContext.getValue('result')
         // return the 'result' var from the context
         return jsWizziContext.getValue('result');
     }

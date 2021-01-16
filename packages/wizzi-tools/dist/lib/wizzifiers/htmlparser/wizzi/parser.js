@@ -1,14 +1,14 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\htmlparser\wizzi\parser.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\htmlparser\wizzi\parser.js.ittf
 */
 'use strict';
 var util = require('util');
 var verbose = false;
-function log(label, obj) {
+function log(label, data) {
     if (verbose) {
-        console.log(label, util.inspect(obj, {
-            depth: 1
+        console.log(label, util.inspect(data, {
+            depth: null
         }));
     }
 }
@@ -559,11 +559,6 @@ function isWhite(ch) {
 }
 function isQuote(ch) {
     return (ch === '"') || (ch === '\'');
-}
-function log(label, data) {
-    console.log(label, util.inspect(data, {
-        depth: null
-    }));
 }
 var voidElements = {
     __proto__: null, 

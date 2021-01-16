@@ -2,11 +2,11 @@
 
 	h2 The wizzi.WizziFactory class
 	
-	p All wizzi factory operations require an instance of the
+	p Every wizzi operation require an instance of the
 		\b wizzi.WizziFactory class.
 
 	ul A wizzi.WizziFactory instance manages
-		li The store system (filesystem, mongodb or localstorage).
+		li The store system (filesystem, mongodb, json or localstorage).
 		li The global context.
 		li The loading of plugins.
 
@@ -25,12 +25,12 @@
 		li Wizzi model loading
 		li Model transformation
 		li Artifact generation
-		li Wizzi model types generation
+		li Wizzi model type generation
 		li Production manager creation
 		li Wizzi job execution
 
 	h3 mTree loading
-	p Executes the loading of an mTree from an ittf document.
+	p Executes the loading of a textual ittf document into a mTree memory object.
 	
 	h3 Wizzi model loading
 	p Executes the loading, initialization and validation of a wizzi model from an ittf document.
@@ -43,7 +43,7 @@
 	h3 Artifact generation
 	p Executes the generation of a single software artifact.
 	
-	h3 Wizzi model types generation
+	h3 Wizzi model type generation
 	p The generation of the javascript modules for loading and implement a wizzi model is a
 		\b fundamental part of a wizzi plugin development.
 	p A wizzi model of type 'wfschema' describes a wizzi model and its constraints.

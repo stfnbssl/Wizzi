@@ -406,7 +406,7 @@
         {
           "name": "fontface",
           "tags": [
-            "font-face"
+            "unicode-range"
           ]
         },
         {
@@ -2488,6 +2488,12 @@
           ]
         },
         {
+          "name": "caret_color",
+          "tags": [
+            "caret-color"
+          ]
+        },
+        {
           "name": "clear",
           "tags": [
             "clear"
@@ -2497,6 +2503,12 @@
           "name": "clip",
           "tags": [
             "clip"
+          ]
+        },
+        {
+          "name": "clip_path",
+          "tags": [
+            "clip-path"
           ]
         },
         {
@@ -3319,6 +3331,12 @@
           "name": "text_decoration_skip",
           "tags": [
             "text-decoration-skip"
+          ]
+        },
+        {
+          "name": "text_fill_color",
+          "tags": [
+            "text-fill-color"
           ]
         },
         {
@@ -5982,6 +6000,35 @@
       "comments": []
     },
     {
+      "name": "caret_color",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "caret-color"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "clear",
       "super": "property",
       "isRoot": false,
@@ -6016,6 +6063,35 @@
       "isRoot": false,
       "tags": [
         "clip"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "clip_path",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "clip-path"
       ],
       "flags": "",
       "attributes": [],
@@ -9984,6 +10060,21 @@
       "comments": []
     },
     {
+      "name": "scrollbar_width",
+      "super": null,
+      "isRoot": false,
+      "tags": [
+        "scrollbar-width"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "speak_header",
       "super": "property",
       "isRoot": false,
@@ -10482,6 +10573,35 @@
       "isRoot": false,
       "tags": [
         "text-decoration-skip"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "text_fill_color",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "text-fill-color"
       ],
       "flags": "",
       "attributes": [],
@@ -11946,7 +12066,7 @@
       "super": "rule",
       "isRoot": false,
       "tags": [
-        "font-face"
+        "unicode-range"
       ],
       "flags": "",
       "attributes": [
@@ -11966,50 +12086,6 @@
           "type": "string",
           "tags": [
             "src"
-          ],
-          "flags": "",
-          "inheritedFrom": null,
-          "restricts": [],
-          "comments": []
-        },
-        {
-          "name": "fontStretch",
-          "type": "string",
-          "tags": [
-            "font-stretch"
-          ],
-          "flags": "",
-          "inheritedFrom": null,
-          "restricts": [],
-          "comments": []
-        },
-        {
-          "name": "fontStyle",
-          "type": "string",
-          "tags": [
-            "font-style"
-          ],
-          "flags": "",
-          "inheritedFrom": null,
-          "restricts": [],
-          "comments": []
-        },
-        {
-          "name": "fontWeight",
-          "type": "string",
-          "tags": [
-            "font-weight"
-          ],
-          "flags": "",
-          "inheritedFrom": null,
-          "restricts": [],
-          "comments": []
-        },
-        {
-          "name": "unicodeRange",
-          "type": "string",
-          "tags": [
-            "unicode-range"
           ],
           "flags": "",
           "inheritedFrom": null,

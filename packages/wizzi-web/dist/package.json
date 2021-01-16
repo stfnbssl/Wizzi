@@ -1,7 +1,7 @@
 {
     "name": "wizzi-web",
     "version": "0.7.3",
-    "description": "A wizzi factory plugin for html css scss svg markdown",
+    "description": "A wizzi default plugin for html css svg markdown",
     "author": {
         "name": "Stefano Bassoli",
         "email": "wizzi.team@gmail.com"
@@ -10,12 +10,12 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/wizzifactory/wizzi-mono/tree/master/license.txt"
+            "url": "https://github.com/stfnbssl/wizzi/tree/master/license.txt"
         }
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/wizzifactory/wizzi-mono/tree/master/packages/wizzi-web"
+        "url": "https://github.com/stfnbssl/wizzi/tree/master/packages/wizzi-web"
     },
     "engines": {
         "node": ">=0.10.28",
@@ -38,8 +38,8 @@
         "iconv-lite": "^0.4.15",
         "json-stringify-safe": "^5.0.1",
         "lodash": "^4.17.4",
-        "wizzi-mtree": "0.7.3",
-        "wizzi-utils": "0.7.5",
+        "wizzi-mtree": "0.7.5",
+        "wizzi-utils": "0.7.6",
         "postcss": "^7.0.16",
         "postcss-color-function": "^4.1.0"
     },

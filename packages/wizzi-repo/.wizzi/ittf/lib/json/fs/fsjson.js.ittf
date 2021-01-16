@@ -120,22 +120,22 @@
 				if verify.isObject(jsonData) == false
 					return
 						_ callback
-							_ error('create', 'parameter jsondata must be an object')
+							_ errorMsg('create', 'parameter jsondata must be an object')
 				if verify.isArray(jsonData.items) == false
 					return
 						_ callback
-							_ error('create', 'parameter jsondata must contain an item property')
+							_ errorMsg('create', 'parameter jsondata must contain an item property')
 				if verify.isArray(jsonData.documents) == false
 					return
 						_ callback
-							_ error('create', 'parameter jsondata must contain a documents property')
+							_ errorMsg('create', 'parameter jsondata must contain a documents property')
 			+
 			return
 				_ callback
 					@ null
 					new FsJson(jsonData)
 
-	function error
+	function errorMsg
 		param method
 		param message
 		return

@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\ittfInterpolate.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\ittfInterpolate.js.ittf
 */
 'use strict';
 
@@ -62,7 +62,7 @@ describe("ittfInterpolate", function() {
     it("interpolate a single var", function() {
         ctx.setValue('name', 'stefi');
         var result = ip('My name is $' + '{name}.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('My name is stefi.');
     });
@@ -70,7 +70,7 @@ describe("ittfInterpolate", function() {
         ctx.setValue('name', 'stefi');
         ctx.setValue('hobby', '');
         var result = ip('My name is $' + '{name} and hobby $' + '{hobby}.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('My name is stefi and hobby .');
     });
@@ -78,42 +78,42 @@ describe("ittfInterpolate", function() {
         ctx.setValue('name', 'stefi');
         ctx.setValue('hobby', 'walking');
         var result = ip('My name is \\$' + '\\{name} and hobby $' + '{hobby}.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('My name is $' + '{name} and hobby walking.');
     });
     it("strange template string", function() {
         ctx.setValue('name', 'stefi');
         var result = ip('Hello *{ $a $ {} a$ ok.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello *{ $a $ {} a$ ok.');
     });
     it("not closed var delimiter", function() {
         ctx.setValue('name', 'stefi');
         var result = ip('Hello ${a', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello ${a');
     });
     it("ending dollar", function() {
         ctx.setValue('name', 'stefi');
         var result = ip('Hello $', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello $');
     });
     it("double dollar", function() {
         ctx.setValue('name', 'stefi');
         var result = ip('Hello $' + '$ ok', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello $' + '$ ok');
     });
     it("interpolated can manage methods on values", function() {
         ctx.setValue('name', 'stefi');
         var result = ip('Hello $' + '{ _.capitalize(name); }.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello Stefi.');
     });
@@ -123,7 +123,7 @@ describe("ittfInterpolate", function() {
         };
         ctx.setValue('obj', obj);
         var result = ip('Hello $' + '{ obj.a }.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello stefi.');
     });
@@ -133,7 +133,7 @@ describe("ittfInterpolate", function() {
         };
         ctx.setValue('obj', obj);
         var result = ip('Hello $' + '{ obj.b }.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello .');
     });
@@ -143,11 +143,11 @@ describe("ittfInterpolate", function() {
         };
         ctx.setValue('obj', obj);
         var result = ip('Hello $' + '{ obj.a }.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello stefi.');
         result = ip('Hello $' + '{ obj.b }.', ctx);
-        console.log('result', result);
+        // log 'result', result
         expect(result).to.be.a('string');
         expect(result).to.be('Hello .');
     });

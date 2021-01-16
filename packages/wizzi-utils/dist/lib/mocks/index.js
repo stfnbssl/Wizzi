@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\mocks\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\mocks\index.js.ittf
 */
 'use strict';
 var verify = require('../verify');
@@ -36,14 +36,14 @@ md.getLoadModelContext = function(modelContext) {
 md.getProductionManager = function() {
     return {
             wizziFactory: {}, 
-            productionContext: createProductionContext(), 
+            productionContext: md.createProductionContext(), 
             globalContext: function() {
                 return {};
             }
         };
 };
 md.errors = require('./errors');
-function createProductionContext() {
+md.createProductionContext = function createProductionContext() {
     return {
             aclstat: {}, 
             ittfEvaluationScripts: {}, 
@@ -81,4 +81,4 @@ function createProductionContext() {
                 throw exception;
             }
         };
-}
+};

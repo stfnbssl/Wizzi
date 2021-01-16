@@ -1,6 +1,7 @@
-﻿section
-	$params name, grid|grid
-	id ${name}
-	class ${grid}
-	ul
-		$hook
+﻿$group
+    $params name, grid|grid
+    section
+        id ${name}
+        class ${grid}
+        ul
+            $hook

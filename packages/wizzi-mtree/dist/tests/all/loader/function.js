@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\function.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\function.js.ittf
 */
 'use strict';
 
@@ -25,8 +25,8 @@ function getFSDocumentStore(callback) {
     });
 }
 
-var mocks = require('../mocks/misc');
-var mTreeLoader = require('./mocks/mTreeLoader');
+var mocks = require('../../mocks/misc');
+var mTreeLoader = require('../../mocks/mTreeLoader');
 
 function evaluate(uri, callback) {
     var loadContext = {
@@ -127,7 +127,7 @@ describe("function", function() {
         done();
     });
     it("complex function nodes [0][0]", function(done) {
-        console.log('evaluatedModel.nodes[0].children', evaluatedModel.nodes[0].children);
+        // log 'evaluatedModel.nodes[0].children', evaluatedModel.nodes[0].children
         expect(evaluatedModel.nodes[0].children).to.be.an('array');
         expect(evaluatedModel.nodes[0].children.length).to.be(2);
         node = evaluatedModel.nodes[0].children[0];
@@ -156,7 +156,7 @@ describe("function", function() {
     it("should load and evaluate an ittf with a recursive function", function(done) {
         var content_filepath = path.join(__dirname, 'repo', 'data', 'function_3.tests.ittf');
         mTreeLoader(store, content_filepath, function(err, result) {
-            console.log('================', err, result);
+            // log '================', err, result
             evaluatedModel = result;
             expect(evaluatedModel).to.be.an('object');
             expect(evaluatedModel.nodes).to.be.an('array');

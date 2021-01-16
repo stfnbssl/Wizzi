@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\util\vfile.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\util\vfile.js.ittf
 */
 'use strict';
 
@@ -101,7 +101,7 @@ describe("vfile", function() {
             extension: null, 
             documentContent: false
         });
-        console.log('should get files in a basefolder - files', files);
+        // log 'should get files in a basefolder - files', files
         expect(files).to.be.an('array');
         expect(files.length).to.be(2);
     });
@@ -131,7 +131,7 @@ describe("vfile", function() {
             documentNames: false, 
             documentContents: false
         });
-        console.log('folders', folders);
+        // log 'folders', folders
         expect(folders).to.be.an('array');
         expect(folders.length).to.be(2);
     });
@@ -143,7 +143,7 @@ describe("vfile", function() {
             tFoldersOnly: false, 
             documentNames: false
         });
-        console.log('folders', folders);
+        // log 'folders', folders
         expect(folders).to.be.an('array');
         expect(folders.length).to.be(4);
         expect(folders[0].relPath).to.be.a('string');
@@ -164,7 +164,7 @@ describe("vfile", function() {
             documentNames: true, 
             documentContents: false
         });
-        console.log('folders', folders);
+        // log 'folders', folders
         expect(folders).to.be.an('array');
         expect(folders.length).to.be(4);
         expect(folders[0].documents).to.be.an('array');
@@ -182,7 +182,7 @@ describe("vfile", function() {
             tFoldersOnly: false, 
             documentNames: true
         });
-        console.log('folders', folders);
+        // log 'folders', folders
         expect(folders).to.be.an('array');
         expect(folders.length).to.be(4);
         expect(folders[0].documents[0].relPath).to.be.a('string');

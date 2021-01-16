@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\svgparser\xml2js\wizzifier.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\svgparser\xml2js\wizzifier.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -172,8 +172,12 @@ function wizzify(xml, options, callback) {
                     return callback(new Error("Root is not an object. Prop: " + prop + ', root: ' + root));
                 }
                 var ac = getAttribsAndChilds(root);
+                var propx = prop;
+                if (prop == 'viewBox') {
+                    propx = prop;
+                }
                 wizziTree = {
-                    tag: prop, 
+                    tag: propx, 
                     attribs: [], 
                     children: []
                 };

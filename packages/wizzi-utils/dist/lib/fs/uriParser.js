@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\fs\uriParser.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\fs\uriParser.js.ittf
 */
 'use strict';
 var verify = require('wizzi-helpers').verify;
@@ -57,7 +57,7 @@ module.exports = function parse(uri, callback) {
             return callback(error('InvalidArgument', 'parse', 'Uri must have a protocol (must be an absolute url). Received: ' + uri));
         }
         else {
-            return error('InvalidArgument', 'parse');
+            return error('InvalidArgument', 'parse', 'Uri must have a protocol (must be an absolute url). Received: ' + uri);
         }
     }
     var protocol = parsedUri.protocol.substr(-1, 1) === ':' ? parsedUri.protocol.substr(0, (parsedUri.protocol.length - 1)) : parsedUri.protocol;

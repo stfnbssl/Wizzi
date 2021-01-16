@@ -7,14 +7,14 @@
     
 	function log
         param label
-        param obj
+        param data
         if verbose
             _ console.log
                 @ label
                 _ util.inspect
-                    @ obj
+                    @ data
                     { 
-                        @ depth 1
+                        @ depth null
     
 	var md
         set module.exports =
@@ -534,16 +534,7 @@
         param ch
         return (ch === '"') || (ch === '\'')
     
-	function log
-        param label
-        param data
-        _ console.log
-            @ label
-            _ util.inspect
-                @ data
-                { 
-                    @ depth null
-    
+   
 	var voidElements
         { 
             @ __proto__ null

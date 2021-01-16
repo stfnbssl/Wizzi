@@ -12,23 +12,23 @@
 		+ 
 		it should scan a folder
 
-			var ittfMTreeEx 
-				_ folderScanner.scan
-					_ path.join
-						@ __dirname
-						@ 'ittf'
-						@ 'first'
-					{
-						@ name 'first'
-						@ gitPath 'c:/blabla'
+			
+            _ folderScanner.scan
+                _ path.join
+                    @ __dirname
+                    @ 'ittf'
+                    @ 'first'
+                {
+                    @ name 'first'
+                    @ gitPath 'c:/blabla'
+                f_cb(ittfMTreeEx)
+                    tobe_object(ittfMTreeEx)
 
-			tobe_object(ittfMTreeEx)
-
-			_ ittfMTreeEx.writeFile
-				_ path.join
-					@ __dirname
-					@ 'outputs'
-					@ 'first.wfpackage.ittf'
-				f_cb_test( result )
-					log 'err, result', err, result
+                    _ ittfMTreeEx.writeFile
+                        _ path.join
+                            @ __dirname
+                            @ 'outputs'
+                            @ 'first.wfpackage.ittf'
+                        f_cb_test( result )
+                            log 'err, result', err, result
 

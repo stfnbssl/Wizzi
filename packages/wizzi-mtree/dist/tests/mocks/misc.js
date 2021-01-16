@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\mocks\misc.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\mocks\misc.js.ittf
 */
 'use strict';
 var path = require('path');
@@ -18,7 +18,7 @@ module.exports = {
             addEvaluatedMTree: function(uri, content) {
             }, 
             addMTreeBuildUpScript: function(uri, jsScriptCoder) {
-                console.log('addMTreeBuildUpScript');
+                // log 'addMTreeBuildUpScript'
                 file.write(path.join(path.dirname(uri), '_debug_dumps', path.basename(uri)), jsScriptCoder.toCode());
             }
         }
@@ -36,9 +36,9 @@ module.exports = {
                 uri: uri, 
                 script: script
             };
-            console.log(script, uri);
+            // log script, uri
             if (this.dump) {
-                console.log('dump');
+                // log 'dump'
                 file.write(path.join(path.dirname(uri), '_debug', path.basename(uri) + '.js.dump'), script);
             }
         }, 

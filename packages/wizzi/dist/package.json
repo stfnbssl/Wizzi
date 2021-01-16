@@ -1,6 +1,6 @@
 {
     "name": "wizzi",
-    "version": "0.7.11",
+    "version": "0.7.12",
     "description": "The wizzi factory..",
     "author": {
         "name": "Stefano Bassoli",
@@ -10,12 +10,12 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/wizzifactory/wizzi-mono/tree/master/license.txt"
+            "url": "https://github.com/stfnbssl/wizzi/tree/master/license.txt"
         }
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/wizzifactory/wizzi-mono/tree/master/packages/wizzi"
+        "url": "https://github.com/stfnbssl/wizzi/tree/master/packages/wizzi"
     },
     "engines": {
         "node": ">=0.10.28",

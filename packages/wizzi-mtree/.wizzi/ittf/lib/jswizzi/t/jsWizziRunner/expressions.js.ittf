@@ -9,7 +9,7 @@
 					@ ctx
 			if exp && exp.__is_error
 				# log 'wizzi-mtree-jsWizziRunner.__is_error CallExpression argument', exp
-				if exp.name === 'JsWizziError-ReferenceError'
+                if exp.data && exp.data.errorName === 'ReferenceError'
 					set exp = undefined
 				else
 					return exp
@@ -289,7 +289,7 @@
             var f
                 _ ctx.getFunction
                     @ node.callee.name
-			log 'wizzi-mtree.jsWizziRunner.CallExpression.node.callee.name', node.callee.name, f
+			# log 'wizzi-mtree.jsWizziRunner.CallExpression.node.callee.name', node.callee.name, f
             if f == null
 				set f = ctx.getValue(node.callee.name)
 				if f != null && verify.isFunction(f)

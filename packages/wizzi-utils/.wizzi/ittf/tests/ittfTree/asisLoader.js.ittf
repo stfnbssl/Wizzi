@@ -11,8 +11,9 @@
 				@ 'ittf'
 				@ 'basic.tests.ittf'
 			{
+                @ file file
 			f_cb_test( result )
-				# log? result
+				log? result
 				tobe_object( result )
 				_ done()
 

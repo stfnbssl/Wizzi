@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\ittfTree\ittfMTreeEx.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\ittfTree\ittfMTreeEx.js.ittf
 */
 'use strict';
 
@@ -23,7 +23,7 @@ describe("ittfMTreeEx", function() {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            console.log("result" + " " + util.inspect(result, { depth: null } ))
+            // log? result
             expect(result).to.be.an('object');
             expect(result.name).to.be.a('string');
             expect(result.name).to.be('alfa');
@@ -66,7 +66,7 @@ describe("ittfMTreeEx", function() {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            console.log("result" + " " + util.inspect(result, { depth: null } ))
+            // log? result
             expect(result).to.be.an('object');
             expect(result.name).to.be.a('string');
             expect(result.name).to.be('alfa');
@@ -105,7 +105,7 @@ describe("ittfMTreeEx", function() {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            console.log("result" + " " + util.inspect(result, { depth: null } ))
+            // log? result
             expect(result).to.be.an('object');
             expect(result.name).to.be.a('string');
             expect(result.name).to.be('alfa');
@@ -136,7 +136,7 @@ describe("ittfMTreeEx", function() {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            console.log("result" + " " + util.inspect(result, { depth: null } ))
+            // log? result
             expect(result).to.be.an('object');
             expect(result.name).to.be.a('string');
             expect(result.name).to.be('alfa');

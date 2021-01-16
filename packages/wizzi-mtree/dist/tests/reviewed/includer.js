@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\reviewed\includer.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\reviewed\includer.js.ittf
 */
 'use strict';
 
@@ -155,7 +155,7 @@ describe("includer", function() {
             }
             var mTree = provider.getPrimaryMTreeBrick();
             includer(mTree, provider, function(err, includedModel) {
-                console.log('should throw an error for fragment to include not found', '\n' + err.toString());
+                // log 'should throw an error for fragment to include not found', '\n' + err.toString()
                 expect(err.__is_error).to.be(true);
                 expect(err.data).to.be.an('object');
                 expect(err.data.errorName).to.be('IttfIncludeError');

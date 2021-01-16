@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\wfschema\json_docs\trans\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\wfschema\json_docs\trans\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -36,10 +36,10 @@ md.wfschema = function(model, ctx, parent) {
         md.element(element, ctx, ctx.result);
     }
 };
-md.exportTo = function(model, ctx, parent) {
+function(model, ctx, parent) {
     parent.exportTos.push(model.wzName);
-};
-md.element = function(model, ctx, parent) {
+}
+function(model, ctx, parent) {
     var flags = '';
     flags += model.isAbstract ? 'is-abstract ' : '';
     flags += model.addToChildren ? 'add-to-children ' : '';
@@ -120,7 +120,7 @@ md.element = function(model, ctx, parent) {
         node.comments.push(comment.wzName);
     }
     parent.elements.push(node);
-};
+}
 function getRestrictFill(model) {
     var restrictCloned = {
         facets: [], 

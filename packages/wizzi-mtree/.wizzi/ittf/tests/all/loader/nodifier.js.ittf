@@ -18,7 +18,6 @@
 				@ 'data'
 				@ 'liner_1.tests.ittf'
 
-
         var mTree
 			new MTreeBrick
 				@ uri

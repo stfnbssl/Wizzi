@@ -262,6 +262,11 @@
                 <h5>Description</h5>
                 <div>
                     <span>The root element of a wizzi factory schema. &nbsp;</span>
+                    <span>If declared, the WizziModelLoader will preserve, in the loaded WizziModelInstance, &nbsp;</span>
+                    <span>the tags used in the source IttfDocuments. &nbsp;</span>
+                    <span>If declared, the WizziModelLoader will preprocess the builded mTree &nbsp;</span>
+                    <span>before loading the WizziModelInstance, &nbsp;</span>
+                    <span>v4 (pre-release) implementation &nbsp;</span>
                     <span>r include/s &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
@@ -286,12 +291,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>If declared, the WizziModelLoader will preserve, in the loaded WizziModelInstance, &nbsp;</span>
-                                        <span>the tags used in the source IttfDocuments. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>mTreeIsPreprocessed</td>
@@ -300,12 +300,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>If declared, the WizziModelLoader will preprocess the builded mTree &nbsp;</span>
-                                        <span>before loading the WizziModelInstance, &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>unknownElementReplacer</td>
@@ -314,11 +309,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>v4 (pre-release) implementation &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -474,6 +465,18 @@
                 <h5>Description</h5>
                 <div>
                     <span>A schema element. A classifier model element that may have attributes and relations. &nbsp;</span>
+                    <span>This element is abstract and cannot be declared in Ittf documents. &nbsp;</span>
+                    <span>Mark the element as the root element of the schema. &nbsp;</span>
+                    <span>If not explicit, the root element is inferred, &nbsp;</span>
+                    <span>and the first element declared in the schema is assumed as the root. &nbsp;</span>
+                    <span>Any node tag of this type will match this element &nbsp;</span>
+                    <span>This element must have a not empty IttfNodeValue (the wzName property in the wizzi model) &nbsp;</span>
+                    <span>Every child node of this element will be added to the wzChildren collection. &nbsp;</span>
+                    <span>Artifact generators will use the wzElement attribute to distinguish child elements. &nbsp;</span>
+                    <span>Data calculated in the mTree preprocessing step will be set on the &nbsp;</span>
+                    <span>wzMTreeData property of this element. &nbsp;</span>
+                    <span>This wfschema MUST have the 'mtree-is-preprocessed' flag set to true &nbsp;</span>
+                    <span>TODO ??? &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -511,11 +514,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>This element is abstract and cannot be declared in Ittf documents. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>isRoot</td>
@@ -524,13 +523,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>Mark the element as the root element of the schema. &nbsp;</span>
-                                        <span>If not explicit, the root element is inferred, &nbsp;</span>
-                                        <span>and the first element declared in the schema is assumed as the root. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>tagInternal</td>
@@ -566,24 +559,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>Any node tag of this type will match this element &nbsp;</span>
-                                    </div>
-                                    <h5>restrict</h5>
-                                    <table>
-                                        <tr>
-                                            <td>Any node tag of this type will match this element number</td>
-                                            <td></td>
-                                        </tr>
-                                    </table>
-                                    <table>
-                                        <tr>
-                                            <td>number css-length</td>
-                                            <td></td>
-                                        </tr>
-                                    </table>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>acceptAnyTag</td>
@@ -609,11 +585,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>This element must have a not empty IttfNodeValue (the wzName property in the wizzi model) &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>addToChildren</td>
@@ -622,12 +594,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>Every child node of this element will be added to the wzChildren collection. &nbsp;</span>
-                                        <span>Artifact generators will use the wzElement attribute to distinguish child elements. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>hasMTreeData</td>
@@ -636,13 +603,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>Data calculated in the mTree preprocessing step will be set on the &nbsp;</span>
-                                        <span>wzMTreeData property of this element. &nbsp;</span>
-                                        <span>This wfschema MUST have the 'mtree-is-preprocessed' flag set to true &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>suppressCollectionEmit</td>
@@ -651,11 +612,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>TODO ??? &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -748,6 +705,9 @@
                 <h5>Description</h5>
                 <div>
                     <span>An element attribute. &nbsp;</span>
+                    <span>If true the attribute must be declared. &nbsp;</span>
+                    <span>This attribute is a datatype attribute and type services will be available to artifact generators. &nbsp;</span>
+                    <span>When the attribute is declared without a IttfNodeValue, this will be its value. &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -854,11 +814,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>If true the attribute must be declared. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>isDataType</td>
@@ -867,11 +823,7 @@
                                 <td>false</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>This attribute is a datatype attribute and type services will be available to artifact generators. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>defaultWhenDeclared</td>
@@ -880,11 +832,7 @@
                                 <td>string</td>
                                 <td></td>
                                 <td></td>
-                                <td>
-                                    <div>
-                                        <span>When the attribute is declared without a IttfNodeValue, this will be its value. &nbsp;</span>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>

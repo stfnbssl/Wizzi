@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\util\node.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\util\node.js.ittf
 */
 'use strict';
 
@@ -233,16 +233,16 @@ describe("util.node", function() {
                     if (err) {
                         return callback(err);
                     }
-                    console.log('original', original.toString());
+                    // log 'original', original.toString()
                     ittfTree.createFrom(item.expected, function(err, expected) {
                         if (err) {
                             return callback(err);
                         }
                         var toremove = original.find(item.name);
                         node.remove(toremove);
-                        console.log('toremove', toremove.toString());
-                        console.log('original after', original.toString());
-                        console.log('expected', expected.toString());
+                        // log 'toremove', toremove.toString()
+                        // log 'original after', original.toString()
+                        // log 'expected', expected.toString()
                         expect(original.equals(expected)).to.be(true);
                     });
                 });
@@ -252,7 +252,7 @@ describe("util.node", function() {
                     if (err) {
                         return callback(err);
                     }
-                    console.log('original', original.toString());
+                    // log 'original', original.toString()
                     ittfTree.createFrom(item.replacer, function(err, replacer) {
                         if (err) {
                             return callback(err);
@@ -262,11 +262,11 @@ describe("util.node", function() {
                                 return callback(err);
                             }
                             var toreplace = original.find(item.name);
-                            console.log('toreplace', toreplace.toString());
+                            // log 'toreplace', toreplace.toString()
                             node.replace(toreplace, [replacer]);
-                            console.log('replacer', replacer.toString());
-                            console.log('original after', original.toString());
-                            console.log('expected', expected.toString());
+                            // log 'replacer', replacer.toString()
+                            // log 'original after', original.toString()
+                            // log 'expected', expected.toString()
                             expect(original.equals(expected)).to.be(true);
                         });
                     });
@@ -283,9 +283,9 @@ describe("util.node", function() {
                     if (err) {
                         return callback(err);
                     }
-                    console.log('original', original.toString());
+                    // log 'original', original.toString()
                     var found = node.findIttfCommand(original, item.value, item.name);
-                    console.log('findCommand.name,value,found', item.name, item.value, found && found.id);
+                    // log 'findCommand.name,value,found', item.name, item.value, found && found.id
                     expect(found).to.be.an('object');
                     // loose equality works for objects
                     expect(item.expected).to.eql(found.id);

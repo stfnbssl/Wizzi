@@ -688,10 +688,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "If declared, the WizziModelLoader will preserve, in the loaded WizziModelInstance,",
-            "the tags used in the source IttfDocuments."
-          ]
+          "comments": []
         },
         {
           "name": "mTreeIsPreprocessed",
@@ -704,10 +701,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "If declared, the WizziModelLoader will preprocess the builded mTree",
-            "before loading the WizziModelInstance,"
-          ]
+          "comments": []
         },
         {
           "name": "unknownElementReplacer",
@@ -718,9 +712,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "v4 (pre-release) implementation"
-          ]
+          "comments": []
         }
       ],
       "relations": [
@@ -796,6 +788,11 @@
       "methods": [],
       "comments": [
         "The root element of a wizzi factory schema.",
+        "If declared, the WizziModelLoader will preserve, in the loaded WizziModelInstance,",
+        "the tags used in the source IttfDocuments.",
+        "If declared, the WizziModelLoader will preprocess the builded mTree",
+        "before loading the WizziModelInstance,",
+        "v4 (pre-release) implementation",
         "r include/s"
       ]
     },
@@ -876,9 +873,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "This element is abstract and cannot be declared in Ittf documents."
-          ]
+          "comments": []
         },
         {
           "name": "isRoot",
@@ -891,11 +886,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "Mark the element as the root element of the schema.",
-            "If not explicit, the root element is inferred,",
-            "and the first element declared in the schema is assumed as the root."
-          ]
+          "comments": []
         },
         {
           "name": "tagInternal",
@@ -932,26 +923,8 @@
           ],
           "flags": "",
           "inheritedFrom": null,
-          "restricts": [
-            {
-              "facets": [
-                {
-                  "type": "enumFacet",
-                  "value": "number",
-                  "comments": []
-                },
-                {
-                  "type": "enumFacet",
-                  "value": "css-length",
-                  "comments": []
-                }
-              ],
-              "comments": []
-            }
-          ],
-          "comments": [
-            "Any node tag of this type will match this element"
-          ]
+          "restricts": [],
+          "comments": []
         },
         {
           "name": "acceptAnyTag",
@@ -981,9 +954,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "This element must have a not empty IttfNodeValue (the wzName property in the wizzi model)"
-          ]
+          "comments": []
         },
         {
           "name": "addToChildren",
@@ -996,10 +967,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "Every child node of this element will be added to the wzChildren collection.",
-            "Artifact generators will use the wzElement attribute to distinguish child elements."
-          ]
+          "comments": []
         },
         {
           "name": "hasMTreeData",
@@ -1012,11 +980,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "Data calculated in the mTree preprocessing step will be set on the",
-            "wzMTreeData property of this element.",
-            "This wfschema MUST have the 'mtree-is-preprocessed' flag set to true"
-          ]
+          "comments": []
         },
         {
           "name": "suppressCollectionEmit",
@@ -1029,9 +993,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "TODO ???"
-          ]
+          "comments": []
         }
       ],
       "relations": [
@@ -1103,10 +1065,38 @@
         }
       ],
       "derived": [],
-      "restricts": [],
+      "restricts": [
+        {
+          "facets": [
+            {
+              "type": "enumFacet",
+              "value": "number",
+              "comments": []
+            },
+            {
+              "type": "enumFacet",
+              "value": "css-length",
+              "comments": []
+            }
+          ],
+          "comments": []
+        }
+      ],
       "methods": [],
       "comments": [
-        "A schema element. A classifier model element that may have attributes and relations."
+        "A schema element. A classifier model element that may have attributes and relations.",
+        "This element is abstract and cannot be declared in Ittf documents.",
+        "Mark the element as the root element of the schema.",
+        "If not explicit, the root element is inferred,",
+        "and the first element declared in the schema is assumed as the root.",
+        "Any node tag of this type will match this element",
+        "This element must have a not empty IttfNodeValue (the wzName property in the wizzi model)",
+        "Every child node of this element will be added to the wzChildren collection.",
+        "Artifact generators will use the wzElement attribute to distinguish child elements.",
+        "Data calculated in the mTree preprocessing step will be set on the",
+        "wzMTreeData property of this element.",
+        "This wfschema MUST have the 'mtree-is-preprocessed' flag set to true",
+        "TODO ???"
       ]
     },
     {
@@ -1211,9 +1201,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "If true the attribute must be declared."
-          ]
+          "comments": []
         },
         {
           "name": "isDataType",
@@ -1226,9 +1214,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "This attribute is a datatype attribute and type services will be available to artifact generators."
-          ]
+          "comments": []
         },
         {
           "name": "defaultWhenDeclared",
@@ -1239,9 +1225,7 @@
           "flags": "",
           "inheritedFrom": null,
           "restricts": [],
-          "comments": [
-            "When the attribute is declared without a IttfNodeValue, this will be its value."
-          ]
+          "comments": []
         }
       ],
       "relations": [
@@ -1272,7 +1256,10 @@
       "restricts": [],
       "methods": [],
       "comments": [
-        "An element attribute."
+        "An element attribute.",
+        "If true the attribute must be declared.",
+        "This attribute is a datatype attribute and type services will be available to artifact generators.",
+        "When the attribute is declared without a IttfNodeValue, this will be its value."
       ]
     },
     {

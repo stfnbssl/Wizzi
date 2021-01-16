@@ -3,7 +3,7 @@
 	$append imports
 		var MTreeBrickProvider = require('../../../lib/loader/mTreeBrickProvider')
 		var errors = require('../../../lib/errors')
-		var mocks = require('../mocks/misc')
+		var mocks = require('../../mocks/misc')
 	
 	initStore()
 

@@ -1,5 +1,6 @@
-﻿m ${name}
-	$params name
-	param model
-	param ctx
-	$hook
+﻿$group
+    $params name
+    m ${name}
+        param model
+        param ctx
+        $hook

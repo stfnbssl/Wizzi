@@ -30,7 +30,7 @@
 								function
 									param uri
 									param jsScriptCoder
-									log 'addMTreeBuildUpScript'
+									# log 'addMTreeBuildUpScript'
 									_ file.write
 										_ path.join
 											@ path.dirname(uri)
@@ -63,9 +63,9 @@
 								{
 									@ uri uri
 									@ script script
-							log script, uri
+							# log script, uri
 							if this.dump
-								log 'dump'
+								# log 'dump'
 								_ file.write
 									_ path.join
 										@ path.dirname(uri)

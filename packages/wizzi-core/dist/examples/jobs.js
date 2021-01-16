@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-core\.wizzi\ittf\examples\jobs.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\examples\jobs.js.ittf
 */
 'use strict';
 var path = require('path');
@@ -191,7 +191,7 @@ function executeLoadModel(name, folder, schema, context, callback) {
         else {
             file.write(jsOutput, stringify(jsWizziModel, null, 4));
         }
-        return callback(null, null);
+        callback(null, null);
     });
 }
 function executeFolderJobs(folder, schema, context, callback) {
@@ -205,7 +205,7 @@ function executeFolderJobs(folder, schema, context, callback) {
         if (err) {
             return callback(err);
         }
-        return callback(null, null);
+        callback(null, null);
     });
 }
 function executeJob(name, folder, schema, context, callback) {
@@ -216,6 +216,6 @@ function executeJob(name, folder, schema, context, callback) {
             throw new Error(err.message);
         }
         console.log('jobResult', jobResult);
-        return callback(null, null);
+        callback(null, null);
     });
 }

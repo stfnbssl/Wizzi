@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\ittfFsNode\ittfFsNode.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\ittfFsNode\ittfFsNode.js.ittf
 */
 'use strict';
 
@@ -26,7 +26,7 @@ describe("ittFsNode", function() {
         // log 'root', root
         var added = root.addDocument('root/readme.md.ittf');
         // log 'root', root
-        expect(added).to.be(true);
+        expect(added).to.be.an('object');
         expect(root.folders).to.be.an('array');
         expect(root.folders.length).to.be(0);
         expect(root.documents).to.be.an('array');
@@ -44,7 +44,7 @@ describe("ittFsNode", function() {
     it("should add a document fragment", function() {
         var added = root.addDocument('root/t/title.md.ittf');
         // log 'root', root
-        expect(added).to.be(true);
+        expect(added).to.be.an('object');
         expect(root.folders).to.be.an('array');
         expect(root.folders.length).to.be(1);
         expect(root.documents).to.be.an('array');
@@ -74,7 +74,7 @@ describe("ittFsNode", function() {
     });
     it("should write an ittf", function(done) {
         var ittf = new ittfMTreeEx('wzpackage');
-        root.toIttf(ittf);
+        root.toIttf2(ittf);
         ittf.writeFile(path.join(__dirname, 'outputs', 'test.wzpackage.ittf'), function(err, result) {
             if (err) {
                 console.log('err', err);

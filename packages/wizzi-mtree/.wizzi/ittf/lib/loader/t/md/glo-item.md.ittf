@@ -1,6 +1,7 @@
-﻿tr
-	$params name
-	td ${name}
-	td
-		$hook
+﻿$group
+    $params name
+    tr
+        td ${name}
+        td
+            $hook
 		

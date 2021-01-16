@@ -1,9 +1,0 @@
-﻿$group
-
-	container
-		
-		$global
-			gcount++;
-		
-		item ${gcount}
-

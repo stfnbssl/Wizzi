@@ -23,6 +23,7 @@ var includer = require('../../lib/loader/includer');
 var mixer = require('../../lib/loader/mixer');
 var appender = require('../../lib/loader/appender');
 var evaluator = require('../../lib/loader/evaluator');
+var loader = require('../../lib/loader');
 var MTreeBrick = require('../../lib/loader/mTreeBrick').MTreeBrick;
 var LoadHistory = require('../../lib/loader/loadHistory').LoadHistory;
 var MTreeBrickProvider = require('../../lib/loader/mTreeBrickProvider');
@@ -112,69 +113,6 @@ var Evaluator_Step_1 = function(step_callback) {
     });
 };
 Evaluator_Step_1.__name = 'Evaluator_Step_1';
-function printLines(lines) {
-    console.log('lines from liner ----------------------------------- start');
-    var i, i_items=lines, i_len=lines.length, l;
-    for (i=0; i<i_len; i++) {
-        l = lines[i];
-        console.log('line', 'indent: ' + l.indent, 'r,c: ' + l.row + ',' + l.col, l.name + ' / ' + l.value, (l.hasMacro ? 'hasMacro' : ''), (l.tagSuffix ? 'tagSuffix: ' + l.tagSuffix : ''));
-    }
-    console.log('lines from liner ------------------------------------- end');
-}
-function printNodes_deep(n, indent) {
-    var mTreeModel = n.model || n.mTreeBrick;
-    console.log(' ', new Array(indent).join('  '), 'r,c: ' + n.row + ',' + n.col, n.name + ' / ' + n.value, (n.hasMacro ? 'hasMacro' : ''), (n.tagSuffix ? 'tagSuffix: ' + n.tagSuffix : ''), (mTreeModel.$params ? '$params: ' + mTreeModel.$params : ''), (mTreeModel.sourceKey ? 'sk: ' + mTreeModel.sourceKey : ''));
-    var i, i_items=n.children, i_len=n.children.length, c;
-    for (i=0; i<i_len; i++) {
-        c = n.children[i];
-        printNodes_deep(c, indent + 1);
-    }
-}
-function printNodes(nodes, title) {
-    console.log('--- nodes ' + (title || '') + ' ------------------------------------------------- start');
-    if (nodes.length != 1) {
-        console.log('Invalid nodes array, must be of length == 1');
-    }
-    else {
-        // log 'nodes.mTreeBrick', nodes[0].mTreeBrick
-        // log 'nodes[0]', nodes[0]
-        var mTreeModel = nodes[0].model || nodes[0].mTreeBrick;
-        if (mTreeModel) {
-            console.log(' ', 'nodes.uri', mTreeModel.uri);
-            console.log(' ', 'nodes.$schema', mTreeModel.$schema);
-            console.log(' ', 'nodes.sourceKey', mTreeModel.sourceKey);
-            if (mTreeModel.$params) {
-                console.log(' ', 'nodes.$params', mTreeModel.$params);
-            }
-            if (mTreeModel.frontMatter) {
-                console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
-            }
-        }
-        printNodes_deep(nodes[0], 1);
-    }
-    console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
-}
-function printEvaluatedNodes_deep(n, indent) {
-    console.log(' ', new Array(indent).join('  '), 'r,c: ' + n.r + ',' + n.c, n.n + ' / ' + n.v, 'sk: ' + n.s, 'u: ' + n.u);
-    var i, i_items=n.children, i_len=n.children.length, c;
-    for (i=0; i<i_len; i++) {
-        c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
-    }
-}
-function printEvaluatedNodes(evaluated, title) {
-    console.log('--- evaluated nodes ' + (title || '') + ' ------------------------------------------------- start');
-    if (evaluated && evaluated.nodes && evaluated.nodes.length == 1) {
-        if (evaluated.frontMatter) {
-            console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
-        }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
-    }
-    else {
-        console.log('Invalid evaluated object', evaluated);
-    }
-    console.log('--- evaluated nodes ' + (title || '') + ' --------------------------------------------------- end');
-}
 function heading1(text) {
     console.log('');
     console.log('*'.repeat(120));
@@ -286,6 +224,69 @@ function __printObject(v, level, limit) {
             }
         }
     }
+}
+function printLines(lines) {
+    console.log('lines from liner ----------------------------------- start');
+    var i, i_items=lines, i_len=lines.length, l;
+    for (i=0; i<i_len; i++) {
+        l = lines[i];
+        console.log('line', 'indent: ' + l.indent, 'r,c: ' + l.row + ',' + l.col, l.name + ' / ' + l.value, (l.hasMacro ? 'hasMacro' : ''), (l.tagSuffix ? 'tagSuffix: ' + l.tagSuffix : ''));
+    }
+    console.log('lines from liner ------------------------------------- end');
+}
+function printNodes_deep(n, indent) {
+    var mTreeModel = n.model || n.mTreeBrick;
+    console.log(' ', new Array(indent).join('  '), 'r,c: ' + n.row + ',' + n.col, n.name + ' / ' + n.value, (n.hasMacro ? 'hasMacro' : ''), (n.tagSuffix ? 'tagSuffix: ' + n.tagSuffix : ''), (mTreeModel.$params ? '$params: ' + mTreeModel.$params : ''), (mTreeModel.sourceKey ? 'sk: ' + mTreeModel.sourceKey : ''));
+    var i, i_items=n.children, i_len=n.children.length, c;
+    for (i=0; i<i_len; i++) {
+        c = n.children[i];
+        printNodes_deep(c, indent + 1);
+    }
+}
+function printNodes(nodes, title) {
+    console.log('--- nodes ' + (title || '') + ' ------------------------------------------------- start');
+    if (nodes.length != 1) {
+        console.log('Invalid nodes array, must be of length == 1');
+    }
+    else {
+        // log 'nodes.mTreeBrick', nodes[0].mTreeBrick
+        // log 'nodes[0]', nodes[0]
+        var mTreeModel = nodes[0].model || nodes[0].mTreeBrick;
+        if (mTreeModel) {
+            console.log(' ', 'nodes.uri', mTreeModel.uri);
+            console.log(' ', 'nodes.$schema', mTreeModel.$schema);
+            console.log(' ', 'nodes.sourceKey', mTreeModel.sourceKey);
+            if (mTreeModel.$params) {
+                console.log(' ', 'nodes.$params', mTreeModel.$params);
+            }
+            if (mTreeModel.frontMatter) {
+                console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
+            }
+        }
+        printNodes_deep(nodes[0], 1);
+    }
+    console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
+}
+function printEvaluatedNodes_deep(n, indent) {
+    console.log(' ', new Array(indent).join('  '), 'r,c: ' + n.r + ',' + n.c, n.n + ' / ' + n.v, 'sk: ' + n.s, 'u: ' + n.u);
+    var i, i_items=n.children, i_len=n.children.length, c;
+    for (i=0; i<i_len; i++) {
+        c = n.children[i];
+        printEvaluatedNodes_deep(c, indent + 1);
+    }
+}
+function printEvaluatedNodes(evaluated, title) {
+    console.log('--- evaluated nodes ' + (title || '') + ' ------------------------------------------------- start');
+    if (evaluated && evaluated.nodes && evaluated.nodes.length == 1) {
+        if (evaluated.frontMatter) {
+            console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
+        }
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+    }
+    else {
+        console.log('Invalid evaluated object', evaluated);
+    }
+    console.log('--- evaluated nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
 function spaces(len) {
     return new Array(len).join(' ');

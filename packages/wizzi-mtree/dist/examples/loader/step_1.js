@@ -1,13 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\appender\step_1.js.ittf
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader\step_1.js.ittf
 */
 'use strict';
 //
 // Example skeleton specific for the 'wizzi-mtree' kernel package
 //
 /**
-     Examples: Appender_Step_1
+     Examples: Evaluator_Step_1
     
 */
 var path = require('path');
@@ -37,9 +37,10 @@ function getFSDocumentStore(callback) {
         return storeFactory(callback);
     });
 }
-var Appender_Step_1 = function(step_callback) {
+var Evaluator_Step_1 = function(step_callback) {
     heading1('EXAMPLE');
-    var ittfUri = path.join(__dirname, 'ittf', 'appender_1.js.ittf');
+    var ittfUri = path.join(__dirname, 'ittf', 'inline_fragments_1.html.ittf');
+    var productionManager = mocks.getProductionManager();
     getFSDocumentStore(function(err, fsStore) {
         if (err) {
             console.log('err', err);
@@ -54,63 +55,47 @@ var Appender_Step_1 = function(step_callback) {
             }
             throw new Error(err.message);
         }
-        MTreeBrickProvider.createFromUri(ittfUri, {
-            mTreeBuildUpContext: {}, 
-            productionContext: mocks.createProductionContext(), 
+        loader.loadMTree(ittfUri, {
+            mTreeBuildUpContext: {
+                items: [
+                    {
+                        name: 'stefi', 
+                        value: 60
+                    }, 
+                    {
+                        name: 'annie', 
+                        value: 59
+                    }, 
+                    {
+                        name: 'afro', 
+                        value: 98
+                    }
+                ]
+            }, 
+            __productionManager: productionManager, 
             __ittfDocumentStore: fsStore
-        }, function(err, provider) {
+        }, function(err, mTree) {
             if (err) {
                 console.log('err', err);
-                if (err.toString()) {
-                    console.log('err.toString()', err.toString());
-                }
-                if (err.inner) {
-                    console.log('err.inner', err.inner);
-                    if (err.inner.toString) {
-                        console.log('err.inner.toString()', err.inner.toString());
-                    }
-                }
                 throw new Error(err.message);
             }
-            var mTree = provider.getPrimaryMTreeBrick();
-            printNodes(mTree.nodes, 'Before append');
-            mixer(mTree, provider, function(err, mixedModel) {
-                if (err) {
-                    console.log('err', err);
-                    if (err.toString()) {
-                        console.log('err.toString()', err.toString());
-                    }
-                    if (err.inner) {
-                        console.log('err.inner', err.inner);
-                        if (err.inner.toString) {
-                            console.log('err.inner.toString()', err.inner.toString());
-                        }
-                    }
-                    throw new Error(err.message);
-                }
-                appender(mixedModel, function(err, appendedModel) {
-                    if (err) {
-                        console.log('err', err);
-                        throw new Error(err.message);
-                    }
-                    printNodes(appendedModel.nodes, 'After append');
-                });
-            });
+            // log 'mTree', mTree
+            printEvaluatedNodes(mTree, 'After evaluate');
         });
     });
 };
-Appender_Step_1.__name = 'Appender_Step_1';
+Evaluator_Step_1.__name = 'Evaluator_Step_1';
 function heading1(text) {
     console.log('');
     console.log('*'.repeat(120));
-    console.log('** level 0 - step 1 - Appender_Step_1 - ' + text);
+    console.log('** level 0 - step 1 - Evaluator_Step_1 - ' + text);
     console.log('*'.repeat(120));
     console.log('');
 }
 function heading2(text) {
     console.log('');
     console.log('   ', '-'.repeat(100));
-    console.log('   ','-- Appender_Step_1 - ' + text);
+    console.log('   ','-- Evaluator_Step_1 - ' + text);
     console.log('   ', '-'.repeat(100));
     console.log('');
 }
@@ -295,7 +280,7 @@ function formatNum(num, len) {
     var x = num.toString();
     return new Array(1 + len-x.length).join(' ') + x;
 }
-module.exports = Appender_Step_1;
+module.exports = Evaluator_Step_1;
 if (typeof require != 'undefined' && require.main === module) {
-    Appender_Step_1();
+    Evaluator_Step_1();
 }

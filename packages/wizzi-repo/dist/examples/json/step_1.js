@@ -1,13 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\appender\step_1.js.ittf
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\examples\json\step_1.js.ittf
 */
 'use strict';
 //
-// Example skeleton specific for the 'wizzi-mtree' kernel package
+// Example skeleton specific for the 'wizzi-repo' kernel package
 //
 /**
-     Examples: Appender_Step_1
+     Examples: Json_Step_1
     
 */
 var path = require('path');
@@ -15,102 +15,77 @@ var fs = require('fs');
 var stringify = require('json-stringify-safe');
 var wizziUtils = require('wizzi-utils');
 var file = wizziUtils.file;
+var verify = wizziUtils.verify;
 var mocks = wizziUtils.mocks;
 var createStoreFactory = require('wizzi-repo').createStoreFactory;
-var liner = require('../../lib/loader/liner');
-var nodifier = require('../../lib/loader/nodifier');
-var includer = require('../../lib/loader/includer');
-var mixer = require('../../lib/loader/mixer');
-var appender = require('../../lib/loader/appender');
-var evaluator = require('../../lib/loader/evaluator');
-var loader = require('../../lib/loader');
-var MTreeBrick = require('../../lib/loader/mTreeBrick').MTreeBrick;
-var LoadHistory = require('../../lib/loader/loadHistory').LoadHistory;
-var MTreeBrickProvider = require('../../lib/loader/mTreeBrickProvider');
-function getFSDocumentStore(callback) {
-    createStoreFactory({
-        kind: 'filesystem'
-    }, function(err, storeFactory) {
-        if (err) {
-            return callback(err);
-        }
-        return storeFactory(callback);
-    });
+var json = require('../../lib/json/index');
+function dump(fsJson) {
+    printValue('fsJson.items', fsJson.items);
+    printValue('fsJson.documents', fsJson.documents);
 }
-var Appender_Step_1 = function(step_callback) {
+heading1('start');
+var Json_Step_1 = function(step_callback) {
     heading1('EXAMPLE');
-    var ittfUri = path.join(__dirname, 'ittf', 'appender_1.js.ittf');
-    getFSDocumentStore(function(err, fsStore) {
+    var fsJson = new json.FsJson();
+    dump(fsJson);
+    fsJson.insertItem({
+        basename: 'alpha.js.ittf', 
+        dirname: 'w:/zero', 
+        kind: 1
+    }, function(err, result) {
         if (err) {
             console.log('err', err);
-            if (err.toString()) {
-                console.log('err.toString()', err.toString());
-            }
-            if (err.inner) {
-                console.log('err.inner', err.inner);
-                if (err.inner.toString) {
-                    console.log('err.inner.toString()', err.inner.toString());
-                }
-            }
             throw new Error(err.message);
         }
-        MTreeBrickProvider.createFromUri(ittfUri, {
-            mTreeBuildUpContext: {}, 
-            productionContext: mocks.createProductionContext(), 
-            __ittfDocumentStore: fsStore
-        }, function(err, provider) {
+        console.log('insert.alpha.js.ittf.result', result);
+        var insertedId = result.insertedId;
+        dump();
+        result.item.basename = 'beta.js.ittf';
+        fsJson.updateItem(result.item, function(err, result) {
             if (err) {
                 console.log('err', err);
-                if (err.toString()) {
-                    console.log('err.toString()', err.toString());
-                }
-                if (err.inner) {
-                    console.log('err.inner', err.inner);
-                    if (err.inner.toString) {
-                        console.log('err.inner.toString()', err.inner.toString());
-                    }
-                }
                 throw new Error(err.message);
             }
-            var mTree = provider.getPrimaryMTreeBrick();
-            printNodes(mTree.nodes, 'Before append');
-            mixer(mTree, provider, function(err, mixedModel) {
+            console.log('update.beta.js.ittf.result', result);
+            dump();
+            fsJson.writeDocument(result.item._id, 'My content', function(err, result) {
                 if (err) {
                     console.log('err', err);
-                    if (err.toString()) {
-                        console.log('err.toString()', err.toString());
-                    }
-                    if (err.inner) {
-                        console.log('err.inner', err.inner);
-                        if (err.inner.toString) {
-                            console.log('err.inner.toString()', err.inner.toString());
-                        }
-                    }
                     throw new Error(err.message);
                 }
-                appender(mixedModel, function(err, appendedModel) {
+                console.log('write.beta.js.ittf.result', result);
+                dump();
+                fsJson.readDocument(result.item._id, function(err, result) {
                     if (err) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printNodes(appendedModel.nodes, 'After append');
+                    console.log('read.beta.js.ittf.result', result);
+                    fsJson.deleteItem(insertedId, function(err, result) {
+                        if (err) {
+                            console.log('err', err);
+                            throw new Error(err.message);
+                        }
+                        console.log('delete.beta.js.ittf.result', result);
+                        dump(fsJson);
+                    });
                 });
             });
         });
     });
 };
-Appender_Step_1.__name = 'Appender_Step_1';
+Json_Step_1.__name = 'Json_Step_1';
 function heading1(text) {
     console.log('');
     console.log('*'.repeat(120));
-    console.log('** level 0 - step 1 - Appender_Step_1 - ' + text);
+    console.log('** level 0 - step 1 - Json_Step_1 - ' + text);
     console.log('*'.repeat(120));
     console.log('');
 }
 function heading2(text) {
     console.log('');
     console.log('   ', '-'.repeat(100));
-    console.log('   ','-- Appender_Step_1 - ' + text);
+    console.log('   ','-- Json_Step_1 - ' + text);
     console.log('   ', '-'.repeat(100));
     console.log('');
 }
@@ -295,7 +270,7 @@ function formatNum(num, len) {
     var x = num.toString();
     return new Array(1 + len-x.length).join(' ') + x;
 }
-module.exports = Appender_Step_1;
+module.exports = Json_Step_1;
 if (typeof require != 'undefined' && require.main === module) {
-    Appender_Step_1();
+    Json_Step_1();
 }

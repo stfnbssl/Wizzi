@@ -1,7 +1,17 @@
 ﻿md
 
-	h2 Glossary
-	
+	h2 Ittf document loading
+    + A textual Ittf document is loaded into an mTree object by these modules
+        \b that are run in sequence.
+    ul
+        li liner
+        li nodifier
+        li includer
+        li mixer
+        li appender
+        li evaluator
+
+    h2 Glossary
 	table
 		
 		md/glo-item( $append [hook-name] )

@@ -1,3 +1,11 @@
+## Ittf document loading
+`A textual Ittf document is loaded into an mTree object by these modules that are run in sequence.`
+* liner 
+* nodifier 
+* includer 
+* mixer 
+* appender 
+* evaluator 
 ## Glossary
 
 <table>

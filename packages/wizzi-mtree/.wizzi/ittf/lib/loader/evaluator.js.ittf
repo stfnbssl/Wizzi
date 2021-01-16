@@ -1,7 +1,6 @@
 ﻿module wizzi-mtree.loader.evaluator
     kind es6
     
-	# var util = require('util')
     var jsWizziRunner = require('../jswizzi/jsWizziRunner')
     var JsWizziContext = require('../jswizzi/jsWizziContext')
     var dateUtil = require('../jswizzi/functions/dateutil')

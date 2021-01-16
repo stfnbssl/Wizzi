@@ -3,7 +3,6 @@
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\evaluator.js.ittf
 */
 'use strict';
-// var util = require('util')
 var jsWizziRunner = require('../jswizzi/jsWizziRunner');
 var JsWizziContext = require('../jswizzi/jsWizziContext');
 var dateUtil = require('../jswizzi/functions/dateutil');

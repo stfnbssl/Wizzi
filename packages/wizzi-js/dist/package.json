@@ -1,6 +1,6 @@
 {
     "name": "wizzi-js",
-    "version": "0.7.4",
+    "version": "0.7.5",
     "description": "A wizzi default plugin for javascript and typescript code-generation..",
     "author": {
         "name": "Stefano Bassoli",
@@ -25,15 +25,15 @@
         "test": "mocha tests/**/*.js --full-trace"
     },
     "dependencies": {
-        "async": "^2.1.5",
-        "chalk": "^1.1.3",
+        "async": "^3.2.0",
+        "chalk": "^4.1.0",
         "i": "^0.3.5",
-        "iconv-lite": "^0.4.15",
+        "iconv-lite": "^0.6.2",
         "json-stringify-safe": "^5.0.1",
-        "lodash": "^4.17.4"
+        "lodash": "^4.17.20"
     },
     "devDependencies": {
-        "del": "^4.1.1",
+        "del": "^6.0.0",
         "expect.js": "^0.3.1",
         "wizzi-mtree": "file:../../wizzi-mtree/dist",
         "wizzi-utils": "file:../../wizzi-utils/dist"

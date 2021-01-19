@@ -8,7 +8,8 @@
 	var Collection = require('../../utils/collection')
 
 	#
-		# class FsJson (Filesystem Json)
+		# class FsJson 
+        # implements an in-memory json Filesystem (a set of documents organized in a tree of folders)
 		#
 		# Filesystem item
 		# { fsitem
@@ -25,32 +26,37 @@
 		#   ObjectId _id
 		#   string content
 		#   ISODate lastModified
+        #
+		# ctor params
+		#  { fsJsonData
+		#    [ items
+		#    [ documents
 
 	class FsJson
 		ctor
-			param db
+			param fsJsonData
 			set this.classType = 'wizzi-repo.json.FsJson'
-			if verify.isObject(db)
-				if verify.isArray(db.items) === false
+			if verify.isObject(fsJsonData)
+				if verify.isArray(fsJsonData.items) === false
 					throw
 						new Error
 							_ error
 								@ 'InvalidArgument'
 								@ 'ctor'
 								{
-									@ parameter 'db.items'
-									@ message 'The db.items parameter must be an array. Received: ' + db.items
-				if verify.isArray(db.documents) === false
+									@ parameter 'fsJsonData.items'
+									@ message 'The fsJsonData.items parameter must be an array. Received: ' + fsJsonData.items
+				if verify.isArray(fsJsonData.documents) === false
 					throw
 						new Error
 							_ error
 								@ 'InvalidArgument'
 								@ 'ctor'
 								{
-									@ parameter 'db.documents'
-									@ message 'The db.documents parameter must be an array. Received: ' + db.documents
-				set this.items = new Collection(db.items)
-				set this.documents = new Collection(db.documents)
+									@ parameter 'fsJsonData.documents'
+									@ message 'The fsJsonData.documents parameter must be an array. Received: ' + fsJsonData.documents
+				set this.items = new Collection(fsJsonData.items)
+				set this.documents = new Collection(fsJsonData.documents)
 			else
 				set this.items = new Collection([])
 				set this.documents = new Collection([])
@@ -102,38 +108,43 @@
 
 	#
 		# Creates a FsJson instance
+		# params
+		#  { fsJsonData
+		#    [ items
+		#    [ documents
+        #  callback
 	set FsJson.create
 		function
-			param jsonData
+			param fsJsonData
 			param callback
 			+
-			if verify.isUndefined(callback) && verify.isFunction(mongoUri)
-				set callback = jsonData
-				set jsonData = null
+			if verify.isUndefined(callback)
+				set callback = fsJsonData
+				set fsJsonData = null
 			+
-			if jsonData == null
-				set jsonData
+			if fsJsonData == null
+				set fsJsonData
 					{
 						@ items []
 						@ documents []
 			else
-				if verify.isObject(jsonData) == false
+				if verify.isObject(fsJsonData) == false
 					return
 						_ callback
-							_ errorMsg('create', 'parameter jsondata must be an object')
-				if verify.isArray(jsonData.items) == false
+							_ errorMsg('create', 'parameter fsJsonData must be an object')
+				if verify.isArray(fsJsonData.items) == false
 					return
 						_ callback
-							_ errorMsg('create', 'parameter jsondata must contain an item property')
-				if verify.isArray(jsonData.documents) == false
+							_ errorMsg('create', 'parameter fsJsonData must contain an items property')
+				if verify.isArray(fsJsonData.documents) == false
 					return
 						_ callback
-							_ errorMsg('create', 'parameter jsondata must contain a documents property')
+							_ errorMsg('create', 'parameter fsJsonData must contain a documents property')
 			+
 			return
 				_ callback
 					@ null
-					new FsJson(jsonData)
+					new FsJson(fsJsonData)
 
 	function errorMsg
 		param method

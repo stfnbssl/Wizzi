@@ -492,7 +492,25 @@
 				_ model.statements.splice(retIndex, 1)
 			return ret
 
-	set md.extractTS
+    set md.extractTSParameterDecl
+        function 
+            param model
+			if !model.statements || model.statements.length == 0
+				return
+			var ret, retIndex
+			_ model.statements.some
+				=>
+					param item
+					param index
+					if item.wzElement == 'typeParameterDecl'
+						set ret = item
+						set retIndex = index
+						return true
+			if ret
+				_ model.statements.splice(retIndex, 1)
+			return ret
+
+    set md.extractTS
         function 
             param model
 			param element

@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\types.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\types.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -12,7 +12,18 @@ var myname = 'wizzi-js.artifacts.ts.module.gen.codegen.statements.types';
 var md = module.exports = {};
 
 function hasStatements(model) {
-    return model.statements && model.statements.length > 0;
+    return countStatements(model) > 0;
+}
+function countStatements(model) {
+    var count = 0;
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement != 'comment') {
+            count++;
+        }
+    }
+    return count;
 }
 md.load = function(cnt) {
     cnt.stm.typeNumber = function(model, ctx, kind, callback) {
@@ -118,7 +129,7 @@ md.load = function(cnt) {
             var item_1 = model.statements[index_1];
             if (index_1 > 0) {
                 // log 0
-                ctx.write(', ');
+                // (19/1/21 It seems are separated by ';') _ ctx.write(', ')
             }
             // log 'typeObjectLiteral.item_1.wzElement', item_1.wzElement, item_1.wzName
             cnt.genItem(item_1, ctx, (err, notUsed) => {
@@ -513,7 +524,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeParameterDecl. Got: ' + callback);
         }
         var atype = u.extractTSSimpleType(model);
-        ctx.write(model.wzName);
+        ctx.write('<'+ model.wzName + '>');
         if (atype) {
             ctx.write(' extends ');
             if (!cnt.stm[atype.wzElement]) {

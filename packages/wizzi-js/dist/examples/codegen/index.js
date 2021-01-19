@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\index.js.ittf
 */
 'use strict';
 var chalk = require('chalk');
@@ -42,268 +42,198 @@ example({
         }
     ]
 }, 'var = tau;');
-example({
-    nodes: [
-        {
-            n: "var", 
-            v: "beta = 'astra'", 
+example(nodes: [
+    {
+        n: "var", 
+        v: "beta = 'astra'", 
+        children: [
+            
+        ]
+    }
+], "var = beta = 'astra';");
+example(nodes: [
+    {
+        n: "var", 
+        v: "alfa", 
+        children: [
+            {
+                n: "_", 
+                v: "getAlpha", 
+                children: [
+                    
+                ]
+            }
+        ]
+    }
+], "var alpha = getAlpha();");
+example(nodes: [
+    {
+        n: "var", 
+        v: "", 
+        children: [
+            n "decl", 
+            v "i", 
+            children: [
+                
+            ], 
+            n "decl", 
+            v "k = 10", 
+            children: [
+                
+            ], 
+            n "decl", 
+            v "name", 
             children: [
                 
             ]
-        }
-    ]
-}, "var = beta = 'astra';");
-example({
-    nodes: [
-        {
-            n: "var", 
-            v: "alfa", 
+        ]
+    }
+], "var i, k = 10, name;");
+example(nodes: [
+    {
+        n: "let", 
+        v: "sigma = 1", 
+        children: [
+            
+        ]
+    }
+], 'let sigma = 1;');
+example(nodes: [
+    {
+        n: "let", 
+        v: "omega = 1", 
+        children: [
+            
+        ]
+    }
+], 'let omega = 1;');
+example(nodes: [
+    {
+        n: "const", 
+        v: "ossian", 
+        children: [
+            n "_", 
+            v "buuh", 
             children: [
-                {
-                    n: "_", 
-                    v: "getAlpha", 
-                    children: [
-                        
-                    ]
-                }
+                n "@", 
+                v "wash", 
+                children: [
+                    
+                ]
             ]
-        }
-    ]
-}, "var alpha = getAlpha();");
-example({
-    nodes: [
-        {
-            n: "var", 
-            v: "", 
+        ]
+    }
+], "const ossian = buuh('wash')");
+example(nodes: [
+    {
+        n: "react", 
+        v: "Horse", 
+        children: [
+            n "prop", 
+            v "title", 
             children: [
-                {
-                    n: "decl", 
-                    v: "i", 
-                    children: [
-                        
-                    ]
-                }, 
-                {
-                    n: "decl", 
-                    v: "k = 10", 
-                    children: [
-                        
-                    ]
-                }, 
-                {
-                    n: "decl", 
-                    v: "name", 
-                    children: [
-                        
-                    ]
-                }
-            ]
-        }
-    ]
-}, "var i, k = 10, name;");
-example({
-    nodes: [
-        {
-            n: "let", 
-            v: "sigma = 1", 
+                n "string", 
+                v "", 
+                children: [
+                    
+                ], 
+                n "default", 
+                v "stefi", 
+                children: [
+                    
+                ]
+            ], 
+            n "prop", 
+            v "onClick", 
             children: [
-                
-            ]
-        }
-    ]
-}, 'let sigma = 1;');
-example({
-    nodes: [
-        {
-            n: "let", 
-            v: "omega = 1", 
+                n "func", 
+                v "", 
+                children: [
+                    
+                ]
+            ], 
+            n "style", 
+            v "", 
             children: [
-                
-            ]
-        }
-    ]
-}, 'let omega = 1;');
-example({
-    nodes: [
-        {
-            n: "const", 
-            v: "ossian", 
+                n "@", 
+                v "dark", 
+                children: [
+                    n "{", 
+                    v "", 
+                    children: [
+                        n "@", 
+                        v "color 'blue'", 
+                        children: [
+                            
+                        ]
+                    ]
+                ], 
+                n "@", 
+                v "appBarHome", 
+                children: [
+                    n "{", 
+                    v "", 
+                    children: [
+                        n "@", 
+                        v "backgroundColor 'transparent'", 
+                        children: [
+                            
+                        ], 
+                        n "@", 
+                        v "boxShadow 'none'", 
+                        children: [
+                            
+                        ]
+                    ]
+                ]
+            ], 
+            n "state", 
+            v "", 
             children: [
-                {
-                    n: "_", 
-                    v: "buuh", 
-                    children: [
-                        {
-                            n: "@", 
-                            v: "wash", 
-                            children: [
-                                
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}, "const ossian = buuh('wash')");
-example({
-    nodes: [
-        {
-            n: "react", 
-            v: "Horse", 
+                n "@", 
+                v "age 10", 
+                children: [
+                    
+                ]
+            ], 
+            n "did-mount", 
+            v "", 
             children: [
-                {
-                    n: "prop", 
-                    v: "title", 
+                n "_", 
+                v "hello", 
+                children: [
+                    
+                ]
+            ], 
+            n "will-unmount", 
+            v "", 
+            children: [
+                n "_", 
+                v "hello", 
+                children: [
+                    
+                ]
+            ], 
+            n "render", 
+            v "", 
+            children: [
+                n ".", 
+                v "hello", 
+                children: [
+                    n "<", 
+                    v "Link", 
                     children: [
-                        {
-                            n: "string", 
-                            v: "", 
-                            children: [
-                                
-                            ]
-                        }, 
-                        {
-                            n: "default", 
-                            v: "stefi", 
-                            children: [
-                                
-                            ]
-                        }
+                        n "@", 
+                        v "href 'miss'", 
+                        children: [
+                            
+                        ]
                     ]
-                }, 
-                {
-                    n: "prop", 
-                    v: "onClick", 
-                    children: [
-                        {
-                            n: "func", 
-                            v: "", 
-                            children: [
-                                
-                            ]
-                        }
-                    ]
-                }, 
-                {
-                    n: "style", 
-                    v: "", 
-                    children: [
-                        {
-                            n: "@", 
-                            v: "dark", 
-                            children: [
-                                {
-                                    n: "{", 
-                                    v: "", 
-                                    children: [
-                                        {
-                                            n: "@", 
-                                            v: "color 'blue'", 
-                                            children: [
-                                                
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }, 
-                        {
-                            n: "@", 
-                            v: "appBarHome", 
-                            children: [
-                                {
-                                    n: "{", 
-                                    v: "", 
-                                    children: [
-                                        {
-                                            n: "@", 
-                                            v: "backgroundColor 'transparent'", 
-                                            children: [
-                                                
-                                            ]
-                                        }, 
-                                        {
-                                            n: "@", 
-                                            v: "boxShadow 'none'", 
-                                            children: [
-                                                
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }, 
-                {
-                    n: "state", 
-                    v: "", 
-                    children: [
-                        {
-                            n: "@", 
-                            v: "age 10", 
-                            children: [
-                                
-                            ]
-                        }
-                    ]
-                }, 
-                {
-                    n: "did-mount", 
-                    v: "", 
-                    children: [
-                        {
-                            n: "_", 
-                            v: "hello", 
-                            children: [
-                                
-                            ]
-                        }
-                    ]
-                }, 
-                {
-                    n: "will-unmount", 
-                    v: "", 
-                    children: [
-                        {
-                            n: "_", 
-                            v: "hello", 
-                            children: [
-                                
-                            ]
-                        }
-                    ]
-                }, 
-                {
-                    n: "render", 
-                    v: "", 
-                    children: [
-                        {
-                            n: ".", 
-                            v: "hello", 
-                            children: [
-                                {
-                                    n: "<", 
-                                    v: "Link", 
-                                    children: [
-                                        {
-                                            n: "@", 
-                                            v: "href 'miss'", 
-                                            children: [
-                                                
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
+                ]
             ]
-        }
-    ]
-}, '', {
+        ]
+    }
+], '', {
     __jskind: 'react'
 });
 var len_1 = examples.length;

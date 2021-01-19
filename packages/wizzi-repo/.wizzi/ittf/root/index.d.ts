@@ -136,7 +136,6 @@ type createStoreFn = (callback: cb<Store>) => void;
 
 export function createStoreFactory(options: CreateStoreFactoryOptions, callback: cb<createStoreFn>): void;
 
-
 interface FileInfo {
     name: string;
     basename: string;

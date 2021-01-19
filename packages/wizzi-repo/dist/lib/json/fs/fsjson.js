@@ -15,7 +15,8 @@ var util = require('util');
 var verify = require('wizzi-utils').verify;
 var Collection = require('../../utils/collection');
 /**
-     class FsJson (Filesystem Json)
+     class FsJson
+     implements an in-memory json Filesystem (a set of documents organized in a tree of folders)
     
      Filesystem item
      { fsitem
@@ -32,26 +33,31 @@ var Collection = require('../../utils/collection');
      ObjectId _id
      string content
      ISODate lastModified
+    
+     ctor params
+     { fsJsonData
+     [ items
+     [ documents
 */
 var FsJson = (function () {
-    function FsJson(db) {
+    function FsJson(fsJsonData) {
         _classCallCheck(this, FsJson);
         this.classType = 'wizzi-repo.json.FsJson';
-        if (verify.isObject(db)) {
-            if (verify.isArray(db.items) === false) {
+        if (verify.isObject(fsJsonData)) {
+            if (verify.isArray(fsJsonData.items) === false) {
                 throw new Error(error('InvalidArgument', 'ctor', {
-                        parameter: 'db.items', 
-                        message: 'The db.items parameter must be an array. Received: ' + db.items
+                        parameter: 'fsJsonData.items', 
+                        message: 'The fsJsonData.items parameter must be an array. Received: ' + fsJsonData.items
                     }));
             }
-            if (verify.isArray(db.documents) === false) {
+            if (verify.isArray(fsJsonData.documents) === false) {
                 throw new Error(error('InvalidArgument', 'ctor', {
-                        parameter: 'db.documents', 
-                        message: 'The db.documents parameter must be an array. Received: ' + db.documents
+                        parameter: 'fsJsonData.documents', 
+                        message: 'The fsJsonData.documents parameter must be an array. Received: ' + fsJsonData.documents
                     }));
             }
-            this.items = new Collection(db.items);
-            this.documents = new Collection(db.documents);
+            this.items = new Collection(fsJsonData.items);
+            this.documents = new Collection(fsJsonData.documents);
         }
         else {
             this.items = new Collection([]);
@@ -328,7 +334,7 @@ var FsJson = (function () {
                     if (err) {
                         return callback(err);
                     }
-                    console.log('*** wizzi-repo.json.FsJson.deleteItem,r', r);
+                    // log '*** wizzi-repo.json.FsJson.deleteItem,r', r
                     if (r.deletedCount == 1 && r.result.ok == 1) {
                         return callback(null, {
                                 code: 'FSITEM_DELETED', 
@@ -523,33 +529,38 @@ var FsJson = (function () {
 
 /**
      Creates a FsJson instance
+     params
+     { fsJsonData
+     [ items
+     [ documents
+     callback
 */
-FsJson.create = function(jsonData, callback) {
+FsJson.create = function(fsJsonData, callback) {
     
-    if (verify.isUndefined(callback) && verify.isFunction(mongoUri)) {
-        callback = jsonData;
-        jsonData = null;
+    if (verify.isUndefined(callback)) {
+        callback = fsJsonData;
+        fsJsonData = null;
     }
     
-    if (jsonData == null) {
-        jsonData = {
+    if (fsJsonData == null) {
+        fsJsonData = {
             items: [], 
             documents: []
         };
     }
     else {
-        if (verify.isObject(jsonData) == false) {
-            return callback(errorMsg('create', 'parameter jsondata must be an object'));
+        if (verify.isObject(fsJsonData) == false) {
+            return callback(errorMsg('create', 'parameter fsJsonData must be an object'));
         }
-        if (verify.isArray(jsonData.items) == false) {
-            return callback(errorMsg('create', 'parameter jsondata must contain an item property'));
+        if (verify.isArray(fsJsonData.items) == false) {
+            return callback(errorMsg('create', 'parameter fsJsonData must contain an items property'));
         }
-        if (verify.isArray(jsonData.documents) == false) {
-            return callback(errorMsg('create', 'parameter jsondata must contain a documents property'));
+        if (verify.isArray(fsJsonData.documents) == false) {
+            return callback(errorMsg('create', 'parameter fsJsonData must contain a documents property'));
         }
     }
     
-    return callback(null, new FsJson(jsonData));
+    return callback(null, new FsJson(fsJsonData));
 };
 function errorMsg(method, message) {
     return {

@@ -38,6 +38,8 @@
 		set md.file = require('./lib/fs/file')
 	set md.vfile = require('./lib/fs/vfile')
 	set md.uriParser = require('./lib/fs/uriParser')
+    var fsUtils = require('./lib/fs/utils')
+    set md.fileInfoByPath = fsUtils.fileInfoByPath
 	$if isWebpackTarget
 		# expose nodejs path to the browser
 		set md.path = require('path')
@@ -48,7 +50,7 @@
 	set md.IttfMTreeEx = ittfMTreeEx
 	set md.ittfWriter = ittfWriter
 	
-	# function
+	# function asIsLoader
 	#   string ittfDocumentUri
 	#   { options
 	#     { file?

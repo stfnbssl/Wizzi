@@ -18,41 +18,62 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 			decl zsuper = model.super
 
 		# log 'ts.es6.class', model
+		
+        _ classDecorators
+            @ model
+            @ ctx
+            a_cb()
+                _ u.genAccessorsAndExtra
+                    @ model
+                    @ ctx
+                _ ctx.write('class ' + zclass)
+                # log myname, zclass, model.extends
+                _ u.genTSTypeParameters
+                    @ model
+                    @ ctx
+                    @ statement
+                    a_cb()
+                        _ classSuper
+                            @ model
+                            @ ctx
+                            a_cb()
+                                _ classImplements
+                                    @ model
+                                    @ ctx
+                                    a_cb()
+                                        _ ctx.w(' {')
+                                        _ ctx.indent();
+                                        _ classCTor
+                                            @ model
+                                            @ ctx
+                                            f_cb()
+                                                _ classMembers
+                                                    @ model
+                                                    @ ctx
+                                                    f_cb()
+                                                        _ ctx.deindent();
+                                                        _ ctx.w('}')
+                                                        r_cb()
 
-		_ u.genAccessorsAndExtra
-			@ model
-			@ ctx
+	fn( classDecorators )
+        var count = 0
+		repeater( 1, model.statements )
+            if item_1.wzElement == 'decoratorCall'
+                if count > 0
+                    _ ctx.write(', ')
+                set count++
+                _ statement.genItem
+                    @ item_1
+                    @ ctx
+                    a_cb()
+                        _ ctx.w()
+                        repeater_increment( 1 )
+            else
+			    repeater_increment( 1 )
+			$append next
+				r_cb()
 
-		_ ctx.write('class ' + zclass)
-		# log myname, zclass, model.extends
-		_ u.genTSTypeParameters
-			@ model
-			@ ctx
-			@ statement
-			a_cb()
-				_ classSuper
-					@ model
-					@ ctx
-					a_cb()
-						_ classImplements
-							@ model
-							@ ctx
-							a_cb()
-								_ ctx.w(' {')
-								_ ctx.indent();
-								_ classCTor
-									@ model
-									@ ctx
-									f_cb()
-										_ classMembers
-											@ model
-											@ ctx
-											f_cb()
-												_ ctx.deindent();
-												_ ctx.w('}')
-												r_cb()
-
-	fn( classImplements )
+    fn( classImplements )
 		if model.implements.length == 0
 			r_cb()
 		_ ctx.write( ' implements ' )
@@ -159,12 +180,17 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 
 		# log 'classMembers'
 
-		var generator
+		
 		repeater( 1, model.statements )
 			log 'ts.es6.class.classMembers', item_1.wzElement
+            var generator = null
+            var done = false
 			if item_1.wzElement === 'ctor'
 				# done already
-				set generator = null
+				set done = true
+			elif item_1.wzElement === 'decoratorCall'
+				# done already
+				set done = true
 			elif item_1.wzElement === 'method' || item_1.wzElement === 'typeMethod'
 				set generator = method
 			elif item_1.wzElement === 'arrowfunction'
@@ -184,11 +210,14 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 					f_cb()
 						repeater_increment( 1 )
 			else
-				_ statement.genItem
-					@ item_1
-					@ ctx
-					a_cb()
-						repeater_increment( 1 )
+                if done == false
+                    _ statement.genItem
+                        @ item_1
+                        @ ctx
+                        a_cb()
+                            repeater_increment( 1 )
+                else
+                    repeater_increment( 1 )
 			$append next
 				log 'ts.es6.class.classMembers end'
 				r_cb()

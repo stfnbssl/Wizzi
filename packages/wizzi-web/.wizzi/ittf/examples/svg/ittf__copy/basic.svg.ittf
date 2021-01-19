@@ -1,6 +1,7 @@
 ﻿svg
-	width ${160 * 5}
-	height ${90 * 5}
+    width ${160 * 5}
+    height ${90 * 5}
+    viewBox 0 0 21.813 23.453
 
 	line
 		x1 20
@@ -8,6 +9,7 @@
 		x2 120
 		y2 20
 		stroke black
+        data-name alfio
 
 	rect
 		x 20

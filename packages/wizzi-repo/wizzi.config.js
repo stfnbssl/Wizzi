@@ -11,7 +11,7 @@ module.exports = {
         isPackageDeploy: true,
         isWebpackTarget: false,
         isDevelopment: false,
-        gctx_useMongo: false,
+        gctx_useMongo: true,
     },
     globalContext_default: {
         isPackageDeploy: true,

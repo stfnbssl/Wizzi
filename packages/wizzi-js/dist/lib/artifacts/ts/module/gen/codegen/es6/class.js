@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\class.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\class.js.ittf
 */
 'use strict';
 var u = require('../../../../../js/module/gen/codegen/util/stm');
@@ -22,40 +22,82 @@ md.gen = function(model, ctx, callback) {
     var zclass = model.wzName,
         zsuper = model.super;
     // log 'ts.es6.class', model
-    u.genAccessorsAndExtra(model, ctx);
-    ctx.write('class ' + zclass);
-    // log myname, zclass, model.extends
-    u.genTSTypeParameters(model, ctx, statement, (err, notUsed) => {
+    classDecorators(model, ctx, (err, notUsed) => {
         if (err) {
             return callback(err);
         }
-        classSuper(model, ctx, (err, notUsed) => {
+        u.genAccessorsAndExtra(model, ctx);
+        ctx.write('class ' + zclass);
+        // log myname, zclass, model.extends
+        u.genTSTypeParameters(model, ctx, statement, (err, notUsed) => {
             if (err) {
                 return callback(err);
             }
-            classImplements(model, ctx, (err, notUsed) => {
+            classSuper(model, ctx, (err, notUsed) => {
                 if (err) {
                     return callback(err);
                 }
-                ctx.w(' {');
-                ctx.indent();
-                classCTor(model, ctx, function(err, notUsed) {
+                classImplements(model, ctx, (err, notUsed) => {
                     if (err) {
                         return callback(err);
                     }
-                    classMembers(model, ctx, function(err, notUsed) {
+                    ctx.w(' {');
+                    ctx.indent();
+                    classCTor(model, ctx, function(err, notUsed) {
                         if (err) {
                             return callback(err);
                         }
-                        ctx.deindent();
-                        ctx.w('}');
-                        return callback(null, null);
+                        classMembers(model, ctx, function(err, notUsed) {
+                            if (err) {
+                                return callback(err);
+                            }
+                            ctx.deindent();
+                            ctx.w('}');
+                            return callback(null, null);
+                        });
                     });
                 });
             });
         });
     });
 };
+function classDecorators(model, ctx, callback) {
+    if (typeof callback === 'undefined') {
+        throw new Error('Missing callback parameter in fn: ' + myname + '.classDecorators');
+    }
+    var count = 0;
+    var len_1 = model.statements.length;
+    function repeater_1(index_1) {
+        if (index_1 === len_1) {
+            return next_1();
+        }
+        var item_1 = model.statements[index_1];
+        if (item_1.wzElement == 'decoratorCall') {
+            if (count > 0) {
+                ctx.write(', ');
+            }
+            count++;
+            statement.genItem(item_1, ctx, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.w();
+                process.nextTick(function() {
+                    repeater_1(index_1 + 1);
+                });
+            });
+        }
+        else {
+            process.nextTick(function() {
+                repeater_1(index_1 + 1);
+            });
+        }
+    }
+    repeater_1(0);
+    function next_1() {
+        return callback(null, null);
+    }
+}
 function classImplements(model, ctx, callback) {
     if (typeof callback === 'undefined') {
         throw new Error('Missing callback parameter in fn: ' + myname + '.classImplements');
@@ -202,7 +244,6 @@ function classMembers(model, ctx, callback) {
         throw new Error('Missing callback parameter in fn: ' + myname + '.classMembers');
     }
     // log 'classMembers'
-    var generator;
     var len_1 = model.statements.length;
     function repeater_1(index_1) {
         if (index_1 === len_1) {
@@ -210,9 +251,15 @@ function classMembers(model, ctx, callback) {
         }
         var item_1 = model.statements[index_1];
         console.log('ts.es6.class.classMembers', item_1.wzElement);
+        var generator = null;
+        var done = false;
         if (item_1.wzElement === 'ctor') {
             // done already
-            generator = null;
+            done = true;
+        }
+        else if (item_1.wzElement === 'decoratorCall') {
+            // done already
+            done = true;
         }
         else if (item_1.wzElement === 'method' || item_1.wzElement === 'typeMethod') {
             generator = method;
@@ -243,14 +290,21 @@ function classMembers(model, ctx, callback) {
             });
         }
         else {
-            statement.genItem(item_1, ctx, (err, notUsed) => {
-                if (err) {
-                    return callback(err);
-                }
+            if (done == false) {
+                statement.genItem(item_1, ctx, (err, notUsed) => {
+                    if (err) {
+                        return callback(err);
+                    }
+                    process.nextTick(function() {
+                        repeater_1(index_1 + 1);
+                    });
+                });
+            }
+            else {
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 });
-            });
+            }
         }
     }
     repeater_1(0);

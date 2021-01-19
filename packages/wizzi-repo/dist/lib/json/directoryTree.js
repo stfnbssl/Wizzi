@@ -50,7 +50,7 @@ function directoryTree(path) {
     if (stats.isFile()) {
         const ext = PATH.extname(path).toLowerCase();
         // Skip if it does not match the extension regex
-        console.log('ext', ext);
+        // log 'ext', ext
         if (ext != '.ittf') {
             return null;
         }

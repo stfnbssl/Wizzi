@@ -56,7 +56,7 @@ var StorePool = (function () {
             );
         };
         var JsonComponents = repo.JsonComponents;
-        JsonComponents.createFsJsonByJsonFsData(this.repoOptions.jsonFsData, (err, fsJson) => {
+        JsonComponents.createFsJsonByJsonFsData(this.repoOptions.storeJsonFsData, (err, fsJson) => {
             if (err) {
                 return callback(err);
             }

@@ -52,7 +52,7 @@
 	stm( decl
         _ ctx.write
             @ model.wzName
-        if model.statements.length > 0
+        if countStatements(model) > 0
             _ ctx.write(' = ')
 			repeater( 1, model.statements )
 				_ cnt.genItem
@@ -73,7 +73,7 @@
 		_ ctx.write(' = ')
         _ ctx.write
             @ model.wzName
-		if model.statements.length > 0
+		if countStatements(model) > 0
 			_ cnt.genItem
 				@ model.statements[0]
 				@ ctx

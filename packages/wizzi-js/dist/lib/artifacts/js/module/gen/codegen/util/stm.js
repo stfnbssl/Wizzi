@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\util\stm.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\util\stm.js.ittf
 */
 'use strict';
 var verify = require('./verify');
@@ -473,6 +473,23 @@ md.extractTSSimpleType = function(model) {
     var ret, retIndex;
     model.statements.some((item, index) => {
         if (md.isTSSimpleType(item)) {
+            ret = item;
+            retIndex = index;
+            return true;
+        }
+    });
+    if (ret) {
+        model.statements.splice(retIndex, 1);
+    }
+    return ret;
+};
+md.extractTSParameterDecl = function(model) {
+    if (!model.statements || model.statements.length == 0) {
+        return ;
+    }
+    var ret, retIndex;
+    model.statements.some((item, index) => {
+        if (item.wzElement == 'typeParameterDecl') {
             ret = item;
             retIndex = index;
             return true;

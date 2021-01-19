@@ -54,7 +54,6 @@
 			set state.htmlOn = true
 			if node.n === 'svg'
 				set state.svgOn = true
-			
 		elif node.n === '<'
 			set state.htmlOn = true
 			if node.v === 'svg'

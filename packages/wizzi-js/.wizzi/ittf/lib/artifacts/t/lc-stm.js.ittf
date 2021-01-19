@@ -1,7 +1,8 @@
-﻿set lc.${name}
-	$params name
-	function
-		param model
-		param ctx
-		param cnt
-		$hook
+﻿$group
+    $params name
+    set lc.${name}
+        function
+            param model
+            param ctx
+            param cnt
+            $hook

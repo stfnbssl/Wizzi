@@ -9,25 +9,32 @@ $group
 		# Examples: ${opt.name}
 		#
 	
-    var path = require('path')
-	var fs = require('fs')
-	var stringify = require('json-stringify-safe')
-	var wizziUtils = require('wizzi-utils')
-    var file = wizziUtils.file
-    var verify = wizziUtils.verify
-    var mocks = wizziUtils.mocks
+    $include example_includes
+    
     var createStoreFactory = require('wizzi-repo').createStoreFactory
     
     $if opt.folderLevel == 1
+        var repoIndex = require('../index')
         var json = require('../lib/json/index')
+        var MongoFsImpl = require('../lib/mongodb/mongoFsimpl')
+        var FsMongo = require('../lib/mongodb/fs/fsmongo')
+        var Document = require('../lib/mongodb/fs/document')
     $elif opt.folderLevel == 2
+        var repoIndex = require('../../index')
         var json = require('../../lib/json/index')
+        var MongoFsImpl = require('../../lib/mongodb/mongoFsimpl')
+        var FsMongo = require('../../lib/mongodb/fs/fsmongo')
+        var Document = require('../../lib/mongodb/fs/document')
     $elif opt.folderLevel == 3
+        var repoIndex = require('../../../index')
         var json = require('../../../lib/json/index')
+        var MongoFsImpl = require('../../../lib/mongodb/mongoFsimpl')
+        var FsMongo = require('../../../lib/mongodb/fs/fsmongo')
+        var Document = require('../../../lib/mongodb/fs/document')
 
 	$hook imports
 
-	$hook functions
+    $hook functions
 
 	var ${opt.name}
 		function
@@ -38,7 +45,7 @@ $group
 
     set ${opt.name}.__name = '${opt.name}'
     
-	example_prints( ${opt.name} )
+	example_prints( ${opt.name}, ${opt.level}, ${opt.step} )
 
 	set module.exports = ${opt.name}
 

@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-js\.wizzi\ittf\examples\js.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\js.js.ittf
 */
 'use strict';
 var path = require('path');
@@ -13,7 +13,7 @@ var file = wizziUtils.file;
 var wizzi = null;
 function createWizziFactory(globalContext, callback) {
     if (wizzi == null) {
-        // The wizzi package will be a previous version from wizzi-mono/node_modules
+        // The wizzi package will be a previous version from wizzi/node_modules
         wizzi = require('wizzi');
     }
     console.log('"wizzi" package version', wizzi.version);

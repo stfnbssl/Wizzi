@@ -74,7 +74,7 @@ md.genItems = function(items, ctx, options, callback) {
 md.getGenItem = function(ctx) {
     return function(model, callback) {
             if (md.stm[model.wzElement]) {
-                console.log('***** known element', model.wzElement);
+                // log '***** known element', model.wzElement
                 md.stm[model.wzElement](model, ctx, function(err, done) {
                     if (err) {
                         return callback(err);
@@ -94,6 +94,7 @@ md.getGenItem = function(ctx) {
         };
 };
 md.stm.standardElement = function(model, ctx, callback) {
+    // log '***** standard element', model.wzElement
     writeBeginTag(ctx, model.wzTag);
     writeAttributes(model, ctx);
     if (model.items.length > 0) {

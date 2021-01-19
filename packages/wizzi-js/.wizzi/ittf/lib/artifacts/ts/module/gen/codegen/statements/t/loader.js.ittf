@@ -13,8 +13,16 @@
 	+
 	function hasStatements
 		param model
-		return model.statements && model.statements.length > 0 
+		return countStatements(model) > 0 
 	
+	function countStatements
+		param model
+        var count = 0
+        foreach item in model.statements
+            if item.wzElement != 'comment'
+                set count++
+		return count
+
 	set md.load
 		function
 			param cnt

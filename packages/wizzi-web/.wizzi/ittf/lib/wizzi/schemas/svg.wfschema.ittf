@@ -47,7 +47,10 @@
 		a href
 		a rotate
         a class
+        a_tag( dataName, data-name
+        a transform
 		a xmlns
+        a xmlns:*
 		a_tag( xmlBase, xml:base
 		a_tag( xmlLang, xml:lang
 		a_tag( xmlSpace, xml:space
@@ -65,7 +68,7 @@
 		r item/s
 
 		svg/getAttrs( 
-			\b id;href;rotate;xmlns;xmlBase;xmlLang;xmlSpace;pathLength
+			\b id;class;dataName;href;rotate;transform;xmlns;xmlBase;xmlLang;xmlSpace;pathLength
 			\b )
 
 		m getStyleAttributes
@@ -111,60 +114,55 @@
 
 	e svg : rect
 		is-root
-		a_tag( viewBox, view-box )
+		a viewBox
+            tag viewBox|view-box
 			# This attribute defines the bound of the SVG viewport for the current SVG fragment.
 			# Value type: <list-of-numbers> ; Default value: none; Animatable: yes
 		a_tag( preserveAspectRatio, preserve-aspect-ratio )
 			# This attribute defines how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio.
 			# Value type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes
-		a transform
 		a version
-		svg/getAttrs( width;height;viewBox;preserveAspectRatio;transform;version, item )
+        a alt
+		svg/getAttrs( width;height;viewBox;preserveAspectRatio;version, item )
 
 	e line : item
 		a x1
 		a y1
 		a x2
 		a y2
-		a transform
 
-		svg/getAttrs( x1;y1;x2;y2;transform, item )
+		svg/getAttrs( x1;y1;x2;y2;, item )
 
 	e polyline : item
 		a points
-		a transform
 		
-		svg/getAttrs( points;transform, item )
+		svg/getAttrs( points, item )
 
 	
 	e polygon : item
 		a points
-		a transform
 
-		svg/getAttrs( points:pathLength;transform, item )
+		svg/getAttrs( points:pathLength, item )
 
 	e circle : item
 		a cx
 		a cy
 		a r
-		a transform
 
-		svg/getAttrs( cx;cy;r;transform, item )
+		svg/getAttrs( cx;cy;r, item )
 
 	e ellipse : item
 		a cx
 		a cy
 		a rx
 		a ry
-		a transform
 
-		svg/getAttrs( cx;cy;rx;ry;transform, item )
+		svg/getAttrs( cx;cy;rx;ry, item )
 
 	e path : item
 		a d
-		a transform
 
-		svg/getAttrs( d;transform, item )
+		svg/getAttrs( d, item )
 
 	e text : item
 		a x
@@ -173,9 +171,8 @@
 			tag font-family
 		a fontSize
 			tag font-size
-		a transform
 
-		svg/getAttrs( x;y;fontFamily;fontSize;transform, item )
+		svg/getAttrs( x;y;fontFamily;fontSize, item )
 
 	e textPath : item
 
@@ -188,7 +185,6 @@
 		svg/getAttrs( x;y;dx;dy , item )
 
 	e a : item
-		a transform
 		# link
 		# a
 			# href http://tecfa.unige.ch
@@ -207,16 +203,14 @@
 				# stroke #000099
 				# fill #000099
 				# font-size 24
-		svg/getAttrs( transform, item )
+		$$ svg/getAttrs( transform, item )
 
 	e g : item
-		a transform
 		# grouping
-		svg/getAttrs( transform, item )
+		$$ svg/getAttrs( transform, item )
 
 	e image : rect
-		a transform
-		svg/getAttrs( transform, rect )
+		$$ svg/getAttrs( transform, rect )
 
 	e title : item
 
@@ -228,13 +222,11 @@
 	e animateMotion : item
 	e animateTransform : item
 	e clipPath : item
-		a transform
-		svg/getAttrs( transform, item )
+		$$ svg/getAttrs( transform, item )
 	e color-profile : item
 	e cursor : item
 	e defs : item
-		a transform
-		svg/getAttrs( transform, item )
+		$$ svg/getAttrs( transform, item )
 	e desc : item
 	e feBlend : item
 	e feColorMatrix : item
@@ -268,8 +260,7 @@
 	e font-face-src : item
 	e font-face-uri : item
 	e foreignObject : item
-		a transform
-		svg/getAttrs( transform, item )
+		$$ svg/getAttrs( transform, item )
 	e glyph : item
 	e glyphRef : item
 	e hkern : item
@@ -281,7 +272,7 @@
 	e mpath : item
 	e pattern : item
         a progressLines
-        a_tag( viewBox, view-box )
+        $$ a_tag( viewBox, viewBox|view-box )
         a width
         a height
         a patternUnits
@@ -292,16 +283,14 @@
 	e stop : item
 		a style
 		a offset
-		svg/getAttrs( class;style;offset )
+		svg/getAttrs( style;offset, item )
 	e style : item
 	e switch : item
-		a transform
-		svg/getAttrs( transform, item )
+		$$ svg/getAttrs( transform, item )
 	e symbol : item
 	e tref : item
 	e use : item
-		a transform
-		svg/getAttrs( transform, item )
+		$$ svg/getAttrs( transform, item )
 	e view : item
 	e vkern : item
 

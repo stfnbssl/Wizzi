@@ -1,6 +1,7 @@
-﻿set md.gen.prototype.${name}
-	$params name
-	function
-		param model
-		param ctx
-		$hook
+﻿$group
+    $params name
+    set md.gen.prototype.${name}
+        function
+            param model
+            param ctx
+            $hook

@@ -15,6 +15,7 @@ var fs = require('fs');
 var stringify = require('json-stringify-safe');
 var wizziUtils = require('wizzi-utils');
 var file = wizziUtils.file;
+var verify = wizziUtils.verify;
 var mocks = wizziUtils.mocks;
 var createStoreFactory = require('wizzi-repo').createStoreFactory;
 var liner = require('../../lib/loader/liner');
@@ -127,7 +128,7 @@ function printValue(k, v, format, p1) {
         }
     }
     else if (verify.isObject(v)) {
-        console.log('   ', k, ':', inspect(v));
+        console.log('   ', k, ':', util.inspect(v));
     }
     else {
         console.log('   ', k, ':', v);

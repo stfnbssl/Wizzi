@@ -9,7 +9,7 @@ module.exports = md;
 var Collection = require('../utils/collection');
 md.directoryTree = require('./directoryTree');
 md.FsJson = require('./fs/fsjson');
-md.Document = require('./fs/document');
+md.DocumentManager = require('./fs/documentmanager');
 /**
      params
      { jsonFsData
@@ -17,17 +17,17 @@ md.Document = require('./fs/document');
      [ documents
      jsonFsData is simply a transport (DTO)
      to get the updated jsonFsData you
-     must call the toJson method of the Document instance
+     must call the toJson method of the DocumentManager instance
 */
 md.createDocumentManager = function(fsJsonDataOrFsJson) {
     if (fsJsonDataOrFsJson && fsJsonDataOrFsJson.classType === 'wizzi-repo.json.FsJson') {
-        return new md.Document(fsJsonDataOrFsJson);
+        return new md.DocumentManager(fsJsonDataOrFsJson);
     }
     else {
         var jsonFsData = fsJsonDataOrFsJson || {};
         jsonFsData.items = jsonFsData.items || [];
         jsonFsData.documents = jsonFsData.documents || [];
-        return new md.Document(new md.FsJson(jsonFsData));
+        return new md.DocumentManager(new md.FsJson(jsonFsData));
     }
 };
 md.createFsJson = function(documents, callback) {

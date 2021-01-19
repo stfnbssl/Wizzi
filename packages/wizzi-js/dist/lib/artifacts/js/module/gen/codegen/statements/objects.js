@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\objects.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\objects.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -14,7 +14,18 @@ var myname = 'wizzi-js.artifacts.js.module.gen.codegen.statements.objects';
 var md = module.exports = {};
 
 function hasStatements(model) {
-    return model.statements && model.statements.length > 0;
+    return countStatements(model) > 0;
+}
+function countStatements(model) {
+    var count = 0;
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement != 'comment') {
+            count++;
+        }
+    }
+    return count;
 }
 md.load = function(cnt) {
     cnt.stm.jsonStatementTree = function(model, ctx, callback) {
@@ -284,7 +295,7 @@ md.load = function(cnt) {
                 });
             }
             else {
-                // log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
+                console.log('js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1));
                 if (u.isMemberAccessOrCall(item_1)) {
                     // log 'jsObject_close 3'
                     ctx.w('');
@@ -318,20 +329,33 @@ md.load = function(cnt) {
                         }
                     });
                 }
-                if (comma && !first) {
-                    ctx.w(', ');
-                }
-                first = false;
-                cnt.genItem(item_1, ctx, function(err, notUsed) {
-                    if (err) {
-                        return callback(err);
-                    }
-                    // log 'js.module.gen.jsObject_close.after.genItem'
-                    comma = ['comment', 'handlebar'].indexOf(item_1.wzElement) < 0;
-                    process.nextTick(function() {
-                        repeater_1(index_1 + 1);
+                else if (item_1.wzElement == 'typeAs') {
+                    ctx.w('');
+                    ctx.deindent();
+                    ctx.write('}');
+                    cnt.genItem(item_1, ctx, function(err, notUsed) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        return callback(null, null);
                     });
-                });
+                }
+                else {
+                    if (comma && !first) {
+                        ctx.w(', ');
+                    }
+                    first = false;
+                    cnt.genItem(item_1, ctx, function(err, notUsed) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        // log 'js.module.gen.jsObject_close.after.genItem'
+                        comma = ['comment', 'handlebar'].indexOf(item_1.wzElement) < 0;
+                        process.nextTick(function() {
+                            repeater_1(index_1 + 1);
+                        });
+                    });
+                }
             }
         }
         repeater_1(0);

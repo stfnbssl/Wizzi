@@ -32,7 +32,7 @@
         "json-stringify-safe": "^5.0.1",
         "lodash": "^4.17.4",
         "wizzi-mtree": "0.7.6",
-        "wizzi-utils": "0.7.6",
+        "wizzi-utils": "0.7.8",
         "js-yaml": "^3.13.1",
         "wizzi-legacy-v5": "latest"
     },

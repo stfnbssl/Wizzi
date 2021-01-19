@@ -9,19 +9,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var verify = require('wizzi-utils').verify;
-/**
-     Implements the `fsimpl` interface for a json backed file system.
-*/
 var FsJson = require('./fs/fsjson'),
-    Document = require('./fs/document'),
+    DocumentManager = require('./fs/documentmanager'),
     jsonUriParser = require('wizzi-utils').uriParser;
+/**
+     class JsonFsImpl
+    
+     Implements the `fsimpl` interface for a json backed file system.
+     It is used by repo/jsonDbStore that implements the json repo store.
+     uses a json/DocumentManager instance to manage an in-memory json filesystem (json/fs/FsJson)
+     ctor params
+     { fsJsonData
+     [ items
+     # simple javascript array
+     [ documents
+     # simple javascript array
+*/
 var JsonFsImpl = (function () {
-    function JsonFsImpl(jsonFsData) {
+    function JsonFsImpl(fsJsonData) {
         _classCallCheck(this, JsonFsImpl);
         this.classType = 'wizzi-repo.json.JsonFsImpl';
-        this.jsonFsData = jsonFsData;
+        this.fsJsonData = fsJsonData;
         this.fsJson = null;
-        this.jsonDb = null;
+        this.docManager = null;
     }
     JsonFsImpl.prototype.db = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -29,11 +39,11 @@ var JsonFsImpl = (function () {
                 error('InvalidArgument', 'db', 'The callback parameter must be a function. Received: ' + callback)
             );
         };
-        if (this.jsonDb == null) {
+        if (this.docManager == null) {
             return callback(error('InvalidOperation', 'db', 'Connection not opened. The method `open` must be called before calling `db`.'));
         }
         else {
-            return callback(null, this.jsonDb);
+            return callback(null, this.docManager);
         }
     }
     JsonFsImpl.prototype.open = function(options, callback) {
@@ -47,19 +57,19 @@ var JsonFsImpl = (function () {
             );
         };
         var that = this;
-        if (this.jsonDb) {
-            return callback(null, this.jsonDb);
+        if (this.docManager) {
+            return callback(null, this.docManager);
         }
-        this.fsJson = options.fsJson ? options.fsJson : options.jsonFsData ? new FsJson(options.jsonFsData) : new FsJson(this.jsonFsData);
+        this.fsJson = options.fsJson ? options.fsJson : options.fsJsonData ? new FsJson(options.fsJsonData) : new FsJson(this.fsJsonData);
         ;
-        that.jsonDb = new Document(this.fsJson);
+        that.docManager = new DocumentManager(this.fsJson);
         // log '***** json connected'
-        return callback(null, that.jsonDb);
+        return callback(null, that.docManager);
     }
     JsonFsImpl.prototype.close = function() {
-        if (this.jsonDb) {
+        if (this.docManager) {
             // log '***** json start closing'
-            this.jsonDb = null;
+            this.docManager = null;
             // log '***** json closed'
         }
     }
@@ -85,7 +95,7 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            jsonDb.stat(parsedUri.internalPath, function(err, result) {
+            docManager.stat(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -115,7 +125,7 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            jsonDb.stat(parsedUri.internalPath, function(err, result) {
+            docManager.stat(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -149,7 +159,7 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            jsonDb.readFile(parsedUri.internalPath, function(err, result) {
+            docManager.readFile(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -183,7 +193,7 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            jsonDb.writeFile(parsedUri.internalPath, content, function(err, result) {
+            docManager.writeFile(parsedUri.internalPath, content, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -217,7 +227,7 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            jsonDb.getDir(parsedUri.internalPath, options, function(err, result) {
+            docManager.getDir(parsedUri.internalPath, options, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -258,7 +268,7 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            jsonDb.createFolder(parsedUri.internalPath, function(err, result) {
+            docManager.createFolder(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -288,7 +298,7 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            jsonDb.deleteFile(parsedUri.internalPath, function(err, result) {
+            docManager.deleteFile(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -306,7 +316,7 @@ var JsonFsImpl = (function () {
         if (parsedUri && parsedUri.__is_error) {
             return parsedUri;
         }
-        return this.jsonDb.createWriteStream(parsedUri.internalPath);
+        return this.docManager.createWriteStream(parsedUri.internalPath);
     }
     JsonFsImpl.prototype.toJson = function(callback) {
         this.fsJson.toJson(function(err, json) {

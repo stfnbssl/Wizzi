@@ -5,3 +5,4 @@
         type boolean
         default ${defaultValue}
         default-when-declared true
+        $hook

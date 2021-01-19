@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\class.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\class.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -15,7 +15,18 @@ var myname = 'wizzi-js.artifacts.ts.module.gen.codegen.statements.class';
 var md = module.exports = {};
 
 function hasStatements(model) {
-    return model.statements && model.statements.length > 0;
+    return countStatements(model) > 0;
+}
+function countStatements(model) {
+    var count = 0;
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement != 'comment') {
+            count++;
+        }
+    }
+    return count;
 }
 md.load = function(cnt) {
     cnt.stm.xclass = function(model, ctx, callback) {

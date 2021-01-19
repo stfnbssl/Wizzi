@@ -31,7 +31,7 @@
 			callback
 			var JsonComponents = repo.JsonComponents
 			_ JsonComponents.createFsJsonByJsonFsData
-				@ this.repoOptions.jsonFsData
+				@ this.repoOptions.storeJsonFsData
 				a_cb( fsJson )
 					set this.repoOptions.storeFsJson = fsJson
 					r_cb()

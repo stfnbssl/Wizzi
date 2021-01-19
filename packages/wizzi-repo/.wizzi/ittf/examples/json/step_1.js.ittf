@@ -3,8 +3,10 @@
 
     $
         var opt = {
+            level: 0,
+            step: 1,
             name: 'Json_Step_1',
-            title: 'Json - step - 1',
+            title: 'Json - step - 1 - FsJson',
             folderLevel: 2
         }
 
@@ -22,7 +24,7 @@
                     @ 'fsJson.documents'
                     @ fsJson.documents    
 
-            _ heading1('start')
+        _ heading1('start')
 
         
         var fsJson = new json.FsJson()
@@ -38,18 +40,21 @@
                 log 'insert.alpha.js.ittf.result', result
                 var insertedId = result.insertedId
                 _ dump
+                    @ fsJson
                 set result.item.basename = 'beta.js.ittf'
                 _ fsJson.updateItem
                     @ result.item
                     f_cb_test( result )
                         log 'update.beta.js.ittf.result', result
                         _ dump
+                            @ fsJson
                         _ fsJson.writeDocument
                             @ result.item._id
                             @ 'My content'
                             f_cb_test( result )
                                 log 'write.beta.js.ittf.result', result
                                 _ dump
+                                    @ fsJson
                                 _ fsJson.readDocument
                                     @ result.item._id
                                     f_cb_test( result )
@@ -60,5 +65,3 @@
                                                 log 'delete.beta.js.ittf.result', result
                                                 _ dump
                                                     @ fsJson
-
-

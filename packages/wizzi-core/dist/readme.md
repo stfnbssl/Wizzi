@@ -79,6 +79,9 @@ yes<td>
 <td>json/document</td>
 </tr>
 <tr>
+<td>json/toyaml</td>
+</tr>
+<tr>
 <td>json/export</td>
 </tr>
 </table>

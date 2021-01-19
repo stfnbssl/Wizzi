@@ -1,91 +1,101 @@
 ﻿module wizzi-repo.json.jsonFsimpl
 	kind jsfile
 
-	#
-		# Implements the `fsimpl` interface for a json backed file system.
-
 	var
 		decl FsJson = require('./fs/fsjson')
-		decl Document = require('./fs/document')
+		decl DocumentManager = require('./fs/documentmanager')
 		decl jsonUriParser = require('wizzi-utils').uriParser
+
+	#
+        # class JsonFsImpl
+        #
+		# Implements the `fsimpl` interface for a json backed file system.
+        # It is used by repo/jsonDbStore that implements the json repo store.
+        # uses a json/DocumentManager instance to manage an in-memory json filesystem (json/fs/FsJson)
+		# ctor params
+		#  { fsJsonData
+		#    [ items
+        #      # simple javascript array
+		#    [ documents
+        #      # simple javascript array
 
 	class JsonFsImpl
 
 		ctor
-			param jsonFsData
+			param fsJsonData
 			set this.classType = 'wizzi-repo.json.JsonFsImpl'
-			set this.jsonFsData = jsonFsData
+			set this.fsJsonData = fsJsonData
 			set this.fsJson = null
-			set this.jsonDb = null
+			set this.docManager = null
 		
 		m db
 			callback
-			if this.jsonDb == null
+			if this.docManager == null
 				r_cb_wz_err( InvalidOperation, db )
 					@ 'Connection not opened. The method `open` must be called before calling `db`.'
 			else
 				return
 					_ callback
 						@ null
-						@ this.jsonDb
+						@ this.docManager
 		
 		m open
 			options-callback
 			var that = this
-			if this.jsonDb
+			if this.docManager
 				return
 					_ callback
 						@ null
-						@ this.jsonDb
+						@ this.docManager
 			set this.fsJson
 				iif options.fsJson
 					then options.fsJson
 					else
-						iif options.jsonFsData
+						iif options.fsJsonData
 							then
-								new FsJson(options.jsonFsData)
+								new FsJson(options.fsJsonData)
 							else
-								new FsJson(this.jsonFsData)
-			set that.jsonDb = new Document(this.fsJson)
+								new FsJson(this.fsJsonData)
+			set that.docManager = new DocumentManager(this.fsJson)
 			# log '***** json connected'
 			return
 				_ callback
 					@ null
-					@ that.jsonDb
+					@ that.docManager
 
 		m close
-			if this.jsonDb
+			if this.docManager
 				# log '***** json start closing'
-				set this.jsonDb = null
+				set this.docManager = null
 				# log '***** json closed'
 
 		jsonFsimpl/m( stat )
-			_ jsonDb.stat
+			_ docManager.stat
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
 
 		jsonFsimpl/m( lstat )
-			_ jsonDb.stat
+			_ docManager.stat
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
 
 		jsonFsimpl/m( readFile, options )
-			_ jsonDb.readFile
+			_ docManager.readFile
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
 		
 		jsonFsimpl/m( writeFile, content, options )
-			_ jsonDb.writeFile
+			_ docManager.writeFile
 				@ parsedUri.internalPath
 				@ content
 				f_cb( result )
 					_ callback(null, result)
 
 		jsonFsimpl/m( readdir, options )
-			_ jsonDb.getDir
+			_ docManager.getDir
 				@ parsedUri.internalPath
 				@ options
 				f_cb( result )
@@ -96,13 +106,13 @@
 					_ callback(null, dir)
 		
 		jsonFsimpl/m( mkdir, options )
-			_ jsonDb.createFolder
+			_ docManager.createFolder
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
 
 		jsonFsimpl/m( unlink )
-			_ jsonDb.deleteFile
+			_ docManager.deleteFile
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
@@ -114,7 +124,7 @@
 					@ documentUri
 					@ this.jsonBaseFolder
 			return
-				_ this.jsonDb.createWriteStream
+				_ this.docManager.createWriteStream
 					@ parsedUri.internalPath
 
 		m toJson

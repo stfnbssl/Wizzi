@@ -219,7 +219,7 @@
 				# log 'jsObject_close 2'
 				repeater_increment(1)
             else
-				# log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
+				log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
 				if u.isMemberAccessOrCall(item_1)
 					# log 'jsObject_close 3'
 					_ ctx.w('')
@@ -239,16 +239,26 @@
 										repeater_increment(2)
 								$append next
 									r_cb()
-				if comma && !first
-					_ ctx.w(', ')
-				set first = false
-				_ cnt.genItem
-					@ item_1
-					@ ctx
-					f_cb()
-						# log 'js.module.gen.jsObject_close.after.genItem'
-						set comma = ['comment', 'handlebar'].indexOf(item_1.wzElement) < 0
-						repeater_increment(1)
+                elif item_1.wzElement == 'typeAs'
+					_ ctx.w('')
+					_ ctx.deindent()
+					_ ctx.write('}')
+                    _ cnt.genItem
+                        @ item_1
+                        @ ctx
+                        f_cb()
+                            r_cb()
+                else
+                    if comma && !first
+                        _ ctx.w(', ')
+                    set first = false
+                    _ cnt.genItem
+                        @ item_1
+                        @ ctx
+                        f_cb()
+                            # log 'js.module.gen.jsObject_close.after.genItem'
+                            set comma = ['comment', 'handlebar'].indexOf(item_1.wzElement) < 0
+                            repeater_increment(1)
 			$append next
 				+ ;
 				# log 'jsObject_close 4'

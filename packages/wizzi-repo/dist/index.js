@@ -7,11 +7,12 @@ var verify = require('wizzi-utils').verify;
 
 var chalk = require('chalk');
 var vfile = require('wizzi-utils').vfile;
+var fileInfoByPath = require('wizzi-utils').fileInfoByPath;
 
 var md = module.exports = {};
 
-var MongoDocument = {};
-var MongoFsImpl = {};
+var MongoDocument = require('./lib/mongodb/fs/document');
+var MongoFsImpl = require('./lib/mongodb/mongoFsImpl');
 var JsonFsImpl = require('./lib/json/jsonFsimpl');
 var IttfDocumentStore = require('./lib/repo/ittfDocumentStore');
 md.ObjectId = require('./lib/utils/objectId');
@@ -263,13 +264,13 @@ md.folderFilesInfoByPath = function(folderPath, fileService) {
         var i, i_items=files, i_len=files.length, f;
         for (i=0; i<i_len; i++) {
             f = files[i];
-            result.push(md.fileInfoByPath(f.fullPath));
+            result.push(fileInfoByPath(f.fullPath));
         }
         return result;
     });
 };
 md.ittfDocumentInfoByPath = function(filePath) {
-    var result = md.fileInfoByPath(filePath);
+    var result = fileInfoByPath(filePath);
     if (result.isIttfDocument) {
         return result;
     }
@@ -279,63 +280,6 @@ md.ittfDocumentInfoByPath = function(filePath) {
                 message: 'The file is not an ittfdocument: ' + result.fullPath
             };
     }
-};
-md.fileInfoByPath = function(filePath, baseFolder) {
-    if (typeof baseFolder === 'undefined') {
-        baseFolder = path.dirname(filePath);
-    }
-    filePath = normalize(filePath);
-    var basename = path.basename(filePath);
-    var dirname = path.dirname(filePath);
-    var relFolder = path.dirname(filePath).length > baseFolder.length ? path.dirname(filePath).substr(baseFolder.length + 1) : '';
-    var fileUri = filePath.substr();
-    var ss = basename.split('.');
-    if (ss[ss.length-1] === 'ittf') {
-        var name = ss.slice(0, ss.length-2).join('.');
-        var schema = ss[ss.length-2];
-        var mime = DEFAULT_MIME[schema] || schema;
-        return {
-                name: name, 
-                basename: basename, 
-                isIttfDocument: true, 
-                isFragment: filePath.indexOf('/t/') > -1, 
-                schema: schema, 
-                mime: mime, 
-                relFolder: relFolder, 
-                fullPath: filePath, 
-                destBasename: name + '.' + mime, 
-                destRelPath: relFolder.length > 0 ? relFolder + '/' + name + '.' + mime : name + '.' + mime
-            };
-    }
-    else {
-        return {
-                name: ss.slice(0, ss.length-1).join('.'), 
-                basename: basename, 
-                isIttfDocument: false, 
-                schema: null, 
-                mime: ss[ss.length-1], 
-                relFolder: relFolder, 
-                fullPath: filePath, 
-                destBasename: basename, 
-                destRelPath: relFolder.length > 0 ? relFolder + '/' + basename : basename
-            };
-    }
-};
-function normalize(filepath) {
-    return verify.replaceAll(filepath, '\\', '/');
-}
-var DEFAULT_MIME = {
-    css: 'css', 
-    graphql: 'graphql', 
-    html: 'html', 
-    js: 'js', 
-    json: 'json', 
-    scss: 'scss', 
-    text: 'text', 
-    ts: 'ts', 
-    xml: 'xml', 
-    vtt: 'vtt', 
-    vue: 'vue'
 };
 /**
   params

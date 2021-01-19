@@ -36,10 +36,10 @@
         "iconv-lite": "^0.4.15",
         "json-stringify-safe": "^5.0.1",
         "lodash": "^4.17.4",
-        "wizzi-utils": "0.7.6",
+        "wizzi-utils": "0.7.8",
         "extsprintf": "^1.2.0",
-        "wizzi-mtree": "0.7.5",
-        "wizzi-repo": "0.7.2"
+        "wizzi-mtree": "0.7.6",
+        "wizzi-repo": "0.7.3"
     },
     "devDependencies": {
         "del": "^4.1.1",

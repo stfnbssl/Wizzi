@@ -1,7 +1,8 @@
-﻿set md.${wzelement}
-	$params wzelement
-	function
-		param model
-		param ctx
-		param parent
-		$hook
+﻿$group
+    $params wzelement
+    set md.${wzelement}
+        function
+            param model
+            param ctx
+            param parent
+            $hook

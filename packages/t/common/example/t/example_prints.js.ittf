@@ -61,7 +61,7 @@
 					else
 						log '   ', spaces(k.length+1), ' ', lines[i].numFmt, lines[i].text
 		elif verify.isObject(v)
-			log '   ', k, ':', inspect(v)
+			log '   ', k, ':', util.inspect(v)
 		else
 			log '   ', k, ':', v
 		if format === 'meter'

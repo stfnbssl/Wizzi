@@ -10,7 +10,7 @@
 
 	set md.directoryTree = require('./directoryTree')
 	set md.FsJson = require('./fs/fsjson')
-	set md.Document = require('./fs/document')
+	set md.DocumentManager = require('./fs/documentmanager')
 
 	#
 		# params
@@ -19,18 +19,18 @@
 		#    [ documents
 		#    jsonFsData is simply a transport (DTO)
 		#    to get the updated jsonFsData you
-		#    must call the toJson method of the Document instance
+		#    must call the toJson method of the DocumentManager instance
 	set md.createDocumentManager
 		function
 			param fsJsonDataOrFsJson
 			if fsJsonDataOrFsJson && fsJsonDataOrFsJson.classType === 'wizzi-repo.json.FsJson'
-				return new md.Document(fsJsonDataOrFsJson)
+				return new md.DocumentManager(fsJsonDataOrFsJson)
 			else
 				var jsonFsData = fsJsonDataOrFsJson || {}
 				set jsonFsData.items = jsonFsData.items || []
 				set jsonFsData.documents = jsonFsData.documents || []
 				return
-					new md.Document
+					new md.DocumentManager
 						new md.FsJson(jsonFsData)
 
 	set md.createFsJson

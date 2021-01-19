@@ -3,12 +3,12 @@ $group
         var versions = {};
         versions['wizzi-helpers'] = '0.7.1';
         versions['wizzi-helpers@next'] = '0.7.2';
-        versions['wizzi-utils'] = '0.7.7';
-        versions['wizzi-utils@next'] = '0.7.8';
+        versions['wizzi-utils'] = '0.7.8';
+        versions['wizzi-utils@next'] = '0.7.9';
         versions['wizzi-mtree'] = '0.7.6';
         versions['wizzi-mtree@next'] = '0.7.7';
-        versions['wizzi-repo'] = '0.7.2';
-        versions['wizzi-repo@next'] = '0.7.3';
+        versions['wizzi-repo'] = '0.7.3';
+        versions['wizzi-repo@next'] = '0.7.4';
         versions['wizzi'] = '0.7.11';
         versions['wizzi@next'] = '0.7.12';
         versions['wizzi-js'] = '0.7.4';

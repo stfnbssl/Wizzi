@@ -1,6 +1,11 @@
 ﻿loader( call )
 
 	stm( typeCallSignature
+        var ptypeDecl
+            _ u.extractTSParameterDecl    
+                @ model
+        if ptypeDecl
+            _ cnt.stm[ptypeDecl.wzElement](ptypeDecl, ctx, () => {})
 		_ ctx.write('(')
 		_ u.genTSParams
 			@ model
@@ -15,5 +20,5 @@
 					log 'property', ptype.wzElement
 					_ ctx.write(': ')
 					_ cnt.stm[ptype.wzElement](ptype, ctx, () => {})
-				_ ctx.w
+				_ ctx.w(';')
 				r_cb()

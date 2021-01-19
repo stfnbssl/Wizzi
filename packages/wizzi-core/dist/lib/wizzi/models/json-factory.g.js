@@ -24,8 +24,6 @@ var md = module.exports = {};
              api-ref wizzi-mtree.loader.loadMTree
             { file
              api-ref wizzi-utils.file
-            { verify
-             api-ref wizzi-utils.verify
             { errors
              type WizziModelLoadError
 */

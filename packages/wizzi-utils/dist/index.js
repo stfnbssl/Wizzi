@@ -30,10 +30,12 @@ md.errors = require('./lib/errors');
 md.file = require('./lib/fs/file');
 md.vfile = require('./lib/fs/vfile');
 md.uriParser = require('./lib/fs/uriParser');
+var fsUtils = require('./lib/fs/utils');
+md.fileInfoByPath = fsUtils.fileInfoByPath;
 // class IttfMTreeEx
 md.IttfMTreeEx = ittfMTreeEx;
 md.ittfWriter = ittfWriter;
-// function
+// function asIsLoader
 // string ittfDocumentUri
 // { options
 // { file?

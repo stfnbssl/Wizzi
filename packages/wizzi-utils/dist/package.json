@@ -1,6 +1,6 @@
 {
     "name": "wizzi-utils",
-    "version": "0.7.7",
+    "version": "0.7.8",
     "description": "Utility library for the wizzi factory.",
     "author": {
         "name": "Stefano Bassoli",

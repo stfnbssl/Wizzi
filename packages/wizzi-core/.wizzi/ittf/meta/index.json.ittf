@@ -34,6 +34,8 @@
                 {
                     name 'json/document'
                 {
+                    name 'json/toyaml'
+                {
                     name 'json/export'
         {
             name 'xml'

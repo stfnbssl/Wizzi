@@ -10,22 +10,33 @@
      Examples: Json_Step_1
     
 */
+var util = require('util');
 var path = require('path');
 var fs = require('fs');
 var stringify = require('json-stringify-safe');
 var wizziUtils = require('wizzi-utils');
+// local disk filesystem
 var file = wizziUtils.file;
+// virtual filesystem
+var vfile = require('wizzi-utils').vfile;
+// defaults to local disk filesystem
+var fsfile = vfile();
+// utilities
 var verify = wizziUtils.verify;
 var mocks = wizziUtils.mocks;
 var createStoreFactory = require('wizzi-repo').createStoreFactory;
+var repoIndex = require('../../index');
 var json = require('../../lib/json/index');
+var MongoFsImpl = require('../../lib/mongodb/mongoFsimpl');
+var FsMongo = require('../../lib/mongodb/fs/fsmongo');
+var Document = require('../../lib/mongodb/fs/document');
 function dump(fsJson) {
     printValue('fsJson.items', fsJson.items);
     printValue('fsJson.documents', fsJson.documents);
 }
-heading1('start');
 var Json_Step_1 = function(step_callback) {
     heading1('EXAMPLE');
+    heading1('start');
     var fsJson = new json.FsJson();
     dump(fsJson);
     fsJson.insertItem({
@@ -39,7 +50,7 @@ var Json_Step_1 = function(step_callback) {
         }
         console.log('insert.alpha.js.ittf.result', result);
         var insertedId = result.insertedId;
-        dump();
+        dump(fsJson);
         result.item.basename = 'beta.js.ittf';
         fsJson.updateItem(result.item, function(err, result) {
             if (err) {
@@ -47,14 +58,14 @@ var Json_Step_1 = function(step_callback) {
                 throw new Error(err.message);
             }
             console.log('update.beta.js.ittf.result', result);
-            dump();
+            dump(fsJson);
             fsJson.writeDocument(result.item._id, 'My content', function(err, result) {
                 if (err) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
                 console.log('write.beta.js.ittf.result', result);
-                dump();
+                dump(fsJson);
                 fsJson.readDocument(result.item._id, function(err, result) {
                     if (err) {
                         console.log('err', err);
@@ -132,7 +143,7 @@ function printValue(k, v, format, p1) {
         }
     }
     else if (verify.isObject(v)) {
-        console.log('   ', k, ':', inspect(v));
+        console.log('   ', k, ':', util.inspect(v));
     }
     else {
         console.log('   ', k, ':', v);

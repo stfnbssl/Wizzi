@@ -45,7 +45,7 @@
 		repeater( 1, model.statements )
 			if index_1 > 0
 				# log 0
-				_ ctx.write(', ')
+				# (19/1/21 It seems are separated by ';') _ ctx.write(', ')
 			# log 'typeObjectLiteral.item_1.wzElement', item_1.wzElement, item_1.wzName
 			_ cnt.genItem
 				@ item_1
@@ -275,7 +275,7 @@
 		var atype
 			_ u.extractTSSimpleType
 				@ model
-		_ ctx.write(model.wzName)
+		_ ctx.write('<'+ model.wzName + '>')
 		if atype
 			_ ctx.write(' extends ')
 			if !cnt.stm[atype.wzElement]

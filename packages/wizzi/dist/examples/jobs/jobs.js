@@ -13,7 +13,7 @@ var file = wizziUtils.file;
 var wizzi = null;
 function createWizziFactory(globalContext, callback) {
     if (wizzi == null) {
-        // The wizzi package will be a previous version from wizzi-mono/node_modules
+        // The wizzi package will be a previous version from wizzi/node_modules
         wizzi = require('../../index');
     }
     console.log('"wizzi" package version', wizzi.version);

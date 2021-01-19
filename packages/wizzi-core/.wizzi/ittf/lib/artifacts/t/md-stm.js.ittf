@@ -1,6 +1,7 @@
-﻿set md.stm.${name}
-	$params name
-	function
-		param model
-		param ctx
-		$hook
+﻿$group
+    $params name
+    set md.stm.${name}
+        function
+            param model
+            param ctx
+            $hook

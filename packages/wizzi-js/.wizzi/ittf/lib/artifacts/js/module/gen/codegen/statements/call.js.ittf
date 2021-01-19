@@ -152,10 +152,11 @@
 				if hasParens === false
 					_ ctx.write(')')
 				if u.isTopStatement(model, ctx) && 
-					\b model.wzElement !== 'decoratorCall' && 
+					$$ 19/1/2021 (typescript class decorator) model.wzElement !== 'decoratorCall' && 
 					$$ 14/5/2018 (gatsby.node.js) | \b !u.parentIs(model, 'arrowfunction') && 
 					\b u.isDescendentOf(model, 'iif') == false
-					_ ctx.w(';')
+					$$ _ ctx.w(';') $$ 19/1/2021 (typescript class decorator)
+                    _ ctx.w() $$ 19/1/2021 (typescript class decorator)
 				else 
 					# 2/11/17 _ ctx.w()
 				r_cb()

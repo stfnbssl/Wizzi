@@ -178,6 +178,7 @@
 			@ callback
 
 	stm( xawait
+        _ ctx.write('await ')
 		var name = model.wzName.trim()
 		if hasStatements(model) == false
 			_ ctx.write(name)

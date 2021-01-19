@@ -3,6 +3,7 @@
 	+
 	var chalk = require('chalk')
 	var vfile = require('wizzi-utils').vfile
+    var fileInfoByPath = require('wizzi-utils').fileInfoByPath
 	+
 	var md = module.exports = {}
 	+
@@ -123,14 +124,14 @@
 					var result = []
 					foreach f in files
 						_ result.push
-							_ md.fileInfoByPath
+							_ fileInfoByPath
 								@ f.fullPath
 					return result
 
 	set md.ittfDocumentInfoByPath
 		function
 			param filePath
-			var result = md.fileInfoByPath(filePath)
+			var result = fileInfoByPath(filePath)
 			if result.isIttfDocument
 				return result
 			else
@@ -138,72 +139,3 @@
 					{
 						@ is_error true
 						@ message 'The file is not an ittfdocument: ' + result.fullPath
-
-	set md.fileInfoByPath
-		function
-			param filePath
-			param baseFolder
-			if typeof baseFolder === 'undefined'
-				set baseFolder = path.dirname(filePath)
-			set filePath = normalize(filePath)
-			var basename = path.basename(filePath)
-			var dirname = path.dirname(filePath)
-			var relFolder
-				iif path.dirname(filePath).length > baseFolder.length 
-					then path.dirname(filePath).substr(baseFolder.length + 1) 
-					else ''
-			var fileUri
-				_ filePath.substr
-			var ss = basename.split('.')
-			if ss[ss.length-1] === 'ittf'
-				var name = ss.slice(0, ss.length-2).join('.')
-				var schema = ss[ss.length-2]
-				var mime = DEFAULT_MIME[schema] || schema
-				return
-					{
-						@ name name
-						@ basename basename
-						@ isIttfDocument true
-						@ isFragment filePath.indexOf('/t/') > -1
-						@ schema schema
-						@ mime mime
-						@ relFolder relFolder
-						@ fullPath filePath
-						@ destBasename name + '.' + mime
-						@ destRelPath
-							iif relFolder.length > 0
-								then relFolder + '/' + name + '.' + mime
-								else name + '.' + mime
-			else
-				return 
-					{
-						@ name ss.slice(0, ss.length-1).join('.')
-						@ basename basename
-						@ isIttfDocument false
-						@ schema null
-						@ mime ss[ss.length-1]
-						@ relFolder relFolder
-						@ fullPath filePath
-						@ destBasename basename
-						@ destRelPath
-							iif relFolder.length > 0
-								then relFolder + '/' + basename
-								else basename
-
-    function normalize
-        param filepath
-        return verify.replaceAll(filepath, '\\', '/')
-
-	var DEFAULT_MIME
-		{
-			@ css 'css'
-			@ graphql 'graphql'
-			@ html 'html'
-			@ js 'js'
-			@ json 'json'
-			@ scss 'scss'
-			@ text 'text'
-			@ ts 'ts'
-			@ xml 'xml'
-			@ vtt 'vtt'
-			@ vue 'vue'

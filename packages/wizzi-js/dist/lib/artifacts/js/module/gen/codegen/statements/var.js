@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\var.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\var.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -12,7 +12,18 @@ var myname = 'wizzi-js.artifacts.js.module.gen.codegen.statements.var';
 var md = module.exports = {};
 
 function hasStatements(model) {
-    return model.statements && model.statements.length > 0;
+    return countStatements(model) > 0;
+}
+function countStatements(model) {
+    var count = 0;
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement != 'comment') {
+            count++;
+        }
+    }
+    return count;
 }
 md.load = function(cnt) {
     cnt.stm.xlet = function(model, ctx, callback) {
@@ -112,7 +123,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.decl. Got: ' + callback);
         }
         ctx.write(model.wzName);
-        if (model.statements.length > 0) {
+        if (countStatements(model) > 0) {
             ctx.write(' = ');
             var len_1 = model.statements.length;
             function repeater_1(index_1) {
@@ -151,7 +162,7 @@ md.load = function(cnt) {
         }
         ctx.write(' = ');
         ctx.write(model.wzName);
-        if (model.statements.length > 0) {
+        if (countStatements(model) > 0) {
             cnt.genItem(model.statements[0], ctx, callback);
         }
         else {

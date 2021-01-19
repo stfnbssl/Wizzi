@@ -36,10 +36,10 @@ md.wfschema = function(model, ctx, parent) {
         md.element(element, ctx, ctx.result);
     }
 };
-function(model, ctx, parent) {
+md.exportTo = function(model, ctx, parent) {
     parent.exportTos.push(model.wzName);
-}
-function(model, ctx, parent) {
+};
+md.element = function(model, ctx, parent) {
     var flags = '';
     flags += model.isAbstract ? 'is-abstract ' : '';
     flags += model.addToChildren ? 'add-to-children ' : '';
@@ -120,7 +120,7 @@ function(model, ctx, parent) {
         node.comments.push(comment.wzName);
     }
     parent.elements.push(node);
-}
+};
 function getRestrictFill(model) {
     var restrictCloned = {
         facets: [], 

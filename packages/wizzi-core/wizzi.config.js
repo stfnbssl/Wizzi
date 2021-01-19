@@ -10,7 +10,7 @@ module.exports = {
     ], 
     schemas: [
         'wfjob',
-        'wfschema',
+        'wfschema', 
     ],
     globalContext: {
         isPackageDeploy: true,

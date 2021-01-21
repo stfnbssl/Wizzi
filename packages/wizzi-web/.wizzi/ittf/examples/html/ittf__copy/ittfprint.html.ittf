@@ -1,4 +1,9 @@
 html
+    $
+        var opt = {
+            language: 'js',
+            generated: 'function alpha(a, b) {\n    return a + b;\n}'
+        }
     body
         ittf-panel
             schema js
@@ -6,3 +11,9 @@ html
             ittf
                 var i
                     _ random(10)
+
+        pre
+            style width: 50%;
+            code 
+                class ${opt.language}
+                + ${opt.generated}

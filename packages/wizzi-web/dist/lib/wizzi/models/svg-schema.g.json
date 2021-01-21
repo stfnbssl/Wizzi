@@ -38,7 +38,7 @@
       "super": null,
       "isRoot": false,
       "tags": [
-        "path-length"
+        "item"
       ],
       "flags": "",
       "attributes": [
@@ -129,6 +129,53 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
         },
         {
           "name": "alignmentBaseline",
@@ -807,7 +854,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -825,7 +872,7 @@
         {
           "name": "svg",
           "tags": [
-            "preserve-aspect-ratio"
+            "svg"
           ]
         },
         {
@@ -1411,9 +1458,7 @@
         }
       ],
       "comments": [
-        "attributes common to all svg items",
-        "This attribute lets specify the total length for the path, in user units.",
-        "Value type: <number> ; Default value: none; Animatable: yes"
+        "attributes common to all svg items"
       ]
     },
     {
@@ -1617,6 +1662,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -2293,7 +2385,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -2305,7 +2397,7 @@
         {
           "name": "svg",
           "tags": [
-            "preserve-aspect-ratio"
+            "svg"
           ]
         },
         {
@@ -2381,7 +2473,7 @@
       "super": "rect",
       "isRoot": true,
       "tags": [
-        "preserve-aspect-ratio"
+        "svg"
       ],
       "flags": "",
       "attributes": [
@@ -2398,6 +2490,20 @@
           "comments": [
             "This attribute defines the bound of the SVG viewport for the current SVG fragment.",
             "Value type: <list-of-numbers> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
+          "name": "preserveAspectRatio",
+          "type": "string",
+          "tags": [
+            "preserve-aspect-ratio"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": [
+            "This attribute defines how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio.",
+            "Value type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes"
           ]
         },
         {
@@ -2595,6 +2701,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -3271,7 +3424,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -3339,10 +3492,7 @@
           "comments": []
         }
       ],
-      "comments": [
-        "This attribute defines how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio.",
-        "Value type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes"
-      ]
+      "comments": []
     },
     {
       "name": "line",
@@ -3486,6 +3636,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -4162,7 +4359,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -4341,6 +4538,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -5017,7 +5261,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -5196,6 +5440,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -5872,7 +6163,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -6073,6 +6364,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -6749,7 +7087,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -6961,6 +7299,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -7637,7 +8022,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -7816,6 +8201,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -8492,7 +8924,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -8704,6 +9136,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -9380,7 +9859,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -9548,6 +10027,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -10224,7 +10750,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -10379,6 +10905,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -11055,7 +11628,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -11223,6 +11796,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -11899,7 +12519,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -12029,6 +12649,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -12705,7 +13372,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -12902,6 +13569,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -13578,7 +14292,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -13689,6 +14403,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -14365,7 +15126,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -14476,6 +15237,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -15152,7 +15960,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -15263,6 +16071,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -15939,7 +16794,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -16050,6 +16905,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -16726,7 +17628,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -16837,6 +17739,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -17513,7 +18462,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -17624,6 +18573,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -18300,7 +19296,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -18411,6 +19407,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -19087,7 +20130,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -19198,6 +20241,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -19874,7 +20964,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -19985,6 +21075,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -20661,7 +21798,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -20772,6 +21909,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -21448,7 +22632,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -21559,6 +22743,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -22235,7 +23466,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -22346,6 +23577,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -23022,7 +24300,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -23133,6 +24411,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -23809,7 +25134,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -23920,6 +25245,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -24596,7 +25968,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -24707,6 +26079,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -25383,7 +26802,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -25494,6 +26913,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -26170,7 +27636,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -26281,6 +27747,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -26957,7 +28470,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -27068,6 +28581,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -27744,7 +29304,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -27855,6 +29415,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -28531,7 +30138,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -28642,6 +30249,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -29318,7 +30972,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -29429,6 +31083,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -30105,7 +31806,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -30216,6 +31917,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -30892,7 +32640,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -31003,6 +32751,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -31679,7 +33474,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -31790,6 +33585,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -32466,7 +34308,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -32577,6 +34419,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -33253,7 +35142,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -33364,6 +35253,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -34040,7 +35976,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -34151,6 +36087,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -34827,7 +36810,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -34938,6 +36921,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -35614,7 +37644,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -35725,6 +37755,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -36401,7 +38478,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -36512,6 +38589,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -37188,7 +39312,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -37299,6 +39423,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -37975,7 +40146,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -38086,6 +40257,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -38762,7 +40980,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -38873,6 +41091,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -39549,7 +41814,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -39660,6 +41925,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -40336,7 +42648,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -40447,6 +42759,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -41123,7 +43482,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -41234,6 +43593,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -41910,7 +44316,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -42021,6 +44427,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -42697,7 +45150,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -42808,6 +45261,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -43484,7 +45984,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -43595,6 +46095,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -44271,7 +46818,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -44382,6 +46929,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -45058,7 +47652,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -45169,6 +47763,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -45845,7 +48486,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -45956,6 +48597,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -46632,7 +49320,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -46743,6 +49431,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -47419,7 +50154,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -47530,6 +50265,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -48206,7 +50988,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -48317,6 +51099,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -48993,7 +51822,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -49104,6 +51933,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -49780,7 +52656,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -49891,6 +52767,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -50567,7 +53490,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -50678,6 +53601,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -51354,7 +54324,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -51465,6 +54435,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -52141,7 +55158,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -52252,6 +55269,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -52928,7 +55992,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -53039,6 +56103,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -53715,7 +56826,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -53826,6 +56937,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -54502,7 +57660,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -54613,6 +57771,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -55289,7 +58494,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -55400,6 +58605,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -56076,7 +59328,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -56242,6 +59494,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -56918,7 +60217,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -57029,6 +60328,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -57705,7 +61051,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -57816,6 +61162,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -58492,7 +61885,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -58603,6 +61996,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -59279,7 +62719,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -59412,6 +62852,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -60088,7 +63575,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -60256,6 +63743,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -60932,7 +64466,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -61043,6 +64577,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -61719,7 +65300,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -61830,6 +65411,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -62506,7 +66134,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -62617,6 +66245,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -63293,7 +66968,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -63404,6 +67079,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -64080,7 +67802,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -64191,6 +67913,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -64867,7 +68636,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",
@@ -64978,6 +68747,53 @@
           "comments": []
         },
         {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xml:base"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xml:lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xml:space"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "path-length"
+          ],
+          "flags": "",
+          "inheritedFrom": "item",
+          "restricts": [],
+          "comments": [
+            "This attribute lets specify the total length for the path, in user units.",
+            "Value type: <number> ; Default value: none; Animatable: yes"
+          ]
+        },
+        {
           "name": "alignmentBaseline",
           "type": "string",
           "tags": [
@@ -65654,7 +69470,7 @@
           "name": "item",
           "role": "items",
           "tags": [
-            "path-length"
+            "item"
           ],
           "cardinality": "one-to-many",
           "flags": "",

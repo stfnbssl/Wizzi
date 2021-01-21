@@ -41,7 +41,7 @@ md.gen = function gen(model, ctx, callback) {
             return callback(err);
         }
         console.log(myname, 'exit err', err);
-        callback(null, ctx);
+        return callback(null, ctx);
     })
 };
 function getGenItem(ctx) {
@@ -52,7 +52,7 @@ function getGenItem(ctx) {
                     if (err) {
                         return callback(err);
                     }
-                    callback(null);
+                    return callback(null);
                 });
             }
             else {
@@ -84,7 +84,7 @@ function genItems(items, ctx, options, callback) {
         if (indent) {
             ctx.deindent();
         }
-        callback(null);
+        return callback(null);
     });
 }
 stm.scss = function(model, ctx, callback) {
@@ -108,7 +108,7 @@ stm.typeRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     });
 };
 stm.idRule = function(model, ctx, callback) {
@@ -121,7 +121,7 @@ stm.idRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     });
 };
 stm.classRule = function(model, ctx, callback) {
@@ -134,7 +134,7 @@ stm.classRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     });
 };
 stm.parentRule = function(model, ctx, callback) {
@@ -147,7 +147,7 @@ stm.parentRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     });
 };
 stm.combinator = function(model, ctx, callback) {
@@ -172,7 +172,7 @@ stm.combinator = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     });
 };
 stm.propertyRule = function(model, ctx, callback) {
@@ -183,15 +183,15 @@ stm.propertyRule = function(model, ctx, callback) {
     else {
         ctx.write( p.name() );
     }
-    callback(null);
+    return callback(null);
 };
 stm.importRule = function(model, ctx, callback) {
     ctx.w( '@import ' + model.wzName + ';');
-    callback(null);
+    return callback(null);
 };
 stm.extendRule = function(model, ctx, callback) {
     ctx.w( '@extend ' + model.wzName + ';');
-    callback(null);
+    return callback(null);
 };
 stm.includeRule = function(model, ctx, callback) {
     ctx.write( '@include ' + model.wzName);
@@ -215,12 +215,12 @@ stm.includeRule = function(model, ctx, callback) {
                         return callback(err);
                     }
                     ctx.w( '}' );
-                    callback(null);
+                    return callback(null);
                 });
             }
             else {
                 ctx.w( ');' );
-                callback(null);
+                return callback(null);
             }
         });
     }
@@ -235,12 +235,12 @@ stm.includeRule = function(model, ctx, callback) {
                     return callback(err);
                 }
                 ctx.w( '}' );
-                callback(null);
+                return callback(null);
             });
         }
         else {
             ctx.w();
-            callback(null);
+            return callback(null);
         }
     }
 };
@@ -254,7 +254,7 @@ stm.mixinRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w('}');
-        callback(null);
+        return callback(null);
     });
 };
 stm.forRule = function(model, ctx, callback) {
@@ -267,7 +267,7 @@ stm.forRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w('}');
-        callback(null);
+        return callback(null);
     });
 };
 stm.eachRule = function(model, ctx, callback) {
@@ -280,7 +280,7 @@ stm.eachRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w('}');
-        callback(null);
+        return callback(null);
     });
 };
 stm.whileRule = function(model, ctx, callback) {
@@ -293,7 +293,7 @@ stm.whileRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w('}');
-        callback(null);
+        return callback(null);
     });
 };
 stm.functionRule = function(model, ctx, callback) {
@@ -306,12 +306,12 @@ stm.functionRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w('}');
-        callback(null);
+        return callback(null);
     });
 };
 stm.returnRule = function(model, ctx, callback) {
     ctx.w( '@return ' + model.wzName + ';');
-    callback(null);
+    return callback(null);
 };
 stm.callRule = function(model, ctx, callback) {
     ctx.write( model.wzName + '(');
@@ -324,17 +324,17 @@ stm.callRule = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.write(')');
-        callback(null);
+        return callback(null);
     });
 };
 stm.setRule = function(model, ctx, callback) {
     var p = lineParser.parseNameValueRaw(model.wzName, model);
     ctx.w( '$' + p.name() + ': ' + p.value() + ';' );
-    callback(null);
+    return callback(null);
 };
 stm.separator = function(model, ctx, callback) {
     ctx.write( getSeparator(model.wzName) );
-    callback(null);
+    return callback(null);
 };
 function writeOpenRule(ctx, prefix, model) {
     ctx.write( prefix );

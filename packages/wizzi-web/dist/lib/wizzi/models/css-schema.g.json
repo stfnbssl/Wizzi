@@ -406,7 +406,7 @@
         {
           "name": "fontface",
           "tags": [
-            "unicode-range"
+            "font-face"
           ]
         },
         {
@@ -12066,7 +12066,7 @@
       "super": "rule",
       "isRoot": false,
       "tags": [
-        "unicode-range"
+        "font-face"
       ],
       "flags": "",
       "attributes": [
@@ -12086,6 +12086,50 @@
           "type": "string",
           "tags": [
             "src"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontStretch",
+          "type": "string",
+          "tags": [
+            "font-stretch"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontStyle",
+          "type": "string",
+          "tags": [
+            "font-style"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "tags": [
+            "font-weight"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "unicodeRange",
+          "type": "string",
+          "tags": [
+            "unicode-range"
           ],
           "flags": "",
           "inheritedFrom": null,

@@ -21,23 +21,20 @@ md.gen = function(model, ctx, callback) {
         else {
             ctx.write(model.wzName + ' = ');
         }
-        if (hasChildren) {
-            ctx.indent();
-            model.wzElement = 'jsObject';
-            statement.gen(model, ctx, function(err, notUsed) {
-                if (err) {
-                    return callback(err);
-                }
-                model.wzElement = 'p';
-                ctx.deindent();
-                ctx.w('');
-                return callback(null, null);
-            });
-        }
-        else {
+        ctx.indent();
+        var saveName = model.wzName;
+        model.wzName = '';
+        model.wzElement = 'jsObject';
+        statement.gen(model, ctx, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            model.wzElement = 'p';
+            model.wzName = saveName;
+            ctx.deindent();
             ctx.w('');
             return callback(null, null);
-        }
+        });
     }
     else {
         if (model.static) {

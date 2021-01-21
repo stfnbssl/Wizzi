@@ -16,20 +16,19 @@ module wizzi.js.artifacts.module.gen.codegen.es6.property
 			else
 				_ ctx.write(model.wzName + ' = ');
 		
-			if hasChildren
-				_ ctx.indent();
-				set model.wzElement = 'jsObject'
-				_ statement.gen
-					@ model
-					@ ctx
-					f_cb()
-						set model.wzElement = 'p'
-						_ ctx.deindent();
-						_ ctx.w('');
-						r_cb()
-			else
-				_ ctx.w('');
-				r_cb()
+            _ ctx.indent();
+            var saveName = model.wzName
+            set model.wzName = ''
+            set model.wzElement = 'jsObject'
+            _ statement.gen
+                @ model
+                @ ctx
+                f_cb()
+                    set model.wzElement = 'p'
+                    set model.wzName = saveName
+                    _ ctx.deindent();
+                    _ ctx.w('');
+                    r_cb()
 		else
 			if model.static
 				_ ctx.write('static ' + model.wzName + ';')

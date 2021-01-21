@@ -67,6 +67,8 @@
 			#     preserve a blank first char (coded between single hyphens)
 			#     var text = verify.startsWith(model.wzName, "' '") ? '&nbsp;' + model.wzName.substr(3) : model.wzName;
 			var text = model.wzName
+
+            log 'text', text
 				
 			if ctx.__iscode || model.wzElement === '_textLF'
 				_ ctx.w(text)
@@ -155,7 +157,7 @@
 		if lt.lines
 			_ ctx.w()
 			var saveIndent
-			if ctx.__ispre
+			if ctx.__iscodeTag
 				# we are inside a pre element, temporaly reset 
 				# to 0 the indentation depending from the node depth
 				set saveIndent = ctx.forceIndent(0)
@@ -163,16 +165,16 @@
 				_ ctx.indent()
 			foreach line in lt.lines
 				_ ctx.w(line)
-			if ctx.__ispre
+			if ctx.__iscodeTag
 				# restore indentation
 				_ ctx.forceIndent(saveIndent);
 			else
 				_ ctx.deindent()
 
 		if model.elements && model.elements.length > 0
-			if ctx.__ispre && !ctx.__ispre_started
+			if ctx.__iscodeTag && !ctx.__iscodeTag_started
 				_ ctx.w('')
-				set ctx.__ispre_started = true
+				set ctx.__iscodeTag_started = true
 				var saveIndent = ctx.forceIndent(0)
 				_ md.genItems
 					@ model.elements
@@ -181,7 +183,7 @@
 						@ indent false
 					f_cb( notUsed )
 						_ ctx.forceIndent(saveIndent)
-						set ctx.__ispre_started = false
+						set ctx.__iscodeTag_started = false
 						_ ctx.w('</' + model.wzTag + '>')
 						_ postprocess(model, ctx)
 						return
@@ -373,16 +375,16 @@
 			set model.type = 'text/babel'
 		if incode.indexOf(model.wzTag) > -1
 			set ctx.__iscode = true
-		if ['pre'].indexOf(model.wzTag) > -1
-			set ctx.__ispre = true
+		if ['code'].indexOf(model.wzTag) > -1
+			set ctx.__iscodeTag = true
 
 	function postprocess
 		param model
 		param ctx
 		if incode.indexOf(model.wzTag) > -1
 			set ctx.__iscode = false
-		if ['pre'].indexOf(model.wzTag) > -1
-			set ctx.__ispre = false
+		if ['code'].indexOf(model.wzTag) > -1
+			set ctx.__iscodeTag = false
 
 	var noattrs
 		[

@@ -74,6 +74,7 @@ md.getGenItem = function(ctx) {
                 // preserve a blank first char (coded between single hyphens)
                 // var text = verify.startsWith(model.wzName, "' '") ? '&nbsp;' + model.wzName.substr(3) : model.wzName;
                 var text = model.wzName;
+                console.log('text', text);
                 if (ctx.__iscode || model.wzElement === '_textLF') {
                     ctx.w(text);
                 }
@@ -150,7 +151,7 @@ md.stm.standardElement = function(model, ctx, callback) {
     if (lt.lines) {
         ctx.w();
         var saveIndent;
-        if (ctx.__ispre) {
+        if (ctx.__iscodeTag) {
             // we are inside a pre element, temporaly reset
             // to 0 the indentation depending from the node depth
             saveIndent = ctx.forceIndent(0);
@@ -163,7 +164,7 @@ md.stm.standardElement = function(model, ctx, callback) {
             line = lt.lines[i];
             ctx.w(line);
         }
-        if (ctx.__ispre) {
+        if (ctx.__iscodeTag) {
             // restore indentation
             ctx.forceIndent(saveIndent);
         }
@@ -172,9 +173,9 @@ md.stm.standardElement = function(model, ctx, callback) {
         }
     }
     if (model.elements && model.elements.length > 0) {
-        if (ctx.__ispre && !ctx.__ispre_started) {
+        if (ctx.__iscodeTag && !ctx.__iscodeTag_started) {
             ctx.w('');
-            ctx.__ispre_started = true;
+            ctx.__iscodeTag_started = true;
             var saveIndent = ctx.forceIndent(0);
             md.genItems(model.elements, ctx, {
                 indent: false
@@ -183,7 +184,7 @@ md.stm.standardElement = function(model, ctx, callback) {
                     return callback(err);
                 }
                 ctx.forceIndent(saveIndent);
-                ctx.__ispre_started = false;
+                ctx.__iscodeTag_started = false;
                 ctx.w('</' + model.wzTag + '>');
                 postprocess(model, ctx);
                 return callback();
@@ -243,7 +244,7 @@ md.stm.html = function(model, ctx, callback) {
         if (!!ctx.values.forVueTemplate == false) {
             ctx.w('</html>');
         }
-        callback(null, true);
+        return callback(null, true);
     });
 };
 md.stm.jsBabel = function(model, ctx, callback) {
@@ -258,7 +259,7 @@ md.stm.jsBabel = function(model, ctx, callback) {
         js_statement.gen(item, ctx);
     }
     ctx.w("</script>");
-    callback(null, true);
+    return callback(null, true);
 };
 md.stm.cssInclude = function(model, ctx, callback) {
     ctx.write('<style');
@@ -279,12 +280,12 @@ md.stm.cssInclude = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w("</style>");
-            callback(null, true);
+            return callback(null, true);
         });
     }
     else {
         ctx.w("</style>");
-        callback(null, true);
+        return callback(null, true);
     }
 };
 md.stm.script = function(model, ctx, callback) {
@@ -307,7 +308,7 @@ md.stm.script = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w("</script>");
-            callback(null, true);
+            return callback(null, true);
         });
     }
     else {
@@ -318,7 +319,7 @@ md.stm.script = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w("</script>");
-            callback(null, true);
+            return callback(null, true);
         });
     }
 };
@@ -341,12 +342,12 @@ md.stm.jsInclude = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w("</script>");
-            callback(null, true);
+            return callback(null, true);
         });
     }
     else {
         ctx.w("</script>");
-        callback(null, true);
+        return callback(null, true);
     }
 };
 md.stm.readyInclude = function(model, ctx, callback) {
@@ -372,7 +373,7 @@ md.stm.readyInclude = function(model, ctx, callback) {
                 ctx.deindent();
                 ctx.w('});');
                 ctx.w("</script>");
-                callback(null, true);
+                return callback(null, true);
             })
         }
         else {
@@ -385,13 +386,13 @@ md.stm.readyInclude = function(model, ctx, callback) {
                 ctx.deindent();
                 ctx.w('};');
                 ctx.w("</script>");
-                callback(null, true);
+                return callback(null, true);
             });
         }
     }
     else {
         ctx.w("</script>");
-        callback(null, true);
+        return callback(null, true);
     }
 };
 md.stm.img = function(model, ctx, callback) {
@@ -403,11 +404,11 @@ md.stm.img = function(model, ctx, callback) {
                 if (err) {
                     return callback(err);
                 }
-                callback(null, true);
+                return callback(null, true);
             });
     }
     else {
-        callback(null, false);
+        return callback(null, false);
     }
 };
 md.stm.svgInclude = function(model, ctx, callback) {
@@ -417,11 +418,11 @@ md.stm.svgInclude = function(model, ctx, callback) {
                 if (err) {
                     return callback(err);
                 }
-                callback(null, true);
+                return callback(null, true);
             });
     }
     else {
-        callback(null, false);
+        return callback(null, false);
     }
 };
 md.stm.jsonObjectInclude = function(model, ctx, callback) {
@@ -433,11 +434,11 @@ md.stm.jsonObjectInclude = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w('</script>');
-            callback(null, true);
+            return callback(null, true);
         });
     }
     else {
-        callback(null, false);
+        return callback(null, false);
     }
 };
 md.stm.jsonArrayInclude = function(model, ctx, callback) {
@@ -449,11 +450,11 @@ md.stm.jsonArrayInclude = function(model, ctx, callback) {
                 return callback(err);
             }
             ctx.w('</script>');
-            callback(null, true);
+            return callback(null, true);
         });
     }
     else {
-        callback(null, false);
+        return callback(null, false);
     }
 };
 md.stm.lorem = function(model, ctx, callback) {
@@ -468,7 +469,7 @@ md.stm.lorem = function(model, ctx, callback) {
         paragraphUpperBound: model.maxSentences
     });
     ctx.w(string);
-    callback(null, true);
+    return callback(null, true);
 };
 md.stm.ready = function(model, ctx, callback) {
     ctx.w("<script>");
@@ -497,7 +498,7 @@ md.stm.ready = function(model, ctx, callback) {
     }
     ctx.deindent();
     ctx.w("</script>");
-    callback(null, true);
+    return callback(null, true);
 };
 md.stm.ittfPanel = function(model, ctx, callback) {
     ctx.w("<div class='ittf-panel'>");
@@ -511,13 +512,13 @@ md.stm.ittfPanel = function(model, ctx, callback) {
         }
         ctx.w("<div>" + result.ittfPretty + '</div>');
         ctx.w("</code></pre></div>");
-        callback(null, true);
+        return callback(null, true);
     });
 };
 md.stm.comment = function(model, ctx, callback) {
     if (ctx.__iscode) {
         ctx.w("// " + model.wzName);
-        callback(null, true);
+        return callback(null, true);
     }
     if (model.elements.length == 0) {
         if (ctx.__inside_comment) {
@@ -527,7 +528,7 @@ md.stm.comment = function(model, ctx, callback) {
             ctx.w("<!-- " + model.wzName + " -->");
         }
         ctx.__needs_crlf = false;
-        callback(null, true);
+        return callback(null, true);
     }
     var enter_inside_comment = ctx.__inside_comment;
     if (!ctx.__inside_comment) {
@@ -550,7 +551,7 @@ md.stm.comment = function(model, ctx, callback) {
             ctx.w(' -->');
         }
         ctx.__needs_crlf = false;
-        callback(null, true);
+        return callback(null, true);
     });
 };
 function prettifyIttf(mTreeData, callback) {
@@ -705,16 +706,16 @@ function preprocess(model, ctx) {
     if (incode.indexOf(model.wzTag) > -1) {
         ctx.__iscode = true;
     }
-    if (['pre'].indexOf(model.wzTag) > -1) {
-        ctx.__ispre = true;
+    if (['code'].indexOf(model.wzTag) > -1) {
+        ctx.__iscodeTag = true;
     }
 }
 function postprocess(model, ctx) {
     if (incode.indexOf(model.wzTag) > -1) {
         ctx.__iscode = false;
     }
-    if (['pre'].indexOf(model.wzTag) > -1) {
-        ctx.__ispre = false;
+    if (['code'].indexOf(model.wzTag) > -1) {
+        ctx.__iscodeTag = false;
     }
 }
 var noattrs = [

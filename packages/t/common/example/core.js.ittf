@@ -16,8 +16,11 @@ $group
     var wizzi = null
     
     $if opt.folderLevel == 1
+        var legacy = require('../legacy')
     $elif opt.folderLevel == 2
+        var legacy = require('../../legacy')
     $elif opt.folderLevel == 3
+        var legacy = require('../../../legacy')
 
 	$hook imports
 

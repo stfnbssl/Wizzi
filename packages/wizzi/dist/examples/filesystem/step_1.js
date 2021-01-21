@@ -42,31 +42,37 @@ var filesystem_step_1 = function(step_callback) {
     var projectId = 'example';
     wfs.mount(path.join(__dirname, 'mounted_fs'), function(err, notUsed) {
         if (err) {
+            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
             console.log('err', err);
             throw new Error(err.message);
         }
         wfs.mkdir(userId, projectId, 'folderA', function(err, notUsed) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }
             wfs.mkdir(userId, projectId, 'folderB', function(err, notUsed) {
                 if (err) {
+                    console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                     console.log('err', err);
                     throw new Error(err.message);
                 }
                 wfs.mkdir(userId, projectId, 'folderC', function(err, notUsed) {
                     if (err) {
+                        console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                         console.log('err', err);
                         throw new Error(err.message);
                     }
                     wfs.mkdir(userId, projectId, 'folderD', function(err, notUsed) {
                         if (err) {
+                            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                             console.log('err', err);
                             throw new Error(err.message);
                         }
                         wfs.mkdir(userId, projectId, 'folderToDelete/folder1', function(err, notUsed) {
                             if (err) {
+                                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                 console.log('err', err);
                                 throw new Error(err.message);
                             }
@@ -80,31 +86,37 @@ var filesystem_step_1 = function(step_callback) {
     function createExampleFiles() {
         wfs.writeFile(userId, projectId, 'folderA/docA1.js.ittf', 'module\n\t kind react', function(err, notUsed) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }
             wfs.writeFile(userId, projectId, 'folderA/docA2.js.ittf', 'module\n\t kind jsfile', function(err, notUsed) {
                 if (err) {
+                    console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                     console.log('err', err);
                     throw new Error(err.message);
                 }
                 wfs.writeFile(userId, projectId, 'folderB/docB1.js.ittf', 'module\n\t kind es6', function(err, notUsed) {
                     if (err) {
+                        console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                         console.log('err', err);
                         throw new Error(err.message);
                     }
                     wfs.writeFile(userId, projectId, 'folderC/docC1.js.ittf', 'module\n\t kind es6', function(err, notUsed) {
                         if (err) {
+                            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                             console.log('err', err);
                             throw new Error(err.message);
                         }
                         wfs.writeFile(userId, projectId, 'folderC/docC2.js.ittf', 'module\n\t kind es6', function(err, notUsed) {
                             if (err) {
+                                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                 console.log('err', err);
                                 throw new Error(err.message);
                             }
                             wfs.writeFile(userId, projectId, 'folderToDelete/folder1/docToDel1.js.ittf', 'module\n\t kind es6', function(err, notUsed) {
                                 if (err) {
+                                    console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                                     console.log('err', err);
                                     throw new Error(err.message);
                                 }
@@ -119,21 +131,25 @@ var filesystem_step_1 = function(step_callback) {
     function executeCopyMove() {
         wfs.copyFolder(userId, projectId, 'folderA', projectId, 'folderA_copied', function(err, notUsed) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }
             wfs.moveFolder(userId, projectId, 'folderB', projectId, 'folderB_moved', function(err, notUsed) {
                 if (err) {
+                    console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                     console.log('err', err);
                     throw new Error(err.message);
                 }
                 wfs.copyFile(userId, projectId, 'folderC/docC1.js.ittf', projectId, 'folderD/docC1.js.ittf', function(err, notUsed) {
                     if (err) {
+                        console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                         console.log('err', err);
                         throw new Error(err.message);
                     }
                     wfs.moveFile(userId, projectId, 'folderC/docC2.js.ittf', projectId, 'folderD/docC2.js.ittf', function(err, notUsed) {
                         if (err) {
+                            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                             console.log('err', err);
                             throw new Error(err.message);
                         }
@@ -193,6 +209,7 @@ var filesystem_step_1 = function(step_callback) {
             }
         ], function(err, notUsed) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }

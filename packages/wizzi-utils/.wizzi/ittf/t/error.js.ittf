@@ -12,7 +12,9 @@
 			param ${arg4}
 		set this.name = '${name}Error'
 		$hook
-		set this.stack = (new Error()).stack
+        $* 21/1/21 (let the error popup with callbacks)
+        set this.stack = (new Error()).stack
+        *$
 	set ${name}Error.prototype.toString
         function 
             return this.message

@@ -31,6 +31,5 @@ module
 				@ 'basic.ittf.ittf'
             {
             f_cb_test( wizziModel )
-                # for built-in schema xml the wizziModel returned is a json object
                 _ printObject
                     @ wizziModel

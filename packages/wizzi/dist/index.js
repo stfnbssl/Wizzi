@@ -1547,6 +1547,7 @@ md.generateFolderArtifacts = function(ittfDocumentPath, context, options, callba
             });
         }, function(err, result) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }

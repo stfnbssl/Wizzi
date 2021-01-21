@@ -1836,6 +1836,12 @@
           ]
         },
         {
+          "name": "caret_color",
+          "tags": [
+            "caret-color"
+          ]
+        },
+        {
           "name": "clear",
           "tags": [
             "clear"
@@ -1845,6 +1851,12 @@
           "name": "clip",
           "tags": [
             "clip"
+          ]
+        },
+        {
+          "name": "clip_path",
+          "tags": [
+            "clip-path"
           ]
         },
         {
@@ -2043,6 +2055,12 @@
           "name": "font",
           "tags": [
             "font"
+          ]
+        },
+        {
+          "name": "font_feature_settings",
+          "tags": [
+            "font-feature-settings"
           ]
         },
         {
@@ -2661,6 +2679,12 @@
           "name": "text_decoration_skip",
           "tags": [
             "text-decoration-skip"
+          ]
+        },
+        {
+          "name": "text_fill_color",
+          "tags": [
+            "text-fill-color"
           ]
         },
         {
@@ -5324,6 +5348,35 @@
       "comments": []
     },
     {
+      "name": "caret_color",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "caret-color"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "clear",
       "super": "property",
       "isRoot": false,
@@ -5358,6 +5411,35 @@
       "isRoot": false,
       "tags": [
         "clip"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "clip_path",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "clip-path"
       ],
       "flags": "",
       "attributes": [],
@@ -6441,6 +6523,35 @@
           "comments": []
         }
       ],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_feature_settings",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-feature-settings"
+      ],
+      "flags": "",
+      "attributes": [],
       "relations": [
         {
           "name": "property",
@@ -9297,6 +9408,21 @@
       "comments": []
     },
     {
+      "name": "scrollbar_width",
+      "super": null,
+      "isRoot": false,
+      "tags": [
+        "scrollbar-width"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "speak_header",
       "super": "property",
       "isRoot": false,
@@ -9795,6 +9921,35 @@
       "isRoot": false,
       "tags": [
         "text-decoration-skip"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "text_fill_color",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "text-fill-color"
       ],
       "flags": "",
       "attributes": [],

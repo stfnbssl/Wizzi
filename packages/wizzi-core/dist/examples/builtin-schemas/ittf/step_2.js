@@ -4,7 +4,7 @@
 */
 'use strict';
 /**
-     Example: Schemas_xml_step_2
+     Example: Schemas_ittf_step_2
     
 */
 var util = require('util');
@@ -25,6 +25,7 @@ var wizziRepo = require('wizzi-repo');
 var fileInfoByPath = wizziUtils.fileInfoByPath;
 var async = require('async');
 var wizzi = null;
+var legacy = require('../../../legacy');
 function createWizziFactory(globalContext, callback) {
     if (wizzi == null) {
         // The wizzi package will be a previous version from wizzi/node_modules
@@ -72,7 +73,12 @@ function loadModelAndGenerateArtifact(ittfDocumentUri, context, artifactName, ca
         wf.loadModelAndGenerateArtifact(ittfDocumentUri, {
             modelRequestContext: context, 
             artifactRequestContext: {}
-        }, artifactName, callback);
+        }, artifactName, function(err, artifact) {
+            if (err) {
+                return callback(err);
+            }
+            callback(null, artifact);
+        });
     });
 }
 function loadAndTransformModel(ittfDocumentUri, context, transformerName, callback) {
@@ -124,7 +130,7 @@ function getFiles(srcpath, schema) {
         })
     ;
 }
-var Schemas_xml_step_2 = function(step_callback) {
+var Schemas_ittf_step_2 = function(step_callback) {
     heading1('EXAMPLE');
     heading2('Ittf builtin schema');
     loadModelAndGenerateArtifact(path.join(__dirname, 'ittf', 'basic.ittf.ittf'), {}, "ittf/document", function(err, artifactText) {
@@ -144,18 +150,18 @@ var Schemas_xml_step_2 = function(step_callback) {
         });
     });
 };
-Schemas_xml_step_2.__name = 'Schemas_xml_step_2';
+Schemas_ittf_step_2.__name = 'Schemas_ittf_step_2';
 function heading1(text) {
     console.log('');
     console.log('*'.repeat(120));
-    console.log('** level 0 - step 2 - Schemas_xml_step_2 - ' + text);
+    console.log('** level 0 - step 2 - Schemas_ittf_step_2 - ' + text);
     console.log('*'.repeat(120));
     console.log('');
 }
 function heading2(text) {
     console.log('');
     console.log('   ', '-'.repeat(100));
-    console.log('   ','-- Schemas_xml_step_2 - ' + text);
+    console.log('   ','-- Schemas_ittf_step_2 - ' + text);
     console.log('   ', '-'.repeat(100));
     console.log('');
 }
@@ -340,7 +346,7 @@ function formatNum(num, len) {
     var x = num.toString();
     return new Array(1 + len-x.length).join(' ') + x;
 }
-module.exports = Schemas_xml_step_2;
+module.exports = Schemas_ittf_step_2;
 if (typeof require != 'undefined' && require.main === module) {
-    Schemas_xml_step_2();
+    Schemas_ittf_step_2();
 }

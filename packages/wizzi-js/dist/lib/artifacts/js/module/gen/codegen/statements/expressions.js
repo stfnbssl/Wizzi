@@ -467,10 +467,7 @@ md.load = function(cnt) {
                 return callback(null, null);
             }
             else {
-                ctx.artifactGenerationError("Invalid model. Two child statements are required. Model: " + util.inspect(model, {depth: 2}), "wizzi-codegen/lib/js/statements/expressions/emitOperators", model);
-                /**
-                    throw new Error("module.gen.statements.emitOperators Invalid model " + util.inspect(model, {depth: 2}));
-                */
+                return callback(ctx.artifactGenerationError("Invalid model. Two child statements are required. Model: " + util.inspect(model, {depth: 2}), "wizzi-codegen/lib/js/statements/expressions/emitOperators", model));
             }
         }
     }

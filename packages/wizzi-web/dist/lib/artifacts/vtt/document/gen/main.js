@@ -41,7 +41,7 @@ md.gen = function gen(model, ctx, callback) {
             return callback(err);
         }
         console.log(myname, 'exit err', err);
-        callback(null, ctx);
+        return callback(null, ctx);
     })
 };
 function getGenItem(ctx) {
@@ -52,7 +52,7 @@ function getGenItem(ctx) {
                     if (err) {
                         return callback(err);
                     }
-                    callback(null);
+                    return callback(null);
                 });
             }
             else {
@@ -84,7 +84,7 @@ function genItems(items, ctx, options, callback) {
         if (indent) {
             ctx.deindent();
         }
-        callback(null);
+        return callback(null);
     });
 }
 stm.vtt = function(model, ctx, callback) {
@@ -153,7 +153,7 @@ stm.vttCue = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w();
-        callback(null);
+        return callback(null);
     });
 };
 stm.cueText = function(model, ctx, callback) {
@@ -171,7 +171,7 @@ stm.cueText = function(model, ctx, callback) {
             ctx.w();
         }
         ctx.isInsideText = saveIsInsideText;
-        callback(null);
+        return callback(null);
     });
 };
 stm.p = function(model, ctx, callback) {
@@ -189,7 +189,7 @@ stm.p = function(model, ctx, callback) {
             ctx.w();
         }
         ctx.isInsideText = saveIsInsideText;
-        callback(null);
+        return callback(null);
     });
 };
 stm.u = function(model, ctx, callback) {
@@ -217,7 +217,7 @@ stm.time = function(model, ctx, callback) {
 };
 stm.componentClass = function(model, ctx, callback) {
     ctx.write( '.' + model.wzName );
-    callback(null);
+    return callback(null);
 };
 stm.style = function(model, ctx, callback) {
     ctx.w( 'STYLE' );
@@ -229,7 +229,7 @@ stm.style = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w();
-        callback(null);
+        return callback(null);
     });
 };
 stm.cueRule = function(model, ctx, callback) {
@@ -238,7 +238,7 @@ stm.cueRule = function(model, ctx, callback) {
     async.mapSeries(model.getProperties(), getWriteProperty(ctx), function() {
         ctx.deindent();
         ctx.w('}');
-        callback(null);
+        return callback(null);
     });
 };
 function getWriteProperty(ctx) {
@@ -352,7 +352,7 @@ stm.region = function(model, ctx, callback) {
         ctx.w( 'scroll:' + model.scroll);
     }
     ctx.w();
-    callback(null);
+    return callback(null);
 };
 function writeComments(ctx, model) {
     if (model.comments.length == 1) {
@@ -393,7 +393,7 @@ function writeCueText(ctx, model, tag, callback) {
                 ctx.w();
             }
             ctx.isInsideText = saveIsInsideText;
-            callback(null);
+            return callback(null);
         });
     });
 }

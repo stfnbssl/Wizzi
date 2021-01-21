@@ -2,10 +2,10 @@
 	kind jsfile
 
 	iife
-		function
-			param x
-			param y
-			var alpha = x
-			return alpha
-		@ 'a'
-		@ 'b'
+        param x
+        param y
+        var alpha = x
+        return alpha
+		(
+            @ 'a'
+            @ 'b'

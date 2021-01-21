@@ -33,7 +33,6 @@ function NodeError(message, node) {
     this.message = msg.join('');
     // log 'NodeError', this.message
     // set this.node = node
-    this.stack = (new Error()).stack;
 }
 NodeError.prototype.toString = function() {
     return this.message;
@@ -46,7 +45,6 @@ md.NodeError = NodeError;
 function WizziModelLoadError(message, srcPath, ex) {
     this.name = 'WizziModelLoadError';
     this.message = 'Error: ' + message + '\nLoading ittf document ' + md.getSrcPathInfo(srcPath);
-    this.stack = (new Error()).stack;
 }
 WizziModelLoadError.prototype.toString = function() {
     return this.message;
@@ -60,7 +58,6 @@ function NotImplementedError(message) {
     this.name = 'NotImplementedError';
     console.log('message', message);
     this.message = message;
-    this.stack = (new Error()).stack;
 }
 NotImplementedError.prototype.toString = function() {
     return this.message;
@@ -75,7 +72,6 @@ function InvalidRequestError(message, code) {
     console.log('message', message);
     this.message = message;
     this.code = code;
-    this.stack = (new Error()).stack;
 }
 InvalidRequestError.prototype.toString = function() {
     return this.message;
@@ -87,7 +83,6 @@ md.InvalidRequestError = InvalidRequestError;
 function FsItemNotFoundError(resourceType, uri) {
     this.name = 'FsItemNotFoundError';
     this.message = resourceType + ': ' + uri + ' not found ';
-    this.stack = (new Error()).stack;
 }
 FsItemNotFoundError.prototype.toString = function() {
     return this.message;
@@ -99,7 +94,6 @@ md.FsItemNotFoundError = FsItemNotFoundError;
 function IttfNotFoundError(resourceType, name, sourceUri) {
     this.name = 'IttfNotFoundError';
     this.message = resourceType + ': ' + name +' not found, processing document ' + md.getSrcPathInfo(sourceUri);
-    this.stack = (new Error()).stack;
 }
 IttfNotFoundError.prototype.toString = function() {
     return this.message;
@@ -113,7 +107,6 @@ function ArtifactGenerationError(message, generation, srcPath, ex) {
     this.name = 'ArtifactGenerationError';
     this.message = 'Error: ' + message +'\nDuring generation:' + generation +', processing document ' + md.getSrcPathInfo(srcPath);
     console.log('wizzi.artifact.errors.artifactGenerationError.message', this.message);
-    this.stack = (new Error()).stack;
 }
 ArtifactGenerationError.prototype.toString = function() {
     return this.message;

@@ -11,7 +11,6 @@ function FileError(message, ex) {
     this.name = 'FileError';
     this.message = message;
     this.inner = ex;
-    this.stack = (new Error()).stack;
 }
 FileError.prototype.toString = function() {
     return this.message;
@@ -50,7 +49,6 @@ function NodeError(message, node) {
     this.message = msg.join('');
     // log 'NodeError', this.message
     // VIA set this.node = node
-    this.stack = (new Error()).stack;
 }
 NodeError.prototype.toString = function() {
     return this.message;

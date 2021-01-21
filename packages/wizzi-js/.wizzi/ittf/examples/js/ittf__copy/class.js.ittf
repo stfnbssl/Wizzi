@@ -9,6 +9,12 @@
 
         p [hello] 'hey'
 
+        p staticProps
+            static
+            @ prop1 null
+            { prop2
+                @ prop3 10
+
         => handleClickOpen
             param scroll
             => 

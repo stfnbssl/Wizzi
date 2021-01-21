@@ -268,7 +268,7 @@
                             <td>
                                 <b>item</b>
                             </td>
-                            <td>path-length</td>
+                            <td>item</td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -277,8 +277,6 @@
                 <h5>Description</h5>
                 <div>
                     <span>attributes common to all svg items &nbsp;</span>
-                    <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
-                    <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
                 </div>
                 <h5>Attributes</h5>
                 <small>
@@ -366,6 +364,47 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -1191,6 +1230,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -1801,17 +1881,12 @@
                             <td>
                                 <b>svg</b>
                             </td>
-                            <td>preserve-aspect-ratio</td>
+                            <td>svg</td>
                             <td>rect</td>
                             <td></td>
                         </tr>
                     </tbody>
                 </table>
-                <h5>Description</h5>
-                <div>
-                    <span>This attribute defines how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio. &nbsp;</span>
-                    <span>Value type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes &nbsp;</span>
-                </div>
                 <h5>Attributes</h5>
                 <small>
                     <table class="table table-condensed table-bordered" style="width:100%;">
@@ -1838,6 +1913,20 @@
                                     <div>
                                         <span>This attribute defines the bound of the SVG viewport for the current SVG fragment. &nbsp;</span>
                                         <span>Value type: <list-of-numbers> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>preserveAspectRatio</td>
+                                <td>preserve-aspect-ratio</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute defines how the svg fragment must be deformed if it is embedded in a container with a different aspect ratio. &nbsp;</span>
+                                        <span>Value type: (none| xMinYMin| xMidYMin| xMaxYMin| xMinYMid| xMidYMid| xMaxYMid| xMinYMax| xMidYMax| xMaxYMax) (meet|slice)? ; Default value: xMidYMid meet; Animatable: yes &nbsp;</span>
                                     </div>
                                 </td>
                             </tr>
@@ -2014,6 +2103,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -2756,6 +2886,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -3469,6 +3640,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -4180,6 +4392,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -4911,6 +5164,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -5653,6 +5947,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -6364,6 +6699,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -7106,6 +7482,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -7808,6 +8225,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -8526,6 +8984,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -9253,6 +9752,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -9937,6 +10477,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -10705,6 +11286,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -11385,6 +12007,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -12069,6 +12732,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -12749,6 +13453,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -13433,6 +14178,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -14113,6 +14899,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -14797,6 +15624,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -15477,6 +16345,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -16161,6 +17070,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -16841,6 +17791,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -17525,6 +18516,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -18205,6 +19237,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -18889,6 +19962,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -19569,6 +20683,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -20253,6 +21408,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -20933,6 +22129,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -21617,6 +22854,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -22297,6 +23575,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -22981,6 +24300,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -23661,6 +25021,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -24345,6 +25746,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -25025,6 +26467,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -25709,6 +27192,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -26389,6 +27913,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -27073,6 +28638,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -27753,6 +29359,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -28437,6 +30084,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -29117,6 +30805,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -29801,6 +31530,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -30481,6 +32251,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -31165,6 +32976,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -31845,6 +33697,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -32529,6 +34422,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -33209,6 +35143,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -33893,6 +35868,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -34573,6 +36589,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -35257,6 +37314,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -35937,6 +38035,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -36621,6 +38760,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -37301,6 +39481,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -37985,6 +40206,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -38665,6 +40927,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -39349,6 +41652,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -40029,6 +42373,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -40713,6 +43098,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -41393,6 +43819,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -42077,6 +44544,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -42757,6 +45265,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -43441,6 +45990,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -44121,6 +46711,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -44805,6 +47436,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -45485,6 +48157,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -46169,6 +48882,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -46851,6 +49605,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -47531,6 +50326,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -48260,6 +51096,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -48940,6 +51817,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -49624,6 +52542,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -50304,6 +53263,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -51004,6 +54004,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -51710,6 +54751,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -52390,6 +55472,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -53074,6 +56197,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -53754,6 +56918,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>
@@ -54438,6 +57643,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -55120,6 +58366,47 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>alignmentBaseline</td>
                                 <td>alignment-baseline</td>
                                 <td>string</td>
@@ -55800,6 +59087,47 @@
                                 <td>item</td>
                                 <td></td>
                                 <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlBase</td>
+                                <td>xml:base</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlLang</td>
+                                <td>xml:lang</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>xmlSpace</td>
+                                <td>xml:space</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>pathLength</td>
+                                <td>path-length</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>item</td>
+                                <td></td>
+                                <td>
+                                    <div>
+                                        <span>This attribute lets specify the total length for the path, in user units. &nbsp;</span>
+                                        <span>Value type: <number> ; Default value: none; Animatable: yes &nbsp;</span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>alignmentBaseline</td>

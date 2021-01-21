@@ -116,7 +116,7 @@ md.genItem = function(model, ctx, callback) {
         }
         else {
             console.log(myname + '. Unknown statement tag/element: ' + model.wzTag + '/' + model.wzElement, model);
-            throw ctx.error(myname + '. Unknown statement tag/element: ' + model.wzTag + '/' + model.wzElement, model);
+            return callback(ctx.error(myname + '. Unknown statement tag/element: ' + model.wzTag + '/' + model.wzElement, model));
         }
     }
 };

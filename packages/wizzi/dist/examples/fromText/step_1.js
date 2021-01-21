@@ -39,6 +39,7 @@ var fromText_step_1 = function(step_callback) {
     heading1('EXAMPLE');
     createWizziFactory({}, function(err, wf) {
         if (err) {
+            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
             console.log('err', err);
             throw new Error(err.message);
         }

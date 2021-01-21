@@ -12,7 +12,6 @@ function NotImplementedError(message) {
     this.name = 'NotImplementedError';
     console.log('message', message);
     this.message = message;
-    this.stack = (new Error()).stack;
 }
 NotImplementedError.prototype.toString = function() {
     return this.message;
@@ -27,7 +26,6 @@ function InvalidRequestError(message, code) {
     console.log('message', message);
     this.message = message;
     this.code = code;
-    this.stack = (new Error()).stack;
 }
 InvalidRequestError.prototype.toString = function() {
     return this.message;
@@ -61,7 +59,6 @@ function NodeError(message, node) {
     this.message = msg.join('');
     console.log('NodeError', this.message);
     // set this.node = node
-    this.stack = (new Error()).stack;
 }
 NodeError.prototype.toString = function() {
     return this.message;
@@ -73,7 +70,6 @@ md.NodeError = NodeError;
 function NotFoundError(resourceType, name, message) {
     this.name = 'NotFoundError';
     this.message = resourceType + ': ' + name +' not found, message ' + message;
-    this.stack = (new Error()).stack;
 }
 NotFoundError.prototype.toString = function() {
     return this.message;
@@ -85,7 +81,6 @@ md.NotFoundError = NotFoundError;
 function IttfNotFoundError(resourceType, name, sourceUri) {
     this.name = 'IttfNotFoundError';
     this.message = resourceType + ': ' + name +' not found, processing document ' + md.getSrcPathInfo(sourceUri);
-    this.stack = (new Error()).stack;
 }
 IttfNotFoundError.prototype.toString = function() {
     return this.message;
@@ -104,7 +99,6 @@ function IttfLoadError(message, srcPath, node, ex) {
     if (node) {
         this.message += ('\n' + new NodeError('', node).message);
     }
-    this.stack = (new Error()).stack;
 }
 IttfLoadError.prototype.toString = function() {
     return this.message;
@@ -116,7 +110,6 @@ md.IttfLoadError = IttfLoadError;
 function WizziModelLoadError(message, srcPath, ex) {
     this.name = 'WizziModelLoadError';
     this.message = 'Error: ' + message + '\nLoading ittf document ' + md.getSrcPathInfo(srcPath);
-    this.stack = (new Error()).stack;
 }
 WizziModelLoadError.prototype.toString = function() {
     return this.message;
@@ -128,7 +121,6 @@ md.WizziModelLoadError = WizziModelLoadError;
 function ModelTransformationError(message, generation, srcPath, ex) {
     this.name = 'ModelTransformationError';
     this.message = 'Error: ' + message + '\nDuring generation:' + generation + ', processing document ' + md.getSrcPathInfo(srcPath);
-    this.stack = (new Error()).stack;
 }
 ModelTransformationError.prototype.toString = function() {
     return this.message;
@@ -141,7 +133,6 @@ function ArtifactGenerationError(message, generation, srcPath, ex) {
     this.name = 'ArtifactGenerationError';
     this.message = 'Error: ' + message +'\nDuring generation:' + generation +', processing document ' + md.getSrcPathInfo(srcPath);
     console.log('wizzi.artifact.errors.artifactGenerationError.message', this.message);
-    this.stack = (new Error()).stack;
 }
 ArtifactGenerationError.prototype.toString = function() {
     return this.message;
@@ -153,7 +144,6 @@ md.ArtifactGenerationError = ArtifactGenerationError;
 function WizziInvalidRequestError(message, srcPath, ex) {
     this.name = 'WizziInvalidRequestError';
     this.message = message;
-    this.stack = (new Error()).stack;
 }
 WizziInvalidRequestError.prototype.toString = function() {
     return this.message;
@@ -165,7 +155,6 @@ md.WizziInvalidRequestError = WizziInvalidRequestError;
 function RunnerServerError(message) {
     this.name = 'RunnerServerError';
     this.message = message;
-    this.stack = (new Error()).stack;
 }
 RunnerServerError.prototype.toString = function() {
     return this.message;
@@ -176,8 +165,7 @@ md.RunnerServerError = RunnerServerError;
 
 md.artifactGenerationError = function(message, generation, node) {
     var error = new md.ArtifactGenerationError(message, generation, node);
-    fail.warn(error);
-    throw error;
+    return error;
 };
 md.getSrcPathInfo = function(srcPath) {
     if (typeof (srcPath) === 'string') {
@@ -210,7 +198,6 @@ function FileError(message, ex) {
     this.name = 'FileError';
     this.message = message;
     this.inner = ex;
-    this.stack = (new Error()).stack;
 }
 FileError.prototype.toString = function() {
     return this.message;

@@ -129,17 +129,17 @@ $group
             return callback(loadModel)
 		+
 		var that = this
-		_ loadModel
-			@ ittfDocumentUri
-			_ this.createLoadContext
-				@ loadContext
-			f_cb( wizziModel )
-				return
-					_ callback
-						@ null
-						_ that.formatWizziModel
-							@ wizziModel
-							@ loadContext.formatOptions
+        _ loadModel
+            @ ittfDocumentUri
+            _ this.createLoadContext
+                @ loadContext
+            f_cb( wizziModel )
+                return
+                    _ callback
+                        @ null
+                        _ that.formatWizziModel
+                            @ wizziModel
+                            @ loadContext.formatOptions
 
 	m formatWizziModel
 		param model

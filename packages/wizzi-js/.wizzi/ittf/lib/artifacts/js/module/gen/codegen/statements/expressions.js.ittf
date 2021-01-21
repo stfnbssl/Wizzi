@@ -273,10 +273,13 @@
 				_ ctx.write(' ' + op + ' ' + (model.wzName || ''))
 				r_cb()
 			else
-				_ ctx.artifactGenerationError
-					@ "Invalid model. Two child statements are required. Model: " + util.inspect(model, {depth: 2})
-					@ "wizzi-codegen/lib/js/statements/expressions/emitOperators"
-					@ model
-				#
+                return 
+                    _ callback
+                        _ ctx.artifactGenerationError
+                            @ "Invalid model. Two child statements are required. Model: " + util.inspect(model, {depth: 2})
+                            @ "wizzi-codegen/lib/js/statements/expressions/emitOperators"
+                            @ model
+				$* 21/1/21
 					throw 
 						new Error("module.gen.statements.emitOperators Invalid model " + util.inspect(model, {depth: 2}))
+                *$

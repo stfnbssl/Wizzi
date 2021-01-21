@@ -51,11 +51,13 @@ var light_modelContexts_step_1 = function(step_callback) {
         ]
     }, function(err, wizziModel) {
         if (err) {
+            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
             console.log('err', err);
             throw new Error(err.message);
         }
         wizziIndex.gen(wizziModel, function(err, artifactText) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }

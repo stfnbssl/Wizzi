@@ -25,6 +25,7 @@ var wizziRepo = require('wizzi-repo');
 var fileInfoByPath = wizziUtils.fileInfoByPath;
 var async = require('async');
 var wizzi = null;
+var legacy = require('../../legacy');
 function createWizziFactory(globalContext, callback) {
     if (wizzi == null) {
         // The wizzi package will be a previous version from wizzi/node_modules
@@ -72,7 +73,12 @@ function loadModelAndGenerateArtifact(ittfDocumentUri, context, artifactName, ca
         wf.loadModelAndGenerateArtifact(ittfDocumentUri, {
             modelRequestContext: context, 
             artifactRequestContext: {}
-        }, artifactName, callback);
+        }, artifactName, function(err, artifact) {
+            if (err) {
+                return callback(err);
+            }
+            callback(null, artifact);
+        });
     });
 }
 function loadAndTransformModel(ittfDocumentUri, context, transformerName, callback) {

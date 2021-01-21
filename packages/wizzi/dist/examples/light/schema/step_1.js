@@ -47,6 +47,7 @@ var light_schema_step_1 = function(step_callback) {
         outputPackagePath: schemaFriendsOutputPath
     }, function(err, schemaPaths) {
         if (err) {
+            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
             console.log('err', err);
             throw new Error(err.message);
         }

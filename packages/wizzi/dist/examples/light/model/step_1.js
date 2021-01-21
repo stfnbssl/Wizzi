@@ -50,6 +50,7 @@ var light_model_step_1 = function(step_callback) {
         friends: friendsArray
     }, function(err, wizziModel) {
         if (err) {
+            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
             console.log('err', err);
             throw new Error(err.message);
         }
@@ -63,6 +64,7 @@ var light_model_step_1 = function(step_callback) {
             friends: friendsArray
         }, function(err, artifactText) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }

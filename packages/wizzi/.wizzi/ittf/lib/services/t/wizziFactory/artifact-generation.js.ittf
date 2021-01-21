@@ -77,29 +77,29 @@ $group
 								@ data artifactRequestContext
 					@ pman this.createProductionManager()
 		log 'wizzi.wizziFactory.generateArtifact', artifactName, ittfDocumentUri
-		_ generator.gen
-			@ artifactModel
-			@ genContext
-			function
-				param err
-				param result
-				if err
-					#
-						set err.artifactName = artifactName
-						set err.artifactIttfDocumentUri = ittfDocumentUri
-						return
-							_ callback(err)
-					#
-					log 'wizzi.wizziFactory.generateArtifact', typeof(err), err, err.length, err.length && err.length > 0 && err[0]
-					r_cb_wz_err( WizziFactoryError, generateArtifact, err )
-						{
-							@ message 'See inner error'
-							{ parameter
-								@ artifactName artifactName
-								@ artifactIttfDocumentUri ittfDocumentUri
-				var sw = new StringWriter()
-				_ result.toStream(sw)
-				_ callback(null, sw.toString())
+        _ generator.gen
+            @ artifactModel
+            @ genContext
+            function
+                param err
+                param result
+                if err
+                    #
+                        set err.artifactName = artifactName
+                        set err.artifactIttfDocumentUri = ittfDocumentUri
+                        return
+                            _ callback(err)
+                    #
+                    log 'wizzi.wizziFactory.generateArtifact', typeof(err), err, err.length, err.length && err.length > 0 && err[0]
+                    r_cb_wz_err( WizziFactoryError, generateArtifact, err )
+                        {
+                            @ message 'See inner error'
+                            { parameter
+                                @ artifactName artifactName
+                                @ artifactIttfDocumentUri ittfDocumentUri
+                var sw = new StringWriter()
+                _ result.toStream(sw)
+                _ callback(null, sw.toString())
 
 	#
 		# Loads a wizzi model from an IttfDocument and use it as
@@ -130,18 +130,18 @@ $group
 		+
 		var that = this
 		# load the wizzi model from an ittfDocument
-		_ this.loadModel
-			@ ittfDocumentUri
-			@ requestContext.modelRequestContext
-			f_cb( artifactModel )
-				# log 'wizzi.wizziFactory.loadModelAndGenerateArtifact', 'model loaded', artifactModel
-				# the loaded wizzi model becomes the artifactModel of the artifact generation
-				_ that.generateArtifact
-					@ artifactModel
-					@ ittfDocumentUri
-					@ artifactName
-					@ requestContext.artifactRequestContext
-					@ callback
+        _ this.loadModel
+            @ ittfDocumentUri
+            @ requestContext.modelRequestContext
+            f_cb( artifactModel )
+                # log 'wizzi.wizziFactory.loadModelAndGenerateArtifact', 'model loaded', artifactModel
+                # the loaded wizzi model becomes the artifactModel of the artifact generation
+                _ that.generateArtifact
+                    @ artifactModel
+                    @ ittfDocumentUri
+                    @ artifactName
+                    @ requestContext.artifactRequestContext
+                    @ callback
 
 	m loadModelAndGenerateArtifactFromText
         string ittfContent

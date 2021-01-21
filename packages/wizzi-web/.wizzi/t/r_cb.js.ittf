@@ -1,6 +1,7 @@
-﻿return
-	$params result|@@null
-	_ callback
-		@ null
-		$if result != null
-			@ ${result}
+﻿$group
+    $params result|@@null
+    return
+        _ callback
+            @ null
+            $if result != null
+                @ ${result}

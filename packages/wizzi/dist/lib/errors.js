@@ -198,8 +198,7 @@ md.RunnerServerError = RunnerServerError;
 
 md.artifactGenerationError = function(message, generation, node) {
     var error = new md.ArtifactGenerationError(message, generation, node);
-    fail.warn(error);
-    throw error;
+    return error;
 };
 md.getSrcPathInfo = function(srcPath) {
     if (typeof (srcPath) === 'string') {

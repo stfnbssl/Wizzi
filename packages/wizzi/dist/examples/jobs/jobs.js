@@ -181,6 +181,7 @@ function executeLoadModel(name, folder, schema, context, callback) {
     console.log('wizzi-core.examples.jobs.before-load ittfSource', ittfSource, 'schema', schema);
     loadWizziModel(ittfSource, context || {}, function(err, jsWizziModel) {
         if (err) {
+            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
             console.log('err', err);
             throw new Error(err.message);
         }
@@ -213,6 +214,7 @@ function executeJob(name, folder, schema, context, callback) {
     var ittfSource = path.join(__dirname, 'ittf', folder, schema === 'ittf' ? name + '.ittf' : name + '.' + schema + '.ittf');
     executeWizziJob(ittfSource, context || {}, function(err, jobResult) {
         if (err) {
+            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
             console.log('err', err);
             throw new Error(err.message);
         }

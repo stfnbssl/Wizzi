@@ -51,7 +51,7 @@ md.graphql = function(model, ctx, callback) {
             if (err) {
                 return callback(err);
             }
-            callback(null);
+            return callback(null);
         });
     });
 };
@@ -63,7 +63,7 @@ md.typeDef = function(ctx) {
 };
 md.scalarTypeDef = function(model, ctx, callback) {
     ctx.w( 'scalar ' + model.wzName );
-    callback(null);
+    return callback(null);
 };
 md.objectTypeDef = function(model, ctx, callback) {
     var impl = [];
@@ -81,7 +81,7 @@ md.objectTypeDef = function(model, ctx, callback) {
         }
         ctx.deindent();
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     });
 };
 md.fieldDef = function(ctx) {
@@ -107,7 +107,7 @@ md.fieldDef = function(ctx) {
                 var directiveString = model.isDeprecated ? ' @deprecated' : '';
                 var requiredChar = model.isRequired ? '!' : '';
                 ctx.w( model.wzName + argsString + ': ' + type + requiredChar + directiveString);
-                callback(null);
+                return callback(null);
             }
         };
 };
@@ -124,12 +124,12 @@ md.method = function(model, ctx, callback) {
             if (err) {
                 return callback(err);
             }
-            callback(null);
+            return callback(null);
         });
     }
     else {
         ctx.w(': ' + model.type);
-        callback(null);
+        return callback(null);
     }
 };
 md.interfaceTypeDef = function(model, ctx, callback) {
@@ -141,7 +141,7 @@ md.interfaceTypeDef = function(model, ctx, callback) {
         }
         ctx.deindent();
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     });
 };
 md.unionTypeDef = function(model, ctx, callback) {
@@ -155,7 +155,7 @@ md.unionTypeDef = function(model, ctx, callback) {
         ctx.write( item.wzName );
     }
     ctx.w();
-    callback(null);
+    return callback(null);
 };
 md.enumTypeDef = function(model, ctx, callback) {
     ctx.w( 'enum ' + model.wzName + ' {' );
@@ -167,7 +167,7 @@ md.enumTypeDef = function(model, ctx, callback) {
     }
     ctx.deindent();
     ctx.w( '}' );
-    callback(null);
+    return callback(null);
 };
 md.inputObjectTypeDef = function(model, ctx, callback) {
     ctx.write( 'input ' + model.wzName + ' ');
@@ -175,7 +175,7 @@ md.inputObjectTypeDef = function(model, ctx, callback) {
         md.objectValueDef(model.objectValueDef, ctx, callback);
     }
     else {
-        callback(null);
+        return callback(null);
     }
 };
 md.objectValueDef = function(model, ctx, callback) {
@@ -187,14 +187,14 @@ md.objectValueDef = function(model, ctx, callback) {
         }
         ctx.deindent();
         ctx.w('}');
-        callback(null);
+        return callback(null);
     });
 };
 md.valueDef = function(ctx) {
     return function(model, callback) {
             console.log('valueDef', model.wzElement, model.wzName);
             ctx.w( model.wzName + ': ' + model.type);
-            callback(null);
+            return callback(null);
         };
 };
 md.directiveDef = function(model, ctx, callback) {
@@ -214,7 +214,7 @@ md.directiveDef = function(model, ctx, callback) {
     }
     var locString = loc.length > 0 ? ' on ' + loc.join(' | ') : '';
     ctx.w( 'directive ' + model.wzName + argsString + locString );
-    callback(null);
+    return callback(null);
 };
 md.operation = function(ctx) {
     return function(model, callback) {
@@ -240,13 +240,13 @@ md.query = function(model, ctx, callback) {
             }
             ctx.deindent();
             ctx.w( '}' );
-            callback(null);
+            return callback(null);
         });
     }
     else {
         ctx.deindent();
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     }
 };
 md.selectionSet = function(model, ctx, callback) {
@@ -264,7 +264,7 @@ md.selectionSet = function(model, ctx, callback) {
         }
         ctx.deindent();
         ctx.w( '}' );
-        callback(null);
+        return callback(null);
     });
 };
 md.selection = function(ctx) {
@@ -281,7 +281,7 @@ md.field = function(model, ctx, callback) {
     ctx.write( model.wzName );
     writeArguments(model.xarguments, ctx);
     ctx.w();
-    callback(null);
+    return callback(null);
 };
 md.fragmentSpread = function(model, ctx, callback) {
     var directiveString = getDirectives(model.directives);
@@ -290,7 +290,7 @@ md.fragmentSpread = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        callback(null);
+        return callback(null);
     });
 };
 md.inlineFragment = function(model, ctx, callback) {
@@ -304,11 +304,11 @@ md.inlineFragment = function(model, ctx, callback) {
             }
             ctx.deindent();
             ctx.w('}');
-            callback(null);
+            return callback(null);
         });
     }
     else {
-        callback(null);
+        return callback(null);
     }
 };
 md.fragment = function(model, ctx, callback) {
@@ -319,12 +319,12 @@ md.fragment = function(model, ctx, callback) {
             if (err) {
                 return callback(err);
             }
-            callback(null);
+            return callback(null);
         });
     }
     else {
         ctx.w();
-        callback(null);
+        return callback(null);
     }
 };
 md.xargument = function(ctx) {
@@ -358,7 +358,7 @@ md.value = function(model, ctx, callback) {
         method(model, ctx, callback);
     }
     else {
-        callback(null);
+        return callback(null);
     }
 };
 md.arrayValue = function(model, ctx, callback) {
@@ -371,7 +371,7 @@ md.arrayValue = function(model, ctx, callback) {
         }
         ctx.write( ']' );
         ctx.genState = saveState;
-        callback(null);
+        return callback(null);
     });
 };
 md.objectValue = function(model, ctx, callback) {
@@ -385,7 +385,7 @@ md.objectValue = function(model, ctx, callback) {
         ctx.write( '}' );
     });
     ctx.genState = saveState;
-    callback(null);
+    return callback(null);
 };
 function writeArguments(args, ctx) {
     // sync method
@@ -469,7 +469,7 @@ function getArgumentDeclaration(model, callback) {
     if (value) {
         ret.push(' : ');
         ret.push( value );
-        callback(null, ret.join(''));
+        return callback(null, ret.join(''));
     }
     else {
         if (model.value) {
@@ -479,7 +479,7 @@ function getArgumentDeclaration(model, callback) {
                 }
                 ret.push(' : ');
                 ret.push( result );
-                callback(null, ret.join(''));
+                return callback(null, ret.join(''));
             });
         }
     }

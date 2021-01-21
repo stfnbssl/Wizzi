@@ -42,7 +42,7 @@ md.gen = function gen(model, ctx, callback) {
             return callback(err);
         }
         console.log(myname, 'exit err', err);
-        callback(null, ctx);
+        return callback(null, ctx);
     })
 };
 function getGenItem(ctx) {
@@ -53,7 +53,7 @@ function getGenItem(ctx) {
                     if (err) {
                         return callback(err);
                     }
-                    callback(null);
+                    return callback(null);
                 });
             }
             else {
@@ -85,7 +85,7 @@ function genItems(items, ctx, options, callback) {
         if (indent) {
             ctx.deindent();
         }
-        callback(null);
+        return callback(null);
     });
 }
 stm.vue = function(model, ctx, callback) {

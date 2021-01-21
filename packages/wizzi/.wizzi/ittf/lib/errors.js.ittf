@@ -96,8 +96,11 @@
             param node
             var error
                 new md.ArtifactGenerationError(message, generation, node)
+            return error
+            $* 21/1/21
             _ fail.warn(error)
             throw error
+            *$
 
 	set md.getSrcPathInfo
 		function

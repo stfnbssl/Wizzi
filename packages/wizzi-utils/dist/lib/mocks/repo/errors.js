@@ -10,7 +10,6 @@ var md = module.exports = globalErrors;
 function RepoIOError(message, uri, innerEx) {
     this.name = 'RepoIOError';
     this.message = message + '\nuri: ' + uri;
-    this.stack = (new Error()).stack;
 }
 RepoIOError.prototype.toString = function() {
     return this.message;

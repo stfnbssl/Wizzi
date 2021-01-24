@@ -43,9 +43,7 @@
                                     . css
                         catch ex
                             if ex.name === 'CssSyntaxError'
-                                return
-                                    _ callback
-                                    
+                                r_cb()
                                 
                         _ ctx.hydrate
                             {
@@ -54,7 +52,7 @@
                                         @ indentValue 0
                                         [ text
                                             @ postCssResult                        
-						_ callback(null, ctx)
+						r_cb(ctx)
 
 	async/md-gen-item( )
 

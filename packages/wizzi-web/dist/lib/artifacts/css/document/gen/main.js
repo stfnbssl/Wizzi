@@ -29,7 +29,7 @@ md.gen = function(model, ctx, callback) {
         } 
         catch (ex) {
             if (ex.name === 'CssSyntaxError') {
-                return callback();
+                return callback(null);
             }
         } 
         ctx.hydrate({
@@ -42,7 +42,7 @@ md.gen = function(model, ctx, callback) {
                 }
             ]
         });
-        callback(null, ctx);
+        return callback(null, ctx);
     })
 };
 md.getGenItem = function(ctx) {

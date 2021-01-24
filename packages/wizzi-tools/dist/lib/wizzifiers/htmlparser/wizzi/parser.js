@@ -35,16 +35,42 @@ var COULD_BE_ENDOFTEXT = 31;
 var START_SWIG_1 = 41;
 var SWIG = 42;
 var END_SWIG_1 = 43;
+var stateText = {
+    n0: "START", 
+    n1: "WAIT_TAG_NAME", 
+    n2: "TAG_NAME", 
+    n3: "ENDTAG_NAME", 
+    n4: "WAIT_ATTR_NAME", 
+    n5: "ATTR_NAME", 
+    n6: "WAIT_ATTR_EQU", 
+    n7: "WAIT_ATTR_VALUE", 
+    n8: "ATTR_VALUE", 
+    n9: "TEXT", 
+    n10: "WAIT_EMPTY_ELEMENT_TAG_RIGHT_CLOSE", 
+    n11: "DOCTYPE", 
+    n12: "START_COMMENT_1", 
+    n13: "START_COMMENT_2", 
+    n24: "COMMENT", 
+    n25: "END_COMMENT_1", 
+    n26: "END_COMMENT_2", 
+    n31: "COULD_BE_ENDOFTEXT", 
+    n41: "START_SWIG_1", 
+    n42: "SWIG", 
+    n43: "END_SWIG_1"
+};
 md.Parser = function(handlers) {
     this.handlers = handlers;
 };
 md.Parser.prototype.write = function(input) {
     var state = {
+        input: input, 
+        pos: 0, 
         cur: START, 
         prev: null, 
         stack: [], 
         line: 1, 
         col: 0, 
+        currenttagname: null, 
         tagcount: 0, 
         chprev: null
     };
@@ -53,12 +79,18 @@ md.Parser.prototype.write = function(input) {
         state[k] = this.handlers[k];
     }
     var ch,
+        i,
         l = input.length;
-    for (var i = 0; i < l; i++) {
+    while (true) {
+        if (state.pos >= l) {
+            return ;
+        }
+        i = state.pos;
         ch = input[i];
-        // log i, l, ch
+        state.pos++;
+        // log 'main', 'pos,line,col', state.pos, state.line, state.col, 'ch,state', ch, stateText['n'+state.cur], 'currenttagname', state.currenttagname
         if (state.cur === COULD_BE_ENDOFTEXT) {
-            // log 'COULD_BE_ENDOFTEXT', ch
+            // log '+COULD_BE_ENDOFTEXT, ch', ch
             if (ch === '/') {
                 priv.ontext(state);
                 priv.resetStateOpenTag(state);
@@ -81,7 +113,7 @@ md.Parser.prototype.write = function(input) {
         }
         else if (state.cur === START_SWIG_1 && ch !== '%') {
             if (state.prev === null) {
-                priv.error("Missing prev state on START_SWIG_1" + state.cur, state);
+                priv.error("Missing prev state on START_SWIG_1" + stateText['n'+state.cur], state);
             }
             state.cur = state.prev;
             priv.append('{', state);
@@ -102,8 +134,18 @@ priv.resetStateOpenTag = function(state) {
 };
 priv.loop = function(ch, state) {
     state.col++;
-    // log 'priv.loop', ch, state.cur, state.quote
+    // log 'priv.loop', ch, stateText['n'+state.cur], state.pos, state.quote
+    if (ch === '\r' || ch === '\n') {
+        // log '===================================rn', ch === '\r', ch === '\n'
+        if (ch === '\n' && state.chprev === '\r') {
+            // log '===================================n prev r'
+            return ;
+        }
+        state.line++;
+        state.col = 0;
+    }
     if (priv.specialCases(ch, state)) {
+        // log ch, "is specialCases"
         return ;
     }
     if (ch === '<') {
@@ -142,14 +184,6 @@ priv.loop = function(ch, state) {
         priv.doPercent(state);
     }
     else if (ch === '\r' || ch === '\n') {
-        if (ch === '\n' && state.chprev === '\r') {
-            return ;
-        }
-        if (ch === '\r' && state.chprev === '\n') {
-            return ;
-        }
-        state.line++;
-        state.col = 0;
         priv.doWhite(ch, state);
         // _ priv.doLF(state)
     }
@@ -164,6 +198,22 @@ priv.loop = function(ch, state) {
     }
 };
 priv.specialCases = function(ch, state) {
+    // log 'specialCases.state.currenttagname', state.currenttagname
+    if (state.currenttagname === 'script' || state.currenttagname === 'style') {
+        if (isEndTag(state.currenttagname, ch, state)) {
+            // log 'isEndTag', state.currenttagname
+            priv.ontext(state);
+            priv.resetStateOpenTag(state);
+            state.cur = TEXT;
+            // (NO done in priv.onclosetag) _ state.stack.pop
+            priv.onclosetag(state);
+            return true;
+        }
+        else {
+            state.text = (state.text || '') + ch;
+            return true;
+        }
+    }
     if (state.cur === TEXT && state.text) {
         // log 'TEXT', ch, state.quote, state.text.length
     }
@@ -225,7 +275,7 @@ priv.doLT = function(state) {
         priv.onopentag(state);
     }
     else {
-        priv.error("doLT invalid state.cur " + state.cur, state);
+        priv.error("doLT invalid state.cur " + stateText['n'+state.cur], state);
     }
     state.cur = WAIT_TAG_NAME;
 };
@@ -259,7 +309,7 @@ priv.doGT = function(state) {
         state.doctype = null;
     }
     else {
-        priv.error("doGT invalid state.cur " + state.cur, state);
+        priv.error("doGT invalid state.cur " + stateText['n'+state.cur], state);
     }
     state.cur = TEXT;
 };
@@ -452,13 +502,15 @@ priv.append = function(ch, state) {
         state.swig = (state.swig || '') + ch;
     }
     else {
-        priv.error("append invalid state.cur " + state.cur, state);
+        priv.error("append invalid ch: " + ch + " state.cur: " + stateText['n'+state.cur], state);
     }
 };
 priv.onopentag = function(state) {
     state.tagcount++;
     state.stack.push(state.tagname);
-    // log 'onopentag', state.tagname
+    if (state.tagname == 'script' || state.tagname == 'style') {
+        console.log('onopentag', state.tagname, 'line', state.line);
+    }
     state.currenttagname = state.tagname;
     if (state.onopentag) {
         state.onopentag(state.tagname, state.attribs);
@@ -471,14 +523,18 @@ priv.onopentag = function(state) {
     }
 };
 priv.onclosetag = function(state) {
-    // log 'onclosetag', state.tagname
+    if (state.tagname == 'script' || state.tagname == 'style') {
+        console.log('onclosetag', state.tagname, 'line', state.line);
+    }
     if (state.onclosetag) {
         if (state.tagname in voidElements) {
             // done already
         }
         else {
             state.stack.pop();
+            // log 'state.stack after onclosetag', state.stack
             state.onclosetag(state.tagname);
+            state.currenttagname = null;
         }
     }
 };
@@ -499,10 +555,6 @@ priv.ontext = function(state) {
     if (state.text.length == 0) {
         return ;
     }
-    if (!(isText(state.text))) {
-        return ;
-    }
-    // log 'ontext', state.text
     if (state.ontext) {
         state.ontext(state.text);
     }
@@ -515,7 +567,8 @@ priv.onswig = function(state) {
     state.swig = '';
 };
 priv.error = function(message, state) {
-    log('state', state);
+    delete state.input
+    // log 'current state', state
     throw new Error(message + ' at line ' + state.line + ' col ' + state.col + ' text ' + state.text);
 };
 function isText(text) {
@@ -551,8 +604,34 @@ function isOpenTag(input, len, start) {
 function isOpenComment(input, len, start) {
     return (len - start) > 3 && input.substr(start, 3) === '!--';
 }
+function isEndTag(tagName, ch, state) {
+    // log 'isEndTag 1', ch, state.pos-1
+    if (ch != '<') {
+        return false;
+    }
+    var ch2 = state.input[state.pos];
+    // log 'isEndTag 2', ch2, state.pos
+    if (ch2 != '/') {
+        return false;
+    }
+    for (var i = 0; i < tagName.length; i++) {
+        ch2 = state.input[state.pos+1+i];
+        // log 'isEndTag 3', ch2, state.pos+1+i, i, tagName.length, tagName
+        if (isTagChar(ch2) == false) {
+            return false;
+        }
+    }
+    ch2 = state.input[state.pos+1+tagName.length];
+    // log 'isEndTag 4', ch2
+    if (ch2 != '>') {
+        return false;
+    }
+    // log 'isEndTag 5', true
+    state.pos += 2+tagName.length;
+    return true;
+}
 function isTagChar(ch) {
-    return (ch === ' ') || (ch === '\t');
+    return ch.match(/[_]|[a-zA-Z]/i);
 }
 function isWhite(ch) {
     return (ch === ' ') || (ch === '\t') || (ch === '\r') || (ch === '\n');

@@ -19,28 +19,28 @@
 					return
 						_ writeRule(cnt, model, ctx, callback);
 				else
-					_ callback
+					r_cb()
 
 			async/cnt-stm( classRule )
 				if model.hasContent()
 					return
 						_ writeRule(cnt, model, ctx, callback);
 				else
-					_ callback
+					r_cb()
 
 			async/cnt-stm( idRule )
 				if model.hasContent()
 					return
 						_ writeRule(cnt, model, ctx, callback);
 				else
-					_ callback
+					r_cb()
 
 			async/cnt-stm( gtRule )
 				if model.hasContent()
 					return 
 						_ writeRule(cnt, model, ctx, callback);
 				else
-					_ callback
+					r_cb()
 
 			async/cnt-stm( ampersand )
 				if model.hasContent()
@@ -79,7 +79,7 @@
 									# _ writeRule(cnt, model, ctx);
 									_ ctx.deindent()
 									_ ctx.w('}');
-									_ callback
+									r_cb()
 				else
 					_ cnt.genItems
 						@ model.rules
@@ -90,7 +90,7 @@
 							# _ writeRule(cnt, model, ctx);
 							_ ctx.deindent()
 							_ ctx.w('}');
-							_ callback
+							r_cb()
 
 			async/cnt-stm( fontface )
 				_ ctx.w('@font-face {');
@@ -115,7 +115,7 @@
 					f_cb()
 						_ ctx.deindent()
 						_ ctx.w('}');
-						_ callback
+						r_cb()
 
 			async/cnt-stm( keyframes )
 				_ ctx.w('@' + (model.vendor || '') + 'keyframes ' + model.wzName + ' {')
@@ -126,7 +126,7 @@
 						@ indent true
 					f_cb()
 						_ ctx.w('}')
-						_ callback
+						r_cb()
 
 			async/cnt-stm( keyframe )
 				_ ctx.w(model.wzName + ' {')
@@ -137,11 +137,11 @@
 						@ indent true
 					f_cb()
 						_ ctx.w('}')
-						_ callback
+						r_cb()
 
 			async/cnt-stm( ximport )
 				_ ctx.w('@import ' + model.wzName + ';')
-				_ callback
+				r_cb()
 
 			async/cnt-stm( comment )
 				if model.rules && model.rules.length > 0
@@ -162,13 +162,13 @@
 							_ ctx.deindent()
 							if ctx.__comment_level === 0
 								_ ctx.w('*/')
-							_ callback
+							r_cb()
 				else 
 					if ctx.__comment_level > 0
 						_ ctx.w(model.wzName ? (' ' + model.wzName) : '')
 					else 
 						_ ctx.w('/**' + (model.wzName ? (' ' + model.wzName) : '') + ' */')
-					_ callback
+					r_cb()
 
 	function writeRule
 		param cnt
@@ -220,7 +220,7 @@
 									f_cb( artifactText )
 										log myname, 'artifactText', artifactText
 										_ ctx.w('background-image: url("data:image/svg+xml,' + artifactText + '");')
-										_ callback
+										r_cb()
 					else
 						throw ctx.error(myname + '. writeProperty unknown  prop.wzElement: ' + prop.wzElement)
 				else

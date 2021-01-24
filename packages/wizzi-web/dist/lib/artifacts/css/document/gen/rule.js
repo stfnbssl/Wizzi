@@ -15,7 +15,7 @@ md.load = function(cnt) {
             return writeRule(cnt, model, ctx, callback);;
         }
         else {
-            callback();
+            return callback(null);
         }
     };
     cnt.stm.classRule = function(model, ctx, callback) {
@@ -23,7 +23,7 @@ md.load = function(cnt) {
             return writeRule(cnt, model, ctx, callback);;
         }
         else {
-            callback();
+            return callback(null);
         }
     };
     cnt.stm.idRule = function(model, ctx, callback) {
@@ -31,7 +31,7 @@ md.load = function(cnt) {
             return writeRule(cnt, model, ctx, callback);;
         }
         else {
-            callback();
+            return callback(null);
         }
     };
     cnt.stm.gtRule = function(model, ctx, callback) {
@@ -39,7 +39,7 @@ md.load = function(cnt) {
             return writeRule(cnt, model, ctx, callback);;
         }
         else {
-            callback();
+            return callback(null);
         }
     };
     cnt.stm.ampersand = function(model, ctx, callback) {
@@ -81,7 +81,7 @@ md.load = function(cnt) {
                     // _ writeRule(cnt, model, ctx);
                     ctx.deindent();
                     ctx.w('}');
-                    callback();
+                    return callback(null);
                 });
             });
         }
@@ -95,7 +95,7 @@ md.load = function(cnt) {
                 // _ writeRule(cnt, model, ctx);
                 ctx.deindent();
                 ctx.w('}');
-                callback();
+                return callback(null);
             });
         }
     };
@@ -128,7 +128,7 @@ md.load = function(cnt) {
             }
             ctx.deindent();
             ctx.w('}');
-            callback();
+            return callback(null);
         });
     };
     cnt.stm.keyframes = function(model, ctx, callback) {
@@ -140,7 +140,7 @@ md.load = function(cnt) {
                 return callback(err);
             }
             ctx.w('}');
-            callback();
+            return callback(null);
         });
     };
     cnt.stm.keyframe = function(model, ctx, callback) {
@@ -152,12 +152,12 @@ md.load = function(cnt) {
                 return callback(err);
             }
             ctx.w('}');
-            callback();
+            return callback(null);
         });
     };
     cnt.stm.ximport = function(model, ctx, callback) {
         ctx.w('@import ' + model.wzName + ';');
-        callback();
+        return callback(null);
     };
     cnt.stm.comment = function(model, ctx, callback) {
         if (model.rules && model.rules.length > 0) {
@@ -180,7 +180,7 @@ md.load = function(cnt) {
                 if (ctx.__comment_level === 0) {
                     ctx.w('*/');
                 }
-                callback();
+                return callback(null);
             });
         }
         else {
@@ -190,7 +190,7 @@ md.load = function(cnt) {
             else {
                 ctx.w('/**' + (model.wzName ? (' ' + model.wzName) : '') + ' */');
             }
-            callback();
+            return callback(null);
         }
     };
 };
@@ -228,7 +228,7 @@ function getWriteProperty(ctx) {
                             }
                             console.log(myname, 'artifactText', artifactText);
                             ctx.w('background-image: url("data:image/svg+xml,' + artifactText + '");');
-                            callback();
+                            return callback(null);
                         });
                     });
                 }

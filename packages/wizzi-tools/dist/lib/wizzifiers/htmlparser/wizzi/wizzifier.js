@@ -53,7 +53,7 @@ function parseInternal(html, options, callback) {
             wizziTree = n;
         }, 
         ontext: function(text) {
-            // log "Text", text, wizziTree.tag
+            // log "================= Text", text, wizziTree.tag
             var lines = file.splitLines(text.trim());
             if (wizziTree.swig) {
                 // log '++++++++++ wizziTree.swig'
@@ -69,7 +69,7 @@ function parseInternal(html, options, callback) {
             }
             else if ('script' === wizziTree.tag) {
                 var literal = lines.join('\n');
-                console.log('literal', literal, wizziTree.attribs['lang']);
+                // log 'literal', literal, wizziTree.attribs['lang']
                 options.wizziIncludes.push({
                     kind: wizziTree.attribs['lang'] || wizziTree.attribs['language'] || 'js', 
                     node: wizziTree, 
@@ -185,19 +185,25 @@ function parseInternal(html, options, callback) {
     var addedWrapper = false;
     try {
         if (html && html.length > 0) {
-            var i1 = html.indexOf('<');
-            var i2 = html.indexOf('>');
-            if (i1 > -1 && i2 > -1) {
-                var temp = html.substr(i1+1, i2-i1-1);
-                console.log('wizzi-tools.htmlparser.addedWrapper.temp', temp);
-                if (temp.toLowerCase().indexOf('!doctype') > -1) {
-                    html = '<html>' + html.substr(i2+1) + '</html>';
+            if (html.substr(0,'<html>'.length) == '<html>' || html.substr(0,'<!doctype>'.length) == '<!doctype>') {
+                console.log('html document has root tag html');
+            }
+            else {
+                console.log(html.substr(0,'<html>'.length), html.substr(0,'<!doctype>'.length));
+                var i1 = html.indexOf('<');
+                var i2 = html.indexOf('>');
+                if (i1 > -1 && i2 > -1) {
+                    var temp = html.substr(i1+1, i2-i1-1);
+                    console.log('wizzi-tools.htmlparser.addedWrapper.temp', temp);
+                    if (temp.toLowerCase().indexOf('!doctype') > -1) {
+                        html = '<html>' + html.substr(i2+1) + '</html>';
+                    }
+                    else {
+                        html = '<html>' + html + '</html>';
+                    }
+                    addedWrapper = true;
+                    // log 'wizzi-tools.htmlparser.addedWrapper.html', html
                 }
-                else {
-                    html = '<html>' + html + '</html>';
-                }
-                addedWrapper = true;
-                console.log('wizzi-tools.htmlparser.addedWrapper.html', html);
             }
             parser.write(html);
             parser.end();
@@ -425,6 +431,6 @@ md.getWizzifierIncludes = function(options, callback) {
     }, callback);
 };
 function wizzify(html, options, callback) {
-    console.log('wizzi-tools.htmlparser.wizzify.html', html);
+    // log 'wizzi-tools.htmlparser.wizzify.html', html
     parseInternal(html, options, callback);
 }

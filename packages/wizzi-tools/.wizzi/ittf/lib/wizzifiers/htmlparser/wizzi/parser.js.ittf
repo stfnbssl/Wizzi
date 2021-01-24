@@ -43,6 +43,31 @@
     var START_SWIG_1 = 41
     var SWIG = 42
     var END_SWIG_1 = 43
+
+    var stateText
+        {
+            @ n0 "START"
+            @ n1 "WAIT_TAG_NAME"
+            @ n2 "TAG_NAME"
+            @ n3 "ENDTAG_NAME"
+            @ n4 "WAIT_ATTR_NAME"
+            @ n5 "ATTR_NAME"
+            @ n6 "WAIT_ATTR_EQU"
+            @ n7 "WAIT_ATTR_VALUE"
+            @ n8 "ATTR_VALUE"
+            @ n9 "TEXT"
+            @ n10 "WAIT_EMPTY_ELEMENT_TAG_RIGHT_CLOSE"
+            @ n11 "DOCTYPE"
+            @ n12 "START_COMMENT_1"
+            @ n13 "START_COMMENT_2"
+            @ n24 "COMMENT"
+            @ n25 "END_COMMENT_1"
+            @ n26 "END_COMMENT_2"
+            @ n31 "COULD_BE_ENDOFTEXT"
+            @ n41 "START_SWIG_1"
+            @ n42 "SWIG"
+            @ n43 "END_SWIG_1"
+
     
 	set md.Parser =
         function 
@@ -54,12 +79,15 @@
             param input
             var state
                 { 
+                    @ input input
+                    @ pos 0
                     @ cur START
                     @ prev null
                     @ stack
                         [ 
                     @ line 1
                     @ col 0
+                    @ currenttagname null
                     @ tagcount 0
                     @ chprev null
             _ priv.resetStateOpenTag(state)
@@ -67,12 +95,22 @@
                 set state[k] = this.handlers[k]
             var 
                 decl ch
+                decl i
                 decl l = input.length
-            for var i = 0; i < l; i++
+            while true
+            $$ for var i = 0; i < l; i++
+                if state.pos >= l
+                    return
+                $*
+                if state.pos >= 5000
+                    return
+                *$
+                set i = state.pos
                 set ch = input[i]
-				# log i, l, ch
+                set state.pos++
+				# log 'main', 'pos,line,col', state.pos, state.line, state.col, 'ch,state', ch, stateText['n'+state.cur], 'currenttagname', state.currenttagname
                 if state.cur === COULD_BE_ENDOFTEXT
-					# log 'COULD_BE_ENDOFTEXT', ch
+					# log '+COULD_BE_ENDOFTEXT, ch', ch
                     if ch === '/'
                         _ priv.ontext(state)
                         _ priv.resetStateOpenTag(state)
@@ -89,7 +127,7 @@
                             set state.text += '<'
                 elif state.cur === START_SWIG_1 && ch !== '%'
                     if state.prev === null
-                        _ priv.error("Missing prev state on START_SWIG_1" + state.cur, state)
+                        _ priv.error("Missing prev state on START_SWIG_1" + stateText['n'+state.cur], state)
                     set state.cur = state.prev
                     _ priv.append('{', state)
                 _ priv.loop(ch, state)
@@ -114,8 +152,16 @@
             param ch
             param state
             set state.col++
-			# log 'priv.loop', ch, state.cur, state.quote
+			# log 'priv.loop', ch, stateText['n'+state.cur], state.pos, state.quote
+            if ch === '\r' || ch === '\n'
+                # log '===================================rn', ch === '\r', ch === '\n'
+                if ch === '\n' && state.chprev === '\r'
+                    # log '===================================n prev r'
+                    return 
+                set state.line++
+                set state.col = 0
             if priv.specialCases(ch, state)
+                # log ch, "is specialCases"
                 return 
             if ch === '<'
                 _ priv.doLT(state)
@@ -141,12 +187,6 @@
             elif ch === '%'
                 _ priv.doPercent(state)
             elif ch === '\r' || ch === '\n'
-                if ch === '\n' && state.chprev === '\r'
-                    return 
-                if ch === '\r' && state.chprev === '\n'
-                    return 
-                set state.line++
-                set state.col = 0
 				_ priv.doWhite(ch, state)
                 # _ priv.doLF(state)
             elif isWhite(ch)
@@ -160,7 +200,20 @@
         function 
             param ch
             param state
-			if state.cur === TEXT && state.text
+            # log 'specialCases.state.currenttagname', state.currenttagname
+            if state.currenttagname === 'script' || state.currenttagname === 'style'
+                if isEndTag(state.currenttagname, ch, state)
+                    # log 'isEndTag', state.currenttagname
+                    _ priv.ontext(state)
+                    _ priv.resetStateOpenTag(state)
+                    set state.cur = TEXT
+                    # (NO done in priv.onclosetag) _ state.stack.pop
+                    _ priv.onclosetag(state)
+                    return true
+                else
+                    set state.text = (state.text || '') + ch
+                    return true
+            if state.cur === TEXT && state.text
 				# log 'TEXT', ch, state.quote, state.text.length
             if state.cur === COMMENT && ch !== '-'
                 set state.comment = (state.comment || '') + ch
@@ -208,7 +261,7 @@
                 set state.attribs[state.attrname] = null
                 _ priv.onopentag(state)
 			else 
-                _ priv.error("doLT invalid state.cur " + state.cur, state)
+                _ priv.error("doLT invalid state.cur " + stateText['n'+state.cur], state)
             set state.cur = WAIT_TAG_NAME
     
 	set priv.doGT =
@@ -235,7 +288,7 @@
                 _ priv.ondoctype(state)
                 set state.doctype = null
             else 
-                _ priv.error("doGT invalid state.cur " + state.cur, state)
+                _ priv.error("doGT invalid state.cur " + stateText['n'+state.cur], state)
             set state.cur = TEXT
     
 	set priv.doSlash =
@@ -407,7 +460,7 @@
             elif state.cur === SWIG
                 set state.swig = (state.swig || '') + ch
             else 
-                _ priv.error("append invalid state.cur " + state.cur, state)
+                _ priv.error("append invalid ch: " + ch + " state.cur: " + stateText['n'+state.cur], state)
     
 	set priv.onopentag =
         function 
@@ -415,7 +468,8 @@
             set state.tagcount++
             _ state.stack.push
                 @ state.tagname
-			# log 'onopentag', state.tagname
+			if state.tagname == 'script' || state.tagname == 'style'
+                log 'onopentag', state.tagname, 'line', state.line
             set state.currenttagname = state.tagname
             if state.onopentag
                 _ state.onopentag
@@ -430,14 +484,17 @@
 	set priv.onclosetag =
         function 
             param state
-			# log 'onclosetag', state.tagname
+			if state.tagname == 'script' || state.tagname == 'style'
+                log 'onclosetag', state.tagname, 'line', state.line
             if state.onclosetag 
 				if state.tagname in voidElements
 					# done already
 				else
 					_ state.stack.pop
+                    # log 'state.stack after onclosetag', state.stack
 					_ state.onclosetag
 						@ state.tagname
+                    set state.currenttagname = null
     
 	set priv.oncomment =
         function 
@@ -460,9 +517,10 @@
                 return 
             if state.text.length == 0
                 return 
+            $* TODO WHY?
             if !(isText(state.text))
                 return 
-			# log 'ontext', state.text
+            *$
             if state.ontext
                 _ state.ontext
                     @ state.text
@@ -480,7 +538,8 @@
         function 
             param message
             param state
-            _ log('state', state)
+            delete state.input
+            # log 'current state', state
             throw 
                 new Error(message + ' at line ' + state.line + ' col ' + state.col + ' text ' + state.text)
     
@@ -522,9 +581,33 @@
         param start
         return (len - start) > 3 && input.substr(start, 3) === '!--'
     
-	function isTagChar
+	function isEndTag
+        param tagName
         param ch
-        return (ch === ' ') || (ch === '\t')
+        param state
+        # log 'isEndTag 1', ch, state.pos-1
+        if ch != '<'
+            return false
+        var ch2 = state.input[state.pos]
+        # log 'isEndTag 2', ch2, state.pos
+        if ch2 != '/'
+            return false
+        for var i = 0; i < tagName.length; i++
+            set ch2 = state.input[state.pos+1+i]
+            # log 'isEndTag 3', ch2, state.pos+1+i, i, tagName.length, tagName
+            if isTagChar(ch2) == false
+                return false
+        set ch2 = state.input[state.pos+1+tagName.length]
+        # log 'isEndTag 4', ch2
+        if ch2 != '>'
+            return false
+        # log 'isEndTag 5', true
+        set state.pos += 2+tagName.length
+        return true
+
+    function isTagChar
+        param ch
+        return ch.match(/[_]|[a-zA-Z]/i)
     
 	function isWhite
         param ch

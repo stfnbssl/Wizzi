@@ -151,7 +151,7 @@
 						@ ontext
 							function 
 								param text
-								# log "Text", text, wizziTree.tag
+								# log "================= Text", text, wizziTree.tag
 								var lines
 									_ file.splitLines
 										_ text.trim()
@@ -171,7 +171,7 @@
 											_ wizziTree.children.push(n)
 								elif 'script' === wizziTree.tag
 									var literal = lines.join('\n')
-									log 'literal', literal, wizziTree.attribs['lang']
+									# log 'literal', literal, wizziTree.attribs['lang']
 									_ options.wizziIncludes.push
 										{
 											@ kind wizziTree.attribs['lang'] || wizziTree.attribs['language'] || 'js'
@@ -291,19 +291,23 @@
 			var addedWrapper = false
 			try
 				if html && html.length > 0
-					var i1 = html.indexOf('<')
-					var i2 = html.indexOf('>')
-					if i1 > -1 && i2 > -1
-						var temp = html.substr(i1+1, i2-i1-1)
-						log 'wizzi-tools.htmlparser.addedWrapper.temp', temp
-						if temp.toLowerCase().indexOf('!doctype') > -1
-							set html = '<html>' + html.substr(i2+1) + '</html>'
-						else
-							set html = '<html>' + html + '</html>'
-						set addedWrapper = true
-						log 'wizzi-tools.htmlparser.addedWrapper.html', html
-					_ parser.write(html)
-					_ parser.end()
+                    if html.substr(0,'<html>'.length) == '<html>' || html.substr(0,'<!doctype>'.length) == '<!doctype>'
+                        log 'html document has root tag html'
+                    else
+                        log html.substr(0,'<html>'.length), html.substr(0,'<!doctype>'.length)
+                        var i1 = html.indexOf('<')
+                        var i2 = html.indexOf('>')
+                        if i1 > -1 && i2 > -1
+                            var temp = html.substr(i1+1, i2-i1-1)
+                            log 'wizzi-tools.htmlparser.addedWrapper.temp', temp
+                            if temp.toLowerCase().indexOf('!doctype') > -1
+                                set html = '<html>' + html.substr(i2+1) + '</html>'
+                            else
+                                set html = '<html>' + html + '</html>'
+                            set addedWrapper = true
+                            # log 'wizzi-tools.htmlparser.addedWrapper.html', html
+                    _ parser.write(html)
+                    _ parser.end()
 			catch ex
 				return
 					_ callback
@@ -358,7 +362,7 @@
         param html
         param options
         param callback
-		log 'wizzi-tools.htmlparser.wizzify.html', html
+		# log 'wizzi-tools.htmlparser.wizzify.html', html
 		_ parseInternal
 			@ html
 			@ options

@@ -441,6 +441,7 @@ var PluginsManager = (function () {
         // log 'wizzi.services.PluginsManager.getModelFactory: schemaName, textOnlyMockBaseDir ' + schemaName, textOnlyMockBaseDir
         var found = null,
             foundInPlugin = null,
+            pluginVersion = null,
             result = null;
         // all factoryPlugins are searched, last matching encountered wins.
         var i, i_items=this.factoryPlugins, i_len=this.factoryPlugins.length, item;
@@ -455,6 +456,9 @@ var PluginsManager = (function () {
             if (found && verify.isFunction(found.createLoadModel)) {
                 result = found;
                 foundInPlugin = item.getFilename();
+                if (verify.isFunction(item.getVersion)) {
+                    pluginVersion = item.getVersion();
+                }
             }
         }
         if (!result) {
@@ -462,7 +466,7 @@ var PluginsManager = (function () {
             return error('NotFound', 'getModelFactory', 'Cannot find model loader: ' + schemaName + '\navailables schemas: ' + this.availableSchemas().join(', '));
         }
         else {
-            log.success('getModelFactory. Found model loader: ' + schemaName + ' in plugin ' + foundInPlugin);
+            log.success('getModelFactory. Found model loader: ' + schemaName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'));
         }
         return result;
     }
@@ -484,6 +488,7 @@ var PluginsManager = (function () {
         // log 'wizzi.pluginsManager.getModelTransformer.transformerName: ' + transformerName
         var found = null,
             foundInPlugin = null,
+            pluginVersion = null,
             result = null;
         // all factoryPlugins are searched, last matching encountered wins.
         var i, i_items=this.factoryPlugins, i_len=this.factoryPlugins.length, item;
@@ -498,6 +503,9 @@ var PluginsManager = (function () {
             if (found && verify.isFunction(found.trans)) {
                 result = found;
                 foundInPlugin = item.getFilename();
+                if (verify.isFunction(item.getVersion)) {
+                    pluginVersion = item.getVersion();
+                }
             }
         }
         if (!result) {
@@ -506,7 +514,7 @@ var PluginsManager = (function () {
             return error('NotFound', 'getModelTransformer', msg);
         }
         else {
-            log.success('getModelTransformer. Found transformer: ' + transformerName + ' in plugin ' + foundInPlugin);
+            log.success('getModelTransformer. Found transformer: ' + transformerName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'));
         }
         return result;
     }
@@ -528,6 +536,7 @@ var PluginsManager = (function () {
         // log 'PluginsManager.getArtifactGenerator.artifactName: ' + artifactName
         var found = null,
             foundInPlugin = null,
+            pluginVersion,
             result = null;
         // all factoryPlugins are searched, last matching encountered wins.
         var i, i_items=this.factoryPlugins, i_len=this.factoryPlugins.length, item;
@@ -542,6 +551,9 @@ var PluginsManager = (function () {
             if (found && verify.isFunction(found.gen)) {
                 result = found;
                 foundInPlugin = item.getFilename();
+                if (verify.isFunction(item.getVersion)) {
+                    pluginVersion = item.getVersion();
+                }
             }
         }
         if (!result) {
@@ -550,7 +562,7 @@ var PluginsManager = (function () {
             return error('NotFound', 'getArtifactGenerator', msg);
         }
         else {
-            log.success('getArtifactGenerator. Found artifact generator: ' + artifactName + ' in plugin ' + foundInPlugin);
+            log.success('getArtifactGenerator. Found artifact generator: ' + artifactName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'));
         }
         return result;
     }

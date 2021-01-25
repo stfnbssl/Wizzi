@@ -76,7 +76,7 @@ $group
 							{
 								@ data artifactRequestContext
 					@ pman this.createProductionManager()
-		log 'wizzi.wizziFactory.generateArtifact', artifactName, ittfDocumentUri
+		# log 'wizzi.wizziFactory.generateArtifact', artifactName, ittfDocumentUri
         _ generator.gen
             @ artifactModel
             @ genContext
@@ -90,7 +90,7 @@ $group
                         return
                             _ callback(err)
                     #
-                    log 'wizzi.wizziFactory.generateArtifact', typeof(err), err, err.length, err.length && err.length > 0 && err[0]
+                    # log 'wizzi.wizziFactory.generateArtifact', typeof(err), err, err.length, err.length && err.length > 0 && err[0]
                     r_cb_wz_err( WizziFactoryError, generateArtifact, err )
                         {
                             @ message 'See inner error'
@@ -132,7 +132,8 @@ $group
 		# load the wizzi model from an ittfDocument
         _ this.loadModel
             @ ittfDocumentUri
-            @ requestContext.modelRequestContext
+            {
+                @ mTreeBuildUpContext requestContext.modelRequestContext
             f_cb( artifactModel )
                 # log 'wizzi.wizziFactory.loadModelAndGenerateArtifact', 'model loaded', artifactModel
                 # the loaded wizzi model becomes the artifactModel of the artifact generation

@@ -62,6 +62,7 @@ var Evaluator_Step_2 = function(step_callback) {
             __ittfDocumentStore: fsStore
         }, function(err, mTree) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }

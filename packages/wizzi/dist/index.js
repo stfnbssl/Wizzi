@@ -1067,6 +1067,78 @@ md.loadModel = function(ittfDocumentPath, context, options, callback) {
     });
 };
 md.model = md.loadModel;
+//
+// params
+//
+// string ittfDocumentPath
+// { context
+// optional, used by all methods
+// { options
+// [ plugins?
+// string plugin-name
+// optional, used by all methods
+// { globalContext?
+// optional, used by all methods
+// boolean raw?
+// optional, used by md.mtree()
+// default false
+// string artifactName?
+// required by md.gen() and md.genFromText()
+// { artifactContext?
+// optional, used by md.gen() and md.genFromText()
+// string outputPackagePath
+// required by md.schema()
+// string name
+// optional, used by md.job()
+// number verbose?
+// optional, used by md.job()
+// default 2
+// number indentedSpaces?
+// optional, used by md.job()
+// default 4
+// { jobContext?
+// optional, used by md.job()
+// callback
+//
+md.transformModel = function(ittfDocumentPath, context, options, callback) {
+    if (typeof callback === 'undefined') {
+        callback = options;
+        options = {};
+    }
+    if (typeof callback === 'undefined') {
+        callback = context;
+        context = {};
+    }
+    var name, schema;
+    if (verify.isObject(ittfDocumentPath)) {
+    }
+    else {
+        var ittfInfo = ittfDocumentInfoByPath(ittfDocumentPath);
+        if (ittfInfo.is_error) {
+            return callback(ittfInfo);
+        }
+        name = ittfInfo.name;
+        schema = ittfInfo.schema;
+    }
+    md.createFactoryLight(options, function(err, wf) {
+        if (err) {
+            return callback(err);
+        }
+        if (verify.isString(context.transformName) == false) {
+            return callback({
+                    is_error: true, 
+                    message: "wizzi.transformModel operation requires a transformName string in the context object"
+                });
+        }
+        md.loadModel(ittfDocumentPath, context, options, function(err, wizziModel) {
+            if (err) {
+                return callback(err);
+            }
+            wf.transformModel(wizziModel, context.transformName, context, callback);
+        });
+    });
+};
+md.trans = md.transformModel;
 /**
      params
      string ittfDocumentPath

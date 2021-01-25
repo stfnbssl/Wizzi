@@ -22,7 +22,9 @@ var fsfile = vfile();
 var verify = wizziUtils.verify;
 var mocks = wizziUtils.mocks;
 var async = require('async');
+var pluginsBaseFolder = null;
 var wizziIndex = require('../../../index');
+pluginsBaseFolder = path.resolve(__dirname, '..', '..', '..', '..', '..');
 function createWizziFactory(globalContext, callback) {
     wizziIndex.fsnoaclFactory({
         plugins: {

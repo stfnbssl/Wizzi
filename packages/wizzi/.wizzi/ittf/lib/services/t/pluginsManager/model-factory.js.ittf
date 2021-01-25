@@ -15,6 +15,7 @@
 		var
 			decl found = null
 			decl foundInPlugin = null
+            decl pluginVersion = null
 			decl result = null
 			
 		# all factoryPlugins are searched, last matching encountered wins.
@@ -29,12 +30,17 @@
 			if found && verify.isFunction(found.createLoadModel)
 				set result = found
 				set foundInPlugin = item.getFilename()
+                if verify.isFunction(item.getVersion)
+                    set pluginVersion = item.getVersion()
 		if !result
 			_ log.error('getModelFactory. Cannot find model loader: ' + schemaName + '\n' + 'availables schemas: ' + this.availableSchemas().join(', '))
 			r_wz_err( NotFound, getModelFactory )
 				@ 'Cannot find model loader: ' + schemaName + '\navailables schemas: ' + this.availableSchemas().join(', ')
 		else
-			_ log.success('getModelFactory. Found model loader: ' + schemaName + ' in plugin ' + foundInPlugin)
+			_ log.success
+                @ 'getModelFactory. Found model loader: ' + schemaName 
+                    \b + ' in plugin: ' + foundInPlugin 
+                    \b + ', version:' + (pluginVersion || 'unknown')
 			
 		return result
 

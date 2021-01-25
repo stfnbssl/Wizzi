@@ -27,12 +27,12 @@
         "examples:loader": "node examples/loader"
     },
     "dependencies": {
-        "async": "^2.1.5",
-        "chalk": "^1.1.3",
-        "iconv-lite": "^0.4.15",
+        "async": "^3.2.0",
+        "chalk": "^4.1.0",
+        "iconv-lite": "^0.6.2",
         "json-stringify-safe": "^5.0.1",
-        "lodash": "^4.17.4",
-        "wizzi-utils": "0.7.8",
+        "lodash": "^4.17.20",
+        "wizzi-utils": "0.7.9",
         "escodegen": "^1.8.1",
         "esprima": "^3.1.3",
         "glob": "^7.1.2",
@@ -40,7 +40,7 @@
         "promise": "^7.1.1"
     },
     "devDependencies": {
-        "del": "^4.1.1",
+        "del": "^6.0.0",
         "expect.js": "^0.3.1",
         "object-inspect": "^1.6.0",
         "wizzi-repo": "file:../../wizzi-repo/dist"

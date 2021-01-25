@@ -144,24 +144,32 @@ var css_step_1 = function(step_callback) {
         console.log('--------------------------------------------------------------------------------------');
         loadModelAndGenerateArtifact(path.join(__dirname, 'ittf', ittf + '.css.ittf'), {}, "css/document", function(err, artifactText) {
             if (err) {
+                console.log('-------------------------------------------------------------------');
+                console.log('--- Test error ----------------------------------------------------');
                 console.log('err', err);
                 console.log('err.toString()', err.toString());
                 if (err.inner) {
                     console.log('err.inner.toString()', err.inner.toString());
                 }
-                throw err;
+                console.log('-------------------------------------------------------------------');
+                console.log('-------------------------------------------------------------------');
+                throw 'Test error';
             }
             printValue(ittf, artifactText);
             return callback(null, ittf);
         });
     }, function(err, result) {
         if (err) {
+            console.log('-------------------------------------------------------------------');
+            console.log('--- Test error ----------------------------------------------------');
             console.log('err', err);
             console.log('err.toString()', err.toString());
             if (err.inner) {
                 console.log('err.inner.toString()', err.inner.toString());
             }
-            throw err;
+            console.log('-------------------------------------------------------------------');
+            console.log('-------------------------------------------------------------------');
+            throw 'Test error';
         }
         console.log(result);
     });

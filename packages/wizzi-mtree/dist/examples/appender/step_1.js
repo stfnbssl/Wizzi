@@ -91,6 +91,7 @@ var Appender_Step_1 = function(step_callback) {
                 }
                 appender(mixedModel, function(err, appendedModel) {
                     if (err) {
+                        console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                         console.log('err', err);
                         throw new Error(err.message);
                     }

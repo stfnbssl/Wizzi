@@ -783,6 +783,74 @@ var WizziFactory = (function () {
         context.wizziFactory = this;
         transformer.trans(model, context, callback);
     }
+    WizziFactory.prototype.loadAndTransformModelAndGenerateArtifact = function(ittfDocumentUri, requestContext, transformName, artifactName, callback) {
+        if (typeof(callback) !== 'function') {
+            throw new Error(
+                error('InvalidArgument', 'loadAndTransformModelAndGenerateArtifact', 'The callback parameter must be a function. Received: ' + callback)
+            );
+        };
+        if (verify.isNotEmpty(ittfDocumentUri) === false) {
+            return callback(error(
+                'InvalidArgument', 'loadAndTransformModelAndGenerateArtifact', { parameter: 'ittfDocumentUri', message: 'The ittfDocumentUri parameter must be a string. Received: ' + ittfDocumentUri }
+            ));
+        }
+        if (verify.isObject(requestContext) === false) {
+            return callback(error(
+                'InvalidArgument', 'loadAndTransformModelAndGenerateArtifact', { parameter: 'requestContext', message: 'The requestContext parameter must be an object. Received: ' + requestContext }
+            ));
+        }
+        if (verify.isNullOrUndefined(requestContext.modelRequestContext) === false) {
+            if (verify.isObject(requestContext.modelRequestContext) === false) {
+                return callback(error(
+                    'InvalidArgument', 'loadAndTransformModelAndGenerateArtifact', { parameter: 'requestContext.modelRequestContext', message: 'The requestContext.modelRequestContext parameter must be an object. Received: ' + requestContext.modelRequestContext }
+                ));
+            }
+        }
+        if (verify.isNullOrUndefined(requestContext.transformRequestContext) === false) {
+            if (verify.isObject(requestContext.transformRequestContext) === false) {
+                return callback(error(
+                    'InvalidArgument', 'loadAndTransformModelAndGenerateArtifact', { parameter: 'requestContext.transformRequestContext', message: 'The requestContext.transformRequestContext parameter must be an object. Received: ' + requestContext.transformRequestContext }
+                ));
+            }
+        }
+        if (verify.isNullOrUndefined(requestContext.artifactRequestContext) === false) {
+            if (verify.isObject(requestContext.artifactRequestContext) === false) {
+                return callback(error(
+                    'InvalidArgument', 'loadAndTransformModelAndGenerateArtifact', { parameter: 'requestContext.artifactRequestContext', message: 'The requestContext.artifactRequestContext parameter must be an object. Received: ' + requestContext.artifactRequestContext }
+                ));
+            }
+        }
+        if (verify.isNotEmpty(transformName) === false) {
+            return callback(error(
+                'InvalidArgument', 'loadAndTransformModelAndGenerateArtifact', { parameter: 'transformName', message: 'The transformName parameter must be a string. Received: ' + transformName }
+            ));
+        }
+        if (verify.isNotEmpty(artifactName) === false) {
+            return callback(error(
+                'InvalidArgument', 'loadAndTransformModelAndGenerateArtifact', { parameter: 'artifactName', message: 'The artifactName parameter must be a string. Received: ' + artifactName }
+            ));
+        }
+        
+        // log 'wizzi.wizziFactory.loadModelAndGenerateArtifact.requestContext.modelRequestContext', requestContext.modelRequestContext, 'transformRequestContext', requestContext.transformRequestContext, 'artifactRequestContext', requestContext.artifactRequestContext
+        
+        var that = this;
+        // load the wizzi model from an ittfDocument
+        this.loadModel(ittfDocumentUri, {
+            mTreeBuildUpContext: requestContext.modelRequestContext
+        }, function(err, wizziModel) {
+            if (err) {
+                return callback(err);
+            }
+            // log 'wizzi.wizziFactory.loadModelAndGenerateArtifact', 'model loaded', wizziModel
+            // the loaded wizzi model becomes the wizziModel of the transformation
+            that.transformModel(wizziModel, transformName, requestContext.transformRequestContext || requestContext.modelRequestContext, function(err, artifactModel) {
+                if (err) {
+                    return callback(err);
+                }
+                that.generateArtifact(artifactModel, ittfDocumentUri, artifactName, requestContext.artifactRequestContext, callback);
+            });
+        });
+    }
     /**
          Retrieve an artifact generator
          Artifact generators are searched in the PluginsManager
@@ -889,14 +957,14 @@ var WizziFactory = (function () {
             }), 
             pman: this.createProductionManager()
         });
-        console.log('wizzi.wizziFactory.generateArtifact', artifactName, ittfDocumentUri);
+        // log 'wizzi.wizziFactory.generateArtifact', artifactName, ittfDocumentUri
         generator.gen(artifactModel, genContext, function(err, result) {
             if (err) {
                 /**
                     err.artifactName = artifactNameerr.artifactIttfDocumentUri = ittfDocumentUrireturn callback(err);
                 */
                 //
-                console.log('wizzi.wizziFactory.generateArtifact', typeof(err), err, err.length, err.length && err.length > 0 && err[0]);
+                // log 'wizzi.wizziFactory.generateArtifact', typeof(err), err, err.length, err.length && err.length > 0 && err[0]
                 return callback(error('WizziFactoryError', 'generateArtifact', {
                         message: 'See inner error', 
                         parameter: {
@@ -964,7 +1032,9 @@ var WizziFactory = (function () {
         
         var that = this;
         // load the wizzi model from an ittfDocument
-        this.loadModel(ittfDocumentUri, requestContext.modelRequestContext, function(err, artifactModel) {
+        this.loadModel(ittfDocumentUri, {
+            mTreeBuildUpContext: requestContext.modelRequestContext
+        }, function(err, artifactModel) {
             if (err) {
                 return callback(err);
             }

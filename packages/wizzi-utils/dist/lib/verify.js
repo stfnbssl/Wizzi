@@ -782,7 +782,7 @@ md.error = function() {
     for (i=0; i<i_len; i++) {
         arg = args[i];
         if (md.isError(arg)) {
-            console.log('wizzi-utils.verify.errors.error. seen inner', arg.message, arg.stack);
+            // log 'wizzi-utils.verify.errors.error. seen inner', arg.message, arg.stack
             inner = arg;
         }
         else if (typeof (arg) === 'object' && sprintf_args.length == 0) {

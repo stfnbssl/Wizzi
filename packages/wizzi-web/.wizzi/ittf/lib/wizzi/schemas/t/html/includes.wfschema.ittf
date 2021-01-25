@@ -9,6 +9,9 @@
 
 	e cssInclude : element
 		tag ::style
+        a type
+		a media
+		a nonce
 		a_tag( scoped )
 			type boolean
 		include css

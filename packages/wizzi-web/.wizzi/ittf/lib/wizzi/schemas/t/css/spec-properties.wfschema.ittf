@@ -21,6 +21,7 @@
 	e animation-timing-function : property
 	e appearance : property
 	e azimuth : property
+    e backdrop-filter : property
 	e background : property
 		a attachment
 		a color
@@ -163,12 +164,34 @@
 		a style
 		a variant
 		a weight
+        a kerning
+        a smooth
+        a stretch
+        a synthesis
+
     e font-feature-settings : property
 	e font-family : property
+    e font-kerning : property
 	e font-size : property
 	e font-style : property
 	e font-variant : property
+    e font-variation-settings : property
 	e font-weight : property
+    e font-language-override : property
+    e font-optical-sizing : property
+    e font-size-adjust : property
+    e font-smooth : property
+    e font-stretch : property
+    e font-synthesis : property
+    e font-variant-alternates : property
+    e font-variant-caps : property
+    e font-variant-east-asian : property
+    e font-variant-ligatures : property
+    e font-variant-numeric : property
+    e font-variant-position : property
+    e font-variant : property
+    e font-variation-settings : property
+
 	e grid-template-columns : property
 	e grid-template-rows : property
 	e_tag( gridTemplateAreas, grid-template-areas, property )
@@ -230,6 +253,7 @@
 		a right
 		a left
 		a bottom
+    e mask-image : property
 	e max-height : property
 	e max-width : property
 	e min-height : property
@@ -259,6 +283,9 @@
 	e overflow-x : property
 	e overflow-y : property
 	e padding-top : property
+    e overscroll-behavior : property
+    e scrollbar-color : property
+    e scrollbar-width : property
 	e padding-right : property
 	e padding-bottom : property
 	e padding-left : property
@@ -284,13 +311,15 @@
 	e resize : property
 	e richness : property
 	e right : property
-    e scrollbar-width
+    e scrollbar-width : property
+    e scroll-padding-top : property
 	e speak-header : property
 	e speak-numeral : property
 	e speak-punctuation : property
 	e speak : property
 	e speech-rate : property
 	e stress : property
+    e stroke-width : property
 	e tab-size : property
 	e table-layout : property
 	e target-name : property

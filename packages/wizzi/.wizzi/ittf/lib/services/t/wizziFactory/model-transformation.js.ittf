@@ -39,3 +39,41 @@ $group
 			@ model
 			@ context
 			@ callback
+
+	m loadAndTransformModelAndGenerateArtifact
+		string ittfDocumentUri
+		{ requestContext
+			{ modelRequestContext
+				optional
+			{ transformRequestContext
+				optional
+			{ artifactRequestContext
+				optional
+		string transformName
+        string artifactName
+		callback
+		+
+		# log 'wizzi.wizziFactory.loadModelAndGenerateArtifact.requestContext.modelRequestContext', requestContext.modelRequestContext, 
+			\b 'transformRequestContext', requestContext.transformRequestContext,
+            \b 'artifactRequestContext', requestContext.artifactRequestContext
+		+
+		var that = this
+		# load the wizzi model from an ittfDocument
+        _ this.loadModel
+            @ ittfDocumentUri
+            {
+                @ mTreeBuildUpContext requestContext.modelRequestContext
+            f_cb( wizziModel )
+                # log 'wizzi.wizziFactory.loadModelAndGenerateArtifact', 'model loaded', wizziModel
+                # the loaded wizzi model becomes the wizziModel of the transformation
+                _ that.transformModel
+                    @ wizziModel
+                    @ transformName
+                    @ requestContext.transformRequestContext || requestContext.modelRequestContext
+                    f_cb( artifactModel )
+                        _ that.generateArtifact
+                            @ artifactModel
+                            @ ittfDocumentUri
+                            @ artifactName
+                            @ requestContext.artifactRequestContext
+                            @ callback

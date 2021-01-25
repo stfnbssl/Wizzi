@@ -11,6 +11,8 @@ module.exports = {
     pluginsBaseFolder: path.join(__dirname, '..'),
     schemas: [
         'css',
+        'html',
+        'svg',
     ],
     schemasStop: [
         'css',

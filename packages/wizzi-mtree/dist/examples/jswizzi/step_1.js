@@ -40,7 +40,7 @@ function getFSDocumentStore(callback) {
 }
 var jsWizzi_Step_1 = function(step_callback) {
     heading1('EXAMPLE');
-    var ittfUri = path.join(__dirname, 'ittf', 'global_1.js.ittf');
+    var ittfUri = path.join(__dirname, 'ittf', 'vars_1.js.ittf');
     var productionManager = mocks.getProductionManager();
     getFSDocumentStore(function(err, fsStore) {
         if (err) {
@@ -62,6 +62,7 @@ var jsWizzi_Step_1 = function(step_callback) {
             __ittfDocumentStore: fsStore
         }, function(err, mTree) {
             if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
                 throw new Error(err.message);
             }

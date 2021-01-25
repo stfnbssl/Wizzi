@@ -15,8 +15,15 @@ module
         $append plugins
             [ items
                 @ 'wizzi-js'
-                @ 'wizzi-web'
-                @ 'wizzi-core'
+                @ './wizzi-web/dist/index'
+                @ './wizzi-core/dist/index'
+            @ pluginsBaseFolder
+                _ path.resolve
+                    @ __dirname
+                    @ '..'
+                    @ '..'
+                    @ '..'
+                    @ '..'
 
         var htmlFriendsPath
 			_ path.join
@@ -24,6 +31,12 @@ module
                 @ 'ittf'
                 @ 'friends.html.ittf'
         
+        var htmlFriendsPathIttf
+			_ path.join
+                @ __dirname
+                @ 'ittf'
+                @ 'friends.ittf.ittf'
+
         var friendsArray
             [ 
                 @ 'arthur'
@@ -42,7 +55,6 @@ module
                         @ wizziModel.elements
                         @ null
                         @ 2
-
                 # Generate the html document artifact.
                     # No options, the default artifact generator
                     # for the html schema will be used.
@@ -54,3 +66,13 @@ module
                         _ printValue
                             @ 'artifact'
                             @ artifactText
+                        
+                        _ wizziIndex.trans
+                            @ htmlFriendsPathIttf
+                            {
+                                @ friends friendsArray
+                                @ transformName 'ittf/html-pretty'
+                            f_cb_test(prettyfied)
+                                _ printValue
+                                    @ 'ittf/html-pretty'
+                                    @ prettyfied                            

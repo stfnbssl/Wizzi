@@ -219,7 +219,7 @@
 				# log 'jsObject_close 2'
 				repeater_increment(1)
             else
-				log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
+				# log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
 				if u.isMemberAccessOrCall(item_1)
 					# log 'jsObject_close 3'
 					_ ctx.w('')

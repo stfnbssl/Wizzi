@@ -50406,6 +50406,39 @@
       "flags": "",
       "attributes": [
         {
+          "name": "type",
+          "type": "string",
+          "tags": [
+            "type"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "media",
+          "type": "string",
+          "tags": [
+            "media"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "nonce",
+          "type": "string",
+          "tags": [
+            "nonce"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
           "name": "scoped",
           "type": "boolean",
           "tags": [

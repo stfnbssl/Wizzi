@@ -22,15 +22,18 @@ var fsfile = vfile();
 var verify = wizziUtils.verify;
 var mocks = wizziUtils.mocks;
 var async = require('async');
+var pluginsBaseFolder = null;
 var wizziIndex = require('../../../index');
+pluginsBaseFolder = path.resolve(__dirname, '..', '..', '..', '..', '..');
 function createWizziFactory(globalContext, callback) {
     wizziIndex.fsnoaclFactory({
         plugins: {
             items: [
                 'wizzi-js', 
-                'wizzi-web', 
-                'wizzi-core'
-            ]
+                './wizzi-web/dist/index', 
+                './wizzi-core/dist/index'
+            ], 
+            pluginsBaseFolder: path.resolve(__dirname, '..', '..', '..', '..')
         }, 
         globalContext: globalContext || {}
     }, callback);
@@ -38,6 +41,7 @@ function createWizziFactory(globalContext, callback) {
 var light_model_step_1 = function(step_callback) {
     heading1('EXAMPLE');
     var htmlFriendsPath = path.join(__dirname, 'ittf', 'friends.html.ittf');
+    var htmlFriendsPathIttf = path.join(__dirname, 'ittf', 'friends.ittf.ittf');
     var friendsArray = [
         'arthur', 
         'mary'
@@ -69,6 +73,17 @@ var light_model_step_1 = function(step_callback) {
                 throw new Error(err.message);
             }
             printValue('artifact', artifactText);
+            wizziIndex.trans(htmlFriendsPathIttf, {
+                friends: friendsArray, 
+                transformName: 'ittf/html-pretty'
+            }, function(err, prettyfied) {
+                if (err) {
+                    console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+                    console.log('err', err);
+                    throw new Error(err.message);
+                }
+                printValue('ittf/html-pretty', prettyfied);
+            });
         });
     });
 };

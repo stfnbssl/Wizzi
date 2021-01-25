@@ -111,7 +111,12 @@ function getEsprimaErrorLines(esprimaException, source, json) {
     return json ? ret : ret.join('\n');
 }
 function spaces(num) {
-    return Array(num + 1).join(" ");
+    if (num > 0) {
+        return Array(num + 1).join(" ");
+    }
+    else {
+        return '';
+    }
 }
 function formatLineNumber(num) {
     if (num > 999) {

@@ -1,7 +1,9 @@
 module
-	$params pkgname
+	$params pkgname, version|0.0.0
 	kind jsfile
 	+
+    $include versions
+    +
 	var util = require('util')
 	var path = require('path')
 	var stringify = require('json-stringify-safe')
@@ -35,6 +37,9 @@ module
 		m getFilename
 			return __filename
 		
+		m getVersion
+			return '${versions[pkgname + '@next']}'
+
 		m getProvides
 			return this.provides
 

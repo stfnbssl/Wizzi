@@ -179,6 +179,25 @@
 					@ globalContext {}
 				@ callback
 
+	lightFunction( transformModel, trans )
+        if verify.isString(context.transformName) == false
+            return
+                _ callback
+                    {
+                        @ is_error true
+                        @ message "wizzi.transformModel operation requires a transformName string in the context object"
+
+        _ md.loadModel
+            @ ittfDocumentPath
+            @ context
+            @ options
+            f_cb( wizziModel )
+                _ wf.transformModel
+                    @ wizziModel
+                    @ context.transformName
+                    @ context
+                    @ callback
+
 	#
 		# params
 		#   string ittfDocumentPath

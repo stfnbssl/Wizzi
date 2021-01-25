@@ -40,7 +40,7 @@ function getFSDocumentStore(callback) {
 }
 var Mixer_Step_1 = function(step_callback) {
     heading1('EXAMPLE');
-    var ittfUri = path.join(__dirname, 'ittf', 'mixer_1.js.ittf');
+    var ittfUri = path.join(__dirname, 'ittf', 'vars_1.js.ittf');
     getFSDocumentStore(function(err, fsStore) {
         if (err) {
             console.log('err', err);

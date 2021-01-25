@@ -102,6 +102,9 @@ md.load = function(cnt) {
     cnt.stm.fontface = function(model, ctx, callback) {
         ctx.w('@font-face {');
         ctx.indent();
+        if (verify.isNotEmpty(model.featureSetting)) {
+            ctx.w('font-feature-setting: ' + model.featureSetting + ';');
+        }
         if (verify.isNotEmpty(model.fontFamily)) {
             ctx.w('font-family: ' + model.fontFamily + ';');
         }
@@ -116,6 +119,15 @@ md.load = function(cnt) {
         }
         if (verify.isNotEmpty(model.fontWeight)) {
             ctx.w('font-weight: ' + model.fontWeight + ';');
+        }
+        if (verify.isNotEmpty(model.fontDisplay)) {
+            ctx.w('font-display: ' + model.fontDisplay + ';');
+        }
+        if (verify.isNotEmpty(model.fontVariant)) {
+            ctx.w('font-variant: ' + model.fontVariant + ';');
+        }
+        if (verify.isNotEmpty(model.fontVariationSetting)) {
+            ctx.w('font-variation-setting: ' + model.fontVariationSetting + ';');
         }
         if (verify.isNotEmpty(model.unicodeRange)) {
             ctx.w('unicode-range: ' + model.unicodeRange + ';');
@@ -237,7 +249,17 @@ function getWriteProperty(ctx) {
                 }
             }
             else {
-                if (name === "appearance") {
+                if (name === "align-items") {
+                    ctx.w("-webkit-align-items: " + value  + ";");
+                    ctx.w("-webkit-box-align: " + value  + ";");
+                    ctx.w("-ms-flex-align: " + value  + ";");
+                    ctx.w(name + ": " + value + ";");
+                }
+                else if (name === "animation") {
+                    ctx.w("-webkit-" + name + ": " + value  + ";");
+                    ctx.w(name + ": " + value + ";");
+                }
+                else if (name === "appearance") {
                     ctx.w("-webkit-appearance: " + value  + ";");
                     ctx.w("-moz-appearance: " + value  + ";");
                     ctx.w(name + ": " + value + ";");
@@ -269,6 +291,14 @@ function getWriteProperty(ctx) {
                 }
                 else if (name === "display" && value === 'flex') {
                     ctx.w(name + ": -ms-flexbox;");
+                    ctx.w(name + ": -webkit-box;");
+                    ctx.w(name + ": -webkit-flex;");
+                    ctx.w(name + ": " + value + ";");
+                }
+                else if (name === "display" && value === 'inline-flex') {
+                    ctx.w(name + ": -webkit-inline-box;");
+                    ctx.w(name + ": -webkit-inline-flex;");
+                    ctx.w(name + ": -ms-inline-flexbox;");
                     ctx.w(name + ": " + value + ";");
                 }
                 else if (name === "flex") {
@@ -286,12 +316,15 @@ function getWriteProperty(ctx) {
                     ctx.w("-ms-flex-preferred-size: " + value + ";");
                     ctx.w(name + ": " + value + ";");
                 }
-                else if (name === "flex-grow") {
-                    ctx.w("-ms-flex-positive: " + value + ";");
+                else if (name === "flex-direction") {
+                    ctx.w("-webkit-flex-direction: " + value + ";");
+                    ctx.w("-ms-flex-direction: " + value + ";");
                     ctx.w(name + ": " + value + ";");
                 }
-                else if (name === "flex-wrap") {
-                    ctx.w("-ms-flex-wrap: " + value + ";");
+                else if (name === "flex-grow") {
+                    ctx.w("-webkit-flex-grow: " + value + ";");
+                    ctx.w("-webkit-box-flex: " + value + ";");
+                    ctx.w("-ms-flex-positive: " + value + ";");
                     ctx.w(name + ": " + value + ";");
                 }
                 else if (name === "order") {
@@ -302,14 +335,41 @@ function getWriteProperty(ctx) {
                     ctx.w("-webkit-flex-flow: " + value + ";");
                     ctx.w(name + ": " + value + ";");
                 }
+                else if (name === "flex-shrink") {
+                    ctx.w("-webkit-flex-shrink: " + value + ";");
+                    ctx.w("-ms-flex-negative: " + value + ";");
+                    ctx.w(name + ": " + value + ";");
+                }
+                else if (name === "flex-wrap") {
+                    ctx.w("-webkit-flex-wrap: " + value + ";");
+                    ctx.w("-ms-flex-wrap: " + value + ";");
+                    ctx.w(name + ": " + value + ";");
+                }
                 else if (name === "justify-content") {
+                    ctx.w("-webkit-box-pack: " + value + ";");
+                    ctx.w("-ms-flex-pack: " + value + ";");
                     ctx.w("-webkit-justify-content: " + value + ";");
+                    ctx.w(name + ": " + value + ";");
+                }
+                else if (name === "letter-spacing") {
+                    ctx.w("-webkit-" + name + ": " + value + ";");
+                    ctx.w("-moz-" + name + ": " + value + ";");
+                    ctx.w("-ms-" + name + ": " + value + ";");
+                    ctx.w(name + ": " + value + ";");
+                }
+                else if (name === "text-decoration") {
+                    ctx.w("-webkit-" + name + ": " + value + ";");
                     ctx.w(name + ": " + value + ";");
                 }
                 else if (name === "transition") {
                     ctx.w("-webkit-transition: " + value + ";");
                     ctx.w("-moz-transition: " + value + ";");
                     ctx.w("-o-transition: " + value + ";");
+                    ctx.w(name + ": " + value + ";");
+                }
+                else if (name === "transform") {
+                    ctx.w("-webkit-transform: " + value + ";");
+                    ctx.w("-ms-transition: " + value + ";");
                     ctx.w(name + ": " + value + ";");
                 }
                 else if (name === "user-select") {

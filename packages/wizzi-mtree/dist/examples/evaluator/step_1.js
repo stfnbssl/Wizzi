@@ -40,7 +40,7 @@ function getFSDocumentStore(callback) {
 }
 var Evaluator_Step_1 = function(step_callback) {
     heading1('EXAMPLE');
-    var ittfUri = path.join(__dirname, 'ittf', 'evaluator_1.js.ittf');
+    var ittfUri = path.join(__dirname, 'ittf', 'vars_1.js.ittf');
     var productionContext = mocks.createProductionContext();
     getFSDocumentStore(function(err, fsStore) {
         if (err) {
@@ -92,6 +92,7 @@ var Evaluator_Step_1 = function(step_callback) {
                 }
                 appender(mixedModel, function(err, appendedModel) {
                     if (err) {
+                        console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                         console.log('err', err);
                         throw new Error(err.message);
                     }
@@ -102,6 +103,7 @@ var Evaluator_Step_1 = function(step_callback) {
                     };
                     evaluator(appendedModel, loadContext, function(err, evaluatedModel) {
                         if (err) {
+                            console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                             console.log('err', err);
                             throw new Error(err.message);
                         }

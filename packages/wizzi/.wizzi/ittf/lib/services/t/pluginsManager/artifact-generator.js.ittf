@@ -16,6 +16,7 @@
 		var
 			decl found = null
 			decl foundInPlugin = null
+            decl pluginVersion
 			decl result = null
 
 		# all factoryPlugins are searched, last matching encountered wins.
@@ -27,6 +28,8 @@
 			if found && verify.isFunction(found.gen)
 				set result = found
 				set foundInPlugin = item.getFilename()
+                if verify.isFunction(item.getVersion)
+                    set pluginVersion = item.getVersion()
 
 		if !result
 			var msg = 'getArtifactGenerator. Cannot find artifact generator: ' + artifactName + '\n' +
@@ -36,6 +39,10 @@
 			r_wz_err( NotFound, getArtifactGenerator )
 				@ msg
 		else
-			_ log.success('getArtifactGenerator. Found artifact generator: ' + artifactName + ' in plugin ' + foundInPlugin)
+			_ log.success
+                @ 'getArtifactGenerator. Found artifact generator: ' + artifactName
+                    \b + ' in plugin: ' + foundInPlugin 
+                    \b + ', version:' + (pluginVersion || 'unknown')
+
 		return result
 

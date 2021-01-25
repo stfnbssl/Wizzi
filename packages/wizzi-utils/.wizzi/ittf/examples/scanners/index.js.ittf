@@ -1,104 +1,120 @@
-﻿base_example( scanners )
+﻿module
+	kind jsfile    
 
-	var vfile = require('../../lib/fs/vfile')
-	var IttfMTreeEx = require('../../lib/ittfTree/ittfMTreeEx')
-	var IttfFsNode = require('../../lib/scanners/ittfFsNode')
-	var folderBrowse = require('../../lib/scanners/folderBrowse')
-	var folderScanner = require('../../lib/scanners/folderScanner')
-	var ittfDocumentScanner = require('../../lib/scanners/ittfDocumentScanner')
-	var textDocumentScanner = require('../../lib/scanners/textDocumentScanner')
+    $
+        var opt = {
+            level: 0,
+            step: 1,
+            name: 'scanners_Step_1',
+            title: 'scanners - step - 1',
+            folderLevel: 2
+        }
 
-	# _ step_1
-	# _ ittfFsNode_step_1
-	# _ folderBrowse_step_1
-	_ ittfDocumentScanner_step_1
+    common\example\utils(&opt)
 
-	function step_1
-		
-		_ folderScanner.scan
-			_ path.join
-				@ __dirname
-				@ 'ittf'
-				@ 'first'
-			{
-				@ name 'first'
-				@ gitPath 'c:/blabla'
-			f_cb_test( ittfMTreeEx )
-				_ ittfMTreeEx.writeFile
-					_ path.join
-						@ __dirname
-						@ 'outputs'
-						@ 'first.wfpackage.ittf'
-					f_cb_test( result )
-						log 'err, result', err, result
-						_ step_2
+        $append functions
+            var wizziStudioFolder = 'C:/My/wizzi/stfnbssl/wizzi-examples/packages/wizzi-studio'
+            
+            $include ittfFsNode
+            $include folderBrowse
+            $include ittfDocumentScanner
+           
 
-	function step_2
+        _ step_1
+        # _ ittfFsNode_step_1
+        # _ folderBrowse_step_1
+        # _ ittfDocumentScanner_step_1
 
-		var ittfMTreeEx 
-		_ folderScanner.scan
-			_ path.join
-				@ __dirname
-				@ 'ittf'
-				@ 'first'
-				@ 'deep'
-			{
-				@ name 'second'
-				@ gitPath 'c:/blabla'
-			f_cb_test( ittfMTreeEx )
-				_ ittfMTreeEx.writeFile
-					_ path.join
-						@ __dirname
-						@ 'outputs'
-						@ 'second.wfpackage.ittf'
-					f_cb_test( result )
-						log 'err, result', err, result
-						_ step_4
+        function step_1
+            
+            _ folderScanner.scan
+                _ path.join
+                    @ __dirname
+                    @ 'ittf'
+                    @ 'first'
+                {
+                    @ name 'first'
+                    @ gitPath 'c:/blabla'
+                f_cb_test( ittfMTreeEx )
+                    _ ittfMTreeEx.writeFile
+                        _ path.join
+                            @ __dirname
+                            @ 'outputs'
+                            @ 'first.wfpackage.ittf'
+                        f_cb_test( result )
+                            log 'err, result', err, result
+                            _ step_2
 
-	function step_4
+        function step_2
 
-		_ ittfDocumentScanner.scan
-			_ path.join
-				$$ @ "C:/My/wizzi/v5/apps/wizzi-studio/dist/server/ittf/repo/stefi/studio/wizzi/r_long_page"
-				@ "C:/My/wizzi/v5/apps/wizzi-studio/dist/server/ittf/demo/ttech/css/layouts/step_1"
-				@ 'index.html.ittf'
-			{
-				@ rootFolder 'C:/My/wizzi/v5/apps/wizzi-studio/dist/server'
-			f_cb_test( result )
-				log 'step_4 err', err
-				var msg
-					_ stringify
-						@ result
-						@ null
-						@ 2
-				# log 'step_4 result', msg
-				_ file.write
-					_ path.join
-						@ __dirname
-						@ 'outputs'
-						@ 'ittfDocumentScanner.json'
-					@ msg
-				_ step_5
+            var ittfMTreeEx 
+            _ folderScanner.scan
+                _ path.join
+                    @ __dirname
+                    @ 'ittf'
+                    @ 'first'
+                    @ 'deep'
+                {
+                    @ name 'second'
+                    @ gitPath 'c:/blabla'
+                f_cb_test( ittfMTreeEx )
+                    _ ittfMTreeEx.writeFile
+                        _ path.join
+                            @ __dirname
+                            @ 'outputs'
+                            @ 'second.wfpackage.ittf'
+                        f_cb_test( result )
+                            log 'err, result', err, result
+                            _ step_4
 
-	function step_5
+        function step_4
 
-		_ textDocumentScanner.scan
-			_ path.join
-				@ "C:/My/wizzi/v5/apps/wizzi-studio/dist/server/ittf/labs/netlify"
-				@ 'config.yml'
-			{
-				@ baseFolder 'C:/My/wizzi/v5/apps/wizzi-studio/dist/server'
-			f_cb_test( result )
-				log 'step_4 err', err
+            _ ittfDocumentScanner.scan
+                _ path.join
+                    @ wizziStudioFolder
+                    @ 'dist/server/ittf/demo/ttech/css/layouts/step_1'
+                    @ 'index.html.ittf'
+                {
+                    @ rootFolder
+                        _ path.join
+                            @ wizziStudioFolder
+                            @  'dist/server'
+                f_cb_test( result )
+                    log 'step_4 err', err
+                    var msg
+                        _ stringify
+                            @ result
+                            @ null
+                            @ 2
+                    # log 'step_4 result', msg
+                    _ file.write
+                        _ path.join
+                            @ __dirname
+                            @ 'outputs'
+                            @ 'ittfDocumentScanner.json'
+                        @ msg
+                    _ step_5
 
-				var msg
-					_ stringify
-						@ result
-						@ null
-						@ 2
-		
-				log 'step_5 result', msg
+        function step_5
 
-	$include ittfFsNode
-	$include folderBrowse
-	$include ittfDocumentScanner
+            _ textDocumentScanner.scan
+                _ path.join
+                    @ wizziStudioFolder
+                    @ "dist/server/ittf/labs/netlify"
+                    @ 'config.yml'
+                {
+                    @ baseFolder
+                        _ path.join
+                            @ wizziStudioFolder
+                            @  'dist/server'
+
+                f_cb_test( result )
+                    log 'step_4 err', err
+
+                    var msg
+                        _ stringify
+                            @ result
+                            @ null
+                            @ 2
+            
+                    log 'step_5 result', msg

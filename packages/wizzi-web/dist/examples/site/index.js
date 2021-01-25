@@ -34,12 +34,16 @@ function executeExample() {
             __productionManager: mocks.getProductionManager()
         }, function(err, wizziModel) {
             if (err) {
+                console.log('-------------------------------------------------------------------');
+                console.log('--- Test error ----------------------------------------------------');
                 console.log('err', err);
                 console.log('err.toString()', err.toString());
                 if (err.inner) {
                     console.log('err.inner.toString()', err.inner.toString());
                 }
-                throw err;
+                console.log('-------------------------------------------------------------------');
+                console.log('-------------------------------------------------------------------');
+                throw 'Test error';
             }
             console.log('site wizziModel', wizziModel);
             var demos = wizziModel.getDemosByPath('javascript/bundlers');

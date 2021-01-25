@@ -264,7 +264,8 @@
 	e glyph : item
 	e glyphRef : item
 	e hkern : item
-	e linearGradient : item
+	e linearGradient : line
+        a gradientUnits
 	e marker : item
 	e mask : item
 	e metadata : item
@@ -284,7 +285,8 @@
 		a style
 		a offset
 		svg/getAttrs( style;offset, item )
-	e style : item
+	e stroke-width : item
+    e style : item
 	e switch : item
 		$$ svg/getAttrs( transform, item )
 	e symbol : item

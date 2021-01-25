@@ -33,23 +33,31 @@ function executeExample() {
         var mdOutput = path.join(__dirname, 'ittf', name + '.g.md');
         loadModel(ittfSource, getLoadModelContext({}), function(err, mdWizziModel) {
             if (err) {
+                console.log('-------------------------------------------------------------------');
+                console.log('--- Test error ----------------------------------------------------');
                 console.log('err', err);
                 console.log('err.toString()', err.toString());
                 if (err.inner) {
                     console.log('err.inner.toString()', err.inner.toString());
                 }
-                throw err;
+                console.log('-------------------------------------------------------------------');
+                console.log('-------------------------------------------------------------------');
+                throw 'Test error';
             }
             console.log('mdWizziModel', mdWizziModel);
             var ctx = mocks.getGenContext();
             mdgenerator.gen(mdWizziModel, ctx, function(err, ctxout) {
                 if (err) {
+                    console.log('-------------------------------------------------------------------');
+                    console.log('--- Test error ----------------------------------------------------');
                     console.log('err', err);
                     console.log('err.toString()', err.toString());
                     if (err.inner) {
                         console.log('err.inner.toString()', err.inner.toString());
                     }
-                    throw err;
+                    console.log('-------------------------------------------------------------------');
+                    console.log('-------------------------------------------------------------------');
+                    throw 'Test error';
                 }
                 console.log('ctxout', ctxout.getContent());
                 file.write(mdOutput, ctxout.getContent());

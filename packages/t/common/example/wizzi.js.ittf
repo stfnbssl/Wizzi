@@ -11,13 +11,37 @@ $group
 	
     $include example_includes
     var async = require('async')
+    var pluginsBaseFolder = null
     
     $if opt.folderLevel == 1
         var wizziIndex = require('../index')
+        set pluginsBaseFolder
+            _ path.resolve
+                @ __dirname
+                @ '..'
+                @ '..'
+                @ '..'
+
     $elif opt.folderLevel == 2
         var wizziIndex = require('../../index')
+        set pluginsBaseFolder
+            _ path.resolve
+                @ __dirname
+                @ '..'
+                @ '..'
+                @ '..'
+                @ '..'
+
     $elif opt.folderLevel == 3
         var wizziIndex = require('../../../index')
+        set pluginsBaseFolder
+            _ path.resolve
+                @ __dirname
+                @ '..'
+                @ '..'
+                @ '..'
+                @ '..'
+                @ '..'
 
 	$hook imports
 

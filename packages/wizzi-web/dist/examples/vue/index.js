@@ -35,23 +35,31 @@ function executeExample() {
             __productionManager: mocks.getProductionManager()
         }, function(err, wizziModel) {
             if (err) {
+                console.log('-------------------------------------------------------------------');
+                console.log('--- Test error ----------------------------------------------------');
                 console.log('err', err);
                 console.log('err.toString()', err.toString());
                 if (err.inner) {
                     console.log('err.inner.toString()', err.inner.toString());
                 }
-                throw err;
+                console.log('-------------------------------------------------------------------');
+                console.log('-------------------------------------------------------------------');
+                throw 'Test error';
             }
             console.log('vue wizziModel', JSON.stringify(wizziModel.toJson(), null, 2));
             var ctx = mocks.getGenContext();
             vuegenerator.gen(wizziModel, ctx, function(err, ctxout) {
                 if (err) {
+                    console.log('-------------------------------------------------------------------');
+                    console.log('--- Test error ----------------------------------------------------');
                     console.log('err', err);
                     console.log('err.toString()', err.toString());
                     if (err.inner) {
                         console.log('err.inner.toString()', err.inner.toString());
                     }
-                    throw err;
+                    console.log('-------------------------------------------------------------------');
+                    console.log('-------------------------------------------------------------------');
+                    throw 'Test error';
                 }
                 console.log('ctxout', ctxout.getContent());
             });

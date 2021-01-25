@@ -256,9 +256,13 @@
 		a_tag( fontFamily, font-family )
 		a src
 		a_tag( fontStretch, font-stretch )
+        a_tag( fontFeatureSettings, font-feature-settings )
+        a_tag( fontVariationSettings, font-variation-settings )
+        a_tag( fontVariant, font-variant )
 		a_tag( fontStyle,  font-style )
 		a_tag( fontWeight, font-weight )
 		a_tag( unicodeRange, unicode-range )
+        a_tag( fontDisplay, font-display )
 	
 	e extend : rule
 		tag extend|extend

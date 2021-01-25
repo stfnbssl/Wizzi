@@ -106,6 +106,9 @@ function formatLineNum(line) {
     return line;
 }
 function spaces(num) {
+    if (num < 1) {
+        return '';
+    }
     return Array(num + 1).join(" ");
 }
 function error(message) {

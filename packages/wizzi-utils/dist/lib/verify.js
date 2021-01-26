@@ -819,30 +819,39 @@ md.error = function() {
 md.fatal = function(err, errcode) {
     console.log('wizzi-utils.errors.fatal', util.inspect(err, { depth: null }));
     throw new Error(err);
-    logerror("Fatal error: " + String(err.message || err));
+    md.logError("Fatal error: " + String(err.message || err));
     dumpStack(err);
     var code = typeof(errcode) === 'number' ? errcode : md.code.FATAL_ERROR;
     ;
     process.exit(code);
 };
-function loginfo(msg) {
-    console.log(msg);
-}
-function logwarn(msg) {
-    console.log(chalk.yellow(msg));
-}
-function logerror(msg) {
-    console.log(chalk.red(msg));
-}
+md.logInfo = function() {
+    var sb = [];
+    Array.from(arguments).forEach((item) =>
+        sb.push(item && item.toString()));
+    console.log(chalk.gray(sb.join(' ')));
+};
+md.logWarning = function() {
+    var sb = [];
+    Array.from(arguments).forEach((item) =>
+        sb.push(item && item.toString()));
+    console.log(chalk.yellow(sb.join(' ')));
+};
+md.logError = function() {
+    var sb = [];
+    Array.from(arguments).forEach((item) =>
+        sb.push(item && item.toString()));
+    console.log(chalk.red(sb.join(' ')));
+};
 function dumpStack(e) {
     if (e.origError && e.origError.stack) {
-        loginfo(e.origError.stack);
+        md.logInfo(e.origError.stack);
     }
     else if (e.stack) {
-        loginfo(e.stack);
+        md.logInfo(e.stack);
     }
     else {
-        loginfo(new Error().stack());
+        md.logInfo(new Error().stack());
     }
 }
 function error(code, method, message, innerError) {

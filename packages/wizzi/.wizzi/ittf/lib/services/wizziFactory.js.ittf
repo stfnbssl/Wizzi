@@ -1,4 +1,4 @@
-﻿module wizzi.wizziFactory
+﻿module wizzi@${wfpackage.version}.wizziFactory
 	kind jsfile
 	+
 	var util = require('util')

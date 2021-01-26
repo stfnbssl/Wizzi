@@ -1,5 +1,7 @@
 ﻿artifact( v6-wizzi-js, js, module, rootElement=module )
 
+    $include versions
+
 	$append imports
 		var module_es6 = require('./codegen/es6/module')
 		var statement = require('./codegen/statement')
@@ -48,6 +50,7 @@
 		if (!!ctx.values.noGeneratorComments) == false
 			_ ctx.w('/*')
 			_ ctx.w('    artifact generator: ' + __filename)
+            _ ctx.w('    package: wizzi-js@${versions['wizzi-js@next']}')
 			_ ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'))
 			if (!!ctx.values.isPackageDeploy) == false
 				_ ctx.w('    utc time: ' + new Date().toUTCString())

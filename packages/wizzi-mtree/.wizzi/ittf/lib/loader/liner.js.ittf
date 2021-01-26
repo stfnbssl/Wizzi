@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.loader.liner
+﻿module wizzi-mtree@${wfpackage.version}.loader.liner
     kind jsfile
     var util = require('util')
 

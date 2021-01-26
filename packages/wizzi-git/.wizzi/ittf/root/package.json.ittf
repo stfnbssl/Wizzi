@@ -1,4 +1,5 @@
 common/kernel_package( wizzi-git, ${wfpackage.version}, ${wfpackage.title}., ${wfpackage.license}  )
 
-	isomorphic-git "latest"
+	$include versions
+    isomorphic-git "${versions['isomorphic-git']}"
 	$append devDependencies

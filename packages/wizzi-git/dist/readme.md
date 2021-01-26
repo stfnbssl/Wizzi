@@ -1,4 +1,4 @@
-# wizzi-git - ver 0.6 - kernel package
+# wizzi-git
 
 Git utility library for the wizzi factory.
 
@@ -7,20 +7,12 @@ Git utility library for the wizzi factory.
 Availability of features will be announced
 on [Twitter](https://twitter.com/wizziteam) and [Facebook](https://www.facebook.com/wizzifactory)
 
-## Source and generation
-wizzi-git is generated using the wizzi factory ver 0.5.
+## The Wizzi Factory
 
-## The Wizzi Factory - Ver 0.6
-
-A set of tools for model driven development.
+A model driven artifact factory.
 
 
-<p>
-
-<a href="https://wizzifactory.github.io/">Project page
-</a>
-
-</p>
+<p><a href="https://wizzifactory.github.io/">Project page</a></p>
 
 ## Built With
 * [Nodejs](https://nodejs.org)
@@ -30,14 +22,5 @@ A set of tools for model driven development.
 
 ## License
 
-<p>This project is licensed under the MIT License - see the
-
-<a href="license.txt">license.txt
-</a>
-
-
-<p>for details.
-</p>
-
-</p>
+<p>This project is licensed under the MIT License - see the <a href="license.txt">license.txt</a> for details.</p>
 

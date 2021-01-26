@@ -171,7 +171,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi-mtree.loader.nodifier.' + method,
+        method: 'wizzi-mtree@0.7.9.loader.nodifier.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

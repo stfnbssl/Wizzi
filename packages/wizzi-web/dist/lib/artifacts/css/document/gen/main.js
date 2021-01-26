@@ -15,6 +15,7 @@ rule.load(md);
 md.gen = function(model, ctx, callback) {
     // log 'model', util.inspect(model, { depth: 3 })
     // log 'enter', myname
+    main_init(model, ctx);
     ctx.__comment_level = 0;
     md.getGenItem(ctx)(model, function(err, notUsed) {
         if (err) {
@@ -85,6 +86,18 @@ md.stm.css = function(model, ctx, callback) {
         indent: false
     }, callback);
 };
+function main_init(model, ctx) {
+    if ((!!ctx.values.noGeneratorComments) == false) {
+        ctx.w('/*');
+        ctx.w('    artifact generator: ' + __filename);
+        ctx.w('    package: wizzi-web@0.7.6');
+        ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'));
+        if ((!!ctx.values.isPackageDeploy) == false) {
+            ctx.w('    utc time: ' + new Date().toUTCString());
+        }
+        ctx.w('*/');
+    }
+}
 function emitResources(requestedResources, ctx) {
     if (requestedResources.length > 0 && ctx.values.cssResources) {
         var resourceRepo = ctx.values.cssResources;

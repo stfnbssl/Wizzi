@@ -100,7 +100,7 @@ runner.Identifier = function(node, ctx) {
     }
     else {
         // log 'jsWizziRunner. Identifier. ReferenceError. node.loc', node.loc, ctx.isForInterpolation, ctx.__source
-        return local_error(ctx, 'ReferenceError|Identifier < ' + node.name + ' > not defined, on node < ' + ctx.runningNodeId + ' >', {
+        return local_error(ctx, 'ReferenceError|Identifier < ' + node.name + ' > not defined, on node < ' + ctx.runningNodeId + ', Available context keys: ' + Object.keys(ctx.getValues()) + '>', {
                 node: node, 
                 errorLines: errors.esprimaNodeErrorLines('unknown identifier', node, ctx.__source, true)
             }, node, 'Identifier');
@@ -1164,7 +1164,7 @@ function local_error(ctx, message, node, parentnode, method, ex, other) {
 function local_error_new(name, method, message, node, inner, other) {
     return new mainErrors.WizziError(message, node, node ? node.mTreeBrick || node.model : null, {
             errorName: name, 
-            method: method, 
+            method: 'wizzi-mtree@0.7.9.' + method, 
             inner: inner, 
             ...other||{}
         });
@@ -1311,7 +1311,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi-mtree.jsWizzi.jsWizziRunner.' + method,
+        method: 'wizzi-mtree@0.7.9.jsWizzi.jsWizziRunner.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

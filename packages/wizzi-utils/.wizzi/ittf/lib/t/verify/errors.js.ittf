@@ -68,7 +68,7 @@
             
 			log 'wizzi-utils.errors.fatal', util.inspect(err, { depth: null })
 			throw new Error(err)
-			_ logerror
+			_ md.logError
 				@ "Fatal error: " + String(err.message || err)
             
 			_ dumpStack
@@ -82,30 +82,49 @@
 			_ process.exit
 				@ code
 
-	function loginfo
-        param msg
-        _ console.log(msg)
+	set md.logInfo
+        function
+            var sb = []
+            _ Array.from(arguments).forEach
+                =>
+                    param item
+                    _ sb.push(item && item.toString())
+            _ console.log
+                _ chalk.gray
+                    _ sb.join(' ')
 
-	function logwarn
-        param msg
-        _ console.log
-            _ chalk.yellow(msg)
+	set md.logWarning
+        function 
+            var sb = []
+            _ Array.from(arguments).forEach
+                =>
+                    param item
+                    _ sb.push(item && item.toString())
+            _ console.log
+                _ chalk.yellow
+                    _ sb.join(' ')
     
-	function logerror
-        param msg
-        _ console.log
-            _ chalk.red(msg)
+	set md.logError
+        function
+            var sb = []
+            _ Array.from(arguments).forEach
+                =>
+                    param item
+                    _ sb.push(item && item.toString())
+            _ console.log
+                _ chalk.red
+                    _ sb.join(' ')
 
 	function dumpStack
         param e
         if e.origError && e.origError.stack
-            _ loginfo
+            _ md.logInfo
                 @ e.origError.stack
         elif e.stack
-            _ loginfo
+            _ md.logInfo
                 @ e.stack
 		else
-			_ loginfo
+			_ md.logInfo
 				new Error().stack
 
 

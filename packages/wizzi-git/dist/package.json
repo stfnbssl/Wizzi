@@ -1,6 +1,6 @@
 {
     "name": "wizzi-git",
-    "version": "0.6.6",
+    "version": "0.7.1",
     "description": "Git utility library for the wizzi factory.",
     "author": {
         "name": "Stefano Bassoli",
@@ -10,28 +10,32 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/wizzifactory/wizzi/tree/master/license.txt"
+            "url": "https://github.com/stfnbssl/wizzi/tree/master/license.txt"
         }
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-git"
+        "url": "https://github.com/stfnbssl/wizzi/tree/master/packages/wizzi-git"
     },
     "engines": {
         "node": ">=0.10.28",
         "npm": ">=1.4.28"
     },
     "scripts": {
-        "test": "mocha tests/**/*.js --full-trace"
+        "test": "mocha tests/all/**/*.js --full-trace",
+        "test:quick": "mocha tests/quick/**/*.js --full-trace"
     },
     "dependencies": {
-        "async": "^2.1.5",
-        "chalk": "^1.1.3",
-        "iconv-lite": "^0.4.15",
+        "async": "^3.2.0",
+        "chalk": "^4.1.0",
+        "iconv-lite": "^0.6.2",
         "json-stringify-safe": "^5.0.1",
-        "lodash": "^4.17.4",
-        "wizzi-utils": "latest",
-        "isomorphic-git": "latest"
+        "lodash": "^4.17.20",
+        "wizzi-utils": "0.7.10",
+        "isomorphic-git": "^0.55.4"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "del": "^6.0.0",
+        "expect.js": "^0.3.1"
+    }
 }

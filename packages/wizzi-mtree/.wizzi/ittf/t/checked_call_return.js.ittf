@@ -5,7 +5,7 @@
 		$hook
 	if ${varName} && ${varName}.__is_error
         $if forTest != null
-            log 'checked_call_return.error.method',  '${method}'
-            log 'checked_call_return.error.forTest',  '${forTest}',  ${forTest}
-            log 'checked_call_return.error.${varName}', ${varName}
+            _ verify.logError( 'checked_call_return.error.method',  '${method}' )
+            _ verify.logError( 'checked_call_return.error.forTest',  '${forTest}',  ${forTest} )
+            _ verify.logError( 'checked_call_return.error.${varName}', ${varName} )
 		return ${varName}

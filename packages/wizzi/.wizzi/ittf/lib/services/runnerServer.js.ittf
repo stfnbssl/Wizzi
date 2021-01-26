@@ -1,4 +1,4 @@
-﻿module wizzi.runnerServer
+﻿module wizzi@${wfpackage.version}.runnerServer
     kind jsfile
     
 	var _ = require('lodash')

@@ -1,4 +1,4 @@
-﻿module wizzi.pluginsManager
+﻿module wizzi@${wfpackage.version}.pluginsManager
 	kind jsfile
 
 	var path = require('path')

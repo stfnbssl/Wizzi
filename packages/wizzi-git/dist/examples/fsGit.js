@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\kernel\wizzi-git\src\ittf\examples\fsgit.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-git\.wizzi\ittf\examples\fsGit.js.ittf
 */
 'use strict';
 
@@ -25,7 +25,7 @@ git.clone({
     fs: fs, 
     dir: dir, 
     url: 'https://github.com/isomorphic-git/isomorphic-git', 
-    ref: 'master', 
+    ref: 'main', 
     singleBranch: true, 
     depth: 10
 }, function(err, result) {

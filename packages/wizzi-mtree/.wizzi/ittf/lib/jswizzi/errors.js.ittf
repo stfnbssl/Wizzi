@@ -5,13 +5,17 @@
 	var wizziUtils = require('wizzi-utils')
 	var f_verify = require('./functions/verify')
 	+
+    var pkgVersioned = ' (${wfpackage.name}.${wfpackage.version})'
+    +
 	var md = module.exports = {}
 	+
 	error( JsWizziRunner, message, node )
 		set this.message = message + util.inspect(node.loc, {depth: null})
+        set this.message += pkgVersioned
 
 	error( InvalidVariableName, message )
 		set this.message = message
+        set this.message += pkgVersioned
 
 	error( JsWizziSynthax, message, node )
 		# log 'JsWizziSynthax.message', message
@@ -26,12 +30,14 @@
 			set this.errorLines = getEsprimaErrorLines(message, node, true)
 		else
 			set this.message = message
+        set this.message += pkgVersioned
 	
 	# For
 		# vars or functions undeclared
 		# invalid values
 	error( JsWizziType, message, node )
 		set this.message = message
+        set this.message += pkgVersioned
 
 	set md.esprimaNodeErrorLines
 		function

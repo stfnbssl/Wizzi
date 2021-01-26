@@ -1,6 +1,7 @@
 {
+    $include versions
     name '@wizzi/git'
-    version '0.6.16'
+    version '${versions['wizzi-git@next']}'
 	title 'Git utility library for the wizzi factory'
     license 'MIT'
     [ schemas

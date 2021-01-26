@@ -34,6 +34,7 @@ md.gen = function(model, ctx, callback) {
     }
     // log myname, 'enter', 'ctx.values', ctx.values
     // log myname, 'enter', 'model', util.inspect(model, { depth: 1 })
+    main_init(model, ctx);
     md.getGenItem(ctx)(model, function(err, notUsed) {
         if (err) {
             return callback(err);
@@ -554,6 +555,18 @@ md.stm.comment = function(model, ctx, callback) {
         return callback(null, true);
     });
 };
+function main_init(model, ctx) {
+    if ((!!ctx.values.noGeneratorComments) == false) {
+        ctx.w('<!--');
+        ctx.w('    artifact generator: ' + __filename);
+        ctx.w('    package: wizzi-web@0.7.6');
+        ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'));
+        if ((!!ctx.values.isPackageDeploy) == false) {
+            ctx.w('    utc time: ' + new Date().toUTCString());
+        }
+        ctx.w('-->');
+    }
+}
 function prettifyIttf(mTreeData, callback) {
     var schema = mTreeData.schema;
     var title = mTreeData.title;

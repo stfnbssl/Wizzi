@@ -4,6 +4,7 @@
 	import util
 	+
 	var md = module.exports = {}
+    var pkgVersioned = ' (${wfpackage.name}.${wfpackage.version})'
 	+
 	error( NotImplemented, message )
 		log 'message', message

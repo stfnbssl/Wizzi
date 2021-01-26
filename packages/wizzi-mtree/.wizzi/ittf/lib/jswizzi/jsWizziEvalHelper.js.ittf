@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.jsWizziEvalHelper
+﻿module wizzi-mtree@${wfpackage.version}.jswizzi.jsWizziEvalHelper
     kind es6
 
 	var util = require('util')
@@ -123,7 +123,15 @@
 
                 var ret = interpolate(templatedValue, this.jsWizziContext, {delimiter: '${}'})
                 if ret && ret.__is_error
-                    # log 'wizzi-mtree.JsWizziEvalHelper.ip.error.ret', ret
+                    $*
+                    _ verify.logError
+                        @ 'line: ' + line
+                        @ 'wizzi-mtree.JsWizziEvalHelper.ip.error'
+                        @ ret
+                    *$
+                    set ret.sourceKey = brickKey
+                    set ret.line = line
+                    set ret.templatedValue = templatedValue
                     return ret
 				
 				# log 'interpolated result', ret
@@ -143,11 +151,11 @@
 				var mTreeBrickData = this.loadHistory.getMTreeBrickData(brickKey)
 				var mixerMTreeBrickData = this.loadHistory.getMTreeBrickData(mTreeBrickData.mTreeBrick.$mixerBrickKey)
 				var mixerUri = mixerMTreeBrickData ? mixerMTreeBrickData.ittfDocumentUri : 'root model';
-				# log 'saved ip.currentMTreeBrickKey', save, 'mTreeBrickData.evalContext', mTreeBrickData.evalContext
+				log 'wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.saved ip.currentMTreeBrickKey', save, 'mTreeBrickData.evalContext', mTreeBrickData.evalContext
 
-				# 'values.' + util.inspect(this.jsWizziContext.getValues(), {depth: 2}))
+				log 'wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.values.' + util.inspect(this.jsWizziContext.getValues(), {depth: 2})
 
-                # log 'wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.message', ex.message
+                log 'wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.message', ex.message
 
 				return 
                     $*

@@ -1,6 +1,8 @@
 ﻿module wizzi-mtree.loader.interpolate
 	kind jsfile
 
+    $include versions
+
 	var verify = require('wizzi-utils').verify
 	var jsWizziRunner = require('../jswizzi/jsWizziRunner')
 
@@ -107,7 +109,7 @@
 							if isCompile
 								_ result.push("' + " + keyOrCode + " + '")
 							else
-								checked_call_return( replacer, ittf.interpolate, keyOrCode )
+								checked_call_return( replacer )
 									_ evalKeyOrCode(keyOrCode, jsWizziContext)
 								_ result.push(replacer)
 						set state = state_text
@@ -155,7 +157,7 @@
 				then 'var _____result = function dummy() { ' + keyOrCode + ' }();'
 				else 'var _____result = ' + keyOrCode + ';'
 		# log 'wizzi-mtree.loader.ittfInterpolate.evalKeyOrCode.previous._____result: ', keyOrCode, jsWizziContext.isDeclared('_____result')
-		checked_call_return( notUsed, ittf.interpolate.evalKeyOrCode, stm )
+		checked_call_return( notUsed, wizzi-mtree@${versions['wizzi-mtree@next']}.loader.ittfInterpolate.evalKeyOrCode, stm )
 			_ jsWizziRunner.run(stm, jsWizziContext)
 		var result = jsWizziContext.getValue('_____result')
 		# log 'wizzi-mtree.loader.ittfInterpolate.evalKeyOrCode: ', keyOrCode, result

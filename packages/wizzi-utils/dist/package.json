@@ -1,6 +1,6 @@
 {
     "name": "wizzi-utils",
-    "version": "0.7.10",
+    "version": "0.7.12",
     "description": "Utility library for the wizzi factory.",
     "author": {
         "name": "Stefano Bassoli",
@@ -37,7 +37,7 @@
         "graceful-fs": "^4.1.11",
         "hashids": "latest",
         "i": "^0.3.5",
-        "isomorphic-git": "latest",
+        "isomorphic-git": "0.55.4",
         "promise": "^7.1.1",
         "randomstring": "latest"
     },

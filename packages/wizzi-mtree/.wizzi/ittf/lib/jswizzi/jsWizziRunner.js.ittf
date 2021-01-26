@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.jsWizzi.jsWizziRunner
+﻿module wizzi-mtree@${wfpackage.version}.jsWizzi.jsWizziRunner
     kind es6
 
     var util = require('util')
@@ -121,7 +121,7 @@
 			return
 				_ local_error
 					@ ctx
-					@ 'ReferenceError|Identifier < ' + node.name + ' > not defined, on node < ' + ctx.runningNodeId + ' >'
+					@ 'ReferenceError|Identifier < ' + node.name + ' > not defined, on node < ' + ctx.runningNodeId + ', Available context keys: ' + Object.keys(ctx.getValues()) + '>'
 					{
 						@ node node
 						@ errorLines 
@@ -275,7 +275,7 @@
                 @ node ? node.mTreeBrick || node.model : null
                 {
                     @ errorName name
-                    @ method method
+                    @ method 'wizzi-mtree@${wfpackage.version}.' + method
                     @ inner inner
                     @ ...other||{}
 

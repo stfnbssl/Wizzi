@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.jswizzi.jsWizziContext
+﻿module wizzi-mtree@${wfpackage.version}.jswizzi.jsWizziContext
 	kind jsfile
 
     #

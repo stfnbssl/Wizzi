@@ -17,10 +17,9 @@ module
 
         const example_ittfs
             [
-                $$ @ 'basic'
-                $$ @ 'ittfprint'
-                $$ @ 'newfeat'
-                @ 'exception'
+                @ 'basic'
+                @ 'ittfprint'
+                @ 'newfeat'
 
    		_ async.mapSeries
 			@ example_ittfs

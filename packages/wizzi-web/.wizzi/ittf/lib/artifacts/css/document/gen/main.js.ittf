@@ -1,6 +1,8 @@
 ﻿module
 	kind jsfile
 
+    $include versions
+
 	var util = require('util')
 	var async = require('async')
     var postcss = require("postcss")
@@ -22,6 +24,10 @@
 
 			# log 'model', util.inspect(model, { depth: 3 })
 			# log 'enter', myname
+
+            _ main_init
+                @ model
+                @ ctx
 
 			set ctx.__comment_level = 0
 
@@ -103,6 +109,19 @@
 			{
 				@ indent false
 			@ callback
+
+	function main_init
+		param model
+		param ctx
+		
+		if (!!ctx.values.noGeneratorComments) == false
+			_ ctx.w('/*')
+			_ ctx.w('    artifact generator: ' + __filename)
+            _ ctx.w('    package: wizzi-web@${versions['wizzi-web@next']}')
+			_ ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'))
+			if (!!ctx.values.isPackageDeploy) == false
+				_ ctx.w('    utc time: ' + new Date().toUTCString())
+			_ ctx.w('*/')
 
 	function emitResources
 		param requestedResources

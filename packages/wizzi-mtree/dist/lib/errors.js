@@ -34,8 +34,6 @@ function NodeError(message, node) {
         }
     }
     this.message = msg.join('');
-    // log 'NodeError', this.message
-    // set this.node = node
     // 5/8/17 set this.stack = (new Error()).stack
 }
 NodeError.prototype.toString = function() {
@@ -109,12 +107,25 @@ class WizziError extends Error {
         this.name = "WizziError";
         this.__is_error = true;
         this.data = {
-            node, 
-            mTreeBrick, 
             ...other||{}
         };
+        if (node) {
+            this.data.node = {
+                name: node.name, 
+                row: node.row, 
+                col: node.col, 
+                sourceKey: node.sourceKey
+            };
+            if (node.wzSourceLineInfo) {
+                var info = node.wzSourceLineInfo;
+                this.node.filePath = node.wzRoot().wzSourceFilepath(info.sourceKey);
+            }
+        }
         Error.captureStackTrace(this, this.constructor);
         if (mTreeBrick) {
+            this.data.mTreeBrick = {
+                uri: mTreeBrick.uri
+            };
             this.errorLines = mTreeBrick.loadHistory.getIttfDocumentErrorLines(node.sourceKey, {
                 row: node.row, 
                 col: node.col, 

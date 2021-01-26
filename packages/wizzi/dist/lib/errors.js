@@ -6,13 +6,15 @@
 var util = require('util');
 var fail = require('wizzi-utils').fail;
 var utilsErrors = require('wizzi-utils').errors;
+var pkgVersioned = ' (@wizzi.0.7.20)';
 
 var md = module.exports = {};
 
 function NotImplementedError(message) {
     this.name = 'NotImplementedError';
-    console.log('message', message);
-    this.message = message;
+    // log 'message', message
+    this.message;
+    this.message += pkgVersioned;
     // 5/10/17 set this.stack = (new Error()).stack
 }
 NotImplementedError.prototype.toString = function() {
@@ -30,8 +32,9 @@ md.NotImplementedError = NotImplementedError;
 
 function InvalidRequestError(message, code) {
     this.name = 'InvalidRequestError';
-    console.log('message', message);
+    // log 'message', message
     this.message = message;
+    this.message += pkgVersioned;
     this.code = code;
     // 5/10/17 set this.stack = (new Error()).stack
 }
@@ -51,6 +54,7 @@ md.NodeError = utilsErrors.NodeError;
 function NotFoundError(resourceType, name, message) {
     this.name = 'NotFoundError';
     this.message = resourceType + ': ' + name +' not found, message ' + message;
+    this.message += pkgVersioned;
     // 5/10/17 set this.stack = (new Error()).stack
 }
 NotFoundError.prototype.toString = function() {
@@ -68,6 +72,7 @@ md.NotFoundError = NotFoundError;
 function IttfNotFoundError(resourceType, name, sourceUri) {
     this.name = 'IttfNotFoundError';
     this.message = resourceType + ': ' + name +' not found, processing document ' + md.getSrcPathInfo(sourceUri);
+    this.message += pkgVersioned;
     // 5/10/17 set this.stack = (new Error()).stack
 }
 IttfNotFoundError.prototype.toString = function() {
@@ -92,6 +97,7 @@ function IttfLoadError(message, srcPath, node, ex) {
     if (node) {
         this.message += ('\n' + new NodeError('', node).message);
     }
+    this.message += pkgVersioned;
     // 5/10/17 set this.stack = (new Error()).stack
 }
 IttfLoadError.prototype.toString = function() {
@@ -109,6 +115,7 @@ md.IttfLoadError = IttfLoadError;
 function WizziModelLoadError(message, srcPath, ex) {
     this.name = 'WizziModelLoadError';
     this.message = 'Error: ' + message + '\nLoading ittf document ' + md.getSrcPathInfo(srcPath);
+    this.message += pkgVersioned;
     this.inner = ex;
     // 5/10/17 set this.stack = (new Error()).stack
 }
@@ -127,6 +134,7 @@ md.WizziModelLoadError = WizziModelLoadError;
 function ModelTransformationError(message, generation, srcPath, ex) {
     this.name = 'ModelTransformationError';
     this.message = 'Error: ' + message + '\nDuring generation:' + generation + ', processing document ' + md.getSrcPathInfo(srcPath);
+    this.message += pkgVersioned;
     this.inner = ex;
     // 5/10/17 set this.stack = (new Error()).stack
 }
@@ -145,8 +153,9 @@ md.ModelTransformationError = ModelTransformationError;
 function ArtifactGenerationError(message, generation, srcPath, ex) {
     this.name = 'ArtifactGenerationError';
     this.message = 'Error: ' + message +'\nDuring generation:' + generation +', processing document ' + md.getSrcPathInfo(srcPath);
+    this.message += pkgVersioned;
     this.inner = ex;
-    console.log('wizzi.artifact.errors.artifactGenerationError.message', this.message);
+    // log 'wizzi.artifact.errors.artifactGenerationError.message', this.message
     // 5/10/17 set this.stack = (new Error()).stack
 }
 ArtifactGenerationError.prototype.toString = function() {
@@ -164,6 +173,7 @@ md.ArtifactGenerationError = ArtifactGenerationError;
 function WizziInvalidRequestError(message, srcPath, ex) {
     this.name = 'WizziInvalidRequestError';
     this.message = message;
+    this.message += pkgVersioned;
     this.inner = ex;
     // 5/10/17 set this.stack = (new Error()).stack
 }
@@ -182,6 +192,7 @@ md.WizziInvalidRequestError = WizziInvalidRequestError;
 function RunnerServerError(message) {
     this.name = 'RunnerServerError';
     this.message = message;
+    this.message += pkgVersioned;
     // 5/10/17 set this.stack = (new Error()).stack
 }
 RunnerServerError.prototype.toString = function() {
@@ -200,6 +211,25 @@ md.artifactGenerationError = function(message, generation, node) {
     var error = new md.ArtifactGenerationError(message, generation, node);
     return error;
 };
+function FileError(message, ex) {
+    this.name = 'FileError';
+    this.message = message;
+    this.message += pkgVersioned;
+    this.inner = ex;
+    // 5/10/17 set this.stack = (new Error()).stack
+}
+FileError.prototype.toString = function() {
+    var msg = [this.message];
+    if (this.inner) {
+        msg.push('Inner error:');
+        msg.push(this.inner.toString());
+    }
+    return msg.join('\n');
+};
+FileError.prototype = Object.create(Error.prototype);
+FileError.prototype.constructor = FileError;
+md.FileError = FileError;
+
 md.getSrcPathInfo = function(srcPath) {
     if (typeof (srcPath) === 'string') {
         return srcPath;
@@ -227,21 +257,3 @@ md.getSrcPathInfoFromNode = function(node) {
     }
     return msg.length == 0 ? null : msg.join('');
 };
-function FileError(message, ex) {
-    this.name = 'FileError';
-    this.message = message;
-    this.inner = ex;
-    // 5/10/17 set this.stack = (new Error()).stack
-}
-FileError.prototype.toString = function() {
-    var msg = [this.message];
-    if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
-    }
-    return msg.join('\n');
-};
-FileError.prototype = Object.create(Error.prototype);
-FileError.prototype.constructor = FileError;
-md.FileError = FileError;
-

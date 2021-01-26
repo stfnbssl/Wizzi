@@ -125,7 +125,9 @@ class JsWizziEvalHelper {
             // log 'wizzi-mtree.JsWizziEvalHelper.2', 2
             var ret = interpolate(templatedValue, this.jsWizziContext, {delimiter: '${}'});
             if (ret && ret.__is_error) {
-                // log 'wizzi-mtree.JsWizziEvalHelper.ip.error.ret', ret
+                ret.sourceKey = brickKey;
+                ret.line = line;
+                ret.templatedValue = templatedValue;
                 return ret;
             }
             // log 'interpolated result', ret
@@ -146,9 +148,9 @@ class JsWizziEvalHelper {
             var mTreeBrickData = this.loadHistory.getMTreeBrickData(brickKey);
             var mixerMTreeBrickData = this.loadHistory.getMTreeBrickData(mTreeBrickData.mTreeBrick.$mixerBrickKey);
             var mixerUri = mixerMTreeBrickData ? mixerMTreeBrickData.ittfDocumentUri : 'root model';
-            // log 'saved ip.currentMTreeBrickKey', save, 'mTreeBrickData.evalContext', mTreeBrickData.evalContext
-            // 'values.' + util.inspect(this.jsWizziContext.getValues(), {depth: 2}))
-            // log 'wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.message', ex.message
+            console.log('wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.saved ip.currentMTreeBrickKey', save, 'mTreeBrickData.evalContext', mTreeBrickData.evalContext);
+            console.log('wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.values.' + util.inspect(this.jsWizziContext.getValues(), {depth: 2}));
+            console.log('wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.message', ex.message);
             return local_error('IttfEvaluationError', 'ip', 'Interpolation failed, ' + ex.message, this.jsWizziContext.getNodeFromScriptMap(line), ex, {
                     line: line, 
                     type: type, 
@@ -352,7 +354,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi-mtree.jsWizziEvalHelper.' + method,
+        method: 'wizzi-mtree@0.7.9.jswizzi.jsWizziEvalHelper.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

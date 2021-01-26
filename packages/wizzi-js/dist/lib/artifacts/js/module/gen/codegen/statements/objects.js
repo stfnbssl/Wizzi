@@ -295,7 +295,7 @@ md.load = function(cnt) {
                 });
             }
             else {
-                console.log('js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1));
+                // log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
                 if (u.isMemberAccessOrCall(item_1)) {
                     // log 'jsObject_close 3'
                     ctx.w('');

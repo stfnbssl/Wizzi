@@ -776,7 +776,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi.pluginsManager.' + method,
+        method: 'wizzi@0.7.20.pluginsManager.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

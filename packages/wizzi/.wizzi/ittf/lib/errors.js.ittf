@@ -4,56 +4,33 @@
 	import util
 	var fail = require('wizzi-utils').fail
 	var utilsErrors = require('wizzi-utils').errors
+    var pkgVersioned = ' (${wfpackage.name}.${wfpackage.version})'
 
 	+
 	var md = module.exports = {}
 	+
 	error( NotImplemented, message )
-		log 'message', message
-		set this.message = message
+		# log 'message', message
+		set this.message
+        set this.message += pkgVersioned
 	+
 	error( InvalidRequest, message, code )
-		log 'message', message
+		# log 'message', message
 		set this.message = message
+        set this.message += pkgVersioned
 		set this.code = code
 
 	set md.NodeError = utilsErrors.NodeError
-
-	$*
-	error( Node, message, node )
-        var msg
-            [ 
-                @ message
-        if node
-			set this.ittfDocumentUri = 'Unavailable'
-            if node.wzSourceLineInfo
-                var info = node.wzSourceLineInfo
-                if node.wzSourceFilepath
-                    set this.ittfDocumentUri = node.wzSourceFilepath(info.sourceKey)
-				set this.row = info.row
-				set this.col = info.col
-				set this.sourceKey = info.sourceKey
-                _ msg.push((' at row: ' + info.row))
-                _ msg.push((', col: ' + info.col))
-                _ msg.push((', source: ' + info.sourceKey))
-                _ msg.push((', in file: ' + this.ittfDocumentUri))
-            elif node.row
-				set this.row = node.row
-				set this.col = node.col
-                _ msg.push((' at row: ' + node.row))
-                _ msg.push((', col: ' + node.col))
-        set this.message = msg.join('')
-		log 'NodeError', this.message
-        # set this.node = node
-	*$
-    
+   
 	error( NotFound, resourceType, name, message )
 		set this.message = resourceType + ': ' + name + 
 			\ ' not found, message ' + message
+        set this.message += pkgVersioned
 
 	error( IttfNotFound, resourceType, name, sourceUri )
 		set this.message = resourceType + ': ' + name + 
 			\ ' not found, processing document ' + md.getSrcPathInfo(sourceUri)
+        set this.message += pkgVersioned
 
     error( IttfLoad, message, srcPath, node, ex )
         if !(ex)
@@ -62,32 +39,34 @@
         set this.message = 'Error: ' + message + '\nLoading ittf document ' + md.getSrcPathInfo(srcPath)
         if node
             set this.message += ('\n' + new NodeError('', node).message)
+        set this.message += pkgVersioned
 
     error( WizziModelLoad, message, srcPath, ex )
         set this.message = 'Error: ' + message + '\nLoading ittf document ' + md.getSrcPathInfo(srcPath)
+        set this.message += pkgVersioned
         set this.inner = ex
-        $* VIA
-		if ex && ex.errorLines
-			set this.errorLines = ex.errorLines
-        *$
 
     error( ModelTransformation, message, generation, srcPath, ex )
         set this.message = 'Error: ' + message + '\nDuring generation:' + generation + ', processing document ' + md.getSrcPathInfo(srcPath)
+        set this.message += pkgVersioned
         set this.inner = ex
 
 	error( ArtifactGeneration, message, generation, srcPath, ex )
         set this.message = 'Error: ' + message + 
 			\ '\nDuring generation:' + generation + 
 			\ ', processing document ' + md.getSrcPathInfo(srcPath)
+        set this.message += pkgVersioned
         set this.inner = ex
-		log 'wizzi.artifact.errors.artifactGenerationError.message', this.message
+		# log 'wizzi.artifact.errors.artifactGenerationError.message', this.message
     
 	error( WizziInvalidRequest, message, srcPath, ex )
         set this.message = message
+        set this.message += pkgVersioned
         set this.inner = ex
 
 	error( RunnerServer, message )
 		set this.message = message
+        set this.message += pkgVersioned
     
 	set md.artifactGenerationError
         function 
@@ -101,6 +80,11 @@
             _ fail.warn(error)
             throw error
             *$
+
+	error( File, message, ex )
+		set this.message = message
+        set this.message += pkgVersioned
+		set this.inner = ex
 
 	set md.getSrcPathInfo
 		function
@@ -138,8 +122,5 @@
 						_ msg.join('')
 
 
-	error( File, message, ex )
-		set this.message = message
-		set this.inner = ex
     
 

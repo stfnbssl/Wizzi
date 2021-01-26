@@ -78,6 +78,7 @@ md.loadMTree = function loadMTree(primaryIttfDocumentUri, loadContext, callback)
                         // evaluate
                         evaluator(appendedMTreePiece, loadContext, function(err, finalMTree) {
                             if (err) {
+                                // log 'wizzi-mTree.loader.index.err', err
                                 err.ittfDocumentUri = primaryIttfDocumentUri;
                                 return callback(err);
                             }

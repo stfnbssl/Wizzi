@@ -15,9 +15,7 @@ var lorem = require('../../lib/lorem');
 var encdec = require('../../lib/crypto/encdec');
 
 
-var nv = verify.parseNameValue("['@id'] this.id", null, {
-    objectProperty: true
-});
-console.log('verify.parseNameValue', nv);
-nv = verify.parseNameValue("['@id'] this.id");
-console.log('verify.parseNameValue', nv);
+var nv;
+verify.logError('verify.logerror-> ', 'a', 'b', 'c');
+verify.logWarning('verify.logerror-> ', 'a', 'b', 'c');
+verify.logInfo('verify.logerror-> ', 'a', 'b', 'c');

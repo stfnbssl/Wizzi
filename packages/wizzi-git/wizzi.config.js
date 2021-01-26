@@ -9,7 +9,7 @@ module.exports = {
     ], 
     globalContext: {
         isPackageDeploy: true,
-        isWebpackTarget: true,
+        isWebpackTarget: false,
         isDevelopment: false,
     },
     globalContext_default: {

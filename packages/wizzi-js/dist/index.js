@@ -9,6 +9,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 
+
 var util = require('util');
 var path = require('path');
 var stringify = require('json-stringify-safe');
@@ -50,6 +51,9 @@ var FactoryPlugin = (function () {
     }
     FactoryPlugin.prototype.getFilename = function() {
         return __filename;
+    }
+    FactoryPlugin.prototype.getVersion = function() {
+        return '0.7.7';
     }
     FactoryPlugin.prototype.getProvides = function() {
         return this.provides;

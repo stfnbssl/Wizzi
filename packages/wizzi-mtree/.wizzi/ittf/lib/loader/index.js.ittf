@@ -88,6 +88,7 @@
                                                             param err
                                                             param finalMTree
                                                             if err
+                                                                # log 'wizzi-mTree.loader.index.err', err
                                                                 set err.ittfDocumentUri = primaryIttfDocumentUri
                                                                 return callback(err)
                                                             # log 'wizzi-mTree.loader.index.createdProvider.loadHistory', createdProvider.loadHistory

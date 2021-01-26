@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.loader.appender
+﻿module wizzi-mtree@${wfpackage.version}.loader.appender
     kind es6
     
 	var util = require('util')

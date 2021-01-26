@@ -1514,7 +1514,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi.wizziFactory.' + method,
+        method: 'wizzi@0.7.20.wizziFactory.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

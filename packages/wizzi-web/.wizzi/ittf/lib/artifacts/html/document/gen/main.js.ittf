@@ -1,6 +1,8 @@
 ﻿module
 	kind jsfile
 
+    $include versions
+
 	var util = require('util')
 	var async = require('async')
 	var include_writers = require('./include_writers')
@@ -23,7 +25,12 @@
 			callback
 			# log myname, 'enter', 'ctx.values', ctx.values
 			# log myname, 'enter', 'model', util.inspect(model, { depth: 1 })
-			_ md.getGenItem
+            
+            _ main_init
+                @ model
+                @ ctx
+			
+            _ md.getGenItem
 				@ ctx
 				(
 					@ model
@@ -335,6 +342,19 @@
 					_ ctx.w(' -->')
 				set ctx.__needs_crlf = false
 				r_cb(true)
+
+	function main_init
+		param model
+		param ctx
+		
+		if (!!ctx.values.noGeneratorComments) == false
+			_ ctx.w('<!--')
+			_ ctx.w('    artifact generator: ' + __filename)
+            _ ctx.w('    package: wizzi-web@${versions['wizzi-web@next']}')
+			_ ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'))
+			if (!!ctx.values.isPackageDeploy) == false
+				_ ctx.w('    utc time: ' + new Date().toUTCString())
+			_ ctx.w('-->')
 
 	$include prettifyIttf
 

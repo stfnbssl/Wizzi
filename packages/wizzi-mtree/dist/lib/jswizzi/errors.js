@@ -7,6 +7,8 @@ var util = require('util');
 var wizziUtils = require('wizzi-utils');
 var f_verify = require('./functions/verify');
 
+var pkgVersioned = ' (@wizzi/mtree.0.7.9)';
+
 var md = module.exports = {};
 
 function JsWizziRunnerError(message, node) {
@@ -15,6 +17,7 @@ function JsWizziRunnerError(message, node) {
     this.node = node;
     this.__is_error = true;
     this.message = message + util.inspect(node.loc, {depth: null});
+    this.message += pkgVersioned;
     // 5/8/17 set this.stack = (new Error()).stack
 }
 JsWizziRunnerError.prototype.toString = function() {
@@ -29,6 +32,7 @@ function InvalidVariableNameError(message) {
     this.message = message;
     this.__is_error = true;
     this.message = message;
+    this.message += pkgVersioned;
     // 5/8/17 set this.stack = (new Error()).stack
 }
 InvalidVariableNameError.prototype.toString = function() {
@@ -52,6 +56,7 @@ function JsWizziSynthaxError(message, node) {
     else {
         this.message = message;
     }
+    this.message += pkgVersioned;
     // 5/8/17 set this.stack = (new Error()).stack
 }
 JsWizziSynthaxError.prototype.toString = function() {
@@ -72,6 +77,7 @@ function JsWizziTypeError(message, node) {
     this.node = node;
     this.__is_error = true;
     this.message = message;
+    this.message += pkgVersioned;
     // 5/8/17 set this.stack = (new Error()).stack
 }
 JsWizziTypeError.prototype.toString = function() {

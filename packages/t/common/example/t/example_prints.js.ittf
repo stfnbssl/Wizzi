@@ -38,6 +38,7 @@
 		param v
 		param format
 		param p1
+        log '--- value ------------------------------------------------------ start'
 		if format === 'dashes' || format === 'meter'
 			log '   ', '-'.repeat(100)
 		if format === 'json'
@@ -66,12 +67,14 @@
 			log '   ', k, ':', v
 		if format === 'meter'
 			_ meterLine(p1, '     ' + new Array(1 + k.length).join(' '))
+        log '--- value ------------------------------------------------------ end'
 
 	function printObject
 		param k
 		param v
 		param format
 		param p1
+        log '--- object ------------------------------------------------------ start'
 		if format === 'dashes' || format === 'meter'
 			log '   ', '-'.repeat(100)
 		log '   ', k, '{'
@@ -80,6 +83,7 @@
 		
 		if format === 'meter'
 			_ meterLine(p1, '     ' + new Array(1 + k.length).join(' '))
+        log '--- object ------------------------------------------------------ end'
 
 	function __printObject
 		param v

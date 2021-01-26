@@ -20,7 +20,7 @@
 		cwd-folder ${ittf_lib_folder}
 		dest-folder ${dest_folder}/lib
 
-		wfjob/any_js()
+		wfjob/any_js(true)
 			ignore ${ittf_lib_folder}/**/*__copy/**/*.js.ittf
 
 		artifact any_ittf_inside___copy

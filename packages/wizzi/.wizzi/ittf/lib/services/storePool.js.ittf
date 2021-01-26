@@ -1,4 +1,4 @@
-﻿module wizzi.storePool
+﻿module wizzi@${wfpackage.version}.storePool
 	kind jsfile
 
 	var repo = require('wizzi-repo')

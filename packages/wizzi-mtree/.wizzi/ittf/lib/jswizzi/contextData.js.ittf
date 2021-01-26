@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.jswizzi.ContextData
+﻿module wizzi-mtree@${wfpackage.version}.jswizzi.ContextData
 	kind jsfile
 
 	import util

@@ -1,6 +1,6 @@
 {
     "name": "wizzi",
-    "version": "0.7.19",
+    "version": "0.7.20",
     "description": "The wizzi factory..",
     "author": {
         "name": "Stefano Bassoli",
@@ -36,9 +36,9 @@
         "iconv-lite": "^0.6.2",
         "json-stringify-safe": "^5.0.1",
         "lodash": "^4.17.20",
-        "wizzi-utils": "0.7.10",
+        "wizzi-utils": "0.7.12",
         "extsprintf": "^1.2.0",
-        "wizzi-mtree": "0.7.7",
+        "wizzi-mtree": "0.7.9",
         "wizzi-repo": "0.7.2"
     },
     "devDependencies": {

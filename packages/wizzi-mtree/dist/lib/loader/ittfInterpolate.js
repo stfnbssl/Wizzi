@@ -108,9 +108,6 @@ function interpolate(template, jsWizziContext, options) {
                         else {
                             var replacer = evalKeyOrCode(keyOrCode, jsWizziContext);
                             if (replacer && replacer.__is_error) {
-                                console.log('checked_call_return.error.method',  'ittf.interpolate');
-                                console.log('checked_call_return.error.forTest',  'keyOrCode',  keyOrCode);
-                                console.log('checked_call_return.error.replacer', replacer);
                                 return replacer;
                             }
                             result.push(replacer);
@@ -168,9 +165,9 @@ function evalKeyOrCode(keyOrCode, jsWizziContext) {
     // log 'wizzi-mtree.loader.ittfInterpolate.evalKeyOrCode.previous._____result: ', keyOrCode, jsWizziContext.isDeclared('_____result')
     var notUsed = jsWizziRunner.run(stm, jsWizziContext);
     if (notUsed && notUsed.__is_error) {
-        console.log('checked_call_return.error.method',  'ittf.interpolate.evalKeyOrCode');
-        console.log('checked_call_return.error.forTest',  'stm',  stm);
-        console.log('checked_call_return.error.notUsed', notUsed);
+        verify.logError( 'checked_call_return.error.method',  'wizzi-mtree@0.7.9.loader.ittfInterpolate.evalKeyOrCode' );
+        verify.logError( 'checked_call_return.error.forTest',  'stm',  stm );
+        verify.logError( 'checked_call_return.error.notUsed', notUsed );
         return notUsed;
     }
     var result = jsWizziContext.getValue('_____result');

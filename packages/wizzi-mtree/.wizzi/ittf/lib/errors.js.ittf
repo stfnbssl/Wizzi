@@ -28,8 +28,6 @@
                 _ msg.push(', source: ' + node.sourceKey)
                 _ msg.push(', in file: ' + (node.model ? node.model.uri : 'unavailable'))
         set this.message = msg.join('')
-		# log 'NodeError', this.message
-        # set this.node = node
 
 	error( IttfNotFound, resourceType, name, sourceUri )
 		set this.message = resourceType + ': ' + name + 
@@ -61,15 +59,30 @@
             param other
             base message
             # legacy error test
+            
             set this.name = "WizziError"
             set this.__is_error = true
             set this.data
                 {
-                    @ node
-                    @ mTreeBrick
                     @ ...other||{}
+            
+            if node
+                set this.data.node
+                    {
+                        @ name node.name 
+                        @ row node.row
+                        @ col node.col
+                        @ sourceKey node.sourceKey
+                if node.wzSourceLineInfo
+					var info = node.wzSourceLineInfo
+                    set this.node.filePath = node.wzRoot().wzSourceFilepath(info.sourceKey)
+
             _ Error.captureStackTrace(this, this.constructor)
+            
             if mTreeBrick 
+                set this.data.mTreeBrick
+                    {
+                        @ uri mTreeBrick.uri
                 set this.errorLines
                     _ mTreeBrick.loadHistory.getIttfDocumentErrorLines
                         @ node.sourceKey

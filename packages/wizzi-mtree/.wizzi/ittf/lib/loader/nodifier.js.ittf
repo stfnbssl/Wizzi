@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.loader.nodifier
+﻿module wizzi-mtree@${wfpackage.version}.loader.nodifier
     kind jsfile
     
 	var util = require('util')

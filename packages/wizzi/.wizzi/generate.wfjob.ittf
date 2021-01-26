@@ -20,7 +20,7 @@
 		cwd-folder ${ittf_lib_folder}
 		dest-folder ${dest_folder}/lib
 
-		wfjob/any_js()
+		wfjob/any_js(true)
 			ignore ${ittf_lib_folder}/**/*__copy/**/*.js.ittf
 
 		artifact any_ittf_inside___copy
@@ -31,7 +31,7 @@
 		cwd-folder ${ittf_examples_folder}
 		dest-folder ${dest_folder}/examples
 
-		wfjob/any_js()
+		wfjob/any_js(true)
 			ignore ${ittf_examples_folder}/**/*__copy/**/*.js.ittf
 
 		artifact any_ittf_inside___copy
@@ -56,7 +56,7 @@
 		cwd-folder ${ittf_tests_folder}
 		dest-folder ${dest_folder}/tests
 
-		wfjob/any_js()
+		wfjob/any_js(true)
 			ignore ${ittf_tests_folder}/**/*__copy/**/*.js.ittf
 
 		artifact any_ittf_inside___copy

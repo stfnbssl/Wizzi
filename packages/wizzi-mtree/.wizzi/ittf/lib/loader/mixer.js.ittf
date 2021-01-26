@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.loader.mixer
+﻿module wizzi-mtree@${wfpackage.version}.loader.mixer
     kind es6
     
 	var util = require('util')

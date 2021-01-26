@@ -1,4 +1,4 @@
-﻿module wizzi-mtree.loader.evaluator
+﻿module wizzi-mtree@${wfpackage.version}.loader.evaluator
     kind es6
     
     var jsWizziRunner = require('../jswizzi/jsWizziRunner')
@@ -115,7 +115,7 @@
 					{
 					f_cb_no_throw( result )
                         if err
-                            log 'evaluator.jsWizziRunner.run.error', err.name, err.message
+                            set err.scriptCode = scriptCoder.toCode()
 							return
 								_ callback
                                     @ err

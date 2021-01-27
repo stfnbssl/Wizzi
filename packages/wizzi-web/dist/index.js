@@ -65,7 +65,7 @@ var FactoryPlugin = (function () {
         return __filename;
     }
     FactoryPlugin.prototype.getVersion = function() {
-        return '0.7.6';
+        return '0.7.7';
     }
     FactoryPlugin.prototype.getProvides = function() {
         return this.provides;

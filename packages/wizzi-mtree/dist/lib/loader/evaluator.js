@@ -79,7 +79,7 @@ module.exports = function(composedMTree, loadContext, callback) {
     else {
         jsWizziRunner.run(scriptCoder.toCode(), jsWizziContext, {}, function(err, result) {
             if (err) {
-                err.scriptCode = scriptCoder.toCode();
+                // set err.scriptCode = scriptCoder.toCode()
                 return callback(err);
             }
             jsWizziContext.set_NodeContext();

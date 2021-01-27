@@ -1,10 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\examples\builtin-schemas\yaml\step_2.js.ittf
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\examples\builtin-schemas\json\step_jswizzi_1.js.ittf
 */
 'use strict';
 /**
-     Example: Schemas_json_step_2
+     Example: Schemas_json_step_jswizzi_1
     
 */
 var util = require('util');
@@ -130,28 +130,29 @@ function getFiles(srcpath, schema) {
         })
     ;
 }
-var Schemas_json_step_2 = function(step_callback) {
+var Schemas_json_step_jswizzi_1 = function(step_callback) {
     heading1('EXAMPLE');
-    loadModelAndGenerateArtifact(path.join(__dirname, 'ittf', 'basic.yaml.ittf'), {}, "yaml/document", function(err, artifactText) {
+    loadWizziModel(path.join(__dirname, 'ittf', 'jswizzi_1.json.ittf'), {}, function(err, wizziModel) {
         if (err) {
             console.log('err', err);
             throw new Error(err.message);
         }
-        printValue('yaml', artifactText);
+        // for built-in schema json the wizziModel returned is a json object
+        printObject(wizziModel);
     });
 };
-Schemas_json_step_2.__name = 'Schemas_json_step_2';
+Schemas_json_step_jswizzi_1.__name = 'Schemas_json_step_jswizzi_1';
 function heading1(text) {
     console.log('');
     console.log('*'.repeat(120));
-    console.log('** level 0 - step 1 - Schemas_json_step_2 - ' + text);
+    console.log('** level 0 - step 1 - Schemas_json_step_jswizzi_1 - ' + text);
     console.log('*'.repeat(120));
     console.log('');
 }
 function heading2(text) {
     console.log('');
     console.log('   ', '-'.repeat(100));
-    console.log('   ','-- Schemas_json_step_2 - ' + text);
+    console.log('   ','-- Schemas_json_step_jswizzi_1 - ' + text);
     console.log('   ', '-'.repeat(100));
     console.log('');
 }
@@ -340,7 +341,7 @@ function formatNum(num, len) {
     var x = num.toString();
     return new Array(1 + len-x.length).join(' ') + x;
 }
-module.exports = Schemas_json_step_2;
+module.exports = Schemas_json_step_jswizzi_1;
 if (typeof require != 'undefined' && require.main === module) {
-    Schemas_json_step_2();
+    Schemas_json_step_jswizzi_1();
 }

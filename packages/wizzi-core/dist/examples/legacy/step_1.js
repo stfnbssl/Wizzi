@@ -175,6 +175,7 @@ function printArray(name, arr, fields, format) {
     }
 }
 function printValue(k, v, format, p1) {
+    console.log('--- value ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -208,8 +209,10 @@ function printValue(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- value ------------------------------------------------------ end');
 }
 function printObject(k, v, format, p1) {
+    console.log('--- object ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -218,6 +221,7 @@ function printObject(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- object ------------------------------------------------------ end');
 }
 function __printObject(v, level, limit) {
     if (level < limit) {

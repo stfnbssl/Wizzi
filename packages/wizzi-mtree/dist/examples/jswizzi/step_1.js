@@ -40,7 +40,7 @@ function getFSDocumentStore(callback) {
 }
 var jsWizzi_Step_1 = function(step_callback) {
     heading1('EXAMPLE');
-    var ittfUri = path.join(__dirname, 'ittf', 'vars_1.js.ittf');
+    var ittfUri = path.join(__dirname, 'ittf', 'jsonbuild_1.json.ittf');
     var productionManager = mocks.getProductionManager();
     getFSDocumentStore(function(err, fsStore) {
         if (err) {

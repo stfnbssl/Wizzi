@@ -8,4 +8,28 @@
 			$if arg1 != null
 				param ${arg1}
 			_ log('${name}.node', node)
-			$hook
+            var parentNode = null
+            try
+			    $hook
+            catch ex
+                log 'runner Error node:', node
+                return
+                    _ local_error
+                        @ ctx
+                        @ 'JsWizziError|${name} < ' + node.name + ' >, ' + ex.message
+                        @ node
+                        $*
+                        {
+                            @ node node
+                            @ errorLines 
+                                _ errors.esprimaNodeErrorLines
+                                    @ 'unknown identifier'
+                                    @ node
+                                    @ ctx.__source
+                                    @ true
+                        *$
+                        @ parentNode || node
+                        @ '${name}'
+                        @ ex
+                        {
+                            @ scriptCode ctx.__source

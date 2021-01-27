@@ -118,7 +118,7 @@ md.createLoadModel = function(wizziObject) {
                         return callback(err);
                     }
                     // TODO implement a stats object inside the wizziModelRequest object
-                    console.log('Loaded mTree instance for pseudo schema xml from Ittf document ' + ittfDocumentUri + ' in ' + (Date.now() - start) + ' ms');
+                    // log 'Loaded mTree instance for pseudo schema xml from Ittf document ' + ittfDocumentUri + ' in ' + (Date.now() - start) + ' ms'
                     if ((wizziModelRequest.dumpAll || wizziModelRequest.dumpIttfModel) && file.isFilePath(ittfDocumentUri)) {
                         var ittfDumpPath = path.join(path.dirname(ittfDocumentUri), '_debug', path.basename(ittfDocumentUri) + '.ittf.json');
                         file.write(ittfDumpPath, stringify(mTree, null, 2));

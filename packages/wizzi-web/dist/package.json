@@ -1,6 +1,6 @@
 {
     "name": "wizzi-web",
-    "version": "0.7.6",
+    "version": "0.7.7",
     "description": "A wizzi default plugin for html css svg markdown",
     "author": {
         "name": "Stefano Bassoli",
@@ -38,8 +38,8 @@
         "iconv-lite": "^0.6.2",
         "json-stringify-safe": "^5.0.1",
         "lodash": "^4.17.20",
-        "wizzi-mtree": "0.7.8",
-        "wizzi-utils": "0.7.11",
+        "wizzi-mtree": "0.7.9",
+        "wizzi-utils": "0.7.12",
         "postcss": "^7.0.16",
         "postcss-color-function": "^4.1.0"
     },

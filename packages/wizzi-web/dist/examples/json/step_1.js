@@ -1,10 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\examples\builtin-schemas\yaml\step_2.js.ittf
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\examples\json\step_1.js.ittf
 */
 'use strict';
+//
+// Example skeleton specific for the 'wizzi-web' plugin package
+//
 /**
-     Example: Schemas_json_step_2
+     Examples: json_step_1
     
 */
 var util = require('util');
@@ -25,7 +28,7 @@ var wizziRepo = require('wizzi-repo');
 var fileInfoByPath = wizziUtils.fileInfoByPath;
 var async = require('async');
 var wizzi = null;
-var legacy = require('../../../legacy');
+var jsIndex = require('../../index');
 function createWizziFactory(globalContext, callback) {
     if (wizzi == null) {
         // The wizzi package will be a previous version from wizzi/node_modules
@@ -35,11 +38,9 @@ function createWizziFactory(globalContext, callback) {
     wizzi.fsnoaclFactory({
         plugins: {
             items: [
-                'wizzi-js', 
-                'wizzi-web', 
                 './index'
             ], 
-            pluginsBaseFolder: path.resolve(__dirname, '..', '..', '..')
+            pluginsBaseFolder: path.resolve(__dirname, '..', '..')
         }, 
         globalContext: globalContext || {}
     }, callback);
@@ -130,28 +131,62 @@ function getFiles(srcpath, schema) {
         })
     ;
 }
-var Schemas_json_step_2 = function(step_callback) {
+var json_step_1 = function(step_callback) {
     heading1('EXAMPLE');
-    loadModelAndGenerateArtifact(path.join(__dirname, 'ittf', 'basic.yaml.ittf'), {}, "yaml/document", function(err, artifactText) {
+    heading2('basic json generations');
+    const example_ittfs = [
+        'basic', 
+        'ittfprint', 
+        'basic'
+    ];
+    async.mapSeries(example_ittfs, function(ittf, callback) {
+        console.log('======================================================================================');
+        console.log('generate file', ittf + '.json.ittf');
+        console.log('--------------------------------------------------------------------------------------');
+        loadModelAndGenerateArtifact(path.join(__dirname, 'ittf', ittf + '.json.ittf'), {}, "json/document", function(err, artifactText) {
+            if (err) {
+                console.log('-------------------------------------------------------------------');
+                console.log('--- Test error ----------------------------------------------------');
+                console.log('err', err);
+                console.log('err.toString()', err.toString());
+                if (err.inner) {
+                    console.log('err.inner.toString()', err.inner.toString());
+                }
+                console.log('-------------------------------------------------------------------');
+                console.log('-------------------------------------------------------------------');
+                throw 'Test error';
+            }
+            printValue(ittf, artifactText);
+            return callback(null, ittf);
+        });
+    }, function(err, result) {
         if (err) {
+            console.log('-------------------------------------------------------------------');
+            console.log('--- Test error ----------------------------------------------------');
             console.log('err', err);
-            throw new Error(err.message);
+            console.log('err.toString()', err.toString());
+            if (err.inner) {
+                console.log('err.inner.toString()', err.inner.toString());
+            }
+            console.log('-------------------------------------------------------------------');
+            console.log('-------------------------------------------------------------------');
+            throw 'Test error';
         }
-        printValue('yaml', artifactText);
+        console.log(result);
     });
 };
-Schemas_json_step_2.__name = 'Schemas_json_step_2';
+json_step_1.__name = 'json_step_1';
 function heading1(text) {
     console.log('');
     console.log('*'.repeat(120));
-    console.log('** level 0 - step 1 - Schemas_json_step_2 - ' + text);
+    console.log('** level 0 - step 1 - json_step_1 - ' + text);
     console.log('*'.repeat(120));
     console.log('');
 }
 function heading2(text) {
     console.log('');
     console.log('   ', '-'.repeat(100));
-    console.log('   ','-- Schemas_json_step_2 - ' + text);
+    console.log('   ','-- json_step_1 - ' + text);
     console.log('   ', '-'.repeat(100));
     console.log('');
 }
@@ -340,7 +375,7 @@ function formatNum(num, len) {
     var x = num.toString();
     return new Array(1 + len-x.length).join(' ') + x;
 }
-module.exports = Schemas_json_step_2;
+module.exports = json_step_1;
 if (typeof require != 'undefined' && require.main === module) {
-    Schemas_json_step_2();
+    json_step_1();
 }

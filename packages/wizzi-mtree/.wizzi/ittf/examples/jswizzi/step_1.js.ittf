@@ -15,7 +15,8 @@ module
                 @ __dirname
                 @ 'ittf'
                 $$ @ 'global_1.js.ittf'
-                @ 'vars_1.js.ittf'
+                $$ @ 'vars_1.js.ittf'
+                @ 'jsonbuild_1.json.ittf'
 
         var productionManager 
             _ mocks.getProductionManager

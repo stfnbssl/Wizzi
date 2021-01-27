@@ -194,7 +194,9 @@
 			set errorCode = ss[0]
 			set message = ss[1]
 
-		var node, errorLines
+		# log 'jsWizziRunner. local_error.', node.loc, ctx.isForInterpolation, ctx.__source
+
+        var node, errorLines
 		if node
 			if node.errorLines
 				set node = node.node
@@ -275,9 +277,9 @@
                 @ node ? node.mTreeBrick || node.model : null
                 {
                     @ errorName name
-                    @ method 'wizzi-mtree@${wfpackage.version}.' + method
-                    @ inner inner
+                    @ method 'wizzi-mtree@${wfpackage.version}.jsWizzi.jsWizziRunner.' + method
                     @ ...other||{}
+                    @ inner inner
 
 	function getTypeDescription
 		param obj

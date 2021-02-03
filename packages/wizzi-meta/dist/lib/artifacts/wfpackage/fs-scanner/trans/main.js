@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\plugins\wizzi-meta\src\ittf\lib\artifacts\wfpackage\fs-scanner\trans\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-meta\.wizzi\ittf\lib\artifacts\wfpackage\fs-scanner\trans\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -38,7 +38,7 @@ md.trans = function(model, ctx, callback) {
         });
         ittf.insertAt('version', pkg.version, 1);
         ittf.insertAt('title', pkg.title, 2);
-        /** -àà
+        /**
             TODO why folderScanner.scan already sets this
             ittf.insertAt('src-cwd', srcPath, 3)*/
         result.generatedPackages.push(ittf);

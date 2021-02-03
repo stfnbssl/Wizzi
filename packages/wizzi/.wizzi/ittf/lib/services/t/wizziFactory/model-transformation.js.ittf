@@ -31,7 +31,6 @@ $group
 		+
 		var transformer = this.getModelTransformer(transformerName)
         if transformer.__is_error
-			set transformer.ittfDocumentUri = ittfDocumentUri
             return callback(transformer)
 		+
 		set context.wizziFactory = this

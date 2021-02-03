@@ -8,6 +8,7 @@
 	a dropzone
 	a hidden
 	a id
+    a idx
 	a itemid
 	a itemprop
 	a itemref

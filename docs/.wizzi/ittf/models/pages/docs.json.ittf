@@ -1,0 +1,10 @@
+{
+
+    $
+        var ctx = {
+            page: 'docs'
+        }
+
+    common/styles( &ctx )
+    docs/header( &ctx )
+    

@@ -37,7 +37,7 @@
 				(
 					@ model
 					f_cb( notUsed )
-						log 'exit', myname, 'err', err
+						# log 'exit', myname, 'err', err
 						return
 							_ callback(null, ctx)
 

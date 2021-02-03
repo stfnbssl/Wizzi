@@ -37,7 +37,7 @@ html
                     @ y2 11.6882
                     @ gradientUnits userSpaceOnUse
                     stop 
-                        stop-color #663399
+                        stop-color ${mpage.Colors.primary}
                     stop 
                         offset 1
                         stop-color #159BF3

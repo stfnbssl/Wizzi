@@ -1,3 +1,8 @@
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\dist\lib\artifacts\css\document\gen\main.js
+    package: wizzi-web@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\docs\.wizzi\ittf\pages\styles\article.css.ittf
+*/
 html {
     margin: 0;
     padding: 0;
@@ -24,6 +29,7 @@ ul {
     list-style-image: none;
 }
 a {
+    -webkit-text-decoration: none;
     text-decoration: none;
     color: #fc0;
     -webkit-transition: all 0.25s;
@@ -39,6 +45,8 @@ td {
 }
 header .flexbox {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     height: 50px;
 }
@@ -51,6 +59,8 @@ header h1, header  nav {
 }
 header .flexbox {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     height: 50px;
 }
@@ -451,6 +461,8 @@ article {
     margin: 0 auto;
     width: 60%;
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
 }
 .w-1-5 {
@@ -485,6 +497,8 @@ article {
 }
 .cheatsheet-page {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     padding: 25px;
     position: fixed;
@@ -493,15 +507,23 @@ article {
 }
 .cheatsheet-sidebar {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     min-width: 300px;
     margin: 5px;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
     overflow: auto;
 }
 .cheatsheet-sidebar-schemas {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
     border: 1px solid gray;
     margin-bottom: 5px;
@@ -521,6 +543,8 @@ article {
 }
 .cheatsheet-item {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     background-color: #3e5a6d;
 }
@@ -749,6 +773,9 @@ pre.prettyprint ol {
     display: inline-block;
     line-height: 1;
     text-transform: none;
+    -webkit-letter-spacing: normal;
+    -moz-letter-spacing: normal;
+    -ms-letter-spacing: normal;
     letter-spacing: normal;
     word-wrap: normal;
     white-space: nowrap;

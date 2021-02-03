@@ -192,7 +192,8 @@
     e font-variant : property
     e font-variation-settings : property
 
-	e grid-template-columns : property
+	e gap : property
+    e grid-template-columns : property
 	e grid-template-rows : property
 	e_tag( gridTemplateAreas, grid-template-areas, property )
 		m wzinitialize

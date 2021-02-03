@@ -1,0 +1,30 @@
+$group
+    $params &ctx
+    
+    common/banner( &ctx )
+    
+    { Nav1
+        
+        { section
+            title "docs"
+            ariaLabel "Link to Docs home"
+            href "/docs/docs/concepts.html"
+        
+        [ menuGroups
+            {
+                [ menus
+                    {
+                        title "Resources"
+                        url "/docs/resources/index.html"
+                    {
+                        title "Packy"
+                        url "/docs/packy/index.html"
+                    {
+                        title "News"
+                        url "/docs/news/index.html"
+            {
+                [ menus
+                    {
+                        kind "button"
+                        title "Get started"
+                        href "/get-started/"

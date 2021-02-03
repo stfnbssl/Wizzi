@@ -11,8 +11,8 @@ $group
         versions['wizzi-repo@next'] = '0.7.3';
         versions['wizzi-js'] = '0.7.7';
         versions['wizzi-js@next'] = '0.7.8';
-        versions['wizzi-web'] = '0.7.6';
-        versions['wizzi-web@next'] = '0.7.7';
+        versions['wizzi-web'] = '0.7.7';
+        versions['wizzi-web@next'] = '0.7.8';
         versions['wizzi-core'] = '0.7.1';
         versions['wizzi-core@next'] = '0.7.2';
         versions['wizzi-meta'] = '0.6.6';

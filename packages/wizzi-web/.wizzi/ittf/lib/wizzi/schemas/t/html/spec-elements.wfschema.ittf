@@ -141,6 +141,8 @@
 		a ismap
 		a width
 		a height
+        a loading
+        a sizes
 		include svg
 	
 	e input : element

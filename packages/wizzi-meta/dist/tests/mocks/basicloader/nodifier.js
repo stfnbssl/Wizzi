@@ -1,10 +1,10 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\plugins\wizzi-meta\src\ittf\tests\mocks\basicloader\nodifier.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-meta\.wizzi\ittf\tests\mocks\basicloader\nodifier.js.ittf
 */
 'use strict';
 var util = require('util');
-/** -àà
+/**
      Nodify the lines of an IttfDocument and creates a
      tree structure object based on line indentation.
      . detects the $params command
@@ -38,7 +38,7 @@ var util = require('util');
      \        // implements line continuation
      //   the value is appendend to the value of the parent line
      //   without separators
-     \b       // implements line continuation
+            // implements line continuation
      //   the value is appendend to the value of the parent line
      //   with a space separator:  prevLine,value += ' ' + currentLine.value
      \n       // implements line continuation

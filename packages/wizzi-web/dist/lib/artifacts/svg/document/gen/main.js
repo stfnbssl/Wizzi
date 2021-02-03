@@ -46,7 +46,7 @@ md.gen = function gen(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        console.log('exit', myname, 'err', err);
+        // log 'exit', myname, 'err', err
         return callback(null, ctx);
     })
 };

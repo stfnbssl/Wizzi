@@ -1,0 +1,9 @@
+$group
+    $params &intLink
+
+    p ${intLink.p1}
+        class css-kbiyuy
+        a ${intLink.label}
+            class css-vzag2y
+            href ${intLink.href}
+        + .

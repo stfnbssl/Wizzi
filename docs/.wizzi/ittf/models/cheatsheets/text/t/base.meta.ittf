@@ -1,0 +1,19 @@
+﻿element text base
+	tag
+	ast
+	category
+	
+	item
+		title
+		ittf
+			text
+                ${__dollar}params copy|2021
+				
+                MIT License
+
+                Copyright (c) ${__dollar}{copy}
+
+                Permission is hereby granted, free of charge, to any person obtaining a copy
+                ....
+
+

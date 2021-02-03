@@ -1,6 +1,6 @@
-# wizzi-meta - ver 0.6 - plugin package
+# wizzi-meta
 
-Meta data and descriptors for wizzi packages and the wizzi studio dashboard.
+Meta data and descriptors for wizzi packages and the wizzi studio dashboard..
 
 ## Work still in progress
 
@@ -8,19 +8,21 @@ Availability of features will be announced
 on [Twitter](https://twitter.com/wizziteam) and [Facebook](https://www.facebook.com/wizzifactory)
 
 ## Features
-### Implemented wizzi models
+### Implemented Wizzi models
 
 <table>
 <tr>
 <th>Schema</th>
 <th>Descriptionn</th>
+<th>Builtin</th>
 <th>Model transformers</th>
 <th>Artifacts</th>
 </tr>
 <tr>
-<td>docs</td>
-<td>Wizzi documentation</td>
 <td>
+docs<td>Wizzi documentation</td>
+<td>
+no<td>
 
 <table>
 <tr>
@@ -35,9 +37,10 @@ on [Twitter](https://twitter.com/wizziteam) and [Facebook](https://www.facebook.
 
 </tr>
 <tr>
-<td>wfpackage</td>
-<td>Wizzi package descriptor</td>
 <td>
+wfpackage<td>Wizzi package descriptor</td>
+<td>
+no<td>
 
 <table>
 </table>
@@ -49,9 +52,10 @@ on [Twitter](https://twitter.com/wizziteam) and [Facebook](https://www.facebook.
 
 </tr>
 <tr>
-<td>wfstudio</td>
-<td>Wizzi studio dashboard meta data</td>
 <td>
+wfstudio<td>Wizzi studio dashboard meta data</td>
+<td>
+no<td>
 
 <table>
 </table>
@@ -66,18 +70,18 @@ on [Twitter](https://twitter.com/wizziteam) and [Facebook](https://www.facebook.
 
 
 
-<p>Wizzi plugins are documented\b<a href="https://wizzifactory.github.io/docs/plugins.html">here</a>.</p>
+<p>Wizzi plugins are documented <a href="https://wizzifactory.github.io/docs/wizziplugins.html">here</a>.</p>
 
 
 
-<p>You can find a few samples in the /example folder, but you can find more in the\b<a href="https://github.com/wizzifactory/wizzi-demo">demo package</a>.</p>
+<p>You can find a few samples in the /examples folder, but you can find more in the <a href="https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-demo/.wizzi/ittf/examples/advanced/plugins">demo package</a>.</p>
 
 ## Source and generation
-wizzi-meta is generated using the wizzi factory ver 0.5
+wizzi-meta is generated using the Wizzi factory ver 0.7
 
-## The Wizzi Factory - ver 0.6
+## The Wizzi Factory
 
-A set of tools for model driven development.
+A model driven artifact factory.
 
 
 <p><a href="https://wizzifactory.github.io/">Project page</a></p>
@@ -90,5 +94,5 @@ A set of tools for model driven development.
 
 ## License
 
-<p>This project is licensed under the MIT License - see the\b<a href="license.txt">license.txt\b</a><p>for details.</p></p>
+<p>This project is licensed under the MIT License - see the <a href="license.txt">license.txt</a> for details.</p>
 

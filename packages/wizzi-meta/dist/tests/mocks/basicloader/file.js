@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\plugins\wizzi-meta\src\ittf\tests\mocks\basicloader\file.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-meta\.wizzi\ittf\tests\mocks\basicloader\file.js.ittf
 */
 'use strict';
 var fs = require('fs');
@@ -40,9 +40,10 @@ md.readJSON = function(path_string, options) {
     try {
         result = JSON.parse(src);
         return result;
-    } catch (ex) {
+    } 
+    catch (ex) {
         throw new errors.FileError('Unable to parse "' + path_string + '" file (' + ex.message + ').', ex);
-    }
+    } 
 };
 // async read
 md.readFile = function(path_string, callback) {
@@ -64,10 +65,11 @@ md.write = function(path_string, contents, options) {
         }
         fs.writeFileSync(path_string, contents);
         return true;
-    } catch (ex) {
+    } 
+    catch (ex) {
         ex.message = 'Writing file ' + path_string + '.\n' + ex.message;
         throw ex;
-    }
+    } 
 };
 md.writeJSON = function(path_string, contentObject) {
     md.write(path_string, JSON.stringify(contentObject, null, 2));
@@ -86,34 +88,38 @@ md.mkdir = function(dirpath, mode) {
         if (!md.exists(subpath)) {
             try {
                 fs.mkdirSync(subpath, mode);
-            } catch (ex) {
+            } 
+            catch (ex) {
                 throw new errors.FileError('Unable to create directory "' + subpath + '" (Error code: ' + ex.code + ').', ex);
-            }
+            } 
         }
         return parts;
-    }, '');
+    }, '')
 };
 md.exists = function(path_string) {
     try {
         var stat = fs.lstatSync(String(path_string));
         return stat.isFile() || stat.isDirectory();
-    } catch (ex) {
-    }
+    } 
+    catch (ex) {
+    } 
     return false;
 };
 md.isDirectory = function(path_string) {
     try {
         return fs.lstatSync(String(path_string)).isDirectory()
         ;
-    } catch (ex) {
-    }
+    } 
+    catch (ex) {
+    } 
     return false;
 };
 md.isFile = function(path_string) {
     try {
         return fs.lstatSync(String(path_string)).isFile()
         ;
-    } catch (ex) {
-    }
+    } 
+    catch (ex) {
+    } 
     return false;
 };

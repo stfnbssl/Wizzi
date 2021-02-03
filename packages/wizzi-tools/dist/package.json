@@ -49,9 +49,9 @@
         "gonzales-pe": "^4.3.0",
         "graphql": "^15.4.0",
         "xml2js": "^0.4.23",
-        "wizzi": "0.7.16",
-        "wizzi-utils": "0.7.9",
-        "wizzi-js": "0.7.6"
+        "wizzi": "0.7.21",
+        "wizzi-utils": "0.7.12",
+        "wizzi-js": "0.7.7"
     },
     "peerDependencies": {
         "@babel/core": "^7.0.0"

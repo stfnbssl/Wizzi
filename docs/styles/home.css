@@ -1,3 +1,8 @@
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\dist\lib\artifacts\css\document\gen\main.js
+    package: wizzi-web@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\docs\.wizzi\ittf\pages\styles\home.css.ittf
+*/
 html {
     margin: 0;
     padding: 0;
@@ -24,6 +29,7 @@ ul {
     list-style-image: none;
 }
 a {
+    -webkit-text-decoration: none;
     text-decoration: none;
     color: #fc0;
     -webkit-transition: all 0.25s;
@@ -42,6 +48,8 @@ body {
 }
 header .flexbox {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     height: 50px;
 }
@@ -54,6 +62,8 @@ header h1, header  nav {
 }
 header .flexbox {
     display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     height: 50px;
 }
@@ -293,6 +303,7 @@ p {
     color: #ddd;
     margin: .5em 0;
     padding: 1em 2em;
+    -webkit-text-decoration: none;
     text-decoration: none;
     border: 1px solid #666;
 }
@@ -531,6 +542,7 @@ p {
 }
 #main-footer a {
     color: #2690d4;
+    -webkit-text-decoration: none;
     text-decoration: none;
 }
 @media (min-width: 700px) {
@@ -585,7 +597,11 @@ p {
     }
     #section-b ul {
         display: -ms-flexbox;
+        display: -webkit-box;
+        display: -webkit-flex;
         display: flex;
+        -webkit-box-pack: space-around;
+        -ms-flex-pack: space-around;
         -webkit-justify-content: space-around;
         justify-content: space-around;
     }
@@ -596,7 +612,11 @@ p {
     }
     #section-b2 ul {
         display: -ms-flexbox;
+        display: -webkit-box;
+        display: -webkit-flex;
         display: flex;
+        -webkit-box-pack: space-around;
+        -ms-flex-pack: space-around;
         -webkit-justify-content: space-around;
         justify-content: space-around;
     }
@@ -607,7 +627,11 @@ p {
     }
     #section-b3 ul {
         display: -ms-flexbox;
+        display: -webkit-box;
+        display: -webkit-flex;
         display: flex;
+        -webkit-box-pack: space-around;
+        -ms-flex-pack: space-around;
         -webkit-justify-content: space-around;
         justify-content: space-around;
     }
@@ -618,7 +642,11 @@ p {
     }
     #section-b4 ul {
         display: -ms-flexbox;
+        display: -webkit-box;
+        display: -webkit-flex;
         display: flex;
+        -webkit-box-pack: space-around;
+        -ms-flex-pack: space-around;
         -webkit-justify-content: space-around;
         justify-content: space-around;
     }

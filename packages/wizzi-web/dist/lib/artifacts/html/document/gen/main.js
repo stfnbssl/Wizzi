@@ -75,7 +75,7 @@ md.getGenItem = function(ctx) {
                 // preserve a blank first char (coded between single hyphens)
                 // var text = verify.startsWith(model.wzName, "' '") ? '&nbsp;' + model.wzName.substr(3) : model.wzName;
                 var text = model.wzName;
-                console.log('text', text);
+                // log 'text', text
                 if (ctx.__iscode || model.wzElement === '_textLF') {
                     ctx.w(text);
                 }
@@ -559,7 +559,7 @@ function main_init(model, ctx) {
     if ((!!ctx.values.noGeneratorComments) == false) {
         ctx.w('<!--');
         ctx.w('    artifact generator: ' + __filename);
-        ctx.w('    package: wizzi-web@0.7.7');
+        ctx.w('    package: wizzi-web@0.7.8');
         ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'));
         if ((!!ctx.values.isPackageDeploy) == false) {
             ctx.w('    utc time: ' + new Date().toUTCString());

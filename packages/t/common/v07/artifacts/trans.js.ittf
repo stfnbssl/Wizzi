@@ -25,7 +25,7 @@
 					_ error
 						@ 'InvalidArgument'
 						@ 'gen'
-						@ 'Invalid model schema. Expected "${schema}". Received: ' + model.wzElement
+						@ 'Invalid model schema. Expected "${md.schema}". Received: ' + model.wzElement
                         @ model
 		try
 			$hook main

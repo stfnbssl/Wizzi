@@ -238,7 +238,7 @@ function getWriteProperty(ctx) {
                             if (err) {
                                 return callback(err);
                             }
-                            console.log(myname, 'artifactText', artifactText);
+                            // log myname, 'artifactText', artifactText
                             ctx.w('background-image: url("data:image/svg+xml,' + artifactText + '");');
                             return callback(null);
                         });

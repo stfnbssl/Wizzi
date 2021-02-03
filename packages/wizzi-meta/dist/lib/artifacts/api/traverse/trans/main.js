@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\plugins\wizzi-meta\src\ittf\lib\artifacts\api\traverse\trans\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-meta\.wizzi\ittf\lib\artifacts\api\traverse\trans\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -56,7 +56,7 @@ md.api = function(node, ctx, parent) {
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         if (['kernel', 'plugin'].indexOf(item.name) > -1) {
-            var nkind = createNode('kind', item.name, newnode);
+            createNode('kind', item.name, newnode);
         }
         else if (item.name === 'iface') {
             md.api_iface(item, ctx, newnode);
@@ -78,28 +78,28 @@ md.api = function(node, ctx, parent) {
         }
     }
 };
-md.api_iface = function(node, ctx, parent) {
+function(node, ctx, parent) {
     var newnode;
-    newnode = createNode('interface', node.value, parent);
+    createNode('interface', node.value, parent);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.api_member(item, ctx, newnode);
     }
-};
-md.api_type = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    newnode = createNode('type', node.value, parent);
+    createNode('type', node.value, parent);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.api_member(item, ctx, newnode);
     }
-};
-md.api_implementation = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nimplementation = createNode('implementation', node.value, parent);
-    newnode = createNode('type', node.name, nimplementation);
+    createNode('implementation', node.value, parent);
+    createNode('type', node.name, nimplementation);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
@@ -110,15 +110,15 @@ md.api_implementation = function(node, ctx, parent) {
             md.comment(item, ctx, newnode);
         }
         else {
-            newnode = createNode('***', item.name + ' ' + item.value + ' oper: api_implementation', parent);
+            createNode('***', item.name + ' ' + item.value + ' oper: api_implementation', parent);
         }
     }
-};
-md.api_member = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (_args_simple.indexOf(node.name) > -1) {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', node.name, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', node.name, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -126,8 +126,8 @@ md.api_member = function(node, ctx, parent) {
         }
     }
     else if (node.name === '{') {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', name_object, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', name_object, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -135,8 +135,8 @@ md.api_member = function(node, ctx, parent) {
         }
     }
     else if (node.name === '[') {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', name_array, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', name_array, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -144,8 +144,8 @@ md.api_member = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'function') {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', node.name, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', node.name, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -153,8 +153,8 @@ md.api_member = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'merge') {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', name_mergedobject, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', name_mergedobject, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -162,25 +162,25 @@ md.api_member = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'm') {
-        var nmethod = createNode('method', node.value, parent);
-        newnode = createNode('type', name_function, nmethod);
+        createNode('method', node.value, parent);
+        createNode('type', name_function, nmethod);
     }
     else if (node.name === 'hof') {
-        var nmethod = createNode('method', node.value, parent);
-        newnode = createNode('type', name_hof, nmethod);
+        createNode('method', node.value, parent);
+        createNode('type', name_hof, nmethod);
     }
     else if (node.name === 'ctor') {
-        var nmethod = createNode('ctor', node.value, parent);
+        createNode('ctor', node.value, parent);
     }
     else if (node.name === 'facade') {
-        var nmethod = createNode('method', node.value, parent);
-        newnode = createNode('type', name_facade, nmethod);
+        createNode('method', node.value, parent);
+        createNode('type', name_facade, nmethod);
     }
     else if (node.name === '#') {
         md.comment(node, ctx, parent);
     }
     else {
-        newnode = createNode('***', node.name + ' ' + node.value + ' oper: api_member', parent);
+        createNode('***', node.name + ' ' + node.value + ' oper: api_member', parent);
     }
     if (['ctor', 'm', 'hof', 'facade'].indexOf(node.name) > -1) {
         var i, i_items=node.children, i_len=node.children.length, item;
@@ -189,12 +189,12 @@ md.api_member = function(node, ctx, parent) {
             md.method_member(item, ctx, nmethod);
         }
     }
-};
-md.method_member = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (_args_simple.indexOf(node.name) > -1) {
-        var nparam = createNode('param', node.value, parent);
-        newnode = createNode('type', node.name, nparam);
+        createNode('param', node.value, parent);
+        createNode('type', node.name, nparam);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -211,8 +211,8 @@ md.method_member = function(node, ctx, parent) {
         md.array_param(node, ctx, parent);
     }
     else if (node.name === 'function') {
-        var nparam = createNode('param', node.value, parent);
-        newnode = createNode('type', node.name, nparam);
+        createNode('param', node.value, parent);
+        createNode('type', node.name, nparam);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -220,12 +220,12 @@ md.method_member = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'callback') {
-        newnode = createNode('is-async', name_empty, parent);
+        createNode('is-async', name_empty, parent);
         md.callback(node, ctx, parent);
     }
     else if (node.name === 'function') {
-        var narg = createNode('argument', node.value, parent);
-        newnode = createNode('type', node.name, narg);
+        createNode('argument', node.value, parent);
+        createNode('type', node.name, narg);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -233,7 +233,7 @@ md.method_member = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'called-by') {
-        newnode = createNode('called-by', node.value, parent);
+        createNode('called-by', node.value, parent);
     }
     else if (node.name === 'return') {
         md.return(node, ctx, parent);
@@ -242,51 +242,51 @@ md.method_member = function(node, ctx, parent) {
         md.method_info(node, ctx, parent);
     }
     else if (node.name === 'implemented-by') {
-        newnode = createNode('implemented-by', node.value, parent);
+        createNode('implemented-by', node.value, parent);
     }
     else if (node.name === 'internal') {
-        newnode = createNode('is-internal', node.value, parent);
+        createNode('is-internal', node.value, parent);
     }
     else if (node.name === 'throw-if') {
-        newnode = createNode('throw-if', node.value, parent);
+        createNode('throw-if', node.value, parent);
     }
     else if (node.name === '#') {
         md.comment(node, ctx, parent);
     }
     else {
-        newnode = createNode('***', node.name + ' ' + node.value + ' oper: method_member', parent);
+        createNode('***', node.name + ' ' + node.value + ' oper: method_member', parent);
     }
-};
-md.param_alternative = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nparam = createNode('param', node.value, parent);
-    newnode = createNode('type', name_alternative, nparam);
+    createNode('param', node.value, parent);
+    createNode('type', name_alternative, nparam);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.value_item(item, ctx, nparam);
     }
-};
-md.method_info = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var ninfo = createNode('info', node.value, parent);
+    createNode('info', node.value, parent);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.info_item(item, ctx, ninfo);
     }
-};
-md.callback = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nparam = createNode('param', name_callback, parent);
-    newnode = createNode('type', name_callbackfunction, nparam);
+    createNode('param', name_callback, parent);
+    createNode('type', name_callbackfunction, nparam);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.arg_item(item, ctx, nparam);
     }
-};
-md.arg_item = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (node.name === 'alt') {
         md.arg_alternative(node, ctx, parent);
@@ -295,8 +295,8 @@ md.arg_item = function(node, ctx, parent) {
         md.arg_switch(node, ctx, parent);
     }
     else if (_args_simple.indexOf(node.name) > -1) {
-        var narg = createNode('argument', node.name, parent);
-        newnode = createNode('type', node.name, narg);
+        createNode('argument', node.name, parent);
+        createNode('type', node.name, narg);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -304,8 +304,8 @@ md.arg_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === '{') {
-        var narg = createNode('argument', node.value, parent);
-        newnode = createNode('type', name_object, narg);
+        createNode('argument', node.value, parent);
+        createNode('type', name_object, narg);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -313,8 +313,8 @@ md.arg_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === '[') {
-        var narg = createNode('argument', node.value, parent);
-        newnode = createNode('type', name_array, narg);
+        createNode('argument', node.value, parent);
+        createNode('type', name_array, narg);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -322,8 +322,8 @@ md.arg_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'exception') {
-        var narg = createNode('argument', node.value, parent);
-        newnode = createNode('type', name_exception, narg);
+        createNode('argument', node.value, parent);
+        createNode('type', name_exception, narg);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -331,8 +331,8 @@ md.arg_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'function') {
-        var narg = createNode('argument', node.value, parent);
-        newnode = createNode('type', node.name, narg);
+        createNode('argument', node.value, parent);
+        createNode('type', node.name, narg);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -340,40 +340,40 @@ md.arg_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'api-ref') {
-        var narg = createNode('argument', node.name, parent);
-        newnode = createNode('type', name_null, narg);
+        createNode('argument', node.name, parent);
+        createNode('type', name_null, narg);
     }
     else if (node.name === 'iface') {
-        var narg = createNode('argument', node.value, parent);
-        newnode = createNode('iface', node.value, narg);
+        createNode('argument', node.value, parent);
+        createNode('iface', node.value, narg);
     }
     else if (node.name === 'null') {
-        var narg = createNode('argument', node.name, parent);
-        newnode = createNode('type', name_null, narg);
+        createNode('argument', node.name, parent);
+        createNode('type', name_null, narg);
     }
     else if (node.name === '#') {
         md.comment(node, ctx, parent);
     }
     else {
-        newnode = createNode('***', node.name + ' ' + node.value + ' oper: arg_item', parent);
+        createNode('***', node.name + ' ' + node.value + ' oper: arg_item', parent);
     }
-};
-md.arg_alternative = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nargument = createNode('argument', node.value, parent);
-    newnode = createNode('type', name_alternative, nargument);
+    createNode('argument', node.value, parent);
+    createNode('type', name_alternative, nargument);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.value_item(item, ctx, nargument);
     }
-};
-md.function_params = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     // api_member, object_prop, array_item, value_item, arg_item
     if (_args_simple.indexOf(node.name) > -1) {
-        var nparam = createNode('param', node.value, parent);
-        newnode = createNode('type', node.name, nparam);
+        createNode('param', node.value, parent);
+        createNode('type', node.name, nparam);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -390,11 +390,11 @@ md.function_params = function(node, ctx, parent) {
         md.array_param(node, ctx, parent);
     }
     else if (node.name === 'callback') {
-        newnode = createNode('is-async', name_empty, parent);
+        createNode('is-async', name_empty, parent);
         md.callback(node, ctx, parent);
     }
     else if (node.name === 'called-by') {
-        newnode = createNode('called-by', node.value, parent);
+        createNode('called-by', node.value, parent);
     }
     else if (node.name === 'return') {
         md.return(node, ctx, parent);
@@ -403,39 +403,39 @@ md.function_params = function(node, ctx, parent) {
         md.method_info(node, ctx, parent);
     }
     else if (node.name === 'implemented-by') {
-        newnode = createNode('implemented-by', node.value, parent);
+        createNode('implemented-by', node.value, parent);
     }
     else if (node.name === 'internal') {
-        newnode = createNode('is-internal', node.value, parent);
+        createNode('is-internal', node.value, parent);
     }
     else if (node.name === 'throw-if') {
-        newnode = createNode('throw-if', node.value, parent);
+        createNode('throw-if', node.value, parent);
     }
     else {
         md.constraint(node, ctx, parent);
     }
-};
-md.object_param = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nparam = createNode('param', node.value, parent);
-    newnode = createNode('type', name_object, nparam);
+    createNode('param', node.value, parent);
+    createNode('type', name_object, nparam);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.object_prop(item, ctx, nparam);
     }
-};
-md.object_prop = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (['iface', 'api-ref', 'POJO'].indexOf(node.name) > -1) {
-        newnode = createNode(node.name, node.value, parent);
+        createNode(node.name, node.value, parent);
     }
     else if (node.name === 'required') {
-        newnode = createNode('is-required', node.value, parent);
+        createNode('is-required', node.value, parent);
     }
     else if (_args_simple.indexOf(node.name) > -1) {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', node.name, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', node.name, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -443,8 +443,8 @@ md.object_prop = function(node, ctx, parent) {
         }
     }
     else if (node.name === '{') {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', name_object, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', name_object, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -452,8 +452,8 @@ md.object_prop = function(node, ctx, parent) {
         }
     }
     else if (node.name === '[') {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', name_array, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', name_array, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -461,8 +461,8 @@ md.object_prop = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'function') {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', node.name, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', node.name, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -470,8 +470,8 @@ md.object_prop = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'merge') {
-        var nproperty = createNode('property', node.value, parent);
-        newnode = createNode('type', name_mergedobject, nproperty);
+        createNode('property', node.value, parent);
+        createNode('type', name_mergedobject, nproperty);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -488,24 +488,24 @@ md.object_prop = function(node, ctx, parent) {
         md.comment(node, ctx, parent);
     }
     else {
-        newnode = createNode('***', node.name + ' ' + node.value + ' oper: object_prop', parent);
+        createNode('***', node.name + ' ' + node.value + ' oper: object_prop', parent);
     }
-};
-md.prop_alternative = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nproperty = createNode('property', node.value, parent);
-    newnode = createNode('type', name_alternative, nproperty);
+    createNode('property', node.value, parent);
+    createNode('type', name_alternative, nproperty);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.value_item(item, ctx, nproperty);
     }
-};
-md.value_item = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (_args_simple.indexOf(node.name) > -1) {
-        var nvalue = createNode('value', node.value, parent);
-        newnode = createNode('type', node.name, nvalue);
+        createNode('value', node.value, parent);
+        createNode('type', node.name, nvalue);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -513,8 +513,8 @@ md.value_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === '{') {
-        var nvalue = createNode('value', node.value, parent);
-        newnode = createNode('type', name_object, nvalue);
+        createNode('value', node.value, parent);
+        createNode('type', name_object, nvalue);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -522,8 +522,8 @@ md.value_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === '[') {
-        var nvalue = createNode('value', node.value, parent);
-        newnode = createNode('type', name_array, nvalue);
+        createNode('value', node.value, parent);
+        createNode('type', name_array, nvalue);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -531,8 +531,8 @@ md.value_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'function') {
-        var nvalue = createNode('value', node.value, parent);
-        newnode = createNode('type', node.name, nvalue);
+        createNode('value', node.value, parent);
+        createNode('type', node.name, nvalue);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -540,12 +540,12 @@ md.value_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'null') {
-        var nvalue = createNode('value', node.name, parent);
-        newnode = createNode('type', node.name, nvalue);
+        createNode('value', node.name, parent);
+        createNode('type', node.name, nvalue);
     }
     else if (node.name === 'exception') {
-        var nvalue = createNode('value', node.name, parent);
-        newnode = createNode('type', node.name, nvalue);
+        createNode('value', node.name, parent);
+        createNode('type', node.name, nvalue);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -553,21 +553,21 @@ md.value_item = function(node, ctx, parent) {
         }
     }
     else if (['iface', 'api-ref', 'POJO'].indexOf(node.name) > -1) {
-        var nvalue = createNode('value', node.value, parent);
-        newnode = createNode(node.name, node.value, nvalue);
+        createNode('value', node.value, parent);
+        createNode(node.name, node.value, nvalue);
     }
     else if (node.name === '#') {
         md.comment(node, ctx, parent);
     }
     else {
-        newnode = createNode('***', node.name + ' ' + node.value + ' oper: value_item', parent);
+        createNode('***', node.name + ' ' + node.value + ' oper: value_item', parent);
     }
-};
-md.array_item = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (_args_simple.indexOf(node.name) > -1) {
-        var nitem = createNode('item', node.value, parent);
-        newnode = createNode('type', node.name, nitem);
+        createNode('item', node.value, parent);
+        createNode('type', node.name, nitem);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -575,8 +575,8 @@ md.array_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === '{') {
-        var nitem = createNode('item', node.value, parent);
-        newnode = createNode('type', name_object, nitem);
+        createNode('item', node.value, parent);
+        createNode('type', name_object, nitem);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -584,8 +584,8 @@ md.array_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === '[') {
-        var nitem = createNode('item', node.value, parent);
-        newnode = createNode('type', name_array, nitem);
+        createNode('item', node.value, parent);
+        createNode('type', name_array, nitem);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -593,8 +593,8 @@ md.array_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'function') {
-        var nitem = createNode('item', node.value, parent);
-        newnode = createNode('type', node.name, nitem);
+        createNode('item', node.value, parent);
+        createNode('type', node.name, nitem);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -602,12 +602,12 @@ md.array_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'null') {
-        var nitem = createNode('item', node.name, parent);
-        newnode = createNode('type', node.name, nitem);
+        createNode('item', node.name, parent);
+        createNode('type', node.name, nitem);
     }
     else if (node.name === 'exception') {
-        var nitem = createNode('item', node.name, parent);
-        newnode = createNode('type', node.name, nitem);
+        createNode('item', node.name, parent);
+        createNode('type', node.name, nitem);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -618,47 +618,47 @@ md.array_item = function(node, ctx, parent) {
         md.array_alternative(node, ctx, parent);
     }
     else if (['iface', 'api-ref', 'json', 'POJO'].indexOf(node.name) > -1) {
-        var nitem = createNode('item', node.value, parent);
-        newnode = createNode(node.name, node.value, nitem);
+        createNode('item', node.value, parent);
+        createNode(node.name, node.value, nitem);
     }
     else if (node.name === '#') {
         md.comment(node, ctx, parent);
     }
     else {
-        newnode = createNode('***', node.name + ' ' + node.value + ' oper: array_item', parent);
+        createNode('***', node.name + ' ' + node.value + ' oper: array_item', parent);
     }
-};
-md.exception_error = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-};
-md.array_param = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nparam = createNode('param', node.value, parent);
-    newnode = createNode('type', name_array, nparam);
+    createNode('param', node.value, parent);
+    createNode('type', name_array, nparam);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.array_item(item, ctx, nparam);
     }
-};
-md.array_alternative = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nitem = createNode('item', node.value, parent);
-    newnode = createNode('type', name_alternative, nitem);
+    createNode('item', node.value, parent);
+    createNode('type', name_alternative, nitem);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.value_item(item, ctx, nitem);
     }
-};
-md.return = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nreturn = createNode('return', node.value, parent);
+    createNode('return', node.value, parent);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         if (item.name === 'alt') {
-            newnode = createNode('type', name_alternative, nreturn);
+            createNode('type', name_alternative, nreturn);
             var j, j_items=item.children, j_len=item.children.length, item2;
             for (j=0; j<j_len; j++) {
                 item2 = item.children[j];
@@ -669,75 +669,75 @@ md.return = function(node, ctx, parent) {
             md.value_item(item, ctx, nreturn);
         }
     }
-};
-md.exception = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (node.name === 'error') {
-        newnode = createNode('error', node.value, parent);
+        createNode('error', node.value, parent);
     }
     else if (node.name === '#') {
         md.comment(node, ctx, parent);
     }
     else {
-        newnode = createNode('***', node.name + ' ' + node.value + ' oper: exception', parent);
+        createNode('***', node.name + ' ' + node.value + ' oper: exception', parent);
     }
-};
-md.comment = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    newnode = createNode('#', node.value, parent);
+    createNode('#', node.value, parent);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         md.comment(item, ctx, newnode);
     }
-};
-md.constraint = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (node.name === 'required' || node.name === 'is-required') {
-        newnode = createNode('is-required', node.value, parent);
+        createNode('is-required', node.value, parent);
     }
     else if (node.name === 'default') {
-        newnode = createNode('default', node.value, parent);
+        createNode('default', node.value, parent);
     }
     else if (node.name === 'restrict') {
         md.restrict(node, ctx, parent);
     }
     else if (['iface', 'api-ref', 'POJO'].indexOf(node.name) > -1) {
-        newnode = createNode(node.name, node.value, parent);
+        createNode(node.name, node.value, parent);
     }
     else if (node.name === '#') {
         md.comment(node, ctx, parent);
     }
     else {
-        newnode = createNode('***', node.name + ' ' + node.value + ' oper: constraint', parent);
+        createNode('***', node.name + ' ' + node.value + ' oper: constraint', parent);
     }
-};
-md.restrict = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nrestrict = createNode('restrict', node.value, parent);
+    createNode('restrict', node.value, parent);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         if (item.name === 'enum') {
-            newnode = createNode('enum', item.value, nrestrict);
+            createNode('enum', item.value, nrestrict);
         }
         else if (item.name === '#') {
             md.comment(item, ctx, nrestrict);
         }
         else {
-            newnode = createNode('***', item.name + ' ' + item.value + ' oper: restrict', parent);
+            createNode('***', item.name + ' ' + item.value + ' oper: restrict', parent);
         }
     }
-};
-md.arg_switch = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nargument = createNode('argument', node.value, parent);
-    newnode = createNode('type', name_switch, nargument);
+    createNode('argument', node.value, parent);
+    createNode('type', name_switch, nargument);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         if (item.name === 'on') {
-            var non = createNode('on', item.value, nargument);
+            createNode('on', item.value, nargument);
             var j, j_items=item.children, j_len=item.children.length, item2;
             for (j=0; j<j_len; j++) {
                 item2 = item.children[j];
@@ -748,19 +748,19 @@ md.arg_switch = function(node, ctx, parent) {
             md.comment(item, ctx, nswitch);
         }
         else {
-            newnode = createNode('***', item.name + ' ' + item.value + ' oper: arg_switch', parent);
+            createNode('***', item.name + ' ' + item.value + ' oper: arg_switch', parent);
         }
     }
-};
-md.object_prop_switch = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
-    var nproperty = createNode('property', node.value, parent);
-    newnode = createNode('type', name_switch, nproperty);
+    createNode('property', node.value, parent);
+    createNode('type', name_switch, nproperty);
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];
         if (item.name === 'on') {
-            var non = createNode('on', item.value, nproperty);
+            createNode('on', item.value, nproperty);
             var j, j_items=item.children, j_len=item.children.length, item2;
             for (j=0; j<j_len; j++) {
                 item2 = item.children[j];
@@ -771,18 +771,18 @@ md.object_prop_switch = function(node, ctx, parent) {
             md.comment(item, ctx, nswitch);
         }
         else {
-            newnode = createNode('***', item.name + ' ' + item.value + ' oper: arg_switch', parent);
+            createNode('***', item.name + ' ' + item.value + ' oper: arg_switch', parent);
         }
     }
-};
-md.info_item = function(node, ctx, parent) {
+}
+function(node, ctx, parent) {
     var newnode;
     if (node.name === 'api-ref') {
-        newnode = createNode('api-ref', node.value, parent);
+        createNode('api-ref', node.value, parent);
     }
     else if (node.name === 'closure') {
-        var ndep = createNode('dependency', node.value, parent);
-        newnode = createNode('type', name_closure, ndep);
+        createNode('dependency', node.value, parent);
+        createNode('type', name_closure, ndep);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -790,7 +790,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'store-on-this') {
-        var nstore = createNode('store-on-this', node.value, parent);
+        createNode('store-on-this', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -798,7 +798,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'api-call') {
-        newnode = createNode('api-call', node.value, parent);
+        createNode('api-call', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -806,7 +806,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'api-receive') {
-        newnode = createNode('api-receive', node.value, parent);
+        createNode('api-receive', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -814,7 +814,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'api-send') {
-        newnode = createNode('api-send', node.value, parent);
+        createNode('api-send', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -822,7 +822,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'api-create') {
-        newnode = createNode('api-create', node.value, parent);
+        createNode('api-create', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -830,7 +830,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'internal-call') {
-        newnode = createNode('internal-call', node.value, parent);
+        createNode('internal-call', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -838,7 +838,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'receive') {
-        newnode = createNode('receive', node.value, parent);
+        createNode('receive', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -846,7 +846,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'send') {
-        newnode = createNode('send', node.value, parent);
+        createNode('send', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -854,7 +854,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'set') {
-        newnode = createNode('set', node.value, parent);
+        createNode('set', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -862,7 +862,7 @@ md.info_item = function(node, ctx, parent) {
         }
     }
     else if (node.name === 'merge') {
-        newnode = createNode('merge', node.value, parent);
+        createNode('merge', node.value, parent);
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
@@ -875,7 +875,7 @@ md.info_item = function(node, ctx, parent) {
     else {
         md.value_item(node, ctx, parent);
     }
-};
+}
 function createNode(name, value, parent) {
     var node = {
         name: name, 

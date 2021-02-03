@@ -1,0 +1,6 @@
+$group
+    $params &img
+    span
+        $if img.svg == 'github-stars'
+            $include icons/github-stars
+        + ${img.label}

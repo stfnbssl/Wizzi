@@ -330,7 +330,10 @@
 					f_cb( notUsed )
 						_ callback(null, provider)
 			catch ex
-				set ex.message += '\n creating from uri: ' + primaryIttfDocumentUri
+                # TODO create new IttfError and call callback
+				try
+                    set ex.message += '\n creating from uri: ' + primaryIttfDocumentUri
+                catch (ex2)
 				throw ex
 
 	set module.exports = MTreeBrickProvider

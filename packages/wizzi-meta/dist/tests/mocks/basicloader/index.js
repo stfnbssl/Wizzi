@@ -1,9 +1,9 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\plugins\wizzi-meta\src\ittf\tests\mocks\basicloader\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-meta\.wizzi\ittf\tests\mocks\basicloader\index.js.ittf
 */
 'use strict';
-/** -àà
+/**
      This basic loader is for testing plugins.
      The loadMTree function loads an mTree from a
      single IttfDocument without include, mix, append and evaluate.

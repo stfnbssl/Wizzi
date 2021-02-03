@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\plugins\wizzi-meta\src\ittf\lib\artifacts\docs\preprint\trans\html.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-meta\.wizzi\ittf\lib\artifacts\docs\preprint\trans\html.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -278,6 +278,9 @@ function formatLineNum(line) {
     return line;
 }
 function spaces(num) {
+    if (num < 1) {
+        return '';
+    }
     return Array(num + 1).join(" ");
 }
 function stdElement(tag, model, ctx) {

@@ -18,6 +18,7 @@ module
         const example_ittfs
             [
                 @ 'basic'
+                @ 'exp'
 
    		_ async.mapSeries
 			@ example_ittfs

@@ -1,0 +1,15 @@
+$group
+    $params &code
+    . css-19s3isb
+        . css-12vi51d
+            input 
+                type text
+                readonly 
+                aria-label Webhook endpoint
+                class css-2fyybh
+                value ${code.value}
+            button Copy
+                type button
+                title Copy to clipboard
+                aria-label ${code.label}
+                class css-1bgsyyg

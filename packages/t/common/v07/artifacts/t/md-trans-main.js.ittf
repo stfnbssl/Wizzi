@@ -5,5 +5,3 @@
         param callback
 		var transformedModel = {}
 		$hook
-        _ callback(null, transformedModel)
-

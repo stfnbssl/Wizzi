@@ -48,7 +48,7 @@ md.gen = function gen(model, ctx, callback) {
 function getGenItem(ctx) {
     return function(model, callback) {
             if (stm[model.wzElement]) {
-                console.log(myname, 'known element', model.wzElement);
+                // log myname, 'known element', model.wzElement
                 stm[model.wzElement](model, ctx, function(err, done) {
                     if (err) {
                         return callback(err);

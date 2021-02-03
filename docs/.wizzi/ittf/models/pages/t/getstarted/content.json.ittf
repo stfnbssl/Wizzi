@@ -1,0 +1,15 @@
+$group
+    { Main
+        [ contents
+            {
+                kind "row"
+                [ panels
+                    {
+                        kind "scream"
+                        scream1 "One Machinery"
+                        subscream1 "Many productions"
+                        scream2 "Create productions of components, websites and apps"
+                        subscream2 "harness the power of a pluggable, model driven, generation system"
+                        [ teases
+                            {
+                            {

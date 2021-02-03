@@ -60308,6 +60308,61 @@
       "flags": "",
       "attributes": [
         {
+          "name": "cx",
+          "type": "string",
+          "tags": [
+            "cx"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "cy",
+          "type": "string",
+          "tags": [
+            "cy"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "r",
+          "type": "string",
+          "tags": [
+            "r"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "gradientUnits",
+          "type": "string",
+          "tags": [
+            "gradientUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "gradientTransform",
+          "type": "string",
+          "tags": [
+            "gradientTransform"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
           "name": "id",
           "type": "string",
           "tags": [
@@ -61129,7 +61184,64 @@
       ],
       "derived": [],
       "restricts": [],
-      "methods": [],
+      "methods": [
+        {
+          "name": "getAttributes",
+          "isStatic": false,
+          "isKnownMethod": false,
+          "params": [
+            "attrs"
+          ],
+          "statements": [
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "attrs",
+              "statements": [
+                {
+                  "tag": "_",
+                  "name": "call",
+                  "value": "_md.item.prototype.getAttributes.call(this, attrs)",
+                  "statements": []
+                }
+              ]
+            },
+            {
+              "tag": "return",
+              "name": "xreturn",
+              "value": "",
+              "statements": [
+                {
+                  "tag": "_",
+                  "name": "call",
+                  "value": "extractAttributes",
+                  "statements": [
+                    {
+                      "tag": "@",
+                      "name": "jsPropertyOrValue",
+                      "value": "this",
+                      "statements": []
+                    },
+                    {
+                      "tag": "@",
+                      "name": "jsPropertyOrValue",
+                      "value": "'cx;cy;r;gradientUnits;gradientTransform'",
+                      "statements": []
+                    },
+                    {
+                      "tag": "@",
+                      "name": "jsPropertyOrValue",
+                      "value": "attrs",
+                      "statements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "comments": []
+        }
+      ],
       "comments": []
     },
     {

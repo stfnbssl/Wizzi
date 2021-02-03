@@ -10,8 +10,6 @@
 			{
 				. id
 
-	$*				
-
 	type Query
 		[ users
 			item-type User
@@ -55,9 +53,11 @@
 		int value
 		int employeeCount
 
-	union SearchResult
+	$*
+    union SearchResult
 		| Photo
 		| Person
+    *$
 	
 	enum
 		@ NORTH
@@ -141,4 +141,3 @@
 				{ likers
 					. count
 
-	*$

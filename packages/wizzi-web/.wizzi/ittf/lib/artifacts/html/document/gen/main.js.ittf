@@ -75,7 +75,7 @@
 			#     var text = verify.startsWith(model.wzName, "' '") ? '&nbsp;' + model.wzName.substr(3) : model.wzName;
 			var text = model.wzName
 
-            log 'text', text
+            # log 'text', text
 				
 			if ctx.__iscode || model.wzElement === '_textLF'
 				_ ctx.w(text)

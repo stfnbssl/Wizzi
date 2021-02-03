@@ -135,7 +135,8 @@ var svg_step_1 = function(step_callback) {
     heading1('EXAMPLE');
     heading2('basic svg generations');
     const example_ittfs = [
-        'basic'
+        'basic', 
+        'exp'
     ];
     async.mapSeries(example_ittfs, function(ittf, callback) {
         console.log('======================================================================================');

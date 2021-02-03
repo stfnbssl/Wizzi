@@ -12,6 +12,10 @@ module.exports = {
         'wfjob',
         'wfschema', 
     ],
+    stop_schemas: [
+        'wfjob',
+        'wfschema', 
+    ],
     globalContext: {
         isPackageDeploy: true,
         isDevelopment: false,

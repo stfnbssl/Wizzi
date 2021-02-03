@@ -1,0 +1,22 @@
+$group
+    $params &btn
+    . scream-btn-1 $$ . css-zzgy
+        a ${btn.label}
+            class css-1fma4a5
+            href ${btn.href}
+            $include icons/arrow-right-1
+        p
+            $if btn.hint.svg == 'mit'
+                $include icons/mit
+            + ${btn.hint.label}
+            class css-116uxdu
+
+    { btn
+        label "Sign up free"
+        href "/dashboard/signup/"
+        { hint
+            label "No credit card required"
+
+    . scream-btn-1
+        < a
+        < p

@@ -226,7 +226,7 @@
 										@ CRLF ''
 										@ forCssImage true
 									f_cb( artifactText )
-										log myname, 'artifactText', artifactText
+										# log myname, 'artifactText', artifactText
 										_ ctx.w('background-image: url("data:image/svg+xml,' + artifactText + '");')
 										r_cb()
 					else

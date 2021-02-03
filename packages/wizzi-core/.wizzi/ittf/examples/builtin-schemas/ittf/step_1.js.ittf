@@ -12,18 +12,6 @@ module
 
     common\example\core(&opt)
 
-        $append plugins
-            [ items
-                @ 'wizzi-js'
-                @ 'wizzi-web'
-                @ './index'
-            @ pluginsBaseFolder
-                _ path.resolve
-                    @ __dirname
-                    @ '..'
-                    @ '..'
-                    @ '..'
-
         _ loadWizziModel
 			_ path.join
 				@ __dirname

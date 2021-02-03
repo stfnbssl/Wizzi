@@ -34,7 +34,12 @@ function createWizziFactory(globalContext, callback) {
     console.log('"wizzi" package version', wizzi.version);
     wizzi.fsnoaclFactory({
         plugins: {
-            
+            items: [
+                'wizzi-js', 
+                'wizzi-web', 
+                './index'
+            ], 
+            pluginsBaseFolder: path.resolve(__dirname, '..', '..')
         }, 
         globalContext: globalContext || {}
     }, callback);

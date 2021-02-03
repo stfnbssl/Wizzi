@@ -1,9 +1,9 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\plugins\wizzi-meta\src\ittf\examples\wfstudio\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-meta\.wizzi\ittf\examples\wfstudio\index.js.ittf
 */
 'use strict';
-/** -àà
+/**
      Examples: wfstudio
     
 */
@@ -13,7 +13,7 @@ var stringify = require('json-stringify-safe');
 var wizziUtils = require('wizzi-utils');
 var mocks = wizziUtils.mocks;
 var mtree = require('wizzi-mtree');
-/** -àà
+/**
     var mocks = require('../../tests/mocks');
 */
 var basicLoader = mocks.basicLoader;
@@ -51,7 +51,7 @@ function executeExample() {
 }
 function getFiles(srcpath, schema) {
     return fs.readdirSync(srcpath).filter((file) => {
-            return fs.lstatSync(path.join(srcpath, file)).isFile() && verify.endsWith(file, schema === 'ittf' ? '.ittf' : '.' + schema + '.ittf');
+            return fs.lstatSync(path.join(srcpath, file)).isFile() && verify.endsWith(file, (schema === 'ittf' ? '.ittf' : '.' + schema + '.ittf'));
         })
     ;
 }

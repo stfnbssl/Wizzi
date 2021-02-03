@@ -15,18 +15,6 @@ module
         _ heading2
             @ 'Ittf builtin schema'
         
-        $append plugins
-            [ items
-                @ 'wizzi-js'
-                @ 'wizzi-web'
-                @ './index'
-            @ pluginsBaseFolder
-                _ path.resolve
-                    @ __dirname
-                    @ '..'
-                    @ '..'
-                    @ '..'
-
         _ loadModelAndGenerateArtifact
 			_ path.join
 				@ __dirname

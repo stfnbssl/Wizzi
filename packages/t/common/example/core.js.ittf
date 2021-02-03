@@ -25,7 +25,25 @@ $group
 	$hook imports
 
 	$include wizzifactory_functions
-    
+
+    $append plugins
+        [ items
+            @ 'wizzi-js'
+            @ 'wizzi-web'
+            @ './index'
+        @ pluginsBaseFolder
+            _ path.resolve
+                @ __dirname
+                $if opt.folderLevel == 1
+                    @ '..'
+                $if opt.folderLevel == 2
+                    @ '..'
+                    @ '..'
+                $if opt.folderLevel == 3
+                    @ '..'
+                    @ '..'
+                    @ '..'
+
     $hook functions
 
 	var ${opt.name}

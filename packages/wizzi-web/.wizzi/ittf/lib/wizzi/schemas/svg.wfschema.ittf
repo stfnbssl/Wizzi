@@ -279,6 +279,12 @@
         a patternUnits
         a patternTransform
 	e radialGradient : item
+        a cx
+        a cy
+        a r
+        a gradientUnits
+        a gradientTransform 
+        svg/getAttrs( cx;cy;r;gradientUnits;gradientTransform, item )
 	e script : item
 	e set : item
 	e stop : item

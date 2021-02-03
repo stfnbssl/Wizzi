@@ -4,7 +4,7 @@
         // var baseUrl = "https://wizzifactory.github.io";
         // var baseUrl = "https://stfnbssl.github.io/wizzi";
 
-	name "wizzi.github.io"
+	name "stfnbssl.github.io/wizzi"
 	version "0.7.1"
 	description "Wizzi github page"
 	author "Stefano Bassoli"

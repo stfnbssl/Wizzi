@@ -1,9 +1,9 @@
 /*
-    artifact generator: C:\My\wizzi\v5\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\v5\plugins\wizzi-meta\src\ittf\tests\mocks\util\interpolate.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-meta\.wizzi\ittf\tests\mocks\util\interpolate.js.ittf
 */
 'use strict';
-/** -àà
+/**
      port of http://www.bbc.co.uk/glow/docs/1.7/api/glow.lang.shtml#interpolate
      Modified to be stand-alone and offer support for delimters of random length
      @description Replaces placeholders in a string with data from an object

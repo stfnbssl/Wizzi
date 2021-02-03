@@ -1,0 +1,28 @@
+module
+	kind jsfile
+
+    $
+        var opt = {
+            level: 0,
+            step: 2,
+            name: 'Meta_cheatsheet_step_1',
+            title: 'Meta cheatsheet step 1',
+            folderLevel: 2
+        }
+
+    common\example\meta(&opt)
+
+        _ heading2
+            @ 'Meta cheatscheet'
+        
+        _ loadAndTransformModel
+            _ path.join
+                @ __dirname
+                @ 'ittf'
+                @ 'basic.meta.ittf'
+            {
+            @ "cheatsheet/preprint"
+            f_cb_test( artifactText )
+                _ heading2
+                    @ 'Meta cheatscheet - transformation cheatsheet/hpreprint'
+                _ printValue('cheatsheet/preprint', artifactText)

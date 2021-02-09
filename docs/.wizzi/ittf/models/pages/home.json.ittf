@@ -5,6 +5,7 @@
         }
 
     common/styles( &ctx )
+    name "home"
     $include home/header
     $include home/content
     $include home/footer

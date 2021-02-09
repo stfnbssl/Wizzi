@@ -1,9 +1,9 @@
 $group
-    $params &intLink
+    $params &hint
 
-    p ${intLink.p1}
-        class css-kbiyuy
-        a ${intLink.label}
-            class css-vzag2y
-            href ${intLink.href}
+    p ${hint.p}
+        class hint-link
+        a ${hint.label}
+            href ${hint.href}
+            class hint-link-a
         + .

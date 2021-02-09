@@ -2,9 +2,10 @@ common/kernel_package( wizzi, ${wfpackage.version}, ${wfpackage.title}., ${wfpac
     $include versions
 
 	extsprintf "^1.2.0"
-	wizzi-mtree "${versions['wizzi-mtree']}"
-    wizzi-repo "${versions['wizzi-repo']}"
-    wizzi-utils "${versions['wizzi-utils']}"
+	$if isWebpackTarget == false
+        wizzi-mtree "${versions['wizzi-mtree']}"
+        wizzi-repo "${versions['wizzi-repo']}"
+        wizzi-utils "${versions['wizzi-utils']}"
 	
 	$append devDependencies
 

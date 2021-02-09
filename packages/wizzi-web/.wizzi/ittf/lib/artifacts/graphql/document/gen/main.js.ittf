@@ -1,4 +1,4 @@
-﻿module wizzi-web.lib.artifacts.graphql.schema.gen.main
+﻿module wizzi-web@${wfpackage.version}.lib.artifacts.graphql.document.gen.main
 	kind jsfile
 
 	var myname = 'wizzi-web.lib.artifacts.graphql.schema.gen.main';

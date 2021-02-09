@@ -7,7 +7,11 @@
 		var ittf_examples       = path.join(__dirname, 'ittf', 'examples');
 		var ittf_root_folder    = path.join(__dirname, 'ittf', 'root');
 		var ittf_tests          = path.join(__dirname, 'ittf', 'tests');
-		var dest_folder         = path.join(__dirname, '..', 'dist');
+        if (isWebpackTarget) {
+            var dest_folder         = path.join(__dirname, '..', '..', '..', '..', 'wizzi-browser', 'build', 'wizzi_modules', 'wizzi-web');
+        } else {
+		    var dest_folder         = path.join(__dirname, '..', 'dist');
+        }
 
 	model meta
 		schema json
@@ -19,6 +23,8 @@
 
 		wfjob/any_js()
 			ignore ${ittf_lib_artifacts}/**/*__copy/**/*.js.ittf
+			model-ref meta
+				export-name wfpackage
         wfjob/any_plain(css)
 
 	line ittf-lib_models
@@ -27,6 +33,8 @@
 
 		wfjob/any_js()
 			ignore ${ittf_lib_models}/**/*__copy/**/*.js.ittf
+			model-ref meta
+				export-name wfpackage
 
 	line ittf-examples
 		cwd-folder ${ittf_examples}
@@ -45,6 +53,8 @@
 
 		wfjob/any_js()
 			ignore ${ittf_root}/**/*__copy.*/**/*.js.ittf
+			model-ref meta
+				export-name wfpackage
 
 		wfjob/any_json()
 			model-ref meta
@@ -72,6 +82,7 @@
 		dest-folder ${dest_folder}
 		line-ref ittf-lib_artifacts
 		line-ref ittf-lib_models
-		line-ref ittf-examples
 		line-ref ittf-root
-		line-ref ittf-tests
+        $if isWebpackTarget == false
+		    line-ref ittf-tests
+            line-ref ittf-examples

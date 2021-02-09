@@ -14,6 +14,8 @@
             name 'wfschema'
             title 'Wizzi schema definition'
             [ transformers
+                {
+                    name 'wfschema/json_docs'
             [ artifacts
                 {
                     name 'wfschema/factory'
@@ -21,8 +23,6 @@
                     name 'wfschema/model'
                 {
                     name 'wfschema/html_docs'
-                {
-                    name 'wfschema/json_docs'
                 {
                     name 'wfschema/test'
         {
@@ -35,6 +35,8 @@
                     name 'json/document'
                 {
                     name 'json/toyaml'
+                {
+                    name 'json/toml'
                 {
                     name 'json/export'
         {
@@ -61,7 +63,9 @@
             builtin true
             [ transformers
                 {
-                    name 'ittf/html_prettify'
+                    name 'ittf/cheatsheet'
+                {
+                    name 'ittf/html-pretty'
             [ artifacts
                 {
                     name 'ittf/document'

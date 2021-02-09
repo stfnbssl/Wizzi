@@ -4,15 +4,18 @@
     $include versions
 	
 	name  "${pkgName}"
+
+    sideEffects false
 	
-	version  "${version}"
+    $if isWebpackTarget == false
+        version "${version}"
 	
 	description "${description}"
     
 	author
 		{
 			name "Stefano Bassoli"
-			email "wizzi.team@gmail.com"
+			email "stfn.bssl@gmail.com"
 	
 	private false
 	
@@ -47,8 +50,9 @@
 			json-stringify-safe "^5.0.1"
 			lodash "^4.17.20"
             $if !!isDevelopment == false
-                wizzi-mtree "${versions['wizzi-mtree']}"
-                wizzi-utils "${versions['wizzi-utils']}"
+                $if isWebpackTarget == false
+                    wizzi-mtree "${versions['wizzi-mtree']}"
+                    wizzi-utils "${versions['wizzi-utils']}"
 			$hook
             
 	
@@ -57,6 +61,7 @@
             del "^6.0.0"
             expect.js "^0.3.1"
             $if isDevelopment
-                wizzi-mtree "file:../../wizzi-mtree/dist"
-                wizzi-utils "file:../../wizzi-utils/dist"
+                $if isWebpackTarget == false
+                    wizzi-mtree "file:../../wizzi-mtree/dist"
+                    wizzi-utils "file:../../wizzi-utils/dist"
 			$hook devDependencies

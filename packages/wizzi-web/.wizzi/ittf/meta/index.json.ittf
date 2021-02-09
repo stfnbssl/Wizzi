@@ -46,6 +46,8 @@
             title 'Graphql wizzi language model'
             [ transformers
             [ artifacts
+                {
+                    name 'graphql/document'
 
         {
             name 'site'

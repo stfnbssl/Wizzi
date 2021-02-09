@@ -70,32 +70,32 @@
 				# log '***** json closed'
 
 		jsonFsimpl/m( stat )
-			_ docManager.stat
+			_ jsonDb.stat
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
 
 		jsonFsimpl/m( lstat )
-			_ docManager.stat
+			_ jsonDb.stat
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
 
 		jsonFsimpl/m( readFile, options )
-			_ docManager.readFile
+			_ jsonDb.readFile
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
 		
 		jsonFsimpl/m( writeFile, content, options )
-			_ docManager.writeFile
+			_ jsonDb.writeFile
 				@ parsedUri.internalPath
 				@ content
 				f_cb( result )
 					_ callback(null, result)
 
 		jsonFsimpl/m( readdir, options )
-			_ docManager.getDir
+			_ jsonDb.getDir
 				@ parsedUri.internalPath
 				@ options
 				f_cb( result )
@@ -106,13 +106,13 @@
 					_ callback(null, dir)
 		
 		jsonFsimpl/m( mkdir, options )
-			_ docManager.createFolder
+			_ jsonDb.createFolder
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)
 
 		jsonFsimpl/m( unlink )
-			_ docManager.deleteFile
+			_ jsonDb.deleteFile
 				@ parsedUri.internalPath
 				f_cb( result )
 					_ callback(null, result)

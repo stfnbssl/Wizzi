@@ -7,7 +7,7 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 	var handler = require('./handler')
 	var property = require('./property')
 	var xget = require('./get')
-	var html = require('./html')
+	$$ TODO var html = require('./html')
 
 	var md = module.exports = {}
 	var myname = 'wizzi.js.artifacts.module.gen.codegen.es6.class';
@@ -195,8 +195,10 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 				set generator = method
 			elif item_1.wzElement === 'arrowfunction'
 				set generator = handler
-			elif item_1.wzElement === 'html'
+			$* TODO
+            elif item_1.wzElement === 'html'
 				set generator = html
+            *$
 			elif item_1.wzElement === 'property' || item_1.wzElement === 'p'
 				set generator = property
 			elif item_1.wzElement === 'get'

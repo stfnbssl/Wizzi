@@ -1,10 +1,11 @@
 {
     "name": "wizzi",
-    "version": "0.7.21",
+    "sideEffects": false,
+    "version": "0.7.22",
     "description": "The wizzi factory..",
     "author": {
         "name": "Stefano Bassoli",
-        "email": "wizzi.team@gmail.com"
+        "email": "stfn.bssl@gmail.com"
     },
     "private": false,
     "licenses": [

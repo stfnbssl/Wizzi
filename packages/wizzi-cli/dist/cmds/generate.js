@@ -8,6 +8,7 @@ const util = require('util');
 const fs = require('fs');
 const async = require('async');
 const wizzi = require('wizzi');
+const config = require('../utils/config');
 function generateSchemas(schemasToGen, wfJobFolder, destPath, packageName, plugins) {
     async.mapSeries(schemasToGen, function(schemaName, callback) {
         console.log('wizzi-cli.generate.Generating schema ' + schemaName);
@@ -40,25 +41,10 @@ function generateSchemas(schemasToGen, wfJobFolder, destPath, packageName, plugi
         }
     });
 }
-module.exports = (args) => {
-    let currentDir = process.cwd();
-    let currentPath = null;
-    let configPath = null;
-    while (configPath == null && currentDir.length > 3) {
-        currentPath = path.join(currentDir, 'wizzi.config.js');
-        try {
-            console.log('wizzi-cli.generate.searching', currentPath);
-            const stat = fs.lstatSync(currentPath);
-            if (stat.isFile()) {
-                configPath = currentPath;
-            }
-        } 
-        catch (ex) {
-        } 
-        currentDir = path.dirname(currentDir);
-    }
+module.exports = (name) => {
+    let configPath = config.getPath(name);
     if (!configPath) {
-        console.error(`config file "wizzi.config.js" not found`);
+        console.error(`config file "wizzi.config.' + (name ? name + '.' : '') + 'js" not found`);
         return ;
     }
     const configInstance = require(configPath);

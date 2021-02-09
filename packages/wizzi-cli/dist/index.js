@@ -3,8 +3,13 @@
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\ittf\root\index.js.ittf
 */
 'use strict';
+const path = require('path');
 const minimist = require('minimist');
+const config = require('./utils/config');
 const error = require('./utils/error');
+function checkConfig(name) {
+    var test = path.join(currentDir, 'wizzi.config.' + name + 'js');
+}
 module.exports = () => {
     const args = minimist(process.argv.slice(2));
     console.log('args', args);
@@ -12,7 +17,7 @@ module.exports = () => {
     if (args.version || args.v) {
         cmd = 'version';
     }
-    if (args.help || args.h) {
+    if (args.help || args.h || args['?']) {
         cmd = 'help';
     }
     console.log('cmd', cmd);
@@ -30,16 +35,18 @@ module.exports = () => {
             break;
         }
         case 'help': {
-            require('./cmds/help');
-            break;
-        }
-        case '?': {
-            require('./cmds/help');
+            require('./cmds/help')(args);
             break;
         }
         default: {
-            error(`"${cmd}" is not a valid command!`);
-            error(`try wizzi help`, true);
+            var configPath = config.getPath(cmd);
+            if (configPath) {
+                require('./cmds/generate')(cmd);
+            }
+            else {
+                error(`"${cmd}" is not a valid command!`);
+                error(`try wizzi help`, true);
+            }
             break;
         }
     }

@@ -12,6 +12,7 @@
 			@ 'ctor'
 			@ 'method'
 			@ 'module'
+            @ 'xmodule'
 			@ 'ready'
 			@ 'html_f'
 			@ 'html_dom'

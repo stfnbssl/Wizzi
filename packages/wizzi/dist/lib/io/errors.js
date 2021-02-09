@@ -1,12 +1,12 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\io\errors.js.ittf
+    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\io\errors.js.ittf
 */
 'use strict';
 var util = require('util');
 
 var md = module.exports = {};
-var pkgVersioned = ' (@wizzi.0.7.21)';
+var pkgVersioned = ' (@wizzi.0.7.22)';
 
 function NotImplementedError(message) {
     this.name = 'NotImplementedError';

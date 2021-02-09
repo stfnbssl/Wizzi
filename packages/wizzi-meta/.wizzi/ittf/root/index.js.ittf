@@ -17,7 +17,8 @@ common/index/v3-package-index( wizzi-meta )
 		var window_schemaDefinitions
 			{
 
-	@ provides
+	$* VIA see fragment: common/index/v3-package-index
+    @ provides
 		{
 			@ schemas
 				[
@@ -28,4 +29,5 @@ common/index/v3-package-index( wizzi-meta )
 				[
 			@ artifactGenerators
 				[
+    *$
 

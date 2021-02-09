@@ -1,7 +1,8 @@
 ﻿module 
     kind jsfile
 
-	$if isWebpackTarget
+	# isWebpackTarget ${isWebpackTarget}
+    $if isWebpackTarget
 		#
 			# This source targets the browser
 			# (isWebpackTarget == true)
@@ -25,7 +26,7 @@
 	set md.nodeErrors = require('./lib/errors')
 	set md.exampleErrors = require('./lib/exampleErrors')
 	set md.lineparser = require('./lib/lineparser')
-	$if !isWebpackTarget
+	$if isWebpackTarget == false
 		set md.mocks = require('./lib/mocks')
 		set md.requireFromString = require('./lib/requireFromString')
 	set md.Coder = require('./lib/coder')
@@ -34,7 +35,7 @@
 	set md.errors = require('./lib/errors')
 
 	# fs
-	$if !isWebpackTarget
+	$if isWebpackTarget == false
 		set md.file = require('./lib/fs/file')
 	set md.vfile = require('./lib/fs/vfile')
 	set md.uriParser = require('./lib/fs/uriParser')

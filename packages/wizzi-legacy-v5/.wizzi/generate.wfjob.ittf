@@ -6,7 +6,11 @@
 		var ittf_root_folder      = path.join(__dirname, 'ittf', 'root');
 		var ittf_examples_folder  = path.join(__dirname, 'ittf', 'examples');
 		var ittf_tests_folder     = path.join(__dirname, 'ittf', 'tests');
-		var dest_folder           = path.join(__dirname, '..', 'dist');
+        if (isWebpackTarget) {
+            var dest_folder         = path.join(__dirname, '..', '..', '..', '..', 'wizzi-browser', 'build', 'wizzi_modules', 'wizzi-legacy-v5');
+        } else {
+		    var dest_folder         = path.join(__dirname, '..', 'dist');
+        }
 
 	model meta
 		schema json

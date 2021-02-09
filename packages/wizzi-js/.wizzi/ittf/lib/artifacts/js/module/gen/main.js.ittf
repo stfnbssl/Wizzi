@@ -1,4 +1,4 @@
-﻿artifact( v6-wizzi-js, js, module, rootElement=module )
+﻿artifact( v6-wizzi-js, js, module, rootElement=xmodule )
 
     $include versions
 

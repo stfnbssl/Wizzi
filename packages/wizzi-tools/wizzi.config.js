@@ -1,6 +1,6 @@
 const path = require('path');
 module.exports = {
-    wfjobName: "wizzi-tools-job", 
+    wfjobName: "wizzi-tools/job", 
     wfjobPath: path.join(__dirname, '.wizzi', 'generate.wfjob.ittf'), 
     plugins: [
         'wizzi-core', 
@@ -15,11 +15,6 @@ module.exports = {
     globalContext_default: {
         isPackageDeploy: true,
         isWebpackTarget: false,
-        isDevelopment: false,
-    },
-    globalContext_webpack: {
-        isPackageDeploy: true,
-        isWebpackTarget: true,
         isDevelopment: false,
     },
 };

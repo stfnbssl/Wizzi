@@ -6,6 +6,7 @@
 	const fs = require('fs')
 	const async = require('async')
 	const wizzi = require('wizzi')
+    const config = require('../utils/config')
 
     function generateSchemas
         param schemasToGen
@@ -54,24 +55,11 @@
 
 	set module.exports
 		=>
-			param args
+			param name
 
-			let currentDir = process.cwd()
-			let currentPath = null
-			let configPath = null
-			
-			while configPath == null && currentDir.length > 3
-				set currentPath = path.join(currentDir, 'wizzi.config.js')
-				try
-					log 'wizzi-cli.generate.searching', currentPath
-					const stat = fs.lstatSync(currentPath)
-					if stat.isFile()
-						set configPath = currentPath
-				catch ex
-				set currentDir = path.dirname(currentDir)
-
+			let configPath = config.getPath(name)
 			if !configPath
-				_ console.error(`config file "wizzi.config.js" not found`)
+				_ console.error(`config file "wizzi.config.' + (name ? name + '.' : '') + 'js" not found`)
 				return
 
 			const configInstance = require(configPath)

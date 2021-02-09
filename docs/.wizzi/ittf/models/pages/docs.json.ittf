@@ -5,6 +5,7 @@
             page: 'docs'
         }
 
+    name "docs"
     common/styles( &ctx )
     docs/header( &ctx )
     

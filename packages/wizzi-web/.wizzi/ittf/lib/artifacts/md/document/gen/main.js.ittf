@@ -1,4 +1,4 @@
-﻿module
+﻿module wizzi-web@${wfpackage.version}.lib.artifacts.md.document.gen.main
 	kind jsfile
 
 	var util = require('util')

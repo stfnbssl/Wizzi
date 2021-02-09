@@ -20,6 +20,7 @@
         opt.ybottom = 250 * ratio;
         opt.stroke = '#01579b';
         opt.fill = '#01579b';
+        //opt.fill = 'none';
         opt.ratio = ratio;
 
     $if l > 0

@@ -1,4 +1,4 @@
-﻿module
+﻿module wizzi-web@${wfpackage.version}.lib.artifacts.html.document.gen.main
 	kind jsfile
 
     $include versions
@@ -6,7 +6,7 @@
 	var util = require('util')
 	var async = require('async')
 	var include_writers = require('./include_writers')
-	var verify = require('../../../util/verify')
+    var verify = require('wizzi-utils').verify
 	var utilNode = require('../../../util/utilNode')
 	var lineParser = require('../../../util/lineParser')
 	var lorem = require('wizzi-utils').lorem

@@ -229,8 +229,7 @@
 			_ wf.loadModelAndGenerateArtifact
 				@ ittfDocumentPath
 				{
-					{ modelRequestContext
-						@ mTreeBuildUpContext context
+					@ modelRequestContext context
 					@ artifactRequestContext options.artifactContext
 				@ artifactName
 				@ callback
@@ -245,8 +244,7 @@
 		_ wf.loadModelAndGenerateArtifact
 			@ ittfDocumentPath
 			{
-				{ modelRequestContext
-					@ mTreeBuildUpContext context
+				@ modelRequestContext context 
 				@ artifactRequestContext options.artifactContext
 			@ artifactName
 			@ callback

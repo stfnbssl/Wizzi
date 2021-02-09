@@ -5,24 +5,36 @@
 'use strict';
 const menus = {
     main: [
-        "wizzi [noarguments] | [command] <options>", 
+        "", 
+        "", 
+        "wizzi [noarguments] | configname | [command] <options>", 
         "", 
         "noarguments ......... execute generation using wizzi.config.js", 
+        "configname .......... execute generation using wizzi.config.<configname>.js", 
         "create .............. setup wizzi for the current project", 
         "fy .................. wizzify a file or folder", 
         "version ............. show package version", 
         "help ................ show help menu for a command"
     ].join('\n'), 
     create: [
+        "", 
+        "", 
         "wizzi create <options>", 
         "", 
-        "--kind | -k ........... the project kind"
+        "--kind | -k <kindname> ... the project kind <kindname>", 
+        "", 
+        "valid kindnames:", 
+        "  webpack", 
+        "  express", 
+        "  plugin"
     ].join('\n'), 
     fy: [
+        "", 
+        "", 
         "wizzi fy <options>", 
         "", 
-        "--source | -s ........... the source file or folder", 
-        "--dest | -d ............. the destination file or folder"
+        "[--source | -s] <file | folder> .... the source file or folder", 
+        "[--dest | -d] <file | folder> ...... the destination file or folder"
     ].join('\n')
 };
 module.exports = (args) => {

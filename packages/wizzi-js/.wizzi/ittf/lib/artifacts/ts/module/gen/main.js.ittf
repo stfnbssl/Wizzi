@@ -1,4 +1,4 @@
-﻿artifact( v5-wizzi-ts, ts, module, rootElement=module )
+﻿artifact( v5-wizzi-ts, ts, module, rootElement=xmodule )
 
     $include versions
 

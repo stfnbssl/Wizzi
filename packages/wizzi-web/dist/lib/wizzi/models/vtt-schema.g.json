@@ -1524,6 +1524,12 @@
           ]
         },
         {
+          "name": "backdrop_filter",
+          "tags": [
+            "backdrop-filter"
+          ]
+        },
+        {
           "name": "background",
           "tags": [
             "background"
@@ -2070,6 +2076,12 @@
           ]
         },
         {
+          "name": "font_kerning",
+          "tags": [
+            "font-kerning"
+          ]
+        },
+        {
           "name": "font_size",
           "tags": [
             "font-size"
@@ -2088,9 +2100,105 @@
           ]
         },
         {
+          "name": "font_variation_settings",
+          "tags": [
+            "font-variation-settings"
+          ]
+        },
+        {
           "name": "font_weight",
           "tags": [
             "font-weight"
+          ]
+        },
+        {
+          "name": "font_language_override",
+          "tags": [
+            "font-language-override"
+          ]
+        },
+        {
+          "name": "font_optical_sizing",
+          "tags": [
+            "font-optical-sizing"
+          ]
+        },
+        {
+          "name": "font_size_adjust",
+          "tags": [
+            "font-size-adjust"
+          ]
+        },
+        {
+          "name": "font_smooth",
+          "tags": [
+            "font-smooth"
+          ]
+        },
+        {
+          "name": "font_stretch",
+          "tags": [
+            "font-stretch"
+          ]
+        },
+        {
+          "name": "font_synthesis",
+          "tags": [
+            "font-synthesis"
+          ]
+        },
+        {
+          "name": "font_variant_alternates",
+          "tags": [
+            "font-variant-alternates"
+          ]
+        },
+        {
+          "name": "font_variant_caps",
+          "tags": [
+            "font-variant-caps"
+          ]
+        },
+        {
+          "name": "font_variant_east_asian",
+          "tags": [
+            "font-variant-east-asian"
+          ]
+        },
+        {
+          "name": "font_variant_ligatures",
+          "tags": [
+            "font-variant-ligatures"
+          ]
+        },
+        {
+          "name": "font_variant_numeric",
+          "tags": [
+            "font-variant-numeric"
+          ]
+        },
+        {
+          "name": "font_variant_position",
+          "tags": [
+            "font-variant-position"
+          ]
+        },
+        {
+          "name": "font_variant",
+          "tags": [
+            "font-variant"
+          ]
+        },
+        {
+          "name": "font_variation_settings",
+          "tags": [
+            "font-variation-settings"
+          ]
+        },
+        {
+          "name": "gap",
+          "tags": [
+            "gap"
           ]
         },
         {
@@ -2316,6 +2424,12 @@
           ]
         },
         {
+          "name": "mask_image",
+          "tags": [
+            "mask-image"
+          ]
+        },
+        {
           "name": "max_height",
           "tags": [
             "max-height"
@@ -2448,6 +2562,24 @@
           ]
         },
         {
+          "name": "overscroll_behavior",
+          "tags": [
+            "overscroll-behavior"
+          ]
+        },
+        {
+          "name": "scrollbar_color",
+          "tags": [
+            "scrollbar-color"
+          ]
+        },
+        {
+          "name": "scrollbar_width",
+          "tags": [
+            "scrollbar-width"
+          ]
+        },
+        {
           "name": "padding_right",
           "tags": [
             "padding-right"
@@ -2574,6 +2706,18 @@
           ]
         },
         {
+          "name": "scrollbar_width",
+          "tags": [
+            "scrollbar-width"
+          ]
+        },
+        {
+          "name": "scroll_padding_top",
+          "tags": [
+            "scroll-padding-top"
+          ]
+        },
+        {
           "name": "speak_header",
           "tags": [
             "speak-header"
@@ -2607,6 +2751,12 @@
           "name": "stress",
           "tags": [
             "stress"
+          ]
+        },
+        {
+          "name": "stroke_width",
+          "tags": [
+            "stroke-width"
           ]
         },
         {
@@ -3363,6 +3513,35 @@
       "isRoot": false,
       "tags": [
         "azimuth"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "backdrop_filter",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "backdrop-filter"
       ],
       "flags": "",
       "attributes": [],
@@ -6521,6 +6700,50 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "kerning",
+          "type": "string",
+          "tags": [
+            "kerning"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "smooth",
+          "type": "string",
+          "tags": [
+            "smooth"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "stretch",
+          "type": "string",
+          "tags": [
+            "stretch"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "synthesis",
+          "type": "string",
+          "tags": [
+            "synthesis"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -6578,6 +6801,35 @@
       "isRoot": false,
       "tags": [
         "font-family"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_kerning",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-kerning"
       ],
       "flags": "",
       "attributes": [],
@@ -6689,11 +6941,475 @@
       "comments": []
     },
     {
+      "name": "font_variation_settings",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variation-settings"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "font_weight",
       "super": "property",
       "isRoot": false,
       "tags": [
         "font-weight"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_language_override",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-language-override"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_optical_sizing",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-optical-sizing"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_size_adjust",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-size-adjust"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_smooth",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-smooth"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_stretch",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-stretch"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_synthesis",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-synthesis"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_variant_alternates",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variant-alternates"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_variant_caps",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variant-caps"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_variant_east_asian",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variant-east-asian"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_variant_ligatures",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variant-ligatures"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_variant_numeric",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variant-numeric"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_variant_position",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variant-position"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_variant",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variant"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font_variation_settings",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "font-variation-settings"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "gap",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "gap"
       ],
       "flags": "",
       "attributes": [],
@@ -8037,6 +8753,35 @@
       "comments": []
     },
     {
+      "name": "mask_image",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "mask-image"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "max_height",
       "super": "property",
       "isRoot": false,
@@ -8754,6 +9499,93 @@
       "comments": []
     },
     {
+      "name": "overscroll_behavior",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "overscroll-behavior"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "scrollbar_color",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "scrollbar-color"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "scrollbar_width",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "scrollbar-width"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "padding_right",
       "super": "property",
       "isRoot": false,
@@ -9409,14 +10241,57 @@
     },
     {
       "name": "scrollbar_width",
-      "super": null,
+      "super": "property",
       "isRoot": false,
       "tags": [
         "scrollbar-width"
       ],
       "flags": "",
       "attributes": [],
-      "relations": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "scroll_padding_top",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "scroll-padding-top"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
       "derived": [],
       "restricts": [],
       "methods": [],
@@ -9573,6 +10448,35 @@
       "isRoot": false,
       "tags": [
         "stress"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke_width",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke-width"
       ],
       "flags": "",
       "attributes": [],

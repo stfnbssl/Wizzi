@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\examples\fromText\step_2.js.ittf
+    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\examples\fromText\step_2.js.ittf
 */
 'use strict';
 /**
@@ -51,6 +51,25 @@ var fromText_step_2 = function(step_callback) {
             return callback(err);
         }
         console.log('genFromText', '\n', artifactText);
+        wizziIndex.genFromText([
+            'module', 
+            '    kind react', 
+            '    react Hello', 
+            '        state', 
+            '            @ name "stefi"', 
+            '        $foreach item in items', 
+            '            m ${item}'
+        ].join('\n'), {
+            items: [
+                'alfa', 
+                'beta'
+            ]
+        }, {
+            artifactName: 'js/module'
+        }, (err, result) => {
+            console.log('err', err);
+            console.log('result', result);
+        });
     });
 };
 fromText_step_2.__name = 'fromText_step_2';

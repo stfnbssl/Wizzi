@@ -5,8 +5,9 @@
 	
 	name  "${pkgName}"
 	
-	version  "${version}"
-	
+    $if isWebpackTarget == false
+        version "${version}"
+
 	description "${description}"
     
 	author
@@ -46,9 +47,10 @@
 			json-stringify-safe "^5.0.1"
 			lodash "^4.17.4"
 			$hook
-            wizzi "${versions['wizzi']}"
-            wizzi-utils "${versions['wizzi-utils']}"
-            wizzi-js "${versions['wizzi-js']}"
+            $if isWebpackTarget == false
+                wizzi "${versions['wizzi']}"
+                wizzi-utils "${versions['wizzi-utils']}"
+                wizzi-js "${versions['wizzi-js']}"
 	
 	peerDependencies
 		{

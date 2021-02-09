@@ -333,7 +333,7 @@
                 # TODO create new IttfError and call callback
 				try
                     set ex.message += '\n creating from uri: ' + primaryIttfDocumentUri
-                catch (ex2)
+                catch ex2
 				throw ex
 
 	set module.exports = MTreeBrickProvider

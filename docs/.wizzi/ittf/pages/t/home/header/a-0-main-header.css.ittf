@@ -16,7 +16,10 @@ $group
             background var(--theme-ui-colors-${mpage.Colors.scheme1Fade90})
             -webkit-backdrop-filter blur(8px)
             @ backdrop-filter blur(8px)
-            position fixed
+            $if mpage == "home" || mpage == "getstarted"
+                position fixed
+            $else
+                position relative
             left 50%
             transform translateX(-50%)
             top 0

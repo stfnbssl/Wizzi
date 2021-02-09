@@ -23,11 +23,11 @@
     "dependencies": {
         "@babel/core": "^7.0.0",
         "minimist": "^1.2.0",
-        "wizzi": "0.7.16",
+        "wizzi": "0.7.21",
         "wizzi-core": "0.7.1",
-        "wizzi-js": "0.7.6",
-        "wizzi-utils": "0.7.9",
-        "wizzi-web": "0.7.4",
+        "wizzi-js": "0.7.7",
+        "wizzi-utils": "0.7.12",
+        "wizzi-web": "0.7.7",
         "wizzi-tools": "0.7.3"
     }
 }

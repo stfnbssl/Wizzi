@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\root\index.js.ittf
+    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\root\index.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -1293,9 +1293,7 @@ md.generateArtifact = function(ittfDocumentPath, context, options, callback) {
         else {
             var artifactName = options.artifactName || getDefaultArtifact(schema);
             wf.loadModelAndGenerateArtifact(ittfDocumentPath, {
-                modelRequestContext: {
-                    mTreeBuildUpContext: context
-                }, 
+                modelRequestContext: context, 
                 artifactRequestContext: options.artifactContext
             }, artifactName, callback);
         }
@@ -1383,9 +1381,7 @@ md.generateArtifactFromText = function(ittfContent, context, options, callback) 
             var artifactName = options.artifactName || getDefaultArtifact(schema);
             var ittfDocumentPath = tempIttfUri;
             wf.loadModelAndGenerateArtifact(ittfDocumentPath, {
-                modelRequestContext: {
-                    mTreeBuildUpContext: context
-                }, 
+                modelRequestContext: context, 
                 artifactRequestContext: options.artifactContext
             }, artifactName, callback);
         });

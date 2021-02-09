@@ -21,7 +21,7 @@
 	e commentmultiline : statement
 		tag ##
 
-	e module : statement
+	e_tag( xmodule, module, statement)
 		# The root element of the js schema.
 		is-root
 		a kind

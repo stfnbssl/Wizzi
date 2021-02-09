@@ -14,11 +14,11 @@
 		*/
 		var x_presentationAttributes = 'alignment-baseline,baseline-shift,clip,clip-path,clip-rule,' + 
 			'color,color-interpolation,color-interpolation-filters,color-profile,color-rendering,' +
-			'cursor,direction,display,dominant-baseline,enable-background,fill,fill-opacity,fill-rule,' +
+			'cursor,direction,display,dominant-baseline,enable-background,/*fill,*/fill-opacity,fill-rule,' +
 			'filter,flood-color,flood-opacity,font-family,font-size,font-size-adjust,font-stretch,' +
 			'font-style,font-variant,font-weight,glyph-orientation-horizontal,glyph-orientation-vertical,' +
 			'image-rendering,kerning,letter-spacing,lighting-color,marker-end,marker-mid,marker-start,' +
-			'mask,opacity,overflow,pointer-events,shape-rendering,stop-color,stop-opacity,stroke,'+ 
+			'mask,/*opacity,*/overflow,pointer-events,shape-rendering,stop-color,stop-opacity,/*stroke,*/'+ 
 			'stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,' +
 			'stroke-opacity,stroke-width,text-anchor,text-decoration,text-rendering,unicode-bidi,' +
 			'visibility,word-spacing,writing-mode';
@@ -57,6 +57,9 @@
 		a_tag(pathLength, path-length)
 			# This attribute lets specify the total length for the path, in user units.
 			# Value type: <number> ; Default value: none; Animatable: yes
+        a fill
+        a stroke
+        a opacity
 
 		$foreach pa in presentationAttributes
 			a ${pa.name}
@@ -68,7 +71,8 @@
 		r item/s
 
 		svg/getAttrs( 
-			\b id;class;dataName;href;rotate;transform;xmlns;xmlBase;xmlLang;xmlSpace;pathLength
+			\b id;class;dataName;href;rotate;transform;xmlns;xmlBase;xmlLang;xmlSpace;pathLength;
+            \ fill;stroke;opacity
 			\b )
 
 		m getStyleAttributes

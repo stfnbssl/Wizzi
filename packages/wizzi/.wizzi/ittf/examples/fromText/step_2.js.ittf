@@ -32,3 +32,25 @@
                 @ artifactName 'js/module'
             f_cb(artifactText)
                 log 'genFromText', '\n', artifactText
+                _ wizziIndex.genFromText
+                    [
+                        @ 'module'
+                        @ '    kind react'
+                        @ '    react Hello'
+                        @ '        state'
+                        @ '            @ name "stefi"'
+                        @ '        $foreach item in items'
+                        @ '            m ${__dollar}{item}'
+                        ._ join
+                            @ '\n'
+                    {
+                        [ items
+                            @ 'alfa'
+                            @ 'beta'
+                    {
+                        @ artifactName 'js/module'
+                    =>
+                        param err
+                        param result
+                        log 'err', err
+                        log 'result', result

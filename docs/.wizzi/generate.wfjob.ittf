@@ -10,7 +10,15 @@
         var ittf_pages_folder        = path.join(__dirname, 'ittf', 'pages');
 		var ittf_root_folder         = path.join(__dirname, 'ittf', 'root');
 		var dest_folder              = path.join(__dirname, '..');
-        var pages = ['home','docs','cheatsheets'];
+        var pages = [
+            'getstarted',
+        ];
+        var xpages = [
+            'home',
+            'docs',
+            'getstarted',
+            'cheatsheets'
+        ];
         var schemas = [];
         for (var i=0; i<g_schemas.length; i++) {
             if (g_schemas[i] != 'ts') {
@@ -53,6 +61,24 @@
 		wfjob/any_md()
 		wfjob/any_text()
 		wfjob/.gitignore()
+
+    $foreach page in pages
+        line ittf-${page}
+            cwd-folder ${ittf_pages_folder}/${page}
+            dest-folder ${dest_folder}/${page}
+
+            wfjob/any_js()
+                model-ref ${page}
+                    export-name mpage
+
+            wfjob/any_css()
+                model-ref ${page}
+                    export-name mpage
+
+
+            wfjob/any_html()
+                model-ref ${page}
+                    export-name mpage
 
 	line ittf-home
 		cwd-folder ${ittf_pages_folder}/home
@@ -144,11 +170,13 @@
 
 	production
 		dest-folder ${dest_folder}
-        line-ref ittf-cheatsheets
+        $foreach page in pages
+            line-ref ittf-${page}
+        
         $*
+        line-ref ittf-cheatsheets
         line-ref ittf-home
         line-ref ittf-docs
-        
         
         line-ref ittf-styles
 		line-ref ittf-src

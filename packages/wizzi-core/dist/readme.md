@@ -82,6 +82,9 @@ yes<td>
 <td>json/toyaml</td>
 </tr>
 <tr>
+<td>json/toml</td>
+</tr>
+<tr>
 <td>json/export</td>
 </tr>
 </table>
@@ -143,6 +146,9 @@ yes<td>
 <table>
 <tr>
 <td>ittf/document</td>
+</tr>
+<tr>
+<td>ittf/cheatsheet</td>
 </tr>
 </table>
 

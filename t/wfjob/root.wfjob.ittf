@@ -6,6 +6,8 @@
 
 		any_js()
 			ignore ${ittf_root_folder}/**/*__copy.*/**/*.js.ittf
+			model-ref meta
+				export-name wfpackage
 
 		any_json()
 			model-ref meta
@@ -29,3 +31,5 @@
 		any_plain(ps1)
 
 		any_plain_d_ts()
+
+        $hook

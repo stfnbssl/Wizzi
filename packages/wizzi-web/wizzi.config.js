@@ -27,6 +27,7 @@ module.exports = {
     ],
     globalContext: {
         isPackageDeploy: true,
+        isWebpackTarget: false,
         isDevelopment: false,
     },
 };

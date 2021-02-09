@@ -7,12 +7,11 @@
 		var ittf_lib_folder       = path.join(__dirname, 'ittf', 'lib');
 		var ittf_tests_folder     = path.join(__dirname, 'ittf', 'tests');
 		var ittf_examples_folder  = path.join(__dirname, 'ittf', 'examples');
-		if (isWebpackTarget) {
-            var dest_folder           = path.join(__dirname, '..', '..', '..', '..', 'wizzi-browser', 'packages', 'wizzi-tools', 'dist');
-		} else {
-			var dest_folder           = path.join(__dirname, '..', 'dist');
-		}
-
+        if (isWebpackTarget) {
+            var dest_folder         = path.join(__dirname, '..', '..', '..', '..', 'wizzi-browser', 'build', 'wizzi_modules', 'wizzi-tools');
+        } else {
+		    var dest_folder         = path.join(__dirname, '..', 'dist');
+        }
 
 	model meta
 		schema json
@@ -105,5 +104,6 @@
 		line-ref lib
 		line-ref ittf-root
 		line-ref ittf-lib
-		line-ref ittf-examples
-		line-ref ittf-tests
+        $if isWebpackTarget == false
+            line-ref ittf-examples
+            line-ref ittf-tests

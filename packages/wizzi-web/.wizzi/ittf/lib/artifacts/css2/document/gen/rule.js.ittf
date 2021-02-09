@@ -1,10 +1,10 @@
-﻿module
+﻿module wizzi-web@${wfpackage.version}.lib.artifacts.css2.document.gen.rule
 	kind jsfile
 
 	var util = require('util')
 	var async = require('async')
 
-	var verify = require('../../../util/verify');
+    var verify = require('wizzi-utils').verify
 	var lineParser = require('../../../util/lineParser');
 
 	var md = module.exports = {}

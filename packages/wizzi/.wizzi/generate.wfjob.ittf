@@ -7,7 +7,8 @@
 		var ittf_tests_folder     = path.join(__dirname, 'ittf', 'tests');
 		var ittf_examples_folder  = path.join(__dirname, 'ittf', 'examples');
 		if (isWebpackTarget) {
-			var dest_folder           = path.join(__dirname, '..', '..', '..', '..', 'wizzi-browser', 'packages', 'wizzi', 'dist');
+			// var dest_folder           = path.join(__dirname, '..', '..', '..', '..', 'wizzi-browser', 'packages', 'wizzi', 'dist');
+            var dest_folder           = path.join(__dirname, '..', '..', '..', '..', 'wizzi-browser', 'build', 'wizzi_modules', 'wizzi');
 		} else {
 			var dest_folder           = path.join(__dirname, '..', 'dist');
 		}
@@ -72,6 +73,7 @@
 	production
 		dest-folder ${dest_folder}
 		line-ref ittf-lib
-		line-ref ittf-examples
 		line-ref ittf-root
-		line-ref ittf-tests
+        $if isWebpackTarget == false
+		    line-ref ittf-tests
+            line-ref ittf-examples

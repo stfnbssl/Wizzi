@@ -1,37 +1,50 @@
 ﻿module
 	kind jsfile
 
-	var util = require('util')
-	var path = require('path')
-	var legacy = require('../../../../../legacy')
+	$if isWebpackTarget == false
 
-	var md = module.exports = {}
-	var myname = 'wizzischema.test.main'
+        var util = require('util')
+        var path = require('path')
+        var legacy = require('../../../../../legacy')
 
-	set md.gen
-		function
-			param model
-			param ctx
-			param callback
+        var md = module.exports = {}
+        var myname = 'wizzischema.test.main'
 
-			# log myname + 'model', model
+        set md.gen
+            function
+                param model
+                param ctx
+                param callback
 
-			var ittfDocumentPath = path.join(__dirname, 'ittf', 'wizzischema-test.js.ittf')
-			var mTreeBuildUpContext
-				{
-					@ schema model
-					@ request
-						{
-							@ emitKey ctx.emitKey || 'node-js'
-							@ toJson ctx.toJson || false
+                # log myname + 'model', model
 
-			_ legacy.jsModule
-				@ ittfDocumentPath
-				@ mTreeBuildUpContext
-				function
-					param err
-					param result
-					if err
-						throw new Error(err)
-					_ ctx.w(result)
-					_ callback(null, ctx)
+                var ittfDocumentPath = path.join(__dirname, 'ittf', 'wizzischema-test.js.ittf')
+                var mTreeBuildUpContext
+                    {
+                        @ schema model
+                        @ request
+                            {
+                                @ emitKey ctx.emitKey || 'node-js'
+                                @ toJson ctx.toJson || false
+
+                _ legacy.jsModule
+                    @ ittfDocumentPath
+                    @ mTreeBuildUpContext
+                    function
+                        param err
+                        param result
+                        if err
+                            throw new Error(err)
+                        _ ctx.w(result)
+                        _ callback(null, ctx)
+
+    $else   
+        
+        var md = module.exports = {}
+        set md.gen
+            function
+                param model
+                param ctx
+                param callback
+                _ ctx.w('throw new Error("wfschema.test.gen is not implemented in browser")')
+                _ callback(null, ctx)

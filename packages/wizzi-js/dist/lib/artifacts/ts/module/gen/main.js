@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\main.js.ittf
+    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -81,7 +81,7 @@ function main_init(model, ctx) {
     if ((!!ctx.values.noGeneratorComments) == false) {
         ctx.w('/*');
         ctx.w('    artifact generator: ' + __filename);
-        ctx.w('    package: wizzi-js@0.7.7');
+        ctx.w('    package: wizzi-js@0.7.8');
         ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'));
         if ((!!ctx.values.isPackageDeploy) == false) {
             ctx.w('    utc time: ' + new Date().toUTCString());

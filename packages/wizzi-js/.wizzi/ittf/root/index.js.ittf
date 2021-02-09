@@ -1,6 +1,8 @@
 common/index/v3-package-index( wizzi-js )
 
-	$append model-transform-artifacts
+	$* VIA see fragment: common/index/v3-package-index
+    
+    $append model-transform-artifacts
 		# window(s) vars must be declared even if empty
 		var window_modelFactories
 			{
@@ -27,3 +29,4 @@ common/index/v3-package-index( wizzi-js )
 				[
 					@ 'js/module'
 					@ 'ts/module'
+    *$

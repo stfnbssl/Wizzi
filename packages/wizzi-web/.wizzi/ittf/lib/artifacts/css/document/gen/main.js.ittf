@@ -1,4 +1,4 @@
-﻿module
+﻿module wizzi-web@${wfpackage.version}.lib.artifacts.css.document.gen.main
 	kind jsfile
 
     $include versions

@@ -1,4 +1,4 @@
-﻿module
+﻿module wizzi-web@${wfpackage.version}.lib.artifacts.css2.document.gen
 	kind jsfile
 
     $

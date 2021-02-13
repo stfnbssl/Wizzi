@@ -1,12 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\ittf\cmds\generate.js.ittf
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\generate.js.ittf
 */
 'use strict';
 const path = require('path');
 const util = require('util');
 const fs = require('fs');
 const async = require('async');
+const chalk = require('chalk');
 const wizzi = require('wizzi');
 const config = require('../utils/config');
 function generateSchemas(schemasToGen, wfJobFolder, destPath, packageName, plugins) {
@@ -49,14 +50,30 @@ module.exports = (name) => {
     }
     const configInstance = require(configPath);
     console.log('wizzi-cli.generate.configInstance', configInstance);
+    const x_pluginsBaseFolder = configInstance.pluginsBaseFolder || __dirname;
+    if (!configInstance.pluginsBaseFolder) {
+        console.log(chalk.red('wizzi-cli.generate - pluginsBaseFolder not set'));
+        console.log(chalk.red('wizzi-cli.generate - pluginsBaseFolder defaulted to ' + x_pluginsBaseFolder));
+    }
+    var x_pluginsItems = [];
+    if (configInstance.plugins && configInstance.plugins.length > 0) {
+        x_pluginsItems = configInstance.plugins;
+    }
+    else {
+        x_pluginsItems.push('wizzi-core');
+        x_pluginsItems.push('wizzi-js');
+        x_pluginsItems.push('wizzi-web');
+        chalk.red('wizzi-cli.generate - plugins not found in wizzi.config');
+        chalk.red('wizzi-cli.generate - using default plugins: "wizzi-core", "wizzi-js", "wizzi-web"');
+    }
     wizzi.executeWizziJob({
         user: 'stefi', 
         role: 'admin', 
         storeKind: 'filesystem', 
         config: {
             wfBaseFolder: __dirname, 
-            plugins: configInstance.plugins, 
-            pluginsBaseFolder: configInstance.pluginsBaseFolder
+            plugins: x_pluginsItems, 
+            pluginsBaseFolder: x_pluginsBaseFolder
         }, 
         job: {
             name: configInstance.wfjobName, 
@@ -79,14 +96,10 @@ module.exports = (name) => {
             return wizzi.printWizziJobError(configInstance.wfjobName, err);
         }
         if (configInstance.schemas && configInstance.schemas.length > 0) {
-            var plugins = null;
-            if (configInstance.pluginsBaseFolder && configInstance.pluginsBaseFolder.length > 0) {
-                plugins = {
-                    items: configInstance.plugins, 
-                    baseFolder: configInstance.pluginsBaseFolder
-                };
-            }
-            generateSchemas(configInstance.schemas, path.dirname(configInstance.wfjobPath), configInstance.destPath, configInstance.packageName || configInstance.wfjobName, plugins);
+            generateSchemas(configInstance.schemas, path.dirname(configInstance.wfjobPath), configInstance.destPath, configInstance.packageName || configInstance.wfjobName, {
+                items: x_pluginsItems, 
+                baseFolder: x_pluginsBaseFolder
+            });
         }
     });
 };

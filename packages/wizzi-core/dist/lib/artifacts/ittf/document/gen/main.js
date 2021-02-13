@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\ittf\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\ittf\document\gen\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -13,11 +13,16 @@ md.gen = function(model, ctx, callback) {
     callback(null, ctx);
 };
 function toIttf(node, ctx) {
-    if (node.n) {
-        ctx.write(node.n);
+    var n = node.n || node.name;
+    var v = node.v || node.value || '';
+    if (n == '---' && v.length == 0) {
+        ctx.write();
+    }
+    else if (n == '\\---' && v.length == 0) {
+        ctx.write('---');
     }
     else {
-        ctx.write(node.name);
+        ctx.write(n);
     }
     if (node.v && node.v.length > 0) {
         ctx.w(' ' + node.v);

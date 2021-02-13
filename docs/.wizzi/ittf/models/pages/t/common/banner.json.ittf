@@ -17,10 +17,10 @@ $group
                 href "https://github.com/stfnbssl/wizzi"
             {
                 label "Support"
-                href "/support/"
+                href "${gctxBaseUrl}//support/"
             {
                 label "Contact"
-                href "/contact/"
+                href "${gctxBaseUrl}//contact/"
             {
                 label "Login"
-                href "/login/"
+                href "${gctxBaseUrl}/login/"

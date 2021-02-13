@@ -1,7 +1,0 @@
-css
-	< html
-    < body
-    # wrapper
-        margin 10px
-    . container
-        padding 10px

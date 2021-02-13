@@ -1,0 +1,4 @@
+{
+    $include pkginfo.json
+    { scripts
+        start "node index"

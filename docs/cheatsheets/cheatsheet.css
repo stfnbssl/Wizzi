@@ -2,6 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\dist\lib\artifacts\css\document\gen\main.js
     package: wizzi-web@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\docs\.wizzi\ittf\pages\cheatsheets\cheatsheet.css.ittf
+    utc time: Fri, 12 Feb 2021 20:00:34 GMT
 */
 html {
     -ms-text-size-adjust: 100%;
@@ -821,7 +822,7 @@ pre.prettyprint ol {
         -webkit-backdrop-filter: blur(8px);
         background: var(--theme-ui-colors-whiteFade-90,rgba(255,255,255,0.9));
         backdrop-filter: blur(8px);
-        position: fixed;
+        position: relative;
         left: 50%;
         -webkit-transform: translateX(-50%);
         -ms-transition: translateX(-50%);

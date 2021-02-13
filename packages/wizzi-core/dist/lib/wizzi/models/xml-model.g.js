@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\xml-model.g.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\xml-model.g.js.ittf
 */
 'use strict';
 /**
@@ -11,7 +11,7 @@ var lineparser = require('../../util/lineParser');
 
 module.exports = function(mTree, ittfDocumentUri, request, callback) {
     if (!(mTree.nodes && mTree.nodes.length == 1)) {
-        return callback(error('Malformed mTree must have one root node. Found mTree.nodes: ' + mTree.nodes));
+        return callback(error('Malformed mTree. Must have one root node. Found mTree.nodes: ' + mTree.nodes.length));
     }
     var root = mTree.nodes[0];
     if (root.n !== "xml") {

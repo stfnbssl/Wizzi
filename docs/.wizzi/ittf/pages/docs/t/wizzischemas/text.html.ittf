@@ -16,25 +16,25 @@
 		h4 Example of text mixin for a license file
 		ittf-panel
             ittf
-                ${dollar}params copy, license
+                ${'$'}params copy, license
                 MIT License
                 
                 Copyright (c) ${'$'}{copy}
                 
-                ${dollar}if license === 'mit'
-                    ${dollar}include mit_license_text
-                ${dollar}elif ...
+                ${'$'}if license === 'mit'
+                    ${'$'}include mit_license_text
+                ${'$'}elif ...
 
 		h4 The mixin transformed by the prepocessor in a standard format
 		ittf-panel
             ittf
                 text
-                    ${dollar}params copy, license
+                    ${'$'}params copy, license
                     + MIT License
                     +
                     + Copyright (c) 2015 The Wizzi Team
                     +
-                    ${dollar}if license === 'mit'
-                        ${dollar}include mit_license_text
-                    ${dollar}elif ...
+                    ${'$'}if license === 'mit'
+                        ${'$'}include mit_license_text
+                    ${'$'}elif ...
 

@@ -1,0 +1,27 @@
+﻿${'$'}group
+
+    $*
+        react properties for "package.json" ittf documents.
+        The "ctx" context object (if present) is set by wizzi-cli/cmds/create.
+    *$
+
+    ${'$'}if wzCtx.Build.useReact
+        react "^17.0.1"
+        react-dom "^17.0.1"
+        ${'$'}if wzCtx.Build.react.useFontawesome
+            react-fontawesome "^1.6.1"
+        ${'$'}if wzCtx.Build.react.usePerfectScrollbar
+            react-perfect-scrollbar "^1.4.4"
+		${'$'}if wzCtx.Build.react.useRedux
+                react-redux "^7.2.2"
+                ${'$'}if wzCtx.Build.react.redux.useFirestore
+                    react-redux-firebase "^2.2.6"
+        ${'$'}if wzCtx.Build.react.useRouter
+            react-router-dom "^5.2.0"
+        ${'$'}if wzCtx.Build.react.useMaterialUI
+            ${'$'}if wzCtx.Build.react.materialUI.useAutocomplete
+                ${'$'}if wzCtx.Build.react.materialUI.autocomplete.useReactSelect
+                    react-select "^3.0.3"
+        ${'$'}if wzCtx.Build.react.transition
+            react-transition-group "^2.4.0"
+        recompose "^0.30.0"

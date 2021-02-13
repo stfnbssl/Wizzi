@@ -61,7 +61,7 @@
 						var aletters = sletters.split(',');
 					node The resulting tree has the even node values upper cased:
 						${d}foreach letter in aletters
-							node ${d}{ _index} ${d}{ _index % 2 == 0 ? letter : letter.toUpperCase() }
+							node ${d}{letter_index} ${d}{letter_index % 2 == 0 ? letter : letter.toUpperCase() }
 
 		item
 			title While loop in scripts

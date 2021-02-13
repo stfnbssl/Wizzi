@@ -1,41 +1,56 @@
-﻿wfjob wizzi-cli
+﻿wfjob wizzi-cli/job
 	
 	$
-		var ittf_bin_folder      = path.join(__dirname, 'ittf', 'bin');
-		var ittf_cmds_folder     = path.join(__dirname, 'ittf', 'cmds');
-		var ittf_utils_folder    = path.join(__dirname, 'ittf', 'utils');
-        var ittf_examples_folder = path.join(__dirname, 'ittf', 'examples');
-		var ittf_root_folder     = path.join(__dirname, 'ittf', 'root');
-		var dest_folder          = path.join(__dirname, '..', 'dist');
+        var folders = {
+            ittf_bin: path.join(__dirname, 'bin'),
+            ittf_cmds: path.join(__dirname, 'cmds'),
+            ittf_utils: path.join(__dirname, 'utils'),
+            ittf_examples: path.join(__dirname, 'examples'),
+            ittf_resources: path.join(__dirname, 'resources'),
+            ittf_root: path.join(__dirname, 'root'),
+            dest: path.join(__dirname, '..', 'dist')
+        }
 
 	line ittf-bin
-		cwd-folder ${ittf_bin_folder}
-		dest-folder ${dest_folder}/bin
+		cwd-folder ${folders.ittf_bin}
+		dest-folder ${folders.dest}/bin
 
 		wfjob/any_js()
 
 	line ittf-cmds
-		cwd-folder ${ittf_cmds_folder}
-		dest-folder ${dest_folder}/cmds
+		cwd-folder ${folders.ittf_cmds}
+		dest-folder ${folders.dest}/cmds
 
 		wfjob/any_js()
 
 	line ittf-utils
-		cwd-folder ${ittf_utils_folder}
-		dest-folder ${dest_folder}/utils
+		cwd-folder ${folders.ittf_utils}
+		dest-folder ${folders.dest}/utils
 
 		wfjob/any_js()
 
 	line ittf-examples
-		cwd-folder ${ittf_examples_folder}
-		dest-folder ${dest_folder}/examples
+		cwd-folder ${folders.ittf_examples}
+		dest-folder ${folders.dest}/examples
 
-		wfjob/any_plain(js)
+		wfjob/any_js()
+        wfjob/any_plain(js)
         wfjob/any_plain(ittf)
 
+	line ittf-resources
+		cwd-folder ${folders.ittf_resources}
+		dest-folder ${folders.dest}/resources
+        
+        wfjob/any_plain(ittf)
+        wfjob/any_plain(css)
+        wfjob/any_plain(js)
+        wfjob/any_plain(svg)
+        wfjob/any_plain(json)
+        wfjob/any_md()
+
 	line ittf-root
-		cwd-folder ${ittf_root_folder}
-		dest-folder ${dest_folder}
+		cwd-folder ${folders.ittf_root}
+		dest-folder ${folders.dest}
 
 		wfjob/any_js()
 		wfjob/any_json()
@@ -45,9 +60,10 @@
 		wfjob/.gitignore()
 
 	production
-		dest-folder ${dest_folder}
+		dest-folder ${folders.dest}
 		line-ref ittf-bin
 		line-ref ittf-cmds
 		line-ref ittf-utils
         line-ref ittf-examples
+        line-ref ittf-resources
 		line-ref ittf-root

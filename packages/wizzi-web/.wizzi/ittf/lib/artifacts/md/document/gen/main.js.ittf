@@ -299,6 +299,10 @@
 			_ ctx.write(' ' + model.href)
 			_ ctx.w(' "' + model.title + '"')
 
+		md-gen-method( comment )
+			_ ctx.write('')
+			_ ctx.write('[comment]: # ' + model.wzName)
+
 		m writeHtml
 			param tag
 			param model

@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\root\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\root\index.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -612,6 +612,7 @@ var DEFAULT_ARTIFACTS = {
     text: 'text/document', 
     ts: 'ts/module', 
     xml: 'xml/document', 
+    ittf: 'ittf/document', 
     vtt: 'vtt/document', 
     vue: 'vue/document'
 };
@@ -638,6 +639,7 @@ var DEFAULT_MIME = {
     text: 'text', 
     ts: 'ts', 
     xml: 'xml', 
+    ittf: 'ittf', 
     vtt: 'vtt', 
     vue: 'vue'
 };
@@ -1592,34 +1594,39 @@ md.generateFolderArtifacts = function(ittfDocumentPath, context, options, callba
             console.log('generateFolderArtifacts\n', stringify(items, null, 2));
             async.mapSeries(items, function(item, callback) {
                 if (item.isIttfDocument) {
+                    console.log('generating', item.fullPath);
                     md.gen(item.fullPath, context, function(err, artifactText) {
                         if (err) {
                             return callback(err);
                         }
+                        console.log('generated', item.destRelPath);
                         wf.fileService.write(path.join(options.destFolder, item.destRelPath), artifactText, function(err, notUsed) {
                             if (err) {
                                 return callback(err);
                             }
+                            console.log('written', item.destRelPath);
                             callback(null, path.join(options.destFolder, item.destRelPath));
                         });
                     });
                 }
                 else {
-                    wf.fileService.copy(item.fullPath, path.join(options.destFolder, item.destRelPath), function(err, notUsed) {
+                    console.log('copying', item.fullPath);
+                    wf.fileService.copyFile(item.fullPath, path.join(options.destFolder, item.destRelPath), function(err, notUsed) {
                         if (err) {
                             return callback(err);
                         }
                         callback(null, path.join(options.destFolder, item.destRelPath));
                     });
                 }
+            }, function(err, result) {
+                if (err) {
+                    console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+                    console.log('err', err);
+                    throw new Error(err.message);
+                }
+                // log 'result', result
+                return callback(null, result);
             });
-        }, function(err, result) {
-            if (err) {
-                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-                console.log('err', err);
-                throw new Error(err.message);
-            }
-            // log 'result', result
         });
     });
 };
@@ -1641,7 +1648,7 @@ function folderFilesInfoByPath(folderPath, fileService, callback) {
         var i, i_items=files, i_len=files.length, f;
         for (i=0; i<i_len; i++) {
             f = files[i];
-            result.push(fileInfoByPath(f.fullPath));
+            result.push(fileInfoByPath(f.fullPath, folderPath));
         }
         return callback(null, result);
     });
@@ -1669,7 +1676,7 @@ function fileInfoByPath(filePath, baseFolder) {
     var fileUri = filePath.substr();
     var ss = basename.split('.');
     if (ss[ss.length-1] === 'ittf') {
-        var name = ss.slice(0, ss.length-2).join('.');
+        var name = verify.replaceAll(ss.slice(0, ss.length-2).join('.'), '__dot__', '.');
         var schema = ss[ss.length-2];
         var mime = DEFAULT_MIME[schema] || schema;
         return {
@@ -1682,12 +1689,13 @@ function fileInfoByPath(filePath, baseFolder) {
                 relFolder: relFolder, 
                 fullPath: filePath, 
                 destBasename: name + '.' + mime, 
-                destRelPath: relFolder.length > 0 ? relFolder + '/' + name + '.' + mime : name + '.' + mime
+                destRelPath: relFolder.length > 0 ? verify.replaceAll(relFolder, '__dot__', '.') + '/' + name + '.' + mime : name + '.' + mime
             };
     }
     else {
+        var name = verify.replaceAll(basename, '__dot__', '.');
         return {
-                name: ss.slice(0, ss.length-1).join('.'), 
+                name: name, 
                 basename: basename, 
                 isIttfDocument: false, 
                 schema: null, 
@@ -1695,7 +1703,7 @@ function fileInfoByPath(filePath, baseFolder) {
                 relFolder: relFolder, 
                 fullPath: filePath, 
                 destBasename: basename, 
-                destRelPath: relFolder.length > 0 ? relFolder + '/' + basename : basename
+                destRelPath: relFolder.length > 0 ? verify.replaceAll(relFolder, '__dot__', '.') + '/' + name : name
             };
     }
 }

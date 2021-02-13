@@ -11,7 +11,7 @@
 		var ittf_root_folder         = path.join(__dirname, 'ittf', 'root');
 		var dest_folder              = path.join(__dirname, '..');
         var pages = [
-            'getstarted',
+            'home',
         ];
         var xpages = [
             'home',
@@ -20,6 +20,7 @@
             'cheatsheets'
         ];
         var schemas = [];
+        // schemas.push('text');
         for (var i=0; i<g_schemas.length; i++) {
             if (g_schemas[i] != 'ts') {
                 schemas.push(g_schemas[i]);
@@ -76,9 +77,19 @@
                     export-name mpage
 
 
-            wfjob/any_html()
-                model-ref ${page}
-                    export-name mpage
+            $if page == 'cheatsheets'
+                $foreach schema in schemas
+                    wfjob/any_html()
+                        dest-path cs-${schema}.html
+                        model-ref ${page}
+                            export-name mpage
+                        model-ref cs-${schema}
+                            transformer ittf/cheatsheet
+                            export-name cs
+            $else
+                wfjob/any_html()
+                    model-ref ${page}
+                        export-name mpage
 
 	line ittf-home
 		cwd-folder ${ittf_pages_folder}/home
@@ -121,7 +132,8 @@
             model-ref home
                 export-name mpage
 
-	line ittf-cheatsheets
+	$* VIA
+    line ittf-cheatsheets
 		cwd-folder ${ittf_pages_folder}/cheatsheets
 		dest-folder ${dest_folder}/cheatsheets
 
@@ -137,6 +149,7 @@
                     export-name cs
                 model-ref cheatsheets
                     export-name mpage
+    *$
 
     line ittf-src
 		cwd-folder ${ittf_src_folder}

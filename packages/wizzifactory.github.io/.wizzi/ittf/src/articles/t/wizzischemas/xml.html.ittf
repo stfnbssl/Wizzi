@@ -10,17 +10,17 @@
             title Sample xml ittf document
             ittf
                 profile
-                    @ name ${dollar}{user.name}
-                    @ age ${dollar}{user.age}
+                    @ name ${'$'}{user.name}
+                    @ age ${'$'}{user.age}
                     friends
-                        ${dollar}foreach friend in user.friends
+                        ${'$'}foreach friend in user.friends
 
                             friend
-                                @ name ${dollar}{friend.name}
-                                @ age ${dollar}{friend.age}
+                                @ name ${'$'}{friend.name}
+                                @ age ${'$'}{friend.age}
                     address
-                        @ street ${dollar}{user.street}
-                        @ city ${dollar}{user.city}
+                        @ street ${'$'}{user.street}
+                        @ city ${'$'}{user.city}
 		
 		ul Rules
 			li Ittf node names may contain

@@ -61,4 +61,3 @@
                 _ isDescendentOf
                     @ model.wzParent
                     @ ancestor
-

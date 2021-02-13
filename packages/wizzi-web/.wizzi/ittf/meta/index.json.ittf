@@ -9,6 +9,7 @@
         {
             name 'html'
             title 'Html wizzi language model'
+            commentTag "#"
             [ transformers
             [ artifacts
                 {
@@ -16,6 +17,7 @@
         {
             name 'css'
             title 'Cascading style sheet wizzi language model'
+            commentTag "-"
             [ transformers
             [ artifacts
                 {
@@ -23,6 +25,7 @@
         {
             name 'scss'
             title 'Sass cascading style sheet wizzi language model'
+            commentTag "/*"
             [ transformers
             [ artifacts
                 {
@@ -30,6 +33,7 @@
         {
             name 'svg'
             title 'Scalable Vector Graphics wizzi language model'
+            commentTag "#"
             [ transformers
             [ artifacts
                 {
@@ -37,6 +41,7 @@
         {
             name 'md'
             title 'Markdown wizzi language model'
+            commentTag "#"
             [ transformers
             [ artifacts
                 {
@@ -44,6 +49,7 @@
         {
             name 'graphql'
             title 'Graphql wizzi language model'
+            commentTag "#"
             [ transformers
             [ artifacts
                 {
@@ -51,6 +57,7 @@
 
         {
             name 'site'
+            commentTag "#"
             title 'Components of a website structure'
             [ transformers
             [ artifacts
@@ -58,6 +65,7 @@
         {
             name 'vtt'
             title 'Video Text Tracks specification'
+            commentTag "#"
             [ transformers
             [ artifacts
                 {
@@ -65,6 +73,7 @@
         {
             name 'vue'
             title 'Vue wizzi language model'
+            commentTag "#"
             [ transformers
             [ artifacts
                 {

@@ -1,0 +1,7 @@
+{
+    $include cli/v08/wzctx-info
+
+    { Build
+    { Styles
+    { Code   
+    { App

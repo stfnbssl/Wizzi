@@ -1,0 +1,8 @@
+﻿${'$'}group
+    ---
+	${'$'}if pkg.Build.useDevServer
+        ${'$'}if pkg.Build.devServer.contentBase
+            @ contentBase '${'$'}{pkg.Build.devServer.contentBase}'
+        ${'$'}if pkg.Build.useHotReplacement
+            @ open true
+            @ hot true

@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\ittf\cheatsheet\trans\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\ittf\cheatsheet\trans\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -278,6 +278,7 @@ var schemaArtifactMap = {
     vue: 'vue/document', 
     graphql: 'graphql/document', 
     json: 'json/document', 
+    yaml: 'yaml/document', 
     ittf: 'ittf/document', 
     xml: 'xml/document', 
     text: 'text/document'
@@ -298,6 +299,7 @@ var schemaIttfRootMap = {
     vue: 'vue', 
     graphql: 'graphql', 
     json: '{', 
+    yaml: 'yaml', 
     ittf: 'any', 
     text: 'text', 
     xml: 'xml'

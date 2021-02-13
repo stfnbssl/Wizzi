@@ -16,31 +16,31 @@
 				li The value part of nodes (ittf node values are interpolated)
                     ittf-panel
 					    ittf
-						    caption ${dollar}{ name.capitalize() }
+						    caption ${'$'}{ name.capitalize() }
 				li Conditional expression of $if, $elif, $while command nodes
                     ittf-panel
 					    ittf
-    						${dollar}if name.substring(1,2) === 'is'
+    						${'$'}if name.substring(1,2) === 'is'
 
 				li Collection name of $foreach command node
                     ittf-panel
 					    ittf
-    						${dollar}foreach item in model.getCollection('alfa')
+    						${'$'}foreach item in model.getCollection('alfa')
 
                 li Body of $ and $global command nodes
                     ittf-panel
 					    ittf
-        					${dollar} var beta = 100
+        					${'$'} var beta = 100
 
         ittf-panel
             schema html
             title Sample JsWizzi expressions and statements
             ittf
                 ul
-                    ${dollar} var i = 0;
-                    ${dollar}while i < 10
-                        li counting ${dollar}{i}
-                        ${dollar} i++;
+                    ${'$'} var i = 0;
+                    ${'$'}while i < 10
+                        li counting ${'$'}{i}
+                        ${'$'} i++;
 
 		p The esprima syntax tree format is expected to be compatible 
 			+ with the Mozilla SpiderMonkey Parser API. 

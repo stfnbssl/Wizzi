@@ -1,0 +1,8 @@
+${'$'}group
+    ---
+	${'$'}if pkg.Build.isLibrary
+		@ library '${'$'}{pkg.Build.library.name}'
+        ${'$'}if pkg.Build.library.target
+		    @ libraryTarget 'var'
+        ${'$'}else
+            @ libraryTarget '${'$'}{pkg.Build.library.target}'

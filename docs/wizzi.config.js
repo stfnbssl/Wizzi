@@ -19,7 +19,9 @@ module.exports = {
     schemas: [
     ],
     globalContext: {
-        isPackageDeploy: true,
-        isDevelopment: false,
+        gctxIsPackageDeploy: true,
+        gctxIsDevelopment: false,
+        gctxBaseUrl: 'http://127.0.0.1:5500/docs'
     },
 };
+

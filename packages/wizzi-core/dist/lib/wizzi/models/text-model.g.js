@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\text-model.g.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\text-model.g.js.ittf
 */
 'use strict';
 /**
@@ -10,7 +10,7 @@ var util = require('util');
 
 module.exports = function(mTree, ittfDocumentUri, request, callback) {
     if (!(mTree.nodes && mTree.nodes.length == 1)) {
-        return callback(error('Malformed mTree must have one root node. Found mTree.nodes: ' + mTree.nodes));
+        return callback(error('Malformed mTree. Must have one root node. Found mTree.nodes: ' + mTree.nodes.length));
     }
     var root = mTree.nodes[0];
     if (root.n !== "text") {
@@ -43,31 +43,39 @@ function toText(indent, sb, nodes) {
     for (i=0; i<i_len; i++) {
         node = nodes[i];
         // log 'wizzi-core/wizzi/models/text-model/toText', node.n, node.v
+        var n = node.n;
+        var v = node.v;
         var nextIndent = '    ';
-        if (node.n === 'text') {
+        if (n === 'text') {
             // skip
             nextIndent = '';
         }
-        else if (node.n === 'br' && (!node.v || node.v.length == 0)) {
+        else if (n === 'br' && (!v || v.length == 0)) {
             sb.push('');
         }
-        else if (node.n === '\\br') {
-            sb.push(indent + 'br ' + node.v);
+        else if (n === '\\br') {
+            sb.push(indent + 'br ' + v);
         }
-        else if (node.n === 'span') {
-            sb[sb.length - 1] += node.v;
+        else if (n === 'span') {
+            sb[sb.length - 1] += v;
         }
-        else if (node.n === '\\span') {
-            sb.push(indent + 'span ' + node.v);
+        else if (n === '\\span') {
+            sb.push(indent + 'span ' + v);
         }
-        else if (node.n === 'bspan') {
-            sb[sb.length - 1] += ' ' + node.v;
+        else if (n === 'bspan') {
+            sb[sb.length - 1] += ' ' + v;
         }
-        else if (node.n === '\\bspan') {
-            sb.push(indent + 'bspan ' + node.v);
+        else if (n === '\\bspan') {
+            sb.push(indent + 'bspan ' + v);
+        }
+        else if (n == '---' && v.length == 0) {
+            sb.push('');
+        }
+        else if (n == '\\---' && v.length == 0) {
+            sb.push('---');
         }
         else {
-            sb.push(indent + node.n + ' ' + node.v);
+            sb.push(indent + n + ' ' + v);
         }
         if (node.children) {
             toText(indent + nextIndent, sb, node.children);

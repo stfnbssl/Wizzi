@@ -1,0 +1,12 @@
+$group
+    
+    name "${answers.pkg_name}"
+    version "0.0.1"
+	description "${answers.pkg_description}"
+    { author
+        name "${answers.author}"
+        email "${answers.author_email}"
+	{ license
+        type "${answers.licence}"
+        url "${answers.licence_url}"
+

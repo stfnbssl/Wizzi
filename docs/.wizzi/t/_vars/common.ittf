@@ -15,6 +15,7 @@ $group
              'vtt',
              'md',
              'json',
+             'yaml',
              'xml',
              'text'
         ];

@@ -40,6 +40,9 @@ no<td>
 no<td>
 
 <table>
+<tr>
+<td>wfschema/json_docs</td>
+</tr>
 </table>
 
 <td>
@@ -53,9 +56,6 @@ no<td>
 </tr>
 <tr>
 <td>wfschema/html_docs</td>
-</tr>
-<tr>
-<td>wfschema/json_docs</td>
 </tr>
 <tr>
 <td>wfschema/test</td>
@@ -137,7 +137,10 @@ yes<td>
 
 <table>
 <tr>
-<td>ittf/html_prettify</td>
+<td>ittf/cheatsheet</td>
+</tr>
+<tr>
+<td>ittf/html-pretty</td>
 </tr>
 </table>
 
@@ -147,8 +150,23 @@ yes<td>
 <tr>
 <td>ittf/document</td>
 </tr>
+</table>
+
+</tr>
 <tr>
-<td>ittf/cheatsheet</td>
+<td>
+yaml<td>yaml wizzi language model</td>
+<td>
+yes<td>
+
+<table>
+</table>
+
+<td>
+
+<table>
+<tr>
+<td>yaml/document</td>
 </tr>
 </table>
 

@@ -1,0 +1,68 @@
+﻿module
+	kind es6
+
+	const path = require('path')
+	const fs = require('fs')
+    const chalk = require('chalk')
+	const wizzi = require('wizzi')
+    const newpkg = require("./newpkg")
+
+	set module.exports
+		=>
+			param args
+
+            _ newpkg
+                =>
+                    param err
+                    param answers
+                    
+                    log 'create.answers', answers
+                    
+                    _ wizzi.model
+                        _ path.join
+                            @ __dirname
+                            @ '..'
+                            @ 'resources'
+                            @ 'create'
+                            @ 'contexts'
+                            @ answers.pkg_type + ".json.ittf"
+                        {
+                            @ answers answers
+                        =>
+                            param err
+                            param jsonctx
+                            log 'create.jsonctx', jsonctx
+
+                            $* VIA
+                            var pkg
+                                {
+                                    @ type answers.pkg_type
+                                    @ name answers.pkg_name
+                                    { author
+                                        @ name answers.author
+                                        @ email answers.author_email
+                                    { license
+                                        @ type answers.license_type
+                                        @ url null
+                            *$
+
+                            _ wizzi.genFolder
+                                _ path.join
+                                    @ __dirname
+                                    @ '..'
+                                    @ 'resources'
+                                    @ 'create'
+                                    @ 'templates'
+                                    @ answers.pkg_type
+                                {
+                                    @ ctx jsonctx
+
+                                {
+                                    @ destFolder
+                                        _ path.join
+                                            _ process.cwd
+                                            @ answers.pkg_name
+                                    @ copyInclude ['*']
+                                    @ copyExclude []
+                                f_cb_test(genFolderResult)
+                                    log 'genFolderResult', genFolderResult

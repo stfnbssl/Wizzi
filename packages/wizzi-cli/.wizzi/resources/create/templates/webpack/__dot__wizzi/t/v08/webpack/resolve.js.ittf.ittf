@@ -1,0 +1,44 @@
+﻿${'$'}group
+    ---
+    [ modules
+        _ path.resolve(__dirname, "src")
+        @ "node_modules"
+    ---	
+    [ extensions
+		@ ".js"
+		${'$'}if pkg.Build.useTypescript
+			@ ".ts"
+		${'$'}if pkg.Build.useReact
+			@ ".jsx"
+			${'$'}if pkg.Build.useTypescript
+				@ ".tsx"
+		@ ".json"
+		${'$'}if pkg.Build.useVue
+			@ ".vue"
+    ---	
+    { alias
+		${'$'}if pkg.Build.useVue
+			@ '@' resolve('src')
+        ${'$'}if pkg.Build.useWebpack
+            ${'$'}if pkg.Build.webpack.useNodePolifills
+                @ constants false
+				@ fs false
+				@ 'fs-extra' false
+				@ 'fs-graceful' false
+                @ 'graceful-fs' false
+				@ 'mongodb' false
+				@ 'mongodb-core' false
+                @ os false
+    ---
+    { fallback 
+        ${'$'}if pkg.Build.useWebpack
+            ${'$'}if pkg.Build.webpack.useNodePolifills
+                @ assert require.resolve("assert/")
+                @ buffer require.resolve("buffer/")
+                @ crypto require.resolve("crypto-browserify")
+                @ events require.resolve("events/")
+                @ path require.resolve("path-browserify")
+                @ stream require.resolve("stream-browserify")
+                @ process require.resolve("process/browser.js")
+                @ url require.resolve("url/")
+                @ util require.resolve("util/")

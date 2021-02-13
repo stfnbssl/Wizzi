@@ -1,0 +1,46 @@
+module
+    kind es6
+    
+    var inquirer = require('inquirer')
+
+	set module.exports
+		=>
+            param callback
+            _ promptPkgType
+                f_cb(type_answers)
+                    if type_answers.pkg_type == 'wizzi_plugin'
+                        _ promptWizziPlugin
+                            f_cb(plugin_answers)
+
+                                return
+                                    _ promptNext
+                                        @ promptPkgName
+                                        _ Object.assign
+                                            {
+                                            @ type_answers
+                                            @ plugin_answers
+                                        @ callback
+                    else
+                        return
+                            _ promptNext
+                                @ promptPkgName
+                                @ type_answers
+                                @ callback
+
+    function promptNext
+        param fPrompt
+        param prevAnswers
+        param callback
+        _ fPrompt
+            f_cb(answers)
+                return 
+                    _ callback
+                        @ null
+                        _ Object.assign
+                            {
+                            @ prevAnswers
+                            @ answers
+            
+    $include create/pkgType
+    $include create/wizziPlugin
+    $include create/pkgInfo

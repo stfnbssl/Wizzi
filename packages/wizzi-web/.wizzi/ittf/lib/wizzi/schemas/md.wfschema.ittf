@@ -5,12 +5,17 @@
 
 	e md
 		# The root element of the markdown schema.
-		r element/s
+        r element/s
+		# Comments allowed at root level only
+        r comment/s
 
 	e attribute
 		tag @
 
-	e element
+	e comment
+		tag #
+	
+    e element
 		tag <
 		r attribute/s
 		r element/s

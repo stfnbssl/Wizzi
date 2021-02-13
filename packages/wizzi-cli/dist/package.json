@@ -3,7 +3,7 @@
     "version": "0.0.28",
     "author": {
         "name": "Stefano Bassoli",
-        "email": "wizzi.team@gmail.com"
+        "email": "stfn.bssl@gmail.com"
     },
     "private": false,
     "licenses": [
@@ -22,6 +22,9 @@
     },
     "dependencies": {
         "@babel/core": "^7.0.0",
+        "chalk": "^2.4.1",
+        "commander": "^7.0.0",
+        "inquirer": "^7.3.3",
         "minimist": "^1.2.0",
         "wizzi": "0.7.21",
         "wizzi-core": "0.7.1",

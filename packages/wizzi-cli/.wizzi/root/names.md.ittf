@@ -1,0 +1,21 @@
+﻿md
+    h1 Names
+    
+    h2 wizzi-cli
+    p The wizzi factory command line interface.
+    
+    h2 command 'create'
+    p The CLI command for creating starter ittf documents for various package types
+    
+    h3 var answersCtx
+    p The context object created by the CLI interactive 'inquirer'
+    
+    h3 var cliCtx
+    p The context object for creating the package ittf documents from the CLI templates
+    
+    h3 var wzCtx
+    p The context object for generating code from the created ittf documents
+
+    h3 cli ittf documents
+    p Template ittf documents of schema 'ittf' (extension 'ittf.ittf') that are processed
+        \b with the 'cliCtx' context variable and generate the starter ittf documents of the created package.

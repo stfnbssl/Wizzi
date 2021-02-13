@@ -1,0 +1,8 @@
+{
+    $
+        var schemaName = _.isNotEmpty(pkg.schema_name) ? pkg.schema_name : 'sample';
+
+    name "${'$'}{pkg.name}"
+    version "0.0.1"
+    { plugin
+        schemaName "${'$'}{schemaName}"

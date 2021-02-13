@@ -16,7 +16,7 @@
 				return
 					_ callback
 						_ error
-							@ 'Malformed mTree must have one root node. Found mTree.nodes: ' + mTree.nodes
+							@ 'Malformed mTree. Must have one root node. Found mTree.nodes: ' + mTree.nodes.length
 
 			var root = mTree.nodes[0]
 			if root.n !== "text"
@@ -60,24 +60,30 @@
 
 		foreach node in nodes
 			# log 'wizzi-core/wizzi/models/text-model/toText', node.n, node.v
+            var n = node.n
+            var v = node.v
 			var nextIndent = '    '
-			if node.n === 'text'
+			if n === 'text'
 				# skip
 				set nextIndent = ''
-			elif node.n === 'br' && (!node.v || node.v.length == 0)
+			elif n === 'br' && (!v || v.length == 0)
 				_ sb.push('')
-			elif node.n === '\\br'
-				_ sb.push(indent + 'br ' + node.v)
-			elif node.n === 'span'
-				set sb[sb.length - 1] += node.v
-			elif node.n === '\\span' 
-				_ sb.push(indent + 'span ' + node.v)
-			elif node.n === 'bspan'
-				set sb[sb.length - 1] += ' ' + node.v
-			elif node.n === '\\bspan' 
-				_ sb.push(indent + 'bspan ' + node.v)
+			elif n === '\\br'
+				_ sb.push(indent + 'br ' + v)
+			elif n === 'span'
+				set sb[sb.length - 1] += v
+			elif n === '\\span' 
+				_ sb.push(indent + 'span ' + v)
+			elif n === 'bspan'
+				set sb[sb.length - 1] += ' ' + v
+			elif n === '\\bspan' 
+				_ sb.push(indent + 'bspan ' + v)
+            elif n == '---' && v.length == 0
+                _ sb.push('')
+            elif n == '\\---' && v.length == 0
+                _ sb.push('---')
 			else
-				_ sb.push(indent + node.n + ' ' + node.v)
+				_ sb.push(indent + n + ' ' + v)
 			if node.children
 				_ toText
 					@ indent + nextIndent

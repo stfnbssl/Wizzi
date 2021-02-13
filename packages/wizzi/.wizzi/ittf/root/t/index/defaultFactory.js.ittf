@@ -25,6 +25,7 @@
 			@ text 'text/document'
 			@ ts 'ts/module'
 			@ xml 'xml/document'
+            @ ittf 'ittf/document'
 			@ vtt 'vtt/document'
 			@ vue 'vue/document'
 
@@ -41,6 +42,7 @@
 			@ xml 'xml/document'
 			@ vtt 'vtt/document'
 			@ vue 'vue/document'
+            $$ TODO @ '*' 'ittf/document'
 
 	var DEFAULT_MIME
 		{
@@ -53,6 +55,7 @@
 			@ text 'text'
 			@ ts 'ts'
 			@ xml 'xml'
+            @ ittf 'ittf'
 			@ vtt 'vtt'
 			@ vue 'vue'
 
@@ -295,23 +298,27 @@
 						param item
 						param callback
 						if item.isIttfDocument
+                            log 'generating', item.fullPath
 							_ md.gen
 								@ item.fullPath
 								@ context
 								f_cb(artifactText)
+                                    log 'generated', item.destRelPath
 									_ wf.fileService.write
 										_ path.join
 											@ options.destFolder
 											@ item.destRelPath
 										@ artifactText
 										f_cb()
+                                            log 'written', item.destRelPath
 											_ callback
 												@ null
 												_ path.join
 													@ options.destFolder
 													@ item.destRelPath
 						else
-							_ wf.fileService.copy
+                            log 'copying', item.fullPath
+							_ wf.fileService.copyFile
 								@ item.fullPath
 								_ path.join
 									@ options.destFolder
@@ -323,8 +330,9 @@
 											@ options.destFolder
 											@ item.destRelPath
 
-			f_cb_test(result)
-				# log 'result', result
+			        f_cb_test(result)
+				        # log 'result', result
+                        r_cb( result )
 	
 	function getDefaultArtifact
 		param schema
@@ -346,6 +354,7 @@
 					_ result.push
 						_ fileInfoByPath
 							@ f.fullPath
+                            @ folderPath
 				r_cb( result )
 
 	function ittfDocumentInfoByPath
@@ -375,7 +384,7 @@
 			_ filePath.substr
 		var ss = basename.split('.')
 		if ss[ss.length-1] === 'ittf'
-			var name = ss.slice(0, ss.length-2).join('.')
+			var name = verify.replaceAll(ss.slice(0, ss.length-2).join('.'), '__dot__', '.')
 			var schema = ss[ss.length-2]
 			var mime = DEFAULT_MIME[schema] || schema
 			return
@@ -391,12 +400,13 @@
 					@ destBasename name + '.' + mime
 					@ destRelPath
 						iif relFolder.length > 0
-							then relFolder + '/' + name + '.' + mime
+							then verify.replaceAll(relFolder, '__dot__', '.') + '/' + name + '.' + mime
 							else name + '.' + mime
 		else
+            var name = verify.replaceAll(basename, '__dot__', '.')
 			return 
 				{
-					@ name ss.slice(0, ss.length-1).join('.')
+					@ name name
 					@ basename basename
 					@ isIttfDocument false
 					@ schema null
@@ -406,9 +416,8 @@
 					@ destBasename basename
 					@ destRelPath
 						iif relFolder.length > 0
-							then relFolder + '/' + basename
-							else basename
-
+                            then verify.replaceAll(relFolder, '__dot__', '.') + '/' + name
+							else name
 
 	function normalize
 		param filepath

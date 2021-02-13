@@ -51,6 +51,10 @@
 			src ${ittf_examples_folder}/**/*__copy/**/*.css
 			extension css
 
+		artifact any_plain_text_inside___copy
+			src ${ittf_examples_folder}/**/*__copy/**/*.text
+			extension text
+
 	$include wfjob/root	
 
 	line ittf-tests

@@ -28,25 +28,25 @@ $group
                                 [ items
                                     {
                                         label "Documentation"
-                                        href "/docs/"
+                                        href "${gctxBaseUrl}/docs/"
                                     {
                                         label "Quick Start"
-                                        href "/docs/quick-start/"
+                                        href "${gctxBaseUrl}/docs/quick-start/"
                                     {
                                         label "Tutorial"
-                                        href "/docs/tutorial/"
+                                        href "${gctxBaseUrl}/docs/tutorial/"
                                     {
                                         label "How-To Guides"
-                                        href "/docs/how-to/"
+                                        href "${gctxBaseUrl}/docs/how-to/"
                                     {
                                         label "Reference Guides"
-                                        href "/docs/reference/"
+                                        href "${gctxBaseUrl}/docs/reference/"
                                     {
                                         label "Conceptual Guides"
-                                        href "/docs/conceptual/"
+                                        href "${gctxBaseUrl}/docs/conceptual/"
                                     {
                                         label "Wizzi CLI"
-                                        href "/docs/reference/wizzi-cli/"
+                                        href "${gctxBaseUrl}/docs/reference/wizzi-cli/"
                                     {
                                         label "Github"
                                         href "https://github.com/stfnbssl/wizzi"
@@ -84,10 +84,10 @@ $group
                                         href "/plugins/"
                                     {
                                         label "Schemas"
-                                        href "/docs/schemas/"
+                                        href "${gctxBaseUrl}/docs/schemas/"
                                     {
                                         label "Jobs"
-                                        href "/docs/jobs/"
+                                        href "${gctxBaseUrl}/docs/jobs/"
                                     {
                                         label "Starters"
                                         href "/starters/"

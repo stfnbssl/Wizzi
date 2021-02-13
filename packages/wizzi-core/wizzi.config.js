@@ -9,13 +9,14 @@ module.exports = {
         'wizzi-web'
     ], 
     schemas: [
-    ],
-    stop_schemas: [
         'wfjob',
         'wfschema', 
+    ],
+    stop_schemas: [
     ],
     globalContext: {
         isPackageDeploy: true,
         isDevelopment: false,
+        isWebpackTarget: false
     },
 };

@@ -1,0 +1,31 @@
+${'$'}group
+	
+	${'$'}if pkg.Build.useNextjs
+		"next/babel"
+
+    ${'$'}elif pkg.Build.useGatsby
+        [
+            "babel-preset-gatsby"
+            {
+                { targets
+                    [ browsers
+                        ">0.25%"
+                        "not dead"
+
+	${'$'}else
+        ${'$'}if pkg.Build.useWebpack
+            ${'$'}if pkg.Build.webpack.addModuleExport
+                [ 
+                    "@babel/env"
+                    {
+                        modules "commonjs"
+            ${'$'}else
+                "@babel/env"
+        ${'$'}else
+            "@babel/env"
+		${'$'}if pkg.Build.useReact
+			"@babel/react"
+        ${'$'}if pkg.Build.babel.useStage2
+			"@babel/stage-2"
+		${'$'}if pkg.Build.useTypescript
+			"@babel/typescript"

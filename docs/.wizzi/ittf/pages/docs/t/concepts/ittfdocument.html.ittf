@@ -36,7 +36,7 @@ $group
                     body
                         $raw header(&page)
                         $raw content(&page)
-                        ${dollar}include footer
+                        ${'$'}include footer
 
         p The root node can be a mixer or includer.
 
@@ -45,12 +45,12 @@ $group
             schema html
             ittf
                 $raw layout( Welcome to my site )
-                    ${dollar}append appbar
+                    ${'$'}append appbar
                         ul
-                            ${dollar}foreach item in menulist
+                            ${'$'}foreach item in menulist
                                 li 
-                                    a ${dollar}{item.name}
-                                        href ${dollar}{item.path}
+                                    a ${'$'}{item.name}
+                                        href ${'$'}{item.path}
                     . wrapper
                         . content
 
@@ -60,20 +60,20 @@ $group
             schema html
             ittf
                 ul
-                    ${dollar}foreach item in site.TopMenu.items
+                    ${'$'}foreach item in site.TopMenu.items
                         li
-                            a ${dollar}{item.label}
-                                href ${dollar}{item.url}
+                            a ${'$'}{item.label}
+                                href ${'$'}{item.url}
 
         p Scripts can be used to manipulate nodes.
         ittf-panel
             schema html
             ittf
                 div
-                    ${dollar} var i = 0
-                    ${dollar}while i < 5
-                        p Hello number ${dollar}{i}
-                        ${dollar} i++
+                    ${'$'} var i = 0
+                    ${'$'}while i < 5
+                        p Hello number ${'$'}{i}
+                        ${'$'} i++
 
         p &nbsp;
         
@@ -82,15 +82,15 @@ $group
             schema html
             ittf
                 html
-                    ${dollar}params title
+                    ${'$'}params title
                     head
-                        title ${dollar}{title}
+                        title ${'$'}{title}
                     body
                         header
-                            h1 ${dollar}{title}
-                            ${dollar}hook appbar
+                            h1 ${'$'}{title}
+                            ${'$'}hook appbar
                         section
-                            ${dollar}hook
+                            ${'$'}hook
 
         p &nbsp;
         ul ITTF documents are of three kinds
@@ -103,9 +103,9 @@ $group
             schema html
             ittf
                 li
-                    ${dollar}params text, href
-                    a ${dollar}{text}
-                        href ${dollar}{href}
+                    ${'$'}params text, href
+                    a ${'$'}{text}
+                        href ${'$'}{href}
 
         ittf-panel
             title A sample 'include' ITTF Document.

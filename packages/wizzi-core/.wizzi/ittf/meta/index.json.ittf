@@ -29,6 +29,7 @@
             name 'json'
             title 'json wizzi language model'
             builtin true
+            commentTag "#"
             [ transformers
             [ artifacts
                 {
@@ -69,3 +70,12 @@
             [ artifacts
                 {
                     name 'ittf/document'
+        {
+            name 'yaml'
+            title 'yaml wizzi language model'
+            builtin true
+            commentTag "#"
+            [ transformers
+            [ artifacts
+                {
+                    name 'yaml/document'

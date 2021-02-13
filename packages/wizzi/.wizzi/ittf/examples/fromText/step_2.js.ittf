@@ -40,7 +40,7 @@
                         @ '        state'
                         @ '            @ name "stefi"'
                         @ '        $foreach item in items'
-                        @ '            m ${__dollar}{item}'
+                        @ '            m ${'$'}{item}'
                         ._ join
                             @ '\n'
                     {

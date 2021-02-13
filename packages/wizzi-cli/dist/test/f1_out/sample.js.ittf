@@ -1,4 +1,0 @@
-module
-    kind react
-    function Hello
-        _ console.log('hello')

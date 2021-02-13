@@ -24,7 +24,7 @@
                                         _ctx.error
                                             @ myname + " error: the model paramater should be an 'rdbms' Wizzi Model"
                                             @ model
-                            ${dollar}foreach table in model.tables
+                            ${'$'}foreach table in model.tables
                                 _ ctx.a('TABLE', table.wzName)
                                 _ ctx.w('declare table TABLE')
                                 ...

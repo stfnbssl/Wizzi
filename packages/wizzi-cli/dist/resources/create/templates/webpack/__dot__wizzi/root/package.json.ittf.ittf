@@ -1,0 +1,12 @@
+{
+    $include pkginfo.json
+    
+    { scripts
+    	${'$'}include v08/package/scripts
+	
+    { dependencies
+		${'$'}include v08/package/dependencies
+
+	{ devDependencies
+		${'$'}include v08/package/devDependencies
+

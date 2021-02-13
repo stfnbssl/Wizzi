@@ -1,0 +1,4 @@
+{
+    $include package-info.json
+    { scripts
+        start "node index"

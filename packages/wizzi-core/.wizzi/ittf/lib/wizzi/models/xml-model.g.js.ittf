@@ -17,7 +17,7 @@
 				return
 					_ callback
 						_ error
-							@ 'Malformed mTree must have one root node. Found mTree.nodes: ' + mTree.nodes
+							@ 'Malformed mTree. Must have one root node. Found mTree.nodes: ' + mTree.nodes.length
 
 			var root = mTree.nodes[0]
 			if root.n !== "xml"

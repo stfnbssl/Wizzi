@@ -1,0 +1,66 @@
+$group
+    $
+        var call = '(&md)';
+    
+    import express from 'express'
+    ${'$'}if wzCtx.Build.useSocketIO
+        const http = require('http')
+        const socketio = require('socket.io')
+    ${'$'}if wzCtx.Build.useNetlify
+        const serverless = require('serverless-http')
+        index/imports${call}
+
+    class App
+        ctor 
+            param initValues
+            set this.config = initValues.config
+            set this.port = this.config.port
+            set this.app =
+                _ express
+            ${'$'}if wzCtx.Build.useSocketIO
+                set this.server = http.createServer(this.app)
+            _ initValues.middlewares.forEach
+                => 
+                    param middleware
+                    _ middleware(this.app)
+            _ initValues.controllers.forEach
+                => 
+                    param controller
+                    _ console.log('installing router on path: ', controller.path)
+                    _ controller.initialize(initValues)
+                    _ this.app.use('/', controller.router)
+
+            ${'$'}if wzCtx.Build.useSocketIO
+                # Connecting sockets to the server and adding them to the request
+                # so that we can access them later in the controller
+                const io = socketio(this.server)
+                _ io.set
+                    @ 'transports'
+                    [
+                        @ 'websocket'
+                        @ 'polling'
+                _ this.app.set('io', io)
+                # Catch a start up request so that a sleepy server instance (p.e. Heroku) can
+                # be responsive as soon as possible
+                _ this.app.get
+                    @ '/wake-up'
+                    => 
+                        param req
+                        param res
+                        _ res.send('👍')
+
+        m listen
+            param port
+            var usedPort = port || this.port
+            _ ${'$'}{wzCtx.Build.useSocketIO ? 'this.server' : 'this.app'}.listen
+                @ usedPort
+                => 
+                    _ console.log
+                        `lit 
+                            + App listening at http://localhost:
+                            @ port
+                            + 
+    ${'$'}if wzCtx.Build.useNetlify == false
+        export-default App
+
+

@@ -4,7 +4,7 @@ ${'$'}group
     # see https://nativescript.org/blog/deep-dive-into-hot-module-replacement-with-webpack-part-two-handling-updates/
     +
     import hjsMe from './print.js'
-    ${'$'}if wzCtx.Code.useHighlight
+    ${'$'}if wzCtx.Build.useHighlight
         import './highlight.default.min.css'
     import './index.css';
     +

@@ -1,0 +1,27 @@
+{
+    "name": "tau",
+    "version": "0.0.1",
+    "private": false,
+    "main": "",
+    "scripts": {
+        "start": "cross-env NODE_ENV=dev npm-run-all --parallel start:app start:server",
+        "start:app": "react-scripts start",
+        "start:server": "netlify-lambda serve functions",
+        "build": "npm-run-all --parallel build:**",
+        "build:app": "react-scripts build",
+        "build:functions": "netlify-lambda build functions",
+        "test": "react-scripts test --env=jsdom"
+    },
+    "dependencies": {
+        "aws-serverless-express": "^3.2.0",
+        "body-parser": "^1.18.3",
+        "compression": "^1.7.2",
+        "cors": "^2.8.4",
+        "express": "^4.16.3",
+        "morgan": "^1.9.0",
+        "serverless-http": "^1.6.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.2"
+    }
+}

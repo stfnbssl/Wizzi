@@ -1,0 +1,12 @@
+$group
+    $params &md
+    import
+        @ NetlifyRouter
+        from '../features/netlify'
+    $hook imports
+    export
+        const NetlifyServerMiddleware
+            =>
+                param app
+                _ app.use('/.netlify/functions/server', NetlifyRouter)
+                $hook

@@ -18,8 +18,8 @@
 			a Nodejs
 				href https://nodejs.org
 		li 
-			a Wizzi Factory
-				href https://github.com/wizzifactory
+			a Wizzi
+				href https://github.com/stfnbssl/wizzi
 	br
 	
 	license()

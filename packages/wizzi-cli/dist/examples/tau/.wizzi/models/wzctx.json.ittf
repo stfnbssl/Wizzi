@@ -1,0 +1,7 @@
+{
+    name "tau"
+    version "0.0.1"
+    description ""
+    { Build
+        useExpress true
+        { express

@@ -1,4 +1,4 @@
-wfjob /job
+wfjob beta/job
     
     $
         var jobCtx = {

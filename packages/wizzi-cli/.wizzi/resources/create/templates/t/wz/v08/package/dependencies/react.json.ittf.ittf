@@ -25,3 +25,7 @@
         ${'$'}if wzCtx.Build.react.transition
             react-transition-group "^2.4.0"
         recompose "^0.30.0"
+
+    ${'$'}if wzCtx.Build.useGatsby
+        react "^16.13.1"
+        react-dom "^16.13.1"

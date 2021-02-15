@@ -1,0 +1,19 @@
+$group
+    $params &md
+    import
+        @ config
+        from '../features/config'
+    $hook imports
+    export
+        const CacheControlMiddleware
+            =>
+                param app
+                if config.noCache
+                    _ app.use
+                        =>
+                            param req
+                            param res
+                            param next
+                            _ res.set('Cache-Control', 'no-store')
+                            _ next
+                $hook

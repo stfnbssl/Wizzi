@@ -25,16 +25,27 @@ Run `wizzi --help` for full help.
 * [fy](#fy)
 
 ### `generate`
+Executes a Wizzi production described in a wizzi.config[.configname].js file.
+The config file is searched in the current folder and its parent.
 ```sh
-wizzi
+wizzi [configname]
 ```
 ### `create`
+Executes a Wizzi meta production creating a new package for a type of Wizzi production.
 ```sh
 wizzi create
 ```
+An 'inquirer' dialog asks for the production type and other available options.
+* pure js 
+* webpack 
+* webpack + react + material-ui 
+* gatsby 
+* express 
+* wizzi plugin 
 ### `fy`
+Executes the 'wizzifying' of a file or folder (for example creates a .js.ittf document from a .js file).
 ```sh
-wizzi fy
+wizzi fy --source <filepath|folderpath> --dest <filepath|folderpath>
 ```
 
 <table>
@@ -44,12 +55,12 @@ wizzi fy
 </thead>
 <tbody>
 <tr>
-<td>--source|-s <file|folder></td>
-<td>the source file or folder</td>
+<td>--source|-s <filepath|folderpath></td>
+<td>The source file or folder path</td>
 </tr>
 <tr>
-<td>--dest|-d <file|folder></td>
-<td>the destination file or folder</td>
+<td>--dest|-d <filepath|folderpath></td>
+<td>The destination file or folder path</td>
 </tr>
 </tbody>
 </table>
@@ -64,7 +75,7 @@ A model driven artifact factory.
 ## Built With
 * [Nodejs](https://nodejs.org)
 
-* [Wizzi Factory](https://github.com/wizzifactory)
+* [Wizzi](https://github.com/stfnbssl/wizzi)
 
 
 ## License

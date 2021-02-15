@@ -5,9 +5,9 @@
 	const fs = require('fs')
     const chalk = require('chalk')
 	const wizzi = require('wizzi')
-    const newpkg = require("./newpkg")
-
-	set module.exports
+    var inquirer = require('inquirer')
+	
+    set module.exports
 		=>
 			param args
             $*
@@ -96,3 +96,5 @@
                                     @ copyExclude []
                                 f_cb_test(genFolderResult)
                                     log 'genFolderResult', genFolderResult
+
+    $include create/newpkg                                    

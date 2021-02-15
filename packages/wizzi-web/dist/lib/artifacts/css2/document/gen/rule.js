@@ -1,11 +1,12 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\css2\document\gen\rule.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\css2\document\gen\rule.js.ittf
 */
 'use strict';
 var util = require('util');
 var async = require('async');
-var verify = require('../../../util/verify');
+var verify = require('wizzi-utils').verify;
 var lineParser = require('../../../util/lineParser');
 var md = module.exports = {};
 var myname = 'css.document.rule';
@@ -82,8 +83,8 @@ md.load = function(cnt) {
                     ctx.deindent();
                     ctx.w('}');
                     callback();
-                });
-            });
+                })
+            })
         }
         else {
             cnt.genItems(model.rules, ctx, {
@@ -96,7 +97,7 @@ md.load = function(cnt) {
                 ctx.deindent();
                 ctx.w('}');
                 callback();
-            });
+            })
         }
     };
     cnt.stm.fontface = function(model, ctx, callback) {
@@ -129,7 +130,7 @@ md.load = function(cnt) {
             ctx.deindent();
             ctx.w('}');
             callback();
-        });
+        })
     };
     cnt.stm.keyframes = function(model, ctx, callback) {
         ctx.w('@' + (model.vendor || '') + 'keyframes ' + model.wzName + ' {');
@@ -141,7 +142,7 @@ md.load = function(cnt) {
             }
             ctx.w('}');
             callback();
-        });
+        })
     };
     cnt.stm.keyframe = function(model, ctx, callback) {
         ctx.w(model.wzName + ' {');
@@ -153,7 +154,7 @@ md.load = function(cnt) {
             }
             ctx.w('}');
             callback();
-        });
+        })
     };
     cnt.stm.ximport = function(model, ctx, callback) {
         ctx.w('@import ' + model.wzName + ';');
@@ -166,7 +167,7 @@ md.load = function(cnt) {
             }
             ctx.indent();
             if (model.wzName.length > 0) {
-                ctx.w(model.wzName);
+                ctx.w(model.wzName)
             }
             ctx.__comment_level++;
             cnt.genItems(model.rules, ctx, {
@@ -181,7 +182,7 @@ md.load = function(cnt) {
                     ctx.w('*/');
                 }
                 callback();
-            });
+            })
         }
         else {
             if (ctx.__comment_level > 0) {
@@ -205,8 +206,8 @@ function writeRule(cnt, model, ctx, callback) {
         ctx.w('}');
         cnt.genItems(model.rules, ctx, {
             indent: false
-        }, callback);
-    });
+        }, callback)
+    })
 }
 function getWriteProperty(ctx) {
     return function writeProperty(prop, callback) {
@@ -229,8 +230,8 @@ function getWriteProperty(ctx) {
                             console.log(myname, 'artifactText', artifactText);
                             ctx.w('background-image: url("data:image/svg+xml,' + artifactText + '");');
                             callback();
-                        });
-                    });
+                        })
+                    })
                 }
                 else {
                     throw ctx.error(myname + '. writeProperty unknown  prop.wzElement: ' + prop.wzElement);
@@ -322,7 +323,7 @@ function getWriteProperty(ctx) {
                 else {
                     ctx.w(name + ": " + value + ";");
                 }
-                process.nextTick(callback);
+                process.nextTick(callback)
             }
         };
 }

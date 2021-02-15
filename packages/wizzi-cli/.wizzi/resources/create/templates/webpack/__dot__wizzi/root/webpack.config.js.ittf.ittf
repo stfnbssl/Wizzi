@@ -1,4 +1,4 @@
 ﻿module
 	kind es6
 
-    $include webpack.config-base.js
+    $include cli/v08/webpack.config-base.js

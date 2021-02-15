@@ -5,8 +5,8 @@
 			param message
 			param node
 			param instance
-            set this.node = node
-            set this.instance = instance
+            # VIA 14/2/21 (pollutes log) set this.node = node
+            # VIA 14/2/21 (pollutes log) set this.instance = instance
 			if node && instance
 				set this.message = message + 
 					\b ', wzElement: ' + node.wzElement + 

@@ -11,7 +11,6 @@ module
                     if type_answers.pkg_type == 'wizzi_plugin'
                         _ promptWizziPlugin
                             f_cb(plugin_answers)
-
                                 return
                                     _ promptNext
                                         @ promptPkgName
@@ -20,7 +19,25 @@ module
                                             @ type_answers
                                             @ plugin_answers
                                         @ callback
+                    elif type_answers.pkg_type == 'webpack'
+                        _ promptWebpack
+                            f_cb(webpack_answers)
+                                if webpack_answers.webpack_type == 'react'
+                                    set type_answers.__template = 'webpack_react'
+                                elif webpack_answers.webpack_type == 'react_materialui'
+                                    set type_answers.__template = 'webpack_react_mui'
+                                else
+                                    set type_answers.__template = 'webpack'
+                                return
+                                    _ promptNext
+                                        @ promptPkgName
+                                        _ Object.assign
+                                            {
+                                            @ type_answers
+                                            @ webpack_answers
+                                        @ callback
                     else
+                        # _ type_answers.__template = type_answers.pkg_type
                         return
                             _ promptNext
                                 @ promptPkgName
@@ -43,4 +60,5 @@ module
             
     $include create/pkgType
     $include create/wizziPlugin
+    $include create/webpack
     $include create/pkgInfo

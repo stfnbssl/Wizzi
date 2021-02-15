@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\css2\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\css2\document\gen\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -27,7 +28,7 @@ md.gen = function(model, ctx, callback) {
         return callback(error('InvalidArgument', 'gen', 'The model parameter must be an object. Received: ' + model, model));
     }
     if (model.wzElement !== 'css') {
-        callback(error('InvalidArgument', 'gen', 'Invalid model schema. Expected root element "css". Received: ' + model.wzElement, model));
+        callback(error('InvalidArgument', 'gen', 'Invalid model schema. Expected root element "css". Received: ' + model.wzElement, model))
     }
     try {
         ctx.__comment_level = 0;
@@ -56,9 +57,9 @@ md.gen = function(model, ctx, callback) {
                         ]
                     }
                 ]
-            });
+            })
             callback(null, ctx);
-        });
+        })
     } 
     catch (ex) {
         return callback(error('Exception', 'gen', 'An exception encountered during generation', model, ex));
@@ -82,8 +83,8 @@ md.genItems = function(items, ctx, options, callback) {
         if (indent) {
             ctx.deindent();
         }
-        process.nextTick(callback);
-    });
+        process.nextTick(callback)
+    })
 };
 md.mapItem = function(ctx) {
     return function(model, callback) {
@@ -99,18 +100,7 @@ md.genItem = function(model, ctx, callback) {
         return callback(error('ArtifactGenerationError', 'genItem', myname + '. Unknown tag/element: ' + model.wzTag + '/' + model.wzElement, model, null));
     }
 };
-/**
-     params
-     string errorName
-     # the error name or number
-     string method
-     string message
-     # optional
-     { model
-     # optional
-     { innerError
-     # optional
-*/
+//
 function error(errorName, method, message, model, innerError) {
     return new errors.WizziPluginError(message, model, {
             errorName: errorName, 
@@ -132,8 +122,8 @@ md.stm.css = function(model, ctx, callback) {
         console.log('css,after defaults', ctx.getContent());
         md.genItems(model.rules, ctx, {
             indent: false
-        }, callback);
-    });
+        }, callback)
+    })
 };
 md.stm.defaults = function(model, ctx, callback) {
     var items = [];
@@ -142,9 +132,9 @@ md.stm.defaults = function(model, ctx, callback) {
     }
     async.mapSeries(items, (item, callback) => {
         console.log('defaults,appendFile', item);
-        ctx.appendFile(path.join(__dirname, 'defaults', item));
+        ctx.appendFile(path.join(__dirname, 'defaults', item))
         return callback(null);
-    }, callback);
+    }, callback)
 };
 function emitResources(requestedResources, ctx) {
     if (requestedResources.length > 0 && ctx.values.cssResources) {

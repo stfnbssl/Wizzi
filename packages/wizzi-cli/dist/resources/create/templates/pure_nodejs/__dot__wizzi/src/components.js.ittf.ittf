@@ -1,6 +1,6 @@
 module
     kind es6
-
+    +
     export
         function sayHello
             param name

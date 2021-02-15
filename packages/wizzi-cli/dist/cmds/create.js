@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\create.js.ittf
 */
 'use strict';
@@ -15,8 +16,8 @@ module.exports = (args) =>
             answers: answers
         }, (err, jsonctx) => {
             console.log('create.jsonctx', jsonctx);
-            wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', answers.pkg_type), {
-                ctx: jsonctx
+            wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', answers.__template), {
+                cliCtx: jsonctx
             }, {
                 destFolder: path.join(process.cwd(), answers.pkg_name), 
                 copyInclude: ['*'], 
@@ -28,6 +29,6 @@ module.exports = (args) =>
                     throw new Error(err.message);
                 }
                 console.log('genFolderResult', genFolderResult);
-            });
-        });
+            })
+        })
     });

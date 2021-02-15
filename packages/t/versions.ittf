@@ -13,8 +13,8 @@ $group
         versions['wizzi-js@next'] = '0.7.8';
         versions['wizzi-web'] = '0.7.7';
         versions['wizzi-web@next'] = '0.7.8';
-        versions['wizzi-core'] = '0.7.1';
-        versions['wizzi-core@next'] = '0.7.2';
+        versions['wizzi-core'] = '0.7.2';
+        versions['wizzi-core@next'] = '0.7.3';
         versions['wizzi-meta'] = '0.6.6';
         versions['wizzi-meta@next'] = '0.7.0';
         versions['wizzi-tools'] = '0.7.3';

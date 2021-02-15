@@ -61,10 +61,11 @@
 		tag +
 
 	e table : element
+    e thead : element
 	e tbody : element
+    e th : element
 	e tr : element
 	e td : element
-	e th : element
 
 	e quote : element
 	e hr : element

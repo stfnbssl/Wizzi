@@ -3,7 +3,7 @@ module
     const path = require('path')
     set module.exports
         { 
-            @ wfjobName "${ctx.name}/job"
+            @ wfjobName "${cliCtx.name}/job"
             @ wfjobPath path.join(__dirname, '.wizzi', 'generate.wfjob.ittf')
             @ destPath path.join(__dirname, 'dist')
             [ plugins
@@ -12,4 +12,4 @@ module
                 @ 'wizzi-web'
             [ schemas
             { globalContext
-                @ isDevelopment true
+                @ gctxIsDevelopment true

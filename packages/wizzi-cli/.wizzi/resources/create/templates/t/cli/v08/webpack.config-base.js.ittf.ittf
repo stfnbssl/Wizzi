@@ -19,7 +19,7 @@
                 v08/webpack/resolve${mix}
 			
 			{ output
-				@ path path.resolve(__dirname, '..', 'app', 'scripts')
+				@ path path.resolve(__dirname, '..', 'dist', 'scripts')
 				@ filename '${'$'}{wzCtx.name}.js'
                 v08/webpack/output${mix}
 			
@@ -29,5 +29,4 @@
 			@ devtool 'cheap-module-source-map'
 			
 			{ devServer
-				@ contentBase './dist'
                 v08/webpack/devServer${mix}

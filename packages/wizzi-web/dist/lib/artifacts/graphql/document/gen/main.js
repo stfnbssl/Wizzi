@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\graphql\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\graphql\document\gen\main.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -40,7 +41,7 @@ md.gen = function gen(model, ctx, callback) {
             return callback(err);
         }
         return callback(null, ctx);
-    });
+    })
 };
 md.graphql = function(model, ctx, callback) {
     async.mapSeries(model.typeDefs, md.typeDef(ctx), function(err, notUsed) {
@@ -52,13 +53,13 @@ md.graphql = function(model, ctx, callback) {
                 return callback(err);
             }
             return callback(null);
-        });
-    });
+        })
+    })
 };
 md.typeDef = function(ctx) {
     return function(model, callback) {
             var method = md[model.wzElement];
-            method(model, ctx, callback);
+            method(model, ctx, callback)
         };
 };
 md.scalarTypeDef = function(model, ctx, callback) {
@@ -70,7 +71,7 @@ md.objectTypeDef = function(model, ctx, callback) {
     var i, i_items=model.ximplements, i_len=model.ximplements.length, item;
     for (i=0; i<i_len; i++) {
         item = model.ximplements[i];
-        impl.push(item.wzName);
+        impl.push(item.wzName)
     }
     var implString = impl.length > 0 ? ' implements ' + impl.join(' & ') : '';
     ctx.w( 'type ' + model.wzName + implString + ' {' );
@@ -82,7 +83,7 @@ md.objectTypeDef = function(model, ctx, callback) {
         ctx.deindent();
         ctx.w( '}' );
         return callback(null);
-    });
+    })
 };
 md.fieldDef = function(ctx) {
     return function(model, callback) {
@@ -101,7 +102,7 @@ md.fieldDef = function(ctx) {
                 var i, i_items=model.argumentDefs, i_len=model.argumentDefs.length, item;
                 for (i=0; i<i_len; i++) {
                     item = model.argumentDefs[i];
-                    args.push(getTypedArgumentDeclaration(item));
+                    args.push(getTypedArgumentDeclaration(item))
                 }
                 var argsString = args.length > 0 ? '(' + args.join(', ') + ')' : '';
                 var directiveString = model.isDeprecated ? ' @deprecated' : '';
@@ -116,7 +117,7 @@ md.method = function(model, ctx, callback) {
     var i, i_items=model.fieldDefs, i_len=model.fieldDefs.length, item;
     for (i=0; i<i_len; i++) {
         item = model.fieldDefs[i];
-        args.push(getTypedArgumentDeclaration(item));
+        args.push(getTypedArgumentDeclaration(item))
     }
     ctx.write( model.wzName + '(' + args.join(', ') + ') ' );
     if (model.selectionSet) {
@@ -125,7 +126,7 @@ md.method = function(model, ctx, callback) {
                 return callback(err);
             }
             return callback(null);
-        });
+        })
     }
     else {
         ctx.w(': ' + model.type);
@@ -142,7 +143,7 @@ md.interfaceTypeDef = function(model, ctx, callback) {
         ctx.deindent();
         ctx.w( '}' );
         return callback(null);
-    });
+    })
 };
 md.unionTypeDef = function(model, ctx, callback) {
     ctx.write( 'union ' + model.wzName + ' = ');
@@ -172,7 +173,7 @@ md.enumTypeDef = function(model, ctx, callback) {
 md.inputObjectTypeDef = function(model, ctx, callback) {
     ctx.write( 'input ' + model.wzName + ' ');
     if (model.objectValueDef) {
-        md.objectValueDef(model.objectValueDef, ctx, callback);
+        md.objectValueDef(model.objectValueDef, ctx, callback)
     }
     else {
         return callback(null);
@@ -188,7 +189,7 @@ md.objectValueDef = function(model, ctx, callback) {
         ctx.deindent();
         ctx.w('}');
         return callback(null);
-    });
+    })
 };
 md.valueDef = function(ctx) {
     return function(model, callback) {
@@ -203,14 +204,14 @@ md.directiveDef = function(model, ctx, callback) {
     var i, i_items=model.argumentDefs, i_len=model.argumentDefs.length, item;
     for (i=0; i<i_len; i++) {
         item = model.argumentDefs[i];
-        args.push(getTypedArgumentDeclaration(item));
+        args.push(getTypedArgumentDeclaration(item))
     }
     var argsString = args.length > 0 ? '(' + args.join(', ') + ')' : '';
     var loc = [];
     var i, i_items=model.directiveLocations, i_len=model.directiveLocations.length, item;
     for (i=0; i<i_len; i++) {
         item = model.directiveLocations[i];
-        loc.push(item.wzName);
+        loc.push(item.wzName)
     }
     var locString = loc.length > 0 ? ' on ' + loc.join(' | ') : '';
     ctx.w( 'directive ' + model.wzName + argsString + locString );
@@ -220,7 +221,7 @@ md.operation = function(ctx) {
     return function(model, callback) {
             console.log('calling operation', model.wzElement);
             var method = md[model.wzElement];
-            method(model, ctx, callback);
+            method(model, ctx, callback)
         };
 };
 md.query = function(model, ctx, callback) {
@@ -228,7 +229,7 @@ md.query = function(model, ctx, callback) {
     var i, i_items=model.variables, i_len=model.variables.length, item;
     for (i=0; i<i_len; i++) {
         item = model.variables[i];
-        vars.push(getVariableDeclaration(item));
+        vars.push(getVariableDeclaration(item))
     }
     var varsDeclare = vars.length > 0 ? '(' + vars.join(', ') + ')' : '';
     ctx.w( 'query' + (model.wzName.length > 0 ? ' ' + model.wzName : '') + varsDeclare + ' {');
@@ -241,7 +242,7 @@ md.query = function(model, ctx, callback) {
             ctx.deindent();
             ctx.w( '}' );
             return callback(null);
-        });
+        })
     }
     else {
         ctx.deindent();
@@ -253,7 +254,7 @@ md.selectionSet = function(model, ctx, callback) {
     console.log('selectionSet', model.selections.length);
     if (model.wzName.length > 0) {
         ctx.write( model.wzName);
-        writeArguments(model.xarguments, ctx);
+        writeArguments(model.xarguments, ctx)
         ctx.write( ' ' );
     }
     ctx.w( '{' );
@@ -265,13 +266,13 @@ md.selectionSet = function(model, ctx, callback) {
         ctx.deindent();
         ctx.w( '}' );
         return callback(null);
-    });
+    })
 };
 md.selection = function(ctx) {
     return function(model, callback) {
             console.log('calling selection', model.wzElement);
             var method = md[model.wzElement];
-            method(model, ctx, callback);
+            method(model, ctx, callback)
         };
 };
 md.field = function(model, ctx, callback) {
@@ -279,7 +280,7 @@ md.field = function(model, ctx, callback) {
         ctx.write( model.alias + ': ' );
     }
     ctx.write( model.wzName );
-    writeArguments(model.xarguments, ctx);
+    writeArguments(model.xarguments, ctx)
     ctx.w();
     return callback(null);
 };
@@ -291,7 +292,7 @@ md.fragmentSpread = function(model, ctx, callback) {
             return callback(err);
         }
         return callback(null);
-    });
+    })
 };
 md.inlineFragment = function(model, ctx, callback) {
     var directiveString = getDirectives(model.directives);
@@ -305,7 +306,7 @@ md.inlineFragment = function(model, ctx, callback) {
             ctx.deindent();
             ctx.w('}');
             return callback(null);
-        });
+        })
     }
     else {
         return callback(null);
@@ -320,7 +321,7 @@ md.fragment = function(model, ctx, callback) {
                 return callback(err);
             }
             return callback(null);
-        });
+        })
     }
     else {
         ctx.w();
@@ -340,22 +341,22 @@ function getDirectives(directives, ctx) {
         var j, j_items=d.arguments, j_len=d.arguments.length, a;
         for (j=0; j<j_len; j++) {
             a = d.arguments[j];
-            args.push(getArgumentDeclaration(a));
+            args.push(getArgumentDeclaration(a))
         }
         var argsString = args.length > 0 ? '(' + args.join(', ') + ')' : '';
-        ret.push('@' + model.wzName + argsString);
+        ret.push('@' + model.wzName + argsString)
     }
     return ret.join(' ');
 }
 md.valueCtx = function(ctx) {
     return function(model, callback) {
-            md.value(model, ctx, callback);
+            md.value(model, ctx, callback)
         };
 };
 md.value = function(model, ctx, callback) {
     var method = md[model.wzElement];
     if (method) {
-        method(model, ctx, callback);
+        method(model, ctx, callback)
     }
     else {
         return callback(null);
@@ -372,7 +373,7 @@ md.arrayValue = function(model, ctx, callback) {
         ctx.write( ']' );
         ctx.genState = saveState;
         return callback(null);
-    });
+    })
 };
 md.objectValue = function(model, ctx, callback) {
     var saveState = ctx.genState;
@@ -383,7 +384,7 @@ md.objectValue = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.write( '}' );
-    });
+    })
     ctx.genState = saveState;
     return callback(null);
 };
@@ -402,7 +403,7 @@ function writeArguments(args, ctx) {
         }
         if (arg.value) {
             ctx.write( arg.wzName + ': ');
-            writeValue(arg.value, ctx);
+            writeValue(arg.value, ctx)
         }
         else {
             var p = lineParser.parseNameValueRaw(arg.wzName, arg);
@@ -415,13 +416,13 @@ function writeArguments(args, ctx) {
 }
 function writeValue(model, ctx) {
     if (model.wzElement === 'arrayValue') {
-        writeArrayValue(model, ctx);
+        writeArrayValue(model, ctx)
     }
     else if (model.wzElement === 'objectValue') {
-        writeObjectValue(model, ctx);
+        writeObjectValue(model, ctx)
     }
     else if (model.wzElement === 'objectField') {
-        writeObjectField(model, ctx);
+        writeObjectField(model, ctx)
     }
 }
 function writeArrayValue(model, ctx) {
@@ -434,7 +435,7 @@ function writeArrayValue(model, ctx) {
         if (i > 0) {
             ctx.write(', ');
         }
-        writeValue(item, ctx);
+        writeValue(item, ctx)
     }
     ctx.write( ']' );
     ctx.genState = saveState;
@@ -449,7 +450,7 @@ function writeObjectValue(model, ctx) {
         if (i > 0) {
             ctx.write(', ');
         }
-        writeValue(item, ctx);
+        writeValue(item, ctx)
     }
     ctx.write( '}' );
     ctx.genState = saveState;
@@ -480,7 +481,7 @@ function getArgumentDeclaration(model, callback) {
                 ret.push(' : ');
                 ret.push( result );
                 return callback(null, ret.join(''));
-            });
+            })
         }
     }
 }
@@ -522,7 +523,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi-web.lib.artifacts.graphql.schema.gen.main.' + method,
+        method: 'wizzi-web@0.7.8.lib.artifacts.graphql.document.gen.main.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

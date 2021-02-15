@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\css\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\css\document\gen\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -15,7 +16,7 @@ rule.load(md);
 md.gen = function(model, ctx, callback) {
     // log 'model', util.inspect(model, { depth: 3 })
     // log 'enter', myname
-    main_init(model, ctx);
+    main_init(model, ctx)
     ctx.__comment_level = 0;
     md.getGenItem(ctx)(model, function(err, notUsed) {
         if (err) {
@@ -42,7 +43,7 @@ md.gen = function(model, ctx, callback) {
                     ]
                 }
             ]
-        });
+        })
         return callback(null, ctx);
     })
 };
@@ -50,7 +51,7 @@ md.getGenItem = function(ctx) {
     return function(model, callback) {
             var stm = md.stm[model.wzElement];
             if (stm) {
-                stm(model, ctx, callback);
+                stm(model, ctx, callback)
             }
             else {
                 // this is an abnormal end
@@ -73,8 +74,8 @@ md.genItems = function(items, ctx, options, callback) {
         if (indent) {
             ctx.deindent();
         }
-        process.nextTick(callback);
-    });
+        process.nextTick(callback)
+    })
 };
 md.stm.css = function(model, ctx, callback) {
     // css is container only
@@ -84,7 +85,7 @@ md.stm.css = function(model, ctx, callback) {
     emitResources(model.resources, ctx);
     md.genItems(model.rules, ctx, {
         indent: false
-    }, callback);
+    }, callback)
 };
 function main_init(model, ctx) {
     if ((!!ctx.values.noGeneratorComments) == false) {

@@ -1,5 +1,7 @@
 ﻿module
 	kind react
+    $
+        var call = '(&md)';
 
 	${'$'}
 		var md = {};
@@ -8,7 +10,7 @@
         md.withStyles = false;
         md.withContext = false;
 	
-	v08/react/container(&md)
+	v08/react/container${call}
 
         ${'$'}append imports
             ${'$'}if wzCtx.Build.react.useRouter

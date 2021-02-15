@@ -158,15 +158,22 @@
 			_ ctx.w('</table>')
 			_ ctx.w
 
-		md-gen-method( tr )
-			_ ctx.w('<tr>')
+		md-gen-method( thead )
+			_ ctx.w('<thead>')
 			_ this.genItems(model.elements, ctx)
-			_ ctx.w('</tr>')
+			_ ctx.w('</thead>')
 
 		md-gen-method( tbody )
 			_ ctx.w('<tbody>')
 			_ this.genItems(model.elements, ctx)
 			_ ctx.w('</tbody>')
+
+
+		md-gen-method( tr )
+			_ ctx.w('<tr>')
+			_ this.genItems(model.elements, ctx)
+			_ ctx.w('</tr>')
+
 
 		md-gen-method( td )
 			_ ctx.write('<td>')

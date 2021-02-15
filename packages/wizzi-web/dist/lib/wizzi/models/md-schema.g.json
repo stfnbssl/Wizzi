@@ -24,13 +24,25 @@
           "flags": "",
           "inheritedFrom": null,
           "comments": []
+        },
+        {
+          "name": "comment",
+          "role": "comments",
+          "tags": [
+            "#"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": null,
+          "comments": []
         }
       ],
       "derived": [],
       "restricts": [],
       "methods": [],
       "comments": [
-        "The root element of the markdown schema."
+        "The root element of the markdown schema.",
+        "Comments allowed at root level only"
       ]
     },
     {
@@ -39,6 +51,21 @@
       "isRoot": false,
       "tags": [
         "@"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "comment",
+      "super": null,
+      "isRoot": false,
+      "tags": [
+        "#"
       ],
       "flags": "",
       "attributes": [],
@@ -239,9 +266,21 @@
           ]
         },
         {
+          "name": "thead",
+          "tags": [
+            "thead"
+          ]
+        },
+        {
           "name": "tbody",
           "tags": [
             "tbody"
+          ]
+        },
+        {
+          "name": "th",
+          "tags": [
+            "th"
           ]
         },
         {
@@ -254,12 +293,6 @@
           "name": "td",
           "tags": [
             "td"
-          ]
-        },
-        {
-          "name": "th",
-          "tags": [
-            "th"
           ]
         },
         {
@@ -1398,11 +1431,87 @@
       "comments": []
     },
     {
+      "name": "thead",
+      "super": "element",
+      "isRoot": false,
+      "tags": [
+        "thead"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "attribute",
+          "role": "attributes",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "element",
+          "comments": []
+        },
+        {
+          "name": "element",
+          "role": "elements",
+          "tags": [
+            "<"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "element",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "tbody",
       "super": "element",
       "isRoot": false,
       "tags": [
         "tbody"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "attribute",
+          "role": "attributes",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "element",
+          "comments": []
+        },
+        {
+          "name": "element",
+          "role": "elements",
+          "tags": [
+            "<"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "element",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "th",
+      "super": "element",
+      "isRoot": false,
+      "tags": [
+        "th"
       ],
       "flags": "",
       "attributes": [],
@@ -1479,44 +1588,6 @@
       "isRoot": false,
       "tags": [
         "td"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "attribute",
-          "role": "attributes",
-          "tags": [
-            "@"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "element",
-          "comments": []
-        },
-        {
-          "name": "element",
-          "role": "elements",
-          "tags": [
-            "<"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "element",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "th",
-      "super": "element",
-      "isRoot": false,
-      "tags": [
-        "th"
       ],
       "flags": "",
       "attributes": [],

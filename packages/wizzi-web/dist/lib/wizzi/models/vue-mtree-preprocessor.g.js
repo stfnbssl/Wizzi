@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\wizzi\models\vue-mtree-preprocessor.g.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\wizzi\models\vue-mtree-preprocessor.g.js.ittf
 */
 'use strict';
 module.exports = function(mTree, context) {
@@ -16,12 +17,12 @@ function level1(model) {
     if (model.n === 'template') {
         traverse(model, {
             isTemplate: true
-        });
+        })
         model.n = '::template';
         wrapChilds(model, {
             n: 'html', 
             v: ''
-        });
+        })
     }
     else if (model.n === 'script') {
         var lang = extractRemove(model, 'lang');
@@ -40,9 +41,9 @@ function level1(model) {
             newN.children.push({
                 n: 'kind', 
                 v: 'react'
-            });
+            })
         }
-        wrapChilds(model, newN);
+        wrapChilds(model, newN)
     }
     else if (model.n === 'style') {
         model.n = '::style';
@@ -50,9 +51,9 @@ function level1(model) {
         wrapChilds(model, {
             n: 'css', 
             v: ''
-        });
+        })
         if (scoped) {
-            model.children.push(scoped);
+            model.children.push(scoped)
         }
     }
 }
@@ -67,29 +68,29 @@ function extractRemove(model, n) {
             ret = item.v;
         }
         else {
-            model.children.push(item);
+            model.children.push(item)
         }
     }
     return ret;
 }
 function wrapChilds(model, newN) {
     // log 'wrapChild', model.children
-    copyNodeAttrsDeep(model, newN);
+    copyNodeAttrsDeep(model, newN)
     var children = model.children;
     newN.parent = model.parent;
     model.children = [ newN ];
     var i, i_items=children, i_len=children.length, item;
     for (i=0; i<i_len; i++) {
         item = children[i];
-        newN.children.push(item);
+        newN.children.push(item)
     }
 }
 function copyNodeAttrsDeep(nfrom, nto) {
-    copyNodeAttrs(nfrom, nto);
+    copyNodeAttrs(nfrom, nto)
     var i, i_items=nto.children, i_len=nto.children.length, item;
     for (i=0; i<i_len; i++) {
         item = nto.children[i];
-        copyNodeAttrsDeep(nfrom, item);
+        copyNodeAttrsDeep(nfrom, item)
     }
 }
 function copyNodeAttrs(nfrom, nto) {

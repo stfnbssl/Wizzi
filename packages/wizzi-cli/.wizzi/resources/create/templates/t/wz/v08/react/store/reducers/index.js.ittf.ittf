@@ -1,6 +1,4 @@
-﻿${'$'}group
-
-	+
+﻿$group
 	import { combineReducers } from 'redux'
 	${'$'}if app.Build.react.redux.useForm
 		import { reducer as formReducer } from 'redux-form'

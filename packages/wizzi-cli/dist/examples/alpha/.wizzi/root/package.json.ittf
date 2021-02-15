@@ -1,15 +1,18 @@
 {
-    name "${pkg.name}"
-    version "${pkg.version}"
-    { author
-        name "${pkg.author.name}"
-        email "${pkg.author.email}"
+    name "${wzCtx.name}"
+    version "${wzCtx.version}"
+    $if wzCtx.author
+        { author
+            name "${wzCtx.author.name}"
+            email "${wzCtx.author.email}"
     private false
-    [ licenses
-        {
-            type "${pkg.license.type}"
-            url "${pkg.license.url}"
-    main "${pkg.main}"
-    type "module"
+    $if wzCtx.license
+        [ licenses
+            {
+                type "${wzCtx.license.type}"
+                url "${wzCtx.license.url}"
+    main "${wzCtx.main}"
+    $if wzCtx.type
+        type "${wzCtx.type}"
     { scripts
         start "node index"

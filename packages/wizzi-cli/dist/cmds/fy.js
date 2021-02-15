@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\fy.js.ittf
 */
 'use strict';
@@ -26,7 +27,7 @@ module.exports = (args) => {
                         throw new Error(err.message);
                     }
                     console.log('Wizzify folder result', result);
-                });
+                })
             }
             else if (file.isFile(sourcePath)) {
                 console.log('ok. source && dest are files');
@@ -37,7 +38,7 @@ module.exports = (args) => {
                     }
                     file.write(destPath, result);
                     console.log('Wizzify file', result);
-                });
+                })
             }
             else {
                 console.log('error. source and dest must be both folders or both files');
@@ -54,7 +55,7 @@ module.exports = (args) => {
                     }
                     file.write(sourcePath + '.ittf', result);
                     console.log('Wizzify file', result);
-                });
+                })
             }
             else {
                 console.log('error. if dest is missing source must be a file');

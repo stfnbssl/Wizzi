@@ -1,5 +1,5 @@
 ${'$'}group
     ${'$'}params name, &jobCtx, ext|@@null
 
-    $include wfjob/commons.wfjob
+    $include wz/v08/wfjob/commons.wfjob
 

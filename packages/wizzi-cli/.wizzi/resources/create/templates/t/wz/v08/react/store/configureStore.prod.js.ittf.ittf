@@ -1,5 +1,4 @@
-﻿${'$'}group
-	+
+﻿$group
 	${'$'}if app.Build.react.redux.useThunk ||
 		\b app.useApiMiddleware ||
 		\b app.useThunkWithExtraArgument

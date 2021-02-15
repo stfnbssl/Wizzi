@@ -1,6 +1,8 @@
 css
     use-normalize
 
+    - this is a comment
+
 	$*
 	font-face
         font-family "icons"

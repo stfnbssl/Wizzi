@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\examples\beta\.wizzi\root\webpack.config.js.ittf
-    utc time: Fri, 12 Feb 2021 07:20:56 GMT
+    utc time: Mon, 15 Feb 2021 13:20:08 GMT
 */
 'use strict';
 const path = require('path');
@@ -57,18 +57,18 @@ module.exports = {
         }
     }, 
     output: {
-        path: path.resolve(__dirname, '..', 'app', 'scripts'), 
-        filename: 'beta.js'
+        path: path.resolve(__dirname, '..', 'dist', 'scripts'), 
+        filename: '.js'
     }, 
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html', 
             filename: './index.html'
         }), 
         new webpack.HotModuleReplacementPlugin()
     ], 
     devtool: 'cheap-module-source-map', 
     devServer: {
-        contentBase: './dist'
+        open: true, 
+        hot: true
     }
 };

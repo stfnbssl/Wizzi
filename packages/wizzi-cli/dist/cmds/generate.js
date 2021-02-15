@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\generate.js.ittf
 */
 'use strict';
@@ -35,12 +36,12 @@ function generateSchemas(schemasToGen, wfJobFolder, destPath, packageName, plugi
             }
             console.log('wizzi-cli.generate.Generate schema result', result);
             callback(null, result);
-        });
+        })
     }, function(err, result) {
         if (err) {
             wizzi.printWizziJobError($name, err);
         }
-    });
+    })
 }
 module.exports = (name) => {
     let configPath = config.getPath(name);
@@ -52,8 +53,8 @@ module.exports = (name) => {
     console.log('wizzi-cli.generate.configInstance', configInstance);
     const x_pluginsBaseFolder = configInstance.pluginsBaseFolder || __dirname;
     if (!configInstance.pluginsBaseFolder) {
-        console.log(chalk.red('wizzi-cli.generate - pluginsBaseFolder not set'));
-        console.log(chalk.red('wizzi-cli.generate - pluginsBaseFolder defaulted to ' + x_pluginsBaseFolder));
+        console.log(chalk.red('wizzi-cli.generate - pluginsBaseFolder not set'))
+        console.log(chalk.red('wizzi-cli.generate - pluginsBaseFolder defaulted to ' + x_pluginsBaseFolder))
     }
     var x_pluginsItems = [];
     if (configInstance.plugins && configInstance.plugins.length > 0) {
@@ -63,8 +64,8 @@ module.exports = (name) => {
         x_pluginsItems.push('wizzi-core');
         x_pluginsItems.push('wizzi-js');
         x_pluginsItems.push('wizzi-web');
-        chalk.red('wizzi-cli.generate - plugins not found in wizzi.config');
-        chalk.red('wizzi-cli.generate - using default plugins: "wizzi-core", "wizzi-js", "wizzi-web"');
+        chalk.red('wizzi-cli.generate - plugins not found in wizzi.config')
+        chalk.red('wizzi-cli.generate - using default plugins: "wizzi-core", "wizzi-js", "wizzi-web"')
     }
     wizzi.executeWizziJob({
         user: 'stefi', 
@@ -99,7 +100,7 @@ module.exports = (name) => {
             generateSchemas(configInstance.schemas, path.dirname(configInstance.wfjobPath), configInstance.destPath, configInstance.packageName || configInstance.wfjobName, {
                 items: x_pluginsItems, 
                 baseFolder: x_pluginsBaseFolder
-            });
+            })
         }
-    });
+    })
 };

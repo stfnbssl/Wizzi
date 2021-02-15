@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\newpkg.js.ittf
 */
 'use strict';
@@ -16,7 +17,21 @@ module.exports = (callback) =>
                 }
                 return promptNext(promptPkgName, Object.assign({}, type_answers, plugin_answers), callback);
             })}
+        else if (type_answers.pkg_type == 'webpack') {
+            promptWebpack(function(err, webpack_answers) {
+                if (err) {
+                    return callback(err);
+                }
+                if (webpack_answers.webpack_type == 'react') {
+                    type_answers.__template = 'webpack_react'}
+                else if (webpack_answers.webpack_type == 'react_materialui') {
+                    type_answers.__template = 'webpack_react_mui'}
+                else {
+                    type_answers.__template = 'webpack'}
+                return promptNext(promptPkgName, Object.assign({}, type_answers, webpack_answers), callback);
+            })}
         else {
+            // _ type_answers.__template = type_answers.pkg_type
             return promptNext(promptPkgName, type_answers, callback);
         }
     });
@@ -26,7 +41,7 @@ function promptNext(fPrompt, prevAnswers, callback) {
             return callback(err);
         }
         return callback(null, Object.assign({}, prevAnswers, answers));
-    });
+    })
 }
 function promptPkgType(callback) {
     var questions = {
@@ -52,7 +67,7 @@ function promptPkgType(callback) {
         console.log('\nNew package type:');
         console.log(JSON.stringify(answers, null, '  '));
         return callback(null, answers);
-    });
+    })
 }
 function promptWizziPlugin(callback) {
     var questions = {
@@ -74,7 +89,28 @@ function promptWizziPlugin(callback) {
         console.log('\nWizzi plugin type:');
         console.log(JSON.stringify(answers, null, '  '));
         return callback(null, answers);
-    });
+    })
+}
+function promptWebpack(callback) {
+    var questions = {
+        type: 'list', 
+        name: 'webpack_type', 
+        message: 'What kind of webpack package do you want create?', 
+        choices: [
+            'Pure_Js_Html_Css', 
+            'React', 
+            'React_MaterialUI', 
+            'Go_Back'
+        ], 
+        filter: function(val) {
+            return val.toLowerCase();
+        }
+    };
+    inquirer.prompt(questions).then((answers) => {
+        console.log('\nNew webpack package type:');
+        console.log(JSON.stringify(answers, null, '  '));
+        return callback(null, answers);
+    })
 }
 function promptPkgName(callback) {
     var questions = [
@@ -107,13 +143,13 @@ function promptPkgName(callback) {
                     return callback(err);
                 }
                 return callback(null, Object.assign({}, answers, info_answers));
-            });
+            })
         }
         else {
             delete answers.pkg_enterinfo
             return callback(null, answers);
         }
-    });
+    })
 }
 function promptPkgInfo(callback) {
     var questions = [
@@ -145,5 +181,5 @@ function promptPkgInfo(callback) {
         console.log('\nNew package info:');
         console.log(JSON.stringify(answers, null, '  '));
         return callback(null, answers);
-    });
+    })
 }

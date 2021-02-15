@@ -10,6 +10,36 @@
 	set module.exports
 		=>
 			param args
+            $*
+            return
+                _ wizzi.genFolder
+                    _ path.join
+                        @ __dirname
+                        @ '..'
+                        @ 'resources'
+                        @ 'create'
+                        @ 'templates'
+                        $$ @ 'webpack_react_mui'
+                        @ 'webpack'
+                        $$ @ 'pure_nodejs'
+                    {
+                        { cliCtx 
+                            $$ @ pkg_name "gamma"
+                            @ pkg_name "beta"
+                            $$ @ pkg_name "alpha"
+                    {
+                        @ destFolder
+                            _ path.join
+                                _ process.cwd
+                                $$ @ 'gamma'
+                                @ 'beta'
+                                $$ @ 'alpha'
+                        @ copyInclude ['*']
+                        @ copyExclude []
+                    f_cb_test(genFolderResult)
+                        log 'genFolderResult', genFolderResult            
+                        return
+            *$
 
             _ newpkg
                 =>
@@ -53,9 +83,9 @@
                                     @ 'resources'
                                     @ 'create'
                                     @ 'templates'
-                                    @ answers.pkg_type
+                                    @ answers.__template
                                 {
-                                    @ ctx jsonctx
+                                    @ cliCtx jsonctx
 
                                 {
                                     @ destFolder

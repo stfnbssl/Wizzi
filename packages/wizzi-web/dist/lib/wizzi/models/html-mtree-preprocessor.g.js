@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\wizzi\models\html-mtree-preprocessor.g.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\wizzi\models\html-mtree-preprocessor.g.js.ittf
 */
 'use strict';
 var HtmlJsPreprocessor = require('./html-js-mtre-preprocessor.g');
@@ -36,9 +37,9 @@ function preprocessNode(node, state) {
             wrapChilds(node, {
                 n: 'css', 
                 v: ''
-            });
+            })
             if (scoped) {
-                node.children.push(scoped);
+                node.children.push(scoped)
             }
             return true;
         }
@@ -56,9 +57,9 @@ function preprocessNode(node, state) {
                         v: 'react'
                     }
                 ]
-            });
+            })
             if (type) {
-                node.children.push(type);
+                node.children.push(type)
             }
         }
         HtmlJsPreprocessor(node);
@@ -73,7 +74,7 @@ function preprocessNode(node, state) {
                 children: [
                     
                 ]
-            });
+            })
         }
         return true;
     }
@@ -86,7 +87,7 @@ function preprocessNode(node, state) {
                 children: [
                     
                 ]
-            });
+            })
         }
         return true;
     }
@@ -171,7 +172,7 @@ function processIttf(node) {
     var i, i_items=node.children, i_len=node.children.length, child;
     for (i=0; i<i_len; i++) {
         child = node.children[i];
-        processIttf(child);
+        processIttf(child)
     }
     return node;
 }
@@ -218,28 +219,28 @@ function extractRemove(node, n) {
         if (item.n === n) {
         }
         else {
-            node.children.push(item);
+            node.children.push(item)
         }
     }
 }
 function wrapChilds(node, newN) {
     // log 'wrapChild', node.children
-    copyNodeAttrsDeep(node, newN);
+    copyNodeAttrsDeep(node, newN)
     var children = node.children;
     newN.parent = node.parent;
     node.children = [ newN ];
     var i, i_items=children, i_len=children.length, item;
     for (i=0; i<i_len; i++) {
         item = children[i];
-        newN.children.push(item);
+        newN.children.push(item)
     }
 }
 function copyNodeAttrsDeep(nfrom, nto) {
-    copyNodeAttrs(nfrom, nto);
+    copyNodeAttrs(nfrom, nto)
     var i, i_items=nto.children, i_len=nto.children.length, item;
     for (i=0; i<i_len; i++) {
         item = nto.children[i];
-        copyNodeAttrsDeep(nfrom, item);
+        copyNodeAttrsDeep(nfrom, item)
     }
 }
 function copyNodeAttrs(nfrom, nto) {

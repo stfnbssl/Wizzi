@@ -2,14 +2,16 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\examples\beta\.wizzi\src\index.js.ittf
-    utc time: Fri, 12 Feb 2021 07:20:56 GMT
+    utc time: Mon, 15 Feb 2021 13:20:08 GMT
 */
 'use strict';
 // for module hotReplacement
 // see https://nativescript.org/blog/deep-dive-into-hot-module-replacement-with-webpack-part-two-handling-updates/
+
 import hjsMe from './print.js';
 import './highlight.default.min.css';
 import './index.css';
+
 function page() {
     const element = panel('main');
     const fa_panel = panel('fa-panel');
@@ -34,6 +36,7 @@ function page() {
     element.appendChild(codePanel(htmlCode))
     return element;
 }
+
 function panel(cn, innerHTML) {
     const element = document.createElement('div');
     element.className = cn;
@@ -42,11 +45,13 @@ function panel(cn, innerHTML) {
     }
     return element;
 }
+
 function icon(name) {
     const element = document.createElement('i');
     element.className = 'fas fa-' + name + ' fa-5x';
     return element;
 }
+
 function codePanel(innerHTML) {
     const element = document.createElement('div');
     element.className = 'code-panel';
@@ -58,8 +63,10 @@ function codePanel(innerHTML) {
     element.appendChild(e_pre)
     return element;
 }
+
 const rootElement = page();
 document.body.appendChild(rootElement)
+
 if (module.hot) {
     module.hot.accept([
         './print.js'

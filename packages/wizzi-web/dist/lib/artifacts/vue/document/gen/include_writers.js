@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\vue\document\gen\include_writers.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\vue\document\gen\include_writers.js.ittf
 */
 'use strict';
 
@@ -28,8 +29,8 @@ md.writeIncludeCss = function(ctx, model, callback) {
             ctx.deindent();
             ctx.w('</style>');
             callback();
-        });
-    });
+        })
+    })
 };
 md.generateCssArtifact = function(ctx, cssModel, callback) {
     // log myname, 3
@@ -42,7 +43,7 @@ md.generateCssArtifact = function(ctx, cssModel, callback) {
         }
         // log myname, 'css artifactText', artifactText
         return callback(null, artifactText);
-    });
+    })
 };
 md.writeIncludeJs = function(ctx, element, callback) {
     // log myname, 'enter writeIncludeJs'
@@ -66,8 +67,8 @@ md.writeIncludeJs = function(ctx, element, callback) {
             ctx.deindent();
             ctx.w('</script>');
             return callback();
-        });
-    });
+        })
+    })
 };
 md.writeIncludeTypescript = function(ctx, element, callback) {
     // log myname, 'enter writeIncludeTypescript'
@@ -91,8 +92,8 @@ md.writeIncludeTypescript = function(ctx, element, callback) {
             ctx.deindent();
             ctx.w('</script>');
             return callback();
-        });
-    });
+        })
+    })
 };
 md.writeIncludeHtml = function(ctx, element, callback) {
     // log myname, 'enter writeIncludeHtml'
@@ -114,6 +115,6 @@ md.writeIncludeHtml = function(ctx, element, callback) {
             ctx.deindent();
             ctx.w('</template>');
             return callback();
-        });
-    });
+        })
+    })
 };

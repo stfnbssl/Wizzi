@@ -1,17 +1,7 @@
 {
-    "name": "alpha",
-    "version": "0.0.1",
-    "author": {
-        "name": "",
-        "email": ""
-    },
+    "name": "",
+    "version": "",
     "private": false,
-    "licenses": [
-        {
-            "type": "",
-            "url": ""
-        }
-    ],
     "main": "",
     "type": "module",
     "scripts": {

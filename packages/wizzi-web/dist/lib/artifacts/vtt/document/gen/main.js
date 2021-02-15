@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\vtt\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\vtt\document\gen\main.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -53,10 +54,10 @@ function getGenItem(ctx) {
                         return callback(err);
                     }
                     return callback(null);
-                });
+                })
             }
             else {
-                callback(ctx.error(myname + " error: model element not managed: " + model.wzElement, model));
+                callback(ctx.error(myname + " error: model element not managed: " + model.wzElement, model))
             }
         };
 }
@@ -73,7 +74,7 @@ function genItems(items, ctx, options, callback) {
             goitems.push({
                 wzElement: 'separator', 
                 wzName: options.sep
-            });
+            })
         }
         goitems.push(items[i]);
     }
@@ -85,12 +86,12 @@ function genItems(items, ctx, options, callback) {
             ctx.deindent();
         }
         return callback(null);
-    });
+    })
 }
 stm.vtt = function(model, ctx, callback) {
     ctx.w( 'WEBVTT' );
     ctx.w();
-    writeComments(ctx, model);
+    writeComments(ctx, model)
     genItems(model.styles, ctx, {
         indent: false, 
         from: 0
@@ -113,12 +114,12 @@ stm.vtt = function(model, ctx, callback) {
                     return callback(err);
                 }
                 return callback(null);
-            });
-        });
-    });
+            })
+        })
+    })
 };
 stm.vttCue = function(model, ctx, callback) {
-    writeComments(ctx, model);
+    writeComments(ctx, model)
     writeCueTime( ctx, model );
     if (typeof model.region !== 'undefined') {
         ctx.write( ' region:' + model.region);
@@ -154,7 +155,7 @@ stm.vttCue = function(model, ctx, callback) {
         }
         ctx.w();
         return callback(null);
-    });
+    })
 };
 stm.cueText = function(model, ctx, callback) {
     ctx.write( model.wzName );
@@ -172,7 +173,7 @@ stm.cueText = function(model, ctx, callback) {
         }
         ctx.isInsideText = saveIsInsideText;
         return callback(null);
-    });
+    })
 };
 stm.p = function(model, ctx, callback) {
     ctx.write( '- ' + model.wzName );
@@ -190,29 +191,29 @@ stm.p = function(model, ctx, callback) {
         }
         ctx.isInsideText = saveIsInsideText;
         return callback(null);
-    });
+    })
 };
 stm.u = function(model, ctx, callback) {
-    writeCueText(ctx, model, 'u', callback);
+    writeCueText(ctx, model, 'u', callback)
 };
 stm.i = function(model, ctx, callback) {
-    writeCueText(ctx, model, 'i', callback);
+    writeCueText(ctx, model, 'i', callback)
 };
 stm.b = function(model, ctx, callback) {
-    writeCueText(ctx, model, 'b', callback);
+    writeCueText(ctx, model, 'b', callback)
 };
 stm.c = function(model, ctx, callback) {
-    writeCueText(ctx, model, 'c', callback);
+    writeCueText(ctx, model, 'c', callback)
 };
 stm.voiceSpan = function(model, ctx, callback) {
-    writeCueText(ctx, model, 'v', callback);
+    writeCueText(ctx, model, 'v', callback)
 };
 stm.lang = function(model, ctx, callback) {
-    writeCueText(ctx, model, 'lang', callback);
+    writeCueText(ctx, model, 'lang', callback)
 };
 stm.time = function(model, ctx, callback) {
     ctx.write( '<' + tag );
-    ctx.write(formatTime( model.wzName ));
+    ctx.write(formatTime( model.wzName ))
     ctx.w('<');
 };
 stm.componentClass = function(model, ctx, callback) {
@@ -230,7 +231,7 @@ stm.style = function(model, ctx, callback) {
         }
         ctx.w();
         return callback(null);
-    });
+    })
 };
 stm.cueRule = function(model, ctx, callback) {
     ctx.w( '::cue(' + model.wzName + ') {' );
@@ -239,7 +240,7 @@ stm.cueRule = function(model, ctx, callback) {
         ctx.deindent();
         ctx.w('}');
         return callback(null);
-    });
+    })
 };
 function getWriteProperty(ctx) {
     return function writeProperty(prop, callback) {
@@ -330,7 +331,7 @@ function getWriteProperty(ctx) {
             else {
                 ctx.w(name + ": " + value + ";");
             }
-            process.nextTick(callback);
+            process.nextTick(callback)
         };
 }
 stm.region = function(model, ctx, callback) {
@@ -394,8 +395,8 @@ function writeCueText(ctx, model, tag, callback) {
             }
             ctx.isInsideText = saveIsInsideText;
             return callback(null);
-        });
-    });
+        })
+    })
 }
 function writeCueTime(ctx, model) {
     if (typeof model.id !== 'undefined') {
@@ -404,9 +405,9 @@ function writeCueTime(ctx, model) {
     var ss = model.wzName.split(' ').filter(function(el) {
         return el != null;
     });
-    ctx.write(formatTime( ss.length == 1 ? 0 : ss[0] ));
-    ctx.write(' --> ');
-    ctx.write(formatTime( ss.length == 1 ? ss[0] : ss[1] ));
+    ctx.write(formatTime( ss.length == 1 ? 0 : ss[0] ))
+    ctx.write(' --> ')
+    ctx.write(formatTime( ss.length == 1 ? ss[0] : ss[1] ))
 }
 function formatTime(t) {
     var ss = t.split(':');

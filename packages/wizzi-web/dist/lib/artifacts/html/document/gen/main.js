@@ -1,13 +1,14 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\html\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\html\document\gen\main.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
 var util = require('util');
 var async = require('async');
 var include_writers = require('./include_writers');
-var verify = require('../../../util/verify');
+var verify = require('wizzi-utils').verify;
 var utilNode = require('../../../util/utilNode');
 var lineParser = require('../../../util/lineParser');
 var lorem = require('wizzi-utils').lorem;
@@ -34,7 +35,7 @@ md.gen = function(model, ctx, callback) {
     }
     // log myname, 'enter', 'ctx.values', ctx.values
     // log myname, 'enter', 'model', util.inspect(model, { depth: 1 })
-    main_init(model, ctx);
+    main_init(model, ctx)
     md.getGenItem(ctx)(model, function(err, notUsed) {
         if (err) {
             return callback(err);
@@ -64,7 +65,7 @@ md.genItems = function(items, ctx, options, callback) {
         }
         genItemsStackCount--;
         return callback();
-    });
+    })
 };
 md.getGenItem = function(ctx) {
     return function(model, callback) {
@@ -89,7 +90,7 @@ md.getGenItem = function(ctx) {
             else if (['_style'].indexOf(model.wzElement) >= 0 && model.get_css) {
                 // must be here because _style with model.get_css undefined
                 // has its handler
-                include_writers.writeIncludeCss(ctx, model, callback);
+                include_writers.writeIncludeCss(ctx, model, callback)
             }
             else if (md.stm[model.wzElement]) {
                 md.stm[model.wzElement](model, ctx, function(err, done) {
@@ -104,7 +105,7 @@ md.getGenItem = function(ctx) {
                         return process.nextTick(() =>
                                 md.stm.standardElement(model, ctx, callback));
                     }
-                });
+                })
             }
             else {
                 return process.nextTick(() =>
@@ -189,7 +190,7 @@ md.stm.standardElement = function(model, ctx, callback) {
                 ctx.w('</' + model.wzTag + '>');
                 postprocess(model, ctx);
                 return callback();
-            });
+            })
         }
         else {
             var noinline = inline.indexOf(model.wzTag) < 0;
@@ -205,7 +206,7 @@ md.stm.standardElement = function(model, ctx, callback) {
                 ctx.w('</' + model.wzTag + '>');
                 postprocess(model, ctx);
                 return callback();
-            });
+            })
         }
     }
     else {
@@ -246,7 +247,7 @@ md.stm.html = function(model, ctx, callback) {
             ctx.w('</html>');
         }
         return callback(null, true);
-    });
+    })
 };
 md.stm.jsBabel = function(model, ctx, callback) {
     if (model.statements.length === 0) {
@@ -282,7 +283,7 @@ md.stm.cssInclude = function(model, ctx, callback) {
             }
             ctx.w("</style>");
             return callback(null, true);
-        });
+        })
     }
     else {
         ctx.w("</style>");
@@ -310,7 +311,7 @@ md.stm.script = function(model, ctx, callback) {
             }
             ctx.w("</script>");
             return callback(null, true);
-        });
+        })
     }
     else {
         md.genItems(model.elements, ctx, {
@@ -321,7 +322,7 @@ md.stm.script = function(model, ctx, callback) {
             }
             ctx.w("</script>");
             return callback(null, true);
-        });
+        })
     }
 };
 md.stm.jsInclude = function(model, ctx, callback) {
@@ -344,7 +345,7 @@ md.stm.jsInclude = function(model, ctx, callback) {
             }
             ctx.w("</script>");
             return callback(null, true);
-        });
+        })
     }
     else {
         ctx.w("</script>");
@@ -388,7 +389,7 @@ md.stm.readyInclude = function(model, ctx, callback) {
                 ctx.w('};');
                 ctx.w("</script>");
                 return callback(null, true);
-            });
+            })
         }
     }
     else {
@@ -436,7 +437,7 @@ md.stm.jsonObjectInclude = function(model, ctx, callback) {
             }
             ctx.w('</script>');
             return callback(null, true);
-        });
+        })
     }
     else {
         return callback(null, false);
@@ -452,7 +453,7 @@ md.stm.jsonArrayInclude = function(model, ctx, callback) {
             }
             ctx.w('</script>');
             return callback(null, true);
-        });
+        })
     }
     else {
         return callback(null, false);
@@ -514,7 +515,7 @@ md.stm.ittfPanel = function(model, ctx, callback) {
         ctx.w("<div>" + result.ittfPretty + '</div>');
         ctx.w("</code></pre></div>");
         return callback(null, true);
-    });
+    })
 };
 md.stm.comment = function(model, ctx, callback) {
     if (ctx.__iscode) {
@@ -537,7 +538,7 @@ md.stm.comment = function(model, ctx, callback) {
     }
     ctx.indent();
     if (model.wzName.length > 0) {
-        ctx.w(model.wzName);
+        ctx.w(model.wzName)
     }
     ctx.__inside_comment = true;
     md.genItems(model.elements, ctx, {
@@ -553,7 +554,7 @@ md.stm.comment = function(model, ctx, callback) {
         }
         ctx.__needs_crlf = false;
         return callback(null, true);
-    });
+    })
 };
 function main_init(model, ctx) {
     if ((!!ctx.values.noGeneratorComments) == false) {
@@ -585,7 +586,7 @@ function prettifyIttf(mTreeData, callback) {
             var i, i_items=item.children, i_len=item.children.length, node;
             for (i=0; i<i_len; i++) {
                 node = item.children[i];
-                ittfNode.children.push(node);
+                ittfNode.children.push(node)
             }
             itemResult[item.n] = mTree.toIttf(item.children[0]);
             itemResult[item.n + 'Wrapped'] = mTree.toIttf(ittfNode);
@@ -597,7 +598,7 @@ function prettifyIttf(mTreeData, callback) {
         var i, i_items=item.children, i_len=item.children.length, node;
         for (i=0; i<i_len; i++) {
             node = item.children[i];
-            ittfNode.children.push(node);
+            ittfNode.children.push(node)
         }
         itemResult[item.n] = mTree.toIttf(item.children[0]);
         itemResult[item.n + 'Wrapped'] = mTree.toIttf(ittfNode);
@@ -609,7 +610,7 @@ function prettifyIttf(mTreeData, callback) {
         itemResult.ittfPretty = pretty;
         console.log('prettifyIttf', itemResult);
         return callback(null, itemResult);
-    });
+    })
 }
 function wrapperForSchema(schema) {
     if (schema === 'js') {
@@ -846,7 +847,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: '.' + method,
+        method: 'wizzi-web@0.7.8.lib.artifacts.html.document.gen.main.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

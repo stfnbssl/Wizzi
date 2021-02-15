@@ -1,11 +1,11 @@
-﻿${'$'}group
+﻿$group
 	+
 	# configureStore is called by the app entry point ( index.js )
 	+
     ${'$'}
         var useMiddlewares = app.Build.react.redux.useThunk || app.Build.react.redux.Logger 
             || app.Build.react.redux.useApiMiddleware
-
+    +
 	${'$'}if useMiddlewares
 		${'$'}if app.Build.react.redux.Compose
 			import { createStore, compose, applyMiddleware } from 'redux'
@@ -28,7 +28,7 @@
 			import { createStore, compose } from 'redux'
 		${'$'}else
 			import { createStore } from 'redux'
-
+    +
 	${'$'}if app.Build.react.redux.Firestore
 		import { firebase as fbConfig } from './config'
 		import firebase from 'firebase/app'
@@ -38,12 +38,12 @@
 		import 'firebase/firestore'
 		import { reactReduxFirebase } from 'react-redux-firebase'
 		import { reduxFirestore } from 'redux-firestore'
-
+    +
 	${'$'}if app.Build.react.redux.useInitialLoad
 		import { initialLoad } from './actions'
-	
+	+
 	import rootReducer from './reducers'
-	
+	+
 	${'$'}if app.Build.react.redux.useDevTools
 		# Get the Redux DevTools extension and fallback to a no-op function
 		let devtools = x => x;
@@ -80,7 +80,7 @@
 							_ createLogger()
 						${'$'}if app.Build.react.redux.useDevTools
 							@ devtools
-
+            +
 			${'$'}if app.Build.react.redux.Compose
 				const createStoreComposed
 					_ compose

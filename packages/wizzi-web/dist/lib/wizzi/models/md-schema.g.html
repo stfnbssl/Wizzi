@@ -42,6 +42,8 @@
                     </li>
                     <li><a href="#element_attribute">attribute</a>
                     </li>
+                    <li><a href="#element_comment">comment</a>
+                    </li>
                     <li><a href="#element_element">element</a>
                     </li>
                     <li><a href="#element_frontmatter">frontmatter</a>
@@ -96,13 +98,15 @@
                     </li>
                     <li><a href="#element_table">table</a>
                     </li>
+                    <li><a href="#element_thead">thead</a>
+                    </li>
                     <li><a href="#element_tbody">tbody</a>
+                    </li>
+                    <li><a href="#element_th">th</a>
                     </li>
                     <li><a href="#element_tr">tr</a>
                     </li>
                     <li><a href="#element_td">td</a>
-                    </li>
-                    <li><a href="#element_th">th</a>
                     </li>
                     <li><a href="#element_quote">quote</a>
                     </li>
@@ -144,6 +148,7 @@
                 <h5>Description</h5>
                 <div>
                     <span>The root element of the markdown schema. &nbsp;</span>
+                    <span>Comments allowed at root level only &nbsp;</span>
                 </div>
                 <h5>Relations</h5>
                 <small>
@@ -167,6 +172,14 @@
                                 <td></td>
                                 <td></td>
                             </tr>
+                            <tr>
+                                <td>comment</td>
+                                <td>comments</td>
+                                <td>one-to-many</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         </tbody>
                     </table>
                 </small>
@@ -185,6 +198,26 @@
                                 <b>attribute</b>
                             </td>
                             <td>@</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table id="element_comment" class="pretty-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Tag</th>
+                            <th>Super</th>
+                            <th>Flags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>comment</b>
+                            </td>
+                            <td>#</td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -1701,6 +1734,59 @@
                         </tbody>
                     </table>
                 </small>
+                <table id="element_thead" class="pretty-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Tag</th>
+                            <th>Super</th>
+                            <th>Flags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>thead</b>
+                            </td>
+                            <td>thead</td>
+                            <td>element</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Relations</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Cardinality</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>attribute</td>
+                                <td>attributes</td>
+                                <td>one-to-many</td>
+                                <td>element</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>element</td>
+                                <td>elements</td>
+                                <td>one-to-many</td>
+                                <td>element</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
                 <table id="element_tbody" class="pretty-table">
                     <thead>
                         <tr>
@@ -1716,6 +1802,59 @@
                                 <b>tbody</b>
                             </td>
                             <td>tbody</td>
+                            <td>element</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Relations</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Cardinality</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>attribute</td>
+                                <td>attributes</td>
+                                <td>one-to-many</td>
+                                <td>element</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>element</td>
+                                <td>elements</td>
+                                <td>one-to-many</td>
+                                <td>element</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
+                <table id="element_th" class="pretty-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Tag</th>
+                            <th>Super</th>
+                            <th>Flags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>th</b>
+                            </td>
+                            <td>th</td>
                             <td>element</td>
                             <td></td>
                         </tr>
@@ -1822,59 +1961,6 @@
                                 <b>td</b>
                             </td>
                             <td>td</td>
-                            <td>element</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>attribute</td>
-                                <td>attributes</td>
-                                <td>one-to-many</td>
-                                <td>element</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>element</td>
-                                <td>elements</td>
-                                <td>one-to-many</td>
-                                <td>element</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <table id="element_th" class="pretty-table">
-                    <thead>
-                        <tr>
-                            <th>Element</th>
-                            <th>Tag</th>
-                            <th>Super</th>
-                            <th>Flags</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <b>th</b>
-                            </td>
-                            <td>th</td>
                             <td>element</td>
                             <td></td>
                         </tr>

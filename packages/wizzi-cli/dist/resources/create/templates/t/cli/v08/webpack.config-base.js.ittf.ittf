@@ -1,0 +1,32 @@
+$group
+
+    $
+        var mix = '(&jobCtx)';
+
+    v08/webpack/imports${mix}
+
+	set module.exports
+		{
+            @ mode "development"
+			[ entry
+				@ './src/index.js'
+			
+			{ module
+				[ rules
+                    v08/webpack/module.rules${mix}
+
+			{ resolve
+                v08/webpack/resolve${mix}
+			
+			{ output
+				@ path path.resolve(__dirname, '..', 'dist', 'scripts')
+				@ filename '${'$'}{wzCtx.name}.js'
+                v08/webpack/output${mix}
+			
+			[ plugins
+                v08/webpack/plugins${mix}
+			
+			@ devtool 'cheap-module-source-map'
+			
+			{ devServer
+                v08/webpack/devServer${mix}

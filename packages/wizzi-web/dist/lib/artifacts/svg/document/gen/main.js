@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\svg\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\svg\document\gen\main.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -69,7 +70,7 @@ md.genItems = function(items, ctx, options, callback) {
             ctx.deindent();
         }
         return callback();
-    });
+    })
 };
 md.getGenItem = function(ctx) {
     return function(model, callback) {
@@ -86,7 +87,7 @@ md.getGenItem = function(ctx) {
                     else {
                         return md.stm.standardElement(model, ctx, callback);
                     }
-                });
+                })
             }
             else {
                 return md.stm.standardElement(model, ctx, callback);
@@ -95,10 +96,10 @@ md.getGenItem = function(ctx) {
 };
 md.stm.standardElement = function(model, ctx, callback) {
     // log '***** standard element', model.wzElement
-    writeBeginTag(ctx, model.wzTag);
+    writeBeginTag(ctx, model.wzTag)
     writeAttributes(model, ctx);
     if (model.items.length > 0) {
-        writeCloseBegin(ctx);
+        writeCloseBegin(ctx)
         if (model.wzName && model.wzName.length > 0) {
             ctx.write(model.wzName);
         }
@@ -108,14 +109,14 @@ md.stm.standardElement = function(model, ctx, callback) {
             if (err) {
                 return callback(err);
             }
-            writeEndTag(ctx, model.wzTag);
+            writeEndTag(ctx, model.wzTag)
             return callback();
-        });
+        })
     }
     else {
-        ctx.write(closeSym(ctx));
-        ctx.write((model.wzName && model.wzName.length > 0 ? model.wzName : ''));
-        writeEndTag(ctx, model.wzTag);
+        ctx.write(closeSym(ctx))
+        ctx.write((model.wzName && model.wzName.length > 0 ? model.wzName : ''))
+        writeEndTag(ctx, model.wzTag)
         return callback();
     }
 };
@@ -125,27 +126,27 @@ md.stm.svg = function(model, ctx, callback) {
     else {
         ctx.w('<?xml version="1.0"?>');
     }
-    writeBeginTag(ctx, 'svg');
+    writeBeginTag(ctx, 'svg')
     ctx.write(" xmlns='http://www.w3.org/2000/svg'");
     writeAttributes(model, ctx);
-    writeCloseBegin(ctx);
+    writeCloseBegin(ctx)
     md.genItems(model.items, ctx, {
         indent: true
     }, function(err, notUsed) {
         if (err) {
             return callback(err);
         }
-        writeEndTag(ctx, 'svg');
+        writeEndTag(ctx, 'svg')
         callback(null, true);
-    });
+    })
 };
 /**
     md.stm.linearGradient = function(model, ctx, callback) {
-        writeBeginTag(ctx, 'linearGradient');
+        writeBeginTag(ctx, 'linearGradient')
         writeAttributes(model, ctx);
-        writeCloseBegin(ctx);
+        writeCloseBegin(ctx)
          TODO
-        writeEndTag(ctx, 'linearGradient', callback(null, true));
+        writeEndTag(ctx, 'linearGradient', callback(null, true))
     }*/
 function writeAttributes(model, ctx) {
     var v;
@@ -153,7 +154,7 @@ function writeAttributes(model, ctx) {
     for (i=0; i<i_len; i++) {
         a = model.getAttributes()[i];
         v = encodeValue(ctx, a.value);
-        ctx.write(" " + a.name + "='" + v + "'");
+        ctx.write(" " + a.name + "='" + v + "'")
     }
     if (model.attributes) {
         var i, i_items=model.attributes, i_len=model.attributes.length, a;
@@ -161,10 +162,10 @@ function writeAttributes(model, ctx) {
             a = model.attributes[i];
             var p = lineParser.parseNameValueRaw(a.wzName, a);
             if (p.hasValue()) {
-                ctx.write(" " + p.name() + "='" + p.value() + "'");
+                ctx.write(" " + p.name() + "='" + p.value() + "'")
             }
             else {
-                ctx.write(" " + p.name());
+                ctx.write(" " + p.name())
             }
         }
     }
@@ -175,9 +176,9 @@ function writeAttributes(model, ctx) {
         for (i=0; i<i_len; i++) {
             style = styles[i];
             v = encodeValue(ctx, style.value);
-            sb.push(style.tag + ':' + v + ';');
+            sb.push(style.tag + ':' + v + ';')
         }
-        ctx.write(" style='" + sb.join('') + "'");
+        ctx.write(" style='" + sb.join('') + "'")
     }
 }
 function encodeValue(ctx, value) {
@@ -196,22 +197,22 @@ function closeSym(ctx) {
     return ctx.values.forCssImage ? '%3E' : '>';
 }
 function writeBeginTag(ctx, name) {
-    ctx.write(openSym(ctx) + name);
+    ctx.write(openSym(ctx) + name)
 }
 function writeCloseBegin(ctx) {
     if (ctx.values.forCssImage) {
-        ctx.write(closeSym(ctx));
+        ctx.write(closeSym(ctx))
     }
     else {
-        ctx.w(closeSym(ctx));
+        ctx.w(closeSym(ctx))
     }
 }
 function writeEndTag(ctx, name) {
     if (name) {
-        __w(ctx, openSym(ctx) + '/' + name + closeSym(ctx));
+        __w(ctx, openSym(ctx) + '/' + name + closeSym(ctx))
     }
     else {
-        __w(ctx, '/' + closeSym(ctx));
+        __w(ctx, '/' + closeSym(ctx))
     }
 }
 function __w(ctx, text) {

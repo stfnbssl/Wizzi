@@ -1,5 +1,6 @@
 {
     "name": "wizzi-web",
+    "sideEffects": false,
     "version": "0.7.8",
     "description": "A wizzi default plugin for html css svg markdown",
     "author": {

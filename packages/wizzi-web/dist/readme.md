@@ -120,6 +120,9 @@ no<td>
 <td>
 
 <table>
+<tr>
+<td>graphql/document</td>
+</tr>
 </table>
 
 </tr>

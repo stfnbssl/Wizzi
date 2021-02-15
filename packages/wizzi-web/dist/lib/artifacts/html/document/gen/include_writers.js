@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\html\document\gen\include_writers.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\html\document\gen\include_writers.js.ittf
 */
 'use strict';
 
@@ -32,9 +33,9 @@ md.writeIncludeCssLegacy = function(ctx, model, callback) {
                 ctx.deindent();
                 ctx.w('</style>');
                 callback();
-            });
+            })
         }
-    });
+    })
 };
 md.generateCssArtifact = function(ctx, cssModel, callback) {
     // log myname, 3
@@ -47,7 +48,7 @@ md.generateCssArtifact = function(ctx, cssModel, callback) {
         }
         // log myname, 'css artifactText', artifactText
         return callback(null, artifactText);
-    });
+    })
 };
 md.writeIncludeCss = function(ctx, element, callback) {
     // log myname, 'enter writeIncludeJs'
@@ -68,8 +69,8 @@ md.writeIncludeCss = function(ctx, element, callback) {
             ctx.writeAligned(artifactText);
             ctx.deindent();
             return callback();
-        });
-    });
+        })
+    })
 };
 md.writeIncludeJs = function(ctx, element, callback) {
     // log myname, 'enter writeIncludeJs'
@@ -91,8 +92,8 @@ md.writeIncludeJs = function(ctx, element, callback) {
             ctx.writeAligned(artifactText);
             ctx.deindent();
             return callback();
-        });
-    });
+        })
+    })
 };
 md.writeIncludeSvg = function(ctx, element, callback) {
     // log myname, 'enter writeIncludeSvg'
@@ -112,8 +113,8 @@ md.writeIncludeSvg = function(ctx, element, callback) {
             ctx.writeAligned(artifactText);
             ctx.deindent();
             return callback();
-        });
-    });
+        })
+    })
 };
 md.writeIncludeJson = function(ctx, element, callback) {
     // log myname, 'enter writeIncludeSvg'
@@ -133,6 +134,6 @@ md.writeIncludeJson = function(ctx, element, callback) {
             ctx.writeAligned(artifactText);
             ctx.deindent();
             return callback();
-        });
-    });
+        })
+    })
 };

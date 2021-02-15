@@ -1,18 +1,22 @@
-wfjob beta/job
-    ---
+wfjob /job
+    
     $
         var jobCtx = {
             ittf_models_folder: path.join(__dirname, 'models'),
             ittf_src_folder: path.join(__dirname, 'src'),
             ittf_root_folder: path.join(__dirname, 'root'),
             dest_folder: path.join(__dirname, '..', 'dist'),
-            job_model: 'pkg'
+            job_model: 'wzCtx'
         }
-    ---
-    model pkg
+    
+    model ${jobCtx.job_model}
         schema json
-        src ${jobCtx.ittf_models_folder}/pkg.json.ittf
-    ---
+        src ${jobCtx.ittf_models_folder}/wzctx.json.ittf
+    
+    line ittf-models
+        cwd-folder ${jobCtx.ittf_models_folder}
+        wfjobs(any_json, &jobCtx)
+    
     line ittf-root
         cwd-folder ${jobCtx.ittf_root_folder}
         wfjobs(any_js, &jobCtx)
@@ -20,7 +24,7 @@ wfjob beta/job
         wfjobs(any_md, &jobCtx)
         wfjobs(.babelrc, &jobCtx)
         wfjobs(.gitignore, &jobCtx)
-    ---
+    
     line ittf-src
         cwd-folder ${jobCtx.ittf_src_folder}
         dest-folder ${jobCtx.dest_folder}/src
@@ -30,8 +34,9 @@ wfjob beta/job
         wfjobs(any_plain, &jobCtx, js)
         wfjobs(any_plain, &jobCtx, html)
         wfjobs(any_plain, &jobCtx, css)
-    ---
+    
     production
         dest-folder ${jobCtx.dest_folder}
+        line-ref ittf-models
         line-ref ittf-root
         line-ref ittf-src

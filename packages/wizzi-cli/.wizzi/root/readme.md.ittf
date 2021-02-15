@@ -1,3 +1,54 @@
 ﻿common/kernel( wizzi-cli, The wizzi factory command line interface. )
     code sh
         + npm install -g wizzi-cli
+
+    h1 wizzi-cli
+    p The Wizzi command line interface (CLI) is used to perform basic functionality, 
+        \b such as executing a Wizzi production, 
+        \b creating a Wizzi production package based on a starter,
+        \b wizzifying an existent artifact or a folder of artifacts. 
+
+    p The Wizzi CLI (`wizzi-cli`) is packaged as an executable that can be used globally. 
+        \b The Wizzi CLI is available via [npm](https://www.npmjs.com/) and should be installed globally 
+        \b by running
+    code sh
+        + npm install -g wizzi-cli
+
+    p Run `wizzi --help` for full help.
+
+    h2 CLI Commands
+    ul
+        li 
+            a generate
+                href #generate
+        li 
+            a create
+                href #create
+        li 
+            a fy
+                href #fy
+
+
+    h3 `generate`
+    code sh
+        + wizzi
+    
+    h3 `create`
+    code sh
+        + wizzi create
+    
+    h3 `fy`
+    code sh
+        + wizzi fy
+
+    table
+        thead
+            th Argument
+            th Description                                                                                                                                                                                                                             |
+        tbody
+            tr
+                td --source|-s <file|folder>
+                td the source file or folder
+            tr
+                td --dest|-d <file|folder>
+                td the destination file or folder

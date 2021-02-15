@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\wizzi\models\html-js-mtre-preprocessor.g.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\wizzi\models\html-js-mtre-preprocessor.g.js.ittf
 */
 'use strict';
 // Those of facebook react
@@ -67,7 +68,7 @@ module.exports = function(node) {
             var j, j_items=children, j_len=children.length, c;
             for (j=0; j<j_len; j++) {
                 c = children[j];
-                item.to.children.push(c);
+                item.to.children.push(c)
             }
         }
     }
@@ -94,21 +95,21 @@ function preprocessNode(node, state) {
     // log 'js-mtree-processor preprocessNode', node.n, node.v, state.htmlOn, state.svgOn
     if (node.n === 'async-m') {
         node.n = 'm';
-        addAttr(state, node, 'async');
+        addAttr(state, node, 'async')
     }
     else if (node.n === 'async=>*') {
         node.n = '=>';
-        addAttr(state, node, 'async');
-        addAttr(state, node, 'generator');
+        addAttr(state, node, 'async')
+        addAttr(state, node, 'generator')
     }
     else if (node.n === 'async=>') {
         node.n = '=>';
-        addAttr(state, node, 'async');
+        addAttr(state, node, 'async')
     }
     else if (node.n === 'async=>*') {
         node.n = '=>';
-        addAttr(state, node, 'async');
-        addAttr(state, node, 'generator');
+        addAttr(state, node, 'async')
+        addAttr(state, node, 'generator')
     }
     if (state.svgOn) {
         // log 'js-mtree-processor svgOn', node.n, node.v
@@ -152,5 +153,5 @@ function addAttr(state, node, attr) {
         to: node, 
         n: attr, 
         v: ''
-    });
+    })
 }

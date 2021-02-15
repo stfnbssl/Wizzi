@@ -1,4 +1,4 @@
 {
-    $include package-info.json
+    $include cli/v08/package-info.json
     { scripts
         start "node index"

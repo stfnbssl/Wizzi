@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\scss\document\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\.wizzi\ittf\lib\artifacts\scss\document\gen\main.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -53,10 +54,10 @@ function getGenItem(ctx) {
                         return callback(err);
                     }
                     return callback(null);
-                });
+                })
             }
             else {
-                callback(ctx.error(myname + " error: model element not managed: " + model.wzElement, model));
+                callback(ctx.error(myname + " error: model element not managed: " + model.wzElement, model))
             }
         };
 }
@@ -73,7 +74,7 @@ function genItems(items, ctx, options, callback) {
             goitems.push({
                 wzElement: 'separator', 
                 wzName: options.sep
-            });
+            })
         }
         goitems.push(items[i]);
     }
@@ -85,7 +86,7 @@ function genItems(items, ctx, options, callback) {
             ctx.deindent();
         }
         return callback(null);
-    });
+    })
 }
 stm.scss = function(model, ctx, callback) {
     genItems(model.rules, ctx, {
@@ -96,7 +97,7 @@ stm.scss = function(model, ctx, callback) {
             return callback(err);
         }
         return callback(null);
-    });
+    })
 };
 stm.typeRule = function(model, ctx, callback) {
     writeOpenRule( ctx, '', model );
@@ -109,7 +110,7 @@ stm.typeRule = function(model, ctx, callback) {
         }
         ctx.w( '}' );
         return callback(null);
-    });
+    })
 };
 stm.idRule = function(model, ctx, callback) {
     writeOpenRule( ctx, '#', model );
@@ -122,7 +123,7 @@ stm.idRule = function(model, ctx, callback) {
         }
         ctx.w( '}' );
         return callback(null);
-    });
+    })
 };
 stm.classRule = function(model, ctx, callback) {
     writeOpenRule( ctx, '.', model );
@@ -135,7 +136,7 @@ stm.classRule = function(model, ctx, callback) {
         }
         ctx.w( '}' );
         return callback(null);
-    });
+    })
 };
 stm.parentRule = function(model, ctx, callback) {
     ctx.w( model.getValue() + ' {');
@@ -148,11 +149,11 @@ stm.parentRule = function(model, ctx, callback) {
         }
         ctx.w( '}' );
         return callback(null);
-    });
+    })
 };
 stm.combinator = function(model, ctx, callback) {
     if (model.pseudoClasses.length < 1) {
-        callback(ctx.error(myname + " error: combinator must have psedoClasses", model));
+        callback(ctx.error(myname + " error: combinator must have psedoClasses", model))
     }
     ctx.write( '>' );
     var i, i_items=model.pseudoClasses, i_len=model.pseudoClasses.length, item;
@@ -173,7 +174,7 @@ stm.combinator = function(model, ctx, callback) {
         }
         ctx.w( '}' );
         return callback(null);
-    });
+    })
 };
 stm.propertyRule = function(model, ctx, callback) {
     var p = lineParser.parseNameValueRaw(model.wzName, model);
@@ -216,13 +217,13 @@ stm.includeRule = function(model, ctx, callback) {
                     }
                     ctx.w( '}' );
                     return callback(null);
-                });
+                })
             }
             else {
                 ctx.w( ');' );
                 return callback(null);
             }
-        });
+        })
     }
     else {
         if (model.block) {
@@ -236,7 +237,7 @@ stm.includeRule = function(model, ctx, callback) {
                 }
                 ctx.w( '}' );
                 return callback(null);
-            });
+            })
         }
         else {
             ctx.w();
@@ -255,7 +256,7 @@ stm.mixinRule = function(model, ctx, callback) {
         }
         ctx.w('}');
         return callback(null);
-    });
+    })
 };
 stm.forRule = function(model, ctx, callback) {
     ctx.w( '@for ' + model.wzName + ' {');
@@ -268,7 +269,7 @@ stm.forRule = function(model, ctx, callback) {
         }
         ctx.w('}');
         return callback(null);
-    });
+    })
 };
 stm.eachRule = function(model, ctx, callback) {
     ctx.w( '@each ' + model.wzName + ' {');
@@ -281,7 +282,7 @@ stm.eachRule = function(model, ctx, callback) {
         }
         ctx.w('}');
         return callback(null);
-    });
+    })
 };
 stm.whileRule = function(model, ctx, callback) {
     ctx.w( '@while ' + model.wzName + ' {');
@@ -294,7 +295,7 @@ stm.whileRule = function(model, ctx, callback) {
         }
         ctx.w('}');
         return callback(null);
-    });
+    })
 };
 stm.functionRule = function(model, ctx, callback) {
     ctx.w( '@function ' + model.wzName + '(' + model.paramNames.join(', ') + ') {');
@@ -307,7 +308,7 @@ stm.functionRule = function(model, ctx, callback) {
         }
         ctx.w('}');
         return callback(null);
-    });
+    })
 };
 stm.returnRule = function(model, ctx, callback) {
     ctx.w( '@return ' + model.wzName + ';');
@@ -325,7 +326,7 @@ stm.callRule = function(model, ctx, callback) {
         }
         ctx.write(')');
         return callback(null);
-    });
+    })
 };
 stm.setRule = function(model, ctx, callback) {
     var p = lineParser.parseNameValueRaw(model.wzName, model);

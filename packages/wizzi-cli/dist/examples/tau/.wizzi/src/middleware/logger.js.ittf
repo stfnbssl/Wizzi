@@ -1,0 +1,9 @@
+module
+    kind es6
+    $
+        var md = {
+        }
+    $if wzCtx.Build.useLogger
+        v08/express/middlewares/logger(&md)
+    $else
+        # $suppress

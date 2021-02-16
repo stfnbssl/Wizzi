@@ -1,0 +1,7 @@
+module
+    kind es6
+    $
+        var md = {
+        }
+    $if wzCtx.Build.useAuth0
+        v08/express/features/auth0/controllers/auth0Test(&md)

@@ -1,0 +1,12 @@
+$group
+    
+    import 
+        as compression
+        from 'compression'
+    
+    export 
+        const CompressionMiddleware
+            => 
+                param app
+                _ app.use
+                    _ compression

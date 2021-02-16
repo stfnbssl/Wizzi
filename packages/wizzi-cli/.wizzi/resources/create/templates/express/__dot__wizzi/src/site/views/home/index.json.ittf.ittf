@@ -1,0 +1,10 @@
+﻿html
+    $
+        var call = '(&md)';
+    
+    ${'$'}
+        var md = {
+        }
+
+    ${'$'}if wzCtx.Build.useSite
+        v08/express/site/views/home/index${call}

@@ -1,0 +1,5 @@
+$group
+    $params &md
+    import NetlifyRouter from './router'
+    export
+        @ NetlifyRouter

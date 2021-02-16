@@ -10,6 +10,8 @@ $group
     $if wzCtx.Build.useWizzi
         $if wzCtx.Build.wizzi.useSite
             import { siteControllers } from './site'
+    $if wzCtx.Build.useAuth0
+        import { auth } from 'express-openid-connect'
     $* TODO
     import
         @ authControllers

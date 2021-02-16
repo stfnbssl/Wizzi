@@ -1,0 +1,10 @@
+$group
+    import 
+        as wizziFactory
+        from './factory'
+    import 
+        as wizziProds
+        from './productions'
+    export 
+        @ wizziProds
+        @ wizziFactory

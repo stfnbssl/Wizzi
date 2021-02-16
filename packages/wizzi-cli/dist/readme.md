@@ -65,12 +65,12 @@ wizzi fy --source <filepath|folderpath> --dest <filepath|folderpath>
 </tbody>
 </table>
 
-## The Wizzi Factory
+## Wizzi
 
-A model driven artifact factory.
+One machinery, many productions.
 
 
-<p><a href="https://wizzifactory.github.io/">Project page</a></p>
+<p><a href="https://stfnbssl.github.io/wizzi">Project page</a></p>
 
 ## Built With
 * [Nodejs](https://nodejs.org)

@@ -1,0 +1,12 @@
+$group
+
+    import 
+        as cors
+        from 'cors'
+    
+    export 
+        const CorsMiddleware
+            => 
+                param app
+                _ app.use
+                    _ cors

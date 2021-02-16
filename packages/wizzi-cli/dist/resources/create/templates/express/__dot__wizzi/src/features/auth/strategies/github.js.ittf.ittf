@@ -1,0 +1,11 @@
+module
+    kind es6
+    $
+        var call = '(&md)';
+    
+    ${'$'}
+        var md = {
+        }
+
+    ${'$'}if wzCtx.Build.useAuth
+        v08/express/features/auth/strategies/github${call}

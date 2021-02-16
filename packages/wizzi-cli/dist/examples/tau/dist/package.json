@@ -4,13 +4,7 @@
     "private": false,
     "main": "",
     "scripts": {
-        "start": "cross-env NODE_ENV=dev npm-run-all --parallel start:app start:server",
-        "start:app": "react-scripts start",
-        "start:server": "netlify-lambda serve functions",
-        "build": "npm-run-all --parallel build:**",
-        "build:app": "react-scripts build",
-        "build:functions": "netlify-lambda build functions",
-        "test": "react-scripts test --env=jsdom"
+        "start": "set NODE_ENV=development&&nodemon index"
     },
     "dependencies": {
         "aws-serverless-express": "^3.2.0",

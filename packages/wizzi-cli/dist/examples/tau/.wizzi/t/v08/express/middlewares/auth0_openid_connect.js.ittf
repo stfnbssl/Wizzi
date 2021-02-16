@@ -1,0 +1,21 @@
+$group
+    $params &md
+    $if wzCtx.Build.useAuth0
+        import { auth, requiresAuth } from require('express-openid-connect')
+        $hook imports
+        export
+            const Auth0OpenIdConnectMiddleware
+                =>
+                    param app
+                    _ app.use
+                        _ auth
+                            {
+                                $if wzCtx.Build.auth0.authRequired
+                                    @ authRequired true
+                                $else
+                                    @ authRequired false
+                                $if wzCtx.Build.auth0.userInfo
+                                    @ idpLogout true
+                                    { authorizationParams
+                                        @ response_type 'code id_token'
+                    $hook

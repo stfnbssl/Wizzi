@@ -1,0 +1,56 @@
+$group
+    
+    import 
+        @ CookieOptions
+        from 'express'
+    
+    import 
+        as session
+        from 'express-session'
+    
+    import 
+        as mongoSessionStore
+        from 'connect-mongo'
+    
+    import 
+        as mongoose
+        from 'mongoose'
+    
+    import 
+        @ config
+        from '../features/config'
+    
+    export 
+        const SessionMiddleware
+            => 
+                param app
+                const MongoStore = mongoSessionStore(session)
+                const cookieOptions
+                    { 
+                        # serve secure cookies, requires https
+                        @ secure
+                            iif app.get('env') === 'production'
+                                then true
+                                else false
+                        @ httpOnly true
+                        @ maxAge 14 * 24 * 60 * 60 * 1000
+                        # expires in 14 days
+                const sessionOptions
+                    { 
+                        @ name 'packi-backend.sid'
+                        @ secret config.sessionSecret
+                        @ store
+                            new MongoStore
+                                { 
+                                    @ mongooseConnection mongoose.connection
+                                    @ ttl 14 * 24 * 60 * 60
+                                    # save session 14 days
+                        @ cookie cookieOptions
+                        @ resave false
+                        @ saveUninitialized false
+                #
+                    # 
+                    # if !dev
+                    #     server.set('trust proxy', 1); // trust first proxy
+                    # 
+                _ app.use(session(sessionOptions))

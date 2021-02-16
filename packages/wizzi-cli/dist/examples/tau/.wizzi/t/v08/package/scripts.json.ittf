@@ -16,17 +16,20 @@ $group
         serve "gatsby serve"
         clean "gatsby clean"
     $if wzCtx.Build.useExpress
-        $if wzCtx.Build.useLocalServer
-            build "netlify-lambda build ${wzCtx.Build.netlify.functionsFolder}"
-            start "nodemon server-local.js"
-        $else wzctx.Build.useExpress
-            start "cross-env NODE_ENV=dev npm-run-all --parallel start:app start:server"
-            start:app "react-scripts start"
-            start:server "netlify-lambda serve functions"
-            build "npm-run-all --parallel build:**"
-            build:app "react-scripts build"
-            build:functions "netlify-lambda build functions"
-            test "react-scripts test --env=jsdom"
+        $if wzCtx.Build.useNetlify
+            $if wzCtx.Build.useLocalServer
+                build "netlify-lambda build ${wzCtx.Build.netlify.functionsFolder}"
+                start "nodemon server-local.js"
+            $else wzctx.Build.useExpress
+                start "cross-env NODE_ENV=dev npm-run-all --parallel start:app start:server"
+                start:app "react-scripts start"
+                start:server "netlify-lambda serve functions"
+                build "npm-run-all --parallel build:**"
+                build:app "react-scripts build"
+                build:functions "netlify-lambda build functions"
+                test "react-scripts test --env=jsdom"
+        $else
+            start "set NODE_ENV=development&&nodemon index"
     $if wzCtx.Build.useLint
         lint "eslint --debug src/"
         lint:write "eslint --debug src/ --fix"

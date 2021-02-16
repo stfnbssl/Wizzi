@@ -1,9 +1,9 @@
 ﻿$group
 
-	h2 The Wizzi Factory
+	h2 Wizzi
 	br
-	p A model driven artifact factory.
+	p One machinery, many productions.
 	br
 	p
 		a Project page
-			href https://wizzifactory.github.io/
+			href https://stfnbssl.github.io/wizzi

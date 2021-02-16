@@ -1,0 +1,16 @@
+$group
+    $params &md
+    import
+        @ Request
+        @ Response
+        @ RequestHandler
+        from 'express'
+    import
+        as cookieParser
+        from 'cookie-parser'
+    export
+        const CookieMiddleware
+            =>
+                param app
+                _ app.use
+                    _ cookieParser

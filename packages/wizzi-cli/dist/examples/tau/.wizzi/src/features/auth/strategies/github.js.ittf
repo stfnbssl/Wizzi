@@ -1,0 +1,7 @@
+module
+    kind es6
+    $
+        var md = {
+        }
+    $if wzCtx.Build.useAuth
+        v08/express/features/auth/strategies/github(&md)

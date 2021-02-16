@@ -1,0 +1,17 @@
+$group
+    $params &md
+    import
+        as path
+        from 'path'
+    import
+        @ static
+            as expressStatic
+        from 'express'
+    export
+        const StaticFilesMiddleware
+            =>
+                param app
+                log 'StaticFilesMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', '..', 'static')
+                _ app.use('/static', expressStatic(path.resolve(__dirname, '..', '..', '..', 'static')))
+                # simply browse ittfs when IttfDocumentsMiddleware is not used
+                # app.use('/ittf', expressStatic(path.resolve(__dirname, '..', '..', '..', 'ittf')));

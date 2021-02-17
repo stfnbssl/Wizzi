@@ -3,7 +3,7 @@ $group
     import fetch from 'node-fetch'
     import
         @ config
-        from '../config'
+        from '../config/index.js'
     export
         function getManagementApiToken
             return

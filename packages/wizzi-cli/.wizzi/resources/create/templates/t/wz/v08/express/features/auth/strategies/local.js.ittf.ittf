@@ -6,11 +6,11 @@ $group
     
     import 
         @ GetUserModel
-        from '../mongo/user'
+        from '../mongo/user.js'
     
     import 
         @ config
-        from '../../config'
+        from '../../config/index.js'
     
     let userModel
     

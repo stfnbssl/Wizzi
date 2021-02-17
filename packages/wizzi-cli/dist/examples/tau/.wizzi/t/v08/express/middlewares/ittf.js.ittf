@@ -1,5 +1,9 @@
 $group
     $params &md
+    $if wzCtx.type == 'module'
+        import { dirname } from 'path'
+        import { fileURLToPath } from 'url'
+        const __dirname = dirname(fileURLToPath(import.meta.url))
     import
         as stringify
         from 'json-stringify-safe'
@@ -17,16 +21,16 @@ $group
         from 'parseurl'
     import
         @ config
-        from '../features/config'
+        from '../features/config/index.js'
     import
         @ wizziProds
-        from '../features/wizzi'
+        from '../features/wizzi/index.js'
     export
         const IttfDocumentsMiddleware
             =>
                 param app
-                log 'IttfDocumentsMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', '..', 'ittf')
-                _ app.use('/ittf', ittfMiddleware(path.resolve(__dirname, '..', '..', '..', 'ittf'), '/ittf'))
+                log 'IttfDocumentsMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', 'ittf')
+                _ app.use('/ittf', ittfMiddleware(path.resolve(__dirname, '..', '..', 'ittf'), '/ittf'))
     const extContentTypeMap
         {
             @ '.css' 'text/css'
@@ -306,7 +310,7 @@ $group
                 delete obj.evalContext
             if obj.loadContext && obj.sourceKey
                 delete obj.loadContext
-            for in obj
+            for k in obj
                 var item = obj[k]
                 if !item
                     delete obj[k]
@@ -322,13 +326,11 @@ $group
         param options
         set options = options || {}
         const code = options.code || 999
-        let errEmit
-            :any
-            @id err
-        opdelete errEmit.__is_error
+        let errEmit = err
+        delete errEmit.__is_error
         if options.format === 'string'
             if typeof err !== 'string'
-                set err =
+                set err
                     _ util.inspect
                         @ err
                         {

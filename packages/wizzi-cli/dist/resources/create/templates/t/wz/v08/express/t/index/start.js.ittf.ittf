@@ -3,23 +3,26 @@ $group
     ${'$'}if wzCtx.Build.useMongoDb
         let modelBuilders
             [ 
-                ${'$'}* TODO
-                @ ...authModelBuilders
-                @ ...blogModelBuilders
-                *${'$'}
+                ${'$'}if wzCtx.Build.useAuth
+                    @ ...authModelBuilders
+                ${'$'}if wzCtx.Build.useBlog
+                    @ ...blogModelBuilders
         await mongodbStart(config, modelBuilders)
+        +
     let middlewares
         [ 
             @ ...appMiddlewares
+        +
     let controllers
         [ 
-            ${'$'}if wzCtx.Build.useWizzi
-                ${'$'}if wzCtx.Build.wizzi.useSite
-                    @ ...siteControllers
-            ${'$'}* TODO
-            @ ...authControllers
-            @ ...blogControllers
-            *${'$'}
+            ${'$'}if wzCtx.Build.useSite
+                @ ...siteControllers
+            ${'$'}if wzCtx.Build.useAuth
+                @ ...authControllers
+            ${'$'}if wzCtx.Build.useBlog
+                @ ...blogControllers
+        +
+    log 'Starting app. Config:', config
     const appInitializer
         { 
             @ config

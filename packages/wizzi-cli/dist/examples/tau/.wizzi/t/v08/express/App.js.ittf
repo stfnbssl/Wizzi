@@ -53,7 +53,7 @@ $group
                     _ console.log
                         `lit
                             + App listening at http://localhost:
-                            @ port
+                            @ usedPort
                             +
     $if wzCtx.Build.useNetlify == false
         export-default App

@@ -1,15 +1,19 @@
 $group
     $
-        var call = '(&md)'
+        var callG1 = '$'+ "{call}";
+        var dollarG1 = '$'+ "{'$'}";
 
-    v08/express/site/views/t/layout${call}
+    ${'$'}
+        var call = '(&md)';
+
+    v08/express/site/views/t/layout${callG1}
         . w3-card-4
-            h1 Welcome ${'$'}{user.nickname}
+            h1 Welcome ${dollarG1}{user.nickname}
             img
-                src ${'$'}{user.picture}
+                src ${dollarG1}{user.picture}
             h2 User profile
             p This is the content of <code>req.user</code>.
             p Note: <code>_raw</code> and <code>_json</code> properties have been ommited.
             pre
                 code
-                    + ${'$'}{JSON.stringify(user, null, 2)}
+                    + ${dollarG1}{JSON.stringify(user, null, 2)}

@@ -1,17 +1,28 @@
 {
     $include cli/v08/wzctx-info.json
+    type "module"
 
     { Build
         useExpress true
         { express
+        useSite true
+        { site
+            useViews false
+            { views
+            useIttfDocuments true
+            { ittfDocuments
         useNetlify false
         { netlify
+        useWizzi true
+        { wizzi
         useAuth0 false
         { auth0
             authRequired false
             userInfo false
         useLogger false
         { logger
+            useMorgan false
+            { morgan
         useCors false
         { cors
         useSession false
@@ -20,15 +31,15 @@
         { passport
         usePassportAuth0 false
         { passportAuth0
-        useIttf false
-        { ittf
         useCompression false
         { compression
         useHelmet false
         { helmet
-        useStaticFiles false
+        useStaticFiles true
         { staticFiles
         useWizziViewEngine false
         { wizziViewEngine
         useWebpackApp false
         { webpackApp
+        useErrors false
+        { errors

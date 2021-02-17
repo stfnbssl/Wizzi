@@ -1,12 +1,6 @@
 $group
     $params &md
     import
-        @ Request
-        @ Response
-        @ RequestHandler
-        @ CookieOptions
-        from 'express'
-    import
         as passport
         from 'passport'
     import

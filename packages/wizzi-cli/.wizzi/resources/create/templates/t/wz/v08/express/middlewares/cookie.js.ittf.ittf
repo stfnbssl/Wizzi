@@ -1,14 +1,10 @@
 $group
     
-    import
-        @ Request
-        @ Response
-        @ RequestHandler
-        from 'express'
-    
     import 
         as cookieParser
         from 'cookie-parser'
+
+    # http://expressjs.com/en/resources/middleware/cookie-parser.html
     
     export 
         const CookieMiddleware

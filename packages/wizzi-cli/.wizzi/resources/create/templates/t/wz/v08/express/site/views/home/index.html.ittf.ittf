@@ -1,16 +1,20 @@
 $group
     $
-        var call = '(&md)'
+        var callG1 = '$'+ "{call}";
+        var dollarG1 = '$'+ "{'$'}";
 
-    v08/express/site/views/t/layout${call}
+    ${'$'}
+        var call = '(&md)';
+
+    v08/express/site/views/t/layout${callG1}
         h1 Hello world from site/views/home/index.html
         . w3-container
-            ${'$'}if locals.user
+            ${dollarG1}if locals.user
                 h4 You are logged in!
-            ${'$'}else
+            ${dollarG1}else
                 h4 You are not logged in! Please \b
                     a Log In \b
                         href /account/login
                     + to continue. 
         h1 Test
-        p ${'$'}{mpage.test.path}        
+        p ${dollarG1}{mpage.test.path}

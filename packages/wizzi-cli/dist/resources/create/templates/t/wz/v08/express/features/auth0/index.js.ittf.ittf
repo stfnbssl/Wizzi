@@ -2,11 +2,11 @@ $group
     
     import 
         as auth0ApiCalls
-        from './apicalls'
+        from './apicalls.js'
     
     import 
         @ Auth0TestController
-        from './controllers/auth0Test'
+        from './controllers/auth0Test.js'
     
     const auth0Controllers
         [ 

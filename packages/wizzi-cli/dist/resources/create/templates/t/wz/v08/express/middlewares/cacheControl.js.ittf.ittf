@@ -2,7 +2,7 @@ $group
 
     import 
         @ config
-        from '../features/config'
+        from '../features/config/index.js'
 
     ${'$'}hook imports
     

@@ -6,19 +6,19 @@ $group
     const jwt = require('express-jwt')
     import
         @ GetUserModel
-        from './mongo/user'
+        from './mongo/user.js'
     import
         @ GetAccountModel
         @ AccountModelType
-        from './mongo/account'
+        from './mongo/account.js'
     import
         @ createStrategy
             as createLocalStrategy
-        from './strategies/local'
+        from './strategies/local.js'
     import
         @ createStrategy
             as createGithubStrategy
-        from './strategies/github'
+        from './strategies/github.js'
     import
         @ resolve
         from 'path'

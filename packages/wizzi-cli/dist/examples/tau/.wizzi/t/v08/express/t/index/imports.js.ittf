@@ -1,29 +1,33 @@
 $group
     $params &md
     $ var baseDir = wzCtx.Build.useNetlify ? '..' : '.'
-    import 'babel-polyfill'
+    # import 'babel-polyfill'
     import
         @ config
-        from '${baseDir}/features/config'
+        from '${baseDir}/features/config/index.js'
     $if wzCtx.Build.useMongoDb
         import mongodbStart from '${baseDir}/services/mongodb'
     $if wzCtx.Build.useWizzi
         $if wzCtx.Build.wizzi.useSite
-            import { siteControllers } from './site'
+            import { siteControllers } from './site/index.js'
     $if wzCtx.Build.useAuth0
         import { auth } from 'express-openid-connect'
-    $* TODO
-    import
-        @ authControllers
-        @ authModelBuilders
-        from './features/auth'
-    import
-        @ blogControllers
-        @ blogModelBuilders
-        from './features/blog'
-    *$
+    $if wzCtx.Build.useAuth
+        import
+            @ authControllers
+            @ authModelBuilders
+            from './features/auth/index.js'
+    $if wzCtx.Build.useBlog
+        import
+            @ blogControllers
+            @ blogModelBuilders
+            from './features/blog/index.js'
+    $if wzCtx.Build.useSite
+        import
+            @ siteControllers
+            from './site/index.js'
     import
         @ appMiddlewares
-        from '${baseDir}/middleware'
+        from '${baseDir}/middlewares/index.js'
     $if wzCtx.Build.useNetlify == false
-        import App from './App'
+        import App from './App.js'

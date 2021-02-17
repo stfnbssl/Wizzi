@@ -2,18 +2,31 @@
     "name": "tau",
     "version": "0.0.1",
     "description": "",
+    "type": "module",
     "Build": {
         "useExpress": true,
         "express": {},
+        "useSite": true,
+        "site": {
+            "useViews": false,
+            "views": {},
+            "useIttfDocuments": true,
+            "ittfDocuments": {}
+        },
         "useNetlify": false,
         "netlify": {},
+        "useWizzi": true,
+        "wizzi": {},
         "useAuth0": false,
         "auth0": {
             "authRequired": false,
             "userInfo": false
         },
         "useLogger": false,
-        "logger": {},
+        "logger": {
+            "useMorgan": false,
+            "morgan": {}
+        },
         "useCors": false,
         "cors": {},
         "useSession": false,
@@ -22,17 +35,17 @@
         "passport": {},
         "usePassportAuth0": false,
         "passportAuth0": {},
-        "useIttf": false,
-        "ittf": {},
         "useCompression": false,
         "compression": {},
         "useHelmet": false,
         "helmet": {},
-        "useStaticFiles": false,
+        "useStaticFiles": true,
         "staticFiles": {},
         "useWizziViewEngine": false,
         "wizziViewEngine": {},
         "useWebpackApp": false,
-        "webpackApp": {}
+        "webpackApp": {},
+        "useErrors": false,
+        "errors": {}
     }
 }

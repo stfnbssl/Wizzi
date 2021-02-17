@@ -5,10 +5,10 @@ $group
         from 'passport-local'
     import
         @ GetUserModel
-        from '../mongo/user'
+        from '../mongo/user.js'
     import
         @ config
-        from '../../config'
+        from '../../config/index.js'
     let userModel
     export
         function createStrategy

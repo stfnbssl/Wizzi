@@ -1,21 +1,21 @@
 $group
 
-    import { Router, Request, Response } from 'express';
+    import { Router } from 'express';
 
     export
         class HomeController
-        const path = ''
-        const router = Router()
+            p path = ''
+            p router = Router()
 
-        m initialize
-            param initValues
-            _ this.router.get(`/`, this.home)
+            m initialize
+                param initValues
+                _ this.router.get(`/`, this.home)
 
-        m home
-            param request
-            param response
-            param next
-            _ response.render
-                @ 'home/index.html.ittf'
-                {
-                    @ title 'Site Home'
+            m home
+                param request
+                param response
+                param next
+                _ response.render
+                    @ 'home/index.html.ittf'
+                    {
+                        @ title 'Site Home'

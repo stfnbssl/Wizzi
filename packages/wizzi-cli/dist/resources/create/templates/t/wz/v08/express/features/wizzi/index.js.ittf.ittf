@@ -1,10 +1,10 @@
 $group
     import 
         as wizziFactory
-        from './factory'
+        from './factory.js'
     import 
         as wizziProds
-        from './productions'
+        from './productions.js'
     export 
         @ wizziProds
         @ wizziFactory

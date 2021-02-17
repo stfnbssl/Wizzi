@@ -4,4 +4,6 @@ module
         var md = {
         }
     $if wzCtx.Build.useSite
-        v08/express/site/controllers/account(&md)
+        $if wzCtx.Build.site.useViews
+            $if wzCtx.Build.useAuth
+                v08/express/site/controllers/account(&md)

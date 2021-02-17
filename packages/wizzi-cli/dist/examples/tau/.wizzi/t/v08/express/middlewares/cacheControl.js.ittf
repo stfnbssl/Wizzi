@@ -2,7 +2,7 @@ $group
     $params &md
     import
         @ config
-        from '../features/config'
+        from '../features/config/index.js'
     $hook imports
     export
         const CacheControlMiddleware

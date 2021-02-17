@@ -9,14 +9,14 @@ $group
     import
         @ GetUserModel
         @ UserModelType
-        from '../mongo/user'
+        from '../mongo/user.js'
     import
         @ GetAccountModel
         @ AccountModelType
-        from '../mongo/account'
+        from '../mongo/account.js'
     import
         @ config
-        from '../../config'
+        from '../../config/index.js'
     # let userModel: UserModelType;
     let accountModel
     export

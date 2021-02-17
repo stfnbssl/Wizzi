@@ -2,14 +2,12 @@ $group
     
     import 
         @ Router
-        @ Request
-        @ Response
         from 'express'
     
     import 
         @ checkJwt
         @ checkScopes
-        from '../../../middleware'
+        from '../../../middleware/index.js'
     
     export 
         class Auth0TestController

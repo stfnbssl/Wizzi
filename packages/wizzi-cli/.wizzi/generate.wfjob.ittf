@@ -43,6 +43,7 @@
         
         wfjob/any_plain(ittf)
         wfjob/any_plain(css)
+        wfjob/any_plain(html)
         wfjob/any_plain(js)
         wfjob/any_plain(svg)
         wfjob/any_plain(json)

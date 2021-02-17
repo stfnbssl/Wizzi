@@ -17,10 +17,10 @@ $group
         from 'wizzi-utils'
     import
         @ config
-        from '../config'
+        from '../config/index.js'
     import
         @ createFilesystemFactory
-        from './factory'
+        from './factory.js'
     $hook imports
     export
         async-function loadModelFs

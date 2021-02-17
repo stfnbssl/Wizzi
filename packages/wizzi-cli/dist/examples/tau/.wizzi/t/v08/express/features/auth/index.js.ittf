@@ -1,10 +1,10 @@
 $group
     $params &md
-    import {UserModelBuilder, GetUserModel} from './mongo/user'
-    import {TokenModelBuilder, GetTokenModel} from './mongo/token'
-    import {AccountModelBuilder, GetAccountModel} from './mongo/account'
-    import {AuthController} from './controllers/auth'
-    import * as authManager from './manager'
+    import {UserModelBuilder, GetUserModel} from './mongo/user.js'
+    import {TokenModelBuilder, GetTokenModel} from './mongo/token.js'
+    import {AccountModelBuilder, GetAccountModel} from './mongo/account.js'
+    import {AuthController} from './controllers/auth.js'
+    import * as authManager from './manager.js'
     const authModelGetters
         {
             @ GetUserModel

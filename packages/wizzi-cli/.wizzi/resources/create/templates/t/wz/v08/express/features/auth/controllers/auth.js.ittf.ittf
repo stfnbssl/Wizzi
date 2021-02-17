@@ -2,26 +2,24 @@ $group
 
     import 
         @ Router
-        @ Request
-        @ Response
         from 'express'
     
     import 
         @ GetAccountModel
         @ AccountModelType
-        from '../mongo/account'
+        from '../mongo/account.js'
     
     import 
         @ authenticate
         @ jwtAuth
         @ getLoggedUserFromAccount
-        from '../manager'
+        from '../manager.js'
     
     import
         @ sendPromiseResult
         @ sendSuccess
         @ sendFailure
-        from '../../../utils/response'
+        from '../../../utils/response.js'
     
     export 
         class AuthController

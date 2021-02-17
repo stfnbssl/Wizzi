@@ -8,4 +8,6 @@ module
         }
 
     ${'$'}if wzCtx.Build.useSite
-        v08/express/site/controllers/account${call}
+        ${'$'}if wzCtx.Build.site.useViews
+            ${'$'}if wzCtx.Build.useAuth
+                v08/express/site/controllers/account${call}

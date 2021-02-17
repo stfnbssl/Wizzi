@@ -21,7 +21,7 @@ $group
         a Home
             href /
             class .w3-bar-item.w3-button
-        $if locals.user
+        ${'$'}if locals.user
             a Repositories
                 href /repo/list
                 class .w3-bar-item.w3-button
@@ -32,9 +32,9 @@ $group
                 id qsLogoutBtn
                 href /account/logout
                 class .w3-bar-item.w3-button
-        $else
+        ${'$'}else
             a Log In
                 id qsLoginBtn
                 href /account/login
                 class .w3-bar-item.w3-button
-        $hook
+        ${'$'}hook

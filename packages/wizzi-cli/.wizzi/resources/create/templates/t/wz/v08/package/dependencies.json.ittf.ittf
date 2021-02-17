@@ -10,7 +10,8 @@
     ${'$'}if wzCtx.Build.useAuth0
         auth0/express-openid-connect "latest"
     ${'$'}if wzCtx.Build.useExpress
-        aws-serverless-express "^3.2.0"
+        ${'$'}if wzCtx.Build.useNetlify
+            aws-serverless-express "^3.2.0"
     ${'$'}if wzCtx.Build.useExpress
         body-parser "^1.18.3"
     ${'$'}if wzCtx.Build.useBootstrap
@@ -22,8 +23,10 @@
             ${'$'}if wzCtx.Build.react.materialUI.usePickers
                 date-fns "2.0.0-alpha.27"
     ${'$'}if wzCtx.Build.useExpress
-        compression "^1.7.2"
-        cors "^2.8.4"
+        ${'$'}if wzCtx.Build.useCompression
+            compression "^1.7.2"
+        ${'$'}if wzCtx.Build.useCors
+            cors "^2.8.4"
     ---
     ${'$'}if wzCtx.Build.useDomHelpers
         dom-helpers "^3.4.0"
@@ -52,14 +55,17 @@
     ${'$'}if wzCtx.Build.useMoment
         moment "^2.24.0"
     ${'$'}if wzCtx.Build.useExpress
-        morgan "^1.9.0"
+        ${'$'}if wzCtx.Build.useLogger
+            ${'$'}if wzCtx.Build.logger.useMorgan
+                morgan "^1.9.0"
     ---
     $include ./dependencies/react.json
     ---    
     $include ./dependencies/redux.json
     ---    
     ${'$'}if wzCtx.Build.useExpress
-        serverless-http "^1.6.0"
+        ${'$'}if wzCtx.Build.useNetlify
+            serverless-http "^1.6.0"
     ${'$'}if wzCtx.Build.useSocketIO
         socket.io-client "^2.2.0"
     ${'$'}if wzCtx.Build.useReact && wzCtx.Build.react.styledComponents

@@ -4,16 +4,9 @@ $group
         import { dirname } from 'path'
         import { fileURLToPath } from 'url'
         const __dirname = dirname(fileURLToPath(import.meta.url))
-    import
-        as path
-        from 'path'
-    import
-        as parseUrl
-        from 'parseurl'
-    import
-        @ static
-            as expressStatic
-        from 'express'
+    import path from 'path'
+    import parseUrl from 'parseurl'
+    import express from 'express'
     export
         const WebpackAppMiddleware
             =>
@@ -21,11 +14,11 @@ $group
                 if process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test'
                     _ app.use
                         @ '/dist'
-                        _ expressStatic(path.resolve(__dirname, '..', '..', '..', 'packi', 'dist')))
+                        _ express.static(path.resolve(__dirname, '..', '..', 'pack', 'dist')))
                 else
                     const webpack = require('webpack')
                     const webpackDevMiddleware = require('webpack-dev-middleware')
-                    const config = require('../../../webpack.config')
+                    const config = require('../../webpack.config')
                     const compiler = webpack(config)
                     _ app.use
                         _ webpackDevMiddleware

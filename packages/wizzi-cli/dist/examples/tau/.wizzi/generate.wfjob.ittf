@@ -24,6 +24,7 @@ wfjob tau/job
         wfjobs(any_js, &jobCtx)
         wfjobs(any_json, &jobCtx)
         wfjobs(any_md, &jobCtx)
+        wfjobs(.env, &jobCtx)
         wfjobs(.gitignore, &jobCtx)
     
     line ittf-src

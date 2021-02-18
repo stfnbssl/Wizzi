@@ -1,32 +1,26 @@
 $group
     
     ${'$'}if wzCtx.Build.useSite
-        ${'$'}if wzCtx.Build.site.useViews
-            import 
-                @ HomeController
-                from './controllers/home.js'
-        ${'$'}else
-            import 
-                @ HomeNoViewController
-                from './controllers/homeNoView.js'
+        import 
+            @ HomeNoViewController
+            from './controllers/homeNoView.js'
+        import 
+            @ WizziController
+            from './controllers/wizzi.js'
     
     ${'$'}if wzCtx.Build.useSite
-        ${'$'}if wzCtx.Build.site.useViews
-            ${'$'}if wzCtx.Build.useAuth
-                import 
-                    @ AccountController
-                    from './controllers/account.js'
+        ${'$'}if wzCtx.Build.useAuth
+            import 
+                @ AccountController
+                from './controllers/account.js'
     
     const siteControllers
         [ 
             ${'$'}if wzCtx.Build.useSite
-                ${'$'}if wzCtx.Build.site.useViews
-                    @ new HomeController()
-                ${'$'}else
-                    @ new HomeNoViewController()
+                @ new HomeNoViewController()
+                @ new WizziController()
             ${'$'}if wzCtx.Build.useSite
-                ${'$'}if wzCtx.Build.site.useViews
-                    ${'$'}if wzCtx.Build.useAuth
-                        @ new AccountController()
+                ${'$'}if wzCtx.Build.useAuth
+                    @ new AccountController()
     export
         @ siteControllers

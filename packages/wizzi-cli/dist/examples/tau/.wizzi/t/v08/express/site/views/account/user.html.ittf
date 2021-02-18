@@ -1,15 +1,13 @@
 $group
     $params &md
-    $
-        var call = '(&md)';
-    v08/express/site/views/t/layout${call}
+    layout(&md)
         . w3-card-4
-            h1 Welcome ${'$'}{user.nickname}
+            h1 Welcome ${user.nickname}
             img
-                src ${'$'}{user.picture}
+                src ${user.picture}
             h2 User profile
             p This is the content of <code>req.user</code>.
             p Note: <code>_raw</code> and <code>_json</code> properties have been ommited.
             pre
                 code
-                    + ${'$'}{JSON.stringify(user, null, 2)}
+                    + ${JSON.stringify(user, null, 2)}

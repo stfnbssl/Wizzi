@@ -8,19 +8,24 @@
         "express": {},
         "useSite": true,
         "site": {
-            "useViews": false,
-            "views": {},
-            "useIttfDocuments": true,
-            "ittfDocuments": {}
+            "useIttfStatic": true,
+            "ittfStatic": {}
         },
         "useNetlify": false,
         "netlify": {},
         "useWizzi": true,
         "wizzi": {},
+        "useAuth0OpenId": true,
+        "auth0openid": {},
         "useAuth0": false,
         "auth0": {
             "authRequired": false,
             "userInfo": false
+        },
+        "useConfig": true,
+        "config": {
+            "useEnvalid": true,
+            "envalid": {}
         },
         "useLogger": false,
         "logger": {
@@ -41,11 +46,15 @@
         "helmet": {},
         "useStaticFiles": true,
         "staticFiles": {},
-        "useWizziViewEngine": false,
+        "useWizziViewEngine": true,
         "wizziViewEngine": {},
         "useWebpackApp": false,
         "webpackApp": {},
         "useErrors": false,
-        "errors": {}
+        "errors": {},
+        "useMongoDb": true,
+        "mongodb": {},
+        "useBlog": true,
+        "blog": {}
     }
 }

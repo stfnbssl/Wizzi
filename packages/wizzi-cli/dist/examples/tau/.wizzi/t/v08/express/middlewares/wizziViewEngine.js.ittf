@@ -4,16 +4,11 @@ $group
         import { dirname } from 'path'
         import { fileURLToPath } from 'url'
         const __dirname = dirname(fileURLToPath(import.meta.url))
-    import
-        as path
-        from 'path'
-    import
-        @ Application
-        from 'express'
+    import path from 'path'
     import stringify from 'json-stringify-safe'
     import
         @ wizziProds
-        from '../features/wizzi'
+        from '../features/wizzi/index.js'
     $hook imports
     export
         const WizziViewEngineMiddleware

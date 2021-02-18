@@ -1,0 +1,4 @@
+$group
+    $params &md
+    { test
+        path "${__dirname}"

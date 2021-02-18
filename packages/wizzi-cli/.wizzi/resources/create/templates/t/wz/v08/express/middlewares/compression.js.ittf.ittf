@@ -1,8 +1,6 @@
 $group
     
-    import 
-        as compression
-        from 'compression'
+    import compression from 'compression'
 
     # see other options here http://expressjs.com/en/resources/middleware/compression.html
     const options

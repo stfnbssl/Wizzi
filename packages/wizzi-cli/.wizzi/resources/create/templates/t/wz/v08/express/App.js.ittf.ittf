@@ -28,7 +28,7 @@ $group
                     param controller
                     _ console.log('installing router on path: ', controller.path)
                     _ controller.initialize(initValues)
-                    _ this.app.use('/', controller.router)
+                    _ this.app.use(controller.path, controller.router)
 
             ${'$'}if wzCtx.Build.useSocketIO
                 # Connecting sockets to the server and adding them to the request

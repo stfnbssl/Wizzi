@@ -1,12 +1,8 @@
 $group
     
-    import
-        @ Application
-        from 'express'
-    
     import 
         @ authManager
-        from '../features/auth'
+        from '../features/auth/index.js'
 
     # passport.session() acts as a middleware to alter the req object 
     # and change the 'user' value that is currently the session id (from the client cookie) 

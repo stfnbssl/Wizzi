@@ -2,21 +2,21 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\examples\tau\.wizzi\src\middlewares\ittf.js.ittf
-    utc time: Wed, 17 Feb 2021 17:02:45 GMT
+    utc time: Thu, 18 Feb 2021 22:37:09 GMT
 */
 'use strict';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
-import * as stringify from 'json-stringify-safe';
-import * as util from 'util';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as parseUrl from 'parseurl';
+import stringify from 'json-stringify-safe';
+import util from 'util';
+import path from 'path';
+import fs from 'fs';
+import parseUrl from 'parseurl';
 import {config} from '../features/config/index.js';
 import {wizziProds} from '../features/wizzi/index.js';
-export const IttfDocumentsMiddleware = (app) => {
-    console.log('IttfDocumentsMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', 'ittf'));
+export const IttfStaticMiddleware = (app) => {
+    console.log('IttfStaticMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', 'ittf'));
     app.use('/ittf', ittfMiddleware(path.resolve(__dirname, '..', '..', 'ittf'), '/ittf'));
 };
 const extContentTypeMap = {
@@ -59,16 +59,16 @@ function ittfMiddleware(basePath, routePath) {
             // ??? urlPathName.substr(routePath.length);
             const filePath = path.join(basePath, pathname);
             const extname = path.extname(filePath);
-            console.log('IttfDocumentsMiddleware. ittf.pathname, pathname, filePath', urlPathName, pathname, filePath, path.extname(filePath));
+            console.log('IttfStaticMiddleware. ittf.pathname, pathname, filePath', urlPathName, pathname, filePath, path.extname(filePath));
             if (fs.existsSync(filePath) === false) {
-                console.log('IttfDocumentsMiddleware. filePath do not exists', filePath);
+                console.log('IttfStaticMiddleware. filePath do not exists', filePath);
                 return next();
             }
             if (fs.statSync(filePath).isDirectory()) {
                 return sendFolderScan(filePath, basePath, req.query.meta, res);
             }
             let contentType = contentTypeFor(filePath);
-            console.log('IttfDocumentsMiddleware. contentType', contentType);
+            console.log('IttfStaticMiddleware. contentType', contentType);
             if (contentType) {
                 if (req.query.meta && req.query.meta === 'html') {
                     try {
@@ -100,7 +100,7 @@ function ittfMiddleware(basePath, routePath) {
                             return res.end(err);
                         }
                         wizziProds.generateArtifactFs(filePath, modelContext).then((generated) => {
-                            console.log('IttfDocumentsMiddleware. generated.artifactContent', generated.artifactContent);
+                            console.log('IttfStaticMiddleware. generated.artifactContent', generated.artifactContent);
                             res.writeHead(200, {
                                 'Content-Type': contentType, 
                                 'Content-Length': generated.artifactContent.length
@@ -131,7 +131,7 @@ async function contextLoader(resourceFilePath, req, callback) {
                 relPath: undefined
             };
             const type_path = req.query['_' + element];
-            console.log('IttfDocumentsMiddleware.contextLoader exportName, type_path', element, type_path);
+            console.log('IttfStaticMiddleware.contextLoader exportName, type_path', element, type_path);
             if (!type_path) {
                 return (callback({
                         requestedResource: resourceFilePath, 
@@ -146,7 +146,7 @@ async function contextLoader(resourceFilePath, req, callback) {
             else {
                 request.relPath = tp[1];
             }
-            console.log('IttfDocumentsMiddleware.contextLoader exportName, type_path, relPath', element, type_path, request.relPath);
+            console.log('IttfStaticMiddleware.contextLoader exportName, type_path, relPath', element, type_path, request.relPath);
             if (request.type === 'cheatsheet') {
                 request.name = request.relPath;
                 requests.push(request);
@@ -155,9 +155,9 @@ async function contextLoader(resourceFilePath, req, callback) {
                 request.fullPath = path.join(path.dirname(resourceFilePath), request.relPath);
                 requests.push(request);
             }
-            console.log('IttfDocumentsMiddleware.contextLoader request', request);
+            console.log('IttfStaticMiddleware.contextLoader request', request);
         })
-        console.log('IttfDocumentsMiddleware.contextLoader.requests', requests);
+        console.log('IttfStaticMiddleware.contextLoader.requests', requests);
         const resultContext = {};
         const repeatCount = requests.length;
         const repeat = (index) => {
@@ -195,7 +195,7 @@ async function sendFolderScan(folderPath, root, meta, res) {
                     path: folderPath, 
                     fs: folderState
                 });
-            // log 'IttfDocumentsMiddleware.generated.meta.document', generated.artifactContent
+            // log 'IttfStaticMiddleware.generated.meta.document', generated.artifactContent
             res.writeHead(200, {
                 'Content-Type': 'text/html', 
                 'Content-Length': generated.artifactContent.length

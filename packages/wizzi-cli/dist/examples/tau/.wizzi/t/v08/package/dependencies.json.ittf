@@ -18,8 +18,6 @@ $group
                     @material-ui/pickers "^3.0.0"
                 @material-ui/styles "^4.11.2"
     
-    $if wzCtx.Build.useAuth0
-        auth0/express-openid-connect "latest"
     $if wzCtx.Build.useExpress
         $if wzCtx.Build.useNetlify
             aws-serverless-express "^3.2.0"
@@ -30,20 +28,23 @@ $group
     
     $if wzCtx.Build.useReact
         classnames "^2.2.6"
-        $if wzCtx.Build.react.useMaterialUI
-            $if wzCtx.Build.react.materialUI.usePickers
-                date-fns "2.0.0-alpha.27"
+    $if wzCtx.Build.useMongoDb
+        connect-mongo "^3.2.0"
     $if wzCtx.Build.useExpress
         $if wzCtx.Build.useCompression
             compression "^1.7.2"
         $if wzCtx.Build.useCors
             cors "^2.8.4"
     
+    $if wzCtx.Build.useReact
+        $if wzCtx.Build.react.useMaterialUI
+            $if wzCtx.Build.react.materialUI.usePickers
+                date-fns "2.0.0-alpha.27"
     $if wzCtx.Build.useDomHelpers
         dom-helpers "^3.4.0"
     
-    $if wzCtx.Build.useAuth0
-        dotenv "latest"
+    $if wzCtx.Build.useConfig && wzCtx.Build.config.useEnvalid
+        dotenv "8.2.0"
     $if wzCtx.Build.useReact
         $if wzCtx.Build.react.useDraftJs
             draft-js "^0.10.5"
@@ -51,8 +52,8 @@ $group
         envalid "^7.0.0"
     $if wzCtx.Build.useExpress
         express "^4.16.3"
-        $if wzCtx.Build.useAuth0
-            express-openid-connect "latest"
+        $if wzCtx.Build.useAuth0 || wzCtx.Build.useAuth0OpenId
+            express-openid-connect "2.2.1"
     $if wzCtx.Build.useReact
         $if wzCtx.Build.react.useFormik
             formik "^1.5.7"
@@ -67,6 +68,8 @@ $group
         isomorphic-unfetch "^3.0.0"
     $if wzCtx.Build.useMoment
         moment "^2.24.0"
+    $if wzCtx.Build.useMongoDb
+        mongoose "^5.4.2"
     $if wzCtx.Build.useExpress
         $if wzCtx.Build.useLogger
             $if wzCtx.Build.logger.useMorgan

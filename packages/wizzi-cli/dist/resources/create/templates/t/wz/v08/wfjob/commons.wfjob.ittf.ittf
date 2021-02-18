@@ -60,6 +60,29 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
+    ${'$'}if name == 'any_text'
+        artifact any_text
+            src ./**/*.text.ittf
+            schema text
+            generator text/document
+            extension text
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
+    ${'$'}if name == '.env'
+        artifact .env
+            src .env.text.ittf
+            schema text
+            generator text/document
+            dest-path .env
+            extension env
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
     ${'$'}if name == '.babelrc'
         artifact .babelrc
             src .babelrc.json.ittf

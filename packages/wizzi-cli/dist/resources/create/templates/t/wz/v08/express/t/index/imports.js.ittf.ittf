@@ -8,7 +8,7 @@ $group
         from '${'$'}{baseDir}/features/config/index.js'
     
     ${'$'}if wzCtx.Build.useMongoDb
-        import mongodbStart from '${'$'}{baseDir}/services/mongodb'
+        import { mongodbStart } from '${'$'}{baseDir}/services/mongodb.js'
     
     ${'$'}if wzCtx.Build.useWizzi
         ${'$'}if wzCtx.Build.wizzi.useSite

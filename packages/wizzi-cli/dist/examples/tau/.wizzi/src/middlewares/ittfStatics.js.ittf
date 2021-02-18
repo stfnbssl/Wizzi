@@ -1,0 +1,8 @@
+module
+    kind es6
+    $
+        var md = {
+        }
+    $if wzCtx.Build.useSite
+        $if wzCtx.Build.site.useIttfStatic
+            v08/express/middlewares/ittfStatic(&md)

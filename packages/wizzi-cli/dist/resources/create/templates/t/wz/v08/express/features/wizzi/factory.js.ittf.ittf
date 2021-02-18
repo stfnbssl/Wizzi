@@ -1,11 +1,6 @@
 $group
-    import 
-        as path
-        from 'path'
-    
-    import 
-        as wizzi
-        from 'wizzi'
+    import path from 'path'
+    import wizzi from 'wizzi'
 
     ${'$'}hook imports
     

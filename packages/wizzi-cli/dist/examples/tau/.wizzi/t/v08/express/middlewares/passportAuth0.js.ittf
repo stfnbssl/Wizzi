@@ -1,15 +1,13 @@
 $group
     $params &md
-    import
-        as passport
-        from 'passport'
+    import passport from 'passport'
     import
         @ Strategy
             as Auth0Strategy
         from 'passport-auth0'
     import
         @ config
-        from '../features/config'
+        from '../features/config/index.js'
     # Configure Passport to use Auth0
     var strategy
         new Auth0Strategy

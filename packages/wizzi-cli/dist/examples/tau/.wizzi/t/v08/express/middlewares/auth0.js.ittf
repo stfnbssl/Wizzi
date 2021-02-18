@@ -1,14 +1,10 @@
 $group
     $params &md
-    import
-        as jwt
-        from 'express-jwt'
-    import
-        as jwksRsa
-        from 'jwks-rsa'
+    import jwt from 'express-jwt'
+    import jwksRsa from 'jwks-rsa'
     import
         @ config
-        from '../features/config'
+        from '../features/config/index.js'
     export
         const checkJwt
             _ jwt

@@ -4,5 +4,4 @@ module
         var md = {
         }
     $if wzCtx.Build.useSite
-        $if wzCtx.Build.site.useViews
-            v08/express/site/controllers/home(&md)
+        v08/express/site/controllers/home(&md)

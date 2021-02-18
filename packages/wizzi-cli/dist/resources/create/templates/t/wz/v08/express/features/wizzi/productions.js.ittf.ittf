@@ -1,19 +1,15 @@
 $group
-    import
-        as path
-        from 'path'
-    import 
-        as fs
-        from 'fs'
-    import 
-        as wizzi
-        from 'wizzi'
-    import 
-        @ ittfDocumentScanner
-        @ folderBrowse
-        @ IttfMTreeState
-        @ FolderBrowseResult
-        from 'wizzi-utils'
+    import path from 'path'
+    import fs from 'fs'
+    import wizzi from 'wizzi'
+    import wizziUtils from 'wizzi-utils'
+    var
+        {
+            @ ittfDocumentScanner
+            @ folderBrowse
+            @ IttfMTreeState
+            @ FolderBrowseResult
+        = wizziUtils
     import 
         @ config
         from '../config/index.js'

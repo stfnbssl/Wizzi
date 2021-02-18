@@ -5,7 +5,7 @@ $group
     import { buildPage, navUl } from '../noviews/htmlCommon.js'
     export
         class HomeNoViewController
-            p path = ''
+            p path = '/'
             p router = Router()
             m initialize
                 param initValues
@@ -73,11 +73,18 @@ $group
                 p It seems that the 'useStaticFiles' flag was set in the generation context object (wzCtx).
                 p If it is so you may visit
                 p
-                    a A pure html document served by 'express.static'.
+                    a A pure html document served by the 'express.static' middleware.
                         href static/pure.html
                 p
-                    a A Wizzi generated html document served by 'express.static'.
+                    a A Wizzi pre-generated html document served by the 'express.static' middleware.
                         href static/wizzi.html
+            $if wzCtx.Build.useIttfStatic
+                h3 Ittf static files
+                p It seems that the 'useIttfStatic' flag was set in the generation context object (wzCtx).
+                p If it is so you may visit
+                p
+                    a A Wizzi html document generated on the fly and served by the  'ittfStatic' middleware.
+                        href ittf/wizzi.html.ittf
         _ html_footer
             @ __html
     html_f html_about

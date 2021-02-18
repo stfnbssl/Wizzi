@@ -4,16 +4,17 @@ $group
         @ Router
         from 'express'
     
-    import 
-        @ GetAccountModel
-        @ AccountModelType
-        from '../mongo/account.js'
-    
-    import 
-        @ authenticate
-        @ jwtAuth
-        @ getLoggedUserFromAccount
-        from '../manager.js'
+    $if false $$ TODO
+        import 
+            @ GetAccountModel
+            @ AccountModelType
+            from '../mongo/account.js'
+        
+        import 
+            @ authenticate
+            @ jwtAuth
+            @ getLoggedUserFromAccount
+            from '../manager.js'
     
     import
         @ sendPromiseResult

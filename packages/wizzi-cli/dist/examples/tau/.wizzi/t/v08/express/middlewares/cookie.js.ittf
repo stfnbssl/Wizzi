@@ -1,8 +1,6 @@
 $group
     $params &md
-    import
-        as cookieParser
-        from 'cookie-parser'
+    import cookieParser from 'cookie-parser'
     # http://expressjs.com/en/resources/middleware/cookie-parser.html
     export
         const CookieMiddleware

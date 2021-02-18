@@ -1,8 +1,6 @@
 $group
     
-    import 
-        as helmet
-        from 'helmet'
+    import helmet from 'helmet'
 
     # https://geshan.com.np/blog/2021/01/nodejs-express-helmet/
     # see https://expressjs.com/it/advanced/best-practice-security.html

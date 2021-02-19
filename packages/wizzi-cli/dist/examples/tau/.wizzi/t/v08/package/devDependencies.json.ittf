@@ -15,7 +15,7 @@ $group
         babel-eslint "^8.2.3"
     $if wzCtx.Build.useTest && wzCtx.Build.test.useJest
         babel-jest "^23.4.2"
-    $if wzCtx.Build.useBabel || wzCtx.Build.useWebpack
+    $if wzCtx.Build.useBabel || wzCtx.Build.useWebpack || wzCtx.Build.useWebpackApp
         babel-loader "^8.2.2"
     $if wzCtx.Build.useWebpack
         $if wzCtx.Build.webpack.useCopy
@@ -85,8 +85,11 @@ $group
             vue-router "^3.0.2"
         $if wzCtx.Build.vue.useVuetify
             vuetify "^1.4.3"
-    $if wzCtx.Build.useWebpack
+    $if wzCtx.Build.useWebpack || wzCtx.Build.useWebpackApp
         webpack "^5.22.0"
+        $if wzCtx.Build.useWebpackApp
+            webpack-dev-middleware "4.1.0"
+    $if wzCtx.Build.useWebpack
         webpack-cli "^4.5.0"
         $if wzCtx.Build.webpack.useDevServer
             webpack-dev-server "^3.11.2"

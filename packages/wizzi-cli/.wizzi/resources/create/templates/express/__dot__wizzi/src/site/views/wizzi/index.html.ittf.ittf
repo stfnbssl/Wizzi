@@ -3,5 +3,5 @@
         var md = {
         }
 
-    $$ TODO $if cliCtx.useIttfStatic
+    $$ TODO $if cliCtx.useStaticIttf
     $include wz/v08/express/site/views/wizzi/index.html

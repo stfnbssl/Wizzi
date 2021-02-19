@@ -7,7 +7,7 @@
         { express
         useSite true
         { site
-            useIttfStatic true
+            useStaticIttf true
             { ittfStatic
         useNetlify false
         { netlify
@@ -43,8 +43,12 @@
         { staticFiles
         useWizziViewEngine true
         { wizziViewEngine
-        useWebpackApp false
+        useWebpackApp true
         { webpackApp
+            [ items
+                {
+                    name "hello"
+                    writeToDisk false
         useErrors false
         { errors
         useMongoDb true

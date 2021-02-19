@@ -8,7 +8,7 @@
         "express": {},
         "useSite": true,
         "site": {
-            "useIttfStatic": true,
+            "useStaticIttf": true,
             "ittfStatic": {}
         },
         "useNetlify": false,
@@ -48,8 +48,15 @@
         "staticFiles": {},
         "useWizziViewEngine": true,
         "wizziViewEngine": {},
-        "useWebpackApp": false,
-        "webpackApp": {},
+        "useWebpackApp": true,
+        "webpackApp": {
+            "items": [
+                {
+                    "name": "hello",
+                    "writeToDisk": false
+                }
+            ]
+        },
         "useErrors": false,
         "errors": {},
         "useMongoDb": true,

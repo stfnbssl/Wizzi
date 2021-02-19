@@ -1,0 +1,9 @@
+$group
+    $params &md
+    const path = require('path')
+    set module.exports
+        {
+            @ entry './src/index.js'
+            { output
+                @ filename 'hello.js'
+                @ path path.resolve(__dirname, 'dist')

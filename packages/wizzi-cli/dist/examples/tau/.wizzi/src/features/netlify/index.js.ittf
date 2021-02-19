@@ -3,4 +3,5 @@ module
     $
         var md = {
         }
-    v08/express/features/netlify/index(&md)
+    $if wzCtx.Build.useNetlify
+        v08/express/features/netlify/index(&md)

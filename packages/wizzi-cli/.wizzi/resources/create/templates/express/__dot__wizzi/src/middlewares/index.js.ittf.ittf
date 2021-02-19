@@ -16,7 +16,7 @@ module
     ${'$'}if wzCtx.Build.usePassportAuth0
         import { PassportAuth0Middleware } from './passportAuth0.js'
     ${'$'}if wzCtx.Build.useSite
-        ${'$'}if wzCtx.Build.site.useIttfStatic
+        ${'$'}if wzCtx.Build.site.useStaticIttf
             import { IttfStaticMiddleware } from './ittfStatic.js'
     ${'$'}if wzCtx.Build.useAuth0OpenIdConnect
         import { Auth0OpenIdConnectMiddleware } from './auth0_openid_connect.js'
@@ -53,7 +53,7 @@ module
                 ${'$'}if wzCtx.Build.usePassportAuth0
                     @ PassportAuth0Middleware
             ${'$'}if wzCtx.Build.useSite
-                ${'$'}if wzCtx.Build.site.useIttfStatic
+                ${'$'}if wzCtx.Build.site.useStaticIttf
                     @ IttfStaticMiddleware
             ${'$'}if wzCtx.Build.useAuth0
                 @ Auth0Middleware

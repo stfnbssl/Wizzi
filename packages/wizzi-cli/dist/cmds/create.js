@@ -9,7 +9,40 @@ const fs = require('fs');
 const chalk = require('chalk');
 const wizzi = require('wizzi');
 var inquirer = require('inquirer');
-module.exports = (args) =>
+module.exports = (args) => {
+    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'wizzi_plugin'), {
+            cliCtx: {
+                pkg_name: "lambda", 
+                wizzi_plugin_type: "syntax_structure", 
+                author: {
+                    
+                }, 
+                license: {
+                    name: "MIT", 
+                    copy: "copy 2021"
+                }, 
+                github: {
+                    
+                }, 
+                Schemas: [
+                    {
+                        name: "sample"
+                    }
+                ]
+            }
+        }, {
+            destFolder: path.join(process.cwd(), 'lambda'), 
+            copyInclude: ['*'], 
+            copyExclude: []
+        }, function(err, genFolderResult) {
+            if (err) {
+                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+                console.log('err', err);
+                throw new Error(err.message);
+            }
+            console.log('genFolderResult', genFolderResult);
+            return ;
+        });
     newpkg((err, answers) => {
         console.log('create.answers', answers);
         wizzi.model(path.join(__dirname, '..', 'resources', 'create', 'contexts', answers.pkg_type + ".json.ittf"), {
@@ -31,7 +64,8 @@ module.exports = (args) =>
                 console.log('genFolderResult', genFolderResult);
             })
         })
-    });
+    })
+};
 function newpkg(callback) {
     promptPkgType(function(err, type_answers) {
         if (err) {
@@ -42,6 +76,7 @@ function newpkg(callback) {
                 if (err) {
                     return callback(err);
                 }
+                type_answers.__template = 'wizzi_plugin';
                 return promptNext(promptPkgName, Object.assign({}, type_answers, plugin_answers), callback);
             })
         }
@@ -121,6 +156,11 @@ function promptWizziPlugin(callback) {
     inquirer.prompt(questions).then((answers) => {
         console.log('\nWizzi plugin type:');
         console.log(JSON.stringify(answers, null, '  '));
+        answers.author = {};
+        answers.license = {};
+        answers.license.name = "MIT";
+        answers.license.copy = "copy 2021";
+        answers.github = {};
         return callback(null, answers);
     })
 }

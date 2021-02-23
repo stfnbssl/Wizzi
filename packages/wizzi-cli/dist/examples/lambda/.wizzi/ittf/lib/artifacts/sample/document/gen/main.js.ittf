@@ -1,0 +1,283 @@
+module
+    kind es6
+    $
+        var md = {
+            plugin: '',
+            name: 'document',
+            schema: 'sample',
+            checkSchema: true,
+            isAsync: true,
+        };
+    v08/lib/artifacts/gen(&md)
+        $append imports
+        $append main
+            _ md.sample
+                @ model
+                @ ctx
+                f_cb( )
+                    if ctx.artifactGenerationErrors.length > 0
+                        r_cb_err( ctx.artifactGenerationErrors )
+                    else
+                        # generation OK
+                        r_cb( ctx )
+        +
+        const noindent
+            {
+                @ indent false
+        +
+        async-md( sample )
+            log "ctx.keys", Object.keys(ctx)
+            log "ctx.values property", ctx.values
+            log 'tag sample, nodes', model.nodes.length
+            set ctx.values.docxStack = []
+            set ctx.values.docxCounter = 0
+            var docxNode = "docx_doc_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('import * as fs from "fs";')
+            _ ctx.w('import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ShadingType, Table, TableCell, TableRow, TableLayoutType, WidthType } from "docx";')
+            _ ctx.w('')
+            _ ctx.w('const ' + docxNode + ' = new Document();')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('')
+                    _ ctx.w('Packer.toBuffer(' + docxNode + ').then((buffer) => {')
+                    _ ctx.w('    fs.writeFileSync("My Document.docx", buffer);')
+                    _ ctx.w('    console.log("DONE written")')
+                    _ ctx.w('});')
+                    r_cb()
+        +
+        async-md( section )
+            log 'tag section, value', model.wzName
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_sect_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = { properties: {}, children: [] };')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w(docxParent + '.addSection(' + docxNode + ');')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        +
+        async-md( p )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_par_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = { children: [] };')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new Paragraph(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        +
+        async-md( text )
+            log 'tag text, value', model.wzName
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_txt_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ ctx.w(docxNode + '.text = "' + model.wzName + '";')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        +
+        async-md( h1 )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_txt_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ ctx.w(docxNode + '.text = "' + model.wzName + '";')
+            _ ctx.w(docxNode + '.heading = HeadingLevel.HEADING_1;')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        +
+        async-md( h2 )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_txt_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ ctx.w(docxNode + '.text = "' + model.wzName + '";')
+            _ ctx.w(docxNode + '.heading = HeadingLevel.HEADING_2;')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        async-md( bold )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_txt_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ ctx.w(docxNode + '.text = "' + model.wzName + '";')
+            _ ctx.w(docxParent + '.bold = true;')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        async-md( italic )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_txt_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ ctx.w(docxNode + '.text = "' + model.wzName + '";')
+            _ ctx.w(docxParent + '.italic = true;')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        async-md( xbreak )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            _ ctx.w(docxParent + '.break = ' + true + ';')
+            r_cb()
+        async-md( size )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            _ ctx.w(docxParent + '.size = ' + model.wzName + ';')
+            r_cb()
+        async-md( color )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            _ ctx.w(docxParent + '.color = "' + model.wzName + '";')
+            r_cb()
+        async-md( fill )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            _ ctx.w(docxParent + '.fill = "' + model.wzName + '";')
+            r_cb()
+        async-md( xname )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            _ ctx.w(docxParent + '.name = "' + model.wzName + '";')
+            r_cb()
+        async-md( highlight )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            _ ctx.w(docxParent + '.highlight = "' + model.wzName + '";')
+            r_cb()
+        async-md( xtype )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            if model.wzParent.wzElement == 'shading'
+                _ ctx.w(docxParent + '.type = ShadingType.' + model.wzName + ';')
+            elif model.wzParent.wzElement == 'width'
+                _ ctx.w(docxParent + '.type = WidthType.' + model.wzName + ';')
+            else
+                _ ctx.w(docxParent + '.type = "' + model.wzName + '";')
+            r_cb()
+        +
+        async-md( font )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_fnt_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w(docxParent + '.font = ' + docxNode + ';')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        +
+        async-md( shading )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_shd_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w(docxParent + '.shading = ' + docxNode + ';')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        async-md( table )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_table_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ ctx.w(docxNode + '.rows = [];')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new Table(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        async-md( tr )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_tr_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ ctx.w(docxNode + '.children = [];')
+            _ ctx.w(docxNode + '.layout = TableLayoutType.FIXED;')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new TableRow(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.rows.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        async-md( td )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_td_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ ctx.w(docxNode + '.children = [];')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w('const ' + docxNode + 'Obj = new TableCell(' + docxNode + ');')
+                    _ ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()
+        async-md( width )
+            var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1]
+            var docxNode = "docx_width_" + (++ctx.values.docxCounter)
+            _ ctx.values.docxStack.push(docxNode)
+            _ ctx.w('const ' + docxNode + ' = {};')
+            _ md.genItems
+                @ model.nodes
+                @ ctx
+                @ noindent
+                a_cb()
+                    _ ctx.w(docxParent + '.width = ' + docxNode + ';')
+                    _ ctx.values.docxStack.pop()
+                    r_cb()

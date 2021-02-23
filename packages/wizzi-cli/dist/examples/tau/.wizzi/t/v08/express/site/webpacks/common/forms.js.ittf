@@ -1,0 +1,844 @@
+$group
+    $params &md
+    var stylesInjected = false
+    export
+        function createForm
+            param pageData
+            param elementId
+            const jq2
+                _ jQuery.noConflict
+            _ jq2
+                function
+                    param $
+                    if !stylesInjected
+                        _ injectPageStyles
+                        _ injectFormStyles
+                        set stylesInjected = true
+                    set document.getElementById(elementId).innerHTML
+                        _ getFormContainer
+                            @ pageData
+                    _ startForm
+                        @ $
+                        @ pageData.form
+                    _ startFormValidation
+                        @ $
+                        @ pageData.form
+    html_f getFormContainer
+        var temp = []
+        _ formHtml
+            @ temp
+            @ ctx.form
+        < div
+            id container
+            class page-wrapper bg-red p-t-30 p-b-100 font-robo
+            div
+                id content
+                + {{ temp.join('') }}
+            div
+                id footer
+    function startForm
+        param $
+        param form
+        foreach item in form.controls
+            _ startControl
+                @ $
+                @ item
+    function startControl
+        param $
+        param item
+        if item.type == 'group'
+            foreach child in item.controls
+                _ startControl
+                    @ $
+                    @ child
+            return
+        elif item.type == 'select'
+            try
+                var selectBox = $('select[name="' + item.id + '"]')
+                var selectDropdown = $('#' + item.id + '-dropdown')
+                _ selectBox.select2
+                    {
+                        @ dropdownParent selectDropdown
+                log 'select', item.id, 'activated'
+            catch err
+                log err
+        elif item.type == 'date'
+            try
+                _ $('input[name="' + item.id + '"]').daterangepicker
+                    {
+                        @ "singleDatePicker" true
+                        @ "showDropdowns" true
+                        @ "autoUpdateInput" true
+                        @ "autoApply" true
+                        { locale
+                            @ format 'DD/MM/YYYY'
+                _ $('input[name="' + item.id + '"]').on
+                    @ 'apply.daterangepicker'
+                    function
+                        param ev
+                        param picker
+                        _ $(this).val(picker.startDate.format('DD/MM/YYYY'))
+                log 'datepicker', item.id, 'activated'
+            catch err
+                log err
+        elif item.type == 'checkbox' || item.type == 'radio'
+            const skin = item.skin || 'square'
+            const colorScheme = item.color || 'blue'
+            const increaseArea = item.increase || '20'
+            try
+                _ $('input[name="' + item.id + '"]').iCheck
+                    {
+                        @ checkboxClass 'icheckbox_' + skin + '-' + colorScheme
+                        @ radioClass 'iradio_' + skin + '-' + colorScheme
+                        @ increaseArea increaseArea + '%'
+            catch err
+                log err
+        elif item.type == 'slider'
+            try
+                _ noUiSlider.create
+                    @ $('#' + item.id)[0]
+                    {
+                        [ start
+                            @ item.start
+                        @ step item.step
+                        [ connect
+                            @ true
+                            @ false
+                        [ tooltips
+                            @ true
+                        { range
+                            @ 'min' item.range.min
+                            @ 'max' item.range.max
+                        @ format
+                            _ wNumb
+                                {
+                                    @ decimals 0
+                                    @ thousand ','
+                                    @ prefix '$ '
+            catch err
+                log err
+        elif item.type == 'code'
+            try
+                var editor
+                    _ CodeMirror
+                        @ $('#' + item.id)[0]
+                        {
+                            @ mode "text/html"
+                            @ theme "dracula"
+                            @ lineWrapping false
+                            @ lineNumbers true
+                            @ styleActiveLine true
+                            @ matchBrackets true
+                            @ viewportMargin Infinity
+                            { extraKeys
+                                @ "Ctrl-Space" "autocomplete"
+                            @ value "<!doctype html>\n<html>\n  " + $('#' + item.id)[0].innerHTML + "\n</html>"
+            catch err
+                log err
+    function startFormValidation
+        param $
+        param form
+        var rules = {}
+        foreach item in form.controls
+            _ setControlRule
+                @ $
+                @ item
+                @ rules
+        _ $('#' + form.id).validate
+            {
+                @ rules rules
+                @ errorElement 'div'
+                @ onfocusout
+                    function
+                        param element
+                        log 'onfocusout', element
+                        _ $(element).valid
+                        log $(element).valid()
+    function setControlRule
+        param $
+        param item
+        param rules
+        if item.type == 'group'
+            foreach child in item.controls
+                _ setControlRule
+                    @ $
+                    @ child
+                    @ rules
+            return
+        if item.required
+            set rules[item.id] = "required"
+    function formHtml
+        param __html
+        param form
+        var temp = []
+        foreach item in form.controls
+            _ formControlHtml
+                @ temp
+                @ item
+        div
+            class card card-2
+            div
+                class card-heading
+            div
+                class card-body
+                h2 {{ form.title }}
+                    class title
+                div
+                    < form
+                        method post
+                        id {{ form.id }}
+                        div {{ temp.join('') }}
+                        div
+                            class form-submit
+                            input
+                                type submit
+                                value Submit
+                                class submit
+                                id submit
+                                name submit
+                            input
+                                type submit
+                                value Reset
+                                class submit
+                                id reset
+                                name reset
+    function formControlHtml
+        param __html
+        param ctrl
+        let options = []
+        if ctrl.type == 'group'
+            var direction = ctrl.direction || 'row'
+            foreach item in ctrl.controls
+                var aOptions = []
+                _ formControlHtml
+                    @ aOptions
+                    @ item
+                _ options.push
+                    _ aOptions.join('\n')
+            div {{ options.join('\n') }}
+                class control-group grid-{{ direction }}-{{ ctrl.controls.length }}
+            return
+        elif ctrl.type == 'select'
+            foreach item in ctrl.options
+                var aOptions = []
+                _ selectOptionHtml
+                    @ aOptions
+                    @ item
+                _ options.push
+                    _ aOptions.join('')
+        if ctrl.type == 'radio'
+            foreach item in ctrl.options
+                var aOptions = []
+                _ radioOptionHtml
+                    @ aOptions
+                    @ ctrl
+                    @ item
+                _ options.push
+                    _ aOptions.join('')
+        div
+            class single-control row row-space
+            label {{ ctrl.label }}
+                @ for {{ ctrl.id }}
+                class {{ (ctrl.required ? 'required' : '') }}
+            div
+                class input-group
+                if ctrl.type == 'text'
+                    input
+                        class input--style-2
+                        type text
+                        placeholder {{ ctrl.label }}
+                        name {{ ctrl.id }}
+                elif ctrl.type == 'select'
+                    div
+                        class rs-select2 js-select-simple select--no-search
+                        select {{ options.join('\n') }}
+                            name {{ ctrl.id }}
+                        div
+                            id {{ ctrl.id }}-dropdown
+                            class select-dropdown
+                elif ctrl.type == 'date'
+                    input
+                        class input--style-2 js-datepicker
+                        type text
+                        placeholder {{ ctrl.label }}
+                        name {{ ctrl.id }}
+                    i
+                        class zmdi zmdi-calendar-note input-icon js-btn-calendar
+                elif ctrl.type == 'checkbox'
+                    div
+                        class checkbox-item
+                        input
+                            class input--style-2
+                            type checkbox
+                            placeholder {{ ctrl.label }}
+                            name {{ ctrl.id }}
+                elif ctrl.type == 'radio'
+                    div {{ options.join('\n') }}
+                        class radio-group
+                elif ctrl.type == 'slider'
+                    div
+                        class slider-group ui-slider ui-slider-horizontal
+                        div
+                            class slider-item
+                            id {{ ctrl.id }}
+                        span
+                            class donate-value
+                            id value-lower
+                elif ctrl.type == 'code'
+                    div
+                        id {{ ctrl.id }}
+    function selectOptionHtml
+        param __html
+        param ctrl
+        _ __html.push('<option')
+        _ __html.push(' value="' + ctrl.value + '"')
+        if ctrl.selected
+            _ __html.push(' selected="selected"')
+        _ __html.push('>')
+        _ __html.push(ctrl.label)
+        _ __html.push('</option>')
+    function radioOptionHtml
+        param __html
+        param radio
+        param ctrl
+        div
+            class radio-item
+            input
+                type radio
+                name {{ radio.id }}
+                id {{ ctrl.id }}
+                checked
+            label {{ ctrl.label }}
+                @ for {{ ctrl.id }}
+            span
+                class check
+    function injectPageStyles
+        _ injectCssLink
+            @ "https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+        _ injectCssText
+            {
+                { body
+                    @ margin 0
+                    @ "font-family" '"Roboto", "Arial", "Helvetica Neue", sans-serif'
+                    @ "font-weight" 400
+                    @ "font-size" "14px"
+                { "#container"
+                    @ width "75%"
+                    @ border "none"
+                    @ margin "auto"
+                { "#content"
+                    @ padding "2rem"
+                { ".row"
+                    @ display "-webkit-box"
+                    @ display "-webkit-flex"
+                    @ display "-moz-box"
+                    @ display "-ms-flexbox"
+                    @ display "flex"
+                    @ "-webkit-flex-wrap" "wrap"
+                    @ "-ms-flex-wrap" "wrap"
+                    @ "flex-wrap" "wrap"
+                { ".row-space"
+                    @ "-webkit-box-pack" "justify"
+                    @ "-webkit-justify-content" "space-between"
+                    @ "-moz-box-pack" "justify"
+                    @ "-ms-flex-pack" "justify"
+                    @ "justify-content" "space-between"
+                { ".col-2"
+                    @ width "-webkit-calc((100% - 60px) / 2)"
+                    @ width "-moz-calc((100% - 60px) / 2)"
+                    @ width "calc((100% - 60px) / 2)"
+                { "@media (max-width: 767px)"
+                    { ".col-2"
+                        @ width "100%"
+                # ==========================================================================
+                # BACKGROUND
+                # ==========================================================================
+                { ".bg-blue"
+                    @ background "#2c6ed5"
+                { ".bg-red"
+                    @ background "#fa4251"
+                # ==========================================================================
+                # SPACING
+                # ==========================================================================
+                { ".m-t-20"
+                    @ "margin-top" "20px"
+                { ".m-t-30"
+                    @ "margin-top" "30px"
+                { ".m-t-100"
+                    @ "margin-top" "100px"
+                { ".m-t-180"
+                    @ "margin-top" "180px"
+                { ".m-b-20"
+                    @ "margin-bottom" "20px"
+                { ".m-b-30"
+                    @ "margin-bottom" "30px"
+                { ".m-b-100"
+                    @ "margin-bottom" "100px"
+                { ".m-b-180"
+                    @ "margin-bottom" "180px"
+                { ".p-t-20"
+                    @ "padding-top" "20px"
+                { ".p-t-30"
+                    @ "padding-top" "30px"
+                { ".p-t-100"
+                    @ "padding-top" "100px"
+                { ".p-t-180"
+                    @ "padding-top" "180px"
+                { ".p-b-180"
+                    @ "padding-bottom" "180px"
+                { ".p-b-180"
+                    @ "padding-bottom" "180px"
+                { ".p-b-180"
+                    @ "padding-bottom" "180px"
+                { ".p-b-180"
+                    @ "padding-bottom" "180px"
+    function injectFormStyles
+        _ injectCssText
+            {
+                # ==========================================================================
+                # GRID
+                # ==========================================================================
+                { ".control-group"
+                    @ "width" "100%"
+                { ".single-control"
+                    @ "width" "100%"
+                { ".grid-row-2"
+                    @ display "grid"
+                    @ "grid-template-columns" "1fr 1fr"
+                { ".grid-row-3"
+                    @ display "grid"
+                    @ "grid-template-columns" "1fr 1fr 1fr"
+                { ".input-group"
+                    @ position "relative"
+                    @ "width" "100%"
+                    $if md.hasBorderedControls
+                        @ "margin-bottom" "2px"
+                        @ "padding-bottom" "12px"
+                    $else
+                        @ "margin-bottom" "12px"
+                        @ "padding-bottom" "22px"
+                        @ "border-bottom" "1px solid #e5e5e5"
+                # ==========================================================================
+                # BUTTON
+                # ==========================================================================
+                { ".btn"
+                    @ "line-height" "40px"
+                    @ display "inline-block"
+                    @ padding "0 25px"
+                    @ cursor "pointer"
+                    @ color "#fff"
+                    @ "font-family" '"Roboto", "Arial", "Helvetica Neue", sans-serif'
+                    @ "-webkit-transition" "all 0.4s ease"
+                    @ "-o-transition" "all 0.4s ease"
+                    @ "-moz-transition" "all 0.4s ease"
+                    @ "transition" "all 0.4s ease"
+                    @ "font-size" "14px"
+                    @ "font-weight" "700"
+                { ".btn--radius"
+                    @ "-webkit-border-radius" "3px"
+                    @ "-moz-border-radius" "3px"
+                    @ "border-radius" "3px"
+                { ".btn--green"
+                    @ background "#57b846"
+                { ".btn--green:hover"
+                    @ background "#4dae3c"
+                # ==========================================================================
+                # Label
+                # ==========================================================================
+                { label
+                    @ "font-weight" "bold"
+                    @ "margin-bottom" "7px"
+                { "label.required"
+                    @ "position" "relative"
+                { "label.required:after"
+                    @ "content" "'*'"
+                    @ "margin-left" "2px"
+                    @ color "#b90000"
+                { "div.error"
+                    @ color "#c70000"
+                # ==========================================================================
+                # Input
+                # ==========================================================================
+                { input
+                    $if md.hasBorderedControls
+                        @ "box-sizing" "border-box"
+                        @ border "1px solid #ebebeb"
+                        @ padding "14px 20px"
+                        @ "border-radius" "5px"
+                        @ "-moz-border-radius" "5px"
+                        @ "-webkit-border-radius" "5px"
+                        @ "-o-border-radius" "5px"
+                        @ "-ms-border-radius" "5px"
+                    $else
+                        @ outline "none"
+                        @ margin 0
+                        @ border "none"
+                        @ "-webkit-box-shadow" "none"
+                        @ "-moz-box-shadow" "none"
+                        @ "box-shadow" "none"
+                    @ "font-size" "14px"
+                    @ "font-family" "inherit"
+                $if md.hasBorderedControls
+                    { "input:focus"
+                        @ border "1px solid #009e00"
+                    { "input.error"
+                        @ border "1px solid #c70000"
+                { ".input-icon"
+                    @ position "absolute"
+                    @ "font-size" "18px"
+                    @ "color" "#ccc"
+                    @ "right" "8px"
+                    @ "top" "50%"
+                    @ "-webkit-transform" "translateY(-50%)"
+                    @ "-moz-transform" "translateY(-50%)"
+                    @ "-ms-transform" "translateY(-50%)"
+                    @ "-o-transform" "translateY(-50%)"
+                    @ "transform" "translateY(-50%)"
+                    @ "cursor" "pointer"
+                { ".input--style-2"
+                    $if !md.hasBorderedControls
+                        @ padding "9px 0"
+                    @ color "#666"
+                    @ "font-size" "16px"
+                    @ "font-weight" "500"
+                { ".input--style-2::-webkit-input-placeholder"
+                    @ color "#808080"
+                    @ opacity .4
+                { ".input--style-2:-moz-placeholder"
+                    @ color "#808080"
+                    @ opacity .4
+                { ".input--style-2::-moz-placeholder"
+                    @ color "#808080"
+                    @ opacity .4
+                { ".input--style-2:-ms-input-placeholder"
+                    @ color "#808080"
+                    @ opacity .4
+                { ".input--style-2:-ms-input-placeholder"
+                    @ color "#808080"
+                    @ opacity .4
+                # ==========================================================================
+                # DATE PICKER
+                # ==========================================================================
+                { "td.active"
+                    @ "background-color" "#2c6ed5"
+                { 'input[type="date" i]'
+                    @ padding "14px"
+                { ".table-condensed td, .table-condensed th"
+                    @ "font-size" "14px"
+                    @ "font-family" '"Roboto", "Arial", "Helvetica Neue", sans-serif'
+                    @ "font-weight" "400"
+                { ".daterangepicker td"
+                    @ width "40px"
+                    @ height "30px"
+                { ".daterangepicker"
+                    @ border "none"
+                    @ "-webkit-box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ "-moz-box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ "box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ display "none"
+                    @ border "1px solid #e0e0e0"
+                    @ "margin-top" "5px"
+                { ".daterangepicker::after, .daterangepicker::before"
+                    @ display "none"
+                { ".daterangepicker thead tr th"
+                    @ padding "10px 0"
+                { ".daterangepicker .table-condensed th select"
+                    @ border "1px solid #ccc"
+                    @ "-webkit-border-radius" "3px"
+                    @ "-moz-border-radius" "3px"
+                    @ "border-radius" "3px"
+                    @ "font-size" "14px"
+                    @ "padding" "5px"
+                    @ "outline" "none"
+                # =========================================================================
+                # SELECT2
+                # =========================================================================
+                { ".select--no-search .select2-search"
+                    @ display "none !important"
+                { ".rs-select2 .select2-container"
+                    @ width "100% !important"
+                    $if md.hasBorderedControls
+                        @ border "1px solid #ebebeb"
+                    $else
+                        @ outline "none"
+                { ".rs-select2 .select2-container .select2-selection--single"
+                    @ outline "none"
+                    @ border "none"
+                    @ height "36px"
+                { ".rs-select2 .select2-container .select2-selection--single .select2-selection__rendered"
+                    @ "line-height" "36px"
+                    @ "padding-left" 0
+                    @ color "#808080"
+                    @ "font-size" "16px"
+                    @ "font-family" "inherit"
+                    @ "font-weight" 500
+                { ".rs-select2 .select2-container .select2-selection--single .select2-selection__arrow"
+                    @ height "34px"
+                    @ right  "4px"
+                    @ display "-webkit-box"
+                    @ display "-webkit-flex"
+                    @ display "-moz-box"
+                    @ display "-ms-flexbox"
+                    @ display "flex"
+                    @ "-webkit-box-pack" "center"
+                    @ "-webkit-justify-content" "center"
+                    @ "-moz-box-pack" "center"
+                    @ "-ms-flex-pack" "center"
+                    @ "justify-content" "center"
+                    @ "-webkit-box-align" "center"
+                    @ "-webkit-align-items" "center"
+                    @ "-moz-box-align" "center"
+                    @ "-ms-flex-align" "center"
+                    @ "align-items" "center"
+                { ".rs-select2 .select2-container .select2-selection--single .select2-selection__arrow b"
+                    @ "display" "none"
+                { ".rs-select2 .select2-container .select2-selection--single .select2-selection__arrow:after"
+                    @ "font-family" "Material-Design-Iconic-Font"
+                    @ content "'\f2f9'"
+                    @ "font-size" "18px"
+                    @ color "#ccc"
+                    @ "-webkit-transition" "all 0.4s ease"
+                    @ "-o-transition" "all 0.4s ease"
+                    @ "-moz-transition" "all 0.4s ease"
+                    @ transition "all 0.4s ease"
+                { ".rs-select2 .select2-container.select2-container--open .select2-selection--single .select2-selection__arrow::after"
+                    @ "-webkit-transform" "rotate(-180deg)"
+                    @ "-moz-transform" "rotate(-180deg)"
+                    @ "-ms-transform" "rotate(-180deg)"
+                    @ "-o-transform" "rotate(-180deg)"
+                    @ transform "rotate(-180deg)"
+                { ".select2-container--open .select2-dropdown--below"
+                    @ border "none"
+                    @ "-webkit-border-radius" "3px"
+                    @ "-moz-border-radius" "3px"
+                    @ "border-radius" "3px"
+                    @ "-webkit-box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ "-moz-box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ "box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ border "1px solid #e0e0e0"
+                    @ "margin-top" "5px"
+                    @ overflow "hidden"
+                # ==========================================================================
+                # CHECKBOX
+                # ==========================================================================
+                { ".checkbox-item"
+                    @ "padding-left" "30px"
+                    @ "padding-bottom" "10px"
+                    @ "padding-top" "12px"
+                # ==========================================================================
+                # RADIO
+                # ==========================================================================
+                { ".radio-group"
+                    @ display "flex"
+                    @ "padding-bottom" "10px"
+                    @ "padding-top" "12px"
+                { ".radio-item"
+                    @ position "relative"
+                    @ display "grid"
+                    @ "grid-template-columns" "1fr 3fr"
+                    @ "margin-right" "30px"
+                { ".radio-item label"
+                    @ "font-weight" 500
+                    @ "padding-left" "10px"
+                    @ position "relative"
+                    @ "z-index" 9
+                    @ display "block"
+                    @ cursor "pointer"
+                    @ "text-transform" "none"
+                { ".form-radio input"
+                    @ width "auto"
+                    @ display "inline-block"
+                # ==========================================================================
+                # SLIDER
+                # ==========================================================================
+                { ".slider-group"
+                    @ position "relative"
+                    @ "margin-top" "22px"
+                { ".slider-item"
+                    @ height "5px"
+                    @ border "none"
+                    @ "box-shadow" "none"
+                    @ "-moz-box-shadow" "none"
+                    @ "-webkit-box-shadow" "none"
+                    @ "-o-box-shadow" "none"
+                    @ "-ms-box-shadow" "none"
+                    @ background "#f8f8f8"
+                    @ "border-radius" "2.5px"
+                    @ "-moz-border-radius" "2.5px"
+                    @ "-webkit-border-radius" "2.5px"
+                    @ "-o-border-radius" "2.5px"
+                    @ "-ms-border-radius" "2.5px"
+                { ".slider-item .noUi-connect"
+                    @ background "#329e5e"
+                { ".slider-item .noUi-handle"
+                    @ width "100px"
+                    @ height "30px"
+                    @ top "-12px"
+                    @ background "#329e5e"
+                    @ "box-shadow" "0px 3px 2.85px 0.15px rgba(0, 0, 0, 0.1)"
+                    @ "-moz-box-shadow" "0px 3px 2.85px 0.15px rgba(0, 0, 0, 0.1)"
+                    @ "-webkit-box-shadow" "0px 3px 2.85px 0.15px rgba(0, 0, 0, 0.1)"
+                    @ "-o-box-shadow" "0px 3px 2.85px 0.15px rgba(0, 0, 0, 0.1)"
+                    @ "-ms-box-shadow" "0px 3px 2.85px 0.15px rgba(0, 0, 0, 0.1)"
+                    @ "border-radius" "5px"
+                    @ "-moz-border-radius" "5px"
+                    @ "-webkit-border-radius" "5px"
+                    @ "-o-border-radius" "5px"
+                    @ "-ms-border-radius" "5px"
+                    @ outline "none"
+                    @ border "none"
+                    @ right "-50px"
+                { ".slider-item .noUi-handle:after, .slider-item .noUi-handle:before"
+                    @ background "transparent"
+                    @ height "0px"
+                    @ width "20px"
+                    @ top "-2px"
+                    @ "font-size" "18px"
+                    @ outline "none"
+                { ".slider-item .noUi-handle:before"
+                    @ "font-family" "Material-Design-Iconic-Font"
+                    @ color "#fff"
+                    @ content "'\f2fa'"
+                    @ left "10px"
+                { ".slider-item .noUi-handle:after"
+                    @ "font-family" "'Material-Design-Iconic-Font'"
+                    @ color "#fff"
+                    @ content "'\f2fb'"
+                    @ left "auto"
+                    @ right "-5px"
+                { ".slider-item .noUi-handle .noUi-tooltip"
+                    @ bottom "2px"
+                    @ border "none"
+                    @ background "transparent"
+                    @ "font-weight" "bold"
+                    @ color "#fff"
+                    @ padding "0px"
+                { ".donate-us"
+                    @ "margin-bottom" "93px"
+                    @ "margin-top" "30px"
+                { ".donate-us label"
+                    @ "margin-bottom" "32px"
+                { ".price_slider"
+                    @ position "relative"
+                { ".donate-value"
+                    @ position "absolute"
+                    @ top "-9px"
+                    @ left "50%"
+                    @ "z-index" "99"
+                    @ transform "translateX(-50%)"
+                    @ "-moz-transform" "translateX(-50%)"
+                    @ "-webkit-transform" "translateX(-50%)"
+                    @ "-o-transform" "translateX(-50%)"
+                    @ "-ms-transform" "translateX(-50%)"
+                # ==========================================================================
+                # CODEMIRROR
+                # ==========================================================================
+                { ".CodeMirror"
+                    @ "font-size" "15px"
+                    @ border "1px solid #eee"
+                    @ height "20rem"
+                # ==========================================================================
+                # SUBMIT
+                # ==========================================================================
+                { ".form-submit"
+                    @ "text-align" "right"
+                { ".submit"
+                    @ width "150px"
+                    @ height "50px"
+                    @ display "inline-block"
+                    @ "font-family" "'Poppins'"
+                    @ "font-weight" "bold"
+                    @ "font-size" "14px"
+                    @ padding "10px"
+                    @ border "none"
+                    @ cursor "pointer"
+                    @ "text-transform" "uppercase"
+                    @ "border-radius" "5px"
+                    @ "-moz-border-radius" "5px"
+                    @ "-webkit-border-radius" "5px"
+                    @ "-o-border-radius" "5px"
+                    @ "-ms-border-radius" "5px"
+                { "#reset"
+                    @ background "#fff"
+                    @ color "#999"
+                    @ border "2px solid #ebebeb"
+                { "#reset:hover"
+                    @ border "2px solid #329e5e"
+                    @ background "#329e5e"
+                    @ color "#fff"
+                { "#submit"
+                    @ background "#329e5e"
+                    @ color "#fff"
+                    @ "margin-right" "25px"
+                { "#submit:hover"
+                    @ "background-color" "#267747"
+                # ==========================================================================
+                # TITLE
+                # ==========================================================================
+                { ".title"
+                    @ "text-transform" "uppercase"
+                    @ "font-weight" 700
+                    @ "margin-bottom" "37px"
+                # ==========================================================================
+                # CARD
+                # ==========================================================================
+                { ".card"
+                    @ overflow "hidden"
+                    @ "-webkit-border-radius" "3px"
+                    @ "-moz-border-radius" "3px"
+                    @ "border-radius" "3px"
+                    @ background "#fff"
+                { ".card-2"
+                    @ "-webkit-box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ "-moz-box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ "box-shadow" "0px 8px 20px 0px rgba(0, 0, 0, 0.15)"
+                    @ "-webkit-border-radius" "10px"
+                    @ "-moz-border-radius" "10px"
+                    @ "border-radius" "10px"
+                    @ "width" "100%"
+                    @ display "table"
+                { ".card-2 .card-heading"
+                    @ background 'url("./images/stefano_stop.jpg") top left/cover no-repeat'
+                    @ width "24.1%"
+                    @ display "table-cell"
+                { ".card-2 .card-body"
+                    @ display "table-cell"
+                    @ padding "80px 90px"
+                    @ "padding-bottom" "88px"
+    function injectCssLink
+        param href
+        var head = document.head || document.getElementsByTagName('head')[0]
+        var link = document.createElement('link')
+        set link.rel = "stylesheet"
+        set link.href = href
+        set link.type = "text/css"
+        _ head.appendChild(link)
+    function injectCssText
+        param cssObj
+        var head = document.head || document.getElementsByTagName('head')[0]
+        var style = document.createElement('style')
+        set style.type = 'text/css'
+        var aCss = []
+        for var krule in cssObj
+            var ruleObj = cssObj[krule]
+            var aRule = []
+            for var kstyle in ruleObj
+                if typeof ruleObj[kstyle] === 'object'
+                    var aRule2 = []
+                    for var kstyle2 in ruleObj[kstyle]
+                        _ aRule2.push
+                            @ kstyle2 + ': ' + ruleObj[kstyle][kstyle2]
+                    _ aRule.push
+                        @ kstyle + ' { ' + aRule2.join(';\n') + ' } '
+                else
+                    _ aRule.push
+                        @ kstyle + ': ' + ruleObj[kstyle]
+            _ aCss.push
+                @ krule + ' { ' + aRule.join(';\n') + ' } '
+        var css = aCss.join('\n')
+        # IE8 and below.
+        if style.styleSheet
+            set style.styleSheet.cssText = css
+        else
+            _ style.appendChild(document.createTextNode(css))
+        _ head.appendChild(style)

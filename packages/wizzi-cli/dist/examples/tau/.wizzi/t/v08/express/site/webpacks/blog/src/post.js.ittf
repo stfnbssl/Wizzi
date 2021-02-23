@@ -1,0 +1,27 @@
+$group
+    $params &md
+    import
+        @ createForm
+        from '../../common/forms.js'
+    const blogFormData
+        {
+            { form
+                @ id "blogPost"
+                @ title "Blog post"
+                [ controls
+                    {
+                        @ id "author"
+                        @ label "author"
+                        @ type "text"
+                        @ required true
+                    {
+                        @ id "title"
+                        @ label "title"
+                        @ type "text"
+                        @ required true
+    export
+        function mountPostForm
+            param elementId
+            _ createForm
+                @ blogFormData
+                @ elementId

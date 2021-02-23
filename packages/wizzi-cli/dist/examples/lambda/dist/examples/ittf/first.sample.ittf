@@ -1,0 +1,91 @@
+sample first
+    section one
+        p
+            h1 Hello world
+            + I am very happy and you?
+                font
+                    name Garamond
+                br
+            + I am very happy and you?
+                font
+                    name Garamond
+                br
+            + I am very happy and you?
+                font
+                    name Garamond
+                br
+            + I am very happy and you?
+                font
+                    name Garamond
+                br
+            + I am very happy and you?
+                font
+                    name Garamond
+                br
+            + I am very happy and you?
+                font
+                    name Garamond
+                br
+        p
+            + Colored and shaded
+                size 48
+                color red
+                shading
+                    color dede00
+                    fill 00dede
+                    type REVERSE_DIAGONAL_STRIPE
+        table
+            width
+                size 8000
+                type DXA
+            tr
+                td
+                    p
+                        b Name
+                    width
+                        size 50
+                        type PERCENTAGE
+                td
+                    p
+                        b Role
+                    width
+                        size 50
+                        type PERCENTAGE
+            tr
+                td
+                    p
+                        + Sarti
+                td
+                    p
+                        + Portiere
+            tr
+                td
+                    p
+                        + Burnich
+                td
+                    p
+                        + Terzino
+    section two
+        p
+            b I am so so
+                size 32
+                br
+            b I am so so
+                size 32
+                br
+            b I am so so
+                size 32
+                br
+            b I am so so
+                size 32
+                br
+            b I am so so
+                size 32
+                br
+            b I am so so
+                size 32
+                br
+    section three
+        p
+            + I am very bad and you?
+            i Am i italian?

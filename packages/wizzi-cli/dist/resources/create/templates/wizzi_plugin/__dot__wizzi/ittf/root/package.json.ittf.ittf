@@ -1,0 +1,16 @@
+{
+    $
+        var call = '(&md)'
+    
+    ${'$'}
+        var md = {
+        }
+
+    v08/root/package${call}
+
+        ${'$'}append scripts
+            examples "node examples"
+
+        ${'$'}append dependencies
+
+        ${'$'}append devDependencies

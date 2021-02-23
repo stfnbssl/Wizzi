@@ -1,0 +1,53 @@
+${'$'}group
+    ${'$'}params &md
+
+    var stylesInjected = false
+
+    export
+        function createForm
+            param pageData
+            param elementId
+
+            const jq2
+                _ jQuery.noConflict
+            _ jq2
+                function 
+                    param $
+                    
+                    if !stylesInjected
+                        _ injectPageStyles
+                        _ injectFormStyles
+                        set stylesInjected = true
+
+                    set document.getElementById(elementId).innerHTML
+                        _ getFormContainer
+                            @ pageData
+                    
+                    _ startForm
+                        @ $
+                        @ pageData.form
+
+                    _ startFormValidation
+                        @ $
+                        @ pageData.form
+
+    html_f getFormContainer
+        var temp = []    
+        _ formHtml
+            @ temp
+            @ ctx.form
+        < div
+            id container
+            class page-wrapper bg-red p-t-30 p-b-100 font-robo
+            div
+                id content
+                + {{ temp.join('') }}
+            div
+                id footer
+
+    $include wz/v08/js/forms/startForm.js
+    $include wz/v08/js/forms/startFormValidation.js
+    $include wz/v08/js/forms/formHtml.js
+    $include wz/v08/js/forms/pageStyles.js
+    $include wz/v08/js/forms/formStyles.js
+    $include wz/v08/js/forms/injectStyles.js

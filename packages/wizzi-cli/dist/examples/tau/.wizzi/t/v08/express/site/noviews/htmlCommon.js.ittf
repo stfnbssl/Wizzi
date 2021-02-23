@@ -10,7 +10,7 @@ $group
                     + nav { float: right; max-width: 160px; height: 134px; padding: 1em; border: solid #333 }
                     + nav ul { list-style-type: none; padding: 0; }
                     + nav ul a { text-decoration: none; }
-                    + article { padding: 1em; min-height: 20rem;}
+                    + article { padding: 3em; min-height: 20rem;}
             body
                 div
                     id container

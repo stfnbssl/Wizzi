@@ -50,6 +50,9 @@
                 {
                     name "hello"
                     writeToDisk false
+                {
+                    name "blog"
+                    writeToDisk false
         useErrors false
         { errors
         useMongoDb true

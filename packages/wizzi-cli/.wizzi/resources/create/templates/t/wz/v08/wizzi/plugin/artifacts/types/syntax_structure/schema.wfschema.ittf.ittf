@@ -1,0 +1,36 @@
+$group
+
+    e xname : node
+        tag name
+    
+    e section : node
+    e h1 : node
+    e h2 : node
+    e p : node
+    e break : node
+        tag br
+
+    e text : node
+        tag +
+    e bold : node
+        tag b
+    e italic : node
+        tag i
+    e font : node
+    e color : node
+    e fill : node
+    e size : node
+    e width : node
+    e shading : node
+    e highlight : node
+    e xtype : node
+        tag type
+
+    e table : node
+    e tr : node
+    e td : node
+    
+    e center : node
+    e bullet_0 : node
+
+

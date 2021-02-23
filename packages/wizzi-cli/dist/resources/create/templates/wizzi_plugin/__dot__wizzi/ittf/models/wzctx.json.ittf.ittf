@@ -1,0 +1,28 @@
+{
+    name "${cliCtx.name}"
+    version "0.0.1"
+    description "${cliCtx.description}"
+    { author
+        name "${cliCtx.author.name}"
+        email "${cliCtx.author.email}"
+    { github
+        userid "${cliCtx.github.userid}"
+    { license
+        name "${cliCtx.license.name}"
+        copy "${cliCtx.license.copy}"
+
+    { Build
+        useWizzi true
+        { wizzi
+    
+    [ Schemas
+        {
+            name "Sample"
+            title "Sample wizzi schema"
+            builtin false
+            [ modelTransformers
+                {
+                    name "extended"
+            [ artifactGenerators
+                {
+                    name "document"

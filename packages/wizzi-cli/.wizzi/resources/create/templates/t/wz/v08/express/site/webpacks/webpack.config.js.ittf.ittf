@@ -1,0 +1,40 @@
+$group
+
+    ${'$'}if wzCtx.type == 'module'
+        import { dirname } from 'path'
+        import { fileURLToPath } from 'url'
+        const __dirname = dirname(fileURLToPath(import.meta.url))
+    
+    ## Webpack config file for package ${'$'}{md.name.toUpperCase()}
+    
+    import path from 'path'
+    export
+        const config
+            { 
+                @ mode "development"
+                @ entry 
+                    _ path.resolve
+                        @ __dirname
+                        @ './src/index.js'
+                { module
+				    [ rules
+                        {	
+                            @ test /\.(js)$/
+                            @ exclude /node_modules/
+                            { use
+                                @ loader 'babel-loader'
+                                { options
+                                    [ presets
+                                        @ '@babel/preset-env'                                
+                { output
+                    @ path
+                        _ path.resolve
+                            @ __dirname
+                            @ 'static'
+                    @ filename 'bundle.js'
+                    @ publicPath '/webpacks/${'$'}{md.name}'
+                { resolve
+                    [ extensions
+                        @ '.js'
+                @ devtool 'cheap-module-source-map'
+

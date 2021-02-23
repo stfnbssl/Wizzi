@@ -23,4 +23,9 @@ $group
                 param answers
                 _ console.log('\nWizzi plugin type:')
                 _ console.log(JSON.stringify(answers, null, '  '))
+                set answers.author = {}
+                set answers.license = {}
+                set answers.license.name = "MIT"
+                set answers.license.copy = "copy 2021"
+                set answers.github = {}
                 r_cb(answers)

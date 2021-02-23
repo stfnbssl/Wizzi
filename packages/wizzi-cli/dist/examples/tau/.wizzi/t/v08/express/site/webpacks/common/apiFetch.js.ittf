@@ -1,0 +1,102 @@
+$group
+    $params &md
+    +
+    export
+        function getData
+            param url
+            param callback
+            _ executeFetch
+                @ url
+                @ callback
+    +
+    export
+        function postData
+            param url = ''
+            param data = {}
+            param callback
+            _ executeFetch
+                @ url
+                @ data
+                {
+                    @ method 'POST'
+                @ callback
+    +
+    export
+        function postData
+            param url = ''
+            param data = {}
+            param callback
+            _ executeFetch
+                @ url
+                @ data
+                {
+                    @ method 'PUT'
+                @ callback
+    +
+    export
+        function postData
+            param url = ''
+            param data = {}
+            param callback
+            _ executeFetch
+                @ url
+                @ data
+                {
+                    @ method 'DELETE'
+                @ callback
+    +
+    function executeFetch
+        param url
+        param data
+        param options
+        param callback
+        if typeof options == 'undefined'
+            set callback = data
+            set options
+                {
+                    @ method 'GET'
+        elif typeof callback == 'undefined'
+            set callback = options
+        let fetchOptions
+            {
+                @ method options.method || "GET"
+        if fetchOptions.method == 'GET' || fetchOptions.method == 'HEAD'
+        else
+            if typeof data == 'object' && data != null
+                set fetchOptions.body = JSON.stringify(data)
+                set fetchOptions.headers
+                    {
+                        @ 'Content-Type' 'application/json'
+        log 'executeFetch, url, fetchOptions
+        set fetchOptions.mode = 'cors'
+        set fetchOptions.cache = 'no-cache'
+        set fetchOptions.credentials = 'same-origin'
+        set fetchOptions.redirect 'follow'
+        set fetchOptions.referrerPolicy 'no-referrer'
+        _ fetch
+            @ url
+            @ fetchOptions
+            ._ then
+            =>
+                param resp
+                if !response.ok
+                    _ callback
+                        {
+                            @ method fetchOptions.method
+                            @ message "Http error fetching url " + url
+                            @ error `Status: ${response.status}`
+                _ resp.json
+            ._ then
+                function
+                    param data
+                    _ callback
+                        @ null
+                        @ data
+            ._ catch
+                function
+                    param error
+                    _ callback
+                        {
+                            @ method fetchOptions.method
+                            @ message "Error fetching " + url
+                            @ error

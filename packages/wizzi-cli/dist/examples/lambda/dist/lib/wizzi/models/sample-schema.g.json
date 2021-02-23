@@ -1,0 +1,795 @@
+{
+  "name": "sample",
+  "preserveTags": true,
+  "requires": [],
+  "exportTos": [],
+  "elements": [
+    {
+      "name": "node",
+      "super": null,
+      "isRoot": false,
+      "tags": [
+        "node"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": null,
+          "comments": []
+        }
+      ],
+      "derived": [
+        {
+          "name": "sample",
+          "tags": [
+            "sample"
+          ]
+        },
+        {
+          "name": "xname",
+          "tags": [
+            "name"
+          ]
+        },
+        {
+          "name": "section",
+          "tags": [
+            "section"
+          ]
+        },
+        {
+          "name": "h1",
+          "tags": [
+            "h1"
+          ]
+        },
+        {
+          "name": "h2",
+          "tags": [
+            "h2"
+          ]
+        },
+        {
+          "name": "p",
+          "tags": [
+            "p"
+          ]
+        },
+        {
+          "name": "xbreak",
+          "tags": [
+            "br"
+          ]
+        },
+        {
+          "name": "text",
+          "tags": [
+            "+"
+          ]
+        },
+        {
+          "name": "bold",
+          "tags": [
+            "b"
+          ]
+        },
+        {
+          "name": "italic",
+          "tags": [
+            "i"
+          ]
+        },
+        {
+          "name": "font",
+          "tags": [
+            "font"
+          ]
+        },
+        {
+          "name": "color",
+          "tags": [
+            "color"
+          ]
+        },
+        {
+          "name": "fill",
+          "tags": [
+            "fill"
+          ]
+        },
+        {
+          "name": "size",
+          "tags": [
+            "size"
+          ]
+        },
+        {
+          "name": "width",
+          "tags": [
+            "width"
+          ]
+        },
+        {
+          "name": "shading",
+          "tags": [
+            "shading"
+          ]
+        },
+        {
+          "name": "highlight",
+          "tags": [
+            "highlight"
+          ]
+        },
+        {
+          "name": "xtype",
+          "tags": [
+            "type"
+          ]
+        },
+        {
+          "name": "table",
+          "tags": [
+            "table"
+          ]
+        },
+        {
+          "name": "tr",
+          "tags": [
+            "tr"
+          ]
+        },
+        {
+          "name": "td",
+          "tags": [
+            "td"
+          ]
+        },
+        {
+          "name": "center",
+          "tags": [
+            "center"
+          ]
+        },
+        {
+          "name": "bullet_0",
+          "tags": [
+            "bullet_0"
+          ]
+        }
+      ],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "sample",
+      "super": "node",
+      "isRoot": true,
+      "tags": [
+        "sample"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "xname",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "name"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "section",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "section"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "h1",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "h1"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "h2",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "h2"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "p",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "p"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "xbreak",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "br"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "text",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "+"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "bold",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "b"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "italic",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "i"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "font",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "font"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "color",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "color"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "fill",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "fill"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "size",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "size"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "width",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "width"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "shading",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "shading"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "highlight",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "highlight"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "xtype",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "type"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "table",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "table"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "tr",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "tr"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "td",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "td"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "center",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "center"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "bullet_0",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "bullet_0"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    }
+  ]
+}

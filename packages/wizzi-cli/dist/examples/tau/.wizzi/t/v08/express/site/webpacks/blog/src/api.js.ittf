@@ -1,0 +1,48 @@
+$group
+    $params &md
+    import
+        @ getData
+        @ postData
+        @ putData
+        @ deleteData
+        from '../../common/apiFetch'
+    const apiUrl = 'http://localhost:5000/api/v1'
+    +
+    export
+        function getPostList
+            return
+                _ getData
+                    @ `${apiUrl}/posts`
+    +
+    export
+        function createPost
+            param post
+            return
+                _ postData
+                    @ `${apiUrl}/posts`
+                    {
+                        @ data post
+    +
+    export
+        function getPost
+            param id
+            return
+                _ getData
+                    @ `${apiUrl}/posts/${id}`
+    +
+    export
+        function updatePost
+            param id
+            param post
+            return
+                _ putData
+                    @ `${apiUrl}/posts/${id}`
+                    {
+                        @ data post
+    +
+    export
+        function deletePost
+            param id
+            return
+                _ deleteData
+                    @ `${apiUrl}/posts/${id}`

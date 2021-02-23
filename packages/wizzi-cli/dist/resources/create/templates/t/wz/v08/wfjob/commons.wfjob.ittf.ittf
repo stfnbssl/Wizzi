@@ -71,6 +71,17 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
+    ${'$'}if name == 'any_ittf'
+        artifact any_ittf
+            src ./**/*.ittf.ittf
+            schema ittf
+            generator ittf/document
+            extension ittf
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
     ${'$'}if name == '.env'
         artifact .env
             src .env.text.ittf

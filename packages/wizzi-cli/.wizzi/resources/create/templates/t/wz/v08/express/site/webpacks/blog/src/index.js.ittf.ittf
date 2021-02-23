@@ -1,5 +1,4 @@
-module
-    kind es6
+$group
 
     function component
         const element = document.createElement('div')

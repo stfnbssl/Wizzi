@@ -1,1 +1,0 @@
-This folder contains the starters for a few wizzi productions.

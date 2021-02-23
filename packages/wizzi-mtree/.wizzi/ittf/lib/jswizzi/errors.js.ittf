@@ -78,7 +78,7 @@
 		for var i = start; i < end; i++
             _ ret.push(formatLineNumber(i + 1) + ' ' + statements[i])
             if (i == esprimaException.lineNumber - 1)
-                var col = esprimaException.column
+                var col = Math.max(0, esprimaException.column)
                 _ ret.push(spaces(col + 4) + '^ ' + esprimaException.description)
         
 		return json ? ret : ret.join('\n')

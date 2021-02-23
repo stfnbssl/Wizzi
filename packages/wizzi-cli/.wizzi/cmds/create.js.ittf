@@ -1,6 +1,12 @@
 ﻿module
 	kind es6
 
+    $
+        var quick = true;
+        var pkgName = "lambda";
+        var template = "wizzi_plugin";
+        var wizzi_plugin_type = 'syntax_structure';
+
 	const path = require('path')
 	const fs = require('fs')
     const chalk = require('chalk')
@@ -10,36 +16,38 @@
     set module.exports
 		=>
 			param args
-            $*
-            return
-                _ wizzi.genFolder
-                    _ path.join
-                        @ __dirname
-                        @ '..'
-                        @ 'resources'
-                        @ 'create'
-                        @ 'templates'
-                        $$ @ 'webpack_react_mui'
-                        @ 'webpack'
-                        $$ @ 'pure_nodejs'
-                    {
-                        { cliCtx 
-                            $$ @ pkg_name "gamma"
-                            @ pkg_name "beta"
-                            $$ @ pkg_name "alpha"
-                    {
-                        @ destFolder
-                            _ path.join
-                                _ process.cwd
-                                $$ @ 'gamma'
-                                @ 'beta'
-                                $$ @ 'alpha'
-                        @ copyInclude ['*']
-                        @ copyExclude []
-                    f_cb_test(genFolderResult)
-                        log 'genFolderResult', genFolderResult            
-                        return
-            *$
+            $if quick
+                return
+                    _ wizzi.genFolder
+                        _ path.join
+                            @ __dirname
+                            @ '..'
+                            @ 'resources'
+                            @ 'create'
+                            @ 'templates'
+                            @ '${template}'
+                        {
+                            { cliCtx 
+                                @ pkg_name "${pkgName}"
+                                @ wizzi_plugin_type "${wizzi_plugin_type}"
+                                { author
+                                { license
+                                    @ name "MIT"
+                                    @ copy "copy 2021"
+                                { github
+                                [ Schemas
+                                    {
+                                        @ name "sample"
+                        {
+                            @ destFolder
+                                _ path.join
+                                    _ process.cwd
+                                    @ '${pkgName}'
+                            @ copyInclude ['*']
+                            @ copyExclude []
+                        f_cb_test(genFolderResult)
+                            log 'genFolderResult', genFolderResult            
+                            return
 
             _ newpkg
                 =>

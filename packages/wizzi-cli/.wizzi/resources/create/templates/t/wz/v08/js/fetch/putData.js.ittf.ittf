@@ -1,0 +1,13 @@
+$group
+    
+    function postData
+        param url = ''
+        param data = {}
+        param callback
+
+        _ executeFetch
+            @ url
+            @ data
+            {
+                @ method 'PUT'
+            @ callback        

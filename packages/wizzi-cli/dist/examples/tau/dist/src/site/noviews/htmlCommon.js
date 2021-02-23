@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\examples\tau\.wizzi\src\site\noviews\htmlCommon.js.ittf
-    utc time: Fri, 19 Feb 2021 10:35:17 GMT
+    utc time: Mon, 22 Feb 2021 12:45:40 GMT
 */
 'use strict';
 function html_head(ctx) {
@@ -16,7 +16,7 @@ function html_head(ctx) {
     __html.push("nav { float: right; max-width: 160px; height: 134px; padding: 1em; border: solid #333 }");
     __html.push("nav ul { list-style-type: none; padding: 0; }");
     __html.push("nav ul a { text-decoration: none; }");
-    __html.push("article { padding: 1em; min-height: 20rem;}");
+    __html.push("article { padding: 3em; min-height: 20rem;}");
     __html.push('</style>\n');
     __html.push('</head>');
     __html.push('<body>');

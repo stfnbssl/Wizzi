@@ -1,0 +1,19 @@
+${'$'}group
+    ${'$'}params &md
+
+    $$ $include wz/v08/express/site/webpacks/blog/src/index.js
+
+    import
+        @ mountPostForm
+        from './post.js'
+
+    function component
+        const element = document.createElement('div')
+        set element.id = 'post-form'
+        return element
+    
+    _ document.body.appendChild
+        _ component    
+
+    _ mountPostForm
+        @ 'post-form'

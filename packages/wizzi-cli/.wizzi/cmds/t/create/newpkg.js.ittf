@@ -7,6 +7,7 @@ $group
                 if type_answers.pkg_type == 'wizzi_plugin'
                     _ promptWizziPlugin
                         f_cb(plugin_answers)
+                            set type_answers.__template = 'wizzi_plugin'
                             return
                                 _ promptNext
                                     @ promptPkgName

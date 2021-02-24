@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\production\runner.js.ittf
 */
 'use strict';
@@ -20,20 +21,7 @@ var AsyncModelLoader = require('../model/asyncModelLoader');
 var AsyncArtifactGenerator = require('../artifact/asyncArtifactGenerator').AsyncArtifactGenerator;
 var AsyncWizziModelTypesRunner = require('./asyncWizziModelTypesRunner');
 
-/**
-     Async artifact generation runner.
-     A runner instance runs a single artifactInfo.
-     Input: an ArtifactInfo (constructor injected).
-     Output: the ArtifactInfo enriched with (one or many) genContext(s),
-     ready to be persisted (callback ok result).
-     A Runner can run
-     a WfJob (a wizzi job)
-     a WfSchema (a wizzi model types generation)
-     a ModelArtifact
-     a ModelCollectionArtifact
-     a CodeWriteArtifact
-     a FinalArtifact (a simple copy from source to destination)
-*/
+//
 
 function logme() {
     if (false) {
@@ -49,15 +37,15 @@ var Runner = (function () {
     }
     Runner.prototype.run = function(callback) {
         if (this.artifactInfo.modelInfo) {
-            this._runOnModelInfo(this.artifactInfo.modelInfo, callback);
+            this._runOnModelInfo(this.artifactInfo.modelInfo, callback)
         }
         else {
-            this._runOnContextInfos(this.artifactInfo.contextInfos, callback);
+            this._runOnContextInfos(this.artifactInfo.contextInfos, callback)
         }
     }
     Runner.prototype._runOnContextInfos = function(contextInfos, callback) {
         if (this.artifactInfo.isCodeWriteArtifact()) {
-            this.runCodeWriteArtifact(this.artifactInfo.modelInfo, this.artifactInfo.gen, callback);
+            this.runCodeWriteArtifact(this.artifactInfo.modelInfo, this.artifactInfo.gen, callback)
         }
         else {
             return callback(error('999', '_runOnContextInfos', 'Artifact is in an invalid state: ' + util.inspect(this.artifactInfo, {depth: 2})));
@@ -66,16 +54,16 @@ var Runner = (function () {
     Runner.prototype._runOnModelInfo = function(modelInfo, callback) {
         var gen = this.artifactInfo.gen;
         if (this.artifactInfo.isWizziModelTypesArtifact()) {
-            this.runWizziModelTypesArtifact(modelInfo, callback);
+            this.runWizziModelTypesArtifact(modelInfo, callback)
         }
         else if (this.artifactInfo.isWizziModelArtifact()) {
-            this.runWizziModelArtifact(modelInfo, gen, callback);
+            this.runWizziModelArtifact(modelInfo, gen, callback)
         }
         else if (this.artifactInfo.isModelCollectionArtifact()) {
-            this.runModelCollectionArtifact(modelInfo, gen, callback);
+            this.runModelCollectionArtifact(modelInfo, gen, callback)
         }
         else if (this.artifactInfo.isFinalArtifact()) {
-            this.runFinalArtifact(modelInfo, callback);
+            this.runFinalArtifact(modelInfo, callback)
         }
         else {
             return callback(error('999', '_runOnModelInfo', 'Artifact is in an invalid state: ' + util.inspect(this.artifactInfo, {depth: 2})));
@@ -113,8 +101,8 @@ var Runner = (function () {
                 }
                 // TODO how to expose results ?
                 callback(null, that.artifactInfo);
-            });
-        });
+            })
+        })
     }
     Runner.prototype.runWizziModelArtifact = function(modelInfo, gen, callback) {
         var that = this;
@@ -140,10 +128,10 @@ var Runner = (function () {
                             return callback(err);
                         }
                         callback(null, that.artifactInfo);
-                    });
-                });
-            });
-        });
+                    })
+                })
+            })
+        })
     }
     Runner.prototype.runModelCollectionArtifact = function(modelInfo, gen, callback) {
         var that = this;
@@ -156,7 +144,7 @@ var Runner = (function () {
             var i, i_items=modelInfos, i_len=modelInfos.length, mi;
             for (i=0; i<i_len; i++) {
                 mi = modelInfos[i];
-                logme("runModelCollectionArtifact.modelInfo to load", mi);
+                logme("runModelCollectionArtifact.modelInfo to load", mi)
             }
             modelInfo.getArtifactGenerator(gen.generator, function(err, generator) {
                 if (err) {
@@ -166,17 +154,17 @@ var Runner = (function () {
                     if (err) {
                         return callback(err);
                     }
-                    logme('runModelCollectionArtifact got mainSourceModelsOfModelCollection', mainSourceModelsOfModelCollection);
+                    logme('runModelCollectionArtifact got mainSourceModelsOfModelCollection', mainSourceModelsOfModelCollection)
                     AsyncArtifactGenerator.generateModelCollection(that.artifactInfo, generator, modelInfos, mainSourceModelsOfModelCollection, function(err, result) {
                         if (err) {
                             return callback(err);
                         }
-                        logme('runModelCollectionArtifact result', result);
+                        logme('runModelCollectionArtifact result', result)
                         callback(null, that.artifactInfo);
-                    });
-                });
-            });
-        });
+                    })
+                })
+            })
+        })
     }
     Runner.prototype.runCodeWriteArtifact = function(contextInfos, gen, callback) {
         var that = this;
@@ -193,9 +181,9 @@ var Runner = (function () {
                         return callback(err);
                     }
                     callback(null, that.artifactInfo);
-                });
-            });
-        });
+                })
+            })
+        })
     }
     // TODO execute copy without loading content in genContext
     Runner.prototype.runFinalArtifact = function(modelInfo, callback) {
@@ -221,11 +209,11 @@ var Runner = (function () {
                             options: that.artifactInfo.options, 
                             pman: modelInfo.productionManager()
                         });
-                        genContext.writeFile(fileInfo.fullpath);
+                        genContext.writeFile(fileInfo.fullpath)
                         that.artifactInfo.addGenContext(genContext);
                     }
                     return callback(null, that.artifactInfo);
-                });
+                })
             }
             else {
                 var genContext = new GenContext({
@@ -242,9 +230,9 @@ var Runner = (function () {
                     genContext.write(content);
                     that.artifactInfo.addGenContext(genContext);
                     return callback(null, that.artifactInfo);
-                });
+                })
             }
-        });
+        })
     }
     Runner.prototype.runFrontMatter = function(callback) {
         if (this.artifactInfo.modelInfo) {
@@ -263,8 +251,8 @@ var Runner = (function () {
                             collection: this.artifactInfo.collection, 
                             items: frontMatters
                         });
-                });
-            });
+                })
+            })
         }
         else {
             // log 'runFrontMatter.contextInfos', this.artifactInfo.contextInfos.length
@@ -276,22 +264,13 @@ var Runner = (function () {
                         collection: this.artifactInfo.collection, 
                         items: frontMatters
                     });
-            });
+            })
         }
     }
     return Runner;
 })();
 
-/**
-     params
-     string code
-     # the error name or number
-     string method
-     string message
-     # optional
-     { innerError
-     # optional
-*/
+//
 function error(code, method, message, innerError) {
     return verify.error(innerError, {
             name: ( verify.isNumber(code) ? 'Err-' + code : code ), 

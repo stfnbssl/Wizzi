@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\mocks\plugin.js.ittf
 */
 'use strict';
@@ -16,9 +17,7 @@ var stringify = require('json-stringify-safe');
 var md = module.exports = {};
 md.name = 'mock1-plugin';
 
-/**
-     FactoryPlugin class
-*/
+//
 var FactoryPlugin = (function () {
     function FactoryPlugin(wizziPackage, provides) {
         _classCallCheck(this, FactoryPlugin);
@@ -42,11 +41,7 @@ var FactoryPlugin = (function () {
     FactoryPlugin.prototype.getProvides = function() {
         return this.provides;
     }
-    /**
-         Retrieve a WizziModelFactory by its wfschema name
-         searching the loader in this WizziPackage.
-         No search up in "node_modules" folders.
-    */
+    //
     FactoryPlugin.prototype.getModelFactory = function(schemaName, mockBaseDir) {
         console.log('wizzi.tests.plugin.getModelFactory: schemaName, mockBaseDir', schemaName, mockBaseDir);
         var factory = this.modelFactories[schemaName] || null;
@@ -64,24 +59,20 @@ var FactoryPlugin = (function () {
                     var models = mockWizziModels.getModels(schemaName, mockBaseDir);
                     return function(ittfDocumentUri, context, callback) {
                             if (models[ittfDocumentUri]) {
-                                callback(null, models[ittfDocumentUri]);
+                                callback(null, models[ittfDocumentUri])
                             }
                             else {
                                 console.log('wizzi.tests.plugin.createLoadModel', ittfDocumentUri, models);
                                 callback({
                                     __is_error: true, 
                                     message: 'Wizzi model not found. IttfDocumentUri: ' + ittfDocumentUri
-                                });
+                                })
                             }
                         };
                 }
             };
     }
-    /**
-         retrieve a ModelTransformer by its name
-         searching the loader in this WizziPackage
-         No search up in "node_modules" folders.
-    */
+    //
     FactoryPlugin.prototype.getModelTransformer = function(transformerName) {
         
         console.log('wizzi.tests.plugin.getModelTransformer transformerName: ' + transformerName);
@@ -95,11 +86,7 @@ var FactoryPlugin = (function () {
         }
         return transformer;
     }
-    /**
-         Retrieve an ArtifactGenerator by its name
-         Generators are searched in this WizziPackage
-         No search up in "node_modules" folders.
-    */
+    //
     FactoryPlugin.prototype.getArtifactGenerator = function(generationName) {
         
         var generator = this.artifactGenerators[generationName] || null;
@@ -110,11 +97,7 @@ var FactoryPlugin = (function () {
         }
         return generator;
     }
-    /**
-         Retrieve a WizziSchema definition in JSON format
-         searching the loader in this WizziPackage.
-         No search up in "node_modules" folders.
-    */
+    //
     FactoryPlugin.prototype.getSchemaDefinition = function(schemaName) {
         var definition = this.schemaDefinitions[schemaName] || null;
         if (definition == null) {
@@ -156,7 +139,7 @@ module.exports = {
                 return callback(err);
             }
             return callback(null, plugin);
-        });
+        })
     }
 };
 

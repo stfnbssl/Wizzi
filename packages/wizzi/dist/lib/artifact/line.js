@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\artifact\line.js.ittf
 */
 'use strict';
@@ -19,7 +20,7 @@ var Line = (function () {
             this.text.push({
                 k: 0, 
                 t: textOrPath
-            });
+            })
         }
         else {
             this.text.push(textOrPath);
@@ -32,7 +33,7 @@ var Line = (function () {
             this.text.push({
                 k: 1, 
                 t: text
-            });
+            })
         }
         else {
             this.text.push(text);
@@ -43,7 +44,7 @@ var Line = (function () {
             this.text.push({
                 k: 0, 
                 t: filePath
-            });
+            })
         }
         else {
             for (var i = 0; i < text.length; i++) {
@@ -55,7 +56,7 @@ var Line = (function () {
             this.text.push({
                 k: 0, 
                 t: filePath
-            });
+            })
         }
     }
     Line.prototype.toStream = function(stream, ctx) {
@@ -70,19 +71,19 @@ var Line = (function () {
             for (i = 0; i < len; i++) {
                 var t = this.text[i];
                 if (t.k === 1) {
-                    stream.write(t.t);
+                    stream.write(t.t)
                     seen_tokens = true;
                 }
                 else {
-                    this._fileToStream(seen_tokens, stream, t.t, ctx);
+                    this._fileToStream(seen_tokens, stream, t.t, ctx)
                 }
                 if (i == len - 1) {
-                    stream.write(this.options.CRLF);
+                    stream.write(this.options.CRLF)
                 }
             }
         }
         else {
-            stream.write(spaces(this.indentValue * this.options.indentSpaces) + this.text.join('') + this.options.CRLF);
+            stream.write(spaces(this.indentValue * this.options.indentSpaces) + this.text.join('') + this.options.CRLF)
         }
     }
     Line.prototype._fileToStream = function(seen_tokens, stream, filePath, ctx) {
@@ -99,10 +100,10 @@ var Line = (function () {
                 if (i > 0 || seen_tokens == false) {
                     stream.write(indent);
                 }
-                stream.write(line);
+                stream.write(line)
             }
             if (i < len - 1) {
-                stream.write(this.options.CRLF);
+                stream.write(this.options.CRLF)
             }
         }
     }

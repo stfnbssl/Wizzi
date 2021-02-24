@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\services\pluginsManager.js.ittf
 */
 'use strict';
@@ -33,15 +34,7 @@ var PluginsManager = (function () {
         this.providedModelTransformers = [];
         this.providedArtifactGenerators = [];
     }
-    /**
-         { options
-         string pluginsBaseFolder
-         default process.cwd()
-         [ items
-         required
-         string pluginName
-         }
-    */
+    //
     PluginsManager.prototype.initialize = function(options, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -80,10 +73,10 @@ var PluginsManager = (function () {
                         return callback(err);
                     }
                     return register(++i);
-                });
+                })
             }
             register(0);
-        });
+        })
     }
     PluginsManager.prototype.loadPlugins = function(options, callback) {
         
@@ -142,7 +135,7 @@ var PluginsManager = (function () {
                         resolvePackage(pluginsBaseFolder, mp, next);
                     }
                     else if (packagePath) {
-                        next(null, path.dirname(packagePath));
+                        next(null, path.dirname(packagePath))
                     }
                     else {
                         resolvePackage(pluginsBaseFolder, modulePath, next);
@@ -164,9 +157,9 @@ var PluginsManager = (function () {
                     moduleObject.consumes = (packageMetadata && packageMetadata.consumes) || moduleObject.consumes || [];
                     moduleObject.packagePath = modulePath;
                     callback(null, moduleObject);
-                });
+                })
                 ;
-            });
+            })
         }
         function resolvePackage(pluginsBaseFolder, packagePath, callback) {
             
@@ -190,12 +183,12 @@ var PluginsManager = (function () {
                             }
                             cache[packagePath] = newPath;
                             return callback(null, newPath);
-                        });
+                        })
                     }
                     else {
                         return callback(error('ENOENT', 'resolvePackage', "Can't find '" + newPath + "' ('" + packagePath + "' relative to '" + originalBase + "')"));
                     }
-                });
+                })
             }
             else {
                 // npm (node_modules folder) plugin module
@@ -214,7 +207,7 @@ var PluginsManager = (function () {
                             }
                             cache[packagePath] = newPath;
                             return callback(null, newPath);
-                        });
+                        })
                     }
                     else {
                         var nextBase = path.resolve(base, '..');
@@ -225,13 +218,11 @@ var PluginsManager = (function () {
                             tryNext(nextBase);
                         }
                     }
-                });
+                })
             }
         }
     }
-    /**
-         Register a factoryPlugin to this plugins manager
-    */
+    //
     PluginsManager.prototype.registerFactoryPlugin = function(pluginModule, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -266,7 +257,7 @@ var PluginsManager = (function () {
                 return callback(providesAdded);
             }
             return callback(null);
-        });
+        })
     }
     PluginsManager.prototype.createWizziForPlugin = function() {
         return {
@@ -362,7 +353,7 @@ var PluginsManager = (function () {
             else {
                 this.providedSchemas.push({
                     name: item
-                });
+                })
             }
         }
         
@@ -378,7 +369,7 @@ var PluginsManager = (function () {
             else {
                 this.providedModelTransformers.push({
                     name: item
-                });
+                })
             }
         }
         
@@ -394,7 +385,7 @@ var PluginsManager = (function () {
             else {
                 this.providedArtifactGenerators.push({
                     name: item
-                });
+                })
             }
         }
     }
@@ -425,13 +416,7 @@ var PluginsManager = (function () {
         }
         return ret;
     }
-    /**
-         Retrieve a model factory searching the factoryPlugins
-         registered to this repository
-         returns
-         | api-ref wizzi-plugin.modelFactory
-         | wzError NotFound
-    */
+    //
     PluginsManager.prototype.getModelFactory = function(schemaName, textOnlyMockBaseDir) {
         if (verify.isNotEmpty(schemaName) === false) {
             return error(
@@ -466,19 +451,11 @@ var PluginsManager = (function () {
             return error('NotFound', 'getModelFactory', 'Cannot find model loader: ' + schemaName + '\navailables schemas: ' + this.availableSchemas().join(', '));
         }
         else {
-            log.success('getModelFactory. Found model loader: ' + schemaName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'));
+            log.success('getModelFactory. Found model loader: ' + schemaName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'))
         }
         return result;
     }
-    /**
-         Retrieve a model transformer searching the factoryPlugins
-         registered to this plugins manager
-         params
-         string transformerName
-         returns
-         | api-ref wizzi-plugin.modelTransformer
-         | wzError NotFound
-    */
+    //
     PluginsManager.prototype.getModelTransformer = function(transformerName) {
         if (verify.isNotEmpty(transformerName) === false) {
             return error(
@@ -510,23 +487,15 @@ var PluginsManager = (function () {
         }
         if (!result) {
             var msg = 'getModelTransformer. Cannot find model transformer: ' + transformerName + '\n' + 'availables transformers: ' + this.availableModelTransformers().join(', ');
-            log.error(msg);
+            log.error(msg)
             return error('NotFound', 'getModelTransformer', msg);
         }
         else {
-            log.success('getModelTransformer. Found transformer: ' + transformerName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'));
+            log.success('getModelTransformer. Found transformer: ' + transformerName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'))
         }
         return result;
     }
-    /**
-         retrieve an artifact generator searching the factoryPlugins
-         registered to this plugins manager
-         params
-         string artifactName
-         returns
-         | api-ref wizzi-plugin.modelTransformer
-         | wzError NotFound
-    */
+    //
     PluginsManager.prototype.getArtifactGenerator = function(artifactName) {
         if (verify.isNotEmpty(artifactName) === false) {
             return error(
@@ -558,23 +527,15 @@ var PluginsManager = (function () {
         }
         if (!result) {
             var msg = 'getArtifactGenerator. Cannot find artifact generator: ' + artifactName + '\n' + 'availables generators: ' + this.availableArtifactGenerators().join(', ');
-            log.error(msg);
+            log.error(msg)
             return error('NotFound', 'getArtifactGenerator', msg);
         }
         else {
-            log.success('getArtifactGenerator. Found artifact generator: ' + artifactName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'));
+            log.success('getArtifactGenerator. Found artifact generator: ' + artifactName + ' in plugin: ' + foundInPlugin + ', version:' + (pluginVersion || 'unknown'))
         }
         return result;
     }
-    /**
-         Retrieve a schema definition searching the factoryPlugins
-         registered to this plugins manager
-         params
-         string schemaName
-         returns
-         | { jsonSchema
-         | wzError NotFound
-    */
+    //
     PluginsManager.prototype.getSchemaDefinition = function(schemaName) {
         if (verify.isNotEmpty(schemaName) === false) {
             return error(
@@ -602,7 +563,7 @@ var PluginsManager = (function () {
         }
         if (!result) {
             var msg = 'getSchemaDefinition. Cannot find schema: ' + schemaName + '\n' + 'availables schemas: ' + this.availableSchemas().join(', ');
-            log.error(msg);
+            log.error(msg)
             return error('NotFound', 'getSchemaDefinition', msg);
         }
         else {
@@ -619,7 +580,7 @@ var PluginsManager = (function () {
                 packageName: item.packageName, 
                 packagePath: item.packagePath, 
                 provides: item.provides
-            });
+            })
         }
         return {
                 providedSchemas: this.providedSchemas, 
@@ -652,7 +613,7 @@ function resolveModule(pluginsBaseFolder, modulePath, callback) {
                 resolvePackage(pluginsBaseFolder, mp, next);
             }
             else if (packagePath) {
-                next(null, path.dirname(packagePath));
+                next(null, path.dirname(packagePath))
             }
             else {
                 resolvePackage(pluginsBaseFolder, modulePath, next);
@@ -674,9 +635,9 @@ function resolveModule(pluginsBaseFolder, modulePath, callback) {
             moduleObject.consumes = (packageMetadata && packageMetadata.consumes) || moduleObject.consumes || [];
             moduleObject.packagePath = modulePath;
             callback(null, moduleObject);
-        });
+        })
         ;
-    });
+    })
 }
 function resolvePackage(pluginsBaseFolder, packagePath, callback) {
     
@@ -700,12 +661,12 @@ function resolvePackage(pluginsBaseFolder, packagePath, callback) {
                     }
                     cache[packagePath] = newPath;
                     return callback(null, newPath);
-                });
+                })
             }
             else {
                 return callback(error('ENOENT', 'resolvePackage', "Can't find '" + newPath + "' ('" + packagePath + "' relative to '" + originalBase + "')"));
             }
-        });
+        })
     }
     else {
         // npm (node_modules folder) plugin module
@@ -724,7 +685,7 @@ function resolvePackage(pluginsBaseFolder, packagePath, callback) {
                     }
                     cache[packagePath] = newPath;
                     return callback(null, newPath);
-                });
+                })
             }
             else {
                 var nextBase = path.resolve(base, '..');
@@ -735,7 +696,7 @@ function resolvePackage(pluginsBaseFolder, packagePath, callback) {
                     tryNext(nextBase);
                 }
             }
-        });
+        })
     }
 }
 // For test - end
@@ -752,7 +713,7 @@ module.exports = {
             ));
         }
         var pm = new PluginsManager();
-        pm.initialize(options, callback);
+        pm.initialize(options, callback)
     }, 
     PluginsManager: PluginsManager, 
     resolveModule: resolveModule, 

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\cssparser\css\wizzifier.js.ittf
 */
 'use strict';
@@ -26,7 +27,7 @@ function log(label, obj, force) {
     if (verbose || force) {
         console.log(label, util.inspect(obj, {
             depth: null
-        }));
+        }))
     }
 }
 var md = module.exports = {};
@@ -36,7 +37,7 @@ md.getCodeAST = function(input, options, callback) {
         options = {};
     }
     options = options || {};
-    parseInternal(input, options, callback);
+    parseInternal(input, options, callback)
 };
 md.getWizziTree = function(input, options, callback) {
     options = (options || {});
@@ -54,12 +55,12 @@ md.getWizziTree = function(input, options, callback) {
                 if (err) {
                     return callback(err);
                 }
-                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2));
-            });
+                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2))
+            })
         }
         // log 'Parsed in ' + Date.now() - startTime + ' ms'
         callback(null, syntax);
-    });
+    })
 };
 md.getWizziIttf = function(input, options, callback) {
     md.getWizziTree(input, options, function(err, result) {
@@ -71,9 +72,9 @@ md.getWizziIttf = function(input, options, callback) {
                 return callback(err);
             }
             result = cloner(result, options);
-            callback(null, ittfwriter.stringify(result, options));
-        });
-    });
+            callback(null, ittfwriter.stringify(result, options))
+        })
+    })
 };
 // ovveridable
 md.getWizzifierIncludes = function(options, callback) {
@@ -96,8 +97,8 @@ format['stylesheet'] = function(ast) {
         children: []
     };
     ast.stylesheet.rules.map(function(node) {
-        ret.children.push(format(node));
-    });
+        ret.children.push(format(node))
+    })
     return ret;
 };
 format['comment'] = function(ast) {
@@ -117,7 +118,7 @@ format['comment'] = function(ast) {
                 tag: '#', 
                 name: l, 
                 children: []
-            });
+            })
         }
     }
     return ret;
@@ -145,12 +146,12 @@ format['rule'] = function(ast) {
                 tag: '+', 
                 name: ast.selectors[i], 
                 children: []
-            });
+            })
         }
     }
     ast.declarations.map(function(node) {
-        ret.children.push(format(node));
-    });
+        ret.children.push(format(node))
+    })
     return ret;
 };
 format['declaration'] = function(ast) {
@@ -168,8 +169,8 @@ format['media'] = function(ast) {
         children: []
     };
     ast.rules.map(function(node) {
-        ret.children.push(format(node));
-    });
+        ret.children.push(format(node))
+    })
     return ret;
 };
 format['font-face'] = function(ast) {
@@ -178,8 +179,8 @@ format['font-face'] = function(ast) {
         children: []
     };
     ast.declarations.map(function(node) {
-        ret.children.push(format(node));
-    });
+        ret.children.push(format(node))
+    })
     return ret;
 };
 format['keyframes'] = function(ast) {
@@ -192,10 +193,10 @@ format['keyframes'] = function(ast) {
         tag: 'vendor', 
         name: ast.vendor, 
         children: []
-    });
+    })
     ast.keyframes.map(function(node) {
-        ret.children.push(format(node));
-    });
+        ret.children.push(format(node))
+    })
     return ret;
 };
 format['keyframe'] = function(ast) {
@@ -213,18 +214,18 @@ format['keyframe'] = function(ast) {
                 tag: 'value', 
                 name: ast.values[i], 
                 children: []
-            });
+            })
         }
     }
     ast.declarations.map(function(node) {
-        ret.children.push(format(node));
-    });
+        ret.children.push(format(node))
+    })
     return ret;
 };
 format['import'] = function(ast) {
     console.log('import', util.inspect(ast, {
         depth: null
-    }));
+    }))
     var ret = {
         tag: 'import', 
         name: ast.import, 
@@ -235,7 +236,7 @@ format['import'] = function(ast) {
 format['charset'] = function(ast) {
     console.log('charset', util.inspect(ast, {
         depth: null
-    }));
+    }))
     var ret = {
         tag: 'charset', 
         name: ast.charset, 
@@ -251,5 +252,5 @@ function wizzify(css, options, callback) {
         var node = format(syntax);
         // log "wizziTree", node
         return callback(null, node);
-    });
+    })
 }

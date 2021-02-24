@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\all\services\pluginsManager.js.ittf
 */
 'use strict';
@@ -33,7 +34,7 @@ describe("pluginsManager", function() {
             }
             pluginsManagerInstance = pm;
             done();
-        });
+        })
     });
     
     it("should retrieve the loadModel function for a 'tests' wizzi model", function() {

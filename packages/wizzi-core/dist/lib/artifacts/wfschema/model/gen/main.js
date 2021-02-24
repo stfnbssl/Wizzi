@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\wfschema\model\gen\main.js.ittf
 */
 'use strict';
@@ -28,5 +29,5 @@ md.gen = function(model, ctx, callback) {
         console.log('wizzi-core.wfschema.gen.model ended', ittfDocumentPath);
         ctx.w(result);
         callback(null, ctx);
-    });
+    })
 };

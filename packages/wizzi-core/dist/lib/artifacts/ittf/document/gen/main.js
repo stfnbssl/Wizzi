@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\ittf\document\gen\main.js.ittf
 */
 'use strict';
@@ -9,7 +10,7 @@ var md = module.exports = {};
 var myname = 'ittf.document.main';
 
 md.gen = function(model, ctx, callback) {
-    toIttf(model, ctx);
+    toIttf(model, ctx)
     callback(null, ctx);
 };
 function toIttf(node, ctx) {
@@ -38,7 +39,7 @@ function toIttf(node, ctx) {
         var i, i_items=node.children, i_len=node.children.length, child;
         for (i=0; i<i_len; i++) {
             child = node.children[i];
-            toIttf(child, ctx);
+            toIttf(child, ctx)
         }
         ctx.deindent();
     }

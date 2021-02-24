@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\xsdparser\xml2js\wizzifier.js.ittf
 */
 'use strict';
@@ -18,14 +19,14 @@ function parseInternal(xml, options, callback) {
             return callback(err);
         }
         callback(null, result);
-    });
+    })
 }
 var verbose = false;
 function log(label, obj, force) {
     if (verbose || force) {
         console.log(label, util.inspect(obj, {
             depth: null
-        }));
+        }))
     }
 }
 var md = module.exports = {};
@@ -35,7 +36,7 @@ md.getCodeAST = function(input, options, callback) {
         options = {};
     }
     options = options || {};
-    parseInternal(input, options, callback);
+    parseInternal(input, options, callback)
 };
 md.getWizziTree = function(input, options, callback) {
     options = (options || {});
@@ -53,12 +54,12 @@ md.getWizziTree = function(input, options, callback) {
                 if (err) {
                     return callback(err);
                 }
-                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2));
-            });
+                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2))
+            })
         }
         // log 'Parsed in ' + Date.now() - startTime + ' ms'
         callback(null, syntax);
-    });
+    })
 };
 md.getWizziIttf = function(input, options, callback) {
     md.getWizziTree(input, options, function(err, result) {
@@ -70,9 +71,9 @@ md.getWizziIttf = function(input, options, callback) {
                 return callback(err);
             }
             result = cloner(result, options);
-            callback(null, ittfwriter.stringify(result, options));
-        });
-    });
+            callback(null, ittfwriter.stringify(result, options))
+        })
+    })
 };
 // ovveridable
 md.getWizzifierIncludes = function(options, callback) {
@@ -84,7 +85,7 @@ function wizzify(xml, options, callback) {
             return callback(err);
         }
         if (options.dumpfile) {
-            file.write(options.dumpfile, JSON.stringify(result, null, 2));
+            file.write(options.dumpfile, JSON.stringify(result, null, 2))
         }
         const wizziTree = {
             tag: 'xsd', 
@@ -102,11 +103,11 @@ function wizzify(xml, options, callback) {
                     return callback(new Error("Root is not an object. Prop: " + prop + ', root: ' + root));
                 }
                 var ctx = getNamespaces(root);
-                appendXmlNodeToIttfNode(ctx, root, wizziTree);
+                appendXmlNodeToIttfNode(ctx, root, wizziTree)
             }
         }
         return callback(null, wizziTree);
-    });
+    })
 }
 function appendXmlNodeToIttfNode(ctx, xmlNode, parent) {
     if (verify.isString(xmlNode)) {
@@ -160,7 +161,7 @@ function appendXmlNodeToIttfNode(ctx, xmlNode, parent) {
                     tag: 'xmlns', 
                     name: nsn.local + ' ' + attribs[aName], 
                     children: []
-                });
+                })
                 continue;
             }
             rName = resolveAttrName(aName);
@@ -203,27 +204,27 @@ function appendXmlNodeToIttfNode(ctx, xmlNode, parent) {
                     tag: rName, 
                     name: attribs[aName], 
                     children: []
-                });
+                })
             }
             else if (rName === 'use') {
                 parent.children.push({
                     tag: 'is-' + attribs[aName], 
                     children: []
-                });
+                })
             }
             else if (rName === 'source' && parentTag === '#') {
                 parent.children.push({
                     tag: '# source', 
                     name: attribs[aName], 
                     children: []
-                });
+                })
             }
             else if (rName === 'abstract') {
                 if (attribs[aName] === 'true') {
                     parent.children.push({
                         tag: 'is-' + rName, 
                         children: []
-                    });
+                    })
                 }
             }
             else {
@@ -231,7 +232,7 @@ function appendXmlNodeToIttfNode(ctx, xmlNode, parent) {
                     tag: '@', 
                     name: rName + ' ' + attribs[rName], 
                     children: []
-                });
+                })
             }
         }
         var i, i_items=ac.c, i_len=ac.c.length, childnode;
@@ -248,7 +249,7 @@ function appendXmlNodeToIttfNode(ctx, xmlNode, parent) {
                         childnodeItem = childnode.value[j];
                         var ac2 = getAttribsAndChilds(ctx, childnodeItem);
                         if (!ac2.n && ac2.c.length == 1) {
-                            appendParsedChildsToIttfNode(ctx, ac2.c, parent);
+                            appendParsedChildsToIttfNode(ctx, ac2.c, parent)
                         }
                         else {
                             throw ac2.c;
@@ -260,7 +261,7 @@ function appendXmlNodeToIttfNode(ctx, xmlNode, parent) {
                     var ac2 = getAttribsAndChilds(ctx, childnode.value[0]);
                     parent.tag = parent.tag + '-' + childXmlNodeName;
                     parent.name = ac2.a.base;
-                    appendParsedChildsToIttfNode(ctx, ac2.c, parent);
+                    appendParsedChildsToIttfNode(ctx, ac2.c, parent)
                 }
                 else {
                     var j, j_items=childnode.value, j_len=childnode.value.length, childnodeItem;
@@ -272,7 +273,7 @@ function appendXmlNodeToIttfNode(ctx, xmlNode, parent) {
                             children: []
                         };
                         parent.children.push(tag);
-                        appendXmlNodeToIttfNode(ctx, childnodeItem, tag);
+                        appendXmlNodeToIttfNode(ctx, childnodeItem, tag)
                     }
                 }
             }
@@ -293,7 +294,7 @@ function appendParsedChildsToIttfNode(ctx, parsedChilds, parent) {
                 children: []
             };
             parent.children.push(tag);
-            appendXmlNodeToIttfNode(ctx, childnodeItem, tag);
+            appendXmlNodeToIttfNode(ctx, childnodeItem, tag)
         }
     }
 }
@@ -324,13 +325,13 @@ function getAttribsAndChilds(ctx, node) {
                         children.push({
                             name: nsn.local, 
                             value: value
-                        });
+                        })
                     }
                     else {
                         children.push({
                             name: prop, 
                             value: value
-                        });
+                        })
                     }
                 }
             }
@@ -543,7 +544,7 @@ function getNamespaces(rootXmlNode) {
                 ret.namespaces.push({
                     prefix: nsn.local, 
                     ns: ac.a[k]
-                });
+                })
             }
         }
     }

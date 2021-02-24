@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\util\ittfTemp.js.ittf
 */
 'use strict';
@@ -31,7 +32,7 @@ var IttfTemp = (function () {
     }
     IttfTemp.prototype.write = function(sb, indent) {
         // log 'sb',sb
-        sb.push(indentTabs(indent) + this.name + (this.value && this.value.length > 0 ? ' ' + this.value : ''));
+        sb.push(indentTabs(indent) + this.name + (this.value && this.value.length > 0 ? ' ' + this.value : ''))
         var i, i_items=this.children, i_len=this.children.length, node;
         for (i=0; i<i_len; i++) {
             node = this.children[i];
@@ -49,7 +50,7 @@ var IttfTemp = (function () {
             stream.write(sb.join('\n'));
             stream.end();
             callback(null);
-        });
+        })
     }
     return IttfTemp;
 })();

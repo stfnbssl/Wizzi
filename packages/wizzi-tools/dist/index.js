@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\root\index.js.ittf
 */
 'use strict';
@@ -38,7 +39,7 @@ md.wizzify_js = function(codeSnippet, options, callback) {
         };
     }
     // log 'wizzi-tools.wizzify_js.options', options
-    jswizzifier.getWizziIttf(codeSnippet, options, callback);
+    jswizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_ts = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -53,7 +54,7 @@ md.wizzify_ts = function(codeSnippet, options, callback) {
         };
     }
     // log 'wizzi-tools.wizzify_ts.options', options
-    jswizzifier.getWizziIttf(codeSnippet, options, callback);
+    jswizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_xml = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -62,7 +63,7 @@ md.wizzify_xml = function(codeSnippet, options, callback) {
             syntaxOutFile: null
         };
     }
-    xmlwizzifier.getWizziIttf(codeSnippet, options, callback);
+    xmlwizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_xsd = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -71,7 +72,7 @@ md.wizzify_xsd = function(codeSnippet, options, callback) {
             syntaxOutFile: null
         };
     }
-    xsdwizzifier.getWizziIttf(codeSnippet, options, callback);
+    xsdwizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_svg = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -80,7 +81,7 @@ md.wizzify_svg = function(codeSnippet, options, callback) {
             syntaxOutFile: null
         };
     }
-    svgwizzifier.getWizziIttf(codeSnippet, options, callback);
+    svgwizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_css = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -89,7 +90,7 @@ md.wizzify_css = function(codeSnippet, options, callback) {
             syntaxOutFile: null
         };
     }
-    csswizzifier.getWizziIttf(codeSnippet, options, callback);
+    csswizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_scss = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -98,7 +99,7 @@ md.wizzify_scss = function(codeSnippet, options, callback) {
             syntaxOutFile: null
         };
     }
-    scsswizzifier.getWizziIttf(codeSnippet, options, callback);
+    scsswizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_html = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -108,7 +109,7 @@ md.wizzify_html = function(codeSnippet, options, callback) {
         };
     }
     options.embedTag = 'html';
-    htmlwizzifier.getWizziIttf(codeSnippet, options, callback);
+    htmlwizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_json = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -117,7 +118,7 @@ md.wizzify_json = function(codeSnippet, options, callback) {
             syntaxOutFile: null
         };
     }
-    jsonwizzifier.getWizziIttf(codeSnippet, options, callback);
+    jsonwizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_graphql = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -126,7 +127,7 @@ md.wizzify_graphql = function(codeSnippet, options, callback) {
             syntaxOutFile: null
         };
     }
-    graphqlwizzifier.getWizziIttf(codeSnippet, options, callback);
+    graphqlwizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify_vue = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -137,7 +138,7 @@ md.wizzify_vue = function(codeSnippet, options, callback) {
     }
     options.isForVue = true;
     options.embedTag = 'vue';
-    htmlwizzifier.getWizziIttf(codeSnippet, options, callback);
+    htmlwizzifier.getWizziIttf(codeSnippet, options, callback)
 };
 md.wizzify = function(schemaName, codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
@@ -156,7 +157,7 @@ md.wizzify = function(schemaName, codeSnippet, options, callback) {
         if (!wizzifier) {
             return callback(new Error("Non wizzifier found for schema: " + schemaName));
         }
-        wizzifier(codeSnippet, options, callback);
+        wizzifier(codeSnippet, options, callback)
     } 
     catch (ex) {
         console.log(ex);
@@ -184,7 +185,7 @@ md.getCodeAST = function(schemaName, codeSnippet, callback) {
                 }
             };
         }
-        wizzifier.getCodeAST(codeSnippet, options, callback);
+        wizzifier.getCodeAST(codeSnippet, options, callback)
     } 
     catch (ex) {
         return callback(ex);
@@ -192,7 +193,7 @@ md.getCodeAST = function(schemaName, codeSnippet, callback) {
 };
 md.importFolder = function(baseImportPath, baseExportPath, callback) {
     try {
-        importFolder(baseImportPath, baseExportPath, callback);
+        importFolder(baseImportPath, baseExportPath, callback)
     } 
     catch (ex) {
         return callback(ex);

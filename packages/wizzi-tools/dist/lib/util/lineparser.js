@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\util\lineparser.js.ittf
 */
 'use strict';
@@ -53,7 +54,7 @@ md.parse = function(text, node) {
                 quote: null, 
                 text: ch, 
                 raw: ch
-            });
+            })
             token = {
                 quote: null, 
                 text: '', 
@@ -94,14 +95,14 @@ md.parse = function(text, node) {
                     if (sep === 'forValue') {
                         var s = this.tokens[i].text;
                         if (['(', ')', '[', ']', '{', '}'].indexOf(s) > - (1)) {
-                            t.push(this.tokens[i].text);
+                            t.push(this.tokens[i].text)
                         }
                         else {
                             t.push((this.tokens[i].text + ' '));
                         }
                     }
                     else {
-                        t.push(this.tokens[i].text);
+                        t.push(this.tokens[i].text)
                     }
                 }
                 if (sep === 'forValue') {
@@ -252,7 +253,7 @@ md.parseInterpolation = function(text, node, handlebar, ng) {
                             t.push('"{{ ' + escapename(token.text) + '}}"');
                         }
                         else {
-                            t.push(token.text);
+                            t.push(token.text)
                         }
                     }
                 }
@@ -260,15 +261,7 @@ md.parseInterpolation = function(text, node, handlebar, ng) {
             }
         };
 };
-/**
-     ignore quotes
-     name = first not (blank or tab) char sequence
-     value = all remaining chars after name + (blank or tab)
-     example
-     "trip to the london bridge"
-     name() = "trip"
-     value() = "to the london bridge"
-*/
+//
 md.parseNameValueRaw = function(text, node) {
     var name = '',
         value = '';
@@ -315,22 +308,12 @@ md.parseNameValueRaw = function(text, node) {
             }
         };
 };
-/**
-     ignore quotes
-     category = first not (blank or tab) char sequence
-     name = second not (blank or tab) char sequence after category + (blank or tab)
-     value = all remaining chars after category + (blank or tab) + name + (blank or tab)
-     example
-     "leisure trip to the london bridge"
-     category() = "leisure"
-     name() = "trip"
-     value() = "to the london bridge"
-*/
+//
 md.parseCategoryNameValue = function(text, node) {
     var nv1 = md.parseNameValueRaw(text, node);
-    console.log('parseCategoryNameValue 1v', nv1.value());
+    console.log('parseCategoryNameValue 1v', nv1.value())
     var nv2 = md.parseNameValueRaw(nv1.value(), node);
-    console.log('parseCategoryNameValue 2n', nv2.name());
+    console.log('parseCategoryNameValue 2n', nv2.name())
     return {
             category: function() {
                 return nv1.name();

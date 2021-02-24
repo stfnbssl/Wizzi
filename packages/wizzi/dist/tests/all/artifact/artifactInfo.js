@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\all\artifact\artifactInfo.js.ittf
 */
 'use strict';
@@ -65,7 +66,7 @@ describe("artifactInfo", function() {
             expect(items).to.be.an('array');
             expect(items.length).to.be(1);
             done();
-        });
+        })
     });
     it("shoul interpolate the path of an item of a model collection artifact", function() {
         var ipname = ai.getInterpolatePathNameContext();

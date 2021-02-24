@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\tests\mocks\basicloader\file.js.ittf
 */
 'use strict';
@@ -52,7 +53,7 @@ md.readFile = function(path_string, callback) {
             callback(err);
         }
         callback(null, data);
-    });
+    })
 };
 md.write = function(path_string, contents, options) {
     if (!options) {
@@ -72,7 +73,7 @@ md.write = function(path_string, contents, options) {
     } 
 };
 md.writeJSON = function(path_string, contentObject) {
-    md.write(path_string, JSON.stringify(contentObject, null, 2));
+    md.write(path_string, JSON.stringify(contentObject, null, 2))
 };
 md.mkpath = function(path_string) {
     var dir = path.dirname(path_string);

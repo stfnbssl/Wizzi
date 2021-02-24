@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\production\persister.js.ittf
 */
 'use strict';
@@ -25,7 +26,7 @@ var ArtifactPersister = (function () {
     function ArtifactPersister(artifactInfo) {
         _classCallCheck(this, ArtifactPersister);
         this.artifactInfo = artifactInfo;
-        log.setLevel(artifactInfo.productionManager.options.verbose);
+        log.setLevel(artifactInfo.productionManager.options.verbose)
     }
     ArtifactPersister.prototype.toFile = function(callback) {
         var that = this;
@@ -50,8 +51,8 @@ var ArtifactPersister = (function () {
                 if (err) {
                     return callback(err);
                 }
-                async.mapSeries(items, asyncArtifactFilePersister_hof(that.artifactInfo), callback);
-            });
+                async.mapSeries(items, asyncArtifactFilePersister_hof(that.artifactInfo), callback)
+            })
         }
     }
     ArtifactPersister.prototype.toTest = function() {
@@ -66,9 +67,9 @@ var ArtifactPersister = (function () {
                 ret.push({
                     filepath: item.filepath, 
                     content: item.genContext.getContent()
-                });
+                })
             }
-        });
+        })
         return ret;
     }
     return ArtifactPersister;
@@ -77,7 +78,7 @@ var ArtifactPersister = (function () {
 function asyncArtifactFilePersister_hof(artifactInfo) {
     var fileService = artifactInfo.getFileService();
     return function(genInfo, callback) {
-            logme('AsyncArtifactFilePersister.persist', genInfo.filepath, genInfo.genContext.getContent());
+            logme('AsyncArtifactFilePersister.persist', genInfo.filepath, genInfo.genContext.getContent())
             fileService.openWrite(genInfo.filepath, (err, stream) => {
                 if (err) {
                     return callback(err);
@@ -94,9 +95,9 @@ function asyncArtifactFilePersister_hof(artifactInfo) {
                             filepath: genInfo.filepath
                         }, 
                         status: 'success'
-                    });
-                });
-            });
+                    })
+                })
+            })
         };
 }
 

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\jsonparser\wizzi\wizzifier.js.ittf
 */
 'use strict';
@@ -139,14 +140,14 @@ function parseInternal(jsonString, options, callback) {
             return callback(new Error('Json.Wizzifier.Wizzi parse failed. wizziTree: ' + util.inspect(wizziTree, {depth: 2})));
         }
         return callback(null, synthax);
-    });
+    })
 }
 var verbose = false;
 function log(label, obj, force) {
     if (verbose || force) {
         console.log(label, util.inspect(obj, {
             depth: null
-        }));
+        }))
     }
 }
 var md = module.exports = {};
@@ -156,7 +157,7 @@ md.getCodeAST = function(input, options, callback) {
         options = {};
     }
     options = options || {};
-    parseInternal(input, options, callback);
+    parseInternal(input, options, callback)
 };
 md.getWizziTree = function(input, options, callback) {
     options = (options || {});
@@ -174,12 +175,12 @@ md.getWizziTree = function(input, options, callback) {
                 if (err) {
                     return callback(err);
                 }
-                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2));
-            });
+                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2))
+            })
         }
         // log 'Parsed in ' + Date.now() - startTime + ' ms'
         callback(null, syntax);
-    });
+    })
 };
 md.getWizziIttf = function(input, options, callback) {
     md.getWizziTree(input, options, function(err, result) {
@@ -191,14 +192,14 @@ md.getWizziIttf = function(input, options, callback) {
                 return callback(err);
             }
             result = cloner(result, options);
-            callback(null, ittfwriter.stringify(result, options));
-        });
-    });
+            callback(null, ittfwriter.stringify(result, options))
+        })
+    })
 };
 // ovveridable
 md.getWizzifierIncludes = function(options, callback) {
     return callback(null);
 };
 function wizzify(json, options, callback) {
-    parseInternal(json, options, callback);
+    parseInternal(json, options, callback)
 }

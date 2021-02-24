@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\all\services\pluginsManager_internal_1.js.ittf
 */
 'use strict';
@@ -37,7 +38,7 @@ describe("pluginsManager internals 1", function() {
             expect(pmod.packagePath).to.be.a('string');
             expect(pmod.packagePath).to.be(pkgPath);
             done();
-        });
+        })
     });
     
     it("should give an error trying to resolve a plugin package", function(done) {
@@ -47,7 +48,7 @@ describe("pluginsManager internals 1", function() {
             expect(err.name).to.be.a('string');
             expect(err.name).to.be('ENOENT');
             done();
-        });
+        })
     });
     
     it("should resolve a plugin package", function(done) {
@@ -60,6 +61,6 @@ describe("pluginsManager internals 1", function() {
             expect(pkgpath).to.be.a('string');
             expect(pkgpath).to.be(pkgPathExpected);
             done();
-        });
+        })
     });
 });

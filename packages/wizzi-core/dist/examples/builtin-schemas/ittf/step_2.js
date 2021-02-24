@@ -1,12 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\examples\builtin-schemas\ittf\step_2.js.ittf
 */
 'use strict';
-/**
-     Example: Schemas_ittf_step_2
-    
-*/
+//
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
@@ -42,15 +40,15 @@ function createWizziFactory(globalContext, callback) {
             pluginsBaseFolder: path.resolve(__dirname, '..', '..', '..')
         }, 
         globalContext: globalContext || {}
-    }, callback);
+    }, callback)
 }
 function loadMTree(ittfDocumentUri, context, callback) {
     createWizziFactory({}, function(err, wf) {
         if (err) {
             return callback(err);
         }
-        wf.loadMTree(ittfDocumentUri, context, callback);
-    });
+        wf.loadMTree(ittfDocumentUri, context, callback)
+    })
 }
 function loadWizziModel(ittfDocumentUri, context, callback) {
     var fi = fileInfoByPath(ittfDocumentUri);
@@ -61,8 +59,8 @@ function loadWizziModel(ittfDocumentUri, context, callback) {
         wf.loadModel(fi.schema, ittfDocumentUri, {
             mTreeBuildUpContext: context, 
             globalContext: {}
-        }, callback);
-    });
+        }, callback)
+    })
 }
 function loadModelAndGenerateArtifact(ittfDocumentUri, context, artifactName, callback) {
     var fi = fileInfoByPath(ittfDocumentUri);
@@ -78,8 +76,8 @@ function loadModelAndGenerateArtifact(ittfDocumentUri, context, artifactName, ca
                 return callback(err);
             }
             callback(null, artifact);
-        });
-    });
+        })
+    })
 }
 function loadAndTransformModel(ittfDocumentUri, context, transformerName, callback) {
     var fi = fileInfoByPath(ittfDocumentUri);
@@ -94,9 +92,9 @@ function loadAndTransformModel(ittfDocumentUri, context, transformerName, callba
             if (err) {
                 return callback(err);
             }
-            wf.transformModel(wizziModel, transformerName, context, callback);
-        });
-    });
+            wf.transformModel(wizziModel, transformerName, context, callback)
+        })
+    })
 }
 function executeWizziJob(ittfDocumentUri, context, callback) {
     createWizziFactory({}, function(err, wf) {
@@ -113,16 +111,16 @@ function executeWizziJob(ittfDocumentUri, context, callback) {
             }), 
             modelContext: context || {}, 
             jobContext: {}
-        }, callback);
-    });
+        }, callback)
+    })
 }
 function executeGenerateModelTypes(wfschemaIttfDocumentUri, outputPackagePath, wfschemaName, mTreeBuildUpContext, callback) {
     createWizziFactory({}, function(err, wf) {
         if (err) {
             return callback(err);
         }
-        wf.generateModelTypes(wfschemaIttfDocumentUri, outputPackagePath, wfschemaName, mTreeBuildUpContext, callback);
-    });
+        wf.generateModelTypes(wfschemaIttfDocumentUri, outputPackagePath, wfschemaName, mTreeBuildUpContext, callback)
+    })
 }
 function getFiles(srcpath, schema) {
     return fs.readdirSync(srcpath).filter((file) => {
@@ -131,24 +129,24 @@ function getFiles(srcpath, schema) {
     ;
 }
 var Schemas_ittf_step_2 = function(step_callback) {
-    heading1('EXAMPLE');
-    heading2('Ittf builtin schema');
+    heading1('EXAMPLE')
+    heading2('Ittf builtin schema')
     loadModelAndGenerateArtifact(path.join(__dirname, 'ittf', 'basic.ittf.ittf'), {}, "ittf/document", function(err, artifactText) {
         if (err) {
             console.log('err', err);
             throw new Error(err.message);
         }
-        heading2('Ittf builtin schema - artifact ittf/document');
+        heading2('Ittf builtin schema - artifact ittf/document')
         printValue('ittf/document', artifactText);
         loadAndTransformModel(path.join(__dirname, 'ittf', 'basic.ittf.ittf'), {}, "ittf/html-pretty", function(err, artifactText) {
             if (err) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            heading2('Ittf builtin schema - transformation ittf/html-pretty');
+            heading2('Ittf builtin schema - transformation ittf/html-pretty')
             printValue('ittf/html-pretty', artifactText);
-        });
-    });
+        })
+    })
 };
 Schemas_ittf_step_2.__name = 'Schemas_ittf_step_2';
 function heading1(text) {
@@ -178,7 +176,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }
@@ -282,7 +280,7 @@ function printNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printNodes_deep(c, indent + 1);
+        printNodes_deep(c, indent + 1)
     }
 }
 function printNodes(nodes, title) {
@@ -305,7 +303,7 @@ function printNodes(nodes, title) {
                 console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
             }
         }
-        printNodes_deep(nodes[0], 1);
+        printNodes_deep(nodes[0], 1)
     }
     console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
@@ -314,7 +312,7 @@ function printEvaluatedNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
+        printEvaluatedNodes_deep(c, indent + 1)
     }
 }
 function printEvaluatedNodes(evaluated, title) {
@@ -323,7 +321,7 @@ function printEvaluatedNodes(evaluated, title) {
         if (evaluated.frontMatter) {
             console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
         }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1)
     }
     else {
         console.log('Invalid evaluated object', evaluated);

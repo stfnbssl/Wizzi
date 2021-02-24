@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\examples\lambda\.wizzi\ittf\examples\index.js.ittf
-    utc time: Tue, 23 Feb 2021 21:47:52 GMT
+    utc time: Wed, 24 Feb 2021 09:08:37 GMT
 */
 'use strict';
 var path = require('path');
@@ -34,7 +34,7 @@ function executeExample() {
     function executeGenerateModules(modules, callback) {
         async.mapSeries(modules, (module, callback) => {
             var ittfDocumentUri = path.join(__dirname, 'ittf', module + '.sample.ittf');
-            var outputPath = path.join(__dirname, 'dist', module + '.sample');
+            var outputPath = path.join(__dirname, 'dist', module + '.sample.js');
             loadModelAndGenerateArtifact(ittfDocumentUri, {}, 'sample/document', function(err, artifactText) {
                 if (err) {
                     return callback(err);
@@ -135,7 +135,7 @@ function executeWizziJob(ittfDocumentUri, context, callback) {
         }, callback)
     })
 }
-function executeWizziJob(wfjobDocumentUri, options) {
+function executeWizziJob_2(wfjobDocumentUri, options) {
     options = options || {};
     options.plugins = options.plugins || [];
     options.globalContext = options.globalContext || {};

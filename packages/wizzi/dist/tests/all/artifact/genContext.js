@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\all\artifact\genContext.js.ittf
 */
 'use strict';
@@ -88,7 +89,7 @@ describe("genContext", function() {
         ctx.w('{YYY}');
         ctx.indent(2);
         ctx.w('sigma');
-        ctx.appendFile(path.join(__dirname, 'ittf', 'gc_one.ittf'));
+        ctx.appendFile(path.join(__dirname, 'ittf', 'gc_one.ittf'))
         ctx.deindent(2);
         ctx.w('lambda');
         var result = ctx.getContent();
@@ -108,7 +109,7 @@ describe("genContext", function() {
             srcPath: null, 
             pman: null
         });
-        ctx.writeFile(path.join(__dirname, 'ittf', 'gc_one.ittf'));
+        ctx.writeFile(path.join(__dirname, 'ittf', 'gc_one.ittf'))
         var sw = new StringWriter();
         ctx.toStream(sw);
         var result = sw.toString();
@@ -128,7 +129,7 @@ describe("genContext", function() {
             srcPath: null, 
             pman: null
         });
-        ctx.writeFile(path.join(__dirname, 'ittf', 'gc_one.ittf'));
+        ctx.writeFile(path.join(__dirname, 'ittf', 'gc_one.ittf'))
         var sw = new StringWriter();
         ctx.toStream(sw);
         var result = sw.toString();

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\tests\mocks\artifact\genContext.js.ittf
 */
 'use strict';
@@ -51,7 +52,7 @@ var GenContext = (function () {
     }
     GenContext.prototype.w = function(text) {
         if (verify.isString(text)) {
-            this.block.w(text.indexOf('{') > - (1) ? interpolate(text, this.values) : text);
+            this.block.w(text.indexOf('{') > - (1) ? interpolate(text, this.values) : text)
         }
         else {
             this.block.w('');
@@ -61,10 +62,10 @@ var GenContext = (function () {
         if (!verify.isString(text)) {
             return ;
         }
-        this.block.write(interpolate(text, this.values));
+        this.block.write(interpolate(text, this.values))
     }
     GenContext.prototype.writeFile = function(filePath) {
-        this.block.writeFile(interpolate(filePath, this.values));
+        this.block.writeFile(interpolate(filePath, this.values))
     }
     GenContext.prototype.toStream = function(stream) {
         this.block.toStream(stream);
@@ -90,7 +91,7 @@ var GenContext = (function () {
     }
     GenContext.prototype.hydrate = function(block, options) {
         this.block = new block(options);
-        this.block.hydrate(block.lines, options);
+        this.block.hydrate(block.lines, options)
     }
     GenContext.prototype.toStringFromJSON = function(block, options) {
         if (!block || !block.lines) {
@@ -99,7 +100,7 @@ var GenContext = (function () {
         var gw = new GenContext({
             options: options
         });
-        gw.block.hydrate(block.lines, options);
+        gw.block.hydrate(block.lines, options)
         return gw.getContent();
     }
     return GenContext;

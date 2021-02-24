@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\errors.js.ittf
 */
 'use strict';
@@ -20,8 +21,8 @@ function NotImplementedError(message) {
 NotImplementedError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -41,8 +42,8 @@ function InvalidRequestError(message, code) {
 InvalidRequestError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -60,8 +61,8 @@ function NotFoundError(resourceType, name, message) {
 NotFoundError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -78,8 +79,8 @@ function IttfNotFoundError(resourceType, name, sourceUri) {
 IttfNotFoundError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -103,8 +104,8 @@ function IttfLoadError(message, srcPath, node, ex) {
 IttfLoadError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -122,8 +123,8 @@ function WizziModelLoadError(message, srcPath, ex) {
 WizziModelLoadError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -141,8 +142,8 @@ function ModelTransformationError(message, generation, srcPath, ex) {
 ModelTransformationError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -161,8 +162,8 @@ function ArtifactGenerationError(message, generation, srcPath, ex) {
 ArtifactGenerationError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -180,8 +181,8 @@ function WizziInvalidRequestError(message, srcPath, ex) {
 WizziInvalidRequestError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -198,8 +199,8 @@ function RunnerServerError(message) {
 RunnerServerError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };
@@ -221,8 +222,8 @@ function FileError(message, ex) {
 FileError.prototype.toString = function() {
     var msg = [this.message];
     if (this.inner) {
-        msg.push('Inner error:');
-        msg.push(this.inner.toString());
+        msg.push('Inner error:')
+        msg.push(this.inner.toString())
     }
     return msg.join('\n');
 };

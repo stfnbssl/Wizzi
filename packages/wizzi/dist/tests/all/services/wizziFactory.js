@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\all\services\wizziFactory.js.ittf
 */
 'use strict';
@@ -44,7 +45,7 @@ describe("wizziFactory", function() {
             console.log('wf.__loadMTree', wf.__loadMTree);
             wizziFactoryInstance = wf;
             done();
-        });
+        })
     });
     
     it("should load a wizzi model", function(done) {
@@ -62,7 +63,7 @@ describe("wizziFactory", function() {
             expect(wizziModel.wzName).to.be.a('string');
             expect(wizziModel.wzName).to.be('mock1');
             done();
-        });
+        })
     });
     
     it("should retrieve the loadModel function for a 'tests' wizzi model", function() {
@@ -88,7 +89,7 @@ describe("wizziFactory", function() {
             expect(transformedModel.contextFrom).to.be.a('string');
             expect(transformedModel.contextFrom).to.be('stefi');
             done();
-        });
+        })
     });
     it("should retrieve an artifact generator", function() {
         var artifactGenerator = wizziFactoryInstance.getArtifactGenerator('tests/gen1');
@@ -105,7 +106,7 @@ describe("wizziFactory", function() {
             expect(artifact).to.be.a('string');
             expect(artifact).to.be('Hello I am mock1 artifact from stefi\n');
             done();
-        });
+        })
     });
     it("should load a wizzi model and generate an artifact", function(done) {
         wizziFactoryInstance.loadModelAndGenerateArtifact(path.join(__dirname, 'ittf', 'mock1.tests.ittf'), {
@@ -121,7 +122,7 @@ describe("wizziFactory", function() {
             expect(artifact).to.be.a('string');
             expect(artifact).to.be('Hello I am mock1 artifact from stefi\n');
             done();
-        });
+        })
     });
     it("should retrieve the 'tests' schema definition", function() {
         var schemaDefinition = wizziFactoryInstance.getSchemaDefinition('tests');
@@ -148,6 +149,6 @@ describe("wizziFactory", function() {
             expect(mTree.nodes[0].children[0].children[0].v).to.be.a('string');
             expect(mTree.nodes[0].children[0].children[0].v).to.be('from stefi');
             done();
-        });
+        })
     });
 });

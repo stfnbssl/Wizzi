@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\xmlparser\xml2js\wizzifier.js.ittf
 */
 'use strict';
@@ -18,14 +19,14 @@ function parseInternal(xml, options, callback) {
             return callback(err);
         }
         callback(null, result);
-    });
+    })
 }
 var verbose = false;
 function log(label, obj, force) {
     if (verbose || force) {
         console.log(label, util.inspect(obj, {
             depth: null
-        }));
+        }))
     }
 }
 var md = module.exports = {};
@@ -35,7 +36,7 @@ md.getCodeAST = function(input, options, callback) {
         options = {};
     }
     options = options || {};
-    parseInternal(input, options, callback);
+    parseInternal(input, options, callback)
 };
 md.getWizziTree = function(input, options, callback) {
     options = (options || {});
@@ -53,12 +54,12 @@ md.getWizziTree = function(input, options, callback) {
                 if (err) {
                     return callback(err);
                 }
-                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2));
-            });
+                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2))
+            })
         }
         // log 'Parsed in ' + Date.now() - startTime + ' ms'
         callback(null, syntax);
-    });
+    })
 };
 md.getWizziIttf = function(input, options, callback) {
     md.getWizziTree(input, options, function(err, result) {
@@ -70,9 +71,9 @@ md.getWizziIttf = function(input, options, callback) {
                 return callback(err);
             }
             result = cloner(result, options);
-            callback(null, ittfwriter.stringify(result, options));
-        });
-    });
+            callback(null, ittfwriter.stringify(result, options))
+        })
+    })
 };
 // ovveridable
 md.getWizzifierIncludes = function(options, callback) {
@@ -99,7 +100,7 @@ function appendChilds(name, nodeArray, parent) {
                     tag: '@', 
                     name: (((aName + ' ')) + aObj[aName]), 
                     children: []
-                });
+                })
             }
             var j, j_items=ac.c, j_len=ac.c.length, childnode;
             for (j=0; j<j_len; j++) {
@@ -108,7 +109,7 @@ function appendChilds(name, nodeArray, parent) {
                     console.log("Error: value is not an array: " + childnode.name + ',' + childnode.value);
                 }
                 else {
-                    appendChilds(childnode.name, childnode.value, tag);
+                    appendChilds(childnode.name, childnode.value, tag)
                 }
             }
         }
@@ -132,7 +133,7 @@ function getAttribsAndChilds(node) {
                 children.push({
                     name: prop, 
                     value: node[prop]
-                });
+                })
             }
         }
     }
@@ -150,7 +151,7 @@ function wizzify(xml, options, callback) {
             return callback(err);
         }
         if (options.dumpfile) {
-            file.write(options.dumpfile, JSON.stringify(result, null, 2));
+            file.write(options.dumpfile, JSON.stringify(result, null, 2))
         }
         for (var prop in result) {
             if (result.hasOwnProperty(prop)) {
@@ -170,7 +171,7 @@ function wizzify(xml, options, callback) {
                         tag: '@', 
                         name: (((aName + ' ')) + aObj[aName]), 
                         children: []
-                    });
+                    })
                 }
                 for (var j = 0; j < ac.c.length; j++) {
                     var childnode = ac.c[j];
@@ -178,12 +179,12 @@ function wizzify(xml, options, callback) {
                         console.log("Error: value is not an array: " + childnode.name + ',' + childnode.value);
                     }
                     else {
-                        appendChilds(childnode.name, childnode.value, wizziTree);
+                        appendChilds(childnode.name, childnode.value, wizziTree)
                     }
                 }
             }
         }
         console.log("wizziTree", wizziTree);
         callback(null, wizziTree);
-    });
+    })
 }

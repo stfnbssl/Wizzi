@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\scssparser\gonzales\wizzifier.js.ittf
 */
 'use strict';
@@ -24,7 +25,7 @@ function log(label, obj, force) {
     if (verbose || force) {
         console.log(label, util.inspect(obj, {
             depth: null
-        }));
+        }))
     }
 }
 var md = module.exports = {};
@@ -34,7 +35,7 @@ md.getCodeAST = function(input, options, callback) {
         options = {};
     }
     options = options || {};
-    parseInternal(input, options, callback);
+    parseInternal(input, options, callback)
 };
 md.getWizziTree = function(input, options, callback) {
     options = (options || {});
@@ -52,12 +53,12 @@ md.getWizziTree = function(input, options, callback) {
                 if (err) {
                     return callback(err);
                 }
-                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2));
-            });
+                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2))
+            })
         }
         // log 'Parsed in ' + Date.now() - startTime + ' ms'
         callback(null, syntax);
-    });
+    })
 };
 md.getWizziIttf = function(input, options, callback) {
     md.getWizziTree(input, options, function(err, result) {
@@ -69,9 +70,9 @@ md.getWizziIttf = function(input, options, callback) {
                 return callback(err);
             }
             result = cloner(result, options);
-            callback(null, ittfwriter.stringify(result, options));
-        });
-    });
+            callback(null, ittfwriter.stringify(result, options))
+        })
+    })
 };
 // ovveridable
 md.getWizzifierIncludes = function(options, callback) {
@@ -127,7 +128,7 @@ function wizzify(scss, options, callback) {
         };
         format(root, syntax, options);
         return callback(null, root);
-    });
+    })
 }
 // process AST node space
 format.space = function(parent, node, options) {
@@ -176,7 +177,7 @@ format.variable = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -307,7 +308,7 @@ format.value = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -566,7 +567,7 @@ format.block = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -619,7 +620,7 @@ format.declaration = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (p_content.children.length == 2 && p_content.children[0].tag === 'property' && p_content.children[1].tag === 'value') {
@@ -686,7 +687,7 @@ format.property = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -714,7 +715,7 @@ format.property = function(parent, node, options) {
                         name: 'content', 
                         len: node.content.length
                     };
-                    format(ret, item, options);
+                    format(ret, item, options)
                 }
             }
             else {
@@ -767,7 +768,7 @@ format.stylesheet = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -818,7 +819,7 @@ format.ruleset = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (p_content.children.length == 2 && p_content.children[0].tag === 'selector' && p_content.children[1].tag === 'block') {
@@ -879,7 +880,7 @@ format.selector = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -999,7 +1000,7 @@ format.parentSelectorExtension = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -1053,7 +1054,7 @@ format.attributeSelector = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1099,7 +1100,7 @@ format.universalSelector = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1145,7 +1146,7 @@ format.attributeName = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1225,7 +1226,7 @@ format.attributeValue = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1271,7 +1272,7 @@ format.pseudoClass = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1341,7 +1342,7 @@ format.class = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -1395,7 +1396,7 @@ format.include = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1476,7 +1477,7 @@ format.function = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1543,7 +1544,7 @@ format.xarguments = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     var acc = [];
@@ -1679,7 +1680,7 @@ format.parentheses = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -1769,7 +1770,7 @@ format.dimension = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -1893,7 +1894,7 @@ format.atrule = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1973,7 +1974,7 @@ format.mixin = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2048,7 +2049,7 @@ format.extend = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2117,7 +2118,7 @@ format.placeholder = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -2178,7 +2179,7 @@ format.interpolation = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(p_content, item, options);
+            format(p_content, item, options)
         }
     }
     if (isTextualNode(p_content.children)) {
@@ -2232,7 +2233,7 @@ format.conditionalStatement = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2289,7 +2290,7 @@ format.condition = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2340,7 +2341,7 @@ format.loop = function(parent, node, options) {
                 name: 'content', 
                 len: node.content.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2487,7 +2488,7 @@ function processLeadingComments(node, ittfNode) {
                     children: [
                         
                     ]
-                });
+                })
             }
         }
     }
@@ -2629,7 +2630,7 @@ function textifyChildren(ittfNode, tag) {
                 children: [
                     
                 ]
-            });
+            })
         }
         else {
             ret.push(item);

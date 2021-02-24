@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\production\preLoader.js.ittf
 */
 'use strict';
@@ -38,9 +39,9 @@ var PreLoader = (function () {
             if (err) {
                 return callback(err);
             }
-            this.productionContext.addGlobalModel(this.loadInfo.srcFullPath(), this.loadInfo.exportName, wizziModel);
+            this.productionContext.addGlobalModel(this.loadInfo.srcFullPath(), this.loadInfo.exportName, wizziModel)
             return callback(null, wizziModel);
-        });
+        })
     }
     PreLoader.prototype.runArtifactCollection = function(callback) {
         // loadInfo alias of ArtifactInfo
@@ -50,17 +51,14 @@ var PreLoader = (function () {
                 return callback(err);
             }
             // log 'wizzi.production.preLoader.runArtifact.runFrontMatter.result', result
-            this.productionContext.addArtifactCollection(this.loadInfo, result);
+            this.productionContext.addArtifactCollection(this.loadInfo, result)
             return callback(null, result);
-        });
+        })
     }
     return PreLoader;
 })();
 
-/**
-    async run an artifact production
-     from an artifactInfo object
-*/
+// async run an artifact production
 var AsyncRunner = {
     run: function(artifactInfo, callback) {
         log.info('Started async run artifact: ' + artifactInfo.name);
@@ -73,7 +71,7 @@ var AsyncRunner = {
             }
             log.info('Ended async run artifact: ' + artifactInfo.name);
             callback(null, operResult);
-        });
+        })
     }, 
     runFrontMatter: function(artifactInfo, callback) {
         log.info('Started async runFrontMatter artifact: ' + artifactInfo.name);
@@ -86,7 +84,7 @@ var AsyncRunner = {
             }
             log.info('Ended async runFrontMatter artifact: ' + artifactInfo.name);
             callback(null, operResult);
-        });
+        })
     }
 };
 

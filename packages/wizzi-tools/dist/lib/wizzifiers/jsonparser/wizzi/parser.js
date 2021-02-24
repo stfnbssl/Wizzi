@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\jsonparser\wizzi\parser.js.ittf
 */
 'use strict';
@@ -55,25 +56,25 @@ md.parse = function(input, handlers, callback) {
         state[k] = handlers[k];
     }
     function onObject(open) {
-        state.onObject(open);
+        state.onObject(open)
     }
     function onArray(open) {
-        state.onArray(open);
+        state.onArray(open)
     }
     function onPropName() {
-        state.onPropName(state.name.join(''));
+        state.onPropName(state.name.join(''))
         state.name.length = 0;
     }
     function onObjectProp() {
-        state.onObjectProp(state.name.join(''));
+        state.onObjectProp(state.name.join(''))
         state.name.length = 0;
     }
     function onArrayProp() {
-        state.onArrayProp(state.name.join(''));
+        state.onArrayProp(state.name.join(''))
         state.name.length = 0;
     }
     function onProp() {
-        state.onProp(state.name.join(''), state.value.join(''));
+        state.onProp(state.name.join(''), state.value.join(''))
         state.name.length = 0;
         state.value.length = 0;
     }
@@ -81,11 +82,11 @@ md.parse = function(input, handlers, callback) {
         state.onClosePropName();
     }
     function onArrayValue() {
-        state.onArrayValue(state.value.join(''));
+        state.onArrayValue(state.value.join(''))
         state.value.length = 0;
     }
     function onHandlebar() {
-        state.onHandlebar(state.hb.join(''));
+        state.onHandlebar(state.hb.join(''))
         state.hb.length = 0;
     }
     function error(ch) {

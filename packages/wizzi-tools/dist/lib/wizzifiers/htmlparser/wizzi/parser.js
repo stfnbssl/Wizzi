@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\htmlparser\wizzi\parser.js.ittf
 */
 'use strict';
@@ -9,7 +10,7 @@ function log(label, data) {
     if (verbose) {
         console.log(label, util.inspect(data, {
             depth: null
-        }));
+        }))
     }
 }
 var md = module.exports = {};
@@ -507,18 +508,18 @@ priv.append = function(ch, state) {
 };
 priv.onopentag = function(state) {
     state.tagcount++;
-    state.stack.push(state.tagname);
+    state.stack.push(state.tagname)
     if (state.tagname == 'script' || state.tagname == 'style') {
         console.log('onopentag', state.tagname, 'line', state.line);
     }
     state.currenttagname = state.tagname;
     if (state.onopentag) {
-        state.onopentag(state.tagname, state.attribs);
+        state.onopentag(state.tagname, state.attribs)
     }
     if (state.tagname in voidElements) {
         if (state.onclosetag) {
             state.stack.pop();
-            state.onclosetag(state.tagname);
+            state.onclosetag(state.tagname)
         }
     }
 };
@@ -533,19 +534,19 @@ priv.onclosetag = function(state) {
         else {
             state.stack.pop();
             // log 'state.stack after onclosetag', state.stack
-            state.onclosetag(state.tagname);
+            state.onclosetag(state.tagname)
             state.currenttagname = null;
         }
     }
 };
 priv.oncomment = function(state) {
     if (state.oncomment) {
-        state.oncomment(state.comment);
+        state.oncomment(state.comment)
     }
 };
 priv.ondoctype = function(state) {
     if (state.ondoctype) {
-        state.ondoctype(state.doctype);
+        state.ondoctype(state.doctype)
     }
 };
 priv.ontext = function(state) {
@@ -556,13 +557,13 @@ priv.ontext = function(state) {
         return ;
     }
     if (state.ontext) {
-        state.ontext(state.text);
+        state.ontext(state.text)
     }
     state.text = '';
 };
 priv.onswig = function(state) {
     if (state.onswig) {
-        state.onswig(state.swig);
+        state.onswig(state.swig)
     }
     state.swig = '';
 };

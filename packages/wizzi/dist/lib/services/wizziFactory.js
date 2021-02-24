@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\services\wizziFactory.js.ittf
 */
 'use strict';
@@ -58,30 +59,7 @@ var WizziFactory = (function () {
         this.schemaDefinitions = {};
         this.globalContext = {};
     }
-    /**
-         params
-         { options
-         { repo
-         string storeKind
-         oneOf 'filesystem', 'mongodb', 'browserfs', 'json'
-         string storeUri
-         # when storeKind == mongodb
-         string storeBaseFolder
-         # when storeKind == mongodb
-         { storeJsonFsData
-         # when storeKind == json
-         { plugins
-         [ items
-         string pluginName
-         string pluginsBaseFolder
-         { test
-         string testOnlyMockBaseDir
-         { dumps
-         string dumpsBaseFolder
-         { mTreeBuildupJsWizziScript
-         boolean dump
-         string dumpsBaseFolder
-    */
+    //
     WizziFactory.prototype.initialize = function(options, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -183,23 +161,14 @@ var WizziFactory = (function () {
                     that.pluginsManager = pluginsManager;
                     // log 'pluginsManager', pluginsManager
                     return callback(null, that);
-                });
-            });
-        });
+                })
+            })
+        })
     }
     WizziFactory.prototype.terminate = function() {
         this.storePool.close();
     }
-    /**
-         TODO
-         This method is optimal to implement the
-         replacement of wizzi.model.modelInfo(s) properties of
-         'loadContext' with loaded wizzi models.
-         But the method must become asynchronous !!!
-         params
-         { loadContext
-         { mTreeBuildUpContext
-    */
+    //
     WizziFactory.prototype.createLoadContext = function(loadContext) {
         
         if (verify.isObject(loadContext) && verify.isObject(loadContext.__productionManager)) {
@@ -216,18 +185,7 @@ var WizziFactory = (function () {
                 mTreeBuildUpContext: mTreeBuildUpContext
             };
     }
-    /**
-         params
-         { userProductionOptions
-         integer indentSpaces
-         default 4
-         string basedir
-         integer verbose
-         default 2
-         { dumps
-         ...
-         { globalContext
-    */
+    //
     WizziFactory.prototype.createProductionManager = function(userProductionOptions, globalContext) {
         if (verify.isNullOrUndefined(userProductionOptions) === false) {
             if (verify.isObject(userProductionOptions) === false) {
@@ -261,14 +219,7 @@ var WizziFactory = (function () {
         pman.globalContext(globalContext);
         return pman;
     }
-    /**
-         Async load a wizzi magical tree
-        
-         params
-         string ittfDocumentUri
-         { mTreeBuildUpContext
-         callback
-    */
+    //
     WizziFactory.prototype.loadMTree = function(ittfDocumentUri, mTreeBuildUpContext, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -288,15 +239,9 @@ var WizziFactory = (function () {
         
         this.__loadMTree(ittfDocumentUri, this.createLoadContext({
             mTreeBuildUpContext: mTreeBuildUpContext
-        }), callback);
+        }), callback)
     }
-    /**
-         Async load the front matter of an ittf document
-        
-         params
-         string ittfDocumentUri
-         callback
-    */
+    //
     WizziFactory.prototype.loadMTreeFrontMatter = function(ittfDocumentUri, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -309,15 +254,9 @@ var WizziFactory = (function () {
             ));
         }
         
-        this.__loadMTreeFrontMatter(ittfDocumentUri, this.createLoadContext({}), callback);
+        this.__loadMTreeFrontMatter(ittfDocumentUri, this.createLoadContext({}), callback)
     }
-    /**
-         Async load a raw ittf document
-        
-         params
-         string ittfDocumentUri
-         callback
-    */
+    //
     WizziFactory.prototype.loadMTreeRaw = function(ittfDocumentUri, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -330,15 +269,9 @@ var WizziFactory = (function () {
             ));
         }
         
-        this.__loadMTreeRaw(ittfDocumentUri, this.createLoadContext({}), callback);
+        this.__loadMTreeRaw(ittfDocumentUri, this.createLoadContext({}), callback)
     }
-    /**
-         Async load the mTree debug info of an ittf document
-        
-         params
-         string ittfDocumentUri
-         callback
-    */
+    //
     WizziFactory.prototype.loadMTreeDebugInfo = function(ittfDocumentUri, mTreeBuildUpContext, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -358,7 +291,7 @@ var WizziFactory = (function () {
         
         this.__loadMTreeDebugInfo(ittfDocumentUri, this.createLoadContext({
             mTreeBuildUpContext: mTreeBuildUpContext
-        }), callback);
+        }), callback)
     }
     WizziFactory.prototype.loadMTreeDebugInfoFromText = function(ittfContent, mTreeBuildUpContext, callback) {
         if (typeof(callback) !== 'function') {
@@ -382,26 +315,10 @@ var WizziFactory = (function () {
             if (err) {
                 return callback(err);
             }
-            result.wizziFactory.loadMTreeDebugInfo(result.ittfDocumentUri, mTreeBuildUpContext, callback);
-        });
+            result.wizziFactory.loadMTreeDebugInfo(result.ittfDocumentUri, mTreeBuildUpContext, callback)
+        })
     }
-    /**
-         Retrieve a loadModel function by the model schema name.
-         Model factories are searched in the PluginsManager.
-         They are cached.
-         return
-         | func wizzi-plugin.modelFactory.loadModel
-         | wzError NotFound
-         params
-         string schemaName
-         { globalContext
-         optional
-         # A global context object can be used to add mTree buildup contex values
-         # to those contained in the mTreeBuildUpContext parameter, every time
-         # the returned loadModel function is called.
-         string testOnlyMockBaseDir
-         # used for test purposes
-    */
+    //
     WizziFactory.prototype.getLoadModel = function(schemaName, globalContext, testOnlyMockBaseDir) {
         if (verify.isNotEmpty(schemaName) === false) {
             return error(
@@ -437,16 +354,7 @@ var WizziFactory = (function () {
         }
         return loadModel;
     }
-    /**
-         Retrieve a loadModelFromTree function by the model schema name.
-         Model factories are searched in the PluginsManager.
-         They are cached.
-         return
-         | func wizzi-plugin.modelFactory.loadModel
-         | wzError NotFound
-         params
-         string schemaName
-    */
+    //
     WizziFactory.prototype.getLoadModelFromMTree = function(schemaName) {
         if (verify.isNotEmpty(schemaName) === false) {
             return error(
@@ -475,23 +383,7 @@ var WizziFactory = (function () {
         }
         return loadModel;
     }
-    /**
-         Async load a wizzi model
-         params
-         string schemaName
-         string ittfDocumentUri
-         { loadContext
-         { mTreeBuildUpContext
-         optional
-         { globalContext
-         # Being the loadModel function called once this usually is not used.
-         optional
-         { formatOptions
-         optional
-         boolean ittfSources
-         # if true returns not the model but its ittf source documents.
-         callback
-    */
+    //
     WizziFactory.prototype.loadModel = function(schemaName, ittfDocumentUri, loadContext, callback, testOnlyMockBaseDir) {
         
         if (typeof(callback) == 'undefined') {
@@ -541,7 +433,7 @@ var WizziFactory = (function () {
                 return callback(err);
             }
             return callback(null, that.formatWizziModel(wizziModel, loadContext.formatOptions));
-        });
+        })
     }
     WizziFactory.prototype.formatWizziModel = function(model, formatOptions) {
         if (!formatOptions) {
@@ -586,31 +478,9 @@ var WizziFactory = (function () {
                 return callback(err);
             }
             return callback(null, that.formatWizziModel(wizziModel, loadContext.formatOptions));
-        });
+        })
     }
-    /**
-         Async load a wizzi model from a
-         config object built programmatically
-         params
-         { modelConfig
-         string src
-         string cwd
-         optional
-         string schema
-         optional
-         string format
-         optional
-         string exportName
-         optional - has meaning only for context models.
-         [ contexts
-         optional - has the same format of modelConfig
-         [ transformers
-         optional
-         { formatOptions
-         optional
-         boolean ittfSources
-         # if true returns not the model but its ittf source documents.
-    */
+    //
     WizziFactory.prototype.loadModelFromConfig = function(modelConfig, globalContext, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -686,14 +556,14 @@ var WizziFactory = (function () {
             AsyncModelLoader = require('../model/asyncModelLoader');
         }
         var mi = new ModelInfo(modelConfig);
-        mi.productionManager(this.createProductionManager(null, globalContext));
+        mi.productionManager(this.createProductionManager(null, globalContext))
         var that = this;
         AsyncModelLoader.load(mi, function(err, wizziModel) {
             if (err) {
                 return callback(err);
             }
             return callback(null, that.formatWizziModel(wizziModel, globalContext.formatOptions));
-        });
+        })
     }
     WizziFactory.prototype.loadModelFromText = function(ittfContent, schema, loadContext, callback) {
         
@@ -710,14 +580,10 @@ var WizziFactory = (function () {
             if (err) {
                 return callback(err);
             }
-            result.wizziFactory.loadModel(schema, result.ittfDocumentUri, loadContext, callback);
-        });
+            result.wizziFactory.loadModel(schema, result.ittfDocumentUri, loadContext, callback)
+        })
     }
-    /**
-         Retrieve a model transformer
-         Model transformation are searched in the PluginsManager
-         They are cached
-    */
+    //
     WizziFactory.prototype.getModelTransformer = function(transformerName, globalContext) {
         if (verify.isNotEmpty(transformerName) === false) {
             return error(
@@ -739,15 +605,13 @@ var WizziFactory = (function () {
                 return transformer;
             }
             if (verify.isFunction(transformer.setGlobalContext) && globalContext) {
-                transformer.setGlobalContext(globalContext);
+                transformer.setGlobalContext(globalContext)
             }
             this.modelTransformers[transformerName] = transformer;
         }
         return transformer;
     }
-    /**
-         Async execute a model transformation
-    */
+    //
     WizziFactory.prototype.transformModel = function(model, transformerName, context, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -780,7 +644,7 @@ var WizziFactory = (function () {
         }
         
         context.wizziFactory = this;
-        transformer.trans(model, context, callback);
+        transformer.trans(model, context, callback)
     }
     WizziFactory.prototype.loadAndTransformModelAndGenerateArtifact = function(ittfDocumentUri, requestContext, transformName, artifactName, callback) {
         if (typeof(callback) !== 'function') {
@@ -846,15 +710,11 @@ var WizziFactory = (function () {
                 if (err) {
                     return callback(err);
                 }
-                that.generateArtifact(artifactModel, ittfDocumentUri, artifactName, requestContext.artifactRequestContext, callback);
-            });
-        });
+                that.generateArtifact(artifactModel, ittfDocumentUri, artifactName, requestContext.artifactRequestContext, callback)
+            })
+        })
     }
-    /**
-         Retrieve an artifact generator
-         Artifact generators are searched in the PluginsManager
-         They are cached
-    */
+    //
     WizziFactory.prototype.getArtifactGenerator = function(artifactName, globalContext) {
         if (verify.isNotEmpty(artifactName) === false) {
             return error(
@@ -876,28 +736,13 @@ var WizziFactory = (function () {
                 return generator;
             }
             if (verify.isFunction(generator.setGlobalContext) && globalContext) {
-                generator.setGlobalContext(globalContext);
+                generator.setGlobalContext(globalContext)
             }
             this.artifactGenerators[artifactName] = generator;
         }
         return generator;
     }
-    /**
-         Async generate an artifact
-        
-         params
-         { artifactModel
-         # A wizzi model or POJO, the main context of the generation
-         # May be null for artifacts of type 'code write'
-         string ittfDocumentUri
-         # For trace and documentation purposes
-         string artifactName
-         # The name for retrieving the artifact generation module
-         { artifactRequestContext
-         # context data for the artifact generator
-         callback
-         string generated artifact
-    */
+    //
     WizziFactory.prototype.generateArtifact = function(artifactModel, ittfDocumentUri, artifactName, artifactRequestContext, callback) {
         if (verify.isNullOrUndefined(artifactModel) === false) {
             if (verify.isArrayOrObject(artifactModel) === false) {
@@ -931,13 +776,7 @@ var WizziFactory = (function () {
             throw new Error(error('InvalidArgument', 'generateArtifact', 'The callback parameter must be a function. Received: ' + callback));
         }
         
-        /**
-            TODO (next wizzi factory versions)
-             check_cb_object( artifactModel, generateArtifact ) cannot be done because
-             artifactModel may be null for artifacts of type 'code write'.
-             To check the match between artifact descriptors (wzjob/artifact) and
-             artifact modules (lib/artifatcs/schema/artifactName/main.js) could be helpfull.
-        */
+        // TODO (next wizzi factory versions)
         
         var generator = this.getArtifactGenerator(artifactName);
         if (generator.__is_error) {
@@ -975,22 +814,9 @@ var WizziFactory = (function () {
             var sw = new StringWriter();
             result.toStream(sw);
             callback(null, sw.toString());
-        });
+        })
     }
-    /**
-         Loads a wizzi model from an IttfDocument and use it as
-         the artifactModel for the artifact generation.
-         params
-         string ittfDocumentUri
-         # the uri of the IttfDocument
-         { requestContext
-         { modelRequestContext
-         # Context data for the wizzi model loading
-         { artifactRequestContext
-         # Context data for the artifact generation
-         string artifactName
-         function callback
-    */
+    //
     WizziFactory.prototype.loadModelAndGenerateArtifact = function(ittfDocumentUri, requestContext, artifactName, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -1039,8 +865,8 @@ var WizziFactory = (function () {
             }
             // log 'wizzi.wizziFactory.loadModelAndGenerateArtifact', 'model loaded', artifactModel
             // the loaded wizzi model becomes the artifactModel of the artifact generation
-            that.generateArtifact(artifactModel, ittfDocumentUri, artifactName, requestContext.artifactRequestContext, callback);
-        });
+            that.generateArtifact(artifactModel, ittfDocumentUri, artifactName, requestContext.artifactRequestContext, callback)
+        })
     }
     WizziFactory.prototype.loadModelAndGenerateArtifactFromText = function(ittfContent, requestContext, artifactName, callback) {
         if (typeof(callback) !== 'function') {
@@ -1086,23 +912,10 @@ var WizziFactory = (function () {
             if (err) {
                 return callback(err);
             }
-            result.wizziFactory.loadModelAndGenerateArtifact(result.ittfDocumentUri, requestContext, artifactName, callback);
-        });
+            result.wizziFactory.loadModelAndGenerateArtifact(result.ittfDocumentUri, requestContext, artifactName, callback)
+        })
     }
-    /**
-         Executes loadModelAndGenerateArtifact for each ittf document of a folder
-         params
-         string ittfFolderUri
-         # the uri of the ittf documents folder
-         { requestContext
-         { modelRequestContext
-         # Context data for the wizzi model loading
-         { artifactRequestContext
-         # Context data for the artifact generation
-         { options
-         boolean copyNonIttf
-         function callback
-    */
+    //
     WizziFactory.prototype.generateFolderArtifacts = function(ittfFolderUri, requestContext, options, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -1139,11 +952,7 @@ var WizziFactory = (function () {
             ));
         }
     }
-    /**
-         Retrieve a schema definition in json format
-         Schema definitions are searched in the PluginsManager
-         They are cached
-    */
+    //
     WizziFactory.prototype.getSchemaDefinition = function(schemaName) {
         if (verify.isNotEmpty(schemaName) === false) {
             return error(
@@ -1160,15 +969,7 @@ var WizziFactory = (function () {
         }
         return schema;
     }
-    /**
-         From an IttfDocument of schema "wfschema"
-         async generate:
-         - a WizziModelType
-         - a WizziModelFactory
-         - a WizziModelType test module
-         - a WizziModelType json documentation
-         - a WizziModelType html documentation
-    */
+    //
     WizziFactory.prototype.generateModelTypes = function(wfschemaIttfDocumentUri, outputPackagePath, wfschemaName, mTreeBuildUpContext, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -1211,28 +1012,25 @@ var WizziFactory = (function () {
             if (err) {
                 return callback(err);
             }
-            file.write(paths.model, generatedArtifacts.model);
+            file.write(paths.model, generatedArtifacts.model)
             log.success('Generated WizziModel: ' + paths.model);
-            file.write(paths.factory, generatedArtifacts.factory);
+            file.write(paths.factory, generatedArtifacts.factory)
             log.success('Generated WizziModelFactory: ' + paths.factory);
-            file.write(paths.lab, generatedArtifacts.lab);
+            file.write(paths.lab, generatedArtifacts.lab)
             log.success('Generated WizziModel test: ' + paths.lab);
-            file.write(paths.jsondocs, generatedArtifacts.jsondocs);
+            file.write(paths.jsondocs, generatedArtifacts.jsondocs)
             log.success('Generated WizziModel json docs: ' + paths.jsondocs);
-            file.write(paths.htmldocs, generatedArtifacts.htmldocs);
+            file.write(paths.htmldocs, generatedArtifacts.htmldocs)
             log.success('Generated WizziModel html docs: ' + paths.htmldocs);
             callback(null, {
                 modelPath: paths.model, 
                 factoryPath: paths.factory, 
                 jsondocsPath: paths.jsondocs, 
                 htmldocsPath: paths.htmldocs
-            });
-        });
+            })
+        })
     }
-    /**
-         generate the wizzi model type artifacts
-         from an IttfDocument of schema "wfschema"
-    */
+    //
     WizziFactory.prototype.generateModelTypesArtifacts = function(wfschemaIttfDocumentUri, mTreeBuildUpContext, callback) {
         
         var loadContext = {
@@ -1285,31 +1083,15 @@ var WizziFactory = (function () {
                                     test: wizziTestArtifact, 
                                     jsondocs: jsondocsJson, 
                                     htmldocs: wizziHtmlDocsArtifact
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        })
     }
-    /**
-         Execute a wizzi job
-        
-         params
-         { jobRequest type 1
-         string name
-         string path
-         # path to the 'wfjob' ittf document that the wizzi.production.programManager will load.
-         { productionOptions
-         { globalContext
-         { jobRequest type 2
-         { wfjobModel
-         # 'wfjob' wizzi model, built programmatically or previously loaded
-         { productionOptions
-         { globalContext
-        
-    */
+    //
     WizziFactory.prototype.executeJob = function(jobRequest, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -1331,11 +1113,11 @@ var WizziFactory = (function () {
         
         if (verify.isNotEmpty(jobRequest.path)) {
             // jobRequest type 1
-            this._executeJob_by_path(jobRequest, callback);
+            this._executeJob_by_path(jobRequest, callback)
         }
         else {
             // jobRequest type 2
-            this._executeJob_by_wfjobModel(jobRequest, callback);
+            this._executeJob_by_wfjobModel(jobRequest, callback)
         }
     }
     WizziFactory.prototype._executeJob_by_path = function(jobRequest, callback) {
@@ -1387,22 +1169,16 @@ var WizziFactory = (function () {
                             };
                             pman.terminate();
                             return callback(null, result);
-                        });
-                    });
+                        })
+                    })
                 }
-            });
-        });
+            })
+        })
     }
     WizziFactory.prototype._executeJob_by_wfjobModel = function(jobRequest, callback) {
         throw new Error('wizzi.wizziFactory._executeJob_by_wfjobModel not implemented.');
     }
-    /**
-         This allows model loadings and generations from text strings
-         params
-         { options
-         { globalContext
-         optional
-    */
+    //
     WizziFactory.prototype.createSingleTextSourceFactory = function(ittfContent, schema, options, callback) {
         if (typeof callback === 'undefined') {
             callback = options;
@@ -1428,8 +1204,8 @@ var WizziFactory = (function () {
                         wizziFactory: wf, 
                         ittfDocumentUri: tempIttfDocumentUri
                     });
-            });
-        });
+            })
+        })
     }
     WizziFactory.prototype.createJsonFactory = function(options, callback) {
         var wf = new WizziFactory(this.user, this.role);
@@ -1440,7 +1216,7 @@ var WizziFactory = (function () {
             }, 
             plugins: this.pluginsOptions, 
             globalContext: options.globalContext || {}
-        }, callback);
+        }, callback)
     }
     WizziFactory.prototype.getInfo = function() {
         return {
@@ -1492,7 +1268,7 @@ module.exports = {
         }
         // log 'wizzi.wizziFactory.createFactory.globalContext', options.globalContext
         var wf = new WizziFactory(user, role);
-        wf.initialize(options, callback);
+        wf.initialize(options, callback)
     }
 };
 /**

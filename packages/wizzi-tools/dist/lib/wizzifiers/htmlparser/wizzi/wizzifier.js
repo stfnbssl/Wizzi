@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\htmlparser\wizzi\wizzifier.js.ittf
 */
 'use strict';
@@ -65,7 +66,7 @@ function parseInternal(html, options, callback) {
                         children: []
                     };
                     wizziTree.children.push(n);
-                });
+                })
             }
             else if ('script' === wizziTree.tag) {
                 var literal = lines.join('\n');
@@ -74,7 +75,7 @@ function parseInternal(html, options, callback) {
                     kind: wizziTree.attribs['lang'] || wizziTree.attribs['language'] || 'js', 
                     node: wizziTree, 
                     literal: literal
-                });
+                })
             }
             else if ('style' === wizziTree.tag) {
                 var literal = lines.join('\n');
@@ -83,7 +84,7 @@ function parseInternal(html, options, callback) {
                     kind: 'css', 
                     node: wizziTree, 
                     literal: literal
-                });
+                })
             }
             else if (lines.length == 1) {
                 if (wizziTree.children.length > 0) {
@@ -108,7 +109,7 @@ function parseInternal(html, options, callback) {
                         children: []
                     };
                     wizziTree.children.push(n);
-                });
+                })
             }
         }, 
         onclosetag: function(tagname) {
@@ -235,7 +236,7 @@ function parseInternal(html, options, callback) {
             };
             wizziTree.children.forEach(function(item) {
                 synthax.children.push(item);
-            });
+            })
         }
     }
     else {
@@ -251,7 +252,7 @@ function parseInternal(html, options, callback) {
             };
             wizziTree.children.forEach(function(item) {
                 synthax.children.push(item);
-            });
+            })
         }
     }
     if (!synthax) {
@@ -264,7 +265,7 @@ function log(label, obj, force) {
     if (verbose || force) {
         console.log(label, util.inspect(obj, {
             depth: null
-        }));
+        }))
     }
 }
 var md = module.exports = {};
@@ -274,7 +275,7 @@ md.getCodeAST = function(input, options, callback) {
         options = {};
     }
     options = options || {};
-    parseInternal(input, options, callback);
+    parseInternal(input, options, callback)
 };
 md.getWizziTree = function(input, options, callback) {
     options = (options || {});
@@ -292,12 +293,12 @@ md.getWizziTree = function(input, options, callback) {
                 if (err) {
                     return callback(err);
                 }
-                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2));
-            });
+                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2))
+            })
         }
         // log 'Parsed in ' + Date.now() - startTime + ' ms'
         callback(null, syntax);
-    });
+    })
 };
 md.getWizziIttf = function(input, options, callback) {
     md.getWizziTree(input, options, function(err, result) {
@@ -309,9 +310,9 @@ md.getWizziIttf = function(input, options, callback) {
                 return callback(err);
             }
             result = cloner(result, options);
-            callback(null, ittfwriter.stringify(result, options));
-        });
-    });
+            callback(null, ittfwriter.stringify(result, options))
+        })
+    })
 };
 // ovveridable
 md.getWizzifierIncludes = function(options, callback) {
@@ -334,22 +335,22 @@ md.getWizzifierIncludes = function(options, callback) {
                         children: [
                             
                         ]
-                    });
+                    })
                 }
                 else {
                     if (options.isForVue) {
                         var i, i_items=ittf.children, i_len=ittf.children.length, ittfchild;
                         for (i=0; i<i_len; i++) {
                             ittfchild = ittf.children[i];
-                            item.node.children.push(ittfchild);
+                            item.node.children.push(ittfchild)
                         }
                     }
                     else {
-                        item.node.children.push(ittf);
+                        item.node.children.push(ittf)
                     }
                 }
                 return callback(null);
-            });
+            })
         }
         else if (item.kind === 'ts') {
             if (!jswizzifier) {
@@ -372,7 +373,7 @@ md.getWizzifierIncludes = function(options, callback) {
                         children: [
                             
                         ]
-                    });
+                    })
                 }
                 else {
                     if (options.isForVue) {
@@ -381,16 +382,16 @@ md.getWizzifierIncludes = function(options, callback) {
                             ittfchild = ittf.children[i];
                             // skip kind
                             if (i > 0) {
-                                item.node.children.push(ittfchild);
+                                item.node.children.push(ittfchild)
                             }
                         }
                     }
                     else {
-                        item.node.children.push(ittf);
+                        item.node.children.push(ittf)
                     }
                 }
                 return callback(null);
-            });
+            })
         }
         else {
             if (!jswizzifier) {
@@ -408,7 +409,7 @@ md.getWizzifierIncludes = function(options, callback) {
                         children: [
                             
                         ]
-                    });
+                    })
                 }
                 else {
                     if (options.isForVue) {
@@ -417,20 +418,20 @@ md.getWizzifierIncludes = function(options, callback) {
                             ittfchild = ittf.children[i];
                             // skip kind
                             if (i > 0) {
-                                item.node.children.push(ittfchild);
+                                item.node.children.push(ittfchild)
                             }
                         }
                     }
                     else {
-                        item.node.children.push(ittf);
+                        item.node.children.push(ittf)
                     }
                 }
                 return callback(null);
-            });
+            })
         }
-    }, callback);
+    }, callback)
 };
 function wizzify(html, options, callback) {
     // log 'wizzi-tools.htmlparser.wizzify.html', html
-    parseInternal(html, options, callback);
+    parseInternal(html, options, callback)
 }

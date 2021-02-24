@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\production\asyncWizziModelTypesRunner.js.ittf
 */
 'use strict';
@@ -9,9 +10,7 @@ var async = require('async');
 var chalk = require('chalk');
 var verify = require('wizzi-utils').verify;
 var log = require('../util/log')(module);
-/**
-    
-*/
+//
 var AsyncWizziModelTypesRunner = {
     run: function(wmtRequest, callback) {
         var modelInfo = wmtRequest.modelInfo;
@@ -23,8 +22,8 @@ var AsyncWizziModelTypesRunner = {
                 return callback(err);
             }
             console.log(chalk.green('WIZZI MODEL TYPES GENERATED FOR SCHEMA ' + wmtRequest.schemaName));
-            callback(null, result);
-        });
+            callback(null, result)
+        })
     }
 };
 module.exports = AsyncWizziModelTypesRunner;

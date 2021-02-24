@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\util\lineParser.js.ittf
 */
 'use strict';
@@ -7,15 +8,7 @@
 var verify = require('./verify');
 
 var md = module.exports = {};
-/**
-     ignore quotes
-     name = first not (blank or tab) char sequence
-     value = all remaining chars after name + (blank or tab)
-     example
-     "trip to the london bridge"
-     name() = "trip"
-     value() = "to the london bridge"
-*/
+//
 md.parseNameValueRaw = function(text, node) {
     var name = '',
         value = '';

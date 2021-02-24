@@ -40,13 +40,14 @@
             @ callback
 
     $include wz/v08/wizzi/opers/loadMTree.js
+    $include wz/v08/wizzi/opers/loadMTreeDebugInfo.js
     $include wz/v08/wizzi/opers/loadWizziModel.js
     $include wz/v08/wizzi/opers/loadWizziModelAndSaveToJson.js
     $include wz/v08/wizzi/opers/loadModelAndGenerateArtifact.js
+    $include wz/v08/wizzi/opers/loadModelAndGenerateArtifactFromText.js
     $include wz/v08/wizzi/opers/loadModelAndTransform.js
     $include wz/v08/wizzi/opers/executeWizziJob.js
     $include wz/v08/wizzi/opers/executeGenerateModelTypes.js
-
     $include wz/v08/wizzi/opers/getIttfFilesBySchema.js
     $include wz/v08/wizzi/opers/fileInfoByPath.js
     $include wz/v08/wizzi/globals/defaultMimeTypes.js

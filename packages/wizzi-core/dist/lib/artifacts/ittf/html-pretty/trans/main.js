@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\ittf\html-pretty\trans\main.js.ittf
 */
 'use strict';
@@ -16,14 +17,14 @@ md.trans = function(model, ctx, callback) {
     var transformedModel = {};
     if (model.wzElement !== 'ittf') {
         console.log('wizzi-core', 'transformer', 'model', model);
-        callback(error('Invalid model schema. Expected "ittf". Received: ' + model.wzElement));
+        callback(error('Invalid model schema. Expected "ittf". Received: ' + model.wzElement))
     }
     ctx.__ittfNode = {
         line: 0, 
         indent: 0
     };
     ctx.hb = new HtmlBuilder();
-    toHtmlPretty(model, ctx);
+    toHtmlPretty(model, ctx)
     transformedModel = ctx.hb.toLines();
     callback(null, transformedModel);
 };
@@ -89,7 +90,7 @@ function toHtmlPretty(node, ctx) {
     var i, i_items=children, i_len=children.length, child;
     for (i=0; i<i_len; i++) {
         child = children[i];
-        toHtmlPretty(child, ctx);
+        toHtmlPretty(child, ctx)
     }
     ctx.__ittfNode.indent--;
     if (is_code) {

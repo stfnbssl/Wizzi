@@ -1,15 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\examples\html\step_full.js.ittf
 */
 'use strict';
 //
 // Example skeleton specific for the 'wizzify' executions
 //
-/**
-     Examples: wizzify_html_step_1
-    
-*/
+//
 var util = require('util');
 var async = require('async');
 var path = require('path');
@@ -19,7 +17,7 @@ var wizziUtils = require('wizzi-utils');
 var file = wizziUtils.file;
 var verify = wizziUtils.verify;
 var htmlwizzifier = require('../../lib/wizzifiers/htmlparser/wizzi/wizzifier');
-heading2('wizzify html');
+heading2('wizzify html')
 const example_htmls = [
     'full'
 ];
@@ -35,15 +33,15 @@ async.mapSeries(example_htmls, function(name, callback) {
             throw new Error(err.message);
         }
         // _ printValue(name, ittf)
-        file.write(path.join(__dirname, 'outputs', name + '.html.ittf'), ittf);
-    });
+        file.write(path.join(__dirname, 'outputs', name + '.html.ittf'), ittf)
+    })
 }, function(err, result) {
     if (err) {
         console.log('err', err);
         throw new Error(err.message);
     }
     console.log('result', result);
-});
+})
 function heading1(text) {
     console.log('');
     console.log('*'.repeat(120));
@@ -71,7 +69,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }
@@ -175,7 +173,7 @@ function printNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printNodes_deep(c, indent + 1);
+        printNodes_deep(c, indent + 1)
     }
 }
 function printNodes(nodes, title) {
@@ -198,7 +196,7 @@ function printNodes(nodes, title) {
                 console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
             }
         }
-        printNodes_deep(nodes[0], 1);
+        printNodes_deep(nodes[0], 1)
     }
     console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
@@ -207,7 +205,7 @@ function printEvaluatedNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
+        printEvaluatedNodes_deep(c, indent + 1)
     }
 }
 function printEvaluatedNodes(evaluated, title) {
@@ -216,7 +214,7 @@ function printEvaluatedNodes(evaluated, title) {
         if (evaluated.frontMatter) {
             console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
         }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1)
     }
     else {
         console.log('Invalid evaluated object', evaluated);

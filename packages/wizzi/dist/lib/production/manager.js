@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\production\manager.js.ittf
 */
 'use strict';
@@ -31,41 +32,8 @@ var ArtifactPersister = require('./persister').ArtifactPersister;
 var thisWizziPackage = require('../../index');
 // var legacy = require('../../legacy')
 // var Logger = require('../services/logger')
-/**
-     The wizzi.productionManager is used for complex productions.
-     It executes wfjob models.
-*/
-/**
-    
-     The 'meat' of a production is the execution of a wizzi.artifact.artifactInfo instance
-     performed by an instance of a wizzi.production.Runner.
-     wizzi.artifact.artifactInfo (s) are added to the wizzi.production.productionManager
-     in three ways:
-     1. adding a request for loading a 'wfjob' wizzi model.
-     2. adding a wfjobArtifactModel
-     3. adding a wizzi.artifact.artifactInfo created programmaticaly.
-     When the 'run' method is called the production manager:
-     1. loads the requested wfjobModels.
-     A wfjobModel can contain wfjobArtifactModel(s) and others 'wfjob' requests.
-     Every wfjob request is execute until we have wfjobArtifactModel(s) only.
-     2  wfjobArtifactModel(s) are transformed in instances of wizzi.artifact.artifactInfo (s)
-     3  A wizzi.production.Runner is instantiated and asynchronously executed for each
-     wizzi.artifact.artifactInfo.
-    
-     addArtifactInfo(artifactInfo)
-     addWfJob(wfJobConfig)
-     getLoadModel(schemaName)
-     getWizziSchemaObject(schemaName)
-     getModelTransformer(transName)
-     getArtifactGenerator(artifactName)
-     run:AsyncMethod
-     persistToFile:AsyncMethod
-    
-     You execute a production
-     adding wfjobs and/or artifact infos
-     finally executing the run and persistToFile async methods
-    
-*/
+//
+//
 var ProductionManager = (function () {
     function ProductionManager(wizziFactory, options) {
         _classCallCheck(this, ProductionManager);
@@ -97,27 +65,8 @@ var ProductionManager = (function () {
         // set this.logger = new Logger()
         this.productionName = 'production';
     }
-    /**
-         CTOR_PARAMS
-         { wizziFactory
-         { options
-         boolean verbose
-         boolean trace
-         string basedir // uri
-         { dumps
-         string dumpsBaseFolder
-         { mTreeBuildUpScript
-         boolean dump
-         string dumpsBaseFolder
-    */
-    /**
-         Add a global model info from a configuration object
-         declared in an "model" element of a "wfjob" wizzi model.
-         It may also be built programmatically.
-        
-         params
-         { globalModelInfoConfig
-    */
+    //
+    //
     ProductionManager.prototype.addGlobalModelRequest = function(globalModelInfoConfig) {
         if (verify.isObject(globalModelInfoConfig) === false) {
             return error(
@@ -133,12 +82,7 @@ var ProductionManager = (function () {
             throw new Error("wizzi.production.productionManager.addGlobalModelRequest. The 'globalModelInfoConfig' parameter is not a valid global model info config: " + util.inspect(globalModelInfoConfig));
         }
     }
-    /**
-         Add an artifact info to be run by a Runner instance.
-         The artifactInfoConfig parameter can be
-         .1 An artifact info config declared in a "artifact" element of a "wfjob" wizzi model.
-         .2 An artifactInfo instance created programmatically.
-    */
+    //
     ProductionManager.prototype.addArtifactInfo = function(artifactInfoConfig) {
         if (verify.isObject(artifactInfoConfig) === false) {
             return error(
@@ -158,14 +102,7 @@ var ProductionManager = (function () {
             throw new Error('ProductionManager.addArtifactInfo is not an artifact info: ' + util.inspect(artifactInfoConfig));
         }
     }
-    /**
-         Add an artifact info from a configuration object
-         declared in an "artifact" element of a "wfjob" wizzi model.
-         It may also be built programmatically.
-        
-         params
-         { artifactInfoConfig
-    */
+    //
     ProductionManager.prototype.addArtifactRequest = function(artifactInfoConfig) {
         if (verify.isObject(artifactInfoConfig) === false) {
             return error(
@@ -181,11 +118,7 @@ var ProductionManager = (function () {
             throw new Error("wizzi.production.productionManager.addArtifactRequest. The 'artifactInfoConfig' parameter is not a valid artifact info config: " + util.inspect(artifactInfoConfig));
         }
     }
-    /**
-         Add a WfJob request
-         23/8/2018, the wfJobConfig.options parameter was optional, it seems it is not
-         called by wizzi.executeJob
-    */
+    //
     ProductionManager.prototype.addWfJob = function(wfJobConfig) {
         if (verify.isObject(wfJobConfig) === false) {
             return error(
@@ -211,16 +144,7 @@ var ProductionManager = (function () {
         wfJobConfig.options = Object.assign({}, this.options, wfJobConfig.options || {});
         this.jobRequests.push(wfJobConfig);
     }
-    /**
-         The same as addWfJob (a duplication) but without the options
-         property in the jobRequest parameter.
-         called by wizzi.executeWizziJob and wizziFactory.executeJob
-         TODO unify these two methods.
-         params
-         { jobRequest
-         { wfjob
-         string ittfDocumentUri
-    */
+    //
     ProductionManager.prototype.addJobRequest = function(jobRequest) {
         if (verify.isObject(jobRequest) === false) {
             return error(
@@ -252,8 +176,8 @@ var ProductionManager = (function () {
             if (err) {
                 return callback(err);
             }
-            this.preLoad(callback);
-        });
+            this.preLoad(callback)
+        })
     }
     ProductionManager.prototype.preLoad = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -270,8 +194,8 @@ var ProductionManager = (function () {
                     return callback(err);
                 }
                 callback(null);
-            });
-        });
+            })
+        })
     }
     ProductionManager.prototype.run = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -292,8 +216,8 @@ var ProductionManager = (function () {
                 }
                 self.artifactInfos = result;
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     ProductionManager.prototype.terminate = function() {
         if (this.wizziFactory) {
@@ -320,7 +244,7 @@ var ProductionManager = (function () {
                 ai.terminate();
             }
             callback(null, result);
-        });
+        })
     }
     ProductionManager.prototype.relPath = function(filepath) {
         return filepath.substr(this.options.basedir.length + 1);
@@ -385,7 +309,7 @@ var ProductionManager = (function () {
         }
         var ctx = this.wizziFactory.createLoadContext(context);
         // log 'wizzi.production.productionManager.loadWfjob.ctx', ctx, this.wizziFactory.globalContext
-        this.wfjobLoadModel(ittfDocumentUri, this.wizziFactory.createLoadContext(context), callback);
+        this.wfjobLoadModel(ittfDocumentUri, this.wizziFactory.createLoadContext(context), callback)
     }
     ProductionManager.prototype.aclStat = function(value) {
         if (typeof(value) === 'undefined') {
@@ -514,23 +438,15 @@ var ProductionManager = (function () {
                     fail.warn(msg);
                     throw new Error(msg);
                 }
-                self.go_generateArtifact(artifactName, artifactContext, wizziModelInstance, callback);
-            });
+                self.go_generateArtifact(artifactName, artifactContext, wizziModelInstance, callback)
+            })
         }
     }
     return ProductionManager;
 })();
 
-/**
-    async run a wizzi job request
-     from jobRequest
-*/
-/**
-     called by the productionManager.initialize method
-     . loads a requested wfjob model and
-     . add its artifactInfos objects to the productionManager artifactInfos collection and
-     . initializes them
-*/
+// async run a wizzi job request
+//
 var AsyncInitializeJobRequests = {
     run: function(jobRequest, callback) {
         if (typeof(callback) !== 'function') {
@@ -598,14 +514,10 @@ var AsyncInitializeJobRequests = {
                 pman.addArtifactRequest(artifactInfoConfig);
             }
             callback(null);
-        });
+        })
     }
 };
-/**
-    async global model pre loader
-     Pre loads
-     . global models (wfjob "model" elements with an "exportName" attribute)
-*/
+// async global model pre loader
 var AsyncGlobalModelPreLoader = {
     run: function(globalModelInfo, callback) {
         log.info('Started async global model preload: ' + globalModelInfo.name);
@@ -619,15 +531,11 @@ var AsyncGlobalModelPreLoader = {
             callback(null, {
                 exportName: globalModelInfo.exportName, 
                 modelInstance: modelInstance
-            });
-        });
+            })
+        })
     }
 };
-/**
-    async artifact collection pre loader
-     Pre loads
-     . artifact front matters (wfjob "artifact" elements with a "collection" attribute)
-*/
+// async artifact collection pre loader
 var AsyncArtifactCollectionPreLoader = {
     run: function(artifactInfo, callback) {
         // log 'Started async artifact collection pre load', artifactInfo.collection
@@ -644,13 +552,10 @@ var AsyncArtifactCollectionPreLoader = {
             }
             log.info('Ended async artifact collection pre load: ' + artifactInfo.name);
             callback(null, operResult);
-        });
+        })
     }
 };
-/**
-    async run an artifact production
-     from an artifactInfo object
-*/
+// async run an artifact production
 var AsyncRunner = {
     run: function(artifactInfo, callback) {
         log.info('Started async run artifact: ' + artifactInfo.name);
@@ -663,7 +568,7 @@ var AsyncRunner = {
             }
             log.info('Ended async run artifact: ' + artifactInfo.name);
             callback(null, operResult);
-        });
+        })
     }, 
     runFrontMatter: function(artifactInfo, callback) {
         log.info('Started async runFrontMatter artifact: ' + artifactInfo.name);
@@ -676,14 +581,10 @@ var AsyncRunner = {
             }
             log.info('Ended async runFrontMatter artifact: ' + artifactInfo.name);
             callback(null, operResult);
-        });
+        })
     }
 };
-/**
-    async persist one or more artifact productions
-     from an artifactInfo object.
-     uses an ArtifactPersister instance
-*/
+// async persist one or more artifact productions
 var AsyncPersisterToFile = {
     run: function(artifactInfo, callback) {
         if (typeof(callback) !== 'function') {
@@ -710,11 +611,11 @@ var AsyncPersisterToFile = {
             var i, i_items=operResult, i_len=operResult.length, oper;
             for (i=0; i<i_len; i++) {
                 oper = operResult[i];
-                log.info(oper.oper + ', ' + oper.status + ', ' + oper.item.filepath);
+                log.info(oper.oper + ', ' + oper.status + ', ' + oper.item.filepath)
             }
             console.log('Ended async persist to file artifact: ', artifactInfo.name);
             callback(null, operResult);
-        });
+        })
     }
 };
 module.exports = ProductionManager;

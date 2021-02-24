@@ -1,11 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\json-model.g.js.ittf
 */
 'use strict';
-/**
-     Pseudo schema json
-*/
+//
 var util = require('util');
 var verify = require('wizzi-utils').verify;
 var errors = require('wizzi-utils').errors;
@@ -115,14 +114,14 @@ function toJsonArray(mTreeNodeChilds) {
                 if (value && value.__is_error) {
                     return value;
                 }
-                ret.push(value);
+                ret.push(value)
             }
             else if (node.n === '[') {
                 var value = toJsonArray(node.children);
                 if (value && value.__is_error) {
                     return value;
                 }
-                ret.push(value);
+                ret.push(value)
             }
             else if (node.v && node.v.length && isQuoted(node.n + ' ' + node.v) == false) {
                 return error('A json array item must be an object, an array or a value not a property. Found: ' + node.n + ' ' + node.v, node);
@@ -132,7 +131,7 @@ function toJsonArray(mTreeNodeChilds) {
                 if (value && value.__is_error) {
                     return value;
                 }
-                ret.push(value);
+                ret.push(value)
             }
         }
     }
@@ -172,7 +171,7 @@ function unquote(str) {
 }
 function error(message, node) {
     console.log('wizzi-core.wizzi.models.json-model.g.error', node);
-    nodeInfo(node, message);
+    nodeInfo(node, message)
     return {
             __is_error: true, 
             source: 'wizzi-core/lib/wizzi/models/json-model.g', 

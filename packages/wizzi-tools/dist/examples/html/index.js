@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\examples\html\index.js.ittf
 */
 'use strict';
@@ -16,7 +17,7 @@ async.map([
     'index'
 ], wizzify, function(err, result) {
     console.log('Terminated. result: ', result);
-});
+})
 function wizzify(name, callback) {
     
     var source = path.join(__dirname, 'data', name + '.html');
@@ -31,7 +32,7 @@ function wizzify(name, callback) {
             console.log('err', err);
             return callback(null, 'error ' + source);
         }
-        file.write(path.join(__dirname, 'data', 'output', name + '.html.ittf'), ittf);
+        file.write(path.join(__dirname, 'data', 'output', name + '.html.ittf'), ittf)
         return callback(null, 'success ' + source);
-    });
+    })
 }

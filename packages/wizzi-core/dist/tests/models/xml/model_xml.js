@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\tests\models\xml\model_xml.js.ittf
 */
 'use strict';
@@ -41,8 +42,8 @@ describe("model xml", function() {
                 expect(artifactText).to.be.a('string');
                 expect(artifactText).to.be('<?xml version="1.0">\n<user name="stefi" />\n');
                 done();
-            });
-        });
+            })
+        })
     });
     it("should load a mixed xml ittf document", function(done) {
         loadModel(path.join(__dirname, 'ittf', 'mixed.xml.ittf'), getLoadModelContext({}), function(err, wizziModel) {
@@ -61,8 +62,8 @@ describe("model xml", function() {
                 expect(artifactText).to.be.a('string');
                 expect(artifactText).to.be('<?xml version="1.0">\n<footer Copyright="(c) Wizzi" />\n');
                 done();
-            });
-        });
+            })
+        })
     });
 });
 
@@ -89,7 +90,7 @@ function getTestModelInfo(schemaName, modelName) {
             expectedPath: expectedPath, 
             expectedContent: expectedContent, 
             writeResult: function(content) {
-                file.write(path.join(__dirname, 'ittf', modelName + '.' + schemaName + '.result'), content);
+                file.write(path.join(__dirname, 'ittf', modelName + '.' + schemaName + '.result'), content)
             }
         };
 }

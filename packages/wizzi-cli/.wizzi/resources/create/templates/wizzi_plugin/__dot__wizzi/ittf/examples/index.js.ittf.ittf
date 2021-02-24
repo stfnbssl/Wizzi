@@ -52,7 +52,7 @@ module
                         _ path.join
                             @ __dirname
                             @ 'dist'
-                            @ module + '.sample'
+                            @ module + '.sample.js'
                     
                     _ loadModelAndGenerateArtifact
                         @ ittfDocumentUri

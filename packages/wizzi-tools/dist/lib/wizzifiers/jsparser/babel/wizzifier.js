@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\jsparser\babel\wizzifier.js.ittf
 */
 'use strict';
@@ -80,7 +81,7 @@ format.File = function(parent, node, options) {
         if (!node.program.type) {
             throw 'Node program has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.program, options);
+        format(ret, node.program, options)
     }
     else {
         throw new Error('AST-node-property program undefined: ' + JSON.stringify(node, null, 2));
@@ -122,7 +123,7 @@ format.Program = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -140,7 +141,7 @@ format.Program = function(parent, node, options) {
                 name: 'body', 
                 len: node.body.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -199,7 +200,7 @@ format.Identifier = function(parent, node, options) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     if (node.optional) {
         ret.children.push({
@@ -208,7 +209,7 @@ format.Identifier = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     if (ret.children.length > 0) {
         __isText = false;
@@ -268,7 +269,7 @@ format.PrivateName = function(parent, node, options) {
                 
             ]
         };
-        format(tempIdentifier, node.Identifier, options);
+        format(tempIdentifier, node.Identifier, options)
         /**
             if (tempIdentifier .children.length > 0) {
                 throw 'node.Identifier must result zero node, returned: ' + tempIdentifier.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -592,7 +593,7 @@ format.Function = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -627,9 +628,9 @@ format.Function = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     processParams(ret);
@@ -639,7 +640,7 @@ format.Function = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -700,7 +701,7 @@ format.ExpressionStatement = function(parent, node, options) {
         if (!node.expression.type) {
             throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.expression, options);
+        format(ret, node.expression, options)
     }
     else {
         throw new Error('AST-node-property expression undefined: ' + JSON.stringify(node, null, 2));
@@ -751,7 +752,7 @@ format.BlockStatement = function(parent, node, options) {
                 name: 'body', 
                 len: node.body.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -769,7 +770,7 @@ format.BlockStatement = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -894,7 +895,7 @@ format.WithStatement = function(parent, node, options) {
         if (!node.object.type) {
             throw 'Node object has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.object, options);
+        format(ret, node.object, options)
     }
     else {
         throw new Error('AST-node-property object undefined: ' + JSON.stringify(node, null, 2));
@@ -904,7 +905,7 @@ format.WithStatement = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -954,7 +955,7 @@ format.ReturnStatement = function(parent, node, options) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.argument, options);
+        format(ret, node.argument, options)
     }
     // log 'get_text_from_1_children', isChildrenCount(ret, 1)
     var got_text_1 = false;
@@ -1026,7 +1027,7 @@ format.LabeledStatement = function(parent, node, options) {
                 throw 'Node label has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp label before format'
-            format(p_label, node.label, options);
+            format(p_label, node.label, options)
             // log 'f_p_temp label after format', p_label
             if (p_label.children.length == 1) {
                 p_label.tag = p_label.children[0].tag;
@@ -1060,7 +1061,7 @@ format.LabeledStatement = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -1116,7 +1117,7 @@ format.BreakStatement = function(parent, node, options) {
                 
             ]
         };
-        format(templabel, node.label, options);
+        format(templabel, node.label, options)
         /**
             if (templabel .children.length > 0) {
                 throw 'node.label must result zero node, returned: ' + templabel.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -1181,7 +1182,7 @@ format.ContinueStatement = function(parent, node, options) {
                 
             ]
         };
-        format(templabel, node.label, options);
+        format(templabel, node.label, options)
         /**
             if (templabel .children.length > 0) {
                 throw 'node.label must result zero node, returned: ' + templabel.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -1246,9 +1247,9 @@ format.IfStatement = function(parent, node, options) {
         if (!node.test.type) {
             throw 'Node test has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_test, node.test, options);
+        format(p_test, node.test, options)
         p_test.tag = 'test';
-        ret.children.push(p_test);
+        ret.children.push(p_test)
         if (p_test.children.length == 1) {
             // log '*** f_p_tag test children[0].textified', p_test.children[0].textified
             // log '*** f_p_tag test children[0].isText', p_test.children[0].isText
@@ -1290,7 +1291,7 @@ format.IfStatement = function(parent, node, options) {
                     throw 'Node consequent has no type: ' + JSON.stringify(node, null, 2);
                 }
                 // log 'f_p_temp consequent before format'
-                format(p_consequent, node.consequent, options);
+                format(p_consequent, node.consequent, options)
                 // log 'f_p_temp consequent after format', p_consequent
                 if (p_consequent.children.length == 1) {
                     p_consequent.tag = p_consequent.children[0].tag;
@@ -1350,7 +1351,7 @@ format.IfStatement = function(parent, node, options) {
                     throw 'Node alternate has no type: ' + JSON.stringify(node, null, 2);
                 }
                 // log 'f_p_temp alternate before format'
-                format(p_alternate, node.alternate, options);
+                format(p_alternate, node.alternate, options)
                 // log 'f_p_temp alternate after format', p_alternate
                 if (p_alternate.children.length == 1) {
                     p_alternate.tag = p_alternate.children[0].tag;
@@ -1463,7 +1464,7 @@ format.SwitchStatement = function(parent, node, options) {
                 throw 'Node discriminant has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp discriminant before format'
-            format(p_discriminant, node.discriminant, options);
+            format(p_discriminant, node.discriminant, options)
             // log 'f_p_temp discriminant after format', p_discriminant
             if (p_discriminant.children.length == 1) {
                 p_discriminant.tag = p_discriminant.children[0].tag;
@@ -1496,7 +1497,7 @@ format.SwitchStatement = function(parent, node, options) {
         ret.textified = ret.name;
     }
     else {
-        ret.children.push(p_discriminant);
+        ret.children.push(p_discriminant)
     }
     // process AST-node-property-collection cases and append ittfNode(s) to `ret`
     if (node.cases) {
@@ -1510,7 +1511,7 @@ format.SwitchStatement = function(parent, node, options) {
                 name: 'cases', 
                 len: node.cases.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1574,7 +1575,7 @@ format.SwitchCase = function(parent, node, options) {
                 throw 'Node test has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp test before format'
-            format(p_test, node.test, options);
+            format(p_test, node.test, options)
             // log 'f_p_temp test after format', p_test
             if (p_test.children.length == 1) {
                 p_test.tag = p_test.children[0].tag;
@@ -1611,7 +1612,7 @@ format.SwitchCase = function(parent, node, options) {
                 name: 'consequent', 
                 len: node.consequent.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1689,7 +1690,7 @@ format.ThrowStatement = function(parent, node, options) {
                 throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp argument before format'
-            format(p_argument, node.argument, options);
+            format(p_argument, node.argument, options)
             // log 'f_p_temp argument after format', p_argument
             if (p_argument.children.length == 1) {
                 p_argument.tag = p_argument.children[0].tag;
@@ -1722,7 +1723,7 @@ format.ThrowStatement = function(parent, node, options) {
         ret.name = getNodeText(p_argument);
     }
     else {
-        ret.children.push(p_argument);
+        ret.children.push(p_argument)
     }
     if (ret != null) {
         if (__isText) {
@@ -1769,7 +1770,7 @@ format.TryStatement = function(parent, node, options) {
         if (!node.block.type) {
             throw 'Node block has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.block, options);
+        format(ret, node.block, options)
     }
     else {
         throw new Error('AST-node-property block undefined: ' + JSON.stringify(node, null, 2));
@@ -1793,7 +1794,7 @@ format.TryStatement = function(parent, node, options) {
                 throw 'Node handler has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp handler before format'
-            format(p_handler, node.handler, options);
+            format(p_handler, node.handler, options)
             // log 'f_p_temp handler after format', p_handler
             if (p_handler.children.length == 1) {
                 p_handler.tag = p_handler.children[0].tag;
@@ -1837,7 +1838,7 @@ format.TryStatement = function(parent, node, options) {
                 throw 'Node finalizer has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp finalizer before format'
-            format(p_finalizer, node.finalizer, options);
+            format(p_finalizer, node.finalizer, options)
             // log 'f_p_temp finalizer after format', p_finalizer
             if (p_finalizer.children.length == 1) {
                 p_finalizer.tag = p_finalizer.children[0].tag;
@@ -1881,7 +1882,7 @@ format.TryStatement = function(parent, node, options) {
                     children: [
                         p_finalizer
                     ]
-                });
+                })
             }
         }
     }
@@ -1943,7 +1944,7 @@ format.CatchClause = function(parent, node, options) {
                 
             ]
         };
-        format(tempparam, node.param, options);
+        format(tempparam, node.param, options)
         /**
             if (tempparam .children.length > 0) {
                 throw 'node.param must result zero node, returned: ' + tempparam.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -1962,7 +1963,7 @@ format.CatchClause = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -2019,9 +2020,9 @@ format.WhileStatement = function(parent, node, options) {
         if (!node.test.type) {
             throw 'Node test has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_test, node.test, options);
+        format(p_test, node.test, options)
         p_test.tag = 'test';
-        ret.children.push(p_test);
+        ret.children.push(p_test)
         if (p_test.children.length == 1) {
             // log '*** f_p_tag test children[0].textified', p_test.children[0].textified
             // log '*** f_p_tag test children[0].isText', p_test.children[0].isText
@@ -2058,7 +2059,7 @@ format.WhileStatement = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -2114,9 +2115,9 @@ format.DoWhileStatement = function(parent, node, options) {
         if (!node.test.type) {
             throw 'Node test has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_test, node.test, options);
+        format(p_test, node.test, options)
         p_test.tag = 'test';
-        ret.children.push(p_test);
+        ret.children.push(p_test)
         if (p_test.children.length == 1) {
             // log '*** f_p_tag test children[0].textified', p_test.children[0].textified
             // log '*** f_p_tag test children[0].isText', p_test.children[0].isText
@@ -2153,7 +2154,7 @@ format.DoWhileStatement = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -2209,9 +2210,9 @@ format.ForStatement = function(parent, node, options) {
         if (!node.init.type) {
             throw 'Node init has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_init, node.init, options);
+        format(p_init, node.init, options)
         p_init.tag = 'init';
-        ret.children.push(p_init);
+        ret.children.push(p_init)
         if (p_init.children.length == 1) {
             // log '*** f_p_tag init children[0].textified', p_init.children[0].textified
             // log '*** f_p_tag init children[0].isText', p_init.children[0].isText
@@ -2244,9 +2245,9 @@ format.ForStatement = function(parent, node, options) {
         if (!node.test.type) {
             throw 'Node test has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_test, node.test, options);
+        format(p_test, node.test, options)
         p_test.tag = 'test';
-        ret.children.push(p_test);
+        ret.children.push(p_test)
         if (p_test.children.length == 1) {
             // log '*** f_p_tag test children[0].textified', p_test.children[0].textified
             // log '*** f_p_tag test children[0].isText', p_test.children[0].isText
@@ -2279,9 +2280,9 @@ format.ForStatement = function(parent, node, options) {
         if (!node.update.type) {
             throw 'Node update has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_update, node.update, options);
+        format(p_update, node.update, options)
         p_update.tag = 'update';
-        ret.children.push(p_update);
+        ret.children.push(p_update)
         if (p_update.children.length == 1) {
             // log '*** f_p_tag update children[0].textified', p_update.children[0].textified
             // log '*** f_p_tag update children[0].isText', p_update.children[0].isText
@@ -2315,7 +2316,7 @@ format.ForStatement = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -2378,7 +2379,7 @@ format.ForInStatement = function(parent, node, options) {
                 throw 'Node left has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp left before format'
-            format(p_left, node.left, options);
+            format(p_left, node.left, options)
             // log 'f_p_temp left after format', p_left
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
@@ -2425,7 +2426,7 @@ format.ForInStatement = function(parent, node, options) {
                 throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp right before format'
-            format(p_right, node.right, options);
+            format(p_right, node.right, options)
             // log 'f_p_temp right after format', p_right
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
@@ -2465,7 +2466,7 @@ format.ForInStatement = function(parent, node, options) {
             children: [
                 p_right
             ]
-        });
+        })
     }
     // log 'node.await', node.await
     if (!!node.await == true) {
@@ -2474,14 +2475,14 @@ format.ForInStatement = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property body and append ittfNode to `ret`
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -2544,7 +2545,7 @@ format.ForOfStatement = function(parent, node, options) {
                 throw 'Node left has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp left before format'
-            format(p_left, node.left, options);
+            format(p_left, node.left, options)
             // log 'f_p_temp left after format', p_left
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
@@ -2591,7 +2592,7 @@ format.ForOfStatement = function(parent, node, options) {
                 throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp right before format'
-            format(p_right, node.right, options);
+            format(p_right, node.right, options)
             // log 'f_p_temp right after format', p_right
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
@@ -2631,7 +2632,7 @@ format.ForOfStatement = function(parent, node, options) {
             children: [
                 p_right
             ]
-        });
+        })
     }
     // log 'node.await', node.await
     if (!!node.await == true) {
@@ -2640,14 +2641,14 @@ format.ForOfStatement = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property body and append ittfNode to `ret`
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -2704,7 +2705,7 @@ format.FunctionDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -2723,7 +2724,7 @@ format.FunctionDeclaration = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
@@ -2746,9 +2747,9 @@ format.FunctionDeclaration = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     processParams(ret);
@@ -2771,7 +2772,7 @@ format.FunctionDeclaration = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -2811,14 +2812,14 @@ format.FunctionDeclaration = function(parent, node, options) {
         if (!node.predicate.type) {
             throw 'Node predicate has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.predicate, options);
+        format(ret, node.predicate, options)
     }
     // process AST-node-property body and append ittfNode to `ret`
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -2881,7 +2882,7 @@ format.VariableDeclaration = function(parent, node, options) {
                 name: 'declarations', 
                 len: node.declarations.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2925,8 +2926,8 @@ format.VariableDeclaration = function(parent, node, options) {
             if (child2.tag === '=' || isTypeReference(child1.tag)) {
                 ret.name = ret.children[0].name;
                 ret.children = [];
-                ret.children.push(child1);
-                ret.children.push(child2);
+                ret.children.push(child1)
+                ret.children.push(child2)
             }
             else {
                 if (child1.name && child1.name.length > 0 && child1.children.length > 0) {
@@ -2935,15 +2936,15 @@ format.VariableDeclaration = function(parent, node, options) {
                     var i, i_items=child1.children, i_len=child1.children.length, item;
                     for (i=0; i<i_len; i++) {
                         item = child1.children[i];
-                        ret.children.push(item);
+                        ret.children.push(item)
                     }
-                    ret.children.push(child2);
+                    ret.children.push(child2)
                 }
                 else {
                     ret.name = ret.children[0].name;
                     ret.children = [];
-                    ret.children.push(child1);
-                    ret.children.push(child2);
+                    ret.children.push(child1)
+                    ret.children.push(child2)
                 }
             }
         }
@@ -3042,7 +3043,7 @@ format.VariableDeclarator = function(parent, node, options) {
                 throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp id before format'
-            format(p_id, node.id, options);
+            format(p_id, node.id, options)
             // log 'f_p_temp id after format', p_id
             if (p_id.children.length == 1) {
                 p_id.tag = p_id.children[0].tag;
@@ -3080,7 +3081,7 @@ format.VariableDeclarator = function(parent, node, options) {
             ret.children = p_id.children;
         }
         else {
-            ret.children.push(p_id);
+            ret.children.push(p_id)
         }
     }
     // log 'VariableDeclarator 1', ret
@@ -3089,7 +3090,7 @@ format.VariableDeclarator = function(parent, node, options) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     // process AST-node-property init and set it in a var
     var p_init = null;
@@ -3110,7 +3111,7 @@ format.VariableDeclarator = function(parent, node, options) {
                 throw 'Node init has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp init before format'
-            format(p_init, node.init, options);
+            format(p_init, node.init, options)
             // log 'f_p_temp init after format', p_init
             if (p_init.children.length == 1) {
                 p_init.tag = p_init.children[0].tag;
@@ -3144,12 +3145,12 @@ format.VariableDeclarator = function(parent, node, options) {
                 ret.textified = ret.name;
             }
             else {
-                ret.children.push(p_init);
+                ret.children.push(p_init)
             }
         }
         else {
             if (p_id.tag === '@id') {
-                ret.children.push(p_init);
+                ret.children.push(p_init)
             }
             else {
                 if (isTextualNode(p_init)) {
@@ -3159,7 +3160,7 @@ format.VariableDeclarator = function(parent, node, options) {
                         children: [
                             
                         ]
-                    });
+                    })
                 }
                 else {
                     ret.children.push({
@@ -3167,7 +3168,7 @@ format.VariableDeclarator = function(parent, node, options) {
                         children: [
                             p_init
                         ]
-                    });
+                    })
                 }
             }
         }
@@ -3234,7 +3235,7 @@ format.Decorator = function(parent, node, options) {
                 throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp expression before format'
-            format(p_expression, node.expression, options);
+            format(p_expression, node.expression, options)
             // log 'f_p_temp expression after format', p_expression
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
@@ -3266,7 +3267,7 @@ format.Decorator = function(parent, node, options) {
         ret.name = getNodeText(p_expression);
     }
     else {
-        ret.children.push(p_expression);
+        ret.children.push(p_expression)
     }
     if (ret != null) {
         if (__isText) {
@@ -3330,7 +3331,7 @@ format.Directive = function(parent, node, options) {
                     throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
                 }
                 // log 'f_p_temp value before format'
-                format(p_value, node.value, options);
+                format(p_value, node.value, options)
                 // log 'f_p_temp value after format', p_value
                 if (p_value.children.length == 1) {
                     p_value.tag = p_value.children[0].tag;
@@ -3626,9 +3627,9 @@ format.ArrowFunctionExpression = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     processParams(ret);
@@ -3651,7 +3652,7 @@ format.ArrowFunctionExpression = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -3697,7 +3698,7 @@ format.ArrowFunctionExpression = function(parent, node, options) {
                 name: 'body', 
                 len: node.body.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -3710,7 +3711,7 @@ format.ArrowFunctionExpression = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // log '*** ArrowFunctionExpression.ret.params', getChildByTag(ret, 'params')
     // log '*** ArrowFunctionExpression.ret', ret
@@ -3772,9 +3773,9 @@ format.YieldExpression = function(parent, node, options) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_argument, node.argument, options);
+        format(p_argument, node.argument, options)
         p_argument.tag = 'argument';
-        ret.children.push(p_argument);
+        ret.children.push(p_argument)
         if (p_argument.children.length == 1) {
             // log '*** f_p_tag argument children[0].textified', p_argument.children[0].textified
             // log '*** f_p_tag argument children[0].isText', p_argument.children[0].isText
@@ -3813,7 +3814,7 @@ format.YieldExpression = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // A `yield` expression.
     if (ret != null) {
@@ -3860,7 +3861,7 @@ format.AwaitExpression = function(parent, node, options) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.argument, options);
+        format(ret, node.argument, options)
     }
     // A `await` expression.
     if (ret != null) {
@@ -3914,7 +3915,7 @@ format.ArrayExpression = function(parent, node, options) {
                 name: 'elements', 
                 len: node.elements.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -4023,7 +4024,7 @@ format.ObjectExpression = function(parent, node, options) {
                 name: 'properties', 
                 len: node.properties.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -4068,7 +4069,7 @@ format.ObjectExpression = function(parent, node, options) {
                     kind: 'html', 
                     node: item, 
                     literal: getLiteral(item.children[0])
-                });
+                })
                 item.children = [];
             }
         }
@@ -4155,7 +4156,7 @@ format.ObjectProperty = function(parent, node, options) {
                 throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp key before format'
-            format(p_key, node.key, options);
+            format(p_key, node.key, options)
             // log 'f_p_temp key after format', p_key
             if (p_key.children.length == 1) {
                 p_key.tag = p_key.children[0].tag;
@@ -4198,7 +4199,7 @@ format.ObjectProperty = function(parent, node, options) {
                 p_key
             ]
         };
-        ret.children.push(p_computed);
+        ret.children.push(p_computed)
         ret = p_computed;
     }
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
@@ -4213,7 +4214,7 @@ format.ObjectProperty = function(parent, node, options) {
                 name: 'decorators', 
                 len: node.decorators.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     console.log('ObjectProperty.ret.name', ret.name, 'node.value.type', node.value.type);
@@ -4237,7 +4238,7 @@ format.ObjectProperty = function(parent, node, options) {
                     throw 'Node value_left has no type: ' + JSON.stringify(node, null, 2);
                 }
                 // log 'f_p_temp value_left before format'
-                format(p_value_left, node.value.left, options);
+                format(p_value_left, node.value.left, options)
                 // log 'f_p_temp value_left after format', p_value_left
                 if (p_value_left.children.length == 1) {
                     p_value_left.tag = p_value_left.children[0].tag;
@@ -4284,7 +4285,7 @@ format.ObjectProperty = function(parent, node, options) {
                     throw 'Node value_right has no type: ' + JSON.stringify(node, null, 2);
                 }
                 // log 'f_p_temp value_right before format'
-                format(p_value_right, node.value.right, options);
+                format(p_value_right, node.value.right, options)
                 // log 'f_p_temp value_right after format', p_value_right
                 if (p_value_right.children.length == 1) {
                     p_value_right.tag = p_value_right.children[0].tag;
@@ -4315,7 +4316,7 @@ format.ObjectProperty = function(parent, node, options) {
         console.log('p_value_left', p_value_left);
         // log 'p_value_right', p_value_right
         if (node.value.left.type === 'ObjectPattern') {
-            ret.children.push(p_value_left);
+            ret.children.push(p_value_left)
             if (isTextualNode(p_value_right)) {
                 ret.children.push({
                     tag: '=', 
@@ -4323,7 +4324,7 @@ format.ObjectProperty = function(parent, node, options) {
                     children: [
                         
                     ]
-                });
+                })
             }
             else if (p_value_right.tag === 'none' && verify.isNotEmpty(p_value_right.name)) {
                 // FIXME why this?
@@ -4333,7 +4334,7 @@ format.ObjectProperty = function(parent, node, options) {
                     children: [
                         
                     ]
-                });
+                })
             }
             else {
                 ret.children.push({
@@ -4341,7 +4342,7 @@ format.ObjectProperty = function(parent, node, options) {
                     children: [
                         p_value_right
                     ]
-                });
+                })
             }
         }
         else {
@@ -4356,7 +4357,7 @@ format.ObjectProperty = function(parent, node, options) {
                         children: [
                             
                         ]
-                    });
+                    })
                 }
             }
             else if (p_value_right.tag === 'none' && verify.isNotEmpty(p_value_right.name)) {
@@ -4367,7 +4368,7 @@ format.ObjectProperty = function(parent, node, options) {
                     children: [
                         
                     ]
-                });
+                })
             }
             else {
                 ret.children.push({
@@ -4375,7 +4376,7 @@ format.ObjectProperty = function(parent, node, options) {
                     children: [
                         p_value_right
                     ]
-                });
+                })
             }
         }
     }
@@ -4399,7 +4400,7 @@ format.ObjectProperty = function(parent, node, options) {
                     throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
                 }
                 // log 'f_p_temp value before format'
-                format(p_value, node.value, options);
+                format(p_value, node.value, options)
                 // log 'f_p_temp value after format', p_value
                 if (p_value.children.length == 1) {
                     p_value.tag = p_value.children[0].tag;
@@ -4451,7 +4452,7 @@ format.ObjectProperty = function(parent, node, options) {
                     children: [
                         
                     ]
-                });
+                })
             }
         }
         else if (p_value.tag === 'none' && verify.isNotEmpty(p_value.name)) {
@@ -4467,11 +4468,11 @@ format.ObjectProperty = function(parent, node, options) {
                     children: [
                         
                     ]
-                });
+                })
             }
         }
         else {
-            ret.children.push(p_value);
+            ret.children.push(p_value)
         }
     }
     // TODO b( shorthand
@@ -4548,7 +4549,7 @@ format.ObjectMethod = function(parent, node, options) {
                 throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp key before format'
-            format(p_key, node.key, options);
+            format(p_key, node.key, options)
             // log 'f_p_temp key after format', p_key
             if (p_key.children.length == 1) {
                 p_key.tag = p_key.children[0].tag;
@@ -4599,9 +4600,9 @@ format.ObjectMethod = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     processParams(ret);
@@ -4624,7 +4625,7 @@ format.ObjectMethod = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -4663,7 +4664,7 @@ format.ObjectMethod = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -4730,7 +4731,7 @@ format.FunctionExpression = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -4765,9 +4766,9 @@ format.FunctionExpression = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     processParams(ret);
@@ -4790,7 +4791,7 @@ format.FunctionExpression = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -4829,7 +4830,7 @@ format.FunctionExpression = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -4901,7 +4902,7 @@ format.UnaryExpression = function(parent, node, options) {
                 throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp argument before format'
-            format(p_argument, node.argument, options);
+            format(p_argument, node.argument, options)
             // log 'f_p_temp argument after format', p_argument
             if (p_argument.children.length == 1) {
                 p_argument.tag = p_argument.children[0].tag;
@@ -4935,7 +4936,7 @@ format.UnaryExpression = function(parent, node, options) {
         ret.textified = node.operator + space + ret.name;
     }
     else {
-        ret.children.push(p_argument);
+        ret.children.push(p_argument)
     }
     if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
         if (node.extra && node.extra.parenthesized == true) {
@@ -5019,7 +5020,7 @@ format.UpdateExpression = function(parent, node, options) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.argument, options);
+        format(ret, node.argument, options)
     }
     else {
         throw new Error('AST-node-property argument undefined: ' + JSON.stringify(node, null, 2));
@@ -5134,7 +5135,7 @@ format.BinaryExpression = function(parent, node, options) {
                 throw 'Node left has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp left before format'
-            format(p_left, node.left, options);
+            format(p_left, node.left, options)
             // log 'f_p_temp left after format', p_left
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
@@ -5182,7 +5183,7 @@ format.BinaryExpression = function(parent, node, options) {
                 throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp right before format'
-            format(p_right, node.right, options);
+            format(p_right, node.right, options)
             // log 'f_p_temp right after format', p_right
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
@@ -5227,7 +5228,7 @@ format.BinaryExpression = function(parent, node, options) {
                 p_left.children = [];
             }
         }
-        ret.children.push(p_left);
+        ret.children.push(p_left)
         if (isTextualNode(p_right) || (p_right.children.length == 0 && ['@expr', '@id', 'literal'].indexOf(p_right.tag) > -1)) {
             p_right.tag = '+';
             if (isTextualNode(p_right)) {
@@ -5235,7 +5236,7 @@ format.BinaryExpression = function(parent, node, options) {
                 p_right.children = [];
             }
         }
-        ret.children.push(p_right);
+        ret.children.push(p_right)
         if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
             // is the return value of an ArrowExpression
             if (node.extra && node.extra.parenthesized == true) {
@@ -5310,7 +5311,7 @@ format.AssignmentExpression = function(parent, node, options) {
                 throw 'Node left has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp left before format'
-            format(p_left, node.left, options);
+            format(p_left, node.left, options)
             // log 'f_p_temp left after format', p_left
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
@@ -5358,7 +5359,7 @@ format.AssignmentExpression = function(parent, node, options) {
                 throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp right before format'
-            format(p_right, node.right, options);
+            format(p_right, node.right, options)
             // log 'f_p_temp right after format', p_right
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
@@ -5391,13 +5392,13 @@ format.AssignmentExpression = function(parent, node, options) {
     }
     else {
         ret.name = node.operator;
-        ret.children.push(p_left);
+        ret.children.push(p_left)
     }
     if (isTextualNode(p_left) && isTextualNode(p_right)) {
         ret.name += getNodeText(p_right);
     }
     else {
-        ret.children.push(p_right);
+        ret.children.push(p_right)
     }
     if (ret != null) {
         if (__isText) {
@@ -5459,7 +5460,7 @@ format.LogicalExpression = function(parent, node, options) {
                 throw 'Node left has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp left before format'
-            format(p_left, node.left, options);
+            format(p_left, node.left, options)
             // log 'f_p_temp left after format', p_left
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
@@ -5506,7 +5507,7 @@ format.LogicalExpression = function(parent, node, options) {
                 throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp right before format'
-            format(p_right, node.right, options);
+            format(p_right, node.right, options)
             // log 'f_p_temp right after format', p_right
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
@@ -5548,7 +5549,7 @@ format.LogicalExpression = function(parent, node, options) {
                 p_left.children = [];
             }
         }
-        ret.children.push(p_left);
+        ret.children.push(p_left)
         // log 'LogicalExpression.p_left', p_left
         if (isTextualNode(p_right) || ['@expr', '@id', 'literal'].indexOf(p_right.tag) > -1) {
             p_right.tag = '+';
@@ -5557,7 +5558,7 @@ format.LogicalExpression = function(parent, node, options) {
                 p_right.children = [];
             }
         }
-        ret.children.push(p_right);
+        ret.children.push(p_right)
         // log 'LogicalExpression.p_right', p_right
     }
     if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
@@ -5637,7 +5638,7 @@ format.SpreadElement = function(parent, node, options) {
                 throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp argument before format'
-            format(p_argument, node.argument, options);
+            format(p_argument, node.argument, options)
             // log 'f_p_temp argument after format', p_argument
             if (p_argument.children.length == 1) {
                 p_argument.tag = p_argument.children[0].tag;
@@ -5671,7 +5672,7 @@ format.SpreadElement = function(parent, node, options) {
         ret.textified = '...' + ret.name;
     }
     else {
-        ret.children.push(p_argument);
+        ret.children.push(p_argument)
         // set ret.textified = p_argument.source
         // throw new Error('SpreadElement must be textual:' + JSON.stringify(p_argument, null, 2))
     }
@@ -5733,7 +5734,7 @@ format.MemberExpression = function(parent, node, options) {
                 throw 'Node object has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp object before format'
-            format(p_object, node.object, options);
+            format(p_object, node.object, options)
             // log 'f_p_temp object after format', p_object
             if (p_object.children.length == 1) {
                 p_object.tag = p_object.children[0].tag;
@@ -5780,7 +5781,7 @@ format.MemberExpression = function(parent, node, options) {
                 throw 'Node property has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp property before format'
-            format(p_property, node.property, options);
+            format(p_property, node.property, options)
             // log 'f_p_temp property after format', p_property
             if (p_property.children.length == 1) {
                 p_property.tag = p_property.children[0].tag;
@@ -5832,8 +5833,8 @@ format.MemberExpression = function(parent, node, options) {
                     
                 ]
             };
-            link.children.push(p_property);
-            ret.children.push(link);
+            link.children.push(p_property)
+            ret.children.push(link)
         }
     }
     else {
@@ -5844,15 +5845,15 @@ format.MemberExpression = function(parent, node, options) {
             p_property.tag = '.';
         }
         if (p_object.tag === '(') {
-            ret.children.push(p_object);
-            ret.children.push(p_property);
+            ret.children.push(p_object)
+            ret.children.push(p_property)
         }
         else {
             ret.tag = p_object.tag;
             ret.name = p_object.name;
             ret.source = p_object.source;
             ret.children = p_object.children;
-            ret.children.push(p_property);
+            ret.children.push(p_property)
         }
         // log 'MemberExpression.tag.name', ret.tag, ret.name
         var i, i_items=ret.children, i_len=ret.children.length, item;
@@ -5914,14 +5915,14 @@ format.BindExpression = function(parent, node, options) {
         if (!node.object.type) {
             throw 'Node object has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.object, options);
+        format(ret, node.object, options)
     }
     // process AST-node-property callee and append ittfNode to `ret`
     if (node.callee) {
         if (!node.callee.type) {
             throw 'Node callee has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.callee, options);
+        format(ret, node.callee, options)
     }
     else {
         throw new Error('AST-node-property callee undefined: ' + JSON.stringify(node, null, 2));
@@ -5979,9 +5980,9 @@ format.ConditionalExpression = function(parent, node, options) {
         if (!node.test.type) {
             throw 'Node test has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_test, node.test, options);
+        format(p_test, node.test, options)
         p_test.tag = 'test';
-        ret.children.push(p_test);
+        ret.children.push(p_test)
         if (p_test.children.length == 1) {
             // log '*** f_p_tag test children[0].textified', p_test.children[0].textified
             // log '*** f_p_tag test children[0].isText', p_test.children[0].isText
@@ -6021,7 +6022,7 @@ format.ConditionalExpression = function(parent, node, options) {
                 throw 'Node consequent has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp consequent before format'
-            format(p_consequent, node.consequent, options);
+            format(p_consequent, node.consequent, options)
             // log 'f_p_temp consequent after format', p_consequent
             if (p_consequent.children.length == 1) {
                 p_consequent.tag = p_consequent.children[0].tag;
@@ -6068,7 +6069,7 @@ format.ConditionalExpression = function(parent, node, options) {
                 throw 'Node alternate has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp alternate before format'
-            format(p_alternate, node.alternate, options);
+            format(p_alternate, node.alternate, options)
             // log 'f_p_temp alternate after format', p_alternate
             if (p_alternate.children.length == 1) {
                 p_alternate.tag = p_alternate.children[0].tag;
@@ -6104,7 +6105,7 @@ format.ConditionalExpression = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     else {
         ret.children.push({
@@ -6112,7 +6113,7 @@ format.ConditionalExpression = function(parent, node, options) {
             children: [
                 p_consequent
             ]
-        });
+        })
     }
     if (isTextualNode(p_alternate)) {
         ret.children.push({
@@ -6121,7 +6122,7 @@ format.ConditionalExpression = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     else {
         ret.children.push({
@@ -6129,7 +6130,7 @@ format.ConditionalExpression = function(parent, node, options) {
             children: [
                 p_alternate
             ]
-        });
+        })
     }
     if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
         // is the return value of an ArrowExpression
@@ -6191,7 +6192,7 @@ format.CallExpression = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property callee and set it in a var
     var p_callee = null;
@@ -6212,7 +6213,7 @@ format.CallExpression = function(parent, node, options) {
                 throw 'Node callee has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp callee before format'
-            format(p_callee, node.callee, options);
+            format(p_callee, node.callee, options)
             // log 'f_p_temp callee after format', p_callee
             if (p_callee.children.length == 1) {
                 p_callee.tag = p_callee.children[0].tag;
@@ -6259,7 +6260,7 @@ format.CallExpression = function(parent, node, options) {
                 name: 'arguments', 
                 len: node.arguments.length
             };
-            format(p_arguments, item, options);
+            format(p_arguments, item, options)
         }
     }
     var lastCallee = ret;
@@ -6274,7 +6275,7 @@ format.CallExpression = function(parent, node, options) {
                 if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
                     item.tag = '@';
                 }
-                lastCallee.children.push(item);
+                lastCallee.children.push(item)
             }
         }
         else {
@@ -6291,7 +6292,7 @@ format.CallExpression = function(parent, node, options) {
                         if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
                             item.tag = '@';
                         }
-                        lastCallee.children.push(item);
+                        lastCallee.children.push(item)
                     }
                 }
             }
@@ -6335,7 +6336,7 @@ format.CallExpression = function(parent, node, options) {
                         if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
                             item.tag = '@';
                         }
-                        lastCallee.children.push(item);
+                        lastCallee.children.push(item)
                     }
                 }
                 else {
@@ -6351,7 +6352,7 @@ format.CallExpression = function(parent, node, options) {
                         if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
                             item.tag = '@';
                         }
-                        call.children.push(item);
+                        call.children.push(item)
                     }
                     ret.children.push(call);
                 }
@@ -6373,7 +6374,7 @@ format.CallExpression = function(parent, node, options) {
                     if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
                         item.tag = '@';
                     }
-                    ret.children.push(item);
+                    ret.children.push(item)
                 }
             }
             // log 'CallExpression', p_callee, ret
@@ -6455,9 +6456,9 @@ format.NewExpression = function(parent, node, options) {
                     name: 'arguments', 
                     len: node.arguments.length
                 };
-                format(temparguments, item, options);
+                format(temparguments, item, options)
             }
-            ret.children.push(temparguments);
+            ret.children.push(temparguments)
         }
     }
     // process AST-node-property callee and set it in a var
@@ -6479,7 +6480,7 @@ format.NewExpression = function(parent, node, options) {
                 throw 'Node callee has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp callee before format'
-            format(p_callee, node.callee, options);
+            format(p_callee, node.callee, options)
             // log 'f_p_temp callee after format', p_callee
             if (p_callee.children.length == 1) {
                 p_callee.tag = p_callee.children[0].tag;
@@ -6530,7 +6531,7 @@ format.NewExpression = function(parent, node, options) {
                 if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
                     item.tag = '@';
                 }
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
     }
@@ -6590,7 +6591,7 @@ format.SequenceExpression = function(parent, node, options) {
                 name: 'expressions', 
                 len: node.expressions.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -6648,7 +6649,7 @@ format.DoExpression = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -6711,7 +6712,7 @@ format.TemplateLiteral = function(parent, node, options) {
                 name: 'quasis', 
                 len: node.quasis.length
             };
-            format(p_quasis, item, options);
+            format(p_quasis, item, options)
         }
     }
     // process AST-node-property-collection expressions and
@@ -6733,7 +6734,7 @@ format.TemplateLiteral = function(parent, node, options) {
                 name: 'expressions', 
                 len: node.expressions.length
             };
-            format(p_expressions, item, options);
+            format(p_expressions, item, options)
         }
     }
     var i = 0, j;
@@ -6814,7 +6815,7 @@ format.TaggedTemplateExpression = function(parent, node, options) {
                 throw 'Node tag has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp tag before format'
-            format(p_tag, node.tag, options);
+            format(p_tag, node.tag, options)
             // log 'f_p_temp tag after format', p_tag
             if (p_tag.children.length == 1) {
                 p_tag.tag = p_tag.children[0].tag;
@@ -6867,7 +6868,7 @@ format.TaggedTemplateExpression = function(parent, node, options) {
                 throw 'Node quasi has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp quasi before format'
-            format(p_quasi, node.quasi, options);
+            format(p_quasi, node.quasi, options)
             // log 'f_p_temp quasi after format', p_quasi
             if (p_quasi.children.length == 1) {
                 p_quasi.tag = p_quasi.children[0].tag;
@@ -6956,7 +6957,7 @@ format.TemplateElement = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // f_p( value
     // f_p_p( value, cooked, optional
@@ -7013,7 +7014,7 @@ format.ObjectPattern = function(parent, node, options) {
                 name: 'properties', 
                 len: node.properties.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -7037,7 +7038,7 @@ format.ObjectPattern = function(parent, node, options) {
             if (!node.typeAnnotation.type) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
             }
-            format(ret, node.typeAnnotation, options);
+            format(ret, node.typeAnnotation, options)
         }
         if (ret.children.length == 0) {
             if (node.extra && node.extra.parenthesized == true) {
@@ -7110,7 +7111,7 @@ format.ArrayPattern = function(parent, node, options) {
                 name: 'elements', 
                 len: node.elements.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     if (setTextList(ret, ', ')) {
@@ -7164,7 +7165,7 @@ format.RestElement = function(parent, node, options) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.argument, options);
+        format(ret, node.argument, options)
     }
     else {
         throw new Error('AST-node-property argument undefined: ' + JSON.stringify(node, null, 2));
@@ -7185,7 +7186,7 @@ format.RestElement = function(parent, node, options) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     ret.textified = '...' + ret.name;
     if (ret != null) {
@@ -7246,7 +7247,7 @@ format.AssignmentPattern = function(parent, node, options) {
                 throw 'Node left has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp left before format'
-            format(p_left, node.left, options);
+            format(p_left, node.left, options)
             // log 'f_p_temp left after format', p_left
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
@@ -7293,7 +7294,7 @@ format.AssignmentPattern = function(parent, node, options) {
                 throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp right before format'
-            format(p_right, node.right, options);
+            format(p_right, node.right, options)
             // log 'f_p_temp right after format', p_right
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
@@ -7329,12 +7330,12 @@ format.AssignmentPattern = function(parent, node, options) {
             ret.name += getNodeText(p_right);
         }
         else {
-            ret.children.push(p_right);
+            ret.children.push(p_right)
         }
     }
     else {
-        ret.children.push(p_left);
-        ret.children.push(p_right);
+        ret.children.push(p_left)
+        ret.children.push(p_right)
     }
     // log 'AssignmentPattern', JSON.stringify(ret, null, 2)
     if (ret != null) {
@@ -7388,7 +7389,7 @@ format.Class = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -7421,7 +7422,7 @@ format.Class = function(parent, node, options) {
                 throw 'Node superClass has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp superClass before format'
-            format(p_superClass, node.superClass, options);
+            format(p_superClass, node.superClass, options)
             // log 'f_p_temp superClass after format', p_superClass
             if (p_superClass.children.length == 1) {
                 p_superClass.tag = p_superClass.children[0].tag;
@@ -7451,7 +7452,7 @@ format.Class = function(parent, node, options) {
             ret.children.push({
                 tag: 'super', 
                 name: getNodeText(p_superClass)
-            });
+            })
         }
         else {
             throw new Error('Class. superClass must be textual: ' + JSON.stringify(node, null, 2));
@@ -7469,7 +7470,7 @@ format.Class = function(parent, node, options) {
                 name: 'decorators', 
                 len: node.decorators.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
@@ -7477,7 +7478,7 @@ format.Class = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -7523,7 +7524,7 @@ format.ClassBody = function(parent, node, options) {
                 name: 'body', 
                 len: node.body.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -7574,9 +7575,9 @@ format.ClassMethod = function(parent, node, options) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_key, node.key, options);
+        format(p_key, node.key, options)
         p_key.tag = 'key';
-        ret.children.push(p_key);
+        ret.children.push(p_key)
         if (p_key.children.length == 1) {
             // log '*** f_p_tag key children[0].textified', p_key.children[0].textified
             // log '*** f_p_tag key children[0].isText', p_key.children[0].isText
@@ -7607,7 +7608,7 @@ format.ClassMethod = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     if (node.accessibility) {
         ret.children.push({
@@ -7616,7 +7617,7 @@ format.ClassMethod = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // b( generator
     // b( async
@@ -7632,7 +7633,7 @@ format.ClassMethod = function(parent, node, options) {
                 name: 'decorators', 
                 len: node.decorators.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property-collection params and
@@ -7656,9 +7657,9 @@ format.ClassMethod = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     processParams(ret);
@@ -7681,7 +7682,7 @@ format.ClassMethod = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -7720,7 +7721,7 @@ format.ClassMethod = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -7783,7 +7784,7 @@ format.ClassPrivateMethod = function(parent, node, options) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.key, options);
+        format(ret, node.key, options)
     }
     else {
         throw new Error('AST-node-property key undefined: ' + JSON.stringify(node, null, 2));
@@ -7796,7 +7797,7 @@ format.ClassPrivateMethod = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
     if (node.decorators) {
@@ -7810,7 +7811,7 @@ format.ClassPrivateMethod = function(parent, node, options) {
                 name: 'decorators', 
                 len: node.decorators.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property-collection params and
@@ -7834,9 +7835,9 @@ format.ClassPrivateMethod = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     ret.tag = ret.tag == 'method' ? 'm' : ret.tag;
@@ -7860,7 +7861,7 @@ format.ClassPrivateMethod = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -7899,7 +7900,7 @@ format.ClassPrivateMethod = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -7955,7 +7956,7 @@ format.ClassProperty = function(parent, node, options) {
                 
             ]
         };
-        format(tempkey, node.key, options);
+        format(tempkey, node.key, options)
         /**
             if (tempkey .children.length > 0) {
                 throw 'node.key must result zero node, returned: ' + tempkey.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -7988,7 +7989,7 @@ format.ClassProperty = function(parent, node, options) {
                 throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp value before format'
-            format(p_value, node.value, options);
+            format(p_value, node.value, options)
             // log 'f_p_temp value after format', p_value
             if (p_value.children.length == 1) {
                 p_value.tag = p_value.children[0].tag;
@@ -8035,7 +8036,7 @@ format.ClassProperty = function(parent, node, options) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp typeAnnotation before format'
-            format(p_typeAnnotation, node.typeAnnotation, options);
+            format(p_typeAnnotation, node.typeAnnotation, options)
             // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
@@ -8067,7 +8068,7 @@ format.ClassProperty = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     if (node.readonly) {
         ret.children.push({
@@ -8076,7 +8077,7 @@ format.ClassProperty = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     if (node.accessibility) {
         ret.children.push({
@@ -8085,16 +8086,16 @@ format.ClassProperty = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     if (p_value.tag === '=>') {
         ret.tag = p_value.tag;
         if (p_typeAnnotation) {
-            ret.children.push(p_typeAnnotation);
+            ret.children.push(p_typeAnnotation)
             var i, i_items=p_value.children, i_len=p_value.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_value.children[i];
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
         else {
@@ -8103,7 +8104,7 @@ format.ClassProperty = function(parent, node, options) {
     }
     else {
         if (p_typeAnnotation) {
-            ret.children.push(p_typeAnnotation);
+            ret.children.push(p_typeAnnotation)
         }
         if (node.computed) {
             ret.name = '[' + ret.name + ']';
@@ -8112,7 +8113,7 @@ format.ClassProperty = function(parent, node, options) {
             if (['@id', '@expr', 'literal'].indexOf(p_value.tag) > -1) {
                 p_value.tag = '=';
             }
-            ret.children.push(p_value);
+            ret.children.push(p_value)
         }
         else {
             // do nothing
@@ -8162,7 +8163,7 @@ format.ClassPrivateProperty = function(parent, node, options) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.key, options);
+        format(ret, node.key, options)
     }
     else {
         throw new Error('AST-node-property key undefined: ' + JSON.stringify(node, null, 2));
@@ -8172,7 +8173,7 @@ format.ClassPrivateProperty = function(parent, node, options) {
         if (!node.value.type) {
             throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.value, options);
+        format(ret, node.value, options)
     }
     else {
         throw new Error('AST-node-property value undefined: ' + JSON.stringify(node, null, 2));
@@ -8184,7 +8185,7 @@ format.ClassPrivateProperty = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     if (ret != null) {
         if (__isText) {
@@ -8237,7 +8238,7 @@ format.ClassDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -8258,14 +8259,14 @@ format.ClassDeclaration = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property superClass and set it in a var
     var p_superClass = null;
@@ -8286,7 +8287,7 @@ format.ClassDeclaration = function(parent, node, options) {
                 throw 'Node superClass has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp superClass before format'
-            format(p_superClass, node.superClass, options);
+            format(p_superClass, node.superClass, options)
             // log 'f_p_temp superClass after format', p_superClass
             if (p_superClass.children.length == 1) {
                 p_superClass.tag = p_superClass.children[0].tag;
@@ -8330,7 +8331,7 @@ format.ClassDeclaration = function(parent, node, options) {
                 throw 'Node superTypeParameters has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp superTypeParameters before format'
-            format(p_superTypeParameters, node.superTypeParameters, options);
+            format(p_superTypeParameters, node.superTypeParameters, options)
             // log 'f_p_temp superTypeParameters after format', p_superTypeParameters
             if (p_superTypeParameters.children.length == 1) {
                 p_superTypeParameters.tag = p_superTypeParameters.children[0].tag;
@@ -8365,7 +8366,7 @@ format.ClassDeclaration = function(parent, node, options) {
                     
                 ]
             };
-            ret.children.push(p_super);
+            ret.children.push(p_super)
         }
         else if (p_superClass.text === 'null') {
             // OK
@@ -8386,16 +8387,16 @@ format.ClassDeclaration = function(parent, node, options) {
                         children: [
                             item
                         ]
-                    });
+                    })
                 }
                 else {
-                    p_super.children.push(item);
+                    p_super.children.push(item)
                 }
             }
         }
         else {
             p_superTypeParameters.tag = ':super-type-params';
-            ret.children.push(p_superTypeParameters);
+            ret.children.push(p_superTypeParameters)
         }
     }
     // process AST-node-property-collection implements and
@@ -8417,7 +8418,7 @@ format.ClassDeclaration = function(parent, node, options) {
                 name: 'implements', 
                 len: node.implements.length
             };
-            format(p_implements, item, options);
+            format(p_implements, item, options)
         }
     }
     if (p_implements) {
@@ -8425,7 +8426,7 @@ format.ClassDeclaration = function(parent, node, options) {
         for (i=0; i<i_len; i++) {
             item = p_implements.children[i];
             item.tag = ':implements';
-            ret.children.push(item);
+            ret.children.push(item)
         }
     }
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
@@ -8440,7 +8441,7 @@ format.ClassDeclaration = function(parent, node, options) {
                 name: 'decorators', 
                 len: node.decorators.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
@@ -8448,7 +8449,7 @@ format.ClassDeclaration = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -8513,7 +8514,7 @@ format.ClassExpression = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -8546,7 +8547,7 @@ format.ClassExpression = function(parent, node, options) {
                 throw 'Node superClass has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp superClass before format'
-            format(p_superClass, node.superClass, options);
+            format(p_superClass, node.superClass, options)
             // log 'f_p_temp superClass after format', p_superClass
             if (p_superClass.children.length == 1) {
                 p_superClass.tag = p_superClass.children[0].tag;
@@ -8579,7 +8580,7 @@ format.ClassExpression = function(parent, node, options) {
                 children: [
                     
                 ]
-            });
+            })
         }
         else {
             throw new Error('Class. superClass must be textual: ' + JSON.stringify(node, null, 2));
@@ -8590,7 +8591,7 @@ format.ClassExpression = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     else {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
@@ -8639,7 +8640,7 @@ format.MetaProperty = function(parent, node, options) {
         if (!node.meta.type) {
             throw 'Node meta has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.meta, options);
+        format(ret, node.meta, options)
     }
     else {
         throw new Error('AST-node-property meta undefined: ' + JSON.stringify(node, null, 2));
@@ -8649,7 +8650,7 @@ format.MetaProperty = function(parent, node, options) {
         if (!node.property.type) {
             throw 'Node property has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.property, options);
+        format(ret, node.property, options)
     }
     else {
         throw new Error('AST-node-property property undefined: ' + JSON.stringify(node, null, 2));
@@ -8757,7 +8758,7 @@ format.ImportDeclaration = function(parent, node, options) {
                 name: 'specifiers', 
                 len: node.specifiers.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -8775,9 +8776,9 @@ format.ImportDeclaration = function(parent, node, options) {
         if (!node.source.type) {
             throw 'Node source has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_source, node.source, options);
+        format(p_source, node.source, options)
         p_source.tag = 'from';
-        ret.children.push(p_source);
+        ret.children.push(p_source)
         if (p_source.children.length == 1) {
             // log '*** f_p_tag source children[0].textified', p_source.children[0].textified
             // log '*** f_p_tag source children[0].isText', p_source.children[0].isText
@@ -8859,7 +8860,7 @@ format.ImportSpecifier = function(parent, node, options) {
         if (!node.local.type) {
             throw 'Node local has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.local, options);
+        format(ret, node.local, options)
     }
     else {
         throw new Error('AST-node-property local undefined: ' + JSON.stringify(node, null, 2));
@@ -8876,7 +8877,7 @@ format.ImportSpecifier = function(parent, node, options) {
                 
             ]
         };
-        format(tempimported, node.imported, options);
+        format(tempimported, node.imported, options)
         /**
             if (tempimported .children.length > 0) {
                 throw 'node.imported must result zero node, returned: ' + tempimported.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -8957,7 +8958,7 @@ format.ImportDefaultSpecifier = function(parent, node, options) {
                 
             ]
         };
-        format(templocal, node.local, options);
+        format(templocal, node.local, options)
         /**
             if (templocal .children.length > 0) {
                 throw 'node.local must result zero node, returned: ' + templocal.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -9016,7 +9017,7 @@ format.ImportNamespaceSpecifier = function(parent, node, options) {
         if (!node.local.type) {
             throw 'Node local has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.local, options);
+        format(ret, node.local, options)
     }
     else {
         throw new Error('AST-node-property local undefined: ' + JSON.stringify(node, null, 2));
@@ -9077,7 +9078,7 @@ format.ExportNamedDeclaration = function(parent, node, options) {
         if (!node.declaration.type) {
             throw 'Node declaration has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.declaration, options);
+        format(ret, node.declaration, options)
     }
     // process AST-node-property-collection specifiers and append ittfNode(s) to `ret`
     if (node.specifiers) {
@@ -9091,7 +9092,7 @@ format.ExportNamedDeclaration = function(parent, node, options) {
                 name: 'specifiers', 
                 len: node.specifiers.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -9109,9 +9110,9 @@ format.ExportNamedDeclaration = function(parent, node, options) {
         if (!node.source.type) {
             throw 'Node source has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_source, node.source, options);
+        format(p_source, node.source, options)
         p_source.tag = 'from';
-        ret.children.push(p_source);
+        ret.children.push(p_source)
         if (p_source.children.length == 1) {
             // log '*** f_p_tag source children[0].textified', p_source.children[0].textified
             // log '*** f_p_tag source children[0].isText', p_source.children[0].isText
@@ -9186,7 +9187,7 @@ format.ExportSpecifier = function(parent, node, options) {
         if (!node.exported.type) {
             throw 'Node exported has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.exported, options);
+        format(ret, node.exported, options)
     }
     else {
         throw new Error('AST-node-property exported undefined: ' + JSON.stringify(node, null, 2));
@@ -9203,7 +9204,7 @@ format.ExportSpecifier = function(parent, node, options) {
                 
             ]
         };
-        format(templocal, node.local, options);
+        format(templocal, node.local, options)
         /**
             if (templocal .children.length > 0) {
                 throw 'node.local must result zero node, returned: ' + templocal.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -9286,7 +9287,7 @@ format.ExportDefaultSpecifier = function(parent, node, options) {
                 throw 'Node exported has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp exported before format'
-            format(p_exported, node.exported, options);
+            format(p_exported, node.exported, options)
             // log 'f_p_temp exported after format', p_exported
             if (p_exported.children.length == 1) {
                 p_exported.tag = p_exported.children[0].tag;
@@ -9318,7 +9319,7 @@ format.ExportDefaultSpecifier = function(parent, node, options) {
         ret.name = getNodeText(p_exported);
     }
     else {
-        ret.children.push(p_exported);
+        ret.children.push(p_exported)
     }
     if (ret != null) {
         if (__isText) {
@@ -9379,7 +9380,7 @@ format.ExportDefaultDeclaration = function(parent, node, options) {
                 throw 'Node declaration has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp declaration before format'
-            format(p_declaration, node.declaration, options);
+            format(p_declaration, node.declaration, options)
             // log 'f_p_temp declaration after format', p_declaration
             if (p_declaration.children.length == 1) {
                 p_declaration.tag = p_declaration.children[0].tag;
@@ -9411,7 +9412,7 @@ format.ExportDefaultDeclaration = function(parent, node, options) {
         ret.name = getNodeText(p_declaration);
     }
     else {
-        ret.children.push(p_declaration);
+        ret.children.push(p_declaration)
     }
     if (ret != null) {
         if (__isText) {
@@ -9471,7 +9472,7 @@ format.ExportNamespaceSpecifier = function(parent, node, options) {
                 throw 'Node exported has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp exported before format'
-            format(p_exported, node.exported, options);
+            format(p_exported, node.exported, options)
             // log 'f_p_temp exported after format', p_exported
             if (p_exported.children.length == 1) {
                 p_exported.tag = p_exported.children[0].tag;
@@ -9503,7 +9504,7 @@ format.ExportNamespaceSpecifier = function(parent, node, options) {
         ret.name = getNodeText(p_exported);
     }
     else {
-        ret.children.push(p_exported);
+        ret.children.push(p_exported)
     }
     if (ret != null) {
         if (__isText) {
@@ -9557,9 +9558,9 @@ format.ExportAllDeclaration = function(parent, node, options) {
         if (!node.source.type) {
             throw 'Node source has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_source, node.source, options);
+        format(p_source, node.source, options)
         p_source.tag = 'from';
-        ret.children.push(p_source);
+        ret.children.push(p_source)
         if (p_source.children.length == 1) {
             // log '*** f_p_tag source children[0].textified', p_source.children[0].textified
             // log '*** f_p_tag source children[0].isText', p_source.children[0].isText
@@ -9631,7 +9632,7 @@ format.CommentBlock = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     if (ret != null) {
         if (__isText) {
@@ -9714,7 +9715,7 @@ format.JSXAttribute = function(parent, node, options) {
             
         ]
     };
-    options.stateAST.push('JSXAttribute');
+    options.stateAST.push('JSXAttribute')
     // process AST-node-property name and set it in a var
     var p_name = null;
     if (typeof(node.name) !== 'undefined') {
@@ -9734,7 +9735,7 @@ format.JSXAttribute = function(parent, node, options) {
                 throw 'Node name has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp name before format'
-            format(p_name, node.name, options);
+            format(p_name, node.name, options)
             // log 'f_p_temp name after format', p_name
             if (p_name.children.length == 1) {
                 p_name.tag = p_name.children[0].tag;
@@ -9781,7 +9782,7 @@ format.JSXAttribute = function(parent, node, options) {
                 throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp value before format'
-            format(p_value, node.value, options);
+            format(p_value, node.value, options)
             // log 'f_p_temp value after format', p_value
             if (p_value.children.length == 1) {
                 p_value.tag = p_value.children[0].tag;
@@ -9818,7 +9819,7 @@ format.JSXAttribute = function(parent, node, options) {
             ret.name += ' ' + getNodeText(p_value);
         }
         else if (p_value != null && p_value.text !== 'null') {
-            ret.children.push(p_value);
+            ret.children.push(p_value)
         }
     }
     options.stateAST.pop();
@@ -9920,7 +9921,7 @@ format.JSXElement = function(parent, node, options) {
                 throw 'Node openingElement has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp openingElement before format'
-            format(p_openingElement, node.openingElement, options);
+            format(p_openingElement, node.openingElement, options)
             // log 'f_p_temp openingElement after format', p_openingElement
             if (p_openingElement.children.length == 1) {
                 p_openingElement.tag = p_openingElement.children[0].tag;
@@ -9968,7 +9969,7 @@ format.JSXElement = function(parent, node, options) {
                 name: 'children', 
                 len: node.children.length
             };
-            format(p_children, item, options);
+            format(p_children, item, options)
         }
     }
     // log 'p_openingElement', p_openingElement
@@ -10005,16 +10006,16 @@ format.JSXElement = function(parent, node, options) {
                             kind: 'css', 
                             node: ret, 
                             literal: getLiteral(c)
-                        });
+                        })
                         // log 'JSXElement.children.item.lit', c, getLiteral(c)
                     }
                 }
                 if (ret.tag !== "style-jsx") {
-                    ret.children.push(item);
+                    ret.children.push(item)
                 }
             }
             else {
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
     }
@@ -10034,10 +10035,10 @@ format.JSXElement = function(parent, node, options) {
                     children: [
                         
                     ]
-                });
+                })
             }
             else {
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
     }
@@ -10082,7 +10083,7 @@ format.JSXEmptyExpression = function(parent, node, options) {
                 name: 'innerComments', 
                 len: node.innerComments.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -10142,7 +10143,7 @@ format.JSXExpressionContainer = function(parent, node, options) {
                 throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp expression before format'
-            format(p_expression, node.expression, options);
+            format(p_expression, node.expression, options)
             // log 'f_p_temp expression after format', p_expression
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
@@ -10180,11 +10181,11 @@ format.JSXExpressionContainer = function(parent, node, options) {
         // log 'JSXExpressionContainer.options.p_expression', p_expression
         if (options.stateAST[options.stateAST.length-1] === 'JSXAttribute') {
             var __skip = true;
-            parent.children.push(p_expression);
+            parent.children.push(p_expression)
         }
         else {
             ret.tag = '{';
-            ret.children.push(p_expression);
+            ret.children.push(p_expression)
         }
     }
     /**
@@ -10247,7 +10248,7 @@ format.JSXSpreadChild = function(parent, node, options) {
                 throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp expression before format'
-            format(p_expression, node.expression, options);
+            format(p_expression, node.expression, options)
             // log 'f_p_temp expression after format', p_expression
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
@@ -10366,7 +10367,7 @@ format.JSXMemberExpression = function(parent, node, options) {
         if (!node.object.type) {
             throw 'Node object has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.object, options);
+        format(ret, node.object, options)
     }
     else {
         throw new Error('AST-node-property object undefined: ' + JSON.stringify(node, null, 2));
@@ -10376,7 +10377,7 @@ format.JSXMemberExpression = function(parent, node, options) {
         if (!node.property.type) {
             throw 'Node property has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.property, options);
+        format(ret, node.property, options)
     }
     else {
         throw new Error('AST-node-property property undefined: ' + JSON.stringify(node, null, 2));
@@ -10492,7 +10493,7 @@ format.JSXOpeningElement = function(parent, node, options) {
                 throw 'Node name has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp name before format'
-            format(p_name, node.name, options);
+            format(p_name, node.name, options)
             // log 'f_p_temp name after format', p_name
             if (p_name.children.length == 1) {
                 p_name.tag = p_name.children[0].tag;
@@ -10534,7 +10535,7 @@ format.JSXOpeningElement = function(parent, node, options) {
                 ret.name = item.name;
             }
             else {
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
     }
@@ -10558,14 +10559,14 @@ format.JSXOpeningElement = function(parent, node, options) {
                 name: 'parameters', 
                 len: node.parameters.length
             };
-            format(p_parameters, item, options);
+            format(p_parameters, item, options)
         }
     }
     if (p_parameters) {
         var i, i_items=p_parameters.children, i_len=p_parameters.children.length, item;
         for (i=0; i<i_len; i++) {
             item = p_parameters.children[i];
-            ret.children.push(item);
+            ret.children.push(item)
         }
     }
     // process AST-node-property-collection attributes and
@@ -10587,14 +10588,14 @@ format.JSXOpeningElement = function(parent, node, options) {
                 name: 'attributes', 
                 len: node.attributes.length
             };
-            format(p_attributes, item, options);
+            format(p_attributes, item, options)
         }
     }
     if (p_attributes) {
         var i, i_items=p_attributes.children, i_len=p_attributes.children.length, item;
         for (i=0; i<i_len; i++) {
             item = p_attributes.children[i];
-            ret.children.push(item);
+            ret.children.push(item)
         }
     }
     if (ret != null) {
@@ -10641,7 +10642,7 @@ format.JSXSpreadAttribute = function(parent, node, options) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.argument, options);
+        format(ret, node.argument, options)
     }
     else {
         throw new Error('AST-node-property argument undefined: ' + JSON.stringify(node, null, 2));
@@ -10764,7 +10765,7 @@ format.JSXFragment = function(parent, node, options) {
                 name: 'children', 
                 len: node.children.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -10902,7 +10903,7 @@ format.TypeAlias = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -10921,14 +10922,14 @@ format.TypeAlias = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property right and append ittfNode to `ret`
     if (node.right) {
         if (!node.right.type) {
             throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.right, options);
+        format(ret, node.right, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -10981,7 +10982,7 @@ format.OpaqueType = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -11000,14 +11001,14 @@ format.OpaqueType = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property right and append ittfNode to `ret`
     if (node.right) {
         if (!node.right.type) {
             throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.right, options);
+        format(ret, node.right, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -11051,7 +11052,7 @@ format.TypeParameterDeclaration = function(parent, node, options) {
                 name: 'params', 
                 len: node.params.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -11105,9 +11106,9 @@ format.TypeParameter = function(parent, node, options) {
         if (!node.bound.type) {
             throw 'Node bound has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_bound, node.bound, options);
+        format(p_bound, node.bound, options)
         p_bound.tag = 'bound';
-        ret.children.push(p_bound);
+        ret.children.push(p_bound)
         if (p_bound.children.length == 1) {
             // log '*** f_p_tag bound children[0].textified', p_bound.children[0].textified
             // log '*** f_p_tag bound children[0].isText', p_bound.children[0].isText
@@ -11140,9 +11141,9 @@ format.TypeParameter = function(parent, node, options) {
         if (!node.default.type) {
             throw 'Node default has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(p_default, node.default, options);
+        format(p_default, node.default, options)
         p_default.tag = 'default';
-        ret.children.push(p_default);
+        ret.children.push(p_default)
         if (p_default.children.length == 1) {
             // log '*** f_p_tag default children[0].textified', p_default.children[0].textified
             // log '*** f_p_tag default children[0].isText', p_default.children[0].isText
@@ -11168,7 +11169,7 @@ format.TypeParameter = function(parent, node, options) {
         if (!node.variance.type) {
             throw 'Node variance has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.variance, options);
+        format(ret, node.variance, options)
     }
     // process AST-node-property variance and set it in a var
     var p_variance = null;
@@ -11189,7 +11190,7 @@ format.TypeParameter = function(parent, node, options) {
                 throw 'Node variance has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp variance before format'
-            format(p_variance, node.variance, options);
+            format(p_variance, node.variance, options)
             // log 'f_p_temp variance after format', p_variance
             if (p_variance.children.length == 1) {
                 p_variance.tag = p_variance.children[0].tag;
@@ -11296,7 +11297,7 @@ format.TypeParameterInstantiation = function(parent, node, options) {
                 name: 'params', 
                 len: node.params.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -11466,7 +11467,7 @@ format.GenericTypeAnnotation = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -11485,7 +11486,7 @@ format.GenericTypeAnnotation = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -11611,7 +11612,7 @@ format.ArrayTypeAnnotation = function(parent, node, options) {
         if (!node.elementType.type) {
             throw 'Node elementType has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.elementType, options);
+        format(ret, node.elementType, options)
     }
     else {
         throw new Error('AST-node-property elementType undefined: ' + JSON.stringify(node, null, 2));
@@ -11749,7 +11750,7 @@ format.ClassImplements = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -11768,7 +11769,7 @@ format.ClassImplements = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -11815,7 +11816,7 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection params and append ittfNode(s) to `ret`
     if (node.params) {
@@ -11829,7 +11830,7 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
                 name: 'params', 
                 len: node.params.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property rest and append ittfNode to `ret`
@@ -11837,7 +11838,7 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
         if (!node.rest.type) {
             throw 'Node rest has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.rest, options);
+        format(ret, node.rest, options)
     }
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
@@ -11858,7 +11859,7 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -11888,7 +11889,7 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
             ret.children.push({
                 tag: ':return', 
                 name: p_returnType.children[0].tag
-            });
+            })
         }
         else {
             ret.children.push({
@@ -11897,7 +11898,7 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
                 children: [
                     p_returnType
                 ]
-            });
+            })
         }
     }
     if (ret != null) {
@@ -11952,7 +11953,7 @@ format.FunctionTypeParam = function(parent, node, options) {
                 
             ]
         };
-        format(tempname, node.name, options);
+        format(tempname, node.name, options)
         /**
             if (tempname .children.length > 0) {
                 throw 'node.name must result zero node, returned: ' + tempname.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -11988,7 +11989,7 @@ format.FunctionTypeParam = function(parent, node, options) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp typeAnnotation before format'
-            format(p_typeAnnotation, node.typeAnnotation, options);
+            format(p_typeAnnotation, node.typeAnnotation, options)
             // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
@@ -12018,11 +12019,11 @@ format.FunctionTypeParam = function(parent, node, options) {
             var i, i_items=p_typeAnnotation.children, i_len=p_typeAnnotation.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_typeAnnotation.children[i];
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
         else {
-            ret.children.push(p_typeAnnotation);
+            ret.children.push(p_typeAnnotation)
         }
     }
     if (ret.children.length == 1 && isFlowPrimitiveTag(ret.children[0].tag)) {
@@ -12040,7 +12041,7 @@ format.FunctionTypeParam = function(parent, node, options) {
                 ui.name = ui.tag.substr(1);
             }
             ui.tag = temp_children.tag === ':|' ? '|' : '&';
-            ret.children.push(ui);
+            ret.children.push(ui)
         }
     }
     if (ret != null) {
@@ -12095,7 +12096,7 @@ format.InterfaceExtends = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -12114,7 +12115,7 @@ format.InterfaceExtends = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -12168,7 +12169,7 @@ format.InterfaceDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -12194,7 +12195,7 @@ format.InterfaceDeclaration = function(parent, node, options) {
                 name: 'extends', 
                 len: node.extends.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
@@ -12202,14 +12203,14 @@ format.InterfaceDeclaration = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property body and append ittfNode to `ret`
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -12263,7 +12264,7 @@ format.IntersectionTypeAnnotation = function(parent, node, options) {
                 name: 'types', 
                 len: node.types.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -12358,7 +12359,7 @@ format.NullableTypeAnnotation = function(parent, node, options) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp typeAnnotation before format'
-            format(p_typeAnnotation, node.typeAnnotation, options);
+            format(p_typeAnnotation, node.typeAnnotation, options)
             // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
@@ -12388,11 +12389,11 @@ format.NullableTypeAnnotation = function(parent, node, options) {
             var i, i_items=p_typeAnnotation.children, i_len=p_typeAnnotation.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_typeAnnotation.children[i];
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
         else {
-            ret.children.push(p_typeAnnotation);
+            ret.children.push(p_typeAnnotation)
         }
     }
     ret.children[0].tag = ':?' + ret.children[0].tag.substr(1);
@@ -12604,7 +12605,7 @@ format.TupleTypeAnnotation = function(parent, node, options) {
                 name: 'types', 
                 len: node.types.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -12655,7 +12656,7 @@ format.TypeofTypeAnnotation = function(parent, node, options) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.argument, options);
+        format(ret, node.argument, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -12706,7 +12707,7 @@ format.TypeAnnotation = function(parent, node, options) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp typeAnnotation before format'
-            format(p_typeAnnotation, node.typeAnnotation, options);
+            format(p_typeAnnotation, node.typeAnnotation, options)
             // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
@@ -12736,11 +12737,11 @@ format.TypeAnnotation = function(parent, node, options) {
             var i, i_items=p_typeAnnotation.children, i_len=p_typeAnnotation.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_typeAnnotation.children[i];
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
         else {
-            ret.children.push(p_typeAnnotation);
+            ret.children.push(p_typeAnnotation)
         }
     }
     // process AST-node-property-collection types and append ittfNode(s) to `ret`
@@ -12755,7 +12756,7 @@ format.TypeAnnotation = function(parent, node, options) {
                 name: 'types', 
                 len: node.types.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
@@ -12763,7 +12764,7 @@ format.TypeAnnotation = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -12818,7 +12819,7 @@ format.TypeCastExpression = function(parent, node, options) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp typeAnnotation before format'
-            format(p_typeAnnotation, node.typeAnnotation, options);
+            format(p_typeAnnotation, node.typeAnnotation, options)
             // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
@@ -12848,11 +12849,11 @@ format.TypeCastExpression = function(parent, node, options) {
             var i, i_items=p_typeAnnotation.children, i_len=p_typeAnnotation.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_typeAnnotation.children[i];
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
         else {
-            ret.children.push(p_typeAnnotation);
+            ret.children.push(p_typeAnnotation)
         }
     }
     // Process AST-node-property expression and
@@ -12867,7 +12868,7 @@ format.TypeCastExpression = function(parent, node, options) {
                 
             ]
         };
-        format(tempexpression, node.expression, options);
+        format(tempexpression, node.expression, options)
         /**
             if (tempexpression .children.length > 0) {
                 throw 'node.expression must result zero node, returned: ' + tempexpression.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -12879,7 +12880,7 @@ format.TypeCastExpression = function(parent, node, options) {
                 appto.name = getNodeText(tempexpression.children[0]);
             }
             else {
-                appto.children.push(tempexpression.children[0]);
+                appto.children.push(tempexpression.children[0])
             }
         }
         else {
@@ -12887,7 +12888,7 @@ format.TypeCastExpression = function(parent, node, options) {
                 appto.name = getNodeText(tempexpression);
             }
             else {
-                appto.children.push(tempexpression);
+                appto.children.push(tempexpression)
             }
         }
     }
@@ -12943,7 +12944,7 @@ format.ObjectTypeAnnotation = function(parent, node, options) {
                 name: 'callProperties', 
                 len: node.callProperties.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property-collection indexers and append ittfNode(s) to `ret`
@@ -12958,7 +12959,7 @@ format.ObjectTypeAnnotation = function(parent, node, options) {
                 name: 'indexers', 
                 len: node.indexers.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property-collection properties and append ittfNode(s) to `ret`
@@ -12973,7 +12974,7 @@ format.ObjectTypeAnnotation = function(parent, node, options) {
                 name: 'properties', 
                 len: node.properties.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -13026,14 +13027,14 @@ format.ObjectTypeCallProperty = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property value and append ittfNode to `ret`
     if (node.value) {
         if (!node.value.type) {
             throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.value, options);
+        format(ret, node.value, options)
     }
     else {
         throw new Error('AST-node-property value undefined: ' + JSON.stringify(node, null, 2));
@@ -13090,7 +13091,7 @@ format.ObjectTypeIndexer = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -13109,14 +13110,14 @@ format.ObjectTypeIndexer = function(parent, node, options) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.key, options);
+        format(ret, node.key, options)
     }
     // process AST-node-property value and append ittfNode to `ret`
     if (node.value) {
         if (!node.value.type) {
             throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.value, options);
+        format(ret, node.value, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -13170,7 +13171,7 @@ format.ObjectTypeProperty = function(parent, node, options) {
                 
             ]
         };
-        format(tempkey, node.key, options);
+        format(tempkey, node.key, options)
         /**
             if (tempkey .children.length > 0) {
                 throw 'node.key must result zero node, returned: ' + tempkey.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -13203,7 +13204,7 @@ format.ObjectTypeProperty = function(parent, node, options) {
                 throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp value before format'
-            format(p_value, node.value, options);
+            format(p_value, node.value, options)
             // log 'f_p_temp value after format', p_value
             if (p_value.children.length == 1) {
                 p_value.tag = p_value.children[0].tag;
@@ -13239,7 +13240,7 @@ format.ObjectTypeProperty = function(parent, node, options) {
     }
     else {
         ret.tag = '@';
-        ret.children.push(p_value);
+        ret.children.push(p_value)
     }
     if (ret != null) {
         if (__isText) {
@@ -13293,7 +13294,7 @@ format.QualifiedTypeIdentifier = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -13326,7 +13327,7 @@ format.QualifiedTypeIdentifier = function(parent, node, options) {
                 throw 'Node qualification has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp qualification before format'
-            format(p_qualification, node.qualification, options);
+            format(p_qualification, node.qualification, options)
             // log 'f_p_temp qualification after format', p_qualification
             if (p_qualification.children.length == 1) {
                 p_qualification.tag = p_qualification.children[0].tag;
@@ -13406,7 +13407,7 @@ format.UnionTypeAnnotation = function(parent, node, options) {
                 name: 'types', 
                 len: node.types.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -13502,28 +13503,7 @@ format.InferredPredicate = function(parent, node, options) {
         }
     }
 };
-/**
-    Type annotations
-     TypeAnnotation
-     VoidTypeAnnotation
-     NullLiteralTypeAnnotation
-     GenericTypeAnnotation
-     StringTypeAnnotation
-     AnyTypeAnnotation
-     ArrayTypeAnnotation
-     BooleanLiteralTypeAnnotation
-     BooleanTypeAnnotation
-     FunctionTypeAnnotation
-     IntersectionTypeAnnotation
-     MixedTypeAnnotation
-     NullableTypeAnnotation
-     NumberLiteralTypeAnnotation
-     NumberTypeAnnotation
-     StringLiteralTypeAnnotation
-     StringTypeAnnotation
-     TupleTypeAnnotation
-     TypeofTypeAnnotation
-*/
+// Type annotations
 // https://iov-one.github.io/iov-core-docs/latest/iov-core/interfaces/node.html
 format.TSInterfaceDeclaration = format.InterfaceDeclaration;
 format.TSStringKeyword = format.StringTypeAnnotation;
@@ -13613,7 +13593,7 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -13632,7 +13612,7 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection extends and append ittfNode(s) to `ret`
     if (node.extends) {
@@ -13646,7 +13626,7 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
                 name: 'extends', 
                 len: node.extends.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
@@ -13654,7 +13634,7 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     if (node.declare) {
         ret = {
@@ -13706,7 +13686,7 @@ format.TSInterfaceBody = function(parent, node, options) {
                 name: 'body', 
                 len: node.body.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -13750,14 +13730,14 @@ format.TSConstructorType = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
@@ -13780,9 +13760,9 @@ format.TSConstructorType = function(parent, node, options) {
                     name: 'parameters', 
                     len: node.parameters.length
                 };
-                format(tempparameters, item, options);
+                format(tempparameters, item, options)
             }
-            ret.children.push(tempparameters);
+            ret.children.push(tempparameters)
         }
     }
     processParams(ret);
@@ -13830,14 +13810,14 @@ format.TSConstructSignatureDeclaration = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
@@ -13860,9 +13840,9 @@ format.TSConstructSignatureDeclaration = function(parent, node, options) {
                     name: 'parameters', 
                     len: node.parameters.length
                 };
-                format(tempparameters, item, options);
+                format(tempparameters, item, options)
             }
-            ret.children.push(tempparameters);
+            ret.children.push(tempparameters)
         }
     }
     processParams(ret);
@@ -13910,14 +13890,14 @@ format.TSCallSignatureDeclaration = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
@@ -13940,9 +13920,9 @@ format.TSCallSignatureDeclaration = function(parent, node, options) {
                     name: 'parameters', 
                     len: node.parameters.length
                 };
-                format(tempparameters, item, options);
+                format(tempparameters, item, options)
             }
-            ret.children.push(tempparameters);
+            ret.children.push(tempparameters)
         }
     }
     processParams(ret);
@@ -13997,7 +13977,7 @@ format.TSPropertySignature = function(parent, node, options) {
                 
             ]
         };
-        format(tempkey, node.key, options);
+        format(tempkey, node.key, options)
         /**
             if (tempkey .children.length > 0) {
                 throw 'node.key must result zero node, returned: ' + tempkey.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -14018,7 +13998,7 @@ format.TSPropertySignature = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property typeAnnotation and set it in a var
     var p_typeAnnotation = null;
@@ -14039,7 +14019,7 @@ format.TSPropertySignature = function(parent, node, options) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp typeAnnotation before format'
-            format(p_typeAnnotation, node.typeAnnotation, options);
+            format(p_typeAnnotation, node.typeAnnotation, options)
             // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
@@ -14069,11 +14049,11 @@ format.TSPropertySignature = function(parent, node, options) {
             var i, i_items=p_typeAnnotation.children, i_len=p_typeAnnotation.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_typeAnnotation.children[i];
-                ret.children.push(item);
+                ret.children.push(item)
             }
         }
         else {
-            ret.children.push(p_typeAnnotation);
+            ret.children.push(p_typeAnnotation)
         }
     }
     if (ret != null) {
@@ -14120,7 +14100,7 @@ format.TSIndexSignature = function(parent, node, options) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     if (node.readonly) {
         ret.children.push({
@@ -14129,7 +14109,7 @@ format.TSIndexSignature = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
@@ -14152,9 +14132,9 @@ format.TSIndexSignature = function(parent, node, options) {
                     name: 'parameters', 
                     len: node.parameters.length
                 };
-                format(tempparameters, item, options);
+                format(tempparameters, item, options)
             }
-            ret.children.push(tempparameters);
+            ret.children.push(tempparameters)
         }
     }
     processParams(ret);
@@ -14202,7 +14182,7 @@ format.TSIndexedAccessType = function(parent, node, options) {
         if (!node.objectType.type) {
             throw 'Node objectType has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.objectType, options);
+        format(ret, node.objectType, options)
     }
     else {
         throw new Error('AST-node-property objectType undefined: ' + JSON.stringify(node, null, 2));
@@ -14212,7 +14192,7 @@ format.TSIndexedAccessType = function(parent, node, options) {
         if (!node.indexType.type) {
             throw 'Node indexType has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.indexType, options);
+        format(ret, node.indexType, options)
     }
     else {
         throw new Error('AST-node-property indexType undefined: ' + JSON.stringify(node, null, 2));
@@ -14268,7 +14248,7 @@ format.TSModuleDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -14287,7 +14267,7 @@ format.TSModuleDeclaration = function(parent, node, options) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.body, options);
+        format(ret, node.body, options)
     }
     if (node.declare) {
         ret = {
@@ -14339,7 +14319,7 @@ format.TSModuleBlock = function(parent, node, options) {
                 name: 'body', 
                 len: node.body.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -14390,7 +14370,7 @@ format.TSDeclareFunction = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -14409,7 +14389,7 @@ format.TSDeclareFunction = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
@@ -14432,9 +14412,9 @@ format.TSDeclareFunction = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     processParams(ret);
@@ -14457,7 +14437,7 @@ format.TSDeclareFunction = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -14550,14 +14530,14 @@ format.TSFunctionType = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     else {
         throw new Error('AST-node-property typeAnnotation undefined: ' + JSON.stringify(node, null, 2));
@@ -14583,9 +14563,9 @@ format.TSFunctionType = function(parent, node, options) {
                     name: 'parameters', 
                     len: node.parameters.length
                 };
-                format(tempparameters, item, options);
+                format(tempparameters, item, options)
             }
-            ret.children.push(tempparameters);
+            ret.children.push(tempparameters)
         }
     }
     processParams(ret);
@@ -14608,7 +14588,7 @@ format.TSFunctionType = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -14693,7 +14673,7 @@ format.TSMethodSignature = function(parent, node, options) {
                 
             ]
         };
-        format(tempkey, node.key, options);
+        format(tempkey, node.key, options)
         /**
             if (tempkey .children.length > 0) {
                 throw 'node.key must result zero node, returned: ' + tempkey.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -14712,14 +14692,14 @@ format.TSMethodSignature = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
@@ -14742,9 +14722,9 @@ format.TSMethodSignature = function(parent, node, options) {
                     name: 'parameters', 
                     len: node.parameters.length
                 };
-                format(tempparameters, item, options);
+                format(tempparameters, item, options)
             }
-            ret.children.push(tempparameters);
+            ret.children.push(tempparameters)
         }
     }
     processParams(ret);
@@ -14782,7 +14762,7 @@ format.TSTypeAnnotation = function(parent, node, options) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     else {
         throw new Error('AST-node-property typeAnnotation undefined: ' + JSON.stringify(node, null, 2));
@@ -14792,7 +14772,7 @@ format.TSTypeAnnotation = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -14836,7 +14816,7 @@ format.TSTypeParameterInstantiation = function(parent, node, options) {
                 name: 'params', 
                 len: node.params.length
             };
-            format(p_params, item, options);
+            format(p_params, item, options)
         }
     }
     // log 'TSTypeParameterInstantiation.p_params', p_params
@@ -14866,7 +14846,7 @@ format.TSTypeParameterInstantiation = function(parent, node, options) {
             };
         }
         // log 'TSTypeParameterInstantiation.p after', p
-        ret.children.push(p);
+        ret.children.push(p)
     }
     if (ret != null) {
         if (__isText) {
@@ -14903,7 +14883,7 @@ format.TSTypeParameterDeclaration = function(parent, node, options) {
                 name: 'params', 
                 len: node.params.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -14948,7 +14928,7 @@ format.TSTypeParameter = function(parent, node, options) {
         if (!node.constraint.type) {
             throw 'Node constraint has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.constraint, options);
+        format(ret, node.constraint, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -14996,7 +14976,7 @@ format.TSParameterProperty = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     if (node.accessibility) {
         ret.children.push({
@@ -15005,7 +14985,7 @@ format.TSParameterProperty = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property parameter and set it in a var
     var p_parameter = null;
@@ -15026,7 +15006,7 @@ format.TSParameterProperty = function(parent, node, options) {
                 throw 'Node parameter has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp parameter before format'
-            format(p_parameter, node.parameter, options);
+            format(p_parameter, node.parameter, options)
             // log 'f_p_temp parameter after format', p_parameter
             if (p_parameter.children.length == 1) {
                 p_parameter.tag = p_parameter.children[0].tag;
@@ -15059,7 +15039,7 @@ format.TSParameterProperty = function(parent, node, options) {
     var i, i_items=p_parameter.children, i_len=p_parameter.children.length, item;
     for (i=0; i<i_len; i++) {
         item = p_parameter.children[i];
-        ret.children.push(item);
+        ret.children.push(item)
     }
     p_parameter.children = [];
     if (ret != null) {
@@ -15120,7 +15100,7 @@ format.TSTypeReference = function(parent, node, options) {
                 throw 'Node typeName has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp typeName before format'
-            format(p_typeName, node.typeName, options);
+            format(p_typeName, node.typeName, options)
             // log 'f_p_temp typeName after format', p_typeName
             if (p_typeName.children.length == 1) {
                 p_typeName.tag = p_typeName.children[0].tag;
@@ -15156,7 +15136,7 @@ format.TSTypeReference = function(parent, node, options) {
             ret.name = p_typeName.name;
         }
         else {
-            ret.children.push(p_typeName);
+            ret.children.push(p_typeName)
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
@@ -15164,7 +15144,7 @@ format.TSTypeReference = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -15210,7 +15190,7 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property expression and set it in a var
     var p_expression = null;
@@ -15231,7 +15211,7 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
                 throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp expression before format'
-            format(p_expression, node.expression, options);
+            format(p_expression, node.expression, options)
             // log 'f_p_temp expression after format', p_expression
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
@@ -15261,7 +15241,7 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
             ret.name = getNodeText(p_expression);
         }
         else {
-            ret.children.push(p_expression);
+            ret.children.push(p_expression)
         }
     }
     if (ret != null) {
@@ -15322,7 +15302,7 @@ format.TSAsExpression = function(parent, node, options) {
                 throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp expression before format'
-            format(p_expression, node.expression, options);
+            format(p_expression, node.expression, options)
             // log 'f_p_temp expression after format', p_expression
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
@@ -15369,7 +15349,7 @@ format.TSAsExpression = function(parent, node, options) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp typeAnnotation before format'
-            format(p_typeAnnotation, node.typeAnnotation, options);
+            format(p_typeAnnotation, node.typeAnnotation, options)
             // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
@@ -15398,8 +15378,8 @@ format.TSAsExpression = function(parent, node, options) {
         throw new Error('AST-node-property typeAnnotation undefined: ' + JSON.stringify(node, null, 2));
     }
     // log 'p_typeAnnotation', p_typeAnnotation
-    ret.children.push(p_typeAnnotation);
-    p_expression.children.push(ret);
+    ret.children.push(p_typeAnnotation)
+    p_expression.children.push(ret)
     ret = p_expression;
     if (node.extra && node.extra.parenthesized) {
         ret = {
@@ -15461,7 +15441,7 @@ format.TSTupleType = function(parent, node, options) {
                 name: 'elementTypes', 
                 len: node.elementTypes.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -15518,7 +15498,7 @@ format.TSUnionType = function(parent, node, options) {
                 name: 'types', 
                 len: node.types.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     if (ret != null) {
@@ -15572,7 +15552,7 @@ format.TSIntersectionType = function(parent, node, options) {
                 name: 'types', 
                 len: node.types.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     if (ret != null) {
@@ -15626,7 +15606,7 @@ format.TSEnumDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -15652,7 +15632,7 @@ format.TSEnumDeclaration = function(parent, node, options) {
                 name: 'members', 
                 len: node.members.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -15709,7 +15689,7 @@ format.TSEnumMember = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -15742,7 +15722,7 @@ format.TSEnumMember = function(parent, node, options) {
                 throw 'Node initializer has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp initializer before format'
-            format(p_initializer, node.initializer, options);
+            format(p_initializer, node.initializer, options)
             // log 'f_p_temp initializer after format', p_initializer
             if (p_initializer.children.length == 1) {
                 p_initializer.tag = p_initializer.children[0].tag;
@@ -15862,7 +15842,7 @@ format.TSTypePredicate = function(parent, node, options) {
                 
             ]
         };
-        format(tempparameterName, node.parameterName, options);
+        format(tempparameterName, node.parameterName, options)
         /**
             if (tempparameterName .children.length > 0) {
                 throw 'node.parameterName must result zero node, returned: ' + tempparameterName.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -15881,7 +15861,7 @@ format.TSTypePredicate = function(parent, node, options) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     else {
         throw new Error('AST-node-property typeAnnotation undefined: ' + JSON.stringify(node, null, 2));
@@ -15937,7 +15917,7 @@ format.TSTypeLiteral = function(parent, node, options) {
                 name: 'members', 
                 len: node.members.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     if (ret != null) {
@@ -15984,7 +15964,7 @@ format.TSTypeOperator = function(parent, node, options) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     else {
         throw new Error('AST-node-property typeAnnotation undefined: ' + JSON.stringify(node, null, 2));
@@ -16050,7 +16030,7 @@ format.TSNonNullExpression = function(parent, node, options) {
                 throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp expression before format'
-            format(p_expression, node.expression, options);
+            format(p_expression, node.expression, options)
             // log 'f_p_temp expression after format', p_expression
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
@@ -16079,7 +16059,7 @@ format.TSNonNullExpression = function(parent, node, options) {
         ret.name = getNodeText(p_expression);
     }
     else {
-        ret.children.push(p_expression);
+        ret.children.push(p_expression)
     }
     if (ret != null) {
         if (__isText) {
@@ -16132,7 +16112,7 @@ format.TSTypeAliasDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -16151,14 +16131,14 @@ format.TSTypeAliasDeclaration = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -16218,7 +16198,7 @@ format.TSLiteralType = function(parent, node, options) {
                 throw 'Node literal has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp literal before format'
-            format(p_literal, node.literal, options);
+            format(p_literal, node.literal, options)
             // log 'f_p_temp literal after format', p_literal
             if (p_literal.children.length == 1) {
                 p_literal.tag = p_literal.children[0].tag;
@@ -16305,7 +16285,7 @@ format.TSConditionalType = function(parent, node, options) {
                 throw 'Node checkType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp checkType before format'
-            format(p_checkType, node.checkType, options);
+            format(p_checkType, node.checkType, options)
             // log 'f_p_temp checkType after format', p_checkType
             if (p_checkType.children.length == 1) {
                 p_checkType.tag = p_checkType.children[0].tag;
@@ -16352,7 +16332,7 @@ format.TSConditionalType = function(parent, node, options) {
                 throw 'Node extendsType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp extendsType before format'
-            format(p_extendsType, node.extendsType, options);
+            format(p_extendsType, node.extendsType, options)
             // log 'f_p_temp extendsType after format', p_extendsType
             if (p_extendsType.children.length == 1) {
                 p_extendsType.tag = p_extendsType.children[0].tag;
@@ -16396,7 +16376,7 @@ format.TSConditionalType = function(parent, node, options) {
                 throw 'Node trueType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp trueType before format'
-            format(p_trueType, node.trueType, options);
+            format(p_trueType, node.trueType, options)
             // log 'f_p_temp trueType after format', p_trueType
             if (p_trueType.children.length == 1) {
                 p_trueType.tag = p_trueType.children[0].tag;
@@ -16443,7 +16423,7 @@ format.TSConditionalType = function(parent, node, options) {
                 throw 'Node falseType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp falseType before format'
-            format(p_falseType, node.falseType, options);
+            format(p_falseType, node.falseType, options)
             // log 'f_p_temp falseType after format', p_falseType
             if (p_falseType.children.length == 1) {
                 p_falseType.tag = p_falseType.children[0].tag;
@@ -16477,28 +16457,28 @@ format.TSConditionalType = function(parent, node, options) {
         children: [
             p_checkType
         ]
-    });
+    })
     ret.children.push({
         tag: ':extends', 
         name: '', 
         children: [
             p_extendsType
         ]
-    });
+    })
     ret.children.push({
         tag: ':then', 
         name: '', 
         children: [
             p_trueType
         ]
-    });
+    })
     ret.children.push({
         tag: ':else', 
         name: '', 
         children: [
             p_falseType
         ]
-    });
+    })
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -16545,21 +16525,21 @@ format.TSMappedType = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property typeParameter and append ittfNode to `ret`
     if (node.typeParameter) {
         if (!node.typeParameter.type) {
             throw 'Node typeParameter has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameter, options);
+        format(ret, node.typeParameter, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -16619,7 +16599,7 @@ format.TSTypeQuery = function(parent, node, options) {
                 throw 'Node exprName has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp exprName before format'
-            format(p_exprName, node.exprName, options);
+            format(p_exprName, node.exprName, options)
             // log 'f_p_temp exprName after format', p_exprName
             if (p_exprName.children.length == 1) {
                 p_exprName.tag = p_exprName.children[0].tag;
@@ -16648,7 +16628,7 @@ format.TSTypeQuery = function(parent, node, options) {
         ret.name = p_exprName.name;
     }
     else {
-        ret.children.push(p_exprName);
+        ret.children.push(p_exprName)
     }
     if (ret != null) {
         if (__isText) {
@@ -16694,7 +16674,7 @@ format.TSInferType = function(parent, node, options) {
         if (!node.typeParameter.type) {
             throw 'Node typeParameter has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameter, options);
+        format(ret, node.typeParameter, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -16740,7 +16720,7 @@ format.TSParenthesizedType = function(parent, node, options) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeAnnotation, options);
+        format(ret, node.typeAnnotation, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -16793,7 +16773,7 @@ format.TSDeclareMethod = function(parent, node, options) {
                 
             ]
         };
-        format(tempkey, node.key, options);
+        format(tempkey, node.key, options)
         /**
             if (tempkey .children.length > 0) {
                 throw 'node.key must result zero node, returned: ' + tempkey.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -16816,7 +16796,7 @@ format.TSDeclareMethod = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // log 'node.static', node.static
     if (!!node.static == true) {
@@ -16825,7 +16805,7 @@ format.TSDeclareMethod = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // TODO
     // b( computed
@@ -16834,7 +16814,7 @@ format.TSDeclareMethod = function(parent, node, options) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.typeParameters, options);
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
@@ -16857,9 +16837,9 @@ format.TSDeclareMethod = function(parent, node, options) {
                     name: 'params', 
                     len: node.params.length
                 };
-                format(tempparams, item, options);
+                format(tempparams, item, options)
             }
-            ret.children.push(tempparams);
+            ret.children.push(tempparams)
         }
     }
     processParams(ret);
@@ -16882,7 +16862,7 @@ format.TSDeclareMethod = function(parent, node, options) {
                 throw 'Node returnType has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp returnType before format'
-            format(p_returnType, node.returnType, options);
+            format(p_returnType, node.returnType, options)
             // log 'f_p_temp returnType after format', p_returnType
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
@@ -16980,7 +16960,7 @@ format.TSQualifiedName = function(parent, node, options) {
                 throw 'Node left has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp left before format'
-            format(p_left, node.left, options);
+            format(p_left, node.left, options)
             // log 'f_p_temp left after format', p_left
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
@@ -17024,7 +17004,7 @@ format.TSQualifiedName = function(parent, node, options) {
                 throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp right before format'
-            format(p_right, node.right, options);
+            format(p_right, node.right, options)
             // log 'f_p_temp right after format', p_right
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
@@ -17055,12 +17035,12 @@ format.TSQualifiedName = function(parent, node, options) {
             ret.name += '.' + getNodeText(p_right);
         }
         else {
-            ret.children.push(p_right);
+            ret.children.push(p_right)
         }
     }
     else {
-        ret.children.push(p_left);
-        ret.children.push(p_right);
+        ret.children.push(p_left)
+        ret.children.push(p_right)
     }
     if (ret != null) {
         if (__isText) {
@@ -17120,7 +17100,7 @@ format.TSExportAssignment = function(parent, node, options) {
                 throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp expression before format'
-            format(p_expression, node.expression, options);
+            format(p_expression, node.expression, options)
             // log 'f_p_temp expression after format', p_expression
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
@@ -17149,7 +17129,7 @@ format.TSExportAssignment = function(parent, node, options) {
         ret.name = getNodeText(p_expression);
     }
     else {
-        ret.children.push(p_expression);
+        ret.children.push(p_expression)
     }
     if (ret != null) {
         if (__isText) {
@@ -17202,7 +17182,7 @@ format.TSImportEqualsDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -17223,14 +17203,14 @@ format.TSImportEqualsDeclaration = function(parent, node, options) {
             children: [
                 
             ]
-        });
+        })
     }
     // process AST-node-property moduleReference and append ittfNode to `ret`
     if (node.moduleReference) {
         if (!node.moduleReference.type) {
             throw 'Node moduleReference has no type: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.moduleReference, options);
+        format(ret, node.moduleReference, options)
     }
     if (ret != null) {
         if (__isText) {
@@ -17283,7 +17263,7 @@ format.TSNamespaceExportDeclaration = function(parent, node, options) {
                 
             ]
         };
-        format(tempid, node.id, options);
+        format(tempid, node.id, options)
         /**
             if (tempid .children.length > 0) {
                 throw 'node.id must result zero node, returned: ' + tempid.children.length + ' source: ' + options.input.substring(node.start, node.end);
@@ -17355,7 +17335,7 @@ format.TSExternalModuleReference = function(parent, node, options) {
                 throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
             }
             // log 'f_p_temp expression before format'
-            format(p_expression, node.expression, options);
+            format(p_expression, node.expression, options)
             // log 'f_p_temp expression after format', p_expression
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
@@ -17384,7 +17364,7 @@ format.TSExternalModuleReference = function(parent, node, options) {
         ret.name = getNodeText(p_expression);
     }
     else {
-        ret.children.push(p_expression);
+        ret.children.push(p_expression)
     }
     if (ret != null) {
         if (__isText) {
@@ -17400,10 +17380,10 @@ format.TSExternalModuleReference = function(parent, node, options) {
 };
 var md = module.exports = {};
 function processLeadingComments(node, ittfNode, options) {
-    processComments(node.leadingComments, node, ittfNode, options, true);
+    processComments(node.leadingComments, node, ittfNode, options, true)
 }
 function processTrailingComments(node, ittfNode, options) {
-    processComments(node.trailingComments, node, ittfNode, options, false);
+    processComments(node.trailingComments, node, ittfNode, options, false)
 }
 function processComments(comments, node, ittfNode, options, leading) {
     if (verify.isArray(comments) && comments.length > 0) {
@@ -17425,7 +17405,7 @@ function processComments(comments, node, ittfNode, options, leading) {
                             
                         ]
                     };
-                    ittfNode.children.push(hb);
+                    ittfNode.children.push(hb)
                 }
                 else {
                     if (options.commentManager.checkWritten(item) == true) {
@@ -17438,7 +17418,7 @@ function processComments(comments, node, ittfNode, options, leading) {
                             
                         ]
                     };
-                    ittfNode.children.push(hb);
+                    ittfNode.children.push(hb)
                 }
                 options.commentManager.addWritten(item, ittfNode.children, hb);
             }
@@ -17455,7 +17435,7 @@ function processComments(comments, node, ittfNode, options, leading) {
                             
                         ]
                     };
-                    ittfNode.children.push(hb);
+                    ittfNode.children.push(hb)
                 }
                 else {
                     // log 'codeReplacer.isKey', false
@@ -17478,7 +17458,7 @@ function processComments(comments, node, ittfNode, options, leading) {
                             children: [
                                 
                             ]
-                        });
+                        })
                     }
                     ittfNode.children.push(hb);
                 }
@@ -17524,7 +17504,7 @@ function processParams(ittfNode) {
                     for (k=0; k<k_len; k++) {
                         ui = temp_children.children[k];
                         ui.tag = temp_children.tag === ':|' ? '|' : '&';
-                        p.children.push(ui);
+                        p.children.push(ui)
                     }
                 }
                 if (plen == 2) {
@@ -17644,7 +17624,7 @@ function textifyChildren(ittfNode, tag) {
                 children: [
                     
                 ]
-            });
+            })
         }
         else {
             ret.push(item);
@@ -17828,7 +17808,7 @@ md.getCodeAST = function(input, options, callback) {
         return callback(ex);
     } 
     cleanBabel.cleanAst(syntax);
-    callback(null, syntax);
+    callback(null, syntax)
 };
 md.getWizziTree = function(input, options, callback) {
     // log 'options', options
@@ -17852,7 +17832,7 @@ md.getWizziTree = function(input, options, callback) {
         return callback(ex);
     } 
     if (options.syntaxOutFile) {
-        file.write(options.syntaxOutFile, JSON.stringify(cleanBabel.cleanAst(syntax, cr), null, 2));
+        file.write(options.syntaxOutFile, JSON.stringify(cleanBabel.cleanAst(syntax, cr), null, 2))
     }
     options.starter = true;
     options.replaceds = cr.replaceds;
@@ -17872,7 +17852,7 @@ md.getWizziTree = function(input, options, callback) {
             children: [
                 
             ]
-        });
+        })
     }
     try {
         format(root, syntax, options);
@@ -17889,9 +17869,9 @@ md.getWizziTree = function(input, options, callback) {
             }
             csswizzifier.getWizziTree(item.literal, {}, function(err, ittf) {
                 // log 'getWizzifierIncludes.item.ittf', ittf
-                item.node.children.push(ittf);
+                item.node.children.push(ittf)
                 return callback(null);
-            });
+            })
         }
         else {
             if (!htmlwizzifier) {
@@ -17899,16 +17879,16 @@ md.getWizziTree = function(input, options, callback) {
             }
             htmlwizzifier.getWizziTree(item.literal, {}, function(err, ittf) {
                 // log 'getWizzifierIncludes.item.ittf', ittf
-                item.node.children.push(ittf);
+                item.node.children.push(ittf)
                 return callback(null);
-            });
+            })
         }
     }, function(err, notUsed) {
         if (err) {
             return callback(err);
         }
         return callback(null, root);
-    });
+    })
 };
 md.getWizziIttf = function(input, options, callback) {
     // log '++++++++++ jswizzify.options', options
@@ -17919,5 +17899,5 @@ md.getWizziIttf = function(input, options, callback) {
         var ittf = ittfwriter.stringify(root, { lang: 'js' });
         // log "md.getWizziIttf\n" + ittf
         callback(null, ittf);
-    });
+    })
 };

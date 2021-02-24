@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\root\index.js.ittf
 */
 'use strict';
@@ -18,9 +19,7 @@ var md = module.exports = {};
 md.name = 'wizzi-core';
 
 
-/**
-     FactoryPlugin class
-*/
+//
 var FactoryPlugin = (function () {
     function FactoryPlugin(wizziPackage, provides) {
         _classCallCheck(this, FactoryPlugin);
@@ -42,16 +41,12 @@ var FactoryPlugin = (function () {
         return __filename;
     }
     FactoryPlugin.prototype.getVersion = function() {
-        return '0.7.2';
+        return '0.7.3';
     }
     FactoryPlugin.prototype.getProvides = function() {
         return this.provides;
     }
-    /**
-         Retrieve a WizziModelFactory by its wizzischema name
-         searching the loader in this WizziPackage.
-         No search up in "node_modules" folders.
-    */
+    //
     FactoryPlugin.prototype.getModelFactory = function(schemaName) {
         var factory = this.modelFactories[schemaName] || null;
         if (factory == null) {
@@ -73,11 +68,7 @@ var FactoryPlugin = (function () {
         }
         return factory;
     }
-    /**
-         retrieve a ModelTransformer by its name
-         searching the loader in this WizziPackage
-         No search up in "node_modules" folders.
-    */
+    //
     FactoryPlugin.prototype.getModelTransformer = function(transformerName) {
         
         var transformer = this.modelTransformers[transformerName] || null;
@@ -100,11 +91,7 @@ var FactoryPlugin = (function () {
         }
         return transformer;
     }
-    /**
-         Retrieve an ArtifactGenerator by its name
-         Generators are searched in this WizziPackage
-         No search up in "node_modules" folders.
-    */
+    //
     FactoryPlugin.prototype.getArtifactGenerator = function(generationName) {
         
         var generator = this.artifactGenerators[generationName] || null;
@@ -127,11 +114,7 @@ var FactoryPlugin = (function () {
         }
         return generator;
     }
-    /**
-         Retrieve a WizziSchema definition in JSON format
-         searching the loader in this WizziPackage.
-         No search up in "node_modules" folders.
-    */
+    //
     FactoryPlugin.prototype.getSchemaDefinition = function(schemaName) {
         var definition = this.schemaDefinitions[schemaName] || null;
         if (definition == null) {
@@ -195,6 +178,7 @@ module.exports = {
             'xml/export', 
             'text/document', 
             'ittf/document', 
+            'ittf/tojson', 
             'yaml/document'
         ]
     }, 
@@ -205,7 +189,7 @@ module.exports = {
                 return callback(err);
             }
             return callback(null, plugin);
-        });
+        })
     }
 };
 

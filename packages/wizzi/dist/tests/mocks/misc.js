@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\mocks\misc.js.ittf
 */
 'use strict';
@@ -28,7 +29,7 @@ md.getWizziFactory = function(options, callback) {
             throw new Error(err);
         }
         return callback(null, wf);
-    });
+    })
 };
 md.getProductionManager = function(basedir, modelPaths) {
     var aclStat = new acl.AclStat('stefi', 'admin');
@@ -41,7 +42,7 @@ md.getProductionManager = function(basedir, modelPaths) {
         return md.getLoadModel(modelPaths);
     };
     pman.aclStat(aclStat);
-    pman.globalContext({});
+    pman.globalContext({})
     return pman;
 };
 md.getLoadModel = function(modelPaths) {
@@ -50,13 +51,13 @@ md.getLoadModel = function(modelPaths) {
                 callback(null, {
                     wzElement: 'source', 
                     wzName: ittfDocumentUri
-                });
+                })
             }
             else {
                 callback({
                     __is_error: true, 
                     message: 'Not found'
-                });
+                })
             }
         };
 };
@@ -64,13 +65,13 @@ md.getLoadModel2 = function(mockBaseDir) {
     var models = mockModels.getModels(mockBaseDir);
     return function(ittfDocumentUri, context, callback) {
             if (models[ittfDocumentUri]) {
-                callback(null, models[ittfDocumentUri]);
+                callback(null, models[ittfDocumentUri])
             }
             else {
                 callback({
                     __is_error: true, 
                     message: 'Not found'
-                });
+                })
             }
         };
 };

@@ -70,6 +70,8 @@
             [ artifacts
                 {
                     name 'ittf/document'
+                {
+                    name 'ittf/tojson'
         {
             name 'yaml'
             title 'yaml wizzi language model'

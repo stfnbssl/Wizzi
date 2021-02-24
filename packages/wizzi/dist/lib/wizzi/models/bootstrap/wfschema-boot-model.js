@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\wizzi\models\bootstrap\wfschema-boot-model.js.ittf
 */
 'use strict';
@@ -695,7 +696,7 @@ var Element = (function (Node) {
                         else {
                             codelines.push("this." + attribute.wzId + " = parse" + attribute.jsType + "(child.v, " + DEFAULT + ", child); return true;");
                         }
-                    });
+                    })
                 }
             }
         }
@@ -712,14 +713,14 @@ var Element = (function (Node) {
                     if (relation.rightElement.tagType && relation.rightElement.tagType.length > 0) {
                         typeTagSet.addTypeTag(relation.rightElement.tagType, function(codelines) {
                             codelines.push("return this.wzLoadOneToOne(child, _md." + CHILD_ENTITY + ", '" + RELATION + "');");
-                        });
+                        })
                     }
                     var j, j_items=relation.rightElement.getTags(ctx), j_len=relation.rightElement.getTags(ctx).length, test;
                     for (j=0; j<j_len; j++) {
                         test = relation.rightElement.getTags(ctx)[j];
                         choiceSet.addChoice(test, function(codelines) {
                             codelines.push("return this.wzLoadOneToOne(child, _md." + CHILD_ENTITY + ", '" + RELATION + "');");
-                        });
+                        })
                     }
                 }
                 var j, j_items=relation.rightElement.derived, j_len=relation.rightElement.derived.length, d;
@@ -738,14 +739,14 @@ var Element = (function (Node) {
                     if (d.tagType && d.tagType.length > 0) {
                         typeTagSet.addTypeTag(d.tagType, function(codelines) {
                             codelines.push("return this.wzLoadOneToOne(child, _md." + CHILD_ENTITY + ", '" + RELATION + "')");
-                        });
+                        })
                     }
                     var k, k_items=d.getTags(ctx), k_len=d.getTags(ctx).length, test;
                     for (k=0; k<k_len; k++) {
                         test = d.getTags(ctx)[k];
                         choiceSet.addChoice(test, function(codelines) {
                             codelines.push("return this.wzLoadOneToOne(child, _md." + CHILD_ENTITY + ", '" + RELATION + "')");
-                        });
+                        })
                     }
                 }
             }
@@ -761,7 +762,7 @@ var Element = (function (Node) {
                             else {
                                 codelines.push("return this.wzLoadToChildColl(child, _md." + CHILD_ENTITY + ", this." + RELATION + ");");
                             }
-                        });
+                        })
                     }
                     var j, j_items=relation.rightElement.getTags(ctx), j_len=relation.rightElement.getTags(ctx).length, test;
                     for (j=0; j<j_len; j++) {
@@ -773,7 +774,7 @@ var Element = (function (Node) {
                             else {
                                 codelines.push("return this.wzLoadToChildColl(child, _md." + CHILD_ENTITY + ", this." + RELATION + ");");
                             }
-                        });
+                        })
                     }
                 }
                 if (relation.rightElement.addToChildren) {
@@ -791,7 +792,7 @@ var Element = (function (Node) {
                                 codelines.push("this.AddChild(item);");
                                 codelines.push("item.LoadFromNode(child);");
                                 codelines.push("return true;");
-                            });
+                            })
                         }
                         var k, k_items=deriv.getTags(ctx), k_len=deriv.getTags(ctx).length, test;
                         for (k=0; k<k_len; k++) {
@@ -802,7 +803,7 @@ var Element = (function (Node) {
                                 codelines.push("this.AddChild(item);");
                                 codelines.push("item.LoadFromNode(child);");
                                 codelines.push("return true;");
-                            });
+                            })
                         }
                     }
                 }
@@ -824,14 +825,14 @@ var Element = (function (Node) {
                         if (d.tagType && d.tagType.length > 0) {
                             typeTagSet.addTypeTag(d.tagType, function(codelines) {
                                 codelines.push("return this.wzLoadToChildColl(child, _md." + CHILD_ENTITY + ", this." + RELATION + ")");
-                            });
+                            })
                         }
                         var k, k_items=d.getTags(ctx), k_len=d.getTags(ctx).length, test;
                         for (k=0; k<k_len; k++) {
                             test = d.getTags(ctx)[k];
                             choiceSet.addChoice(test, function(codelines) {
                                 codelines.push("return this.wzLoadToChildColl(child, _md." + CHILD_ENTITY + ", this." + RELATION + ")");
-                            });
+                            })
                         }
                     }
                 }
@@ -869,7 +870,7 @@ var Element = (function (Node) {
                 codelines.push("    }, 100);");
                 codelines.push("}");
                 codelines.push("return true;");
-            });
+            })
         }
     }
     Element.prototype.getFlatAttributes = function() {
@@ -1224,7 +1225,7 @@ var Declare = (function (Node) {
                     n: 'param', 
                     v: p.wzName, 
                     children: []
-                });
+                })
             }
         }
         var i, i_items=wizziNode.statements, i_len=wizziNode.statements.length, s;
@@ -1355,16 +1356,7 @@ var Comment = (function (Node) {
 })(Node);
 
 md.Comment = Comment;
-/**
-     The main class imported and instantiated by the model types generator
-     (wizzi.wizziFactory.generateModelTypes).
-    
-     This is an in-memory trasformer of a loaded 'SCHEMA_NAME.wfschema.ittf' source document.
-    
-     TODO this 'wfschema-boot-model' should become a model transformer of the schema 'wfschema'
-     in the 'wizzi-core' plugin.
-    
-*/
+//
 var WizziSchema = (function (Node) {
     _inherits(WizziSchema, Node);
     function WizziSchema(name) {
@@ -1618,16 +1610,7 @@ var WizziSchema = (function (Node) {
             deps.push("nodeException");
         }
     }
-    /**
-         The method called by 'wizzi.wizziFactory.generateModelTypes'
-        
-         params
-         { wfschemaWizziModel
-         # The model loaded from the 'SCHEMA_NAME.wfschema.ittf' source document.
-         [ requires
-         [ exportTos
-         [ elements
-    */
+    //
     WizziSchema.prototype.loadFromWizziModel = function(wfschemaWizziModel) {
         this.wzName = wfschemaWizziModel.wzName;
         this.unknownElementReplacer = wfschemaWizziModel.unknownElementReplacer || false;

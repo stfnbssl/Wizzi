@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\model\asyncFrontMatterLoader.js.ittf
 */
 'use strict';
@@ -16,7 +17,7 @@ function loadMany(modelInfos, callback) {
         }
         // log 'asyncFrontMatterLoader.loadMany, frontMatters', frontMatters
         return callback(null, frontMatters);
-    });
+    })
 }
 function load(modelInfo, callback) {
     _load_item(modelInfo, function(err, frontMatter) {
@@ -25,14 +26,9 @@ function load(modelInfo, callback) {
         }
         // log 'asyncFrontMatterLoader.load, frontMatter', frontMatter
         return callback(null, frontMatter);
-    });
+    })
 }
-/**
-     Load a single front matter using ModelInfo data
-     params
-     { masterModelInfo
-     func srcFullPath
-*/
+//
 function _load_item(masterModelInfo, callback) {
     // log '+ asyncFrontMatterLoader._load_item, masterModelInfo', masterModelInfo.srcFullPath()
     var srcFullPath = masterModelInfo.srcFullPath();
@@ -50,9 +46,9 @@ function _load_item(masterModelInfo, callback) {
                 sourceUri: srcFullPath, 
                 sourceSchema: masterModelInfo.schema, 
                 ...mTree.frontMatter
-            });
-        });
-    });
+            })
+        })
+    })
 }
 
 module.exports = {

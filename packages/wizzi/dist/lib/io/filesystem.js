@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\io\filesystem.js.ittf
 */
 'use strict';
@@ -105,7 +106,7 @@ md.readFile = function(userId, projectId, path_string, callback) {
         }
         // log 'wizzi-io.filesystem.readFile.fsPath', fsPath, 'content', content
         return callback(null, content);
-    });
+    })
 };
 md.writeFile = function(userId, projectId, path_string, content, callback) {
     if (isMounted == false) {
@@ -122,7 +123,7 @@ md.writeFile = function(userId, projectId, path_string, content, callback) {
         }
         // log 'wizzi-io.filesystem.writeFile.fsPath', fsPath, 'result', result
         return callback(null, result);
-    });
+    })
 };
 md.mkdir = function(userId, projectId, path_string, callback) {
     if (isMounted == false) {
@@ -133,7 +134,7 @@ md.mkdir = function(userId, projectId, path_string, callback) {
     }
     var fsPath = normalize(path.join(fsBaseFolderPath, userId, projectId, path_string));
     // log 'wizzi-io.filesystem.mkdir.fsPath', fsPath
-    file.mkdir(fsPath);
+    file.mkdir(fsPath)
     // log 'wizzi-io.filesystem.createFolder.fsPath', fsPath
     return callback(null);
 };
@@ -160,7 +161,7 @@ md.readDir = function(userId, projectId, dirPath, callback) {
         var fsitems = filesToFsitems(files);
         // log 'wizzi-io.filesystem.readDir.fsPath', fsPath, 'fsitems', fsitems
         return callback(null, fsitems);
-    });
+    })
 };
 md._readDir = function(dirPath, callback) {
     if (isMounted == false) {
@@ -178,7 +179,7 @@ md._readDir = function(dirPath, callback) {
         var fsitems = filesToFsitems(files);
         // log 'wizzi-io.filesystem.readDir.fsPath', fsPath, 'fsitems', fsitems
         return callback(null, fsitems);
-    });
+    })
 };
 md.stat = function(userId, projectId, filePath, callback) {
     if (isMounted == false) {
@@ -204,7 +205,7 @@ md.stat = function(userId, projectId, filePath, callback) {
         else {
             return callback(null, new FsStat(fsitem));
         }
-    });
+    })
 };
 md._stat = function(filePath, callback) {
     if (isMounted == false) {
@@ -241,7 +242,7 @@ md.glob = function(userId, projectId, pattern, callback) {
         }
         // log 'wizzi-io.filesystem.glob.fsPattern', fsPattern, 'fsitems', fsitems
         return callback(null, fsitems);
-    });
+    })
 };
 md.deleteFile = function(userId, projectId, path_string, callback) {
     if (isMounted == false) {
@@ -258,7 +259,7 @@ md.deleteFile = function(userId, projectId, path_string, callback) {
         }
         // log 'wizzi-io.filesystem.deleteFile.fsPath', fsPath, 'result', result
         return callback(null, result);
-    });
+    })
 };
 md.copyFile = function(userId, source_projectId, source_path_string, dest_projectId, dest_path_string, callback) {
     if (isMounted == false) {
@@ -270,7 +271,7 @@ md.copyFile = function(userId, source_projectId, source_path_string, dest_projec
     var sourceFsPath = normalize(path.join(fsBaseFolderPath, userId, source_projectId, source_path_string));
     var destFsPath = normalize(path.join(fsBaseFolderPath, userId, dest_projectId, dest_path_string));
     // log 'wizzi-io.filesystem.copyFile.sourceFsPath', sourceFsPath, 'destFsPath', destFsPath
-    file.copy(sourceFsPath, destFsPath);
+    file.copy(sourceFsPath, destFsPath)
     // log 'wizzi-io.filesystem.copyFile.sourceFsPath', sourceFsPath, 'destFsPath', destFsPath
     return callback(null);
 };
@@ -290,7 +291,7 @@ md.moveFile = function(userId, source_projectId, source_path_string, dest_projec
         }
         // log 'wizzi-io.filesystem.moveFile.sourceFsPath', sourceFsPath, 'destFsPath', destFsPath
         return callback(null);
-    });
+    })
 };
 md.deleteFolder = function(userId, projectId, path_string, callback) {
     if (isMounted == false) {
@@ -307,7 +308,7 @@ md.deleteFolder = function(userId, projectId, path_string, callback) {
         }
         // log 'wizzi-io.filesystem.deleteFolder.fsPath', fsPath, 'result', result
         return callback(null, result);
-    });
+    })
 };
 md.copyFolder = function(userId, source_projectId, source_itemPath, dest_projectId, dest_itemPath, callback) {
     if (isMounted == false) {
@@ -325,7 +326,7 @@ md.copyFolder = function(userId, source_projectId, source_itemPath, dest_project
         }
         // log 'wizzi-io.filesystem.copyFolder.sourceFsPath', sourceFsPath, 'destFsPath', destFsPath
         return callback(null);
-    });
+    })
 };
 md.moveFolder = function(userId, source_projectId, source_itemPath, dest_projectId, dest_itemPath, callback) {
     if (isMounted == false) {
@@ -343,7 +344,7 @@ md.moveFolder = function(userId, source_projectId, source_itemPath, dest_project
         }
         // log 'wizzi-io.filesystem.moveFolder.sourceFsPath', sourceFsPath, 'destFsPath', destFsPath
         return callback(null);
-    });
+    })
 };
 md.duplicateFile = function(userId, projectId, itemPath, newName, callback) {
     if (isMounted == false) {
@@ -371,8 +372,8 @@ md.duplicateFile = function(userId, projectId, itemPath, newName, callback) {
             return callback(null, {
                     message: "file duplicated"
                 });
-        });
-    });
+        })
+    })
 };
 md.renameFile = function(userId, projectId, itemPath, newName, callback) {
     if (isMounted == false) {
@@ -402,8 +403,8 @@ md.renameFile = function(userId, projectId, itemPath, newName, callback) {
             return callback(null, {
                     message: "file renamed"
                 });
-        });
-    });
+        })
+    })
 };
 md.duplicateFolder = function(userId, projectId, itemPath, newName, callback) {
     if (isMounted == false) {
@@ -431,8 +432,8 @@ md.duplicateFolder = function(userId, projectId, itemPath, newName, callback) {
             return callback(null, {
                     message: "file duplicated"
                 });
-        });
-    });
+        })
+    })
 };
 md.renameFolder = function(userId, projectId, itemPath, newName, callback) {
     if (isMounted == false) {
@@ -462,49 +463,49 @@ md.renameFolder = function(userId, projectId, itemPath, newName, callback) {
             return callback(null, {
                     message: "file renamed"
                 });
-        });
-    });
+        })
+    })
 };
 md.copyFsItem = function(userId, action, callback) {
     if (action.itemKind == 0) {
-        md.copyFolder(userId, action.sourceProjectId, action.sourceItemPath, action.destProjectId, action.destItemPath, callback);
+        md.copyFolder(userId, action.sourceProjectId, action.sourceItemPath, action.destProjectId, action.destItemPath, callback)
     }
     else {
-        md.copyFile(userId, action.sourceProjectId, action.sourceItemPath, action.destProjectId, action.destItemPath, callback);
+        md.copyFile(userId, action.sourceProjectId, action.sourceItemPath, action.destProjectId, action.destItemPath, callback)
     }
 };
 md.moveFsItem = function(userId, action, callback) {
     if (action.itemKind == 0) {
-        md.moveFolder(userId, action.sourceProjectId, action.sourceItemPath, action.destProjectId, action.destItemPath, callback);
+        md.moveFolder(userId, action.sourceProjectId, action.sourceItemPath, action.destProjectId, action.destItemPath, callback)
     }
     else {
-        md.moveFile(userId, action.sourceProjectId, action.sourceItemPath, action.destProjectId, action.destItemPath, callback);
+        md.moveFile(userId, action.sourceProjectId, action.sourceItemPath, action.destProjectId, action.destItemPath, callback)
     }
 };
 md.deleteFsItem = function(userId, action, callback) {
     console.log('wizzi.FileSystem.deleteFsItem.action', action);
     if (action.itemKind == 0) {
-        md.deleteFolder(action.userId || userId, action.projectId, action.itemPath, callback);
+        md.deleteFolder(action.userId || userId, action.projectId, action.itemPath, callback)
     }
     else {
-        md.deleteFile(action.userId || userId, action.projectId, action.itemPath, callback);
+        md.deleteFile(action.userId || userId, action.projectId, action.itemPath, callback)
     }
 };
 md.batch = function(userId, actions, callback) {
     async.mapSeries(actions, function(action, callback) {
         if (action.actionType === 'copy') {
-            md.copyFsItem(userId, action, callback);
+            md.copyFsItem(userId, action, callback)
         }
         else if (action.actionType === 'move') {
-            md.moveFsItem(userId, action, callback);
+            md.moveFsItem(userId, action, callback)
         }
         else if (action.actionType === 'delete') {
-            md.deleteFsItem(userId, action, callback);
+            md.deleteFsItem(userId, action, callback)
         }
         else {
             callback('Filesystem.batch. Invalid parameter "action.actionType":' + action.actionType);
         }
-    }, callback);
+    }, callback)
 };
 function normalize(path) {
     return path.trim().replace(/\\/g,'/').toLowerCase();
@@ -514,7 +515,7 @@ function filesToFsitems(files) {
     var i, i_items=files, i_len=files.length, f;
     for (i=0; i<i_len; i++) {
         f = files[i];
-        ret.push(fileToFsItem(f));
+        ret.push(fileToFsItem(f))
     }
     return ret;
 }

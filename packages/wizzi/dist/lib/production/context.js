@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\production\context.js.ittf
 */
 'use strict';
@@ -13,14 +14,7 @@ var util = require('util');
 var file = require('wizzi-utils').file;
 var fail = require('wizzi-utils').fail;
 var runnerServer = null;
-/**
-     { options
-     { dumps
-     string dumpsBaseFolder
-     { mTreeBuildupJsWizziScript
-     boolean dump
-     string dumpsBaseFolder
-*/
+//
 var ProductionContext = (function () {
     function ProductionContext(options) {
         _classCallCheck(this, ProductionContext);
@@ -62,20 +56,20 @@ var ProductionContext = (function () {
         // log '*=*=*=*= temporary wizzi.production.productionContext. this.dumps : ', this.dumps
         if (this.dumps && this.dumps.mTreeBuildupJsWizziScript && this.dumps.mTreeBuildupJsWizziScript.dump) {
             var dumpsFolder = this.dumps.mTreeBuildupJsWizziScript.dumpsBaseFolder || this.dumps.dumpsBaseFolder;
-            file.write(path.join(dumpsFolder, path.basename(uri) + '.js.dump'), ittfEvalScript.toCode());
+            file.write(path.join(dumpsFolder, path.basename(uri) + '.js.dump'), ittfEvalScript.toCode())
         }
     }
     ProductionContext.prototype.addMixedMTree = function(uri, mTree) {
         if (this.dumps && this.dumps.mixedMTree && this.dumps.mixedMTree.dump) {
             var dumpsFolder = this.dumps.mixedMTree.dumpsBaseFolder || this.dumps.dumpsBaseFolder;
-            file.write(path.join(dumpsFolder, (path.basename(uri) + '.mixed.mTree.dump')), mTree.dump());
+            file.write(path.join(dumpsFolder, (path.basename(uri) + '.mixed.mTree.dump')), mTree.dump())
         }
     }
     ProductionContext.prototype.addEvaluatedMTree = function(uri, mTree) {
         this.evaluatedMTrees[uri] = mTree.dump(true);
         if (this.dumps && this.dumps.evaluatedMTree && this.dumps.evaluatedMTree.dump) {
             var dumpsFolder = this.dumps.evaluatedMTree.dumpsBaseFolder || this.dumps.dumpsBaseFolder;
-            file.write(path.join(dumpsFolder, path.basename(uri) + '.evaluated.mTree.dump'), this.evaluatedMTrees[uri]);
+            file.write(path.join(dumpsFolder, path.basename(uri) + '.evaluated.mTree.dump'), this.evaluatedMTrees[uri])
         }
     }
     ProductionContext.prototype.addMTree = function(uri, loadHistory) {

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\graphqlparser\graphql\wizzifier.js.ittf
 */
 'use strict';
@@ -28,7 +29,7 @@ function log(label, obj, force) {
     if (verbose || force) {
         console.log(label, util.inspect(obj, {
             depth: null
-        }));
+        }))
     }
 }
 var md = module.exports = {};
@@ -38,7 +39,7 @@ md.getCodeAST = function(input, options, callback) {
         options = {};
     }
     options = options || {};
-    parseInternal(input, options, callback);
+    parseInternal(input, options, callback)
 };
 md.getWizziTree = function(input, options, callback) {
     options = (options || {});
@@ -56,12 +57,12 @@ md.getWizziTree = function(input, options, callback) {
                 if (err) {
                     return callback(err);
                 }
-                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2));
-            });
+                file.write(options.syntaxOutFile, JSON.stringify(syntax, null, 2))
+            })
         }
         // log 'Parsed in ' + Date.now() - startTime + ' ms'
         callback(null, syntax);
-    });
+    })
 };
 md.getWizziIttf = function(input, options, callback) {
     md.getWizziTree(input, options, function(err, result) {
@@ -73,9 +74,9 @@ md.getWizziIttf = function(input, options, callback) {
                 return callback(err);
             }
             result = cloner(result, options);
-            callback(null, ittfwriter.stringify(result, options));
-        });
-    });
+            callback(null, ittfwriter.stringify(result, options))
+        })
+    })
 };
 // ovveridable
 md.getWizzifierIncludes = function(options, callback) {
@@ -131,7 +132,7 @@ function wizzify(graphql, options, callback) {
         };
         format(root, syntax, options);
         return callback(null, root);
-    });
+    })
 }
 function processLeadingComments(node, ittfNode) {
     if (verify.isArray(node.leadingComments) && node.leadingComments.length > 0) {
@@ -145,7 +146,7 @@ function processLeadingComments(node, ittfNode) {
                     children: [
                         
                     ]
-                });
+                })
             }
         }
     }
@@ -287,7 +288,7 @@ function textifyChildren(ittfNode, tag) {
                 children: [
                     
                 ]
-            });
+            })
         }
         else {
             ret.push(item);
@@ -461,7 +462,7 @@ format.NonNullType = function(parent, node, options) {
         if (!node.type.kind) {
             throw 'Node type has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_type, node.type, options);
+        format(p_type, node.type, options)
         if (p_type.children.length == 1) {
             if (isTextualNode(p_type.children[0]) == false) {
                 p_type.tag = p_type.children[0].tag;
@@ -523,7 +524,7 @@ format.NamedType = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -581,7 +582,7 @@ format.Document = function(parent, node, options) {
                 name: 'definitions', 
                 len: node.definitions.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -625,7 +626,7 @@ format.SchemaDefinition = function(parent, node, options) {
                 name: 'operationTypes', 
                 len: node.operationTypes.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -643,7 +644,7 @@ format.SchemaDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -695,7 +696,7 @@ format.OperationTypeDefinition = function(parent, node, options) {
         if (!node.type.kind) {
             throw 'Node type has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_type, node.type, options);
+        format(p_type, node.type, options)
         if (p_type.children.length == 1) {
             if (isTextualNode(p_type.children[0]) == false) {
                 p_type.tag = p_type.children[0].tag;
@@ -761,7 +762,7 @@ format.ObjectTypeDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -805,7 +806,7 @@ format.ObjectTypeDefinition = function(parent, node, options) {
                 name: 'interfaces', 
                 len: node.interfaces.length
             };
-            format(p_interfaces, item, options);
+            format(p_interfaces, item, options)
         }
     }
     if (p_interfaces != null) {
@@ -828,7 +829,7 @@ format.ObjectTypeDefinition = function(parent, node, options) {
                 name: 'fields', 
                 len: node.fields.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -846,7 +847,7 @@ format.ObjectTypeDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -893,7 +894,7 @@ format.FieldDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -925,7 +926,7 @@ format.FieldDefinition = function(parent, node, options) {
         if (!node.type.kind) {
             throw 'Node type has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_type, node.type, options);
+        format(p_type, node.type, options)
         if (p_type.children.length == 1) {
             if (isTextualNode(p_type.children[0]) == false) {
                 p_type.tag = p_type.children[0].tag;
@@ -954,7 +955,7 @@ format.FieldDefinition = function(parent, node, options) {
                 children: [
                     
                 ]
-            });
+            })
         }
         else {
             ret.tag = p_type.name;
@@ -977,7 +978,7 @@ format.FieldDefinition = function(parent, node, options) {
                 name: 'arguments', 
                 len: node.arguments.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -995,7 +996,7 @@ format.FieldDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1042,7 +1043,7 @@ format.ObjectTypeExtension = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -1086,7 +1087,7 @@ format.ObjectTypeExtension = function(parent, node, options) {
                 name: 'interfaces', 
                 len: node.interfaces.length
             };
-            format(p_interfaces, item, options);
+            format(p_interfaces, item, options)
         }
     }
     if (p_interfaces != null) {
@@ -1109,7 +1110,7 @@ format.ObjectTypeExtension = function(parent, node, options) {
                 name: 'fields', 
                 len: node.fields.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1127,7 +1128,7 @@ format.ObjectTypeExtension = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1174,7 +1175,7 @@ format.InterfaceTypeDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -1211,7 +1212,7 @@ format.InterfaceTypeDefinition = function(parent, node, options) {
                 name: 'fields', 
                 len: node.fields.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1229,7 +1230,7 @@ format.InterfaceTypeDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1276,7 +1277,7 @@ format.InterfaceTypeExtension = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -1313,7 +1314,7 @@ format.InterfaceTypeExtension = function(parent, node, options) {
                 name: 'fields', 
                 len: node.fields.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1331,7 +1332,7 @@ format.InterfaceTypeExtension = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1378,7 +1379,7 @@ format.UnionTypeDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -1415,7 +1416,7 @@ format.UnionTypeDefinition = function(parent, node, options) {
                 name: 'types', 
                 len: node.types.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1440,7 +1441,7 @@ format.UnionTypeDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1479,7 +1480,7 @@ format.ListType = function(parent, node, options) {
         if (!node.type.kind) {
             throw 'Node type has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.type, options);
+        format(ret, node.type, options)
     }
     else {
         throw new Error('AST-node-property type undefined: ' + JSON.stringify(node, null, 2));
@@ -1517,7 +1518,7 @@ format.ScalarTypeDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     else {
         throw new Error('AST-node-property name undefined: ' + JSON.stringify(node, null, 2));
@@ -1527,7 +1528,7 @@ format.ScalarTypeDefinition = function(parent, node, options) {
         if (!node.description.kind) {
             throw 'Node description has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.description, options);
+        format(ret, node.description, options)
     }
     // process AST-node-property-collection directives and append ittfNode(s) to `ret`
     if (node.directives) {
@@ -1541,7 +1542,7 @@ format.ScalarTypeDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1580,7 +1581,7 @@ format.EnumTypeDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     else {
         throw new Error('AST-node-property name undefined: ' + JSON.stringify(node, null, 2));
@@ -1597,7 +1598,7 @@ format.EnumTypeDefinition = function(parent, node, options) {
                 name: 'values', 
                 len: node.values.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1615,7 +1616,7 @@ format.EnumTypeDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1654,7 +1655,7 @@ format.EnumValueDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     else {
         throw new Error('AST-node-property name undefined: ' + JSON.stringify(node, null, 2));
@@ -1671,7 +1672,7 @@ format.EnumValueDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1722,7 +1723,7 @@ format.OperationDefinition = function(parent, node, options) {
                 name: 'variableDefinitions', 
                 len: node.variableDefinitions.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1733,7 +1734,7 @@ format.OperationDefinition = function(parent, node, options) {
         if (!node.selectionSet.kind) {
             throw 'Node selectionSet has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.selectionSet, options);
+        format(ret, node.selectionSet, options)
     }
     else {
         throw new Error('AST-node-property selectionSet undefined: ' + JSON.stringify(node, null, 2));
@@ -1750,7 +1751,7 @@ format.OperationDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1796,7 +1797,7 @@ format.SelectionSet = function(parent, node, options) {
                 name: 'selections', 
                 len: node.selections.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1843,7 +1844,7 @@ format.InputValueDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -1875,7 +1876,7 @@ format.InputValueDefinition = function(parent, node, options) {
         if (!node.type.kind) {
             throw 'Node type has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_type, node.type, options);
+        format(p_type, node.type, options)
         if (p_type.children.length == 1) {
             if (isTextualNode(p_type.children[0]) == false) {
                 p_type.tag = p_type.children[0].tag;
@@ -1907,7 +1908,7 @@ format.InputValueDefinition = function(parent, node, options) {
         if (!node.defaultValue.kind) {
             throw 'Node defaultValue has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_defaultValue, node.defaultValue, options);
+        format(p_defaultValue, node.defaultValue, options)
         if (p_defaultValue.children.length == 1) {
             if (isTextualNode(p_defaultValue.children[0]) == false) {
                 p_defaultValue.tag = p_defaultValue.children[0].tag;
@@ -1948,7 +1949,7 @@ format.InputValueDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -1995,7 +1996,7 @@ format.InputObjectTypeDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -2040,9 +2041,9 @@ format.InputObjectTypeDefinition = function(parent, node, options) {
                     name: 'fields', 
                     len: node.fields.length
                 };
-                format(tempfields, item, options);
+                format(tempfields, item, options)
             }
-            ret.children.push(tempfields);
+            ret.children.push(tempfields)
         }
     }
     // process AST-node-property-collection directives and append ittfNode(s) to `ret`
@@ -2057,7 +2058,7 @@ format.InputObjectTypeDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2096,7 +2097,7 @@ format.Field = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     // process AST-node-property alias and set it in a var
     var p_alias = null;
@@ -2111,7 +2112,7 @@ format.Field = function(parent, node, options) {
         if (!node.alias.kind) {
             throw 'Node alias has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_alias, node.alias, options);
+        format(p_alias, node.alias, options)
         if (p_alias.children.length == 1) {
             if (isTextualNode(p_alias.children[0]) == false) {
                 p_alias.tag = p_alias.children[0].tag;
@@ -2143,7 +2144,7 @@ format.Field = function(parent, node, options) {
                 name: 'arguments', 
                 len: node.arguments.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2154,7 +2155,7 @@ format.Field = function(parent, node, options) {
         if (!node.selectionSet.kind) {
             throw 'Node selectionSet has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.selectionSet, options);
+        format(ret, node.selectionSet, options)
     }
     // process AST-node-property-collection directives and append ittfNode(s) to `ret`
     if (node.directives) {
@@ -2168,7 +2169,7 @@ format.Field = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2215,7 +2216,7 @@ format.Argument = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -2242,7 +2243,7 @@ format.Argument = function(parent, node, options) {
         if (!node.value.kind) {
             throw 'Node value has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.value, options);
+        format(ret, node.value, options)
     }
     else {
         throw new Error('AST-node-property value undefined: ' + JSON.stringify(node, null, 2));
@@ -2427,7 +2428,7 @@ format.StringValue = function(parent, node, options) {
                 children: [
                     
                 ]
-            });
+            })
         }
     }
     // log '### add ', ret.tag , 'to', parent.tag
@@ -2470,7 +2471,7 @@ format.ListValue = function(parent, node, options) {
                 name: 'values', 
                 len: node.values.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2516,7 +2517,7 @@ format.ObjectValue = function(parent, node, options) {
                 name: 'fields', 
                 len: node.fields.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2555,7 +2556,7 @@ format.ObjectField = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     else {
         throw new Error('AST-node-property name undefined: ' + JSON.stringify(node, null, 2));
@@ -2565,7 +2566,7 @@ format.ObjectField = function(parent, node, options) {
         if (!node.value.kind) {
             throw 'Node value has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.value, options);
+        format(ret, node.value, options)
     }
     else {
         throw new Error('AST-node-property value undefined: ' + JSON.stringify(node, null, 2));
@@ -2603,7 +2604,7 @@ format.FragmentDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     else {
         throw new Error('AST-node-property name undefined: ' + JSON.stringify(node, null, 2));
@@ -2619,9 +2620,9 @@ format.FragmentDefinition = function(parent, node, options) {
         if (!node.typeCondition.kind) {
             throw 'Node typeCondition has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_typeCondition, node.typeCondition, options);
+        format(p_typeCondition, node.typeCondition, options)
         p_typeCondition.tag = 'on';
-        ret.children.push(p_typeCondition);
+        ret.children.push(p_typeCondition)
         if (p_typeCondition.children.length == 1) {
             if (!(p_typeCondition.children[0].isText || p_typeCondition.children[0].textified)) {
                 p_typeCondition.name = p_typeCondition.children[0].name;
@@ -2661,7 +2662,7 @@ format.FragmentDefinition = function(parent, node, options) {
             if (!node.typeCondition.kind) {
                 throw 'Node typeCondition has no kind: ' + JSON.stringify(node, null, 2);
             }
-            format(p_typeCondition, node.typeCondition, options);
+            format(p_typeCondition, node.typeCondition, options)
             if (p_typeCondition.children.length == 1) {
                 if (isTextualNode(p_typeCondition.children[0]) == false) {
                     p_typeCondition.tag = p_typeCondition.children[0].tag;
@@ -2690,7 +2691,7 @@ format.FragmentDefinition = function(parent, node, options) {
         if (!node.selectionSet.kind) {
             throw 'Node selectionSet has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.selectionSet, options);
+        format(ret, node.selectionSet, options)
     }
     // process AST-node-property-collection directives and append ittfNode(s) to `ret`
     if (node.directives) {
@@ -2704,7 +2705,7 @@ format.FragmentDefinition = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2743,7 +2744,7 @@ format.FragmentSpread = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     else {
         throw new Error('AST-node-property name undefined: ' + JSON.stringify(node, null, 2));
@@ -2760,7 +2761,7 @@ format.FragmentSpread = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2807,7 +2808,7 @@ format.InlineFragment = function(parent, node, options) {
         if (!node.typeCondition.kind) {
             throw 'Node typeCondition has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_typeCondition, node.typeCondition, options);
+        format(p_typeCondition, node.typeCondition, options)
         if (p_typeCondition.children.length == 1) {
             if (isTextualNode(p_typeCondition.children[0]) == false) {
                 p_typeCondition.tag = p_typeCondition.children[0].tag;
@@ -2837,7 +2838,7 @@ format.InlineFragment = function(parent, node, options) {
         if (!node.selectionSet.kind) {
             throw 'Node selectionSet has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.selectionSet, options);
+        format(ret, node.selectionSet, options)
     }
     // process AST-node-property-collection directives and append ittfNode(s) to `ret`
     if (node.directives) {
@@ -2851,7 +2852,7 @@ format.InlineFragment = function(parent, node, options) {
                 name: 'directives', 
                 len: node.directives.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -2890,7 +2891,7 @@ format.VariableDefinition = function(parent, node, options) {
         if (!node.variable.kind) {
             throw 'Node variable has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.variable, options);
+        format(ret, node.variable, options)
     }
     else {
         throw new Error('AST-node-property variable undefined: ' + JSON.stringify(node, null, 2));
@@ -2900,7 +2901,7 @@ format.VariableDefinition = function(parent, node, options) {
         if (!node.type.kind) {
             throw 'Node type has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.type, options);
+        format(ret, node.type, options)
     }
     else {
         throw new Error('AST-node-property type undefined: ' + JSON.stringify(node, null, 2));
@@ -2946,7 +2947,7 @@ format.Variable = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(p_name, node.name, options);
+        format(p_name, node.name, options)
         if (p_name.children.length == 1) {
             if (isTextualNode(p_name.children[0]) == false) {
                 p_name.tag = p_name.children[0].tag;
@@ -3005,7 +3006,7 @@ format.DirectiveDefinition = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     else {
         throw new Error('AST-node-property name undefined: ' + JSON.stringify(node, null, 2));
@@ -3022,7 +3023,7 @@ format.DirectiveDefinition = function(parent, node, options) {
                 name: 'arguments', 
                 len: node.arguments.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -3040,7 +3041,7 @@ format.DirectiveDefinition = function(parent, node, options) {
                 name: 'locations', 
                 len: node.locations.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {
@@ -3079,7 +3080,7 @@ format.Directive = function(parent, node, options) {
         if (!node.name.kind) {
             throw 'Node name has no kind: ' + JSON.stringify(node, null, 2);
         }
-        format(ret, node.name, options);
+        format(ret, node.name, options)
     }
     else {
         throw new Error('AST-node-property name undefined: ' + JSON.stringify(node, null, 2));
@@ -3096,7 +3097,7 @@ format.Directive = function(parent, node, options) {
                 name: 'arguments', 
                 len: node.arguments.length
             };
-            format(ret, item, options);
+            format(ret, item, options)
         }
     }
     else {

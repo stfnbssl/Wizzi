@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\model\asyncModelLoader.js.ittf
 */
 'use strict';
@@ -30,7 +31,7 @@ describe("asyncModelLoader", function() {
             src: 'simple.tests.ittf', 
             schema: 'tests'
         });
-        mi.productionManager(mocks.getProductionManager(path.join(__dirname, 'ittf'), modelPaths));
+        mi.productionManager(mocks.getProductionManager(path.join(__dirname, 'ittf'), modelPaths))
         asyncModelLoader.load(mi, function(err, result) {
             if (err) {
                 console.log('err', err);
@@ -39,7 +40,7 @@ describe("asyncModelLoader", function() {
             console.log('result.keys()', Object.keys(result));
             expect(result).to.be.an('object');
             done();
-        });
+        })
     });
     it("shoul load a simple json format model", function(done) {
         var mi = new modelInfo({
@@ -47,7 +48,7 @@ describe("asyncModelLoader", function() {
             src: 'simple.tests.json', 
             format: 'json'
         });
-        mi.productionManager(mocks.getProductionManager(path.join(__dirname, 'ittf'), modelPaths));
+        mi.productionManager(mocks.getProductionManager(path.join(__dirname, 'ittf'), modelPaths))
         asyncModelLoader.load(mi, function(err, result) {
             if (err) {
                 console.log('err', err);
@@ -58,6 +59,6 @@ describe("asyncModelLoader", function() {
             expect(result.alfa).to.be.a('string');
             expect(result.alfa).to.be('stefi');
             done();
-        });
+        })
     });
 });

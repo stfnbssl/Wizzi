@@ -1,12 +1,11 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\json-factory.g.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
-/**
-     Pseudo schema json
-*/
+//
 var path = require('path');
 var util = require('util');
 var stringify = require('json-stringify-safe');
@@ -17,16 +16,7 @@ var jsonmodel = require('./json-model.g');
 var md = module.exports = {};
 
 // called from the wizzi.wizziFactory.getLoadModel method
-/**
-    params
-        { wizziObject
-            func loadMTree
-             api-ref wizzi-mtree.loader.loadMTree
-            { file
-             api-ref wizzi-utils.file
-            { errors
-             type WizziModelLoadError
-*/
+// params
 md.createLoadModel = function(wizziObject) {
     if (verify.isObject(wizziObject) === false) {
         return error(
@@ -72,30 +62,11 @@ md.createLoadModel = function(wizziObject) {
                 }
                 loadModelFromMTree(mTree, 'Unavailable (loaded from mTree)', wizziModelRequest || {}, {
                     wizziFactory: wizziFactory
-                }, callback);
+                }, callback)
             };
     }
     else {
-        /**
-             Load a WizziModel of type json from an IttfDocument uri
-                params
-                 string ittfDocumentUri
-                    { requestContext
-                        { __productionManager
-                            { productionContext
-                             { aclstat
-                     { __ittfDocumentStore
-                        { mTreeBuildUpContext
-                         optional
-                        { __request
-                         This is a legacy that should disappear.
-                         See the wizzi.production.productionContext class.
-                         boolean dumpAll
-                         boolean dumpIttfModel
-                         boolean dumpModel
-                         boolean dumpModelAfterInitializeAsync
-                 callback
-        */
+        //
         return function loadModel(ittfDocumentUri, requestContext, callback) {
                 if (typeof callback !== 'function') {
                     throw new TypeError('callback must be a function');
@@ -121,12 +92,12 @@ md.createLoadModel = function(wizziObject) {
                     // log 'Loaded mTree instance for pseudo schema json from Ittf document ' + ittfDocumentUri + ' in ' + (Date.now() - start) + ' ms'
                     if ((wizziModelRequest.dumpAll || wizziModelRequest.dumpIttfModel) && file.isFilePath(ittfDocumentUri)) {
                         var ittfDumpPath = path.join(path.dirname(ittfDocumentUri), '_debug', path.basename(ittfDocumentUri) + '.ittf.json');
-                        file.write(ittfDumpPath, stringify(mTree, null, 2));
+                        file.write(ittfDumpPath, stringify(mTree, null, 2))
                     }
                     // log 'wizzi-core.wizzi.models.json-factory.g current __dirname', __dirname
                     // log 'wizzi-core.wizzi.models.json-factory.g, loaded from ittfDocumentUri: ', ittfDocumentUri, mTree
                     jsonmodel(mTree, ittfDocumentUri, wizziModelRequest, callback);
-                });
+                })
             };
     }
 };

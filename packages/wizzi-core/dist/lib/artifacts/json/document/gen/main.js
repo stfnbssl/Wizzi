@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\json\document\gen\main.js.ittf
 */
 'use strict';
@@ -17,7 +18,7 @@ md.gen = function(model, ctx, callback) {
     }
     else {
         delete model.___exportName
-        ctx.w(stringify(model, null, 4));
+        ctx.w(stringify(model, null, 4))
     }
     callback(null, ctx);
 };
@@ -62,14 +63,14 @@ md.genItem = function(model, ctx) {
             else if (model.parent === '[') {
                 if (model.n === '@') {
                     var nv = lineParser.parseNameValueRaw(model.v);
-                    ctx.write(model.v);
+                    ctx.write(model.v)
                 }
                 else {
-                    ctx.write(model.n);
+                    ctx.write(model.n)
                 }
             }
             else {
-                ctx.write(model.n);
+                ctx.write(model.n)
             }
         }
     }

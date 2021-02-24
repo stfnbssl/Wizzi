@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\examples\lambda\.wizzi\ittf\lib\artifacts\sample\document\gen\main.js.ittf
-    utc time: Tue, 23 Feb 2021 21:47:52 GMT
+    utc time: Wed, 24 Feb 2021 09:08:37 GMT
 */
 'use strict';
 var util = require('util');
@@ -95,18 +95,21 @@ md.sample = function(model, ctx, callback) {
     console.log('tag sample, nodes', model.nodes.length);
     ctx.values.docxStack = [];
     ctx.values.docxCounter = 0;
+    ctx.values.docxMainObject = 'docx_MainObject';
+    ctx.values.mainObjectCreated = false;
     var docxNode = "docx_doc_" + (++ctx.values.docxCounter);
     ctx.values.docxStack.push(docxNode);
-    ctx.w('import * as fs from "fs";');
-    ctx.w('import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ShadingType, Table, TableCell, TableRow, TableLayoutType, WidthType } from "docx";');
+    ctx.values.docxMainInternalObject = docxNode;
+    ctx.w('const fs = require("fs");');
+    ctx.w('const docx = require("docx");');
     ctx.w('');
-    ctx.w('const ' + docxNode + ' = new Document();');
+    ctx.w('const ' + docxNode + ' = {};');
     md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
         if (err) {
             return callback(err);
         }
         ctx.w('');
-        ctx.w('Packer.toBuffer(' + docxNode + ').then((buffer) => {');
+        ctx.w('docx.Packer.toBuffer(' + ctx.values.docxMainObject + ').then((buffer) => {');
         ctx.w('    fs.writeFileSync("My Document.docx", buffer);');
         ctx.w('    console.log("DONE written")');
         ctx.w('});');
@@ -124,7 +127,11 @@ md.section = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        ctx.w(docxParent + '.addSection(' + docxNode + ');');
+        if (ctx.values.mainObjectCreated == false) {
+            ctx.w('const ' + ctx.values.docxMainObject + ' = new docx.Document(' + ctx.values.docxMainInternalObject + ');');
+            ctx.values.mainObjectCreated = true;
+        }
+        ctx.w(ctx.values.docxMainObject + '.addSection(' + docxNode + ');');
         ctx.values.docxStack.pop();
         return callback(null);
     })
@@ -132,32 +139,19 @@ md.section = function(model, ctx, callback) {
 
 md.p = function(model, ctx, callback) {
     var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
-    var docxNode = "docx_par_" + (++ctx.values.docxCounter);
-    ctx.values.docxStack.push(docxNode);
-    ctx.w('const ' + docxNode + ' = { children: [] };');
-    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
-        if (err) {
-            return callback(err);
-        }
-        ctx.w('const ' + docxNode + 'Obj = new Paragraph(' + docxNode + ');');
-        ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
-        ctx.values.docxStack.pop();
-        return callback(null);
-    })
-};
-
-md.text = function(model, ctx, callback) {
-    console.log('tag text, value', model.wzName);
-    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
-    var docxNode = "docx_txt_" + (++ctx.values.docxCounter);
+    var docxNode = "docx_p_" + (++ctx.values.docxCounter);
     ctx.values.docxStack.push(docxNode);
     ctx.w('const ' + docxNode + ' = {};');
-    ctx.w(docxNode + '.text = "' + model.wzName + '";');
+    ctx.w(docxNode + '.children = [];');
+    ctx.w(docxNode + '.tabStops = [];');
+    if (!verify.isEmpty(model.wzName)) {
+        ctx.w(docxNode + '.text = "' + model.wzName + '";');
+    }
     md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
         if (err) {
             return callback(err);
         }
-        ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');');
+        ctx.w('const ' + docxNode + 'Obj = new docx.Paragraph(' + docxNode + ');');
         ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
         ctx.values.docxStack.pop();
         return callback(null);
@@ -166,16 +160,16 @@ md.text = function(model, ctx, callback) {
 
 md.h1 = function(model, ctx, callback) {
     var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
-    var docxNode = "docx_txt_" + (++ctx.values.docxCounter);
+    var docxNode = "docx_par_" + (++ctx.values.docxCounter);
     ctx.values.docxStack.push(docxNode);
     ctx.w('const ' + docxNode + ' = {};');
     ctx.w(docxNode + '.text = "' + model.wzName + '";');
-    ctx.w(docxNode + '.heading = HeadingLevel.HEADING_1;');
+    ctx.w(docxNode + '.heading = docx.HeadingLevel.HEADING_1;');
     md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
         if (err) {
             return callback(err);
         }
-        ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');');
+        ctx.w('const ' + docxNode + 'Obj = new docx.Paragraph(' + docxNode + ');');
         ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
         ctx.values.docxStack.pop();
         return callback(null);
@@ -184,16 +178,32 @@ md.h1 = function(model, ctx, callback) {
 
 md.h2 = function(model, ctx, callback) {
     var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
-    var docxNode = "docx_txt_" + (++ctx.values.docxCounter);
+    var docxNode = "docx_par_" + (++ctx.values.docxCounter);
     ctx.values.docxStack.push(docxNode);
     ctx.w('const ' + docxNode + ' = {};');
     ctx.w(docxNode + '.text = "' + model.wzName + '";');
-    ctx.w(docxNode + '.heading = HeadingLevel.HEADING_2;');
+    ctx.w(docxNode + '.heading = docx.HeadingLevel.HEADING_2;');
     md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
         if (err) {
             return callback(err);
         }
-        ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');');
+        ctx.w('const ' + docxNode + 'Obj = new docx.Paragraph(' + docxNode + ');');
+        ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
+        ctx.values.docxStack.pop();
+        return callback(null);
+    })
+};
+md.text = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    var docxNode = "docx_txt_" + (++ctx.values.docxCounter);
+    ctx.values.docxStack.push(docxNode);
+    ctx.w('const ' + docxNode + ' = {};');
+    ctx.w(docxNode + '.text = "' + model.wzName + '";');
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w('const ' + docxNode + 'Obj = new docx.TextRun(' + docxNode + ');');
         ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
         ctx.values.docxStack.pop();
         return callback(null);
@@ -210,7 +220,7 @@ md.bold = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');');
+        ctx.w('const ' + docxNode + 'Obj = new docx.TextRun(' + docxNode + ');');
         ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
         ctx.values.docxStack.pop();
         return callback(null);
@@ -227,11 +237,56 @@ md.italic = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        ctx.w('const ' + docxNode + 'Obj = new TextRun(' + docxNode + ');');
+        ctx.w('const ' + docxNode + 'Obj = new docx.TextRun(' + docxNode + ');');
         ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
         ctx.values.docxStack.pop();
         return callback(null);
     })
+};
+md.boldProp = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.bold = ' + true + ';');
+    return callback(null);
+};
+md.italicProp = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.italic = ' + true + ';');
+    return callback(null);
+};
+md.emphasisMark = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.emphasisMark = ' + true + ';');
+    return callback(null);
+};
+md.strike = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.strike = ' + true + ';');
+    return callback(null);
+};
+md.doubleStrike = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.doubleStrike = ' + true + ';');
+    return callback(null);
+};
+md.superScript = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.superScript = ' + true + ';');
+    return callback(null);
+};
+md.subScript = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.subScript = ' + true + ';');
+    return callback(null);
+};
+md.smallCaps = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.smallCaps = ' + true + ';');
+    return callback(null);
+};
+md.allCaps = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.allCaps = ' + true + ';');
+    return callback(null);
 };
 md.xbreak = function(model, ctx, callback) {
     var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
@@ -263,16 +318,52 @@ md.highlight = function(model, ctx, callback) {
     ctx.w(docxParent + '.highlight = "' + model.wzName + '";');
     return callback(null);
 };
+md.style = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.style = "' + model.wzName + '";');
+    return callback(null);
+};
+md.next = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.next = "' + model.wzName + '";');
+    return callback(null);
+};
+md.basedOn = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    ctx.w(docxParent + '.basedOn = "' + model.wzName + '";');
+    return callback(null);
+};
 md.xtype = function(model, ctx, callback) {
     var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
     if (model.wzParent.wzElement == 'shading') {
-        ctx.w(docxParent + '.type = ShadingType.' + model.wzName + ';');
+        ctx.w(docxParent + '.type = docx.ShadingType.' + model.wzName + ';');
     }
     else if (model.wzParent.wzElement == 'width') {
-        ctx.w(docxParent + '.type = WidthType.' + model.wzName + ';');
+        ctx.w(docxParent + '.type = docx.WidthType.' + model.wzName + ';');
+    }
+    else if (model.wzParent.wzElement == 'tabStop') {
+        ctx.w(docxParent + '.type = docx.TabStopType.' + model.wzName + ';');
+    }
+    else if (model.wzParent.wzElement == 'underline') {
+        ctx.w(docxParent + '.type = docx.UnderlineType.' + model.wzName + ';');
     }
     else {
         ctx.w(docxParent + '.type = "' + model.wzName + '";');
+    }
+    return callback(null);
+};
+md.position = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    if (model.wzParent.wzElement == 'tabStop') {
+        if (verify.isNumber(model.wzName)) {
+            ctx.w(docxParent + '.position = ' + model.wzName + ';');
+        }
+        else {
+            ctx.w(docxParent + '.position = docx.TabStopPosition.' + model.wzName + ';');
+        }
+    }
+    else {
+        ctx.w(docxParent + '.position = ' + model.wzName + ';');
     }
     return callback(null);
 };
@@ -316,7 +407,7 @@ md.table = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        ctx.w('const ' + docxNode + 'Obj = new Table(' + docxNode + ');');
+        ctx.w('const ' + docxNode + 'Obj = new docx.Table(' + docxNode + ');');
         ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
         ctx.values.docxStack.pop();
         return callback(null);
@@ -328,12 +419,12 @@ md.tr = function(model, ctx, callback) {
     ctx.values.docxStack.push(docxNode);
     ctx.w('const ' + docxNode + ' = {};');
     ctx.w(docxNode + '.children = [];');
-    ctx.w(docxNode + '.layout = TableLayoutType.FIXED;');
+    ctx.w(docxNode + '.layout = docx.TableLayoutType.FIXED;');
     md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
         if (err) {
             return callback(err);
         }
-        ctx.w('const ' + docxNode + 'Obj = new TableRow(' + docxNode + ');');
+        ctx.w('const ' + docxNode + 'Obj = new docx.TableRow(' + docxNode + ');');
         ctx.w(docxParent + '.rows.push(' + docxNode + 'Obj);');
         ctx.values.docxStack.pop();
         return callback(null);
@@ -349,7 +440,7 @@ md.td = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        ctx.w('const ' + docxNode + 'Obj = new TableCell(' + docxNode + ');');
+        ctx.w('const ' + docxNode + 'Obj = new docx.TableCell(' + docxNode + ');');
         ctx.w(docxParent + '.children.push(' + docxNode + 'Obj);');
         ctx.values.docxStack.pop();
         return callback(null);
@@ -365,6 +456,112 @@ md.width = function(model, ctx, callback) {
             return callback(err);
         }
         ctx.w(docxParent + '.width = ' + docxNode + ';');
+        ctx.values.docxStack.pop();
+        return callback(null);
+    })
+};
+md.underline = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    var docxNode = "docx_underline_" + (++ctx.values.docxCounter);
+    ctx.values.docxStack.push(docxNode);
+    ctx.w('const ' + docxNode + ' = {};');
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w(docxParent + '.underline = ' + docxNode + ';');
+        ctx.values.docxStack.pop();
+        return callback(null);
+    })
+};
+md.styles = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    var docxNode = "docx_styles_" + (++ctx.values.docxCounter);
+    ctx.values.docxStack.push(docxNode);
+    ctx.w('const ' + docxNode + ' = {};');
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w(docxParent + '.styles = ' + docxNode + ';');
+        ctx.values.docxStack.pop();
+        return callback(null);
+    })
+};
+md.xdefault = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    var docxNode = "docx_xdefault_" + (++ctx.values.docxCounter);
+    ctx.values.docxStack.push(docxNode);
+    ctx.w('const ' + docxNode + ' = {};');
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w(docxParent + '.default = ' + docxNode + ';');
+        ctx.values.docxStack.pop();
+        return callback(null);
+    })
+};
+md.run = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    var docxNode = "docx_run_" + (++ctx.values.docxCounter);
+    ctx.values.docxStack.push(docxNode);
+    ctx.w('const ' + docxNode + ' = {};');
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w(docxParent + '.run = ' + docxNode + ';');
+        ctx.values.docxStack.pop();
+        return callback(null);
+    })
+};
+md.tabStop = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    var docxNode = "docx_tabStop_" + (++ctx.values.docxCounter);
+    ctx.values.docxStack.push(docxNode);
+    ctx.w('const ' + docxNode + ' = {};');
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w(docxParent + '.tabStops.push(' + docxNode + ');');
+        ctx.values.docxStack.pop();
+        return callback(null);
+    })
+};
+md.styleDef = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    var docxNode = "docx_styleDef_" + (++ctx.values.docxCounter);
+    ctx.values.docxStack.push(docxNode);
+    ctx.w('const ' + docxNode + ' = {};');
+    if (model.wzParent.wzElement == 'paragraphStyles') {
+        ctx.w(docxNode + '.id = "' + model.wzName + '";');
+    }
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        if (model.wzParent.wzElement == 'xdefault') {
+            ctx.w(docxParent + '.' + model.wzName + ' = ' + docxNode + ';');
+        }
+        else {
+            ctx.w(docxParent + '.push(' + docxNode + ');');
+        }
+        ctx.values.docxStack.pop();
+        return callback(null);
+    })
+};
+md.paragraphStyles = function(model, ctx, callback) {
+    var docxParent = ctx.values.docxStack[ctx.values.docxStack.length-1];
+    var docxNode = "docx_paragraphStyles_" + (++ctx.values.docxCounter);
+    ctx.values.docxStack.push(docxNode);
+    ctx.w('const ' + docxNode + ' = [];');
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w(docxParent + '.paragraphStyles = ' + docxNode + ';');
         ctx.values.docxStack.pop();
         return callback(null);
     })

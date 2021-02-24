@@ -1,11 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\text-model.g.js.ittf
 */
 'use strict';
-/**
-     Pseudo schema text
-*/
+//
 var util = require('util');
 
 module.exports = function(mTree, ittfDocumentUri, request, callback) {
@@ -78,7 +77,7 @@ function toText(indent, sb, nodes) {
             sb.push(indent + n + ' ' + v);
         }
         if (node.children) {
-            toText(indent + nextIndent, sb, node.children);
+            toText(indent + nextIndent, sb, node.children)
         }
     }
 }

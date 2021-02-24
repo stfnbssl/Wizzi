@@ -1,11 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\ittf-model.g.js.ittf
 */
 'use strict';
-/**
-     Pseudo schema ittf
-*/
+//
 var util = require('util');
 var lineparser = require('../../util/lineParser');
 
@@ -33,7 +32,7 @@ function toIttfNode(node) {
         var i, i_items=node.children, i_len=node.children.length, child;
         for (i=0; i<i_len; i++) {
             child = node.children[i];
-            ret.children.push(toIttfNode(child));
+            ret.children.push(toIttfNode(child))
         }
     }
     return ret;

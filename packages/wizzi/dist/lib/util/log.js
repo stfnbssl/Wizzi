@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\util\log.js.ittf
 */
 'use strict';
@@ -37,10 +38,10 @@ var MyLogger = (function () {
         var minutes = date.getMinutes();
         var hour = date.getHours();
         if (this.stream) {
-            this.stream.write(hour + ':' + minutes + ':' + seconds + ' ' + id + ' ' + level + ' ' + text + '\n');
+            this.stream.write(hour + ':' + minutes + ':' + seconds + ' ' + id + ' ' + level + ' ' + text + '\n')
         }
         else {
-            console.log(hour + ':' + minutes + ':' + seconds + ' ' + id + ' ' + level + ' ' + text + '\n');
+            console.log(hour + ':' + minutes + ':' + seconds + ' ' + id + ' ' + level + ' ' + text + '\n')
         }
     }
     return MyLogger;
@@ -58,20 +59,20 @@ var Log = (function () {
     }
     Log.prototype.info = function() {
         if (this.level > 1) {
-            this.logger.info(this.id, "INFO", buildMessage(chalk.white, arguments));
+            this.logger.info(this.id, "INFO", buildMessage(chalk.white, arguments))
         }
     }
     Log.prototype.warn = function() {
         if (this.level > 0) {
-            this.logger.info(this.id, "WARNING", buildMessage(chalk.yellow, arguments));
+            this.logger.info(this.id, "WARNING", buildMessage(chalk.yellow, arguments))
         }
     }
     Log.prototype.error = function() {
-        this.logger.info(this.id, "ERROR", buildMessage(chalk.red, arguments));
+        this.logger.info(this.id, "ERROR", buildMessage(chalk.red, arguments))
     }
     Log.prototype.success = function() {
         if (this.level > 1) {
-            this.logger.info(this.id, "SUCCESS", buildMessage(chalk.green, arguments));
+            this.logger.info(this.id, "SUCCESS", buildMessage(chalk.green, arguments))
         }
     }
     return Log;
@@ -85,7 +86,7 @@ function getFileLogger(filename) {
         return fileLoggers[dirname].logger;
     }
     var logfile = path.join(dirname, 'debug.log');
-    console.log('creating debug.log for: ', filename.substr((filename.length - 50)));
+    console.log('creating debug.log for: ', filename.substr((filename.length - 50)))
     var stream = fs.createWriteStream(logfile);
     var logger = new MyLogger('debug', stream);
     fileLoggers[dirname] = {
@@ -115,16 +116,16 @@ function logFlushSetup(stream) {
     process.on('exit', function(err) {
         console.log('util.log. Process.exit', err);
         exitHandler();
-    });
+    })
     process.on('SIGINT', function(err) {
         console.log('util.log. Received Signal', err);
         exitHandler();
-    });
+    })
     process.on('uncaughtException', function(err) {
-        console.error("util.log. " + new Date().toUTCString() + ' uncaughtException:', err.message);
-        console.error(err.stack);
+        console.error("util.log. " + new Date().toUTCString() + ' uncaughtException:', err.message)
+        console.error(err.stack)
         exitHandler();
-    });
+    })
 }
 module.exports = function(module, options) {
     options = (options || {});

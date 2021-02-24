@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\model\modelInfo.js.ittf
 */
 'use strict';
@@ -17,34 +18,7 @@ var errors = require('../errors');
 var verify = require('wizzi-utils').verify;
 var ittfs = require('wizzi-repo').Filesystem;
 
-/**
-     Is the ModelInfo instance that
-     - receive the 'wfjob' data to build a model
-     - calls the wizzi factory to retrieve model loaders.
-    
-     TODO generatorRequireContextOnly ... explain ...
-    
-        params
-            { config
-             # built from a `wfjob` `artifact` element
-             string cwd
-             string src
-             string ignore
-             string schema
-             string format
-             boolean isCompile
-                [ contexts
-                    { context
-                     api-ref wizzi.model.modelInfoConfig
-                        { coll
-                         string name
-                         string itemName
-                            [	pathTemplateValues
-                                { pathTemplateValues
-                                 string token
-                                 string attribute
-                                 function function
-*/
+//
 
 function logme() {
     if (false) {
@@ -141,7 +115,7 @@ var ModelInfo = (function () {
             var i, i_items=config.contexts, i_len=config.contexts.length, item;
             for (i=0; i<i_len; i++) {
                 item = config.contexts[i];
-                this.contexts.push(new ModelInfo(item));
+                this.contexts.push(new ModelInfo(item))
             }
         }
         this.transformers = config.transformers;
@@ -254,8 +228,8 @@ var ModelInfo = (function () {
     ModelInfo.prototype.getFileService = function() {
         // return ittfs
         // TODO
-        assert.ok(verify.isObject(this.productionManagerInstance), 'productionManagerInstance not set. Must call productionManager(productionManagerInstance)');
-        assert.ok(verify.isObject(this.productionManagerInstance.wizziFactory.fileService), 'fileService must be set on wizziFactory');
+        assert.ok(verify.isObject(this.productionManagerInstance), 'productionManagerInstance not set. Must call productionManager(productionManagerInstance)')
+        assert.ok(verify.isObject(this.productionManagerInstance.wizziFactory.fileService), 'fileService must be set on wizziFactory')
         return this.productionManagerInstance.wizziFactory.fileService;
     }
     ModelInfo.prototype.getModelCollectionInfo = function() {
@@ -291,19 +265,19 @@ var ModelInfo = (function () {
                     for (var i = 0; i < files.length; i++) {
                         var fileInfo = files[i];
                         var mi = that.clone();
-                        mi.src(fileInfo.relpath);
-                        mi.productionManager(that.productionManagerInstance);
+                        mi.src(fileInfo.relpath)
+                        mi.productionManager(that.productionManagerInstance)
                         ret.push(mi);
                     }
                     return callback(null, ret);
-                });
+                })
             }
             else {
                 return callback(null, [
                         that
                     ]);
             }
-        });
+        })
     }
     ModelInfo.prototype.clone = function() {
         var newconfig = {
@@ -347,9 +321,9 @@ var ModelInfo = (function () {
                 if (!isFile) {
                     return callback(error('InvalidOperation', 'getSource', "Cannot get source. Is not a file : " + that.srcFullPath()));
                 }
-                fileService.read(that.srcFullPath(), callback);
-            });
-        });
+                fileService.read(that.srcFullPath(), callback)
+            })
+        })
     }
     ModelInfo.prototype.getSources = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -388,16 +362,16 @@ var ModelInfo = (function () {
                                     relpath: fileInfo.relpath, 
                                     content: content
                                 });
-                        });
+                        })
                     }, function(err, fileContents) {
                         if (err) {
                             return callback(err);
                         }
                         return callback(null, fileContents);
-                    });
-                });
-            });
-        });
+                    })
+                })
+            })
+        })
     }
     ModelInfo.prototype.getFiles = function(options, callback) {
         if (typeof(callback) !== 'function') {
@@ -458,12 +432,12 @@ var ModelInfo = (function () {
                         ret.push({
                             fullpath: fullpath, 
                             relpath: relpath
-                        });
+                        })
                     }
                     return callback(null, ret);
-                });
-            });
-        });
+                })
+            })
+        })
     }
     ModelInfo.prototype.readJSON = function(sourceUri, callback) {
         if (typeof(callback) !== 'function') {
@@ -485,9 +459,9 @@ var ModelInfo = (function () {
                 return callback(error('NotFound', 'readJSON', "Cannot find json document : " + sourceUri));
             }
             else {
-                fileService.readJSON(sourceUri, callback);
+                fileService.readJSON(sourceUri, callback)
             }
-        });
+        })
     }
     ModelInfo.prototype.readXml = function(sourceUri, callback) {
         if (typeof(callback) !== 'function') {
@@ -509,9 +483,9 @@ var ModelInfo = (function () {
                 return callback(error('NotFound', 'readXml', "Cannot find xml document : " + sourceUri));
             }
             else {
-                fileService.readXml(sourceUri, callback);
+                fileService.readXml(sourceUri, callback)
             }
-        });
+        })
     }
     ModelInfo.prototype.exists = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -520,7 +494,7 @@ var ModelInfo = (function () {
             );
         };
         var fileService = this.getFileService();
-        fileService.exists(this.srcFullPath(), callback);
+        fileService.exists(this.srcFullPath(), callback)
     }
     ModelInfo.prototype.isDirectory = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -529,7 +503,7 @@ var ModelInfo = (function () {
             );
         };
         var fileService = this.getFileService();
-        fileService.isDirectory(this.srcFullPath(), callback);
+        fileService.isDirectory(this.srcFullPath(), callback)
     }
     ModelInfo.prototype.isFile = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -538,7 +512,7 @@ var ModelInfo = (function () {
             );
         };
         var fileService = this.getFileService();
-        fileService.isFile(this.srcFullPath(), callback);
+        fileService.isFile(this.srcFullPath(), callback)
     }
     ModelInfo.prototype.getGlobalContextForLoading = function() {
         var context = Object.assign({}, this.productionManager().globalContext() || {}, this.productionManager().productionContext.getGlobalModels(), this.productionManager().productionContext.getArtifactCollections());
@@ -607,7 +581,7 @@ var ModelInfo = (function () {
                         'InvalidArgument', 'loadFrontMatter', { parameter: 'sourceUri', message: 'The sourceUri parameter must be a string. Received: ' + sourceUri }
                     ));
                 }
-                wf.loadMTreeFrontMatter(sourceUri, callback);
+                wf.loadMTreeFrontMatter(sourceUri, callback)
             };
     }
     ModelInfo.prototype._getLoadJsonModel = function() {
@@ -632,7 +606,7 @@ var ModelInfo = (function () {
                 }
                 // TODO interpolate object values of type string?
                 // interpolate property names too?
-                that.readJSON(sourceUri, callback);
+                that.readJSON(sourceUri, callback)
             };
     }
     ModelInfo.prototype._getLoadXmlModel = function() {
@@ -655,7 +629,7 @@ var ModelInfo = (function () {
                 }
                 // TODO interpolate object values of type string?
                 // interpolate property names too?
-                that.readXml(sourceUri, callback);
+                that.readXml(sourceUri, callback)
             };
     }
     ModelInfo.prototype._getLoadJsModel = function() {
@@ -698,7 +672,7 @@ var ModelInfo = (function () {
                             return callback(error('TypeError', 'loadJsModel', 'Error requiring js module: ' + sourceUri + '. Message: ' + ex.message, ex));
                         } 
                     }
-                });
+                })
             };
     }
     ModelInfo.prototype.getModelTransformer = function(trasformerName, callback) {

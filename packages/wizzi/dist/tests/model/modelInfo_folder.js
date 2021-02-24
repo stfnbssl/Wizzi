@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\model\modelInfo_folder.js.ittf
 */
 'use strict';
@@ -48,15 +49,15 @@ describe("modelInfo", function() {
                 src: './**/*.tests.ittf', 
                 schema: 'tests'
             });
-            mi.productionManager(pman);
+            mi.productionManager(pman)
             done();
-        });
+        })
     });
     it("should get a single source", function(done) {
         mi.getSource(function(err, source) {
             expect(err.__is_error).to.be(true);
             done();
-        });
+        })
     });
     it("should get sources", function(done) {
         var s1Path = path.join(__dirname, 'ittf', 'folder1', 'mock2.tests.ittf').replace(/\\/g, '/')
@@ -76,7 +77,7 @@ describe("modelInfo", function() {
             expect(s1.content).to.be.a('string');
             expect(s1.content).to.be('tests mock2');
             done();
-        });
+        })
     });
     it("should get source files", function(done) {
         var s1Path = path.join(__dirname, 'ittf', 'folder1', 'mock2.tests.ittf').replace(/\\/g, '/')
@@ -94,7 +95,7 @@ describe("modelInfo", function() {
             expect(f1.fullpath).to.be.a('string');
             expect(f1.fullpath).to.be(s1Path);
             done();
-        });
+        })
     });
     it("should check if the source exists", function(done) {
         mi.exists(function(err, exists) {
@@ -104,7 +105,7 @@ describe("modelInfo", function() {
             }
             expect(exists).to.be(true);
             done();
-        });
+        })
     });
     it("should check if the source is a directory", function(done) {
         mi.isDirectory(function(err, isDirectory) {
@@ -114,7 +115,7 @@ describe("modelInfo", function() {
             }
             expect(isDirectory).to.be(true);
             done();
-        });
+        })
     });
     it("should check if the source is a file", function(done) {
         mi.isFile(function(err, isFile) {
@@ -124,6 +125,6 @@ describe("modelInfo", function() {
             }
             expect(isFile).to.be(false);
             done();
-        });
+        })
     });
 });

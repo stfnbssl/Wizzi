@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\services\runnerServer.js.ittf
 */
 'use strict';
@@ -40,7 +41,7 @@ var RunnerServer = (function () {
         if (this.wizziFactory != null) {
             throw new Error('wizzi/runnerServer/registerPlugin error: Cannot register a plugin. The WizziFactory has been already initialized.');
         }
-        this.registeredPlugins.push(pluginName);
+        this.registeredPlugins.push(pluginName)
     }
     RunnerServer.prototype.registerGlobalContext = function(context) {
         if (verify.isObject(context) === false) {
@@ -82,7 +83,7 @@ var RunnerServer = (function () {
         options.repo = {
             storeKind: 'filesystem'
         };
-        this.registerFactory(name, options);
+        this.registerFactory(name, options)
     }
     RunnerServer.prototype.registerFactory = function(name, options) {
         if (verify.isNotEmpty(name) === false) {
@@ -101,7 +102,7 @@ var RunnerServer = (function () {
         this.wizziFactoryDatas.push({
             name: name, 
             options: options
-        });
+        })
         console.log(chalk.yellow('WIZZI RunnerServer. Registered factory: ' + name));
     }
     RunnerServer.prototype.getWizziFactory = function(name) {
@@ -127,14 +128,14 @@ var RunnerServer = (function () {
                         return callback(err);
                     }
                     return callback(null, null);
-                });
-            });
+                })
+            })
         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
             return callback(null, null);
-        });
+        })
     }
     RunnerServer.prototype.loadModel = function(factoryName, modelTicket, schemaName, ittfDocumentUri, loadContext, callback) {
         if (typeof(callback) !== 'function') {
@@ -176,7 +177,7 @@ var RunnerServer = (function () {
             that.models[modelTicket] = wizziModel;
             console.log(chalk.yellow('WIZZI RunnerServer. Loaded model: ' + modelTicket));
             return callback(null, wizziModel);
-        });
+        })
     }
     RunnerServer.prototype.transformModel = function(factoryName, modelTicket, transformerName, model, context, callback) {
         if (typeof(callback) !== 'function') {
@@ -220,7 +221,7 @@ var RunnerServer = (function () {
             that.models[modelTicket] = transformedModel;
             console.log(chalk.yellow('WIZZI RunnerServer. Loaded transformed model: ' + modelTicket));
             return callback(null, wizziModel);
-        });
+        })
     }
     RunnerServer.prototype.getModel = function(modelTicket) {
         return this.models[modelTicket];

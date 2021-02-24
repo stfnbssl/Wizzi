@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\examples\jobs\index.js.ittf
 */
 'use strict';
@@ -14,7 +15,7 @@ execute("job_1", function(err, notUsed) {
     if (err) {
         return callback(err);
     }
-});
+})
 function execute(jobName, callback) {
     var jobsPath = path.join(__dirname, 'ittf', jobName);
     // Execute a wizzi job
@@ -39,5 +40,5 @@ function execute(jobName, callback) {
             throw new Error(err.message);
         }
         console.log("results of job " + jobName + "\n", stringify(jobResults, null, 2));
-    });
+    })
 }

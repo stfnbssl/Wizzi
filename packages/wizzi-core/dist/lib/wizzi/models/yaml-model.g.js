@@ -1,11 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\yaml-model.g.js.ittf
 */
 'use strict';
-/**
-     Pseudo schema yaml
-*/
+//
 var util = require('util');
 var verify = require('wizzi-utils').verify;
 var errors = require('wizzi-utils').errors;
@@ -23,7 +22,7 @@ module.exports = function(mTree, ittfDocumentUri, request, callback) {
     var i, i_items=root.children, i_len=root.children.length, node;
     for (i=0; i<i_len; i++) {
         node = root.children[i];
-        appendNode(node, 0, sb);
+        appendNode(node, 0, sb)
     }
     var yaml = jsyaml.safeLoad(sb.join('\n'));
     return callback(null, yaml);
@@ -31,19 +30,19 @@ module.exports = function(mTree, ittfDocumentUri, request, callback) {
 function appendNode(node, indent, sb) {
     var indentString = new Array(indent).join(' ');
     if (node.n === '-') {
-        sb.push(indentString + node.n + ' ' + node.v);
+        sb.push(indentString + node.n + ' ' + node.v)
     }
     else if (node.n === ':') {
         var nv = lineparser.parseNameValueRaw(node.v);
-        sb.push(indentString + nv.name() + ': ' + nv.value());
+        sb.push(indentString + nv.name() + ': ' + nv.value())
     }
     else {
-        sb.push(indentString + node.n + ' ' + node.v);
+        sb.push(indentString + node.n + ' ' + node.v)
     }
     var i, i_items=node.children, i_len=node.children.length, child;
     for (i=0; i<i_len; i++) {
         child = node.children[i];
-        appendNode(child, indent + 1, sb);
+        appendNode(child, indent + 1, sb)
     }
 }
 function toYamlObject(mTreeNodeChilds) {
@@ -125,14 +124,14 @@ function toYamlArray(mTreeNodeChilds) {
                 if (value && value.__is_error) {
                     return value;
                 }
-                ret.push(value);
+                ret.push(value)
             }
             else if (node.n === '[') {
                 var value = toYamlArray(node.children);
                 if (value && value.__is_error) {
                     return value;
                 }
-                ret.push(value);
+                ret.push(value)
             }
             else if (node.v && node.v.length && isQuoted(node.n + ' ' + node.v) == false) {
                 return error('A yaml array item must be an object, an array or a value not a property. Found: ' + node.n + ' ' + node.v, node);
@@ -142,7 +141,7 @@ function toYamlArray(mTreeNodeChilds) {
                 if (value && value.__is_error) {
                     return value;
                 }
-                ret.push(value);
+                ret.push(value)
             }
         }
     }
@@ -182,7 +181,7 @@ function unquote(str) {
 }
 function error(message, node) {
     console.log('wizzi-core.wizzi.models.yaml-model.g.error', node);
-    nodeInfo(node, message);
+    nodeInfo(node, message)
     return {
             __is_error: true, 
             source: 'wizzi-core/lib/wizzi/models/yaml-model.g', 

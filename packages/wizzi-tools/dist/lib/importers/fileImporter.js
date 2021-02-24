@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\importers\fileImporter.js.ittf
 */
 'use strict';
@@ -39,10 +40,10 @@ function importFile(filePath, baseImportPath, baseExportPath, vfile, callback) {
     if (!packageRoot.canBeWizzified(schema)) {
         // log '0', folderNorm, basename
         if (folderNorm.length > 0) {
-            vfile.write(path.join(baseExportPathNorm, folderNorm, basename), source, callback);
+            vfile.write(path.join(baseExportPathNorm, folderNorm, basename), source, callback)
         }
         else {
-            vfile.write(path.join(baseExportPathNorm, basename), source, callback);
+            vfile.write(path.join(baseExportPathNorm, basename), source, callback)
         }
     }
     else {
@@ -71,12 +72,12 @@ function importFile(filePath, baseImportPath, baseExportPath, vfile, callback) {
             console.log('             to ' + outpath);
             if (err) {
                 console.log('Error', outpath, err);
-                vfile.write(outpath, err, callback);
+                vfile.write(outpath, err, callback)
             }
             else {
-                vfile.write(outpath, result, callback);
+                vfile.write(outpath, result, callback)
             }
-        });
+        })
     }
 }
 module.exports = importFile;

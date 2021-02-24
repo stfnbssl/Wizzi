@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\examples\import\index.js.ittf
 */
 'use strict';
@@ -20,12 +21,12 @@ react_typescript();
 function go() {
     // var outpackage = 'firebase-hn'
     var outpackage = 'markdown-blog';
-    nextjs_folder('pages', outpackage);
-    nextjs_folder('lib', outpackage);
-    nextjs_folder('components', outpackage);
-    nextjs_file('package.json', outpackage);
-    nextjs_file('next.config.js', outpackage);
-    nextjs_file('server.js', outpackage);
+    nextjs_folder('pages', outpackage)
+    nextjs_folder('lib', outpackage)
+    nextjs_folder('components', outpackage)
+    nextjs_file('package.json', outpackage)
+    nextjs_file('next.config.js', outpackage)
+    nextjs_file('server.js', outpackage)
 }
 function nextjs_folder(folder, outpackage) {
     importFolder(path.join(thrdfolder, 'zeit', 'learnnextjs-demo', folder), path.join(jsTutorial, 'zeit', outpackage, 'wizzi', 'ittf', 'src', folder), function(err, notUsed) {
@@ -34,7 +35,7 @@ function nextjs_folder(folder, outpackage) {
             throw err;
         }
         console.log('importFolder done');
-    });
+    })
 }
 function nextjs_file(file, outpackage) {
     importFile(path.join(thrdfolder, 'zeit', 'learnnextjs-demo', file), path.join(thrdfolder, 'zeit', 'learnnextjs-demo'), path.join(jsTutorial, 'zeit', outpackage, 'wizzi', 'ittf', 'root'), function(err, notUsed) {
@@ -43,7 +44,7 @@ function nextjs_file(file, outpackage) {
             throw err;
         }
         console.log('importFile done');
-    });
+    })
 }
 function snack() {
     importFolder("C:/My/wizzi/v5/apps/3dParty/snack-web/src/client", "C:/My/wizzi/v5/apps/3dParty/snack-web/ittf/client", {
@@ -57,7 +58,7 @@ function snack() {
             throw err;
         }
         console.log('importFolder done');
-    });
+    })
 }
 function chrome_ext() {
     importFolder("C:/My/wizzi/v5/apps/js-tutorials/chrome/get_started_complete", "C:/My/wizzi/v5/apps/js-tutorials/chrome/ext1/wizzi/ittf/root", function(err, notUsed) {
@@ -66,7 +67,7 @@ function chrome_ext() {
             throw err;
         }
         console.log('importFolder done');
-    });
+    })
 }
 function react_typescript() {
     importFolder("C:/My/wizzi/v5/apps/3dParty/react-redux-typescript-guide/playground", "C:/My/wizzi/v5/apps/3dParty/react-redux-typescript-guide/ittf", function(err, notUsed) {
@@ -75,7 +76,7 @@ function react_typescript() {
             throw err;
         }
         console.log('importFolder done');
-    });
+    })
 }
 function react_webpack_typescript_babel() {
     importFolder("C:/My/wizzi/v5/apps/3dParty/react-webpack-typescript-babel/original", "C:/My/wizzi/v5/apps/3dParty/react-webpack-typescript-babel/ittf", function(err, notUsed) {
@@ -84,5 +85,5 @@ function react_webpack_typescript_babel() {
             throw err;
         }
         console.log('importFolder done');
-    });
+    })
 }

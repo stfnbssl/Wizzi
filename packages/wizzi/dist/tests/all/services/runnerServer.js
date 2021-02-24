@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\all\services\runnerServer.js.ittf
 */
 'use strict';
@@ -20,17 +21,17 @@ var mocks = require('../mocks/misc');
 describe("runnerServer", function() {
     var _wizziFactory = null;
     before(function(done) {
-        runnerServer.init(__dirname);
+        runnerServer.init(__dirname)
         runnerServer.instance.registerApi('SUM', function(a, b) {
             return a + b;
-        });
-        runnerServer.instance.registerPlugin('../mocks/plugin');
+        })
+        runnerServer.instance.registerPlugin('../mocks/plugin')
         runnerServer.instance.registerGlobalContext({
             myname: 'stefi'
-        });
+        })
         runnerServer.instance.registerGlobalContext({
             hername: 'annie'
-        });
+        })
         runnerServer.instance.registerGlobalContext();
         runnerServer.instance.initializeFactory('stefi', 'admin', {
             storeKind: 'filesystem', 
@@ -44,7 +45,7 @@ describe("runnerServer", function() {
             }
             _wizziFactory = wf;
             done();
-        });
+        })
     });
     it("should use the runnerServer to load a model", function(done) {
         runnerServer.instance.loadModel('tests', path.join(__dirname, 'ittf', 'mock1.tests.ittf'), {}, function(err, wizziModel) {
@@ -56,7 +57,7 @@ describe("runnerServer", function() {
             expect(wizziModel.wzName).to.be.a('string');
             expect(wizziModel.wzName).to.be('mock1');
             done();
-        });
+        })
     });
     it("should call a SUM api function on the runnerServer", function() {
         var tot = runnerServer.instance.callApi('SUM', 2, 2);

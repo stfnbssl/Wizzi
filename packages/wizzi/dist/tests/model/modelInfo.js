@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\tests\model\modelInfo.js.ittf
 */
 'use strict';
@@ -48,9 +49,9 @@ describe("modelInfo", function() {
                 src: 'mock1.tests.ittf', 
                 schema: 'tests'
             });
-            mi.productionManager(pman);
+            mi.productionManager(pman)
             done();
-        });
+        })
     });
     it("should check some properties", function() {
         var s1Path = path.join(__dirname, 'ittf', 'mock1.tests.ittf');
@@ -86,7 +87,7 @@ describe("modelInfo", function() {
             }
             expect(loadModel).to.be.a('function');
             done();
-        });
+        })
     });
     it("should retrieve a model transformer", function(done) {
         mi.getModelTransformer('tests/trans1', function(err, transformModel) {
@@ -96,7 +97,7 @@ describe("modelInfo", function() {
             }
             expect(transformModel.trans).to.be.a('function');
             done();
-        });
+        })
     });
     it("should retrieve an artifact generator", function(done) {
         mi.getArtifactGenerator('tests/gen1', function(err, artifactGenerator) {
@@ -106,7 +107,7 @@ describe("modelInfo", function() {
             }
             expect(artifactGenerator.gen).to.be.a('function');
             done();
-        });
+        })
     });
     it("should get a single source", function(done) {
         mi.getSource(function(err, source) {
@@ -117,7 +118,7 @@ describe("modelInfo", function() {
             expect(source.length).to.be.a('number');
             expect(source.length).to.be(11);
             done();
-        });
+        })
     });
     it("should get an error trying to ges sources (not a directory)", function(done) {
         mi.getSources(function(err, sources) {
@@ -126,7 +127,7 @@ describe("modelInfo", function() {
             expect(err.name).to.be.a('string');
             expect(err.name).to.be('InvalidOperation');
             done();
-        });
+        })
     });
     it("should get source files", function(done) {
         mi.getFiles({
@@ -134,7 +135,7 @@ describe("modelInfo", function() {
         }, function(err, files) {
             expect(err.__is_error).to.be(true);
             done();
-        });
+        })
     });
     it("should get modelInfos", function(done) {
         mi.getModelInfos({
@@ -147,7 +148,7 @@ describe("modelInfo", function() {
             expect(modelInfos).to.be.an('array');
             expect(modelInfos.length).to.be(1);
             done();
-        });
+        })
     });
     it("should clone a modelInfo", function() {
         var cloned = mi.clone();
@@ -165,7 +166,7 @@ describe("modelInfo", function() {
             }
             expect(json).to.be.an('object');
             done();
-        });
+        })
     });
     it("should read an xml file", function(done) {
         mi.readXml('c:\\TODO.xml', function(err, xml) {
@@ -173,7 +174,7 @@ describe("modelInfo", function() {
             expect(err.name).to.be.a('string');
             expect(err.name).to.be('NotFound');
             done();
-        });
+        })
     });
     it("should check if the source exists", function(done) {
         mi.exists(function(err, exists) {
@@ -183,7 +184,7 @@ describe("modelInfo", function() {
             }
             expect(exists).to.be(true);
             done();
-        });
+        })
     });
     it("should check if the source is a directory", function(done) {
         mi.isDirectory(function(err, isDirectory) {
@@ -193,7 +194,7 @@ describe("modelInfo", function() {
             }
             expect(isDirectory).to.be(false);
             done();
-        });
+        })
     });
     it("should check if the source is a file", function(done) {
         mi.isFile(function(err, isFile) {
@@ -203,6 +204,6 @@ describe("modelInfo", function() {
             }
             expect(isFile).to.be(true);
             done();
-        });
+        })
     });
 });

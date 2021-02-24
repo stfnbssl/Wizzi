@@ -1,12 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\examples\wf\schema\step_1.js.ittf
 */
 'use strict';
-/**
-     Example: light_schema_step_1
-    
-*/
+//
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
@@ -35,10 +33,10 @@ function createWizziFactory(globalContext, callback) {
             ]
         }, 
         globalContext: globalContext || {}
-    }, callback);
+    }, callback)
 }
 var light_schema_step_1 = function(step_callback) {
-    heading1('EXAMPLE');
+    heading1('EXAMPLE')
     var schemaFriendsPath = path.join(__dirname, 'ittf', 'friends.wfschema.ittf');
     var schemaFriendsOutputPath = path.join(__dirname, 'plugins', 'friends');
     // Generate the javascript modules for the wizzi schema
@@ -53,8 +51,8 @@ var light_schema_step_1 = function(step_callback) {
             console.log('err', err);
             throw new Error(err.message);
         }
-        printValue('schemaPaths', schemaPaths);
-    });
+        printValue('schemaPaths', schemaPaths)
+    })
 };
 light_schema_step_1.__name = 'light_schema_step_1';
 function heading1(text) {
@@ -84,7 +82,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }
@@ -188,7 +186,7 @@ function printNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printNodes_deep(c, indent + 1);
+        printNodes_deep(c, indent + 1)
     }
 }
 function printNodes(nodes, title) {
@@ -211,7 +209,7 @@ function printNodes(nodes, title) {
                 console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
             }
         }
-        printNodes_deep(nodes[0], 1);
+        printNodes_deep(nodes[0], 1)
     }
     console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
@@ -220,7 +218,7 @@ function printEvaluatedNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
+        printEvaluatedNodes_deep(c, indent + 1)
     }
 }
 function printEvaluatedNodes(evaluated, title) {
@@ -229,7 +227,7 @@ function printEvaluatedNodes(evaluated, title) {
         if (evaluated.frontMatter) {
             console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
         }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1)
     }
     else {
         console.log('Invalid evaluated object', evaluated);

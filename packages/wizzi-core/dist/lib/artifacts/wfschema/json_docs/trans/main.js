@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\wfschema\json_docs\trans\main.js.ittf
 */
 'use strict';
@@ -74,7 +75,7 @@ md.element = function(model, ctx, parent) {
         node.derived.push({
             name: d.wzId, 
             tags: d.tagName.split('|')
-        });
+        })
     }
     var i, i_items=model.methods, i_len=model.methods.length, m;
     for (i=0; i<i_len; i++) {

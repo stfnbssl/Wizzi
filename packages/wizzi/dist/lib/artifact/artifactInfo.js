@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\artifact\artifactInfo.js.ittf
 */
 'use strict';
@@ -17,42 +18,7 @@ var verify = require('wizzi-utils').verify;
 var interpolate = require('../util/interpolate');
 var ModelInfo = require("../model/modelInfo").ModelInfo;
 
-/**
-     ArtifactInfo is a wrapper around an 'artifact' element
-     of a 'wfjob' wizzi model.
-     The 'artifact' element has been preprocessed
-     by the lib/production/wfjob module
-     giving the artifactConfig parameter.
-     param
-     { artifactConfig
-     name:String,
-     options:Object {
-     basedir:String // Uri
-     dotgExtensionPrefix:Boolean
-     },
-     model:Object {  // ModelInfo config object
-     see lib/production/wfjob.js for creation
-     see lib/model/modelInfo.js for use
-     },
-     collection:String,
-     isWfJob:Boolean,
-     isWfSchema:Boolean,
-     transformers:Array {
-     name:String
-     dumpFile:String    // Uri
-     },
-     gen:Object {
-     generator:String // generator name
-     },
-     dest:Object {
-     fullpath:String    // Uri
-     folder:String      // a basepath Uri, may be relative
-     baseFolder:String  // a basepath Uri (required when folder is relative)
-     path:String        // relative path
-     extension:String
-     }
-     }
-*/
+//
 
 function logme() {
     if (false) {
@@ -74,7 +40,7 @@ var ArtifactInfo = (function () {
             var i, i_items=artifactConfig.contexts, i_len=artifactConfig.contexts.length, item;
             for (i=0; i<i_len; i++) {
                 item = artifactConfig.contexts[i];
-                this.contextInfos.push(new ModelInfo(item));
+                this.contextInfos.push(new ModelInfo(item))
             }
             this.modelInfo = null;
         }
@@ -90,13 +56,13 @@ var ArtifactInfo = (function () {
     ArtifactInfo.prototype.initialize = function(productionManager) {
         this.productionManager = productionManager;
         if (this.modelInfo) {
-            this.modelInfo.productionManager(productionManager);
+            this.modelInfo.productionManager(productionManager)
         }
         else {
             var i, i_items=this.contextInfos, i_len=this.contextInfos.length, item;
             for (i=0; i<i_len; i++) {
                 item = this.contextInfos[i];
-                item.productionManager(productionManager);
+                item.productionManager(productionManager)
             }
         }
         this.options = _.merge({}, productionManager.options || {}, this.options || {});
@@ -123,8 +89,8 @@ var ArtifactInfo = (function () {
         return this.modelInfo != null && (verify.isObject(this.gen) === false || verify.isEmpty(this.gen.generator));
     }
     ArtifactInfo.prototype.getFileService = function() {
-        assert.ok(verify.isObject(this.productionManager), 'productionManager not set.');
-        assert.ok(verify.isObject(this.productionManager.wizziFactory.fileService), 'fileService must be set on wizziFactory');
+        assert.ok(verify.isObject(this.productionManager), 'productionManager not set.')
+        assert.ok(verify.isObject(this.productionManager.wizziFactory.fileService), 'fileService must be set on wizziFactory')
         return this.productionManager.wizziFactory.fileService;
     }
     ArtifactInfo.prototype.getItemsToPersistToFile = function(callback) {
@@ -136,7 +102,7 @@ var ArtifactInfo = (function () {
             var srcPath = genContext.srcPath;
             if (this.isModelCollectionArtifact()) {
                 var collectionItem = genContext.model;
-                assert.strictEqual(verify.isObject(collectionItem), true, 'genContext.model must contain an object.');
+                assert.strictEqual(verify.isObject(collectionItem), true, 'genContext.model must contain an object.')
                 var ipcontext = this.getInterpolatePathNameContext(collectionItem);
                 if (ipcontext && ipcontext.__is_error) {
                     console.log('__is_error ', ipcontext);
@@ -193,7 +159,7 @@ var ArtifactInfo = (function () {
                 }
                 else if (templValue.attribute) {
                     result[templValue.token] = collectionItem[templValue.attribute];
-                    logme('result[templValue.token]', result[templValue.token], verify.isEmpty(result[templValue.token]));
+                    logme('result[templValue.token]', result[templValue.token], verify.isEmpty(result[templValue.token]))
                     if (verify.isEmpty(result[templValue.token])) {
                         return this.error('the path template value attribute "' + templValue.attribute + '" must return a not empty string for token: "' + templValue.token + '"', 'getInterpolatePathNameContext');
                     }

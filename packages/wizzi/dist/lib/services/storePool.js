@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi\.wizzi\ittf\lib\services\storePool.js.ittf
 */
 'use strict';
@@ -41,11 +42,11 @@ var StorePool = (function () {
                 if (err) {
                     return callback(err);
                 }
-                this.initialize_next_1(callback);
-            });
+                this.initialize_next_1(callback)
+            })
         }
         else {
-            this.initialize_next_1(callback);
+            this.initialize_next_1(callback)
         }
         
     }
@@ -62,7 +63,7 @@ var StorePool = (function () {
             }
             this.repoOptions.storeFsJson = fsJson;
             return callback(null);
-        });
+        })
     }
     StorePool.prototype.initialize_next_1 = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -82,8 +83,8 @@ var StorePool = (function () {
                         fileService: this.fileService, 
                         createStore: this.getCreateStore_hof()
                     });
-            });
-        });
+            })
+        })
     }
     StorePool.prototype._initializeFileService = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -100,7 +101,7 @@ var StorePool = (function () {
                 }
                 that.fileService = file;
                 return callback(null, null);
-            });
+            })
         }
         else if (this.storeKind === 'mongodb') {
             repo.dbfile({
@@ -112,7 +113,7 @@ var StorePool = (function () {
                 }
                 that.fileService = file;
                 return callback(null, null);
-            });
+            })
         }
         else if (this.storeKind === 'json') {
             // log 'repoOptions', repoOptions
@@ -124,7 +125,7 @@ var StorePool = (function () {
                 }
                 that.fileService = file;
                 return callback(null, null);
-            });
+            })
         }
         else if (this.storeKind === 'browser') {
             // log 'repoOptions', repoOptions
@@ -134,7 +135,7 @@ var StorePool = (function () {
                 }
                 that.fileService = file;
                 return callback(null, null);
-            });
+            })
         }
         else {
             return callback(error('NotImplemented', '_initializeFileService', 'Store kind not implemented yet : ' + this.storeKind));
@@ -151,7 +152,7 @@ var StorePool = (function () {
             }
             that.storeFactory = storeFactory;
             return callback(null, null);
-        });
+        })
     }
     StorePool.prototype.add = function(store) {
         if (verify.isObject(store) === false) {
@@ -178,7 +179,7 @@ var StorePool = (function () {
                 }
                 that.add(store);
                 return callback(null, store);
-            });
+            })
         }
     }
     StorePool.prototype.getCreateStore_hof = function() {
@@ -189,7 +190,7 @@ var StorePool = (function () {
                         return callback(err);
                     }
                     return callback(null, store);
-                });
+                })
             };
     }
     StorePool.prototype.close = function() {

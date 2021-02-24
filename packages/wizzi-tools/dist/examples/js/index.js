@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\examples\js\index.js.ittf
 */
 'use strict';
@@ -32,7 +33,7 @@ function go(name) {
     }, function(err, result) {
         if (err) {
             console.log('err', err);
-            file.write(out_ittf, JSON.stringify(err, null, 4));
+            file.write(out_ittf, JSON.stringify(err, null, 4))
         }
         else {
             var r1 = result.substring(0, 24);
@@ -40,7 +41,7 @@ function go(name) {
             console.log('r1', r1);
             r1 = r1.replace('jsfile', 'react ');
             console.log('r1 after', r1);
-            file.write(out_ittf, r1+r2);
+            file.write(out_ittf, r1+r2)
         }
-    });
+    })
 }

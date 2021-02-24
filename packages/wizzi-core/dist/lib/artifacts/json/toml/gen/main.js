@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\json\toml\gen\main.js.ittf
 */
 'use strict';
@@ -25,15 +26,15 @@ md.gen = function(model, ctx, callback) {
             var item = model[key];
             // log 'key', key
             if (verify.isObject(item)) {
-                ctx.w('[' + key + ']');
-                writeObject(item, ctx, true);
+                ctx.w('[' + key + ']')
+                writeObject(item, ctx, true)
             }
             else if (verify.isArray(item)) {
-                ctx.w(key + ' = [' + writeArray(item, ctx) + ']');
+                ctx.w(key + ' = [' + writeArray(item, ctx) + ']')
             }
             else {
                 // log 'key', key, 'value', verify.isString(item) ? '"' + item + '"' : item
-                ctx.w(key + ' = ' + (verify.isString(item) ? ('"' + item + '"') : item));
+                ctx.w(key + ' = ' + (verify.isString(item) ? ('"' + item + '"') : item))
             }
         }
     } 
@@ -56,13 +57,13 @@ function writeArray(arr, ctx) {
             ctx.w(', ');
         }
         if (verify.isObject(item)) {
-            ctx.w('{' + writeObject(item, ctx) + '}');
+            ctx.w('{' + writeObject(item, ctx) + '}')
         }
         else if (verify.isArray(item)) {
-            ctx.w('[' + writeArray(item, ctx) + ']');
+            ctx.w('[' + writeArray(item, ctx) + ']')
         }
         else {
-            ctx.w(verify.isString(item) ? '"' + item + '"' : item);
+            ctx.w(verify.isString(item) ? '"' + item + '"' : item)
         }
         first = false;
     }
@@ -74,28 +75,19 @@ function writeObject(obj, ctx, top) {
             key = Object.keys(obj)[i];
             var item = obj[key];
             if (verify.isObject(item)) {
-                ctx.w(key + ' = ');
-                writeObject(item, ctx, false);
+                ctx.w(key + ' = ')
+                writeObject(item, ctx, false)
             }
             else if (verify.isArray(item)) {
-                ctx.w(key + ' = [' + writeArray(item, ctx) + ']');
+                ctx.w(key + ' = [' + writeArray(item, ctx) + ']')
             }
             else {
-                ctx.w(key + ' = ' + (verify.isString(item) ? ('"' + item + '"') : item));
+                ctx.w(key + ' = ' + (verify.isString(item) ? ('"' + item + '"') : item))
             }
         }
     }
 }
-/**
-     params
-     string code
-     # the error name or number
-     string method
-     string message
-     # optional
-     { innerError
-     # optional
-*/
+//
 function error(code, method, message, innerError) {
     return verify.error(innerError, {
             name: ( verify.isNumber(code) ? 'Err-' + code : code ), 

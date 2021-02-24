@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\jsonparser\wizzi\cloner.js.ittf
 */
 'use strict';
@@ -17,7 +18,7 @@ function transform(node, options) {
         if (child) {
             ret.children.push(child);
         }
-    });
+    })
     return ret;
 }
 module.exports = function(ast, options) {

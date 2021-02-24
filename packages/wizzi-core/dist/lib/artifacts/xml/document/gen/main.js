@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\xml\document\gen\main.js.ittf
 */
 'use strict';
@@ -11,9 +12,9 @@ var myname = 'xml.document.main';
 md.gen = function(model, ctx, callback) {
     if (model.wzElement !== 'xml') {
         console.log('wizzi-core', 'artifact', 'model', model);
-        callback(error('Invalid model schema. Expected "xml". Received: ' + model.wzElement));
+        callback(error('Invalid model schema. Expected "xml". Received: ' + model.wzElement))
     }
-    ctx.w('<?xml version="1.0"' + (model.encoding ? ' encoding="' + model.encoding + '"' : '') + (model.standalone ? ' standalone="' + model.standalone + '"' : '') + '>');
+    ctx.w('<?xml version="1.0"' + (model.encoding ? ' encoding="' + model.encoding + '"' : '') + (model.standalone ? ' standalone="' + model.standalone + '"' : '') + '>')
     var i, i_items=model.elements, i_len=model.elements.length, el;
     for (i=0; i<i_len; i++) {
         el = model.elements[i];
@@ -28,7 +29,7 @@ md.genItem = function(model, ctx) {
         for (i=0; i<i_len; i++) {
             item = model.attributes[i];
             ctx.write(' ' + item.name + '="');
-            ctx.write(item.value);
+            ctx.write(item.value)
             ctx.write('"');
         }
         if ((model.elements && model.elements.length > 0) || model.text) {

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\xml\document\gen\ittf_to_xml.js.ittf
 */
 'use strict';
@@ -17,10 +18,10 @@ function toxml(model) {
     for (i=0; i<i_len; i++) {
         item = model.children[i];
         if (item.n === '@') {
-            ret.attribs.push(toattr(item.v));
+            ret.attribs.push(toattr(item.v))
         }
         else {
-            ret.elements.push(toxml(item));
+            ret.elements.push(toxml(item))
         }
     }
     return ret;

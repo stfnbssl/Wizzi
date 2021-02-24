@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\artifacts\ittf\cheatsheet\trans\main.js.ittf
 */
 'use strict';
@@ -17,10 +18,10 @@ md.trans = function(model, ctx, callback) {
     var transformedModel = {};
     if (model.wzElement !== 'ittf') {
         console.log('wizzi-core', 'transformer', 'model', model);
-        callback(error('InvalidArgument', 'gen', 'Invalid model schema. Expected "ittf". Received: ' + model.wzElement, model));
+        callback(error('InvalidArgument', 'gen', 'Invalid model schema. Expected "ittf". Received: ' + model.wzElement, model))
     }
     try {
-        executeTrans(model, ctx, callback);
+        executeTrans(model, ctx, callback)
     } 
     catch (ex) {
         return callback(ex);
@@ -36,14 +37,14 @@ function executeTrans(model, ctx, callback) {
             
         ]
     };
-    loadCheats(model, workObj);
+    loadCheats(model, workObj)
     generateArtifacts(ctx, workObj, function(err, result) {
         if (err) {
             return callback(err);
         }
         // log 'executeTrans.result', result
-        callback(null, result);
-    });
+        callback(null, result)
+    })
 }
 function loadCheats(model, workObj) {
     var i, i_items=model.children, i_len=model.children.length, itemTop;
@@ -90,7 +91,7 @@ function loadCheats(model, workObj) {
                                     var l, l_items=item.children, l_len=item.children.length, node;
                                     for (l=0; l<l_len; l++) {
                                         node = item.children[l];
-                                        ittfNode.children.push(node);
+                                        ittfNode.children.push(node)
                                     }
                                     itemResult[item.name] = toIttf(item.children[0]);
                                     itemResult[item.name + 'Wrapped'] = toIttf(ittfNode);
@@ -102,7 +103,7 @@ function loadCheats(model, workObj) {
                                 var l, l_items=item.children, l_len=item.children.length, node;
                                 for (l=0; l<l_len; l++) {
                                     node = item.children[l];
-                                    ittfNode.children.push(node);
+                                    ittfNode.children.push(node)
                                 }
                                 itemResult[item.name] = toIttf(item.children);
                                 itemResult[item.name + 'Wrapped'] = toIttf(ittfNode);
@@ -113,14 +114,14 @@ function loadCheats(model, workObj) {
                             // log item.name, item.value
                         }
                     }
-                    elementResult.items.push(itemResult);
-                    workObj._all_items.push(itemResult);
+                    elementResult.items.push(itemResult)
+                    workObj._all_items.push(itemResult)
                 }
                 else {
                     elementResult[itemEl.name] = itemEl.value;
                 }
             }
-            workObj.elements.push(elementResult);
+            workObj.elements.push(elementResult)
         }
     }
     var dump = stringify(workObj, null, 2);
@@ -150,8 +151,8 @@ function generateArtifacts(ctx, workObj, callback_main) {
                         else {
                             item.generated = '\n' + verify.htmlEscape(script.mTreeBuildUpScript);
                         }
-                        callback(null);
-                    });
+                        callback(null)
+                    })
                 }
                 else {
                     // log 'ctx.wizziFactory.loadModelAndGenerateArtifactFromText', ctx.wizziFactory.loadModelAndGenerateArtifactFromText, artifactNameFromSchema(item.schema)
@@ -170,11 +171,11 @@ function generateArtifacts(ctx, workObj, callback_main) {
                             artifactText = verify.htmlEscape(artifactText);
                             item.generated = '\n' + artifactText;
                         }
-                        callback(null);
-                    });
+                        callback(null)
+                    })
                 }
-            });
-        });
+            })
+        })
     }, function(err, notUsed) {
         if (err) {
             return callback(err);
@@ -185,8 +186,8 @@ function generateArtifacts(ctx, workObj, callback_main) {
         callback_main(null, {
             schema: workObj.schema, 
             elements: workObj.elements
-        });
-    });
+        })
+    })
 }
 function toIttf(node) {
     var buffer = [];
@@ -200,7 +201,7 @@ function toIttf(node) {
             else {
                 item.nodes.forEach(function(node) {
                     _toIttfNodeDeep(node, 0, buffer);
-                });
+                })
             }
         }
     }
@@ -211,17 +212,17 @@ function toIttf(node) {
         else {
             node.nodes.forEach(function(node) {
                 _toIttfNodeDeep(node, 0, buffer);
-            });
+            })
         }
     }
     return buffer.join('\n');
 }
 function _toIttfNodeDeep(node, indent, buffer) {
     if (node.name) {
-        buffer.push(spaces(indent * 4) + node.name + ' ' + (node.value || ''));
+        buffer.push(spaces(indent * 4) + node.name + ' ' + (node.value || ''))
     }
     else {
-        buffer.push(spaces(indent * 4) + node.n + ' ' + (node.v || ''));
+        buffer.push(spaces(indent * 4) + node.n + ' ' + (node.v || ''))
     }
     var i, i_items=node.children, i_len=node.children.length, child;
     for (i=0; i<i_len; i++) {
@@ -308,18 +309,7 @@ function ittfRootFromSchema(schema) {
     // log 'ittfRootFromSchema', schema, schemaIttfRootMap[schema]
     return schemaIttfRootMap[schema];
 }
-/**
-     params
-     string errorName
-     # the error name or number
-     string method
-     string message
-     # optional
-     { model
-     # optional
-     { innerError
-     # optional
-*/
+//
 function error(errorName, method, message, model, innerError) {
     return new errors.WizziPluginError(message, model, {
             errorName: errorName, 

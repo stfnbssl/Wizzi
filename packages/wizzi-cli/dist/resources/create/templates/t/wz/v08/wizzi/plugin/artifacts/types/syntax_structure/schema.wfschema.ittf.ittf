@@ -14,8 +14,21 @@ $group
         tag +
     e bold : node
         tag b
+    e boldProp : node
+        tag bold
     e italic : node
         tag i
+    e italicProp : node
+        tag italic
+    e underline : node
+    e emphasisMark : node
+    e strike : node
+    e doubleStrike : node
+    e superScript : node
+    e subScript : node
+    e smallCaps : node
+    e allCaps : node
+    e smallCaps : node
     e font : node
     e color : node
     e fill : node
@@ -32,5 +45,18 @@ $group
     
     e center : node
     e bullet_0 : node
+    
+    e tabStop : node
+    e position : node
 
-
+    e styles : node
+    e style : node
+    e basedOn : node
+    e next : node
+    e paragraphStyles : node
+        tag paragraph-styles
+    e run : node
+    e xdefault : node
+        tag default
+    e styleDef : node
+        tag style-def

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\tests\mocks\artifact\block.js.ittf
 */
 'use strict';
@@ -32,11 +33,11 @@ var Block = (function () {
     Block.prototype.w = function(text) {
         if (this.currentline != null) {
             this.currentline.add(text);
-            this.lines.push(this.currentline);
+            this.lines.push(this.currentline)
             this.currentline = null;
         }
         else {
-            this.lines.push(new line(text, this.indentValue, this.options));
+            this.lines.push(new line(text, this.indentValue, this.options))
         }
     }
     Block.prototype.write = function(text) {
@@ -50,11 +51,11 @@ var Block = (function () {
     Block.prototype.writeFile = function(filePath) {
         if (this.currentline != null) {
             this.currentline.addFile(filePath);
-            this.lines.push(this.currentline);
+            this.lines.push(this.currentline)
             this.currentline = null;
         }
         else {
-            this.lines.push(new line(filePath, this.indentValue, this.options, true));
+            this.lines.push(new line(filePath, this.indentValue, this.options, true))
         }
     }
     Block.prototype.toStream = function(stream, ctx) {

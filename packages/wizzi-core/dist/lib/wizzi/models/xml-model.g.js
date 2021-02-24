@@ -1,11 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\.wizzi\ittf\lib\wizzi\models\xml-model.g.js.ittf
 */
 'use strict';
-/**
-     Pseudo schema xml
-*/
+//
 var util = require('util');
 var lineparser = require('../../util/lineParser');
 
@@ -48,19 +47,19 @@ function toXmlElement(tag, nodes) {
                 ret.attributes.push({
                     name: nv.name(), 
                     value: nv.value()
-                });
+                })
             }
         }
         else if (node.n === '+') {
             ret.elements.push({
                 text: node.v
-            });
+            })
             if (node.children && node.children.length > 0) {
                 var newelement = toXmlElement(node.n, node.children);
                 if (newelement && newelement.__is_error) {
                     return newelement;
                 }
-                ret.elements.push(newelement);
+                ret.elements.push(newelement)
             }
         }
         else if (node.v && node.v.length > 0) {
@@ -76,13 +75,13 @@ function toXmlElement(tag, nodes) {
                     text: node.v, 
                     attributes: [], 
                     elements: []
-                });
+                })
                 if (node.children && node.children.length > 0) {
                     var newelement = toXmlElement(node.n, node.children);
                     if (newelement && newelement.__is_error) {
                         return newelement;
                     }
-                    ret.elements.push(newelement);
+                    ret.elements.push(newelement)
                 }
             }
         }
@@ -92,7 +91,7 @@ function toXmlElement(tag, nodes) {
                 if (newelement && newelement.__is_error) {
                     return newelement;
                 }
-                ret.elements.push(newelement);
+                ret.elements.push(newelement)
             }
         }
     }

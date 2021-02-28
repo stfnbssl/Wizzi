@@ -1,8 +1,8 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.plugin.docx\.wizzi\ittf\examples\beba.js.ittf
-    utc time: Sun, 28 Feb 2021 14:54:00 GMT
+    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi.plugin.docx\.wizzi\ittf\examples\beba.js.ittf
+    utc time: Sun, 28 Feb 2021 18:24:36 GMT
 */
 'use strict';
 const normal_JUSTIFIED = false;
@@ -10,9 +10,9 @@ const H2_Size = 28;
 const Big_Size = 24;
 const Normal_Size = 24;
 const P_spacing_before = 20 * 72 * 0.05;
-const P_spacing_before_h2 = 20 * 72 * 0.2;
+const P_spacing_before_h2 = 20 * 72 * 0.3;
 const P_spacing_after = 20 * 72 * 0.025;
-const P_spacing_after_h2 = 20 * 72 * 0.1;
+const P_spacing_after_h2 = 20 * 72 * 0.05;
 const IMAGES_BASE_PATH = "C:\\Users\\Stefano Bassoli\\Pictures\\Cosie\\Backend";
 var path = require('path');
 var fs = require('fs');
@@ -29,7 +29,7 @@ var stringify = require('json-stringify-safe');
 var wizziTools = require('../../../wizzi-tools/dist/index');
 function executeExample() {
     executeGenerateModules([
-        "Test"
+        'Famiglia'
     ], function(err, result) {
         if (err) {
             console.log('docx.examples.executeGenerateModules.err', err);
@@ -154,7 +154,7 @@ function executeExample() {
         else if (item.name == 'h2' || item.name == 'ul' || item.name == 'ol') {
             // log 'is ', item.name, item.needsParagraph
             if (item.needsParagraph) {
-                buildPara(item.value, item.name, indent + 1, sb)
+                buildPara('', item.name, indent + 1, sb)
                 if (item.name == 'h2' && item.value && item.value.length > 0) {
                     buildIttfLine('+', item.value, indent + 2, sb)
                     buildInlineStyle('h2', indent + 3, sb)
@@ -408,7 +408,6 @@ function executeExample() {
         }
     }
     function preprocessTesto(item, ctx) {
-        // log 'enter preprocessTesto', item.children.length
         if (item.name == 'p' && ctx.stack.indexOf('li') > -1) {
             item.alreadyIsParagraph = true;
         }
@@ -435,13 +434,17 @@ function executeExample() {
         }
         if (item.name == 'h2' || item.name == 'ul' || item.name == 'ol') {
             // log 'is h2', 'stack', ctx.stack.join(',')
-            if (ctx.stack.indexOf('p') < 0) {
+            if (ctx.stack.indexOf('p') < 0 && ctx.stack.indexOf('li') < 0) {
                 // log 'setting needsParagraph'
                 item.needsParagraph = true;
             }
         }
         ctx.stack.push(item.name);
-        item.children.forEach((child, index) => {
+        var index = 0;
+        var i, i_items=item.children, i_len=item.children.length, child;
+        for (i=0; i<i_len; i++) {
+            child = item.children[i];
+            index++;
             child.parent = item;
             // log 'preprocessTesto', child.name, child.value
             // if (index < item.children.length-1) && item.children[index+1].name == "br"
@@ -452,7 +455,7 @@ function executeExample() {
                 child.deleted = true;
             }
             preprocessTesto(child, ctx)
-        })
+        }
         ctx.stack.pop();
     }
     function transformContext(beba, callback) {

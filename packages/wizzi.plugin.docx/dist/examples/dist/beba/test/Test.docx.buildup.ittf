@@ -444,97 +444,13 @@ docx ${category}
 			link https://cosie.lepida.it/backoffice/news/gestione/433
 			text Edita sul backend
 			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_433
-			link https://cosie.lepida.it/backoffice/news/gestione/433
-			text Edita sul backend
-			type EXTERNAL
 		link-def in_article_1
 			link
 			text value&nbsp;2
 			type EXTERNAL
 		link-def in_article_2
 			link
-			text value&nbsp;4
+			text value&nbsp;1
 			type EXTERNAL
 		link-def in_article_3
 			link
@@ -542,11 +458,11 @@ docx ${category}
 			type EXTERNAL
 		link-def in_article_4
 			link
-			text value&nbsp;1
+			text value&nbsp;2
 			type EXTERNAL
 		link-def in_article_5
 			link
-			text value&nbsp;2
+			text value&nbsp;3
 			type EXTERNAL
 		link-def in_article_6
 			link
@@ -554,7 +470,7 @@ docx ${category}
 			type EXTERNAL
 		link-def in_article_7
 			link
-			text value&nbsp;4
+			text value&nbsp;3
 			type EXTERNAL
 	section
 		h2 X mesi
@@ -749,7 +665,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong></big><big>value 2</big></p> in Pediatra / 4 anni / https://cosie.lepida.it/backoffice/news/gestione/756
+			+ : <p><big><strong>value 1</strong></big><big>value 2</big></p> in Giochi-Movimento / 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/442
 				size 24
 		p
 			font Garamond
@@ -793,61 +709,15 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><strong><big>value 1</big></strong></p> in Giochi-Movimento / 5 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/747
+			+ : <p>value 1<big>value 2</big></p> in Giochi-Movimento / 2 anni e 10 mesi / https://cosie.lepida.it/backoffice/news/gestione/708
 				size 24
-		p
+		p value&nbsp;1
 			font Garamond
-			spacing
+			spacing value&nbsp;1
 				before 72
 				after 36
-			+ value&nbsp;1
-				style strong_big
-				bold
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><strong>value 1<big>value 2</big></strong></p> in Famiglia / 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/367
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style strong
-				bold
-				size 24
 			+ value&nbsp;2
-				style strong_big
-				bold
+				style big
 				size 24
 		p
 			font Garamond
@@ -879,7 +749,48 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <h2><br /><big><strong>value 1</strong></big></h2> in Tutti a tavola / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/611
+			+ : <h2>value 1</h2> in Giochi-Movimento / 2 anni e 10 mesi / https://cosie.lepida.it/backoffice/news/gestione/708
+				size 24
+		p value&nbsp;1
+			font Garamond
+			spacing value&nbsp;1
+				before 288
+				after 144
+			+ value&nbsp;1
+				style h2
+				bold
+				size 28
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <h2><big><strong>value 1</strong></big><big><strong>value 2</strong></big></h2> in Bambino / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/836
 				size 24
 		p
 			font Garamond
@@ -887,6 +798,10 @@ docx ${category}
 				before 288
 				after 144
 			+ value&nbsp;1
+				style h2_big_strong
+				bold
+				size 28
+			+ value&nbsp;2
 				style h2_big_strong
 				bold
 				size 28
@@ -920,50 +835,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1</big><big>value 2</big></p> in Giochi-Movimento / 5 mesi / https://cosie.lepida.it/backoffice/news/gestione/467
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ value&nbsp;2
-				style big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1</big><big>value 2</big><big>value 3</big></p> in Giochi-Movimento / 1 anno / https://cosie.lepida.it/backoffice/news/gestione/479
+			+ : <p><big>value 1</big><big>value 2</big><big>value 3</big><big>value 4</big><big>value 5</big></p> in Tutti a tavola / 2 anni / https://cosie.lepida.it/backoffice/news/gestione/619
 				size 24
 		p
 			font Garamond
@@ -979,6 +851,12 @@ docx ${category}
 			+ value&nbsp;3
 				style big
 				size 24
+			+ value&nbsp;4
+				style big
+				size 24
+			+ value&nbsp;5
+				style big
+				size 24
 		p
 			font Garamond
 			spacing
@@ -1009,7 +887,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><br /><big>value 1<br /><++>value 2</++></big></p> in NpL-NpM / Nascita / https://cosie.lepida.it/backoffice/news/gestione/861
+			+ : <p><br /><big>value 1<strong>value 2</strong></big></p> in NpL-NpM / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/816
 				size 24
 		p
 			font Garamond
@@ -1020,89 +898,7 @@ docx ${category}
 				style big
 				size 24
 				br
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><strong>value 1</strong></p> in Bambino / 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/433
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style strong
-				bold
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><em><strong>value 1</strong></em></p> in NpL-NpM / 15 giorni / https://cosie.lepida.it/backoffice/news/gestione/325
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
+			+ value&nbsp;2
 				style big_strong
 				bold
 				size 24
@@ -1136,7 +932,48 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <h2><big>value 1</big></h2> in Giochi-Movimento / 20 mesi / https://cosie.lepida.it/backoffice/news/gestione/655
+			+ : <p><br /><big>value 1</big></p> in Famiglia / 5 anni / https://cosie.lepida.it/backoffice/news/gestione/653
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <h2><strong>value 1</strong></h2> in Giochi-Movimento / 5 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/747
 				size 24
 		p
 			font Garamond
@@ -1144,7 +981,7 @@ docx ${category}
 				before 288
 				after 144
 			+ value&nbsp;1
-				style h2_big
+				style h2_strong
 				bold
 				size 28
 		p
@@ -1177,7 +1014,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<em>value 2</em></big></p> in Famiglia / 11 mesi / https://cosie.lepida.it/backoffice/news/gestione/476
+			+ : <p><big><em><strong>value 1</strong></em><strong>value 2</strong><strong>value 3</strong></big></p> in NpL-NpM / 15 giorni / https://cosie.lepida.it/backoffice/news/gestione/314
 				size 24
 		p
 			font Garamond
@@ -1185,52 +1022,14 @@ docx ${category}
 				before 72
 				after 36
 			+ value&nbsp;1
-				style big
-				size 24
-			+ value&nbsp;2
-				style big_big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
+				style big_big_strong
 				bold
 				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<strong>value 2</strong></big></p> in Giochi-Movimento / 3 anni e 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/727
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
 			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;3
 				style big_strong
 				bold
 				size 24
@@ -1264,7 +1063,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<br /><++>value 2</++><br /><++>value 3</++></big></p> in Temi caldi / 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/159
+			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong></big></p> in Giochi-Movimento / 16 mesi / https://cosie.lepida.it/backoffice/news/gestione/485
 				size 24
 		p
 			font Garamond
@@ -1274,12 +1073,119 @@ docx ${category}
 			+ value&nbsp;1
 				style big
 				size 24
-			+ null<++>value&nbsp;2
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <ul><li><p><big>value 1</big></p></li><li><p><big>value 2</big></p></li><li><p><big>value 3</big></p></li><li><p><big>value 4</big></p></li><li><p><big>value 5</big></p></li><li><p><big>value 6</big></p></li><li><p><big>value 7</big></p></li></ul> in NpL-NpM / 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/404
+				size 24
+		ul
+			font Garamond
+			spacing
+				before 72
+				after 36
+			li
+				+ value&nbsp;1
+					style big
+					size 24
+			li
+				+ value&nbsp;2
+					style big
+					size 24
+			li
+				+ value&nbsp;3
+					style big
+					size 24
+			li
+				+ value&nbsp;4
+					style big
+					size 24
+			li
+				+ value&nbsp;5
+					style big
+					size 24
+			li
+				+ value&nbsp;6
+					style big
+					size 24
+			li
+				+ value&nbsp;7
+					style big
+					size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<br /><br /></big></p> in Temi caldi / 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/159
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
 				style big
 				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
 		p
 			font Garamond
 			spacing
@@ -1351,7 +1257,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<em><strong>value 2</strong></em><+>value 3</+></big></p> in NpL-NpM / 2 anni e 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/875
+			+ : <p><big>value 1<em><strong>value 2</strong></em></big></p> in NpL-NpM / 2 anni e 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/875
 				size 24
 		p
 			font Garamond
@@ -1364,9 +1270,6 @@ docx ${category}
 			+ value&nbsp;2
 				style big_big_strong
 				bold
-				size 24
-			+ null<+>value&nbsp;3
-				style big
 				size 24
 		p
 			font Garamond
@@ -1398,7 +1301,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong></big><big><strong>value 3</strong></big><big>value 4</big><+>value 5</+><big>value 6</big></p> in NpL-NpM / 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/401
+			+ : <p><big>value 1<strong>value 2</strong></big><big><strong>value 3</strong></big><big>value 4</big><big>value 5</big></p> in NpL-NpM / 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/401
 				size 24
 		p
 			font Garamond
@@ -1419,10 +1322,9 @@ docx ${category}
 			+ value&nbsp;4
 				style big
 				size 24
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style big
-			size 24
+			+ value&nbsp;5
+				style big
+				size 24
 		p
 			font Garamond
 			spacing
@@ -1453,7 +1355,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<em>value 2</em><+>value 3</+><em>value 4</em><+>value 5</+></big></p> in Famiglia / 21 mesi / https://cosie.lepida.it/backoffice/news/gestione/501
+			+ : <p><big>value 1<em>value 2</em><em>value 3</em></big></p> in Famiglia / 21 mesi / https://cosie.lepida.it/backoffice/news/gestione/501
 				size 24
 		p
 			font Garamond
@@ -1466,13 +1368,9 @@ docx ${category}
 			+ value&nbsp;2
 				style big_big
 				size 24
-			+ null<+>value&nbsp;3
-				style big
+			+ value&nbsp;3
+				style big_big
 				size 24
-			+ value&nbsp;4
-				style big
-				size 24
-			+ null<+>value&nbsp;5
 		p
 			font Garamond
 			spacing
@@ -1503,53 +1401,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<a>value 2</a><+>value 3</+><a>value 4</a><+>value 5</+></big></p> in NpL-NpM / 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/822
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			link-ref in_article_1
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			link-ref in_article_2
-			+ null<+>value&nbsp;5
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <h2><strong><em><big>value 1</big></em></strong></h2> in NpL-NpM / 11 mesi / https://cosie.lepida.it/backoffice/news/gestione/768
+			+ : <h2><big><em><strong>value 1</strong></em></big></h2> in NpL-NpM / 11 mesi / https://cosie.lepida.it/backoffice/news/gestione/768
 				size 24
 		p
 			font Garamond
@@ -1557,7 +1409,7 @@ docx ${category}
 				before 288
 				after 144
 			+ value&nbsp;1
-				style h2_strong_big_big
+				style h2_big_big_strong
 				bold
 				size 28
 		p
@@ -1590,7 +1442,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><em>value 1<br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++></em></p> in NpL-NpM / 11 mesi / https://cosie.lepida.it/backoffice/news/gestione/768
+			+ : <p><em><big>value 1</big></em></p> in Giochi-Movimento / 2 anni e 4 mesi / https://cosie.lepida.it/backoffice/news/gestione/748
 				size 24
 		p
 			font Garamond
@@ -1598,16 +1450,8 @@ docx ${category}
 				before 72
 				after 36
 			+ value&nbsp;1
-				style big
+				style big_big
 				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
 		p
 			font Garamond
 			spacing
@@ -1683,7 +1527,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><em>value 1<a>value 2</a><+>value 3</+></em></big></p> in NpL-NpM / 13 mesi / https://cosie.lepida.it/backoffice/news/gestione/829
+			+ : <p><big><em>value 1<a>value 2</a></em></big></p> in NpL-NpM / 13 mesi / https://cosie.lepida.it/backoffice/news/gestione/829
 				size 24
 		p
 			font Garamond
@@ -1693,10 +1537,7 @@ docx ${category}
 			+ value&nbsp;1
 				style big_big
 				size 24
-			link-ref in_article_3
-			+ null<+>value&nbsp;3
-				style big_big
-				size 24
+			link-ref in_article_1
 		p
 			font Garamond
 			spacing
@@ -1727,17 +1568,14 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><a>value 1</a><+>value 2</+></big></p> in NpL-NpM / 13 mesi / https://cosie.lepida.it/backoffice/news/gestione/398
+			+ : <p><big><a>value 1</a></big></p> in NpL-NpM / 13 mesi / https://cosie.lepida.it/backoffice/news/gestione/398
 				size 24
 		p
 			font Garamond
 			spacing
 				before 72
 				after 36
-			link-ref in_article_4
-			+ null<+>value&nbsp;2
-				style big
-				size 24
+			link-ref in_article_2
 		p
 			font Garamond
 			spacing
@@ -1768,7 +1606,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><strong>value 4</strong><+>value 5</+><strong>value 6</strong><+>value 7</+><br /><++>value 8</++><strong>value 9</strong><+>value 10</+><br /><++>value 11</++><br /><++>value 12</++><strong>value 13</strong><+>value 14</+><strong><em>value 15</em></strong><+>value 16</+></big></p> in NpL-NpM / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/816
+			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong><strong>value 4</strong><br /><strong>value 5</strong><br /><br /><strong>value 6</strong><strong><em>value 7</em></strong></big></p> in NpL-NpM / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/816
 				size 24
 		p
 			font Garamond
@@ -1782,19 +1620,28 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
+			+ value&nbsp;3
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;7
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;7
+				style big_strong_big
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -1836,7 +1683,7 @@ docx ${category}
 				style strong
 				bold
 				size 24
-			link-ref in_article_5
+			link-ref in_article_3
 		p
 			font Garamond
 			spacing
@@ -1867,7 +1714,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><strong>value 4</strong><+>value 5</+><strong>value 6</strong></big></p> in Bambino / 3 anni e 4 mesi / https://cosie.lepida.it/backoffice/news/gestione/842
+			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong><strong>value 4</strong></big></p> in Bambino / 4 anni e 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/859
 				size 24
 		p
 			font Garamond
@@ -1881,18 +1728,14 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
+			+ value&nbsp;3
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -1923,7 +1766,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><a>value 2</a><+>value 3</+><a>value 4</a></big></p> in NpL-NpM / 23 mesi / https://cosie.lepida.it/backoffice/news/gestione/827
+			+ : <p><big><strong>value 1</strong><a>value 2</a><a>value 3</a></big></p> in NpL-NpM / 23 mesi / https://cosie.lepida.it/backoffice/news/gestione/827
 				size 24
 		p
 			font Garamond
@@ -1934,11 +1777,8 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			link-ref in_article_6
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			link-ref in_article_7
+			link-ref in_article_4
+			link-ref in_article_5
 		p
 			font Garamond
 			spacing
@@ -2012,7 +1852,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong></big><br /></p> in NpL-NpM / 23 mesi / https://cosie.lepida.it/backoffice/news/gestione/846
+			+ : <p><big><strong>value 1</strong><br /></big></p> in Pediatra / 14 mesi / https://cosie.lepida.it/backoffice/news/gestione/133
 				size 24
 		p
 			font Garamond
@@ -2053,7 +1893,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><strong>value 3</strong><+>value 4</+><strong>value 5<em>value 6</em></strong><+>value 7</+><strong><em>value 8</em></strong><+>value 9</+></big></p> in NpL-NpM / 2 anni e 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/875
+			+ : <p><big><strong>value 1</strong><strong>value 2</strong><strong>value 3<em>value 4</em></strong><strong><em>value 5</em></strong></big></p> in NpL-NpM / 2 anni e 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/875
 				size 24
 		p
 			font Garamond
@@ -2064,23 +1904,22 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ value&nbsp;3
-				style strong
+			+ value&nbsp;2
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-		+ value&nbsp;6
-			style strong_big
-			bold
-			size 24
-		+ null<+>value&nbsp;7
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;4
+				style big_strong_big
+				bold
+				size 24
+			+ value&nbsp;5
+				style big_strong_big
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -2192,7 +2031,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<em>value 2</em><+>value 3</+></big></p> in Giochi-Movimento / 3 anni e 10 mesi / https://cosie.lepida.it/backoffice/news/gestione/731
+			+ : <p><big><strong>value 1</strong><strong>value 2</strong></big></p> in Giochi-Movimento / 13 mesi / https://cosie.lepida.it/backoffice/news/gestione/482
 				size 24
 		p
 			font Garamond
@@ -2200,56 +2039,12 @@ docx ${category}
 				before 72
 				after 36
 			+ value&nbsp;1
-				style big
+				style big_strong
+				bold
 				size 24
 			+ value&nbsp;2
-				style big_big
-				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
+				style big_strong
 				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big><em>value 1</em><+>value 2</+></big></p> in Giochi-Movimento / 8 mesi / https://cosie.lepida.it/backoffice/news/gestione/471
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_big
-				size 24
-			+ null<+>value&nbsp;2
-				style big
 				size 24
 		p
 			font Garamond
@@ -2363,60 +2158,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <ul><li><big>value 1</big></li><li><big>value 2</big></li><li><big>value 3</big></li><li><big>value 4</big></li></ul> in Giochi-Movimento / 3 anni e 10 mesi / https://cosie.lepida.it/backoffice/news/gestione/731
-				size 24
-		ul
-			font Garamond
-			spacing
-				before 72
-				after 36
-			li
-				+ value&nbsp;1
-					style big
-					size 24
-			li
-				+ value&nbsp;2
-					style big
-					size 24
-			li
-				+ value&nbsp;3
-					style big
-					size 24
-			li
-				+ value&nbsp;4
-					style big
-					size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><em>value 3</em><+>value 4</+></big></p> in Famiglia / 2 anni e 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/554
+			+ : <p><big><strong>value 1</strong><em>value 2</em></big></p> in Famiglia / 2 anni e 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/554
 				size 24
 		p
 			font Garamond
@@ -2427,13 +2169,9 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
+			+ value&nbsp;2
+				style big_big
 				size 24
-			+ value&nbsp;3
-				style big
-				size 24
-			+ null<+>value&nbsp;4
 		p
 			font Garamond
 			spacing
@@ -2512,7 +2250,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><em>value 3</em><+>value 4</+><em>value 5</em><+>value 6</+></big></p> in Famiglia / 14 mesi / https://cosie.lepida.it/backoffice/news/gestione/487
+			+ : <p><big><strong>value 1</strong></big><big><strong>value 2</strong></big></p> in Giochi-Movimento / 5 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/747
 				size 24
 		p
 			font Garamond
@@ -2521,159 +2259,12 @@ docx ${category}
 				after 36
 			+ value&nbsp;1
 				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ value&nbsp;3
-				style big
-				size 24
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style big
-			size 24
-		+ null<+>value&nbsp;6
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <ol><li><big>value 1</big></li><li><big>value 2</big></li></ol> in Famiglia / 16 mesi / https://cosie.lepida.it/backoffice/news/gestione/491
-				size 24
-		ol
-			font Garamond
-			spacing
-				before 72
-				after 36
-			li
-				+ value&nbsp;1
-					style big
-					size 24
-			li
-				+ value&nbsp;2
-					style big
-					size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big><strong>value 1</strong><br /><++>value 2</++></big></p> in Pediatra / 14 mesi / https://cosie.lepida.it/backoffice/news/gestione/133
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_strong
-				bold
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><strong><big>value 1</big></strong><big>value 2<br /><++>value 3</++><br /><++>value 4</++></big></p> in Famiglia / 19 mesi / https://cosie.lepida.it/backoffice/news/gestione/497
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style strong_big
 				bold
 				size 24
 			+ value&nbsp;2
-				style big
+				style big_strong
+				bold
 				size 24
-			+ null<++>value&nbsp;3
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;4
-				br
 		p
 			font Garamond
 			spacing
@@ -2704,7 +2295,51 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><br /><br /><strong>value 3</strong><+>value 4</+></big></p> in Famiglia / 20 mesi / https://cosie.lepida.it/backoffice/news/gestione/500
+			+ : <p><big>value 1<br /></big><br /><big><strong>value 2</strong></big><br /><br /></p> in Famiglia / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/496
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big><strong>value 1</strong><br /><br /><strong>value 2</strong></big></p> in Famiglia / 20 mesi / https://cosie.lepida.it/backoffice/news/gestione/500
 				size 24
 		p
 			font Garamond
@@ -2715,15 +2350,11 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ value&nbsp;3
-				style strong
+			+ value&nbsp;2
+				style big_strong
 				bold
 				size 24
 				br
-			+ null<+>value&nbsp;4
 		p
 			font Garamond
 			spacing
@@ -2754,7 +2385,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <ul><li><big><strong>value 1</strong><+>value 2</+></big></li><li><big><strong>value 3</strong><+>value 4</+></big></li><li><big><strong>value 5</strong><+>value 6</+></big></li></ul> in Giochi-Movimento / 5 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/747
+			+ : <ul><li><big><strong>value 1</strong></big></li><li><big><strong>value 2</strong></big></li><li><big><strong>value 3</strong></big></li></ul> in Giochi-Movimento / 5 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/747
 				size 24
 		ul
 			font Garamond
@@ -2766,17 +2397,16 @@ docx ${category}
 					style big_strong
 					bold
 					size 24
-				+ null<+>value&nbsp;2
-					style big
+			li
+				+ value&nbsp;2
+					style big_strong
+					bold
 					size 24
-		li
-			+ value&nbsp;3
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;4
-				style big
-				size 24
+			li
+				+ value&nbsp;3
+					style big_strong
+					bold
+					size 24
 		p
 			font Garamond
 			spacing
@@ -2807,50 +2437,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><em>value 1</em></big><big><em>value 2</em></big></p> in Famiglia / 3 anni e 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/567
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_big
-				size 24
-			+ value&nbsp;2
-				style big_big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <ul><li><h2><big><strong>value 1</strong><+>value 2</+></big></h2></li></ul> in Famiglia / 3 anni e 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/566
+			+ : <ul><li><h2><big><strong>value 1</strong></big></h2></li></ul> in Famiglia / 3 anni e 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/566
 				size 24
 		ul
 			font Garamond
@@ -2867,10 +2454,6 @@ docx ${category}
 						style h2_big_strong
 						bold
 						size 28
-					+ null<+>value&nbsp;2
-						style h2_big
-						bold
-						size 28
 		p
 			font Garamond
 			spacing
@@ -2901,7 +2484,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><strong>value 3</strong><+>value 4</+><strong>value 5</strong><+>value 6</+></big></p> in Bambino / 19 mesi / https://cosie.lepida.it/backoffice/news/gestione/849
+			+ : <p><big><strong>value 1</strong><strong>value 2</strong><strong>value 3</strong></big></p> in Bambino / 19 mesi / https://cosie.lepida.it/backoffice/news/gestione/849
 				size 24
 		p
 			font Garamond
@@ -2912,19 +2495,14 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ value&nbsp;3
-				style strong
+			+ value&nbsp;2
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;6
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -3053,20 +2631,33 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<br /><++>value 2</++></big></p> in Temi caldi / 1 anno / https://cosie.lepida.it/backoffice/news/gestione/135
+			+ : <ul><li><big>value 1</big></li><li><big>value 2</big></li><li><big>value 3</big></li><li><big>value 4</big></li><li><big>value 5</big></li></ul> in Famiglia / 3 anni e 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/572
 				size 24
-		p
+		ul
 			font Garamond
 			spacing
 				before 72
 				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
+			li
+				+ value&nbsp;1
+					style big
+					size 24
+			li
+				+ value&nbsp;2
+					style big
+					size 24
+			li
+				+ value&nbsp;3
+					style big
+					size 24
+			li
+				+ value&nbsp;4
+					style big
+					size 24
+			li
+				+ value&nbsp;5
+					style big
+					size 24
 		p
 			font Garamond
 			spacing
@@ -3097,7 +2688,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++><br /><strong>value 5</strong><+>value 6</+><br /><++>value 7</++></big></p> in Famiglia / 4 anni e 3 mesi / https://cosie.lepida.it/backoffice/news/gestione/648
+			+ : <p><big>value 1<br /><br /></big><big>value 2</big></p> in Famiglia / 4 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/652
 				size 24
 		p
 			font Garamond
@@ -3105,17 +2696,97 @@ docx ${category}
 				before 72
 				after 36
 			+ value&nbsp;1
+				style big
+				size 24
+			+ value&nbsp;2
+				style big
+				size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><em><strong><big>value 1</big></strong></em></p> in Famiglia / 4 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/652
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big_strong_big
+				bold
+				size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<br /><strong>value 2</strong></big></p> in Temi caldi / 15 giorni / https://cosie.lepida.it/backoffice/news/gestione/812
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+			+ value&nbsp;2
 				style big_strong
 				bold
 				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
 				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
 		p
 			font Garamond
 			spacing
@@ -3146,7 +2817,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><em><strong>value 1</strong></em><+>value 2</+><br /><em><strong>value 3</strong></em><+>value 4</+><br /><em><strong>value 5</strong></em></big><br /></p> in Famiglia / 4 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/652
+			+ : <p><br /><big><em><strong>value 1</strong></em><br /><br /><br /></big></p> in Famiglia / 5 anni / https://cosie.lepida.it/backoffice/news/gestione/653
 				size 24
 		p
 			font Garamond
@@ -3157,223 +2828,67 @@ docx ${category}
 				style big_big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
 				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big><strong>value 1</strong><br /><br /><br /><strong>value 2</strong><br /><strong>value 3</strong><br /><br /><br /><br /><br /><br /><strong>value 4</strong><br /><br /><strong>value 5</strong><br /><br /><br /><br /></big></p> in Famiglia / 5 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/649
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+				br
 			+ value&nbsp;3
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style big_strong
-			bold
-			size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
 				br
-			+ : <p><big>value 1<br /><++>value 2</++><br /><strong>value 3</strong><+>value 4</+><strong>value 5</strong></big></p> in Famiglia / 5 anni / https://cosie.lepida.it/backoffice/news/gestione/653
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ value&nbsp;3
-				style strong
-				bold
-				size 24
-				br
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big><em><strong>value 1</strong></em><+>value 2</+></big></p> in Famiglia / 5 anni / https://cosie.lepida.it/backoffice/news/gestione/653
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><br /><big><em><strong>value 1</strong></em><br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++></big></p> in Famiglia / 5 anni / https://cosie.lepida.it/backoffice/news/gestione/653
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_big_strong
-				bold
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big><strong>value 1</strong><br /><++>value 2</++><br /><++>value 3</++><br /><strong>value 4</strong><br /><strong>value 5</strong><+>value 6</+><br /><++>value 7</++><br /><++>value 8</++><br /><++>value 9</++><br /><++>value 10</++><br /><++>value 11</++><br /><strong>value 12</strong><br /><++>value 13</++><br /><strong>value 14</strong><br /><++>value 15</++><br /><++>value 16</++><br /><++>value 17</++><br /><++>value 18</++></big></p> in Famiglia / 5 anni e 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/649
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
+			+ value&nbsp;4
 				style big_strong
 				bold
 				size 24
-			+ null<++>value&nbsp;2
-				style big
+				br
+			+ value&nbsp;5
+				style big_strong
+				bold
 				size 24
 				br
-			+ null<++>value&nbsp;3
-				br
-		+ value&nbsp;4
-			style strong
-			bold
-			size 24
-			br
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-			br
-		+ null<+>value&nbsp;6
 		p
 			font Garamond
 			spacing
@@ -3450,13 +2965,17 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p>value 1<strong>value 2</strong></p> in Giochi-Movimento / 5 mesi / https://cosie.lepida.it/backoffice/news/gestione/467
+			+ : <p><strong>value 1</strong><strong>value 2</strong></p> in Famiglia / *** not found / https://cosie.lepida.it/backoffice/news/gestione/1032
 				size 24
-		p value&nbsp;1
+		p
 			font Garamond
-			spacing value&nbsp;1
+			spacing
 				before 72
 				after 36
+			+ value&nbsp;1
+				style strong
+				bold
+				size 24
 			+ value&nbsp;2
 				style strong
 				bold
@@ -3491,7 +3010,103 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<br /><strong>value 2</strong><+>value 3</+><br /><strong>value 4</strong><+>value 5</+><strong>value 6</strong><+>value 7</+></big></p> in Bambino / Nascita / https://cosie.lepida.it/backoffice/news/gestione/589
+			+ : <p><big><strong>value 1</strong><br /><br /><strong>value 2</strong><br /></big><br /><big>value 3<br /><strong>value 4</strong></big></p> in Bambino / Nascita / https://cosie.lepida.it/backoffice/news/gestione/589
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;3
+				style big
+				size 24
+				br
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <h2><big><strong>value 1</strong></big><br /></h2> in Bambino / 3 mesi / https://cosie.lepida.it/backoffice/news/gestione/597
+				size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			+ value&nbsp;1
+				style h2_big_strong
+				bold
+				size 28
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<br /><br /><br /><br /><br /><br /><strong>value 2</strong></big></p> in Bambino / 15 giorni / https://cosie.lepida.it/backoffice/news/gestione/590
 				size 24
 		p
 			font Garamond
@@ -3506,20 +3121,6 @@ docx ${category}
 				bold
 				size 24
 				br
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
-				bold
-				size 24
-				br
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;7
 		p
 			font Garamond
 			spacing
@@ -3550,7 +3151,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong></big><br /></p> in Bambino / Nascita / https://cosie.lepida.it/backoffice/news/gestione/589
+			+ : <p><big>value 1<strong>value 2</strong><br /><strong>value 3</strong><br /><strong>value 4</strong><br /><strong>value 5</strong><strong>value 6</strong><br /><strong>value 7</strong><br /><strong>value 8</strong><strong>value 9</strong></big></p> in Bambino / 1 mese / https://cosie.lepida.it/backoffice/news/gestione/596
 				size 24
 		p
 			font Garamond
@@ -3568,47 +3169,32 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong></big><br /></p> in Bambino / Nascita / https://cosie.lepida.it/backoffice/news/gestione/589
+			+ value&nbsp;4
+				style big_strong
+				bold
 				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
+				br
+			+ value&nbsp;5
+				style big_strong
+				bold
 				size 24
-			+ value&nbsp;2
+				br
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;7
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;8
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;9
 				style big_strong
 				bold
 				size 24
@@ -3642,109 +3228,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++><br /><++>value 6</++><br /><strong>value 7</strong></big></p> in Bambino / 15 giorni / https://cosie.lepida.it/backoffice/news/gestione/590
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><br /><++>value 4</++><strong>value 5</strong><+>value 6</+><br /><++>value 7</++><strong>value 8</strong><+>value 9</+><br /><++>value 10</++><strong>value 11</strong><+>value 12</+><strong>value 13</strong><br /><++>value 14</++><strong>value 15</strong><+>value 16</+><br /><++>value 17</++><strong>value 18</strong><+>value 19</+><strong>value 20</strong><+>value 21</+></big></p> in Bambino / 1 mese / https://cosie.lepida.it/backoffice/news/gestione/596
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ value&nbsp;2
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ null<++>value&nbsp;4
-				br
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;6
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p>value 1<big><strong>value 2</strong><+>value 3</+><strong>value 4</strong><+>value 5</+><strong>value 6</strong><+>value 7</+><br /><strong>value 8</strong><br /><strong>value 9</strong><+>value 10</+><br /><++>value 11</++><strong>value 12</strong></big><big>value 13<strong>value 14</strong><br /><++>value 15</++><br /><++>value 16</++><br /><strong>value 17</strong><+>value 18</+><br /><strong>value 19</strong><+>value 20</+></big></p> in Bambino / 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/592
+			+ : <p>value 1<big><strong>value 2</strong><strong>value 3</strong><strong>value 4</strong><br /><strong>value 5</strong><br /><strong>value 6</strong><br /><strong>value 7</strong></big><big>value 8<strong>value 9</strong><br /><br /><br /><strong>value 10</strong><br /><strong>value 11</strong></big></p> in Bambino / 2 mesi / https://cosie.lepida.it/backoffice/news/gestione/592
 				size 24
 		p value&nbsp;1
 			font Garamond
@@ -3755,19 +3239,46 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
+			+ value&nbsp;3
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;7
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;7
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;8
+				style big
+				size 24
+			+ value&nbsp;9
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;10
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;11
+				style big_strong
+				bold
+				size 24
+				br
 		p
 			font Garamond
 			spacing
@@ -3798,7 +3309,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><strong>value 4</strong><+>value 5</+><strong>value 6</strong><+>value 7</+></big><br /></p> in Bambino / 3 mesi / https://cosie.lepida.it/backoffice/news/gestione/597
+			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong><strong>value 4</strong><br /></big></p> in Bambino / 11 mesi / https://cosie.lepida.it/backoffice/news/gestione/605
 				size 24
 		p
 			font Garamond
@@ -3812,19 +3323,14 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
+			+ value&nbsp;3
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;7
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -3896,7 +3402,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><strong><big>value 1</big></strong><br /><big>value 2<strong>value 3</strong><+>value 4</+><strong>value 5</strong><+>value 6</+></big></p> in Bambino / 4 mesi / https://cosie.lepida.it/backoffice/news/gestione/598
+			+ : <p><strong><big>value 1</big></strong><br /><big>value 2<strong>value 3</strong><strong>value 4</strong></big></p> in Bambino / 4 mesi / https://cosie.lepida.it/backoffice/news/gestione/598
 				size 24
 		p
 			font Garamond
@@ -3915,55 +3421,195 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;4
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big><strong>value 1</strong><strong>value 2</strong><strong>value 3</strong><br /><strong>value 4</strong><strong>value 5<br /></strong></big><br /></p> in Bambino / 5 mesi / https://cosie.lepida.it/backoffice/news/gestione/599
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big><strong>value 1</strong><strong>value 2</strong><strong>value 3</strong><br /><br /><strong>value 4</strong></big></p> in Bambino / 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/600
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong><strong>value 4</strong><strong>value 5</strong><br /><strong>value 6</strong><strong>value 7</strong><strong>value 8</strong><br /><strong>value 9</strong></big></p> in Bambino / 7 mesi / https://cosie.lepida.it/backoffice/news/gestione/601
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
 				style big
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;4
+				style big_strong
+				bold
 				size 24
 			+ value&nbsp;5
-				style strong
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;6
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
+			+ value&nbsp;6
+				style big_strong
 				bold
 				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
 				br
-			+ : <h2><br /><strong>value 1</strong></h2> in Bambino / 5 mesi / https://cosie.lepida.it/backoffice/news/gestione/599
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			+ value&nbsp;1
-				style h2_strong
+			+ value&nbsp;7
+				style big_strong
 				bold
-				size 28
+				size 24
+			+ value&nbsp;8
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;9
+				style big_strong
+				bold
+				size 24
 				br
 		p
 			font Garamond
@@ -3995,7 +3641,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><br /><big>value 1<strong>value 2</strong><+>value 3</+><strong>value 4</strong><+>value 5</+><strong>value 6</strong><+>value 7</+><strong>value 8</strong><+>value 9</+><strong>value 10</strong><+>value 11</+><strong>value 12</strong><+>value 13</+></big></p> in Bambino / 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/600
+			+ : <p><big>value 1<strong>value 2</strong><br /><strong>value 3</strong><br /><br /><strong>value 4</strong><br /><br /><strong>value 5</strong><strong>value 6</strong></big><br /></p> in Bambino / 8 mesi / https://cosie.lepida.it/backoffice/news/gestione/602
 				size 24
 		p
 			font Garamond
@@ -4005,24 +3651,29 @@ docx ${category}
 			+ value&nbsp;1
 				style big
 				size 24
-				br
 			+ value&nbsp;2
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
+			+ value&nbsp;3
+				style big_strong
+				bold
 				size 24
+				br
 			+ value&nbsp;4
-				style strong
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;7
+				br
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -4053,7 +3704,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><strong>value 3</strong><+>value 4</+><strong>value 5</strong><+>value 6</+><strong>value 7</strong><+>value 8</+><br /><strong>value 9</strong><strong>value 10</strong><+>value 11</+><strong>value 12</strong></big><br /></p> in Bambino / 7 mesi / https://cosie.lepida.it/backoffice/news/gestione/601
+			+ : <p><br /><big><strong>value 1</strong><br /><strong>value 2</strong><br /><strong>value 3</strong><strong>value 4</strong><br /><strong>value 5</strong><strong>value 6</strong></big></p> in Bambino / 11 mesi / https://cosie.lepida.it/backoffice/news/gestione/605
 				size 24
 		p
 			font Garamond
@@ -4064,400 +3715,29 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ value&nbsp;3
-				style strong
+			+ value&nbsp;2
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;6
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><strong>value 3</strong><strong>value 4</strong><br /><++>value 5</++><strong>value 6</strong><+>value 7</+><strong>value 8</strong></big></p> in Bambino / 8 mesi / https://cosie.lepida.it/backoffice/news/gestione/602
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
+			+ value&nbsp;3
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ value&nbsp;3
-				style strong
-				bold
-				size 24
+				br
 			+ value&nbsp;4
-				style strong
-				bold
-				size 24
-			+ null<++>value&nbsp;5
-				br
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;7
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><strong>value 4</strong></big><br /></p> in Bambino / 1 anno / https://cosie.lepida.it/backoffice/news/gestione/607
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ value&nbsp;2
 				style big_strong
 				bold
-				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
-				bold
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><br /><big><strong>value 1</strong><+>value 2</+><strong>value 3</strong><+>value 4</+><strong>value 5</strong><+>value 6</+><strong>value 7</strong><+>value 8</+><strong>value 9</strong><+>value 10</+></big></p> in Bambino / 10 mesi / https://cosie.lepida.it/backoffice/news/gestione/604
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ value&nbsp;3
-				style strong
-				bold
-				size 24
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;6
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><br /><big><strong>value 1</strong><+>value 2</+><br /><++>value 3</++><strong>value 4</strong><br /><strong>value 5</strong><+>value 6</+><strong>value 7</strong><br /><strong>value 8</strong><strong>value 9</strong></big></p> in Bambino / 11 mesi / https://cosie.lepida.it/backoffice/news/gestione/605
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ null<++>value&nbsp;3
-				br
-		+ value&nbsp;4
-			style strong
-			bold
-			size 24
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-			br
-		+ null<+>value&nbsp;6
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><br /><++>value 4</++><br /><++>value 5</++></big></p> in Temi caldi / 19 mesi / https://cosie.lepida.it/backoffice/news/gestione/137
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ value&nbsp;2
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ null<++>value&nbsp;4
-				br
-		+ null<++>value&nbsp;5
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1</big><+>value 2</+><strong>value 3</strong><strong>value 4</strong><+>value 5</+><strong>value 6</strong><+>value 7</+></p> in Bambino / 13 mesi / https://cosie.lepida.it/backoffice/news/gestione/832
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<+>value&nbsp;2
-		+ value&nbsp;3
-			style strong
-			bold
-			size 24
-		+ value&nbsp;4
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;5
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong><+>value 4</+><strong>value 5</strong><+>value 6</+><strong>value 7</strong></big></p> in Bambino / 14 mesi / https://cosie.lepida.it/backoffice/news/gestione/833
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ value&nbsp;2
-				style big_strong
-				bold
-				size 24
-			+ value&nbsp;3
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;4
-				style big
 				size 24
 			+ value&nbsp;5
-				style strong
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;6
-		+ value&nbsp;7
-			style strong
-			bold
-			size 24
+				br
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -4488,48 +3768,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <h2><span><strong>value 1</strong></span></h2> in Bambino / 19 mesi / https://cosie.lepida.it/backoffice/news/gestione/849
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			+ value&nbsp;1
-				style h2_span_strong
-				bold
-				size 28
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><strong>value 4</strong><+>value 5</+><strong>value 6</strong><+>value 7</+><strong>value 8</strong><+>value 9</+><strong>value 10</strong><+>value 11</+><strong>value 12</strong><+>value 13</+></big></p> in Bambino / 20 mesi / https://cosie.lepida.it/backoffice/news/gestione/852
+			+ : <p><big>value 1<strong>value 2</strong><br /><br /></big></p> in Temi caldi / 19 mesi / https://cosie.lepida.it/backoffice/news/gestione/137
 				size 24
 		p
 			font Garamond
@@ -4543,19 +3782,6 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
-				bold
-				size 24
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;7
 		p
 			font Garamond
 			spacing
@@ -4586,7 +3812,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><strong>value 3</strong><+>value 4</+><br /></big></p> in Bambino / 3 anni / https://cosie.lepida.it/backoffice/news/gestione/690
+			+ : <p><big><strong>value 1</strong><strong>value 2</strong><strong>value 3</strong><strong>value 4</strong><strong>value 5</strong><strong>value 6</strong></big></p> in Bambino / 20 mesi / https://cosie.lepida.it/backoffice/news/gestione/852
 				size 24
 		p
 			font Garamond
@@ -4597,14 +3823,26 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
+			+ value&nbsp;2
+				style big_strong
+				bold
 				size 24
 			+ value&nbsp;3
-				style strong
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;4
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -4635,7 +3873,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><strong>value 4</strong></big></p> in Giochi-Movimento / 16 mesi / https://cosie.lepida.it/backoffice/news/gestione/485
+			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong><strong>value 4</strong><strong>value 5</strong><strong>value 6</strong><strong>value 7</strong></big></p> in Bambino / 20 mesi / https://cosie.lepida.it/backoffice/news/gestione/852
 				size 24
 		p
 			font Garamond
@@ -4649,455 +3887,26 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
-				bold
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <h2><big><strong>value 1</strong><+>value 2</+></big></h2> in Bambino / 6 anni / https://cosie.lepida.it/backoffice/news/gestione/1011
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			+ value&nbsp;1
-				style h2_big_strong
-				bold
-				size 28
-			+ null<+>value&nbsp;2
-				style h2_big
-				bold
-				size 28
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++><br /><++>value 6</++><br /><++>value 7</++><br /><++>value 8</++></big></p> in Pediatra / 1 anno / https://cosie.lepida.it/backoffice/news/gestione/146
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++><br /><++>value 6</++><br /><++>value 7</++><br /><++>value 8</++><br /><++>value 9</++><br /><++>value 10</++></big></p> in Temi caldi / 4 mesi / https://cosie.lepida.it/backoffice/news/gestione/157
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++><a>value 6</a><+>value 7</+></big></p> in Pediatra / 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/153
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <h2><strong><big>value 1</big><+>value 2</+></strong></h2> in Pediatra / 1 anno / https://cosie.lepida.it/backoffice/news/gestione/146
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			+ value&nbsp;1
-				style h2_strong_big
-				bold
-				size 28
-			+ null<+>value&nbsp;2
-				style h2_strong
-				bold
-				size 28
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++><br /><++>value 6</++><br /><++>value 7</++><br /><++>value 8</++><br /><++>value 9</++><br /><++>value 10</++><br /><++>value 11</++><br /><++>value 12</++></big></p> in Pediatra / 14 mesi / https://cosie.lepida.it/backoffice/news/gestione/133
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++><br /><++>value 6</++><br /><++>value 7</++></big><br /></p> in Pediatra / 14 mesi / https://cosie.lepida.it/backoffice/news/gestione/133
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big><strong>value 1</strong><br /><++>value 2</++><br /><strong>value 3</strong><br /><++>value 4</++><br /><++>value 5</++></big></p> in Pediatra / 15 mesi / https://cosie.lepida.it/backoffice/news/gestione/134
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_strong
-				bold
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
 			+ value&nbsp;3
-				style strong
-				bold
-				size 24
-				br
-			+ null<++>value&nbsp;4
-				br
-		+ null<++>value&nbsp;5
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><strong>value 4</strong><+>value 5</+><strong>value 6</strong><br /><++>value 7</++><br /><++>value 8</++><br /><++>value 9</++><br /><++>value 10</++><br /><strong>value 11</strong><br /><++>value 12</++></big></p> in Pediatra / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/670
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ value&nbsp;2
 				style big_strong
 				bold
-				size 24
-			+ null<+>value&nbsp;3
-				style big
 				size 24
 			+ value&nbsp;4
-				style strong
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;5
-		+ value&nbsp;6
-			style strong
-			bold
-			size 24
-		+ null<++>value&nbsp;7
-			br
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;7
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -5128,7 +3937,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><br /><++>value 4</++></big><br /></p> in Pediatra / 3 anni e 8 mesi / https://cosie.lepida.it/backoffice/news/gestione/150
+			+ : <p><big><strong>value 1</strong><strong>value 2</strong><br /></big></p> in Bambino / 3 anni / https://cosie.lepida.it/backoffice/news/gestione/690
 				size 24
 		p
 			font Garamond
@@ -5136,17 +3945,13 @@ docx ${category}
 				before 72
 				after 36
 			+ value&nbsp;1
-				style big
+				style big_strong
+				bold
 				size 24
 			+ value&nbsp;2
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ null<++>value&nbsp;4
-				br
 		p
 			font Garamond
 			spacing
@@ -5177,7 +3982,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><br /><strong>value 4</strong><+>value 5</+></big></p> in Temi caldi / Nascita / https://cosie.lepida.it/backoffice/news/gestione/813
+			+ : <p><big><strong>value 1</strong><strong>value 2</strong><strong>value 3</strong><strong>value 4</strong><strong>value 5</strong></big></p> in Bambino / 6 anni / https://cosie.lepida.it/backoffice/news/gestione/1011
 				size 24
 		p
 			font Garamond
@@ -5185,172 +3990,25 @@ docx ${category}
 				before 72
 				after 36
 			+ value&nbsp;1
-				style big
+				style big_strong
+				bold
 				size 24
 			+ value&nbsp;2
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ value&nbsp;4
-				style strong
-				bold
-				size 24
-				br
-			+ null<+>value&nbsp;5
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<strong>value 2</strong><+>value 3</+><br /><++>value 4</++></big></p> in Temi caldi / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/665
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ value&nbsp;2
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;3
-				style big
-				size 24
-			+ null<++>value&nbsp;4
-				br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<br /><++>value 2</++><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++><br /><++>value 6</++><br /><strong>value 7</strong><+>value 8</+><br /><++>value 9</++><br /><++>value 10</++><br /><++>value 11</++></big></p> in Temi caldi / 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/162
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big>value 1<br /><++>value 2</++><strong>value 3</strong><+>value 4</+><strong>value 5</strong><+>value 6</+></big></p> in Temi caldi / 18 mesi / https://cosie.lepida.it/backoffice/news/gestione/136
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big
-				size 24
-			+ null<++>value&nbsp;2
-				style big
-				size 24
-				br
 			+ value&nbsp;3
-				style strong
+				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style strong
-			bold
-			size 24
-		+ null<+>value&nbsp;6
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -5381,7 +4039,88 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><br /><++>value 3</++><br /><++>value 4</++><br /><++>value 5</++><br /><++>value 6</++><br /><++>value 7</++></big></p> in Temi caldi / 3 anni e 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/765
+			+ : <p><big>value 1<br /><br /><br /><br /><br /><br /><br /><br /><br /></big></p> in Temi caldi / 4 mesi / https://cosie.lepida.it/backoffice/news/gestione/157
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<br /><br /><br /><br /><a>value 2</a></big></p> in Pediatra / 9 mesi / https://cosie.lepida.it/backoffice/news/gestione/153
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+			link-ref in_article_6
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big><strong>value 1</strong><br /><br /><br /><br /><br /><br /><br /><br /></big></p> in Pediatra / 13 mesi / https://cosie.lepida.it/backoffice/news/gestione/131
 				size 24
 		p
 			font Garamond
@@ -5392,13 +4131,6 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
 		p
 			font Garamond
 			spacing
@@ -5429,7 +4161,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+><br /><++>value 3</++><br /><++>value 4</++></big></p> in Temi caldi / 3 anni e 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/765
+			+ : <p><big><strong>value 1</strong><br /><br /><br /></big></p> in Temi caldi / 3 anni e 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/765
 				size 24
 		p
 			font Garamond
@@ -5440,13 +4172,6 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ null<++>value&nbsp;3
-				br
-		+ null<++>value&nbsp;4
-			br
 		p
 			font Garamond
 			spacing
@@ -5477,7 +4202,334 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><em><big><strong>value 1</strong><+>value 2</+></big></em></p> in Giochi-Movimento / 1 anno / https://cosie.lepida.it/backoffice/news/gestione/479
+			+ : <p><big><strong>value 1</strong><br /><br /><strong>value 2</strong><br /><br /></big></p> in Pediatra / 15 mesi / https://cosie.lepida.it/backoffice/news/gestione/134
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong><strong>value 4</strong><br /><br /><br /><br /><br /><strong>value 5</strong><br /></big></p> in Pediatra / 17 mesi / https://cosie.lepida.it/backoffice/news/gestione/670
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<strong>value 2</strong><br /><strong>value 3</strong><br /><strong>value 4</strong><br /><br /><br /><br /><br /><br /></big></p> in Pediatra / *** not found / https://cosie.lepida.it/backoffice/news/gestione/658
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><br /><big>value 1<br /><br /><strong>value 2</strong><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></big></p> in Temi caldi / 3 mesi / https://cosie.lepida.it/backoffice/news/gestione/156
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+				br
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<br /><strong>value 2</strong><br /></big></p> in Temi caldi / 16 mesi / https://cosie.lepida.it/backoffice/news/gestione/663
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><big>value 1<strong>value 2</strong><br /><strong>value 3</strong><br /><strong>value 4</strong><br /><strong>value 5</strong><br /><strong>value 6</strong><br /><br /><br /><br /><strong>value 7</strong><br /><strong>value 8</strong><br /><strong>value 9</strong></big></p> in Temi caldi / 20 mesi / https://cosie.lepida.it/backoffice/news/gestione/664
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ value&nbsp;1
+				style big
+				size 24
+			+ value&nbsp;2
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;3
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;7
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;8
+				style big_strong
+				bold
+				size 24
+				br
+			+ value&nbsp;9
+				style big_strong
+				bold
+				size 24
+				br
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			link-ref testo_433
+		h2 X mesi
+		p
+			font Garamond
+			spacing
+				before 288
+				after 144
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla X alla X
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : <p><em><big><strong>value 1</strong></big></em></p> in Giochi-Movimento / 1 anno / https://cosie.lepida.it/backoffice/news/gestione/479
 				size 24
 		p
 			font Garamond
@@ -5488,9 +4540,6 @@ docx ${category}
 				style big_big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
-				style big_big
-				size 24
 		p
 			font Garamond
 			spacing
@@ -5521,57 +4570,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><em>value 1</em><+>value 2</+><em>value 3</em><+>value 4</+><em>value 5</em></big></p> in Giochi-Movimento / 8 mesi / https://cosie.lepida.it/backoffice/news/gestione/471
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ value&nbsp;1
-				style big_big
-				size 24
-			+ null<+>value&nbsp;2
-				style big
-				size 24
-			+ value&nbsp;3
-				style big
-				size 24
-			+ null<+>value&nbsp;4
-		+ value&nbsp;5
-			style big
-			size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <p><big><em>value 1</em><strong>value 2</strong><+>value 3</+></big></p> in Giochi-Movimento / 8 mesi / https://cosie.lepida.it/backoffice/news/gestione/471
+			+ : <p><big><em>value 1</em><em>value 2</em><em>value 3</em></big></p> in Giochi-Movimento / 8 mesi / https://cosie.lepida.it/backoffice/news/gestione/471
 				size 24
 		p
 			font Garamond
@@ -5582,11 +4581,10 @@ docx ${category}
 				style big_big
 				size 24
 			+ value&nbsp;2
-				style big_strong
-				bold
+				style big_big
 				size 24
-			+ null<+>value&nbsp;3
-				style big
+			+ value&nbsp;3
+				style big_big
 				size 24
 		p
 			font Garamond
@@ -5618,21 +4616,36 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <h3><strong>value 1</strong><+>value 2</+></h3> in Giochi-Movimento / 15 mesi / https://cosie.lepida.it/backoffice/news/gestione/484
+			+ : <p><big>value 1<strong>value 2</strong><strong>value 3</strong><strong>value 4</strong></big><big><strong>value 5</strong><strong>value 6</strong></big></p> in Giochi-Movimento / 14 mesi / https://cosie.lepida.it/backoffice/news/gestione/483
 				size 24
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 72
+				after 36
 			+ value&nbsp;1
-				style h2_strong
+				style big
+				size 24
+			+ value&nbsp;2
+				style big_strong
 				bold
-				size 28
-			+ null<+>value&nbsp;2
-				style h2
+				size 24
+			+ value&nbsp;3
+				style big_strong
 				bold
-				size 28
+				size 24
+			+ value&nbsp;4
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;5
+				style big_strong
+				bold
+				size 24
+			+ value&nbsp;6
+				style big_strong
+				bold
+				size 24
 		p
 			font Garamond
 			spacing
@@ -5810,7 +4823,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+></big><br /><big>value 3</big><br /><big>value 4</big><big>value 5</big></p> in Giochi-Movimento / 19 mesi / https://cosie.lepida.it/backoffice/news/gestione/654
+			+ : <p><big><strong>value 1</strong></big><br /><big>value 2</big><br /><big>value 3</big><big>value 4</big></p> in Giochi-Movimento / 19 mesi / https://cosie.lepida.it/backoffice/news/gestione/654
 				size 24
 		p
 			font Garamond
@@ -5821,20 +4834,17 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ null<+>value&nbsp;2
+			+ value&nbsp;2
 				style big
 				size 24
-		+ value&nbsp;3
-			style big
-			size 24
-			br
-		+ value&nbsp;4
-			style big
-			size 24
-			br
-		+ value&nbsp;5
-			style big
-			size 24
+				br
+			+ value&nbsp;3
+				style big
+				size 24
+				br
+			+ value&nbsp;4
+				style big
+				size 24
 		p
 			font Garamond
 			spacing
@@ -5865,7 +4875,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <ul><li><big>value 1</big></li><li><big>value 2<em>value 3</em><+>value 4</+></big></li><li><big>value 5</big></li><li><big>value 6</big></li><li><big>value 7</big></li><li><big>value 8</big></li><li><big>value 9</big></li></ul> in Giochi-Movimento / 22 mesi / https://cosie.lepida.it/backoffice/news/gestione/687
+			+ : <ul><li><big>value 1</big></li><li><big>value 2<em>value 3</em></big></li><li><big>value 4</big></li><li><big>value 5</big></li><li><big>value 6</big></li><li><big>value 7</big></li><li><big>value 8</big></li></ul> in Giochi-Movimento / 22 mesi / https://cosie.lepida.it/backoffice/news/gestione/687
 				size 24
 		ul
 			font Garamond
@@ -5883,29 +4893,26 @@ docx ${category}
 				+ value&nbsp;3
 					style big_big
 					size 24
-				+ null<+>value&nbsp;4
+			li
+				+ value&nbsp;4
 					style big
 					size 24
-		li
-			+ value&nbsp;5
-				style big
-				size 24
-		li
-			+ value&nbsp;6
-				style big
-				size 24
-		li
-			+ value&nbsp;7
-				style big
-				size 24
-		li
-			+ value&nbsp;8
-				style big
-				size 24
-		li
-			+ value&nbsp;9
-				style big
-				size 24
+			li
+				+ value&nbsp;5
+					style big
+					size 24
+			li
+				+ value&nbsp;6
+					style big
+					size 24
+			li
+				+ value&nbsp;7
+					style big
+					size 24
+			li
+				+ value&nbsp;8
+					style big
+					size 24
 		p
 			font Garamond
 			spacing
@@ -6075,7 +5082,7 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : <p><big><strong>value 1</strong><+>value 2</+></big><+>value 3</+></p> in Giochi-Movimento / 3 anni e 6 mesi / https://cosie.lepida.it/backoffice/news/gestione/728
+			+ : <p><big>value 1<em>value 2</em><a>value 3</a></big></p> in Giochi-Movimento / 3 anni e 10 mesi / https://cosie.lepida.it/backoffice/news/gestione/731
 				size 24
 		p
 			font Garamond
@@ -6083,66 +5090,12 @@ docx ${category}
 				before 72
 				after 36
 			+ value&nbsp;1
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;2
 				style big
 				size 24
-		+ null<+>value&nbsp;3
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_433
-		h2 X mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
+			+ value&nbsp;2
+				style big_big
 				size 24
-			+ : dalla X alla X
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : <ul><li><big><strong>value 1</strong><+>value 2</+></big></li><li><big><strong>value 3</strong><+>value 4</+></big></li><li><big><strong>value 5</strong><+>value 6</+></big></li><li><big><strong>value 7</strong><+>value 8</+></big></li></ul> in Giochi-Movimento / 4 anni e 3 mesi / https://cosie.lepida.it/backoffice/news/gestione/732
-				size 24
-		ul
-			font Garamond
-			spacing
-				before 72
-				after 36
-			li
-				+ value&nbsp;1
-					style big_strong
-					bold
-					size 24
-				+ null<+>value&nbsp;2
-					style big
-					size 24
-		li
-			+ value&nbsp;3
-				style big_strong
-				bold
-				size 24
-			+ null<+>value&nbsp;4
-				style big
-				size 24
+			link-ref in_article_7
 		p
 			font Garamond
 			spacing

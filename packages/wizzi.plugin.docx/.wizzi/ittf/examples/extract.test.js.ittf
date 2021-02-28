@@ -79,6 +79,8 @@ module
     function extractDeep
         param node
         param ctx
+        if node.name == '+' || node.name == '++'
+            return
         _ ctx.spath.push(node.name)
         if node.name == 'br'
             _ ctx.shtml.push('<br />')
@@ -92,6 +94,7 @@ module
             _ extractDeep
                 @ child
                 @ ctx
+
         if node.name != 'br'
             _ ctx.shtml.push('</' + node.name + '>')
 

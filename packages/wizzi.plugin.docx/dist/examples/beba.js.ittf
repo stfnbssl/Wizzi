@@ -10,9 +10,9 @@ module
     const Big_Size = 24
     const Normal_Size = 24
     const P_spacing_before = 20 * 72 * 0.05
-    const P_spacing_before_h2 = 20 * 72 * 0.2
+    const P_spacing_before_h2 = 20 * 72 * 0.3
     const P_spacing_after = 20 * 72 * 0.025
-    const P_spacing_after_h2 = 20 * 72 * 0.1
+    const P_spacing_after_h2 = 20 * 72 * 0.05
     const IMAGES_BASE_PATH = "C:\\Users\\Stefano Bassoli\\Pictures\\Cosie\\Backend"
     
     v08/examples/plugin(&md)
@@ -39,15 +39,16 @@ module
                 $*
                 @ 'Tutti a tavola'
                 @ 'NpL-NpM'
-                @ 'Famiglia'
                 *$
+                @ 'Famiglia'
+                $*
                 $$ @ 'Bambino'
                 $*
                 @ 'Pediatra'
                 @ 'Temi caldi'
                 @ 'Giochi-Movimento'
                 *$
-                @ "Test"
+                $$ @ "Test"
 
             f_cb_no_throw( result )
                 if err
@@ -301,7 +302,7 @@ module
                 # log 'is ', item.name, item.needsParagraph
                 if item.needsParagraph
                     _ buildPara
-                        @ item.value
+                        @ ''
                         @ item.name
                         @ indent + 1
                         @ sb

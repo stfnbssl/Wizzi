@@ -54,7 +54,6 @@ $group
     function preprocessTesto
         param item
         param ctx
-        # log 'enter preprocessTesto', item.children.length
         if item.name == 'p' && ctx.stack.indexOf('li') > -1
             set item.alreadyIsParagraph = true
         if item.name == 'h1' || item.name == 'h3'
@@ -72,23 +71,22 @@ $group
                 log 'preprocessTesto.span attribute', k, item.attribs[k]
         if item.name == 'h2' || item.name == 'ul' || item.name == 'ol'
             # log 'is h2', 'stack', ctx.stack.join(',')
-            if ctx.stack.indexOf('p') < 0
+            if ctx.stack.indexOf('p') < 0 && ctx.stack.indexOf('li') < 0
                 # log 'setting needsParagraph'
                 set item.needsParagraph = true
         _ ctx.stack.push(item.name)
-        _ item.children.forEach
-            =>
-                param child
-                param index
-                set child.parent = item
-                # log 'preprocessTesto', child.name, child.value
-                # if (index < item.children.length-1) && item.children[index+1].name == "br"
-                if child.name == "br" && (index < item.children.length-1)
-                    # set child.break = true
-                    set item.children[index+1].break = true
-                    # set item.children[index+1].deleted = true
-                    set child.deleted = true
-                _ preprocessTesto
-                    @ child
-                    @ ctx
+        var index = 0
+        foreach child in item.children
+            set index++
+            set child.parent = item
+            # log 'preprocessTesto', child.name, child.value
+            # if (index < item.children.length-1) && item.children[index+1].name == "br"
+            if child.name == "br" && (index < item.children.length-1)
+                # set child.break = true
+                set item.children[index+1].break = true
+                # set item.children[index+1].deleted = true
+                set child.deleted = true
+            _ preprocessTesto
+                @ child
+                @ ctx
         _ ctx.stack.pop

@@ -40,7 +40,7 @@ $group
             href https://stfnbssl.github.io/wizzi/docs/wizziplugins.html
         span .
     br
-    p You can find a few samples in the /examples folder, but you can find more in the 
+    p You can find a few docxs in the /examples folder, but you can find more in the 
         a demo package
             href https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-demo/.wizzi/ittf/examples/advanced/plugins
         span .

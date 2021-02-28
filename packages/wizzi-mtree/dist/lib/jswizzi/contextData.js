@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\contextData.js.ittf
 */
 'use strict';
@@ -84,7 +85,7 @@ var ContextData = (function () {
     ContextData.prototype.setValues = function(values) {
         values = (values || {});
         for (var k in values) {
-            this.declare(k, values[k]);
+            this.declare(k, values[k])
         }
     }
     // Set value only if name is declared

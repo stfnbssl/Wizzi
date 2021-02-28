@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\quick\loader\evaluator.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var mocks = require('../../mocks/misc');
@@ -52,10 +53,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("evaluator", function() {
@@ -65,7 +66,7 @@ describe("evaluator", function() {
             storeKind: 'filesystem'
         }, function(err, notUsed) {
             done();
-        });
+        })
     });
     it("should load and evaluate", function(done) {
         var content_filepath = path.join(__dirname, 'repo', 'data', 'evaluator_1.tests.ittf');
@@ -106,7 +107,7 @@ describe("evaluator", function() {
             expect(node.v).to.be.a('string');
             expect(node.v).to.be('INTER');
             done();
-        });
+        })
     });
     it("should throw an error evaluating", function(done) {
         var content_filepath = path.join(__dirname, 'repo', 'data', 'evaluator_error_1.tests.ittf');
@@ -116,7 +117,7 @@ describe("evaluator", function() {
             expect(err.data).to.be.an('object');
             expect(err.data.errorName).to.be('IttfEvaluationError');
             done();
-        });
+        })
     });
     it("should throw an error evaluating", function(done) {
         var content_filepath = path.join(__dirname, 'repo', 'data', 'evaluator_error_2.tests.ittf');
@@ -128,7 +129,7 @@ describe("evaluator", function() {
             expect(err.data).to.be.an('object');
             expect(err.data.errorName).to.be('JsWizziError');
             done();
-        });
+        })
     });
     it("should throw an error evaluating", function(done) {
         var content_filepath = path.join(__dirname, 'repo', 'data', 'evaluator_error_3.tests.ittf');
@@ -140,6 +141,6 @@ describe("evaluator", function() {
             expect(err.data).to.be.an('object');
             expect(err.data.errorName).to.be('JsWizziError');
             done();
-        });
+        })
     });
 });

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader\old\step_2_go.js.ittf
 */
 'use strict';
@@ -13,10 +14,8 @@ var file = vfile();
 var mocks = require('wizzi-utils').mocks;
 var repo = mocks.repo;
 var loader_appender = function(step_callback) {
-    heading1('EXAMPLE');
-    /**
-         EXAMPLE: appender
-    */
+    heading1('EXAMPLE')
+    //
     var mocks = require('../../tests/loader/mocks/misc');
     var MTreeBrickProvider = require('../../lib/loader/mTreeBrickProvider');
     var mixer = require('../../lib/loader/mixer');
@@ -79,7 +78,7 @@ var loader_appender = function(step_callback) {
                         }
                         throw new Error(err.message);
                     }
-                    printValue(name + ' mixedModel', mixedModel.dump(), 'dashes');
+                    printValue(name + ' mixedModel', mixedModel.dump(), 'dashes')
                     appender(mixedModel, function(err, appendedModel) {
                         if (err) {
                             console.log('err', err);
@@ -94,13 +93,13 @@ var loader_appender = function(step_callback) {
                             }
                             throw new Error(err.message);
                         }
-                        printValue(name + ' source', sourceContent, 'dashes');
-                        printValue(name + ' toIttf', appendedModel.toIttf(), 'dashes');
-                    });
-                });
-            });
+                        printValue(name + ' source', sourceContent, 'dashes')
+                        printValue(name + ' toIttf', appendedModel.toIttf(), 'dashes')
+                    })
+                })
+            })
         }
-    });
+    })
 };
 loader_appender.__name = 'loader_appender';
 function heading1(text) {
@@ -130,7 +129,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }

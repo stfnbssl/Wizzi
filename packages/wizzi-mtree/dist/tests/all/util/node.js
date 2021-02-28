@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\util\node.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var ittfTree = require('wizzi-utils').IttfMTreeEx;
@@ -46,10 +47,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("util.node", function() {
@@ -239,13 +240,13 @@ describe("util.node", function() {
                             return callback(err);
                         }
                         var toremove = original.find(item.name);
-                        node.remove(toremove);
+                        node.remove(toremove)
                         // log 'toremove', toremove.toString()
                         // log 'original after', original.toString()
                         // log 'expected', expected.toString()
                         expect(original.equals(expected)).to.be(true);
-                    });
-                });
+                    })
+                })
             }
             if (item.action === 'replace') {
                 ittfTree.createFrom(item.original, function(err, original) {
@@ -263,14 +264,14 @@ describe("util.node", function() {
                             }
                             var toreplace = original.find(item.name);
                             // log 'toreplace', toreplace.toString()
-                            node.replace(toreplace, [replacer]);
+                            node.replace(toreplace, [replacer])
                             // log 'replacer', replacer.toString()
                             // log 'original after', original.toString()
                             // log 'expected', expected.toString()
                             expect(original.equals(expected)).to.be(true);
-                        });
-                    });
-                });
+                        })
+                    })
+                })
             }
         }
     });
@@ -289,7 +290,7 @@ describe("util.node", function() {
                     expect(found).to.be.an('object');
                     // loose equality works for objects
                     expect(item.expected).to.eql(found.id);
-                });
+                })
             }
         }
     });

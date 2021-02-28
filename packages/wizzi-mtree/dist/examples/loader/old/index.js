@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader\old\index.js.ittf
 */
 'use strict';
@@ -14,15 +15,13 @@ var mocks = require('wizzi-utils').mocks;
 var repo = mocks.repo;
 var packageIndex = require('../../index');
 var index = function(step_callback) {
-    heading1('EXAMPLE');
-    /**
-         EXAMPLE: index
-    */
+    heading1('EXAMPLE')
+    //
     var loadMTree = packageIndex.createLoadMTree(repo.getCreateFilesystemStore(), {
         raw: false
     });
     exec('multi_hook', () => {
-    });
+    })
     function exec(name, callback) {
         console.log('exec', name);
         var ctx = {
@@ -50,9 +49,9 @@ var index = function(step_callback) {
                 }
                 throw new Error(err.message);
             }
-            printValue('mTree.nodes[0]', mTree.nodes[0]);
-            printValue('mTree.toIttf()', mTree.toIttf());
-        });
+            printValue('mTree.nodes[0]', mTree.nodes[0])
+            printValue('mTree.toIttf()', mTree.toIttf())
+        })
     }
 };
 index.__name = 'index';
@@ -83,7 +82,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }

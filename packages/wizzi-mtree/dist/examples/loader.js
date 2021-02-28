@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader.js.ittf
 */
 'use strict';
@@ -14,7 +15,7 @@ var mocks = require('wizzi-utils').mocks;
 var repo = mocks.repo;
 var packageIndex = require('../index');
 var loader = function(step_callback) {
-    heading1('EXAMPLE');
+    heading1('EXAMPLE')
     step_1(file, function(err, notUsed) {
         if (err) {
             console.log('err', err);
@@ -43,8 +44,8 @@ var loader = function(step_callback) {
                 }
                 throw new Error(err.message);
             }
-        });
-    });
+        })
+    })
     function step_1(file, callback) {
         console.log('EXAMPLE.loader.start');
         var loadMTree = packageIndex.createLoadMTree(repo.getCreateFilesystemStore());
@@ -98,10 +99,10 @@ var loader = function(step_callback) {
                 description: 'dummy error for test'
             }, true);
             console.log("EXAMPLE.loader.mTree.loadHistory.getIttfDocumentErrorLines", el);
-            file.write(path.join(__dirname, 'outputs', 'load_compile.html.ittf'), mTree.toIttf());
+            file.write(path.join(__dirname, 'outputs', 'load_compile.html.ittf'), mTree.toIttf())
             console.log("EXAMPLE.loader.written outputs/ittf/load_compile.html.ittf");
             callback(null);
-        });
+        })
     }
     function sample_load(file, ittfDocumentBasename, callback) {
         console.log('EXAMPLE.loader.sample_load.start', ittfDocumentBasename);
@@ -129,9 +130,9 @@ var loader = function(step_callback) {
             }
             console.log('EXAMPLE.loader.sample_load.result\n', mTree.toIttf());
             console.log('EXAMPLE.loader.sample_load.frontmatter\n', JSON.stringify(mTree.frontMatter, null, 2));
-            file.write(path.join(__dirname, 'outputs', ittfDocumentBasename), mTree.toIttf());
+            file.write(path.join(__dirname, 'outputs', ittfDocumentBasename), mTree.toIttf())
             callback(null);
-        });
+        })
     }
 };
 loader.__name = 'loader';
@@ -162,7 +163,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }

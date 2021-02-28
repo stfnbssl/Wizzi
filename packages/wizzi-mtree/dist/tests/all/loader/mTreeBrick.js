@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\mTreeBrick.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var MTreeBrickProvider = require('../../../lib/loader/mTreeBrickProvider');
@@ -46,10 +47,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("mTree", function() {
@@ -62,7 +63,7 @@ describe("mTree", function() {
             storeKind: 'filesystem'
         }, function(err, notUsed) {
             done();
-        });
+        })
     });
     it("should get an mTreeBrick param values", function(done) {
         MTreeBrickProvider.createFromUri(path.join(__dirname, 'repo', 'data', 'params_1.tests.ittf'), {
@@ -94,6 +95,6 @@ describe("mTree", function() {
             expect(prms[4].value).to.be.a('number');
             expect(prms[4].value).to.be(9.99);
             done();
-        });
+        })
     });
 });

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\root\index.js.ittf
 */
 'use strict';
@@ -7,18 +8,7 @@ var verify = require('wizzi-utils').verify;
 var loader = require('./lib/loader');
 
 var md = module.exports = {};
-/**
-    
-     params
-     function createStore
-     api-ref wizzi-repo.createStore
-     { options
-     boolean useCache
-     boolean frontMatter
-     boolean raw
-     boolean debugInfo
-    
-*/
+//
 md.createLoadMTree = function createLoadMTree(createStore, options) {
     if (verify.isFunction(createStore) === false) {
         return error(
@@ -85,32 +75,32 @@ md.createLoadMTree = function createLoadMTree(createStore, options) {
                     ittfDocumentStore = store;
                     loadContext.__ittfDocumentStore = store;
                     if (frontMatter) {
-                        loader.loadMTreeFrontMatter(ittfDocumentUri, loadContext, callback);
+                        loader.loadMTreeFrontMatter(ittfDocumentUri, loadContext, callback)
                     }
                     else if (raw) {
-                        loader.loadMTreeRaw(ittfDocumentUri, loadContext, callback);
+                        loader.loadMTreeRaw(ittfDocumentUri, loadContext, callback)
                     }
                     else if (debugInfo) {
-                        loader.loadMTreeDebugInfo(ittfDocumentUri, loadContext, callback);
+                        loader.loadMTreeDebugInfo(ittfDocumentUri, loadContext, callback)
                     }
                     else {
-                        loader.loadMTree(ittfDocumentUri, loadContext, callback);
+                        loader.loadMTree(ittfDocumentUri, loadContext, callback)
                     }
-                });
+                })
             }
             else {
                 loadContext.__ittfDocumentStore = ittfDocumentStore;
                 if (frontMatter) {
-                    loader.loadMTreeFrontMatter(ittfDocumentUri, loadContext, callback);
+                    loader.loadMTreeFrontMatter(ittfDocumentUri, loadContext, callback)
                 }
                 else if (raw) {
-                    loader.loadMTreeRaw(ittfDocumentUri, loadContext, callback);
+                    loader.loadMTreeRaw(ittfDocumentUri, loadContext, callback)
                 }
                 else if (debugInfo) {
-                    loader.loadMTreeDebugInfo(ittfDocumentUri, loadContext, callback);
+                    loader.loadMTreeDebugInfo(ittfDocumentUri, loadContext, callback)
                 }
                 else {
-                    loader.loadMTree(ittfDocumentUri, loadContext, callback);
+                    loader.loadMTree(ittfDocumentUri, loadContext, callback)
                 }
             }
         };

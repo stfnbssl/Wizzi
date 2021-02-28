@@ -469,7 +469,7 @@
             _ state.stack.push
                 @ state.tagname
 			if state.tagname == 'script' || state.tagname == 'style'
-                log 'onopentag', state.tagname, 'line', state.line
+                # log 'onopentag', state.tagname, 'line', state.line
             set state.currenttagname = state.tagname
             if state.onopentag
                 _ state.onopentag
@@ -485,7 +485,7 @@
         function 
             param state
 			if state.tagname == 'script' || state.tagname == 'style'
-                log 'onclosetag', state.tagname, 'line', state.line
+                # log 'onclosetag', state.tagname, 'line', state.line
             if state.onclosetag 
 				if state.tagname in voidElements
 					# done already

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\ittfDocumentFinder.js.ittf
 */
 'use strict';
@@ -10,18 +11,7 @@ var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_ag
 
 var verify = require('wizzi-utils').verify;
 var path = require('path');
-/**
-     TODO IttfBrickFinder would be a best name.
-    
-     Implements the path resolution strategy
-     of the wizzi factory:
-     . first try the absolute path
-     . if not found search in 't' folders.
-    
-     The wizzi-repo.ittfDocumentStore instance used
-     for locating documents is ctor iniected.
-    
-*/
+//
 var IttfDocumentFinder = (function () {
     function IttfDocumentFinder(store, schema) {
         _classCallCheck(this, IttfDocumentFinder);
@@ -38,14 +28,7 @@ var IttfDocumentFinder = (function () {
         this.store = store;
         this.schema = schema;
     }
-    /**
-         param options {
-         ittfDocumentUri:String
-         |
-         basedir:String
-         relpath:String
-         }
-    */
+    //
     IttfDocumentFinder.prototype.resolvePath = function(options, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -104,9 +87,9 @@ var IttfDocumentFinder = (function () {
                     else {
                         return callback(error('IttfNotFound', 'resolvePath', 'Cannot find ittf document: ' + ittfDocumentUri));
                     }
-                });
+                })
             }
-        });
+        })
     }
     IttfDocumentFinder.prototype.resolvePathInTFolders = function(basePath, relPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -166,7 +149,7 @@ var IttfDocumentFinder = (function () {
                                     });
                             }
                         }
-                    });
+                    })
                 });
         }
         recurserTFolder(basePath, relPath).then(function(result) {
@@ -229,9 +212,9 @@ var IttfDocumentFinder = (function () {
                                                 found: false
                                             });
                                     }
-                                });
+                                })
                             }
-                        });
+                        })
                     }
                     else {
                         return callback(null, {
@@ -245,7 +228,7 @@ var IttfDocumentFinder = (function () {
                         });
                 }
             }
-        });
+        })
     }
     return IttfDocumentFinder;
 })();

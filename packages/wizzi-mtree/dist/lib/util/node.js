@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\util\node.js.ittf
 */
 'use strict';
@@ -8,18 +9,8 @@ var util = require('util');
 var assert = require('assert');
 var verify = require('wizzi-utils').verify;
 var md = module.exports = {};
-/**
-     { item (Node)
-     string name
-     string value
-     object parent
-     [ children
-*/
-/**
-     IttfCommands are nodes which name
-     starts with the char "$"
-     The search go down to descendants
-*/
+//
+//
 md.findIttfCommand = function(item, cmdname, cmdtype, startItem, multi) {
     if (startItem && item.id === startItem.id) {
         // searching the hook for an append command
@@ -61,12 +52,10 @@ md.findIttfCommand = function(item, cmdname, cmdtype, startItem, multi) {
 };
 md.findIttfCommandMulti = function(item, cmdname, cmdtype) {
     var commands = [];
-    md.findIttfCommand(item, cmdname, cmdtype, null, commands);
+    md.findIttfCommand(item, cmdname, cmdtype, null, commands)
     return commands;
 };
-/**
-     Search a $hook node command going down deep
-*/
+//
 md.findHookExtDeep = function(item, hookname, searchType, startAppendNode, mixedNode) {
     if (typeof mixedNode === 'undefined') {
         // log 'md.findHookExtDeep.enter first', item.name, item.value, item.model.brickKey
@@ -116,10 +105,7 @@ md.findHookExtDeep = function(item, hookname, searchType, startAppendNode, mixed
     }
     return null;
 };
-/**
-     Start the search of a $hook node command from a $append node command.
-     The search start going up to ancestor mixed fragments.
-*/
+//
 md.findHookExt = function(item, hookname, searchType, startAppendNode) {
     // log 'md.findHookExt.enter:', item.name, item.value, 'id', item.id, 'brickKey', item.model.brickKey
     // the startitem (the $append node command) is saved
@@ -142,10 +128,7 @@ md.findHookExt = function(item, hookname, searchType, startAppendNode) {
         return md.findHookExt(prn, hookname, searchType, startAppendNode);
     }
 };
-/**
-     find a $virtual command
-     The search go up to ancestors
-*/
+//
 md.findVirtual = function(item, virtname) {
     var prn = item.parent;
     if (!prn) {
@@ -157,10 +140,7 @@ md.findVirtual = function(item, virtname) {
     }
     return md.findVirtual(prn, virtname);
 };
-/**
-     find the first parent node that is
-     the root of a mixin
-*/
+//
 md.findParentMixinRoot = function(item) {
     var prn = item.parent;
     // log 'util.node.findParentMixinRoot', prn.model.$mixerBrickKey
@@ -208,10 +188,7 @@ md.remove = function(item) {
         }
     }
 };
-/**
-     inline a node hierarchy in a single text line
-     separated by the "__LS__" sequence
-*/
+//
 md.nodeToTextLine = function(node) {
     var acc = [];
     if (node.children) {
@@ -225,7 +202,7 @@ md.nodeToTextLine = function(node) {
 };
 function textline(node, acc, indent) {
     var open = node.tagSuffix == '(' ? '(' : ' ';
-    acc.push(indent + node.name + open + (node.value || ''));
+    acc.push(indent + node.name + open + (node.value || ''))
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
         item = node.children[i];

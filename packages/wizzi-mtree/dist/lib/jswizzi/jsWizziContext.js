@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\jsWizziContext.js.ittf
 */
 'use strict';
@@ -8,18 +9,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-/**
-     Used both for mTree buildup and interpolation
-     mTree builup
-     . composedMTree
-     - loadHistory
-     . productionContext
-     . scriptCoder
-     - toCode()
-     (script code)
-     - map
-     (line to node map)
-*/
+//
 var assert = require('assert');
 var util = require('util');
 var f_dateutil = require('./functions/dateutil');
@@ -222,7 +212,7 @@ var JsWizziContext = (function () {
     }
     JsWizziContext.prototype.declare = function(name, value) {
         if (value && value.__is_function) {
-            this.declareFunction(name, value);
+            this.declareFunction(name, value)
         }
         else {
             if (this.ittf_state === ittfStates.globalContext) {
@@ -301,7 +291,7 @@ var JsWizziContext = (function () {
     }
     JsWizziContext.prototype.setValue = function(name, value) {
         if (value && value.__is_function) {
-            this.declareFunction(name, value);
+            this.declareFunction(name, value)
         }
         else {
             if (this.ittf_state === ittfStates.globalContext) {
@@ -318,13 +308,13 @@ var JsWizziContext = (function () {
     JsWizziContext.prototype.setValues = function(values) {
         values = (values || {});
         for (var k in values) {
-            this.setValue(k, values[k]);
+            this.setValue(k, values[k])
         }
     }
     JsWizziContext.prototype.put = function(name, value) {
-        assert(this.ittf_state != ittfStates.nodeContext, 'put is an invalid operation for NodeContext state');
+        assert(this.ittf_state != ittfStates.nodeContext, 'put is an invalid operation for NodeContext state')
         if (value && value.__is_function) {
-            this.declareFunction(name, value);
+            this.declareFunction(name, value)
         }
         else {
             var ok = false;
@@ -444,9 +434,9 @@ var JsWizziContext = (function () {
         this.exprPending = {};
     }
     JsWizziContext.prototype.endExpr = function() {
-        assert(this.exprPending, 'endExpr called without previous call to beginExpr');
+        assert(this.exprPending, 'endExpr called without previous call to beginExpr')
         for (var k in this.exprPending) {
-            this.put(k, this.exprPending[k]);
+            this.put(k, this.exprPending[k])
         }
         this.exprPending = null;
     }
@@ -468,24 +458,20 @@ var JsWizziContext = (function () {
     JsWizziContext.prototype.getDeclaredInfo = function() {
         var ret = [];
         if (this.ittf_state === ittfStates.globalContext) {
-            ret.push('state=global');
-            ret.push('global declares:' + this.globalContext.getDeclaredInfo());
+            ret.push('state=global')
+            ret.push('global declares:' + this.globalContext.getDeclaredInfo())
         }
         else if (this.ittf_state === ittfStates.nodeContext) {
-            ret.push('state=node');
+            ret.push('state=node')
         }
         else {
-            ret.push('state=brick:' + this.currentMTreeBrickKey);
-            ret.push('model declares:' + this.brickEvalContext.getDeclaredInfo());
-            ret.push('global declares:' + this.globalContext.getDeclaredInfo());
+            ret.push('state=brick:' + this.currentMTreeBrickKey)
+            ret.push('model declares:' + this.brickEvalContext.getDeclaredInfo())
+            ret.push('global declares:' + this.globalContext.getDeclaredInfo())
         }
         return ret.join(', ');
     }
-    /**
-         The JsWizziRunner is entering a block of statements
-         with instructions for the buildup
-         of the final MTree.
-    */
+    //
     JsWizziContext.prototype.set_NodeContext = function() {
         if (this.isForInterpolation) {
             return ;
@@ -499,12 +485,7 @@ var JsWizziContext = (function () {
         this.currentMTreeBrickKey = null;
         this.brickEvalContext = null;
     }
-    /**
-         The JsWizziRunner is entering a block of global statements
-         declared inside an ittf document.
-         Example:
-         001     $global var message = 'hello';
-    */
+    //
     JsWizziContext.prototype.set_GlobalContext = function(brickKey) {
         // get_value has scope: global and the current MTreeBrickEvalContext
         // set_value puts value into global
@@ -528,20 +509,7 @@ var JsWizziContext = (function () {
         // via 7/8/17 set this.currentMTreeBrickKey = null
         // via 7/8/17 set this.brickEvalContext = null
     }
-    /**
-         The JsWizziRunner is entering a block of statements or
-         a node expression that are in the scope of an mTreeBrick.
-         They could be statements declared in a mixed ittf
-         document using the $ IttfCommand:
-        
-         001     $ var message = 'hello';
-        
-         or it could be a node expression that the JsWizziEvalHelper
-         has to interpolate:
-        
-         001     function ${functionName}
-        
-    */
+    //
     JsWizziContext.prototype.set_MTreeBrickEvalContext = function(brickKey, line) {
         if (this.isForInterpolation) {
             return ;

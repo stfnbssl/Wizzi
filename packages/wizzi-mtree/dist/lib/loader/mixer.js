@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\mixer.js.ittf
 */
 'use strict';
@@ -35,7 +36,7 @@ module.exports = function(mTreePiece, mTreeBrickProvider, callback) {
         }
         mTreePiece.nodes = mixedNodes;
         return callback(null, mTreePiece);
-    });
+    })
     function mixNodeCollection(mixerNodes, resultingNodes_Parent, callback) {
         var mixedNodesAccumulator = [];
         var len = mixerNodes.length;
@@ -50,19 +51,12 @@ module.exports = function(mTreePiece, mTreeBrickProvider, callback) {
                 appendItemsToCollection(mixedNodes, mixedNodesAccumulator, resultingNodes_Parent);
                 process.nextTick(function() {
                     repeater(index + 1);
-                });
-            });
+                })
+            })
         }
         repeater(0);
     }
-    /**
-         params
-         mixerNode: Object - may contain a mixin call if name ends with '('; example: class()
-         If the mixerNode is a mixin call
-         fetches the mixed document and mixes it
-         else
-         go down and execute the mix operation on the children nodes of the mixerNode.
-    */
+    //
     function mixNodeIfTheCase(mixerNode, callback) {
         var isMixinCall = false;
         if (mixerNode.tagSuffix === '(') {
@@ -101,7 +95,7 @@ module.exports = function(mTreePiece, mTreeBrickProvider, callback) {
                             mixerRelPath: mixerNode.name
                         }));
                 }
-                mTreeBrickProvider.enterFragmentCall(mixeruri, mixedNodifiedMTree.uri);
+                mTreeBrickProvider.enterFragmentCall(mixeruri, mixedNodifiedMTree.uri)
                 if (mTreeBrickProvider.checkForRecursion()) {
                     return callback(local_error('IttfMixError', 'mixer', 'Recursive mixin or include: ' + mixerNode.name, mixerNode, null, {
                             mixerUri: mixeruri, 
@@ -121,9 +115,9 @@ module.exports = function(mTreePiece, mTreeBrickProvider, callback) {
                         }
                         mTreeBrickProvider.exitFragmentCall();
                         callback(null, mixedNodes);
-                    });
-                });
-            });
+                    })
+                })
+            })
         }
         else if (mixerNode.name === '$.') {
             // mixerNode is a TEXT CONTAINER (CDATA)
@@ -148,20 +142,14 @@ module.exports = function(mTreePiece, mTreeBrickProvider, callback) {
                 return callback(null, [
                         mixerNode
                     ]);
-            });
+            })
         }
     }
     function mixCalleeRootNodes(mixedRootNodes, mixerNode, callback) {
         var mixedRootNode,
             len = mixedRootNodes.length,
             mixedNodesAccumulation = [];
-        /**
-             The mixedNodifiedMTree may contain multiple root nodes.
-             The $group command is used as the root node of an IttfDocument
-             when multiple root nodes have to be declared.
-             So the repeater function execute the mixup of every child node of the mixedNodifiedMTree
-             and accumulates the resulting mixed nodes in the var "mixedNodesAccumulation"
-        */
+        //
         function repeater(index) {
             if (index === len) {
                 // we are done, return the result
@@ -200,7 +188,7 @@ module.exports = function(mTreePiece, mTreeBrickProvider, callback) {
                             var j, j_items=mixedNodes, j_len=mixedNodes.length, mixedNode;
                             for (j=0; j<j_len; j++) {
                                 mixedNode = mixedNodes[j];
-                                clonedMixedNodes.push(mTreePiece.cloneNode(mixedNode, null, mixedNode.model));
+                                clonedMixedNodes.push(mTreePiece.cloneNode(mixedNode, null, mixedNode.model))
                             }
                             utilnode.replace(hook, clonedMixedNodes);
                         }
@@ -217,26 +205,20 @@ module.exports = function(mTreePiece, mTreeBrickProvider, callback) {
                     var i, i_items=mixedNodes, i_len=mixedNodes.length, item;
                     for (i=0; i<i_len; i++) {
                         item = mixedNodes[i];
-                        mixedRootNode.children.push(item);
+                        mixedRootNode.children.push(item)
                     }
                 }
-                /**
-                     It seems we are done, but there is a notch.
-                     mixedRootNode could contain itself a mixin call.
-                     It must be analyzed and mixed if the case.
-                     Set the mixerNode.parent as its parent
-                     and add it to the resultMixedNodes collection.
-                */
+                //
                 mixNodeIfTheCase(mixedRootNode, function(err, mixedNodes) {
                     if (err) {
                         return callback(err);
                     }
-                    appendItemsToCollection(mixedNodes, mixedNodesAccumulation, mixerNode.parent);
+                    appendItemsToCollection(mixedNodes, mixedNodesAccumulation, mixerNode.parent)
                     process.nextTick(function() {
                         repeater(index + 1);
-                    });
-                });
-            });
+                    })
+                })
+            })
         }
         repeater(0);
     }
@@ -293,7 +275,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi-mtree@0.7.10.loader.mixer.' + method,
+        method: 'wizzi-mtree@0.7.11.loader.mixer.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

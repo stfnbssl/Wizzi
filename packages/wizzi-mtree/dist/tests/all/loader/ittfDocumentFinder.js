@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\ittfDocumentFinder.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var mocks = require('../../mocks/misc');
@@ -46,10 +47,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("ittfDocumentFinder", function() {
@@ -62,7 +63,7 @@ describe("ittfDocumentFinder", function() {
             storeKind: 'filesystem'
         }, function(err, notUsed) {
             done();
-        });
+        })
     });
     it("should get an IttfNotFound error", function(done) {
         var ittfDocumentFinder = new IttfDocumentFinder(store, 'tests');
@@ -74,6 +75,6 @@ describe("ittfDocumentFinder", function() {
             expect(err.name).to.be('IttfNotFound');
             expect(err.__is_error).to.be(true);
             done();
-        });
+        })
     });
 });

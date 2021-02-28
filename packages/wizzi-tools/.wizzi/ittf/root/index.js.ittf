@@ -163,6 +163,22 @@ module
                 @ options
 				@ callback 
 
+	set md.wizzify_mtree_html
+        function 
+            param codeSnippet
+            param options
+            param callback
+			if typeof callback === 'undefined'
+				set callback = options
+				set options 
+					{
+						@ syntaxOutFile null
+			set options.embedTag = 'html'
+            _ htmlwizzifier.getWizziTree
+                @ codeSnippet
+                @ options
+				@ callback 
+
 	set md.wizzify_json
         function 
             param codeSnippet

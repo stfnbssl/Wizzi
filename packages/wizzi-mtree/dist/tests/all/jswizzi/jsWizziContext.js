@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\jswizzi\jsWizziContext.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var JsWizziContext = require('../../../lib/jswizzi/jsWizziContext');
@@ -46,10 +47,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("jsWizziContext", function() {
@@ -60,7 +61,7 @@ describe("jsWizziContext", function() {
     });
     it("should set a function to a var", function() {
         ctx.declareFunction('f1', {});
-        ctx.setValue('pointF1', ctx.getValue('f1'));
+        ctx.setValue('pointF1', ctx.getValue('f1'))
         var f = ctx.getFunction('pointF1');
         expect(f.__is_function).to.be(true);
     });

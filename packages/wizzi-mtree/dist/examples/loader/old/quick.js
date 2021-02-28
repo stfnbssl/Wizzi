@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader\old\quick.js.ittf
 */
 'use strict';
@@ -14,15 +15,13 @@ var mocks = require('wizzi-utils').mocks;
 var repo = mocks.repo;
 var packageIndex = require('../../index');
 var quick = function(step_callback) {
-    heading1('EXAMPLE');
-    /**
-         EXAMPLE: quick
-    */
+    heading1('EXAMPLE')
+    //
     var loadMTree = packageIndex.createLoadMTree(repo.getCreateFilesystemStore(), {
         raw: false
     });
     exec('quick', () => {
-    });
+    })
     function exec(name, callback) {
         console.log('exec', name);
         var ctx = {
@@ -50,8 +49,8 @@ var quick = function(step_callback) {
                 }
                 throw new Error(err.message);
             }
-            printValue('mTree.nodes[0]', mTree.nodes[0]);
-        });
+            printValue('mTree.nodes[0]', mTree.nodes[0])
+        })
     }
 };
 quick.__name = 'quick';
@@ -82,7 +81,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }

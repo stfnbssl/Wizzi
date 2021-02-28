@@ -22,9 +22,19 @@
         "npm": ">=1.4.28"
     },
     "scripts": {
-        "test": "mocha tests/**/*.js --full-trace",
-        "examples": "node examples",
-        "docx": "node examples/dist/first.sample"
+        "test": "node examples/dist/beba/Test.docx",
+        "docx": "node examples/dist/first.docx",
+        "extest": "node examples/extract.test",
+        "tavola": "node examples/dist/beba/\\\\\"Tutti a tavola.docx\\\\\"",
+        "npl": "node examples/dist/beba/NpL-NpM.docx",
+        "famiglia": "node examples/dist/beba/Famiglia.docx",
+        "bambino": "node examples/dist/beba/Bambino.docx",
+        "pediatra": "node examples/dist/beba/Pediatra.docx",
+        "temi": "node examples/dist/beba/\\\\\"Temi caldi.docx\\\\\"",
+        "giochi": "node examples/dist/beba/Giochi-Movimento.docx",
+        "bebapre": "node examples/beba",
+        "bebadocs": "npm run tavola && npm run npl && npm run famiglia && npm run bambino && npm run pediatra && npm run temi && npm run giochi",
+        "bebaall": "npm run bebapre && npm run bebadocs"
     },
     "dependencies": {
         "async": "^3.2.0",

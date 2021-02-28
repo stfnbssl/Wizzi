@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\appender.js.ittf
 */
 'use strict';
@@ -7,13 +8,7 @@ var verify = require('wizzi-utils').verify;
 var util = require('util');
 var errors = require('../errors');
 var utilnode = require('../util/node');
-/**
-     Ittf commands
-     $group
-     $append
-     $override
-     $fragment (searched and removed only, processing is by includer and mixer)
-*/
+//
 module.exports = function(mixedMTreePiece, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -35,7 +30,7 @@ module.exports = function(mixedMTreePiece, callback) {
     var i, i_items=mixedMTreePiece.nodes, i_len=mixedMTreePiece.nodes.length, node;
     for (i=0; i<i_len; i++) {
         node = mixedMTreePiece.nodes[i];
-        assignId(node, ctx);
+        assignId(node, ctx)
     }
     var errors = [];
     var i, i_items=mixedMTreePiece.nodes, i_len=mixedMTreePiece.nodes.length, node;
@@ -49,15 +44,15 @@ module.exports = function(mixedMTreePiece, callback) {
     for (var key in appends) {
         // log 'wizzi-mtree.loader.appender.appends.key', key, appends[key]
         var appobj = appends[key];
-        utilnode.replace(appobj.appto, appobj.items);
+        utilnode.replace(appobj.appto, appobj.items)
     }
     for (var key in overrides) {
         var overobj = overrides[key];
-        utilnode.replace(overobj.virt, overobj.items);
+        utilnode.replace(overobj.virt, overobj.items)
     }
     for (var key in fragments) {
         var fragobj = fragments[key];
-        utilnode.remove(fragobj.frag);
+        utilnode.remove(fragobj.frag)
     }
     var i, i_items=groups, i_len=groups.length, item;
     for (i=0; i<i_len; i++) {
@@ -65,7 +60,7 @@ module.exports = function(mixedMTreePiece, callback) {
         if (!item.parent) {
             return callback(local_error('InvalidIttfError', 'appender', "The tag $group must have a parent and cannot be the root of a primary ittf document. Hint: check for ittf fragments not in a tfolder.", item));
         }
-        utilnode.replace(item, item.children);
+        utilnode.replace(item, item.children)
     }
     var toremove = [];
     var i, i_items=mixedMTreePiece.nodes, i_len=mixedMTreePiece.nodes.length, node;
@@ -86,7 +81,7 @@ function searchAppend(item, root, appends, groups, overrides, fragments, errors,
     }
     else if (item.name === '$append') {
         if (!item.value) {
-            errors.push(local_error('InvalidIttfError', 'searchAppend', "The tag $append requires a node-value.", item));
+            errors.push(local_error('InvalidIttfError', 'searchAppend', "The tag $append requires a node-value.", item))
             return ;
         }
         var appto = utilnode.findHookExt(item, item.value.trim(), 1);
@@ -94,7 +89,7 @@ function searchAppend(item, root, appends, groups, overrides, fragments, errors,
             appto = utilnode.findHookExt(item, item.value.trim(), 0);
             if (appto == null) {
                 console.log('mixedMTreePiece.dump\n', mixedMTreePiece.toText());
-                errors.push(local_error('InvalidIttfError', 'searchAppend', 'Cannot find hook ' + (item.value || '') + ', root is ' + root.name + ' ' + (root.value || '') + ', in ' + item.model.uri + ', brickKey ' + item.model.brickKey + ', remember that $hook/$append does not work between sibling nodes.' + 'After mixup the $hook node must be a parent node or a descendant of a parent node of $append' + ', but not a sibling node.', item));
+                errors.push(local_error('InvalidIttfError', 'searchAppend', 'Cannot find hook ' + (item.value || '') + ', root is ' + root.name + ' ' + (root.value || '') + ', in ' + item.model.uri + ', brickKey ' + item.model.brickKey + ', remember that $hook/$append does not work between sibling nodes.' + 'After mixup the $hook node must be a parent node or a descendant of a parent node of $append' + ', but not a sibling node.', item))
                 return ;
             }
         }
@@ -112,17 +107,17 @@ function searchAppend(item, root, appends, groups, overrides, fragments, errors,
     }
     else if (item.name === '$override') {
         if (!(item.value)) {
-            errors.push(local_error('InvalidIttfError', 'searchAppend', "The tag $override requires a value.", item));
+            errors.push(local_error('InvalidIttfError', 'searchAppend', "The tag $override requires a value.", item))
             return ;
         }
         var virt = utilnode.findVirtual(item, item.value.trim());
         if (virt == null) {
-            errors.push(local_error('InvalidIttfError', 'searchAppend', 'Cannot find virtual to override ' + (item.value || '') + ', root is ' + root.name + ' ' + root.value, item));
+            errors.push(local_error('InvalidIttfError', 'searchAppend', 'Cannot find virtual to override ' + (item.value || '') + ', root is ' + root.name + ' ' + root.value, item))
             return ;
         }
         var overobj = overrides[item.value];
         if (overobj) {
-            errors.push(local_error('InvalidIttfError', 'searchAppend', 'The virtual node ' + item.value + ' has already been overridden. Root is ' + root.name + ' ' + root.value, item));
+            errors.push(local_error('InvalidIttfError', 'searchAppend', 'The virtual node ' + item.value + ' has already been overridden. Root is ' + root.name + ' ' + root.value, item))
             return ;
         }
         else {
@@ -190,7 +185,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi-mtree@0.7.10.loader.appender.' + method,
+        method: 'wizzi-mtree@0.7.11.loader.appender.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\mocks\misc.js.ittf
 */
 'use strict';
@@ -19,7 +20,7 @@ module.exports = {
             }, 
             addMTreeBuildUpScript: function(uri, jsScriptCoder) {
                 // log 'addMTreeBuildUpScript'
-                file.write(path.join(path.dirname(uri), '_debug_dumps', path.basename(uri)), jsScriptCoder.toCode());
+                file.write(path.join(path.dirname(uri), '_debug_dumps', path.basename(uri)), jsScriptCoder.toCode())
             }
         }
     }, 
@@ -39,7 +40,7 @@ module.exports = {
             // log script, uri
             if (this.dump) {
                 // log 'dump'
-                file.write(path.join(path.dirname(uri), '_debug', path.basename(uri) + '.js.dump'), script);
+                file.write(path.join(path.dirname(uri), '_debug', path.basename(uri) + '.js.dump'), script)
             }
         }, 
         raiseIttfEvaluationScriptError: function(uri, exception) {

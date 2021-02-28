@@ -111,6 +111,16 @@ md.wizzify_html = function(codeSnippet, options, callback) {
     options.embedTag = 'html';
     htmlwizzifier.getWizziIttf(codeSnippet, options, callback)
 };
+md.wizzify_mtree_html = function(codeSnippet, options, callback) {
+    if (typeof callback === 'undefined') {
+        callback = options;
+        options = {
+            syntaxOutFile: null
+        };
+    }
+    options.embedTag = 'html';
+    htmlwizzifier.getWizziTree(codeSnippet, options, callback)
+};
 md.wizzify_json = function(codeSnippet, options, callback) {
     if (typeof callback === 'undefined') {
         callback = options;

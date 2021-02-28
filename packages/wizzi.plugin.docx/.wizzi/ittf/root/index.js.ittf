@@ -8,26 +8,26 @@ module
             # window(s) vars must be declared even if empty
             var window_modelFactories
                 {
-                    @ 'sample' require('./lib/wizzi/models/sample-factory.g')
+                    @ 'docx' require('./lib/wizzi/models/docx-factory.g')
             var window_artifactGenerators
                 {
-                    @ 'sample/document' require('./lib/artifacts/sample/document/gen/main')
+                    @ 'docx/document' require('./lib/artifacts/docx/document/gen/main')
             var window_transformers
                 {
-                    @ 'sample/extended' require('./lib/artifacts/sample/extended/trans/main')
+                    @ 'docx/extended' require('./lib/artifacts/docx/extended/trans/main')
             var window_schemaDefinitions
                 {
         @ provides
             {
                 @ schemas
                     [
-                        @ 'sample'
+                        @ 'docx'
                 @ modelTransformers
                     [
-                        @ 'sample/extended'
+                        @ 'docx/extended'
                 @ artifactGenerators
                     [
-                        @ 'sample/document'
+                        @ 'docx/document'
         @ provides
             {
                 @ schemas

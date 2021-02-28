@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.plugin.docx\.wizzi\ittf\root\index.js.ittf
-    utc time: Wed, 24 Feb 2021 15:18:28 GMT
+    utc time: Sun, 28 Feb 2021 14:53:59 GMT
 */
 'use strict';
 
@@ -16,13 +16,13 @@ md.name = '.index';
 
 // window(s) vars must be declared even if empty
 var window_modelFactories = {
-    'sample': require('./lib/wizzi/models/sample-factory.g')
+    'docx': require('./lib/wizzi/models/docx-factory.g')
 };
 var window_artifactGenerators = {
-    'sample/document': require('./lib/artifacts/sample/document/gen/main')
+    'docx/document': require('./lib/artifacts/docx/document/gen/main')
 };
 var window_transformers = {
-    'sample/extended': require('./lib/artifacts/sample/extended/trans/main')
+    'docx/extended': require('./lib/artifacts/docx/extended/trans/main')
 };
 var window_schemaDefinitions = {};
 
@@ -161,24 +161,24 @@ function error(errorName, method, message, innerError) {
 module.exports = {
     provides: {
         schemas: [
-            'sample'
+            'docx'
         ], 
         modelTransformers: [
-            'sample/extended'
+            'docx/extended'
         ], 
         artifactGenerators: [
-            'sample/document'
+            'docx/document'
         ]
     }, 
     provides: {
         schemas: [
-            'Sample'
+            'docx'
         ], 
         modelTransformers: [
-            'Sample/extended'
+            'docx/extended'
         ], 
         artifactGenerators: [
-            'Sample/document'
+            'docx/document'
         ]
     }, 
     createFactoryPlugin: function(wizziPackage, options, callback) {

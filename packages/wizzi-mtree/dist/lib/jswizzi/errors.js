@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\errors.js.ittf
 */
 'use strict';
@@ -7,7 +8,7 @@ var util = require('util');
 var wizziUtils = require('wizzi-utils');
 var f_verify = require('./functions/verify');
 
-var pkgVersioned = ' (@wizzi/mtree.0.7.10)';
+var pkgVersioned = ' (@wizzi/mtree.0.7.11)';
 
 var md = module.exports = {};
 
@@ -66,11 +67,7 @@ JsWizziSynthaxError.prototype = Object.create(Error.prototype);
 JsWizziSynthaxError.prototype.constructor = JsWizziSynthaxError;
 md.JsWizziSynthaxError = JsWizziSynthaxError;
 
-/**
-    For
-     vars or functions undeclared
-     invalid values
-*/
+// For
 function JsWizziTypeError(message, node) {
     this.name = 'JsWizziTypeError';
     this.message = message;
@@ -110,7 +107,7 @@ function getEsprimaErrorLines(esprimaException, source, json) {
     for (var i = start; i < end; i++) {
         ret.push(formatLineNumber(i + 1) + ' ' + statements[i]);
         if (i == esprimaException.lineNumber - 1) {
-            var col = esprimaException.column;
+            var col = Math.max(0, esprimaException.column);
             ret.push(spaces(col + 4) + '^ ' + esprimaException.description);
         }
     }

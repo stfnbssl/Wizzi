@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\frontMatter.js.ittf
 */
 'use strict';
@@ -10,12 +11,7 @@ var async = require('async');
 var errors = require('../errors');
 var verify = require('wizzi-utils').verify;
 var utilnode = require('../util/node');
-/**
-     Ittf commands
-     $---       // the front-matter root node.
-     // Children nodes are front-matter named values
-     // Name - value syntax is the same of a json ittf document
-*/
+//
 module.exports = function(primaryMTreeBrick, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -31,7 +27,7 @@ module.exports = function(primaryMTreeBrick, callback) {
     var i, i_items=primaryMTreeBrick.nodes, i_len=primaryMTreeBrick.nodes.length, node;
     for (i=0; i<i_len; i++) {
         node = primaryMTreeBrick.nodes[i];
-        searchCommands(node, frontmatters);
+        searchCommands(node, frontmatters)
     }
     var i, i_items=frontmatters, i_len=frontmatters.length, item;
     for (i=0; i<i_len; i++) {
@@ -53,7 +49,7 @@ module.exports = function(primaryMTreeBrick, callback) {
             }
             primaryMTreeBrick.frontMatter[prop.name] = prop.value;
         }
-        utilnode.remove(item);
+        utilnode.remove(item)
     }
     callback(null, primaryMTreeBrick);
 };
@@ -65,7 +61,7 @@ function searchCommands(item, frontmatters) {
         var i, i_items=item.children, i_len=item.children.length, child;
         for (i=0; i<i_len; i++) {
             child = item.children[i];
-            searchCommands(child, frontmatters);
+            searchCommands(child, frontmatters)
         }
     }
 }

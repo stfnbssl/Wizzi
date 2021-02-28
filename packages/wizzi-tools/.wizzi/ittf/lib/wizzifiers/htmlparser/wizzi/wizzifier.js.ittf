@@ -154,7 +154,8 @@
 								# log "================= Text", text, wizziTree.tag
 								var lines
 									_ file.splitLines
-										_ text.trim()
+										$$ BAX 27/2/21 no trim !!!important _ text.trim()
+                                        @ text
 								if wizziTree.swig
 									# log '++++++++++ wizziTree.swig'
 									_ lines.forEach
@@ -187,30 +188,33 @@
 											@ literal literal
 								elif lines.length == 1
 									if wizziTree.children.length > 0
-										var n
-											{ 
-												@ tag '+'
-												@ name lines[0]
-												@ attribs
-													{ 
-												@ children
-													[ 
-										_ wizziTree.children.push(n)
+										if lines[0].trim().length > 0
+                                            var n
+                                                { 
+                                                    @ tag '+'
+                                                    @ name lines[0]
+                                                    @ attribs
+                                                        { 
+                                                    @ children
+                                                        [ 
+										    _ wizziTree.children.push(n)
 									else 
 										set wizziTree.name += lines[0]
 								else 
 									_ lines.forEach
 										function 
 											param l
-											var n
-												{ 
-													@ tag '++'
-													@ name l.trim()
-													@ attribs
-														{ 
-													@ children
-														[ 
-											_ wizziTree.children.push(n)
+                                            if l.trim().length > 0
+                                                var n
+                                                    { 
+                                                        @ tag '++'
+                                                        $$ BAX 27/2/21 no trim !!!important @ name l.trim()
+                                                        @ name l
+                                                        @ attribs
+                                                            { 
+                                                        @ children
+                                                            [ 
+                                                _ wizziTree.children.push(n)
 						@ onclosetag
 							function 
 								param tagname
@@ -292,14 +296,14 @@
 			try
 				if html && html.length > 0
                     if html.substr(0,'<html>'.length) == '<html>' || html.substr(0,'<!doctype>'.length) == '<!doctype>'
-                        log 'html document has root tag html'
+                        # log 'html document has root tag html'
                     else
-                        log html.substr(0,'<html>'.length), html.substr(0,'<!doctype>'.length)
+                        # log html.substr(0,'<html>'.length), html.substr(0,'<!doctype>'.length)
                         var i1 = html.indexOf('<')
                         var i2 = html.indexOf('>')
                         if i1 > -1 && i2 > -1
                             var temp = html.substr(i1+1, i2-i1-1)
-                            log 'wizzi-tools.htmlparser.addedWrapper.temp', temp
+                            # log 'wizzi-tools.htmlparser.addedWrapper.temp', temp
                             if temp.toLowerCase().indexOf('!doctype') > -1
                                 set html = '<html>' + html.substr(i2+1) + '</html>'
                             else
@@ -317,10 +321,10 @@
 			if addedWrapper
 				set wizziTree.children = wizziTree.children[0].children
 			# log 'wizziTree', wizziTree
-			log 'wizzi-tools.htmlparser.wizzify.options.embedTag,wizziTree.children.length', options.embedTag, wizziTree.children.length
+			# log 'wizzi-tools.htmlparser.wizzify.options.embedTag,wizziTree.children.length', options.embedTag, wizziTree.children.length
 			var synthax
 			if wizziTree.children.length > 1 && typeof (options.embedTag) === 'string'
-				log 'wizzi-tools.htmlparser.wizzify.options.embedTag, wizziTree.children[0]', options.embedTag, wizziTree.children[0]
+				# log 'wizzi-tools.htmlparser.wizzify.options.embedTag, wizziTree.children[0]', options.embedTag, wizziTree.children[0]
 				if options.embedTag === wizziTree.children[0].tag
 					set synthax = wizziTree.children[0]
 				else

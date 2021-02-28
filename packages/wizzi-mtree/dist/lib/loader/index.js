@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\index.js.ittf
 */
 'use strict';
@@ -17,20 +18,7 @@ var appender = require('./appender');
 var evaluator = require('./evaluator');
 var debugInfoBuilder = require('./debugInfoBuilder');
 var md = module.exports = {};
-/**
-     The Big JOB of an mTree loading manages:
-     normalization of loadContext objects
-     instantiation of the modelProvider
-     liner
-     nodifier
-     includer
-     mixer
-     appender
-     evaluator
-     params
-     Are checked in wizzi-mtree/index.js. See there for doc.
-     There should be no direct access to this method except for testing.
-*/
+//
 md.loadMTree = function loadMTree(primaryIttfDocumentUri, loadContext, callback) {
     var originalloadContext = loadContext;
     loadContext = normalizeRequestContext(loadContext);
@@ -86,16 +74,14 @@ md.loadMTree = function loadMTree(primaryIttfDocumentUri, loadContext, callback)
                             finalMTree.loadHistory = createdProvider.loadHistory;
                             loadContext.productionContext.addEvaluatedMTree(primaryIttfDocumentUri, finalMTree);
                             callback(null, finalMTree);
-                        });
-                    });
-                });
-            });
-        });
-    });
+                        })
+                    })
+                })
+            })
+        })
+    })
 };
-/**
-     Load the raw primaryIttfDocumentUri only and extract the front-matter values.
-*/
+//
 md.loadMTreeFrontMatter = function loadMTreeRaw(primaryIttfDocumentUri, loadContext, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -137,13 +123,10 @@ md.loadMTreeFrontMatter = function loadMTreeRaw(primaryIttfDocumentUri, loadCont
             return callback(err);
         }
         // resolve $-- (front matter) commands
-        frontMatter(primaryMTreeBrick, callback);
-    });
+        frontMatter(primaryMTreeBrick, callback)
+    })
 };
-/**
-     Load the raw primaryIttfDocumentUri only.
-     This is mainly for debug or documentation purposes.
-*/
+//
 md.loadMTreeRaw = function loadMTreeRaw(primaryIttfDocumentUri, loadContext, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -194,12 +177,9 @@ md.loadMTreeRaw = function loadMTreeRaw(primaryIttfDocumentUri, loadContext, cal
         }
         var primaryMTreeBrick = createdProvider.getPrimaryMTreeBrick();
         return callback(null, primaryMTreeBrick);
-    });
+    })
 };
-/**
-     Load mTree debug info.
-     This is mainly for debug or documentation purposes.
-*/
+//
 md.loadMTreeDebugInfo = function loadMTree(primaryIttfDocumentUri, loadContext, callback) {
     var originalloadContext = loadContext;
     loadContext = normalizeRequestContext(loadContext);
@@ -244,27 +224,17 @@ md.loadMTreeDebugInfo = function loadMTree(primaryIttfDocumentUri, loadContext, 
                             return callback(err);
                         }
                         // build debug info
-                        debugInfoBuilder(appendedMTreePiece, loadContext, callback);
-                    });
-                });
-            });
-        });
-    });
+                        debugInfoBuilder(appendedMTreePiece, loadContext, callback)
+                    })
+                })
+            })
+        })
+    })
 };
-/**
-     normalized means:
-     { loadContext
-     { productionContext
-     { mTreeBuildUpContext
-     { options
-    
-*/
+//
 function normalizeRequestContext(loadContext) {
     // log 'wizzi-mtree.loader.index.normalizeRequestContext.loadContext', loadContext
-    /**
-        for var k in loadContext
-         log 'normalizeRequestContext.k', k
-    */
+    // for var k in loadContext
     loadContext.productionContext = loadContext.__productionManager.productionContext;
     if (verify.isObject(loadContext.mTreeBuildUpContext) == false) {
         loadContext.mTreeBuildUpContext = {};

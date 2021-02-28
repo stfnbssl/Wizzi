@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader\old\step_1_go.js.ittf
 */
 'use strict';
@@ -14,18 +15,16 @@ var mocks = require('wizzi-utils').mocks;
 var repo = mocks.repo;
 var liner = require('../../lib/loader/liner');
 var loader_liner = function(step_callback) {
-    heading1('EXAMPLE');
-    /**
-         EXAMPLE: liner
-    */
+    heading1('EXAMPLE')
+    //
     exec( 'liner_1' );
     function exec(name) {
         var source = file.read(path.join(__dirname, 'step_1', name + '.sample.ittf'));
         var lines = liner(source, {
             sourceKey: 'f1'
         });
-        printValue(name + ' source', source);
-        printArray(name + ' lines', lines);
+        printValue(name + ' source', source)
+        printArray(name + ' lines', lines)
     }
 };
 loader_liner.__name = 'loader_liner';
@@ -56,7 +55,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }

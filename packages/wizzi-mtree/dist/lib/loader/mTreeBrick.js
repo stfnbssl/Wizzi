@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\mTreeBrick.js.ittf
 */
 'use strict';
@@ -9,38 +10,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var verify = require('wizzi-utils').verify;
-/**
-     An mTreeBrick is a nodified ittf document.
-     In the build-up of an mTree, the same mTreeBrick can be mixed
-     or included many times, so it is created once then cloned.
-     { mTreeBrick
-     string uri       // The location of the source IttfDocument.
-     string schema    // The source IttfDocument schema.
-     { loadHistory    // The loadHistory object
-     { frontMatter    // The frontMatter object
-     [ lines          // parsed lines of source text
-     [ nodes          // nodified lines of source text
-     string sourceKey // key of the source info of the IttfDocument
-     string brickKey  // key of the cloned mTreeBrick
-    
-     ... these are set by the mixer, on the cloned object
-     boolean mixed          // true if has been mixed
-     string $mixerBrickKey  // the brickKey of the mTreeBrick of the calling node (mixer)
-     string $args           // the node-value of the mixer node
-     string $argArray       // the $arg array of the mixer node
-    
-     ... these are set by the nodifier on the original mtree, then cloned
-     string $params:        // the node-value of the $params node, if declared
-    
-     Methods
-     load				// apply liner + nodifier to a Ittf source text
-     setKeys
-     clone
-     calcParamValues
-     toIttf
-     toText
-     dump
-*/
+//
 var path = require('path');
 var util = require('util');
 var verify = require('wizzi-utils').verify;
@@ -148,29 +118,7 @@ var MTreeBrick = (function () {
         clnode.children = self._cloneNodes(node.children, clnode, clonedModel);
         return clnode;
     }
-    /**
-         Rules
-         Node command format
-         > $params param1 [,param2 [,param-n]]
-         param   : [&]name[:type][|[&]default]
-         &name   : the paramater is an object passed by reference, the name can be used in IttfMacro expressions
-         name    : the paramater is a value, the name can be used in IttfMacro expressions
-         type    : the parameter type
-         one-of : string(default), integer, float, boolean, date, object (implicit
-         when '&' declared), macro (implicit, detected from IttfMacro delimiters
-         contained in the default value)
-         &default : the default is an object in the global context, default is its name
-         default  : typed-value | @@null | @@empty | @@undefined
-         // warning! `title|null` becomes title = "null" (the quoted string null)
-         // if you want title to be null then : `title|@@null`
-         string  : quotes are optional, example: `title|"my way"` and `title|my way` are the same
-         boolean : true | false
-         date    : yyyy/mm/dd
-         macro   : an IttfMacro can be passed as a parameter to a mixin, when the parameter
-         is referenced we have a double macro substitution
-         TODO verify, explain how this works, macro or macros can be partial
-         insides of the default value?
-    */
+    //
     MTreeBrick.prototype.calcParamValues = function(args) {
         // string args
         // optional
@@ -261,7 +209,7 @@ var MTreeBrick = (function () {
                 isByRef: type === 'object', 
                 defaultName: defaultName, 
                 defaultIsByRef: defaultName != null
-            });
+            })
         }
         return result;
     }
@@ -274,7 +222,7 @@ var MTreeBrick = (function () {
             };
         this.nodes.forEach(function(node) {
             _dumpNodeDeep(node, 1, buffer, ctx);
-        });
+        })
         return buffer.join('\n');
     }
     MTreeBrick.prototype.toIttf = function(node) {
@@ -285,7 +233,7 @@ var MTreeBrick = (function () {
         else {
             this.nodes.forEach(function(node) {
                 _toIttfNodeDeep(node, 0, buffer);
-            });
+            })
         }
         return buffer.join('\n');
     }
@@ -314,31 +262,31 @@ function _dumpNodeDeep(node, indent, buffer, ctx) {
         var sourceUri = ctx.loadHistory.ittfDocumentDatas[node.u].ittfDocumentUri;
         var sourceUriName = path.basename(sourceUri);
         var sourceUriFolder = path.basename(path.dirname(sourceUri));
-        buffer.push(spaces(indent * 2) + node.n + ' ' + (node.v || '') + '    r' + node.r + ',c' + node.c + '                        source:  ' + sourceUriFolder + '/' + sourceUriName);
+        buffer.push(spaces(indent * 2) + node.n + ' ' + (node.v || '') + '    r' + node.r + ',c' + node.c + '                        source:  ' + sourceUriFolder + '/' + sourceUriName)
     }
     else {
-        buffer.push(spaces(indent * 2) + node.name + ' ' + (node.value || '') + '  r' + node.row + ',c' + node.col + '    ids: ' + node.parsedId + ' ' + node.id + ' brickKey: ' + node.model.brickKey + ' mixed by: ' + (node.model.$mixerBrickKey || 'none'));
+        buffer.push(spaces(indent * 2) + node.name + ' ' + (node.value || '') + '  r' + node.row + ',c' + node.col + '    ids: ' + node.parsedId + ' ' + node.id + ' brickKey: ' + node.model.brickKey + ' mixed by: ' + (node.model.$mixerBrickKey || 'none'))
     }
     if (node.model) {
         if (node.model.$args || node.model.$params) {
             if (!ctx[node.model.brickKey]) {
                 ctx[node.model.brickKey] = node.model;
-                buffer.push(spaces(indent * 2) + '  -- fragment: ' + node.model.uri);
-                buffer.push(spaces(indent * 2) + '  -- $args: ' + node.model.$args + ' $params: ' + node.model.$params);
+                buffer.push(spaces(indent * 2) + '  -- fragment: ' + node.model.uri)
+                buffer.push(spaces(indent * 2) + '  -- $args: ' + node.model.$args + ' $params: ' + node.model.$params)
             }
         }
     }
     indent++;
     node.children.forEach(function(n) {
         _dumpNodeDeep(n, indent, buffer, ctx);
-    });
+    })
 }
 function _toIttfNodeDeep(node, indent, buffer) {
     if (node.name) {
-        buffer.push(spaces(indent * 4) + node.name + ' ' + (node.value || ''));
+        buffer.push(spaces(indent * 4) + node.name + ' ' + (node.value || ''))
     }
     else {
-        buffer.push(spaces(indent * 4) + node.n + ' ' + (node.v || ''));
+        buffer.push(spaces(indent * 4) + node.n + ' ' + (node.v || ''))
     }
     indent++;
     var i, i_items=node.children, i_len=node.children.length, child;
@@ -348,7 +296,7 @@ function _toIttfNodeDeep(node, indent, buffer) {
     }
 }
 function _toTextNodeDeep(node, indent, buffer) {
-    buffer.push(spaces(indent * 4) + node.n + ' ' + node.v || '');
+    buffer.push(spaces(indent * 4) + node.n + ' ' + node.v || '')
     indent++;
     var i, i_items=node.children, i_len=node.children.length, child;
     for (i=0; i<i_len; i++) {

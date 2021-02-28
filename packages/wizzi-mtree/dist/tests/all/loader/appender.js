@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\appender.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var mocks = require('../../mocks/misc');
@@ -48,10 +49,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("appender", function() {
@@ -64,7 +65,7 @@ describe("appender", function() {
             storeKind: 'filesystem'
         }, function(err, notUsed) {
             done();
-        });
+        })
     });
     it("should load an mTree", function(done) {
         var content_filepath = path.join(__dirname, 'repo', 'data', 'appender_1.tests.ittf');
@@ -86,9 +87,9 @@ describe("appender", function() {
                     }
                     appendedModel = result;
                     done();
-                });
-            });
-        });
+                })
+            })
+        })
     });
     it("nodes[0]", function() {
         expect(appendedModel).to.be.an('object');

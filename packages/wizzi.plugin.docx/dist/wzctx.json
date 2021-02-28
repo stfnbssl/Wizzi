@@ -19,8 +19,8 @@
     },
     "Schemas": [
         {
-            "name": "Sample",
-            "title": "Sample wizzi schema",
+            "name": "docx",
+            "title": "docx wizzi schema",
             "builtin": false,
             "modelTransformers": [
                 {

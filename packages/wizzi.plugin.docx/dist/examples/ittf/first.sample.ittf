@@ -1,4 +1,4 @@
-sample first
+docx first
     
     styles
         default
@@ -32,12 +32,9 @@ sample first
                 h2 ${item.Titolo}
                 h3 Dalla settimana ${item.SettimanaDal} alla ${item.SettimanaAl}
                 p ${item.Abstract}
-                p ${_.replace(_.replace(item.Testo,'"','\\"'),'\n','')}
+                $$ p ${_.replace(_.replace(item.Testo,'"','\\"'),'\n','')}
                 p Url ${item.url}
-                $*
-                $foreach node in item.TestoJson.children
+                $foreach tchild in item.TestoJson.children
                     $ _.log("A0", node_index, '/', node_count)
                     $_ itemText
-                        @_ node
-                *$
-
+                        @_ tchild

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\loadHistory.js.ittf
 */
 'use strict';
@@ -11,47 +12,7 @@ var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_ag
 var util = require('util');
 var MTreeBrickProvider = null;
 var utilsErrors = require('wizzi-utils').errors;
-/**
-     One mTree loading uses 1 mTreeBrickProvider and 1 loadHistory.
-    
-     The loadHistory keeps tracks of the ittf documents loaded
-     for building one mTree. Once loaded, ittf documents become mTreeBricks,
-     that may be reused many times for the same mTree and always are cloned.
-     Every cloned mTreeBrick has its own evalContext.
-     The loadHistory assigns source keys to ittf documents, loaded once, and
-     mTreeBrick keys to every cloned mTreeBricks.
-     It also checks the mix and include call chain to prevent recursion.
-    
-     ittfDocumentDatas: Map
-     key: sourceKey
-     item object:
-     string ittfDocumentUri
-     string content
-     string sourceKey
-    
-     mTreeBrickDatas: Map
-     key: brickKey
-     item object:
-     string ittfDocumentUri
-     string schema
-     { mTreeBrick (cloned)      // mTreeBrick is created by the mTreeBrickProvider
-     $mixerBrickKey:String    // key of the mixer mTreeBrickData
-     // set by the lib/loader/mixer
-     $args:String             // args of the mixin call
-     // set by the lib/loader/mixer
-     $params:String           // params received by the mixed mTreeBrick
-     byRefParams:Array        // params passed by reference
-     calcParamValues:Function  // calculates the values
-     { evalContext
-     string sourceKey
-     string brickKey
-    
-     [ callChain
-     {
-     string mixerUri
-     string mixedUri
-    
-*/
+//
 var LoadHistory = (function () {
     function LoadHistory() {
         _classCallCheck(this, LoadHistory);
@@ -104,16 +65,7 @@ var LoadHistory = (function () {
         var ittfDocumentData = this.ittfDocumentDatas[sourceKey];
         return ittfDocumentData ? ittfDocumentData.content : 'Source content unavailable';
     }
-    /**
-         params
-         string sourceKey
-         { errorData
-         @ row
-         @ column
-         @ description
-         boolean json
-        
-    */
+    //
     LoadHistory.prototype.getIttfDocumentErrorLines = function(sourceKey, errorData, json) {
         var source = this.getIttfDocumentContent(sourceKey);
         return utilsErrors.getErrorLines(errorData, source, json);
@@ -143,7 +95,7 @@ var LoadHistory = (function () {
         this.callChain.push({
             mixerUri: mixerUri, 
             mixedUri: mixedUri
-        });
+        })
     }
     LoadHistory.prototype.exitFragmentCall = function() {
         this.callChain.pop();
@@ -189,8 +141,8 @@ var LoadHistory = (function () {
                     }
                     return false;
                 }
-            });
-        });
+            })
+        })
     }
     return LoadHistory;
 })();

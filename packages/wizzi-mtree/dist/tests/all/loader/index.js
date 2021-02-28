@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\index.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var mocks = require('../../mocks/misc');
@@ -48,10 +49,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("index", function() {
@@ -67,7 +68,7 @@ describe("index", function() {
                 throw new Error(err.message);
             }
             done();
-        });
+        })
     });
     it("should load an mTree", function(done) {
         loader.loadMTree(path.join(__dirname, 'repo', 'data', 'ittf_object_args.tests.ittf'), {
@@ -96,9 +97,9 @@ describe("index", function() {
             }
             result = mTree;
             expect(result).to.be.an('object');
-            file.write(path.join(__dirname, 'repo', 'data', 'ittf_object_args.json'), stringify(mTree, null, 2));
+            file.write(path.join(__dirname, 'repo', 'data', 'ittf_object_args.json'), stringify(mTree, null, 2))
             done();
-        });
+        })
     });
     it("should get a NotFoundError", function(done) {
         loader.loadMTree(path.join(__dirname, 'repo', 'data', 'dummy.tests.ittf'), {
@@ -109,6 +110,6 @@ describe("index", function() {
             expect(err.name).to.be.a('string');
             expect(err.name).to.be('RepoIOError');
             done();
-        });
+        })
     });
 });

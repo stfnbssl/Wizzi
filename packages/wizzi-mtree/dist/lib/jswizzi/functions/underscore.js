@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\functions\underscore.js.ittf
 */
 'use strict';
@@ -89,8 +90,8 @@ module.exports = {
     }, 
     log: function() {
         var args = Array.prototype.slice.call(arguments, 0);
-        args.splice(0, 0, "=== jsWizzi:log => ");
-        console.log.apply(null, args);
+        args.splice(0, 0, "=== jsWizzi:log => ")
+        console.log.apply(null, args)
     }, 
     inspect: function(obj) {
         return util.inspect(obj, { depth: null});

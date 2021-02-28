@@ -5,7 +5,8 @@
 		$hook
 	if ${varName} && ${varName}.__is_error
         $if forTest != null
-            _ verify.logError( 'checked_call_return.error.method',  '${method}' )
-            _ verify.logError( 'checked_call_return.error.forTest',  '${forTest}',  ${forTest} )
-            _ verify.logError( 'checked_call_return.error.${varName}', ${varName} )
+            # TODO verify.logError does not exist any more 25/02/21
+            # _ verify.logError( 'checked_call_return.error.method',  '${method}' )
+            # _ verify.logError( 'checked_call_return.error.forTest',  '${forTest}',  ${forTest} )
+            # _ verify.logError( 'checked_call_return.error.${varName}', ${varName} )
 		return ${varName}

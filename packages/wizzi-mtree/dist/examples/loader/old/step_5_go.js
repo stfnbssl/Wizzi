@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\examples\loader\old\step_5_go.js.ittf
 */
 'use strict';
@@ -13,10 +14,8 @@ var file = vfile();
 var mocks = require('wizzi-utils').mocks;
 var repo = mocks.repo;
 var loader_evaluator = function(step_callback) {
-    heading1('EXAMPLE');
-    /**
-         EXAMPLE: evaluator
-    */
+    heading1('EXAMPLE')
+    //
     var mocks = require('../../tests/loader/mocks/misc');
     var MTreeBrickProvider = require('../../lib/loader/mTreeBrickProvider');
     var mixer = require('../../lib/loader/mixer');
@@ -108,15 +107,15 @@ var loader_evaluator = function(step_callback) {
                                 throw new Error(err.message);
                             }
                             evaluatedModel = result;
-                            printValue(name + ' source', sourceContent, 'dashes');
-                            printValue(name + ' toIttf', evaluatedModel.toIttf(), 'dashes');
-                            printObject(name + ' evaluatedModel', evaluatedModel, 'dashes');
-                        });
-                    });
-                });
-            });
+                            printValue(name + ' source', sourceContent, 'dashes')
+                            printValue(name + ' toIttf', evaluatedModel.toIttf(), 'dashes')
+                            printObject(name + ' evaluatedModel', evaluatedModel, 'dashes')
+                        })
+                    })
+                })
+            })
         }
-    });
+    })
 };
 loader_evaluator.__name = 'loader_evaluator';
 function heading1(text) {
@@ -146,7 +145,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }

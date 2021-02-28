@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\jswizzi\jsWizziRunner.js.ittf
 */
 'use strict';
@@ -30,7 +31,7 @@ function log(label, node, force) {
         console.log(escodegen.generate(node));
         console.log(label, util.inspect(node, {
             depth: 2
-        }));
+        }))
     }
 }
 function logGet(name, value) {
@@ -54,7 +55,7 @@ var runner = function(ast, ctx, action, data) {
         console.log('ast.type: ' + type);
     }
     if (ast.trailingComments && ast.trailingComments.length == 1) {
-        ctx.setRunningNodeId(ast.trailingComments[0].value);
+        ctx.setRunningNodeId(ast.trailingComments[0].value)
     }
     var trunner = runner[type];
     if (trunner) {
@@ -105,7 +106,7 @@ runner.Identifier = function(node, ctx) {
         }
         if (ctx.isDeclared(node.name)) {
             if (logGetSet) {
-                logGet(node.name, ctx.getValue(node.name));
+                logGet(node.name, ctx.getValue(node.name))
             }
             return ctx.getValue(node.name);
         }
@@ -128,7 +129,7 @@ runner.Identifier_Set = function(node, ctx, data) {
     log('Identifier_Set.node', node);
     var parentNode = null;
     try {
-        ctx.put(node.name, data);
+        ctx.put(node.name, data)
     } 
     catch (ex) {
         console.log('runner Error node:', node);
@@ -177,7 +178,7 @@ runner.VariableDeclarator = function(node, ctx) {
     var parentNode = null;
     try {
         if (!node.init) {
-            ctx.declare(node.id.name);
+            ctx.declare(node.id.name)
         }
         else {
             var value = runner(node.init, ctx);
@@ -187,7 +188,7 @@ runner.VariableDeclarator = function(node, ctx) {
             }
             // if node.id.name === '_____result'
             // log 'jsWizziRunner.VariableDeclarator', node.id.name, value
-            ctx.declare(node.id.name, value);
+            ctx.declare(node.id.name, value)
         }
     } 
     catch (ex) {
@@ -669,7 +670,7 @@ runner.BinaryExpression = function(node, ctx) {
         log('BinaryExpression.l,r', [
             l, 
             r
-        ]);
+        ])
         if (node.operator === '+') {
             return (l + r);
         }
@@ -764,7 +765,7 @@ runner.UpdateExpression = function(node, ctx) {
         else {
             return local_error(ctx, 'Unmanaged update expression ' + node.operator, node.operator, node, 'UpdateExpression');
         }
-        ctx.put(node.argument.name, v);
+        ctx.put(node.argument.name, v)
         return node.prefix ? v : exp;
     } 
     catch (ex) {
@@ -798,7 +799,7 @@ runner.LogicalExpression = function(node, ctx) {
         log('LogicalExpression.l,r', [
             l, 
             r
-        ]);
+        ])
         if (node.operator === '&&') {
             return l && r;
         }
@@ -1367,7 +1368,7 @@ runner.FunctionDeclaration = function(node, ctx) {
     log('FunctionDeclaration.node', node);
     var parentNode = null;
     try {
-        ctx.declareFunction(node.id.name, node);
+        ctx.declareFunction(node.id.name, node)
         return {};
     } 
     catch (ex) {
@@ -1388,7 +1389,7 @@ runner.FunctionDeclaration_Call = function(node, ctx, data) {
             // log 'wizzi-mtree.jswizzi.runner.functions.FunctionDeclaration_Call.param', node.params[i].name
             if (data.length > i) {
                 // log 'wizzi-mtree.jswizzi.runner.functions.FunctionDeclaration_Call.value', data[i]
-                ctx.declareCallParam(node.params[i].name, data[i]);
+                ctx.declareCallParam(node.params[i].name, data[i])
             }
         }
         var state = runner(node.body, ctx);
@@ -1462,7 +1463,7 @@ function local_error(ctx, message, node, parentnode, method, ex, other) {
 function local_error_new(name, method, message, node, inner, other) {
     return new mainErrors.WizziError(message, node, node ? node.mTreeBrick || node.model : null, {
             errorName: name, 
-            method: 'wizzi-mtree@0.7.10.jsWizzi.jsWizziRunner.' + method, 
+            method: 'wizzi-mtree@0.7.11.jsWizzi.jsWizziRunner.' + method, 
             ...other||{}, 
             inner: inner
         });
@@ -1549,7 +1550,7 @@ module.exports = {
                     return callback(err);
                 }
                 return execute_run_cb(parsed, ctx, options, callback);
-            });
+            })
         }
         else {
             var parsed = this.getParsed(source);
@@ -1562,7 +1563,7 @@ module.exports = {
 };
 function execute_run_cb(parsed, ctx, options, callback) {
     if (options.dumpfile) {
-        options.dumpfile(JSON.stringify(parsed, null, 2));
+        options.dumpfile(JSON.stringify(parsed, null, 2))
     }
     try {
         var result = runner(parsed, ctx);
@@ -1609,7 +1610,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi-mtree@0.7.10.jsWizzi.jsWizziRunner.' + method,
+        method: 'wizzi-mtree@0.7.11.jsWizzi.jsWizziRunner.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

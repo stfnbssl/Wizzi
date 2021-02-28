@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\mTreeBrickProvider.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var MTreeBrickProvider = require('../../../lib/loader/mTreeBrickProvider');
@@ -47,10 +48,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("mTreeBrickProvider", function() {
@@ -63,7 +64,7 @@ describe("mTreeBrickProvider", function() {
             storeKind: 'filesystem'
         }, function(err, notUsed) {
             done();
-        });
+        })
     });
     it("should get a protocol error", function(done) {
         MTreeBrickProvider.createFromUri('alfa.txt', {
@@ -74,7 +75,7 @@ describe("mTreeBrickProvider", function() {
             expect(err.name).to.be('InvalidRequestError');
             expect(err.code).to.be('UriError');
             done();
-        });
+        })
     });
     it("should get a uri error", function(done) {
         MTreeBrickProvider.createFromUri('http://alpha.txt', {
@@ -85,7 +86,7 @@ describe("mTreeBrickProvider", function() {
             expect(err.name).to.be('InvalidRequestError');
             expect(err.code).to.be('UriError');
             done();
-        });
+        })
     });
     it("should get an invalid request error", function(done) {
         MTreeBrickProvider.createFromUri('repo://alpha.txt', {
@@ -95,7 +96,7 @@ describe("mTreeBrickProvider", function() {
         }, function(err, content) {
             expect(err.name).to.be('InvalidRequestError');
             done();
-        });
+        })
     });
     it("should get a RepoIOError (NotFound)", function(done) {
         MTreeBrickProvider.createFromUri(path.join(__dirname, 'dummy', 'alpha.txt'), {
@@ -105,7 +106,7 @@ describe("mTreeBrickProvider", function() {
         }, function(err, content) {
             expect(err.name).to.be('RepoIOError');
             done();
-        });
+        })
     });
     it("should load the raw MTreeBrick", function(done) {
         MTreeBrickProvider.createFromUri(path.join(__dirname, 'repo', 'data', 'doc1.tests.ittf'), {
@@ -133,7 +134,7 @@ describe("mTreeBrickProvider", function() {
             var loadHistory = provider.loadHistory;
             expect(loadHistory).to.be.an('object');
             done();
-        });
+        })
     });
     it("should load the raw mTreeBrick", function(done) {
         MTreeBrickProvider.createFromUri(path.join(__dirname, 'repo', 'data', 'doc1.tests.ittf'), {
@@ -164,7 +165,7 @@ describe("mTreeBrickProvider", function() {
                 expect(mTreeBrick.nodes[0].name).to.be('property');
                 expect(mTreeBrick.nodes[0].value).to.be('Nemo');
                 done();
-            });
-        });
+            })
+        })
     });
 });

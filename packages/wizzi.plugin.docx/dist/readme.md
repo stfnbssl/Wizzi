@@ -15,7 +15,7 @@
 </tr>
 <tr>
 <td>
-<a href https://github.com///tree/master/.wizzi/ittf/lib/wizzi/schemas/Sample.wfschema.ittf>Sample</a><td>Sample wizzi schema</td>
+<a href https://github.com///tree/master/.wizzi/ittf/lib/wizzi/schemas/docx.wfschema.ittf>docx</a><td>docx wizzi schema</td>
 <td>
 no<td>
 
@@ -42,7 +42,7 @@ no<td>
 
 
 
-<p>You can find a few samples in the /examples folder, but you can find more in the<a href="https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-demo/.wizzi/ittf/examples/advanced/plugins">demo package</a>.</p>
+<p>You can find a few docxs in the /examples folder, but you can find more in the<a href="https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-demo/.wizzi/ittf/examples/advanced/plugins">demo package</a>.</p>
 
 ## Source and generation
  is generated using Wizzi.

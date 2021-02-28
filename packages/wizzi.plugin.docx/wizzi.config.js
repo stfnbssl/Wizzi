@@ -15,8 +15,11 @@ module.exports = {
         'wizzi-js', 
         'wizzi-web'
     ], 
+    s_schemas: [
+        "docx"
+    ], 
     schemas: [
-        "sample"
+        "docx"
     ], 
     globalContext: {
         gctxIsDevelopment: true

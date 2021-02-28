@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\mTreeBrickProvider.js.ittf
 */
 'use strict';
@@ -16,11 +17,7 @@ var errors = require('../errors');
 var LoadHistory = require('./loadHistory').LoadHistory;
 var MTreeBrick = require('./mTreeBrick').MTreeBrick;
 var IttfDocumentFinder = require('./ittfDocumentFinder');
-/**
-     Each mTree loading requires one instance of the MTreeBrickProvider.
-     TODO To date there is no global cache for mTrees, but only a cache of
-     mTreeBricks used during a single loading.
-*/
+//
 var MTreeBrickProvider = (function () {
     function MTreeBrickProvider() {
         _classCallCheck(this, MTreeBrickProvider);
@@ -123,34 +120,11 @@ var MTreeBrickProvider = (function () {
                     that.primaryMTreeBrickCloned = primaryMTreeBrickCloned;
                     // callbacks returning the mTreeBrickProvider instance
                     callback(null, that);
-                });
-            });
-        });
+                })
+            })
+        })
     }
-    /**
-         Clones, or loads from source, an included or mixed ittf document
-         params
-         { options
-         string ittfDocumentUri
-         boolean include
-         // If true the mTreeBrick loaded from the IttfDocument will be included in the includer mTreeBrick
-         // and its scope will become that of the includer (its brickKey will be that of the includer).
-         // A $include command must not have any argument.
-         // An included ittf document must not have params (must not have the $params command).
-         string basedir
-         string relpath
-         string from
-         string includerBrickKey
-         { includerMTreeBrick
-         api-ref wizzi-mtree.mTreeBrick
-        
-        
-         called from
-         ./mtree.load
-         ./includer
-         ./mixer
-        
-    */
+    //
     MTreeBrickProvider.prototype.get = function(options, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -177,7 +151,7 @@ var MTreeBrickProvider = (function () {
                 mTreeBrickCloned = cachedMTreeBrick.clone();
                 // this is not superflous
                 // the productionContext counts the cached used
-                productionContext.addIttfDocument(uri, cachedMTreeBrick.inputContent);
+                productionContext.addIttfDocument(uri, cachedMTreeBrick.inputContent)
                 // adding the mTreeBrickCloned to the loadHistory
                 // generates the sourceKey and brickKey
                 var mTreeBrickData = loadHistory.addMTreeBrick(uri, that.schema, mTreeBrickCloned, options);
@@ -202,15 +176,15 @@ var MTreeBrickProvider = (function () {
                         return callback(new errors.IttfLoadError("Empty document", uri));
                     }
                     else {
-                        that.loadMTreeBrickFromSource(uri, options, ittfContent, callback);
+                        that.loadMTreeBrickFromSource(uri, options, ittfContent, callback)
                     }
-                });
+                })
             }
-        });
+        })
     }
     MTreeBrickProvider.prototype.loadMTreeBrickFromSource = function(uri, options, ittfContent, callback) {
-        this.productionContext.addIttfDocument(uri, ittfContent);
-        this.loadHistory.addIttfDocument(uri, ittfContent);
+        this.productionContext.addIttfDocument(uri, ittfContent)
+        this.loadHistory.addIttfDocument(uri, ittfContent)
         if (this.sourcePreprocessor) {
             // TODO save the preprocessed in productionContext and loadHistory
             // or save the sourcePreprocessor function
@@ -283,7 +257,7 @@ var MTreeBrickProvider = (function () {
         return callback(null, mTreeBrickCloned);
     }
     MTreeBrickProvider.prototype.enterFragmentCall = function(mixerUri, mixedUri) {
-        this.loadHistory.enterFragmentCall(mixerUri, mixedUri);
+        this.loadHistory.enterFragmentCall(mixerUri, mixedUri)
     }
     MTreeBrickProvider.prototype.exitFragmentCall = function() {
         this.loadHistory.exitFragmentCall();
@@ -294,10 +268,7 @@ var MTreeBrickProvider = (function () {
     return MTreeBrickProvider;
 })();
 
-/**
-     Creates an MTreeBrickProvider for loading
-     an IttfDocucument
-*/
+//
 MTreeBrickProvider.createFromUri = function(primaryIttfDocumentUri, loadContext, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -321,10 +292,15 @@ MTreeBrickProvider.createFromUri = function(primaryIttfDocumentUri, loadContext,
                 return callback(err);
             }
             callback(null, provider);
-        });
+        })
     } 
     catch (ex) {
-        ex.message += '\n creating from uri: ' + primaryIttfDocumentUri;
+        // TODO create new IttfError and call callback
+        try {
+            ex.message += '\n creating from uri: ' + primaryIttfDocumentUri;
+        } 
+        catch (ex2) {
+        } 
         throw ex;
     } 
 };

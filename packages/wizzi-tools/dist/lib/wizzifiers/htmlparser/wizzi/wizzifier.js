@@ -55,7 +55,7 @@ function parseInternal(html, options, callback) {
         }, 
         ontext: function(text) {
             // log "================= Text", text, wizziTree.tag
-            var lines = file.splitLines(text.trim());
+            var lines = file.splitLines(text);
             if (wizziTree.swig) {
                 // log '++++++++++ wizziTree.swig'
                 lines.forEach(function(l) {
@@ -88,13 +88,15 @@ function parseInternal(html, options, callback) {
             }
             else if (lines.length == 1) {
                 if (wizziTree.children.length > 0) {
-                    var n = {
-                        tag: '+', 
-                        name: lines[0], 
-                        attribs: {}, 
-                        children: []
-                    };
-                    wizziTree.children.push(n);
+                    if (lines[0].trim().length > 0) {
+                        var n = {
+                            tag: '+', 
+                            name: lines[0], 
+                            attribs: {}, 
+                            children: []
+                        };
+                        wizziTree.children.push(n);
+                    }
                 }
                 else {
                     wizziTree.name += lines[0];
@@ -102,13 +104,15 @@ function parseInternal(html, options, callback) {
             }
             else {
                 lines.forEach(function(l) {
-                    var n = {
-                        tag: '++', 
-                        name: l.trim(), 
-                        attribs: {}, 
-                        children: []
-                    };
-                    wizziTree.children.push(n);
+                    if (l.trim().length > 0) {
+                        var n = {
+                            tag: '++', 
+                            name: l, 
+                            attribs: {}, 
+                            children: []
+                        };
+                        wizziTree.children.push(n);
+                    }
                 })
             }
         }, 
@@ -187,15 +191,15 @@ function parseInternal(html, options, callback) {
     try {
         if (html && html.length > 0) {
             if (html.substr(0,'<html>'.length) == '<html>' || html.substr(0,'<!doctype>'.length) == '<!doctype>') {
-                console.log('html document has root tag html');
+                // log 'html document has root tag html'
             }
             else {
-                console.log(html.substr(0,'<html>'.length), html.substr(0,'<!doctype>'.length));
+                // log html.substr(0,'<html>'.length), html.substr(0,'<!doctype>'.length)
                 var i1 = html.indexOf('<');
                 var i2 = html.indexOf('>');
                 if (i1 > -1 && i2 > -1) {
                     var temp = html.substr(i1+1, i2-i1-1);
-                    console.log('wizzi-tools.htmlparser.addedWrapper.temp', temp);
+                    // log 'wizzi-tools.htmlparser.addedWrapper.temp', temp
                     if (temp.toLowerCase().indexOf('!doctype') > -1) {
                         html = '<html>' + html.substr(i2+1) + '</html>';
                     }
@@ -220,10 +224,10 @@ function parseInternal(html, options, callback) {
         wizziTree.children = wizziTree.children[0].children;
     }
     // log 'wizziTree', wizziTree
-    console.log('wizzi-tools.htmlparser.wizzify.options.embedTag,wizziTree.children.length', options.embedTag, wizziTree.children.length);
+    // log 'wizzi-tools.htmlparser.wizzify.options.embedTag,wizziTree.children.length', options.embedTag, wizziTree.children.length
     var synthax;
     if (wizziTree.children.length > 1 && typeof (options.embedTag) === 'string') {
-        console.log('wizzi-tools.htmlparser.wizzify.options.embedTag, wizziTree.children[0]', options.embedTag, wizziTree.children[0]);
+        // log 'wizzi-tools.htmlparser.wizzify.options.embedTag, wizziTree.children[0]', options.embedTag, wizziTree.children[0]
         if (options.embedTag === wizziTree.children[0].tag) {
             synthax = wizziTree.children[0];
         }

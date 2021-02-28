@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\all\loader\mixer.js.ittf
 */
 'use strict';
@@ -22,7 +23,7 @@ function getFSDocumentStore(callback) {
             return callback(err);
         }
         return storeFacory(callback);
-    });
+    })
 }
 
 var mocks = require('../../mocks/misc');
@@ -47,10 +48,10 @@ function evaluate(uri, callback) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                evaluator(appendedModel, loadContext, callback);
-            });
-        });
-    });
+                evaluator(appendedModel, loadContext, callback)
+            })
+        })
+    })
 }
 
 describe("mixer", function() {
@@ -63,7 +64,7 @@ describe("mixer", function() {
             storeKind: 'filesystem'
         }, function(err, notUsed) {
             done();
-        });
+        })
     });
     it("mix a mixin", function(done) {
         var content_filepath = path.join(__dirname, 'repo', 'data', 'mixer_1.tests.ittf');
@@ -93,8 +94,8 @@ describe("mixer", function() {
                 expect(node.value).to.be.a('string');
                 expect(node.value).to.be('1');
                 done();
-            });
-        });
+            })
+        })
     });
     it("mix a mixin with params", function(done) {
         var content_filepath = path.join(__dirname, 'repo', 'data', 'mixer_1_with_params.tests.ittf');
@@ -136,7 +137,7 @@ describe("mixer", function() {
                 // strict equality
                 expect(node.value).to.be('$'+'{name}');
                 done();
-            });
-        });
+            })
+        })
     });
 });

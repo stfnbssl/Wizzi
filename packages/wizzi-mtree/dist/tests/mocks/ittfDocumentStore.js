@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\tests\mocks\ittfDocumentStore.js.ittf
 */
 'use strict';
@@ -28,14 +29,9 @@ var IttfDocumentStore = (function () {
                 'InvalidArgument', 'parseUri', { parameter: 'ittfDocumentUri', message: 'The ittfDocumentUri parameter must be a string. Received: ' + ittfDocumentUri }
             ));
         }
-        uriparser(ittfDocumentUri, callback);
+        uriparser(ittfDocumentUri, callback)
     }
-    /**
-         params
-         { ittfDocumentInfo
-         string storeKind
-         oneOf filesystem, mongodb, localstorage
-    */
+    //
     IttfDocumentStore.prototype.init = function(ittfDocumentInfo, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -127,7 +123,7 @@ var IttfDocumentStore = (function () {
         var ret = new IttfDocumentStore();
         ret.initSync({
             storeKind: "filesystem"
-        });
+        })
         return ret;
     }
     return IttfDocumentStore;

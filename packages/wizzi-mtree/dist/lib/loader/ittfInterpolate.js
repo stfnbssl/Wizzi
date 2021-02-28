@@ -1,21 +1,12 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-mtree\.wizzi\ittf\lib\loader\ittfInterpolate.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
 var jsWizziRunner = require('../jswizzi/jsWizziRunner');
-/**
-     rules:
-     Macro expressions are enclosed by ${ and } delimiters.
-     example: ${name}.
-     A macro expression can be escaped and used as a literal,
-     example: \$\{name}.
-     A macro expression may contain paired graphs { },
-     example: ${ for { var i=0; i<10; i++} ; return i; }.
-     An empty macro ${} is treated as a literal, it is not replaced.
-     An unclosed delimiter ${ is treated as a literal, it is not an error.
-*/
+//
 var state_text = 0;
 var state_tag = 1;
 var state_key = 2;
@@ -165,7 +156,7 @@ function evalKeyOrCode(keyOrCode, jsWizziContext) {
     // log 'wizzi-mtree.loader.ittfInterpolate.evalKeyOrCode.previous._____result: ', keyOrCode, jsWizziContext.isDeclared('_____result')
     var notUsed = jsWizziRunner.run(stm, jsWizziContext);
     if (notUsed && notUsed.__is_error) {
-        verify.logError( 'checked_call_return.error.method',  'wizzi-mtree@0.7.10.loader.ittfInterpolate.evalKeyOrCode' );
+        verify.logError( 'checked_call_return.error.method',  'wizzi-mtree@0.7.11.loader.ittfInterpolate.evalKeyOrCode' );
         verify.logError( 'checked_call_return.error.forTest',  'stm',  stm );
         verify.logError( 'checked_call_return.error.notUsed', notUsed );
         return notUsed;

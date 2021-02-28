@@ -545,8 +545,8 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -570,12 +570,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ CREARE&nbsp;LEGAMI
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ CREARE&nbsp;LEGAMI
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -604,15 +604,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_317
 		h2 Nascita
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -636,12 +636,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GENITORI&nbsp;SI&nbsp;DIVENTA...
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GENITORI&nbsp;SI&nbsp;DIVENTA...
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -683,15 +683,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_308
 		h2 Nascita
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -715,12 +715,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;NUOVI&nbsp;GENITORI…&nbsp;ECCITATI,&nbsp;STANCHI&nbsp;E&nbsp;NERVOSI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;NUOVI&nbsp;GENITORI…&nbsp;ECCITATI,&nbsp;STANCHI&nbsp;E&nbsp;NERVOSI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -766,15 +766,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_307
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -798,12 +798,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ ESSERE&nbsp;GENITORI&nbsp;È&nbsp;UN&nbsp;COMPITO&nbsp;MOLTO&nbsp;IMPEGNATIVO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ ESSERE&nbsp;GENITORI&nbsp;È&nbsp;UN&nbsp;COMPITO&nbsp;MOLTO&nbsp;IMPEGNATIVO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -852,15 +852,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_332
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -884,16 +884,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MOLTE&nbsp;COPPIE&nbsp;NEI&nbsp;PRIMI&nbsp;MESI&nbsp;DI&nbsp;VITA&nbsp;DEL&nbsp;BAMBINO&nbsp;POSSONO&nbsp;ATTRAVERSARE&nbsp;UN&nbsp;MOMENTO&nbsp;DI&nbsp;DIFFICOLTÀ
-			style h2_strong
-			bold
-			size 28
-		+   
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ MOLTE&nbsp;COPPIE&nbsp;NEI&nbsp;PRIMI&nbsp;MESI&nbsp;DI&nbsp;VITA&nbsp;DEL&nbsp;BAMBINO&nbsp;POSSONO&nbsp;ATTRAVERSARE&nbsp;UN&nbsp;MOMENTO&nbsp;DI&nbsp;DIFFICOLTÀ
+				style h2_strong
+				bold
+				size 28
+			+   
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -905,15 +905,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_660
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -937,12 +937,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ SE&nbsp;RISPONDI&nbsp;AL&nbsp;PIANTO&nbsp;DEL&nbsp;TUO&nbsp;BAMBINO&nbsp;NON&nbsp;LO&nbsp;STAI&nbsp;VIZIANDO!
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ SE&nbsp;RISPONDI&nbsp;AL&nbsp;PIANTO&nbsp;DEL&nbsp;TUO&nbsp;BAMBINO&nbsp;NON&nbsp;LO&nbsp;STAI&nbsp;VIZIANDO!
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -987,15 +987,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_340
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1019,12 +1019,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ IL&nbsp;CAMBIAMENTO&nbsp;CHE&nbsp;COMPORTA&nbsp;LA&nbsp;NASCITA&nbsp;DI&nbsp;UN&nbsp;BAMBINO&nbsp;È&nbsp;PROFONDO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ IL&nbsp;CAMBIAMENTO&nbsp;CHE&nbsp;COMPORTA&nbsp;LA&nbsp;NASCITA&nbsp;DI&nbsp;UN&nbsp;BAMBINO&nbsp;È&nbsp;PROFONDO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1057,15 +1057,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_321
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1089,12 +1089,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ IN&nbsp;FAMIGLIA&nbsp;VINCE&nbsp;IL&nbsp;GIOCO&nbsp;DI&nbsp;SQUADRA
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ IN&nbsp;FAMIGLIA&nbsp;VINCE&nbsp;IL&nbsp;GIOCO&nbsp;DI&nbsp;SQUADRA
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1136,15 +1136,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_310
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1168,12 +1168,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ PARLA&nbsp;A&nbsp;QUALCUNO&nbsp;DI&nbsp;TUA&nbsp;FIDUCIA&nbsp;SE&nbsp;TI&nbsp;SENTI&nbsp;SOLA,&nbsp;TRISTE&nbsp;O&nbsp;MALINCONICA
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ PARLA&nbsp;A&nbsp;QUALCUNO&nbsp;DI&nbsp;TUA&nbsp;FIDUCIA&nbsp;SE&nbsp;TI&nbsp;SENTI&nbsp;SOLA,&nbsp;TRISTE&nbsp;O&nbsp;MALINCONICA
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1312,15 +1312,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_326
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1344,12 +1344,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ NON&nbsp;PREOCCUPARTI&nbsp;SE&nbsp;LE&nbsp;COSE&nbsp;NON&nbsp;SONO&nbsp;SEMPRE&nbsp;PERFETTE 
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ NON&nbsp;PREOCCUPARTI&nbsp;SE&nbsp;LE&nbsp;COSE&nbsp;NON&nbsp;SONO&nbsp;SEMPRE&nbsp;PERFETTE 
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1374,15 +1374,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_319
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1406,12 +1406,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Tenere&nbsp;il&nbsp;bambino&nbsp;in&nbsp;braccio&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Tenere&nbsp;il&nbsp;bambino&nbsp;in&nbsp;braccio&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1463,15 +1463,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_341
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1495,12 +1495,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;COPPIA&nbsp;HA&nbsp;BISOGNO&nbsp;DI&nbsp;TEMPO&nbsp;PER&nbsp;RICOSTRUIRE&nbsp;UN&nbsp;NUOVO&nbsp;EQUILIBRIO
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;COPPIA&nbsp;HA&nbsp;BISOGNO&nbsp;DI&nbsp;TEMPO&nbsp;PER&nbsp;RICOSTRUIRE&nbsp;UN&nbsp;NUOVO&nbsp;EQUILIBRIO
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1557,15 +1557,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_334
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1589,12 +1589,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ VOI&nbsp;SIETE&nbsp;IL&nbsp;PRIMO&nbsp;E&nbsp;MIGLIOR&nbsp;INSEGNANTE&nbsp;DEL&nbsp;VOSTRO&nbsp;BAMBINO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ VOI&nbsp;SIETE&nbsp;IL&nbsp;PRIMO&nbsp;E&nbsp;MIGLIOR&nbsp;INSEGNANTE&nbsp;DEL&nbsp;VOSTRO&nbsp;BAMBINO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1639,15 +1639,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_338
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1671,12 +1671,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ OGNI&nbsp;TANTO&nbsp;AI&nbsp;GENITORI&nbsp;SERVE&nbsp;UNA&nbsp;PICCOLA&nbsp;PAUSA!
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ OGNI&nbsp;TANTO&nbsp;AI&nbsp;GENITORI&nbsp;SERVE&nbsp;UNA&nbsp;PICCOLA&nbsp;PAUSA!
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1705,15 +1705,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_333
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1737,12 +1737,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GENITORI&nbsp;CONNESSI...
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GENITORI&nbsp;CONNESSI...
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1788,15 +1788,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_318
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1906,15 +1906,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_335
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1938,12 +1938,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MANTENETE&nbsp;LA&nbsp;VOSTRA&nbsp;RELAZIONE&nbsp;FORTE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MANTENETE&nbsp;LA&nbsp;VOSTRA&nbsp;RELAZIONE&nbsp;FORTE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1984,15 +1984,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_336
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2016,12 +2016,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MASCHI&nbsp;E&nbsp;FEMMINE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MASCHI&nbsp;E&nbsp;FEMMINE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2055,15 +2055,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_339
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2087,12 +2087,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ UNA&nbsp;PAROLA&nbsp;SPECIALE&nbsp;PER&nbsp;I&nbsp;PAPÀ
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ UNA&nbsp;PAROLA&nbsp;SPECIALE&nbsp;PER&nbsp;I&nbsp;PAPÀ
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2171,15 +2171,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_342
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2203,12 +2203,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ OGNI&nbsp;BAMBINO&nbsp;E'&nbsp;UNICO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ OGNI&nbsp;BAMBINO&nbsp;E'&nbsp;UNICO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2253,15 +2253,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_347
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2285,12 +2285,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;BAMBINI&nbsp;SONO&nbsp;NATI&nbsp;PER&nbsp;IMPARARE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;BAMBINI&nbsp;SONO&nbsp;NATI&nbsp;PER&nbsp;IMPARARE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2331,15 +2331,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_343
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2363,12 +2363,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;BAMBINI&nbsp;AMANO&nbsp;LE&nbsp;ROUTINE
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;BAMBINI&nbsp;AMANO&nbsp;LE&nbsp;ROUTINE
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2438,15 +2438,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_348
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2470,12 +2470,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ OGNI&nbsp;BAMBINO&nbsp;SI&nbsp;SVILUPPA&nbsp;E&nbsp;IMPARA&nbsp;CON&nbsp;IL&nbsp;PROPRIO&nbsp;RITMO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ OGNI&nbsp;BAMBINO&nbsp;SI&nbsp;SVILUPPA&nbsp;E&nbsp;IMPARA&nbsp;CON&nbsp;IL&nbsp;PROPRIO&nbsp;RITMO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2560,15 +2560,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_349
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2592,12 +2592,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ UN&nbsp;BUON&nbsp;GENITORE...&nbsp;SI&nbsp;PRENDE&nbsp;CURA&nbsp;DI&nbsp;SE&nbsp;STESSO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ UN&nbsp;BUON&nbsp;GENITORE...&nbsp;SI&nbsp;PRENDE&nbsp;CURA&nbsp;DI&nbsp;SE&nbsp;STESSO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2634,15 +2634,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_350
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2666,21 +2666,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Essere&nbsp;genitori&nbsp;positivi&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Essere&nbsp;genitori&nbsp;positivi&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ non&nbsp;significa&nbsp;essere&nbsp;perfetti,&nbsp;essere&nbsp;sempre&nbsp;allegri&nbsp;o&nbsp;avere&nbsp;un&nbsp;bel&nbsp;profilo&nbsp;sui&nbsp;social.&nbsp;
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ non&nbsp;significa&nbsp;essere&nbsp;perfetti,&nbsp;essere&nbsp;sempre&nbsp;allegri&nbsp;o&nbsp;avere&nbsp;un&nbsp;bel&nbsp;profilo&nbsp;sui&nbsp;social.&nbsp;
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2718,15 +2718,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_355
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2750,12 +2750,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GODITI&nbsp;I&nbsp;MOMENTI&nbsp;DI&nbsp;CONNESSIONE&nbsp;CON&nbsp;IL&nbsp;TUO&nbsp;BAMBINO
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GODITI&nbsp;I&nbsp;MOMENTI&nbsp;DI&nbsp;CONNESSIONE&nbsp;CON&nbsp;IL&nbsp;TUO&nbsp;BAMBINO
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2791,15 +2791,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_351
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2823,16 +2823,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Cerca&nbsp;aiuto, 
-			style h2_big_strong
-			bold
-			size 28
-		+ supporto&nbsp;e&nbsp;altre&nbsp;informazioni&nbsp;sulla&nbsp;genitorialità&nbsp;quando&nbsp;ne&nbsp;hai&nbsp;bisogno
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Cerca&nbsp;aiuto, 
+				style h2_big_strong
+				bold
+				size 28
+			+ supporto&nbsp;e&nbsp;altre&nbsp;informazioni&nbsp;sulla&nbsp;genitorialità&nbsp;quando&nbsp;ne&nbsp;hai&nbsp;bisogno
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2878,15 +2878,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_353
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2910,12 +2910,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ ANCHE&nbsp;SE&nbsp;IL&nbsp;VOSTRO&nbsp;BIMBO&nbsp;HA&nbsp;SOLO&nbsp;SEI&nbsp;MESI,&nbsp;IMPARA&nbsp;GUARDANDO&nbsp;VOI.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ ANCHE&nbsp;SE&nbsp;IL&nbsp;VOSTRO&nbsp;BIMBO&nbsp;HA&nbsp;SOLO&nbsp;SEI&nbsp;MESI,&nbsp;IMPARA&nbsp;GUARDANDO&nbsp;VOI.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3064,15 +3064,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_465
 		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3096,12 +3096,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ AFFIDARE&nbsp;AD&nbsp;ALTRI&nbsp;LE&nbsp;CURE&nbsp;DEL&nbsp;BIMBO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ AFFIDARE&nbsp;AD&nbsp;ALTRI&nbsp;LE&nbsp;CURE&nbsp;DEL&nbsp;BIMBO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3173,15 +3173,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_372
 		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3205,12 +3205,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ INCIDENTI...&nbsp;MEGLIO&nbsp;PREVENIRLI...
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ INCIDENTI...&nbsp;MEGLIO&nbsp;PREVENIRLI...
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3243,15 +3243,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_358
 		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3275,12 +3275,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;BAMBINI&nbsp;IMPARANO&nbsp;GUARDANDO&nbsp;I&nbsp;GENITORI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;BAMBINI&nbsp;IMPARANO&nbsp;GUARDANDO&nbsp;I&nbsp;GENITORI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3333,15 +3333,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_357
 		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3365,12 +3365,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ COME&nbsp;AIUTARE&nbsp;UN&nbsp;BIMBO&nbsp;CHE&nbsp;HA&nbsp;DIFFICOLTÀ&nbsp;A&nbsp;GESTIRE&nbsp;SITUAZIONI&nbsp;NUOVE?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ COME&nbsp;AIUTARE&nbsp;UN&nbsp;BIMBO&nbsp;CHE&nbsp;HA&nbsp;DIFFICOLTÀ&nbsp;A&nbsp;GESTIRE&nbsp;SITUAZIONI&nbsp;NUOVE?
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3446,15 +3446,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_356
 		h2 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3478,12 +3478,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GUIDARE&nbsp;IL&nbsp;COMPORTAMENTO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GUIDARE&nbsp;IL&nbsp;COMPORTAMENTO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3548,15 +3548,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_360
 		h2 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3580,12 +3580,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GENITORI&nbsp;IN&nbsp;FORMA...&nbsp;SE&nbsp;POSSIBILE!
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GENITORI&nbsp;IN&nbsp;FORMA...&nbsp;SE&nbsp;POSSIBILE!
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3625,15 +3625,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_361
 		h2 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3657,12 +3657,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;PAURA&nbsp;DEGLI&nbsp;ESTRANEI,&nbsp;UNA&nbsp;DOMANDA&nbsp;FREQUENTE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;PAURA&nbsp;DEGLI&nbsp;ESTRANEI,&nbsp;UNA&nbsp;DOMANDA&nbsp;FREQUENTE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3711,15 +3711,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_363
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3743,21 +3743,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Riconosci&nbsp;e&nbsp;regola&nbsp;le&nbsp;tue&nbsp;emozioni&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Riconosci&nbsp;e&nbsp;regola&nbsp;le&nbsp;tue&nbsp;emozioni&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ e&nbsp;i&nbsp;tuoi&nbsp;comportamenti&nbsp;prima&nbsp;di&nbsp;rispondere&nbsp;al&nbsp;tuo&nbsp;bambino
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ e&nbsp;i&nbsp;tuoi&nbsp;comportamenti&nbsp;prima&nbsp;di&nbsp;rispondere&nbsp;al&nbsp;tuo&nbsp;bambino
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3785,15 +3785,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_352
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3817,12 +3817,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ IMPARARE&nbsp;A&nbsp;GESTIRE&nbsp;LE&nbsp;EMOZIONI,&nbsp;GENITORI&nbsp;CHE&nbsp;AIUTANO&nbsp;I&nbsp;BAMBINI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ IMPARARE&nbsp;A&nbsp;GESTIRE&nbsp;LE&nbsp;EMOZIONI,&nbsp;GENITORI&nbsp;CHE&nbsp;AIUTANO&nbsp;I&nbsp;BAMBINI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3870,15 +3870,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_367
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3902,12 +3902,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ COME&nbsp;GUIDARE&nbsp;IL&nbsp;COMPORTAMENTO 
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ COME&nbsp;GUIDARE&nbsp;IL&nbsp;COMPORTAMENTO 
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3967,15 +3967,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_364
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3999,21 +3999,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ DIVENTARE&nbsp;FAMIGLIA...
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ DIVENTARE&nbsp;FAMIGLIA...
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+  è&nbsp;una&nbsp;metamorfosi&nbsp;che&nbsp;richiede&nbsp;tempo,&nbsp;impegno&nbsp;e&nbsp;aggiustamenti&nbsp;continui.&nbsp;
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+  è&nbsp;una&nbsp;metamorfosi&nbsp;che&nbsp;richiede&nbsp;tempo,&nbsp;impegno&nbsp;e&nbsp;aggiustamenti&nbsp;continui.&nbsp;
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4082,15 +4082,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_365
 		h2 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4114,12 +4114,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ INSEGNARE&nbsp;A&nbsp;GESTIRE&nbsp;LE&nbsp;EMOZIONI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ INSEGNARE&nbsp;A&nbsp;GESTIRE&nbsp;LE&nbsp;EMOZIONI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4185,15 +4185,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_369
 		h2 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4217,12 +4217,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;BAMBINI&nbsp;TESTANO&nbsp;I&nbsp;LIMITI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;BAMBINI&nbsp;TESTANO&nbsp;I&nbsp;LIMITI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4260,15 +4260,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_379
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4292,12 +4292,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GENITORI&nbsp;CHE&nbsp;LAVORANO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GENITORI&nbsp;CHE&nbsp;LAVORANO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4358,15 +4358,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_375
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4390,12 +4390,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ PRENDERSI&nbsp;CURA&nbsp;DI&nbsp;SE&nbsp;STESSI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ PRENDERSI&nbsp;CURA&nbsp;DI&nbsp;SE&nbsp;STESSI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4469,15 +4469,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_373
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4501,12 +4501,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ IL&nbsp;PIANETA&nbsp;‘NO-NO’
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ IL&nbsp;PIANETA&nbsp;‘NO-NO’
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4620,15 +4620,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_476
 		h2 1 anno
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4652,12 +4652,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;BAMBINI&nbsp;HANNO&nbsp;BISOGNO&nbsp;CHE&nbsp;OGNI&nbsp;TANTO&nbsp;GLI&nbsp;SI&nbsp;DICA&nbsp;“NO”
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;BAMBINI&nbsp;HANNO&nbsp;BISOGNO&nbsp;CHE&nbsp;OGNI&nbsp;TANTO&nbsp;GLI&nbsp;SI&nbsp;DICA&nbsp;“NO”
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4698,15 +4698,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_380
 		h2 1 anno
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4730,12 +4730,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ IMPOSTARE&nbsp;DEI&nbsp;LIMITI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ IMPOSTARE&nbsp;DEI&nbsp;LIMITI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4813,15 +4813,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_478
 		h2 1 anno
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4845,12 +4845,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ TUTTI&nbsp;I&nbsp;GENITORI&nbsp;HANNO&nbsp;BUONE&nbsp;E&nbsp;CATTIVE&nbsp;GIORNATE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ TUTTI&nbsp;I&nbsp;GENITORI&nbsp;HANNO&nbsp;BUONE&nbsp;E&nbsp;CATTIVE&nbsp;GIORNATE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4910,15 +4910,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_477
 		h2 1 anno
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4942,12 +4942,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ COSTRUIRE&nbsp;IL&nbsp;RITMO&nbsp;DELLE&nbsp;GIORNATE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ COSTRUIRE&nbsp;IL&nbsp;RITMO&nbsp;DELLE&nbsp;GIORNATE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5016,15 +5016,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_480
 		h2 13 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5048,12 +5048,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GENITORI&nbsp;A&nbsp;PROVA&nbsp;DI&nbsp;PICCOLI&nbsp;ESPLORATORI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GENITORI&nbsp;A&nbsp;PROVA&nbsp;DI&nbsp;PICCOLI&nbsp;ESPLORATORI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5148,15 +5148,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_481
 		h2 13 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5180,12 +5180,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ AVERE&nbsp;ASPETTATTIVE&nbsp;ADEGUATE&nbsp;IN&nbsp;BASE&nbsp;ALL'ETA'&nbsp;DEI&nbsp;BAMBINI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ AVERE&nbsp;ASPETTATTIVE&nbsp;ADEGUATE&nbsp;IN&nbsp;BASE&nbsp;ALL'ETA'&nbsp;DEI&nbsp;BAMBINI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5238,15 +5238,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_382
 		h2 13 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5270,12 +5270,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LASCIA&nbsp;CHE&nbsp;TUO&nbsp;FIGLIO&nbsp;TI&nbsp;IMITI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LASCIA&nbsp;CHE&nbsp;TUO&nbsp;FIGLIO&nbsp;TI&nbsp;IMITI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5345,15 +5345,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_486
 		h2 14 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5377,12 +5377,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GENITORI...&nbsp;SOTTO&nbsp;STRESS
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GENITORI...&nbsp;SOTTO&nbsp;STRESS
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5460,15 +5460,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_488
 		h2 14 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5492,12 +5492,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ AFFRONTARE&nbsp;LA&nbsp;RABBIA&nbsp;E&nbsp;GLI&nbsp;SCATTI&nbsp;D’IRA
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ AFFRONTARE&nbsp;LA&nbsp;RABBIA&nbsp;E&nbsp;GLI&nbsp;SCATTI&nbsp;D’IRA
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5569,15 +5569,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_374
 		h2 14 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5601,12 +5601,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;GUIDA&nbsp;E&nbsp;LA&nbsp;DISCIPLINA&nbsp;INSEGNERANNO&nbsp;A&nbsp;TUO&nbsp;FIGLIO&nbsp;A&nbsp;COLLABORARE.
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;GUIDA&nbsp;E&nbsp;LA&nbsp;DISCIPLINA&nbsp;INSEGNERANNO&nbsp;A&nbsp;TUO&nbsp;FIGLIO&nbsp;A&nbsp;COLLABORARE.
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5674,15 +5674,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_487
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5706,12 +5706,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ CON&nbsp;IL&nbsp;‘NO’&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;AFFERMA&nbsp;LA&nbsp;SUA&nbsp;INDIPENDENZA&nbsp;
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ CON&nbsp;IL&nbsp;‘NO’&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;AFFERMA&nbsp;LA&nbsp;SUA&nbsp;INDIPENDENZA&nbsp;
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5771,15 +5771,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_541
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5803,12 +5803,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Vedi&nbsp;tuo&nbsp;figlio&nbsp;come&nbsp;un&nbsp;partner&nbsp;nella&nbsp;risoluzione&nbsp;dei&nbsp;problemi
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Vedi&nbsp;tuo&nbsp;figlio&nbsp;come&nbsp;un&nbsp;partner&nbsp;nella&nbsp;risoluzione&nbsp;dei&nbsp;problemi
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5828,15 +5828,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_388
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5860,12 +5860,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ CRESCERE&nbsp;CON&nbsp;FIDUCIA&nbsp;IN&nbsp;SE&nbsp;STESSI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ CRESCERE&nbsp;CON&nbsp;FIDUCIA&nbsp;IN&nbsp;SE&nbsp;STESSI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5921,15 +5921,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_489
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5953,12 +5953,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ AIUTA&nbsp;IL&nbsp;TUO&nbsp;PICCOLO&nbsp;ESPLORATORE&nbsp;A&nbsp;STARE&nbsp;AL&nbsp;SICURO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ AIUTA&nbsp;IL&nbsp;TUO&nbsp;PICCOLO&nbsp;ESPLORATORE&nbsp;A&nbsp;STARE&nbsp;AL&nbsp;SICURO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6012,15 +6012,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_490
 		h2 16 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6044,12 +6044,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GESTISCI&nbsp;LE&nbsp;TUE&nbsp;EMOZIONI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GESTISCI&nbsp;LE&nbsp;TUE&nbsp;EMOZIONI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6069,15 +6069,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_383
 		h2 16 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6101,12 +6101,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ FORNISCI&nbsp;RAGIONI&nbsp;PER&nbsp;LE&nbsp;REGOLE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ FORNISCI&nbsp;RAGIONI&nbsp;PER&nbsp;LE&nbsp;REGOLE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6139,12 +6139,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;bambini&nbsp;imparano&nbsp;come&nbsp;comportarsi&nbsp;e&nbsp;come&nbsp;cooperare&nbsp;quando&nbsp;comprendono&nbsp;le&nbsp;ragioni&nbsp;dietro&nbsp;le&nbsp;regole.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;bambini&nbsp;imparano&nbsp;come&nbsp;comportarsi&nbsp;e&nbsp;come&nbsp;cooperare&nbsp;quando&nbsp;comprendono&nbsp;le&nbsp;ragioni&nbsp;dietro&nbsp;le&nbsp;regole.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6172,15 +6172,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_491
 		h2 16 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6204,21 +6204,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ PRENDITI&nbsp;CURA&nbsp;DI&nbsp;TE&nbsp;STESSO:&nbsp;
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ PRENDITI&nbsp;CURA&nbsp;DI&nbsp;TE&nbsp;STESSO:&nbsp;
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ RICONOSCI&nbsp;QUANDO&nbsp;SEI&nbsp;STRESSATO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ RICONOSCI&nbsp;QUANDO&nbsp;SEI&nbsp;STRESSATO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6288,15 +6288,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_492
 		h2 17 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6320,12 +6320,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ USA&nbsp;LE&nbsp;PAROLE&nbsp;PER&nbsp;DESCRIVERE&nbsp;COME&nbsp;SI&nbsp;SENTE&nbsp;TUO&nbsp;FIGLIO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ USA&nbsp;LE&nbsp;PAROLE&nbsp;PER&nbsp;DESCRIVERE&nbsp;COME&nbsp;SI&nbsp;SENTE&nbsp;TUO&nbsp;FIGLIO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6368,15 +6368,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_493
 		h2 17 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6400,12 +6400,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ A&nbsp;TUTTI&nbsp;I&nbsp;GENITORI&nbsp;CAPITA&nbsp;DI&nbsp;SENTIRSI&nbsp;CRITICATI
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ A&nbsp;TUTTI&nbsp;I&nbsp;GENITORI&nbsp;CAPITA&nbsp;DI&nbsp;SENTIRSI&nbsp;CRITICATI
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6483,15 +6483,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_496
 		h2 17 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6515,12 +6515,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GUARDA&nbsp;IL&nbsp;MONDO&nbsp;DALLA&nbsp;PROSPETTIVA&nbsp;DI&nbsp;TUO&nbsp;FIGLIO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GUARDA&nbsp;IL&nbsp;MONDO&nbsp;DALLA&nbsp;PROSPETTIVA&nbsp;DI&nbsp;TUO&nbsp;FIGLIO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6548,15 +6548,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_384
 		h2 18 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6580,12 +6580,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;SCULACCIATA&nbsp;NON&nbsp;FUNZIONA
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;SCULACCIATA&nbsp;NON&nbsp;FUNZIONA
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6729,15 +6729,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_494
 		h2 18 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6761,12 +6761,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ INSEGNARE&nbsp;STRUMENTI&nbsp;PER&nbsp;GESTIRE&nbsp;LE&nbsp;EMOZIONI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ INSEGNARE&nbsp;STRUMENTI&nbsp;PER&nbsp;GESTIRE&nbsp;LE&nbsp;EMOZIONI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6842,15 +6842,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_371
 		h2 18 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6874,12 +6874,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ EVITA&nbsp;DI&nbsp;VIZIARE&nbsp;TUO&nbsp;FIGLIO:&nbsp;STABILISCI&nbsp;E&nbsp;RAFFORZA&nbsp;I&nbsp;LIMITI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ EVITA&nbsp;DI&nbsp;VIZIARE&nbsp;TUO&nbsp;FIGLIO:&nbsp;STABILISCI&nbsp;E&nbsp;RAFFORZA&nbsp;I&nbsp;LIMITI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6944,15 +6944,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_495
 		h2 18 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6976,12 +6976,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ TUTTO&nbsp;IL&nbsp;COMPORTAMENTO&nbsp;HA&nbsp;UN&nbsp;SIGNIFICATO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ TUTTO&nbsp;IL&nbsp;COMPORTAMENTO&nbsp;HA&nbsp;UN&nbsp;SIGNIFICATO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7048,15 +7048,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_386
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7080,12 +7080,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LODA&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;SE&nbsp;VUOI&nbsp;CHE&nbsp;SI&nbsp;COMPORTI&nbsp;BENE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LODA&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;SE&nbsp;VUOI&nbsp;CHE&nbsp;SI&nbsp;COMPORTI&nbsp;BENE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7126,15 +7126,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_497
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7158,12 +7158,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ AI&nbsp;BAMBINI&nbsp;SERVONO&nbsp;GENITORI&nbsp;AUTOREVOLI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ AI&nbsp;BAMBINI&nbsp;SERVONO&nbsp;GENITORI&nbsp;AUTOREVOLI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7224,15 +7224,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_389
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7256,12 +7256,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ OGNI&nbsp;BAMBINO&nbsp;SI&nbsp;SVILUPPA&nbsp;AL&nbsp;SUO&nbsp;RITMO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ OGNI&nbsp;BAMBINO&nbsp;SI&nbsp;SVILUPPA&nbsp;AL&nbsp;SUO&nbsp;RITMO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7290,15 +7290,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_498
 		h2 20 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7351,15 +7351,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_499
 		h2 20 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7438,6 +7438,7 @@ docx ${category}
 			+ .&nbsp;
 				style big
 				size 24
+				br
 		p
 			font Garamond
 			spacing
@@ -7477,15 +7478,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_500
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7509,12 +7510,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ ASILO,&nbsp;BABY-SITTER&nbsp;O&nbsp;FAMIGLIARI?&nbsp;COSA&nbsp;E’&nbsp;MEGLIO?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ ASILO,&nbsp;BABY-SITTER&nbsp;O&nbsp;FAMIGLIARI?&nbsp;COSA&nbsp;E’&nbsp;MEGLIO?
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7568,15 +7569,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_501
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7614,15 +7615,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_387
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7646,12 +7647,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;RITUALI&nbsp;FAMILIARI…UNA&nbsp;“COLLA”&nbsp;CHE&nbsp;TIENE&nbsp;UNITA&nbsp;LA&nbsp;FAMIGLIA
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;RITUALI&nbsp;FAMILIARI…UNA&nbsp;“COLLA”&nbsp;CHE&nbsp;TIENE&nbsp;UNITA&nbsp;LA&nbsp;FAMIGLIA
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7747,15 +7748,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_502
 		h2 22 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7779,12 +7780,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ È&nbsp;IL&nbsp;MOMENTO&nbsp;PER&nbsp;DARSI&nbsp;UNA&nbsp;PACCA&nbsp;SULLA&nbsp;SPALLA!
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ È&nbsp;IL&nbsp;MOMENTO&nbsp;PER&nbsp;DARSI&nbsp;UNA&nbsp;PACCA&nbsp;SULLA&nbsp;SPALLA!
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7813,15 +7814,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_504
 		h2 22 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7845,12 +7846,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MANTIENI&nbsp;FORTE&nbsp;LA&nbsp;TUA&nbsp;RELAZIONE&nbsp;CON&nbsp;IL&nbsp;PARTNER
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MANTIENI&nbsp;FORTE&nbsp;LA&nbsp;TUA&nbsp;RELAZIONE&nbsp;CON&nbsp;IL&nbsp;PARTNER
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7874,12 +7875,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Una&nbsp;forte&nbsp;relazione&nbsp;di&nbsp;coppia&nbsp;aiuta&nbsp;lo&nbsp;sviluppo&nbsp;del&nbsp;tuo&nbsp;bambino.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Una&nbsp;forte&nbsp;relazione&nbsp;di&nbsp;coppia&nbsp;aiuta&nbsp;lo&nbsp;sviluppo&nbsp;del&nbsp;tuo&nbsp;bambino.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7907,15 +7908,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_503
 		h2 23 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7939,12 +7940,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ AIUTA&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;ASCOLTANDO&nbsp;E&nbsp;RISPONDENDO&nbsp;ALLE&nbsp;SUE&nbsp;DOMANDE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ AIUTA&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;ASCOLTANDO&nbsp;E&nbsp;RISPONDENDO&nbsp;ALLE&nbsp;SUE&nbsp;DOMANDE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8005,15 +8006,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_538
 		h2 2 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8037,12 +8038,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;BAMBINI&nbsp;DI&nbsp;DUE&nbsp;ANNI&nbsp;POSSONO&nbsp;MORDERE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;BAMBINI&nbsp;DI&nbsp;DUE&nbsp;ANNI&nbsp;POSSONO&nbsp;MORDERE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8138,15 +8139,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_543
 		h2 2 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8170,12 +8171,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GENITORI&nbsp;DI&nbsp;BAMBINI&nbsp;DI&nbsp;2&nbsp;ANNI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GENITORI&nbsp;DI&nbsp;BAMBINI&nbsp;DI&nbsp;2&nbsp;ANNI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8267,15 +8268,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_540
 		h2 2 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8299,12 +8300,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ ANCHE&nbsp;I&nbsp;SUPER&nbsp;GENITORI&nbsp;HANNO&nbsp;FIGLI&nbsp;CHE&nbsp;POSSONO&nbsp;COMPORTARSI&nbsp;MALE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ ANCHE&nbsp;I&nbsp;SUPER&nbsp;GENITORI&nbsp;HANNO&nbsp;FIGLI&nbsp;CHE&nbsp;POSSONO&nbsp;COMPORTARSI&nbsp;MALE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8379,15 +8380,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_542
 		h2 2 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8411,12 +8412,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ SOSTITUISCI&nbsp;LE&nbsp;CRITICHE&nbsp;CON&nbsp;COMMENTI&nbsp;UTILI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ SOSTITUISCI&nbsp;LE&nbsp;CRITICHE&nbsp;CON&nbsp;COMMENTI&nbsp;UTILI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8552,15 +8553,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_545
 		h2 2 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8584,21 +8585,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;BATTAGLIA&nbsp;PER&nbsp;L'INDIPENDENZA&nbsp;DEL&nbsp;TUO&nbsp;BAMBINO&nbsp;
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;BATTAGLIA&nbsp;PER&nbsp;L'INDIPENDENZA&nbsp;DEL&nbsp;TUO&nbsp;BAMBINO&nbsp;
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ PUÒ&nbsp;ESSERE&nbsp;VANTAGGIOSA&nbsp;PER&nbsp;TUTTI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ PUÒ&nbsp;ESSERE&nbsp;VANTAGGIOSA&nbsp;PER&nbsp;TUTTI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8655,15 +8656,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_547
 		h2 2 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8687,12 +8688,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GENITORI&nbsp;DI&nbsp;BAMBINI&nbsp;CAPACI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GENITORI&nbsp;DI&nbsp;BAMBINI&nbsp;CAPACI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8768,15 +8769,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_544
 		h2 2 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8800,12 +8801,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ ORGANIZZARSI&nbsp;PER&nbsp;RIDURRE LO&nbsp;STRESS
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ ORGANIZZARSI&nbsp;PER&nbsp;RIDURRE LO&nbsp;STRESS
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8886,24 +8887,24 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Assicurati&nbsp;di&nbsp;avere&nbsp;tempo&nbsp;per&nbsp;le&nbsp;persone&nbsp;più&nbsp;importanti&nbsp;della&nbsp;tua&nbsp;vita:&nbsp;tu,&nbsp;il&nbsp;tuo&nbsp;partner&nbsp;e&nbsp;tuo&nbsp;figlio.
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Assicurati&nbsp;di&nbsp;avere&nbsp;tempo&nbsp;per&nbsp;le&nbsp;persone&nbsp;più&nbsp;importanti&nbsp;della&nbsp;tua&nbsp;vita:&nbsp;tu,&nbsp;il&nbsp;tuo&nbsp;partner&nbsp;e&nbsp;tuo&nbsp;figlio.
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_551
 		h2 2 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8927,21 +8928,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;BAMBINI&nbsp;PICCOLI&nbsp;CHE&nbsp;FREQUENTANO&nbsp;UN&nbsp;ASILO&nbsp;DI&nbsp;QUALITÀ&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;BAMBINI&nbsp;PICCOLI&nbsp;CHE&nbsp;FREQUENTANO&nbsp;UN&nbsp;ASILO&nbsp;DI&nbsp;QUALITÀ&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ VANNO&nbsp;MEGLIO&nbsp;ALLA&nbsp;SCUOLA&nbsp;PRIMARIA
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ VANNO&nbsp;MEGLIO&nbsp;ALLA&nbsp;SCUOLA&nbsp;PRIMARIA
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9021,15 +9022,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_552
 		h2 2 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9053,12 +9054,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ EMOZIONI&nbsp;FORTI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ EMOZIONI&nbsp;FORTI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9130,15 +9131,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_548
 		h2 2 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9162,12 +9163,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ ASCOLTA&nbsp;TUO&nbsp;FIGLIO&nbsp;SE&nbsp;VUOI&nbsp;CHE&nbsp;TI&nbsp;ASCOLTI
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ ASCOLTA&nbsp;TUO&nbsp;FIGLIO&nbsp;SE&nbsp;VUOI&nbsp;CHE&nbsp;TI&nbsp;ASCOLTI
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9214,15 +9215,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_564
 		h2 2 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9246,12 +9247,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MENO&nbsp;DICI&nbsp;"NO"&nbsp;A&nbsp;UN&nbsp;BAMBINO,&nbsp;MENO&nbsp;LO&nbsp;SENTIRAI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MENO&nbsp;DICI&nbsp;"NO"&nbsp;A&nbsp;UN&nbsp;BAMBINO,&nbsp;MENO&nbsp;LO&nbsp;SENTIRAI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9312,15 +9313,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_553
 		h2 2 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9344,12 +9345,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ INIZIARE&nbsp;L’ASILO
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ INIZIARE&nbsp;L’ASILO
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9431,15 +9432,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_554
 		h2 2 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9463,12 +9464,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ INCORAGGIA&nbsp;I&nbsp;NONNI&nbsp;A&nbsp;CONDIVIDERE&nbsp;LA&nbsp;VITA&nbsp;DI&nbsp;TUO&nbsp;FIGLIO
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ INCORAGGIA&nbsp;I&nbsp;NONNI&nbsp;A&nbsp;CONDIVIDERE&nbsp;LA&nbsp;VITA&nbsp;DI&nbsp;TUO&nbsp;FIGLIO
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9488,15 +9489,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_556
 		h2 2 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9520,12 +9521,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;PUNIZIONE&nbsp;NON&nbsp;INSEGNA&nbsp;LA&nbsp;COSA&nbsp;GIUSTA&nbsp;DA&nbsp;FARE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;PUNIZIONE&nbsp;NON&nbsp;INSEGNA&nbsp;LA&nbsp;COSA&nbsp;GIUSTA&nbsp;DA&nbsp;FARE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9591,15 +9592,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_555
 		h2 2 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9623,12 +9624,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;SCATOLA&nbsp;DEI&nbsp;RICORDI&nbsp;
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;SCATOLA&nbsp;DEI&nbsp;RICORDI&nbsp;
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9656,15 +9657,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_559
 		h2 2 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9688,12 +9689,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ SVILUPPARE&nbsp;LA&nbsp;CAPACITA’&nbsp;DI&nbsp;"RISOLVERE&nbsp;PROBLEMI"
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ SVILUPPARE&nbsp;LA&nbsp;CAPACITA’&nbsp;DI&nbsp;"RISOLVERE&nbsp;PROBLEMI"
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9737,15 +9738,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_558
 		h2 3 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9769,12 +9770,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ UNA&nbsp;GUIDA&nbsp;POSITIVA&nbsp;AIUTA&nbsp;A&nbsp;CRESCERE&nbsp;BAMBINI&nbsp;COLLABORANTI&nbsp;ED&nbsp;EDUCATI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ UNA&nbsp;GUIDA&nbsp;POSITIVA&nbsp;AIUTA&nbsp;A&nbsp;CRESCERE&nbsp;BAMBINI&nbsp;COLLABORANTI&nbsp;ED&nbsp;EDUCATI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9855,15 +9856,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_563
 		h2 3 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9887,12 +9888,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LE&nbsp;MINACCE&nbsp;E&nbsp;LE&nbsp;PUNIZIONI&nbsp;NON&nbsp;INSEGNANO
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LE&nbsp;MINACCE&nbsp;E&nbsp;LE&nbsp;PUNIZIONI&nbsp;NON&nbsp;INSEGNANO
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9937,15 +9938,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_562
 		h2 3 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9969,12 +9970,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LASCIA&nbsp;CHE&nbsp;TUO&nbsp;FIGLI&nbsp;TI&nbsp;AIUTI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LASCIA&nbsp;CHE&nbsp;TUO&nbsp;FIGLI&nbsp;TI&nbsp;AIUTI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10024,15 +10025,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_565
 		h2 3 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10056,12 +10057,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ UNA&nbsp;GUIDA&nbsp;POSITIVA&nbsp;AIUTA&nbsp;TUO&nbsp;FIGLIO&nbsp;A&nbsp;DIVENTARE&nbsp;RESPONSABILE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ UNA&nbsp;GUIDA&nbsp;POSITIVA&nbsp;AIUTA&nbsp;TUO&nbsp;FIGLIO&nbsp;A&nbsp;DIVENTARE&nbsp;RESPONSABILE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10092,11 +10093,6 @@ docx ${category}
 				before 72
 				after 36
 			li
-				p
-					font Garamond
-					spacing
-						before 288
-						after 144
 				+ Stabilisci&nbsp;regole&nbsp;eque&nbsp;e&nbsp;limiti&nbsp;ragionevoli.&nbsp;
 					style h2_big_strong
 					bold
@@ -10123,11 +10119,6 @@ docx ${category}
 				before 72
 				after 36
 			li
-				p
-					font Garamond
-					spacing
-						before 288
-						after 144
 				+ Dai&nbsp;istruzioni&nbsp;chiare&nbsp;e&nbsp;positive
 					style h2_big_strong
 					bold
@@ -10158,11 +10149,6 @@ docx ${category}
 				before 72
 				after 36
 			li
-				p
-					font Garamond
-					spacing
-						before 288
-						after 144
 				+ Tieni&nbsp;presente&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;vuole&nbsp;accontentarti
 					style h2_big_strong
 					bold
@@ -10222,11 +10208,6 @@ docx ${category}
 				before 72
 				after 36
 			li
-				p
-					font Garamond
-					spacing
-						before 288
-						after 144
 				+ Di&nbsp;ciò&nbsp;che&nbsp;pensi&nbsp;e&nbsp;pensa&nbsp;a&nbsp;ciò&nbsp;che&nbsp;dici.
 					style h2_big_strong
 					bold
@@ -10253,11 +10234,6 @@ docx ${category}
 				before 72
 				after 36
 			li
-				p
-					font Garamond
-					spacing
-						before 288
-						after 144
 				+ Dai&nbsp;il&nbsp;buon&nbsp;esempio&nbsp;per&nbsp;aiutare&nbsp;tuo&nbsp;figlio&nbsp;ad&nbsp;apprendere&nbsp;l'autocontrollo.&nbsp;
 					style h2_big_strong
 					bold
@@ -10357,15 +10333,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_566
 		h2 3 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10389,12 +10365,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MANTIENI&nbsp;FORTE&nbsp;IL&nbsp;TUO&nbsp;RAPPORTO&nbsp;DI&nbsp;COPPIA&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MANTIENI&nbsp;FORTE&nbsp;IL&nbsp;TUO&nbsp;RAPPORTO&nbsp;DI&nbsp;COPPIA&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10457,15 +10433,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_567
 		h2 3 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10489,12 +10465,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ BAMBINI&nbsp;CON&nbsp;MOLTE&nbsp;PAURE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ BAMBINI&nbsp;CON&nbsp;MOLTE&nbsp;PAURE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10611,12 +10587,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Paura&nbsp;della&nbsp;separazione
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Paura&nbsp;della&nbsp;separazione
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10644,12 +10620,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Paura&nbsp;del&nbsp;bagno
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Paura&nbsp;del&nbsp;bagno
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10693,12 +10669,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Paura&nbsp;dei&nbsp;cani
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Paura&nbsp;dei&nbsp;cani
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10726,12 +10702,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Paura&nbsp;dei&nbsp;rumori&nbsp;forti
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Paura&nbsp;dei&nbsp;rumori&nbsp;forti
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10759,12 +10735,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Paura&nbsp;del&nbsp;cambiamento
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Paura&nbsp;del&nbsp;cambiamento
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10800,12 +10776,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Paura&nbsp;del&nbsp;buio
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Paura&nbsp;del&nbsp;buio
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10833,12 +10809,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Paura&nbsp;dei&nbsp;mostri
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Paura&nbsp;dei&nbsp;mostri
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10874,15 +10850,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_568
 		h2 3 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10906,12 +10882,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ RICORDATI&nbsp;DEL&nbsp;TUO&nbsp;PARTNER&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ RICORDATI&nbsp;DEL&nbsp;TUO&nbsp;PARTNER&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10974,15 +10950,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_574
 		h2 3 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11006,12 +10982,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ RENDI&nbsp;IL&nbsp;TEMPO&nbsp;DI&nbsp;COPPIA&nbsp;UNA&nbsp;PRIORITÀ
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ RENDI&nbsp;IL&nbsp;TEMPO&nbsp;DI&nbsp;COPPIA&nbsp;UNA&nbsp;PRIORITÀ
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11079,15 +11055,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_644
 		h2 4 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11111,21 +11087,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GLI&nbsp;AMICI&nbsp;SONO&nbsp;IMPORTANTI&nbsp;
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GLI&nbsp;AMICI&nbsp;SONO&nbsp;IMPORTANTI&nbsp;
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ E&nbsp;AIUTANO&nbsp;A&nbsp;INSEGNARE&nbsp;AD&nbsp;ESSERE&nbsp;GIUSTI
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ E&nbsp;AIUTANO&nbsp;A&nbsp;INSEGNARE&nbsp;AD&nbsp;ESSERE&nbsp;GIUSTI
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11184,12 +11160,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Come&nbsp;puoi&nbsp;aiutare&nbsp;tuo&nbsp;figlio&nbsp;a&nbsp;creare&nbsp;amicizie?
-			style h2_big_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Come&nbsp;puoi&nbsp;aiutare&nbsp;tuo&nbsp;figlio&nbsp;a&nbsp;creare&nbsp;amicizie?
+				style h2_big_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11233,12 +11209,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Aspettati&nbsp;alcune&nbsp;difficoltà
-			style h2_big_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Aspettati&nbsp;alcune&nbsp;difficoltà
+				style h2_big_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11300,15 +11276,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_647
 		h2 4 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11332,12 +11308,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ AIUTA&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;A&nbsp;CREARE&nbsp;AMICIZIE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ AIUTA&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;A&nbsp;CREARE&nbsp;AMICIZIE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11360,6 +11336,7 @@ docx ${category}
 			+ .&nbsp;Assicurati&nbsp;che&nbsp;abbiano&nbsp;la&nbsp;supervisione&nbsp;degli&nbsp;adulti.
 				style big
 				size 24
+				br
 			+ Incoraggia&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;a&nbsp;salutare&nbsp;ogni&nbsp;giorno&nbsp;un&nbsp;compagno&nbsp;di&nbsp;scuola&nbsp;sconosciuto.
 				style big
 				size 24
@@ -11382,6 +11359,7 @@ docx ${category}
 			+ .&nbsp;Prova&nbsp;questo&nbsp;gioco:&nbsp;Dici&nbsp;qualcosa&nbsp;di&nbsp;negativo&nbsp;("Quel&nbsp;maglione&nbsp;è&nbsp;buffo.")&nbsp;e&nbsp;fai&nbsp;rispondere&nbsp;a tuo&nbsp;figlio&nbsp;con&nbsp;qualcosa&nbsp;di&nbsp;positivo&nbsp;("Mi&nbsp;piace&nbsp;questo&nbsp;maglione&nbsp;-&nbsp;mia&nbsp;nonna&nbsp;ha&nbsp;fatto&nbsp;per&nbsp;me").&nbsp;Poi&nbsp;cambiare&nbsp;ruolo&nbsp;e&nbsp;divertirti&nbsp;con&nbsp;lui perché&nbsp;i&nbsp;bambini&nbsp;amano&nbsp;ridere&nbsp;e&nbsp;fare&nbsp;cose&nbsp;buffe&nbsp;per&nbsp;imparare.&nbsp;Non&nbsp;solo&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;imparerà&nbsp;buone&nbsp;risposte&nbsp;alle prese in&nbsp;giro,&nbsp;ma&nbsp;questo&nbsp;può&nbsp;anche&nbsp;aiutarlo&nbsp;a&nbsp;sviluppare&nbsp;una&nbsp;prospettiva&nbsp;più&nbsp;positiva&nbsp;in&nbsp;generale,&nbsp;a&nbsp;sdrammatizzare&nbsp;e&nbsp;a&nbsp;sviluppare&nbsp;senso&nbsp;dell'ironia.
 				style big
 				size 24
+				br
 			+ Fidati&nbsp;del&nbsp;gusto&nbsp;di&nbsp;tuo&nbsp;figlio&nbsp;negli&nbsp;amici
 				style big_big_strong
 				bold
@@ -11389,18 +11367,19 @@ docx ${category}
 			+ .&nbsp;A&nbsp;meno&nbsp;che&nbsp;non&nbsp;ci&nbsp;sia&nbsp;qualcosa&nbsp;di&nbsp;pericoloso,&nbsp;tollera gli&nbsp;amici&nbsp;di&nbsp;tuo&nbsp;figlio.&nbsp;Se&nbsp;a&nbsp;tuo&nbsp;figlio&nbsp;non&nbsp;piace&nbsp;il&nbsp;figlio&nbsp;del&nbsp;tuo&nbsp;migliore&nbsp;amico,&nbsp;accettalo.&nbsp;Si&nbsp;può&nbsp;essere&nbsp;delusi&nbsp;dal&nbsp;fatto&nbsp;che&nbsp;non&nbsp;vanno&nbsp;d'accordo,&nbsp;ma&nbsp;non&nbsp;è&nbsp;giusto&nbsp;insistere&nbsp;che&nbsp;godano&nbsp;della&nbsp;compagnia&nbsp;l'uno&nbsp;dell'altro,&nbsp;non&nbsp;importa&nbsp;quanto&nbsp;sia&nbsp;conveniente&nbsp;per&nbsp;voi.
 				style big
 				size 24
+				br
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_650
 		h2 3 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11424,12 +11403,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ DAI&nbsp;AL&nbsp;TUO&nbsp;BAMBINO&nbsp;LA&nbsp;POSSIBILITA’&nbsp;DI&nbsp;SCEGLIERE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ DAI&nbsp;AL&nbsp;TUO&nbsp;BAMBINO&nbsp;LA&nbsp;POSSIBILITA’&nbsp;DI&nbsp;SCEGLIERE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11466,15 +11445,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_569
 		h2 3 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11498,12 +11477,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LIMITA&nbsp;LE ATTIVITÀ&nbsp;ESTERNE&nbsp;E PROTEGGI IL&nbsp;TEMPO&nbsp;DEDICATO&nbsp;ALLA&nbsp;COPPIA
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LIMITA&nbsp;LE ATTIVITÀ&nbsp;ESTERNE&nbsp;E PROTEGGI IL&nbsp;TEMPO&nbsp;DEDICATO&nbsp;ALLA&nbsp;COPPIA
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11589,15 +11568,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_570
 		h2 3 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11621,12 +11600,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ INSEGNA&nbsp;A&nbsp;TUO&nbsp;FIGLIO&nbsp;COSA&nbsp;SIGNIFICA&nbsp;FIDUCIA
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ INSEGNA&nbsp;A&nbsp;TUO&nbsp;FIGLIO&nbsp;COSA&nbsp;SIGNIFICA&nbsp;FIDUCIA
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11742,15 +11721,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_613
 		h2 4 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11774,12 +11753,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ BAMBINI&nbsp;CHE&nbsp;DICONO&nbsp;LE&nbsp;PAROLACCE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ BAMBINI&nbsp;CHE&nbsp;DICONO&nbsp;LE&nbsp;PAROLACCE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11817,18 +11796,18 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ .
 				style big
 				size 24
+				br
 			+ Indicare al&nbsp;bambino&nbsp;cosa&nbsp;fare&nbsp;invece&nbsp;di&nbsp;usare&nbsp;la&nbsp;parolaccia
 				style big_strong
 				bold
 				size 24
-				br
 			+ .&nbsp;Dire:&nbsp;"
 				style big
 				size 24
+				br
 			+ Non&nbsp;usiamo&nbsp;quella&nbsp;parola&nbsp;nella&nbsp;nostra&nbsp;famiglia&nbsp;Diciamo&nbsp;_____
 				style big_big
 				size 24
@@ -11854,15 +11833,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_651
 		h2 5 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11886,12 +11865,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;SCULACCIATA&nbsp;NON&nbsp;INSEGNA&nbsp;AI&nbsp;BAMBINI&nbsp;COSA&nbsp;FARE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;SCULACCIATA&nbsp;NON&nbsp;INSEGNA&nbsp;AI&nbsp;BAMBINI&nbsp;COSA&nbsp;FARE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11944,15 +11923,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_573
 		h2 23 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11976,12 +11955,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ TROVA&nbsp;UN&nbsp;TEMPO&nbsp;PER&nbsp;PARLARE&nbsp;CON&nbsp;TUO&nbsp;FIGLIO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ TROVA&nbsp;UN&nbsp;TEMPO&nbsp;PER&nbsp;PARLARE&nbsp;CON&nbsp;TUO&nbsp;FIGLIO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -12066,15 +12045,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_539
 		h2 2 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -12098,12 +12077,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ TUO&nbsp;FIGLIO&nbsp;TI&nbsp;AMERÀ&nbsp;ANCHE&nbsp;SE&nbsp;IMPOSTI&nbsp;DEI&nbsp;LIMITI
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ TUO&nbsp;FIGLIO&nbsp;TI&nbsp;AMERÀ&nbsp;ANCHE&nbsp;SE&nbsp;IMPOSTI&nbsp;DEI&nbsp;LIMITI
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -12160,15 +12139,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_557
 		h2 3 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -12192,12 +12171,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ TEMPO&nbsp;INSIEME
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ TEMPO&nbsp;INSIEME
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -12255,15 +12234,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_472
 		h2 3 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -12287,21 +12266,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ IL&nbsp;PIANTO&nbsp;E&nbsp;GLI&nbsp;SCOPPI&nbsp;D'IRA&nbsp;
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ IL&nbsp;PIANTO&nbsp;E&nbsp;GLI&nbsp;SCOPPI&nbsp;D'IRA&nbsp;
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ POSSONO&nbsp;ESSERE&nbsp;INDIZI&nbsp;CHE&nbsp;IL&nbsp;TUO&nbsp;BIMBO&nbsp;È&nbsp;STRESSATO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ POSSONO&nbsp;ESSERE&nbsp;INDIZI&nbsp;CHE&nbsp;IL&nbsp;TUO&nbsp;BIMBO&nbsp;È&nbsp;STRESSATO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -12406,15 +12385,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_572
 		h2 3 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -12438,21 +12417,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ COINVOLGI&nbsp;TUO&nbsp;FIGLIO&nbsp;NELLE&nbsp;FACCENDE&nbsp;DOMESTICHE,&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ COINVOLGI&nbsp;TUO&nbsp;FIGLIO&nbsp;NELLE&nbsp;FACCENDE&nbsp;DOMESTICHE,&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ GLI&nbsp;INSEGNA&nbsp;AD&nbsp;ESSERE&nbsp;RESPONSABILE&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ GLI&nbsp;INSEGNA&nbsp;AD&nbsp;ESSERE&nbsp;RESPONSABILE&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -12535,15 +12514,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_641
 		h2 4 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -12567,12 +12546,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ IL&nbsp;MESTIERE&nbsp;DI&nbsp;GENITORE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ IL&nbsp;MESTIERE&nbsp;DI&nbsp;GENITORE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -12581,7 +12560,6 @@ docx ${category}
 			+ Essere&nbsp;genitori&nbsp;è&nbsp;uno&nbsp;dei&nbsp;lavori&nbsp;più&nbsp;difficili&nbsp;che&nbsp;ci&nbsp;siano.&nbsp;Sembra&nbsp;anche&nbsp;essere&nbsp;il&nbsp;lavoro&nbsp;per&nbsp;cui&nbsp;siamo&nbsp;meno&nbsp;preparati&nbsp;nella&nbsp;nostra&nbsp;vita.&nbsp;
 				style big
 				size 24
-				br
 		p
 			font Garamond
 			spacing
@@ -12631,10 +12609,10 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ e&nbsp;ti&nbsp;offre&nbsp;l'opportunità&nbsp;di&nbsp;guidare,&nbsp;insegnare&nbsp;e&nbsp;trasmettere&nbsp;i&nbsp;valori&nbsp;alla&nbsp;generazione&nbsp;successiva.
 				style big
 				size 24
+				br
 			+ Essere&nbsp;genitori&nbsp;ti&nbsp;aiuta&nbsp;a&nbsp;capire&nbsp;di&nbsp;più&nbsp;i&nbsp;tuoi&nbsp;genitori.&nbsp;Avere&nbsp;un&nbsp;figlio&nbsp;può&nbsp;aiutare&nbsp;i&nbsp;genitori&nbsp;a&nbsp;vedere&nbsp;i&nbsp;propri&nbsp;genitori&nbsp;sotto&nbsp;una&nbsp;nuova&nbsp;luce.
 				style big
 				size 24
@@ -12642,15 +12620,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_648
 		h2 4 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -12674,12 +12652,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ CONTINUARE&nbsp;AD&nbsp;ESSERE&nbsp;UNA&nbsp;COPPIA 
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ CONTINUARE&nbsp;AD&nbsp;ESSERE&nbsp;UNA&nbsp;COPPIA 
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -12738,6 +12716,7 @@ docx ${category}
 			+ .&nbsp;La&nbsp;maggior&nbsp;parte&nbsp;dei&nbsp;bambini&nbsp;amano&nbsp;i&nbsp;papà&nbsp;per&nbsp;giocare&nbsp;con&nbsp;loro&nbsp;perché&nbsp;sono&nbsp;più&nbsp;propensi&nbsp;a&nbsp;lottare&nbsp;o&nbsp;andare&nbsp;in&nbsp;giro&nbsp;con&nbsp;i&nbsp;loro&nbsp;figli.
 				style big
 				size 24
+				br
 			+ Sii&nbsp;sensibile&nbsp;ai&nbsp;bisogni&nbsp;dei&nbsp;papà.&nbsp;Fagli&nbsp;sapere&nbsp;che&nbsp;è&nbsp;importante&nbsp;per&nbsp;la&nbsp;famiglia.
 				style big_big_strong
 				bold
@@ -12763,15 +12742,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_652
 		h2 5 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -12795,12 +12774,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ AIUTA&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;A&nbsp;IMPARARE&nbsp;LA&nbsp;DIFFERENZA&nbsp;TRA&nbsp;PROVARE&nbsp;RABBIA&nbsp;E&nbsp;AGIRE&nbsp;CON&nbsp;RABBIA 
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ AIUTA&nbsp;IL&nbsp;TUO&nbsp;BAMBINO&nbsp;A&nbsp;IMPARARE&nbsp;LA&nbsp;DIFFERENZA&nbsp;TRA&nbsp;PROVARE&nbsp;RABBIA&nbsp;E&nbsp;AGIRE&nbsp;CON&nbsp;RABBIA 
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -12809,7 +12788,6 @@ docx ${category}
 			+ I&nbsp;bambini&nbsp;si&nbsp;arrabbiano&nbsp;in&nbsp;una&nbsp;varietà&nbsp;di&nbsp;situazioni.&nbsp;Un&nbsp;bambino&nbsp;può&nbsp;essere&nbsp;arrabbiato&nbsp;con&nbsp;la&nbsp;mamma&nbsp;perché&nbsp;lei&nbsp;non&nbsp;lo&nbsp;lascia&nbsp;andare&nbsp;a&nbsp;casa&nbsp;di&nbsp;un&nbsp;amico&nbsp;per&nbsp;giocare,&nbsp;o&nbsp;arrabbiato&nbsp;con&nbsp;papà&nbsp;perché&nbsp;non&nbsp;gli&nbsp;comprerà&nbsp;le&nbsp;caramelle.
 				style big
 				size 24
-				br
 		p
 			font Garamond
 			spacing
@@ -12826,10 +12804,10 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ .&nbsp;
 				style big
 				size 24
+				br
 			+ Gli&nbsp;adulti&nbsp;possono&nbsp;insegnare&nbsp;ai&nbsp;bambini&nbsp;la&nbsp;differenza&nbsp;tra&nbsp;sentirsi&nbsp;arrabbiati&nbsp;e&nbsp;agire&nbsp;sulla&nbsp;rabbia.&nbsp;
 				style big_strong
 				bold
@@ -12870,10 +12848,10 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ &nbsp;Ricordate&nbsp;che&nbsp;alcuni&nbsp;episodi&nbsp;di&nbsp;rabbia&nbsp;prendono&nbsp;più&nbsp;tempo&nbsp;di&nbsp;altri&nbsp;per&nbsp;risolversi.&nbsp;Prova&nbsp;questi&nbsp;suggerimenti:
 				style big
 				size 24
+				br
 		p
 			font Garamond
 			spacing
@@ -12922,15 +12900,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_653
 		h2 5 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -12954,21 +12932,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ PRESTA&nbsp;ATTENZIONE&nbsp;E&nbsp;PARLA&nbsp;CON&nbsp;TUO&nbsp;FIGLIO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ PRESTA&nbsp;ATTENZIONE&nbsp;E&nbsp;PARLA&nbsp;CON&nbsp;TUO&nbsp;FIGLIO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Sii&nbsp;disponibile
-			style h2_big_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Sii&nbsp;disponibile
+				style h2_big_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -13004,12 +12982,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ascolta
-			style h2_big_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Ascolta
+				style h2_big_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -13053,15 +13031,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_571
 		h2 5 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -13085,12 +13063,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ascolta.&nbsp;Ascolta.&nbsp;Ascolta!
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Ascolta.&nbsp;Ascolta.&nbsp;Ascolta!
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -13124,15 +13102,14 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ Sii&nbsp;interessato&nbsp;e&nbsp;presta&nbsp;attenzione
 				style big_strong
 				bold
 				size 24
-				br
 			+ .
 				style big
 				size 24
+				br
 			+ I&nbsp;bambini&nbsp;possono&nbsp;sapere&nbsp;se&nbsp;sei&nbsp;interessato&nbsp;dal&nbsp;modo&nbsp;in&nbsp;cui&nbsp;rispondi&nbsp;o&nbsp;non&nbsp;rispondi.
 				style big
 				size 24
@@ -13157,7 +13134,6 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ A&nbsp;volte&nbsp;solo&nbsp;riflettendo&nbsp;i&nbsp;sentimenti&nbsp;di&nbsp;un&nbsp;bambino&nbsp;lo incoraggi a&nbsp;dirti&nbsp;ciò&nbsp;che&nbsp;è&nbsp;nella&nbsp;sua&nbsp;mente.&nbsp;Di:&nbsp;"Ti&nbsp;senti&nbsp;davvero&nbsp;triste&nbsp;oggi,&nbsp;vero?"&nbsp;aiuterà&nbsp;tuo&nbsp;figlio&nbsp;a&nbsp;condividere&nbsp;i&nbsp;suoi&nbsp;sentimenti&nbsp;più&nbsp;che&nbsp;chiedere:&nbsp;"Cosa&nbsp;c'è&nbsp;che&nbsp;non&nbsp;va?"
 				style big
 				size 24
@@ -13166,7 +13142,6 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ Una&nbsp;buona&nbsp;comunicazione&nbsp;tra&nbsp;genitori&nbsp;e&nbsp;figli&nbsp;avviene&nbsp;quando&nbsp;i&nbsp;genitori&nbsp;si&nbsp;prendono&nbsp;il&nbsp;tempo&nbsp;di&nbsp;ascoltare&nbsp;davvero&nbsp;i&nbsp;sentimenti&nbsp;e&nbsp;le&nbsp;idee&nbsp;dei&nbsp;bambini.
 				style big
 				size 24
@@ -13216,6 +13191,7 @@ docx ${category}
 			+ .&nbsp;domande&nbsp;che&nbsp;richiedano più&nbsp;di&nbsp;"sì"&nbsp;o&nbsp;"no".&nbsp;Domande&nbsp;come,&nbsp;"Qual&nbsp;è&nbsp;il&nbsp;nome&nbsp;del&nbsp;cane?"&nbsp;sono&nbsp;un&nbsp;vicolo&nbsp;cieco&nbsp;in una&nbsp;conversazione.&nbsp;Domande&nbsp;come,&nbsp;"Cosa&nbsp;ti&nbsp;piace&nbsp;del&nbsp;cane?"&nbsp;o&nbsp;"Con&nbsp;quali&nbsp;altri&nbsp;cani&nbsp;hai&nbsp;giocato?"&nbsp;stimolano&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;a&nbsp;continuare&nbsp;a&nbsp;parlare.
 				style big
 				size 24
+				br
 			+ Se&nbsp;tuo&nbsp;figlio&nbsp;dice&nbsp;"Mi&nbsp;piace&nbsp;guardare&nbsp;la&nbsp;TV",&nbsp;rispondi&nbsp;usando&nbsp;alcune&nbsp;delle&nbsp;stesse&nbsp;parole&nbsp;usate&nbsp;da&nbsp;tuo&nbsp;figlio.&nbsp;"Quali&nbsp;sono&nbsp;alcuni&nbsp;dei&nbsp;programmi&nbsp;TV&nbsp;che&nbsp;ti&nbsp;piacciono&nbsp;di&nbsp;più?"&nbsp;Se&nbsp;ne&nbsp;cita&nbsp;uno,&nbsp;la&nbsp;tua&nbsp;risposta&nbsp;potrebbe&nbsp;essere:&nbsp;"Cosa&nbsp;succede&nbsp;in&nbsp;....&nbsp;che&nbsp;ti&nbsp;piace&nbsp;vedere?"&nbsp;Evitare&nbsp;di&nbsp;fare&nbsp;troppe&nbsp;domande,&nbsp;però.
 				style big
 				size 24
@@ -13241,10 +13217,9 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_649

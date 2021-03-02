@@ -138,11 +138,15 @@
 			# TODO if items[1] !== 'in' -> malformed
             
 			_ jsScriptCoder.w
+				@ 'var ' + items[0] + '_count' + nnode + ' = ' + items[2] + '.length;' + ' //' + node.id
+                @ node
+			
+            _ jsScriptCoder.w
 				@ 'var ' + items[0] + '_count = ' + items[2] + '.length;' + ' //' + node.id
                 @ node
 
 			_ jsScriptCoder.for
-				@ 'var i' + nnode + '=0; i' + nnode + '<' + items[0] + '_count; i' + nnode + '++'
+				@ 'var i' + nnode + '=0; i' + nnode + '<' + items[0] + '_count' + nnode + '; i' + nnode + '++'
 				@ node
             
 			_ jsScriptCoder.w
@@ -163,11 +167,15 @@
             var items = node.value.split(' ')
             
 			_ jsScriptCoder.w
+				@ 'var ' + items[0] + '_count' + nnode + ' = ' + items[2] + '.length;' + ' //' + node.id
+                @ node
+
+			_ jsScriptCoder.w
 				@ 'var ' + items[0] + '_count = ' + items[2] + '.length;' + ' //' + node.id
                 @ node
 
 			_ jsScriptCoder.for
-				@ 'var i' + nnode + '=' + items[0] + '_count-1; i' + nnode + '>-1; i' + nnode + '--'
+				@ 'var i' + nnode + '=' + items[0] + '_count' + nnode + '-1; i' + nnode + '>-1; i' + nnode + '--'
 				@ node
             
 			_ jsScriptCoder.w

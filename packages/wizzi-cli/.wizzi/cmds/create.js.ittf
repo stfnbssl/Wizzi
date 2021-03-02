@@ -3,8 +3,10 @@
 
     $
         var quick = true;
-        var pkgName = "lambda";
-        var template = "wizzi_plugin";
+        // var pkgName = "lambda";
+        var pkgName = "tau_express";
+        // var template = "wizzi_plugin";
+        var template = "express";
         var wizzi_plugin_type = 'syntax_structure';
 
 	const path = require('path')

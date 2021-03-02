@@ -4,16 +4,24 @@ ${'$'}group
     $$ $include wz/v08/express/site/webpacks/blog/src/index.js
 
     import
+        @ mountPostPage
+        @ mountPostList
         @ mountPostForm
         from './post.js'
 
     function component
         const element = document.createElement('div')
-        set element.id = 'post-form'
+        set element.id = 'page-container'
         return element
     
     _ document.body.appendChild
         _ component    
 
+    _ mountPostPage
+        @ 'page-container'
+
     _ mountPostForm
-        @ 'post-form'
+        @ 'post-form-container'
+
+    _ mountPostList
+        @ 'post-list-container'

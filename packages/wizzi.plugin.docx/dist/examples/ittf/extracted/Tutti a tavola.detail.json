@@ -2,6 +2,34 @@
     "category": "Tutti a tavola",
     "items": [
         {
+            "NWS_ID": "187",
+            "NWS_FK_TNW_ID": "8",
+            "NWS_FK_TCL_ID": "4",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "24",
+            "SettimanaAl": "27",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><big><strong>Alimentazione complementare</strong></big></h2>\n\n<p><big>Quando decidi di dare al tuo bambino alimenti diversi dal latte, scegli il momento giusto, che lui sia riposato e abbia fame ma non troppa e  tu sia rilassata.</big></p>\n\n<p><big>Per cominciare ha bisogno solo di una piccola quantità di cibo solido, una volta al giorno, in un momento in cui non sia stanco.</big></p>\n\n<p><big>Assicurati che tutti i cibi cotti si siano raffreddati prima di offrirli al tuo bambino.</big></p>\n\n<p><big>Possono essere presentati sotto diverse forme e consistenze rispettando le sue capacità di inghiottire: passati, purea, etc....</big></p>\n\n<p> </p>\n\n<h2><big><strong>Quali alimenti?</strong></big></h2>\n\n<p><big><strong>Al tuo bimbo fa bene mangiare quello che fa bene a te, cucina i pasti della famiglia utilizzando alimenti freschi. </strong></big></p>\n\n<p><big>Ogni popolo ha le sue tradizioni per iniziare a mangiare cibi diversi dal latte. </big></p>\n\n<p><big>Per la nostra tradizione, rispettiamo  la <strong>dieta mediterranea</strong>:</big></p>\n\n<p><big><strong>• </strong></big><big>Una base di verdure di stagione cotte a cui associare i cereali sotto forma di farine come la crema di riso o di mais , oppure, ben cotti e passati, riso, semolino, orzo, cous-cous, farro etc….</big></p>\n\n<p><big><strong>•</strong> Aggiungere alla base di verdure e cereali una piccola quantità di legumi (piselli, lenticchie…) o carne, o pesce, o uovo (ben cotto) o formaggio.</big></p>\n\n<p><big><strong>• </strong>Frutta cruda o cotta di stagione di consistenza adeguata.</big></p>\n\n<p><big><strong>• </strong>Olio extravergine d’oliva . </big></p>\n\n<p><big><strong>• </strong>Acqua da bere.</big></p>\n\n<p><strong><big>L’aggiunta di sale e zucchero non è necessaria.</big></strong></p>\n\n<p> </p>\n\n<p><big>I primi tentativi saranno disordinati. Il tuo bambino è abituato a succhiare liquidi, ora deve imparare a deglutire  i solidi. </big></p>\n\n<p><big>Usa un cucchiaio piccolo e stretto. Metti una piccola quantità di cibo verso la metà della lingua del tuo bambino. Se sembra interessato, dagli qualche altro assaggio con il cucchiaio. Se non gli piace o spinge via il cucchiaio, aspetta qualche giorno e riprova.</big></p>\n\n<p><big>Cercherà di afferrare ciò che è a portata di mano, portandolo alla bocca, annusandolo, manipolandolo, spalmandoselo sulla faccia, giocandoci, ecc…</big></p>\n\n<p><big>Il passaggio da una dieta di solo latte a una “da adulto’’ sarà un processo lento, avverrà in molti mesi, rispetta i tempi del tuo bambino.</big></p>\n\n<p> </p>\n",
+            "Abstract": "Alimentazione complementare",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/5_6.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 5_6.png",
+            "Titolo": "6 mesi",
+            "sort": 8,
+            "Categoria": "Tutti a tavola",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/187",
+            "User": "Anna Maria Davoli",
+            "NewsOrGuida": "guida",
+            "images": [
+                {
+                    "src": "https://cosie.lepida.it/image/upload/galleria/20200315225637_0_187.jpg",
+                    "title": "ready-or-not.jpg"
+                }
+            ]
+        },
+        {
             "NWS_ID": "609",
             "NWS_FK_TNW_ID": "17",
             "NWS_FK_TCL_ID": "4",
@@ -21,7 +49,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/609",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "189",
@@ -43,7 +72,31 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/189",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
+        },
+        {
+            "NWS_ID": "617",
+            "NWS_FK_TNW_ID": "24",
+            "NWS_FK_TCL_ID": "4",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "94",
+            "SettimanaAl": "98",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><big><strong>Il bisogno di fibre</strong></big></h2>\n\n<p><big>Le fibre aiutano la digestione di tuo figlio, evitano la stitichezza e lo fanno sentire sazio più a lungo. Mangiare fibre riduce anche il rischio di malattie cardiache più avanti nella vita. </big></p>\n\n<p><big>I bambini di età compresa tra 1 e 3 anni necessitano di circa 19 grammi di fibre ogni giorno. Ad esempio una mela di medie dimensioni contiene 4 grammi di fibre, 1/2 tazza di ceci ne contiene 8 grammi, 100 grammi di carote 3 grammi .</big></p>\n\n<p> </p>\n\n<p><big>Ci sono tanti modi per aumentare la fibra per il tuo bambino:</big></p>\n\n<p><big>• Cerca di offrire almeno un frutto o una verdura a ogni pasto.</big></p>\n\n<p><big>• Prepara zuppa di verdure.</big></p>\n\n<p><big>• Mescola pasta integrale con la pasta bianca.</big></p>\n\n<p><big>• Alterna  pane integrale e pane bianco.</big></p>\n\n<p><big>• Servi frutta intera invece delle puree ,omogeneizzati e succhi. </big></p>\n\n<p><big>• Aggiungi le verdure ai suoi cibi preferiti.</big></p>\n\n<p><big>• Mescola piselli a pasta e formaggio.</big></p>\n\n<p><big>• Aggiungi carote o zucchine grattugiate al condimento della pasta.</big></p>\n",
+            "Abstract": "Il bisogno di fibre",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/22.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 22.png",
+            "Titolo": "22 mesi",
+            "sort": 24,
+            "Categoria": "Tutti a tavola",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/617",
+            "User": "Anna Maria Davoli",
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "619",
@@ -65,7 +118,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/619",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "621",
@@ -87,7 +141,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/621",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "627",
@@ -109,7 +164,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/627",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "631",
@@ -131,7 +187,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/631",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "638",
@@ -153,51 +210,77 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/638",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
-            "NWS_ID": "1031",
-            "NWS_FK_TNW_ID": "14",
+            "NWS_ID": "190",
+            "NWS_FK_TNW_ID": "11",
             "NWS_FK_TCL_ID": "4",
             "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "48",
-            "SettimanaAl": "51",
+            "SettimanaDal": "36",
+            "SettimanaAl": "39",
             "NWS_DATA_DAL": "",
             "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Mangiate a tavola assieme, gli stessi alimenti, in un clima sereno, con la televisione spenta.</strong></big></h2>\n\n<p><big>Ricordati che il cibo non serve per consolare o per premiare il bambino: questo vale per tutte le età.</big></p>\n\n<p> </p>\n\n<p><big>Ora il tuo bambino ha un anno, dovrebbe fare tre pasti principali e due piccole merende ad esempio a base di frutta, bastoncini di verdure, yogurt, pane.</big></p>\n\n<p> </p>\n\n<p><big>Puoi continuare ad allattare al seno. Man mano che il bambino mangia cibi più solidi, la quantità di latte che richiede diminuirà. </big></p>\n\n<p> </p>\n\n<p><big>Puoi inserire il latte vaccino, parlane con il tuo pediatra.</big></p>\n\n<p> </p>\n\n<p><big>Se hai un bambino molto attivo, potresti notare che non sta aumentando di peso così velocemente come nei primi 10-11 mesi. Questo perché è più attivo e utilizza più calorie. Anche se non sta aumentando di peso come prima, è comunque in buona salute.</big></p>\n\n<p><big>A questa età, i bambini dovrebbero sviluppare tessuto muscolare, non grasso.</big></p>\n",
-            "Abstract": "Mangiate a tavola assieme, gli stessi alimenti, in un clima sereno, con la televisione spenta",
+            "Testo": "<h2><big><strong>Imparare a mangiare da solo</strong></big></h2>\n\n<p><big>Questi sono i primi passi per imparare a mangiare da solo. </big></p>\n\n<p><big>Puoi aiutare il tuo bambino a esercitarsi dandogli alcuni dei seguenti “finger food”:</big></p>\n\n<p><strong>• </strong><big>Cuoci le verdure per ammorbidirle, se necessario, quindi schiacciale o tagliale per ottenere una consistenza adatta per il tuo bambino. Offri una varietà di verdure, comprese quelle con sapori amari: broccoli, peperoni, piselli, cavolfiore, spinaci, fagiolini verdi, zucchine, asparago, zucca, carote….</big></p>\n\n<p><strong>• </strong><big>Cereali secchi soffiati, non zuccherati, di piccole dimensioni e tondi tipo riso soffiato oppure orzo.</big></p>\n\n<p><big>  Spicchi d</big><big>i di frutta sbucciata in fette sottili  e morbida o a piccoli pezzi: banane, pesche, pere, prugne, albicocche, arance  etc a secondo della stagione.</big></p>\n\n<p><big>Il tuo bambino ora può mangiare la maggior parte delle cose che cucini per il resto della famiglia, per lui modera i condimenti.</big></p>\n\n<h2> </h2>\n\n<h2><big><strong>Quanto deve mangiare?</strong></big></h2>\n\n<p><big>Quanto mangia il tuo bambino dipende dal suo appetito, quindi lascia che sia lui a guidarti su quanto cibo ha bisogno - non forzarlo mai a mangiare.</big></p>\n\n<p><big>Segui le sue indicazioni e impara a riconoscere quando ha fame e quando ne ha abbastanza.</big></p>\n\n<p><big>Prima che compia un anno non introdurre:</big></p>\n\n<p>• <big>latte vaccino al posto di quello di mamma o artificiale;</big></p>\n\n<p>• <big>miele (per il rischio di infezione da Botulino).</big></p>\n\n<p> </p>\n\n<p><big>Dagli acqua durante  il pasto, evita bevande zuccherate o succhi di frutta che possono causare carie.</big></p>\n",
+            "Abstract": "Imparare a mangiare da solo",
             "NWS_URL_SITOWEB": "",
             "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/12.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 12.png",
-            "Titolo": "1 anno",
-            "sort": 14,
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/9.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 9.png",
+            "Titolo": "9 mesi",
+            "sort": 11,
             "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/1031",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/190",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
-            "NWS_ID": "186",
-            "NWS_FK_TNW_ID": "7",
+            "NWS_ID": "185",
+            "NWS_FK_TNW_ID": "6",
             "NWS_FK_TCL_ID": "4",
             "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "20",
-            "SettimanaAl": "23",
+            "SettimanaDal": "16",
+            "SettimanaAl": "19",
             "NWS_DATA_DAL": "",
             "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>I cambiamenti che preparano l’inizio dell’alimentazione con cibi solidi, ma ci vuole ancora pazienza prima di iniziare</strong></big></h2>\n\n<p><big>Il tuo pediatra probabilmente ti sta dicendo di non iniziare con i cibi solidi per un altro mese. I tuoi amici e parenti probabilmente ti stanno dicendo che tutti iniziano i cibi solidi prima. Presta attenzione al tuo medico, il latte materno è il migliore. Continua il latte materno e/o il latte artificiale raccomandato dal medico. </big></p>\n\n<p><big>Quando il tuo bambino comincerà ad interessarsi ai cibi solidi sarà necessario affiancare al latte altri alimenti.</big></p>\n\n<p><big>Ciò avverrà circa al sesto mese:</big></p>\n\n<p><big>• il bambino inizierà a manifestare interesse per quello che mangiate voi,</big></p>\n\n<p><big>• sarà in grado di stare seduto.</big></p>\n\n<p> </p>\n",
-            "Abstract": "I cambiamenti che preparano l’inizio dell’alimentazione con cibi solidi",
+            "Testo": "<h2><strong><big>Si continua con il latte, a questa età potrebbe richiedere pasti più brevi e frequenti</big></strong></h2>\n\n<p><big>Al momento, il latte materno è il miglior cibo per il tuo bambino.</big></p>\n\n<p><big>A questa età potrebbe volere pasti più frequenti e più brevi (anche più di 10 poppate al giorno).</big></p>\n\n<p><big>Inoltre potrebbe rallentare la crescita del peso. E’ una fase normale, riprenderà dopo il 5° mese con ritmi più regolari.</big></p>\n\n<p><big>Quando siete a tavola tenetelo vicino, vi guarderà ed inizierà ad essere interessato a ciò che succede durante il vostro pasto.</big></p>\n\n<p><big>Non è raccomandato che inizi a mangiare cibi solidi fino all'età di 6 mesi. Gli alimenti solidi non hanno tanto nutrimento quanto il latte materno o la formula artificiale; sono più difficili da digerire e possono disturbare la sua digestione. </big></p>\n\n<p><big>Inoltre ancora non controlla completamente la bocca e la lingua e potrebbe non avere il controllo della testa e del collo. Parlane con il Pediatra prima di iniziare a proporre cibi solidi.</big></p>\n",
+            "Abstract": "Si continua con il latte...",
             "NWS_URL_SITOWEB": "",
             "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/5_6.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 5_6.png",
-            "Titolo": "5 mesi",
-            "sort": 7,
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/4.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 4.png",
+            "Titolo": "4 mesi",
+            "sort": 6,
             "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/186",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/185",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
+        },
+        {
+            "NWS_ID": "614",
+            "NWS_FK_TNW_ID": "21",
+            "NWS_FK_TCL_ID": "4",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "82",
+            "SettimanaAl": "85",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><big><strong>Le abitudini alimentari sane costruite ora dureranno tutta la vita! Il sale va usato con giudizio.</strong></big></h2>\n\n<p><big>Un eccesso di sale può causare ipertensione e altri problemi di salute, come malattie cardiache e ictus. È molto importante controllare l'assunzione fin da piccoli e utilizzare sale iodato.</big></p>\n\n<p><big>Anche a 19 e 20 mesi molti bambini mangiano troppo sale e sviluppano una preferenza per i cibi salati che manterranno negli anni successivi. Oggigiorno la pressione alta viene diagnosticata in età sempre più giovane. </big></p>\n\n<p><big>Ai bambini  piace il cibo semplice. Non amano i sapori intensi, a meno che non li abbiano assaggiati regolarmente per un certo tempo. Tuo figlio potrebbe essere felice con un pasto semplice, come il pollo al forno con patate e carote al vapore, senza l'aggiunta di spezie o sale.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Le abitudini alimentari sane costruite ora dureranno tutta la vita!</strong></big></h2>\n\n<p><big>Ecco alcuni suggerimenti per ridurre l’assunzione di sale:</big></p>\n\n<p><big>• Riduci un po' alla volta il sale che aggiungi agli alimenti. </big></p>\n\n<p><big>• Usa metà della quantità di sale richiesta nelle ricette.</big></p>\n\n<p><big>• Prepara il cibo a casa più che puoi, evita di acquistare cibi pronti tipo carne impanata, crocchette di patate o pesce in pastella, questi cibi sono ricchi di sale, zucchero e grassi.</big></p>\n\n<p><big>• Leggi le etichette. Le confezioni di alimenti elencano la quantità di sale o sodio.</big></p>\n\n<p><big>• Preferisci verdure fresche o surgelate  ed evita le verdure in scatola, che di norma  contengono molto sale e zuccheri .</big></p>\n\n<p><big>• Leggi le confezioni di alimenti congelati per assicurarti che non contengano aggiunte di sale.</big></p>\n\n<p><big>• I legumi secchi sono ottimi e ne puoi controllare la salatura. </big></p>\n\n<p><big>• Dai il buon esempio. Assaggia il tuo cibo prima di salarlo e togli la saliera dal tavolo. </big></p>\n\n<p> </p>\n\n<p><big><strong>Ricorda che tuo figlio imparerà a conoscere il sale osservandoti.</strong></big></p>\n",
+            "Abstract": "Le abitudini alimentari sane costruite ora dureranno tutta la vita!",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/19.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 19.png",
+            "Titolo": "19 mesi",
+            "sort": 21,
+            "Categoria": "Tutti a tavola",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/614",
+            "User": "Anna Maria Davoli",
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "423",
@@ -219,7 +302,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/423",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "610",
@@ -230,7 +314,7 @@
             "SettimanaAl": "70",
             "NWS_DATA_DAL": "",
             "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Ormai tuo figlio è diventato un esperto nel mettere le cose in bocca, alcuni suggerimenti per incoraggiare a provare e gustare nuovi cibi sani</strong></big></h2>\n\n<p><big>Questa è una buona e una cattiva notizia.</big></p>\n\n<p><big>La cattiva notizia: si mette in bocca di tutto.</big></p>\n\n<p><big>La buona notizia: può iniziare a nutrirsi da solo. Significa anche che potete mangiare assieme contemporaneamente.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Ti starà guardando e proverà a fare quello che fai tu. </strong></big></h2>\n\n<p><big>Quando ti vede mangiare con un cucchiaio, vorrà provare a mangiare con il suo cucchiaio, ma mangerà ancora la maggior parte dei cibi con le dita.</big></p>\n\n<p><big>Ecco alcuni suggerimenti per incoraggiare tuo figlio a provare e gustare nuovi cibi sani:</big></p>\n\n<p><big><strong>• </strong></big><big>Introduci un nuovo alimento per  volta. Un piatto pieno di nuovi cibi è troppo da affrontare. </big></p>\n\n<p><big><strong>• </strong>Abbina un cibo che non ha mai provato con uno che gli piace e conosce.</big></p>\n\n<p><big><strong>• </strong>Presta attenzione alla consistenza. Ai bambini piccoli potrebbero non piacere i cibi viscidi, granulosi o croccanti. Inizia con cibi dalla consistenza morbida come polenta, patate, pollo o frutta tenera.</big></p>\n\n<p><big><strong>• </strong>Taglia il cibo a pezzetti. È più probabile che tuo figlio provi un cibo se riesce a raccoglierlo.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Sii un modello </strong></big></h2>\n\n<p><big>Tuo figlio probabilmente proverà un nuovo cibo se vede che lo stai mangiando. Serviti un po' di cibo e chiedigli di assaggiarlo con te.</big></p>\n\n<p> </p>\n\n<h2><strong><big>Parla del cibo </big></strong></h2>\n\n<p><big>Di' a tuo figlio come si chiama quello che mangia e descrivi il  colore e la  consistenza. Chiedigli di toccarlo e annusarlo, ma non fare pressione perché lo mangi se non è pronto.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Fai piccoli passi e festeggia ogni successo </strong></big></h2>\n\n<p><big>Per un bambino provare un nuovo alimento è una impresa rischiosa. Toccare il cibo, annusarlo, masticarlo e ingoiarlo sono tutti passaggi importanti prima di accettarlo. Alcuni bambini non mangiano un cibo la prima volta che lo vedono. È normale, potrebbero volerci 7-15 volte prima che tuo figlio mangi un cibo che non ha mai mangiato prima. </big></p>\n\n<p><big>Costringere tuo figlio a mangiare qualcosa di nuovo può renderlo meno propenso a provare il cibo in seguito ed è più facile che non gli piaccia.</big></p>\n\n<p> </p>\n\n<p><strong><big>I genitori decidono gli alimenti di qualità che devono essere presenti a tavola e i bambini decidono quanto mangiarne.</big></strong></p>\n",
+            "Testo": "<h2><big><strong>Ormai tuo figlio è diventato un esperto nel mettere le cose in bocca, alcuni suggerimenti per incoraggiare a provare e gustare nuovi cibi sani</strong></big></h2>\n\n<p><big>Questa è una buona e una cattiva notizia.</big></p>\n\n<p><big>La cattiva notizia: si mette in bocca di tutto.</big></p>\n\n<p><big>La buona notizia: può iniziare a nutrirsi da solo. Significa anche che potete mangiare assieme contemporaneamente.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Ti starà guardando e proverà a fare quello che fai tu. </strong></big></h2>\n\n<p><big>Quando ti vede mangiare con un cucchiaio, vorrà provare a mangiare con il suo cucchiaio, ma mangerà ancora la maggior parte dei cibi con le dita.</big></p>\n\n<p><big>Ecco alcuni suggerimenti per incoraggiare tuo figlio a provare e gustare nuovi cibi sani:</big></p>\n\n<p><big><strong>• </strong></big><big>Introduci un nuovo alimento per  volta. Un piatto pieno di nuovi cibi è troppo da affrontare. </big></p>\n\n<p><big><strong>• </strong>Abbina un cibo che non ha mai provato con uno che gli piace e conosce.</big></p>\n\n<p><big><strong>• </strong>Presta attenzione alla consistenza. Ai bambini piccoli potrebbero non piacere i cibi viscidi, granulosi o croccanti. Inizia con alimenti dalla consistenza morbida come polenta, patate, pollo o frutta tenera o cotta.</big></p>\n\n<p><big><strong>• </strong>Taglia il cibo a pezzetti. È più probabile che tuo figlio provi ad assaggiare se riesce a raccogliere da solo quello che vede nel piatto.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Sii un modello </strong></big></h2>\n\n<p><big>Tuo figlio probabilmente proverà un nuovo cibo se vede che lo stai mangiando. Metti nel tuo e nel suo piatto lo stesso alimento e chiedigli di assaggiarlo con te.</big></p>\n\n<p> </p>\n\n<h2><strong><big>Parla del cibo </big></strong></h2>\n\n<p><big>Di' a tuo figlio come si chiama quello che mangia e descrivi il  colore e la  consistenza. Chiedigli di toccarlo e annusarlo, ma non fare pressione perché lo mangi se non è pronto.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Fai piccoli passi e festeggia ogni successo </strong></big></h2>\n\n<p><big>Per un bambino provare un nuovo alimento è una impresa rischiosa. Toccare il cibo, annusarlo, masticarlo e ingoiarlo sono tutti passaggi importanti prima di accettarlo. Alcuni bambini non mangiano un cibo la prima volta che lo vedono. È normale, potrebbero volerci 7-15 volte prima che tuo figlio mangi un cibo che non ha mai mangiato prima. </big></p>\n\n<p><big>Costringere tuo figlio a mangiare qualcosa di nuovo può renderlo meno propenso a provare il cibo in seguito ed è più facile che non gli piaccia.</big></p>\n\n<p> </p>\n\n<p><strong><big>I genitori decidono gli alimenti di qualità che devono essere presenti a tavola e i bambini decidono quanto mangiarne.</big></strong></p>\n",
             "Abstract": "Suggerimenti per incoraggiare a provare e gustare nuovi cibi sani",
             "NWS_URL_SITOWEB": "",
             "NWS_URL_VIDEO": "",
@@ -241,29 +325,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/610",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "617",
-            "NWS_FK_TNW_ID": "24",
-            "NWS_FK_TCL_ID": "4",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "94",
-            "SettimanaAl": "98",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Il bisogno di fibre</strong></big></h2>\n\n<p><big>La fibra aiuta la digestione di tuo figlio, evita la stitichezza e lo fa sentire sazio più a lungo. Mangiare fibre riduce anche il rischio di malattie cardiache più avanti nella vita. </big></p>\n\n<p><big>I bambini di età compresa tra 1 e 3 anni necessitano di circa 19 grammi di fibre ogni giorno.</big></p>\n\n<p> </p>\n\n<p><big>Ci sono tanti modi per aumentare la fibra per il tuo bambino:</big></p>\n\n<p><big>• Cerca di offrire almeno un frutto o una verdura a ogni pasto.</big></p>\n\n<p><big>• Prepara zuppa di verdure.</big></p>\n\n<p><big>• Mescola pasta integrale con la pasta bianca.</big></p>\n\n<p><big>• Alterna  pane integrale e pane bianco.</big></p>\n\n<p><big>• Servi frutta intera invece delle puree ,omogeneizzati e succhi. </big></p>\n\n<p><big>• Aggiungi le verdure ai suoi cibi preferiti.</big></p>\n\n<p><big>• Mescola piselli a pasta e formaggio.</big></p>\n\n<p><big>• Aggiungi carote o zucchine grattugiate al condimento della pasta.</big></p>\n",
-            "Abstract": "Il bisogno di fibre",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/22.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 22.png",
-            "Titolo": "22 mesi",
-            "sort": 24,
-            "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/617",
-            "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "611",
@@ -285,7 +348,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/611",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "629",
@@ -307,7 +371,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/629",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "634",
@@ -329,7 +394,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/634",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "1028",
@@ -351,7 +417,31 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/1028",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
+        },
+        {
+            "NWS_ID": "1029",
+            "NWS_FK_TNW_ID": "16",
+            "NWS_FK_TCL_ID": "4",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "56",
+            "SettimanaAl": "59",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><strong><big>Allattamento prolungato. Tieni il biberon fuori dal letto.</big></strong></h2>\n\n<p><big>L’Organizzazione Mondiale della Sanità suggerisce che l’allattamento materno prosegua, integrato con cibi solidi, almeno fino ai due anni \"finché mamma e bambino lo desiderano\". Il latte materno non perde sostanza con il passare dei mesi e degli anni, ma continua a essere un importante apporto di liquidi e nutrienti.</big></p>\n\n<p><big>Se il tuo bambino beve latte dal biberon, staccarsene sarà un processo lento. La maggior parte dei bambini non è pronta a rinunciare al biberon un giorno e iniziare a bere da una tazza il giorno successivo.</big></p>\n\n<p><big>ll tuo bambino berrà meno latte perché mangerà più cibi solidi. Ricorda di dare latte intero fino all'età di 2 anni, se il pediatra lo consiglia, potrai diluirlo con l'acqua. Il suo cervello ha bisogno del grasso in più nel latte intero per costruire e proteggere le cellule cerebrali. </big></p>\n\n<p><big>Il calcio nel latte aiuta a costruire ossa e denti forti; se beve meno latte integra con latticini (yogurt, ricotta, ecc..) i cibi solidi che assume.</big></p>\n\n<p><big>Loda il tuo bambino quando prova a fare questo passaggio dal biberon alla tazza!</big></p>\n\n<p> </p>\n\n<h2><strong><big>Tieni il biberon fuori dal letto</big></strong></h2>\n\n<p><big>Alcuni bambini desiderano ancora il biberon quando si svegliano o prima di andare a dormire. Non lasciargli il biberon quando si addormenta. Succhiarlo per tutta la notte può danneggiare i suoi denti.</big></p>\n\n<p> </p>\n\n<h2><strong><big>Dopo un po', si dimenticherà del biberon</big></strong></h2>\n\n<p><big>Tu non offrirlo. Lascia che sia lui a chiederlo e daglielo solo se sembra averne davvero bisogno. Vedi se invece si accontenta di qualcos'altro da bere. Non lasciare che durante il giorno porti in giro con sé un biberon, gli sarà più difficile rinunciarvi. Dagli piuttosto un giocattolo da tenere con sé.</big></p>\n\n<p><big>Non offrirgli bevande alla frutta zuccherate o bibite; non sono nutrienti. Quando ha sete, offrigli acqua o latte in tazza. Dai a tuo figlio frutti freschi come mele e arance, sono più nutrienti e contengono più fibre.</big></p>\n\n<p><big>Alcuni bambini bevono dal biberon più a lungo di altri. Devi essere paziente. </big></p>\n",
+            "Abstract": "Allattamento prolungato",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/14.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 14.png",
+            "Titolo": "14 mesi",
+            "sort": 16,
+            "Categoria": "Tutti a tavola",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/1029",
+            "User": "Anna Maria Davoli",
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "183",
@@ -373,29 +463,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/183",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "614",
-            "NWS_FK_TNW_ID": "21",
-            "NWS_FK_TCL_ID": "4",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "82",
-            "SettimanaAl": "85",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Le abitudini alimentari sane costruite ora dureranno tutta la vita! Il sale va usato con giudizio.</strong></big></h2>\n\n<p><big>Un eccesso di sale può causare ipertensione e altri problemi di salute, come malattie cardiache e ictus. È molto importante controllarne sin da piccoli l'assunzione e utilizzare sale iodato.</big></p>\n\n<p><big>Anche a 19 e 20 mesi molti bambini mangiano troppo sale e sviluppano una preferenza per i cibi salati che manterranno negli anni successivi. Oggigiorno la pressione alta viene diagnosticata in età sempre più giovane. </big></p>\n\n<p><big>Ai bambini  piace il cibo semplice. Non amano i sapori intensi, a meno che non li abbiano assaggiati regolarmente per un certo tempo. Tuo figlio potrebbe essere felice con un pasto semplice, come il pollo al forno con patate e carote al vapore, senza l'aggiunta di spezie o sale.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Le abitudini alimentari sane costruite ora dureranno tutta la vita!</strong></big></h2>\n\n<p><big>Ecco alcuni suggerimenti per ridurre l’assunzione di sale:</big></p>\n\n<p><big>• Riduci un po' alla volta il sale che aggiungi agli alimenti. </big></p>\n\n<p><big>• Usa metà della quantità di sale richiesta nelle ricette.</big></p>\n\n<p><big>• Prepara il cibo a casa più che puoi, invece di fermarti in un fast food, avrai un maggiore controllo sulla quantità di sale, zucchero e grassi.</big></p>\n\n<p><big>• Leggi le etichette. Le confezioni di alimenti elencano la quantità di sale o sodio.</big></p>\n\n<p><big>• Preferisci verdure fresche o surgelate  ed evita le verdure in scatola, che di norma  contengono molto sale e zuccheri .</big></p>\n\n<p><big>• Leggi le confezioni di alimenti congelati per assicurarti che non contengano aggiunte di sale.</big></p>\n\n<p><big>• I legumi secchi sono ottimi e ne puoi controllare la salatura. </big></p>\n\n<p><big>• Dai il buon esempio. Assaggia il tuo cibo prima di salarlo e togli la saliera dal tavolo. </big></p>\n\n<p> </p>\n\n<p><big><strong>Ricorda che tuo figlio imparerà a conoscere il sale osservandoti.</strong></big></p>\n",
-            "Abstract": "Le abitudini alimentari sane costruite ora dureranno tutta la vita!",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/19.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 19.png",
-            "Titolo": "19 mesi",
-            "sort": 21,
-            "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/614",
-            "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "630",
@@ -417,7 +486,31 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/630",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
+        },
+        {
+            "NWS_ID": "616",
+            "NWS_FK_TNW_ID": "23",
+            "NWS_FK_TCL_ID": "4",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "90",
+            "SettimanaAl": "93",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><big><strong>I pericoli in cucina</strong></big></h2>\n\n<h2> </h2>\n\n<h2><big><strong>Il pericolo delle scottature</strong></big></h2>\n\n<p><big>Le ustioni sono molto gravi e dolorose per i bambini e possono causare problemi che potrebbero durare per tutta la vita. </big></p>\n\n<p><big>La maggior parte delle ustioni ai bambini si verificano tra la nascita e i 4 anni di età e sono causate da:</big></p>\n\n<p><big>• Liquidi e cibi caldi, come caffè, tè e grasso.</big></p>\n\n<p><big>• Il contatto con superfici calde, come stufe, ferri da stiro e apparecchi da cucina caldi.</big></p>\n\n<p><big>A questa età, il tuo bambino cresce così velocemente che ti può cogliere di sorpresa con quello che sa fare. Come tirare un cibo caldo giù da un tavolo o toccare una stufa calda cercando di camminare.</big></p>\n\n<p><big>Ecco alcuni suggerimenti:</big></p>\n\n<p><big>• Non mangiare, bere o trasportare mai nulla di caldo quando stai trasportando tuo figlio; è pericoloso fare entrambe le cose contemporaneamente!</big></p>\n\n<p><big>• Non lasciare mai nulla di caldo sul bordo di un tavolo o di un bancone.</big></p>\n\n<p><big>• Quando siete assieme in cucina, state attenti a tovaglie o tessuti che può tirare facendo cadere oggetti caldi</big> .<big> Non lasciatelo giocare in cucina quando non ci siete.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Il pericolo del soffocamento</strong></big></h2>\n\n<p><big>Non è facile masticare quando mancano tutti i denti.</big></p>\n\n<p><big>Non potendo masticare bene il tuo bambino potrebbe ingoiare pezzi di cibo troppo grandi per lui.</big></p>\n\n<p><big>Macina la carne e taglia bene tutto il cibo a pezzetti. </big></p>\n\n<p><big>Non fare tagli larghi e sottili confidando che così riesca a masticare meglio. I pezzi devono sempre essere piccoli.</big></p>\n\n<p><big>Gli alimenti più pericolosi sono carne, caramelle, noci e uva. Taglia l'uva in quarti e rompi le noci in piccoli pezzi. </big></p>\n\n<p><big>Non dare caramelle.</big></p>\n",
+            "Abstract": "I pericoli in cucina",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/21.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 21.png",
+            "Titolo": "21 mesi",
+            "sort": 23,
+            "Categoria": "Tutti a tavola",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/616",
+            "User": "Anna Maria Davoli",
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "623",
@@ -439,7 +532,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/623",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "625",
@@ -461,7 +555,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/625",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "628",
@@ -483,7 +578,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/628",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "633",
@@ -505,51 +601,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/633",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "1030",
-            "NWS_FK_TNW_ID": "13",
-            "NWS_FK_TCL_ID": "4",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "44",
-            "SettimanaAl": "47",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Devo dare ancora al mio bambino il latte materno o la formula artificiale?</strong></big></h2>\n\n<p><big>Sì. Il latte materno o la formula artificiale sono ancora importanti per l'energia e i nutrienti e dovrebbero essere la sua bevanda principale fino a 12 mesi.</big></p>\n\n<p><big>Puoi continuare l'allattamento per tutto il tempo che desideri.</big></p>\n\n<p><big>Se stai allattando, il tuo bambino adatterà le poppate alla quantità di cibo complementare che sta mangiando.</big></p>\n\n<p><big>Se il tuo bambino beve formula artificiale, la quantità giornaliera è di circa 400 ml.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Bevande</strong></big></h2>\n\n<p><big>Il tuo bambino ora dovrebbe usare la sua tazza o bicchiere con più sicurezza, permettigli di sorseggiare acqua quando e quanta ne vuole.</big></p>\n\n<p><big>Le bevande dolci come succhi e preparati solubili possono contenere molto zucchero, quindi evitale per evitare la carie e perché non si abitui ad avere sempre un gusto dolce in bocca.</big></p>\n",
-            "Abstract": "Devo dare ancora al mio bambino il latte materno o la formula artificiale?",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/11.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 11.png",
-            "Titolo": "11 mesi",
-            "sort": 13,
-            "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/1030",
-            "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "185",
-            "NWS_FK_TNW_ID": "6",
-            "NWS_FK_TCL_ID": "4",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "16",
-            "SettimanaAl": "19",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><strong><big>Si continua con il latte, a questa età potrebbe richiedere pasti più brevi e frequenti</big></strong></h2>\n\n<p><big>Al momento, il latte materno è il miglior cibo per il tuo bambino, oppure il latte artificiale se indicato dal pediatra.</big></p>\n\n<p><big>A questa età potrebbe volere pasti più frequenti e più brevi (anche più di 10 poppate al giorno).</big></p>\n\n<p><big>Inoltre potrebbe rallentare la crescita del peso. E’ una fase normale, riprenderà dopo il 5° mese con ritmi più regolari.</big></p>\n\n<p><big>Quando siete a tavola tenetelo vicino, vi guarderà ed inizierà ad essere interessato a ciò che succede durante il vostro pasto.</big></p>\n\n<p><big>Non è raccomandato che inizi a mangiare cibi solidi fino all'età di 6 mesi. Gli alimenti solidi non hanno tanto nutrimento quanto il latte materno o la formula; sono più difficili da digerire e possono disturbare la sua digestione. </big></p>\n\n<p><big>Inoltre ancora non controlla completamente la sua bocca e la sua lingua e potrebbe non avere il controllo sulla testa e sul collo. Verifica con il Pediatra prima di iniziare con i cibi solidi.</big></p>\n",
-            "Abstract": "Si continua con il latte...",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/4.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 4.png",
-            "Titolo": "4 mesi",
-            "sort": 6,
-            "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/185",
-            "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "636",
@@ -571,7 +624,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/636",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "615",
@@ -593,7 +647,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/615",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "624",
@@ -615,7 +670,31 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/624",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
+        },
+        {
+            "NWS_ID": "186",
+            "NWS_FK_TNW_ID": "7",
+            "NWS_FK_TCL_ID": "4",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "20",
+            "SettimanaAl": "23",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><big><strong>I cambiamenti che preparano l’inizio dell’alimentazione con cibi solidi, ma ci vuole ancora pazienza prima di iniziare</strong></big></h2>\n\n<p><big>Il tuo pediatra probabilmente ti sta dicendo di non iniziare con i cibi solidi per un altro mese. I tuoi amici e parenti probabilmente ti stanno dicendo che tutti iniziano i cibi solidi prima. Presta attenzione al tuo medico, il latte materno è il migliore. Continua il latte materno e/o la formula artificiale raccomandata dal medico. </big></p>\n\n<p><big>Quando il tuo bambino comincerà ad interessarsi ai cibi solidi sarà necessario affiancare al latte altri alimenti.</big></p>\n\n<p><big>Ciò avverrà circa al sesto mese:</big></p>\n\n<p><big>• il bambino inizierà a manifestare interesse per quello che mangiate voi,</big></p>\n\n<p><big>• sarà in grado di stare seduto.</big></p>\n\n<p> </p>\n",
+            "Abstract": "I cambiamenti che preparano l’inizio dell’alimentazione con cibi solidi",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/5_6.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 5_6.png",
+            "Titolo": "5 mesi",
+            "sort": 7,
+            "Categoria": "Tutti a tavola",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/186",
+            "User": "Anna Maria Davoli",
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "635",
@@ -637,29 +716,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/635",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "190",
-            "NWS_FK_TNW_ID": "11",
-            "NWS_FK_TCL_ID": "4",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "36",
-            "SettimanaAl": "39",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Imparare a mangiare da solo</strong></big></h2>\n\n<p><big>Questi sono i primi passi per imparare a mangiare da solo. </big></p>\n\n<p><big>Puoi aiutare il tuo bambino a esercitarsi dandogli alcuni dei seguenti “finger food”:</big></p>\n\n<p><strong>• </strong><big>Cuoci le verdure per ammorbidirle, se necessario, quindi schiacciale o tagliale per ottenere una consistenza adatta per il tuo bambino. Offri una varietà di verdure, comprese quelle con sapori amari: broccoli, peperoni, piselli, cavolfiore, spinaci, fagiolini verdi, zucchine, asparago, zucca, carote….</big></p>\n\n<p><strong>• </strong><big>Cereali secchi, non zuccherati, tondi e soffiati.</big></p>\n\n<p><strong>• </strong><big>Spicchi di frutta sottili sbucciata e morbida o a piccoli pezzi: banane, pesche, pere, prugne, albicocche, arance  etc a secondo della stagione.</big></p>\n\n<p><big>Il tuo bambino ora può mangiare la maggior parte delle cose che cucini per il resto della famiglia, per lui modera i condimenti.</big></p>\n\n<h2> </h2>\n\n<h2><big><strong>Quanto deve mangiare?</strong></big></h2>\n\n<p><big>Quanto mangia il tuo bambino dipende dal suo appetito, quindi lascia che sia lui a guidarti su quanto cibo ha bisogno - non forzarlo mai a mangiare.</big></p>\n\n<p><big>Segui le sue indicazioni e impara a riconoscere quando ha fame e quando ne ha abbastanza.</big></p>\n\n<p><big>Prima che compia un anno non introdurre:</big></p>\n\n<p>• <big>latte vaccino al posto di quello di mamma o artificiale;</big></p>\n\n<p>• <big>miele (per il rischio di infezione da Botulino).</big></p>\n\n<p> </p>\n\n<p><big>Dagli acqua durante  il pasto, evita bevande zuccherate o succhi di frutta che possono causare carie.</big></p>\n",
-            "Abstract": "Imparare a mangiare da solo",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/9.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 9.png",
-            "Titolo": "9 mesi",
-            "sort": 11,
-            "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/190",
-            "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "184",
@@ -681,29 +739,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/184",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "612",
-            "NWS_FK_TNW_ID": "20",
-            "NWS_FK_TCL_ID": "4",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "78",
-            "SettimanaAl": "81",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><strong><big>Il rifiuto del cibo</big></strong></h2>\n\n<p><big>Nei pasti principali proponi cereali (pasta, riso, polenta, farro, orzo…) associati a verdura a secondo delle stagioni.</big></p>\n\n<p><big>Usa spesso legumi (piselli, lenticchie, fagioli….), carne 3 o 4 volte alla settimana, pesce 2 o 3 volte, uova 1 o 2 volte, formaggi 2 o 3 volte.</big></p>\n\n<p><big>Utilizza cotture semplici lessate o al forno.</big></p>\n\n<p><big>Per insaporire usa succo di pomodoro o limone e fai uso di aromi come basilico, rosmarino, prezzemolo riducendo l’utilizzo del sale.</big></p>\n\n<p> </p>\n\n<p><big><strong>Se il tuo bambino si rifiuta di mangiare potrebbe avere altri motivi oltre alla fame:</strong></big></p>\n\n<p> </p>\n\n<h2><big><strong>È distratto da qualcos'altro. </strong></big></h2>\n\n<p><big>I bambini piccoli hanno tempi di attenzione molto brevi. Potrebbe non voler mangiare perché vede o sente qualcosa di più interessante. Servi pasti e spuntini a un tavolo, lontano dai giocattoli che gli piacciono. Spegni la TV e non rispondere al telefono.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Sta cercando di attirare la tua attenzione. </strong></big></h2>\n\n<p><big>I bambini vogliono l'attenzione dei loro genitori,se non la ottengono attraverso un buon comportamento, si comporteranno male per attirare l'attenzione. Trascorri più tempo con tuo figlio durante i pasti, invece di usare i suoi pasti come un'opportunità per fare i lavori domestici, siediti e mangiate assieme. Usa l'ora del pasto per parlare e assicurati di farlo partecipare al pasto , ad esempio chiedigli di portare il suo cucchiaio, i tovaglioli per tutta la famiglia, parla di quello che state mangiando nominando i cibi etc... </big></p>\n\n<p> </p>\n\n<h2><big><strong>Vuole decidere da solo</strong></big></h2>\n\n<p><big>Fagli scegliere delle cose semplici, ad esempio  il colore del bavaglino, se mangiare prima la pappa gialla (polenta) oppure quella rossa (con pomodoro). </big></p>\n",
-            "Abstract": "Il rifiuto del cibo",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/18.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 18.png",
-            "Titolo": "18 mesi",
-            "sort": 20,
-            "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/612",
-            "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "188",
@@ -725,7 +762,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/188",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "421",
@@ -747,7 +785,29 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/421",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": [
+                {
+                    "src": "https://cosie.lepida.it/image/upload/galleria/20200712174138_0_421.png",
+                    "title": "Allattamento posizione  madre.png"
+                },
+                {
+                    "src": "https://cosie.lepida.it/image/upload/galleria/20200712173922_0_421.png",
+                    "title": "Allattamento sì no - 1.png"
+                },
+                {
+                    "src": "https://cosie.lepida.it/image/upload/galleria/20200712174049_0_421.png",
+                    "title": "Allattamento sì no - 2.png"
+                },
+                {
+                    "src": "https://cosie.lepida.it/image/upload/galleria/20200731204651_0_421.png",
+                    "title": "Allattare rilassate.png"
+                },
+                {
+                    "src": "https://cosie.lepida.it/image/upload/galleria/20200731205003_0_421.png",
+                    "title": "Latte e coccole - logo.png"
+                }
+            ]
         },
         {
             "NWS_ID": "632",
@@ -769,29 +829,31 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/632",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
-            "NWS_ID": "1029",
-            "NWS_FK_TNW_ID": "16",
+            "NWS_ID": "612",
+            "NWS_FK_TNW_ID": "20",
             "NWS_FK_TCL_ID": "4",
             "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "56",
-            "SettimanaAl": "59",
+            "SettimanaDal": "78",
+            "SettimanaAl": "81",
             "NWS_DATA_DAL": "",
             "NWS_DATA_AL": "",
-            "Testo": "<h2><strong><big>Allattamento prolungato. Tieni il biberon fuori dal letto.</big></strong></h2>\n\n<p><big>L’Organizzazione Mondiale della Sanità suggerisce che l’allattamento materno prosegua, integrato con cibi solidi, almeno fino ai due anni \"finché mamma e bambino lo desiderano\". Il latte materno non perde sostanza con il passare dei mesi e degli anni, ma continua a essere un importante apporto di liquidi e nutrienti.</big></p>\n\n<p><big>Se il tuo bambino beve latte vaccino dal biberon, staccarsene sarà un processo lento. La maggior parte dei bambini non è pronta a rinunciare al biberon un giorno e iniziare a bere da una tazza il giorno successivo.</big></p>\n\n<p><big>ll tuo bambino berrà meno latte perché mangerà più cibi solidi. Ricorda di dare latte intero, non a basso contenuto di grassi o scremato, fino all'età di 2 anni. Il suo cervello ha bisogno del grasso in più nel latte intero per costruire e proteggere le cellule cerebrali. </big></p>\n\n<p><big>Il calcio nel latte aiuta a costruire ossa e denti forti; se beve meno latte integra con latticini (yogurt, ricotta, ecc..) i cibi solidi che assume.</big></p>\n\n<p><big>Loda il tuo bambino mentre fa questo passaggio dal biberon alla tazza!</big></p>\n\n<p> </p>\n\n<h2><strong><big>Tieni il biberon fuori dal letto</big></strong></h2>\n\n<p><big>Alcuni bambini desiderano ancora il biberon quando si svegliano o prima di andare a dormire. Non lasciargli il biberon quando si addormenta. Succhiarlo per tutta la notte può danneggiare i suoi denti.</big></p>\n\n<p> </p>\n\n<h2><strong><big>Dopo un po', si dimenticherà del biberon</big></strong></h2>\n\n<p><big>Tu non offrirlo. Lascia che sia lui a chiederlo e daglielo solo se sembra averne davvero bisogno. Vedi se invece si accontenta di qualcos'altro da bere. Non lasciare che durante il giorno porti in giro con sé un biberon, gli sarà più difficile rinunciarvi. Dagli piuttosto un giocattolo da tenere con sé.</big></p>\n\n<p><big>Non offrirgli bevande alla frutta zuccherate o bibite; non sono nutrienti. Quando ha sete, offrigli acqua o latte in tazza. Dai a tuo figlio frutti freschi come mele e arance, sono più nutrienti e contengono più fibre.</big></p>\n\n<p><big>Alcuni bambini bevono dal biberon più a lungo di altri. Devi essere paziente. Non costringerlo a rinunciare al biberon o al seno se non sembra pronto.</big></p>\n",
-            "Abstract": "Allattamento prolungato",
+            "Testo": "<h2><strong><big>Il rifiuto del cibo</big></strong></h2>\n\n<p><big>Nei pasti principali proponi cereali (pasta, riso, polenta, farro, orzo…) associati a verdura a secondo delle stagioni.</big></p>\n\n<p><big>Usa spesso legumi (piselli, lenticchie, fagioli….) 3 o 4 volte a settimana , carne 3 o 4 volte alla settimana, pesce 2 o 3 volte, uova 1 o 2 volte, formaggi 2 o 3 volte.</big></p>\n\n<p><big>Utilizza cotture semplici lessate o al forno.</big></p>\n\n<p><big>Per insaporire usa succo di pomodoro o limone e fai uso di aromi come basilico, rosmarino, prezzemolo riducendo l’utilizzo del sale.</big></p>\n\n<p> </p>\n\n<p><big><strong>Se il tuo bambino si rifiuta di mangiare potrebbe avere altri motivi oltre alla fame:</strong></big></p>\n\n<p> </p>\n\n<h2><big><strong>È distratto da qualcos'altro. </strong></big></h2>\n\n<p><big>I bambini piccoli hanno tempi di attenzione molto brevi. Potrebbe non voler mangiare perché vede o sente qualcosa di più interessante. Servi pasti e spuntini a un tavolo, lontano dai giocattoli che gli piacciono. Spegni la TV e non rispondere al telefono.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Sta cercando di attirare la tua attenzione. </strong></big></h2>\n\n<p><big>I bambini vogliono l'attenzione dei loro genitori,se non la ottengono attraverso un buon comportamento, si comporteranno male per attirare l'attenzione. Trascorri più tempo con tuo figlio durante i pasti, invece di usare i suoi pasti come un'opportunità per fare i lavori domestici, siediti e mangiate assieme. Usa l'ora del pasto per parlare e assicurati di farlo partecipare al pasto , ad esempio chiedigli di portare il suo cucchiaio, i tovaglioli per tutta la famiglia, parla di quello che state mangiando nominando i cibi etc... </big></p>\n\n<p> </p>\n\n<h2><big><strong>Vuole decidere da solo</strong></big></h2>\n\n<p><big>Fagli scegliere delle cose semplici, ad esempio  il colore del bavaglino, se mangiare prima la pappa gialla (polenta) oppure quella rossa (con pomodoro). </big></p>\n",
+            "Abstract": "Il rifiuto del cibo",
             "NWS_URL_SITOWEB": "",
             "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/14.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 14.png",
-            "Titolo": "14 mesi",
-            "sort": 16,
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/18.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 18.png",
+            "Titolo": "18 mesi",
+            "sort": 20,
             "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/1029",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/612",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "618",
@@ -813,7 +875,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/618",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "637",
@@ -835,51 +898,54 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/637",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
-            "NWS_ID": "187",
-            "NWS_FK_TNW_ID": "8",
+            "NWS_ID": "1031",
+            "NWS_FK_TNW_ID": "14",
             "NWS_FK_TCL_ID": "4",
             "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "24",
-            "SettimanaAl": "27",
+            "SettimanaDal": "48",
+            "SettimanaAl": "51",
             "NWS_DATA_DAL": "",
             "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Alimentazione complementare</strong></big></h2>\n\n<p><big>Quando decidi di dare al tuo bambino alimenti diversi dal latte, scegli il momento giusto, che lui sia riposato e abbia fame ma non troppa e  tu sia rilassata.</big></p>\n\n<p><big>Per cominciare ha bisogno solo di una piccola quantità di cibo solido, una volta al giorno, in un momento in cui non sia stanco.</big></p>\n\n<p><big>Assicurati che tutti i cibi cotti si siano raffreddati prima di offrirli al tuo bambino.</big></p>\n\n<p><big>Possono essere presentati sotto diverse forme e consistenze rispettando le sue capacità di inghiottire: passati, purea, ....</big></p>\n\n<p> </p>\n\n<h2><big><strong>Quali alimenti?</strong></big></h2>\n\n<p><big><strong>Al tuo bimbo fa bene mangiare quello che fa bene a te, cucina i pasti della famiglia utilizzando alimenti freschi. </strong></big></p>\n\n<p><big>Ogni popolo ha le sue tradizioni per iniziare a mangiare cibi diversi dal latte. </big></p>\n\n<p><big>Per la nostra tradizione, rispettiamo  la <strong>dieta mediterranea</strong>:</big></p>\n\n<p><big><strong>• </strong></big><big>Una base di verdure di stagione a cui associare cereali sotto forma di farine o ben cotti e passati (riso, semolino, orzo, cous-cous, farro etc…).</big></p>\n\n<p><big><strong>• </strong>Alternare ad ogni pasto legumi (piselli, lenticchie…) o carne, o pesce, o uovo (ben cotto) o formaggi.</big></p>\n\n<p><big><strong>• </strong>Frutta cruda o cotta di stagione di consistenza adeguata.</big></p>\n\n<p><big><strong>• </strong>Olio extravergine d’oliva . </big></p>\n\n<p><big><strong>• </strong>Acqua da bere.</big></p>\n\n<p><strong><big>L’aggiunta di sale e zucchero non è necessaria.</big></strong></p>\n\n<p> </p>\n\n<p><big>I primi tentativi saranno disordinati. Il tuo bambino è abituato a succhiare liquidi, ora deve imparare a deglutire  i solidi. </big></p>\n\n<p><big>Usa un cucchiaio piccolo e stretto. Metti una piccola quantità di cibo verso la metà della lingua del tuo bambino. Se sembra interessato, dagli qualche altro assaggio con il cucchiaio. Se non gli piace o spinge via il cucchiaio, aspetta qualche giorno e riprova.</big></p>\n\n<p><big>Cercherà di afferrare ciò che è a portata di mano, portandolo alla bocca, annusandolo, manipolandolo, spalmandoselo sulla faccia, giocandoci, ecc…</big></p>\n\n<p><big>Il passaggio da una dieta di solo latte a una “da adulto’’ sarà un processo lento, avverrà in molti mesi, rispetta i tempi del tuo bambino.</big></p>\n\n<p> </p>\n",
-            "Abstract": "Alimentazione complementare",
+            "Testo": "<h2><big><strong>Mangiate a tavola assieme, gli stessi alimenti, in un clima sereno, con la televisione spenta.</strong></big></h2>\n\n<p><big>Ricordati che il cibo non serve per consolare o per premiare il bambino: questo vale per tutte le età.</big></p>\n\n<p> </p>\n\n<p><big>Ora il tuo bambino ha un anno, dovrebbe fare tre pasti principali e due piccole merende ad esempio a base di frutta, bastoncini di verdure, yogurt, pane.</big></p>\n\n<p> </p>\n\n<p><big>Puoi continuare ad allattare al seno. Man mano che il bambino mangia cibi più solidi, la quantità di latte che richiede diminuirà. </big></p>\n\n<p> </p>\n\n<p><big>Puoi inserire il latte vaccino, parlane con il tuo pediatra.</big></p>\n\n<p> </p>\n\n<p><big>Se hai un bambino molto attivo, potresti notare che non sta aumentando di peso così velocemente come nei primi 10-11 mesi. Questo perché si muove molto e utilizza più calorie. Anche se non sta aumentando di peso come prima, è comunque in buona salute.</big></p>\n\n<p><big>A questa età, i bambini dovrebbero sviluppare tessuto muscolare, non grasso.</big></p>\n",
+            "Abstract": "Mangiate a tavola assieme, gli stessi alimenti, in un clima sereno, con la televisione spenta",
             "NWS_URL_SITOWEB": "",
             "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/5_6.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 5_6.png",
-            "Titolo": "6 mesi",
-            "sort": 8,
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/12.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 12.png",
+            "Titolo": "1 anno",
+            "sort": 14,
             "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/187",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/1031",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
-            "NWS_ID": "616",
-            "NWS_FK_TNW_ID": "23",
+            "NWS_ID": "1030",
+            "NWS_FK_TNW_ID": "13",
             "NWS_FK_TCL_ID": "4",
             "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "90",
-            "SettimanaAl": "93",
+            "SettimanaDal": "44",
+            "SettimanaAl": "47",
             "NWS_DATA_DAL": "",
             "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>I pericoli in cucina</strong></big></h2>\n\n<h2> </h2>\n\n<h2><big><strong>Il pericolo delle scottature</strong></big></h2>\n\n<p><big>Le ustioni sono molto gravi e dolorose per i bambini e possono causare problemi che potrebbero durare per tutta la vita. </big></p>\n\n<p><big>La maggior parte delle ustioni ai bambini si verificano tra la nascita e i 4 anni di età e sono causate da:</big></p>\n\n<p><big>• Liquidi e cibi caldi, come caffè, tè e grasso.</big></p>\n\n<p><big>• Il contatto con superfici calde, come stufe, ferri da stiro e apparecchi da cucina caldi.</big></p>\n\n<p><big>A questa età, il tuo bambino cresce così velocemente che ti può cogliere di sorpresa con quello che sa fare. Come tirare un cibo caldo giù da un tavolo o toccare una stufa calda cercando di camminare.</big></p>\n\n<p><big>Ecco alcuni suggerimenti:</big></p>\n\n<p><big>• Non mangiare, bere o trasportare mai nulla di caldo quando stai trasportando tuo figlio; è pericoloso fare entrambe le cose contemporaneamente!</big></p>\n\n<p><big>• Non lasciare mai nulla di caldo sul bordo di un tavolo o di un bancone.</big></p>\n\n<p><big>• State molto attenti quando siete assieme in cucina. Non lasciatelo giocare in cucina quando non ci siete.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Il pericolo del soffocamento</strong></big></h2>\n\n<p><big>Non è facile masticare quando mancano tutti i denti.</big></p>\n\n<p><big>Non potendo masticare bene il tuo bambino potrebbe ingoiare pezzi di cibo troppo grandi per lui.</big></p>\n\n<p><big>Macina la carne e taglia bene tutto il cibo a pezzetti. </big></p>\n\n<p><big>Non fare tagli larghi e sottili confidando che così riesca a masticare meglio. I pezzi devono sempre essere piccoli.</big></p>\n\n<p><big>Gli alimenti più pericolosi sono carne, caramelle, noci e uva. Taglia l'uva in quarti e rompi le noci in piccoli pezzi. </big></p>\n\n<p><big>Non dare caramelle.</big></p>\n",
-            "Abstract": "I pericoli in cucina",
+            "Testo": "<h2><big><strong>Devo dare ancora il latte al mio bambino?</strong></big></h2>\n\n<p><big>Sì. Il latte è ancora importante per l'energia e i nutrienti e dovrebbe essere la sua bevanda principale fino a 12 mesi.</big></p>\n\n<p><big>Puoi continuare l'allattamento per tutto il tempo che desideri.</big></p>\n\n<p><big>Se stai allattando, il tuo bambino adatterà le poppate alla quantità di cibo complementare che sta mangiando.</big></p>\n\n<p><big>Se il tuo bambino beve formula artificiale, la quantità giornaliera è di circa 400 ml.</big></p>\n\n<p> </p>\n\n<h2><big><strong>Bevande</strong></big></h2>\n\n<p><big>Il tuo bambino ora dovrebbe usare la sua tazza o bicchiere con più sicurezza, permettigli di sorseggiare acqua quando e quanta ne vuole.</big></p>\n\n<p><big>Le bevande dolci come succhi e preparati solubili possono contenere molto zucchero, quindi evitale per evitare la carie e perché non si abitui ad avere sempre un gusto dolce in bocca.</big></p>\n",
+            "Abstract": "Devo dare ancora il latte al mio bambino ?",
             "NWS_URL_SITOWEB": "",
             "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/21.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 21.png",
-            "Titolo": "21 mesi",
-            "sort": 23,
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/11.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 11.png",
+            "Titolo": "11 mesi",
+            "sort": 13,
             "Categoria": "Tutti a tavola",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/616",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/1030",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "620",
@@ -901,7 +967,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/620",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "622",
@@ -923,7 +990,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/622",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "626",
@@ -945,7 +1013,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/626",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "639",
@@ -967,7 +1036,8 @@
             "Categoria": "Tutti a tavola",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/639",
             "User": "Anna Maria Davoli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         }
     ]
 }

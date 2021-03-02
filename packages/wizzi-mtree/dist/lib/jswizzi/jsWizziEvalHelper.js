@@ -96,7 +96,7 @@ class JsWizziEvalHelper {
                 ret.templatedValue = templatedValue;
                 return ret;
             }
-            // log 'interpolated result', ret
+            // log 'wizzi-mtree.JsWizziEvalHelper.ip.interpolated result', ret
             // Stop 7/7/17 if hasMacro
             ret = remacro(ret);
             // log 'wizzi-mtree.JsWizziEvalHelper.ret', ret

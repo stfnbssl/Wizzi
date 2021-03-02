@@ -1,0 +1,35 @@
+${'$'}group
+
+    const blogPageDef
+        {
+            @ kind "app"
+            @ reset "default"
+            @ elementId "page_container"
+            [ items
+                {
+                    @ kind "header"
+                    @ height 40
+                    [ items
+                        {
+                            @ kind "menu"
+                            @ direction "row"
+                            [ items
+                                {
+                                    @ label "Wizzi"
+                                {
+                                    @ label "Blog"
+                                {
+                                    @ label "Github"
+                {
+                    @ kind "flex"
+                    @ direction "row"
+                    [ items
+                        {
+                            @ kind "panel"
+                            @ id "post-list-container"
+                        {
+                            @ kind "panel"
+                            @ id "post-form-container"
+                {
+                    @ kind "footer"
+                    [ items

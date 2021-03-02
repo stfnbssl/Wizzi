@@ -69,8 +69,9 @@ function codify(node, nparent, jsScriptCoder, ctx) {
         // items = [item, in, coll]
         // TODO if items.length != 3 -> malformed
         // TODO if items[1] !== 'in' -> malformed
+        jsScriptCoder.w('var ' + items[0] + '_count' + nnode + ' = ' + items[2] + '.length;' + ' //' + node.id, node)
         jsScriptCoder.w('var ' + items[0] + '_count = ' + items[2] + '.length;' + ' //' + node.id, node)
-        jsScriptCoder.for('var i' + nnode + '=0; i' + nnode + '<' + items[0] + '_count; i' + nnode + '++', node)
+        jsScriptCoder.for('var i' + nnode + '=0; i' + nnode + '<' + items[0] + '_count' + nnode + '; i' + nnode + '++', node)
         jsScriptCoder.w('var ' + items[0] + ' = ' + items[2] + '[i' + nnode + '];' + ' //' + node.id, node)
         jsScriptCoder.w('var ' + items[0] + '_index = i' + nnode + ';' + ' //' + node.id, node)
         closeBlock = '}';
@@ -78,8 +79,9 @@ function codify(node, nparent, jsScriptCoder, ctx) {
     else if (tag == '$backeach') {
         setJsWizziContext(ctx, node.model.brickKey, jsScriptCoder)
         var items = node.value.split(' ');
+        jsScriptCoder.w('var ' + items[0] + '_count' + nnode + ' = ' + items[2] + '.length;' + ' //' + node.id, node)
         jsScriptCoder.w('var ' + items[0] + '_count = ' + items[2] + '.length;' + ' //' + node.id, node)
-        jsScriptCoder.for('var i' + nnode + '=' + items[0] + '_count-1; i' + nnode + '>-1; i' + nnode + '--', node)
+        jsScriptCoder.for('var i' + nnode + '=' + items[0] + '_count' + nnode + '-1; i' + nnode + '>-1; i' + nnode + '--', node)
         jsScriptCoder.w('var ' + items[0] + ' = ' + items[2] + '[i' + nnode + '];' + ' //' + node.id, node)
         jsScriptCoder.w('var ' + items[0] + '_index = i' + nnode + ';' + ' //' + node.id, node)
         closeBlock = '}';

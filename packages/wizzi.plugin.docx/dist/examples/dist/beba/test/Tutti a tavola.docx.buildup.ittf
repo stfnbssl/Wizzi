@@ -59,6 +59,24 @@ docx ${category}
                     size 32
 
 
+	image-def image_1
+		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\Allattamento posizione  madre.png
+		title Allattamento posizione  madre.png
+	image-def image_2
+		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\Allattamento sì no - 1.png
+		title Allattamento sì no - 1.png
+	image-def image_3
+		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\Allattamento sì no - 2.png
+		title Allattamento sì no - 2.png
+	image-def image_4
+		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\Allattare rilassate.png
+		title Allattare rilassate.png
+	image-def image_5
+		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\Latte e coccole - logo.png
+		title Latte e coccole - logo.png
+	image-def image_6
+		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\ready-or-not.jpg
+		title ready-or-not.jpg
 	hyperlinks
 		link-def testo_421
 			link https://cosie.lepida.it/backoffice/news/gestione/421
@@ -241,8 +259,8 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -266,12 +284,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Come&nbsp;allattare&nbsp;al&nbsp;seno
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Come&nbsp;allattare&nbsp;al&nbsp;seno
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -320,11 +338,11 @@ docx ${category}
 			+ Parlagli&nbsp;rassicurandolo,&nbsp;comunicandogli&nbsp;con&nbsp;il&nbsp;tono&nbsp;dolce&nbsp;della&nbsp;tua&nbsp;voce che&nbsp;sei&nbsp;sicura&nbsp;che&nbsp;ci&nbsp;riuscirà.
 				style big
 				size 24
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -332,12 +350,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;posizione&nbsp;del&nbsp;neonato
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;posizione&nbsp;del&nbsp;neonato
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -354,12 +372,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Prova&nbsp;anche&nbsp;tu:&nbsp;mettiti&nbsp;comoda&nbsp;quando&nbsp;allatti!
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Prova&nbsp;anche&nbsp;tu:&nbsp;mettiti&nbsp;comoda&nbsp;quando&nbsp;allatti!
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -368,12 +386,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Allattare&nbsp;rilassata
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Allattare&nbsp;rilassata
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -452,12 +470,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Allattare&nbsp;a&nbsp;richiesta 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Allattare&nbsp;a&nbsp;richiesta 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -509,12 +527,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Latte&nbsp;e&nbsp;coccole
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Latte&nbsp;e&nbsp;coccole
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -746,15 +764,25 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 72
+				after 36
+			image-ref image_1
+			image-ref image_2
+			image-ref image_3
+			image-ref image_4
+			image-ref image_5
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
 			link-ref testo_421
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -778,20 +806,20 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;pasto&nbsp;è&nbsp;un&nbsp;momento&nbsp;speciale
-			style h2_big_strong
-			bold
-			size 28
-		+ . 
-			style h2_strong
-			bold
-			size 28
-		+ Cosa&nbsp;mangia&nbsp;la&nbsp;mamma&nbsp;che&nbsp;allatta.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;pasto&nbsp;è&nbsp;un&nbsp;momento&nbsp;speciale
+				style h2_big_strong
+				bold
+				size 28
+			+ . 
+				style h2_strong
+				bold
+				size 28
+			+ Cosa&nbsp;mangia&nbsp;la&nbsp;mamma&nbsp;che&nbsp;allatta.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -816,12 +844,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Oltre&nbsp;al&nbsp;latte&nbsp;non&nbsp;dargli&nbsp;altri&nbsp;liquidi!
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Oltre&nbsp;al&nbsp;latte&nbsp;non&nbsp;dargli&nbsp;altri&nbsp;liquidi!
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -838,12 +866,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Cosa&nbsp;mangia&nbsp;la&nbsp;mamma&nbsp;che&nbsp;allatta
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Cosa&nbsp;mangia&nbsp;la&nbsp;mamma&nbsp;che&nbsp;allatta
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -879,15 +907,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_423
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -911,12 +939,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;pasto&nbsp;è&nbsp;un&nbsp;momento&nbsp;speciale
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;pasto&nbsp;è&nbsp;un&nbsp;momento&nbsp;speciale
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -941,12 +969,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;latte&nbsp;materno&nbsp;è&nbsp;l'alimento&nbsp;migliore
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;latte&nbsp;materno&nbsp;è&nbsp;l'alimento&nbsp;migliore
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -984,12 +1012,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;tuo&nbsp;bambino&nbsp;ha&nbsp;fame&nbsp;quando: 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;tuo&nbsp;bambino&nbsp;ha&nbsp;fame&nbsp;quando: 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1030,12 +1058,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;tuo&nbsp;bambino&nbsp;è&nbsp;sazio&nbsp;quando:
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;tuo&nbsp;bambino&nbsp;è&nbsp;sazio&nbsp;quando:
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1092,15 +1120,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_1028
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1124,12 +1152,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Continua&nbsp;ad&nbsp;allattare&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;ogni&nbsp;volta&nbsp;che&nbsp;lo&nbsp;richiede:&nbsp;lo&nbsp;nutri,&nbsp;lo&nbsp;disseti,&nbsp;lo&nbsp;consoli,&nbsp;lo&nbsp;coccoli
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Continua&nbsp;ad&nbsp;allattare&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;ogni&nbsp;volta&nbsp;che&nbsp;lo&nbsp;richiede:&nbsp;lo&nbsp;nutri,&nbsp;lo&nbsp;disseti,&nbsp;lo&nbsp;consoli,&nbsp;lo&nbsp;coccoli
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1157,15 +1185,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_183
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1189,12 +1217,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;giusta&nbsp;quantità&nbsp;di&nbsp;latte
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;giusta&nbsp;quantità&nbsp;di&nbsp;latte
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1267,15 +1295,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_184
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1299,18 +1327,18 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Si&nbsp;continua&nbsp;con&nbsp;il&nbsp;latte,&nbsp;a&nbsp;questa&nbsp;età&nbsp;potrebbe&nbsp;richiedere&nbsp;pasti&nbsp;più&nbsp;brevi&nbsp;e&nbsp;frequenti
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Si&nbsp;continua&nbsp;con&nbsp;il&nbsp;latte,&nbsp;a&nbsp;questa&nbsp;età&nbsp;potrebbe&nbsp;richiedere&nbsp;pasti&nbsp;più&nbsp;brevi&nbsp;e&nbsp;frequenti
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
 				before 72
 				after 36
-			+ Al&nbsp;momento,&nbsp;il&nbsp;latte&nbsp;materno&nbsp;è&nbsp;il&nbsp;miglior&nbsp;cibo&nbsp;per&nbsp;il&nbsp;tuo&nbsp;bambino,&nbsp;oppure&nbsp;il&nbsp;latte&nbsp;artificiale&nbsp;se&nbsp;indicato&nbsp;dal&nbsp;pediatra.
+			+ Al&nbsp;momento,&nbsp;il&nbsp;latte&nbsp;materno&nbsp;è&nbsp;il&nbsp;miglior&nbsp;cibo&nbsp;per&nbsp;il&nbsp;tuo&nbsp;bambino.
 				style big
 				size 24
 		p
@@ -1342,7 +1370,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Non&nbsp;è&nbsp;raccomandato&nbsp;che&nbsp;inizi&nbsp;a&nbsp;mangiare&nbsp;cibi&nbsp;solidi&nbsp;fino&nbsp;all'età&nbsp;di&nbsp;6&nbsp;mesi.&nbsp;Gli&nbsp;alimenti&nbsp;solidi&nbsp;non&nbsp;hanno&nbsp;tanto&nbsp;nutrimento&nbsp;quanto&nbsp;il&nbsp;latte&nbsp;materno&nbsp;o&nbsp;la&nbsp;formula; sono&nbsp;più&nbsp;difficili&nbsp;da&nbsp;digerire&nbsp;e&nbsp;possono&nbsp;disturbare&nbsp;la&nbsp;sua&nbsp;digestione. 
+			+ Non&nbsp;è&nbsp;raccomandato&nbsp;che&nbsp;inizi&nbsp;a&nbsp;mangiare&nbsp;cibi&nbsp;solidi&nbsp;fino&nbsp;all'età&nbsp;di&nbsp;6&nbsp;mesi.&nbsp;Gli&nbsp;alimenti&nbsp;solidi&nbsp;non&nbsp;hanno&nbsp;tanto&nbsp;nutrimento&nbsp;quanto&nbsp;il&nbsp;latte&nbsp;materno&nbsp;o&nbsp;la&nbsp;formula&nbsp;artificiale; sono&nbsp;più&nbsp;difficili&nbsp;da&nbsp;digerire&nbsp;e&nbsp;possono&nbsp;disturbare&nbsp;la&nbsp;sua&nbsp;digestione. 
 				style big
 				size 24
 		p
@@ -1350,21 +1378,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Inoltre&nbsp;ancora&nbsp;non&nbsp;controlla&nbsp;completamente&nbsp;la&nbsp;sua&nbsp;bocca&nbsp;e&nbsp;la&nbsp;sua&nbsp;lingua&nbsp;e&nbsp;potrebbe&nbsp;non&nbsp;avere&nbsp;il&nbsp;controllo&nbsp;sulla&nbsp;testa&nbsp;e&nbsp;sul&nbsp;collo.&nbsp;Verifica&nbsp;con&nbsp;il&nbsp;Pediatra&nbsp;prima&nbsp;di&nbsp;iniziare&nbsp;con&nbsp;i&nbsp;cibi&nbsp;solidi.
+			+ Inoltre&nbsp;ancora&nbsp;non&nbsp;controlla&nbsp;completamente&nbsp;la&nbsp;bocca&nbsp;e&nbsp;la&nbsp;lingua&nbsp;e&nbsp;potrebbe&nbsp;non&nbsp;avere&nbsp;il&nbsp;controllo&nbsp;della testa&nbsp;e&nbsp;del collo.&nbsp;Parlane con&nbsp;il&nbsp;Pediatra&nbsp;prima&nbsp;di&nbsp;iniziare&nbsp;a&nbsp;proporre cibi&nbsp;solidi.
 				style big
 				size 24
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_185
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1388,18 +1416,18 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;cambiamenti&nbsp;che&nbsp;preparano&nbsp;l’inizio&nbsp;dell’alimentazione&nbsp;con&nbsp;cibi&nbsp;solidi,&nbsp;ma&nbsp;ci&nbsp;vuole&nbsp;ancora&nbsp;pazienza&nbsp;prima&nbsp;di&nbsp;iniziare
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;cambiamenti&nbsp;che&nbsp;preparano&nbsp;l’inizio&nbsp;dell’alimentazione&nbsp;con&nbsp;cibi&nbsp;solidi,&nbsp;ma&nbsp;ci&nbsp;vuole&nbsp;ancora&nbsp;pazienza&nbsp;prima&nbsp;di&nbsp;iniziare
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
 				before 72
 				after 36
-			+ Il&nbsp;tuo&nbsp;pediatra&nbsp;probabilmente&nbsp;ti&nbsp;sta&nbsp;dicendo&nbsp;di&nbsp;non&nbsp;iniziare&nbsp;con&nbsp;i&nbsp;cibi&nbsp;solidi&nbsp;per&nbsp;un&nbsp;altro&nbsp;mese.&nbsp;I&nbsp;tuoi&nbsp;amici&nbsp;e&nbsp;parenti&nbsp;probabilmente&nbsp;ti&nbsp;stanno&nbsp;dicendo&nbsp;che&nbsp;tutti&nbsp;iniziano&nbsp;i&nbsp;cibi&nbsp;solidi&nbsp;prima.&nbsp;Presta&nbsp;attenzione&nbsp;al&nbsp;tuo&nbsp;medico,&nbsp;il&nbsp;latte&nbsp;materno&nbsp;è&nbsp;il&nbsp;migliore.&nbsp;Continua&nbsp;il&nbsp;latte&nbsp;materno&nbsp;e/o&nbsp;il&nbsp;latte&nbsp;artificiale&nbsp;raccomandato&nbsp;dal&nbsp;medico.&nbsp;
+			+ Il&nbsp;tuo&nbsp;pediatra&nbsp;probabilmente&nbsp;ti&nbsp;sta&nbsp;dicendo&nbsp;di&nbsp;non&nbsp;iniziare&nbsp;con&nbsp;i&nbsp;cibi&nbsp;solidi&nbsp;per&nbsp;un&nbsp;altro&nbsp;mese.&nbsp;I&nbsp;tuoi&nbsp;amici&nbsp;e&nbsp;parenti&nbsp;probabilmente&nbsp;ti&nbsp;stanno&nbsp;dicendo&nbsp;che&nbsp;tutti&nbsp;iniziano&nbsp;i&nbsp;cibi&nbsp;solidi&nbsp;prima.&nbsp;Presta&nbsp;attenzione&nbsp;al&nbsp;tuo&nbsp;medico,&nbsp;il&nbsp;latte&nbsp;materno&nbsp;è&nbsp;il&nbsp;migliore.&nbsp;Continua&nbsp;il&nbsp;latte&nbsp;materno&nbsp;e/o&nbsp;la&nbsp;formula&nbsp;artificiale&nbsp;raccomandata dal&nbsp;medico.&nbsp;
 				style big
 				size 24
 		p
@@ -1442,15 +1470,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_186
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1474,12 +1502,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Alimentazione&nbsp;complementare
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Alimentazione&nbsp;complementare
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1509,7 +1537,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Possono&nbsp;essere&nbsp;presentati&nbsp;sotto&nbsp;diverse&nbsp;forme&nbsp;e&nbsp;consistenze&nbsp;rispettando&nbsp;le&nbsp;sue&nbsp;capacità&nbsp;di&nbsp;inghiottire:&nbsp;passati,&nbsp;purea,&nbsp;....
+			+ Possono&nbsp;essere&nbsp;presentati&nbsp;sotto&nbsp;diverse&nbsp;forme&nbsp;e&nbsp;consistenze&nbsp;rispettando&nbsp;le&nbsp;sue&nbsp;capacità&nbsp;di&nbsp;inghiottire:&nbsp;passati,&nbsp;purea,&nbsp;etc....
 				style big
 				size 24
 		p  
@@ -1520,12 +1548,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Quali&nbsp;alimenti?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Quali&nbsp;alimenti?
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1567,7 +1595,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ Una&nbsp;base&nbsp;di&nbsp;verdure&nbsp;di&nbsp;stagione&nbsp;a&nbsp;cui&nbsp;associare&nbsp;cereali&nbsp;sotto&nbsp;forma&nbsp;di&nbsp;farine&nbsp;o&nbsp;ben&nbsp;cotti&nbsp;e&nbsp;passati (riso,&nbsp;semolino,&nbsp;orzo,&nbsp;cous-cous,&nbsp;farro&nbsp;etc…).
+			+ Una&nbsp;base&nbsp;di&nbsp;verdure&nbsp;di&nbsp;stagione&nbsp;cotte&nbsp;a&nbsp;cui&nbsp;associare&nbsp;i&nbsp;cereali&nbsp;sotto&nbsp;forma&nbsp;di&nbsp;farine&nbsp;come&nbsp;la&nbsp;crema&nbsp;di&nbsp;riso&nbsp;o&nbsp;di&nbsp;mais&nbsp;, oppure,&nbsp;ben&nbsp;cotti&nbsp;e&nbsp;passati,&nbsp;riso,&nbsp;semolino,&nbsp;orzo,&nbsp;cous-cous, farro&nbsp;etc….
 				style big
 				size 24
 		p
@@ -1575,11 +1603,11 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ •&nbsp;
+			+ •
 				style big_strong
 				bold
 				size 24
-			+ Alternare&nbsp;ad&nbsp;ogni&nbsp;pasto legumi&nbsp;(piselli,&nbsp;lenticchie…)&nbsp;o&nbsp;carne,&nbsp;o&nbsp;pesce,&nbsp;o&nbsp;uovo&nbsp;(ben&nbsp;cotto)&nbsp;o&nbsp;formaggi.
+			+ &nbsp;Aggiungere&nbsp;alla&nbsp;base&nbsp;di&nbsp;verdure&nbsp;e&nbsp;cereali&nbsp;una&nbsp;piccola&nbsp;quantità&nbsp;di legumi&nbsp;(piselli,&nbsp;lenticchie…)&nbsp;o&nbsp;carne,&nbsp;o&nbsp;pesce,&nbsp;o&nbsp;uovo&nbsp;(ben&nbsp;cotto)&nbsp;o&nbsp;formaggio.
 				style big
 				size 24
 		p
@@ -1672,15 +1700,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 72
+				after 36
+			image-ref image_6
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
 			link-ref testo_187
 		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1704,12 +1738,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;dieta&nbsp;si&nbsp;fa&nbsp;più&nbsp;completa
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;dieta&nbsp;si&nbsp;fa&nbsp;più&nbsp;completa
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1782,15 +1816,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_188
 		h2 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1814,12 +1848,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Offri&nbsp;nuovi&nbsp;cibi,&nbsp;cucina&nbsp;i&nbsp;pasti&nbsp;della&nbsp;famiglia&nbsp;utilizzando&nbsp;alimenti&nbsp;freschi
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Offri&nbsp;nuovi&nbsp;cibi,&nbsp;cucina&nbsp;i&nbsp;pasti&nbsp;della&nbsp;famiglia&nbsp;utilizzando&nbsp;alimenti&nbsp;freschi
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1901,15 +1935,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_189
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1933,12 +1967,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Imparare&nbsp;a&nbsp;mangiare&nbsp;da&nbsp;solo
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Imparare&nbsp;a&nbsp;mangiare&nbsp;da&nbsp;solo
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1976,7 +2010,7 @@ docx ${category}
 				style strong
 				bold
 				size 24
-			+ Cereali&nbsp;secchi,&nbsp;non&nbsp;zuccherati,&nbsp;tondi&nbsp;e&nbsp;soffiati.
+			+ Cereali&nbsp;secchi&nbsp;soffiati,&nbsp;non&nbsp;zuccherati,&nbsp;di&nbsp;piccole&nbsp;dimensioni&nbsp;e&nbsp;tondi&nbsp;tipo&nbsp;riso&nbsp;soffiato&nbsp;oppure&nbsp;orzo.
 				style big
 				size 24
 		p
@@ -1984,11 +2018,10 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ •&nbsp;
-				style strong
-				bold
+			+  &nbsp;Spicchi&nbsp;d
+				style big
 				size 24
-			+ Spicchi&nbsp;di&nbsp;frutta&nbsp;sottili sbucciata&nbsp;e&nbsp;morbida&nbsp;o&nbsp;a&nbsp;piccoli&nbsp;pezzi:&nbsp;banane,&nbsp;pesche,&nbsp;pere,&nbsp;prugne,&nbsp;albicocche,&nbsp;arance &nbsp;etc&nbsp;a&nbsp;secondo&nbsp;della&nbsp;stagione.
+			+ i&nbsp;di&nbsp;frutta&nbsp;sbucciata&nbsp;in&nbsp;fette sottili  e&nbsp;morbida&nbsp;o&nbsp;a&nbsp;piccoli&nbsp;pezzi:&nbsp;banane,&nbsp;pesche,&nbsp;pere,&nbsp;prugne,&nbsp;albicocche,&nbsp;arance &nbsp;etc&nbsp;a&nbsp;secondo&nbsp;della&nbsp;stagione.
 				style big
 				size 24
 		p
@@ -1999,11 +2032,11 @@ docx ${category}
 			+ Il&nbsp;tuo&nbsp;bambino&nbsp;ora&nbsp;può&nbsp;mangiare&nbsp;la&nbsp;maggior&nbsp;parte&nbsp;delle&nbsp;cose&nbsp;che&nbsp;cucini&nbsp;per&nbsp;il&nbsp;resto&nbsp;della&nbsp;famiglia,&nbsp;per&nbsp;lui&nbsp;modera&nbsp;i&nbsp;condimenti.
 				style big
 				size 24
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -2011,12 +2044,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Quanto&nbsp;deve&nbsp;mangiare?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Quanto&nbsp;deve&nbsp;mangiare?
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2073,15 +2106,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_190
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2100,23 +2133,23 @@ docx ${category}
 				size 24
 				bold
 				br
-			+ : Devo dare ancora al mio bambino il latte materno o la formula artificiale?
+			+ : Devo dare ancora il latte al mio bambino ?
 				size 24
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Devo&nbsp;dare&nbsp;ancora&nbsp;al&nbsp;mio&nbsp;bambino&nbsp;il&nbsp;latte&nbsp;materno&nbsp;o&nbsp;la&nbsp;formula&nbsp;artificiale?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Devo&nbsp;dare&nbsp;ancora&nbsp;il&nbsp;latte&nbsp;al&nbsp;mio&nbsp;bambino?
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
 				before 72
 				after 36
-			+ Sì.&nbsp;Il&nbsp;latte&nbsp;materno&nbsp;o&nbsp;la&nbsp;formula&nbsp;artificiale&nbsp;sono&nbsp;ancora&nbsp;importanti&nbsp;per&nbsp;l'energia&nbsp;e&nbsp;i&nbsp;nutrienti&nbsp;e&nbsp;dovrebbero&nbsp;essere&nbsp;la&nbsp;sua&nbsp;bevanda&nbsp;principale&nbsp;fino&nbsp;a&nbsp;12&nbsp;mesi.
+			+ Sì.&nbsp;Il&nbsp;latte&nbsp;è ancora&nbsp;importante per&nbsp;l'energia&nbsp;e&nbsp;i&nbsp;nutrienti&nbsp;e&nbsp;dovrebbe essere&nbsp;la&nbsp;sua&nbsp;bevanda&nbsp;principale&nbsp;fino&nbsp;a&nbsp;12&nbsp;mesi.
 				style big
 				size 24
 		p
@@ -2151,12 +2184,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Bevande
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Bevande
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2176,15 +2209,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_1030
 		h2 1 anno
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2208,12 +2241,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Mangiate&nbsp;a&nbsp;tavola&nbsp;assieme,&nbsp;gli&nbsp;stessi&nbsp;alimenti,&nbsp;in&nbsp;un&nbsp;clima&nbsp;sereno,&nbsp;con&nbsp;la&nbsp;televisione&nbsp;spenta.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Mangiate&nbsp;a&nbsp;tavola&nbsp;assieme,&nbsp;gli&nbsp;stessi&nbsp;alimenti,&nbsp;in&nbsp;un&nbsp;clima&nbsp;sereno,&nbsp;con&nbsp;la&nbsp;televisione&nbsp;spenta.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2271,7 +2304,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Se&nbsp;hai&nbsp;un&nbsp;bambino&nbsp;molto&nbsp;attivo,&nbsp;potresti&nbsp;notare&nbsp;che&nbsp;non&nbsp;sta&nbsp;aumentando&nbsp;di&nbsp;peso&nbsp;così&nbsp;velocemente&nbsp;come&nbsp;nei&nbsp;primi&nbsp;10-11&nbsp;mesi.&nbsp;Questo&nbsp;perché&nbsp;è&nbsp;più&nbsp;attivo&nbsp;e&nbsp;utilizza&nbsp;più&nbsp;calorie.&nbsp;Anche&nbsp;se&nbsp;non&nbsp;sta&nbsp;aumentando&nbsp;di&nbsp;peso&nbsp;come&nbsp;prima,&nbsp;è&nbsp;comunque&nbsp;in&nbsp;buona&nbsp;salute.
+			+ Se&nbsp;hai&nbsp;un&nbsp;bambino&nbsp;molto&nbsp;attivo,&nbsp;potresti&nbsp;notare&nbsp;che&nbsp;non&nbsp;sta&nbsp;aumentando&nbsp;di&nbsp;peso&nbsp;così&nbsp;velocemente&nbsp;come&nbsp;nei&nbsp;primi&nbsp;10-11&nbsp;mesi.&nbsp;Questo&nbsp;perché&nbsp;si&nbsp;muove&nbsp;molto&nbsp;e&nbsp;utilizza&nbsp;più&nbsp;calorie.&nbsp;Anche&nbsp;se&nbsp;non&nbsp;sta&nbsp;aumentando&nbsp;di&nbsp;peso&nbsp;come&nbsp;prima,&nbsp;è&nbsp;comunque&nbsp;in&nbsp;buona&nbsp;salute.
 				style big
 				size 24
 		p
@@ -2285,15 +2318,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_1031
 		h2 14 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2317,12 +2350,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Allattamento&nbsp;prolungato.&nbsp;Tieni&nbsp;il&nbsp;biberon&nbsp;fuori&nbsp;dal&nbsp;letto.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Allattamento&nbsp;prolungato.&nbsp;Tieni&nbsp;il&nbsp;biberon&nbsp;fuori&nbsp;dal&nbsp;letto.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2336,7 +2369,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Se&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;beve&nbsp;latte&nbsp;vaccino&nbsp;dal&nbsp;biberon,&nbsp;staccarsene&nbsp;sarà&nbsp;un&nbsp;processo&nbsp;lento.&nbsp;La&nbsp;maggior&nbsp;parte&nbsp;dei&nbsp;bambini&nbsp;non&nbsp;è&nbsp;pronta&nbsp;a&nbsp;rinunciare&nbsp;al&nbsp;biberon&nbsp;un&nbsp;giorno&nbsp;e&nbsp;iniziare&nbsp;a&nbsp;bere&nbsp;da&nbsp;una&nbsp;tazza&nbsp;il&nbsp;giorno&nbsp;successivo.
+			+ Se&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;beve&nbsp;latte dal&nbsp;biberon,&nbsp;staccarsene&nbsp;sarà&nbsp;un&nbsp;processo&nbsp;lento.&nbsp;La&nbsp;maggior&nbsp;parte&nbsp;dei&nbsp;bambini&nbsp;non&nbsp;è&nbsp;pronta&nbsp;a&nbsp;rinunciare&nbsp;al&nbsp;biberon&nbsp;un&nbsp;giorno&nbsp;e&nbsp;iniziare&nbsp;a&nbsp;bere&nbsp;da&nbsp;una&nbsp;tazza&nbsp;il&nbsp;giorno&nbsp;successivo.
 				style big
 				size 24
 		p
@@ -2344,7 +2377,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ ll&nbsp;tuo&nbsp;bambino&nbsp;berrà&nbsp;meno&nbsp;latte&nbsp;perché&nbsp;mangerà&nbsp;più&nbsp;cibi&nbsp;solidi.&nbsp;Ricorda&nbsp;di&nbsp;dare&nbsp;latte&nbsp;intero,&nbsp;non&nbsp;a&nbsp;basso&nbsp;contenuto&nbsp;di&nbsp;grassi&nbsp;o&nbsp;scremato,&nbsp;fino&nbsp;all'età&nbsp;di&nbsp;2&nbsp;anni.&nbsp;Il&nbsp;suo&nbsp;cervello&nbsp;ha&nbsp;bisogno&nbsp;del&nbsp;grasso&nbsp;in&nbsp;più&nbsp;nel&nbsp;latte&nbsp;intero&nbsp;per&nbsp;costruire&nbsp;e&nbsp;proteggere&nbsp;le&nbsp;cellule&nbsp;cerebrali. 
+			+ ll&nbsp;tuo&nbsp;bambino&nbsp;berrà&nbsp;meno&nbsp;latte&nbsp;perché&nbsp;mangerà&nbsp;più&nbsp;cibi&nbsp;solidi.&nbsp;Ricorda&nbsp;di&nbsp;dare&nbsp;latte&nbsp;intero fino&nbsp;all'età&nbsp;di&nbsp;2&nbsp;anni,&nbsp;se&nbsp;il&nbsp;pediatra&nbsp;lo&nbsp;consiglia, potrai&nbsp;diluirlo&nbsp;con&nbsp;l'acqua.&nbsp;Il&nbsp;suo&nbsp;cervello&nbsp;ha&nbsp;bisogno&nbsp;del&nbsp;grasso&nbsp;in&nbsp;più&nbsp;nel&nbsp;latte&nbsp;intero&nbsp;per&nbsp;costruire&nbsp;e&nbsp;proteggere&nbsp;le&nbsp;cellule&nbsp;cerebrali. 
 				style big
 				size 24
 		p
@@ -2360,7 +2393,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Loda&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;mentre&nbsp;fa&nbsp;questo&nbsp;passaggio&nbsp;dal&nbsp;biberon&nbsp;alla&nbsp;tazza!
+			+ Loda&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;quando&nbsp;prova&nbsp;a&nbsp;fare questo&nbsp;passaggio&nbsp;dal&nbsp;biberon&nbsp;alla&nbsp;tazza!
 				style big
 				size 24
 		p  
@@ -2371,12 +2404,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Tieni&nbsp;il&nbsp;biberon&nbsp;fuori&nbsp;dal&nbsp;letto
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Tieni&nbsp;il&nbsp;biberon&nbsp;fuori&nbsp;dal&nbsp;letto
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2393,12 +2426,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Dopo&nbsp;un&nbsp;po',&nbsp;si&nbsp;dimenticherà&nbsp;del&nbsp;biberon
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Dopo&nbsp;un&nbsp;po',&nbsp;si&nbsp;dimenticherà&nbsp;del&nbsp;biberon
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2420,21 +2453,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Alcuni&nbsp;bambini&nbsp;bevono&nbsp;dal&nbsp;biberon&nbsp;più&nbsp;a&nbsp;lungo&nbsp;di&nbsp;altri.&nbsp;Devi&nbsp;essere&nbsp;paziente.&nbsp;Non&nbsp;costringerlo&nbsp;a&nbsp;rinunciare&nbsp;al&nbsp;biberon&nbsp;o&nbsp;al&nbsp;seno&nbsp;se&nbsp;non&nbsp;sembra&nbsp;pronto.
+			+ Alcuni&nbsp;bambini&nbsp;bevono&nbsp;dal&nbsp;biberon&nbsp;più&nbsp;a&nbsp;lungo&nbsp;di&nbsp;altri.&nbsp;Devi&nbsp;essere&nbsp;paziente. 
 				style big
 				size 24
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_1029
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2458,12 +2491,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Sono &nbsp;importanti&nbsp;spuntini&nbsp;sani&nbsp;e&nbsp;regolari.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Sono &nbsp;importanti&nbsp;spuntini&nbsp;sani&nbsp;e&nbsp;regolari.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2496,12 +2529,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Aiuta&nbsp;tuo&nbsp;figlio&nbsp;a&nbsp;imparare&nbsp;a&nbsp;mangiare&nbsp;i&nbsp;cibi&nbsp;sani&nbsp;che&nbsp;hai&nbsp;preparato.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Aiuta&nbsp;tuo&nbsp;figlio&nbsp;a&nbsp;imparare&nbsp;a&nbsp;mangiare&nbsp;i&nbsp;cibi&nbsp;sani&nbsp;che&nbsp;hai&nbsp;preparato.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2518,15 +2551,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_609
 		h2 16 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2550,12 +2583,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ormai&nbsp;tuo&nbsp;figlio&nbsp;è&nbsp;diventato&nbsp;un&nbsp;esperto&nbsp;nel&nbsp;mettere&nbsp;le&nbsp;cose&nbsp;in&nbsp;bocca,&nbsp;alcuni&nbsp;suggerimenti&nbsp;per&nbsp;incoraggiare&nbsp;a&nbsp;provare&nbsp;e&nbsp;gustare&nbsp;nuovi&nbsp;cibi&nbsp;sani
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Ormai&nbsp;tuo&nbsp;figlio&nbsp;è&nbsp;diventato&nbsp;un&nbsp;esperto&nbsp;nel&nbsp;mettere&nbsp;le&nbsp;cose&nbsp;in&nbsp;bocca,&nbsp;alcuni&nbsp;suggerimenti&nbsp;per&nbsp;incoraggiare&nbsp;a&nbsp;provare&nbsp;e&nbsp;gustare&nbsp;nuovi&nbsp;cibi&nbsp;sani
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2588,12 +2621,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ti&nbsp;starà&nbsp;guardando&nbsp;e&nbsp;proverà&nbsp;a&nbsp;fare&nbsp;quello&nbsp;che&nbsp;fai&nbsp;tu.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Ti&nbsp;starà&nbsp;guardando&nbsp;e&nbsp;proverà&nbsp;a&nbsp;fare&nbsp;quello&nbsp;che&nbsp;fai&nbsp;tu.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2643,7 +2676,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ Presta&nbsp;attenzione&nbsp;alla&nbsp;consistenza.&nbsp;Ai&nbsp;bambini&nbsp;piccoli&nbsp;potrebbero&nbsp;non&nbsp;piacere&nbsp;i&nbsp;cibi&nbsp;viscidi,&nbsp;granulosi&nbsp;o&nbsp;croccanti.&nbsp;Inizia&nbsp;con&nbsp;cibi&nbsp;dalla&nbsp;consistenza&nbsp;morbida&nbsp;come&nbsp;polenta,&nbsp;patate,&nbsp;pollo&nbsp;o&nbsp;frutta&nbsp;tenera.
+			+ Presta&nbsp;attenzione&nbsp;alla&nbsp;consistenza.&nbsp;Ai&nbsp;bambini&nbsp;piccoli&nbsp;potrebbero&nbsp;non&nbsp;piacere&nbsp;i&nbsp;cibi&nbsp;viscidi,&nbsp;granulosi&nbsp;o&nbsp;croccanti.&nbsp;Inizia&nbsp;con&nbsp;alimenti&nbsp;dalla consistenza&nbsp;morbida&nbsp;come&nbsp;polenta,&nbsp;patate,&nbsp;pollo&nbsp;o&nbsp;frutta&nbsp;tenera&nbsp;o&nbsp;cotta.
 				style big
 				size 24
 		p
@@ -2655,7 +2688,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ Taglia&nbsp;il&nbsp;cibo&nbsp;a&nbsp;pezzetti.&nbsp;È&nbsp;più&nbsp;probabile&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;provi&nbsp;un&nbsp;cibo&nbsp;se&nbsp;riesce&nbsp;a&nbsp;raccoglierlo.
+			+ Taglia&nbsp;il&nbsp;cibo&nbsp;a&nbsp;pezzetti.&nbsp;È&nbsp;più&nbsp;probabile&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;provi&nbsp;ad&nbsp;assaggiare&nbsp;se&nbsp;riesce&nbsp;a&nbsp;raccogliere&nbsp;da&nbsp;solo&nbsp;quello&nbsp;che&nbsp;vede&nbsp;nel&nbsp;piatto.
 				style big
 				size 24
 		p  
@@ -2666,18 +2699,18 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Sii&nbsp;un&nbsp;modello 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Sii&nbsp;un&nbsp;modello 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
 				before 72
 				after 36
-			+ Tuo&nbsp;figlio&nbsp;probabilmente&nbsp;proverà&nbsp;un&nbsp;nuovo&nbsp;cibo&nbsp;se&nbsp;vede&nbsp;che&nbsp;lo&nbsp;stai&nbsp;mangiando.&nbsp;Serviti&nbsp;un&nbsp;po'&nbsp;di&nbsp;cibo&nbsp;e&nbsp;chiedigli&nbsp;di&nbsp;assaggiarlo&nbsp;con&nbsp;te.
+			+ Tuo&nbsp;figlio&nbsp;probabilmente&nbsp;proverà&nbsp;un&nbsp;nuovo&nbsp;cibo&nbsp;se&nbsp;vede&nbsp;che&nbsp;lo&nbsp;stai&nbsp;mangiando.&nbsp;Metti&nbsp;nel&nbsp;tuo&nbsp;e&nbsp;nel&nbsp;suo&nbsp;piatto&nbsp;lo&nbsp;stesso&nbsp;alimento e&nbsp;chiedigli&nbsp;di&nbsp;assaggiarlo&nbsp;con&nbsp;te.
 				style big
 				size 24
 		p  
@@ -2688,12 +2721,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Parla&nbsp;del&nbsp;cibo 
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Parla&nbsp;del&nbsp;cibo 
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2710,12 +2743,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Fai&nbsp;piccoli&nbsp;passi&nbsp;e&nbsp;festeggia&nbsp;ogni&nbsp;successo 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Fai&nbsp;piccoli&nbsp;passi&nbsp;e&nbsp;festeggia&nbsp;ogni&nbsp;successo 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2749,15 +2782,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_610
 		h2 17 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2781,12 +2814,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Lascia&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;decida&nbsp;quanto&nbsp;cibo&nbsp;mangiare.&nbsp;Ci&nbsp;vuole&nbsp;molta&nbsp;pazienza&nbsp;per&nbsp;aiutare&nbsp;i&nbsp;bambini&nbsp;di&nbsp;questa&nbsp;età&nbsp;ad&nbsp;imparare&nbsp;a&nbsp;mangiare&nbsp;bene.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Lascia&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;decida&nbsp;quanto&nbsp;cibo&nbsp;mangiare.&nbsp;Ci&nbsp;vuole&nbsp;molta&nbsp;pazienza&nbsp;per&nbsp;aiutare&nbsp;i&nbsp;bambini&nbsp;di&nbsp;questa&nbsp;età&nbsp;ad&nbsp;imparare&nbsp;a&nbsp;mangiare&nbsp;bene.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2803,12 +2836,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ci&nbsp;vuole&nbsp;molta&nbsp;pazienza&nbsp;per&nbsp;aiutare&nbsp;i&nbsp;bambini&nbsp;di&nbsp;questa&nbsp;età&nbsp;ad&nbsp;imparare&nbsp;a&nbsp;mangiare&nbsp;bene.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Ci&nbsp;vuole&nbsp;molta&nbsp;pazienza&nbsp;per&nbsp;aiutare&nbsp;i&nbsp;bambini&nbsp;di&nbsp;questa&nbsp;età&nbsp;ad&nbsp;imparare&nbsp;a&nbsp;mangiare&nbsp;bene.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2839,12 +2872,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Non&nbsp;ha&nbsp;fame&nbsp;al&nbsp;mattino.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Non&nbsp;ha&nbsp;fame&nbsp;al&nbsp;mattino.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2861,12 +2894,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Oggi&nbsp;non&nbsp;ha&nbsp;fame.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Oggi&nbsp;non&nbsp;ha&nbsp;fame.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2878,12 +2911,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ È&nbsp;pieno&nbsp;dopo&nbsp;pochi&nbsp;morsi.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ È&nbsp;pieno&nbsp;dopo&nbsp;pochi&nbsp;morsi.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2895,15 +2928,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_611
 		h2 18 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2927,12 +2960,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;rifiuto&nbsp;del&nbsp;cibo
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;rifiuto&nbsp;del&nbsp;cibo
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2946,7 +2979,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Usa&nbsp;spesso&nbsp;legumi&nbsp;(piselli,&nbsp;lenticchie,&nbsp;fagioli….),&nbsp;carne&nbsp;3&nbsp;o&nbsp;4&nbsp;volte&nbsp;alla&nbsp;settimana,&nbsp;pesce&nbsp;2&nbsp;o&nbsp;3&nbsp;volte,&nbsp;uova&nbsp;1&nbsp;o&nbsp;2&nbsp;volte,&nbsp;formaggi&nbsp;2&nbsp;o&nbsp;3&nbsp;volte.
+			+ Usa&nbsp;spesso&nbsp;legumi&nbsp;(piselli,&nbsp;lenticchie,&nbsp;fagioli….)&nbsp;3&nbsp;o&nbsp;4&nbsp;volte&nbsp;a&nbsp;settimana&nbsp;,&nbsp;carne&nbsp;3&nbsp;o&nbsp;4&nbsp;volte&nbsp;alla&nbsp;settimana,&nbsp;pesce&nbsp;2&nbsp;o&nbsp;3&nbsp;volte,&nbsp;uova&nbsp;1&nbsp;o&nbsp;2&nbsp;volte,&nbsp;formaggi&nbsp;2&nbsp;o&nbsp;3&nbsp;volte.
 				style big
 				size 24
 		p
@@ -2987,12 +3020,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ È&nbsp;distratto&nbsp;da&nbsp;qualcos'altro.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ È&nbsp;distratto&nbsp;da&nbsp;qualcos'altro.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3009,12 +3042,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Sta&nbsp;cercando&nbsp;di&nbsp;attirare&nbsp;la&nbsp;tua&nbsp;attenzione.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Sta&nbsp;cercando&nbsp;di&nbsp;attirare&nbsp;la&nbsp;tua&nbsp;attenzione.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3031,12 +3064,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Vuole&nbsp;decidere&nbsp;da&nbsp;solo
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Vuole&nbsp;decidere&nbsp;da&nbsp;solo
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3048,15 +3081,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_612
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3080,18 +3113,18 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;abitudini&nbsp;alimentari&nbsp;sane&nbsp;costruite&nbsp;ora&nbsp;dureranno&nbsp;tutta&nbsp;la&nbsp;vita!&nbsp;Il&nbsp;sale&nbsp;va&nbsp;usato&nbsp;con&nbsp;giudizio.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;abitudini&nbsp;alimentari&nbsp;sane&nbsp;costruite&nbsp;ora&nbsp;dureranno&nbsp;tutta&nbsp;la&nbsp;vita!&nbsp;Il&nbsp;sale&nbsp;va&nbsp;usato&nbsp;con&nbsp;giudizio.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
 				before 72
 				after 36
-			+ Un&nbsp;eccesso&nbsp;di&nbsp;sale&nbsp;può&nbsp;causare&nbsp;ipertensione&nbsp;e&nbsp;altri&nbsp;problemi&nbsp;di&nbsp;salute,&nbsp;come&nbsp;malattie&nbsp;cardiache&nbsp;e&nbsp;ictus.&nbsp;È&nbsp;molto&nbsp;importante&nbsp;controllarne&nbsp;sin&nbsp;da&nbsp;piccoli&nbsp;l'assunzione&nbsp;e&nbsp;utilizzare&nbsp;sale&nbsp;iodato.
+			+ Un&nbsp;eccesso&nbsp;di&nbsp;sale&nbsp;può&nbsp;causare&nbsp;ipertensione&nbsp;e&nbsp;altri&nbsp;problemi&nbsp;di&nbsp;salute,&nbsp;come&nbsp;malattie&nbsp;cardiache&nbsp;e&nbsp;ictus.&nbsp;È&nbsp;molto&nbsp;importante&nbsp;controllare l'assunzione&nbsp;fin&nbsp;da&nbsp;piccoli&nbsp;e&nbsp;utilizzare&nbsp;sale&nbsp;iodato.
 				style big
 				size 24
 		p
@@ -3118,12 +3151,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;abitudini&nbsp;alimentari&nbsp;sane&nbsp;costruite&nbsp;ora&nbsp;dureranno&nbsp;tutta&nbsp;la&nbsp;vita!
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;abitudini&nbsp;alimentari&nbsp;sane&nbsp;costruite&nbsp;ora&nbsp;dureranno&nbsp;tutta&nbsp;la&nbsp;vita!
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3153,7 +3186,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ •&nbsp;Prepara&nbsp;il&nbsp;cibo&nbsp;a&nbsp;casa&nbsp;più&nbsp;che&nbsp;puoi,&nbsp;invece&nbsp;di&nbsp;fermarti&nbsp;in&nbsp;un&nbsp;fast&nbsp;food,&nbsp;avrai&nbsp;un&nbsp;maggiore&nbsp;controllo&nbsp;sulla&nbsp;quantità&nbsp;di&nbsp;sale,&nbsp;zucchero&nbsp;e&nbsp;grassi.
+			+ •&nbsp;Prepara&nbsp;il&nbsp;cibo&nbsp;a&nbsp;casa&nbsp;più&nbsp;che&nbsp;puoi,&nbsp;evita&nbsp;di&nbsp;acquistare&nbsp;cibi&nbsp;pronti&nbsp;tipo&nbsp;carne&nbsp;impanata,&nbsp;crocchette&nbsp;di&nbsp;patate&nbsp;o&nbsp;pesce in&nbsp;pastella, questi&nbsp;cibi&nbsp;sono&nbsp;ricchi&nbsp;di sale,&nbsp;zucchero&nbsp;e&nbsp;grassi.
 				style big
 				size 24
 		p
@@ -3213,15 +3246,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_614
 		h2 20 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3245,12 +3278,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Gli&nbsp;inquinanti&nbsp;alimentari
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Gli&nbsp;inquinanti&nbsp;alimentari
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3334,15 +3367,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_615
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3366,17 +3399,17 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;pericoli&nbsp;in&nbsp;cucina
-			style h2_big_strong
-			bold
-			size 28
-		p  
+				before 432
+				after 72
+			+ I&nbsp;pericoli&nbsp;in&nbsp;cucina
+				style h2_big_strong
+				bold
+				size 28
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -3384,12 +3417,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;pericolo&nbsp;delle&nbsp;scottature
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;pericolo&nbsp;delle&nbsp;scottature
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3459,7 +3492,11 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ •&nbsp;State&nbsp;molto&nbsp;attenti&nbsp;quando&nbsp;siete&nbsp;assieme&nbsp;in&nbsp;cucina.&nbsp;Non&nbsp;lasciatelo&nbsp;giocare&nbsp;in&nbsp;cucina&nbsp;quando&nbsp;non&nbsp;ci&nbsp;siete.
+			+ •&nbsp;Quando&nbsp;siete&nbsp;assieme&nbsp;in&nbsp;cucina,&nbsp;state&nbsp;attenti&nbsp;a&nbsp;tovaglie&nbsp;o&nbsp;tessuti&nbsp;che&nbsp;può&nbsp;tirare&nbsp;facendo&nbsp;cadere&nbsp;oggetti&nbsp;caldi
+				style big
+				size 24
+			+ &nbsp;.
+			+  Non&nbsp;lasciatelo&nbsp;giocare&nbsp;in&nbsp;cucina&nbsp;quando&nbsp;non&nbsp;ci&nbsp;siete.
 				style big
 				size 24
 		p  
@@ -3470,12 +3507,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;pericolo&nbsp;del&nbsp;soffocamento
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;pericolo&nbsp;del&nbsp;soffocamento
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3527,15 +3564,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_616
 		h2 22 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3559,18 +3596,18 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;bisogno&nbsp;di&nbsp;fibre
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;bisogno&nbsp;di&nbsp;fibre
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
 				before 72
 				after 36
-			+ La&nbsp;fibra&nbsp;aiuta&nbsp;la&nbsp;digestione&nbsp;di&nbsp;tuo&nbsp;figlio,&nbsp;evita&nbsp;la&nbsp;stitichezza&nbsp;e&nbsp;lo&nbsp;fa&nbsp;sentire&nbsp;sazio&nbsp;più&nbsp;a&nbsp;lungo.&nbsp;Mangiare&nbsp;fibre&nbsp;riduce&nbsp;anche&nbsp;il&nbsp;rischio&nbsp;di&nbsp;malattie&nbsp;cardiache&nbsp;più&nbsp;avanti&nbsp;nella&nbsp;vita. 
+			+ Le fibre aiutano&nbsp;la&nbsp;digestione&nbsp;di&nbsp;tuo&nbsp;figlio,&nbsp;evitano&nbsp;la&nbsp;stitichezza&nbsp;e&nbsp;lo&nbsp;fanno&nbsp;sentire&nbsp;sazio&nbsp;più&nbsp;a&nbsp;lungo.&nbsp;Mangiare&nbsp;fibre&nbsp;riduce&nbsp;anche&nbsp;il&nbsp;rischio&nbsp;di&nbsp;malattie&nbsp;cardiache&nbsp;più&nbsp;avanti&nbsp;nella&nbsp;vita. 
 				style big
 				size 24
 		p
@@ -3578,7 +3615,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ I&nbsp;bambini&nbsp;di&nbsp;età&nbsp;compresa&nbsp;tra&nbsp;1&nbsp;e&nbsp;3&nbsp;anni&nbsp;necessitano&nbsp;di&nbsp;circa&nbsp;19&nbsp;grammi&nbsp;di&nbsp;fibre&nbsp;ogni&nbsp;giorno.
+			+ I&nbsp;bambini&nbsp;di&nbsp;età&nbsp;compresa&nbsp;tra&nbsp;1&nbsp;e&nbsp;3&nbsp;anni&nbsp;necessitano&nbsp;di&nbsp;circa&nbsp;19&nbsp;grammi&nbsp;di&nbsp;fibre&nbsp;ogni&nbsp;giorno.&nbsp;Ad&nbsp;esempio&nbsp;una&nbsp;mela&nbsp;di&nbsp;medie&nbsp;dimensioni&nbsp;contiene&nbsp;4&nbsp;grammi&nbsp;di&nbsp;fibre,&nbsp;1/2&nbsp;tazza&nbsp;di&nbsp;ceci&nbsp;ne&nbsp;contiene&nbsp;8 grammi,&nbsp;100&nbsp;grammi&nbsp;di&nbsp;carote&nbsp;3&nbsp;grammi&nbsp;.
 				style big
 				size 24
 		p  
@@ -3661,15 +3698,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_617
 		h2 23 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3693,20 +3730,20 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ L’importanza&nbsp;di&nbsp;una&nbsp;ricca&nbsp;varietà&nbsp;di&nbsp;cibi&nbsp;sani,&nbsp;i
-			style h2_big_strong
-			bold
-			size 28
-		+  
-			style h2_strong
-			bold
-			size 28
-		+ bambini&nbsp;a&nbsp;questa&nbsp;età&nbsp;amano&nbsp;sempre&nbsp;gli&nbsp;stessi&nbsp;cibi.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ L’importanza&nbsp;di&nbsp;una&nbsp;ricca&nbsp;varietà&nbsp;di&nbsp;cibi&nbsp;sani,&nbsp;i
+				style h2_big_strong
+				bold
+				size 28
+			+  
+				style h2_strong
+				bold
+				size 28
+			+ bambini&nbsp;a&nbsp;questa&nbsp;età&nbsp;amano&nbsp;sempre&nbsp;gli&nbsp;stessi&nbsp;cibi.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3742,15 +3779,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_618
 		h2 2 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3774,16 +3811,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Buone&nbsp;abitudini&nbsp;e&nbsp;strategie&nbsp;per&nbsp;invogliare&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;a&nbsp;mangiare 
-			style h2_big_strong
-			bold
-			size 28
-		+ cibi&nbsp;salutari
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Buone&nbsp;abitudini&nbsp;e&nbsp;strategie&nbsp;per&nbsp;invogliare&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;a&nbsp;mangiare 
+				style h2_big_strong
+				bold
+				size 28
+			+ cibi&nbsp;salutari
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3816,12 +3853,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Offri&nbsp;un&nbsp;nuovo&nbsp;cibo&nbsp;in&nbsp;un&nbsp;modo&nbsp;già&nbsp;sperimentato.&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Offri&nbsp;un&nbsp;nuovo&nbsp;cibo&nbsp;in&nbsp;un&nbsp;modo&nbsp;già&nbsp;sperimentato.&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3841,12 +3878,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Siate&nbsp;spiritosi
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Siate&nbsp;spiritosi
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3892,15 +3929,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_619
 		h2 2 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3924,12 +3961,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Attenzione&nbsp;ai&nbsp;cereali&nbsp;e&nbsp;alle&nbsp;merendine&nbsp;ad&nbsp;alto&nbsp;contenuto&nbsp;di&nbsp;zucchero
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Attenzione&nbsp;ai&nbsp;cereali&nbsp;e&nbsp;alle&nbsp;merendine&nbsp;ad&nbsp;alto&nbsp;contenuto&nbsp;di&nbsp;zucchero
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3957,15 +3994,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_620
 		h2 2 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3989,12 +4026,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Parlate&nbsp;durante&nbsp;i&nbsp;pasti
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Parlate&nbsp;durante&nbsp;i&nbsp;pasti
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4030,15 +4067,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_621
 		h2 2 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4062,12 +4099,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Evita&nbsp;discussioni&nbsp;e&nbsp;litigi&nbsp;a&nbsp;tavola
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Evita&nbsp;discussioni&nbsp;e&nbsp;litigi&nbsp;a&nbsp;tavola
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -4123,15 +4160,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_622
 		h2 2 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4155,12 +4192,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Mangiare&nbsp;usando&nbsp;il&nbsp;cucchiaio&nbsp;o&nbsp;le&nbsp;dita
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Mangiare&nbsp;usando&nbsp;il&nbsp;cucchiaio&nbsp;o&nbsp;le&nbsp;dita
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4188,15 +4225,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_623
 		h2 2 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4220,12 +4257,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Tuo&nbsp;figlio&nbsp;riceve&nbsp;abbastanza&nbsp;ferro?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Tuo&nbsp;figlio&nbsp;riceve&nbsp;abbastanza&nbsp;ferro?
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4319,15 +4356,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_624
 		h2 3 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4351,12 +4388,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;pasti&nbsp;in&nbsp;famiglia.&nbsp;Le&nbsp;bevande &nbsp;da&nbsp;preferire.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;pasti&nbsp;in&nbsp;famiglia.&nbsp;Le&nbsp;bevande &nbsp;da&nbsp;preferire.
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -4365,12 +4402,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Bevande&nbsp;non&nbsp;zuccherate&nbsp;e&nbsp;latte
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Bevande&nbsp;non&nbsp;zuccherate&nbsp;e&nbsp;latte
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4435,12 +4472,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;pasti&nbsp;in&nbsp;famiglia
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;pasti&nbsp;in&nbsp;famiglia
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4460,15 +4497,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_625
 		h2 3 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4492,12 +4529,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ E&nbsp;se&nbsp;non&nbsp;vuole&nbsp;mangiare&nbsp;frutta&nbsp;e&nbsp;verdura?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ E&nbsp;se&nbsp;non&nbsp;vuole&nbsp;mangiare&nbsp;frutta&nbsp;e&nbsp;verdura?
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -4506,12 +4543,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;tuo&nbsp;bambino&nbsp;non&nbsp;vuole&nbsp;mangiare
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;tuo&nbsp;bambino&nbsp;non&nbsp;vuole&nbsp;mangiare
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4528,12 +4565,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Non&nbsp;si&nbsp;devono&nbsp;ricattare&nbsp;i&nbsp;bambini&nbsp;sul&nbsp;cibo
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Non&nbsp;si&nbsp;devono&nbsp;ricattare&nbsp;i&nbsp;bambini&nbsp;sul&nbsp;cibo
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4550,12 +4587,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ E&nbsp;se &nbsp;non&nbsp;vuole&nbsp;mangiare&nbsp;frutta&nbsp;e&nbsp;verdura?
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ E&nbsp;se &nbsp;non&nbsp;vuole&nbsp;mangiare&nbsp;frutta&nbsp;e&nbsp;verdura?
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4607,15 +4644,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_626
 		h2 3 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4639,12 +4676,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Bizzarrie&nbsp;che&nbsp;vanno&nbsp;tollerate
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Bizzarrie&nbsp;che&nbsp;vanno&nbsp;tollerate
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4688,15 +4725,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_627
 		h2 3 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4720,12 +4757,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Cerca&nbsp;di&nbsp;rendere&nbsp;più&nbsp;sani&nbsp;i&nbsp;tuoi&nbsp;piatti&nbsp;preferiti
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Cerca&nbsp;di&nbsp;rendere&nbsp;più&nbsp;sani&nbsp;i&nbsp;tuoi&nbsp;piatti&nbsp;preferiti
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4764,12 +4801,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Leggere&nbsp;un&nbsp;libro&nbsp;aiuta&nbsp;a&nbsp;mangiare&nbsp;cibi&nbsp;sani
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Leggere&nbsp;un&nbsp;libro&nbsp;aiuta&nbsp;a&nbsp;mangiare&nbsp;cibi&nbsp;sani
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4789,15 +4826,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_628
 		h2 3 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4821,12 +4858,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Un&nbsp;giovane&nbsp;aiuto&nbsp;cuoco&nbsp;e&nbsp;cameriere
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Un&nbsp;giovane&nbsp;aiuto&nbsp;cuoco&nbsp;e&nbsp;cameriere
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4956,15 +4993,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_629
 		h2 3 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4988,12 +5025,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;merenda
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;merenda
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5061,15 +5098,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_630
 		h2 4 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5093,12 +5130,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;momenti&nbsp;speciali&nbsp;a&nbsp;tavola&nbsp;uniscono&nbsp;la&nbsp;famiglia
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;momenti&nbsp;speciali&nbsp;a&nbsp;tavola&nbsp;uniscono&nbsp;la&nbsp;famiglia
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5152,15 +5189,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_631
 		h2 4 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5184,12 +5221,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ognuno&nbsp;ha&nbsp;il&nbsp;suo&nbsp;compito
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Ognuno&nbsp;ha&nbsp;il&nbsp;suo&nbsp;compito
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5368,7 +5405,6 @@ docx ${category}
 			+ Favorisci&nbsp;
 				style big
 				size 24
-				br
 			+ ore&nbsp;di&nbsp;sonno&nbsp;adeguate
 				style big_strong
 				bold
@@ -5379,15 +5415,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_632
 		h2 4 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5411,12 +5447,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Come&nbsp;fare&nbsp;per&nbsp;essere&nbsp;un&nbsp;modello&nbsp;sano?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Come&nbsp;fare&nbsp;per&nbsp;essere&nbsp;un&nbsp;modello&nbsp;sano?
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5510,15 +5546,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_638
 		h2 4 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5542,12 +5578,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Fai partecipare&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;all'acquisto&nbsp;e&nbsp;alla&nbsp;preparazione&nbsp;del&nbsp;cibo
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Fai partecipare&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;all'acquisto&nbsp;e&nbsp;alla&nbsp;preparazione&nbsp;del&nbsp;cibo
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5599,15 +5635,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_639
 		h2 5 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5631,12 +5667,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;modo&nbsp;di&nbsp;mangiare&nbsp;come&nbsp;prova&nbsp;di&nbsp;carattere
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;modo&nbsp;di&nbsp;mangiare&nbsp;come&nbsp;prova&nbsp;di&nbsp;carattere
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5750,15 +5786,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_633
 		h2 5 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5782,12 +5818,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Fra&nbsp;i&nbsp;5&nbsp;e&nbsp;i&nbsp;6&nbsp;anni&nbsp;sarà&nbsp;molto&nbsp;utile&nbsp;un&nbsp;Bilancio&nbsp;di&nbsp;salute&nbsp;dal&nbsp;tuo&nbsp;pediatra
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Fra&nbsp;i&nbsp;5&nbsp;e&nbsp;i&nbsp;6&nbsp;anni&nbsp;sarà&nbsp;molto&nbsp;utile&nbsp;un&nbsp;Bilancio&nbsp;di&nbsp;salute&nbsp;dal&nbsp;tuo&nbsp;pediatra
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5831,15 +5867,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_634
 		h2 5 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5863,12 +5899,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;tuo&nbsp;bambino&nbsp;potrebbe&nbsp;ingrassare&nbsp;troppo&nbsp;se&nbsp;cerchi&nbsp;di&nbsp;convincerlo&nbsp;a&nbsp;mangiare&nbsp;quando&nbsp;è&nbsp;sazio&nbsp;o&nbsp;non&nbsp;gli&nbsp;permetti&nbsp;di&nbsp;mangiare&nbsp;quando&nbsp;ha&nbsp;fame. Tuo&nbsp;figlio&nbsp;ti&nbsp;sta&nbsp;guardando.&nbsp; 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;tuo&nbsp;bambino&nbsp;potrebbe&nbsp;ingrassare&nbsp;troppo&nbsp;se&nbsp;cerchi&nbsp;di&nbsp;convincerlo&nbsp;a&nbsp;mangiare&nbsp;quando&nbsp;è&nbsp;sazio&nbsp;o&nbsp;non&nbsp;gli&nbsp;permetti&nbsp;di&nbsp;mangiare&nbsp;quando&nbsp;ha&nbsp;fame. Tuo&nbsp;figlio&nbsp;ti&nbsp;sta&nbsp;guardando.&nbsp; 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5885,12 +5921,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Tuo&nbsp;figlio&nbsp;ti&nbsp;sta&nbsp;guardando. 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Tuo&nbsp;figlio&nbsp;ti&nbsp;sta&nbsp;guardando. 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5940,15 +5976,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_635
 		h2 5 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5972,12 +6008,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ L'energia&nbsp;(calorie)&nbsp;introdotta&nbsp;con&nbsp;gli&nbsp;alimenti&nbsp;dovrebbe&nbsp;essere&nbsp;adeguata&nbsp;per&nbsp;aiutare&nbsp;la&nbsp;crescita&nbsp;e&nbsp;lo&nbsp;sviluppo&nbsp;e&nbsp;per&nbsp;raggiungere&nbsp;o&nbsp;mantenere&nbsp;il&nbsp;peso&nbsp;corporeo&nbsp;desiderabile
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ L'energia&nbsp;(calorie)&nbsp;introdotta&nbsp;con&nbsp;gli&nbsp;alimenti&nbsp;dovrebbe&nbsp;essere&nbsp;adeguata&nbsp;per&nbsp;aiutare&nbsp;la&nbsp;crescita&nbsp;e&nbsp;lo&nbsp;sviluppo&nbsp;e&nbsp;per&nbsp;raggiungere&nbsp;o&nbsp;mantenere&nbsp;il&nbsp;peso&nbsp;corporeo&nbsp;desiderabile
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6076,15 +6112,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_636
 		h2 6 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6108,12 +6144,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Diventa&nbsp;un&nbsp;critico&nbsp;gastronomico. Coltiva&nbsp;un&nbsp;piccolo&nbsp;orto&nbsp;domestico.&nbsp;I momenti&nbsp;speciali&nbsp;a&nbsp;tavola&nbsp;uniscono&nbsp;la&nbsp;famiglia.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Diventa&nbsp;un&nbsp;critico&nbsp;gastronomico. Coltiva&nbsp;un&nbsp;piccolo&nbsp;orto&nbsp;domestico.&nbsp;I momenti&nbsp;speciali&nbsp;a&nbsp;tavola&nbsp;uniscono&nbsp;la&nbsp;famiglia.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6138,12 +6174,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Scopri&nbsp;da&nbsp;dove&nbsp;viene&nbsp;il&nbsp;tuo&nbsp;cibo
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Scopri&nbsp;da&nbsp;dove&nbsp;viene&nbsp;il&nbsp;tuo&nbsp;cibo
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6160,12 +6196,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Coltiva&nbsp;un&nbsp;piccolo&nbsp;orto&nbsp;domestico
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Coltiva&nbsp;un&nbsp;piccolo&nbsp;orto&nbsp;domestico
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6182,12 +6218,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;momenti&nbsp;speciali&nbsp;a&nbsp;tavola&nbsp;uniscono&nbsp;la&nbsp;famiglia.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;momenti&nbsp;speciali&nbsp;a&nbsp;tavola&nbsp;uniscono&nbsp;la&nbsp;famiglia.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6237,6 +6273,6 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_637

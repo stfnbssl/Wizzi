@@ -195,9 +195,12 @@
 				[ 
 			decl property
 
-		# log 'CallExpression.node.callee', node.callee
+		
         
 		if node.callee.type === 'MemberExpression'
+
+            # log 'CallExpression.node.callee.object.name', node.callee.object.name
+            # log 'CallExpression.node.callee.property.name', node.callee.property.name
 			
 			foreach item in node.arguments
 				checked_run_set( value, CallExpression argument
@@ -208,7 +211,7 @@
                 _ runner
                     @ node.callee.object
                     @ ctx
-            if !obj
+            if obj == null || typeof(obj) == 'undefined'
 				return
 					_ local_error
 						@ ctx
@@ -236,8 +239,10 @@
 					var value = obj[property].apply(obj, args)
 					if value && value.__is_error
 						# log 'wizzi-mtree.jswizzi.jsWizziRunner.CallExpression. Error calling ' + property + ', on statement: ' + escodegen.generate(node)
+                        $* 1/3/21 NO this hide the source position of the error
                         if value.name === 'WizziError'
                             return value
+                        *$
 						var currentModelInfo = ctx.get_currentMTreeBrickInfo()
 						return
                             $* 6/6/19
@@ -400,18 +405,23 @@
 				@ 'CallExpression'
 
     runner( MemberExpression
-		checked_run( obj, MemberExpression
+		# log 'MemberExpression.node', node
+        checked_run( obj, MemberExpression
             _ runner
                 @ node.object
                 @ ctx
-        if !obj
+        if obj == null || typeof(obj) == 'undefined'
+            log 'jsWizziRunner.MemberExpression.obj', obj, typeof obj
+            log 'jsWizziRunner.MemberExpression.node.object', node.object
+            log 'jsWizziRunner.MemberExpression.callContext.values', ctx.callContext && ctx.callContext.values
 			return
 				_ local_error
 					@ ctx
-					@ 'The value must be an object. It is "' + getTypeDescription(obj) + '".'
+					@ 'The value must be an object. It is undefined'
 					@ node.object
 					@ node
 					@ 'MemberExpression'
+
         if node.computed
 			checked_run( property, MemberExpression node.property
                 _ runner
@@ -427,11 +437,11 @@
             _ runner
                 @ node.object
                 @ ctx
-        if !obj
+        if obj == null || typeof(obj) == 'undefined'
 			return
 				_ local_error
 					@ ctx
-					@ 'The value must be an object. It is "' + getTypeDescription(obj) + '".'
+					@ 'The value must be an object. It is undefined'
 					@ node.object
 					@ node
 					@ 'MemberExpression_Set'

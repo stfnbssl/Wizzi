@@ -1,0 +1,33 @@
+$group
+    $params &md
+    import
+        @ auth
+        from 'express-openid-connect'
+    +
+    const config
+        {
+            @ authRequired false
+            @ auth0Logout true
+            @ secret 'a long, randomly-generated string stored in env'
+            @ baseURL 'http://localhost:5000'
+            @ clientID 'dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV'
+            @ issuerBaseURL 'https://dev-qwf9-zob.eu.auth0.com'
+    +
+    export
+        const Auth0OpenIdMiddleware
+            =>
+                param app
+                +
+                # auth router attaches /login, /logout, and /callback routes to the baseURL
+                _ app.use
+                    _ auth
+                        @ config
+                +
+                # req.isAuthenticated is provided from the auth router
+                _ app.use
+                    =>
+                        param req
+                        param res
+                        param next
+                        set res.locals.isAuthenticated = req.oidc.isAuthenticated
+                        _ next

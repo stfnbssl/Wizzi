@@ -1,8 +1,8 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi.plugin.docx\.wizzi\ittf\examples\beba.js.ittf
-    utc time: Sun, 28 Feb 2021 18:24:36 GMT
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.plugin.docx\.wizzi\ittf\examples\beba.js.ittf
+    utc time: Mon, 01 Mar 2021 21:35:47 GMT
 */
 'use strict';
 const normal_JUSTIFIED = false;
@@ -29,7 +29,13 @@ var stringify = require('json-stringify-safe');
 var wizziTools = require('../../../wizzi-tools/dist/index');
 function executeExample() {
     executeGenerateModules([
-        'Famiglia'
+        'Tutti a tavola', 
+        'NpL-NpM', 
+        'Famiglia', 
+        'Bambino', 
+        'Pediatra', 
+        'Temi caldi', 
+        'Giochi-Movimento'
     ], function(err, result) {
         if (err) {
             console.log('docx.examples.executeGenerateModules.err', err);

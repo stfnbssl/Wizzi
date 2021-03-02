@@ -1,0 +1,13 @@
+$group
+    $params &md
+    PORT=5000
+    SESSION_SECRET=axr45hngmuoil9********0ofgt*kjj6767648%$£3f5&/4bnsa-----qq4)$35670qq4q
+    $if wzCtx.Build.useAuth0
+        ISSUER_BASE_URL=https://${wzCtx.Build.auth0.tenant}.auth0.com
+        CLIENT_ID=${wzCtx.Build.auth0.clientId}
+        BASE_URL=https://localhost
+        SECRET=${wzCtx.Build.auth0.longRandomString}
+    $if wzCtx.Build.useMongoDb
+        MONGO_USER=yanez
+        MONGO_PASSWORD=x5csosPN5YAsrl4Z
+        MONGO_PATH=@cluster0.idlk7.mongodb.net/wizzi

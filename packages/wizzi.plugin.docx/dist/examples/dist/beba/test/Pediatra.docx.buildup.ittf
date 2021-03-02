@@ -217,8 +217,8 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -242,12 +242,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;formule&nbsp;artificiali
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;formule&nbsp;artificiali
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -264,15 +264,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_147
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -296,12 +296,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;vitamina&nbsp;D 
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;vitamina&nbsp;D 
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -313,15 +313,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_148
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -345,12 +345,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Cosa&nbsp;può&nbsp;fare&nbsp;un&nbsp;genitore&nbsp;quando&nbsp;il&nbsp;bambino&nbsp;piange
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Cosa&nbsp;può&nbsp;fare&nbsp;un&nbsp;genitore&nbsp;quando&nbsp;il&nbsp;bambino&nbsp;piange
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -395,15 +395,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_143
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -427,12 +427,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Depressione&nbsp;dopo&nbsp;il&nbsp;parto
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Depressione&nbsp;dopo&nbsp;il&nbsp;parto
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -448,15 +448,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_814
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -480,12 +480,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ All’età&nbsp;di&nbsp;tre&nbsp;mesi...
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ All’età&nbsp;di&nbsp;tre&nbsp;mesi...
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -521,15 +521,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_144
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -553,12 +553,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;rigurgito
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;rigurgito
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -570,15 +570,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_149
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -602,12 +602,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Come&nbsp;stimolare&nbsp;il&nbsp;linguaggio&nbsp;nei&nbsp;primi&nbsp;mesi&nbsp;di&nbsp;vita
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Come&nbsp;stimolare&nbsp;il&nbsp;linguaggio&nbsp;nei&nbsp;primi&nbsp;mesi&nbsp;di&nbsp;vita
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -651,15 +651,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_749
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -683,12 +683,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ All’età&nbsp;di&nbsp;6&nbsp;mesi…
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ All’età&nbsp;di&nbsp;6&nbsp;mesi…
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -716,15 +716,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_730
 		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -748,12 +748,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;primi&nbsp;denti
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;primi&nbsp;denti
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -801,15 +801,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_142
 		h2 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -833,12 +833,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;girello &nbsp; 
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;girello &nbsp; 
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -869,21 +869,22 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ seri.
 				style big
 				size 24
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_152
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -907,12 +908,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;seggiolini&nbsp;per&nbsp;l'auto
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;seggiolini&nbsp;per&nbsp;l'auto
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -944,15 +945,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_153
 		h2 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -976,12 +977,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;raffreddore
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;raffreddore
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -993,15 +994,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_154
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1025,12 +1026,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Come&nbsp;misurare&nbsp;la&nbsp;febbre
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Come&nbsp;misurare&nbsp;la&nbsp;febbre
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1054,6 +1055,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ ,&nbsp;come&nbsp;si&nbsp;fa&nbsp;con&nbsp;l’adulto,&nbsp;tenendo&nbsp;fermo&nbsp;il&nbsp;gomito&nbsp;al&nbsp;torace&nbsp;per&nbsp;qualche&nbsp;minuto.&nbsp;La&nbsp;febbre&nbsp;non&nbsp;si&nbsp;misura&nbsp;per&nbsp;via&nbsp;rettale,&nbsp;e&nbsp;sono&nbsp;sconsigliati&nbsp;i&nbsp;vecchi&nbsp;termometri&nbsp;di&nbsp;vetro&nbsp;che&nbsp;utilizzano&nbsp;il&nbsp;mercurio.
 				style big
 				size 24
@@ -1064,15 +1066,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_151
 		h2 1 anno
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1096,16 +1098,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ All'età&nbsp;di&nbsp;12&nbsp;mesi
-			style h2_strong_big
-			bold
-			size 28
-		+ ...
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ All'età&nbsp;di&nbsp;12&nbsp;mesi
+				style h2_strong_big
+				bold
+				size 28
+			+ ...
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1150,15 +1152,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_146
 		h2 13 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1182,12 +1184,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;intossicazioni
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;intossicazioni
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1248,15 +1250,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_131
 		h2 14 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1280,12 +1282,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;sostanze&nbsp;velenose
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;sostanze&nbsp;velenose
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1415,15 +1417,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_133
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1447,12 +1449,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ L'antibiotico
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ L'antibiotico
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1470,7 +1472,6 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ I&nbsp;batteri&nbsp;possono&nbsp;causare&nbsp;infezioni&nbsp;dell'orecchio,&nbsp;alcuni&nbsp;tipi&nbsp;di&nbsp;mal&nbsp;di&nbsp;gola,&nbsp;e&nbsp;la&nbsp;polmonite.&nbsp;Durante&nbsp;l’allattamento&nbsp;possono&nbsp;causare&nbsp;una&nbsp;mastite&nbsp;(una&nbsp;infezione&nbsp;della&nbsp;mammella)&nbsp;e&nbsp;sono&nbsp;responsabili&nbsp;degli&nbsp;ascessi&nbsp;ai&nbsp;denti.&nbsp;Gli&nbsp;antibiotici&nbsp;sono&nbsp;farmaci&nbsp;progettati&nbsp;per&nbsp;uccidere&nbsp;i&nbsp;batteri,&nbsp;ma&nbsp;non&nbsp;hanno&nbsp;alcun&nbsp;effetto&nbsp;su&nbsp;una&nbsp;infezione&nbsp;causata&nbsp;dai&nbsp;virus.&nbsp;L’antibiotico&nbsp;quindi&nbsp;può&nbsp;bloccare&nbsp;o&nbsp;uccidere&nbsp;i&nbsp;batteri&nbsp;ma&nbsp;non&nbsp;ha&nbsp;alcun&nbsp;effetto&nbsp;sui&nbsp;virus
 				style big
 				size 24
@@ -1503,15 +1504,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_134
 		h2 16 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1535,12 +1536,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;tosse
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;tosse
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1560,15 +1561,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_669
 		h2 17 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1592,12 +1593,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;mal&nbsp;d'orecchio
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;mal&nbsp;d'orecchio
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1644,7 +1645,6 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ Si,&nbsp;il&nbsp;rischio&nbsp;di&nbsp;mal&nbsp;d'orecchio&nbsp;si&nbsp;riduce&nbsp;se&nbsp;si&nbsp;riesce&nbsp;a&nbsp;tener&nbsp;pulito&nbsp;il&nbsp;nasino&nbsp;dei&nbsp;bambini.&nbsp;Anche&nbsp;un&nbsp;ambiente&nbsp;privo&nbsp;di&nbsp;fumo&nbsp;di&nbsp;sigaretta&nbsp;abbassa&nbsp;il&nbsp;rischio&nbsp;di&nbsp;infezione&nbsp;all'orecchio.&nbsp;
 				style big
 				size 24
@@ -1660,15 +1660,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_670
 		h2 18 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1692,12 +1692,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ All'età&nbsp;di&nbsp;18&nbsp;mesi...
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ All'età&nbsp;di&nbsp;18&nbsp;mesi...
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1749,15 +1749,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_729
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1781,12 +1781,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Come&nbsp;stimolare&nbsp;il&nbsp;linguaggio&nbsp;nel&nbsp;bambino&nbsp;da&nbsp;1&nbsp;a&nbsp;3&nbsp;anni
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Come&nbsp;stimolare&nbsp;il&nbsp;linguaggio&nbsp;nel&nbsp;bambino&nbsp;da&nbsp;1&nbsp;a&nbsp;3&nbsp;anni
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1865,15 +1865,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_751
 		h2 20 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1897,12 +1897,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;diarrea
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;diarrea
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1923,6 +1923,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ &nbsp;e&nbsp;devono&nbsp;essere&nbsp;somministrate&nbsp;in&nbsp;abbondanza,&nbsp;in&nbsp;continuazione,&nbsp;a&nbsp;piccoli&nbsp;sorsi. 
 				style big
 				size 24
@@ -1938,6 +1939,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ .
 				style big
 				size 24
@@ -1949,21 +1951,22 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ &nbsp;o&nbsp;altre&nbsp;medicine.&nbsp;Non&nbsp;è&nbsp;indicato&nbsp;fare&nbsp;una&nbsp;dieta&nbsp;in&nbsp;bianco&nbsp;o&nbsp;una&nbsp;dieta&nbsp;speciale,&nbsp;ma&nbsp;solo&nbsp;sospendere&nbsp;l'alimentazione&nbsp;con&nbsp;i&nbsp;cibi&nbsp;solidi&nbsp;nelle&nbsp;prime&nbsp;sei&nbsp;ore&nbsp;dall'inizio&nbsp;dei&nbsp;disturbi.
 				style big
 				size 24
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_674
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1987,12 +1990,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;stipsi&nbsp;o&nbsp;stitichezza
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;stipsi&nbsp;o&nbsp;stitichezza
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2008,15 +2011,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_673
 		h2 22 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2040,12 +2043,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;mal&nbsp;di&nbsp;gola
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;mal&nbsp;di&nbsp;gola
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2057,15 +2060,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_671
 		h2 23 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2089,12 +2092,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;medicine&nbsp;per&nbsp;il&nbsp;raffreddore
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;medicine&nbsp;per&nbsp;il&nbsp;raffreddore
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2114,15 +2117,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_808
 		h2 2 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2146,12 +2149,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ All’età&nbsp;di&nbsp;2&nbsp;anni…
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ All’età&nbsp;di&nbsp;2&nbsp;anni…
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2307,15 +2310,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_754
 		h2 2 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2339,12 +2342,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;disciplina,&nbsp;i&nbsp;limiti,&nbsp;le&nbsp;punizioni
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;disciplina,&nbsp;i&nbsp;limiti,&nbsp;le&nbsp;punizioni
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2395,15 +2398,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_789
 		h2 2 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2427,12 +2430,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;lettura&nbsp;con&nbsp;conversazione&nbsp;insieme&nbsp;a&nbsp;un&nbsp;bambino&nbsp;di&nbsp;3&nbsp;–&nbsp;4&nbsp;anni
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;lettura&nbsp;con&nbsp;conversazione&nbsp;insieme&nbsp;a&nbsp;un&nbsp;bambino&nbsp;di&nbsp;3&nbsp;–&nbsp;4&nbsp;anni
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2476,15 +2479,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_752
 		h2 3 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2508,12 +2511,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ All’età&nbsp;di&nbsp;3&nbsp;anni…
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ All’età&nbsp;di&nbsp;3&nbsp;anni…
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2653,15 +2656,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_755
 		h2 3 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2685,12 +2688,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Lo&nbsp;sviluppo&nbsp;del&nbsp;cervello
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Lo&nbsp;sviluppo&nbsp;del&nbsp;cervello
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2764,15 +2767,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_761
 		h2 3 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2796,12 +2799,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;fumo&nbsp;di&nbsp;sigaretta
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;fumo&nbsp;di&nbsp;sigaretta
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2824,15 +2827,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_150
 		h2 4 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2856,12 +2859,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ All’età&nbsp;di&nbsp;4&nbsp;anni…
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ All’età&nbsp;di&nbsp;4&nbsp;anni…
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2997,15 +3000,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_756
 		h2 4 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3029,12 +3032,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;tic
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;tic
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3054,15 +3057,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_787
 		h2 5 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3086,12 +3089,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ All’età&nbsp;di&nbsp;5&nbsp;anni…
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ All’età&nbsp;di&nbsp;5&nbsp;anni…
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3255,15 +3258,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_757
 		h2 *** not found
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3287,12 +3290,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;pelle&nbsp;e&nbsp;il&nbsp;sole
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;pelle&nbsp;e&nbsp;il&nbsp;sole
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3316,6 +3319,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ &nbsp;durante&nbsp;l’infanzia&nbsp;possono&nbsp;portare&nbsp;a&nbsp;maggior&nbsp;rischio&nbsp;di&nbsp;malattie&nbsp;come&nbsp;i&nbsp;tumori&nbsp;della&nbsp;pelle,&nbsp;più&nbsp;avanti&nbsp;nell’arco&nbsp;della&nbsp;vita,&nbsp;in&nbsp;età&nbsp;adulta.&nbsp;Questi&nbsp;tumori&nbsp;non&nbsp;compaiono&nbsp;durante&nbsp;la&nbsp;crescita&nbsp;ma&nbsp;dopo&nbsp;la&nbsp;pubertà.&nbsp;Quindi&nbsp;bisogna&nbsp;stare&nbsp;attenti&nbsp;che&nbsp;il&nbsp;bambino,&nbsp;a&nbsp;qualunque&nbsp;età,&nbsp;non&nbsp;prenda&nbsp;una&nbsp;scottatura&nbsp;solare;&nbsp;in&nbsp;altre&nbsp;parole&nbsp;la&nbsp;sua&nbsp;pelle&nbsp;non&nbsp;deve&nbsp;diventare rossa&nbsp;dopo&nbsp;l’esposizione&nbsp;a&nbsp;troppo&nbsp;sole.
 				style big
 				size 24
@@ -3327,6 +3331,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ nei&nbsp;mesi&nbsp;estivi:
 				style big
 				size 24
@@ -3357,15 +3362,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_658
 		h2 5 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3389,12 +3394,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;gioco&nbsp;libero
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;gioco&nbsp;libero
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3443,15 +3448,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_771
 		h2 6 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3475,12 +3480,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;pediatra
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;pediatra
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3500,6 +3505,6 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_760

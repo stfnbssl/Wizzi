@@ -44,6 +44,7 @@
 			extension ittf
 
 		wfjob/any_md()
+        wfjob/any_plain(json)
 
 	line ittf-tests
 		cwd-folder ${ittf_tests_folder}

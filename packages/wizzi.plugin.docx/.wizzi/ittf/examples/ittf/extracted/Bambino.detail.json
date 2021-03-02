@@ -21,7 +21,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/433",
             "User": "Teresa Gallelli",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "596",
@@ -43,7 +44,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/596",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "604",
@@ -65,7 +67,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/604",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "835",
@@ -87,7 +90,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/835",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "842",
@@ -109,7 +113,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/842",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "849",
@@ -131,7 +136,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/849",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "856",
@@ -153,7 +159,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/856",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "1008",
@@ -175,7 +182,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/1008",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "601",
@@ -197,7 +205,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/601",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "832",
@@ -219,7 +228,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/832",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "837",
@@ -241,7 +251,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/837",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "843",
@@ -263,7 +274,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/843",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "1011",
@@ -285,73 +297,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/1011",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "598",
-            "NWS_FK_TNW_ID": "6",
-            "NWS_FK_TCL_ID": "1",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "16",
-            "SettimanaAl": "19",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><strong><big>Cosa sa fare il tuo bambino</big></strong><br />\n </h2>\n\n<p><big>Il tuo bambino riesce a <strong>girare la testa</strong> in tutte le direzioni e quando è sdraiato sulla schiena riesce a tirarla su e a prendersi i piedi con le mani. Talvolta <strong>si rotola </strong>da pancia in su a pancia in giù, bisogna fare attenzione perché <strong>potrebbe cadere</strong> dal divano o dal letto! <strong>Preferisce stare seduto tra le tue braccia, piuttosto che stare sdraiato, così può osservare meglio il mondo circostante. </strong><strong>Segue  con gli occhi le cose</strong> che si muovono da una parte all’altra. Esplora gli oggetti, con gli occhi, le mani e la bocca. <strong>Riesce ad afferrare </strong>sempre meglio e prova a passare un oggetto da una mano all’altra, <strong>mette le cose in bocca.</strong> E'<strong> fondamentale  per lui conoscere il mondo attraverso la bocca, non è un vizio</strong>.</big> <big>Si diverte a vedere la sua immagine riflessa nello specchio. E' in grado di mettere a fuoco a maggior distanza, per questo è interessato non solo a te, ma anche all'ambiente che lo circonda più di prima.Riesce a ricordare  se un oggetto nascosto per alcuni secondi, inizio a collegare gli eventi (per es.quando sento l’acqua scorrere guardo la mia vasca da bagno).</big></p>\n\n<h2><strong><big>Come comunica e si comporta il tuo bambino</big></strong></h2>\n\n<p><strong><big>Adesso riesce a riconoscere le persone familiari in una stanza e capisce la differenza tra vicino e lontano</big></strong><br />\n<big>Riconosce le persone importanti come mamma e papà. Sorride spontaneamente alle persone che incontra, alcune persone lo attraggono, gli piace giocare con loro e può piangere se il gioco finisce. Altre persone invece lo intimoriscono. <strong>Piange in modo diverso per manifestare rabbia, sonno o dolore, si capisce se è triste o felice. </strong>Emette urletti di gioia, se parli. Ha il suo gioco o la sua coperta preferita. <strong>Imita le espressioni del volto: sorride, sa aggrottare le sopracciglia, imita i suoni come schioccare la lingua o fare la tosse Gli piace molto se canti o balli con lui. </strong>Se lo accarezzi, lo culli e lo baci risponde con affetto.</big></p>\n",
-            "Abstract": "Si sta innamorando di te!",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/4.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 4.png",
-            "Titolo": "4 mesi",
-            "sort": 6,
-            "Categoria": "Bambino",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/598",
-            "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "589",
-            "NWS_FK_TNW_ID": "1",
-            "NWS_FK_TCL_ID": "1",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "1",
-            "SettimanaAl": "2",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Il neonato è pronto fin da subito ad entrare in relazione con i suoi genitori o con chi si prende cura di lui.</strong></big></h2>\n\n<p><big>Il neonato è completamente dipendente dalla cura degli altri e la natura dell’accudimento che riceve può avere effetti a lungo termine sul suo sviluppo.<br />\n<strong>Il contatto tra genitore e neonato fin dai primi istanti di vita aiuta a costruire una buona relazione</strong>.<br />\n<strong>Per il neonato è difficile adattarsi alla nuova vita fuori dalla pancia</strong>, per questo è vitale costruire un <strong>legame con chi lo ama</strong>. Impara a riconoscervi dalle vostre carezze, da come lo cullate, dalla vostra voce che canta o parla, dall'odore della vostra pelle. Quando lo tieni in braccio sorreggi la sua testa, con un braccio sotto il suo collo, alla distanza di circa 20-30 cm (la stessa tra seno-volto materno), ti vede ed è chiaro che sa chi sei, riconosce il volto di mamma e papà.</big></p>\n\n<p><big><strong>E’ sorprendente quanto il neonato sia competente, come risponde e reagisce.</strong><br />\nAma ascoltare la voce umana, è interessato alle parole e ancora di più è attratto dal canto.<br />\n<strong>Distingue la voce della mamma e dei famigliari che hanno condiviso la gravidanza. </strong>Queste voci sono il filo che unisce la vita di prima con quella di adesso, fuori dalla pancia.<br />\nReagisce ai suoni con un ammiccamento degli occhi, svegliandosi o piangendo o muovendo il corpo.</big><br />\n<big>Anche il gusto e l’olfatto sono sviluppati nel neonato, preferisce le cose tiepide a quelle calde, riconosce l’odore dei genitori. Se lasciato nudo sul ventre materno, riesce a muoversi per raggiungere il seno. Può mangiare spesso, anche ogni ora.La sua suzione è ritmica.<br />\n<strong>Il neonato prova tante sensazioni nuove e si impegna molto per adattarsi al nuovo mondo.</strong></big></p>\n\n<p><big>Ci vuole un po’ di tempo per abituarsi alle caratteristiche del nuovo ambiente e alla nuova vita. Freddo/caldo, luce/buio, silenzio/suoni/rumori… La forza di gravità rende faticoso muoversi. Il neonato si sente sicuro quando è contenuto tra le braccia di chi lo ama perché non è abituato ad avere tanto spazio attorno a lui. <strong>Alcuni neonati sono più adattabili, altri fanno più fatica e si irritano facilmente e piangono molto.</strong> <strong>Con l’aiuto dei genitori tutti i neonati possono trovare un buon equilibrio.</strong></big><br />\n </p>\n\n<h2><big><strong>Il neonato comunica in un modo speciale, ponendo attenzione ai suoi bisogni e provando a rispondere con sensibilità ai suoi segnali, favorisci il suo benessere e il suo sviluppo.</strong></big><br />\n </h2>\n\n<p><big>Il neonato non riesce a parlare, ma con le espressioni del suo volto, con il suo pianto e i suoi movimenti riesce a farsi capire. Adesso sembra impossibile, ma con un po’ di pratica riuscirai a capire quando ha fame, quando deve essere cambiato, quando è stanco e vuole dormire, quando ha voglia di giocare con te. E’ meraviglioso vedere che è già capace di ascoltare, di vedere, di sentire gli odori e i sapori. <strong>Riconosce il senso di fame e sazietà, non ti preoccupare, prova a fidarti di lui, ti farà capire se ha fame e se ha mangiato abbastanza.</strong></big><br />\n </p>\n",
-            "Abstract": "Il neonato è pronto alla relazione!",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/Nascita_15.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima Nascita_15gg.png",
-            "Titolo": "Nascita",
-            "sort": 1,
-            "Categoria": "Bambino",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/589",
-            "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
-        },
-        {
-            "NWS_ID": "592",
-            "NWS_FK_TNW_ID": "4",
-            "NWS_FK_TCL_ID": "1",
-            "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "8",
-            "SettimanaAl": "11",
-            "NWS_DATA_DAL": "",
-            "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>IL TUO BAMBINO E’ PIU’ DISPONIBILE ALLA RELAZIONE</strong></big></h2>\n\n<p> <big><strong>E' felice di fare tante facce guardando il volto di chi gli sta vicino. </strong>Al tuo bambino piace fissare le persone e le cose, seguirle con lo sguardo quando si muovono. <strong>Può vedere i colori </strong>ed è molto attratto da quelli vivaci! Riconosce alcuni oggetti familiari. <strong>Riconosce le differenze nelle voci delle persone, sente e impara le parole con più facilità. Riprodurre suoni è un’attività molto divertente.</strong> I rumori come la TV o la radio in sottofondo, disturbano molto il vostro piccolo quando vuole stare con voi.<br />\n<strong>Il tuo bambino ha ancora la testa un po’ traballante quando sta dritto, riesce a tenerla su solo per poco tempo e a girarla lateralmente.</strong><br />\n<strong>E’ molto affascinato dalle proprie mani</strong>, gli piace guardarle, riesce a farle toccare tra loro, le può assaggiare! E’ vero succedeva anche prima, ma<br />\nora è lui che decide di muoverle! Stringe gli oggetti in mano per un po’. Ora le sue mani sono aperte per la maggior parte del tempo. Muove le sue braccia e le sue gambe “a bicicletta” quando è eccitato. <strong>Fa esperienza di diversi tipi di sentimento, tra cui felicità, paura, disagio. </strong></big><big>Ama attirare la vostra attenzione e vedere che siete interessati a quello che fa. <strong>E’ felice quando si sento dire che è meraviglioso e che voi lo amate.</strong><br />\nE’ felice e sicuro quando rispondete ai suoi bisogni: ha bisogno del contatto fisico, sentirsi avvolto dal tuo abbraccio gli dà sicurezza.<br />\nE’ felice se lo nutrite quando è affamato, lo cambiate quando è bagnato, lo dondolate quando è annoiato. <br />\n<strong>E’ un bambino tranquillo o vivace? </strong>Un bambino tranquillo trascorre la maggior parte del tempo guardandosi intorno, mentre quello vivace continua a muoversi, sorride o grida a seconda di ciò che prova.<br />\n<strong>Quando un bambino continua a piangere, sentire vicino a sè dei genitori pazienti, lo fa sentire sicuro e protetto.</strong> A volte alcuni bambini sentono il bisogno di piangere tanto, anche diverse ore al giorno. A volte i bambini si calmano succhiando le dita, il ciuccio o il seno.</big></p>\n",
-            "Abstract": "Il bambino ti sorride",
-            "NWS_URL_SITOWEB": "",
-            "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/2.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 2.png",
-            "Titolo": "2 mesi",
-            "sort": 4,
-            "Categoria": "Bambino",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/592",
-            "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "836",
@@ -373,7 +320,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/836",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "600",
@@ -395,7 +343,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/600",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "603",
@@ -417,7 +366,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/603",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "833",
@@ -439,7 +389,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/833",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "857",
@@ -461,7 +412,31 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/857",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
+        },
+        {
+            "NWS_ID": "597",
+            "NWS_FK_TNW_ID": "5",
+            "NWS_FK_TCL_ID": "1",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "12",
+            "SettimanaAl": "15",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><big><strong>Gioca sempre di più, passa periodi sempre più lunghi da sveglio. </strong></big></h2>\n\n<p><br />\n<big><strong>Sorregge la testa</strong> e ha il busto ben dritto se lo sostenete in posizione verticale, ma le sue gambe non sono ancora abbastanza forti per reggere il suo corpo. <strong>Quando è a pancia in giù può sollevare la testa</strong>, puntare i gomiti, inarcare il suo dorso, a volte rotola. Ama colpire gli oggetti mobili appesi ad una barra sospesa, con i piedi e con le mani.<br />\n<strong>Può vedere i colori vivaci. </strong>Fissa il luogo da cui cadono le cose, ma non vede dove vanno quando cadono. I suoi occhi si voltano dove origina un suono. <strong>Sta imparando a riconoscervi da una foto.</strong> <strong>Gli piace mettersi le cose in bocca, gli serve per capire come sono fatte, ma non ha male ai denti! </strong><br />\nQuando è irritato, potrebbe succhiare le mani per calmarsi. </big></p>\n\n<h2><big><strong>Al tuo bambino non piace stare da solo, preferisce stare dove vi riesce a vedere, preferisce interagire con le persone piuttosto che con gli oggetti. </strong></big><br />\n </h2>\n\n<p><big>Risponde con il suo intero corpo a volti e voci che gli appaiono familiari, <strong>il contatto visivo è sempre più prolungato </strong>e ricco di espressioni mimiche del volto. Il tuo bambino ti <strong>sorride, vocalizza, può muovere la lingua e aprire la bocca per comunicare con te.</strong> Se conversi con lui riuscite ad avere un vero dialogo, gli piace e è contento quando <strong>ripeti i suoi gorgheggi, se lo imiti il gioco è più stimolante per lui e riesce a mantenere un’interazione più a lungo.</strong> E’ invece a disagio se la tua faccia appare seria, è sensibile ai cambiamenti del tuo modo con cui ti rivolgi a lui. Distingue le vostre voci da quelle di altre persone e vi guarda per mostrarvi che vi riconosce.Essere tenuto in braccio, cullato e coccolato rimane una delle sue attività preferite. </big><br />\n </p>\n\n<h2><big><strong>Sta imparando che le sue azioni possono portare a dei risultati e che può contare sul tuo aiuto quando ha bisogno. </strong></big><br />\n </h2>\n\n<p><big>Utilizza diversi tipi di pianto per farsi capire. Se è molto attivo, inizi ad intuire quando è stanco e coccolandolo con una ninna nanna lo aiuti a calmarsi.<br />\nSe è troppo sensibile alle luci e ai rumori, prova ad eliminarli e tenerlo in braccio con delicatezza. Quando vede qualcosa che gli piace, si esprime con suoni di gioia,come “oy”, “ah, ah”, e “eh, eh”.<br />\n<strong>Adora stare un po’ fuori ogni giorno. </strong><br />\nQuando uscite, controllate che io non abbia troppo caldo (diventa rosso e sudato) oppure che non abbia freddo (trema oppure ha la pelle d’oca), perché la temperatura del suo corpo non è sempre la stessa degli adulti.</big><br />\n </p>\n",
+            "Abstract": "Quanti progressi! ",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/3.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 3.png",
+            "Titolo": "3 mesi",
+            "sort": 5,
+            "Categoria": "Bambino",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/597",
+            "User": "Francesca Manusia",
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "599",
@@ -483,7 +458,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/599",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "605",
@@ -505,7 +481,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/605",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "860",
@@ -527,29 +504,31 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/860",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
-            "NWS_ID": "597",
-            "NWS_FK_TNW_ID": "5",
+            "NWS_ID": "598",
+            "NWS_FK_TNW_ID": "6",
             "NWS_FK_TCL_ID": "1",
             "NWS_FK_TPN_ID": "2",
-            "SettimanaDal": "12",
-            "SettimanaAl": "15",
+            "SettimanaDal": "16",
+            "SettimanaAl": "19",
             "NWS_DATA_DAL": "",
             "NWS_DATA_AL": "",
-            "Testo": "<h2><big><strong>Gioca sempre di più, passa periodi sempre più lunghi da sveglio. </strong></big></h2>\n\n<p><br />\n<big><strong>Sorregge la testa</strong> e ha il busto ben dritto se lo sostenete in posizione verticale, ma le sue gambe non sono ancora abbastanza forti per reggere il suo corpo . <strong>Quando è a pancia in giù può sollevare la testa</strong>, puntare i gomiti, inarcare il suo dorso, a volte rotola. Ama colpire gli oggetti mobili appesi ad una barra sospesa, con i piedi e con le mani.<br />\n<strong>Può vedere i colori vivaci. </strong>Fissa il luogo da cui cadono le cose, ma non vede dove vanno quando cadono. I suoi occhi si voltano dove origina un suono. <strong>Sta imparando a riconoscervi da una foto.</strong> <strong>Gli piace mettersi le cose in bocca, gli serve per capire come sono fatte, ma non ha male ai denti! </strong><br />\nQuando è irritato, potrebbe succhiare le mani per calmarsi. </big></p>\n\n<h2><big><strong>Al tuo bambino non piace stare da solo, preferisce stare dove vi riesce a vedere, preferisce interagire con le persone piuttosto che con gli oggetti. </strong></big><br />\n </h2>\n\n<p><big>Risponde con il suo intero corpo a volti e voci che gli appaiono familiari, <strong>il contatto visivo è sempre più prolungato </strong>e ricco di espressioni mimiche del volto. Il tuo bambino ti <strong>sorride, vocalizza, può muovere la lingua e aprire la bocca per comunicare con te.</strong> Se conversi con lui riuscite ad avere un vero dialogo, gli piace e è contento quando <strong>ripeti i suoi gorgheggi, se lo imiti il gioco è più stimolante per lui e riesce a mantenere un’interazione più a lungo.</strong> E’ invece a disagio se la tua faccia appare seria, è sensibile ai cambiamenti del tuo modo con cui ti rivolgi a lui. Distingue le vostre voci da quelle di altre persone e vi guarda per mostrarvi che vi riconosce.Essere tenuto in braccio, cullato e coccolato rimane una delle sue attività preferite. </big><br />\n </p>\n\n<h2><big><strong>Sta imparando che le sue azioni possono portare a dei risultati e che può contare sul tuo aiuto quando ha bisogno. </strong></big><br />\n </h2>\n\n<p><big>Utilizza diversi tipi di pianto per farsi capire. Se è molto attivo, inizi ad intuire quando è stanco e coccolandolo con una ninna nanna lo aiuti a calmarsi.<br />\nSe è troppo sensibile alle luci e ai rumori, prova ad eliminarli e tenerlo in braccio con delicatezza. Quando vede qualcosa che gli piace, si esprime con suoni di gioia,come “oy”, “ah, ah”, e “eh, eh”.<br />\n<strong>Adora stare un po’ fuori ogni giorno. </strong><br />\nQuando uscite, controllate che io non abbia troppo caldo (diventa rosso e sudato) oppure che non abbia freddo (trema oppure ha la pelle d’oca), perché la temperatura del suo corpo non è sempre la stessa degli adulti.</big><br />\n </p>\n",
-            "Abstract": "Quanti progressi! ",
+            "Testo": "<h2><strong><big>Cosa sa fare il tuo bambino</big></strong><br />\n </h2>\n\n<p><big>Il tuo bambino riesce a <strong>girare la testa</strong> in tutte le direzioni e quando è sdraiato sulla schiena riesce a tirarla su e a prendersi i piedi con le mani. Talvolta <strong>si rotola </strong>da pancia in su a pancia in giù, bisogna fare attenzione perché <strong>potrebbe cadere</strong> dal divano o dal letto! <strong>Preferisce stare seduto tra le tue braccia, piuttosto che stare sdraiato, così può osservare meglio il mondo circostante. </strong><strong>Segue  con gli occhi le cose</strong> che si muovono da una parte all’altra. Esplora gli oggetti, con gli occhi, le mani e la bocca. <strong>Riesce ad afferrare </strong>sempre meglio e prova a passare un oggetto da una mano all’altra, <strong>mette le cose in bocca.</strong> E'<strong> fondamentale  per lui conoscere il mondo attraverso la bocca, non è un vizio</strong>.</big> <big>Si diverte a vedere la sua immagine riflessa nello specchio. E' in grado di mettere a fuoco a maggior distanza, per questo è interessato non solo a te, ma anche all'ambiente che lo circonda più di prima.Riesce a ricordare  se un oggetto nascosto per alcuni secondi, inizio a collegare gli eventi (per es.quando sento l’acqua scorrere guardo la mia vasca da bagno).</big></p>\n\n<h2><strong><big>Come comunica e si comporta il tuo bambino</big></strong></h2>\n\n<p><strong><big>Adesso riesce a riconoscere le persone familiari in una stanza e capisce la differenza tra vicino e lontano</big></strong><br />\n<big>Riconosce le persone importanti come mamma e papà. Sorride spontaneamente alle persone che incontra, alcune persone lo attraggono, gli piace giocare con loro e può piangere se il gioco finisce. Altre persone invece lo intimoriscono. <strong>Piange in modo diverso per manifestare rabbia, sonno o dolore, si capisce se è triste o felice. </strong>Emette urletti di gioia, se parli. Ha il suo gioco o la sua coperta preferita. <strong>Imita le espressioni del volto: sorride, sa aggrottare le sopracciglia, imita i suoni come schioccare la lingua o fare la tosse Gli piace molto se canti o balli con lui. </strong>Se lo accarezzi, lo culli e lo baci risponde con affetto.</big></p>\n",
+            "Abstract": "E' sempre più innamorato di te!",
             "NWS_URL_SITOWEB": "",
             "NWS_URL_VIDEO": "",
-            "NWS_IMG_COPERTINA": "/image/upload/copertina/3.png",
-            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 3.png",
-            "Titolo": "3 mesi",
-            "sort": 5,
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/4.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 4.png",
+            "Titolo": "4 mesi",
+            "sort": 6,
             "Categoria": "Bambino",
-            "url": "https://cosie.lepida.it/backoffice/news/gestione/597",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/598",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "607",
@@ -571,7 +550,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/607",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "858",
@@ -593,7 +573,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/858",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "853",
@@ -615,7 +596,31 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/853",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
+        },
+        {
+            "NWS_ID": "589",
+            "NWS_FK_TNW_ID": "1",
+            "NWS_FK_TCL_ID": "1",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "1",
+            "SettimanaAl": "2",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><big><strong>Il neonato è pronto fin da subito ad entrare in relazione con i suoi genitori o con chi si prende cura di lui.</strong></big></h2>\n\n<p><big><strong>Il contatto tra genitore e neonato fin dai primi istanti di vita aiuta a costruire una buona relazione</strong>.<br />\n<strong>Per il neonato è difficile adattarsi alla nuova vita fuori dalla pancia</strong>, per questo è vitale costruire un <strong>legame con chi lo ama</strong>. Impara a riconoscervi dalle vostre carezze, da come lo cullate, dalla vostra voce che canta o parla, dall'odore della vostra pelle. Quando lo tieni in braccio sorreggi la sua testa, con un braccio sotto il suo collo, alla distanza di circa 20-30 cm (la stessa tra seno-volto materno), ti vede ed è chiaro che sa chi sei, riconosce il volto di mamma e papà.</big></p>\n\n<h2><big><strong>E’ sorprendente quanto il neonato sia competente, come risponde e reagisce.</strong></big><br />\n </h2>\n\n<p><big>Ama ascoltare la voce umana, è interessato alle parole e ancora di più è attratto dal canto.<br />\n<strong>Distingue la voce della mamma e dei famigliari che hanno condiviso la gravidanza. </strong>Queste voci sono il filo che unisce la vita di prima con quella di adesso, fuori dalla pancia.<br />\nReagisce ai suoni con un ammiccamento degli occhi, svegliandosi o piangendo o muovendo il corpo.</big><br />\n<big>Anche il gusto e l’olfatto sono sviluppati nel neonato, preferisce le cose tiepide a quelle calde, riconosce l’odore dei genitori. Se lasciato nudo sul ventre materno, riesce a muoversi per raggiungere il seno. Può mangiare spesso, anche ogni ora.La sua suzione è ritmica.</big><br />\n </p>\n\n<h2><big><strong>Il neonato prova tante sensazioni nuove e si impegna molto per adattarsi al nuovo mondo.</strong></big></h2>\n\n<p><big>Ci vuole un po’ di tempo per abituarsi alle caratteristiche del nuovo ambiente e alla nuova vita. Freddo/caldo, luce/buio, silenzio/suoni/rumori… La forza di gravità rende faticoso muoversi. Il neonato si sente sicuro quando è contenuto tra le braccia di chi lo ama perché non è abituato ad avere tanto spazio attorno a lui. <strong>Alcuni neonati sono più adattabili, altri fanno più fatica e si irritano facilmente e piangono molto.</strong> <strong>Con l’aiuto dei genitori tutti i neonati possono trovare un buon equilibrio.</strong></big><br />\n </p>\n\n<h2><big><strong>Il neonato comunica in un modo speciale, ponendo attenzione ai suoi bisogni e provando a rispondere con sensibilità ai suoi segnali, favorisci il suo benessere e il suo sviluppo.</strong></big><br />\n </h2>\n\n<p><big>Il neonato non riesce a parlare, ma con le espressioni del suo volto, con il suo pianto e i suoi movimenti riesce a farsi capire. Adesso sembra impossibile, ma con un po’ di pratica riuscirai a capire quando ha fame, quando deve essere cambiato, quando è stanco e vuole dormire, quando ha voglia di giocare con te. E’ meraviglioso vedere che è già capace di ascoltare, di vedere, di sentire gli odori e i sapori. <strong>Riconosce il senso di fame e sazietà, non ti preoccupare, prova a fidarti di lui, ti farà capire se ha fame e se ha mangiato abbastanza.</strong></big><br />\n </p>\n",
+            "Abstract": "Il neonato è pronto alla relazione!",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/Nascita_15.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima Nascita_15gg.png",
+            "Titolo": "Nascita",
+            "sort": 1,
+            "Categoria": "Bambino",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/589",
+            "User": "Francesca Manusia",
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "590",
@@ -637,7 +642,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/590",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "690",
@@ -659,7 +665,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/690",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "844",
@@ -681,7 +688,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/844",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "854",
@@ -703,7 +711,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/854",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "855",
@@ -725,7 +734,31 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/855",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
+        },
+        {
+            "NWS_ID": "592",
+            "NWS_FK_TNW_ID": "4",
+            "NWS_FK_TCL_ID": "1",
+            "NWS_FK_TPN_ID": "2",
+            "SettimanaDal": "8",
+            "SettimanaAl": "11",
+            "NWS_DATA_DAL": "",
+            "NWS_DATA_AL": "",
+            "Testo": "<h2><big><strong>IL TUO BAMBINO E’ PIU’ DISPONIBILE ALLA RELAZIONE</strong></big></h2>\n\n<p> <big><strong>E' felice di fare tante facce guardando il volto di chi gli sta vicino. </strong>Al tuo bambino piace fissare le persone e le cose, seguirle con lo sguardo quando si muovono. <strong>Può vedere i colori </strong>ed è molto attratto da quelli vivaci! Riconosce alcuni oggetti familiari. <strong>Riconosce le differenze nelle voci delle persone, sente e impara le parole con più facilità. Riprodurre suoni è un’attività molto divertente.</strong> I rumori come la TV o la radio in sottofondo, disturbano molto il vostro piccolo quando vuole stare con voi.<br />\n<strong>Il tuo bambino ha ancora la testa un po’ traballante quando sta dritto, riesce a tenerla su solo per poco tempo e a girarla lateralmente.</strong><br />\n<strong>E’ molto affascinato dalle proprie mani</strong>, gli piace guardarle, riesce a farle toccare tra loro, le può assaggiare! E’ vero succedeva anche prima, ma<br />\nora è lui che decide di muoverle! Stringe gli oggetti in mano per un po’. Ora le sue mani sono aperte per la maggior parte del tempo. Muove le sue braccia e le sue gambe “a bicicletta” quando è eccitato. <strong>Fa esperienza di diversi tipi di sentimento, tra cui felicità, paura, disagio. </strong></big><big>Ama attirare la vostra attenzione e vedere che siete interessati a quello che fa. <strong>E’ felice quando si sento dire che è meraviglioso e che voi lo amate.</strong><br />\nE’ felice e sicuro quando rispondete ai suoi bisogni: ha bisogno del contatto fisico, sentirsi avvolto dal tuo abbraccio gli dà sicurezza.<br />\nE’ felice se lo nutrite quando è affamato, lo cambiate quando è bagnato, lo dondolate quando è annoiato. <br />\n<strong>E’ un bambino tranquillo o vivace? </strong>Un bambino tranquillo trascorre la maggior parte del tempo guardandosi intorno, mentre quello vivace continua a muoversi, sorride o grida a seconda di ciò che prova.<br />\n<strong>Quando un bambino continua a piangere, sentire vicino a sè dei genitori pazienti, lo fa sentire sicuro e protetto.</strong> A volte alcuni bambini sentono il bisogno di piangere tanto, anche diverse ore al giorno. A volte i bambini si calmano succhiando le dita, il ciuccio o il seno.</big></p>\n",
+            "Abstract": "Quando ti sorride: che meraviglia!",
+            "NWS_URL_SITOWEB": "",
+            "NWS_URL_VIDEO": "",
+            "NWS_IMG_COPERTINA": "/image/upload/copertina/2.png",
+            "NWS_IMG_ANTEPRIMA": "/image/upload/copertina/preview/Anteprima 2.png",
+            "Titolo": "2 mesi",
+            "sort": 4,
+            "Categoria": "Bambino",
+            "url": "https://cosie.lepida.it/backoffice/news/gestione/592",
+            "User": "Francesca Manusia",
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "602",
@@ -747,7 +780,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/602",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "834",
@@ -769,7 +803,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/834",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "852",
@@ -791,7 +826,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/852",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         },
         {
             "NWS_ID": "859",
@@ -813,7 +849,8 @@
             "Categoria": "Bambino",
             "url": "https://cosie.lepida.it/backoffice/news/gestione/859",
             "User": "Francesca Manusia",
-            "NewsOrGuida": "guida"
+            "NewsOrGuida": "guida",
+            "images": []
         }
     ]
 }

@@ -25,9 +25,9 @@
     var defaultValues
         { 
 			@ '__dollar'        '$'
-            @ '__dollardollar'  '$$'
-            @ '__dollaraster'   '$*'
-            @ '__asterdollar'   '*$'
+            @ '__dollardollar'  '$' + '$'
+            @ '__dollaraster'   '$' + '*'
+            @ '__asterdollar'   '*' + '$'
     
 	var knownCallables
         { 
@@ -93,7 +93,8 @@
 				set this.isForInterpolation = true
 			+
 			set this.globalContext = new ContextData(ittfStates.globalContext)
-			set this.callContext = new ContextData(ittfStates.callContext)
+            set this.callContextStack = []
+			set this.callContext = null
 			if this.isForInterpolation == false
 				set this.nodeContext = new ContextData(ittfStates.nodeContext)
 			set this.loadingCallArguments = false
@@ -119,6 +120,9 @@
 			+
 			set this.runningNodeId = null
 			+
+            set this.sourceStack = []
+            set this.source = null
+            +
 			if typeof window === 'undefined'
 				set this.startTimer = process.hrtime()
 			else
@@ -127,16 +131,21 @@
 
 		# Called by JsWizziRunner.FunctionDeclarationCall
 		m push
-			_ this.callContext.push()
+            if this.callContext
+                _ this.callContextStack.push(this.callContext)
+            set this.callContext = new ContextData(ittfStates.callContext)
 			if this.isForInterpolation == false
-				_ this.nodeContext.push()
-				_ this.brickEvalContext.push()
+				$$ stop _ this.nodeContext.push()
+				$$ stop _ this.brickEvalContext.push()
 			return this
 		m pop
-			_ this.callContext.pop()
+            if this.callContextStack.length > 0
+			    set this.callContext = this.callContextStack.pop()
+            else
+                set this.callContext = null
 			if this.isForInterpolation == false
-				_ this.nodeContext.pop()
-				_ this.brickEvalContext.pop()
+				$$ stop _ this.nodeContext.pop()
+				$$ stop _ this.brickEvalContext.pop()
 			return this
 		m clear
 			_ this.globalContext.clear
@@ -149,7 +158,19 @@
 			_ this.globalContext.setValues(defaultValues)
 			_ this.globalContext.setValues(knownCallables)
 
-		m setRunningNodeId
+		m pushSource
+            param source
+            if this.source
+                _ this.sourceStack.push(this.source)
+            set this.source = source
+
+        m popSource
+            if this.sourceStack.length > 0
+			    set this.source = this.sourceStack.pop()
+            else
+                set this.source = null
+        
+        m setRunningNodeId
 			param id
 			set this.runningNodeId = id
 

@@ -1,0 +1,395 @@
+$group
+    $params &md
+    var stylesInjected = false
+    export
+        function createList
+            param listDef
+            param elementId
+            const jq2
+                _ jQuery.noConflict
+            _ jq2
+                function
+                    param $
+                    if !stylesInjected
+                        _ injectListStyles
+                        set stylesInjected = true
+                    set document.getElementById(elementId).innerHTML
+                        _ getContainer
+                            @ listDef
+                    _ startList
+                        @ $
+                        @ listDef
+                    _ startListValidation
+                        @ $
+                        @ listDef
+    html_f getContainer
+        _ listHtml
+            @ __html
+            @ ctx
+    function injectCssLink
+        param href
+        var head = document.head || document.getElementsByTagName('head')[0]
+        var link = document.createElement('link')
+        set link.rel = "stylesheet"
+        set link.href = href
+        set link.type = "text/css"
+        _ head.appendChild(link)
+    function injectCssText
+        param cssObj
+        var head = document.head || document.getElementsByTagName('head')[0]
+        var style = document.createElement('style')
+        set style.type = 'text/css'
+        var aCss = []
+        for var krule in cssObj
+            var ruleObj = cssObj[krule]
+            var aRule = []
+            for var kstyle in ruleObj
+                if typeof ruleObj[kstyle] === 'object'
+                    var aRule2 = []
+                    for var kstyle2 in ruleObj[kstyle]
+                        _ aRule2.push
+                            @ kstyle2 + ': ' + ruleObj[kstyle][kstyle2]
+                    _ aRule.push
+                        @ kstyle + ' { ' + aRule2.join(';\n') + ' } '
+                else
+                    _ aRule.push
+                        @ kstyle + ': ' + ruleObj[kstyle]
+            _ aCss.push
+                @ krule + ' { ' + aRule.join(';\n') + ' } '
+        var css = aCss.join('\n')
+        # IE8 and below.
+        if style.styleSheet
+            set style.styleSheet.cssText = css
+        else
+            _ style.appendChild(document.createTextNode(css))
+        _ head.appendChild(style)
+    function injectListStyles
+        _ injectCssText
+            {
+                { ".list-row"
+                    @ display "flex"
+                    @ "flex-direction" "row"
+                    @ "justify-content" "space-between"
+                { ".list-head"
+                    @ display "flex"
+                    @ "flex-direction" "row"
+                    @ "justify-content" "space-between"
+                    @ "font-weight" 600
+                { "table td, table th"
+                    @ padding "5px"
+                { ".td-hidden"
+                    @ display "none"
+    function listHtml
+        param __html
+        param list
+        log 'listHtml', list
+        if list.def.kind == "table"
+            _ listTableHtml
+                @ __html
+                @ list
+        else
+            _ listUlHtml
+                @ __html
+                @ list
+    function listUlHtml
+        param __html
+        param list
+        var temp = []
+        _ listUlHtml_head
+            @ temp
+            @ list.def
+        foreach item in list.data.items
+            _ listUlHtml_row
+                @ temp
+                @ item
+                @ list.def
+        div
+            class card card-2
+            div
+                class card-heading
+            div
+                class card-body
+                h2 {{ list.title }}
+                    class title
+                div
+                    id {{ list.def.id }}
+                    ul {{ temp.join('\n') }}
+    function listUlHtml_head
+        param __html
+        param def
+        var temp = []
+        foreach column in def.columns
+            _ listUlHtml_headCell
+                @ temp
+                @ column
+        li {{ temp.join('\n') }}
+            class list-head
+    function listUlHtml_headCell
+        param __html
+        param def
+        div
+            class list-head-cell
+            div {{ def.label || def.id }}
+                class list-head-cell-label
+    function listUlHtml_row
+        param __html
+        param item
+        param def
+        var temp = []
+        foreach column in def.columns
+            _ listUlHtml_cell
+                @ temp
+                @ item[column.id]
+                @ column
+        li {{ temp.join('\n') }}
+            class list-row
+    function listUlHtml_cell
+        param __html
+        param value
+        param def
+        div
+            class list-cell
+            div {{ value }}
+                class list-cell
+    function listTableHtml
+        param __html
+        param list
+        var temp_thead = []
+        _ listTableHtml_thead
+            @ temp_thead
+            @ list.def
+        var temp_tbody = []
+        _ listTableHtml_tbody
+            @ temp_tbody
+            @ list
+        if list.def.isEditAdd
+            var temp_tbody_edit_add = []
+            _ listTableHtml_edit_add
+                @ temp_tbody_edit_add
+                @ list.def
+        div
+            class card card-2
+            div
+                class card-heading
+            div
+                class card-body
+                h2 {{ list.title }}
+                    class title
+            div
+                id {{ list.def.id }}
+                table
+                    thead {{ temp_thead.join('\n') }}
+                    tbody {{ temp_tbody.join('\n') }}
+                        class list
+                if list.def.isEditAdd
+                    table
+                        tbody {{ temp_tbody_edit_add.join('\n') }}
+    function listTableHtml_thead
+        param __html
+        param def
+        foreach column_def in def.columns
+            _ listTableHtml_th
+                @ __html
+                @ column_def
+        if def.hasSearch
+            th
+                @ colspan 2
+                input
+                    type text
+                    class search
+                    placeholder Search
+    function listTableHtml_th
+        param __html
+        param column_def
+        th {{ column_def.label || column_def.id }}
+            class list-table-th sort
+            data-sort {{ column_def.id }}
+    function listTableHtml_tbody
+        param __html
+        param list
+        foreach item in list.data.items
+            _ listTableHtml_tr
+                @ __html
+                @ item
+                @ list.def
+    function listTableHtml_tr
+        param __html
+        param data_item
+        param list_def
+        var temp = []
+        foreach column_def in list_def.columns
+            _ listTableHtml_td
+                @ temp
+                @ data_item[column_def.id]
+                @ column_def
+        tr {{ temp.join('\n') }}
+            class list-table-td
+            td
+                class edit
+                button Edit
+                    class edit-{{list_def.id}}-item-btn
+            td
+                class remove
+                button Remove
+                    class remove-{{list_def.id}}-item-btn
+    function listTableHtml_td
+        param __html
+        param value
+        param column_def
+        _ __html.push
+            @ '<td class="list-table-td ' + column_def.id + ' ' + (column_def.isKey ? 'td-hidden' : '') + '">' + value + '</td>'
+    function listTableHtml_edit_add
+        param __html
+        param list_def
+        var first = true
+        foreach column_def in list_def.columns
+            if !!column_def.isKey == false
+                _ listTableHtml_edit_add_td
+                    @ __html
+                    @ list_def
+                    @ column_def
+                    @ first
+                set first = false
+        td
+            class add
+            button Add
+                id add-{{list_def.id}}-btn
+        td
+            class edit
+            button Edit
+                id edit-{{list_def.id}}-btn
+    function listTableHtml_edit_add_td
+        param __html
+        param list_def
+        param column_def
+        param first
+        var temp = []
+        if first
+            _ listTableHtml_edit_add_key
+                @ temp
+                @ list_def
+        td {{ temp.join('\n') }}
+            class list-table-edit-add-td {{ column_def.id }}
+            input
+                type text
+                id {{ column_def.id }}_field
+                placeholder {{ column_def.label }}
+    function listTableHtml_edit_add_key
+        param __html
+        param list_def
+        var keyId
+        foreach column_def in list_def.columns
+            if column_def.isKey
+                set keyId = column_def.id
+        input
+            type hidden
+            id {{ keyId }}_field
+    function startList
+        param $
+        param list
+        param context
+        if list.def.kind == 'table'
+            _ startList_table
+                @ $
+                @ list
+                @ context
+        else
+            _ startList_ul
+                @ $
+                @ list
+                @ context
+    function startList_ul
+        param $
+        param list
+        param context
+    function startList_table
+        param $
+        param list
+        param context
+        var list_def = list.def
+        var keyId
+        var options
+            {
+                [ valueNames
+        foreach column_def in list_def.columns
+            if column_def.isKey
+                set keyId = column_def.id
+            _ options.valueNames.push
+                @ column_def.id
+        if !keyId || keyId.length < 1
+            throw new Error('Id key missing on list ' + list_def.id)
+        log 'starting list', list_def.id, $('#' + list_def.id)[0]
+        # Init list
+        var listObj = new List(list_def.id, options)
+        var
+            decl addBtn = $('#add-' + list_def.id + '-btn')
+            decl editBtn = $('#edit-' + list_def.id + '-btn').hide()
+        _ addBtn.click
+            function
+                var valuesObj
+                    _ lt_formFieldsValues
+                set valuesObj[keyId]
+                    _ Math.floor
+                        @ Math.random() * 110000
+                _ listObj.add
+                    @ valuesObj
+                _ lt_clearFormFields
+                if list_def.onAdd
+                    _ list_def.onAdd
+                        @ 'add'
+                        @ valuesObj
+        _ editBtn.click
+            function
+                var item = listObj.get(keyId, $('#' + keyId + '_field').val())[0]
+                var oldValues = Object.assign({}, item.values())
+                var newValues = lt_formFieldsValues()
+                _ item.values
+                    @ newValues
+                if list_def.onUpdate
+                    _ list_def.onUpdate
+                        {
+                            @ old oldValues
+                            @ new newValues
+                _ lt_clearFormFields
+                _ editBtn.hide
+                _ addBtn.show
+        # Sets callbacks to the buttons in the list
+        _ lt_setItemsEventHandlers
+        function lt_setItemsEventHandlers
+            _ $(document).on
+                @ 'click'
+                @ '.remove-' + list_def.id + '-item-btn'
+                function
+                    var itemId
+                        _ $(this).closest('tr').find('.' + keyId).text
+                    var itemValues
+                        _ listObj.get(keyId, itemId)[0].values
+                    _ listObj.remove(keyId, itemId)
+                    if list_def.onRemove
+                        _ list_def.onRemove
+                            @ 'remove'
+                            @ itemValues
+            _ $(document).on
+                @ 'click'
+                @ '.edit-' + list_def.id + '-item-btn'
+                function
+                    var itemId
+                        _ $(this).closest('tr').find('.' + keyId).text
+                    var itemValues
+                        _ listObj.get(keyId, itemId)[0].values
+                    foreach column_def in list_def.columns
+                        _ $('#' + column_def.id + '_field').val(itemValues[column_def.id])
+                    _ editBtn.show
+                    _ addBtn.hide
+        function lt_clearFormFields
+            foreach column_def in list_def.columns
+                _ $('#' + column_def.id + '_field').val('')
+        function lt_formFieldsValues
+            var ret = {}
+            foreach column_def in list_def.columns
+                set ret[column_def.id] = $('#' + column_def.id + '_field').val()
+            return ret
+    function startListValidation
+        param $
+        param list
+        var rules = {}

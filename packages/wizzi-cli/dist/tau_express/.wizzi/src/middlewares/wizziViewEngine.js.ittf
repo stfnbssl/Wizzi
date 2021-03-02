@@ -1,0 +1,7 @@
+module
+    kind es6
+    $
+        var md = {
+        }
+    $if wzCtx.Build.useWizziViewEngine
+        v08/express/middlewares/wizziViewEngine(&md)

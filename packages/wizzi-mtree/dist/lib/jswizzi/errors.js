@@ -95,7 +95,7 @@ md.esprimaNodeErrorLines = function(description, node, source, json) {
             }, source, json);
     }
     else {
-        console.log('jswizzi.errors.esprimaNodeErrorLines', 'node has no loc property', node);
+        // log 'jswizzi.errors.esprimaNodeErrorLines', 'node has no loc property', node
         return ['No data available'];
     }
 };

@@ -40,12 +40,12 @@ $group
 
     function formControlHtml
         param __html
-        param ctrl
+        param ctrl_def
 
         let options = []
-        if ctrl.type == 'group'
-            var direction = ctrl.direction || 'row'
-            foreach item in ctrl.controls
+        if ctrl_def.type == 'group'
+            var direction = ctrl_def.direction || 'row'
+            foreach item in ctrl_def.controls
                 var aOptions = []
                 _ formControlHtml
                     @ aOptions
@@ -53,103 +53,103 @@ $group
                 _ options.push
                     _ aOptions.join('\n')
             div {{ options.join('\n') }}
-                class control-group grid-{{ direction }}-{{ ctrl.controls.length }}
+                class control-group grid-{{ direction }}-{{ ctrl_def.controls.length }}
 
             return
-        elif ctrl.type == 'select'
-            foreach item in ctrl.options
+        elif ctrl_def.type == 'select'
+            foreach item in ctrl_def.options
                 var aOptions = []
                 _ selectOptionHtml
                     @ aOptions
                     @ item
                 _ options.push
                     _ aOptions.join('')
-        if ctrl.type == 'radio'
-            foreach item in ctrl.options
+        if ctrl_def.type == 'radio'
+            foreach item in ctrl_def.options
                 var aOptions = []
                 _ radioOptionHtml
                     @ aOptions
-                    @ ctrl
+                    @ ctrl_def
                     @ item
                 _ options.push
                     _ aOptions.join('')
         
         div
             class single-control row row-space
-            label {{ ctrl.label }}
-                @ for {{ ctrl.id }}
-                class {{ (ctrl.required ? 'required' : '') }} 
+            label {{ ctrl_def.label }}
+                @ for {{ ctrl_def.id }}
+                class {{ (ctrl_def.required ? 'required' : '') }} 
             div
                 class input-group
-                if ctrl.type == 'text'
+                if ctrl_def.type == 'text'
                     input
                         class input--style-2
                         type text
-                        placeholder {{ ctrl.label }}
-                        name {{ ctrl.id }}
-                elif ctrl.type == 'select'
+                        placeholder {{ ctrl_def.label }}
+                        name {{ ctrl_def.id }}
+                elif ctrl_def.type == 'select'
                     div
                         class rs-select2 js-select-simple select--no-search
                         select {{ options.join('\n') }}
-                            name {{ ctrl.id }}
+                            name {{ ctrl_def.id }}
                         div
-                            id {{ ctrl.id }}-dropdown
+                            id {{ ctrl_def.id }}-dropdown
                             class select-dropdown
-                elif ctrl.type == 'date'
+                elif ctrl_def.type == 'date'
                     input
                         class input--style-2 js-datepicker
                         type text
-                        placeholder {{ ctrl.label }}
-                        name {{ ctrl.id }}
+                        placeholder {{ ctrl_def.label }}
+                        name {{ ctrl_def.id }}
                     i
                         class zmdi zmdi-calendar-note input-icon js-btn-calendar
-                elif ctrl.type == 'checkbox'
+                elif ctrl_def.type == 'checkbox'
                     div
                         class checkbox-item
                         input
                             class input--style-2
                             type checkbox
-                            placeholder {{ ctrl.label }}
-                            name {{ ctrl.id }}
-                elif ctrl.type == 'radio'
+                            placeholder {{ ctrl_def.label }}
+                            name {{ ctrl_def.id }}
+                elif ctrl_def.type == 'radio'
                     div {{ options.join('\n') }}
                         class radio-group
-                elif ctrl.type == 'slider'
+                elif ctrl_def.type == 'slider'
                     div
                         class slider-group ui-slider ui-slider-horizontal
                         div
                             class slider-item
-                            id {{ ctrl.id }}
+                            id {{ ctrl_def.id }}
                         span
                             class donate-value
                             id value-lower
-                elif ctrl.type == 'code'
+                elif ctrl_def.type == 'code'
                     div
-                        id {{ ctrl.id }}
+                        id {{ ctrl_def.id }}
 
     function selectOptionHtml
         param __html
-        param ctrl
+        param ctrl_def
         _ __html.push('<option')
-        _ __html.push(' value="' + ctrl.value + '"')
-        if ctrl.selected
+        _ __html.push(' value="' + ctrl_def.value + '"')
+        if ctrl_def.selected
             _ __html.push(' selected="selected"')
         _ __html.push('>')
-        _ __html.push(ctrl.label)
+        _ __html.push(ctrl_def.label)
         _ __html.push('</option>')   
 
     function radioOptionHtml
         param __html
         param radio
-        param ctrl
+        param ctrl_def
         div
             class radio-item
             input 
                 type radio
                 name {{ radio.id }}
-                id {{ ctrl.id }}
+                id {{ ctrl_def.id }}
                 checked 
-            label {{ ctrl.label }}
-                @ for {{ ctrl.id }}
+            label {{ ctrl_def.label }}
+                @ for {{ ctrl_def.id }}
             span 
                 class check

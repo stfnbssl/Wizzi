@@ -17,6 +17,9 @@
         "node": ">=8"
     },
     "preferGlobal": true,
+    "scripts": {
+        "start": "node examples/create"
+    },
     "bin": {
         "wizzi": "bin/wizzi.js"
     },

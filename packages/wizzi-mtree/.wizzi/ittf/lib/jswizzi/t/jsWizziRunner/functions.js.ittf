@@ -4,7 +4,9 @@
 		var 
 			decl objbase
 			decl value
-		# log 'wizzi-mtree.jswizzi.runner.functions.FunctionCall'
+		
+        # log 'wizzi-mtree.jswizzi.runner.functions.FunctionCall, node.name', node.name
+        # log 'wizzi-mtree.jswizzi.runner.functions.FunctionCall, ctx.values', ctx.values
         if node.name.base
 			checked_run_set( objbase, FunctionCall node.name.base
                 _ runner
@@ -12,11 +14,11 @@
                     @ ctx
         else 
             set objbase = ctx.values
-		if _.isObject(objbase) == false
+		if objbase == null || typeof(objbase) == 'undefined'
 			return
 				_ local_error
 					@ ctx
-					@ 'The value must be an object. It is "' + getTypeDescription(obj) + '".'
+					@ 'The value ' + node.name.base + ' must be an object. It is undefined'
 					@ node.name.base
 					@ node
 					@ 'FunctionCall'
@@ -41,6 +43,7 @@
 		if verify.isFunction(f)
 			try
 				var v = objbase[node.name.name].apply(objbase, args)
+                # log 'jsWizziRunner.FunctionCall.name.result', node.name.name, v
 				return v
 			catch ex
 				return
@@ -60,7 +63,9 @@
             { 
 
     runner( FunctionDeclaration_Call, data
-		# log 'wizzi-mtree.jswizzi.runner.functions.FunctionDeclaration_Call'
+        # log 'wizzi-mtree.jswizzi.runner.functions.FunctionDeclaration_Call, node.params', node.params
+        # log 'wizzi-mtree.jswizzi.runner.functions.FunctionDeclaration_Call, node.body', node.body
+        
 		var save_brick_key = ctx.get_currentMTreeBrickKey()
 	    var ctx = ctx.push()
         for var i = 0; i < node.params.length; i++
@@ -70,6 +75,7 @@
                 _ ctx.declareCallParam
                     @ node.params[i].name
                     @ data[i]
+        # log 'wizzi-mtree.jswizzi.runner.functions.FunctionDeclaration_Call, ctx.callContext.values', ctx.callContext.values
         checked_run( state, FunctionCall node.body
             _ runner
                 @ node.body

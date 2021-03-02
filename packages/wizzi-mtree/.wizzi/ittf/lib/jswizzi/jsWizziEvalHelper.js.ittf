@@ -134,7 +134,7 @@
                     set ret.templatedValue = templatedValue
                     return ret
 				
-				# log 'interpolated result', ret
+				# log 'wizzi-mtree.JsWizziEvalHelper.ip.interpolated result', ret
 				
 				# Stop 7/7/17 if hasMacro
 				set ret = remacro(ret)
@@ -147,16 +147,12 @@
 						_ this.jsWizziContext.set_MTreeBrickEvalContext(save)
 			
 			catch ex
-				
 				var mTreeBrickData = this.loadHistory.getMTreeBrickData(brickKey)
 				var mixerMTreeBrickData = this.loadHistory.getMTreeBrickData(mTreeBrickData.mTreeBrick.$mixerBrickKey)
 				var mixerUri = mixerMTreeBrickData ? mixerMTreeBrickData.ittfDocumentUri : 'root model';
 				log 'wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.saved ip.currentMTreeBrickKey', save, 'mTreeBrickData.evalContext', mTreeBrickData.evalContext
-
 				log 'wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.values.' + util.inspect(this.jsWizziContext.getValues(), {depth: 2})
-
                 log 'wizzi-mtree.JsWizziEvalHelper.ip.catch.ex.message', ex.message
-
 				return 
                     $*
 					_ error

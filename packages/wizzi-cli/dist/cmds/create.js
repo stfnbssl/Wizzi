@@ -10,9 +10,9 @@ const chalk = require('chalk');
 const wizzi = require('wizzi');
 var inquirer = require('inquirer');
 module.exports = (args) => {
-    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'wizzi_plugin'), {
+    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'express'), {
             cliCtx: {
-                pkg_name: "lambda", 
+                pkg_name: "tau_express", 
                 wizzi_plugin_type: "syntax_structure", 
                 author: {
                     
@@ -31,7 +31,7 @@ module.exports = (args) => {
                 ]
             }
         }, {
-            destFolder: path.join(process.cwd(), 'lambda'), 
+            destFolder: path.join(process.cwd(), 'tau_express'), 
             copyInclude: ['*'], 
             copyExclude: []
         }, function(err, genFolderResult) {

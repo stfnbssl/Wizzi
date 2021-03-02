@@ -213,8 +213,8 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -300,15 +300,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_463
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -332,12 +332,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Gioco&nbsp;e&nbsp;imparo
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Gioco&nbsp;e&nbsp;imparo
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -370,15 +370,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_441
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -402,12 +402,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Sulla&nbsp;pancia&nbsp;per&nbsp;guardarsi&nbsp;e&nbsp;giocare&nbsp;insieme
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Sulla&nbsp;pancia&nbsp;per&nbsp;guardarsi&nbsp;e&nbsp;giocare&nbsp;insieme
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -462,7 +462,7 @@ docx ${category}
 			+ Questa&nbsp;posizione&nbsp;è&nbsp;un&nbsp;nuovo&nbsp;modo&nbsp;per&nbsp;giocare&nbsp;insieme&nbsp;e guardare&nbsp;il&nbsp;mondo&nbsp;da&nbsp;un&nbsp;altro&nbsp;punto&nbsp;di&nbsp;vista, 
 				style big
 				size 24
-			+ ma&nbsp;se&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;mostra&nbsp;di&nbsp;non&nbsp;essere&nbsp;a&nbsp;proprio&nbsp;agio&nbsp;non&nbsp;insistere, riprova&nbsp;in&nbsp;altri&nbsp;momenti.&nbsp;E'&nbsp;importante&nbsp;che&nbsp;gradatamente&nbsp;arrivi&nbsp;a&nbsp;passare almeno&nbsp;30'&nbsp;al&nbsp;giorno&nbsp;a&nbsp;pancia&nbsp;in&nbsp;giu.
+			+ ma&nbsp;se&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;mostra&nbsp;di&nbsp;non&nbsp;essere&nbsp;a&nbsp;proprio&nbsp;agio&nbsp;non&nbsp;insistere, riprova&nbsp;in&nbsp;altri&nbsp;momenti.&nbsp;E'&nbsp;importante&nbsp;che&nbsp;gradatamente&nbsp;arrivi&nbsp;a&nbsp;passare almeno&nbsp;30'&nbsp;al&nbsp;giorno&nbsp;a&nbsp;pancia&nbsp;in&nbsp;giù.
 				style big
 				size 24
 		p
@@ -481,15 +481,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_442
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -513,12 +513,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Scopro&nbsp;gli&nbsp;oggetti 
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Scopro&nbsp;gli&nbsp;oggetti 
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -570,15 +570,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_443
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -602,12 +602,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Porto&nbsp;i&nbsp;pedi&nbsp;in&nbsp;bocca&nbsp;e&nbsp;provo&nbsp;a&nbsp;girarmi
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Porto&nbsp;i&nbsp;pedi&nbsp;in&nbsp;bocca&nbsp;e&nbsp;provo&nbsp;a&nbsp;girarmi
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -665,15 +665,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_444
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -697,12 +697,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Rotoliamo&nbsp;insieme
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Rotoliamo&nbsp;insieme
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -717,10 +717,10 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Tra&nbsp;non&nbsp;molto&nbsp;sarà&nbsp;capace&nbsp;di&nbsp;rotolare. Per&nbsp;aiutare&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;a&nbsp;imparare&nbsp;a  rotolarsi,&nbsp;stendilo&nbsp;sul&nbsp;fianco&nbsp;su una&nbsp;a&nbsp;coperta. Solleva&nbsp;delicatamente&nbsp;la&nbsp;coperta&nbsp;per&nbsp;aiutarlo&nbsp;a&nbsp;rotolare. Premialo&nbsp;con&nbsp;grandi&nbsp;sorrisi&nbsp;e&nbsp;abbracci&nbsp;quando&nbsp;riescea&nbsp;girarsi.&nbsp;Potete&nbsp;anche&nbsp;farlo
+			+ Tra&nbsp;non&nbsp;molto&nbsp;sarà&nbsp;capace&nbsp;di&nbsp;rotolare. Per&nbsp;aiutare&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;a&nbsp;imparare&nbsp;a  rotolarsi,&nbsp;stendilo&nbsp;sul&nbsp;fianco&nbsp;su una&nbsp;a&nbsp;coperta. Solleva&nbsp;delicatamente&nbsp;la&nbsp;coperta&nbsp;per&nbsp;aiutarlo&nbsp;a&nbsp;rotolare. Premialo&nbsp;con&nbsp;grandi&nbsp;sorrisi&nbsp;e&nbsp;abbracci&nbsp;quando&nbsp;riesce&nbsp;a&nbsp;girarsi.&nbsp;Potete&nbsp;anche&nbsp;farlo
 				style big
 				size 24
-			+  insieme&nbsp;sdraiandiovi&nbsp;su&nbsp;un&nbsp;tappeto&nbsp;pulito &nbsp;sarà&nbsp;molto&nbsp;divertente&nbsp;e&nbsp;imitandoti&nbsp;imparerà. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+			+  insieme&nbsp;sdraiandovi&nbsp;su&nbsp;un&nbsp;tappeto&nbsp;pulito &nbsp;sarà&nbsp;molto&nbsp;divertente&nbsp;e&nbsp;imitandoti&nbsp;imparerà. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 				style big
 				size 24
 		p
@@ -765,7 +765,7 @@ docx ${category}
 				style big_big_strong
 				bold
 				size 24
-			+  Questo&nbsp;dito&nbsp;e’&nbsp;il&nbsp;piu’&nbsp;ciccione:&nbsp;s’e’&nbsp;mangiato&nbsp;un&nbsp;bel&nbsp;montone; Questo&nbsp;dito&nbsp;e’&nbsp;un&nbsp;po’&nbsp;piu’&nbsp;snello:&nbsp;s’è mangiato&nbsp;un&nbsp;ravanello;&nbsp;Questo&nbsp;dito&nbsp;e’&nbsp;un&nbsp;po’&nbsp;piu’&nbsp;lungo:&nbsp;s’è mangiato&nbsp;un&nbsp;pan&nbsp;bislungo; Questo&nbsp;dito&nbsp;e’&nbsp;un&nbsp;po’&nbsp;piu’&nbsp;corto:&nbsp;un&nbsp;ovin&nbsp;gli&nbsp;e’&nbsp;andato&nbsp;storto; Questo&nbsp;dito&nbsp;e’&nbsp;il&nbsp;piu’&nbsp;piccino&nbsp;e&nbsp;io&nbsp;gli&nbsp;do un&nbsp;bel&nbsp;bacino!
+			+  Questo&nbsp;dito&nbsp;e’&nbsp;il&nbsp;più&nbsp;ciccione:&nbsp;s’e’&nbsp;mangiato&nbsp;un&nbsp;bel&nbsp;montone; Questo&nbsp;dito&nbsp;e’&nbsp;un&nbsp;po’&nbsp;più&nbsp;snello:&nbsp;s’è mangiato&nbsp;un&nbsp;ravanello;&nbsp;Questo&nbsp;dito&nbsp;e’&nbsp;un&nbsp;po’&nbsp;più&nbsp;lungo:&nbsp;s’è mangiato&nbsp;un&nbsp;pan&nbsp;bislungo; Questo&nbsp;dito&nbsp;e’&nbsp;un&nbsp;po’&nbsp;più&nbsp;corto:&nbsp;un&nbsp;ovin&nbsp;gli&nbsp;e’&nbsp;andato&nbsp;storto; Questo&nbsp;dito&nbsp;e’&nbsp;il&nbsp;più&nbsp;piccino&nbsp;e&nbsp;io&nbsp;gli&nbsp;do un&nbsp;bel&nbsp;bacino!
 				style big_big
 				size 24
 		p  &nbsp; 
@@ -780,15 +780,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_467
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -812,16 +812,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Guardo,&nbsp;tocco,&nbsp;ascolto &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-			style h2_strong
-			bold
-			size 28
-		+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Guardo,&nbsp;tocco,&nbsp;ascolto &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+				style h2_strong
+				bold
+				size 28
+			+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -899,15 +899,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_468
 		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -931,12 +931,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Muoversi&nbsp;è&nbsp;una&nbsp;necessità&nbsp;vitale
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Muoversi&nbsp;è&nbsp;una&nbsp;necessità&nbsp;vitale
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -949,7 +949,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ molto&nbsp;di&nbsp;più&nbsp;che&nbsp;un&nbsp;piacere&nbsp;funzionale:&nbsp;è&nbsp;un&nbsp;bisogno,&nbsp;una&nbsp;necessità&nbsp;vitale.&nbsp;Attraverso&nbsp;la&nbsp;possibilità&nbsp;di&nbsp;muoversi&nbsp;liberamente&nbsp;il&nbsp;piccolo&nbsp;acquisisce&nbsp;consapevolezza&nbsp;di&nbsp;sé&nbsp;e&nbsp;del&nbsp;proprio&nbsp;corpo&nbsp;e&nbsp;dell’ambiente&nbsp;che&nbsp;lo&nbsp;circonda.  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+			+ molto&nbsp;di&nbsp;più&nbsp;che&nbsp;un&nbsp;piacere, è&nbsp;un&nbsp;bisogno,&nbsp;una&nbsp;necessità&nbsp;vitale.&nbsp;Attraverso&nbsp;la&nbsp;possibilità&nbsp;di&nbsp;muoversi&nbsp;liberamente&nbsp;il&nbsp;piccolo&nbsp;acquisisce&nbsp;consapevolezza&nbsp;di&nbsp;sé&nbsp;e&nbsp;del&nbsp;proprio&nbsp;corpo&nbsp;e&nbsp;dell’ambiente&nbsp;che&nbsp;lo&nbsp;circonda.  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
 				style big
 				size 24
 		p
@@ -1064,15 +1064,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_470
 		h2 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1096,12 +1096,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Alla&nbsp;conquista&nbsp;del&nbsp;mondo
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Alla&nbsp;conquista&nbsp;del&nbsp;mondo
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1236,15 +1236,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_471
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1268,12 +1268,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Sono&nbsp;interessato&nbsp;al&nbsp;mondo
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Sono&nbsp;interessato&nbsp;al&nbsp;mondo
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1300,7 +1300,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Mentre è&nbsp;seduto&nbsp;e&nbsp;ti&nbsp;osserva&nbsp;prova&nbsp;a&nbsp;nascondere&nbsp;un&nbsp;giocattolo&nbsp;sotto&nbsp;una&nbsp;coperta,&nbsp;probabilmente&nbsp;lo&nbsp;andrà&nbsp;a&nbsp;cercare&nbsp;e&nbsp;se&nbsp;non&nbsp;lo&nbsp;fa&nbsp;spontaneamente&nbsp;incoraggalo&nbsp;a&nbsp;farlo&nbsp;tirando&nbsp;tu  la&nbsp;coperta&nbsp;e...&nbsp;sorpresa!!!  
+			+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Mentre è&nbsp;seduto&nbsp;e&nbsp;ti&nbsp;osserva&nbsp;prova&nbsp;a&nbsp;nascondere&nbsp;un&nbsp;giocattolo&nbsp;sotto&nbsp;una&nbsp;coperta,&nbsp;probabilmente&nbsp;lo&nbsp;andrà&nbsp;a&nbsp;cercare&nbsp;e&nbsp;se&nbsp;non&nbsp;lo&nbsp;fa&nbsp;spontaneamente&nbsp;incoraggialo&nbsp;a&nbsp;farlo&nbsp;tirando&nbsp;tu  la&nbsp;coperta&nbsp;e...&nbsp;sorpresa!!!  
 				style big
 				size 24
 		p
@@ -1346,15 +1346,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_473
 		h2 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1378,12 +1378,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;mondo&nbsp;è&nbsp;sicuro
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;mondo&nbsp;è&nbsp;sicuro
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1510,15 +1510,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_474
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1542,12 +1542,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Impilo&nbsp;e&nbsp;incolonno
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Impilo&nbsp;e&nbsp;incolonno
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1597,15 +1597,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_475
 		h2 1 anno
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1629,12 +1629,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Proteggilo&nbsp;ma&nbsp;non&nbsp;spaventarlo
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Proteggilo&nbsp;ma&nbsp;non&nbsp;spaventarlo
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1708,15 +1708,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_479
 		h2 13 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1740,12 +1740,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Curioso&nbsp;come&nbsp;uno&nbsp;scienziato
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Curioso&nbsp;come&nbsp;uno&nbsp;scienziato
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1829,15 +1829,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_482
 		h2 14 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1861,12 +1861,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;"Diritti&nbsp;naturali&nbsp;dei&nbsp;bambini"
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;"Diritti&nbsp;naturali&nbsp;dei&nbsp;bambini"
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1876,7 +1876,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ &nbsp;Conducilo&nbsp;regolarmente  al&nbsp;parco&nbsp;vicino&nbsp;casa,&nbsp;e&nbsp;tutte&nbsp;le&nbsp;volte&nbsp;che&nbsp;ne&nbsp;hai&nbsp;la&nbsp;possibilià&nbsp;in&nbsp;montagna&nbsp;o&nbsp;al&nbsp;mare&nbsp; o&nbsp;comunque&nbsp;in&nbsp;posti&nbsp;in&nbsp;cui&nbsp;abbia&nbsp;la&nbsp;possibiità&nbsp;di esplorare,&nbsp;conoscere&nbsp;mondi&nbsp;nuovi&nbsp;ed&nbsp;anche&nbsp;incontrare&nbsp;altri&nbsp;bambini.
+			+ &nbsp;Conducilo&nbsp;regolarmente  al&nbsp;parco&nbsp;vicino&nbsp;casa,&nbsp;e&nbsp;tutte&nbsp;le&nbsp;volte&nbsp;che&nbsp;puoi in&nbsp;montagna&nbsp;o&nbsp;al&nbsp;mare&nbsp; o&nbsp;comunque&nbsp;in&nbsp;posti&nbsp;in&nbsp;cui&nbsp;abbia&nbsp;la&nbsp;possibilità&nbsp;di esplorare,&nbsp;conoscere&nbsp;mondi&nbsp;nuovi&nbsp;ed&nbsp;anche&nbsp;incontrare&nbsp;altri&nbsp;bambini.
 				style big
 				size 24
 		p
@@ -1958,15 +1958,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_483
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1990,12 +1990,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Giochiamo&nbsp;insieme
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Giochiamo&nbsp;insieme
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2015,30 +2015,30 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Balla&nbsp;e&nbsp;fermati&nbsp;con&nbsp;la&nbsp;musica &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-			style h2_strong
-			bold
-			size 28
-		+ Mentre&nbsp;ascoltate&nbsp;una &nbsp;musica&nbsp; incoraggia&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;a&nbsp;ballare&nbsp;o&nbsp;muoversi&nbsp;come&nbsp;preferisce. Quindi&nbsp;istruiscilo&nbsp;a&nbsp;fermarsi&nbsp;quando&nbsp;la&nbsp;musica&nbsp;finisce. Questo&nbsp;tipo&nbsp;di&nbsp;attività&nbsp;rafforza  le&nbsp;capacità&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;l'autoregolazione&nbsp;esercitandosi&nbsp;a&nbsp;fermarsi&nbsp;e&nbsp;ripartire&nbsp;con&nbsp;la&nbsp;musica. Questa&nbsp;è&nbsp;un'abilità&nbsp;molto&nbsp;utile&nbsp;per&nbsp;quando&nbsp;andrà  a&nbsp;scuola&nbsp;e&nbsp;dovrà seguire indicazioni&nbsp;e&nbsp;regole.
-			style h2
-			bold
-			size 28
+				before 432
+				after 72
+			+ Balla&nbsp;e&nbsp;fermati&nbsp;con&nbsp;la&nbsp;musica &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+				style h2_strong
+				bold
+				size 28
+			+ Mentre&nbsp;ascoltate&nbsp;una &nbsp;musica&nbsp; incoraggia&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;a&nbsp;ballare&nbsp;o&nbsp;muoversi&nbsp;come&nbsp;preferisce. Quindi&nbsp;istruiscilo&nbsp;a&nbsp;fermarsi&nbsp;quando&nbsp;la&nbsp;musica&nbsp;finisce. Questo&nbsp;tipo&nbsp;di&nbsp;attività&nbsp;rafforza  le&nbsp;capacità&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;l'autoregolazione&nbsp;esercitandosi&nbsp;a&nbsp;fermarsi&nbsp;e&nbsp;ripartire&nbsp;con&nbsp;la&nbsp;musica. Questa&nbsp;è&nbsp;un'abilità&nbsp;molto&nbsp;utile&nbsp;per&nbsp;quando&nbsp;andrà  a&nbsp;scuola&nbsp;e&nbsp;dovrà seguire indicazioni&nbsp;e&nbsp;regole.
+				style h2
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Crea&nbsp;un&nbsp;"carro"&nbsp;fatto&nbsp;in&nbsp;casa &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
-			style h2_strong
-			bold
-			size 28
-		p Attacca&nbsp;uno&nbsp;spago&nbsp;o&nbsp;un&nbsp;nastro&nbsp;di&nbsp;30.35&nbsp;cm a&nbsp;una&nbsp;scatola&nbsp;da&nbsp;scarpe&nbsp;usando&nbsp;un&nbsp;nastro&nbsp;robusto. Mostra&nbsp;al&nbsp;tuo&nbsp;bambino&nbsp;come&nbsp;può&nbsp;tirare&nbsp;la&nbsp;corda&nbsp;per&nbsp;far&nbsp;muovere&nbsp;la&nbsp;scatola. &nbsp;Dagli&nbsp;un&nbsp;compito&nbsp;da&nbsp;far&nbsp;svolgere&nbsp;al suo&nbsp;"carro",&nbsp;come&nbsp;portare degli&nbsp;oggetti&nbsp;da&nbsp;riporre&nbsp;nella&nbsp;sua&nbsp;stanza o&nbsp;consegnare&nbsp;la&nbsp;posta&nbsp;al&nbsp;nonno&nbsp;in&nbsp;un'altra&nbsp;stanza. Questo&nbsp;tipo&nbsp;di&nbsp;attività&nbsp;sviluppa&nbsp;capacità&nbsp;fisiche&nbsp;e&nbsp;di&nbsp;risoluzione&nbsp;dei&nbsp;problemi&nbsp;mentre&nbsp;impara&nbsp;a&nbsp;usare&nbsp;un&nbsp;oggetto&nbsp;come&nbsp;uno&nbsp;"strumento"&nbsp;(tirando&nbsp;la&nbsp;corda&nbsp;per&nbsp;spostare&nbsp;la&nbsp;scatola.)
+				before 432
+				after 72
+			+ Crea&nbsp;un&nbsp;"carro"&nbsp;fatto&nbsp;in&nbsp;casa &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+				style h2_strong
+				bold
+				size 28
+		p
 			font Garamond
-			spacing Attacca&nbsp;uno&nbsp;spago&nbsp;o&nbsp;un&nbsp;nastro&nbsp;di&nbsp;30.35&nbsp;cm a&nbsp;una&nbsp;scatola&nbsp;da&nbsp;scarpe&nbsp;usando&nbsp;un&nbsp;nastro&nbsp;robusto. Mostra&nbsp;al&nbsp;tuo&nbsp;bambino&nbsp;come&nbsp;può&nbsp;tirare&nbsp;la&nbsp;corda&nbsp;per&nbsp;far&nbsp;muovere&nbsp;la&nbsp;scatola. &nbsp;Dagli&nbsp;un&nbsp;compito&nbsp;da&nbsp;far&nbsp;svolgere&nbsp;al suo&nbsp;"carro",&nbsp;come&nbsp;portare degli&nbsp;oggetti&nbsp;da&nbsp;riporre&nbsp;nella&nbsp;sua&nbsp;stanza o&nbsp;consegnare&nbsp;la&nbsp;posta&nbsp;al&nbsp;nonno&nbsp;in&nbsp;un'altra&nbsp;stanza. Questo&nbsp;tipo&nbsp;di&nbsp;attività&nbsp;sviluppa&nbsp;capacità&nbsp;fisiche&nbsp;e&nbsp;di&nbsp;risoluzione&nbsp;dei&nbsp;problemi&nbsp;mentre&nbsp;impara&nbsp;a&nbsp;usare&nbsp;un&nbsp;oggetto&nbsp;come&nbsp;uno&nbsp;"strumento"&nbsp;(tirando&nbsp;la&nbsp;corda&nbsp;per&nbsp;spostare&nbsp;la&nbsp;scatola.)
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+ Attacca&nbsp;uno&nbsp;spago&nbsp;o&nbsp;un&nbsp;nastro&nbsp;di&nbsp;30.35&nbsp;cm a&nbsp;una&nbsp;scatola&nbsp;da&nbsp;scarpe&nbsp;usando&nbsp;un&nbsp;nastro&nbsp;robusto. Mostra&nbsp;al&nbsp;tuo&nbsp;bambino&nbsp;come&nbsp;può&nbsp;tirare&nbsp;la&nbsp;corda&nbsp;per&nbsp;far&nbsp;muovere&nbsp;la&nbsp;scatola. &nbsp;Dagli&nbsp;un&nbsp;compito&nbsp;da&nbsp;far&nbsp;svolgere&nbsp;al suo&nbsp;"carro",&nbsp;come&nbsp;portare degli&nbsp;oggetti&nbsp;da&nbsp;riporre&nbsp;nella&nbsp;sua&nbsp;stanza o&nbsp;consegnare&nbsp;la&nbsp;posta&nbsp;al&nbsp;nonno&nbsp;in&nbsp;un'altra&nbsp;stanza. Questo&nbsp;tipo&nbsp;di&nbsp;attività&nbsp;sviluppa&nbsp;capacità&nbsp;fisiche&nbsp;e&nbsp;di&nbsp;risoluzione&nbsp;dei&nbsp;problemi&nbsp;mentre&nbsp;impara&nbsp;a&nbsp;usare&nbsp;un&nbsp;oggetto&nbsp;come&nbsp;uno&nbsp;"strumento"&nbsp;(tirando&nbsp;la&nbsp;corda&nbsp;per&nbsp;spostare&nbsp;la&nbsp;scatola.)
 				style h2
 				bold
@@ -2046,17 +2046,17 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ciao,&nbsp;arrivederci
-			style h2_strong
-			bold
-			size 28
-		p Crea&nbsp;un&nbsp;tunnel&nbsp;da&nbsp;una&nbsp;grande&nbsp;scatola&nbsp;di&nbsp;cartone&nbsp;aprendo&nbsp;entrambe&nbsp;le&nbsp;estremità.&nbsp;Il&nbsp;tuo&nbsp;bambino&nbsp;si&nbsp;pone&nbsp;ad&nbsp; un'estremità&nbsp;del&nbsp;tunnel&nbsp;e&nbsp;tu&nbsp;a&nbsp;quella&nbsp;opposta. Sbircia&nbsp;la&nbsp;sua&nbsp;faccia&nbsp;nel&nbsp;tunnel&nbsp;e&nbsp;dì:&nbsp;"Ciao!" Quindi&nbsp;allontanati&nbsp;dal&nbsp;tunnel&nbsp;(cosicchè non&nbsp;possa vederti)&nbsp;e&nbsp;dì:&nbsp;"Ciao!"  Cercherà di&nbsp;comunicare&nbsp;con&nbsp;te&nbsp;strisciando&nbsp;per&nbsp;trovarti&nbsp;o&nbsp;proverà&nbsp;a&nbsp;ripetere&nbsp;i tuoi&nbsp;"ciao"&nbsp;e&nbsp;"ciao". Questa&nbsp;attività&nbsp;incoraggia&nbsp;il&nbsp;linguaggio,&nbsp;la&nbsp;risoluzione&nbsp;dei&nbsp;problemi&nbsp;e&nbsp;favorisce&nbsp;l'acquisizione&nbsp;di&nbsp;nuove abilità&nbsp;fisiche.
+				before 432
+				after 72
+			+ Ciao,&nbsp;arrivederci
+				style h2_strong
+				bold
+				size 28
+		p
 			font Garamond
-			spacing Crea&nbsp;un&nbsp;tunnel&nbsp;da&nbsp;una&nbsp;grande&nbsp;scatola&nbsp;di&nbsp;cartone&nbsp;aprendo&nbsp;entrambe&nbsp;le&nbsp;estremità.&nbsp;Il&nbsp;tuo&nbsp;bambino&nbsp;si&nbsp;pone&nbsp;ad&nbsp; un'estremità&nbsp;del&nbsp;tunnel&nbsp;e&nbsp;tu&nbsp;a&nbsp;quella&nbsp;opposta. Sbircia&nbsp;la&nbsp;sua&nbsp;faccia&nbsp;nel&nbsp;tunnel&nbsp;e&nbsp;dì:&nbsp;"Ciao!" Quindi&nbsp;allontanati&nbsp;dal&nbsp;tunnel&nbsp;(cosicchè non&nbsp;possa vederti)&nbsp;e&nbsp;dì:&nbsp;"Ciao!"  Cercherà di&nbsp;comunicare&nbsp;con&nbsp;te&nbsp;strisciando&nbsp;per&nbsp;trovarti&nbsp;o&nbsp;proverà&nbsp;a&nbsp;ripetere&nbsp;i tuoi&nbsp;"ciao"&nbsp;e&nbsp;"ciao". Questa&nbsp;attività&nbsp;incoraggia&nbsp;il&nbsp;linguaggio,&nbsp;la&nbsp;risoluzione&nbsp;dei&nbsp;problemi&nbsp;e&nbsp;favorisce&nbsp;l'acquisizione&nbsp;di&nbsp;nuove abilità&nbsp;fisiche.
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+ Crea&nbsp;un&nbsp;tunnel&nbsp;da&nbsp;una&nbsp;grande&nbsp;scatola&nbsp;di&nbsp;cartone&nbsp;aprendo&nbsp;entrambe&nbsp;le&nbsp;estremità.&nbsp;Il&nbsp;tuo&nbsp;bambino&nbsp;si&nbsp;pone&nbsp;ad&nbsp; un'estremità&nbsp;del&nbsp;tunnel&nbsp;e&nbsp;tu&nbsp;a&nbsp;quella&nbsp;opposta. Sbircia&nbsp;la&nbsp;sua&nbsp;faccia&nbsp;nel&nbsp;tunnel&nbsp;e&nbsp;dì:&nbsp;"Ciao!" Quindi&nbsp;allontanati&nbsp;dal&nbsp;tunnel&nbsp;(cosicchè non&nbsp;possa vederti)&nbsp;e&nbsp;dì:&nbsp;"Ciao!"  Cercherà di&nbsp;comunicare&nbsp;con&nbsp;te&nbsp;strisciando&nbsp;per&nbsp;trovarti&nbsp;o&nbsp;proverà&nbsp;a&nbsp;ripetere&nbsp;i tuoi&nbsp;"ciao"&nbsp;e&nbsp;"ciao". Questa&nbsp;attività&nbsp;incoraggia&nbsp;il&nbsp;linguaggio,&nbsp;la&nbsp;risoluzione&nbsp;dei&nbsp;problemi&nbsp;e&nbsp;favorisce&nbsp;l'acquisizione&nbsp;di&nbsp;nuove abilità&nbsp;fisiche.
 				style h2
 				bold
@@ -2064,15 +2064,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_484
 		h2 16 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2096,12 +2096,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ L'importanza&nbsp;dell'imitazione
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ L'importanza&nbsp;dell'imitazione
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2114,7 +2114,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ ,&nbsp;il&nbsp;bambino&nbsp;comincia&nbsp;ad&nbsp;imitare le&nbsp;azioni&nbsp;che&nbsp;vedono&nbsp;compiere&nbsp;intorno&nbsp;a&nbsp;loro (cullare,&nbsp;dar&nbsp;da&nbsp;mangiare&nbsp;alle&nbsp;bambole,&nbsp;guidare&nbsp;la&nbsp;macchina).&nbsp;Gli&nbsp;oggetti&nbsp;vangono&nbsp;ancora&nbsp;usati&nbsp;per&nbsp;quella&nbsp;che&nbsp;è&nbsp;la&nbsp;loro&nbsp;reale&nbsp;funzione,&nbsp;ma&nbsp;si&nbsp;tratta&nbsp;di&nbsp;un
+			+ ,&nbsp;il&nbsp;bambino&nbsp;comincia&nbsp;ad&nbsp;imitare le&nbsp;azioni&nbsp;che&nbsp;vedono&nbsp;compiere&nbsp;intorno&nbsp;a&nbsp;loro (cullare,&nbsp;dar&nbsp;da&nbsp;mangiare&nbsp;alle&nbsp;bambole,&nbsp;guidare&nbsp;la&nbsp;macchina).&nbsp;Gli&nbsp;oggetti&nbsp;vengono&nbsp;ancora&nbsp;usati&nbsp;per&nbsp;quella&nbsp;che&nbsp;è&nbsp;la&nbsp;loro&nbsp;reale&nbsp;funzione,&nbsp;ma&nbsp;si&nbsp;tratta&nbsp;di&nbsp;un
 				style big
 				size 24
 			+ &nbsp;passo&nbsp;fondamentale nelle&nbsp;tappe&nbsp;dello&nbsp;sviluppo&nbsp;del&nbsp;bambino.  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -2141,7 +2141,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ replicando i&nbsp;gesti&nbsp;e&nbsp;le&nbsp;azioni&nbsp;che&nbsp;si svolgono  attorno&nbsp;a&nbsp;lui, pulirà&nbsp;casa&nbsp;,&nbsp;guiderà&nbsp;un'automobile,&nbsp;darà&nbsp;da&nbsp;mangiare&nbsp;alla&nbsp;bambola.&nbsp;ripetendo&nbsp;gesti&nbsp;e&nbsp;azioni&nbsp;conosciuti,&nbsp;e&nbsp;esibirà&nbsp;queste&nbsp;sue&nbsp;nuove&nbsp;capacità rivolgendosi a&nbsp;voi,&nbsp;il&nbsp;suo pubblico &nbsp;preferito.&nbsp;Incoraggiatelo &nbsp;e&nbsp;state&nbsp;al&nbsp;gioco,&nbsp;capirà&nbsp;che&nbsp;quello&nbsp;che&nbsp;fa&nbsp;è&nbsp;importante&nbsp;per&nbsp;voi&nbsp;e&nbsp;sarà&nbsp;stimolato&nbsp;a&nbsp;provarci&nbsp;ancora  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Dopo&nbsp;qualche&nbsp;tempo&nbsp;vedrete il&nbsp;vostro&nbsp;piccolo&nbsp;approfondire&nbsp;sempre&nbsp;di&nbsp;più&nbsp;il&nbsp;suo&nbsp;gioco&nbsp;di&nbsp;finzione:&nbsp;esempio&nbsp;classico&nbsp;è&nbsp;quello&nbsp;del&nbsp;caffè&nbsp;finto&nbsp;offerto&nbsp;alla&nbsp;bambola.&nbsp;Il&nbsp;bambino&nbsp;sa&nbsp;che&nbsp;la&nbsp;tazza&nbsp;è&nbsp;vuota&nbsp;e&nbsp;che&nbsp;la&nbsp;situazione&nbsp;è&nbsp;una&nbsp;finzione,&nbsp;ma&nbsp;l’oggetto&nbsp;nel&nbsp;gioco&nbsp;è&nbsp;ancora&nbsp;utilizzato&nbsp;secondo&nbsp;la&nbsp;sua&nbsp;funzione&nbsp;“reale”&nbsp;(la&nbsp;tazza&nbsp;anche&nbsp;se&nbsp;vuota&nbsp;è&nbsp;usata come&nbsp;contenitore&nbsp;di&nbsp;liquido&nbsp;da&nbsp;bere).&nbsp;Il&nbsp;gioco&nbsp;di&nbsp;finzione&nbsp;si&nbsp;trsformerà&nbsp;progressivamente&nbsp;in&nbsp;gioco&nbsp;simbolico &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+			+ replicando i&nbsp;gesti&nbsp;e&nbsp;le&nbsp;azioni&nbsp;che&nbsp;si svolgono  attorno&nbsp;a&nbsp;lui, pulirà&nbsp;casa&nbsp;,&nbsp;guiderà&nbsp;un'automobile,&nbsp;darà&nbsp;da&nbsp;mangiare&nbsp;alla&nbsp;bambola.&nbsp;ripetendo&nbsp;gesti&nbsp;e&nbsp;azioni&nbsp;conosciuti,&nbsp;e&nbsp;esibirà&nbsp;queste&nbsp;sue&nbsp;nuove&nbsp;capacità rivolgendosi a&nbsp;voi,&nbsp;il&nbsp;suo pubblico &nbsp;preferito.&nbsp;Incoraggiatelo &nbsp;e&nbsp;state&nbsp;al&nbsp;gioco,&nbsp;capirà&nbsp;che&nbsp;quello&nbsp;che&nbsp;fa&nbsp;è&nbsp;importante&nbsp;per&nbsp;voi&nbsp;e&nbsp;sarà&nbsp;stimolato&nbsp;a&nbsp;provarci&nbsp;ancora  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Dopo&nbsp;qualche&nbsp;tempo&nbsp;vedrete il&nbsp;vostro&nbsp;piccolo&nbsp;approfondire&nbsp;sempre&nbsp;di&nbsp;più&nbsp;il&nbsp;suo&nbsp;gioco&nbsp;di&nbsp;finzione:&nbsp;esempio&nbsp;classico&nbsp;è&nbsp;quello&nbsp;del&nbsp;caffè&nbsp;finto&nbsp;offerto&nbsp;alla&nbsp;bambola.&nbsp;Il&nbsp;bambino&nbsp;sa&nbsp;che&nbsp;la&nbsp;tazza&nbsp;è&nbsp;vuota&nbsp;e&nbsp;che&nbsp;la&nbsp;situazione&nbsp;è&nbsp;una&nbsp;finzione,&nbsp;ma&nbsp;l’oggetto&nbsp;nel&nbsp;gioco&nbsp;è&nbsp;ancora&nbsp;utilizzato&nbsp;secondo&nbsp;la&nbsp;sua&nbsp;funzione&nbsp;“reale”&nbsp;(la&nbsp;tazza&nbsp;anche&nbsp;se&nbsp;vuota&nbsp;è&nbsp;usata come&nbsp;contenitore&nbsp;di&nbsp;liquido&nbsp;da&nbsp;bere).&nbsp;Il&nbsp;gioco&nbsp;di&nbsp;finzione&nbsp;si&nbsp;trasformerà&nbsp;progressivamente&nbsp;in&nbsp;gioco&nbsp;simbolico &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 				style big
 				size 24
 		p
@@ -2174,15 +2174,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_485
 		h2 17 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2206,12 +2206,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Creiamo,&nbsp;ricicliamo&nbsp;e&nbsp;giochiamo
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Creiamo,&nbsp;ricicliamo&nbsp;e&nbsp;giochiamo
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2364,15 +2364,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_505
 		h2 18 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2396,12 +2396,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Maggiori&nbsp;capacità,&nbsp;giochi&nbsp;diversi
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Maggiori&nbsp;capacità,&nbsp;giochi&nbsp;diversi
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2536,12 +2536,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Si&nbsp;muove&nbsp;sempre&nbsp;di&nbsp;più
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Si&nbsp;muove&nbsp;sempre&nbsp;di&nbsp;più
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2555,7 +2555,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Giocatttoli&nbsp;che&nbsp;puoi&nbsp;proporre:
+			+ Giocattoli&nbsp;che&nbsp;puoi&nbsp;proporre:
 				style big_big
 				size 24
 		ul
@@ -2629,11 +2629,11 @@ docx ${category}
 			spacing  
 				before 72
 				after 36
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -2641,15 +2641,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_506
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2673,12 +2673,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ripetendo&nbsp;imparo
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Ripetendo&nbsp;imparo
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2694,14 +2694,13 @@ docx ${category}
 			+ Più&nbsp;si&nbsp;esercita&nbsp;ed&nbsp;esprime&nbsp;nuove&nbsp;competenze,&nbsp;più&nbsp;è&nbsp;pronto&nbsp;ad affrontare&nbsp;nuove&nbsp;sfide&nbsp;e&nbsp;l'apprendimento&nbsp;continua.
 				style big
 				size 24
-				br
 			+ Quindi,&nbsp;quando&nbsp;sei&nbsp;tentato&nbsp;di&nbsp;nascondere&nbsp;quel&nbsp;gioco con&nbsp;il&nbsp;quale non&nbsp;pensi&nbsp;di&nbsp;poter&nbsp;giocare&nbsp;ancora&nbsp;una&nbsp;volta,&nbsp;ricorda&nbsp;il&nbsp;ruolo&nbsp;essenziale che&nbsp;la&nbsp;ripetizione&nbsp;gioca&nbsp;nello&nbsp;sviluppo&nbsp;di&nbsp;tuo&nbsp;figlio. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 				style big
 				size 24
-				br
 			+ E&nbsp;quando&nbsp;dopo&nbsp;averci&nbsp;provato&nbsp;e&nbsp;riprovato &nbsp;riesce&nbsp;a&nbsp;fare&nbsp;"Tutto&nbsp;da&nbsp;solo!"&nbsp;ha&nbsp;fatto&nbsp;una&nbsp;grande&nbsp;conquista&nbsp;ed&nbsp;è&nbsp;ricompensato&nbsp;da&nbsp;un&nbsp;forte&nbsp;senso&nbsp;delle proprie&nbsp;capacità. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Non&nbsp;dimenticare&nbsp;mai&nbsp;di&nbsp;dimostrargli&nbsp;apertamente&nbsp;la&nbsp;tua&nbsp;approvazione,&nbsp;vede&nbsp;se&nbsp;stesso&nbsp;attraverso&nbsp;i&nbsp;tuoi&nbsp;occhi&nbsp;e&nbsp;i&nbsp;complimenti&nbsp;che&nbsp;riceve&nbsp;da&nbsp;te &nbsp;lo&nbsp;renderanno&nbsp;più&nbsp;sicuro.
 				style big
 				size 24
+				br
 		p
 			font Garamond
 			spacing
@@ -2715,15 +2714,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_654
 		h2 20 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2747,12 +2746,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Con&nbsp;gli&nbsp;altri&nbsp;bambini&nbsp;al&nbsp;nido&nbsp;e&nbsp;al&nbsp;parco
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Con&nbsp;gli&nbsp;altri&nbsp;bambini&nbsp;al&nbsp;nido&nbsp;e&nbsp;al&nbsp;parco
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2790,15 +2789,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_655
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2822,12 +2821,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Stimoliamo&nbsp;i&nbsp;movimenti&nbsp;fini
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Stimoliamo&nbsp;i&nbsp;movimenti&nbsp;fini
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2845,7 +2844,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ &nbsp;non&nbsp;è&nbsp;importante&nbsp;solo&nbsp;per&nbsp;la&nbsp;creatività,&nbsp;ma&nbsp;anche&nbsp;per&nbsp;stimolare&nbsp;la&nbsp;manualità&nbsp;fine&nbsp;e&nbsp;per&nbsp;la&nbsp;presa&nbsp;della&nbsp;penna e&nbsp;della&nbsp;matita.&nbsp;Disegnando&nbsp;con&nbsp;i&nbsp;pastelli&nbsp;a&nbsp;cera, i&nbsp;pennarelli&nbsp;e&nbsp;il&nbsp;pennello&nbsp;i&nbsp;bambini&nbsp;acquisiranno&nbsp;sempre&nbsp;più&nbsp;forza&nbsp;nelle&nbsp;dita,&nbsp;miglioreranno&nbsp;pian&nbsp;piano&nbsp;la&nbsp;capacità&nbsp;di&nbsp;afferrafre e&nbsp;di&nbsp;modulare&nbsp;i&nbsp;movimenti&nbsp;delle&nbsp;dita&nbsp;. Lasciate  quindi&nbsp;che&nbsp;il&nbsp;vostro&nbsp;bambino&nbsp;cominci&nbsp;a&nbsp;disegnare&nbsp;fin&nbsp;dai&nbsp;primi&nbsp;anni&nbsp;di&nbsp;vita,&nbsp;dal&nbsp;momento&nbsp;in&nbsp;cui&nbsp;mostra interesse&nbsp;per&nbsp;questa&nbsp;attività&nbsp;naturale, importante&nbsp;e&nbsp;fonte&nbsp;di&nbsp;grande&nbsp;soddisfazione
+			+ &nbsp;non&nbsp;è&nbsp;importante&nbsp;solo&nbsp;per&nbsp;la&nbsp;creatività,&nbsp;ma&nbsp;anche&nbsp;per&nbsp;stimolare&nbsp;la&nbsp;manualità&nbsp;fine&nbsp;e&nbsp;per&nbsp;la&nbsp;presa&nbsp;della&nbsp;penna e&nbsp;della&nbsp;matita.&nbsp;Disegnando&nbsp;con&nbsp;i&nbsp;pastelli&nbsp;a&nbsp;cera, i&nbsp;pennarelli&nbsp;e&nbsp;il&nbsp;pennello&nbsp;i&nbsp;bambini&nbsp;acquisiranno&nbsp;sempre&nbsp;più&nbsp;forza&nbsp;nelle&nbsp;dita,&nbsp;miglioreranno&nbsp;pian&nbsp;piano&nbsp;la&nbsp;capacità&nbsp;di&nbsp;afferrare e&nbsp;di&nbsp;modulare&nbsp;i&nbsp;movimenti&nbsp;delle&nbsp;dita&nbsp;. Lasciate  quindi&nbsp;che&nbsp;il&nbsp;vostro&nbsp;bambino&nbsp;cominci&nbsp;a&nbsp;disegnare&nbsp;fin&nbsp;dai&nbsp;primi&nbsp;anni&nbsp;di&nbsp;vita,&nbsp;dal&nbsp;momento&nbsp;in&nbsp;cui&nbsp;mostra interesse&nbsp;per&nbsp;questa&nbsp;attività&nbsp;naturale, importante&nbsp;e&nbsp;fonte&nbsp;di&nbsp;grande&nbsp;soddisfazione
 				style big
 				size 24
 		p
@@ -2885,11 +2884,11 @@ docx ${category}
 			spacing  
 				before 72
 				after 36
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -2897,15 +2896,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_656
 		h2 22 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2929,12 +2928,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Giochi&nbsp;attivi&nbsp;per&nbsp;tutta&nbsp;la&nbsp;famiglia
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Giochi&nbsp;attivi&nbsp;per&nbsp;tutta&nbsp;la&nbsp;famiglia
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2949,7 +2948,7 @@ docx ${category}
 				before 72
 				after 36
 			li
-				+ Trovate&nbsp;dei&nbsp;luoghi&nbsp;per&nbsp;il&nbsp;gioco&nbsp;attivo. Cortili,&nbsp;campi&nbsp;da&nbsp;gioco&nbsp;e&nbsp;parchi&nbsp;offrono&nbsp;molto&nbsp;spazio&nbsp;per&nbsp;far&nbsp;correre&nbsp;il&nbsp;tuo&nbsp;bambino.&nbsp;Nei&nbsp;periodi&nbsp;più&nbsp;freddi&nbsp;e&nbsp;piovosi cercate&nbsp;centri&nbsp;ricreativi&nbsp;al&nbsp;coperto&nbsp;e&nbsp;parchi&nbsp;giochi.&nbsp;Ma&nbsp;ricordate&nbsp;che&nbsp;stare&nbsp;all'aperto&nbsp;anche&nbsp;quando&nbsp;fa&nbsp;freddo è&nbsp;sempre&nbsp;un&nbsp;bene,&nbsp;basta&nbsp;coprirsi&nbsp;adeguatamete 
+				+ Trovate&nbsp;dei&nbsp;luoghi&nbsp;per&nbsp;il&nbsp;gioco&nbsp;attivo. Cortili,&nbsp;campi&nbsp;da&nbsp;gioco&nbsp;e&nbsp;parchi&nbsp;offrono&nbsp;molto&nbsp;spazio&nbsp;per&nbsp;far&nbsp;correre&nbsp;il&nbsp;tuo&nbsp;bambino.&nbsp;Nei&nbsp;periodi&nbsp;più&nbsp;freddi&nbsp;e&nbsp;piovosi cercate&nbsp;centri&nbsp;ricreativi&nbsp;al&nbsp;coperto&nbsp;e&nbsp;parchi&nbsp;giochi.&nbsp;Ma&nbsp;ricordate&nbsp;che&nbsp;stare&nbsp;all'aperto&nbsp;anche&nbsp;quando&nbsp;fa&nbsp;freddo è&nbsp;sempre&nbsp;un&nbsp;bene,&nbsp;basta&nbsp;coprirsi&nbsp;adeguatamente 
 					style big
 					size 24
 			li
@@ -2967,7 +2966,7 @@ docx ${category}
 					style big
 					size 24
 			li
-				+ Spegnete la&nbsp;televisione. I&nbsp;bambini&nbsp;che&nbsp;passano&nbsp;molto&nbsp;tempo&nbsp;a&nbsp;guardare&nbsp;la&nbsp;televisione&nbsp;hanno&nbsp;meno&nbsp;probabilità&nbsp;di&nbsp;essere&nbsp;fisicamente&nbsp;attivi.&nbsp;Potreste&nbsp;scegliere&nbsp;almeno&nbsp;un&nbsp;giorno&nbsp;alla&nbsp;settimana&nbsp;come&nbsp;"&nbsp;il&nbsp;giorno&nbsp;della&nbsp;TV&nbsp;spenta. Invece&nbsp;di&nbsp;guardare&nbsp;la&nbsp;TV&nbsp;quel&nbsp;giorno,&nbsp;fate una&nbsp;passeggiata&nbsp;al&nbsp;parco&nbsp;giochi&nbsp;o&nbsp;giocate&nbsp;ache&nbsp;a&nbsp;casa&nbsp;con&nbsp;una&nbsp;palla&nbsp;di&nbsp;gommapiuma lanciandovela&nbsp;l'un&nbsp;l'altro.
+				+ Spegnete la&nbsp;televisione. I&nbsp;bambini&nbsp;che&nbsp;passano&nbsp;molto&nbsp;tempo&nbsp;a&nbsp;guardare&nbsp;la&nbsp;televisione&nbsp;hanno&nbsp;meno&nbsp;probabilità&nbsp;di&nbsp;essere&nbsp;fisicamente&nbsp;attivi.&nbsp;Potreste&nbsp;scegliere&nbsp;almeno&nbsp;un&nbsp;giorno&nbsp;alla&nbsp;settimana&nbsp;come&nbsp;"&nbsp;il&nbsp;giorno&nbsp;della&nbsp;TV&nbsp;spenta. Invece&nbsp;di&nbsp;guardare&nbsp;la&nbsp;TV&nbsp;quel&nbsp;giorno,&nbsp;fate una&nbsp;passeggiata&nbsp;al&nbsp;parco&nbsp;giochi&nbsp;o&nbsp;giocate&nbsp;anche&nbsp;a&nbsp;casa&nbsp;con&nbsp;una&nbsp;palla&nbsp;di&nbsp;gommapiuma lanciandovela&nbsp;l'un&nbsp;l'altro.
 					style big
 					size 24
 			li
@@ -2985,15 +2984,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_687
 		h2 23 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3017,12 +3016,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Nuovi&nbsp;giochi
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Nuovi&nbsp;giochi
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3153,20 +3152,11 @@ docx ${category}
 			spacing  
 				before 72
 				after 36
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
-			+  
-				style h2
-				bold
-				size 28
-		p  
-			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -3174,15 +3164,24 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
+			+  
+				style h2
+				bold
+				size 28
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
 			link-ref testo_688
 		h2 2 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3206,12 +3205,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Un&nbsp;nuovo&nbsp;modo&nbsp;di&nbsp;vedere&nbsp;il&nbsp;mondo
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Un&nbsp;nuovo&nbsp;modo&nbsp;di&nbsp;vedere&nbsp;il&nbsp;mondo
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3224,7 +3223,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+ .&nbsp;Se&nbsp;ha&nbsp;bisogno&nbsp;di&nbsp;una&nbsp;macchina&nbsp;prende&nbsp;una&nbsp;seggiolina&nbsp;e&nbsp;comincia&nbsp;a&nbsp;guidare,&nbsp;un&nbsp;pezzo&nbsp;di&nbsp;legno&nbsp;si&nbsp;trasforma&nbsp;in&nbsp;una&nbsp;bambola&nbsp;e&nbsp;un&nbsp;bastone&nbsp;diventa&nbsp;un&nbsp;cavallo,&nbsp;dimostrando&nbsp;di&nbsp;essre&nbsp;capace&nbsp;di&nbsp;vedere&nbsp;oltre&nbsp;le&nbsp;cose,&nbsp;di&nbsp;essere&nbsp;capace&nbsp;di&nbsp;usare&nbsp;la&nbsp;fantasia&nbsp;e&nbsp;l’immaginazione.
+			+ .&nbsp;Se&nbsp;ha&nbsp;bisogno&nbsp;di&nbsp;una&nbsp;macchina&nbsp;prende&nbsp;una&nbsp;seggiolina&nbsp;e&nbsp;comincia&nbsp;a&nbsp;guidare,&nbsp;un&nbsp;pezzo&nbsp;di&nbsp;legno&nbsp;si&nbsp;trasforma&nbsp;in&nbsp;una&nbsp;bambola&nbsp;e&nbsp;un&nbsp;bastone&nbsp;diventa&nbsp;un&nbsp;cavallo,&nbsp;dimostrando&nbsp;di&nbsp;essere&nbsp;capace&nbsp;di&nbsp;vedere&nbsp;oltre&nbsp;le&nbsp;cose,&nbsp;di&nbsp;essere&nbsp;capace&nbsp;di&nbsp;usare&nbsp;la&nbsp;fantasia&nbsp;e&nbsp;l’immaginazione.
 				style big
 				size 24
 		p
@@ -3232,7 +3231,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Giocando&nbsp;a&nbsp;far&nbsp;finta&nbsp;i&nbsp;bambini&nbsp;esercitano&nbsp;la&nbsp;propria&nbsp;immaginazione&nbsp;e&nbsp;creatività,&nbsp;sviluppano&nbsp;autoconsapevolezza,&nbsp;imparano&nbsp;a&nbsp;riconoscere&nbsp;le&nbsp;emozioni&nbsp;proprie&nbsp;e&nbsp;altrui,&nbsp;esplorano&nbsp;mondi&nbsp;sconosciuti,&nbsp;acquisicono abilità&nbsp;cognitive&nbsp;e&nbsp;relazionali,&nbsp;sviluppano&nbsp;le&nbsp;prime&nbsp;forme&nbsp;di&nbsp;pensiero&nbsp;astratto,&nbsp;arricchiscono&nbsp;il&nbsp;proprio&nbsp;linguaggio.
+			+ Giocando&nbsp;a&nbsp;far&nbsp;finta&nbsp;i&nbsp;bambini&nbsp;esercitano&nbsp;la&nbsp;propria&nbsp;immaginazione&nbsp;e&nbsp;creatività,&nbsp;sviluppano&nbsp;autoconsapevolezza,&nbsp;imparano&nbsp;a&nbsp;riconoscere&nbsp;le&nbsp;emozioni&nbsp;proprie&nbsp;e&nbsp;altrui,&nbsp;esplorano&nbsp;mondi&nbsp;sconosciuti,&nbsp;acquisiscono abilità&nbsp;cognitive&nbsp;e&nbsp;relazionali,&nbsp;sviluppano&nbsp;le&nbsp;prime&nbsp;forme&nbsp;di&nbsp;pensiero&nbsp;astratto,&nbsp;arricchiscono&nbsp;il&nbsp;proprio&nbsp;linguaggio.
 				style big
 				size 24
 		p
@@ -3248,7 +3247,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Lasciate&nbsp;che&nbsp;vostro figlio&nbsp;scelga&nbsp;il&nbsp;suo  gioco&nbsp;di&nbsp;finzione&nbsp;e&nbsp;poi&nbsp;partecipate&nbsp;alla&nbsp;sua&nbsp;attività&nbsp;incoraggiandolo&nbsp;a&nbsp;dare&nbsp;libero&nbsp;sfogo&nbsp;alla&nbsp;sua&nbsp;fantasia.&nbsp;E'&nbsp;molto&nbsp;importante&nbsp;che&nbsp;voi&nbsp;partecipiate&nbsp; al&nbsp;gioco&nbsp;adattandovi&nbsp;alle&nbsp;sue&nbsp;regole,&nbsp;che&nbsp;lo&nbsp;assecondiate lasciando&nbsp;però&nbsp;che&nbsp;sia&nbsp;lui&nbsp;a&nbsp;condurre,&nbsp;inventare&nbsp;e&nbsp;rivoluzionare&nbsp;i&nbsp;concetti&nbsp;del&nbsp;gioco.&nbsp;La&nbsp;vostra&nbsp;attenzione&nbsp;gli&nbsp;farà&nbsp;capire&nbsp;che&nbsp;quello&nbsp;he&nbsp;fa&nbsp;è&nbsp;importante&nbsp;anche&nbsp;per&nbsp;voi&nbsp;e&nbsp;gli&nbsp;darà&nbsp;fiducia&nbsp;in&nbsp;se&nbsp;stesso.
+			+ Lasciate&nbsp;che&nbsp;vostro figlio&nbsp;scelga&nbsp;il&nbsp;suo  gioco&nbsp;di&nbsp;finzione&nbsp;e&nbsp;poi&nbsp;partecipate&nbsp;alla&nbsp;sua&nbsp;attività&nbsp;incoraggiandolo&nbsp;a&nbsp;dare&nbsp;libero&nbsp;sfogo&nbsp;alla&nbsp;sua&nbsp;fantasia.&nbsp;E'&nbsp;molto&nbsp;importante&nbsp;che&nbsp;voi&nbsp;partecipiate&nbsp; al&nbsp;gioco&nbsp;adattandovi&nbsp;alle&nbsp;sue&nbsp;regole,&nbsp;che&nbsp;lo&nbsp;assecondiate lasciando&nbsp;però&nbsp;che&nbsp;sia&nbsp;lui&nbsp;a&nbsp;condurre,&nbsp;inventare&nbsp;e&nbsp;rivoluzionare&nbsp;i&nbsp;concetti&nbsp;del&nbsp;gioco.&nbsp;La&nbsp;vostra&nbsp;attenzione&nbsp;gli&nbsp;farà&nbsp;capire&nbsp;che&nbsp;quello&nbsp;che&nbsp;fa&nbsp;è&nbsp;importante&nbsp;anche&nbsp;per&nbsp;voi&nbsp;e&nbsp;gli&nbsp;darà&nbsp;fiducia&nbsp;in&nbsp;se&nbsp;stesso.
 				style big
 				size 24
 		p
@@ -3277,11 +3276,11 @@ docx ${category}
 			spacing  
 				before 72
 				after 36
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -3289,15 +3288,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_689
 		h2 2 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3321,12 +3320,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Giochi&nbsp;nuovi&nbsp;da&nbsp;fare&nbsp;insieme
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Giochi&nbsp;nuovi&nbsp;da&nbsp;fare&nbsp;insieme
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3363,7 +3362,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+  Sedetevi fuori&nbsp;con&nbsp;il&nbsp;vostro bambino&nbsp;e&nbsp;fate&nbsp;delle  bolle.&nbsp;Osservate&nbsp;quello&nbsp;che&nbsp; fa&nbsp;il&nbsp;vostro&nbsp;bambino? Si&nbsp;allunga&nbsp;per&nbsp;toccarle?&nbsp;Li&nbsp;segue&nbsp;con&nbsp;i&nbsp;suoi&nbsp;occhi? Cattura&nbsp;una&nbsp;bolla&nbsp;sulla&nbsp;bacchetta&nbsp;a&nbsp;bolle. Chiedetegli&nbsp;se&nbsp;vuole&nbsp;farle&nbsp;scoppiare oppure  lascite&nbsp;che&nbsp;la "afferri"&nbsp;con&nbsp;le&nbsp;dita. Lasciate&nbsp;che&nbsp;il&nbsp;vostro bambino&nbsp;giochi&nbsp;con&nbsp;una&nbsp;gran&nbsp;quantità&nbsp;di&nbsp;bolle. Ditegli  che&nbsp;il&nbsp;suo&nbsp;compito&nbsp;sarà&nbsp;quello&nbsp;di&nbsp;provare&nbsp;a&nbsp;"catturare"&nbsp;quante&nbsp;più&nbsp;bolle&nbsp;possibile&nbsp;e&nbsp;farle&nbsp;scoppiare. Inizia&nbsp;a&nbsp;soffiare&nbsp;bolle&nbsp;e&nbsp;guardalo&nbsp;correre&nbsp;per&nbsp;prenderle.
+			+  Sedetevi fuori&nbsp;con&nbsp;il&nbsp;vostro bambino&nbsp;e&nbsp;fate&nbsp;delle  bolle.&nbsp;Osservate&nbsp;quello&nbsp;che&nbsp; fa&nbsp;il&nbsp;vostro&nbsp;bambino? Si&nbsp;allunga&nbsp;per&nbsp;toccarle?&nbsp;Li&nbsp;segue&nbsp;con&nbsp;i&nbsp;suoi&nbsp;occhi? Cattura&nbsp;una&nbsp;bolla&nbsp;sulla&nbsp;bacchetta&nbsp;a&nbsp;bolle. Chiedetegli&nbsp;se&nbsp;vuole&nbsp;farle&nbsp;scoppiare oppure  lasciate&nbsp;che&nbsp;la "afferri"&nbsp;con&nbsp;le&nbsp;dita. Lasciate&nbsp;che&nbsp;il&nbsp;vostro bambino&nbsp;giochi&nbsp;con&nbsp;una&nbsp;gran&nbsp;quantità&nbsp;di&nbsp;bolle. Ditegli  che&nbsp;il&nbsp;suo&nbsp;compito&nbsp;sarà&nbsp;quello&nbsp;di&nbsp;provare&nbsp;a&nbsp;"catturare"&nbsp;quante&nbsp;più&nbsp;bolle&nbsp;possibile&nbsp;e&nbsp;farle&nbsp;scoppiare. Inizia&nbsp;a&nbsp;soffiare&nbsp;bolle&nbsp;e&nbsp;guardalo&nbsp;correre&nbsp;per&nbsp;prenderle.
 				style big_big
 				size 24
 		p
@@ -3378,15 +3377,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_691
 		h2 2 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3410,12 +3409,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Giocare&nbsp;con&nbsp;i&nbsp;nonni
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Giocare&nbsp;con&nbsp;i&nbsp;nonni
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3463,15 +3462,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_748
 		h2 2 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3495,12 +3494,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;gioco&nbsp;attivo&nbsp;aiuta crescere&nbsp;sani
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;gioco&nbsp;attivo&nbsp;aiuta crescere&nbsp;sani
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3575,7 +3574,7 @@ docx ${category}
 				before 72
 				after 36
 			li
-				+ Date a&nbsp;vostro figlio&nbsp;la&nbsp;possibilità&nbsp;di&nbsp;giocare&nbsp;in&nbsp;modo&nbsp;attivo&nbsp;ogni&nbsp;giorno.&nbsp;L'ideale &nbsp;sarebbe&nbsp;avere&nbsp;un'area&nbsp;giochi&nbsp;all'aperto&nbsp;con&nbsp;una&nbsp;varietà&nbsp;di&nbsp;attrezzature&nbsp;da&nbsp;gioco,&nbsp;se&nbsp;possibile.&nbsp;Se&nbsp;non&nbsp;avete un&nbsp;giardino  dove&nbsp;il&nbsp;vostro&nbsp;bambino&nbsp;possa&nbsp;scorazzare,&nbsp;portate&nbsp;vostro figlio&nbsp;in&nbsp;un&nbsp;posto&nbsp;che&nbsp;abbia&nbsp;abbastanza&nbsp;spazio,&nbsp;come&nbsp;un&nbsp;parco.
+				+ Date a&nbsp;vostro figlio&nbsp;la&nbsp;possibilità&nbsp;di&nbsp;giocare&nbsp;in&nbsp;modo&nbsp;attivo&nbsp;ogni&nbsp;giorno.&nbsp;L'ideale &nbsp;sarebbe&nbsp;avere&nbsp;un'area&nbsp;giochi&nbsp;all'aperto&nbsp;con&nbsp;una&nbsp;varietà&nbsp;di&nbsp;attrezzature&nbsp;da&nbsp;gioco,&nbsp;se&nbsp;possibile.&nbsp;Se&nbsp;non&nbsp;avete un&nbsp;giardino  dove&nbsp;il&nbsp;vostro&nbsp;bambino&nbsp;possa&nbsp;scorrazzare,&nbsp;portate&nbsp;vostro figlio&nbsp;in&nbsp;un&nbsp;posto&nbsp;che&nbsp;abbia&nbsp;abbastanza&nbsp;spazio,&nbsp;come&nbsp;un&nbsp;parco.
 					style big
 					size 24
 			li
@@ -3586,11 +3585,11 @@ docx ${category}
 				+ Diventate&nbsp; sostenitori del&nbsp;gioco&nbsp;all'aperto.&nbsp; Chiedete  che &nbsp;l'asilo&nbsp;o&nbsp;la&nbsp;scuola&nbsp;materna &nbsp;che&nbsp;avete&nbsp;scelto&nbsp;per&nbsp;il&nbsp;vostro&nbsp;bambino&nbsp;preveda&nbsp;del&nbsp;tempo&nbsp;da&nbsp;trascorrere&nbsp;all'aria&nbsp;aperta&nbsp;quotidianamente.&nbsp;Quando&nbsp;scegliete una&nbsp;scuola&nbsp;materna&nbsp;o&nbsp;un&nbsp;asilo&nbsp;nido,&nbsp;sceglietene&nbsp;uno&nbsp;che&nbsp;alterni&nbsp;i&nbsp;momenti  tranquilli&nbsp;e&nbsp;organizzati con&nbsp;il&nbsp;gioco&nbsp;libero. 
 					style big
 					size 24
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -3598,15 +3597,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_707
 		h2 2 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3630,12 +3629,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Creatività&nbsp;e  gioco&nbsp;di&nbsp;finzione&nbsp;in&nbsp;una&nbsp;scatola&nbsp;dei&nbsp;costumi 
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Creatività&nbsp;e  gioco&nbsp;di&nbsp;finzione&nbsp;in&nbsp;una&nbsp;scatola&nbsp;dei&nbsp;costumi 
+				style h2_strong
+				bold
+				size 28
 		ul
 			font Garamond
 			spacing
@@ -3665,12 +3664,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Usa&nbsp;l'armadio&nbsp;magico&nbsp;per&nbsp;ruotare&nbsp;i&nbsp;giocattoli&nbsp;in&nbsp;modo&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;possa&nbsp;riscoprire&nbsp;vecchi&nbsp;giocattoli
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Usa&nbsp;l'armadio&nbsp;magico&nbsp;per&nbsp;ruotare&nbsp;i&nbsp;giocattoli&nbsp;in&nbsp;modo&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;possa&nbsp;riscoprire&nbsp;vecchi&nbsp;giocattoli
+				style h2_strong
+				bold
+				size 28
 		p L
 			font Garamond
 			spacing L
@@ -3679,11 +3678,11 @@ docx ${category}
 			+ 'armadio&nbsp;magico&nbsp;(o&nbsp;scatola&nbsp;o&nbsp;cestino)&nbsp;è&nbsp;un&nbsp;luogo&nbsp;pieno&nbsp;di&nbsp;felici&nbsp;sorprese&nbsp;per&nbsp;il&nbsp;tuo&nbsp;bambino.&nbsp;Puoi&nbsp;ruotare&nbsp;i&nbsp;giocattoli&nbsp;di&nbsp;tuo&nbsp;figlio&nbsp;attraverso&nbsp;l'armadio&nbsp;magico.&nbsp;Puoi&nbsp;tirare&nbsp;fuori&nbsp;una&nbsp;cosa&nbsp;alla&nbsp;volta&nbsp;quando&nbsp;tuo&nbsp;figlio&nbsp;è&nbsp;malato,&nbsp;annoiato&nbsp;in&nbsp;un&nbsp;giorno&nbsp;di&nbsp;pioggia&nbsp;o&nbsp;quando&nbsp;tu&nbsp;e&nbsp;lei&nbsp;avete&nbsp;bisogno&nbsp;di&nbsp;qualcosa&nbsp;di&nbsp;molto&nbsp;speciale&nbsp;da&nbsp;fare.&nbsp;Non&nbsp;dimenticare&nbsp;di&nbsp;rimettere&nbsp;alcuni&nbsp;giocattoli&nbsp;nell'armadio&nbsp;per&nbsp;il prossimo&nbsp;momento&nbsp;dei&nbsp;ricordi!
 				style big
 				size 24
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -3691,12 +3690,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;gioco&nbsp;del&nbsp;"Dov'è?"&nbsp; insegna&nbsp;dentro,&nbsp;sotto&nbsp;e&nbsp;accanto
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;gioco&nbsp;del&nbsp;"Dov'è?"&nbsp; insegna&nbsp;dentro,&nbsp;sotto&nbsp;e&nbsp;accanto
+				style h2_strong
+				bold
+				size 28
 		ul
 			font Garamond
 			spacing
@@ -3718,12 +3717,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;gioco&nbsp;delle&nbsp;coppie&nbsp;di&nbsp;abbinamento&nbsp;insegna&nbsp;lo&nbsp;stesso&nbsp;e&nbsp;il&nbsp;diverso
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;gioco&nbsp;delle&nbsp;coppie&nbsp;di&nbsp;abbinamento&nbsp;insegna&nbsp;lo&nbsp;stesso&nbsp;e&nbsp;il&nbsp;diverso
+				style h2_strong
+				bold
+				size 28
 		ul
 			font Garamond
 			spacing
@@ -3753,30 +3752,30 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Fate&nbsp;insieme&nbsp;giochi&nbsp;di&nbsp;memoria:
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Fate&nbsp;insieme&nbsp;giochi&nbsp;di&nbsp;memoria:
+				style h2_strong
+				bold
+				size 28
 		ul
 			font Garamond
 			spacing
 				before 72
 				after 36
 			li
-				+ Create&nbsp;il&nbsp;un gioco&nbsp;di&nbsp;memoria&nbsp;utilizzando&nbsp;le&nbsp;foto&nbsp;dei&nbsp;membri&nbsp;della&nbsp;famiglia.&nbsp;Stampa&nbsp;due&nbsp;copie&nbsp;di&nbsp;10&nbsp;foto,&nbsp;incolla&nbsp;ciascuna&nbsp;foto&nbsp;su&nbsp;una&nbsp;scheda.&nbsp;Mettilie&nbsp;a&nbsp;faccia&nbsp;in&nbsp;su&nbsp;sul&nbsp;pavimento&nbsp;e&nbsp;vedi&nbsp;se&nbsp;tuo&nbsp;figlio&nbsp;riesce&nbsp;a&nbsp;trovare&nbsp;quelle&nbsp;uguali.
+				+ Create&nbsp;il&nbsp;un gioco&nbsp;di&nbsp;memoria&nbsp;utilizzando&nbsp;le&nbsp;foto&nbsp;dei&nbsp;membri&nbsp;della&nbsp;famiglia.&nbsp;Stampa&nbsp;due&nbsp;copie&nbsp;di&nbsp;10&nbsp;foto,&nbsp;incolla&nbsp;ciascuna&nbsp;foto&nbsp;su&nbsp;una&nbsp;scheda.&nbsp;Mettile&nbsp;a&nbsp;faccia&nbsp;in&nbsp;su&nbsp;sul&nbsp;pavimento&nbsp;e&nbsp;vedi&nbsp;se&nbsp;tuo&nbsp;figlio&nbsp;riesce&nbsp;a&nbsp;trovare&nbsp;quelle&nbsp;uguali.
 					style big
 					size 24
 			li
 				+ Trasforma&nbsp;la&nbsp;pulizia&nbsp;in&nbsp;un&nbsp;gioco&nbsp;di&nbsp;smistamento.&nbsp;Scatta&nbsp;foto&nbsp;dei&nbsp;diversi&nbsp;giocattoli&nbsp;di&nbsp;tuo&nbsp;figlio&nbsp;e&nbsp;attaccali&nbsp;al&nbsp;cestino&nbsp;o&nbsp;alla&nbsp;scatola&nbsp;a&nbsp;cui&nbsp;appartengono.&nbsp;Mostra&nbsp;a&nbsp;tuo&nbsp;figlio&nbsp;come&nbsp;ordinare&nbsp;i&nbsp;suoi&nbsp;giocattoli.&nbsp;Prima&nbsp;che&nbsp;tu&nbsp;te&nbsp;ne&nbsp;accorga,&nbsp;diventerà&nbsp;un'esperta&nbsp;nel&nbsp;"gioco&nbsp;di&nbsp;pulizia"!
 					style big
 					size 24
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -3784,12 +3783,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;gioco&nbsp;“take&nbsp;away”&nbsp;aumenta&nbsp;la&nbsp;memoria&nbsp;di&nbsp;tuo&nbsp;figlio
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;gioco&nbsp;“take&nbsp;away”&nbsp;aumenta&nbsp;la&nbsp;memoria&nbsp;di&nbsp;tuo&nbsp;figlio
+				style h2_strong
+				bold
+				size 28
 		ul
 			font Garamond
 			spacing
@@ -3820,11 +3819,11 @@ docx ${category}
 				style strong_big
 				bold
 				size 24
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -3832,15 +3831,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_708
 		h2 3 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3864,12 +3863,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+  I&nbsp;nonni
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+  I&nbsp;nonni
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3900,47 +3899,47 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-		p Attività&nbsp;orientate&nbsp;al&nbsp;movimento
+		p
 			font Garamond
-			spacing Attività&nbsp;orientate&nbsp;al&nbsp;movimento
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+ Attività&nbsp;orientate&nbsp;al&nbsp;movimento
 				style h2
 				bold
 				size 28
-		p •&nbsp;Rane&nbsp;su&nbsp;una&nbsp;ninfea.&nbsp;Ritaglia&nbsp;dei&nbsp;grandi&nbsp;cerchi&nbsp;verdi&nbsp;dalla&nbsp;carta&nbsp;e&nbsp;spargili&nbsp;sul&nbsp;pavimento.&nbsp;Suggerisci&nbsp;a&nbsp;tuo&nbsp;nipote&nbsp;di&nbsp;fingere&nbsp;di&nbsp;essere&nbsp;una&nbsp;rana&nbsp;e&nbsp;di&nbsp;saltare&nbsp;da&nbsp;una&nbsp;ninfea&nbsp;all'altra.&nbsp;Non&nbsp;dimenticare&nbsp;di&nbsp;"ribbit"&nbsp;insieme!&nbsp;Giochi&nbsp;come&nbsp;questo&nbsp;sviluppano&nbsp;abilità&nbsp;fisiche&nbsp;e&nbsp;coordinazione&nbsp;incoraggiando&nbsp;l'immaginazione&nbsp;e&nbsp;il&nbsp;pensiero&nbsp;creativo.
+		p
 			font Garamond
-			spacing •&nbsp;Rane&nbsp;su&nbsp;una&nbsp;ninfea.&nbsp;Ritaglia&nbsp;dei&nbsp;grandi&nbsp;cerchi&nbsp;verdi&nbsp;dalla&nbsp;carta&nbsp;e&nbsp;spargili&nbsp;sul&nbsp;pavimento.&nbsp;Suggerisci&nbsp;a&nbsp;tuo&nbsp;nipote&nbsp;di&nbsp;fingere&nbsp;di&nbsp;essere&nbsp;una&nbsp;rana&nbsp;e&nbsp;di&nbsp;saltare&nbsp;da&nbsp;una&nbsp;ninfea&nbsp;all'altra.&nbsp;Non&nbsp;dimenticare&nbsp;di&nbsp;"ribbit"&nbsp;insieme!&nbsp;Giochi&nbsp;come&nbsp;questo&nbsp;sviluppano&nbsp;abilità&nbsp;fisiche&nbsp;e&nbsp;coordinazione&nbsp;incoraggiando&nbsp;l'immaginazione&nbsp;e&nbsp;il&nbsp;pensiero&nbsp;creativo.
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+ •&nbsp;Rane&nbsp;su&nbsp;una&nbsp;ninfea.&nbsp;Ritaglia&nbsp;dei&nbsp;grandi&nbsp;cerchi&nbsp;verdi&nbsp;dalla&nbsp;carta&nbsp;e&nbsp;spargili&nbsp;sul&nbsp;pavimento.&nbsp;Suggerisci&nbsp;a&nbsp;tuo&nbsp;nipote&nbsp;di&nbsp;fingere&nbsp;di&nbsp;essere&nbsp;una&nbsp;rana&nbsp;e&nbsp;di&nbsp;saltare&nbsp;da&nbsp;una&nbsp;ninfea&nbsp;all'altra.&nbsp;Non&nbsp;dimenticare&nbsp;di&nbsp;"ribbit"&nbsp;insieme!&nbsp;Giochi&nbsp;come&nbsp;questo&nbsp;sviluppano&nbsp;abilità&nbsp;fisiche&nbsp;e&nbsp;coordinazione&nbsp;incoraggiando&nbsp;l'immaginazione&nbsp;e&nbsp;il&nbsp;pensiero&nbsp;creativo.
 				style h2
 				bold
 				size 28
-		p •&nbsp;Divertirsi&nbsp;con&nbsp;le spugne.&nbsp;Prendi&nbsp;delle&nbsp;grandi&nbsp;spugne&nbsp;e&nbsp;preparati&nbsp;per&nbsp;un&nbsp;po&nbsp;'di&nbsp;divertimento&nbsp;bagnato&nbsp;all'aperto.&nbsp;Puoi&nbsp;lanciarti&nbsp;una&nbsp;spugna&nbsp;bagnata.&nbsp;Puoi&nbsp;anche&nbsp;saltare&nbsp;a&nbsp;piedi&nbsp;nudi&nbsp;su&nbsp;una&nbsp;grande&nbsp;spugna&nbsp;bagnata&nbsp;per&nbsp;far&nbsp;uscire&nbsp;l'acqua.&nbsp;Potresti&nbsp;immergere&nbsp;la&nbsp;spugna&nbsp;in&nbsp;un&nbsp;secchio&nbsp;d'acqua&nbsp;e&nbsp;poi&nbsp;strizzarla&nbsp;in&nbsp;un&nbsp;secondo&nbsp;secchio.&nbsp;Quanta&nbsp;acqua&nbsp;riesci&nbsp;a&nbsp;spostare&nbsp;da&nbsp;un&nbsp;secchio&nbsp;all'altro?&nbsp;Attività&nbsp;come&nbsp;queste&nbsp;aiutano&nbsp;a&nbsp;sviluppare&nbsp;abilità&nbsp;fisiche&nbsp;come&nbsp;la&nbsp;coordinazione&nbsp;occhio-mano.&nbsp;Come&nbsp;per&nbsp;tutte&nbsp;le&nbsp;attività&nbsp;acquatiche,&nbsp;è&nbsp;fondamentale&nbsp;sorvegliare&nbsp;attentamente&nbsp;i&nbsp;bambini&nbsp;mentre&nbsp;giocano.
+		p
 			font Garamond
-			spacing •&nbsp;Divertirsi&nbsp;con&nbsp;le spugne.&nbsp;Prendi&nbsp;delle&nbsp;grandi&nbsp;spugne&nbsp;e&nbsp;preparati&nbsp;per&nbsp;un&nbsp;po&nbsp;'di&nbsp;divertimento&nbsp;bagnato&nbsp;all'aperto.&nbsp;Puoi&nbsp;lanciarti&nbsp;una&nbsp;spugna&nbsp;bagnata.&nbsp;Puoi&nbsp;anche&nbsp;saltare&nbsp;a&nbsp;piedi&nbsp;nudi&nbsp;su&nbsp;una&nbsp;grande&nbsp;spugna&nbsp;bagnata&nbsp;per&nbsp;far&nbsp;uscire&nbsp;l'acqua.&nbsp;Potresti&nbsp;immergere&nbsp;la&nbsp;spugna&nbsp;in&nbsp;un&nbsp;secchio&nbsp;d'acqua&nbsp;e&nbsp;poi&nbsp;strizzarla&nbsp;in&nbsp;un&nbsp;secondo&nbsp;secchio.&nbsp;Quanta&nbsp;acqua&nbsp;riesci&nbsp;a&nbsp;spostare&nbsp;da&nbsp;un&nbsp;secchio&nbsp;all'altro?&nbsp;Attività&nbsp;come&nbsp;queste&nbsp;aiutano&nbsp;a&nbsp;sviluppare&nbsp;abilità&nbsp;fisiche&nbsp;come&nbsp;la&nbsp;coordinazione&nbsp;occhio-mano.&nbsp;Come&nbsp;per&nbsp;tutte&nbsp;le&nbsp;attività&nbsp;acquatiche,&nbsp;è&nbsp;fondamentale&nbsp;sorvegliare&nbsp;attentamente&nbsp;i&nbsp;bambini&nbsp;mentre&nbsp;giocano.
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+ •&nbsp;Divertirsi&nbsp;con&nbsp;le spugne.&nbsp;Prendi&nbsp;delle&nbsp;grandi&nbsp;spugne&nbsp;e&nbsp;preparati&nbsp;per&nbsp;un&nbsp;po&nbsp;'di&nbsp;divertimento&nbsp;bagnato&nbsp;all'aperto.&nbsp;Puoi&nbsp;lanciarti&nbsp;una&nbsp;spugna&nbsp;bagnata.&nbsp;Puoi&nbsp;anche&nbsp;saltare&nbsp;a&nbsp;piedi&nbsp;nudi&nbsp;su&nbsp;una&nbsp;grande&nbsp;spugna&nbsp;bagnata&nbsp;per&nbsp;far&nbsp;uscire&nbsp;l'acqua.&nbsp;Potresti&nbsp;immergere&nbsp;la&nbsp;spugna&nbsp;in&nbsp;un&nbsp;secchio&nbsp;d'acqua&nbsp;e&nbsp;poi&nbsp;strizzarla&nbsp;in&nbsp;un&nbsp;secondo&nbsp;secchio.&nbsp;Quanta&nbsp;acqua&nbsp;riesci&nbsp;a&nbsp;spostare&nbsp;da&nbsp;un&nbsp;secchio&nbsp;all'altro?&nbsp;Attività&nbsp;come&nbsp;queste&nbsp;aiutano&nbsp;a&nbsp;sviluppare&nbsp;abilità&nbsp;fisiche&nbsp;come&nbsp;la&nbsp;coordinazione&nbsp;occhio-mano.&nbsp;Come&nbsp;per&nbsp;tutte&nbsp;le&nbsp;attività&nbsp;acquatiche,&nbsp;è&nbsp;fondamentale&nbsp;sorvegliare&nbsp;attentamente&nbsp;i&nbsp;bambini&nbsp;mentre&nbsp;giocano.
 				style h2
 				bold
 				size 28
-		p •&nbsp;Forme&nbsp;d'ombra.&nbsp;In&nbsp;una&nbsp;giornata&nbsp;di&nbsp;sole,&nbsp;porta&nbsp;fuori&nbsp;tuo&nbsp;nipote&nbsp;e&nbsp;mostragli&nbsp;la&nbsp;sua&nbsp;ombra.&nbsp;Invita&nbsp;tuo&nbsp;nipote&nbsp;a&nbsp;giocare&nbsp;con&nbsp;la&nbsp;sua ombra&nbsp;facendola saltare,&nbsp;salutare,&nbsp;accovacciarsi,&nbsp;correre&nbsp;e&nbsp;altro&nbsp;ancora.&nbsp;Questa&nbsp;è&nbsp;un'ottima&nbsp;pratica&nbsp;per&nbsp;stimolare&nbsp;le&nbsp;capacità&nbsp;di&nbsp;osservazione di&nbsp;tuo&nbsp;nipote&nbsp;e&nbsp;anche&nbsp;un'ottima&nbsp;occasione&nbsp;per&nbsp;andare&nbsp;fuori.&nbsp;Per&nbsp;un&nbsp;ultimo&nbsp;momento&nbsp;di&nbsp;divertimento,&nbsp;traccia&nbsp;l'ombra&nbsp;di&nbsp;tuo&nbsp;nipote&nbsp;con&nbsp;il&nbsp;gesso&nbsp;e&nbsp;insieme&nbsp;voi&nbsp;due&nbsp;potete&nbsp;colorare&nbsp;nella&nbsp;sua&nbsp;"forma&nbsp;d'ombra".
+		p
 			font Garamond
-			spacing •&nbsp;Forme&nbsp;d'ombra.&nbsp;In&nbsp;una&nbsp;giornata&nbsp;di&nbsp;sole,&nbsp;porta&nbsp;fuori&nbsp;tuo&nbsp;nipote&nbsp;e&nbsp;mostragli&nbsp;la&nbsp;sua&nbsp;ombra.&nbsp;Invita&nbsp;tuo&nbsp;nipote&nbsp;a&nbsp;giocare&nbsp;con&nbsp;la&nbsp;sua ombra&nbsp;facendola saltare,&nbsp;salutare,&nbsp;accovacciarsi,&nbsp;correre&nbsp;e&nbsp;altro&nbsp;ancora.&nbsp;Questa&nbsp;è&nbsp;un'ottima&nbsp;pratica&nbsp;per&nbsp;stimolare&nbsp;le&nbsp;capacità&nbsp;di&nbsp;osservazione di&nbsp;tuo&nbsp;nipote&nbsp;e&nbsp;anche&nbsp;un'ottima&nbsp;occasione&nbsp;per&nbsp;andare&nbsp;fuori.&nbsp;Per&nbsp;un&nbsp;ultimo&nbsp;momento&nbsp;di&nbsp;divertimento,&nbsp;traccia&nbsp;l'ombra&nbsp;di&nbsp;tuo&nbsp;nipote&nbsp;con&nbsp;il&nbsp;gesso&nbsp;e&nbsp;insieme&nbsp;voi&nbsp;due&nbsp;potete&nbsp;colorare&nbsp;nella&nbsp;sua&nbsp;"forma&nbsp;d'ombra".
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+ •&nbsp;Forme&nbsp;d'ombra.&nbsp;In&nbsp;una&nbsp;giornata&nbsp;di&nbsp;sole,&nbsp;porta&nbsp;fuori&nbsp;tuo&nbsp;nipote&nbsp;e&nbsp;mostragli&nbsp;la&nbsp;sua&nbsp;ombra.&nbsp;Invita&nbsp;tuo&nbsp;nipote&nbsp;a&nbsp;giocare&nbsp;con&nbsp;la&nbsp;sua ombra&nbsp;facendola saltare,&nbsp;salutare,&nbsp;accovacciarsi,&nbsp;correre&nbsp;e&nbsp;altro&nbsp;ancora.&nbsp;Questa&nbsp;è&nbsp;un'ottima&nbsp;pratica&nbsp;per&nbsp;stimolare&nbsp;le&nbsp;capacità&nbsp;di&nbsp;osservazione di&nbsp;tuo&nbsp;nipote&nbsp;e&nbsp;anche&nbsp;un'ottima&nbsp;occasione&nbsp;per&nbsp;andare&nbsp;fuori.&nbsp;Per&nbsp;un&nbsp;ultimo&nbsp;momento&nbsp;di&nbsp;divertimento,&nbsp;traccia&nbsp;l'ombra&nbsp;di&nbsp;tuo&nbsp;nipote&nbsp;con&nbsp;il&nbsp;gesso&nbsp;e&nbsp;insieme&nbsp;voi&nbsp;due&nbsp;potete&nbsp;colorare&nbsp;nella&nbsp;sua&nbsp;"forma&nbsp;d'ombra".
 				style h2
 				bold
 				size 28
-		p •&nbsp; Banda&nbsp;di&nbsp;paese.&nbsp;Il&nbsp;tempo&nbsp;rende&nbsp;impossibile&nbsp;giocare&nbsp;all'aperto? &nbsp;Allora,&nbsp;prendi&nbsp;uno&nbsp;strumento&nbsp;(sonaglio,&nbsp;campanello,&nbsp;fischietto,&nbsp;barattolo&nbsp;di&nbsp;caffè&nbsp;e&nbsp;cucchiaio,&nbsp;ecc.)&nbsp;per&nbsp;te&nbsp;e&nbsp;per&nbsp;tuo&nbsp;nipote,&nbsp;metti&nbsp;della&nbsp;meravigliosa&nbsp;musica&nbsp;da&nbsp;marcia&nbsp;e&nbsp;lascia&nbsp;che&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;ti&nbsp;conduca&nbsp;in&nbsp;giro&nbsp;per&nbsp;casa&nbsp;in&nbsp;una&nbsp;parata&nbsp;musicale.
+		p
 			font Garamond
-			spacing •&nbsp; Banda&nbsp;di&nbsp;paese.&nbsp;Il&nbsp;tempo&nbsp;rende&nbsp;impossibile&nbsp;giocare&nbsp;all'aperto? &nbsp;Allora,&nbsp;prendi&nbsp;uno&nbsp;strumento&nbsp;(sonaglio,&nbsp;campanello,&nbsp;fischietto,&nbsp;barattolo&nbsp;di&nbsp;caffè&nbsp;e&nbsp;cucchiaio,&nbsp;ecc.)&nbsp;per&nbsp;te&nbsp;e&nbsp;per&nbsp;tuo&nbsp;nipote,&nbsp;metti&nbsp;della&nbsp;meravigliosa&nbsp;musica&nbsp;da&nbsp;marcia&nbsp;e&nbsp;lascia&nbsp;che&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;ti&nbsp;conduca&nbsp;in&nbsp;giro&nbsp;per&nbsp;casa&nbsp;in&nbsp;una&nbsp;parata&nbsp;musicale.
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+ •&nbsp; Banda&nbsp;di&nbsp;paese.&nbsp;Il&nbsp;tempo&nbsp;rende&nbsp;impossibile&nbsp;giocare&nbsp;all'aperto? &nbsp;Allora,&nbsp;prendi&nbsp;uno&nbsp;strumento&nbsp;(sonaglio,&nbsp;campanello,&nbsp;fischietto,&nbsp;barattolo&nbsp;di&nbsp;caffè&nbsp;e&nbsp;cucchiaio,&nbsp;ecc.)&nbsp;per&nbsp;te&nbsp;e&nbsp;per&nbsp;tuo&nbsp;nipote,&nbsp;metti&nbsp;della&nbsp;meravigliosa&nbsp;musica&nbsp;da&nbsp;marcia&nbsp;e&nbsp;lascia&nbsp;che&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;ti&nbsp;conduca&nbsp;in&nbsp;giro&nbsp;per&nbsp;casa&nbsp;in&nbsp;una&nbsp;parata&nbsp;musicale.
 				style h2
 				bold
@@ -3948,15 +3947,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_727
 		h2 3 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3980,12 +3979,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;gioco&nbsp;all'aperto&nbsp;insegna&nbsp;abilità&nbsp;fisiche&nbsp;e&nbsp;sociali
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;gioco&nbsp;all'aperto&nbsp;insegna&nbsp;abilità&nbsp;fisiche&nbsp;e&nbsp;sociali
+				style h2_strong_big
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -4058,15 +4057,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_728
 		h2 3 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4090,18 +4089,18 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Giochiamo,&nbsp;costruiamo,&nbsp;impariamo 
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Giochiamo,&nbsp;costruiamo,&nbsp;impariamo 
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
 				before 72
 				after 36
-			+ I&nbsp;bambini&nbsp;amano&nbsp;i&nbsp;giocattoli. I&nbsp;giocattoli&nbsp;sono&nbsp;gli&nbsp;strumenti&nbsp;del&nbsp;gioco&nbsp;e&nbsp;dell'apprendimento.&nbsp;Ma&nbsp;non&nbsp;è&nbsp;importante&nbsp;acquistare&nbsp;per&nbsp;loro&nbsp; molti&nbsp;giocattoli,&nbsp;i&nbsp;giocattoli&nbsp;che&nbsp;voi&nbsp;e&nbsp;il&nbsp;vostro&nbsp;bambino&nbsp;costruite insieme&nbsp;sono&nbsp;certamente&nbsp;i&nbsp;più&nbsp;belli: uniscono&nbsp;il&nbsp;fascino&nbsp;del&nbsp;giocattolo, la&nbsp;gratificazione&nbsp;della&nbsp;creazione&nbsp;e&nbsp;la&nbsp;possibiltà&nbsp;di&nbsp;avere&nbsp;cose&nbsp;sempre&nbsp;diverse
+			+ I&nbsp;bambini&nbsp;amano&nbsp;i&nbsp;giocattoli. I&nbsp;giocattoli&nbsp;sono&nbsp;gli&nbsp;strumenti&nbsp;del&nbsp;gioco&nbsp;e&nbsp;dell'apprendimento.&nbsp;Ma&nbsp;non&nbsp;è&nbsp;importante&nbsp;acquistare&nbsp;per&nbsp;loro&nbsp; molti&nbsp;giocattoli,&nbsp;i&nbsp;giocattoli&nbsp;che&nbsp;voi&nbsp;e&nbsp;il&nbsp;vostro&nbsp;bambino&nbsp;costruite insieme&nbsp;sono&nbsp;certamente&nbsp;i&nbsp;più&nbsp;belli: uniscono&nbsp;il&nbsp;fascino&nbsp;del&nbsp;giocattolo, la&nbsp;gratificazione&nbsp;della&nbsp;creazione&nbsp;e&nbsp;la&nbsp;possibilità&nbsp;di&nbsp;avere&nbsp;cose&nbsp;sempre&nbsp;diverse
 				style big
 				size 24
 		p
@@ -4224,7 +4223,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ La&nbsp;motricità&nbsp;fine&nbsp;si&nbsp;acquisisce…&nbsp;a&nbsp;martellate!&nbsp;Anche&nbsp;se&nbsp;sembra&nbsp;uno&nbsp;scherzo,&nbsp;è&nbsp;proprio&nbsp;così:&nbsp;il&nbsp;gesto&nbsp;del&nbsp;martellare&nbsp;(cioè&nbsp;colpire&nbsp;con&nbsp;un&nbsp;martello&nbsp;un&nbsp;chiodino&nbsp;nel&nbsp;punto&nbsp;esatto&nbsp;dove&nbsp;serve&nbsp;per&nbsp;farlo&nbsp;entrare&nbsp;senza&nbsp;piegarlo)&nbsp;è&nbsp;un&nbsp;ottimo&nbsp;esercizio&nbsp;per&nbsp;allenarsi&nbsp;alla&nbsp;precisione&nbsp;e&nbsp;alla&nbsp;cordinazione&nbsp;occhio&nbsp;mano. 
+			+ La&nbsp;motricità&nbsp;fine&nbsp;si&nbsp;acquisisce…&nbsp;a&nbsp;martellate!&nbsp;Anche&nbsp;se&nbsp;sembra&nbsp;uno&nbsp;scherzo,&nbsp;è&nbsp;proprio&nbsp;così:&nbsp;il&nbsp;gesto&nbsp;del&nbsp;martellare&nbsp;(cioè&nbsp;colpire&nbsp;con&nbsp;un&nbsp;martello&nbsp;un&nbsp;chiodino&nbsp;nel&nbsp;punto&nbsp;esatto&nbsp;dove&nbsp;serve&nbsp;per&nbsp;farlo&nbsp;entrare&nbsp;senza&nbsp;piegarlo)&nbsp;è&nbsp;un&nbsp;ottimo&nbsp;esercizio&nbsp;per&nbsp;allenarsi&nbsp;alla&nbsp;precisione&nbsp;e&nbsp;alla&nbsp;coordinazione&nbsp;occhio&nbsp;mano. 
 				style big
 				size 24
 			+ Occorrente
@@ -4297,7 +4296,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Le&nbsp;palline&nbsp;da&nbsp;ping&nbsp;pong&nbsp;sono&nbsp;economiche&nbsp;e&nbsp;facili&nbsp;da&nbsp;trovare.&nbsp;Ideali&nbsp;quindi&nbsp;per&nbsp;proporre&nbsp;ai&nbsp;bambini&nbsp;un&nbsp;facile&nbsp;gioco&nbsp;con&nbsp;i&nbsp;numeri.&nbsp;Per&nbsp;giocare&nbsp;ti&nbsp;serviranno&nbsp;solo&nbsp;12&nbsp;palline&nbsp;da&nbsp;ping&nbsp;pong,&nbsp;un&nbsp;pennarello&nbsp;nero&nbsp;permanente,&nbsp;2&nbsp;cartoni&nbsp;delle&nbsp;uova&nbsp;da&nbsp;sei,&nbsp;una&nbsp;ciotola&nbsp;e&nbsp;un&nbsp;cucchiaio.&nbsp;Per&nbsp;prima&nbsp;cosa&nbsp;scrivi&nbsp;col&nbsp;pennarello&nbsp;sulle&nbsp;pallline&nbsp;le&nbsp;cifre&nbsp;da&nbsp;1&nbsp;a&nbsp;12.&nbsp;Poi&nbsp;metti&nbsp;tutte&nbsp;le&nbsp;palline&nbsp;in&nbsp;una&nbsp;ciotola.&nbsp;Con&nbsp;un&nbsp;cucchiaio,&nbsp;il&nbsp;bambino&nbsp;dovrà&nbsp;trasferire&nbsp;le&nbsp;palline&nbsp;dalla&nbsp;ciotola,&nbsp;una&nbsp;alla&nbsp;volta,&nbsp;in&nbsp;un&nbsp;contenitore&nbsp;delle&nbsp;uova.&nbsp;In&nbsp;ordine&nbsp;crescente:&nbsp;prima&nbsp;la&nbsp;pallina&nbsp;col&nbsp;numero&nbsp;1,&nbsp;poi&nbsp;quella&nbsp;col&nbsp;numero&nbsp;2,&nbsp;e&nbsp;così&nbsp;via&nbsp;fino&nbsp;a&nbsp;riempire&nbsp;i&nbsp;due&nbsp;cartoni.&nbsp; 
+			+ Le&nbsp;palline&nbsp;da&nbsp;ping&nbsp;pong&nbsp;sono&nbsp;economiche&nbsp;e&nbsp;facili&nbsp;da&nbsp;trovare.&nbsp;Ideali&nbsp;quindi&nbsp;per&nbsp;proporre&nbsp;ai&nbsp;bambini&nbsp;un&nbsp;facile&nbsp;gioco&nbsp;con&nbsp;i&nbsp;numeri.&nbsp;Per&nbsp;giocare&nbsp;ti&nbsp;serviranno&nbsp;solo&nbsp;12&nbsp;palline&nbsp;da&nbsp;ping&nbsp;pong,&nbsp;un&nbsp;pennarello&nbsp;nero&nbsp;permanente,&nbsp;2&nbsp;cartoni&nbsp;delle&nbsp;uova&nbsp;da&nbsp;sei,&nbsp;una&nbsp;ciotola&nbsp;e&nbsp;un&nbsp;cucchiaio.&nbsp;Per&nbsp;prima&nbsp;cosa&nbsp;scrivi&nbsp;col&nbsp;pennarello&nbsp;sulle&nbsp;palline&nbsp;le&nbsp;cifre&nbsp;da&nbsp;1&nbsp;a&nbsp;12.&nbsp;Poi&nbsp;metti&nbsp;tutte&nbsp;le&nbsp;palline&nbsp;in&nbsp;una&nbsp;ciotola.&nbsp;Con&nbsp;un&nbsp;cucchiaio,&nbsp;il&nbsp;bambino&nbsp;dovrà&nbsp;trasferire&nbsp;le&nbsp;palline&nbsp;dalla&nbsp;ciotola,&nbsp;una&nbsp;alla&nbsp;volta,&nbsp;in&nbsp;un&nbsp;contenitore&nbsp;delle&nbsp;uova.&nbsp;In&nbsp;ordine&nbsp;crescente:&nbsp;prima&nbsp;la&nbsp;pallina&nbsp;col&nbsp;numero&nbsp;1,&nbsp;poi&nbsp;quella&nbsp;col&nbsp;numero&nbsp;2,&nbsp;e&nbsp;così&nbsp;via&nbsp;fino&nbsp;a&nbsp;riempire&nbsp;i&nbsp;due&nbsp;cartoni.&nbsp; 
 				style big
 				size 24
 		p
@@ -4320,15 +4319,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_731
 		h2 4 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4352,12 +4351,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;formula&nbsp;MOVE&nbsp;per un&nbsp;sano&nbsp;sviluppo&nbsp;fisico
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;formula&nbsp;MOVE&nbsp;per un&nbsp;sano&nbsp;sviluppo&nbsp;fisico
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4463,15 +4462,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_732
 		h2 4 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4495,12 +4494,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ «Facciamo&nbsp;finta&nbsp;che&nbsp;io&nbsp;sono&nbsp;la&nbsp;maestra»
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ «Facciamo&nbsp;finta&nbsp;che&nbsp;io&nbsp;sono&nbsp;la&nbsp;maestra»
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4561,15 +4560,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_733
 		h2 5 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4593,12 +4592,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Riconquistare&nbsp;il&nbsp;cortile
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Riconquistare&nbsp;il&nbsp;cortile
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4653,7 +4652,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-			+  I giochi&nbsp;da&nbsp;cortile&nbsp;sono&nbsp;giochi&nbsp;di&nbsp;movimento&nbsp;"sfrenato", giochi&nbsp;di&nbsp;squadra&nbsp;con&nbsp;la&nbsp;palla,&nbsp;il&nbsp;salto con&nbsp;la&nbsp;corda,&nbsp;il&nbsp;gioco&nbsp;con  con&nbsp;l’elastico,&nbsp;la&nbsp;campana, il&nbsp;gioco&nbsp;“di&nbsp;un&nbsp;–due&nbsp;–tre&nbsp;stella”, le&nbsp;conte&nbsp;del&nbsp;nascondino,&nbsp;il&nbsp;ruba-bandiera,&nbsp;regina-reginella&nbsp;e&nbsp;tutti&nbsp;gli&nbsp;altri&nbsp;giochi&nbsp;di&nbsp;movimentoin&nbsp;gruppo&nbsp;che&nbsp;la&nbsp;creatività&nbsp;dei&nbsp;bambini&nbsp;suggerirà
+			+  I giochi&nbsp;da&nbsp;cortile&nbsp;sono&nbsp;giochi&nbsp;di&nbsp;movimento&nbsp;"sfrenato", giochi&nbsp;di&nbsp;squadra&nbsp;con&nbsp;la&nbsp;palla,&nbsp;il&nbsp;salto con&nbsp;la&nbsp;corda,&nbsp;il&nbsp;gioco&nbsp;con  con&nbsp;l’elastico,&nbsp;la&nbsp;campana, il&nbsp;gioco&nbsp;“di&nbsp;un&nbsp;–due&nbsp;–tre&nbsp;stella”, le&nbsp;conte&nbsp;del&nbsp;nascondino,&nbsp;il&nbsp;ruba-bandiera,&nbsp;regina-reginella&nbsp;e&nbsp;tutti&nbsp;gli&nbsp;altri&nbsp;giochi&nbsp;di&nbsp;movimento&nbsp;in&nbsp;gruppo&nbsp;che&nbsp;la&nbsp;creatività&nbsp;dei&nbsp;bambini&nbsp;suggerirà
 				style big
 				size 24
 		p
@@ -4674,15 +4673,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_734
 		h2 5 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4706,12 +4705,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Mio&nbsp;figlio&nbsp;è&nbsp;pronto&nbsp;a&nbsp;fare&nbsp;sport?
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Mio&nbsp;figlio&nbsp;è&nbsp;pronto&nbsp;a&nbsp;fare&nbsp;sport?
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4771,7 +4770,7 @@ docx ${category}
 					style big_strong
 					bold
 					size 24
-				+ a&nbsp;vivere&nbsp;il&nbsp;movimento&nbsp;come&nbsp;un&nbsp;attività&nbsp;orgnizzata&nbsp;e&nbsp;sottoposta&nbsp;a&nbsp;regole&nbsp;più&nbsp;rigide
+				+ a&nbsp;vivere&nbsp;il&nbsp;movimento&nbsp;come&nbsp;un'attività&nbsp;organizzata&nbsp;e&nbsp;sottoposta&nbsp;a&nbsp;regole&nbsp;più&nbsp;rigide
 					style big
 					size 24
 			li
@@ -4803,7 +4802,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Prima&nbsp;di&nbsp;decidere&nbsp;quale sport&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;praticherà,&nbsp;dagli&nbsp;la&nbsp;possibilità&nbsp;di&nbsp;conoscere&nbsp;e&nbsp;sperimentare sport divers
+			+ Prima&nbsp;di&nbsp;decidere&nbsp;quale sport&nbsp;che&nbsp;tuo&nbsp;figlio&nbsp;praticherà,&nbsp;dagli&nbsp;la&nbsp;possibilità&nbsp;di&nbsp;conoscere&nbsp;e&nbsp;sperimentare sport diversi
 				style big_strong
 				bold
 				size 24
@@ -4850,6 +4849,6 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_747

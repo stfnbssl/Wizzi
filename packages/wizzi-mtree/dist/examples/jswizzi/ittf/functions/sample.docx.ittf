@@ -17,6 +17,7 @@ docx
             }]
         }
 
+    $*
     $function viewNode
         $param node
         tr
@@ -28,9 +29,9 @@ docx
 
     $_ viewNode
         $@ tree
+    *$
 
 
-	$*
     $function itemText
 		$param node
         $$ ${node.name} ${node.value ? node.value : ''}
@@ -41,5 +42,4 @@ docx
 
     top
         $_ itemText
-            $_ node
-    *$
+            $@ tree

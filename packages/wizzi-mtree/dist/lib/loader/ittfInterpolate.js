@@ -156,9 +156,10 @@ function evalKeyOrCode(keyOrCode, jsWizziContext) {
     // log 'wizzi-mtree.loader.ittfInterpolate.evalKeyOrCode.previous._____result: ', keyOrCode, jsWizziContext.isDeclared('_____result')
     var notUsed = jsWizziRunner.run(stm, jsWizziContext);
     if (notUsed && notUsed.__is_error) {
-        verify.logError( 'checked_call_return.error.method',  'wizzi-mtree@0.7.11.loader.ittfInterpolate.evalKeyOrCode' );
-        verify.logError( 'checked_call_return.error.forTest',  'stm',  stm );
-        verify.logError( 'checked_call_return.error.notUsed', notUsed );
+        // TODO verify.logError does not exist any more 25/02/21
+        // _ verify.logError( 'checked_call_return.error.method',  'wizzi-mtree@0.7.11.loader.ittfInterpolate.evalKeyOrCode' )
+        // _ verify.logError( 'checked_call_return.error.forTest',  'stm',  stm )
+        // _ verify.logError( 'checked_call_return.error.notUsed', notUsed )
         return notUsed;
     }
     var result = jsWizziContext.getValue('_____result');

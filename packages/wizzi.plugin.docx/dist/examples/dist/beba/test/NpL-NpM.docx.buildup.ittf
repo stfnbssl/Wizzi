@@ -66,216 +66,213 @@ docx ${category}
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\_ logo NpL.jpg
 		title _ logo NpL.jpg
 	image-def image_3
-		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\A fior di pelle.png
-		title A fior di pelle.png
-	image-def image_4
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\2a_an ghin go_15gg.jpg
 		title 2a_an ghin go_15gg.jpg
-	image-def image_5
+	image-def image_4
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\z_logo NpL.jpg
 		title z_logo NpL.jpg
-	image-def image_6
+	image-def image_5
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\3a_a fior di pelle_1mese.jpg
 		title 3a_a fior di pelle_1mese.jpg
-	image-def image_8
+	image-def image_7
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\4a_libro stoffa_2mesi.jpg
 		title 4a_libro stoffa_2mesi.jpg
-	image-def image_10
+	image-def image_9
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\5a_stella_3mesi.jpg
 		title 5a_stella_3mesi.jpg
-	image-def image_12
+	image-def image_11
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\8a_faccia_6mesi.jpg
 		title 8a_faccia_6mesi.jpg
-	image-def image_14
+	image-def image_13
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\7a_teddy_5mesi.jpg
 		title 7a_teddy_5mesi.jpg
-	image-def image_16
+	image-def image_15
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\8c_buongiorno_6mesi.jpg
 		title 8c_buongiorno_6mesi.jpg
-	image-def image_18
+	image-def image_17
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\9c_luna_7mesi.jpg
 		title 9c_luna_7mesi.jpg
-	image-def image_20
+	image-def image_19
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\10a_colorami_8mesi.jpg
 		title 10a_colorami_8mesi.jpg
-	image-def image_22
+	image-def image_21
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\11a_paperella_9mesi.jpg
 		title 11a_paperella_9mesi.jpg
-	image-def image_24
+	image-def image_23
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\12a_circo_10mesi.jpg
 		title 12a_circo_10mesi.jpg
-	image-def image_26
+	image-def image_25
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\13a_bacio_11mesi.jpg
 		title 13a_bacio_11mesi.jpg
-	image-def image_28
+	image-def image_27
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\14a_parole_12mesi.jpg
 		title 14a_parole_12mesi.jpg
-	image-def image_29
+	image-def image_28
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\14c_bruco_12mesi.jpg
 		title 14c_bruco_12mesi.jpg
-	image-def image_31
+	image-def image_30
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\13mesi_mamma cannibale.png
 		title 13mesi_mamma cannibale.png
-	image-def image_33
+	image-def image_32
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\14mesi_uccellinofa.jpg
 		title 14mesi_uccellinofa.jpg
-	image-def image_34
+	image-def image_33
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\19mesi_manipapà.jpg
 		title 19mesi_manipapà.jpg
-	image-def image_36
+	image-def image_35
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\15mesi_GNAM.jpg
 		title 15mesi_GNAM.jpg
-	image-def image_38
+	image-def image_37
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\16mesi_piedino.jpg
 		title 16mesi_piedino.jpg
-	image-def image_40
+	image-def image_39
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\14mesi_grandelibro.jpg
 		title 14mesi_grandelibro.jpg
-	image-def image_42
+	image-def image_41
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\18mesi_io vado.jpg
 		title 18mesi_io vado.jpg
-	image-def image_44
+	image-def image_43
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\19mesi_testapiedi.jpg
 		title 19mesi_testapiedi.jpg
-	image-def image_46
+	image-def image_45
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\20mesi_pimpa.jpg
 		title 20mesi_pimpa.jpg
-	image-def image_48
+	image-def image_47
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\21mesi_enciclopedia.jpg
 		title 21mesi_enciclopedia.jpg
-	image-def image_49
+	image-def image_48
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\21mesi_pronti.jpg
 		title 21mesi_pronti.jpg
-	image-def image_51
+	image-def image_50
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\22mesi_blubblubblub.jpg
 		title 22mesi_blubblubblub.jpg
-	image-def image_52
+	image-def image_51
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\22mesi_rime.jpg
 		title 22mesi_rime.jpg
-	image-def image_54
+	image-def image_53
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\23mesi_gufi.jpg
 		title 23mesi_gufi.jpg
-	image-def image_55
+	image-def image_54
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\23mesi_piccoloblu.jpg
 		title 23mesi_piccoloblu.jpg
-	image-def image_57
+	image-def image_56
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\24mesi_buonanotte.jpg
 		title 24mesi_buonanotte.jpg
-	image-def image_58
+	image-def image_57
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\24mesi_tarari.jpg
 		title 24mesi_tarari.jpg
-	image-def image_60
+	image-def image_59
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\A CACCIA DELL'ORSO.jpg
 		title A CACCIA DELL'ORSO.jpg
-	image-def image_61
+	image-def image_60
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\MANGIA CHE TI MANGIO.jpg
 		title MANGIA CHE TI MANGIO.jpg
-	image-def image_63
+	image-def image_62
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\PICCOLO GRANDE BUBO.jpg
 		title PICCOLO GRANDE BUBO.jpg
-	image-def image_64
+	image-def image_63
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\UN LIBRO.jpg
 		title UN LIBRO.jpg
-	image-def image_66
+	image-def image_65
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\BELLA E IL GORILLA.jpg
 		title BELLA E IL GORILLA.jpg
-	image-def image_67
+	image-def image_66
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\IL MIO PRIMO LIBRO DEI NUMERI.jpg
 		title IL MIO PRIMO LIBRO DEI NUMERI.jpg
-	image-def image_69
+	image-def image_68
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\AUTUNNO-I LIBRI DELLE STAGIONI.jpg
 		title AUTUNNO-I LIBRI DELLE STAGIONI.jpg
-	image-def image_70
+	image-def image_69
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\ESTATE-I LIBRI DELLE STAGIONI.jpg
 		title ESTATE-I LIBRI DELLE STAGIONI.jpg
-	image-def image_71
+	image-def image_70
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\INVERNO-I LIBRI DELLE STAGIONI.jpg
 		title INVERNO-I LIBRI DELLE STAGIONI.jpg
-	image-def image_72
+	image-def image_71
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\PRIMAVERA-I LIBRI DELLE STAGIONI.jpg
 		title PRIMAVERA-I LIBRI DELLE STAGIONI.jpg
-	image-def image_74
+	image-def image_73
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\CAPPUCCETTO ROSSO.jpg
 		title CAPPUCCETTO ROSSO.jpg
-	image-def image_75
+	image-def image_74
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\CAPRICCI CHE PASSIONE.jpg
 		title CAPRICCI CHE PASSIONE.jpg
-	image-def image_77
+	image-def image_76
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\ABBAIA,GEORGE.jpg
 		title ABBAIA,GEORGE.jpg
-	image-def image_78
+	image-def image_77
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\CACCAPUPU’.jpg
 		title CACCAPUPU’.jpg
-	image-def image_80
+	image-def image_79
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\CHI ME L’HA FATTA IN TESTA.jpg
 		title CHI ME L’HA FATTA IN TESTA.jpg
-	image-def image_81
+	image-def image_80
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\IL CANE CON UNA CASA SULLA TESTA.jpg
 		title IL CANE CON UNA CASA SULLA TESTA.jpg
-	image-def image_83
+	image-def image_82
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\GRANDE GATTO PICCOLO GATTO.jpg
 		title GRANDE GATTO PICCOLO GATTO.jpg
-	image-def image_84
+	image-def image_83
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\UNA ZUPPA DI SASSO.jpg
 		title UNA ZUPPA DI SASSO.jpg
-	image-def image_86
+	image-def image_85
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\PAPA’, MI PRENDI LA LUNA PER FAVORE.jpg
 		title PAPA’, MI PRENDI LA LUNA PER FAVORE.jpg
-	image-def image_87
+	image-def image_86
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\TOMMASO E I CENTO LUPI CATTIVI.jpg
 		title TOMMASO E I CENTO LUPI CATTIVI.jpg
-	image-def image_89
+	image-def image_88
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\DIMODOCHE’.jpg
 		title DIMODOCHE’.jpg
-	image-def image_90
+	image-def image_89
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\NEL PAESE DEI MOSTRI SELVAGGI.jpg
 		title NEL PAESE DEI MOSTRI SELVAGGI.jpg
-	image-def image_92
+	image-def image_91
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\NELLA CITTA’ ANIMATA.jpg
 		title NELLA CITTA’ ANIMATA.jpg
-	image-def image_93
+	image-def image_92
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\UN MARE DI TRISTEZZA.jpg
 		title UN MARE DI TRISTEZZA.jpg
-	image-def image_95
+	image-def image_94
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\FIABE PER I PIU’ PICCINI.jpg
 		title FIABE PER I PIU’ PICCINI.jpg
-	image-def image_96
+	image-def image_95
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\PERCHE’ TUTTO QUESTO TRAFFICO.jpg
 		title PERCHE’ TUTTO QUESTO TRAFFICO.jpg
-	image-def image_98
+	image-def image_97
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\MAI E POI MAI MANGERO i POMODORI.jpg
 		title MAI E POI MAI MANGERO i POMODORI.jpg
-	image-def image_99
+	image-def image_98
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\UN PICCOLO PASSO.jpg
 		title UN PICCOLO PASSO.jpg
-	image-def image_101
+	image-def image_100
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\FIABE PER OCCHI e BOCCA.jpg
 		title FIABE PER OCCHI e BOCCA.jpg
-	image-def image_102
+	image-def image_101
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\ORSETTO E LA CASA NEL BOSCO.jpg
 		title ORSETTO E LA CASA NEL BOSCO.jpg
-	image-def image_104
+	image-def image_103
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\COMECOSA.jpg
 		title COMECOSA.jpg
-	image-def image_105
+	image-def image_104
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\IL GRUFFALO’.jpg
 		title IL GRUFFALO’.jpg
-	image-def image_107
+	image-def image_106
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\BIAGIO E IL CASTELLO DI COMPLEANNO.jpg
 		title BIAGIO E IL CASTELLO DI COMPLEANNO.jpg
-	image-def image_109
+	image-def image_108
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\IL MOSTRO PELOSO.jpg
 		title IL MOSTRO PELOSO.jpg
-	image-def image_110
+	image-def image_109
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\UNA TIGRE ALL'ORA del TE.jpg
 		title UNA TIGRE ALL'ORA del TE.jpg
-	image-def image_112
+	image-def image_111
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\IN PUNTA DI PIEDI.jpg
 		title IN PUNTA DI PIEDI.jpg
-	image-def image_114
+	image-def image_113
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\IL LIBRO DELLE STORIE di QUENTIN BLAKE.jpg
 		title IL LIBRO DELLE STORIE di QUENTIN BLAKE.jpg
-	image-def image_116
+	image-def image_115
 		src C:\Users\Stefano Bassoli\Pictures\Cosie\Backend\L’INVESTIGATORE JOHN GATTONI.jpg
 		title L’INVESTIGATORE JOHN GATTONI.jpg
 	hyperlinks
@@ -291,20 +288,16 @@ docx ${category}
 			link https://cosie.lepida.it/backoffice/news/gestione/316
 			text Edita sul backend
 			type EXTERNAL
+		link-def testo_329
+			link https://cosie.lepida.it/backoffice/news/gestione/329
+			text Edita sul backend
+			type EXTERNAL
 		link-def testo_325
 			link https://cosie.lepida.it/backoffice/news/gestione/325
 			text Edita sul backend
 			type EXTERNAL
-		link-def testo_314
-			link https://cosie.lepida.it/backoffice/news/gestione/314
-			text Edita sul backend
-			type EXTERNAL
 		link-def testo_862
 			link https://cosie.lepida.it/backoffice/news/gestione/862
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_329
-			link https://cosie.lepida.it/backoffice/news/gestione/329
 			text Edita sul backend
 			type EXTERNAL
 		link-def testo_324
@@ -383,16 +376,16 @@ docx ${category}
 			link https://cosie.lepida.it/backoffice/news/gestione/868
 			text Edita sul backend
 			type EXTERNAL
+		link-def testo_766
+			link https://cosie.lepida.it/backoffice/news/gestione/766
+			text Edita sul backend
+			type EXTERNAL
 		link-def testo_869
 			link https://cosie.lepida.it/backoffice/news/gestione/869
 			text Edita sul backend
 			type EXTERNAL
 		link-def testo_821
 			link https://cosie.lepida.it/backoffice/news/gestione/821
-			text Edita sul backend
-			type EXTERNAL
-		link-def testo_766
-			link https://cosie.lepida.it/backoffice/news/gestione/766
 			text Edita sul backend
 			type EXTERNAL
 		link-def testo_848
@@ -692,8 +685,8 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -717,12 +710,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Biblioteca,&nbsp;consigli&nbsp;di&nbsp;lettura
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Biblioteca,&nbsp;consigli&nbsp;di&nbsp;lettura
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -739,7 +732,6 @@ docx ${category}
 			+ “Non&nbsp;è&nbsp;mai&nbsp;troppo&nbsp;presto&nbsp;per&nbsp;imparare&nbsp;ad&nbsp;amare&nbsp;la&nbsp;lettura&nbsp;attraverso&nbsp;il&nbsp;gesto&nbsp;d'amore&nbsp;di&nbsp;un&nbsp;adulto&nbsp;che legge&nbsp;una&nbsp;storia.&nbsp;Per&nbsp;questo&nbsp;il&nbsp;sistema&nbsp;delle&nbsp;biblioteche&nbsp;di&nbsp;Reggio&nbsp;è&nbsp;a&nbsp;disposizione&nbsp;delle&nbsp;famiglie&nbsp;e&nbsp;dei bambini&nbsp;reggiani&nbsp;e&nbsp;li&nbsp;invita&nbsp;a&nbsp;godere&nbsp;del&nbsp;patrimonio&nbsp;di&nbsp;conoscenze&nbsp;e&nbsp;idee&nbsp;racchiusa&nbsp;nei&nbsp;libri&nbsp;che
 				style big
 				size 24
-				br
 			+ custodiamo&nbsp;nelle&nbsp;nostre&nbsp;biblioteche”&nbsp;(Graziano&nbsp;Del&nbsp;Rio,&nbsp;2008).
 				style big
 				size 24
@@ -752,7 +744,6 @@ docx ${category}
 			+ In&nbsp;biblioteca&nbsp;potrai&nbsp;ritirare&nbsp;la&nbsp;tessera&nbsp;di&nbsp;prestito&nbsp;personale&nbsp;del&nbsp;tuo&nbsp;bambino&nbsp;con&nbsp;la&nbsp;quale&nbsp;potrai&nbsp;avere accesso&nbsp;gratuitamente&nbsp;a&nbsp;tanto&nbsp;materiale&nbsp;che&nbsp;potrà&nbsp;essere&nbsp;di&nbsp;supporto&nbsp;al&nbsp;suo&nbsp;sviluppo.&nbsp;Chiedi&nbsp;consiglio&nbsp;al bibliotecario,&nbsp;ti&nbsp;potrà&nbsp;suggerire&nbsp;ciò&nbsp;che&nbsp;è&nbsp;più&nbsp;adatto&nbsp;al&nbsp;tuo&nbsp;bambino.
 				style big
 				size 24
-				br
 		p  
 			font Garamond
 			spacing  
@@ -761,12 +752,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -794,15 +785,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_861
 		h2 Nascita
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -826,12 +817,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Appena&nbsp;puoi,&nbsp;ricerca&nbsp;un&nbsp;momento&nbsp;di&nbsp;quiete&nbsp;per&nbsp;parlare&nbsp;dolcemente&nbsp;o&nbsp;cantare&nbsp;al&nbsp;tuo&nbsp;bambino.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Appena&nbsp;puoi,&nbsp;ricerca&nbsp;un&nbsp;momento&nbsp;di&nbsp;quiete&nbsp;per&nbsp;parlare&nbsp;dolcemente&nbsp;o&nbsp;cantare&nbsp;al&nbsp;tuo&nbsp;bambino.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -876,20 +867,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_311
 		h2 Nascita
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -913,12 +899,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;gioco&nbsp;musicale
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;gioco&nbsp;musicale
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -938,20 +924,95 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_316
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla 3 alla 4
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : Ascoltando il tuo cuore...mi calmo
+				size 24
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
+			+ Ascoltando&nbsp;il&nbsp;tuo&nbsp;cuore...&nbsp;mi&nbsp;calmo
+				style h2_big_strong
+				bold
+				size 28
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ Prova&nbsp;a&nbsp;utilizzare&nbsp;il&nbsp;battito&nbsp;del&nbsp;tuo&nbsp;cuore&nbsp;o&nbsp;a&nbsp;respirare&nbsp;profondamente&nbsp;per&nbsp;far&nbsp;calmare&nbsp;il&nbsp;tuo&nbsp;bambino. 
+				style big
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ Avvicina&nbsp;il&nbsp;neonato&nbsp;al&nbsp;petto&nbsp;o&nbsp;al&nbsp;collo&nbsp;affinchè&nbsp;possa&nbsp;sintonizzarsi&nbsp;con&nbsp;il&nbsp;tuo&nbsp;battito&nbsp;cardiaco&nbsp;e&nbsp;ascoltare&nbsp;il&nbsp;tuo&nbsp;respiro. 
+				style big_strong
+				bold
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ Rilassati&nbsp;e&nbsp;lascia&nbsp;che&nbsp;l'istinto&nbsp;ti&nbsp;guidi. 
+				style big_strong
+				bold
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ E'&nbsp;molto&nbsp;probabile&nbsp;che&nbsp;il&nbsp;piccolo&nbsp;si&nbsp;tranquillizzi&nbsp;perchè&nbsp;durante&nbsp;la&nbsp;gravidanza&nbsp;ha&nbsp;imparato&nbsp;a&nbsp;conoscere&nbsp;questi&nbsp;suoni.
+				style big
+				size 24
+		p  
+			font Garamond
+			spacing  
+				before 72
+				after 36
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
+			link-ref testo_329
+		h2 15 giorni
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1004,116 +1065,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_325
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla 3 alla 4
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : 
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;di&nbsp;lettura 
-			style h2_big_strong
-			bold
-			size 28
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ Prova&nbsp;a&nbsp;leggere&nbsp;questo&nbsp;libro&nbsp;insieme&nbsp;al&nbsp;tuo&nbsp;piccolo&nbsp;mentre&nbsp;lo&nbsp;massaggi&nbsp;e&nbsp;lo&nbsp;accarezzi&nbsp;dolcemente&nbsp;
-				style big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ A&nbsp;fior&nbsp;di&nbsp;pelle
-				style big_big_strong
-				bold
-				size 24
-			+ &nbsp;con&nbsp;le&nbsp;rime&nbsp;di&nbsp;
-				style big
-				size 24
-			+ Chiara&nbsp;Carminati
-				style big_strong
-				bold
-				size 24
-			+ &nbsp;e&nbsp;le&nbsp;fotografie&nbsp;di&nbsp;
-				style big
-				size 24
-			+ Massimiliano&nbsp;Tappari
-				style big_strong
-				bold
-				size 24
-			+ &nbsp;(Lapis)
-				style big
-				size 24
-		p  
-			font Garamond
-			spacing  
-				before 72
-				after 36
-		p  
-			font Garamond
-			spacing  
-				before 72
-				after 36
-		p  
-			font Garamond
-			spacing  
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			image-ref image_3
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_314
-		h2 15 giorni
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1137,16 +1097,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura: 
-			style h2_big_strong
-			bold
-			size 28
-		+ AN&nbsp;GHIN&nbsp;GO’&nbsp;di&nbsp;Emanuela&nbsp;Bussolati,&nbsp;Il&nbsp;Castoro
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura: 
+				style h2_big_strong
+				bold
+				size 28
+			+ AN&nbsp;GHIN&nbsp;GO’&nbsp;di&nbsp;Emanuela&nbsp;Bussolati,&nbsp;Il&nbsp;Castoro
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1160,105 +1120,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_3
 			image-ref image_4
-			image-ref image_5
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_862
 		h2 15 giorni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla 3 alla 4
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : Ascoltando il tuo cuore...mi calmo
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-		+ Ascoltando&nbsp;il&nbsp;tuo&nbsp;cuore...&nbsp;mi&nbsp;calmo
-			style h2_big_strong
-			bold
-			size 28
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ Prova&nbsp;a&nbsp;utilizzare&nbsp;il&nbsp;battito&nbsp;del&nbsp;tuo&nbsp;cuore&nbsp;o&nbsp;a&nbsp;respirare&nbsp;profondamente&nbsp;per&nbsp;far&nbsp;calmare&nbsp;il&nbsp;tuo&nbsp;bambino. 
-				style big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ Avvicina&nbsp;il&nbsp;neonato&nbsp;al&nbsp;petto&nbsp;o&nbsp;al&nbsp;collo&nbsp;affinchè&nbsp;possa&nbsp;sintonizzarsi&nbsp;con&nbsp;il&nbsp;tuo&nbsp;battito&nbsp;cardiaco&nbsp;e&nbsp;ascoltare&nbsp;il&nbsp;tuo&nbsp;respiro. 
-				style big_strong
-				bold
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ Rilassati&nbsp;e&nbsp;lascia&nbsp;che&nbsp;l'istinto&nbsp;ti&nbsp;guidi. 
-				style big_strong
-				bold
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ E'&nbsp;molto&nbsp;probabile&nbsp;che&nbsp;il&nbsp;piccolo&nbsp;si&nbsp;tranquillizzi&nbsp;,&nbsp;anche&nbsp;perchè&nbsp;durante&nbsp;la&nbsp;gravidanza&nbsp;ha&nbsp;imparato&nbsp;a&nbsp;riconoscere&nbsp;questi&nbsp;suoni. 
-				style big
-				size 24
-		p  
-			font Garamond
-			spacing  
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_329
-		h2 15 giorni
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1282,12 +1157,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;gioco&nbsp;musicale
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;gioco&nbsp;musicale
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1316,20 +1191,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_324
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1353,12 +1223,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1379,20 +1249,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_390
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1416,12 +1281,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;tua&nbsp;voce&nbsp;interessa&nbsp;al&nbsp;tuo&nbsp;bambino:&nbsp;lo&nbsp;rassicura&nbsp;se&nbsp;non&nbsp;può&nbsp;vederti,&nbsp;lo&nbsp;attiva&nbsp;quando&nbsp;è&nbsp;in&nbsp;stato&nbsp;di&nbsp;veglia,&nbsp;lo&nbsp;calma&nbsp;quando&nbsp;è&nbsp;agitato. 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;tua&nbsp;voce&nbsp;interessa&nbsp;al&nbsp;tuo&nbsp;bambino:&nbsp;lo&nbsp;rassicura&nbsp;se&nbsp;non&nbsp;può&nbsp;vederti,&nbsp;lo&nbsp;attiva&nbsp;quando&nbsp;è&nbsp;in&nbsp;stato&nbsp;di&nbsp;veglia,&nbsp;lo&nbsp;calma&nbsp;quando&nbsp;è&nbsp;agitato. 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1447,12 +1312,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;neonati&nbsp;sono&nbsp;musicali
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;neonati&nbsp;sono&nbsp;musicali
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1497,20 +1362,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_322
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1534,12 +1394,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;gioco&nbsp;musicale&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;gioco&nbsp;musicale&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1576,20 +1436,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_819
 		h2 1 mese
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1613,12 +1468,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Nato&nbsp;per&nbsp;leggere. Consigli&nbsp;di&nbsp;lettura.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Nato&nbsp;per&nbsp;leggere. Consigli&nbsp;di&nbsp;lettura.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1643,12 +1498,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Ma&nbsp;cosa&nbsp;si&nbsp;può&nbsp;leggere&nbsp;ai&nbsp;neonati?
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Ma&nbsp;cosa&nbsp;si&nbsp;può&nbsp;leggere&nbsp;ai&nbsp;neonati?
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1673,12 +1528,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -1722,20 +1577,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_6
+			image-ref image_5
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_863
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1759,21 +1614,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;Tempo&nbsp;Dei&nbsp;Sogni&nbsp;(Classica&nbsp;Per&nbsp;I&nbsp;Bambini)
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;Tempo&nbsp;Dei&nbsp;Sogni&nbsp;(Classica&nbsp;Per&nbsp;I&nbsp;Bambini)
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1793,20 +1648,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_391
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1830,12 +1680,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Fare&nbsp;musica&nbsp;in&nbsp;famiglia, giocando&nbsp;con&nbsp;la&nbsp;voce&nbsp;e&nbsp;con&nbsp;i&nbsp;suoni,&nbsp;rafforza&nbsp;il&nbsp;legame&nbsp;affettivo&nbsp;tra&nbsp;adulto&nbsp;e&nbsp;bambino&nbsp;ed&nbsp;è&nbsp;fonte&nbsp;di&nbsp;benessere.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Fare&nbsp;musica&nbsp;in&nbsp;famiglia, giocando&nbsp;con&nbsp;la&nbsp;voce&nbsp;e&nbsp;con&nbsp;i&nbsp;suoni,&nbsp;rafforza&nbsp;il&nbsp;legame&nbsp;affettivo&nbsp;tra&nbsp;adulto&nbsp;e&nbsp;bambino&nbsp;ed&nbsp;è&nbsp;fonte&nbsp;di&nbsp;benessere.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1928,20 +1778,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_404
 		h2 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -1965,12 +1810,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -1993,20 +1838,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_8
+			image-ref image_7
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_864
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2030,12 +1875,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ SMARTPHONE,&nbsp;TABLET,&nbsp;TV&nbsp;...&nbsp;MEGLIO&nbsp;SE&nbsp;LONTANI&nbsp;DAL&nbsp;TUO&nbsp;BAMBINO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ SMARTPHONE,&nbsp;TABLET,&nbsp;TV&nbsp;...&nbsp;MEGLIO&nbsp;SE&nbsp;LONTANI&nbsp;DAL&nbsp;TUO&nbsp;BAMBINO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2076,12 +1921,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ SE&nbsp;ASCOLTI&nbsp;LA&nbsp;MUSICA&nbsp;CON&nbsp;LO&nbsp;SMARTHPHONE&nbsp;RICORDATI&nbsp;DI&nbsp;AMPLIFICARE&nbsp;IL&nbsp;SUONO
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ SE&nbsp;ASCOLTI&nbsp;LA&nbsp;MUSICA&nbsp;CON&nbsp;LO&nbsp;SMARTHPHONE&nbsp;RICORDATI&nbsp;DI&nbsp;AMPLIFICARE&nbsp;IL&nbsp;SUONO
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2132,20 +1977,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_408
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2169,12 +2009,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ CONSIGLI&nbsp;DI&nbsp;LETTURA
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ CONSIGLI&nbsp;DI&nbsp;LETTURA
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -2202,20 +2042,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_10
+			image-ref image_9
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_865
 		h2 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2239,12 +2079,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ CONSIGLIO&nbsp;D'ASCOLTO&nbsp;E&nbsp;DI&nbsp;GIOCO&nbsp;MUSICALE&nbsp;
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ CONSIGLIO&nbsp;D'ASCOLTO&nbsp;E&nbsp;DI&nbsp;GIOCO&nbsp;MUSICALE&nbsp;
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2281,20 +2121,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_820
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2318,12 +2153,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2346,20 +2181,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_12
+			image-ref image_11
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_866
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2383,12 +2218,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2417,20 +2252,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_393
 		h2 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2454,12 +2284,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ IN&nbsp;FAMIGLIA&nbsp;PARLATE&nbsp;DIVERSE&nbsp;LINGUE?
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ IN&nbsp;FAMIGLIA&nbsp;PARLATE&nbsp;DIVERSE&nbsp;LINGUE?
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2533,20 +2363,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_411
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2570,12 +2395,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;BAMBINI&nbsp;AMANO&nbsp;LE&nbsp;ROUTINE...&nbsp;TIENI IL&nbsp;RITMO&nbsp;DELLA&nbsp;GIORNATA&nbsp;CON&nbsp;LA&nbsp;MUSICA!
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;BAMBINI&nbsp;AMANO&nbsp;LE&nbsp;ROUTINE...&nbsp;TIENI IL&nbsp;RITMO&nbsp;DELLA&nbsp;GIORNATA&nbsp;CON&nbsp;LA&nbsp;MUSICA!
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2627,20 +2452,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_764
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2690,20 +2510,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_395
 		h2 5 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2727,12 +2542,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2779,20 +2594,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_14
+			image-ref image_13
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_867
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2816,12 +2631,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;di&nbsp;lettura&nbsp;e&nbsp;ascolto
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;di&nbsp;lettura&nbsp;e&nbsp;ascolto
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2858,20 +2673,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_396
 		h2 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -2895,12 +2705,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;programma&nbsp;Nati&nbsp;per&nbsp;Leggere&nbsp;(NpL)
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;programma&nbsp;Nati&nbsp;per&nbsp;Leggere&nbsp;(NpL)
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -2992,12 +2802,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3044,161 +2854,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_16
+			image-ref image_15
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_868
 		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla 30 alla 31
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : Consigli di lettura: Buonanotte luna
-
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ BUONANOTTE&nbsp;LUNA&nbsp;di&nbsp;Margaret&nbsp;Wise&nbsp;Brown,&nbsp;illustrazioni&nbsp;di&nbsp;Clemente&nbsp;Hurd,&nbsp;traduzione&nbsp;poetica&nbsp;di&nbsp;Bruno&nbsp;Tognolini,&nbsp;Nord-Sud,&nbsp;2017 
-				style big_strong
-				bold
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ Un&nbsp;coniglietto&nbsp;già&nbsp;pronto&nbsp;per&nbsp;dormire&nbsp;dà&nbsp;la&nbsp;buonanotte&nbsp;a&nbsp;tutti&nbsp;gli&nbsp;oggetti&nbsp;che&nbsp;si&nbsp;trovano&nbsp;nella&nbsp;sua&nbsp;cameretta,&nbsp;dai&nbsp;quadri&nbsp;al&nbsp;fuoco&nbsp;nel&nbsp;camino,&nbsp;ai&nbsp;guanti&nbsp;stesi&nbsp;ad&nbsp;asciugare,&nbsp;alla&nbsp;luna&nbsp;che&nbsp;si&nbsp;intravede&nbsp;dalla&nbsp;finestra.
-				style big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			image-ref image_18
-			image-ref
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_869
-		h2 7 mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			border
-				top
-					size 3
-					value single
-					space 2
-				bottom
-					size 3
-					value single
-					space 2
-			+ Settimane
-				bold
-				size 24
-			+ : dalla 30 alla 31
-				size 24
-			+ Abstract
-				size 24
-				bold
-				br
-			+ : Consiglio di ascolto e gioco musicale: Mamme in sol
-				size 24
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-		+ CONSIGLIO&nbsp;DI&nbsp;ASCOLTO&nbsp;E&nbsp;GIOCO&nbsp;MUSICALE&nbsp;
-			style h2_big_big
-			bold
-			size 28
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ Mamme&nbsp;in&nbsp;sol.&nbsp;Con&nbsp;CD&nbsp;Audio
-				style big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ di&nbsp;
-				style big
-				size 24
-			link-ref in_article_2
-			+ ,&nbsp;
-				style big
-				size 24
-			link-ref in_article_3
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-			+ Franco&nbsp;Cosimo&nbsp;Panini&nbsp;Editore
-				style big
-				size 24
-		p
-			font Garamond
-			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
-			link-ref testo_821
-		h2 7 mesi
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3222,12 +2891,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ UN&nbsp;CESTINO&nbsp;DEI&nbsp;TESORI&nbsp; SONORI
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ UN&nbsp;CESTINO&nbsp;DEI&nbsp;TESORI&nbsp; SONORI
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3249,7 +2918,7 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			+ Tutto&nbsp;ciò&nbsp;che&nbsp;produce&nbsp;un&nbsp;suono&nbsp;attrae&nbsp;l'attenzione&nbsp;del&nbsp;tuo&nbsp;bambino &nbsp;puoi&nbsp;quindi&nbsp;proporgli&nbsp;un&nbsp;cestino&nbsp;dei&nbsp;tesori&nbsp;sonori&nbsp;in&nbsp;cui&nbsp;inserire&nbsp;oggetti&nbsp;che&nbsp;suonano&nbsp;quando&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;li scuote,&nbsp;li&nbsp;batte,&nbsp;li&nbsp;strofina. 
+			+ Tutto&nbsp;ciò&nbsp;che&nbsp;produce&nbsp;un&nbsp;suono&nbsp;attrae&nbsp;l'attenzione&nbsp;del&nbsp;tuo&nbsp;bambino, &nbsp;puoi&nbsp;quindi&nbsp;proporgli&nbsp;un&nbsp;cestino&nbsp;dei&nbsp;tesori&nbsp;sonori&nbsp;in&nbsp;cui&nbsp;inserire&nbsp;oggetti&nbsp;che&nbsp;suonano&nbsp;quando&nbsp;il&nbsp;tuo&nbsp;bambino&nbsp;li scuote,&nbsp;li&nbsp;batte,&nbsp;li&nbsp;strofina. 
 				style big_strong
 				bold
 				size 24
@@ -3319,20 +2988,151 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
+				before 432
+				after 72
+			link-ref testo_766
+		h2 7 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-			link-ref testo_766
+				before 432
+				after 72
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla 30 alla 31
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : Consigli di lettura: Buonanotte luna
+
+				size 24
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ BUONANOTTE&nbsp;LUNA&nbsp;di&nbsp;Margaret&nbsp;Wise&nbsp;Brown,&nbsp;illustrazioni&nbsp;di&nbsp;Clemente&nbsp;Hurd,&nbsp;traduzione&nbsp;poetica&nbsp;di&nbsp;Bruno&nbsp;Tognolini,&nbsp;Nord-Sud,&nbsp;2017 
+				style big_strong
+				bold
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ Un&nbsp;coniglietto&nbsp;già&nbsp;pronto&nbsp;per&nbsp;dormire&nbsp;dà&nbsp;la&nbsp;buonanotte&nbsp;a&nbsp;tutti&nbsp;gli&nbsp;oggetti&nbsp;che&nbsp;si&nbsp;trovano&nbsp;nella&nbsp;sua&nbsp;cameretta,&nbsp;dai&nbsp;quadri&nbsp;al&nbsp;fuoco&nbsp;nel&nbsp;camino,&nbsp;ai&nbsp;guanti&nbsp;stesi&nbsp;ad&nbsp;asciugare,&nbsp;alla&nbsp;luna&nbsp;che&nbsp;si&nbsp;intravede&nbsp;dalla&nbsp;finestra.
+				style big
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			image-ref image_17
+			image-ref
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
+			link-ref testo_869
+		h2 7 mesi
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
+			border
+				top
+					size 3
+					value single
+					space 2
+				bottom
+					size 3
+					value single
+					space 2
+			+ Settimane
+				bold
+				size 24
+			+ : dalla 30 alla 31
+				size 24
+			+ Abstract
+				size 24
+				bold
+				br
+			+ : Consiglio di ascolto e gioco musicale: Mamme in sol
+				size 24
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
+			+ CONSIGLIO&nbsp;DI&nbsp;ASCOLTO&nbsp;E&nbsp;GIOCO&nbsp;MUSICALE&nbsp;
+				style h2_big_big
+				bold
+				size 28
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ Mamme&nbsp;in&nbsp;sol.&nbsp;Con&nbsp;CD&nbsp;Audio
+				style big
+				size 24
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ di&nbsp;
+				style big
+				size 24
+			link-ref in_article_2
+			+ ,&nbsp;
+				style big
+				size 24
+			link-ref in_article_3
+		p
+			font Garamond
+			spacing
+				before 72
+				after 36
+			+ Franco&nbsp;Cosimo&nbsp;Panini&nbsp;Editore
+				style big
+				size 24
+		p
+			font Garamond
+			spacing
+				before 432
+				after 72
+			link-ref testo_821
 		h2 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3356,47 +3156,42 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ French&nbsp;Playground&nbsp;di&nbsp;Putumayo
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ French&nbsp;Playground&nbsp;di&nbsp;Putumayo
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Musiche&nbsp;francesi&nbsp;per&nbsp;un&nbsp;momento&nbsp;di&nbsp;gioco&nbsp;musicale
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Musiche&nbsp;francesi&nbsp;per&nbsp;un&nbsp;momento&nbsp;di&nbsp;gioco&nbsp;musicale
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_848
 		h2 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3420,12 +3215,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;lettura&nbsp;ha&nbsp;bisogno&nbsp;di&nbsp;routine
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;lettura&nbsp;ha&nbsp;bisogno&nbsp;di&nbsp;routine
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3458,12 +3253,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3494,20 +3289,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_20
+			image-ref image_19
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_870
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3531,12 +3326,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MUSICA...&nbsp;COMPAGNA&nbsp;DI&nbsp;GIOCHI&nbsp;PER&nbsp;CRESCERE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MUSICA...&nbsp;COMPAGNA&nbsp;DI&nbsp;GIOCHI&nbsp;PER&nbsp;CRESCERE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3682,20 +3477,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_401
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3719,12 +3509,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3747,20 +3537,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_22
+			image-ref image_21
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_871
 		h2 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3784,21 +3574,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale&nbsp;
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale&nbsp;
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Orchestra&nbsp;di&nbsp;coccole
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Orchestra&nbsp;di&nbsp;coccole
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3834,20 +3624,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_822
 		h2 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3871,12 +3656,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura.&nbsp;La&nbsp;lettura&nbsp;favorisce&nbsp;la&nbsp;relazione&nbsp;di&nbsp;attaccamento. 
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura.&nbsp;La&nbsp;lettura&nbsp;favorisce&nbsp;la&nbsp;relazione&nbsp;di&nbsp;attaccamento. 
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -3901,12 +3686,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -3934,20 +3719,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_24
+			image-ref image_23
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_872
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -3971,12 +3756,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -4004,20 +3789,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_26
+			image-ref image_25
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_873
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4041,12 +3826,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Costruire&nbsp;l'ambiente&nbsp;sonoro...&nbsp;i&nbsp;nidi&nbsp;sonori&nbsp;e&nbsp;la&nbsp;tenda&nbsp;del&nbsp;silenzio
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Costruire&nbsp;l'ambiente&nbsp;sonoro...&nbsp;i&nbsp;nidi&nbsp;sonori&nbsp;e&nbsp;la&nbsp;tenda&nbsp;del&nbsp;silenzio
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4066,12 +3851,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;tenda&nbsp;del&nbsp;silenzio
-			style h2_big_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;tenda&nbsp;del&nbsp;silenzio
+				style h2_big_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4099,12 +3884,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Nidi&nbsp;sonori
-			style h2_strong_big_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Nidi&nbsp;sonori
+				style h2_strong_big_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4246,20 +4031,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_768
 		h2 11 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4283,21 +4063,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;gioco&nbsp;musicale
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;gioco&nbsp;musicale
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Rime&nbsp;per&nbsp;le&nbsp;mani
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Rime&nbsp;per&nbsp;le&nbsp;mani
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4317,20 +4097,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_403
 		h2 1 anno
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4354,16 +4129,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;letture&nbsp;di&nbsp;oggi&nbsp;lo&nbsp;aiuteranno&nbsp;quando&nbsp;andrà&nbsp;a&nbsp;scuola. 
-			style h2_big_strong
-			bold
-			size 28
-		+ Consigli&nbsp;di&nbsp;lettura.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;letture&nbsp;di&nbsp;oggi&nbsp;lo&nbsp;aiuteranno&nbsp;quando&nbsp;andrà&nbsp;a&nbsp;scuola. 
+				style h2_big_strong
+				bold
+				size 28
+			+ Consigli&nbsp;di&nbsp;lettura.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4396,12 +4171,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -4459,21 +4234,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_27
 			image-ref image_28
-			image-ref image_29
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_874
 		h2 13 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4497,12 +4272,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -4530,20 +4305,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_31
+			image-ref image_30
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_877
 		h2 13 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4567,12 +4342,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ ROUTINE&nbsp;E&nbsp;GIOCHI...&nbsp;IN&nbsp;MUSICA
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ ROUTINE&nbsp;E&nbsp;GIOCHI...&nbsp;IN&nbsp;MUSICA
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4668,15 +4443,12 @@ docx ${category}
 			+ per&nbsp;la&nbsp;strada&nbsp;del&nbsp;mulino;
 				style big_big
 				size 24
-				br
 			+ il&nbsp;mulino&nbsp;non&nbsp;c'è&nbsp;più:
 				style big_big
 				size 24
-				br
 			+ trotta&nbsp;trotta&nbsp;cadi&nbsp;giù!
 				style big_big
 				size 24
-				br
 		p
 			font Garamond
 			spacing
@@ -4696,15 +4468,12 @@ docx ${category}
 			+ porta&nbsp;a&nbsp;spasso&nbsp;il&nbsp;mio&nbsp;bambino:
 				style big_big
 				size 24
-				br
 			+ fallo&nbsp;andare&nbsp;come&nbsp;il&nbsp;vento,
 				style big_big
 				size 24
-				br
 			+ fallo&nbsp;andare&nbsp;a&nbsp;mille&nbsp;e&nbsp;cento.
 				style big_big
 				size 24
-				br
 		p
 			font Garamond
 			spacing
@@ -4716,15 +4485,12 @@ docx ${category}
 			+ fallo&nbsp;andare&nbsp;domattina,
 				style big_big
 				size 24
-				br
 			+ e&nbsp;poi&nbsp;dopo&nbsp;scappa&nbsp;scappa,
 				style big_big
 				size 24
-				br
 			+ che&nbsp;il&nbsp;mio&nbsp;bimbo&nbsp;vuol&nbsp;la&nbsp;pappa!
 				style big_big
 				size 24
-				br
 		p  
 			font Garamond
 			spacing  
@@ -4733,20 +4499,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_829
 		h2 13 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4770,21 +4531,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
-			style h2_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;gioco&nbsp;musicale
+				style h2_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Il&nbsp;Tempo&nbsp;Dei&nbsp;Giochi
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Il&nbsp;Tempo&nbsp;Dei&nbsp;Giochi
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4805,20 +4566,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_398
 		h2 14 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -4842,16 +4598,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Segui&nbsp;la&nbsp;lettura&nbsp;indicando&nbsp;con&nbsp;il&nbsp;dito&nbsp;le&nbsp;parole&nbsp;e&nbsp;le&nbsp;immagini. 
-			style h2_big_strong
-			bold
-			size 28
-		+ Consigli&nbsp;di&nbsp;lettura.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Segui&nbsp;la&nbsp;lettura&nbsp;indicando&nbsp;con&nbsp;il&nbsp;dito&nbsp;le&nbsp;parole&nbsp;e&nbsp;le&nbsp;immagini. 
+				style h2_big_strong
+				bold
+				size 28
+			+ Consigli&nbsp;di&nbsp;lettura.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -4876,12 +4632,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -4939,21 +4695,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_32
 			image-ref image_33
-			image-ref image_34
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_878
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5044,20 +4800,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_818
 		h2 15 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5081,12 +4832,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -5138,20 +4889,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_36
+			image-ref image_35
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_879
 		h2 16 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5175,16 +4926,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;letture&nbsp;creano&nbsp;ricordi&nbsp;importanti. 
-			style h2_big_strong
-			bold
-			size 28
-		+ Consigli&nbsp;di&nbsp;lettura.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;letture&nbsp;creano&nbsp;ricordi&nbsp;importanti. 
+				style h2_big_strong
+				bold
+				size 28
+			+ Consigli&nbsp;di&nbsp;lettura.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5217,12 +4968,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -5258,20 +5009,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_38
+			image-ref image_37
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_880
 		h2 17 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5295,12 +5046,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MUSICA&nbsp;E'&nbsp;GIOCO!
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MUSICA&nbsp;E'&nbsp;GIOCO!
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5366,6 +5117,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ :&nbsp;non&nbsp;solo&nbsp;musica&nbsp;per&nbsp;bambini!&nbsp;Rock,&nbsp;pop,&nbsp;classica,&nbsp;jazz,&nbsp;country,&nbsp;musiche&nbsp;tradizionali&nbsp;di&nbsp;paesi&nbsp;lontani,&nbsp;...&nbsp;variare&nbsp;nelle proposte&nbsp;è&nbsp;una&nbsp;ricchezza&nbsp;per&nbsp;il&nbsp;tuo&nbsp;bambino! 
 				style big
 				size 24
@@ -5381,6 +5133,7 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
+				br
 			+ &nbsp;sottolineando&nbsp;cadenza&nbsp;ritmica,&nbsp;gradite&nbsp;sono&nbsp;quelle&nbsp;in&nbsp;cui&nbsp;si&nbsp;fanno&nbsp;dei&nbsp;gesti&nbsp;utilizzando&nbsp;il&nbsp;corpo.&nbsp;Il&nbsp;bambino&nbsp;inizia&nbsp;a&nbsp;memorizzarle&nbsp;e&nbsp;potrebbe&nbsp;provare&nbsp;a&nbsp;ripeterle;&nbsp;ad&nbsp;esempio&nbsp;ricordi
 				style big
 				size 24
@@ -5718,7 +5471,6 @@ docx ${category}
 			+ -&nbsp;Se&nbsp;a&nbsp;casa&nbsp;sono&nbsp;presenti&nbsp;
 				style big
 				size 24
-				br
 			+ strumenti&nbsp;musicali
 				style big_strong
 				bold
@@ -5749,20 +5501,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_816
 		h2 17 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5786,12 +5533,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -5819,20 +5566,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_40
+			image-ref image_39
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_881
 		h2 18 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -5856,16 +5603,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;biblioteche. 
-			style h2_big_strong
-			bold
-			size 28
-		+ Consigli&nbsp;di&nbsp;lettura.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;biblioteche. 
+				style h2_big_strong
+				bold
+				size 28
+			+ Consigli&nbsp;di&nbsp;lettura.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5938,12 +5685,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -5977,12 +5724,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ NO!&nbsp;di&nbsp;Claudia&nbsp;Rueda,&nbsp;Lapis 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ NO!&nbsp;di&nbsp;Claudia&nbsp;Rueda,&nbsp;Lapis 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6004,20 +5751,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_42
+			image-ref image_41
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_882
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6038,11 +5785,11 @@ docx ${category}
 				br
 			+ : Consiglio di ascolto e lettura: Capricci e coccole
 				size 24
-		p Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;lettura
+		p
 			font Garamond
-			spacing Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;lettura
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+ Consiglio&nbsp;di&nbsp;ascolto&nbsp;e&nbsp;lettura
 				style h2
 				bold
@@ -6050,12 +5797,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Capricci&nbsp;e&nbsp;coccole
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Capricci&nbsp;e&nbsp;coccole
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6086,20 +5833,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_828
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6124,17 +5866,17 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
-		p  
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -6161,20 +5903,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_44
+			image-ref image_43
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_883
 		h2 19 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6198,12 +5940,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ LA&nbsp;MUSICA&nbsp;FA&nbsp;BENE
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ LA&nbsp;MUSICA&nbsp;FA&nbsp;BENE
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6327,20 +6069,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_847
 		h2 20 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6364,16 +6101,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Create&nbsp;la&nbsp;sua&nbsp;piccola&nbsp;biblioteca. 
-			style h2_big_strong
-			bold
-			size 28
-		+ Consigli&nbsp;di&nbsp;lettura.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Create&nbsp;la&nbsp;sua&nbsp;piccola&nbsp;biblioteca. 
+				style h2_big_strong
+				bold
+				size 28
+			+ Consigli&nbsp;di&nbsp;lettura.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6398,12 +6135,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6434,20 +6171,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_46
+			image-ref image_45
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_884
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6541,12 +6278,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ CANZONI&nbsp;CHE&nbsp;CONTANO…
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ CANZONI&nbsp;CHE&nbsp;CONTANO…
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -6803,20 +6540,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_850
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -6840,12 +6572,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p  
 			font Garamond
 			spacing  
@@ -6895,21 +6627,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_47
 			image-ref image_48
-			image-ref image_49
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_885
 		h2 21 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7003,12 +6735,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ CANZONI&nbsp;CHE&nbsp;CONTANO…
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ CANZONI&nbsp;CHE&nbsp;CONTANO…
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7265,20 +6997,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_851
 		h2 22 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7302,16 +7029,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Scegli&nbsp;libri&nbsp;di&nbsp;qualità&nbsp;e&nbsp;adatti&nbsp;all’età&nbsp;e&nbsp;agli&nbsp;interessi&nbsp;del&nbsp;tuo&nbsp;bambino. 
-			style h2_big_strong
-			bold
-			size 28
-		+ Consigli&nbsp;di&nbsp;lettura.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Scegli&nbsp;libri&nbsp;di&nbsp;qualità&nbsp;e&nbsp;adatti&nbsp;all’età&nbsp;e&nbsp;agli&nbsp;interessi&nbsp;del&nbsp;tuo&nbsp;bambino. 
+				style h2_big_strong
+				bold
+				size 28
+			+ Consigli&nbsp;di&nbsp;lettura.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7363,12 +7090,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7421,21 +7148,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_50
 			image-ref image_51
-			image-ref image_52
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_886
 		h2 23 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7459,12 +7186,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7517,21 +7244,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_53
 			image-ref image_54
-			image-ref image_55
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_887
 		h2 23 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7555,21 +7282,21 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;lettura
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;di&nbsp;lettura
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;canzoni&nbsp;delle&nbsp;emozioni
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;canzoni&nbsp;delle&nbsp;emozioni
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7605,20 +7332,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_827
 		h2 23 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7642,12 +7364,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ SOSTENERE&nbsp;LA&nbsp;RELAZIONE&nbsp;MUSICALE 
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ SOSTENERE&nbsp;LA&nbsp;RELAZIONE&nbsp;MUSICALE 
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7682,7 +7404,6 @@ docx ${category}
 				style big_strong
 				bold
 				size 24
-				br
 			+ Potranno&nbsp;aiutarti&nbsp;a&nbsp;scandire&nbsp;il&nbsp;ritmo&nbsp;delle&nbsp;vostre&nbsp;giornate.
 				style big
 				size 24
@@ -7734,20 +7455,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_846
 		h2 2 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7771,16 +7487,16 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Prima&nbsp;di&nbsp;addormentarsi.&nbsp;Pagina&nbsp;Facebook. 
-			style h2_big_strong
-			bold
-			size 28
-		+ Consigli&nbsp;di&nbsp;lettura.
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ Prima&nbsp;di&nbsp;addormentarsi.&nbsp;Pagina&nbsp;Facebook. 
+				style h2_big_strong
+				bold
+				size 28
+			+ Consigli&nbsp;di&nbsp;lettura.
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7837,12 +7553,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Pagina&nbsp;Facebook
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Pagina&nbsp;Facebook
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7865,12 +7581,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -7923,21 +7639,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_56
 			image-ref image_57
-			image-ref image_58
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_888
 		h2 2 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -7961,12 +7677,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MUSICA&nbsp;E'...&nbsp;LIBERTA'&nbsp;E&nbsp;PIACERE
-			style h2_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MUSICA&nbsp;E'...&nbsp;LIBERTA'&nbsp;E&nbsp;PIACERE
+				style h2_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8120,20 +7836,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_875
 		h2 2 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8157,12 +7868,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8215,21 +7926,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_59
 			image-ref image_60
-			image-ref image_61
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_889
 		h2 2 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8253,12 +7964,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;libri&nbsp;fanno&nbsp;scoprire&nbsp;il&nbsp;mondo.&nbsp;Consigli&nbsp;di&nbsp;lettura.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;libri&nbsp;fanno&nbsp;scoprire&nbsp;il&nbsp;mondo.&nbsp;Consigli&nbsp;di&nbsp;lettura.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8291,12 +8002,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8349,21 +8060,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_62
 			image-ref image_63
-			image-ref image_64
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_890
 		h2 2 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8387,12 +8098,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MEMORY&nbsp;SONORO
-			style h2_strong_big
-			bold
-			size 28
+				before 432
+				after 72
+			+ MEMORY&nbsp;SONORO
+				style h2_strong_big
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8417,11 +8128,11 @@ docx ${category}
 			+ Utilizzando&nbsp;delle&nbsp;immagini&nbsp;degli&nbsp;animali&nbsp;potrete&nbsp;andare&nbsp;alla&nbsp;scoperta&nbsp;dei&nbsp;versi&nbsp;degli&nbsp;animali&nbsp;abbinandoli&nbsp;non&nbsp;solo&nbsp;come&nbsp;immagine,&nbsp;ma&nbsp;anche&nbsp;come&nbsp;memory&nbsp;sonoro. 
 				style big
 				size 24
-		p  
+		p
 			font Garamond
-			spacing  
-				before 288
-				after 144
+			spacing
+				before 432
+				after 72
 			+  
 				style h2
 				bold
@@ -8429,20 +8140,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_817
 		h2 2 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8466,12 +8172,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8537,21 +8243,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_65
 			image-ref image_66
-			image-ref image_67
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_891
 		h2 2 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8575,12 +8281,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;storie&nbsp;vanno&nbsp;commentate&nbsp;a&nbsp;lungo.&nbsp;Consigli&nbsp;di&nbsp;lettura.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;storie&nbsp;vanno&nbsp;commentate&nbsp;a&nbsp;lungo.&nbsp;Consigli&nbsp;di&nbsp;lettura.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8621,12 +8327,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8649,23 +8355,23 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_68
 			image-ref image_69
 			image-ref image_70
 			image-ref image_71
-			image-ref image_72
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_892
 		h2 2 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8689,12 +8395,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -8739,21 +8445,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_73
 			image-ref image_74
-			image-ref image_75
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_893
 		h2 2 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -8777,12 +8483,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;LIBRI&nbsp;MUSICALI&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;LIBRI&nbsp;MUSICALI&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9299,20 +9005,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_876
 		h2 3 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9336,12 +9037,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Leggere&nbsp;e&nbsp;rileggere.&nbsp;Consigli&nbsp;di&nbsp;lettura.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Leggere&nbsp;e&nbsp;rileggere.&nbsp;Consigli&nbsp;di&nbsp;lettura.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9385,12 +9086,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9435,21 +9136,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_76
 			image-ref image_77
-			image-ref image_78
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_894
 		h2 3 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9473,12 +9174,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9523,21 +9224,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_79
 			image-ref image_80
-			image-ref image_81
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_895
 		h2 3 anni e 2 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9561,12 +9262,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ MUSICA…&nbsp;UN&nbsp;NETTARE&nbsp;CHE&nbsp;NUTRE&nbsp;LA&nbsp;CRESCITA
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ MUSICA…&nbsp;UN&nbsp;NETTARE&nbsp;CHE&nbsp;NUTRE&nbsp;LA&nbsp;CRESCITA
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9627,20 +9328,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_948
 		h2 3 anni e 4 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9664,12 +9360,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ I&nbsp;volontari&nbsp;NpL.&nbsp;Consigli&nbsp;di&nbsp;lettura.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ I&nbsp;volontari&nbsp;NpL.&nbsp;Consigli&nbsp;di&nbsp;lettura.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9718,12 +9414,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9768,21 +9464,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_82
 			image-ref image_83
-			image-ref image_84
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_896
 		h2 3 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9806,12 +9502,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;gioco&nbsp;musicale
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consiglio&nbsp;d'ascolto&nbsp;e&nbsp;gioco&nbsp;musicale
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9856,20 +9552,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_949
 		h2 3 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9893,12 +9584,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -9957,21 +9648,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_85
 			image-ref image_86
-			image-ref image_87
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_897
 		h2 3 anni e 8 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -9995,12 +9686,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Le&nbsp;immagini&nbsp;dei&nbsp;libri&nbsp;sono&nbsp;importanti.&nbsp;Consigli&nbsp;di&nbsp;lettura.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Le&nbsp;immagini&nbsp;dei&nbsp;libri&nbsp;sono&nbsp;importanti.&nbsp;Consigli&nbsp;di&nbsp;lettura.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10044,12 +9735,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10094,21 +9785,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_88
 			image-ref image_89
-			image-ref image_90
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_898
 		h2 3 anni e 10 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10132,12 +9823,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10182,21 +9873,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_91
 			image-ref image_92
-			image-ref image_93
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_899
 		h2 4 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10220,12 +9911,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ La&nbsp;lettura&nbsp;dialogica.&nbsp;Consigli&nbsp;di&nbsp;lettura.
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ La&nbsp;lettura&nbsp;dialogica.&nbsp;Consigli&nbsp;di&nbsp;lettura.
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10312,12 +10003,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10362,21 +10053,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_94
 			image-ref image_95
-			image-ref image_96
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_900
 		h2 4 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10400,12 +10091,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ INVENTARE&nbsp;UNA&nbsp;STORIA&nbsp;SONORA&nbsp;
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ INVENTARE&nbsp;UNA&nbsp;STORIA&nbsp;SONORA&nbsp;
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10465,20 +10156,15 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 72
-				after 36
-		p
-			font Garamond
-			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_950
 		h2 4 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10502,12 +10188,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10552,21 +10238,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_97
 			image-ref image_98
-			image-ref image_99
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_901
 		h2 4 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10590,12 +10276,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10640,21 +10326,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_100
 			image-ref image_101
-			image-ref image_102
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_902
 		h2 4 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10678,12 +10364,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10728,21 +10414,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_103
 			image-ref image_104
-			image-ref image_105
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_903
 		h2 5 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10766,12 +10452,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10794,20 +10480,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_107
+			image-ref image_106
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_904
 		h2 5 anni e 3 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10831,12 +10517,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10881,21 +10567,21 @@ docx ${category}
 			spacing
 				before 72
 				after 36
+			image-ref image_108
 			image-ref image_109
-			image-ref image_110
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_905
 		h2 5 anni e 6 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10919,12 +10605,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -10947,20 +10633,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_112
+			image-ref image_111
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_906
 		h2 5 anni e 9 mesi
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -10984,12 +10670,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11012,20 +10698,20 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_114
+			image-ref image_113
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_907
 		h2 6 anni
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			border
 				top
 					size 3
@@ -11049,12 +10735,12 @@ docx ${category}
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
-		+ Consigli&nbsp;di&nbsp;lettura
-			style h2_big_strong
-			bold
-			size 28
+				before 432
+				after 72
+			+ Consigli&nbsp;di&nbsp;lettura
+				style h2_big_strong
+				bold
+				size 28
 		p
 			font Garamond
 			spacing
@@ -11077,11 +10763,11 @@ docx ${category}
 			spacing
 				before 72
 				after 36
-			image-ref image_116
+			image-ref image_115
 			image-ref
 		p
 			font Garamond
 			spacing
-				before 288
-				after 144
+				before 432
+				after 72
 			link-ref testo_908

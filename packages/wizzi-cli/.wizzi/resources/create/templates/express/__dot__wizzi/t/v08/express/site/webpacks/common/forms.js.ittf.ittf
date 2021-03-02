@@ -5,7 +5,7 @@ ${'$'}group
 
     export
         function createForm
-            param pageData
+            param formDef
             param elementId
 
             const jq2
@@ -15,39 +15,29 @@ ${'$'}group
                     param $
                     
                     if !stylesInjected
-                        _ injectPageStyles
                         _ injectFormStyles
                         set stylesInjected = true
 
                     set document.getElementById(elementId).innerHTML
-                        _ getFormContainer
-                            @ pageData
+                        _ getContainer
+                            @ formDef
                     
                     _ startForm
                         @ $
-                        @ pageData.form
+                        @ formDef
 
                     _ startFormValidation
                         @ $
-                        @ pageData.form
+                        @ formDef
 
-    html_f getFormContainer
-        var temp = []    
+    html_f getContainer
+        
         _ formHtml
-            @ temp
-            @ ctx.form
-        < div
-            id container
-            class page-wrapper bg-red p-t-30 p-b-100 font-robo
-            div
-                id content
-                + {{ temp.join('') }}
-            div
-                id footer
+            @ __html
+            @ ctx
 
+    $include wz/v08/js/page/injectStyles.js
+    $include wz/v08/js/forms/formHtml.js
+    $include wz/v08/js/forms/formStyles.js
     $include wz/v08/js/forms/startForm.js
     $include wz/v08/js/forms/startFormValidation.js
-    $include wz/v08/js/forms/formHtml.js
-    $include wz/v08/js/forms/pageStyles.js
-    $include wz/v08/js/forms/formStyles.js
-    $include wz/v08/js/forms/injectStyles.js

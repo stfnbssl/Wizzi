@@ -42,7 +42,7 @@
 		if this.loadingCallArguments
 			if this.globalContext.isDeclared(name)
 				return true
-			if this.callContext.isDeclared(name)
+			if this.callContext && this.callContext.isDeclared(name)
 				return true
 			if this.isForInterpolation == false
 				if this.nodeContext.isDeclared(name)
@@ -70,7 +70,7 @@
 			if !ret
 				set ret = this.getFunction(name)
 		
-		if !ret
+		if !ret && this.callContext
 			set ret = this.callContext.isDeclared(name)
 		return ret
 
@@ -126,7 +126,7 @@
 		if this.loadingCallArguments
 			if this.globalContext.isDeclared(name)
 				return this.globalContext.getValue(name)
-			if this.callContext.isDeclared(name)
+			if this.callContext && this.callContext.isDeclared(name)
 				return this.callContext.getValue(name)
 			if this.isForInterpolation == false
 				if this.nodeContext.isDeclared(name)
@@ -153,7 +153,7 @@
 			elif this.globalContext.isDeclared(name)
 				return this.globalContext.getValue(name)
 		
-		if this.callContext.isDeclared(name)
+		if this.callContext && this.callContext.isDeclared(name)
 			return this.callContext.getValue(name)
 		else
 			var fn = this.getFunction(name)

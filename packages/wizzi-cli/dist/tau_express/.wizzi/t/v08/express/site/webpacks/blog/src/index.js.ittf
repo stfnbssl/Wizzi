@@ -1,0 +1,19 @@
+$group
+    $params &md
+    import
+        @ mountPostPage
+        @ mountPostList
+        @ mountPostForm
+        from './post.js'
+    function component
+        const element = document.createElement('div')
+        set element.id = 'page-container'
+        return element
+    _ document.body.appendChild
+        _ component
+    _ mountPostPage
+        @ 'page-container'
+    _ mountPostForm
+        @ 'post-form-container'
+    _ mountPostList
+        @ 'post-list-container'

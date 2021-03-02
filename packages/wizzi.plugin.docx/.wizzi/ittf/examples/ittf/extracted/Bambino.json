@@ -91,27 +91,6 @@
         "User": "Francesca Manusia"
     },
     {
-        "href": "https://cosie.lepida.it/backoffice/news/gestione/598",
-        "Titolo": "4 mesi",
-        "NewsOrGuida": "guida",
-        "Categoria": "Bambino",
-        "User": "Francesca Manusia"
-    },
-    {
-        "href": "https://cosie.lepida.it/backoffice/news/gestione/589",
-        "Titolo": "Nascita",
-        "NewsOrGuida": "guida",
-        "Categoria": "Bambino",
-        "User": "Francesca Manusia"
-    },
-    {
-        "href": "https://cosie.lepida.it/backoffice/news/gestione/592",
-        "Titolo": "2 mesi",
-        "NewsOrGuida": "guida",
-        "Categoria": "Bambino",
-        "User": "Francesca Manusia"
-    },
-    {
         "href": "https://cosie.lepida.it/backoffice/news/gestione/836",
         "Titolo": "17 mesi",
         "NewsOrGuida": "guida",
@@ -147,6 +126,13 @@
         "User": "Francesca Manusia"
     },
     {
+        "href": "https://cosie.lepida.it/backoffice/news/gestione/597",
+        "Titolo": "3 mesi",
+        "NewsOrGuida": "guida",
+        "Categoria": "Bambino",
+        "User": "Francesca Manusia"
+    },
+    {
         "href": "https://cosie.lepida.it/backoffice/news/gestione/599",
         "Titolo": "5 mesi",
         "NewsOrGuida": "guida",
@@ -168,8 +154,8 @@
         "User": "Francesca Manusia"
     },
     {
-        "href": "https://cosie.lepida.it/backoffice/news/gestione/597",
-        "Titolo": "3 mesi",
+        "href": "https://cosie.lepida.it/backoffice/news/gestione/598",
+        "Titolo": "4 mesi",
         "NewsOrGuida": "guida",
         "Categoria": "Bambino",
         "User": "Francesca Manusia"
@@ -191,6 +177,13 @@
     {
         "href": "https://cosie.lepida.it/backoffice/news/gestione/853",
         "Titolo": "21 mesi",
+        "NewsOrGuida": "guida",
+        "Categoria": "Bambino",
+        "User": "Francesca Manusia"
+    },
+    {
+        "href": "https://cosie.lepida.it/backoffice/news/gestione/589",
+        "Titolo": "Nascita",
         "NewsOrGuida": "guida",
         "Categoria": "Bambino",
         "User": "Francesca Manusia"
@@ -226,6 +219,13 @@
     {
         "href": "https://cosie.lepida.it/backoffice/news/gestione/855",
         "Titolo": "23 mesi",
+        "NewsOrGuida": "guida",
+        "Categoria": "Bambino",
+        "User": "Francesca Manusia"
+    },
+    {
+        "href": "https://cosie.lepida.it/backoffice/news/gestione/592",
+        "Titolo": "2 mesi",
         "NewsOrGuida": "guida",
         "Categoria": "Bambino",
         "User": "Francesca Manusia"

@@ -64,7 +64,7 @@
                         set ast.type
             
 			if verbose
-                _ console.log('ast.type: ' + type)
+                log 'ast.type: ' + type
             
 			if ast.trailingComments && ast.trailingComments.length == 1
                 _ ctx.setRunningNodeId
@@ -117,7 +117,7 @@
 				_ ctx.getValue
 					@ node.name
         else
-            # log 'jsWizziRunner. Identifier. ReferenceError. node.loc', node.loc, ctx.isForInterpolation, ctx.__source
+            # log 'jsWizziRunner. Identifier. ReferenceError. node.loc', node.loc, ctx.isForInterpolation, ctx.source
 			return
 				_ local_error
 					@ ctx
@@ -128,7 +128,7 @@
 							_ errors.esprimaNodeErrorLines
 								@ 'unknown identifier'
 								@ node
-								@ ctx.__source
+								@ ctx.source
 								@ true
 					@ node
 					@ 'Identifier'
@@ -177,13 +177,19 @@
 		param ex
         param other
 
+        # log 'jsWizziRunner.local_error.message', message
+        # log 'jsWizziRunner.local_error.node.name', node && node.name
+        # log 'jsWizziRunner.local_error.parentnode.name', parentnode && parentnode.name
+        # log 'jsWizziRunner.local_error.method', method
+        # log 'jsWizziRunner.local_error.ex.message', ex && ex.message
+        # log 'jsWizziRunner.local_error.parentnode.other', other
+        # log 'jsWizziRunner.local_error.ctx.source', ctx.source
+
         $*
         if ex && ex.name === "JsWizziSynthaxError"
             return ex
         log 'jsWizziRunner.local_error.ex', ex
         *$
-
-		# throw new Error('boing')
 
         # log 'jsWizziRunner.local_error.ctx', ctx
         # log 'jsWizziRunner.local_error.isForInterpolation.node,parentnode', ex && ex.name,  ctx.isForInterpolation, node, parentnode
@@ -194,30 +200,36 @@
 			set errorCode = ss[0]
 			set message = ss[1]
 
-		# log 'jsWizziRunner. local_error.', node.loc, ctx.isForInterpolation, ctx.__source
+		# log 'jsWizziRunner. local_error.', node.loc, ctx.isForInterpolation, ctx.source
 
         var node, errorLines
 		if node
 			if node.errorLines
-				set node = node.node
 				set errorLines = node.errorLines
+                set node = node.node
 			else
-				set node = node
                 if parentnode
                     set errorLines
                         _ errors.esprimaNodeErrorLines
-                            @ 'unknown identifier'
+                            @ message
                             @ parentnode
-                            @ ctx.__source
+                            @ ctx.source
+                            @ true
+                else
+                    set errorLines
+                        _ errors.esprimaNodeErrorLines
+                            @ message
+                            @ node
+                            @ ctx.source
                             @ true
 
-		var nodeStm
+        var nodeStm
 		try
 			set nodeStm = node ? escodegen.generate(node) : ''
 		catch escodegenErr
 			set nodeStm = 'escodegen failed: ' + escodegenErr.message
 		
-		var nodeInsp = node ? util.inspect(node, {depth:2}) : ''
+		$$ var nodeInsp = node ? util.inspect(node, {depth:2}) : ''
 		
 		var parentnodeStm
 		try
@@ -225,7 +237,7 @@
 		catch escodegenErr
 			set parentnodeStm = 'escodegen failed: ' + escodegenErr.message
 		
-		var parentnodeInsp = node ? util.inspect(parentnode, {depth:2}) : ''
+		$$ var parentnodeInsp = node ? util.inspect(parentnode, {depth:2}) : ''
 
 		var currentModelInfo = ctx.get_currentMTreeBrickInfo()
 
@@ -255,9 +267,9 @@
                 {
                     @ errorLines errorLines
                     @ nodeStatement nodeStm
-                    @ nodeInspected nodeInsp
+                    $$ @ nodeInspected nodeInsp
                     @ parentNodeStatement parentnodeStm
-                    @ parentNodeInspected parentnodeInsp
+                    $$ @ parentNodeInspected parentnodeInsp
                     @ uri currentModelInfo.currentModel_uri
                     @ mixerUri currentModelInfo.currentModel_mixerUri
                     @ ...other||{}
@@ -337,7 +349,9 @@
 
 					# ctx : instance-of wizzi-mtree.jswizzi.jsWizziContext
 
-					set ctx.__source = source
+                    # log 'jsWizziRunner.run.source', source.substr(0, 400)
+
+					_ ctx.pushSource(source)
 
 					if verify.isNotEmpty(source) === false
 						var err
@@ -403,12 +417,15 @@
 		try
             var result = runner(parsed, ctx)
         catch ex
+            _ ctx.popSource
             if callback 
                 return callback(ex)
             else
                 return ex
 
-		if result && result.__is_error
+		_ ctx.popSource
+
+        if result && result.__is_error
 			# log 'wizzi-mtree.jswizzi.jsWizziRunner. Result has errors: ', result
 
 		if callback

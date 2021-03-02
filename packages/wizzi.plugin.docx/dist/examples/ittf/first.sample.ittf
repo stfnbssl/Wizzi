@@ -28,7 +28,7 @@ docx first
     section
         h1 ${beba.category}
         $foreach item in beba.items
-            $if item.Categoria == "Tutti a tavola"
+            $if item.Categoria == "Bambino"
                 h2 ${item.Titolo}
                 h3 Dalla settimana ${item.SettimanaDal} alla ${item.SettimanaAl}
                 p ${item.Abstract}

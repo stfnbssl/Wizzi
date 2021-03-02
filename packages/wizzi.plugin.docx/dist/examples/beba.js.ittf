@@ -36,18 +36,13 @@ module
                     @ '..'
         _ executeGenerateModules
             [
-                $*
                 @ 'Tutti a tavola'
                 @ 'NpL-NpM'
-                *$
                 @ 'Famiglia'
-                $*
-                $$ @ 'Bambino'
-                $*
+                @ 'Bambino'
                 @ 'Pediatra'
                 @ 'Temi caldi'
                 @ 'Giochi-Movimento'
-                *$
                 $$ @ "Test"
 
             f_cb_no_throw( result )

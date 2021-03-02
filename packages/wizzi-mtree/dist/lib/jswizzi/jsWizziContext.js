@@ -20,9 +20,9 @@ var JsWizziEvalHelper = require('./jsWizziEvalHelper');
 var ContextData = require('./contextData');
 var defaultValues = {
     '__dollar': '$', 
-    '__dollardollar': '$$', 
-    '__dollaraster': '$*', 
-    '__asterdollar': '*$'
+    '__dollardollar': '$' + '$', 
+    '__dollaraster': '$' + '*', 
+    '__asterdollar': '*' + '$'
 };
 var knownCallables = {
     'console': console, 
@@ -84,7 +84,8 @@ var JsWizziContext = (function () {
         }
         
         this.globalContext = new ContextData(ittfStates.globalContext);
-        this.callContext = new ContextData(ittfStates.callContext);
+        this.callContextStack = [];
+        this.callContext = null;
         if (this.isForInterpolation == false) {
             this.nodeContext = new ContextData(ittfStates.nodeContext);
         }
@@ -112,6 +113,9 @@ var JsWizziContext = (function () {
         
         this.runningNodeId = null;
         
+        this.sourceStack = [];
+        this.source = null;
+        
         if (typeof window === 'undefined') {
             this.startTimer = process.hrtime();
         }
@@ -122,18 +126,22 @@ var JsWizziContext = (function () {
     }
     // Called by JsWizziRunner.FunctionDeclarationCall
     JsWizziContext.prototype.push = function() {
-        this.callContext.push();
+        if (this.callContext) {
+            this.callContextStack.push(this.callContext);
+        }
+        this.callContext = new ContextData(ittfStates.callContext);
         if (this.isForInterpolation == false) {
-            this.nodeContext.push();
-            this.brickEvalContext.push();
         }
         return this;
     }
     JsWizziContext.prototype.pop = function() {
-        this.callContext.pop();
+        if (this.callContextStack.length > 0) {
+            this.callContext = this.callContextStack.pop();
+        }
+        else {
+            this.callContext = null;
+        }
         if (this.isForInterpolation == false) {
-            this.nodeContext.pop();
-            this.brickEvalContext.pop();
         }
         return this;
     }
@@ -149,6 +157,20 @@ var JsWizziContext = (function () {
         }
         this.globalContext.setValues(defaultValues);
         this.globalContext.setValues(knownCallables);
+    }
+    JsWizziContext.prototype.pushSource = function(source) {
+        if (this.source) {
+            this.sourceStack.push(this.source);
+        }
+        this.source = source;
+    }
+    JsWizziContext.prototype.popSource = function() {
+        if (this.sourceStack.length > 0) {
+            this.source = this.sourceStack.pop();
+        }
+        else {
+            this.source = null;
+        }
     }
     JsWizziContext.prototype.setRunningNodeId = function(id) {
         this.runningNodeId = id;
@@ -247,7 +269,7 @@ var JsWizziContext = (function () {
             if (this.globalContext.isDeclared(name)) {
                 return true;
             }
-            if (this.callContext.isDeclared(name)) {
+            if (this.callContext && this.callContext.isDeclared(name)) {
                 return true;
             }
             if (this.isForInterpolation == false) {
@@ -284,7 +306,7 @@ var JsWizziContext = (function () {
                 ret = this.getFunction(name);
             }
         }
-        if (!ret) {
+        if (!ret && this.callContext) {
             ret = this.callContext.isDeclared(name);
         }
         return ret;
@@ -339,7 +361,7 @@ var JsWizziContext = (function () {
             if (this.globalContext.isDeclared(name)) {
                 return this.globalContext.getValue(name);
             }
-            if (this.callContext.isDeclared(name)) {
+            if (this.callContext && this.callContext.isDeclared(name)) {
                 return this.callContext.getValue(name);
             }
             if (this.isForInterpolation == false) {
@@ -376,7 +398,7 @@ var JsWizziContext = (function () {
                 return this.globalContext.getValue(name);
             }
         }
-        if (this.callContext.isDeclared(name)) {
+        if (this.callContext && this.callContext.isDeclared(name)) {
             return this.callContext.getValue(name);
         }
         else {

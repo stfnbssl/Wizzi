@@ -1,6 +1,6 @@
 $group
     
-    function postData
+    function deleteData
         param url = ''
         param data = {}
         param callback

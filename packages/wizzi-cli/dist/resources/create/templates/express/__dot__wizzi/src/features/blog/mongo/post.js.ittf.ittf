@@ -4,9 +4,11 @@ module
         var call = '(&md)';
     
     ${'$'}
-        var md = {
+        var md = {};
+        if (wzCtx.Build.useBlog && wzCtx.Build.useMongoDb) {
+            md.tobeIncluded = true;
+            md.schema = wzCtx.Build.blog.dataModels[0];
         }
 
-    ${'$'}if wzCtx.Build.useBlog
-        ${'$'}if wzCtx.Build.useMongoDb
-            v08/express/features/blog/mongo/post${call}
+    ${'$'}if md.tobeIncluded
+        v08/express/features/dataModels/mongoseSchema${call}

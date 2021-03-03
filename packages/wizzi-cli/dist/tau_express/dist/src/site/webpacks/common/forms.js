@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\site\webpacks\common\forms.js.ittf
-    utc time: Tue, 02 Mar 2021 21:04:16 GMT
+    utc time: Wed, 03 Mar 2021 15:56:02 GMT
 */
 'use strict';
 var stylesInjected = false;
@@ -133,12 +133,12 @@ function formControlHtml(__html, ctrl_def) {
     __html.push('</label>');
     __html.push('<div class="' + "input-group" + '">');
     if (ctrl_def.type == 'text') {
-        __html.push('<input class="' + "input--style-2" + '" type="' + "text" + '" placeholder="' + ctrl_def.label + '" name="' + ctrl_def.id + '">');
+        __html.push('<input class="' + "input--style-2" + '" type="' + "text" + '" placeholder="' + ctrl_def.label + '" name="' + ctrl_def.id + '" id="' + ctrl_def.ctrlId + '">');
         __html.push('</input>');
     }
     else if (ctrl_def.type == 'select') {
         __html.push('<div class="' + "rs-select2 js-select-simple select--no-search" + '">');
-        __html.push('<select name="' + ctrl_def.id + '">');
+        __html.push('<select name="' + ctrl_def.id + '" id="' + ctrl_def.ctrlId + '">');
         __html.push( options.join('\n') );
         __html.push('</select>');
         __html.push('<div class="' + "select-dropdown" + '" id="' + ctrl_def.id  + "-dropdown" + '">');
@@ -146,14 +146,14 @@ function formControlHtml(__html, ctrl_def) {
         __html.push('</div>');
     }
     else if (ctrl_def.type == 'date') {
-        __html.push('<input class="' + "input--style-2 js-datepicker" + '" type="' + "text" + '" placeholder="' + ctrl_def.label + '" name="' + ctrl_def.id + '">');
+        __html.push('<input class="' + "input--style-2 js-datepicker" + '" type="' + "text" + '" placeholder="' + ctrl_def.label + '" name="' + ctrl_def.id + '" id="' + ctrl_def.ctrlId + '">');
         __html.push('</input>');
         __html.push('<i class="' + "zmdi zmdi-calendar-note input-icon js-btn-calendar" + '">');
         __html.push('</i>');
     }
     else if (ctrl_def.type == 'checkbox') {
         __html.push('<div class="' + "checkbox-item" + '">');
-        __html.push('<input class="' + "input--style-2" + '" type="' + "checkbox" + '" placeholder="' + ctrl_def.label + '" name="' + ctrl_def.id + '">');
+        __html.push('<input class="' + "input--style-2" + '" type="' + "checkbox" + '" placeholder="' + ctrl_def.label + '" name="' + ctrl_def.id + '" id="' + ctrl_def.ctrlId + '">');
         __html.push('</input>');
         __html.push('</div>');
     }
@@ -189,9 +189,9 @@ function selectOptionHtml(__html, ctrl_def) {
 }
 function radioOptionHtml(__html, radio, ctrl_def) {
     __html.push('<div class="' + "radio-item" + '">');
-    __html.push('<input type="' + "radio" + '" name="' + radio.id + '" id="' + ctrl_def.id + '" checked>');
+    __html.push('<input type="' + "radio" + '" name="' + radio.id + '" id="' + ctrl_def.ctrlId + '" checked>');
     __html.push('</input>');
-    __html.push('<label for="' + ctrl_def.id + '">');
+    __html.push('<label for="' + ctrl_def.ctrlId + '">');
     __html.push( ctrl_def.label );
     __html.push('</label>');
     __html.push('<span class="' + "check" + '">');
@@ -662,12 +662,26 @@ function injectFormStyles() {
         }
     })
 }
-function startForm($, form) {
-    var i, i_items=form.controls, i_len=form.controls.length, item;
+function startForm($, form_def) {
+    var i, i_items=form_def.controls, i_len=form_def.controls.length, item;
     for (i=0; i<i_len; i++) {
-        item = form.controls[i];
+        item = form_def.controls[i];
         startControl($, item)
     }
+    $( "#" + form_def.id ).submit(function(event) {
+        console.log("Handler for .submit() called.");
+        var formData = {};
+        var i, i_items=form_def.controls, i_len=form_def.controls.length, item;
+        for (i=0; i<i_len; i++) {
+            item = form_def.controls[i];
+            formData[item.id] = $( "#" + item.ctrlId ).val();
+        }
+        console.log('formData', formData);
+        event.preventDefault();
+        if (form_def.onSubmit) {
+            form_def.onSubmit(formData)
+        }
+    })
 }
 function startControl($, item) {
     if (item.type == 'group') {

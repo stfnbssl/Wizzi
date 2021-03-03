@@ -1,0 +1,37 @@
+$group
+    $params &md
+    const postPageDef
+        {
+            @ kind "app"
+            @ reset "default"
+            @ elementId "page_container"
+            [ items
+                {
+                    @ kind "header"
+                    @ height 40
+                    [ items
+                        {
+                            @ kind "menu"
+                            @ direction "row"
+                            [ items
+                                {
+                                    @ label "Wizzi"
+                                {
+                                    @ label "Blog"
+                                {
+                                    @ label "Github"
+                $
+                    var schema = md.schema;
+                {
+                    @ kind "flex"
+                    @ direction "row"
+                    [ items
+                        {
+                            @ kind "panel"
+                            @ id "${schema.name}-list-container"
+                        {
+                            @ kind "panel"
+                            @ id "${schema.name}-form-container"
+                {
+                    @ kind "footer"
+                    [ items

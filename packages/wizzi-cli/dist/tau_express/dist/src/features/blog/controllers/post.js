@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\features\blog\controllers\post.js.ittf
-    utc time: Tue, 02 Mar 2021 21:04:16 GMT
+    utc time: Wed, 03 Mar 2021 14:10:30 GMT
 */
 'use strict';
 import { Router } from 'express';
@@ -17,20 +17,20 @@ export class PostController {
     initialize(initValues) {
         console.log('Entering PostController.initialize');
         this.postModel = GetPostModel();
-        this.router.get(`${this.path}`, this.getPosts.bind(this));
-        this.router.post(`${this.path}`, this.createPost.bind(this));
-        this.router.get(`${this.path}/:id`, this.getPostById.bind(this));
-        this.router.put(`${this.path}/:id`, this.updatePost.bind(this));
-        this.router.delete(`${this.path}/:id`, this.deletePost.bind(this));
+        this.router.get(`/`, this.get.bind(this));
+        this.router.post(`/`, this.createPost.bind(this));
+        this.router.get(`/:id`, this.getPostById.bind(this));
+        this.router.put(`/:id`, this.updatePost.bind(this));
+        this.router.delete(`/:id`, this.deletePost.bind(this));
     }
-    getPosts(req, res) {
+    get(req, res) {
         this.postModel.find((err, posts) => {
             if (err) {
-                console.log('getPosts.err', posts);
+                console.log('get.err', posts);
                 return sendFailure(res, err);
             }
             else {
-                console.log('getPosts.posts', posts);
+                console.log('get.posts', posts);
                 sendSuccess(res, {
                     posts: posts
                 })
@@ -46,6 +46,7 @@ export class PostController {
             })).catch((err) =>
             sendFailure(res, {
                 message: "Post could not be created.", 
+               
                 err
             }))
     }
@@ -72,9 +73,9 @@ export class PostController {
                     }, 404);
             }
             else {
+                post.author = req.body.author;
                 post.title = req.body.title;
                 post.content = req.body.content;
-                post.author = req.body.author;
                 post.save().then((post) =>
                     sendSuccess(res, {
                         message: 'Post update complete.'

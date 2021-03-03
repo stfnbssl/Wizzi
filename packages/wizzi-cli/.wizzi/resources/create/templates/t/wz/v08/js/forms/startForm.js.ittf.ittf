@@ -2,12 +2,25 @@ $group
 
     function startForm
         param $
-        param form
+        param form_def
 
-        foreach item in form.controls
+        foreach item in form_def.controls
             _ startControl
                 @ $
                 @ item
+
+        _ $( "#" + form_def.id ).submit
+            function
+                param event
+                log "Handler for .submit() called."
+                var formData = {}
+                foreach item in form_def.controls
+                    set formData[item.id] = $( "#" + item.ctrlId ).val()
+                log 'formData', formData
+                _ event.preventDefault()
+                if form_def.onSubmit
+                    _ form_def.onSubmit
+                        @ formData
         
     function startControl
         param $

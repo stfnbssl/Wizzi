@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\site\webpacks\common\lists.js.ittf
-    utc time: Tue, 02 Mar 2021 21:04:16 GMT
+    utc time: Wed, 03 Mar 2021 15:56:02 GMT
 */
 'use strict';
 var stylesInjected = false;
@@ -321,7 +321,7 @@ function startList_table($, list, context) {
         listObj.add(valuesObj)
         lt_clearFormFields();
         if (list_def.onAdd) {
-            list_def.onAdd('add', valuesObj)
+            list_def.onAdd(valuesObj)
         }
     })
     editBtn.click(function() {
@@ -347,7 +347,7 @@ function startList_table($, list, context) {
             var itemValues = listObj.get(keyId, itemId)[0].values();
             listObj.remove(keyId, itemId);
             if (list_def.onRemove) {
-                list_def.onRemove('remove', itemValues)
+                list_def.onRemove(itemValues)
             }
         })
         $(document).on('click', '.edit-' + list_def.id + '-item-btn', function() {
@@ -360,6 +360,9 @@ function startList_table($, list, context) {
             }
             editBtn.show();
             addBtn.hide();
+            if (list_def.onSelectItem) {
+                list_def.onSelectItem(itemValues)
+            }
         })
     }
     function lt_clearFormFields() {

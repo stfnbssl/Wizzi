@@ -1,0 +1,73 @@
+$group
+
+    ${'$'}
+        var schema = md.schema;
+
+    import
+        @ get${'$'}{schema.Name}List
+        @ create${'$'}{schema.Name}
+        @ get${'$'}{schema.Name}ById
+        @ update${'$'}{schema.Name}
+        @ delete${'$'}{schema.Name}
+        from './api.js'
+    import
+        @ createPage
+        from '../../common/page.js'
+    import
+        @ createList
+        from '../../common/lists.js'
+    import
+        @ createForm
+        from '../../common/forms.js'
+
+    ${'$'}hook defs
+
+    export
+        function mount${'$'}{schema.Name}Page
+            param elementId
+            param props
+            _ createPage
+                @ ${'$'}{schema.name}PageDef
+                @ elementId
+                @ props
+
+    export
+        function mount${'$'}{schema.Name}Form
+            param elementId
+            param props
+            
+            set ${'$'}{schema.name}FormDef.onSubmit
+                =>
+                    param formData
+                    log 'pageComponent ${'$'}{schema.name}', 'form onSubmit', 'formData', formData
+            
+            set ${'$'}{schema.name}FormDef.onCancel
+                =>
+                    log 'pageComponent ${'$'}{schema.name}', 'form onCancel'
+            
+            _ createForm
+                @ ${'$'}{schema.name}FormDef
+                @ elementId
+                @ props
+
+    export
+        function mount${'$'}{schema.Name}List
+            param elementId
+            param props
+
+            set ${'$'}{schema.name}ListDef.onSelectItem
+                =>
+                    param item
+                    log 'pageComponent ${'$'}{schema.name}', 'list onSelectItem', item
+            
+            set ${'$'}{schema.name}ListDef.onDeleteItem
+                =>
+                    param item
+                    log 'pageComponent ${'$'}{schema.name}', 'list onDeleteItem', item
+
+            _ createList
+                {
+                    @ def ${'$'}{schema.name}ListDef
+                    @ data ${'$'}{schema.name}ListData
+                @ elementId
+                @ props

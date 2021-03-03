@@ -4,8 +4,11 @@ module
         var call = '(&md)';
     
     ${'$'}
-        var md = {
+        var md = {};
+        if (wzCtx.Build.useBlog) {
+            md.tobeIncluded = true;
+            md.feature = wzCtx.Build.blog;
         }
 
-    ${'$'}if wzCtx.Build.useBlog
-        v08/express/features/blog/index${call}
+    ${'$'}if md.tobeIncluded
+        v08/express/features/dataModels/index${call}

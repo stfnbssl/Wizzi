@@ -87,11 +87,13 @@ $group
                         type text
                         placeholder {{ ctrl_def.label }}
                         name {{ ctrl_def.id }}
+                        id {{ ctrl_def.ctrlId }}
                 elif ctrl_def.type == 'select'
                     div
                         class rs-select2 js-select-simple select--no-search
                         select {{ options.join('\n') }}
                             name {{ ctrl_def.id }}
+                            id {{ ctrl_def.ctrlId }}
                         div
                             id {{ ctrl_def.id }}-dropdown
                             class select-dropdown
@@ -101,6 +103,7 @@ $group
                         type text
                         placeholder {{ ctrl_def.label }}
                         name {{ ctrl_def.id }}
+                        id {{ ctrl_def.ctrlId }}
                     i
                         class zmdi zmdi-calendar-note input-icon js-btn-calendar
                 elif ctrl_def.type == 'checkbox'
@@ -111,6 +114,7 @@ $group
                             type checkbox
                             placeholder {{ ctrl_def.label }}
                             name {{ ctrl_def.id }}
+                            id {{ ctrl_def.ctrlId }}
                 elif ctrl_def.type == 'radio'
                     div {{ options.join('\n') }}
                         class radio-group
@@ -147,9 +151,9 @@ $group
             input 
                 type radio
                 name {{ radio.id }}
-                id {{ ctrl_def.id }}
+                id {{ ctrl_def.ctrlId }}
                 checked 
             label {{ ctrl_def.label }}
-                @ for {{ ctrl_def.id }}
+                @ for {{ ctrl_def.ctrlId }}
             span 
                 class check

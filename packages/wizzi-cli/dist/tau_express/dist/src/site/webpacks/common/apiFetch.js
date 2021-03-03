@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\site\webpacks\common\apiFetch.js.ittf
-    utc time: Tue, 02 Mar 2021 21:04:16 GMT
+    utc time: Wed, 03 Mar 2021 15:56:02 GMT
 */
 'use strict';
 
@@ -16,13 +16,13 @@ export function postData(url = '', data = {}, callback) {
     }, callback)
 }
 
-export function postData(url = '', data = {}, callback) {
+export function putData(url = '', data = {}, callback) {
     executeFetch(url, data, {
         method: 'PUT'
     }, callback)
 }
 
-export function postData(url = '', data = {}, callback) {
+export function deleteData(url = '', data = {}, callback) {
     executeFetch(url, data, {
         method: 'DELETE'
     }, callback)
@@ -55,9 +55,9 @@ function executeFetch(url, data, options, callback) {
     fetchOptions.mode = 'cors';
     fetchOptions.cache = 'no-cache';
     fetchOptions.credentials = 'same-origin';
-    fetchOptions.redirect 'follow';
-    fetchOptions.referrerPolicy 'no-referrer';
-    fetch(url, fetchOptions).then()(resp) => {
+    fetchOptions.redirect = 'follow';
+    fetchOptions.referrerPolicy = 'no-referrer';
+    fetch(url, fetchOptions).then((resp) => {
         if (!response.ok) {
             callback({
                 method: fetchOptions.method, 
@@ -66,7 +66,7 @@ function executeFetch(url, data, options, callback) {
             })
         }
         resp.json();
-    }.then(function(data) {
+    }).then(function(data) {
         callback(null, data)
     }).catch(function(error) {
         callback({

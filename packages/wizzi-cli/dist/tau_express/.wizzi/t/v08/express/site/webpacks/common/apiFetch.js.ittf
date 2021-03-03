@@ -22,7 +22,7 @@ $group
                 @ callback
     +
     export
-        function postData
+        function putData
             param url = ''
             param data = {}
             param callback
@@ -34,7 +34,7 @@ $group
                 @ callback
     +
     export
-        function postData
+        function deleteData
             param url = ''
             param data = {}
             param callback
@@ -71,21 +71,21 @@ $group
         set fetchOptions.mode = 'cors'
         set fetchOptions.cache = 'no-cache'
         set fetchOptions.credentials = 'same-origin'
-        set fetchOptions.redirect 'follow'
-        set fetchOptions.referrerPolicy 'no-referrer'
+        set fetchOptions.redirect = 'follow'
+        set fetchOptions.referrerPolicy = 'no-referrer'
         _ fetch
             @ url
             @ fetchOptions
             ._ then
-            =>
-                param resp
-                if !response.ok
-                    _ callback
-                        {
-                            @ method fetchOptions.method
-                            @ message "Http error fetching url " + url
-                            @ error `Status: ${response.status}`
-                _ resp.json
+                =>
+                    param resp
+                    if !response.ok
+                        _ callback
+                            {
+                                @ method fetchOptions.method
+                                @ message "Http error fetching url " + url
+                                @ error `Status: ${response.status}`
+                    _ resp.json
             ._ then
                 function
                     param data

@@ -336,7 +336,6 @@ $group
                 _ lt_clearFormFields
                 if list_def.onAdd
                     _ list_def.onAdd
-                        @ 'add'
                         @ valuesObj
         _ editBtn.click
             function
@@ -367,7 +366,6 @@ $group
                     _ listObj.remove(keyId, itemId)
                     if list_def.onRemove
                         _ list_def.onRemove
-                            @ 'remove'
                             @ itemValues
             _ $(document).on
                 @ 'click'
@@ -381,6 +379,9 @@ $group
                         _ $('#' + column_def.id + '_field').val(itemValues[column_def.id])
                     _ editBtn.show
                     _ addBtn.hide
+                    if list_def.onSelectItem
+                        _ list_def.onSelectItem
+                            @ itemValues
         function lt_clearFormFields
             foreach column_def in list_def.columns
                 _ $('#' + column_def.id + '_field').val('')

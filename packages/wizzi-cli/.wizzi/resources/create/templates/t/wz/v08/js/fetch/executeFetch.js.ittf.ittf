@@ -28,26 +28,26 @@ $group
 
         log 'executeFetch', 'url', url, 'fetchOptions', fetchOptions
 
-                                                       $$ Default options are marked with *
-        set fetchOptions.mode = 'cors'                 $$ no-cors, *cors, same-origin
-        set fetchOptions.cache = 'no-cache'            $$ *default, no-cache, reload, force-cache, only-if-cached
-        set fetchOptions.credentials = 'same-origin'   $$ include, *same-origin, omit
-        set fetchOptions.redirect 'follow'             $$ manual, *follow, error
-        set fetchOptions.referrerPolicy 'no-referrer'  $$ no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                                                         $$ Default options are marked with *
+        set fetchOptions.mode = 'cors'                   $$ no-cors, *cors, same-origin
+        set fetchOptions.cache = 'no-cache'              $$ *default, no-cache, reload, force-cache, only-if-cached
+        set fetchOptions.credentials = 'same-origin'     $$ include, *same-origin, omit
+        set fetchOptions.redirect = 'follow'             $$ manual, *follow, error
+        set fetchOptions.referrerPolicy = 'no-referrer'  $$ no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 
         _ fetch
             @ url
             @ fetchOptions
             ._ then
-            => 
-                param resp
-                if !response.ok
-                    _ callback
-                        {
-                            @ method fetchOptions.method
-                            @ message "Http error fetching url " + url
-                            @ error `Status: ${response.status}`
-                _ resp.json
+                => 
+                    param resp
+                    if !response.ok
+                        _ callback
+                            {
+                                @ method fetchOptions.method
+                                @ message "Http error fetching url " + url
+                                @ error `Status: ${response.status}`
+                    _ resp.json
             ._ then
                 function 
                     param data

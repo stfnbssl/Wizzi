@@ -4,8 +4,15 @@ module
         var call = '(&md)'
     
     ${'$'}
-        var md = {
+        var md = {};
+        if (wzCtx.Build.useWebpackApp && wzCtx.Build.useBlog && wzCtx.Build.useMongoDb) {
+            md.tobeIncluded = true;
+            md.schema = wzCtx.Build.blog.dataModels[0];
         }
 
-    ${'$'}if wzCtx.Build.useWebpackApp
-        v08/express/site/webpacks/blog/src/post${call}
+    ${'$'}if md.tobeIncluded
+        v08/express/site/webpacks/dataModels/pageComponents${call}
+            ${'$'}append defs
+                post/pageDef.js${call}
+                v08/express/site/webpacks/dataModels/listDef.js${call}
+                v08/express/site/webpacks/dataModels/formDef.js${call}

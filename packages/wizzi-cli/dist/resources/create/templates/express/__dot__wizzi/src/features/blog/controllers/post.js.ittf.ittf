@@ -4,8 +4,11 @@ module
         var call = '(&md)';
     
     ${'$'}
-        var md = {
+        var md = {};
+        if (wzCtx.Build.useBlog && wzCtx.Build.useMongoDb) {
+            md.tobeIncluded = true;
+            md.schema = wzCtx.Build.blog.dataModels[0];
         }
 
-    ${'$'}if wzCtx.Build.useBlog
-        v08/express/features/blog/controllers/post${call}
+    ${'$'}if md.tobeIncluded
+        v08/express/features/dataModels/controller${call}

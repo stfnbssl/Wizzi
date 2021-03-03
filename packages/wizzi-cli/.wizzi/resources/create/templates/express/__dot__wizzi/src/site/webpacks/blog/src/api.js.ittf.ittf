@@ -4,8 +4,11 @@ module
         var call = '(&md)'
     
     ${'$'}
-        var md = {
+        var md = {};
+        if (wzCtx.Build.useWebpackApp && wzCtx.Build.useBlog && wzCtx.Build.useMongoDb) {
+            md.tobeIncluded = true;
+            md.schema = wzCtx.Build.blog.dataModels[0];
         }
 
-    ${'$'}if wzCtx.Build.useWebpackApp
-        v08/express/site/webpacks/blog/src/api${call}
+    ${'$'}if md.tobeIncluded
+        v08/express/site/webpacks/dataModels/api${call}

@@ -6,6 +6,10 @@
         name ""
         email ""
     type "module"
+    { App
+        siteUrl "http://localhost"
+        port 5000
+        baseUrl "http://localhost:5000"
     { Build
         useExpress true
         { express
@@ -62,3 +66,36 @@
         { mongodb
         useBlog true
         { blog
+            name "blog"
+            Name "Blog"
+            [ dataModels
+                {
+                    name "post"
+                    Name "Post"
+                    Title "Blog post"
+                    Titles "Blog posts"
+                    collectionName "posts"
+                    [ fields
+                        {
+                            name "_id"
+                            type "oid"
+                            isListItem true
+                            test "id"
+                            ctrlId "fd_1_post_id"
+                        {
+                            name "author"
+                            type "string"
+                            isListItem true
+                            test "Stefi"
+                            ctrlId "fd_1_post_author"
+                        {
+                            name "title"
+                            type "string"
+                            isListItem true
+                            test "My postulates"
+                            ctrlId "fd_1_post_title"
+                        {
+                            name "content"
+                            type "string"
+                            test "Bla bla"
+                            ctrlId "fd_1_post_content"

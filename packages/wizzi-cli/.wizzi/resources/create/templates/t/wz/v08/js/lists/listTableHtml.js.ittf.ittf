@@ -40,14 +40,14 @@ $group
 
     function listTableHtml_thead
         param __html
-        param def
+        param list_def
 
-        foreach column_def in def.columns
+        foreach column_def in list_def.columns
             _ listTableHtml_th
                 @ __html
                 @ column_def
 
-        if def.hasSearch
+        if list_def.hasSearch
             th
                 @ colspan 2
                 input
@@ -60,7 +60,7 @@ $group
         param column_def
 
         th {{ column_def.label || column_def.id }}
-            class list-table-th sort
+            class list-table-th sort {{(column_def.isKey ? 'td-hidden' : '')}} 
             data-sort {{ column_def.id }}
 
     function listTableHtml_tbody

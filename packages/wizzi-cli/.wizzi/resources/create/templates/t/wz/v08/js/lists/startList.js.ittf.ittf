@@ -50,7 +50,7 @@ $group
         var
             decl addBtn = $('#add-' + list_def.id + '-btn')
             decl editBtn = $('#edit-' + list_def.id + '-btn').hide()
-        
+
         _ addBtn.click
             function 
                 var valuesObj
@@ -81,8 +81,13 @@ $group
                 _ editBtn.hide
                 _ addBtn.show
 
-        # Sets callbacks to the buttons in the list
         _ lt_setItemsEventHandlers
+
+        _ startListMethods
+            @ $
+            @ list_def
+            @ listObj
+            @ keyId
         
         function lt_setItemsEventHandlers
             _ $(document).on
@@ -93,9 +98,9 @@ $group
                         _ $(this).closest('tr').find('.' + keyId).text
                     var itemValues
                         _ listObj.get(keyId, itemId)[0].values
-                    _ listObj.remove(keyId, itemId)
-                    if list_def.onRemove
-                        _ list_def.onRemove
+                    # _ listObj.remove(keyId, itemId)
+                    if list_def.onDeleteItem
+                        _ list_def.onDeleteItem
                             @ itemValues
             
             _ $(document).on
@@ -123,3 +128,38 @@ $group
             foreach column_def in list_def.columns
                 set ret[column_def.id] = $('#' + column_def.id + '_field').val()
             return ret
+
+    function startListMethods
+        param $
+        param list_def
+        param listObj
+        param keyId
+
+        set list_def.__methods
+            {
+                
+                @ onDoneAddItem
+                    function
+                        param values
+                        log 'onDoneAddItem', values
+                        _ listObj.add
+                            @ values
+                
+                @ onDoneUpdateItem
+                    function
+                        param newValues
+                        log 'onDoneUpdateItem', newValues, newValues[keyId]
+                        var item = listObj.get(keyId, newValues[keyId])[0]
+                        _ item.values
+                            @ newValues
+               
+                @ onDoneDeleteItem
+                    function
+                        param itemId
+                        log 'onDoneDeleteItem', itemId
+
+                        _ listObj.remove(keyId, itemId)
+
+        if list_def.onStart
+            _ list_def.onStart
+                @ list_def.__methods

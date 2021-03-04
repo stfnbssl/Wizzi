@@ -28,7 +28,7 @@ $group
                         param err
                         param ${schema.collectionName}
                         if err
-                            log 'get${schema.CollectionName}.err', ${schema.collectionName}
+                            log 'get${schema.CollectionName}.err', err
                             return
                                 _ sendFailure
                                     @ res
@@ -43,7 +43,8 @@ $group
                 param req
                 param res
                 log 'Entering blog.${schema.Name}Controller.create${schema.Name}, req.body', req.body
-                let ${schema.name} = new this.${schema.name}Model(req.body)
+                const data = req.body.data
+                let ${schema.name} = new this.${schema.name}Model(data)
                 _ ${schema.name}.save
                     ._ then
                         =>
@@ -52,9 +53,11 @@ $group
                                 @ res
                                 {
                                     @ 'message' '${schema.Name} created successfully'
+                                    @ ${schema.name} ${schema.name}
                     ._ catch
                         =>
                             param err
+                            log 'create${schema.Name}.err', err
                             _ sendFailure
                                 @ res
                                 {
@@ -70,10 +73,13 @@ $group
                         param err
                         param ${schema.name}
                         if err
+                            log 'get${schema.Name}ById.err', err
                             return
                                 _ sendFailure
                                     @ res
-                                    @ err
+                                    {
+                                        @ message "${schema.Name} could not be retrieved."
+                                        @ err
                         _ sendSuccess
                             @ res
                             {
@@ -88,21 +94,25 @@ $group
                         param err
                         param ${schema.name}
                         if err
+                            log 'update${schema.Name}.err', err
                             return
                                 _ sendFailure
                                     @ res
-                                    @ err
+                                    {
+                                        @ message "${schema.Name} could not be updated."
+                                        @ err
                         if !${schema.name}
                             return
                                 _ sendFailure
                                     @ res
                                     {
                                         @ message '${schema.Name} data not found'
-                                    @ 404
+                                    @ 500
                         else
+                            const data = req.body.data
                             $foreach field in schema.fields
                                 $if field.type != 'oid'
-                                    set ${schema.name}.${field.name} = req.body.${field.name}
+                                    set ${schema.name}.${field.name} = data.${field.name}
                             _ ${schema.name}.save
                                 ._ then
                                     =>
@@ -114,12 +124,13 @@ $group
                                 ._ catch
                                     =>
                                         param err
+                                        log 'update${schema.Name}.err', err
                                         _ sendFailure
                                             @ res
                                             {
                                                 @ message '${schema.Name} could not be updated.'
                                                 @ err
-                                            @ 400
+                                            @ 500
             m delete${schema.Name}
                 param req
                 param res
@@ -131,10 +142,13 @@ $group
                         param err
                         param ${schema.name}
                         if err
+                            log 'delete${schema.Name}.err', err
                             return
                                 _ sendFailure
                                     @ res
-                                    @ err
+                                    {
+                                        @ message "${schema.Name} could not be deleted."
+                                        @ err
                         else
                             _ sendSuccess
                                 @ res

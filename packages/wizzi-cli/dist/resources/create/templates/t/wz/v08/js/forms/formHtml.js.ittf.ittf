@@ -26,16 +26,16 @@ $group
                         div
                             class form-submit
                             input 
-                                type submit
-                                value Submit
-                                class submit
-                                id submit
+                                $$ VIA type submit
+                                value Add
+                                class form-button submit
+                                id {{ form.id }}_submit
                                 name submit
                             input 
-                                type submit
-                                value Reset
-                                class submit
-                                id reset
+                                $$ VIA type submit
+                                value Cancel
+                                class form-button reset
+                                id {{ form.id }}_reset
                                 name reset
 
     function formControlHtml
@@ -86,6 +86,13 @@ $group
                         class input--style-2
                         type text
                         placeholder {{ ctrl_def.label }}
+                        name {{ ctrl_def.id }}
+                        id {{ ctrl_def.ctrlId }}
+                elif ctrl_def.type == 'oid'
+                    input
+                        class input--style-2
+                        type text
+                        disabled disabled
                         name {{ ctrl_def.id }}
                         id {{ ctrl_def.ctrlId }}
                 elif ctrl_def.type == 'select'

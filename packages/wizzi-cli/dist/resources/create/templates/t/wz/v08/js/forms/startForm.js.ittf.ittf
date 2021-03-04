@@ -4,23 +4,44 @@ $group
         param $
         param form_def
 
+        _ startFormMethods
+            @ $
+            @ form_def
+        
         foreach item in form_def.controls
             _ startControl
                 @ $
                 @ item
 
-        _ $( "#" + form_def.id ).submit
+        _ $( "#" + form_def.id + "_submit").click
             function
                 param event
-                log "Handler for .submit() called."
                 var formData = {}
                 foreach item in form_def.controls
-                    set formData[item.id] = $( "#" + item.ctrlId ).val()
-                log 'formData', formData
+                    if !!item.isKey == false || form_def.__state.status != 'add'
+                        set formData[item.id] = $( "#" + item.ctrlId ).val()
+                log 'formData', formData, 'form_def.__state', form_def.__state
                 _ event.preventDefault()
-                if form_def.onSubmit
-                    _ form_def.onSubmit
-                        @ formData
+                if form_def.__state.status == 'update'
+                    if form_def.onConfirmUpdate
+                        _ form_def.onConfirmUpdate
+                            @ formData
+                elif form_def.__state.status == 'delete'
+                    if form_def.onConfirmDelete
+                        _ form_def.onConfirmDelete
+                            @ formData
+                else
+                    if form_def.onAdd
+                        _ form_def.onAdd
+                            @ formData
+
+        _ $( "#" + form_def.id + "_reset").click
+            function
+                param event
+                foreach item in form_def.controls
+                    _ $( "#" + item.ctrlId ).val('')
+                set form_def.__state.status == 'add'
+                _ $( "#" + form_def.id + "_submit").val('Add')
         
     function startControl
         param $
@@ -116,3 +137,68 @@ $group
                             @ value "<!doctype html>\n<html>\n  " + $('#' + item.id)[0].innerHTML + "\n</html>"
             catch err
                 log err
+
+    function resetForm
+        param $
+        param form_def
+
+        foreach item in form_def.controls
+            _ $( "#" + item.ctrlId ).val('')
+        _ $( "#" + form_def.id + "_submit").val('add')
+        set form_def.__state.status = 'add'
+
+    function startFormMethods
+        param $
+        param form_def
+
+        set form_def.__state
+            {
+                @ status 'add'
+
+        set form_def.__methods
+            {
+                @ setUpdateItem
+                    function
+                        param values
+                        set form_def.__state.status = 'update'
+                        foreach item in form_def.controls
+                            _ $( "#" + item.ctrlId ).val(values[item.id])
+                        _ $( "#" + form_def.id + "_submit").val('update')
+               
+                @ setDeleteItem
+                    function
+                        param values
+                        set form_def.__state.status = 'delete'
+                        foreach item in form_def.controls
+                            _ $( "#" + item.ctrlId ).val(values[item.id])
+                        _ $( "#" + form_def.id + "_submit").val('delete')
+
+                @ onDoneAddItem
+                    function
+                        param values
+                        log 'form.onDoneAddItem', values
+                        _ resetForm
+                            @ $
+                            @ form_def
+                
+                @ onDoneUpdateItem
+                    function
+                        param newvalues
+                        log 'form.onDoneUpdateItem', newvalues
+                        _ resetForm
+                            @ $
+                            @ form_def
+
+               
+                @ onDoneDeleteItem
+                    function
+                        param itemId
+                        log 'form.onDoneDeleteItem', itemId
+                        _ resetForm
+                            @ $
+                            @ form_def
+
+
+        if form_def.onStart
+            _ form_def.onStart
+                @ form_def.__methods

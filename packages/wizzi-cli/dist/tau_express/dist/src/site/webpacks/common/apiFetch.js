@@ -2,30 +2,30 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\site\webpacks\common\apiFetch.js.ittf
-    utc time: Wed, 03 Mar 2021 15:56:02 GMT
+    utc time: Thu, 04 Mar 2021 19:31:00 GMT
 */
 'use strict';
 
-export function getData(url, callback) {
-    executeFetch(url, callback)
+export function getData(url) {
+    return executeFetch(url);
 }
 
-export function postData(url = '', data = {}, callback) {
-    executeFetch(url, data, {
-        method: 'POST'
-    }, callback)
+export function postData(url = '', data = {}) {
+    return executeFetch(url, data, {
+            method: 'POST'
+        });
 }
 
-export function putData(url = '', data = {}, callback) {
-    executeFetch(url, data, {
-        method: 'PUT'
-    }, callback)
+export function putData(url = '', data = {}) {
+    return executeFetch(url, data, {
+            method: 'PUT'
+        });
 }
 
-export function deleteData(url = '', data = {}, callback) {
-    executeFetch(url, data, {
-        method: 'DELETE'
-    }, callback)
+export function deleteData(url = '', data = {}) {
+    return executeFetch(url, data, {
+            method: 'DELETE'
+        });
 }
 
 function executeFetch(url, data, options, callback) {
@@ -57,22 +57,5 @@ function executeFetch(url, data, options, callback) {
     fetchOptions.credentials = 'same-origin';
     fetchOptions.redirect = 'follow';
     fetchOptions.referrerPolicy = 'no-referrer';
-    fetch(url, fetchOptions).then((resp) => {
-        if (!response.ok) {
-            callback({
-                method: fetchOptions.method, 
-                message: "Http error fetching url " + url, 
-                error: `Status: ${response.status}`
-            })
-        }
-        resp.json();
-    }).then(function(data) {
-        callback(null, data)
-    }).catch(function(error) {
-        callback({
-            method: fetchOptions.method, 
-            message: "Error fetching " + url, 
-            error
-        })
-    })
+    return fetch(url, fetchOptions);
 }

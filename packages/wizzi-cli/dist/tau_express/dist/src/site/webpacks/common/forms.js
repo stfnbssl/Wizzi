@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\site\webpacks\common\forms.js.ittf
-    utc time: Wed, 03 Mar 2021 15:56:02 GMT
+    utc time: Thu, 04 Mar 2021 19:31:00 GMT
 */
 'use strict';
 var stylesInjected = false;
@@ -83,9 +83,9 @@ function formHtml(__html, form) {
     __html.push( temp.join('') );
     __html.push('</div>');
     __html.push('<div class="' + "form-submit" + '">');
-    __html.push('<input class="' + "submit" + '" type="' + "submit" + '" value="' + "Submit" + '" id="' + "submit" + '" name="' + "submit" + '">');
+    __html.push('<input class="' + "form-button submit" + '" value="' + "Add" + '" id="' + form.id  + "_submit" + '" name="' + "submit" + '">');
     __html.push('</input>');
-    __html.push('<input class="' + "submit" + '" type="' + "submit" + '" value="' + "Reset" + '" id="' + "reset" + '" name="' + "reset" + '">');
+    __html.push('<input class="' + "form-button reset" + '" value="' + "Cancel" + '" id="' + form.id  + "_reset" + '" name="' + "reset" + '">');
     __html.push('</input>');
     __html.push('</div>');
     __html.push('</form>');
@@ -134,6 +134,10 @@ function formControlHtml(__html, ctrl_def) {
     __html.push('<div class="' + "input-group" + '">');
     if (ctrl_def.type == 'text') {
         __html.push('<input class="' + "input--style-2" + '" type="' + "text" + '" placeholder="' + ctrl_def.label + '" name="' + ctrl_def.id + '" id="' + ctrl_def.ctrlId + '">');
+        __html.push('</input>');
+    }
+    else if (ctrl_def.type == 'oid') {
+        __html.push('<input class="' + "input--style-2" + '" type="' + "text" + '" disabled="' + "disabled" + '" name="' + ctrl_def.id + '" id="' + ctrl_def.ctrlId + '">');
         __html.push('</input>');
     }
     else if (ctrl_def.type == 'select') {
@@ -587,7 +591,7 @@ function injectFormStyles() {
         ".form-submit": {
             "text-align": "right"
         }, 
-        ".submit": {
+        ".form-button": {
             width: "150px", 
             height: "50px", 
             display: "inline-block", 
@@ -604,22 +608,22 @@ function injectFormStyles() {
             "-o-border-radius": "5px", 
             "-ms-border-radius": "5px"
         }, 
-        "#reset": {
+        ".reset": {
             background: "#fff", 
             color: "#999", 
             border: "2px solid #ebebeb"
         }, 
-        "#reset:hover": {
+        ".reset:hover": {
             border: "2px solid #329e5e", 
             background: "#329e5e", 
             color: "#fff"
         }, 
-        "#submit": {
+        ".submit": {
             background: "#329e5e", 
             color: "#fff", 
             "margin-right": "25px"
         }, 
-        "#submit:hover": {
+        ".submit:hover": {
             "background-color": "#267747"
         }, 
         // ==========================================================================
@@ -663,24 +667,47 @@ function injectFormStyles() {
     })
 }
 function startForm($, form_def) {
+    startFormMethods($, form_def)
     var i, i_items=form_def.controls, i_len=form_def.controls.length, item;
     for (i=0; i<i_len; i++) {
         item = form_def.controls[i];
         startControl($, item)
     }
-    $( "#" + form_def.id ).submit(function(event) {
-        console.log("Handler for .submit() called.");
+    $( "#" + form_def.id + "_submit").click(function(event) {
         var formData = {};
         var i, i_items=form_def.controls, i_len=form_def.controls.length, item;
         for (i=0; i<i_len; i++) {
             item = form_def.controls[i];
-            formData[item.id] = $( "#" + item.ctrlId ).val();
+            if (!!item.isKey == false || form_def.__state.status != 'add') {
+                formData[item.id] = $( "#" + item.ctrlId ).val();
+            }
         }
-        console.log('formData', formData);
+        console.log('formData', formData, 'form_def.__state', form_def.__state);
         event.preventDefault();
-        if (form_def.onSubmit) {
-            form_def.onSubmit(formData)
+        if (form_def.__state.status == 'update') {
+            if (form_def.onConfirmUpdate) {
+                form_def.onConfirmUpdate(formData)
+            }
         }
+        else if (form_def.__state.status == 'delete') {
+            if (form_def.onConfirmDelete) {
+                form_def.onConfirmDelete(formData)
+            }
+        }
+        else {
+            if (form_def.onAdd) {
+                form_def.onAdd(formData)
+            }
+        }
+    })
+    $( "#" + form_def.id + "_reset").click(function(event) {
+        var i, i_items=form_def.controls, i_len=form_def.controls.length, item;
+        for (i=0; i<i_len; i++) {
+            item = form_def.controls[i];
+            $( "#" + item.ctrlId ).val('');
+        }
+        form_def.__state.status == 'add';
+        $( "#" + form_def.id + "_submit").val('Add');
     })
 }
 function startControl($, item) {
@@ -788,6 +815,55 @@ function startControl($, item) {
         catch (err) {
             console.log(err);
         } 
+    }
+}
+function resetForm($, form_def) {
+    var i, i_items=form_def.controls, i_len=form_def.controls.length, item;
+    for (i=0; i<i_len; i++) {
+        item = form_def.controls[i];
+        $( "#" + item.ctrlId ).val('');
+    }
+    $( "#" + form_def.id + "_submit").val('add');
+    form_def.__state.status = 'add';
+}
+function startFormMethods($, form_def) {
+    form_def.__state = {
+        status: 'add'
+    };
+    form_def.__methods = {
+        setUpdateItem: function(values) {
+            form_def.__state.status = 'update';
+            var i, i_items=form_def.controls, i_len=form_def.controls.length, item;
+            for (i=0; i<i_len; i++) {
+                item = form_def.controls[i];
+                $( "#" + item.ctrlId ).val(values[item.id]);
+            }
+            $( "#" + form_def.id + "_submit").val('update');
+        }, 
+        setDeleteItem: function(values) {
+            form_def.__state.status = 'delete';
+            var i, i_items=form_def.controls, i_len=form_def.controls.length, item;
+            for (i=0; i<i_len; i++) {
+                item = form_def.controls[i];
+                $( "#" + item.ctrlId ).val(values[item.id]);
+            }
+            $( "#" + form_def.id + "_submit").val('delete');
+        }, 
+        onDoneAddItem: function(values) {
+            console.log('form.onDoneAddItem', values);
+            resetForm($, form_def)
+        }, 
+        onDoneUpdateItem: function(newvalues) {
+            console.log('form.onDoneUpdateItem', newvalues);
+            resetForm($, form_def)
+        }, 
+        onDoneDeleteItem: function(itemId) {
+            console.log('form.onDoneDeleteItem', itemId);
+            resetForm($, form_def)
+        }
+    };
+    if (form_def.onStart) {
+        form_def.onStart(form_def.__methods)
     }
 }
 function startFormValidation($, form) {

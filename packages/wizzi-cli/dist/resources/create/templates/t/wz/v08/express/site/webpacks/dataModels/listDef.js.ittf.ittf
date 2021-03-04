@@ -6,7 +6,7 @@ ${'$'}group
     ${'$'}
         var schema = md.schema;
         var testItems = [101,102];
-        for (var i=0; i<20 ; i++) { 
+        for (var i=0; i<8 ; i++) { 
             testItems.push${call}; 
         }
 
@@ -19,7 +19,7 @@ ${'$'}group
             @ hasSearch true
             [ columns
                 ${'$'}foreach field in schema.fields
-                    ${'$'}if field.isListItem
+                    ${'$'}if field.isListItem || field.type == 'oid'
                         {
                             @ id "${'$'}{field.name}"
                             @ label "${'$'}{field.label ? field.label : field.name}"

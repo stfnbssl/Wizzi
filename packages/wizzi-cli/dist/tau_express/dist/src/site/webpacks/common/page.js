@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\site\webpacks\common\page.js.ittf
-    utc time: Wed, 03 Mar 2021 15:56:02 GMT
+    utc time: Thu, 04 Mar 2021 19:31:00 GMT
 */
 'use strict';
 var stylesInjected = false;
@@ -106,6 +106,26 @@ function injectPageStyles() {
             ".col-2": {
                 width: "100%"
             }
+        }, 
+        // ==========================================================================
+        // FLEX / GRID
+        // ==========================================================================
+        ".flex-row": {
+            display: "flex", 
+            "flex-direction": "row", 
+            padding: "5px"
+        }, 
+        ".flex-row > div": {
+            flex: "1 1 auto", 
+            margin: "5px"
+        }, 
+        ".flex-column": {
+            display: "flex", 
+            "flex-direction": "column"
+        }, 
+        ".flex-column > div": {
+            flex: "1 1 auto", 
+            margin: "5px"
         }, 
         // ==========================================================================
         // HEADER

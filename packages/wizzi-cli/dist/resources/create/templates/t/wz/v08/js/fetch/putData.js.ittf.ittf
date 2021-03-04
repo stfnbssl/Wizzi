@@ -3,11 +3,10 @@ $group
     function putData
         param url = ''
         param data = {}
-        param callback
 
-        _ executeFetch
-            @ url
-            @ data
-            {
-                @ method 'PUT'
-            @ callback        
+        return
+            _ executeFetch
+                @ url
+                @ data
+                {
+                    @ method 'PUT'

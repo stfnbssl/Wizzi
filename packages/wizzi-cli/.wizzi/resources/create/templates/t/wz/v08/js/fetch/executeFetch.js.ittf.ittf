@@ -35,30 +35,7 @@ $group
         set fetchOptions.redirect = 'follow'             $$ manual, *follow, error
         set fetchOptions.referrerPolicy = 'no-referrer'  $$ no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
 
-        _ fetch
-            @ url
-            @ fetchOptions
-            ._ then
-                => 
-                    param resp
-                    if !response.ok
-                        _ callback
-                            {
-                                @ method fetchOptions.method
-                                @ message "Http error fetching url " + url
-                                @ error `Status: ${response.status}`
-                    _ resp.json
-            ._ then
-                function 
-                    param data
-                    _ callback
-                        @ null
-                        @ data
-            ._ catch
-                function 
-                    param error
-                    _ callback
-                        {
-                            @ method fetchOptions.method
-                            @ message "Error fetching " + url
-                            @ error
+        return 
+            _ fetch
+                @ url
+                @ fetchOptions

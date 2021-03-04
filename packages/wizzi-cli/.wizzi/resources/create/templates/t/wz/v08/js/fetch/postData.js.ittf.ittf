@@ -3,11 +3,10 @@ $group
     function postData
         param url = ''
         param data = {}
-        param callback
 
-        _ executeFetch
-            @ url
-            @ data
-            {
-                @ method 'POST'
-            @ callback        
+        return
+            _ executeFetch
+                @ url
+                @ data
+                {
+                    @ method 'POST'

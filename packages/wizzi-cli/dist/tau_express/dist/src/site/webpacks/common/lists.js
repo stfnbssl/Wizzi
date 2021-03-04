@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\site\webpacks\common\lists.js.ittf
-    utc time: Wed, 03 Mar 2021 15:56:02 GMT
+    utc time: Thu, 04 Mar 2021 19:31:00 GMT
 */
 'use strict';
 var stylesInjected = false;
@@ -188,13 +188,13 @@ function listTableHtml(__html, list) {
     __html.push('</div>');
     __html.push('</div>');
 }
-function listTableHtml_thead(__html, def) {
-    var i, i_items=def.columns, i_len=def.columns.length, column_def;
+function listTableHtml_thead(__html, list_def) {
+    var i, i_items=list_def.columns, i_len=list_def.columns.length, column_def;
     for (i=0; i<i_len; i++) {
-        column_def = def.columns[i];
+        column_def = list_def.columns[i];
         listTableHtml_th(__html, column_def)
     }
-    if (def.hasSearch) {
+    if (list_def.hasSearch) {
         __html.push('<th colspan="' + "2" + '">');
         __html.push('<input class="' + "search" + '" type="' + "text" + '" placeholder="' + "Search" + '">');
         __html.push('</input>');
@@ -202,7 +202,7 @@ function listTableHtml_thead(__html, def) {
     }
 }
 function listTableHtml_th(__html, column_def) {
-    __html.push('<th class="' + "list-table-th sort" + '" data-sort="' +  column_def.id  + '">');
+    __html.push('<th class="' + "list-table-th sort " + (column_def.isKey ? 'td-hidden' : '') + '" data-sort="' +  column_def.id  + '">');
     __html.push( column_def.label || column_def.id );
     __html.push('</th>');
 }
@@ -339,15 +339,15 @@ function startList_table($, list, context) {
         editBtn.hide();
         addBtn.show();
     })
-    // Sets callbacks to the buttons in the list
     lt_setItemsEventHandlers();
+    startListMethods($, list_def, listObj, keyId)
     function lt_setItemsEventHandlers() {
         $(document).on('click', '.remove-' + list_def.id + '-item-btn', function() {
             var itemId = $(this).closest('tr').find('.' + keyId).text();
             var itemValues = listObj.get(keyId, itemId)[0].values();
-            listObj.remove(keyId, itemId);
-            if (list_def.onRemove) {
-                list_def.onRemove(itemValues)
+            // _ listObj.remove(keyId, itemId)
+            if (list_def.onDeleteItem) {
+                list_def.onDeleteItem(itemValues)
             }
         })
         $(document).on('click', '.edit-' + list_def.id + '-item-btn', function() {
@@ -380,6 +380,26 @@ function startList_table($, list, context) {
             ret[column_def.id] = $('#' + column_def.id + '_field').val();
         }
         return ret;
+    }
+}
+function startListMethods($, list_def, listObj, keyId) {
+    list_def.__methods = {
+        onDoneAddItem: function(values) {
+            console.log('onDoneAddItem', values);
+            listObj.add(values)
+        }, 
+        onDoneUpdateItem: function(newValues) {
+            console.log('onDoneUpdateItem', newValues, newValues[keyId]);
+            var item = listObj.get(keyId, newValues[keyId])[0];
+            item.values(newValues)
+        }, 
+        onDoneDeleteItem: function(itemId) {
+            console.log('onDoneDeleteItem', itemId);
+            listObj.remove(keyId, itemId);
+        }
+    };
+    if (list_def.onStart) {
+        list_def.onStart(list_def.__methods)
     }
 }
 function startListValidation($, list) {

@@ -9,7 +9,7 @@
     "main": "",
     "type": "module",
     "scripts": {
-        "start": "set NODE_ENV=development && start http://localhost:5000 && nodemon src/index"
+        "start": "set NODE_ENV=development && nodemon src/index && start http://localhost:5000"
     },
     "dependencies": {
         "body-parser": "^1.18.3",

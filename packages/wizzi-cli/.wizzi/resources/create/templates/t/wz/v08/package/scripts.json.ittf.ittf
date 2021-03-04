@@ -31,7 +31,7 @@ $group
                 build:functions "netlify-lambda build functions"
                 test "react-scripts test --env=jsdom"    
         ${'$'}else 
-            start "set NODE_ENV=development && start http://localhost:5000 && nodemon src/index"
+            start "set NODE_ENV=development && nodemon src/index && start ${'$'}{wzCtx.App.baseUrl}"
 
     ${'$'}if wzCtx.Build.useLint
         lint "eslint --debug src/"

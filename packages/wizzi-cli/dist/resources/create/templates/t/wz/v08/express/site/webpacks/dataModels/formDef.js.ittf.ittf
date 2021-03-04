@@ -15,6 +15,7 @@ $group
                         @ ctrlId "${'$'}{field.ctrlId}"
                         ${'$'}if field.type == "oid"
                             @ type "oid"
+                            @ isKey true
                         ${'$'}else
                             @ type "text"
                         ${'$'}if field.required

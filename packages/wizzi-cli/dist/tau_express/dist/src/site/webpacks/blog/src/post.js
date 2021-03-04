@@ -2,13 +2,17 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\tau_express\.wizzi\src\site\webpacks\blog\src\post.js.ittf
-    utc time: Wed, 03 Mar 2021 15:56:02 GMT
+    utc time: Thu, 04 Mar 2021 19:31:00 GMT
 */
 'use strict';
 import {getPostList, createPost, getPostById, updatePost, deletePost} from './api.js';
 import {createPage} from '../../common/page.js';
 import {createList} from '../../common/lists.js';
 import {createForm} from '../../common/forms.js';
+
+var formMethods = null;
+var listMethods = null;
+
 const postPageDef = {
     kind: "app", 
     reset: "default", 
@@ -139,66 +143,6 @@ const postListData = {
             _id: "id 7", 
             author: "Stefi 7", 
             title: "My postulates 7"
-        }, 
-        {
-            _id: "id 8", 
-            author: "Stefi 8", 
-            title: "My postulates 8"
-        }, 
-        {
-            _id: "id 9", 
-            author: "Stefi 9", 
-            title: "My postulates 9"
-        }, 
-        {
-            _id: "id 10", 
-            author: "Stefi 10", 
-            title: "My postulates 10"
-        }, 
-        {
-            _id: "id 11", 
-            author: "Stefi 11", 
-            title: "My postulates 11"
-        }, 
-        {
-            _id: "id 12", 
-            author: "Stefi 12", 
-            title: "My postulates 12"
-        }, 
-        {
-            _id: "id 13", 
-            author: "Stefi 13", 
-            title: "My postulates 13"
-        }, 
-        {
-            _id: "id 14", 
-            author: "Stefi 14", 
-            title: "My postulates 14"
-        }, 
-        {
-            _id: "id 15", 
-            author: "Stefi 15", 
-            title: "My postulates 15"
-        }, 
-        {
-            _id: "id 16", 
-            author: "Stefi 16", 
-            title: "My postulates 16"
-        }, 
-        {
-            _id: "id 17", 
-            author: "Stefi 17", 
-            title: "My postulates 17"
-        }, 
-        {
-            _id: "id 18", 
-            author: "Stefi 18", 
-            title: "My postulates 18"
-        }, 
-        {
-            _id: "id 19", 
-            author: "Stefi 19", 
-            title: "My postulates 19"
         }
     ]
 };
@@ -210,7 +154,8 @@ const postFormDef = {
             id: "_id", 
             label: "_id", 
             ctrlId: "fd_1_post_id", 
-            type: "oid"
+            type: "oid", 
+            isKey: true
         }, 
         {
             id: "author", 
@@ -232,27 +177,253 @@ const postFormDef = {
         }
     ]
 };
+
 export function mountPostPage(elementId, props) {
     createPage(postPageDef, elementId, props)
 }
+
 export function mountPostForm(elementId, props) {
-    postFormDef.onSubmit = (formData) => {
+    postFormDef.onStart = (methods) =>
+        formMethods = methods;
+    postFormDef.onAdd = (formData) => {
         console.log('pageComponent post', 'form onSubmit', 'formData', formData);
+        var __response_ok = false;
+        var __response_status = false;
+        createPost(formData).then((response) => {
+            console.log('createPost', 'response', response);
+            __response_status = response.status;
+            if (response.ok) {
+                __response_ok = true;
+            }
+            return response.json();
+        }).then(function(data) {
+            if (__response_ok) {
+                console.log({
+                    action: 'createPost', 
+                    message: "success", 
+                    data: data
+                })
+                if (listMethods && listMethods.onDoneAddItem) {
+                    listMethods.onDoneAddItem(data.post)
+                }
+                if (formMethods && formMethods.onDoneAddItem) {
+                    formMethods.onDoneAddItem(data.post)
+                }
+            }
+            else {
+                console.log({
+                    action: 'createPost', 
+                    message: "failure", 
+                    responseStatus: __response_status, 
+                    error: data
+                })
+            }
+        }).catch(function(error) {
+            console.log({
+                action: 'createPost', 
+                error: error
+            })
+        })
     };
     postFormDef.onCancel = () => {
         console.log('pageComponent post', 'form onCancel');
     };
+    postFormDef.onConfirmUpdate = (formData) => {
+        console.log('pageComponent post', 'form onConfirmUpdate', 'formData', formData);
+        var __response_ok = false;
+        var __response_status = false;
+        updatePost(formData._id, formData).then((response) => {
+            console.log('updatePost', 'response', response);
+            __response_status = response.status;
+            if (response.ok) {
+                __response_ok = true;
+            }
+            return response.json();
+        }).then(function(data) {
+            if (__response_ok) {
+                console.log({
+                    action: 'updatePost', 
+                    message: "success", 
+                    data: data
+                })
+                console.log('listMethods && listMethods.onDoneUpdate', listMethods && listMethods.onDoneUpdateItem);
+                if (listMethods && listMethods.onDoneUpdateItem) {
+                    listMethods.onDoneUpdateItem(formData)
+                }
+                console.log('formMethods && formMethods.onDoneUpdate', formMethods && formMethods.onDoneUpdateItem);
+                if (formMethods && formMethods.onDoneUpdateItem) {
+                    formMethods.onDoneUpdateItem(formData)
+                }
+            }
+            else {
+                console.log({
+                    action: 'updatePost', 
+                    message: "failure", 
+                    responseStatus: __response_status, 
+                    error: data
+                })
+            }
+        }).catch(function(error) {
+            console.log({
+                action: 'updatePost', 
+                error: error
+            })
+        })
+    };
+    postFormDef.onConfirmDelete = (formData) => {
+        console.log('pageComponent post', 'form onConfirmDelete', 'formData', formData);
+        var __response_ok = false;
+        var __response_status = false;
+        deletePost(formData._id).then((response) => {
+            console.log('deletePost', 'response', response);
+            __response_status = response.status;
+            if (response.ok) {
+                __response_ok = true;
+            }
+            return response.json();
+        }).then(function(data) {
+            if (__response_ok) {
+                console.log({
+                    action: 'deletePost', 
+                    message: "success", 
+                    data: data
+                })
+                if (listMethods && listMethods.onDoneDeleteItem) {
+                    listMethods.onDoneDeleteItem(formData._id)
+                }
+                if (formMethods && formMethods.onDoneUpdateItem) {
+                    formMethods.onDoneDeleteItem(formData._id)
+                }
+            }
+            else {
+                console.log({
+                    action: 'deletePost', 
+                    message: "failure", 
+                    responseStatus: __response_status, 
+                    error: data
+                })
+            }
+        }).catch(function(error) {
+            console.log({
+                action: 'deletePost', 
+                error: error
+            })
+        })
+    };
     createForm(postFormDef, elementId, props)
 }
+
 export function mountPostList(elementId, props) {
+    postListDef.onStart = (methods) =>
+        listMethods = methods;
     postListDef.onSelectItem = (item) => {
         console.log('pageComponent post', 'list onSelectItem', item);
+        var __response_ok = false;
+        var __response_status = false;
+        getPostById(item._id).then((response) => {
+            console.log('getPostById', 'response', response);
+            __response_status = response.status;
+            if (response.ok) {
+                __response_ok = true;
+            }
+            return response.json();
+        }).then(function(data) {
+            if (__response_ok) {
+                console.log({
+                    action: 'getPostById', 
+                    message: "success", 
+                    data: data
+                })
+                formMethods.setUpdateItem(data.post)
+            }
+            else {
+                console.log({
+                    action: 'getPostById', 
+                    message: "failure", 
+                    responseStatus: __response_status, 
+                    error: data
+                })
+            }
+        }).catch(function(error) {
+            console.log({
+                action: 'getPostById', 
+                error: error
+            })
+        })
     };
     postListDef.onDeleteItem = (item) => {
         console.log('pageComponent post', 'list onDeleteItem', item);
+        var __response_ok = false;
+        var __response_status = false;
+        getPostById(item._id).then((response) => {
+            console.log('getPostById', 'response', response);
+            __response_status = response.status;
+            if (response.ok) {
+                __response_ok = true;
+            }
+            return response.json();
+        }).then(function(data) {
+            if (__response_ok) {
+                console.log({
+                    action: 'getPostById', 
+                    message: "success", 
+                    data: data
+                })
+                formMethods.setDeleteItem(data.post)
+            }
+            else {
+                console.log({
+                    action: 'getPostById', 
+                    message: "failure", 
+                    responseStatus: __response_status, 
+                    error: data
+                })
+            }
+        }).catch(function(error) {
+            console.log({
+                action: 'getPostById', 
+                error: error
+            })
+        })
     };
-    createList({
-        def: postListDef, 
-        data: postListData
-    }, elementId, props)
+    startList(elementId, props)
+}
+function startList(elementId, props) {
+    var __response_ok = false;
+    var __response_status = false;
+    getPostList().then((response) => {
+        console.log('getPostList', 'response', response);
+        __response_status = response.status;
+        if (response.ok) {
+            __response_ok = true;
+        }
+        return response.json();
+    }).then(function(data) {
+        if (__response_ok) {
+            console.log({
+                action: 'getPostList', 
+                message: "success", 
+                data: data
+            })
+            createList({
+                def: postListDef, 
+                data: {
+                    items: data.posts
+                }
+            }, elementId, props)
+        }
+        else {
+            console.log({
+                action: 'getPostList', 
+                message: "failure", 
+                responseStatus: __response_status, 
+                error: data
+            })
+        }
+    }).catch(function(error) {
+        console.log({
+            action: 'getPostList', 
+            error: error
+        })
+    })
 }

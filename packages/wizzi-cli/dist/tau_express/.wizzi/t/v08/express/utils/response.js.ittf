@@ -28,7 +28,7 @@ $group
                 _ res.status
                     iif error && error.status
                         then error.status
-                        else status
+                        else (status || 500)
                 _ res.type('application/json')
                 _ res.send(error)
     export

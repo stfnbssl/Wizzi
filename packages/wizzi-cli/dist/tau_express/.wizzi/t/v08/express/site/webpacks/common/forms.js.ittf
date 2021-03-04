@@ -87,16 +87,14 @@ $group
                         div
                             class form-submit
                             input
-                                type submit
-                                value Submit
-                                class submit
-                                id submit
+                                value Add
+                                class form-button submit
+                                id {{ form.id }}_submit
                                 name submit
                             input
-                                type submit
-                                value Reset
-                                class submit
-                                id reset
+                                value Cancel
+                                class form-button reset
+                                id {{ form.id }}_reset
                                 name reset
     function formControlHtml
         param __html
@@ -143,6 +141,13 @@ $group
                         class input--style-2
                         type text
                         placeholder {{ ctrl_def.label }}
+                        name {{ ctrl_def.id }}
+                        id {{ ctrl_def.ctrlId }}
+                elif ctrl_def.type == 'oid'
+                    input
+                        class input--style-2
+                        type text
+                        disabled disabled
                         name {{ ctrl_def.id }}
                         id {{ ctrl_def.ctrlId }}
                 elif ctrl_def.type == 'select'
@@ -562,7 +567,7 @@ $group
                 # ==========================================================================
                 { ".form-submit"
                     @ "text-align" "right"
-                { ".submit"
+                { ".form-button"
                     @ width "150px"
                     @ height "50px"
                     @ display "inline-block"
@@ -578,19 +583,19 @@ $group
                     @ "-webkit-border-radius" "5px"
                     @ "-o-border-radius" "5px"
                     @ "-ms-border-radius" "5px"
-                { "#reset"
+                { ".reset"
                     @ background "#fff"
                     @ color "#999"
                     @ border "2px solid #ebebeb"
-                { "#reset:hover"
+                { ".reset:hover"
                     @ border "2px solid #329e5e"
                     @ background "#329e5e"
                     @ color "#fff"
-                { "#submit"
+                { ".submit"
                     @ background "#329e5e"
                     @ color "#fff"
                     @ "margin-right" "25px"
-                { "#submit:hover"
+                { ".submit:hover"
                     @ "background-color" "#267747"
                 # ==========================================================================
                 # TITLE
@@ -628,22 +633,41 @@ $group
     function startForm
         param $
         param form_def
+        _ startFormMethods
+            @ $
+            @ form_def
         foreach item in form_def.controls
             _ startControl
                 @ $
                 @ item
-        _ $( "#" + form_def.id ).submit
+        _ $( "#" + form_def.id + "_submit").click
             function
                 param event
-                log "Handler for .submit() called."
                 var formData = {}
                 foreach item in form_def.controls
-                    set formData[item.id] = $( "#" + item.ctrlId ).val()
-                log 'formData', formData
+                    if !!item.isKey == false || form_def.__state.status != 'add'
+                        set formData[item.id] = $( "#" + item.ctrlId ).val()
+                log 'formData', formData, 'form_def.__state', form_def.__state
                 _ event.preventDefault()
-                if form_def.onSubmit
-                    _ form_def.onSubmit
-                        @ formData
+                if form_def.__state.status == 'update'
+                    if form_def.onConfirmUpdate
+                        _ form_def.onConfirmUpdate
+                            @ formData
+                elif form_def.__state.status == 'delete'
+                    if form_def.onConfirmDelete
+                        _ form_def.onConfirmDelete
+                            @ formData
+                else
+                    if form_def.onAdd
+                        _ form_def.onAdd
+                            @ formData
+        _ $( "#" + form_def.id + "_reset").click
+            function
+                param event
+                foreach item in form_def.controls
+                    _ $( "#" + item.ctrlId ).val('')
+                set form_def.__state.status == 'add'
+                _ $( "#" + form_def.id + "_submit").val('Add')
     function startControl
         param $
         param item
@@ -736,6 +760,59 @@ $group
                             @ value "<!doctype html>\n<html>\n  " + $('#' + item.id)[0].innerHTML + "\n</html>"
             catch err
                 log err
+    function resetForm
+        param $
+        param form_def
+        foreach item in form_def.controls
+            _ $( "#" + item.ctrlId ).val('')
+        _ $( "#" + form_def.id + "_submit").val('add')
+        set form_def.__state.status = 'add'
+    function startFormMethods
+        param $
+        param form_def
+        set form_def.__state
+            {
+                @ status 'add'
+        set form_def.__methods
+            {
+                @ setUpdateItem
+                    function
+                        param values
+                        set form_def.__state.status = 'update'
+                        foreach item in form_def.controls
+                            _ $( "#" + item.ctrlId ).val(values[item.id])
+                        _ $( "#" + form_def.id + "_submit").val('update')
+                @ setDeleteItem
+                    function
+                        param values
+                        set form_def.__state.status = 'delete'
+                        foreach item in form_def.controls
+                            _ $( "#" + item.ctrlId ).val(values[item.id])
+                        _ $( "#" + form_def.id + "_submit").val('delete')
+                @ onDoneAddItem
+                    function
+                        param values
+                        log 'form.onDoneAddItem', values
+                        _ resetForm
+                            @ $
+                            @ form_def
+                @ onDoneUpdateItem
+                    function
+                        param newvalues
+                        log 'form.onDoneUpdateItem', newvalues
+                        _ resetForm
+                            @ $
+                            @ form_def
+                @ onDoneDeleteItem
+                    function
+                        param itemId
+                        log 'form.onDoneDeleteItem', itemId
+                        _ resetForm
+                            @ $
+                            @ form_def
+        if form_def.onStart
+            _ form_def.onStart
+                @ form_def.__methods
     function startFormValidation
         param $
         param form

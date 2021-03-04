@@ -45,7 +45,8 @@ $group
                 param req
                 param res
                 log 'Entering blog.PostController.createPost, req.body', req.body
-                let post = new this.postModel(req.body)
+                const data = req.body.data
+                let post = new this.postModel(data)
                 _ post.save
                     ._ then
                         => 
@@ -105,9 +106,10 @@ $group
                                         @ message 'Post data not found'
                                     @ 404
                         else
-                            set post.title = req.body.title
-                            set post.content = req.body.content
-                            set post.author = req.body.author
+                            const data = req.body.data
+                            set post.title = data.title
+                            set post.content = data.content
+                            set post.author = data.author
                             _ post.save
                                 ._ then
                                     => 

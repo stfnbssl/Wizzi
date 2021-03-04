@@ -3,11 +3,10 @@ $group
     function deleteData
         param url = ''
         param data = {}
-        param callback
 
-        _ executeFetch
-            @ url
-            @ data
-            {
-                @ method 'DELETE'
-            @ callback
+        return
+            _ executeFetch
+                @ url
+                @ data
+                {
+                    @ method 'DELETE'

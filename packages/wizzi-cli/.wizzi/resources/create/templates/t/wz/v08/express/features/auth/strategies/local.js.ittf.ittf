@@ -4,9 +4,10 @@ $group
         @ Strategy
         from 'passport-local'
     
-    import 
-        @ GetUserModel
-        from '../mongo/user.js'
+    ${'$'}if wzCtx.Build.useMongoDb
+        import 
+            @ GetUserModel
+            from '../mongo/user.js'
     
     import 
         @ config
@@ -16,8 +17,9 @@ $group
     
     export 
         function createStrategy
-            set userModel =
-                _ GetUserModel
+            ${'$'}if wzCtx.Build.useMongoDb            
+                set userModel =
+                    _ GetUserModel
             log 'features.auth.strategies.local.createStrategy'
             return 
                 new Strategy
@@ -29,22 +31,30 @@ $group
                         param password
                         param done
                         log 'features.auth.strategies.local.verify.email,password', email, password
-                        _ userModel.findOne
-                            { 
-                                @ email
-                            ._ then
-                                => 
-                                    param user
-                                    if !user || !user.validatePassword(password)
-                                        log 'features.auth.strategies.local.verify.false'
-                                        return 
-                                            _ done
-                                                @ null
-                                                @ false
-                                                { 
-                                                    { errors
-                                                        @ 'email or password' 'is invalid'
-                                    log 'features.auth.strategies.local.verify.true.user', user
-                                    return done(null, user)
-                            ._ catch
-                                @ done
+                        ${'$'}if wzCtx.Build.useMongoDb
+                            _ userModel.findOne
+                                { 
+                                    @ email
+                                ._ then
+                                    => 
+                                        param user
+                                        if !user || !user.validatePassword(password)
+                                            log 'features.auth.strategies.local.verify.false'
+                                            return 
+                                                _ done
+                                                    @ null
+                                                    @ false
+                                                    { 
+                                                        { errors
+                                                            @ 'email or password' 'is invalid'
+                                        log 'features.auth.strategies.local.verify.true.user', user
+                                        return done(null, user)
+                                ._ catch
+                                    @ done
+                        ${'$'}else
+                            return
+                                _ done
+                                    @ null
+                                    {
+                                        @ email email
+                                        @ id "dummy_id_1"

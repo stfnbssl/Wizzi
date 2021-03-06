@@ -14,14 +14,26 @@ $group
         ${'$'}if wzCtx.Build.wizzi.useSite
             import { siteControllers } from './site/index.js'
 
-    ${'$'}if wzCtx.Build.useAuth0
-        import { auth } from 'express-openid-connect'                        
-    
-    ${'$'}if wzCtx.Build.useAuth
+    ${'$'}if wzCtx.Build.useAuthentication
         import 
-            @ authControllers
-            @ authModelBuilders
+            @ authenticationControllers
+            ${'$'}if wzCtx.Build.useMongoDb
+                @ authenticationModelBuilders
             from './features/auth/index.js'
+    
+    ${'$'}if wzCtx.Build.useAuthorization
+        import 
+            @ authorizationControllers
+            ${'$'}if wzCtx.Build.useMongoDb
+                @ authorizationModelBuilders
+            from './features/auth/index.js'
+    
+    ${'$'}if wzCtx.Build.useAccount
+        import 
+            @ accountControllers
+            @ accountModelBuilders
+            from './features/account/index.js'
+    
     ${'$'}if wzCtx.Build.useBlog
         import 
             @ blogControllers
@@ -33,7 +45,8 @@ $group
             from './site/index.js'
     
     import 
-        @ appMiddlewares
+        @ appMiddlewaresPre
+        @ appMiddlewaresPost
         from '${'$'}{baseDir}/middlewares/index.js'
     
     ${'$'}if wzCtx.Build.useNetlify == false

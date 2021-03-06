@@ -2,7 +2,7 @@ $group
 
     import { Router, Request, Response } from 'express';
     import * as passport from 'passport';
-    import { auth0ApiCalls } from '../../features/auth0';
+    import { authApiCalls } from '../../features/auth.js';
 
     export
         class AccountController
@@ -10,6 +10,9 @@ $group
             const router = Router()
             m initialize
                 param initValues
+                
+                log 'Entering AccountController.initialize'
+                
                 _ this.router.get
                     @ `${this.path}/login`
                     _ passport.authenticate
@@ -22,7 +25,7 @@ $group
                             _ res.redirect('/')
                 _ this.router.get(`${this.path}/callback`, this.callback)
                 _ this.router.get(`${this.path}/logout`, this.logout)
-                _ this.router.get(`${this.path}/user`, initValues.auth0Secured(), this.user)
+                _ this.router.get(`${this.path}/user`, initValues.authSecured(), this.user)
 
     function callback
         param request
@@ -44,7 +47,7 @@ $group
                         param err
                         if err
                             return next(err)
-                        const full_user = await auth0ApiCalls.getUser(user.user_id)
+                        const full_user = await authApiCalls.getUser(user.user_id)
                         log 'full_user', full_user
                         set request.session.github_accessToken = full_user.identities[0].access_token
                         let returnTo = `${this.path}/user`

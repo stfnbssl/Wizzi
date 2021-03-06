@@ -40,8 +40,11 @@ $group
         envalid "^7.0.0"
     ${'$'}if wzCtx.Build.useExpress
         express "^4.16.3"
-        ${'$'}if wzCtx.Build.useAuth0 || wzCtx.Build.useAuth0OpenId
-            express-openid-connect "2.2.1"
+        ${'$'}if wzCtx.Build.useAuthentication || wzCtx.Build.useAuthorization
+            express-jwt "^6.0.0"
+            express-openid-connect "^2.2.1"
+        ${'$'}if wzCtx.Build.useSession
+            express-session "^1.17.1"
     ${'$'}if wzCtx.Build.useReact
         ${'$'}if wzCtx.Build.react.useFormik
             formik "^1.5.7"
@@ -60,6 +63,13 @@ $group
         ${'$'}if wzCtx.Build.useLogger
             ${'$'}if wzCtx.Build.logger.useMorgan
                 morgan "^1.9.0"
+    ${'$'}if wzCtx.Build.useExpress
+        ${'$'}if wzCtx.Build.useAuthentication
+            passport "^0.4.1"
+            ${'$'}if wzCtx.Build.authentication.useGithub
+                passport-github2 "^0.1.12"
+            ${'$'}if wzCtx.Build.authentication.useLocal
+                passport-local "^1.0.0"
     ---
     $include ./dependencies/react.json
     ---    

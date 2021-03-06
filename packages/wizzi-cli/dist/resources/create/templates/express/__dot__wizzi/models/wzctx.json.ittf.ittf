@@ -2,28 +2,61 @@
     $include cli/v08/wzctx-info.json
     type "module"
 
+    $
+        var useSsl = true;
+        var pkgLetter = 'sigma';
+        var http = useSsl ? 'https' : 'http';
+
     { App
-        siteUrl "http://localhost"
+        siteUrl "${http}://localhost"
         port 5000
-        baseUrl "http://localhost:5000"
+        baseUrl "${http}://localhost:5000"
     
     { Build
         useExpress true
         { express
+            useSsl ${useSsl ? 'true' : 'false'}
+
+        useSession true
+        { session
+            name "${cliCtx.name}"
+
+        useSocketIO false 
+        { socketIO
+        
         useSite true
         { site
             useStaticIttf true
             { ittfStatic
+        
         useNetlify false
         { netlify
+        
         useWizzi true
         { wizzi
-        useAuth0OpenId true
-        { auth0openid
-        useAuth0 false
-        { auth0
+        
+        useAuthentication ${pkgLetter == 'sigma' ? true : false}
+        { authentication
+            tenant "dev-qwf9-zob.eu"
+            clientID "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV"
+            longRandomString "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg"
+            baseURL "${http}://localhost:5000"
             authRequired false
             userInfo false
+            useGithub true
+            { github
+                clientID "6a42cd4cb7247bb4e823"
+                clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
+                callbackURL "${http}://localhost:5000/authenticate/github/callback" 
+            useLocal true
+            { local
+        
+        useAuthorization false
+        { authorization
+        
+        useAccount ${pkgLetter == 'sigma' ? true : false}
+        { account
+        
         useConfig true
         { config
             useEnvalid true
@@ -34,8 +67,6 @@
             { morgan
         useCors false
         { cors
-        useSession false
-        { session
         usePassport false
         { passport
         usePassportAuth0 false
@@ -48,7 +79,7 @@
         { staticFiles
         useWizziViewEngine true
         { wizziViewEngine
-        useWebpackApp true
+        useWebpackApp ${pkgLetter == 'sigma' ? false : true}
         { webpackApp
             [ items
                 {
@@ -57,11 +88,13 @@
                 {
                     name "blog"
                     writeToDisk false
-        useErrors false
-        { errors
-        useMongoDb true
+        useMongoDb ${pkgLetter == 'sigma' ? false : true}
         { mongodb
-        useBlog true
+            user "yanez"
+            password "x5csosPN5YAsrl4Z"
+            dbPath "@cluster0.idlk7.mongodb.net"
+            dbName "wizzi"
+        useBlog ${pkgLetter == 'sigma' ? false : true}
         { blog
             name "blog"
             Name "Blog"
@@ -77,22 +110,22 @@
                             name "_id"
                             type "oid"
                             isListItem true
-                            test "id"
                             ctrlId "fd_1_post_id"
+                            test "id"
                         {
                             name "author"
                             type "string"
                             isListItem true
-                            test "Stefi"
                             ctrlId "fd_1_post_author"
+                            test "Stefi"
                         {
                             name "title"
                             type "string"
                             isListItem true
-                            test "My postulates"
                             ctrlId "fd_1_post_title"
+                            test "My postulates"
                         {
                             name "content"
                             type "string"
-                            test "Bla bla"
                             ctrlId "fd_1_post_content"
+                            test "Bla bla"

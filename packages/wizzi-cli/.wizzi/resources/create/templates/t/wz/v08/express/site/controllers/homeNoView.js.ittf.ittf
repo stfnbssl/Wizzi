@@ -11,6 +11,9 @@ $group
 
             m initialize
                 param initValues
+                
+                log 'Entering HomeNoViewController.initialize'
+                
                 _ this.router.get(`/`, this.home)
                 _ this.router.get(`/about`, this.about)
                 _ this.router.get(`/support`, this.support)
@@ -38,6 +41,10 @@ $group
                 {
                     @ text "Home"
                     @ href "/"
+                ${'$'}if wzCtx.Build.useAuthentication
+                    {
+                        @ text "Profile"
+                        @ href "/account/profile"
                 {
                     @ text "About"
                     @ href "/about"

@@ -1,19 +1,17 @@
 $group
     
     import 
-        @ Request
-        from 'express'
-    import 
         @ Strategy
         from 'passport-github2'
-    import 
-        @ GetUserModel
-        @ UserModelType
-        from '../mongo/user.js'
-    import 
-        @ GetAccountModel
-        @ AccountModelType
-        from '../mongo/account.js'
+    ${'$'}if wzCtx.Build.useMongoDb
+        import 
+            @ GetUserModel
+            @ UserModelType
+            from '../mongo/user.js'
+        import 
+            @ GetAccountModel
+            @ AccountModelType
+            from '../mongo/account.js'
     import 
         @ config
         from '../../config/index.js'
@@ -24,15 +22,16 @@ $group
     export 
         function createStrategy
             # userModel = GetUserModel();
-            set accountModel =
-                _ GetAccountModel
+            ${'$'}if wzCtx.Build.useMongoDb
+                set accountModel =
+                    _ GetAccountModel
             log 'features.auth.strategies.github.createStrategy'
             return 
                 new Strategy
                     { 
-                        @ clientID config.GithubClientID
-                        @ clientSecret config.GithubClientSecret
-                        @ callbackURL config.GithubCallbackURL
+                        @ clientID config.githubClientID
+                        @ clientSecret config.githubClientSecret
+                        @ callbackURL config.githubCallbackURL
                         @ passReqToCallback true
                     function 
                         param req
@@ -40,12 +39,18 @@ $group
                         param refreshToken
                         param profile
                         param done
-                        log 'features.auth.strategies.github.req.session.socketId,socketUserId', req.session.socketId, req.session.socketUserId
+                        ${'$'}if wzCtx.Build.useSocketIO
+                            log 'features.auth.strategies.github.req.session.socketId,socketUserId', req.session.socketId, req.session.socketUserId
                         log 'features.auth.strategies.github.req.sessionID,session', req.sessionID, req.session
                         log 'features.auth.strategies.github.req.user', req.user
                         log 'features.auth.strategies.github.accessToken.refreshToken', accessToken, refreshToken
                         log 'features.auth.strategies.github.profile', profile
-                        var account = new accountModel()
+                        ${'$'}if wzCtx.Build.useMongoDb
+                            var account = new accountModel()
+                        ${'$'}else
+                            var account
+                                {
+                                    [ tokens
                         set account.domain = 'github.com'
                         set account.uid = profile.id
                         set account.username = profile.username

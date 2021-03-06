@@ -8,4 +8,4 @@ module
         }
 
     ${'$'}if wzCtx.Build.useWebpackApp
-        v08/express/site/webpacks/blog/src/index${call}
+        v08/express/site/webpacks/dataModels/index${call}

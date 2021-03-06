@@ -1,0 +1,7 @@
+module
+    kind es6
+    $
+        var md = {
+        }
+    $if wzCtx.Build.useAuth_stop
+        v08/express/features/auth/mongo/user(&md)

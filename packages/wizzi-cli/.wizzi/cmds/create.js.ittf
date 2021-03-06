@@ -4,7 +4,8 @@
     $
         var quick = true;
         // var pkgName = "lambda";
-        var pkgName = "tau_express";
+        // var pkgName = "tau_express";
+        var pkgName = "sigma_express_auth";
         // var template = "wizzi_plugin";
         var template = "express";
         var wizzi_plugin_type = 'syntax_structure';

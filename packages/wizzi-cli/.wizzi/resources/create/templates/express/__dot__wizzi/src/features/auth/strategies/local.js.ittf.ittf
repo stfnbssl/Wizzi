@@ -7,5 +7,6 @@ module
         var md = {
         }
 
-    ${'$'}if wzCtx.Build.useAuth
-        v08/express/features/auth/strategies/local${call}
+    ${'$'}if wzCtx.Build.useAuthentication
+        ${'$'}if wzCtx.Build.authentication.useLocal
+            v08/express/features/auth/strategies/local${call}

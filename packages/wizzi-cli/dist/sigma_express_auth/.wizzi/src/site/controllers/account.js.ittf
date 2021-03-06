@@ -1,0 +1,9 @@
+module
+    kind es6
+    $
+        var md = {
+        }
+    $if wzCtx.Build.useSite
+        $if wzCtx.Build.useAuthentication
+            $if wzCtx.Build.useAccount
+                v08/express/site/controllers/account(&md)

@@ -1,7 +1,0 @@
-module
-    kind es6
-    $
-        var md = {
-        }
-    $if wzCtx.Build.useAuth0OpenIdConnect
-        v08/express/middlewares/auth0_openid_connect(&md)

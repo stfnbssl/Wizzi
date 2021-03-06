@@ -61,7 +61,6 @@
                 }
             ]
         },
-        "useErrors": false,
         "errors": {},
         "useMongoDb": true,
         "mongodb": {},

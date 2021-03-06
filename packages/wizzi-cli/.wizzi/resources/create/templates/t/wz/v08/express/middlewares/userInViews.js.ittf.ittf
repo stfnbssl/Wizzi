@@ -12,5 +12,8 @@ $group
                         param req
                         param res
                         param next
-                        set res.locals.user = req.user
+                        ${'$'}if wzCtx.Build.useAuthentication
+                            set res.locals.user = req.oidc.user
+                        ${'$'}else
+                            set res.locals.user = req.user
                         _ next

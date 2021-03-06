@@ -12,7 +12,7 @@ var inquirer = require('inquirer');
 module.exports = (args) => {
     return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'express'), {
             cliCtx: {
-                pkg_name: "tau_express", 
+                pkg_name: "sigma_express_auth", 
                 wizzi_plugin_type: "syntax_structure", 
                 author: {
                     
@@ -31,7 +31,7 @@ module.exports = (args) => {
                 ]
             }
         }, {
-            destFolder: path.join(process.cwd(), 'tau_express'), 
+            destFolder: path.join(process.cwd(), 'sigma_express_auth'), 
             copyInclude: ['*'], 
             copyExclude: []
         }, function(err, genFolderResult) {

@@ -1,25 +1,23 @@
 module
     kind es6
 
-    ${'$'}if wzCtx.Build.useAuth0
-        import { Auth0Middleware } from './auth0.js'
-    ${'$'}if wzCtx.Build.useAuth0OpenId
-        import { Auth0OpenIdMiddleware } from './auth0_openid.js'
+    ${'$'}if wzCtx.Build.useAuthentication
+        import { AuthenticationMiddleware } from './authentication.js'
+    ${'$'}if wzCtx.Build.useAuthorization
+        import { AuthorizationMiddleware } from './authorization.js'
     ${'$'}if wzCtx.Build.useLogger
         import { LoggerMiddleware } from './logger.js'
     ${'$'}if wzCtx.Build.useCors
         import { CorsMiddleware } from './cors.js'
     ${'$'}if wzCtx.Build.useSession
         import { SessionMiddleware } from './session.js'
-    ${'$'}if wzCtx.Build.usePassport
+    ${'$'}if wzCtx.Build.useAuthentication
         import { PassportMiddleware } from './passport.js'
     ${'$'}if wzCtx.Build.usePassportAuth0
         import { PassportAuth0Middleware } from './passportAuth0.js'
     ${'$'}if wzCtx.Build.useSite
         ${'$'}if wzCtx.Build.site.useStaticIttf
             import { IttfStaticMiddleware } from './ittfStatic.js'
-    ${'$'}if wzCtx.Build.useAuth0OpenIdConnect
-        import { Auth0OpenIdConnectMiddleware } from './auth0_openid_connect.js'
     import { BodyParserMiddleware } from './bodyParser.js'
     import { CacheControlMiddleware } from './cacheControl.js'
     ${'$'}if wzCtx.Build.useCompression
@@ -35,28 +33,27 @@ module
         import { WizziViewEngineMiddleware } from './wizziViewEngine.js'
     ${'$'}if wzCtx.Build.useWebpackApp
         import { WebpackAppMiddleware } from './webpackApp.js'
-    ${'$'}if wzCtx.Build.useErrors
-        import { ErrorsMiddleware } from './errors.js'
+    import { ErrorsMiddleware } from './errors.js'
 
-    const appMiddlewares
+    const appMiddlewaresPre
         [ 
-            ${'$'}if wzCtx.Build.useAuth0OpenId
-                @ Auth0OpenIdMiddleware
+            ${'$'}if wzCtx.Build.useAuthentication
+                @ AuthenticationMiddleware
             ${'$'}if wzCtx.Build.useLogger
                 @ LoggerMiddleware
             ${'$'}if wzCtx.Build.useCors
                 @ CorsMiddleware
             ${'$'}if wzCtx.Build.useSession
                 @ SessionMiddleware
-            ${'$'}if wzCtx.Build.usePassport
+            ${'$'}if wzCtx.Build.useAuthentication
                 @ PassportMiddleware
                 ${'$'}if wzCtx.Build.usePassportAuth0
                     @ PassportAuth0Middleware
             ${'$'}if wzCtx.Build.useSite
                 ${'$'}if wzCtx.Build.site.useStaticIttf
                     @ IttfStaticMiddleware
-            ${'$'}if wzCtx.Build.useAuth0
-                @ Auth0Middleware
+            ${'$'}if wzCtx.Build.useAuthorization
+                @ AuthorizationMiddleware
             @ BodyParserMiddleware
             @ CacheControlMiddleware
             ${'$'}if wzCtx.Build.useCompression
@@ -72,19 +69,22 @@ module
                 @ WizziViewEngineMiddleware
             ${'$'}if wzCtx.Build.useWebpackApp
                 @ WebpackAppMiddleware
-            ${'$'}if wzCtx.Build.useErrors
-                @ ErrorsMiddleware
+            
+    const appMiddlewaresPost
+        [ 
+            @ ErrorsMiddleware
 
-    ${'$'}if wzCtx.Build.useAuth0
+    ${'$'}if wzCtx.Build.useAuthorization
         import 
             @ checkJwt
             @ checkScopes
-            from './auth0'
-        import auth0Secured from './auth0Secured'
+            from './authorization.js'
+        import authSecured from './authSecured.js'
     
     export 
-        @ appMiddlewares
-        ${'$'}if wzCtx.Build.useAuth0
-            @ auth0Secured
+        @ appMiddlewaresPre
+        @ appMiddlewaresPost
+        ${'$'}if wzCtx.Build.useAuthorization
+            @ authSecured
             @ checkJwt
             @ checkScopes

@@ -205,10 +205,11 @@
 				r_cb()
 
 	stm( typeEnum, kind
-		_ ctx.write('enum ' + model.wzName + ' {')
+		_ ctx.w('enum ' + model.wzName + ' {')
+        _ ctx.indent
 		repeater( 1, model.statements )
 			if index_1 > 0
-				_ ctx.write(' , ')
+				_ ctx.w(' , ')
 			log 'typeEnum.item_1.wzElement', item_1.wzElement, item_1.wzName
 			_ cnt.genItem
 				@ item_1
@@ -216,9 +217,10 @@
 				a_cb()
 					repeater_increment( 1 )
 			$append next
+                _ ctx.deindent
+                _ ctx.w()
 				_ ctx.w('}')
 				r_cb()
-
 
 	stm( typeReturn, kind
 		if model.statements.length == 1

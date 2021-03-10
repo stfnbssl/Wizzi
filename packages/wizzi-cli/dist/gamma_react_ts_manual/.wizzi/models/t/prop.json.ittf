@@ -1,0 +1,10 @@
+$group
+    $params name, type|string, xdefault|@@null
+    
+    $ var quote = type == 'string' ? '"' : ''
+
+    {
+        name "${name}"
+        type "${type}"
+        $if xdefault != null
+            default ${quote}${xdefault}${quote}

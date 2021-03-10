@@ -10,7 +10,7 @@ module.exports = {
     ], 
     pluginsBaseFolder: path.join(__dirname, '..'),
     schemas: [
-        'md',
+        'css',
     ],
     schemasStop: [
         'css',

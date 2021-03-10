@@ -44,7 +44,7 @@
                     </li>
                     <li><a href="#element_commentmultiline">commentmultiline</a>
                     </li>
-                    <li><a href="#element_module">module</a>
+                    <li><a href="#element_xmodule">xmodule</a>
                     </li>
                     <li><a href="#element_feature">feature</a>
                     </li>
@@ -632,6 +632,10 @@
                     </li>
                     <li><a href="#element_styleJsx">styleJsx</a>
                     </li>
+                    <li><a href="#element_styled">styled</a>
+                    </li>
+                    <li><a href="#element_keyframes">keyframes</a>
+                    </li>
                     <li><a href="#element_htmlParam">htmlParam</a>
                     </li>
                     <li><a href="#element_htmlFilter">htmlFilter</a>
@@ -839,7 +843,7 @@
                         </tbody>
                     </table>
                 </small>
-                <table id="element_module" class="pretty-table">
+                <table id="element_xmodule" class="pretty-table">
                     <thead>
                         <tr>
                             <th>Element</th>
@@ -851,7 +855,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <b>module</b>
+                                <b>xmodule</b>
                             </td>
                             <td>module</td>
                             <td>statement</td>
@@ -18094,6 +18098,276 @@
                                 <td>string</td>
                                 <td>string</td>
                                 <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
+                <h5>Relations</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Cardinality</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>statement</td>
+                                <td>statements</td>
+                                <td>one-to-many</td>
+                                <td>statement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
+                <table id="element_styled" class="pretty-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Tag</th>
+                            <th>Super</th>
+                            <th>Flags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>styled</b>
+                            </td>
+                            <td>styled</td>
+                            <td>htmlelement</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Attributes</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Tag</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>global</td>
+                                <td>global</td>
+                                <td>boolean</td>
+                                <td>false</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>autoCapitalize</td>
+                                <td>autoCapitalize</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>autoCorrect</td>
+                                <td>autoCorrect</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>property</td>
+                                <td>property</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>itemProp</td>
+                                <td>itemProp</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>itemScope</td>
+                                <td>itemScope</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>itemType</td>
+                                <td>itemType</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>itemRef</td>
+                                <td>itemRef</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>itemID</td>
+                                <td>itemID</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>unselectable</td>
+                                <td>unselectable</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>results</td>
+                                <td>results</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>autoSave</td>
+                                <td>autoSave</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>class</td>
+                                <td>class</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>aria__</td>
+                                <td>aria-*</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>data__</td>
+                                <td>data-*</td>
+                                <td>string</td>
+                                <td>string</td>
+                                <td>htmlelement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
+                <h5>Relations</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Cardinality</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>statement</td>
+                                <td>statements</td>
+                                <td>one-to-many</td>
+                                <td>statement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
+                <table id="element_keyframes" class="pretty-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Tag</th>
+                            <th>Super</th>
+                            <th>Flags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>keyframes</b>
+                            </td>
+                            <td>keyframes</td>
+                            <td>statement</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Attributes</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Tag</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>global</td>
+                                <td>global</td>
+                                <td>boolean</td>
+                                <td>false</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>

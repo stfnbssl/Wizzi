@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\method.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\method.js.ittf
 */
 'use strict';
 var u = require('../../../../../js/module/gen/codegen/util/stm');
@@ -21,7 +22,7 @@ md.gen = function(model, ctx, callback) {
     if (model.async) {
         ctx.write('async ');
     }
-    u.genAccessorsAndExtra(model, ctx);
+    u.genAccessorsAndExtra(model, ctx)
     ctx.write(method);
     u.genTSTypeParameters(model, ctx, statement, (err, notUsed) => {
         if (err) {
@@ -39,14 +40,14 @@ md.gen = function(model, ctx, callback) {
                     if (err) {
                         return callback(err);
                     }
-                    method_step_1(model, ctx, callback);
-                });
+                    method_step_1(model, ctx, callback)
+                })
             }
             else {
-                method_step_1(model, ctx, callback);
+                method_step_1(model, ctx, callback)
             }
-        });
-    });
+        })
+    })
 };
 function method_step_1(model, ctx, callback) {
     ctx.w(' {');
@@ -58,5 +59,5 @@ function method_step_1(model, ctx, callback) {
         ctx.deindent();
         ctx.w('}');
         return callback(null, null);
-    });
+    })
 }

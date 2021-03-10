@@ -1,0 +1,40 @@
+module
+
+    $
+        var md = {
+            name: "ThemeButton",
+            element: 'button',
+            props: [
+                {
+                    name: "variant",
+                    type: "VARIANT",
+                    optional: true,
+                    ref: true,
+                }
+            ]
+        }
+
+    v08/ts/react/styled(&md)
+        
+        $append imports
+            export
+                :enum VARIANT
+                    @ PRIMARY
+                    @ SECONDARY      
+                    @ TERTHIARY  
+
+        margin 8px
+        border-radius
+            => props.theme.borderRadius
+        js=>
+            module
+                switch props.variant
+                    case VARIANT.SECONDARY
+                        styled
+                            color £{props.theme.palette.secondary.contrastText}
+                            background-color £{props.theme.palette.secondary.main}
+                    case VARIANT.PRIMARY
+                    default
+                        styled
+                            color £{props.theme.palette.primary.contrastText}
+                            background-color £{props.theme.palette.primary.main}

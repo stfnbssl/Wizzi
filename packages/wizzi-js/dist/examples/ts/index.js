@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\ts\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\ts\index.js.ittf
 */
 'use strict';
 var path = require('path');
@@ -35,8 +36,8 @@ function executeExample() {
             }
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
-            });
-        });
+            })
+        })
     }
     repeater_1(0);
     function next_1() {
@@ -62,10 +63,10 @@ function executeExample() {
                     throw new Error(err.message);
                 }
                 console.log('ctxout', ctxout.getContent());
-                file.write(tsOutput, ctxout.getContent());
+                file.write(tsOutput, ctxout.getContent())
                 return callback(null, null);
-            });
-        });
+            })
+        })
     }
 }
 function getFiles(srcpath, schema) {
@@ -87,7 +88,7 @@ function getFilesData(srcpath, schema) {
             path: file, 
             name: file.substring(0, file.length - ('.' + schema + '.ittf').length), 
             fullPath: path.join(srcpath, file)
-        });
+        })
     }
     return ret;
 }
@@ -102,7 +103,7 @@ function createWizziFactory(globalContext, callback) {
             
         }, 
         globalContext: globalContext || {}
-    }, callback);
+    }, callback)
 }
 function getWizziObject(callback) {
     if (typeof(callback) === 'undefined') {
@@ -129,7 +130,7 @@ function getWizziObject(callback) {
                     errors: errors, 
                     wizziFactory: wf
                 });
-        });
+        })
     }
 }
 function getLoadModelContext(mtreeBuilUpContext) {
@@ -175,7 +176,7 @@ function executeWizziJob(wfjobDocumentUri, options) {
         if (err) {
             wizzi.printWizziJobError($name, err);
         }
-    });
+    })
 }
 module.exports = executeExample;
 if (require.main === module) {

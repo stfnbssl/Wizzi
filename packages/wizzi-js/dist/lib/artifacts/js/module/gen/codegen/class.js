@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\class.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\class.js.ittf
 */
 'use strict';
 var verify = require('wizzi-utils').verify;
@@ -46,8 +47,8 @@ md.gen = function(model, ctx, callback) {
             ctx.w('})(' + zsuperw + ');');
             ctx.w('');
             return callback(null, null);
-        });
-    });
+        })
+    })
 };
 md.genCTor = function(ctor, ctx, callback) {
     if (ctor) {
@@ -56,8 +57,8 @@ md.genCTor = function(ctor, ctx, callback) {
                 return callback(err);
             }
             // log 123, 'class.genCTor'
-            statement.genMany(ctor.statements, ctx, callback);
-        });
+            statement.genMany(ctor.statements, ctx, callback)
+        })
     }
     else {
         return callback(null, null);
@@ -93,13 +94,13 @@ md.genMembers = function(model, ctx, callback) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         else {
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
-            });
+            })
         }
     }
     repeater_1(0);
@@ -352,7 +353,7 @@ function prmAnalizeLeaf(candidate, state) {
             paramName: candidate.prm.wzName, 
             paramType: prmTypeFromElement(candidate.prm.wzElement), 
             accessPath: candidate.accessPath
-        });
+        })
         candidate.isRequired = true;
         if (candidate.prm.isRequired) {
             requireParents(candidate);
@@ -368,7 +369,7 @@ function requireParents(candidate) {
                 paramName: ancestor.prm.wzName, 
                 paramType: prmTypeFromElement(ancestor.prm.wzElement), 
                 accessPath: ancestor.accessPath
-            });
+            })
             ancestor.isRequired = true;
         }
         ancestor = ancestor.parent;

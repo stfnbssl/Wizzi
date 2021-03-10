@@ -67,12 +67,12 @@ no<td>
 ## Source and generation
 wizzi-js is generated using the Wizzi factory ver 0.7
 
-## The Wizzi Factory
+## Wizzi
 
-A model driven artifact factory.
+One machinery, many productions.
 
 
-<p><a href="https://wizzifactory.github.io/">Project page</a></p>
+<p><a href="https://stfnbssl.github.io/wizzi">Project page</a></p>
 
 ## Built With
 * [Nodejs](https://nodejs.org)

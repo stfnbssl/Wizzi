@@ -1,5 +1,13 @@
 $group
     ---
+    ${'$'}if wzCtx.Build.useTypescript
+        ${'$'}if wzCtx.Build.useJest
+            @types/jest "^26.0.15"
+        @types/node "^12.0.0"
+    ${'$'}if wzCtx.Build.useReact
+        ${'$'}if wzCtx.Build.useTypescript
+            @types/react "^17.0.0"
+            @types/react-dom "^17.0.0"
     ${'$'}if wzCtx.Build.useBabel
         ${'$'}if wzCtx.Build.babel.useRuntime
             @babel/runtime "^7.12.5"
@@ -14,7 +22,7 @@ $group
     ${'$'}if wzCtx.Build.useBootstrap
         bootstrap "^4.1.3"
     ---    
-    ${'$'}if wzCtx.Build.useReact
+    ${'$'}if wzCtx.Build.useReact && !!wzCtx.Build.useReactCreateApp == false
         classnames "^2.2.6"
     ${'$'}if wzCtx.Build.useMongoDb
         connect-mongo "^3.2.0"
@@ -80,14 +88,23 @@ $group
             serverless-http "^1.6.0"
     ${'$'}if wzCtx.Build.useSocketIO
         socket.io-client "^2.2.0"
-    ${'$'}if wzCtx.Build.useReact && wzCtx.Build.react.styledComponents
-        styled-components "^3.3.3"
+    ${'$'}if wzCtx.Build.useReact && wzCtx.Build.useStyledComponents
+        styled-components "^5.2.1"
+    ---    
+    ${'$'}if wzCtx.Build.useTypescript
+        typescript "^4.1.2"
+    ---    
     ${'$'}if wzCtx.Build.useUnderscore
         underscore "^1.9.1"
+    ---    
     ${'$'}if wzCtx.Build.useValidateJs
         validate.js "^0.12.0"
     ${'$'}if wzCtx.Build.useVue
         vue "^2.5.17"
         vue-server-renderer "^2.5.17"
+    ---
+    ${'$'}if wzCtx.Build.useReactCreateApp
+        web-vitals "^1.0.1"
+    ---
     ${'$'}if wzCtx.Build.useYup
         yup "^0.27.0"

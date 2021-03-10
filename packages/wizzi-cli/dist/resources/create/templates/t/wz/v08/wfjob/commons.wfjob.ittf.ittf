@@ -16,7 +16,29 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook            
 
-    ${'$'}if name == 'any_css'
+    ${'$'}elif name == 'any_ts'
+        artifact any_ts
+            src ./**/*.ts.ittf
+            schema ts
+            generator ts/module
+            extension ts
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook            
+
+    ${'$'}elif name == 'any_tsx'
+        artifact any_tsx
+            src ./**/*.tsx.ittf
+            schema ts
+            generator ts/module
+            extension tsx
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook            
+
+    ${'$'}elif name == 'any_css'
         artifact any_css
             src ./**/*.css.ittf
             schema css
@@ -27,7 +49,18 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == 'any_html'
+    ${'$'}elif name == 'any_svg'
+        artifact any_svg
+            src ./**/*.svg.ittf
+            schema svg
+            generator svg/document
+            extension svg
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
+    ${'$'}elif name == 'any_html'
         artifact any_html
             src ./**/*.html.ittf
             schema html
@@ -38,7 +71,7 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == 'any_json'
+    ${'$'}elif name == 'any_json'
         artifact any_json
             src ./**/*.json.ittf
             schema json
@@ -49,7 +82,7 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == 'any_md'
+    ${'$'}elif name == 'any_md'
         artifact any_md
             src ./**/*.md.ittf
             schema md
@@ -60,7 +93,7 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == 'any_text'
+    ${'$'}elif name == 'any_text'
         artifact any_text
             src ./**/*.text.ittf
             schema text
@@ -71,7 +104,7 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == 'any_ittf'
+    ${'$'}elif name == 'any_ittf'
         artifact any_ittf
             src ./**/*.ittf.ittf
             schema ittf
@@ -82,7 +115,7 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == '.env'
+    ${'$'}elif name == '.env'
         artifact .env
             src .env.text.ittf
             schema text
@@ -94,7 +127,7 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == '.babelrc'
+    ${'$'}elif name == '.babelrc'
         artifact .babelrc
             src .babelrc.json.ittf
             schema json
@@ -106,7 +139,7 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == '.gitignore'
+    ${'$'}elif name == '.gitignore'
         artifact .gitignore
             src .gitignore.text.ittf
             schema text
@@ -117,7 +150,11 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
-    ${'$'}if name == 'any_plain'
+    ${'$'}elif name == 'any_plain'
         artifact any_plain_${'$'}{ext}
             src ./**/*.${'$'}{ext}
             extension ${'$'}{ext}
+
+    ${'$'}else
+        
+        ${'$'}throw wfjob name not managed: ${'$'}{name}

@@ -101,6 +101,10 @@
             _ ctx.write
                 @ model.wzName
 			r_cb()
+        elif u.isEnumValue(model)
+            _ ctx.write
+                @ model.wzName
+			r_cb()
         elif u.isObjectProperty(model)
             var 
                 decl tk

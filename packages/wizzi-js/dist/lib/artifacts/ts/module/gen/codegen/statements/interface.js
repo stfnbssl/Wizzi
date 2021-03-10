@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\interface.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\interface.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -45,8 +46,8 @@ md.load = function(cnt) {
                 }
                 ctx.w('}');
                 return callback(null, null);
-            });
-        });
+            })
+        })
     };
     cnt.stm.typeProperty = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -55,7 +56,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeProperty. Got: ' + callback);
         }
-        u.genAccessorsAndExtra(model, ctx);
+        u.genAccessorsAndExtra(model, ctx)
         ctx.write(model.wzName);
         if (model.typeOptional) {
             ctx.write('?');
@@ -76,7 +77,7 @@ md.load = function(cnt) {
                         }
                         ctx.w(';');
                         return callback(null, null);
-                    });
+                    })
                 }
                 else if (model.statements.length > 0) {
                     ctx.indent();
@@ -88,14 +89,14 @@ md.load = function(cnt) {
                         model.wzElement = ':p';
                         ctx.deindent();
                         ctx.w('');
-                    });
+                    })
                     return callback(null, null);
                 }
                 else {
-                    ctx.w();
+                    ctx.w(";");
                     return callback(null, null);
                 }
-            });
+            })
         }
     };
     cnt.stm.typeMethod = function(model, ctx, callback) {
@@ -105,7 +106,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeMethod. Got: ' + callback);
         }
-        u.genAccessorsAndExtra(model, ctx);
+        u.genAccessorsAndExtra(model, ctx)
         var atype = u.extractTSSimpleType(model);
         // log 'typeMethod atype', atype
         ctx.write(model.wzName);
@@ -130,8 +131,8 @@ md.load = function(cnt) {
                         }
                         ctx.w(';');
                         return callback(null, null);
-                    });
-                });
+                    })
+                })
             }
             else {
                 cnt.genItems(model.statements, ctx, function(err, notUsed) {
@@ -140,8 +141,8 @@ md.load = function(cnt) {
                     }
                     ctx.w(';');
                     return callback(null, null);
-                });
+                })
             }
-        });
+        })
     };
 };

@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\get.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\get.js.ittf
 */
 'use strict';
 var u = require('../../../../../js/module/gen/codegen/util/stm');
@@ -17,7 +18,7 @@ md.gen = function(model, ctx, callback) {
     if (model.static) {
         ctx.write('static ');
     }
-    u.genAccessorsAndExtra(model, ctx);
+    u.genAccessorsAndExtra(model, ctx)
     ctx.write('get ' + model.wzName + '()');
     if (model.typeReturn) {
         ctx.write(': ');
@@ -25,11 +26,11 @@ md.gen = function(model, ctx, callback) {
             if (err) {
                 return callback(err);
             }
-            get_step_1(model, ctx, callback);
-        });
+            get_step_1(model, ctx, callback)
+        })
     }
     else {
-        get_step_1(model, ctx, callback);
+        get_step_1(model, ctx, callback)
     }
 };
 function get_step_1(model, ctx, callback) {
@@ -40,5 +41,5 @@ function get_step_1(model, ctx, callback) {
         }
         ctx.w('}');
         return callback(null, null);
-    });
+    })
 }

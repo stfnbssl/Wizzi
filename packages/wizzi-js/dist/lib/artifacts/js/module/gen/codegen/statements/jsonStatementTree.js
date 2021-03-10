@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\jsonStatementTree.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\jsonStatementTree.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -17,12 +18,12 @@ md.getStatements = function(model) {
         var i, i_items=json, i_len=json.length, jsonitem;
         for (i=0; i<i_len; i++) {
             jsonitem = json[i];
-            ret.push(normalizeJSTNode(jsonitem, model.wzParent));
+            ret.push(normalizeJSTNode(jsonitem, model.wzParent))
         }
         utilnode.replace(item, normalized);
     }
     else {
-        ret.push(normalizeJSTNode(json, model.wzParent));
+        ret.push(normalizeJSTNode(json, model.wzParent))
     }
     return ret;
 };
@@ -49,7 +50,7 @@ function normalizeJSTNode(node, parent) {
             node.paramNames.push(item.wzName);
         }
         else {
-            node.statements.push(normalizeJSTNode(item, node));
+            node.statements.push(normalizeJSTNode(item, node))
         }
     }
     if (node.n === 'function') {

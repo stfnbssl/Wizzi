@@ -1,0 +1,28 @@
+$group
+
+    import React
+        @ FunctionComponent
+        from 'react'
+    ${'$'}hook imports
+
+    
+    :type ${'$'}{md.name}Props
+        :{ 
+            ${'$'}foreach prop in md.props
+                ${'$'}if prop.type == 'date'
+                    :p ${'$'}{prop.name}
+                        :ref Date
+                ${'$'}else
+                    :p ${'$'}{prop.name}
+                        :${'$'}{prop.type}
+    
+    export 
+        const ${'$'}{md.name}
+            :ref FunctionComponent
+                :param 
+                    :ref ${'$'}{md.name}Props
+            => 
+                { 
+                    ${'$'}foreach prop in md.props
+                        @ ${'$'}{prop.name}
+                ${'$'}hook

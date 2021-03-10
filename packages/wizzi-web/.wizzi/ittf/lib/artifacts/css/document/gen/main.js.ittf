@@ -49,7 +49,7 @@
                                     . css
                         catch ex
                             if ex.name === 'CssSyntaxError'
-                                r_cb()
+                                r_cb(ctx)
                                 
                         _ ctx.hydrate
                             {
@@ -91,7 +91,7 @@
 			@ goitems
 			_ md.getGenItem
 				@ ctx
-			function
+			f_cb()
 				if indent
 					_ ctx.deindent()
 				_ process.nextTick
@@ -113,6 +113,8 @@
 	function main_init
 		param model
 		param ctx
+
+        # log 'css.document.gen.main, ctx.values', ctx.values, !!ctx.values.noGeneratorComments
 		
 		if (!!ctx.values.noGeneratorComments) == false
 			_ ctx.w('/*')

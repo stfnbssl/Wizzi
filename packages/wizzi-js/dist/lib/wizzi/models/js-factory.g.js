@@ -1,7 +1,7 @@
 /*
-    artifact generator: C:\My\wizzi\wizzi\node_modules\wizzi-legacy-v5\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: c:\my\wizzi\wizzi\node_modules\wizzi-core\lib\artifacts\wfschema\factory\gen\ittf\wfschema-factory.js.ittf
-    utc time: Tue, 25 Jun 2019 18:28:14 GMT
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-legacy-v5\lib\artifacts\js\module\gen\main.js
+    primary source IttfDocument: c:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-core\lib\artifacts\wfschema\factory\gen\ittf\wfschema-factory.js.ittf
+    utc time: Wed, 10 Mar 2021 12:11:08 GMT
 */
 'use strict';
 /**
@@ -39,31 +39,31 @@ md.createLoadModel = function(wizziObject) {
     var wizziFactory = wizziObject.wizziFactory;
     function loadModelFromMTree(mTree, ittfDocumentUri, wizziModelRequest, options, callback) {
         var start = Date.now(),
-            modulemodel;
+            xmodulemodel;
         if (mTree.nodes.length == 0) {
-            var modulemodel = new modulemodelType('EmptyIttfDocument');
+            var xmodulemodel = new xmodulemodelType('EmptyIttfDocument');
         }
         else {
             // Get the model type of the root node of the ittf model.
             var rootNode = mTree.nodes[0];
-            var modulemodelType = jsschema[rootNode.n];
-            if (!modulemodelType) {
+            var xmodulemodelType = jsschema[rootNode.n];
+            if (!xmodulemodelType) {
                 var maptag = jsschema.__tagElementMapping[rootNode.n];
                 if (typeof maptag === 'string') {
-                    modulemodelType = jsschema[maptag];
+                    xmodulemodelType = jsschema[maptag];
                 }
-                if (!modulemodelType) {
+                if (!xmodulemodelType) {
                     var error = new errors.WizziModelLoadError('In js Factory. Cannot map root node: ' + rootNode.n + ', to any entity of schema: js', ittfDocumentUri);
                     return callback(error);
                 }
             }
             // Load the WizziModel from the root node of the mTree
-            modulemodel = new modulemodelType(rootNode.v);
-            modulemodel.loadHistory = mTree.loadHistory;
-            modulemodel.wzFactory = options.wizziFactory;
+            xmodulemodel = new xmodulemodelType(rootNode.v);
+            xmodulemodel.loadHistory = mTree.loadHistory;
+            xmodulemodel.wzFactory = options.wizziFactory;
             try {
                 // this is a sync call
-                modulemodel.loadFromNode(rootNode);
+                xmodulemodel.loadFromNode(rootNode);
             } 
             catch (ex) {
                 var error = new errors.WizziModelLoadError(ex.message + '\nIn js Factory, calling loadFromNode.', ittfDocumentUri, ex);
@@ -77,8 +77,8 @@ md.createLoadModel = function(wizziObject) {
         // TODO Implement an initialize strategy to be declared in the wizzischema
         // Initialize and verify the loaded model
         var ctx = new jsschema.jsContext();
-        modulemodel.wzInitialize(ctx);
-        modulemodel.wzVerify(ctx);
+        xmodulemodel.wzInitialize(ctx);
+        xmodulemodel.wzVerify(ctx);
         if (ctx.schemaIsValid() === false) {
             var errorsMessage = ctx.validationErrors.join('\n');
             var error = new errors.WizziModelLoadError('In js Factory.\nWizziModel has validation errors: \n' + errorsMessage, ittfDocumentUri);
@@ -86,22 +86,22 @@ md.createLoadModel = function(wizziObject) {
         }
         // TODO implement a stats object inside the wizziModelRequest object
         // _ log.info('Initialized wmt model ' + ittfDocumentUri + ' in ' + (Date.now() - start) + ' ms')
-        if ((wizziModelRequest.dumpAll || wizziModelRequest.dumpModel) && modulemodel.toJson && file.isFilePath(ittfDocumentUri)) {
+        if ((wizziModelRequest.dumpAll || wizziModelRequest.dumpModel) && xmodulemodel.toJson && file.isFilePath(ittfDocumentUri)) {
             // dump for debug
             var mTreeDump = path.join(path.dirname(ittfDocumentUri), '_debug', path.basename(ittfDocumentUri) + '.dump.json');
-            file.write(mTreeDump, stringify(modulemodel.toJson(), null, 2));
+            file.write(mTreeDump, stringify(xmodulemodel.toJson(), null, 2));
         }
         // TODO Generate this wzInitializeAsync call only if wizziModelRequested by the wizzischema
-        modulemodel.wzInitializeAsync(ctx, function(err, result) {
+        xmodulemodel.wzInitializeAsync(ctx, function(err, result) {
             if (err) {
                 return callback(err, null);
             }
-            if ((wizziModelRequest.dumpAll || wizziModelRequest.dumpModelAfterInitializeAsync) && modulemodel.toJson && file.isFilePath(ittfDocumentUri)) {
+            if ((wizziModelRequest.dumpAll || wizziModelRequest.dumpModelAfterInitializeAsync) && xmodulemodel.toJson && file.isFilePath(ittfDocumentUri)) {
                 // dump for debug
                 var mTreeDump = path.join(path.dirname(ittfDocumentUri), '_debug', path.basename(ittfDocumentUri) + '.dump.after.initializeasync.json');
-                file.write(mTreeDump, stringify(modulemodel.toJson(), null, 2));
+                file.write(mTreeDump, stringify(xmodulemodel.toJson(), null, 2));
             }
-            callback(null, modulemodel);
+            callback(null, xmodulemodel);
         });
     }
     if (options.loadFromMTree) {

@@ -10,7 +10,7 @@ $group
         babel-plugin-add-module-exports "^1.0.4"
         @babel/polyfill "^7.12.1"
         @babel/preset-env "^7.12.11"
-    ${'$'}if wzCtx.Build.useReact
+    ${'$'}if wzCtx.Build.useReact && !!wzCtx.Build.useReactCreateApp == false
         @babel/preset-react "^7.0.0"
     ${'$'}if wzCtx.Build.useLint
         babel-eslint "^8.2.3"
@@ -66,7 +66,7 @@ $group
             optimize-css-assets-webpack-plugin "^4.0.0"
     ${'$'}if wzCtx.Build.usePrettier
         prettier "^1.14.3"
-    ${'$'}if wzCtx.Build.useReact
+    ${'$'}if wzCtx.Build.useReact  && !!wzCtx.Build.useReactCreateApp == false
         prop-types "^15.7.2"
     ${'$'}if wzCtx.Build.useWebpack
         ${'$'}if wzCtx.Build.webpack.useSass

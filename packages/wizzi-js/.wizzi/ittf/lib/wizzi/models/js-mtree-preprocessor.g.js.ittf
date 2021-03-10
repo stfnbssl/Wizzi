@@ -117,7 +117,10 @@
 			set state.htmlOn = true
 			set state.svgOn = true
 			# log 'js-mtree-processor svgOn'
-		return false
+        
+        $include mtree_preprocessor_styled
+		
+        return false
 
 	function addAttr
 		param state

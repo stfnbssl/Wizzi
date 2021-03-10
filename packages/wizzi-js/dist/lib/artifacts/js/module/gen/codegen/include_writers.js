@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\include_writers.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\include_writers.js.ittf
 */
 'use strict';
 
@@ -14,36 +15,30 @@ md.writeIncludeCss = function(ctx, model, callback) {
         if (err) {
             return callback(err);
         }
-        // log myname, 'cssModel.rules', cssModel.rules
-        if (cssModel.rules.length == 0 && verify.isEmpty(cssModel.wzName) == false) {
-            // log myname, 1
-            ctx.w('<link href="' + cssModel.wzName + '" rel="stylesheet" />');
+        // log myname, 'cssModel.rules', cssModel.rules, Object.keys(cssModel)
+        // log myname, 2
+        md.generateCssArtifact(ctx, cssModel, function(err, artifactText) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.indent();
+            ctx.writeAligned(artifactText);
+            ctx.deindent();
             callback();
-        }
-        else {
-            // log myname, 2
-            md.generateCssArtifact(ctx, cssModel, function(err, artifactText) {
-                if (err) {
-                    return callback(err);
-                }
-                ctx.indent();
-                ctx.writeAligned(artifactText);
-                ctx.deindent();
-                callback();
-            });
-        }
-    });
+        })
+    })
 };
 md.generateCssArtifact = function(ctx, cssModel, callback) {
     // log myname, 3
     // log myname, 'cssModel', cssModel, 'cssModel.rules', cssModel.rules
-    ctx.wizziFactory.generateArtifact(cssModel, 'generated from html model', 'css/document', {
-        forHtmlStyle: true
+    ctx.wizziFactory.generateArtifact(cssModel, 'generated from js model', 'css/document', {
+        forHtmlStyle: true, 
+        noGeneratorComments: true
     }, function(err, artifactText) {
         if (err) {
             return callback(err);
         }
         // log myname, 'css artifactText', artifactText
         return callback(null, artifactText);
-    });
+    })
 };

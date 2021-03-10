@@ -404,6 +404,18 @@
           ]
         },
         {
+          "name": "keyframeFrom",
+          "tags": [
+            "from"
+          ]
+        },
+        {
+          "name": "keyframeTo",
+          "tags": [
+            "to"
+          ]
+        },
+        {
           "name": "fontface",
           "tags": [
             "font-face"
@@ -699,6 +711,19 @@
                               "statements": []
                             }
                           ]
+                        },
+                        {
+                          "tag": "elif",
+                          "name": "elif",
+                          "value": "prop.styledprop",
+                          "statements": [
+                            {
+                              "tag": "_",
+                              "name": "call",
+                              "value": "retval.push({ name: p.name(), value: null, styledprop: prop.styledprop })",
+                              "statements": []
+                            }
+                          ]
                         }
                       ]
                     }
@@ -712,7 +737,7 @@
                     {
                       "tag": "if",
                       "name": "xif",
-                      "value": "prop.wzElement == 'background_image'",
+                      "value": "prop.wzElement == 'background_image' || prop.wzElement == 'jscode'",
                       "statements": [
                         {
                           "tag": "_",
@@ -747,6 +772,12 @@
                                   "name": "jsPropertyOrValue",
                                   "value": "prop prop",
                                   "statements": []
+                                },
+                                {
+                                  "tag": "@",
+                                  "name": "jsPropertyOrValue",
+                                  "value": "styledprop prop.styledprop",
+                                  "statements": []
                                 }
                               ]
                             }
@@ -763,6 +794,19 @@
                           "tag": "_",
                           "name": "call",
                           "value": "retval.push({ name: prop.wzTag, value: prop.wzName })",
+                          "statements": []
+                        }
+                      ]
+                    },
+                    {
+                      "tag": "else",
+                      "name": "xelse",
+                      "value": "",
+                      "statements": [
+                        {
+                          "tag": "_",
+                          "name": "call",
+                          "value": "retval.push({ name: prop.wzTag, value: null, styledprop: prop.styledprop })",
                           "statements": []
                         }
                       ]
@@ -2074,7 +2118,19 @@
         "@"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -2091,6 +2147,12 @@
         }
       ],
       "derived": [
+        {
+          "name": "jscode",
+          "tags": [
+            "js=>"
+          ]
+        },
         {
           "name": "align_content",
           "tags": [
@@ -3406,6 +3468,30 @@
           ]
         },
         {
+          "name": "stroke",
+          "tags": [
+            "stroke"
+          ]
+        },
+        {
+          "name": "stroke_dasharray",
+          "tags": [
+            "stroke-dasharray"
+          ]
+        },
+        {
+          "name": "stroke_dashoffset",
+          "tags": [
+            "stroke-dashoffset"
+          ]
+        },
+        {
+          "name": "stroke_linecap",
+          "tags": [
+            "stroke-linecap"
+          ]
+        },
+        {
           "name": "stroke_width",
           "tags": [
             "stroke-width"
@@ -3694,6 +3780,47 @@
       ]
     },
     {
+      "name": "jscode",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "js=>"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "align_content",
       "super": "property",
       "isRoot": false,
@@ -3701,7 +3828,19 @@
         "align-content"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -3730,7 +3869,19 @@
         "align-items"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -3759,7 +3910,19 @@
         "align-self"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -3876,6 +4039,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -3906,7 +4080,19 @@
         "animation-delay"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -3935,7 +4121,19 @@
         "animation-direction"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -3964,7 +4162,19 @@
         "animation-duration"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -3993,7 +4203,19 @@
         "animation-fill-mode"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4022,7 +4244,19 @@
         "animation-iteration-count"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4051,7 +4285,19 @@
         "animation-name"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4080,7 +4326,19 @@
         "animation-play-state"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4109,7 +4367,19 @@
         "animation-timing-function"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4138,7 +4408,19 @@
         "appearance"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4167,7 +4449,19 @@
         "azimuth"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4196,7 +4490,19 @@
         "backdrop-filter"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4324,6 +4630,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -4354,7 +4671,19 @@
         "background-attachment"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4383,7 +4712,19 @@
         "background-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4412,7 +4753,19 @@
         "background-image"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4441,7 +4794,19 @@
         "background-position"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4470,7 +4835,19 @@
         "background-repeat"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4499,7 +4876,19 @@
         "background-blend-mode"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4528,7 +4917,19 @@
         "background-clip"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4557,7 +4958,19 @@
         "background-origin"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4586,7 +4999,19 @@
         "background-size"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4615,7 +5040,19 @@
         "backface-visibility"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -4996,6 +5433,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -5026,7 +5474,19 @@
         "border-collapse"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5055,7 +5515,19 @@
         "border-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5084,7 +5556,19 @@
         "border-spacing"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5113,7 +5597,19 @@
         "border-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5142,7 +5638,19 @@
         "border-top"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5171,7 +5679,19 @@
         "border-right"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5200,7 +5720,19 @@
         "border-bottom"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5229,7 +5761,19 @@
         "border-left"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5258,7 +5802,19 @@
         "border-top-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5287,7 +5843,19 @@
         "border-right-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5316,7 +5884,19 @@
         "border-bottom-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5345,7 +5925,19 @@
         "border-left-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5374,7 +5966,19 @@
         "border-top-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5403,7 +6007,19 @@
         "border-right-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5432,7 +6048,19 @@
         "border-bottom-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5461,7 +6089,19 @@
         "border-left-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5490,7 +6130,19 @@
         "border-top-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5519,7 +6171,19 @@
         "border-right-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5548,7 +6212,19 @@
         "border-bottom-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5577,7 +6253,19 @@
         "border-left-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5606,7 +6294,19 @@
         "border-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5635,7 +6335,19 @@
         "border-radius"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5664,7 +6376,19 @@
         "border-top-left-radius"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5693,7 +6417,19 @@
         "border-top-right-radius"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5722,7 +6458,19 @@
         "border-bottom-left-radius"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5751,7 +6499,19 @@
         "border-bottom-right-radius"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5780,7 +6540,19 @@
         "border-image"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5809,7 +6581,19 @@
         "border-image-outset"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5838,7 +6622,19 @@
         "border-image-repeat"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5867,7 +6663,19 @@
         "border-image-source"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5896,7 +6704,19 @@
         "border-image-slice"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5925,7 +6745,19 @@
         "border-image-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5954,7 +6786,19 @@
         "bottom"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -5983,7 +6827,19 @@
         "box-sizing"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6012,7 +6868,19 @@
         "box-decoration-break"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6041,7 +6909,19 @@
         "box-shadow"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6070,7 +6950,19 @@
         "break-after"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6099,7 +6991,19 @@
         "break-before"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6128,7 +7032,19 @@
         "break-inside"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6157,7 +7073,19 @@
         "caption-side"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6186,7 +7114,19 @@
         "caret-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6215,7 +7155,19 @@
         "clear"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6244,7 +7196,19 @@
         "clip"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6273,7 +7237,19 @@
         "clip-path"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6302,7 +7278,19 @@
         "color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6331,7 +7319,19 @@
         "columns"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6360,7 +7360,19 @@
         "column-count"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6389,7 +7401,19 @@
         "column-fill"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6418,7 +7442,19 @@
         "column-gap"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6447,7 +7483,19 @@
         "column-rule"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6476,7 +7524,19 @@
         "column-rule-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6505,7 +7565,19 @@
         "column-rule-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6534,7 +7606,19 @@
         "column-rule-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6563,7 +7647,19 @@
         "column-span"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6592,7 +7688,19 @@
         "column-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6621,7 +7729,19 @@
         "content"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6650,7 +7770,19 @@
         "counter-increment"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6679,7 +7811,19 @@
         "counter-reset"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6708,7 +7852,19 @@
         "cue-after"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6737,7 +7893,19 @@
         "cue-before"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6766,7 +7934,19 @@
         "cue"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6795,7 +7975,19 @@
         "cursor"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6824,7 +8016,19 @@
         "direction"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6853,7 +8057,19 @@
         "display"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6882,7 +8098,19 @@
         "elevation"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6911,7 +8139,19 @@
         "empty-cells"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -6940,7 +8180,19 @@
         "filter"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7035,6 +8287,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -7065,7 +8328,19 @@
         "flex-basis"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7094,7 +8369,19 @@
         "flex-direction"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7123,7 +8410,19 @@
         "flex-flow"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7152,7 +8451,19 @@
         "flex-grow"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7181,7 +8492,19 @@
         "flex-shrink"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7210,7 +8533,19 @@
         "flex-wrap"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7239,7 +8574,19 @@
         "fill"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7268,7 +8615,19 @@
         "float"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7396,6 +8755,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -7426,7 +8796,19 @@
         "font-feature-settings"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7455,7 +8837,19 @@
         "font-family"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7484,7 +8878,19 @@
         "font-kerning"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7513,7 +8919,19 @@
         "font-size"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7542,7 +8960,19 @@
         "font-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7571,7 +9001,19 @@
         "font-variant"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7600,7 +9042,19 @@
         "font-variation-settings"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7629,7 +9083,19 @@
         "font-weight"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7658,7 +9124,19 @@
         "font-language-override"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7687,7 +9165,19 @@
         "font-optical-sizing"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7716,7 +9206,19 @@
         "font-size-adjust"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7745,7 +9247,19 @@
         "font-smooth"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7774,7 +9288,19 @@
         "font-stretch"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7803,7 +9329,19 @@
         "font-synthesis"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7832,7 +9370,19 @@
         "font-variant-alternates"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7861,7 +9411,19 @@
         "font-variant-caps"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7890,7 +9452,19 @@
         "font-variant-east-asian"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7919,7 +9493,19 @@
         "font-variant-ligatures"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7948,7 +9534,19 @@
         "font-variant-numeric"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -7977,7 +9575,19 @@
         "font-variant-position"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8006,7 +9616,19 @@
         "font-variant"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8035,7 +9657,19 @@
         "font-variation-settings"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8064,7 +9698,19 @@
         "gap"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8093,7 +9739,19 @@
         "grid-template-columns"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8122,7 +9780,19 @@
         "grid-template-rows"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8151,7 +9821,19 @@
         "grid-template-areas"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8380,6 +10062,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -8410,7 +10103,19 @@
         "grid-column-gap"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8439,7 +10144,19 @@
         "grid-row-gap"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8468,7 +10185,19 @@
         "grid-gap"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8497,7 +10226,19 @@
         "grid-auto-columns"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8526,7 +10267,19 @@
         "grid-auto-rows"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8555,7 +10308,19 @@
         "grid-auto-flow"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8584,7 +10349,19 @@
         "grid-column-start"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8613,7 +10390,19 @@
         "grid-column-end"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8642,7 +10431,19 @@
         "grid-row-start"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8671,7 +10472,19 @@
         "grid-row-end"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8700,7 +10513,19 @@
         "grid-column"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8729,7 +10554,19 @@
         "grid-row"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8758,7 +10595,19 @@
         "grid-area"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8787,7 +10636,19 @@
         "hanging-punctuation"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8816,7 +10677,19 @@
         "height"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8845,7 +10718,19 @@
         "hyphens"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8874,7 +10759,19 @@
         "isolation"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8903,7 +10800,19 @@
         "justify-content"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8932,7 +10841,19 @@
         "justify-items"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8961,7 +10882,19 @@
         "justify-self"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -8990,7 +10923,19 @@
         "left"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9019,7 +10964,19 @@
         "letter-spacing"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9048,7 +11005,19 @@
         "line-break"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9077,7 +11046,19 @@
         "line-height"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9106,7 +11087,19 @@
         "list-style-image"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9135,7 +11128,19 @@
         "list-style-position"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9164,7 +11169,19 @@
         "list-style-type"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9193,7 +11210,19 @@
         "list-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9222,7 +11251,19 @@
         "margin-right"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9251,7 +11292,19 @@
         "margin-top"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9280,7 +11333,19 @@
         "margin-bottom"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9309,7 +11374,19 @@
         "margin-left"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9382,6 +11459,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -9412,7 +11500,19 @@
         "mask-image"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9441,7 +11541,19 @@
         "max-height"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9470,7 +11582,19 @@
         "max-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9499,7 +11623,19 @@
         "min-height"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9528,7 +11664,19 @@
         "min-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9557,7 +11705,19 @@
         "mix-blend-mode"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9586,7 +11746,19 @@
         "nav-up"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9615,7 +11787,19 @@
         "nav-down"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9644,7 +11828,19 @@
         "nav-left"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9673,7 +11869,19 @@
         "nav-right"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9702,7 +11910,19 @@
         "opacity"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9731,7 +11951,19 @@
         "order"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9760,7 +11992,19 @@
         "orphans"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9833,6 +12077,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -9863,7 +12118,19 @@
         "outline-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9892,7 +12159,19 @@
         "outline-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9921,7 +12200,19 @@
         "outline-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -9950,7 +12241,19 @@
         "outline-offset"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10012,6 +12315,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -10042,7 +12356,19 @@
         "overflow-wrap"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10071,7 +12397,19 @@
         "overflow-x"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10100,7 +12438,19 @@
         "overflow-y"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10129,7 +12479,19 @@
         "padding-top"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10158,7 +12520,19 @@
         "overscroll-behavior"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10187,7 +12561,19 @@
         "scrollbar-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10216,7 +12602,19 @@
         "scrollbar-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10245,7 +12643,19 @@
         "padding-right"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10274,7 +12684,19 @@
         "padding-bottom"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10303,7 +12725,19 @@
         "padding-left"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10376,6 +12810,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -10406,7 +12851,19 @@
         "page-break-after"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10435,7 +12892,19 @@
         "page-break-before"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10464,7 +12933,19 @@
         "page-break-inside"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10493,7 +12974,19 @@
         "pause-after"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10522,7 +13015,19 @@
         "pause-before"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10551,7 +13056,19 @@
         "pause"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10580,7 +13097,19 @@
         "perspective"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10609,7 +13138,19 @@
         "perspective-origin"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10638,7 +13179,19 @@
         "pitch-range"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10667,7 +13220,19 @@
         "pitch"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10696,7 +13261,19 @@
         "play-during"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10725,7 +13302,19 @@
         "pointer-events"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10754,7 +13343,19 @@
         "position"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10783,7 +13384,19 @@
         "quotes"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10812,7 +13425,19 @@
         "resize"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10841,7 +13466,19 @@
         "richness"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10870,7 +13507,19 @@
         "right"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10899,7 +13548,19 @@
         "scrollbar-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10928,7 +13589,19 @@
         "scroll-padding-top"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10957,7 +13630,19 @@
         "speak-header"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -10986,7 +13671,19 @@
         "speak-numeral"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11015,7 +13712,19 @@
         "speak-punctuation"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11044,7 +13753,19 @@
         "speak"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11073,7 +13794,19 @@
         "speech-rate"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11102,7 +13835,183 @@
         "stress"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke_dasharray",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke-dasharray"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke_dashoffset",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke-dashoffset"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke_linecap",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke-linecap"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11131,7 +14040,19 @@
         "stroke-width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11160,7 +14081,19 @@
         "tab-size"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11189,7 +14122,19 @@
         "table-layout"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11218,7 +14163,19 @@
         "target-name"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11247,7 +14204,19 @@
         "target-new"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11276,7 +14245,19 @@
         "target-position"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11305,7 +14286,19 @@
         "text-align"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11334,7 +14327,19 @@
         "text-align-last"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11363,7 +14368,19 @@
         "text-decoration"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11392,7 +14409,19 @@
         "text-decoration-line"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11421,7 +14450,19 @@
         "text-decoration-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11450,7 +14491,19 @@
         "text-decoration-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11479,7 +14532,19 @@
         "text-decoration-skip"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11508,7 +14573,19 @@
         "text-fill-color"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11537,7 +14614,19 @@
         "text-indent"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11566,7 +14655,19 @@
         "text-overflow"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11595,7 +14696,19 @@
         "text-rendering"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11624,7 +14737,19 @@
         "text-shadow"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11653,7 +14778,19 @@
         "text-transform"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11682,7 +14819,19 @@
         "text-underline-position"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11711,7 +14860,19 @@
         "touch-action"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11762,6 +14923,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -11792,7 +14964,19 @@
         "transform-origin"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11821,7 +15005,19 @@
         "transform-style"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11894,6 +15090,17 @@
           "inheritedFrom": null,
           "restricts": [],
           "comments": []
+        },
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
         }
       ],
       "relations": [
@@ -11924,7 +15131,19 @@
         "transition-delay"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11953,7 +15172,19 @@
         "transition-duration"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -11982,7 +15213,19 @@
         "transition-property"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12011,7 +15254,19 @@
         "transition-timing-function"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12040,7 +15295,19 @@
         "top"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12069,7 +15336,19 @@
         "unicode-bidi"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12098,7 +15377,19 @@
         "user-select"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12127,7 +15418,19 @@
         "vertical-align"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12156,7 +15459,19 @@
         "visibility"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12185,7 +15500,19 @@
         "voice-family"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12214,7 +15541,19 @@
         "volume"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12243,7 +15582,19 @@
         "white-space"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12272,7 +15623,19 @@
         "widows"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12301,7 +15664,19 @@
         "width"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12330,7 +15705,19 @@
         "will-change"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12359,7 +15746,19 @@
         "word-break"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12388,7 +15787,19 @@
         "word-spacing"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12417,7 +15828,19 @@
         "word-wrap"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12446,7 +15869,19 @@
         "z-index"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12475,7 +15910,19 @@
         "zoom"
       ],
       "flags": "",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
       "relations": [
         {
           "name": "property",
@@ -12793,28 +16240,6 @@
       "flags": "",
       "attributes": [
         {
-          "name": "from",
-          "type": "string",
-          "tags": [
-            "from"
-          ],
-          "flags": "",
-          "inheritedFrom": null,
-          "restricts": [],
-          "comments": []
-        },
-        {
-          "name": "to",
-          "type": "string",
-          "tags": [
-            "to"
-          ],
-          "flags": "",
-          "inheritedFrom": null,
-          "restricts": [],
-          "comments": []
-        },
-        {
           "name": "value",
           "type": "string",
           "tags": [
@@ -12836,6 +16261,282 @@
           "restricts": [],
           "comments": []
         },
+        {
+          "name": "_webkit__",
+          "type": "string",
+          "tags": [
+            "-webkit-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_ms__",
+          "type": "string",
+          "tags": [
+            "-ms-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_o__",
+          "type": "string",
+          "tags": [
+            "-o-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_moz__",
+          "type": "string",
+          "tags": [
+            "-moz-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "___",
+          "type": "string",
+          "tags": [
+            "--*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "v__",
+          "type": "string",
+          "tags": [
+            "v-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "otherRuleSelector",
+          "role": "otherRuleSelectors",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "otherClassSelector",
+          "role": "otherClassSelectors",
+          "tags": [
+            "+."
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "otherAmpersandSelector",
+          "role": "otherAmpersandSelectors",
+          "tags": [
+            "+&"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "rule",
+          "role": "rules",
+          "tags": [
+            "rule"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "keyframeFrom",
+      "super": "rule",
+      "isRoot": false,
+      "tags": [
+        "from"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "_webkit__",
+          "type": "string",
+          "tags": [
+            "-webkit-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_ms__",
+          "type": "string",
+          "tags": [
+            "-ms-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_o__",
+          "type": "string",
+          "tags": [
+            "-o-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_moz__",
+          "type": "string",
+          "tags": [
+            "-moz-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "___",
+          "type": "string",
+          "tags": [
+            "--*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "v__",
+          "type": "string",
+          "tags": [
+            "v-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "otherRuleSelector",
+          "role": "otherRuleSelectors",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "otherClassSelector",
+          "role": "otherClassSelectors",
+          "tags": [
+            "+."
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "otherAmpersandSelector",
+          "role": "otherAmpersandSelectors",
+          "tags": [
+            "+&"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "rule",
+          "role": "rules",
+          "tags": [
+            "rule"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "keyframeTo",
+      "super": "rule",
+      "isRoot": false,
+      "tags": [
+        "to"
+      ],
+      "flags": "",
+      "attributes": [
         {
           "name": "_webkit__",
           "type": "string",

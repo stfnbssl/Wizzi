@@ -1,0 +1,19 @@
+module
+
+    styled Title .h1
+        font-size 1.5em
+        text-align center
+        color palevioletred
+
+    styled Input .input.attrs
+        =>
+            param props
+            return
+                {
+                    @ type "text"
+                    @ size props.size || "1em"
+        border 2px solid palevioletred
+        margin
+            => props.size
+        padding
+            => props.size 

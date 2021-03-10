@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\test.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\test.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -43,7 +44,7 @@ md.load = function(cnt) {
             }
             ctx.w('});');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.it = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -61,7 +62,7 @@ md.load = function(cnt) {
             }
             ctx.w('});');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.itAsync = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -79,7 +80,7 @@ md.load = function(cnt) {
             }
             ctx.w('});');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.before = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -88,7 +89,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.before. Got: ' + callback);
         }
-        embedFunction('before', ctx, model.statements, cnt, callback);
+        embedFunction('before', ctx, model.statements, cnt, callback)
     };
     cnt.stm.beforeAsync = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -97,7 +98,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.beforeAsync. Got: ' + callback);
         }
-        embedFunctionAsync('before', ctx, model.statements, cnt, callback);
+        embedFunctionAsync('before', ctx, model.statements, cnt, callback)
     };
     cnt.stm.beforeEach = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -106,7 +107,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.beforeEach. Got: ' + callback);
         }
-        embedFunction('beforeEach', ctx, model.statements, cnt, callback);
+        embedFunction('beforeEach', ctx, model.statements, cnt, callback)
     };
     cnt.stm.after = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -115,7 +116,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.after. Got: ' + callback);
         }
-        embedFunction('after', ctx, model.statements, cnt, callback);
+        embedFunction('after', ctx, model.statements, cnt, callback)
     };
     cnt.stm.afterAsync = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -124,7 +125,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.afterAsync. Got: ' + callback);
         }
-        embedFunctionAsync('after', ctx, model.statements, cnt, callback);
+        embedFunctionAsync('after', ctx, model.statements, cnt, callback)
     };
     cnt.stm.afterEach = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -133,7 +134,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.afterEach. Got: ' + callback);
         }
-        embedFunction('afterEach', ctx, model.statements, cnt, callback);
+        embedFunction('afterEach', ctx, model.statements, cnt, callback)
     };
     function embedFunction(name, ctx, items, cnt, callback) {
         ctx.w((name + '(function() {'));
@@ -143,7 +144,7 @@ md.load = function(cnt) {
             }
             ctx.w('});');
             return callback(null, null);
-        });
+        })
     }
     function embedFunctionAsync(name, ctx, items, cnt, callback) {
         ctx.w(name + '(function(done) {');
@@ -153,7 +154,7 @@ md.load = function(cnt) {
             }
             ctx.w('});');
             return callback(null, null);
-        });
+        })
     }
     function escapename(value) {
         if (verify.isNotEmpty(value)) {

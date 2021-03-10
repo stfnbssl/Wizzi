@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\var.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\var.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -101,8 +102,8 @@ md.load = function(cnt) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             repeater_1(1);
             function next_1() {
@@ -113,7 +114,7 @@ md.load = function(cnt) {
                 ctx.__needs_crlf = ctx.__needs_comma = ctx.__inside_expr = false;
                 return callback(null, null);
             }
-        });
+        })
     };
     cnt.stm.decl = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -122,7 +123,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.decl. Got: ' + callback);
         }
-        ctx.write(model.wzName);
+        ctx.write(model.wzName)
         if (countStatements(model) > 0) {
             ctx.write(' = ');
             var len_1 = model.statements.length;
@@ -137,8 +138,8 @@ md.load = function(cnt) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             repeater_1(0);
             function next_1() {
@@ -161,9 +162,9 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.initValue. Got: ' + callback);
         }
         ctx.write(' = ');
-        ctx.write(model.wzName);
+        ctx.write(model.wzName)
         if (countStatements(model) > 0) {
-            cnt.genItem(model.statements[0], ctx, callback);
+            cnt.genItem(model.statements[0], ctx, callback)
         }
         else {
             return callback(null, null);
@@ -227,8 +228,8 @@ md.load = function(cnt) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             repeater_1(startArg);
             function next_1() {
@@ -240,7 +241,7 @@ md.load = function(cnt) {
                 }
                 return callback(null, null);
             }
-        });
+        })
     };
     function xnew_type(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -254,10 +255,10 @@ md.load = function(cnt) {
                 }
                 ctx.write(')');
                 return callback(null, 1);
-            });
+            })
         }
         else {
-            ctx.write(model.wzName);
+            ctx.write(model.wzName)
             return callback(null, 0);
         }
     }
@@ -268,6 +269,6 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.type. Got: ' + callback);
         }
-        cnt.genItems(model.statements, ctx, callback);
+        cnt.genItems(model.statements, ctx, callback)
     };
 };

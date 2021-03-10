@@ -65,21 +65,24 @@ md.load = function(cnt) {
         var selector = model.getSelector();
         // log '*** selector', selector
         if (selector && selector.length > 0) {
-            ctx.w(model.getSelector() + ' {');
-            ctx.indent();
+            if (!!ctx.__isStyledComponent == false) {
+                ctx.w(model.getSelector() + ' {');
+                ctx.indent();
+            }
             async.mapSeries(model.getProperties(), getWriteProperty(ctx), function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
-                ctx.deindent();
-                ctx.w('}');
+                if (!!ctx.__isStyledComponent == false) {
+                    ctx.deindent();
+                    ctx.w('}');
+                }
                 cnt.genItems(model.rules, ctx, {
                     indent: false
                 }, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
-                    // _ writeRule(cnt, model, ctx);
                     ctx.deindent();
                     ctx.w('}');
                     return callback(null);
@@ -93,7 +96,6 @@ md.load = function(cnt) {
                 if (err) {
                     return callback(err);
                 }
-                // _ writeRule(cnt, model, ctx);
                 ctx.deindent();
                 ctx.w('}');
                 return callback(null);
@@ -145,25 +147,53 @@ md.load = function(cnt) {
         })
     };
     cnt.stm.keyframes = function(model, ctx, callback) {
-        ctx.w('@' + (model.vendor || '') + 'keyframes ' + model.wzName + ' {');
+        if (model.wzName != '--styled--') {
+            ctx.w('@' + (model.vendor || '') + 'keyframes ' + model.wzName + ' {');
+        }
         cnt.genItems(model.rules, ctx, {
-            indent: true
+            indent: model.wzName != '--styled--'
         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
-            ctx.w('}');
+            if (model.wzName != '--styled--') {
+                ctx.w('}');
+            }
             return callback(null);
         })
     };
     cnt.stm.keyframe = function(model, ctx, callback) {
         ctx.w(model.wzName + ' {');
-        cnt.genItems(model.rules, ctx, {
-            indent: true
-        }, function(err, notUsed) {
+        ctx.indent();
+        async.mapSeries(model.getProperties(), getWriteProperty(ctx), function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
+            ctx.deindent();
+            ctx.w('}');
+            return callback(null);
+        })
+    };
+    cnt.stm.keyframeFrom = function(model, ctx, callback) {
+        ctx.w("from " + model.wzName + ' {');
+        ctx.indent();
+        async.mapSeries(model.getProperties(), getWriteProperty(ctx), function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.deindent();
+            ctx.w('}');
+            return callback(null);
+        })
+    };
+    cnt.stm.keyframeTo = function(model, ctx, callback) {
+        ctx.w("to " + model.wzName + ' {');
+        ctx.indent();
+        async.mapSeries(model.getProperties(), getWriteProperty(ctx), function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.deindent();
             ctx.w('}');
             return callback(null);
         })
@@ -209,22 +239,68 @@ md.load = function(cnt) {
 };
 function writeRule(cnt, model, ctx, callback) {
     // log 'writeRule, model.ruleParts', model.ruleParts
-    var wzName = model.wzElement === 'ampersand' ? '&' + model.wzName : model.wzName;
+    if (!!ctx.__isStyledComponent == false) {
+        var wzName = model.wzElement === 'ampersand' ? '&' + model.wzName : model.wzName;
+    }
     var ruleText = model.getSelector(true);
-    ctx.w(ruleText + ' {');
-    ctx.indent();
-    async.mapSeries(model.getProperties(), getWriteProperty(ctx), function() {
-        ctx.deindent();
-        ctx.w('}');
+    var isStyledComponent = model.wzElement == "elementRule" && model.wzName == "--styled--";
+    var isInsideStyledComponent = ctx.__isStyledComponent;
+    // log 'isStyledComponent, ctx.__isStyledComponent, isInsideStyledComponent, model.wzName', isStyledComponent, ctx.__isStyledComponent, isInsideStyledComponent, model.wzName
+    if (isInsideStyledComponent && model.wzElement === 'ampersand') {
+        // log 1
+        var text = ['+', '~'].indexOf(model.wzName[0]) > -1 ? ' ' + model.wzName : model.wzName;
+        ctx.w('&' + text + ' {');
+        ctx.indent();
+    }
+    else if (isInsideStyledComponent) {
+        var pref = model.wzElement === 'classRule' ? '.' : model.wzElement === 'elementRule' ? '' : model.wzElement === 'idRule' ? '#' : model.wzElement + '-not-mamaged';
+        ctx.w(pref + model.wzName + ' {');
+        ctx.indent();
+    }
+    else if (isStyledComponent) {
+        // log 2
+        ctx.__isStyledComponent = true;
+    }
+    else {
+        // log 3
+        ctx.w(ruleText + ' {');
+        ctx.indent();
+    }
+    async.mapSeries(model.getProperties(), getWriteProperty(ctx), function(err, notUsed) {
+        if (err) {
+            return callback(err);
+        }
+        if (isInsideStyledComponent) {
+            // log 11
+            ctx.deindent();
+            ctx.w('}');
+        }
+        else {
+            // log 12
+            if (!!isStyledComponent == false) {
+                ctx.deindent();
+                ctx.w('}');
+            }
+        }
         cnt.genItems(model.rules, ctx, {
             indent: false
-        }, callback)
+        }, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            if (isStyledComponent) {
+                // log 13
+                ctx.__isStyledComponent = false;
+            }
+            return callback(null);
+        })
     })
 }
 function getWriteProperty(ctx) {
     return function writeProperty(prop, callback) {
             var name = prop.name;
             var value = prop.value;
+            // log 'getWriteProperty', prop.name, prop.value, prop.wzElement, prop.wzName, prop.get_js, prop.prop && prop.prop.get_js
             if (prop.wzElement && prop.prop && prop.prop.get_svg) {
                 if (prop.wzElement === "background_image") {
                     prop.prop.get_svg(function(err, svgModel) {
@@ -234,7 +310,8 @@ function getWriteProperty(ctx) {
                         // log myname, 'svgModel', svgModel
                         ctx.wizziFactory.generateArtifact(svgModel, 'generated from css model', 'svg/document', {
                             CRLF: '', 
-                            forCssImage: true
+                            forCssImage: true, 
+                            noGeneratorComments: true
                         }, function(err, artifactText) {
                             if (err) {
                                 return callback(err);
@@ -249,7 +326,40 @@ function getWriteProperty(ctx) {
                     throw ctx.error(myname + '. writeProperty unknown  prop.wzElement: ' + prop.wzElement);
                 }
             }
+            else if (prop.wzElement && prop.prop && prop.prop.get_js) {
+                prop.prop.get_js(function(err, jsModel) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    // log myname, 'Object.keys(jsModel)', Object.keys(jsModel)
+                    ctx.wizziFactory.generateArtifact(jsModel, 'generated from css model', 'js/module', {
+                        noGeneratorComments: true, 
+                        noUseStrict: true
+                    }, function(err, artifactText) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        function _indent(txt, ind) {
+                            var ret = [];
+                            var i, i_items=txt.split('\n'), i_len=txt.split('\n').length, item;
+                            for (i=0; i<i_len; i++) {
+                                item = txt.split('\n')[i];
+                                ret.push(new Array(ind+1).join(' ') + item)
+                            }
+                            return ret.join('\n');
+                        }
+                        var code = "$" + "{props => {\n" + _indent(artifactText,4) + "\n}}";
+                        // log myname, 'artifactText', code
+                        ctx.w(code);
+                        return callback(null);
+                    })
+                })
+            }
             else {
+                if (prop.styledprop) {
+                    value = "£{props => " + prop.styledprop + "}";
+                }
+                value = verify.replaceAll(value, "£{", "${");
                 if (name === "align-items") {
                     ctx.w("-webkit-align-items: " + value  + ";");
                     ctx.w("-webkit-box-align: " + value  + ";");

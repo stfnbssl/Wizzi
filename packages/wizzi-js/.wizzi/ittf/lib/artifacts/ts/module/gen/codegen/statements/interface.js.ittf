@@ -55,7 +55,7 @@
 								_ ctx.w('');
 						r_cb()
 					else
-						_ ctx.w();
+						_ ctx.w(";");
 						r_cb()
 
 	stm( typeMethod

@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\_old_index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\_old_index.js.ittf
 */
 'use strict';
 var path = require('path');
@@ -27,8 +28,8 @@ function repeater_1(index_1) {
         }
         process.nextTick(function() {
             repeater_1(index_1 + 1);
-        });
-    });
+        })
+    })
 }
 repeater_1(0);
 function next_1() {
@@ -57,10 +58,10 @@ function execute(name, callback) {
                 return callback(err);
             }
             console.log(name, 'ctx\n' + ctx.getContent());
-            file.write(jsOutput, ctx.getContent());
+            file.write(jsOutput, ctx.getContent())
             return callback(null, null);
-        });
-    });
+        })
+    })
 }
 function getFiles(srcpath) {
     return fs.readdirSync(srcpath).filter((file) => {

@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\template.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\template.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -43,7 +44,7 @@ md.load = function(cnt) {
             // w -> write 1/3/19
             ctx.write('`');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.taggedTemplate = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -62,7 +63,7 @@ md.load = function(cnt) {
             // w -> write 1/3/19
             ctx.write('`');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.tagFunctionCall = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -83,7 +84,7 @@ md.load = function(cnt) {
                 ctx.write(';');
             }
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.macroExpr = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -101,6 +102,6 @@ md.load = function(cnt) {
             }
             ctx.write('}');
             return callback(null, null);
-        });
+        })
     };
 };

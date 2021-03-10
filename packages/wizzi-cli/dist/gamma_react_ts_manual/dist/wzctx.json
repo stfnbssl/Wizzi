@@ -1,0 +1,128 @@
+{
+    "name": "",
+    "version": "",
+    "description": "",
+    "author": {
+        "name": "",
+        "email": ""
+    },
+    "Build": {
+        "useTypescript": true,
+        "typescript": {},
+        "useReactCreateApp": true,
+        "reactCreateApp": {},
+        "useWebpack": false,
+        "webpack": {
+            "useCss": true,
+            "css": {},
+            "useSass": false,
+            "sass": {},
+            "useHtml": true,
+            "html": {
+                "template": "./src/index.html",
+                "filename": "index.html"
+            },
+            "useDevServer": true,
+            "devServer": {}
+        },
+        "useHotReplacement": false,
+        "hotReplacement": {},
+        "useBabel": false,
+        "babel": {},
+        "useReact": true,
+        "react": {
+            "rootContainer": "AppContainer",
+            "rootElementId": "root",
+            "useRouter": false,
+            "router": {},
+            "useStateHooks": false,
+            "stateHooks": {},
+            "useRedux": false,
+            "redux": {
+                "useInitialLoad": true,
+                "initialLoad": {},
+                "useThunk": true,
+                "thunk": {
+                    "useExtraArgument": true
+                },
+                "useFirestore": false,
+                "firestore": {},
+                "useAuth": false,
+                "auth": {},
+                "useForm": false,
+                "form": {}
+            },
+            "useMaterialUI": false,
+            "materialUI": {
+                "useAutocomplete": false,
+                "autocomplete": {
+                    "useReactSelect": false
+                },
+                "usePickers": false,
+                "useLab": false,
+                "useIcons": true
+            }
+        },
+        "useStyledComponents": true,
+        "styledComponents": {},
+        "useLocalStorage": false,
+        "localStorage": {
+            "key": "wr-state"
+        }
+    },
+    "Styles": {
+        "theme": {
+            "dark": true
+        },
+        "colors": {
+            "primary": "green",
+            "secondary": "orange",
+            "white": "#fff",
+            "black": "#000",
+            "red": "#f00",
+            "orange": "#f80",
+            "grey_2": "#444"
+        },
+        "useMainCss": true,
+        "mainCss": {
+            "path": "./styles/main.css"
+        }
+    },
+    "Code": {},
+    "App": {
+        "useLogin": false,
+        "login": {},
+        "Components": [
+            {
+                "name": "Dash",
+                "props": [
+                    {
+                        "name": "radius",
+                        "type": "number",
+                        "default": 50
+                    },
+                    {
+                        "name": "color",
+                        "type": "string",
+                        "default": "yellow"
+                    },
+                    {
+                        "name": "trackColor",
+                        "type": "string",
+                        "default": "rgba(0"
+                    },
+                    {
+                        "name": "width",
+                        "type": "number",
+                        "default": 4
+                    },
+                    {
+                        "name": "duration",
+                        "type": "string",
+                        "default": "1s"
+                    }
+                ]
+            }
+        ]
+    }
+}

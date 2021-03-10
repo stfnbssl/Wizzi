@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\objects.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\objects.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -38,7 +39,7 @@ md.load = function(cnt) {
         var statements = jstparser.getStatements(model);
         cnt.genItems(statements, ctx, {
             indent: false
-        }, callback);
+        }, callback)
     };
     cnt.stm.jsPropertyOrValue = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -57,14 +58,14 @@ md.load = function(cnt) {
                 }
                 ctx.write('}');
                 return callback(null, null);
-            });
+            })
         }
         else {
             if (u.hasStatementChildren(model)) {
-                jsPropertyOrValue_with_stm_children(model, ctx, callback);
+                jsPropertyOrValue_with_stm_children(model, ctx, callback)
             }
             else {
-                jsPropertyOrValue_no_stm_children(model, ctx, callback);
+                jsPropertyOrValue_no_stm_children(model, ctx, callback)
             }
         }
     };
@@ -98,7 +99,7 @@ md.load = function(cnt) {
                 }
                 ctx.write(')');
                 return callback(null, null);
-            });
+            })
         }
         else if (u.isObjectProperty(model) || u.isParamValue(model) || u.isValue(model)) {
             // log 4, model.wzName + colon
@@ -106,7 +107,7 @@ md.load = function(cnt) {
                 ctx.write(model.wzName + colon);
                 cnt.genItems(model.statements, ctx, {
                     indent: false
-                }, callback);
+                }, callback)
             }
             else if (model.statements.length == 2) {
                 cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
@@ -114,8 +115,8 @@ md.load = function(cnt) {
                         return callback(err);
                     }
                     ctx.write(colon);
-                    cnt.genItem(model.statements[1], ctx, callback);
-                });
+                    cnt.genItem(model.statements[1], ctx, callback)
+                })
             }
             else {
                 return callback(ctx.error(myname + '. Invalid jsPropertyOrValue. Ha s no name: ' + model.wzName, model));
@@ -131,7 +132,7 @@ md.load = function(cnt) {
                 }
                 ctx.w(')');
                 return callback(null, null);
-            });
+            })
         }
         else {
             return callback(ctx.error(myname + '. Invalid jsPropertyOrValue: ' + model.wzName, model));
@@ -143,7 +144,11 @@ md.load = function(cnt) {
         }
         var colon = (ctx.isGraphql && !ctx.isNamedCallParam) ? ' ' : ': ';
         if (u.isParamValue(model) || u.isValue(model)) {
-            ctx.write(model.wzName);
+            ctx.write(model.wzName)
+            return callback(null, null);
+        }
+        else if (u.isEnumValue(model)) {
+            ctx.write(model.wzName)
             return callback(null, null);
         }
         else if (u.isObjectProperty(model)) {
@@ -153,20 +158,20 @@ md.load = function(cnt) {
                 });
             if (p.hasValue()) {
                 ctx.write(p.name() + colon);
-                ctx.write(p.value());
+                ctx.write(p.value())
             }
             else {
                 if (ctx.__ecma === 'es5') {
-                    console.log(ctx.error(myname + '. Invalid object property: ' + model.wzName, model));
+                    console.log(ctx.error(myname + '. Invalid object property: ' + model.wzName, model))
                     return callback(ctx.error(myname + '. Invalid object property: ' + model.wzName, model));
                 }
                 else {
-                    ctx.write(p.name());
+                    ctx.write(p.name())
                 }
             }
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, callback);
+            }, callback)
         }
         else if (u.parentIsHtmlElement(model)) {
             return callback(null, null);
@@ -176,7 +181,7 @@ md.load = function(cnt) {
                 ctx.w('@' + model.wzName);
             }
             else if (ctx.__artifact === 'xittf/document') {
-                ctx.write(model.wzName);
+                ctx.write(model.wzName)
             }
             else {
                 return callback(ctx.error(myname + '. Invalid jsPropertyOrValue: ' + model.wzName, model));
@@ -198,8 +203,8 @@ md.load = function(cnt) {
                 if (err) {
                     return callback(err);
                 }
-                jsObject_close(model, ctx, callback);
-            });
+                jsObject_close(model, ctx, callback)
+            })
         }
         else {
             if (model.wzName && model.wzName.length > 0) {
@@ -227,7 +232,7 @@ md.load = function(cnt) {
                     ctx.__is_react_class = save__is_react_class;
                 }
                 return callback(null, null);
-            });
+            })
         }
     };
     function jsObject_is_dslCall(model, ctx, callback) {
@@ -255,13 +260,13 @@ md.load = function(cnt) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             else {
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
+                })
             }
         }
         repeater_1(0);
@@ -292,7 +297,7 @@ md.load = function(cnt) {
                 // log 'jsObject_close 2'
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
+                })
             }
             else {
                 // log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
@@ -320,14 +325,14 @@ md.load = function(cnt) {
                                 }
                                 process.nextTick(function() {
                                     repeater_2(index_2 + 1);
-                                });
-                            });
+                                })
+                            })
                         }
                         repeater_2(index_1 + 1);
                         function next_2() {
                             return callback(null, null);
                         }
-                    });
+                    })
                 }
                 else if (item_1.wzElement == 'typeAs') {
                     ctx.w('');
@@ -338,7 +343,7 @@ md.load = function(cnt) {
                             return callback(err);
                         }
                         return callback(null, null);
-                    });
+                    })
                 }
                 else {
                     if (comma && !first) {
@@ -353,8 +358,8 @@ md.load = function(cnt) {
                         comma = ['comment', 'handlebar'].indexOf(item_1.wzElement) < 0;
                         process.nextTick(function() {
                             repeater_1(index_1 + 1);
-                        });
-                    });
+                        })
+                    })
                 }
             }
         }
@@ -424,8 +429,8 @@ md.load = function(cnt) {
                                 }
                                 process.nextTick(function() {
                                     repeater_2(index_2 + 1);
-                                });
-                            });
+                                })
+                            })
                         }
                         repeater_2(index_1 + 1);
                         function next_2() {
@@ -445,8 +450,8 @@ md.load = function(cnt) {
                 // log '604 jsArray'
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -473,6 +478,6 @@ md.load = function(cnt) {
             ctx.deindent();
             ctx.write('}');
             return callback(null, null);
-        });
+        })
     };
 };

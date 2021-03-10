@@ -1,0 +1,38 @@
+module
+
+    $
+        var md = {
+            name: "InputRef",
+            element: 'div',
+            styled: true,
+            props: []
+        }
+
+    v08/ts/react/component(&md)
+        $append imports
+            styled Input .input
+                padding 0.5em
+                margin 0.5em
+                color palevioletred
+                background papayawhip
+                border none
+                border-radius 3px
+
+        p inputRef
+            :any
+        
+        ctor
+            param props: any
+            base props
+
+            set this.inputRef =
+                _ React.createRef
+        
+        m render
+            return 
+                < Input 
+                    @ ref {this.inputRef}
+                    @ placeholder "Hover to focus!"
+                    @ onMouseEnter
+                        => 
+                            _ this.inputRef.current.focus

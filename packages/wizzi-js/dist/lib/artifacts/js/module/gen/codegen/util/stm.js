@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\util\stm.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\util\stm.js.ittf
 */
 'use strict';
 var verify = require('./verify');
@@ -16,6 +17,7 @@ var parents_of_top_statements = [
     'ctor', 
     'method', 
     'module', 
+    'xmodule', 
     'ready', 
     'html_f', 
     'html_dom', 
@@ -102,6 +104,12 @@ md.isObjectProperty = function(model) {
         return false;
     }
     return ['jsObject', 'state'].indexOf(model.wzParent.wzElement) > -1;
+};
+md.isEnumValue = function(model) {
+    if (!model.wzParent) {
+        return false;
+    }
+    return ['typeEnum'].indexOf(model.wzParent.wzElement) > -1;
 };
 md.isMemberAccess = function(model) {
     if (['memberAccess', 'memberAccessComputed', 'memberCall', 'decoratorCall', 'callOnValue'].indexOf(model.wzElement) > -1) {
@@ -357,8 +365,8 @@ md.emitBlock = function(cnt, tag, model, items, count, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        emitBlock_end(cnt, items, ctx, count, callback);
-    });
+        emitBlock_end(cnt, items, ctx, count, callback)
+    })
 };
 function emitBlock_begin(cnt, tag, model, items, count, ctx, callback) {
     var blockIndex = items.length > 0 && items[0].wzElement === 'test' ? 1 : 0;
@@ -373,7 +381,7 @@ function emitBlock_begin(cnt, tag, model, items, count, ctx, callback) {
                 return callback(null, null);
             }
             else {
-                md.emitTest(cnt, tag, model, items, ctx, ' {', callback);
+                md.emitTest(cnt, tag, model, items, ctx, ' {', callback)
             }
         }
         else {
@@ -386,7 +394,7 @@ function emitBlock_begin(cnt, tag, model, items, count, ctx, callback) {
                 return callback(null, null);
             }
             else {
-                md.emitTest(cnt, tag, model, items, ctx, '', callback);
+                md.emitTest(cnt, tag, model, items, ctx, '', callback)
             }
         }
     }
@@ -400,7 +408,7 @@ function emitBlock_begin(cnt, tag, model, items, count, ctx, callback) {
             return callback(null, null);
         }
         else {
-            md.emitTest(cnt, tag, model, items, ctx, ' {', callback);
+            md.emitTest(cnt, tag, model, items, ctx, ' {', callback)
         }
     }
 }
@@ -423,7 +431,7 @@ function emitBlock_end(cnt, items, ctx, count, callback) {
             ctx.w('}');
         }
         return callback(null, null);
-    });
+    })
 }
 md.emitTest = function(cnt, tag, model, items, ctx, open, callback) {
     if (items.length > 0 && items[0].wzElement === 'test') {
@@ -434,16 +442,14 @@ md.emitTest = function(cnt, tag, model, items, ctx, open, callback) {
             }
             ctx.w(open);
             return callback(null, null);
-        });
+        })
     }
     else {
         ctx.w(tag + ' (' + md.unparen(model.wzName) + ')' + open);
         return callback(null, null);
     }
 };
-/**
-     TYPESCRIPT
-*/
+//
 md.isTSSimpleType = function(model) {
     return [
             'typeNumber', 
@@ -477,7 +483,7 @@ md.extractTSSimpleType = function(model) {
             retIndex = index;
             return true;
         }
-    });
+    })
     if (ret) {
         model.statements.splice(retIndex, 1);
     }
@@ -494,7 +500,7 @@ md.extractTSParameterDecl = function(model) {
             retIndex = index;
             return true;
         }
-    });
+    })
     if (ret) {
         model.statements.splice(retIndex, 1);
     }
@@ -511,7 +517,7 @@ md.extractTS = function(model, element) {
             retIndex = index;
             return true;
         }
-    });
+    })
     if (ret) {
         model.statements.splice(retIndex, 1);
     }
@@ -534,7 +540,7 @@ md.genTSParams = function(model, ctx, cnt, callback) {
             ctx.write(', ');
         }
         var ptype = md.extractTSSimpleType(p);
-        md.genAccessorsAndExtra(p, ctx);
+        md.genAccessorsAndExtra(p, ctx)
         // log 'genTSParams', index_1, p.statements.length, ptype && ptype.wzElement
         if (p.statements.length == 0) {
             ctx.write(p.wzName);
@@ -549,13 +555,13 @@ md.genTSParams = function(model, ctx, cnt, callback) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             else {
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
+                })
             }
         }
         else if (p.wzElement === 'objectParam' || p.wzElement === 'jsObject') {
@@ -573,15 +579,15 @@ md.genTSParams = function(model, ctx, cnt, callback) {
                         }
                         process.nextTick(function() {
                             repeater_1(index_1 + 1);
-                        });
-                    });
+                        })
+                    })
                 }
                 else {
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
+                    })
                 }
-            });
+            })
         }
         else if (p.statements.length == 1) {
             ctx.write(p.wzName);
@@ -604,9 +610,9 @@ md.genTSParams = function(model, ctx, cnt, callback) {
                         }
                         process.nextTick(function() {
                             repeater_1(index_1 + 1);
-                        });
-                    });
-                });
+                        })
+                    })
+                })
             }
             else {
                 genTSParams_close(s0, ctx, cnt, (err, notUsed) => {
@@ -615,15 +621,15 @@ md.genTSParams = function(model, ctx, cnt, callback) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             // else
             // throw new Error('jswizzifier.genTSParams.statements[0].wzElement should be "typeInitValue or typeCTor".found: ' + s0.wzElement)
         }
         else {
             // log 'jswizzifier.genTSParams.p', p, 'statements', p.statements
-            callback(ctx.error(myname + '.genTSParams.statements.length should be 0 or 1.found: ' + p.statements.length, model));
+            callback(ctx.error(myname + '.genTSParams.statements.length should be 0 or 1.found: ' + p.statements.length, model))
         }
     }
     repeater_1(0);
@@ -643,13 +649,13 @@ function genTSParams_close(s0, ctx, cnt, callback) {
             ctx.write(' = ');
             var item = s0.statements[1];
             // log 'genTSParams_close 2 item.wzElement', item.wzElement
-            cnt.stm[item.wzElement](item, ctx, callback);
-        });
+            cnt.stm[item.wzElement](item, ctx, callback)
+        })
     }
     else {
         ctx.write(' = ');
         // log 'genTSParams_close 3 item.wzElement', s0.wzElement
-        cnt.stm[s0.wzElement](s0, ctx, callback);
+        cnt.stm[s0.wzElement](s0, ctx, callback)
     }
 }
 md.genAccessorsAndExtra = function(model, ctx) {
@@ -681,10 +687,10 @@ md.genTSTypeParameters = function(model, ctx, cnt, callback) {
                     ctx.write(', ');
                 }
                 ctx.write(e.wzName);
-            });
+            })
         }
         return callback(null, null);
-    });
+    })
 };
 function genTSTypeParameters_partial(model, ctx, cnt, callback) {
     if (model.typeParameterDecls && model.typeParameterDecls.length > 0) {
@@ -704,8 +710,8 @@ function genTSTypeParameters_partial(model, ctx, cnt, callback) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {

@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\main.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\main.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -19,9 +20,9 @@ md.gen = function(model, ctx, callback) {
     if (verify.isObject(model) == false) {
         return callback(error('InvalidArgument', 'gen', 'The model parameter must be an object. Received: ' + model));
     }
-    if (model.wzElement !== 'module') {
+    if (model.wzElement !== 'xmodule') {
         console.log('v5-wizzi-ts', 'artifact', 'model', model);
-        return callback(error('InvalidArgument', 'gen', 'Invalid model schema. Expected root element "module". Received: ' + model.wzElement));
+        return callback(error('InvalidArgument', 'gen', 'Invalid model schema. Expected root element "xmodule". Received: ' + model.wzElement));
     }
     /**
         return callback(ctx.error('test', model));
@@ -29,7 +30,7 @@ md.gen = function(model, ctx, callback) {
     try {
         ctx.__ecma = 'es6';
         ctx.__jskind = 'react';
-        main_init(model, ctx);
+        main_init(model, ctx)
         var len_1 = model.statements.length;
         function repeater_1(index_1) {
             if (index_1 === len_1) {
@@ -45,8 +46,8 @@ md.gen = function(model, ctx, callback) {
                     ctx.w("");
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             else {
                 statement.gen(item_1, ctx, function(err, notUsed) {
@@ -55,8 +56,8 @@ md.gen = function(model, ctx, callback) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
         }
         repeater_1(0);
@@ -89,16 +90,7 @@ function main_init(model, ctx) {
         ctx.w('*/');
     }
 }
-/**
-     params
-     string code
-     # the error name or number
-     string method
-     string message
-     # optional
-     { innerError
-     # optional
-*/
+//
 function error(code, method, message, innerError) {
     return verify.error(innerError, {
             name: ( verify.isNumber(code) ? 'Err-' + code : code ), 

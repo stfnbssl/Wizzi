@@ -34,7 +34,7 @@
           ]
         },
         {
-          "name": "module",
+          "name": "xmodule",
           "tags": [
             "module"
           ]
@@ -885,6 +885,12 @@
           ]
         },
         {
+          "name": "styled",
+          "tags": [
+            "styled"
+          ]
+        },
+        {
           "name": "htmlParam",
           "tags": [
             "@param"
@@ -894,6 +900,12 @@
           "name": "htmlFilter",
           "tags": [
             "@filter"
+          ]
+        },
+        {
+          "name": "keyframes",
+          "tags": [
+            "keyframes"
           ]
         },
         {
@@ -1228,7 +1240,7 @@
       "comments": []
     },
     {
-      "name": "module",
+      "name": "xmodule",
       "super": "statement",
       "isRoot": true,
       "tags": [
@@ -11485,6 +11497,12 @@
           "name": "styleJsx",
           "tags": [
             "style-jsx"
+          ]
+        },
+        {
+          "name": "styled",
+          "tags": [
+            "styled"
           ]
         },
         {
@@ -31887,6 +31905,4136 @@
           ],
           "flags": "",
           "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "styled",
+      "super": "htmlelement",
+      "isRoot": false,
+      "tags": [
+        "styled"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "global",
+          "type": "boolean",
+          "tags": [
+            "global"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoCapitalize",
+          "type": "string",
+          "tags": [
+            "autoCapitalize"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoCorrect",
+          "type": "string",
+          "tags": [
+            "autoCorrect"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "property",
+          "type": "string",
+          "tags": [
+            "property"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemProp",
+          "type": "string",
+          "tags": [
+            "itemProp"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemScope",
+          "type": "string",
+          "tags": [
+            "itemScope"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemType",
+          "type": "string",
+          "tags": [
+            "itemType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemRef",
+          "type": "string",
+          "tags": [
+            "itemRef"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemID",
+          "type": "string",
+          "tags": [
+            "itemID"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "unselectable",
+          "type": "string",
+          "tags": [
+            "unselectable"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "results",
+          "type": "string",
+          "tags": [
+            "results"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoSave",
+          "type": "string",
+          "tags": [
+            "autoSave"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "class",
+          "type": "string",
+          "tags": [
+            "class"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "aria__",
+          "type": "string",
+          "tags": [
+            "aria-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "data__",
+          "type": "string",
+          "tags": [
+            "data-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "accept",
+          "type": "string",
+          "tags": [
+            "accept"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "acceptCharset",
+          "type": "string",
+          "tags": [
+            "acceptCharset"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "accessKey",
+          "type": "string",
+          "tags": [
+            "accessKey"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "tags": [
+            "action"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "allowFullScreen",
+          "type": "string",
+          "tags": [
+            "allowFullScreen"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "allowTransparency",
+          "type": "string",
+          "tags": [
+            "allowTransparency"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "tags": [
+            "alt"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "async",
+          "type": "string",
+          "tags": [
+            "async"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoComplete",
+          "type": "string",
+          "tags": [
+            "autoComplete"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoFocus",
+          "type": "string",
+          "tags": [
+            "autoFocus"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoPlay",
+          "type": "string",
+          "tags": [
+            "autoPlay"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "capture",
+          "type": "string",
+          "tags": [
+            "capture"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "cellPadding",
+          "type": "string",
+          "tags": [
+            "cellPadding"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "cellSpacing",
+          "type": "string",
+          "tags": [
+            "cellSpacing"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "charSet",
+          "type": "string",
+          "tags": [
+            "charSet"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "challenge",
+          "type": "string",
+          "tags": [
+            "challenge"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "checked",
+          "type": "string",
+          "tags": [
+            "checked"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "classID",
+          "type": "string",
+          "tags": [
+            "classID"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "tags": [
+            "className"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "cols",
+          "type": "string",
+          "tags": [
+            "cols"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "colSpan",
+          "type": "string",
+          "tags": [
+            "colSpan"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "tags": [
+            "content"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "contentEditable",
+          "type": "string",
+          "tags": [
+            "contentEditable"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "contextMenu",
+          "type": "string",
+          "tags": [
+            "contextMenu"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "controls",
+          "type": "string",
+          "tags": [
+            "controls"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "coords",
+          "type": "string",
+          "tags": [
+            "coords"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "crossOrigin",
+          "type": "string",
+          "tags": [
+            "crossOrigin"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "data",
+          "type": "string",
+          "tags": [
+            "data"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "dateTime",
+          "type": "string",
+          "tags": [
+            "dateTime"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "defer",
+          "type": "string",
+          "tags": [
+            "defer"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "dir",
+          "type": "string",
+          "tags": [
+            "dir"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "disabled",
+          "type": "string",
+          "tags": [
+            "disabled"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "download",
+          "type": "string",
+          "tags": [
+            "download"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "draggable",
+          "type": "string",
+          "tags": [
+            "draggable"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "encType",
+          "type": "string",
+          "tags": [
+            "encType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "form",
+          "type": "string",
+          "tags": [
+            "form"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "formAction",
+          "type": "string",
+          "tags": [
+            "formAction"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "formEncType",
+          "type": "string",
+          "tags": [
+            "formEncType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "formMethod",
+          "type": "string",
+          "tags": [
+            "formMethod"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "formNoValidate",
+          "type": "string",
+          "tags": [
+            "formNoValidate"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "formTarget",
+          "type": "string",
+          "tags": [
+            "formTarget"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "frameBorder",
+          "type": "string",
+          "tags": [
+            "frameBorder"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "headers",
+          "type": "string",
+          "tags": [
+            "headers"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "tags": [
+            "height"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "hidden",
+          "type": "string",
+          "tags": [
+            "hidden"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "high",
+          "type": "string",
+          "tags": [
+            "high"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "tags": [
+            "href"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "hrefLang",
+          "type": "string",
+          "tags": [
+            "hrefLang"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "htmlFor",
+          "type": "string",
+          "tags": [
+            "htmlFor"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "httpEquiv",
+          "type": "string",
+          "tags": [
+            "httpEquiv"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "tags": [
+            "icon"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "tags": [
+            "id"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "inputMode",
+          "type": "string",
+          "tags": [
+            "inputMode"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "keyParams",
+          "type": "string",
+          "tags": [
+            "keyParams"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "keyType",
+          "type": "string",
+          "tags": [
+            "keyType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_label",
+          "type": "string",
+          "tags": [
+            "@label"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "lang",
+          "type": "string",
+          "tags": [
+            "lang"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "list",
+          "type": "string",
+          "tags": [
+            "list"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "loop",
+          "type": "string",
+          "tags": [
+            "loop"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "low",
+          "type": "string",
+          "tags": [
+            "low"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "manifest",
+          "type": "string",
+          "tags": [
+            "manifest"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "marginHeight",
+          "type": "string",
+          "tags": [
+            "marginHeight"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "marginWidth",
+          "type": "string",
+          "tags": [
+            "marginWidth"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "max",
+          "type": "string",
+          "tags": [
+            "max"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "maxLength",
+          "type": "string",
+          "tags": [
+            "maxLength"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "media",
+          "type": "string",
+          "tags": [
+            "media"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "mediaGroup",
+          "type": "string",
+          "tags": [
+            "mediaGroup"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "method",
+          "type": "string",
+          "tags": [
+            "method"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "min",
+          "type": "string",
+          "tags": [
+            "min"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "minLength",
+          "type": "string",
+          "tags": [
+            "minLength"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "multiple",
+          "type": "string",
+          "tags": [
+            "multiple"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "muted",
+          "type": "string",
+          "tags": [
+            "muted"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "tags": [
+            "name"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "noValidate",
+          "type": "string",
+          "tags": [
+            "noValidate"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "open",
+          "type": "string",
+          "tags": [
+            "open"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "optimum",
+          "type": "string",
+          "tags": [
+            "optimum"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pattern",
+          "type": "string",
+          "tags": [
+            "pattern"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "tags": [
+            "placeholder"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "poster",
+          "type": "string",
+          "tags": [
+            "poster"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "preload",
+          "type": "string",
+          "tags": [
+            "preload"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "radioGroup",
+          "type": "string",
+          "tags": [
+            "radioGroup"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "readOnly",
+          "type": "string",
+          "tags": [
+            "readOnly"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "rel",
+          "type": "string",
+          "tags": [
+            "rel"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "required",
+          "type": "string",
+          "tags": [
+            "required"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "role",
+          "type": "string",
+          "tags": [
+            "role"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "rows",
+          "type": "string",
+          "tags": [
+            "rows"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "rowSpan",
+          "type": "string",
+          "tags": [
+            "rowSpan"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "sandbox",
+          "type": "string",
+          "tags": [
+            "sandbox"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "scope",
+          "type": "string",
+          "tags": [
+            "scope"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "scoped",
+          "type": "string",
+          "tags": [
+            "scoped"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "scrolling",
+          "type": "string",
+          "tags": [
+            "scrolling"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "seamless",
+          "type": "string",
+          "tags": [
+            "seamless"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "selected",
+          "type": "string",
+          "tags": [
+            "selected"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "shape",
+          "type": "string",
+          "tags": [
+            "shape"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "tags": [
+            "size"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "sizes",
+          "type": "string",
+          "tags": [
+            "sizes"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_span",
+          "type": "string",
+          "tags": [
+            "@span"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "spellCheck",
+          "type": "string",
+          "tags": [
+            "spellCheck"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "src",
+          "type": "string",
+          "tags": [
+            "src"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "srcDoc",
+          "type": "string",
+          "tags": [
+            "srcDoc"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "srcSet",
+          "type": "string",
+          "tags": [
+            "srcSet"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "start",
+          "type": "string",
+          "tags": [
+            "start"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "step",
+          "type": "string",
+          "tags": [
+            "step"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "style",
+          "type": "string",
+          "tags": [
+            "style"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_summary",
+          "type": "string",
+          "tags": [
+            "@summary"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "tabIndex",
+          "type": "string",
+          "tags": [
+            "tabIndex"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "tags": [
+            "target"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "tags": [
+            "title"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "tags": [
+            "type"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "useMap",
+          "type": "string",
+          "tags": [
+            "useMap"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "tags": [
+            "value"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "tags": [
+            "width"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "wmode",
+          "type": "string",
+          "tags": [
+            "wmode"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "wrap",
+          "type": "string",
+          "tags": [
+            "wrap"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "static",
+          "type": "string",
+          "tags": [
+            "static"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "accentHeight",
+          "type": "string",
+          "tags": [
+            "accentHeight"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "accumulate",
+          "type": "string",
+          "tags": [
+            "accumulate"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "additive",
+          "type": "string",
+          "tags": [
+            "additive"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "alignmentBaseline",
+          "type": "string",
+          "tags": [
+            "alignmentBaseline"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "allowReorder",
+          "type": "string",
+          "tags": [
+            "allowReorder"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "alphabetic",
+          "type": "string",
+          "tags": [
+            "alphabetic"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "amplitude",
+          "type": "string",
+          "tags": [
+            "amplitude"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "arabicForm",
+          "type": "string",
+          "tags": [
+            "arabicForm"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "ascent",
+          "type": "string",
+          "tags": [
+            "ascent"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "attributeName",
+          "type": "string",
+          "tags": [
+            "attributeName"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "attributeType",
+          "type": "string",
+          "tags": [
+            "attributeType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoReverse",
+          "type": "string",
+          "tags": [
+            "autoReverse"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "azimuth",
+          "type": "string",
+          "tags": [
+            "azimuth"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "baseFrequency",
+          "type": "string",
+          "tags": [
+            "baseFrequency"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "baseProfile",
+          "type": "string",
+          "tags": [
+            "baseProfile"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "baselineShift",
+          "type": "string",
+          "tags": [
+            "baselineShift"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "bbox",
+          "type": "string",
+          "tags": [
+            "bbox"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "begin",
+          "type": "string",
+          "tags": [
+            "begin"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "bias",
+          "type": "string",
+          "tags": [
+            "bias"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "by",
+          "type": "string",
+          "tags": [
+            "by"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "calcMode",
+          "type": "string",
+          "tags": [
+            "calcMode"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "capHeight",
+          "type": "string",
+          "tags": [
+            "capHeight"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "clip",
+          "type": "string",
+          "tags": [
+            "clip"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "clipPath",
+          "type": "string",
+          "tags": [
+            "clipPath"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "clipPathUnits",
+          "type": "string",
+          "tags": [
+            "clipPathUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "clipRule",
+          "type": "string",
+          "tags": [
+            "clipRule"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "colorInterpolation",
+          "type": "string",
+          "tags": [
+            "colorInterpolation"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "colorInterpolationFilters",
+          "type": "string",
+          "tags": [
+            "colorInterpolationFilters"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "colorProfile",
+          "type": "string",
+          "tags": [
+            "colorProfile"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "colorRendering",
+          "type": "string",
+          "tags": [
+            "colorRendering"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "contentScriptType",
+          "type": "string",
+          "tags": [
+            "contentScriptType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "contentStyleType",
+          "type": "string",
+          "tags": [
+            "contentStyleType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "cursor",
+          "type": "string",
+          "tags": [
+            "cursor"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "cx",
+          "type": "string",
+          "tags": [
+            "cx"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "cy",
+          "type": "string",
+          "tags": [
+            "cy"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "d",
+          "type": "string",
+          "tags": [
+            "d"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "decelerate",
+          "type": "string",
+          "tags": [
+            "decelerate"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "descent",
+          "type": "string",
+          "tags": [
+            "descent"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "diffuseConstant",
+          "type": "string",
+          "tags": [
+            "diffuseConstant"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "direction",
+          "type": "string",
+          "tags": [
+            "direction"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "display",
+          "type": "string",
+          "tags": [
+            "display"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "divisor",
+          "type": "string",
+          "tags": [
+            "divisor"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "dominantBaseline",
+          "type": "string",
+          "tags": [
+            "dominantBaseline"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "dur",
+          "type": "string",
+          "tags": [
+            "dur"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "dx",
+          "type": "string",
+          "tags": [
+            "dx"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "dy",
+          "type": "string",
+          "tags": [
+            "dy"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "edgeMode",
+          "type": "string",
+          "tags": [
+            "edgeMode"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "elevation",
+          "type": "string",
+          "tags": [
+            "elevation"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "enableBackground",
+          "type": "string",
+          "tags": [
+            "enableBackground"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "end",
+          "type": "string",
+          "tags": [
+            "end"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "exponent",
+          "type": "string",
+          "tags": [
+            "exponent"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "externalResourcesRequired",
+          "type": "string",
+          "tags": [
+            "externalResourcesRequired"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fill",
+          "type": "string",
+          "tags": [
+            "fill"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fillOpacity",
+          "type": "string",
+          "tags": [
+            "fillOpacity"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fillRule",
+          "type": "string",
+          "tags": [
+            "fillRule"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_filter",
+          "type": "string",
+          "tags": [
+            "@filter"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "filterRes",
+          "type": "string",
+          "tags": [
+            "filterRes"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "filterUnits",
+          "type": "string",
+          "tags": [
+            "filterUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "floodColor",
+          "type": "string",
+          "tags": [
+            "floodColor"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "floodOpacity",
+          "type": "string",
+          "tags": [
+            "floodOpacity"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "focusable",
+          "type": "string",
+          "tags": [
+            "focusable"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontFamily",
+          "type": "string",
+          "tags": [
+            "fontFamily"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontSize",
+          "type": "string",
+          "tags": [
+            "fontSize"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontSizeAdjust",
+          "type": "string",
+          "tags": [
+            "fontSizeAdjust"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontStretch",
+          "type": "string",
+          "tags": [
+            "fontStretch"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontStyle",
+          "type": "string",
+          "tags": [
+            "fontStyle"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontVariant",
+          "type": "string",
+          "tags": [
+            "fontVariant"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fontWeight",
+          "type": "string",
+          "tags": [
+            "fontWeight"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "tags": [
+            "format"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "from",
+          "type": "string",
+          "tags": [
+            "from"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fx",
+          "type": "string",
+          "tags": [
+            "fx"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "fy",
+          "type": "string",
+          "tags": [
+            "fy"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "g1",
+          "type": "string",
+          "tags": [
+            "g1"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "g2",
+          "type": "string",
+          "tags": [
+            "g2"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "glyphName",
+          "type": "string",
+          "tags": [
+            "glyphName"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "glyphOrientationHorizontal",
+          "type": "string",
+          "tags": [
+            "glyphOrientationHorizontal"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "glyphOrientationVertical",
+          "type": "string",
+          "tags": [
+            "glyphOrientationVertical"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "glyphRef",
+          "type": "string",
+          "tags": [
+            "glyphRef"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "gradientTransform",
+          "type": "string",
+          "tags": [
+            "gradientTransform"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "gradientUnits",
+          "type": "string",
+          "tags": [
+            "gradientUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "hanging",
+          "type": "string",
+          "tags": [
+            "hanging"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "horizAdvX",
+          "type": "string",
+          "tags": [
+            "horizAdvX"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "horizOriginX",
+          "type": "string",
+          "tags": [
+            "horizOriginX"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "ideographic",
+          "type": "string",
+          "tags": [
+            "ideographic"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "imageRendering",
+          "type": "string",
+          "tags": [
+            "imageRendering"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "in",
+          "type": "string",
+          "tags": [
+            "in"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "in2",
+          "type": "string",
+          "tags": [
+            "in2"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "intercept",
+          "type": "string",
+          "tags": [
+            "intercept"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "k",
+          "type": "string",
+          "tags": [
+            "k"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "k1",
+          "type": "string",
+          "tags": [
+            "k1"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "k2",
+          "type": "string",
+          "tags": [
+            "k2"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "k3",
+          "type": "string",
+          "tags": [
+            "k3"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "k4",
+          "type": "string",
+          "tags": [
+            "k4"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "kernelMatrix",
+          "type": "string",
+          "tags": [
+            "kernelMatrix"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "kernelUnitLength",
+          "type": "string",
+          "tags": [
+            "kernelUnitLength"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "kerning",
+          "type": "string",
+          "tags": [
+            "kerning"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "keyPoints",
+          "type": "string",
+          "tags": [
+            "keyPoints"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "keySplines",
+          "type": "string",
+          "tags": [
+            "keySplines"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "keyTimes",
+          "type": "string",
+          "tags": [
+            "keyTimes"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "lengthAdjust",
+          "type": "string",
+          "tags": [
+            "lengthAdjust"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "letterSpacing",
+          "type": "string",
+          "tags": [
+            "letterSpacing"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "lightingColor",
+          "type": "string",
+          "tags": [
+            "lightingColor"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "limitingConeAngle",
+          "type": "string",
+          "tags": [
+            "limitingConeAngle"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "local",
+          "type": "string",
+          "tags": [
+            "local"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "markerEnd",
+          "type": "string",
+          "tags": [
+            "markerEnd"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "markerHeight",
+          "type": "string",
+          "tags": [
+            "markerHeight"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "markerMid",
+          "type": "string",
+          "tags": [
+            "markerMid"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "markerStart",
+          "type": "string",
+          "tags": [
+            "markerStart"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "markerUnits",
+          "type": "string",
+          "tags": [
+            "markerUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "markerWidth",
+          "type": "string",
+          "tags": [
+            "markerWidth"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "mask",
+          "type": "string",
+          "tags": [
+            "mask"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "maskContentUnits",
+          "type": "string",
+          "tags": [
+            "maskContentUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "maskUnits",
+          "type": "string",
+          "tags": [
+            "maskUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "mathematical",
+          "type": "string",
+          "tags": [
+            "mathematical"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "tags": [
+            "mode"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "numOctaves",
+          "type": "string",
+          "tags": [
+            "numOctaves"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "offset",
+          "type": "string",
+          "tags": [
+            "offset"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "opacity",
+          "type": "string",
+          "tags": [
+            "opacity"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "operator",
+          "type": "string",
+          "tags": [
+            "operator"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "order",
+          "type": "string",
+          "tags": [
+            "order"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "orient",
+          "type": "string",
+          "tags": [
+            "orient"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "orientation",
+          "type": "string",
+          "tags": [
+            "orientation"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "origin",
+          "type": "string",
+          "tags": [
+            "origin"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "overflow",
+          "type": "string",
+          "tags": [
+            "overflow"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "overlinePosition",
+          "type": "string",
+          "tags": [
+            "overlinePosition"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "overlineThickness",
+          "type": "string",
+          "tags": [
+            "overlineThickness"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "paintOrder",
+          "type": "string",
+          "tags": [
+            "paintOrder"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "panose1",
+          "type": "string",
+          "tags": [
+            "panose1"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pathLength",
+          "type": "string",
+          "tags": [
+            "pathLength"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "patternContentUnits",
+          "type": "string",
+          "tags": [
+            "patternContentUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "patternTransform",
+          "type": "string",
+          "tags": [
+            "patternTransform"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "patternUnits",
+          "type": "string",
+          "tags": [
+            "patternUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pointerEvents",
+          "type": "string",
+          "tags": [
+            "pointerEvents"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "points",
+          "type": "string",
+          "tags": [
+            "points"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pointsAtX",
+          "type": "string",
+          "tags": [
+            "pointsAtX"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pointsAtY",
+          "type": "string",
+          "tags": [
+            "pointsAtY"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "pointsAtZ",
+          "type": "string",
+          "tags": [
+            "pointsAtZ"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "preserveAlpha",
+          "type": "string",
+          "tags": [
+            "preserveAlpha"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "preserveAspectRatio",
+          "type": "string",
+          "tags": [
+            "preserveAspectRatio"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "primitiveUnits",
+          "type": "string",
+          "tags": [
+            "primitiveUnits"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "r",
+          "type": "string",
+          "tags": [
+            "r"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "radius",
+          "type": "string",
+          "tags": [
+            "radius"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "refX",
+          "type": "string",
+          "tags": [
+            "refX"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "refY",
+          "type": "string",
+          "tags": [
+            "refY"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "renderingIntent",
+          "type": "string",
+          "tags": [
+            "renderingIntent"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "repeatCount",
+          "type": "string",
+          "tags": [
+            "repeatCount"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "repeatDur",
+          "type": "string",
+          "tags": [
+            "repeatDur"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "requiredExtensions",
+          "type": "string",
+          "tags": [
+            "requiredExtensions"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "requiredFeatures",
+          "type": "string",
+          "tags": [
+            "requiredFeatures"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "restart",
+          "type": "string",
+          "tags": [
+            "restart"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "result",
+          "type": "string",
+          "tags": [
+            "result"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "rotate",
+          "type": "string",
+          "tags": [
+            "rotate"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "rx",
+          "type": "string",
+          "tags": [
+            "rx"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "ry",
+          "type": "string",
+          "tags": [
+            "ry"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "scale",
+          "type": "string",
+          "tags": [
+            "scale"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "seed",
+          "type": "string",
+          "tags": [
+            "seed"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "shapeRendering",
+          "type": "string",
+          "tags": [
+            "shapeRendering"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "slope",
+          "type": "string",
+          "tags": [
+            "slope"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "spacing",
+          "type": "string",
+          "tags": [
+            "spacing"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "specularConstant",
+          "type": "string",
+          "tags": [
+            "specularConstant"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "specularExponent",
+          "type": "string",
+          "tags": [
+            "specularExponent"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "speed",
+          "type": "string",
+          "tags": [
+            "speed"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "spreadMethod",
+          "type": "string",
+          "tags": [
+            "spreadMethod"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "startOffset",
+          "type": "string",
+          "tags": [
+            "startOffset"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "stdDeviation",
+          "type": "string",
+          "tags": [
+            "stdDeviation"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "stemh",
+          "type": "string",
+          "tags": [
+            "stemh"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "stemv",
+          "type": "string",
+          "tags": [
+            "stemv"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "stitchTiles",
+          "type": "string",
+          "tags": [
+            "stitchTiles"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "stopColor",
+          "type": "string",
+          "tags": [
+            "stopColor"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "stopOpacity",
+          "type": "string",
+          "tags": [
+            "stopOpacity"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strikethroughPosition",
+          "type": "string",
+          "tags": [
+            "strikethroughPosition"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strikethroughThickness",
+          "type": "string",
+          "tags": [
+            "strikethroughThickness"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "string",
+          "type": "string",
+          "tags": [
+            "string"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "stroke",
+          "type": "string",
+          "tags": [
+            "stroke"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strokeDasharray",
+          "type": "string",
+          "tags": [
+            "strokeDasharray"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strokeDashoffset",
+          "type": "string",
+          "tags": [
+            "strokeDashoffset"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strokeLinecap",
+          "type": "string",
+          "tags": [
+            "strokeLinecap"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strokeLinejoin",
+          "type": "string",
+          "tags": [
+            "strokeLinejoin"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strokeMiterlimit",
+          "type": "string",
+          "tags": [
+            "strokeMiterlimit"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strokeOpacity",
+          "type": "string",
+          "tags": [
+            "strokeOpacity"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "strokeWidth",
+          "type": "string",
+          "tags": [
+            "strokeWidth"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "surfaceScale",
+          "type": "string",
+          "tags": [
+            "surfaceScale"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "systemLanguage",
+          "type": "string",
+          "tags": [
+            "systemLanguage"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "tableValues",
+          "type": "string",
+          "tags": [
+            "tableValues"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "targetX",
+          "type": "string",
+          "tags": [
+            "targetX"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "targetY",
+          "type": "string",
+          "tags": [
+            "targetY"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "textAnchor",
+          "type": "string",
+          "tags": [
+            "textAnchor"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "textDecoration",
+          "type": "string",
+          "tags": [
+            "textDecoration"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "textLength",
+          "type": "string",
+          "tags": [
+            "textLength"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "textRendering",
+          "type": "string",
+          "tags": [
+            "textRendering"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "tags": [
+            "to"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "transform",
+          "type": "string",
+          "tags": [
+            "transform"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "u1",
+          "type": "string",
+          "tags": [
+            "u1"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "u2",
+          "type": "string",
+          "tags": [
+            "u2"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "underlinePosition",
+          "type": "string",
+          "tags": [
+            "underlinePosition"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "underlineThickness",
+          "type": "string",
+          "tags": [
+            "underlineThickness"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "unicode",
+          "type": "string",
+          "tags": [
+            "unicode"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "unicodeBidi",
+          "type": "string",
+          "tags": [
+            "unicodeBidi"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "unicodeRange",
+          "type": "string",
+          "tags": [
+            "unicodeRange"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "unitsPerEm",
+          "type": "string",
+          "tags": [
+            "unitsPerEm"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "vAlphabetic",
+          "type": "string",
+          "tags": [
+            "vAlphabetic"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "vHanging",
+          "type": "string",
+          "tags": [
+            "vHanging"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "vIdeographic",
+          "type": "string",
+          "tags": [
+            "vIdeographic"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "vMathematical",
+          "type": "string",
+          "tags": [
+            "vMathematical"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "values",
+          "type": "string",
+          "tags": [
+            "values"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "vectorEffect",
+          "type": "string",
+          "tags": [
+            "vectorEffect"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "tags": [
+            "version"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "vertAdvY",
+          "type": "string",
+          "tags": [
+            "vertAdvY"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "vertOriginX",
+          "type": "string",
+          "tags": [
+            "vertOriginX"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "vertOriginY",
+          "type": "string",
+          "tags": [
+            "vertOriginY"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "viewBox",
+          "type": "string",
+          "tags": [
+            "viewBox"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "viewTarget",
+          "type": "string",
+          "tags": [
+            "viewTarget"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "visibility",
+          "type": "string",
+          "tags": [
+            "visibility"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "widths",
+          "type": "string",
+          "tags": [
+            "widths"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "wordSpacing",
+          "type": "string",
+          "tags": [
+            "wordSpacing"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "writingMode",
+          "type": "string",
+          "tags": [
+            "writingMode"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "x",
+          "type": "string",
+          "tags": [
+            "x"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "x1",
+          "type": "string",
+          "tags": [
+            "x1"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "x2",
+          "type": "string",
+          "tags": [
+            "x2"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xChannelSelector",
+          "type": "string",
+          "tags": [
+            "xChannelSelector"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xHeight",
+          "type": "string",
+          "tags": [
+            "xHeight"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xlinkActuate",
+          "type": "string",
+          "tags": [
+            "xlinkActuate"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xlinkArcrole",
+          "type": "string",
+          "tags": [
+            "xlinkArcrole"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xlinkHref",
+          "type": "string",
+          "tags": [
+            "xlinkHref"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xlinkRole",
+          "type": "string",
+          "tags": [
+            "xlinkRole"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xlinkShow",
+          "type": "string",
+          "tags": [
+            "xlinkShow"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xlinkTitle",
+          "type": "string",
+          "tags": [
+            "xlinkTitle"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xlinkType",
+          "type": "string",
+          "tags": [
+            "xlinkType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlns",
+          "type": "string",
+          "tags": [
+            "xmlns"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlnsXlink",
+          "type": "string",
+          "tags": [
+            "xmlnsXlink"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlBase",
+          "type": "string",
+          "tags": [
+            "xmlBase"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlLang",
+          "type": "string",
+          "tags": [
+            "xmlLang"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xmlSpace",
+          "type": "string",
+          "tags": [
+            "xmlSpace"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "y",
+          "type": "string",
+          "tags": [
+            "y"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "y1",
+          "type": "string",
+          "tags": [
+            "y1"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "y2",
+          "type": "string",
+          "tags": [
+            "y2"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "yChannelSelector",
+          "type": "string",
+          "tags": [
+            "yChannelSelector"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "z",
+          "type": "string",
+          "tags": [
+            "z"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "zoomAndPan",
+          "type": "string",
+          "tags": [
+            "zoomAndPan"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "keyframes",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "keyframes"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "global",
+          "type": "boolean",
+          "tags": [
+            "global"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
           "restricts": [],
           "comments": []
         }

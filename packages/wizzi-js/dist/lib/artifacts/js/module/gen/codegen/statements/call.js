@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\call.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\call.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -53,13 +54,13 @@ md.load = function(cnt) {
                     ctx.write('}');
                 }
                 return callback(null, null);
-            });
+            })
         }
         else {
             name = hasParens ? name : (name + '()');
             ctx.write(name);
             if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
-                ctx.w(u.semicolon(name));
+                ctx.w(u.semicolon(name))
             }
             if (model.__templateChild) {
                 ctx.write('}');
@@ -83,7 +84,7 @@ md.load = function(cnt) {
             name = hasParens ? ('.' + name) : ('.' + name) + '()';
             ctx.write(name);
             if (u.isTopStatement(model, ctx)) {
-                ctx.w(u.semicolon(name));
+                ctx.w(u.semicolon(name))
             }
             return callback(null, null);
         }
@@ -104,7 +105,7 @@ md.load = function(cnt) {
             name = hasParens ? name : (name + '()');
             ctx.write(name);
             if (u.isTopStatement(model, ctx) && (u.isDescendentOf(model, 'iif') == false)) {
-                ctx.w(u.semicolon(name));
+                ctx.w(u.semicolon(name))
             }
             return callback(null, null);
         }
@@ -126,7 +127,7 @@ md.load = function(cnt) {
                     }
                     ctx.write(')');
                     return callback(null, null);
-                });
+                })
             }
             else {
                 ctx.write(')');
@@ -141,7 +142,7 @@ md.load = function(cnt) {
                 }
                 ctx.write(')');
                 return callback(null, null);
-            });
+            })
         }
         else if (model.statements.length > 0) {
             doCallChildStatements_one(model, '', hasParens, ctx, callback);
@@ -168,7 +169,7 @@ md.load = function(cnt) {
                     ctx.write(item_1.wzName);
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
+                    })
                 }
                 else if (item_1.statements.length == 1) {
                     cnt.genItem(item_1.statements[0], ctx, (err, notUsed) => {
@@ -177,14 +178,14 @@ md.load = function(cnt) {
                         }
                         process.nextTick(function() {
                             repeater_1(index_1 + 1);
-                        });
-                    });
+                        })
+                    })
                 }
                 else {
                     ctx.write('*** js.module.statements.call.doCallChildStatements_two not managed ***');
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
+                    })
                 }
             }
             repeater_1(0);
@@ -237,8 +238,8 @@ md.load = function(cnt) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -275,8 +276,8 @@ md.load = function(cnt) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             repeater_1(0);
             function next_1() {
@@ -292,7 +293,7 @@ md.load = function(cnt) {
                 }
                 return callback(null, null);
             }
-        });
+        })
     }
     cnt.stm.memberAccess = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -307,7 +308,7 @@ md.load = function(cnt) {
                 wzElement: 'jsPropertyOrValue', 
                 wzName: classTag + ' ' + model.wzName, 
                 wzParent: model
-            });
+            })
             model.wzElement = 'div';
             model.wzName = '';
             cnt.stm.div(model, ctx, callback);
@@ -346,7 +347,7 @@ md.load = function(cnt) {
                         ctx.w(';');
                     }
                     return callback(null, null);
-                });
+                })
             }
             else {
                 if (!first) {
@@ -359,8 +360,8 @@ md.load = function(cnt) {
                     ctx.first = false;
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
         }
         repeater_1(0);

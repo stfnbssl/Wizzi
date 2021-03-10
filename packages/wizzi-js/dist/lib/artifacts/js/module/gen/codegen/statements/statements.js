@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\statements.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\statements.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -36,7 +37,7 @@ md.load = function(cnt) {
         }
         // log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName
         if (model.__templateChild) {
-            ctx.write(verify.replaceAll(verify.replaceAll(model.wzName, '\\b', ' '), '\\n', '\n'));
+            ctx.write(verify.replaceAll(verify.replaceAll(model.wzName, '\\b', ' '), '\\n', '\n'))
             return callback(null, null);
         }
         else if (ctx.__inside_html == true && ctx.__jskind !== 'react') {
@@ -55,7 +56,7 @@ md.load = function(cnt) {
         }
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, callback);
+        }, callback)
     };
     cnt.stm.statementmultiline = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -70,11 +71,11 @@ md.load = function(cnt) {
             ctx.w("__html.push('\\n' + " + ip.join() + ");");
         }
         else {
-            ctx.w(model.wzName);
+            ctx.w(model.wzName)
         }
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, callback);
+        }, callback)
     };
     cnt.stm.require = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -179,7 +180,7 @@ md.load = function(cnt) {
             }
             ctx.w(u.semicolon(model.wzName));
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.typeRequire = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -189,7 +190,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeRequire. Got: ' + callback);
         }
         ctx.write('require ' + model.wzName);
-        cnt.genItems(model.statements, ctx, callback);
+        cnt.genItems(model.statements, ctx, callback)
     };
     cnt.stm.exportDefault = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -243,7 +244,7 @@ md.load = function(cnt) {
         ctx.write('export ' + name);
         // log 'js.module.xexport', name, model.from, model.statements.length, model.specifiers.length
         if (model.from) {
-            exportSpecifiers(model, ctx, name);
+            exportSpecifiers(model, ctx, name)
             ctx.write(' from ' + model.from);
             ctx.w(u.semicolon(name));
             return callback(null, null);
@@ -287,8 +288,8 @@ md.load = function(cnt) {
                             }
                             process.nextTick(function() {
                                 repeater_1(index_1 + 1);
-                            });
-                        });
+                            })
+                        })
                     }
                     repeater_1(1);
                     function next_1() {
@@ -301,10 +302,10 @@ md.load = function(cnt) {
                         ctx.__needs_crlf = ctx.__needs_comma = ctx.__inside_expr = false;
                         return callback(null, null);
                     }
-                });
+                })
             }
             else {
-                exportSpecifiers(model, ctx, name);
+                exportSpecifiers(model, ctx, name)
                 ctx.w(u.semicolon(name));
                 return callback(null, null);
             }
@@ -376,7 +377,7 @@ md.load = function(cnt) {
         }
         ctx.indent();
         if (model.wzName.length > 0) {
-            ctx.w(model.wzName);
+            ctx.w(model.wzName)
         }
         ctx.__inside_comment = true;
         cnt.genItems(model.statements, ctx, {
@@ -392,7 +393,7 @@ md.load = function(cnt) {
             }
             ctx.__needs_crlf = false;
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.commentmultiline = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -435,12 +436,12 @@ md.load = function(cnt) {
         }
         if (hasStatements(model) == false) {
             if (u.isDeclare(model)) {
-                ctx.write(text);
+                ctx.write(text)
             }
             else {
-                ctx.write(text);
+                ctx.write(text)
                 if (u.isTopStatement(model, ctx)) {
-                    ctx.w(u.semicolon(text));
+                    ctx.w(u.semicolon(text))
                 }
             }
             return callback(null, null);
@@ -453,7 +454,7 @@ md.load = function(cnt) {
                 if (err) {
                     return callback(err);
                 }
-                ctx.write(' ' + model.wzName + ' ');
+                ctx.write(' ' + model.wzName + ' ')
                 cnt.genItem(model.statements[1], ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
@@ -462,11 +463,11 @@ md.load = function(cnt) {
                         ctx.w(';');
                     }
                     return callback(null, null);
-                });
-            });
+                })
+            })
         }
         else {
-            ctx.write(u.setOperator(text, model.statements));
+            ctx.write(u.setOperator(text, model.statements))
             cnt.genItems(model.statements, ctx, {
                 indent: false
             }, function(err, notUsed) {
@@ -477,7 +478,7 @@ md.load = function(cnt) {
                     ctx.w(';');
                 }
                 return callback(null, null);
-            });
+            })
         }
     };
     cnt.stm.block = function(model, ctx, callback) {

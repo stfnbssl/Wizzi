@@ -31,7 +31,7 @@ md.gen = function(model, ctx, callback) {
         } 
         catch (ex) {
             if (ex.name === 'CssSyntaxError') {
-                return callback(null);
+                return callback(null, ctx);
             }
         } 
         ctx.hydrate({
@@ -70,7 +70,10 @@ md.genItems = function(items, ctx, options, callback) {
     for (var i = from; i < items.length; i++) {
         goitems.push(items[i]);
     }
-    async.mapSeries(goitems, md.getGenItem(ctx), function() {
+    async.mapSeries(goitems, md.getGenItem(ctx), function(err, notUsed) {
+        if (err) {
+            return callback(err);
+        }
         if (indent) {
             ctx.deindent();
         }
@@ -88,6 +91,7 @@ md.stm.css = function(model, ctx, callback) {
     }, callback)
 };
 function main_init(model, ctx) {
+    // log 'css.document.gen.main, ctx.values', ctx.values, !!ctx.values.noGeneratorComments
     if ((!!ctx.values.noGeneratorComments) == false) {
         ctx.w('/*');
         ctx.w('    artifact generator: ' + __filename);

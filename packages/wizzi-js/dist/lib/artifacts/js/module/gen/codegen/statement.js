@@ -1,10 +1,13 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statement.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statement.js.ittf
 */
 'use strict';
 
 var myname = 'wizzi.js.artifacts.module.gen.codegen.statement';
+
+var verify = require('wizzi-utils').verify;
 
 var zvar = require('./statements/var');
 var objects = require('./statements/objects');
@@ -72,8 +75,8 @@ md.genMany = function(models, ctx, callback) {
             }
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
-            });
-        });
+            })
+        })
     }
     repeater_1(0);
     function next_1() {
@@ -96,7 +99,66 @@ md.genItem = function(model, ctx, callback) {
             }
             ctx.w("`}</style>");
             return callback(null, null);
-        });
+        })
+    }
+    else if (['styled'].indexOf(key) >= 0 && model.get_css) {
+        var global = model.global ? ' global' : '';
+        var nv = verify.parseNameValue(model.wzName);
+        if (model.statements.length == 1) {
+            if (model.wzName && model.wzName.length > 0) {
+                ctx.w("const " + nv.name() + " = styled" + nv.value() + "(");
+            }
+            else {
+                ctx.w("return `");
+            }
+            ctx.indent();
+            md.genItem(model.statements[0], ctx, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.deindent();
+                ctx.w(")`");
+                include_writers.writeIncludeCss(ctx, model, function(err, notUsed) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    ctx.w("`");
+                    return callback(null, null);
+                })
+            })
+        }
+        else {
+            if (model.wzName && model.wzName.length > 0) {
+                ctx.w("const " + nv.name() + " = styled" + nv.value() + "`");
+            }
+            else {
+                ctx.w("return `");
+            }
+            include_writers.writeIncludeCss(ctx, model, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.w("`");
+                return callback(null, null);
+            })
+        }
+    }
+    else if (['keyframes'].indexOf(key) >= 0 && model.get_css) {
+        var global = model.global ? ' global' : '';
+        var nv = verify.parseNameValue(model.wzName);
+        if (model.wzName && model.wzName.length > 0) {
+            ctx.w("const " + nv.name() + " = keyframes`");
+        }
+        else {
+            ctx.w("keyframes`");
+        }
+        include_writers.writeIncludeCss(ctx, model, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.w("`");
+            return callback(null, null);
+        })
     }
     else {
         if (key === 'wzVar') {
@@ -129,7 +191,7 @@ md.genItemAs = function(model, asWzElement, ctx, callback) {
         }
         model.wzElement = save;
         return callback(null, null);
-    });
+    })
 };
 md.genItems = function(statements, ctx, options, callback) {
     if (typeof callback === 'undefined') {
@@ -159,8 +221,8 @@ md.genItems = function(statements, ctx, options, callback) {
             first = false;
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
-            });
-        });
+            })
+        })
     }
     repeater_1(from);
     function next_1() {

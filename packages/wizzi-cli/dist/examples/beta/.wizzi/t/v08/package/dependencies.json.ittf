@@ -77,8 +77,8 @@ $group
     
     $if wzCtx.Build.useSocketIO
         socket.io-client "^2.2.0"
-    $if wzCtx.Build.useReact && wzCtx.Build.react.styledComponents
-        styled-components "^3.3.3"
+    $if wzCtx.Build.useReact && wzCtx.Build.useStyledComponents
+        styled-components "^5.2.1"
     $if wzCtx.Build.useUnderscore
         underscore "^1.9.1"
     $if wzCtx.Build.useValidateJs

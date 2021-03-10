@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\module.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\module.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -46,8 +47,8 @@ md.load = function(cnt) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -69,7 +70,7 @@ md.load = function(cnt) {
             }
             ctx.w('}');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.typeTypeAlias = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -91,12 +92,12 @@ md.load = function(cnt) {
                     }
                     ctx.w(';');
                     return callback(null, null);
-                });
+                })
             }
             else {
                 return callback(ctx.error(':type typeTypeAlias must have one children. found: ' + model.statements.length, model));
             }
-        });
+        })
     };
     cnt.stm.typeFunctionDeclare = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -129,13 +130,13 @@ md.load = function(cnt) {
                         ctx.w(';');
                         // log 'typeFunctionDeclare exit 1'
                         return callback(null, null);
-                    });
+                    })
                 }
                 else {
                     // log 'typeFunctionDeclare exit 2'
                     return callback(null, null);
                 }
-            });
-        });
+            })
+        })
     };
 };

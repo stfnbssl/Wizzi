@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\tests\js\model_js.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\tests\js\model_js.js.ittf
 */
 'use strict';
 
@@ -43,8 +44,8 @@ describe("model js", function() {
                 expect(artifactText).to.be.a('string');
                 expect(artifactText).to.be(info.expectedContent);
                 done();
-            });
-        });
+            })
+        })
     });
     it("should load a mixed js ittf document", function(done) {
         var info = getTestModelInfo('js', 'mixed');
@@ -65,8 +66,8 @@ describe("model js", function() {
                 expect(artifactText).to.be.a('string');
                 expect(artifactText).to.be(info.expectedContent);
                 done();
-            });
-        });
+            })
+        })
     });
 });
 
@@ -93,7 +94,7 @@ function getTestModelInfo(schemaName, modelName) {
             expectedPath: expectedPath, 
             expectedContent: expectedContent, 
             writeResult: function(content) {
-                file.write(path.join(__dirname, 'ittf', modelName + '.' + schemaName + '.result'), content);
+                file.write(path.join(__dirname, 'ittf', modelName + '.' + schemaName + '.result'), content)
             }
         };
 }

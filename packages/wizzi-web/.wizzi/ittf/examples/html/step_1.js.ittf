@@ -17,9 +17,10 @@ module
 
         const example_ittfs
             [
-                @ 'basic'
-                @ 'ittfprint'
-                @ 'newfeat'
+                $$ @ 'basic'
+                $$ @ 'ittfprint'
+                $$ @ 'newfeat'
+                @ 'keyframes'
 
    		_ async.mapSeries
 			@ example_ittfs

@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\debug.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\debug.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -50,7 +51,7 @@ md.load = function(cnt) {
                 value = ss[0];
             }
         }
-        ctx.w('console.log("' + name + '" + " " + util.inspect(' + value + ', { depth: null } ))');
+        ctx.w('console.log("' + name + '" + " " + util.inspect(' + value + ', { depth: null } ))')
         return callback(null, null);
     };
     cnt.stm.debug = function(model, ctx, callback) {
@@ -107,13 +108,13 @@ md.load = function(cnt) {
             item = model.wzName.split(',')[i];
             var nv = lineParser.parseNameValueRaw(item, model);
             if (nv.value()) {
-                sw.push('chalk.' + nv.name() + '(' + nv.value() + ')');
+                sw.push('chalk.' + nv.name() + '(' + nv.value() + ')')
             }
             else {
-                sw.push('chalk.red(' + nv.name() + ')');
+                sw.push('chalk.red(' + nv.name() + ')')
             }
         }
-        ctx.w('console.log(' + sw.join(', ') + ')');
+        ctx.w('console.log(' + sw.join(', ') + ')')
         return callback(null, null);
     };
 };

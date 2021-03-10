@@ -320,6 +320,10 @@
 	e speak : property
 	e speech-rate : property
 	e stress : property
+    e stroke : property
+    e stroke-dasharray : property
+    e stroke-dashoffset : property
+    e stroke-linecap : property
     e stroke-width : property
 	e tab-size : property
 	e table-layout : property

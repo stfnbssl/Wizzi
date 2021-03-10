@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\function.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\function.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -51,8 +52,8 @@ md.load = function(cnt) {
                 ctx.deindent();
                 ctx.write('}');
                 return callback(null, null);
-            });
-        });
+            })
+        })
     };
     cnt.stm.xfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -138,8 +139,8 @@ md.load = function(cnt) {
                     ctx.w('');
                 }
                 return callback(null, null);
-            });
-        });
+            })
+        })
     };
     cnt.stm.iife = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -154,7 +155,7 @@ md.load = function(cnt) {
             model.statements.splice(model.statements.length - 1, 1);
         }
         if (model.unary_prefix) {
-            ctx.write(model.unary_prefix);
+            ctx.write(model.unary_prefix)
         }
         ctx.w('(function(' + model.paramNames.join(', ') + ') {');
         // constraints
@@ -178,14 +179,14 @@ md.load = function(cnt) {
                         }
                         ctx.w(';');
                         return callback(null, null);
-                    });
+                    })
                 }
                 else {
                     ctx.w('();');
                     return callback(null, null);
                 }
-            });
-        });
+            })
+        })
     };
     cnt.stm.generatorfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -201,7 +202,7 @@ md.load = function(cnt) {
             }
             ctx.__aster = null;
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.asyncfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -217,7 +218,7 @@ md.load = function(cnt) {
             }
             ctx.__aster = null;
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.xyield = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -232,7 +233,7 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         ctx.write('yield ');
-        cnt.genItems(model.statements, ctx, callback);
+        cnt.genItems(model.statements, ctx, callback)
     };
     cnt.stm.xawait = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -259,7 +260,7 @@ md.load = function(cnt) {
                     ctx.w(u.semicolon(name));
                 }
                 return callback(null, null);
-            });
+            })
         }
     };
     cnt.stm.asyncarrowfunction = function(model, ctx, callback) {
@@ -270,7 +271,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.asyncarrowfunction. Got: ' + callback);
         }
         model.xasync = true;
-        cnt.stm.arrowfunction(model, ctx, callback);
+        cnt.stm.arrowfunction(model, ctx, callback)
     };
     cnt.stm.arrowfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -303,22 +304,22 @@ md.load = function(cnt) {
                     }
                     ctx.arrowFunctionNoGraphs = save1;
                     return callback(null, null);
-                });
-            });
+                })
+            })
         }
         else if (u.onlyChildIs(model, 'callOnValue') || u.onlyChildIsHtmlElement(model)) {
             ctx.write(async_str + '(' + model.paramNames.join(', ') + ') => ');
             // TODO what if it needs generateParamConstraints ?
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, callback);
+            }, callback)
         }
         else if (u.onlyChildIs(model, 'arrowfunction')) {
             console.log("u.onlyChildIs(model, 'arrowfunction')", model.statements[0].paramNames);
             ctx.write(async_str + '(' + model.paramNames.join(', ') + ') => ');
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, callback);
+            }, callback)
         }
         else {
             var save1 = ctx.arrowFunctionNoGraphs;
@@ -339,7 +340,7 @@ md.load = function(cnt) {
                 }
                 ctx.arrowFunctionNoGraphs = save1;
                 return callback(null, null);
-            });
+            })
         }
     };
     cnt.stm.xreturn = function(model, ctx, callback) {
@@ -364,7 +365,7 @@ md.load = function(cnt) {
                 ctx.w(';');
             }
             return callback(null, null);
-        });
+        })
     };
     function generateParamConstraints(methodName, parameters, hasCallback, hasOptionsCallback, ctx, callback) {
         if (hasCallback) {
@@ -610,7 +611,7 @@ md.load = function(cnt) {
                 paramName: candidate.prm.wzName, 
                 paramType: prmTypeFromElement(candidate.prm.wzElement), 
                 accessPath: candidate.accessPath
-            });
+            })
             candidate.isRequired = true;
             if (candidate.prm.isRequired) {
                 requireParents(candidate);
@@ -626,7 +627,7 @@ md.load = function(cnt) {
                     paramName: ancestor.prm.wzName, 
                     paramType: prmTypeFromElement(ancestor.prm.wzElement), 
                     accessPath: ancestor.accessPath
-                });
+                })
                 ancestor.isRequired = true;
             }
             ancestor = ancestor.parent;

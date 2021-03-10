@@ -1,0 +1,103 @@
+module
+
+    $
+        var md = {
+            name: "WidgetsDemo",
+            props: [
+                {
+                    name: "title",
+                    type: "string"
+                }
+            ]
+        }
+
+    import 
+        @ ThemeProvider
+        from 'styled-components'
+    import
+        @ defaultTheme
+        from '../../theme/styled'
+    import
+        @ Button
+        from './button'
+    import
+        @ ThemeButton
+        @ VARIANT
+        from './themebutton'
+    import
+        @ Pulsar
+        from './pulsar'
+    import
+        @ Rotate
+        from './rotate'
+    import
+        @ InputRef
+        from './inputref'
+    import
+        @ Dash
+        from './dash'
+    import
+        @ Card
+        from './card'
+    import
+        @ Tick
+        from './tick'
+
+    v08/ts/react/function(&md)
+        < ThemeProvider 
+            @ theme {defaultTheme}
+            aside 
+                h2 
+                    + {title}
+                h4 widget: Card
+                div
+                    < Card 
+                        @ title "Welcome!"
+                        @ paragraph "To this example of a Card widget"
+                h4 widget: Tick
+                div
+                    < Tick
+                h4 widget: Button
+                div
+                    < Button
+                        @ active {true}
+                        @ icon https://material.io/resources/icons/static/ic_material_192px_light.svg
+                        @ theme dark
+                        @ onClick  
+                            =>
+                                _ alert('Hello')
+                        + Give me five
+                h5 widget: ThemeButton
+                div
+                    < ThemeButton
+                        + Theme button
+                    < ThemeButton
+                        @ variant {VARIANT.SECONDARY}
+                        + Theme button
+
+                h5 widget: Pulsar
+                div
+                    < Pulsar
+                        @ diameter {100}
+
+
+                h5 widget: Dash
+                div
+                    < Dash
+                        @ radius {50}
+                        @ color 'yellow'
+                        @ trackColor 'rgba(0,0,0,.2)'
+                        @ width {4}
+                        @ duration '1s'
+
+                h5 widget: Rotate
+                div
+                    < Rotate
+                        @ speed {100}
+                        + &lt; 💅🏾 &gt;
+                    
+                h5 widget: InputRef
+                div
+                    < InputRef
+
+

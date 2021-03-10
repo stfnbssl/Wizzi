@@ -14,21 +14,23 @@
 			param callback
 			_ model.get_css
 				f_cb( cssModel )
-					# log myname, 'cssModel.rules', cssModel.rules
-					if cssModel.rules.length == 0 && verify.isEmpty(cssModel.wzName) == false
+					# log myname, 'cssModel.rules', cssModel.rules, Object.keys(cssModel)
+					$* VIA
+                    if cssModel.rules.length == 0 && verify.isEmpty(cssModel.wzName) == false
 						# log myname, 1
 						_ ctx.w('<link href="' + cssModel.wzName + '" rel="stylesheet" />')
 						_ callback
 					else
-						# log myname, 2
-						_ md.generateCssArtifact
-							@ ctx
-							@ cssModel
-							f_cb( artifactText )
-								_ ctx.indent
-								_ ctx.writeAligned(artifactText)
-								_ ctx.deindent
-								_ callback
+                    *$
+                    # log myname, 2
+                    _ md.generateCssArtifact
+                        @ ctx
+                        @ cssModel
+                        f_cb( artifactText )
+                            _ ctx.indent
+                            _ ctx.writeAligned(artifactText)
+                            _ ctx.deindent
+                            _ callback
 
 	set md.generateCssArtifact
 		function
@@ -39,10 +41,11 @@
 			# log myname, 'cssModel', cssModel, 'cssModel.rules', cssModel.rules
 			_ ctx.wizziFactory.generateArtifact
 				@ cssModel
-				@ 'generated from html model'
+				@ 'generated from js model'
 				@ 'css/document'
 				{
 					@ forHtmlStyle true
+                    @ noGeneratorComments true
 				f_cb( artifactText )
 					# log myname, 'css artifactText', artifactText
 					return

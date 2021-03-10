@@ -36,9 +36,10 @@ function createWizziFactory(globalContext, callback) {
     wizzi.fsnoaclFactory({
         plugins: {
             items: [
-                './index'
+                './wizzi-js/dist/index', 
+                './wizzi-web/dist/index'
             ], 
-            pluginsBaseFolder: path.resolve(__dirname, '..', '..')
+            pluginsBaseFolder: path.resolve(__dirname, '..', '..', '..', '..')
         }, 
         globalContext: globalContext || {}
     }, callback)
@@ -133,8 +134,7 @@ var css_step_1 = function(step_callback) {
     heading1('EXAMPLE')
     heading2('basic css generations')
     const example_ittfs = [
-        'basic', 
-        'svg'
+        'keyframes'
     ];
     async.mapSeries(example_ittfs, function(ittf, callback) {
         console.log('======================================================================================');

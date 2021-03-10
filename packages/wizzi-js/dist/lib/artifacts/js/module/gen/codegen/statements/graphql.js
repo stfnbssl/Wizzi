@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\graphql.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\graphql.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -49,7 +50,7 @@ md.load = function(cnt) {
                 ctx.write("`");
                 ctx.isGraphql = false;
                 return callback(null, null);
-            });
+            })
         }
         else {
             ctx.w("graphql`");
@@ -66,7 +67,7 @@ md.load = function(cnt) {
                 ctx.w("`");
                 ctx.isGraphql = false;
                 return callback(null, null);
-            });
+            })
         }
     };
     cnt.stm.graphqlMutation = function(model, ctx, callback) {
@@ -110,12 +111,12 @@ md.load = function(cnt) {
                 }
                 ctx.isNamedCallParam = false;
                 return callback(null, null);
-            });
+            })
         }
         else {
             var p = lineParser.parseNameValueRaw(model.wzName, model);
             ctx.write(p.name() + ': ');
-            ctx.write(p.value());
+            ctx.write(p.value())
             ctx.isNamedCallParam = false;
             return callback(null, null);
         }

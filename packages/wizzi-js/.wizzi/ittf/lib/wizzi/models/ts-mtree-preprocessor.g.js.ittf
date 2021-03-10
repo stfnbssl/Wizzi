@@ -61,4 +61,7 @@
 		elif node.n === 'svg'
 			set state.htmlOn = true
 			set state.svgOn = true
+        
+        $include mtree_preprocessor_styled
+
 		return false

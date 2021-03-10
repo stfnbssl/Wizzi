@@ -18,13 +18,16 @@
                     react-redux-firebase "^2.2.6"
         ${'$'}if wzCtx.Build.react.useRouter
             react-router-dom "^5.2.0"
+        ${'$'}if wzCtx.Build.useReactCreateApp
+            react-scripts "^4.0.3"
         ${'$'}if wzCtx.Build.react.useMaterialUI
             ${'$'}if wzCtx.Build.react.materialUI.useAutocomplete
                 ${'$'}if wzCtx.Build.react.materialUI.autocomplete.useReactSelect
                     react-select "^3.0.3"
         ${'$'}if wzCtx.Build.react.transition
             react-transition-group "^2.4.0"
-        recompose "^0.30.0"
+        ${'$'}if !!wzCtx.Build.useReactCreateApp == false
+            recompose "^0.30.0"
 
     ${'$'}if wzCtx.Build.useGatsby
         react "^16.13.1"

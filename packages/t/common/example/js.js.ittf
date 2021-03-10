@@ -28,16 +28,23 @@ $group
 
     $append plugins
         [ items
-            @ './index'
+            @ './wizzi-js/dist/index'
+            @ './wizzi-web/dist/index'
         @ pluginsBaseFolder
             _ path.resolve
                 @ __dirname
                 $if opt.folderLevel == 1
                     @ '..'
+                    @ '..'
+                    @ '..'
                 $if opt.folderLevel == 2
                     @ '..'
                     @ '..'
+                    @ '..'
+                    @ '..'
                 $if opt.folderLevel == 3
+                    @ '..'
+                    @ '..'
                     @ '..'
                     @ '..'
                     @ '..'

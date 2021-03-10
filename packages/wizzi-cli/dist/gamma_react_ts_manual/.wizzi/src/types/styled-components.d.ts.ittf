@@ -1,0 +1,28 @@
+module
+    
+    import 'styled-components'
+    
+    :interface IPalette
+        :p main
+            :string 
+        :p contrastText
+            :string 
+    
+    :declare 
+        :module 'styled-components'
+            export 
+                :interface DefaultTheme
+                    :p borderRadius
+                        :string 
+                    :p palette
+                        :{ 
+                            :p common
+                                :{ 
+                                    :p black
+                                        :string 
+                                    :p white
+                                        :string 
+                            :p primary
+                                :ref IPalette
+                            :p secondary
+                                :ref IPalette

@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\types.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\types.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -92,7 +93,7 @@ md.load = function(cnt) {
                 ctx.write('[]');
                 // log 'typeArray item.wzElement exit', item.wzElement
                 return callback(null, null);
-            });
+            })
         }
         else {
             // TODO
@@ -139,8 +140,8 @@ md.load = function(cnt) {
                 // log 1
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -219,7 +220,7 @@ md.load = function(cnt) {
             if (!cnt.stm[item.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
             }
-            cnt.stm[item.wzElement](item, ctx, callback);
+            cnt.stm[item.wzElement](item, ctx, callback)
         }
         else if (kind === 'typeParameterDecl') {
             ctx.write(' extends ' + model.wzName);
@@ -247,8 +248,8 @@ md.load = function(cnt) {
                         }
                         process.nextTick(function() {
                             repeater_1(index_1 + 1);
-                        });
-                    });
+                        })
+                    })
                 }
                 repeater_1(0);
                 function next_1() {
@@ -278,7 +279,7 @@ md.load = function(cnt) {
             if (!cnt.stm[item.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
             }
-            cnt.stm[item.wzElement](item, ctx, callback);
+            cnt.stm[item.wzElement](item, ctx, callback)
         }
         else {
             return callback(ctx.error(':param typeParameterInst not managed. children: ' + model.statements.length, model));
@@ -323,10 +324,10 @@ md.load = function(cnt) {
                     if (!cnt.stm[item.wzElement]) {
                         console.log('ts.module.gen.typeElse.wzElement not managed', item.wzElement);
                     }
-                    cnt.stm[item.wzElement](item, ctx, callback);
-                });
-            });
-        });
+                    cnt.stm[item.wzElement](item, ctx, callback)
+                })
+            })
+        })
     };
     cnt.stm.typeInfer = function(model, ctx, kind, callback) {
         if (typeof callback === 'undefined') {
@@ -341,7 +342,7 @@ md.load = function(cnt) {
         if (!cnt.stm[item.wzElement]) {
             console.log('ts.module.gen.typeThen.wzElement not managed', item.wzElement);
         }
-        cnt.stm[item.wzElement](item, ctx, callback);
+        cnt.stm[item.wzElement](item, ctx, callback)
     };
     cnt.stm.typeParenthesized = function(model, ctx, kind, callback) {
         if (typeof callback === 'undefined') {
@@ -363,7 +364,7 @@ md.load = function(cnt) {
                 }
                 ctx.write(')');
                 return callback(null, null);
-            });
+            })
         }
         else {
             return callback(ctx.error(':paren typeParenthesized not managed. children: ' + model.statements.length, model));
@@ -394,8 +395,8 @@ md.load = function(cnt) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -411,7 +412,8 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeEnum. Got: ' + callback);
         }
-        ctx.write('enum ' + model.wzName + ' {');
+        ctx.w('enum ' + model.wzName + ' {');
+        ctx.indent();
         var len_1 = model.statements.length;
         function repeater_1(index_1) {
             if (index_1 === len_1) {
@@ -419,7 +421,7 @@ md.load = function(cnt) {
             }
             var item_1 = model.statements[index_1];
             if (index_1 > 0) {
-                ctx.write(' , ');
+                ctx.w(' , ');
             }
             console.log('typeEnum.item_1.wzElement', item_1.wzElement, item_1.wzName);
             cnt.genItem(item_1, ctx, (err, notUsed) => {
@@ -428,11 +430,13 @@ md.load = function(cnt) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
+            ctx.deindent();
+            ctx.w();
             ctx.w('}');
             return callback(null, null);
         }
@@ -451,7 +455,7 @@ md.load = function(cnt) {
             if (!cnt.stm[item.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
             }
-            cnt.stm[item.wzElement](item, ctx, callback);
+            cnt.stm[item.wzElement](item, ctx, callback)
         }
         else {
             return callback(ctx.error(':{ typeReturn must have one children. found: ' + model.statements.length, model));
@@ -470,10 +474,10 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         else if (model.statements.length == 1) {
-            cnt.genItem(model.statements[0], ctx, callback);
+            cnt.genItem(model.statements[0], ctx, callback)
         }
         else if (model.statements.length > 1) {
-            cnt.genItems(model.statements, ctx, callback);
+            cnt.genItems(model.statements, ctx, callback)
         }
         else {
             return callback(ctx.error(':{ typeReturn must have wzName or children. found: ' + model.statements.length, model));
@@ -507,8 +511,8 @@ md.load = function(cnt) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -530,7 +534,7 @@ md.load = function(cnt) {
             if (!cnt.stm[atype.wzElement]) {
                 console.log('ts.module.gen.typeParameterDecl.item.wzElement not managed', atype.wzElement);
             }
-            cnt.stm[atype.wzElement](atype, ctx, callback);
+            cnt.stm[atype.wzElement](atype, ctx, callback)
         }
         else {
             return callback(null, null);
@@ -560,8 +564,8 @@ md.load = function(cnt) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -592,8 +596,8 @@ md.load = function(cnt) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -619,7 +623,7 @@ md.load = function(cnt) {
                 }
                 ctx.write('!');
                 return callback(null, null);
-            });
+            })
         }
     };
     cnt.stm.typePredicate = function(model, ctx, kind, callback) {
@@ -636,7 +640,7 @@ md.load = function(cnt) {
             if (!cnt.stm[item.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
             }
-            cnt.stm[item.wzElement](item, ctx, callback);
+            cnt.stm[item.wzElement](item, ctx, callback)
         }
         else {
             return callback(ctx.error(':predicate typePredicate must have one children. found: ' + model.statements.length, model));
@@ -677,8 +681,8 @@ md.load = function(cnt) {
                     }
                     ctx.write(']');
                     return callback(null, null);
-                });
-            });
+                })
+            })
         }
         else {
             return callback(ctx.error(':mapped typeMapped must have two children. found: ' + model.statements.length, model));
@@ -693,7 +697,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeIndex. Got: ' + callback);
         }
         var atype = u.extractTSSimpleType(model);
-        u.genAccessorsAndExtra(model, ctx);
+        u.genAccessorsAndExtra(model, ctx)
         ctx.write('[');
         u.genTSParams(model, ctx, cnt, (err, notUsed) => {
             if (err) {
@@ -712,12 +716,12 @@ md.load = function(cnt) {
                     }
                     ctx.w(';');
                     return callback(null, null);
-                });
+                })
             }
             else {
                 return callback(null, null);
             }
-        });
+        })
     };
     cnt.stm.typeAs = function(model, ctx, kind, callback) {
         if (typeof callback === 'undefined') {
@@ -736,7 +740,7 @@ md.load = function(cnt) {
             if (!cnt.stm[atype.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', atype.wzElement);
             }
-            cnt.stm[atype.wzElement](atype, ctx, callback);
+            cnt.stm[atype.wzElement](atype, ctx, callback)
         }
         else {
             return callback(ctx.error('typeAs must have a type.', model));
@@ -777,8 +781,8 @@ md.load = function(cnt) {
                 if (!cnt.stm[item.wzElement]) {
                     console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
                 }
-                cnt.stm[item.wzElement](item, ctx, callback);
-            });
+                cnt.stm[item.wzElement](item, ctx, callback)
+            })
         }
         else {
             return callback(ctx.error(':mapped typeMapped must have two children. found: ' + model.statements.length, model));
@@ -809,14 +813,14 @@ md.load = function(cnt) {
                         if (err) {
                             return callback(err);
                         }
-                        typeArrowFunction_close(model, ctx, atype, callback);
-                    });
+                        typeArrowFunction_close(model, ctx, atype, callback)
+                    })
                 }
                 else {
-                    typeArrowFunction_close(model, ctx, atype, callback);
+                    typeArrowFunction_close(model, ctx, atype, callback)
                 }
-            });
-        });
+            })
+        })
     };
     function typeArrowFunction_close(model, ctx, atype, callback) {
         if (typeof callback === 'undefined') {
@@ -831,11 +835,11 @@ md.load = function(cnt) {
                 if (err) {
                     return callback(err);
                 }
-                cnt.genItems(model.statements, ctx, callback);
-            });
+                cnt.genItems(model.statements, ctx, callback)
+            })
         }
         else {
-            cnt.genItems(model.statements, ctx, callback);
+            cnt.genItems(model.statements, ctx, callback)
         }
     }
     cnt.stm.typeExportAssignment = function(model, ctx, callback) {
@@ -898,13 +902,13 @@ md.load = function(cnt) {
                     }
                     ctx.w(';');
                     return callback(null, null);
-                });
+                })
             }
             else {
                 ctx.w(';');
                 return callback(null, null);
             }
-        });
+        })
     };
     cnt.stm.typeCTor = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -949,10 +953,10 @@ md.load = function(cnt) {
                     }
                     ctx.write(' : ');
                     item = model.typeElse.statements[0];
-                    cnt.stm[item.wzElement](item, ctx, callback);
-                });
-            });
-        });
+                    cnt.stm[item.wzElement](item, ctx, callback)
+                })
+            })
+        })
     };
     function typeConditional_extends(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -961,7 +965,7 @@ md.load = function(cnt) {
         if (model.typeExtends) {
             ctx.write(' extends ');
             var item = model.typeExtends.statements[0];
-            cnt.stm[item.wzElement](item, ctx, callback);
+            cnt.stm[item.wzElement](item, ctx, callback)
         }
         else {
             return callback(null, null);
@@ -983,8 +987,8 @@ md.load = function(cnt) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         repeater_1(0);
         function next_1() {

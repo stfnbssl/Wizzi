@@ -3,6 +3,8 @@ module wizzi.js.artifacts.module.gen.codegen.statement
 	+
 	var myname = 'wizzi.js.artifacts.module.gen.codegen.statement'
 	+
+    var verify = require('wizzi-utils').verify
+	+
 	var zvar = require('./statements/var')
 	var objects = require('./statements/objects')
 	var xfunction = require('./statements/function')
@@ -85,18 +87,7 @@ module wizzi.js.artifacts.module.gen.codegen.statement
 			
 			var key = model.wzElement
 
-			if ['styleJsx'].indexOf(key) >= 0 && model.get_css
-				var global = model.global ? ' global' : ''
-				_ ctx.write("<style jsx")
-				if model.global
-					_ ctx.write(" global")
-				_ ctx.w(">{`")
-				_ include_writers.writeIncludeCss
-					@ ctx
-					@ model
-					f_cb()
-						_ ctx.w("`}</style>")
-						r_cb()
+            $include common/statement_include_writers
 			else
 				if key === 'wzVar'
 					set key = 'xvar'

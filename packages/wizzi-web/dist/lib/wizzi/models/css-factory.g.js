@@ -1,7 +1,7 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-core\dist\node_modules\wizzi-legacy-v5\lib\artifacts\js\module\gen\main.js
     primary source IttfDocument: c:\my\wizzi\stfnbssl\wizzi\packages\wizzi-core\dist\lib\artifacts\wfschema\factory\gen\ittf\wfschema-factory.js.ittf
-    utc time: Mon, 15 Feb 2021 14:21:41 GMT
+    utc time: Wed, 10 Mar 2021 12:58:37 GMT
 */
 'use strict';
 /**
@@ -11,6 +11,7 @@ var path = require('path');
 var util = require('util');
 var _ = require('lodash');
 var stringify = require('json-stringify-safe');
+var cssmTreePreProcessor = require('./css-mtree-preprocessor.g');
 var cssschema = require('./css-model.g');
 var md = module.exports = {};
 //
@@ -171,6 +172,7 @@ md.createLoadModel = function(wizziObject) {
                         var ittfDumpPath = path.join(path.dirname(ittfDocumentUri), '_debug', path.basename(ittfDocumentUri) + '.ittf.json');
                         file.write(ittfDumpPath, stringify(mTree, null, 2));
                     }
+                    mTree = cssmTreePreProcessor(mTree, loadContext);
                     loadModelFromMTree(mTree, ittfDocumentUri, wizziModelRequest, {
                         wizziFactory: wizziFactory
                     }, callback);

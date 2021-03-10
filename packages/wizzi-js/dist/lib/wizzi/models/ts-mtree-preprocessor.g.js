@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\wizzi\models\ts-mtree-preprocessor.g.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\wizzi\models\ts-mtree-preprocessor.g.js.ittf
 */
 'use strict';
 // Those of facebook react
@@ -97,6 +98,49 @@ function preprocessNode(node, state) {
     else if (node.n === 'svg') {
         state.htmlOn = true;
         state.svgOn = true;
+    }
+    else if (node.n === 'styled' || node.n === 'keyframes') {
+        if (node.children.length == 1 && node.children[0].n == "css") {
+            return false;
+        }
+        var arrow;
+        var savedchildren = [];
+        var i, i_items=node.children, i_len=node.children.length, child;
+        for (i=0; i<i_len; i++) {
+            child = node.children[i];
+            if (child.n == '=>') {
+                arrow = child;
+            }
+            else {
+                savedchildren.push(child)
+            }
+        }
+        var cssnode = {
+            n: "css", 
+            v: "", 
+            r: node.r, 
+            c: node.c, 
+            s: node.s, 
+            u: node.u, 
+            children: [
+                {
+                    n: (node.n === 'keyframes' ? "keyframes" : "<"), 
+                    v: "--styled--", 
+                    r: node.r, 
+                    c: node.c, 
+                    s: node.s, 
+                    u: node.u, 
+                    children: savedchildren
+                }
+            ]
+        };
+        node.children = arrow ? [arrow, cssnode] : [cssnode];
+        var i, i_items=savedchildren, i_len=savedchildren.length, child;
+        for (i=0; i<i_len; i++) {
+            child = savedchildren[i];
+            traverse(child, state)
+        }
+        return true;
     }
     return false;
 }

@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\exceptions.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\exceptions.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -42,7 +43,7 @@ md.load = function(cnt) {
             }
             ctx.w('} ');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.xcatch = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -60,7 +61,7 @@ md.load = function(cnt) {
             }
             ctx.w('} ');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.xfinally = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -78,7 +79,7 @@ md.load = function(cnt) {
             }
             ctx.w('} ');
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.xthrow = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -97,7 +98,7 @@ md.load = function(cnt) {
                 }
                 ctx.w(';');
                 return callback(null, null);
-            });
+            })
         }
         else {
             ctx.w('throw ' + model.wzName + u.semicolon(model.wzName));

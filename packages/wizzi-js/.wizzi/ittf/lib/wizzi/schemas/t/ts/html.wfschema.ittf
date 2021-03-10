@@ -40,21 +40,4 @@
 			type boolean
 			default true
 
-	e js : htmlelement
-	
-	e css : htmlelement
-	
-	e_tag(styleJsx, style-jsx , htmlelement)
-		a_flag( global
-		include css
-
-	e_tag(htmlParam, @param, htmlelement)
-
-	e_tag(htmlFilter, @filter, htmlelement)
-
-	e ready : statement
-		a kind
-			default jquery
-			restrict
-				enum jquery
-				enum window
+    $include common/html

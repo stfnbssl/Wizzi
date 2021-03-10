@@ -23,8 +23,12 @@ module
                 @ 'app.router'
                 @ 'app.main'
                 @ 'app.test'
-                *$
                 @ 'e2e'
+                @ 'styled'
+                @ 'types'
+                *$
+                @ 'styled'
+                @ 'keyframes'
 
    		_ async.mapSeries
 			@ example_ittfs

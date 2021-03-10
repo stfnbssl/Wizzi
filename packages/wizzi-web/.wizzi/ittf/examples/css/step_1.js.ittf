@@ -13,12 +13,15 @@ module
     common\example\web(&opt)
 
         _ heading2
-            @ 'basic css generations'     
+            @ 'basic css generations'
 
         const example_ittfs
             [
-                @ 'basic'
-                @ 'svg'
+                $$ @ 'basic'
+                $$ @ 'svg'
+                $$ @ 'styled'
+                $$ @ 'styled_js'
+                @ 'keyframes'
 
    		_ async.mapSeries
 			@ example_ittfs

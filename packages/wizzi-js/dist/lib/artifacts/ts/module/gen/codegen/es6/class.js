@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\class.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\class.js.ittf
 */
 'use strict';
 var u = require('../../../../../js/module/gen/codegen/util/stm');
@@ -9,7 +10,6 @@ var method = require('./method');
 var handler = require('./handler');
 var property = require('./property');
 var xget = require('./get');
-var html = require('./html');
 var md = module.exports = {};
 var myname = 'wizzi.js.artifacts.module.gen.codegen.es6.class';
 md.gen = function(model, ctx, callback) {
@@ -26,7 +26,7 @@ md.gen = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        u.genAccessorsAndExtra(model, ctx);
+        u.genAccessorsAndExtra(model, ctx)
         ctx.write('class ' + zclass);
         // log myname, zclass, model.extends
         u.genTSTypeParameters(model, ctx, statement, (err, notUsed) => {
@@ -54,12 +54,12 @@ md.gen = function(model, ctx, callback) {
                             ctx.deindent();
                             ctx.w('}');
                             return callback(null, null);
-                        });
-                    });
-                });
-            });
-        });
-    });
+                        })
+                    })
+                })
+            })
+        })
+    })
 };
 function classDecorators(model, ctx, callback) {
     if (typeof callback === 'undefined') {
@@ -84,13 +84,13 @@ function classDecorators(model, ctx, callback) {
                 ctx.w();
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         else {
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
-            });
+            })
         }
     }
     repeater_1(0);
@@ -118,7 +118,7 @@ function classImplements(model, ctx, callback) {
         ctx.write( item_1.wzName );
         process.nextTick(function() {
             repeater_1(index_1 + 1);
-        });
+        })
     }
     repeater_1(0);
     function next_1() {
@@ -146,7 +146,7 @@ function classSuper(model, ctx, callback) {
                     ctx.write(item_1.wzName);
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
+                    })
                 }
                 else if (item_1.statements.length == 1) {
                     statement.genItem(item_1.statements[0], ctx, (err, notUsed) => {
@@ -155,14 +155,14 @@ function classSuper(model, ctx, callback) {
                         }
                         process.nextTick(function() {
                             repeater_1(index_1 + 1);
-                        });
-                    });
+                        })
+                    })
                 }
                 else {
                     ctx.write('x');
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
+                    })
                 }
             }
             repeater_1(0);
@@ -187,7 +187,7 @@ function classCTor(model, ctx, callback) {
     var zsuper = model.super,
         ctor = model.findCtor();
     if (ctor) {
-        u.genAccessorsAndExtra(ctor, ctx);
+        u.genAccessorsAndExtra(ctor, ctx)
         ctx.write('constructor');
         u.genTSTypeParameters(ctor, ctx, statement, (err, notUsed) => {
             if (err) {
@@ -201,9 +201,9 @@ function classCTor(model, ctx, callback) {
                 ctx.write(')');
                 ctx.w(' {');
                 ctx.indent();
-                classCTor_end(model, ctx, callback);
-            });
-        });
+                classCTor_end(model, ctx, callback)
+            })
+        })
     }
     else {
         return callback(null, null);
@@ -228,7 +228,7 @@ function classCTor_end(model, ctx, callback) {
             ctx.deindent();
             ctx.w('}');
             return callback(null, null);
-        });
+        })
     }
     else if (zsuper) {
         ctx.deindent();
@@ -267,9 +267,6 @@ function classMembers(model, ctx, callback) {
         else if (item_1.wzElement === 'arrowfunction') {
             generator = handler;
         }
-        else if (item_1.wzElement === 'html') {
-            generator = html;
-        }
         else if (item_1.wzElement === 'property' || item_1.wzElement === 'p') {
             generator = property;
         }
@@ -286,8 +283,8 @@ function classMembers(model, ctx, callback) {
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
-            });
+                })
+            })
         }
         else {
             if (done == false) {
@@ -297,13 +294,13 @@ function classMembers(model, ctx, callback) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             else {
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
+                })
             }
         }
     }

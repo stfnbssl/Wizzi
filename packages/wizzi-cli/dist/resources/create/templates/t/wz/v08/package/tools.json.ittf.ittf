@@ -1,5 +1,12 @@
 $group
     ---
+    ${'$'}if wzCtx.Build.useLint
+        { eslintConfig
+            [ extends
+                "react-app" 
+                ${'$'}if wzCtx.Build.useJest
+                    "react-app/jest" 
+    ---
     ${'$'}if wzCtx.Build.useLint && wzCtx.Build.lint.useHusky
         { husky
             { hooks

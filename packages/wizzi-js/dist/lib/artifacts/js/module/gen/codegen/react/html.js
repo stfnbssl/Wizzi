@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\react\html.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\react\html.js.ittf
 */
 'use strict';
 var u = require('../util/stm');
@@ -37,8 +38,8 @@ md.htmlelement = function(cnt, model, tag, text, ctx, attrs, callback) {
             // log 'exit from react/html *****************', tag
             // @ callback
             return callback(null, null);
-        });
-    });
+        })
+    })
 };
 function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
     ctx.indent();
@@ -56,8 +57,8 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
             }
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
-            });
-        });
+            })
+        })
     }
     repeater_1(0);
     function next_1() {
@@ -77,7 +78,7 @@ function htmlelement_attribute(cnt, a, ctx, callback) {
             }
             ctx.write('}');
             return callback(null, null);
-        });
+        })
     }
     else if (a.value.length || a.value.length == 0) {
         if (a.value.length == 0) {
@@ -119,5 +120,5 @@ function htmlelement_end(cnt, model, ctx, tag, text, callback) {
             }
         }
         return callback(null, null);
-    });
+    })
 }

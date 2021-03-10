@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\function.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\function.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -57,8 +58,8 @@ md.load = function(cnt) {
                 ctx.deindent();
                 ctx.write('}');
                 return callback(null, null);
-            });
-        });
+            })
+        })
     };
     cnt.stm.xfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -101,14 +102,14 @@ md.load = function(cnt) {
                         if (err) {
                             return callback(err);
                         }
-                        xfunction_end(model, ctx, iife, callback);
-                    });
+                        xfunction_end(model, ctx, iife, callback)
+                    })
                 }
                 else {
-                    xfunction_end(model, ctx, iife, callback);
+                    xfunction_end(model, ctx, iife, callback)
                 }
-            });
-        });
+            })
+        })
     };
     function xfunction_end(model, ctx, iife, callback) {
         if (typeof callback === 'undefined') {
@@ -144,7 +145,7 @@ md.load = function(cnt) {
                 ctx.w('');
             }
             return callback(null, null);
-        });
+        })
     }
     cnt.stm.iife = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -159,7 +160,7 @@ md.load = function(cnt) {
             model.statements.splice(model.statements.length - 1, 1);
         }
         if (model.unary_prefix) {
-            ctx.write(model.unary_prefix);
+            ctx.write(model.unary_prefix)
         }
         ctx.write('(function(');
         u.genTSParams(model, ctx, cnt, (err, notUsed) => {
@@ -188,14 +189,14 @@ md.load = function(cnt) {
                         }
                         ctx.w(';');
                         return callback(null, null);
-                    });
+                    })
                 }
                 else {
                     ctx.w('();');
                     return callback(null, null);
                 }
-            });
-        });
+            })
+        })
     };
     cnt.stm.generatorfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -211,7 +212,7 @@ md.load = function(cnt) {
             }
             ctx.__aster = null;
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.asyncfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -227,7 +228,7 @@ md.load = function(cnt) {
             }
             ctx.__aster = null;
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.xyield = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -242,7 +243,7 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         ctx.write('yield ');
-        cnt.genItems(model.statements, ctx, callback);
+        cnt.genItems(model.statements, ctx, callback)
     };
     cnt.stm.xawait = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -269,7 +270,7 @@ md.load = function(cnt) {
                     ctx.w(u.semicolon(name));
                 }
                 return callback(null, null);
-            });
+            })
         }
     };
     cnt.stm.asyncarrowfunction = function(model, ctx, callback) {
@@ -280,7 +281,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.asyncarrowfunction. Got: ' + callback);
         }
         model.xasync = true;
-        cnt.stm.arrowfunction(model, ctx, callback);
+        cnt.stm.arrowfunction(model, ctx, callback)
     };
     cnt.stm.arrowfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -313,8 +314,8 @@ md.load = function(cnt) {
                     }
                     ctx.arrowFunctionNoGraphs = save1;
                     return callback(null, null);
-                });
-            });
+                })
+            })
         }
         else if (u.onlyChildIs(model, 'callOnValue') || u.onlyChildIsHtmlElement(model)) {
             ctx.write(async_str + '(');
@@ -326,8 +327,8 @@ md.load = function(cnt) {
                 // TODO what if it needs generateParams ?
                 cnt.genItems(model.statements, ctx, {
                     indent: true
-                }, callback);
-            });
+                }, callback)
+            })
         }
         else if (u.onlyChildIs(model, 'arrowfunction')) {
             ctx.write(async_str + '(');
@@ -338,8 +339,8 @@ md.load = function(cnt) {
                 ctx.write(') => ');
                 cnt.genItems(model.statements, ctx, {
                     indent: true
-                }, callback);
-            });
+                }, callback)
+            })
         }
         else {
             var save1 = ctx.arrowFunctionNoGraphs;
@@ -362,8 +363,8 @@ md.load = function(cnt) {
                     }
                     ctx.arrowFunctionNoGraphs = save1;
                     return callback(null, null);
-                });
-            });
+                })
+            })
         }
     };
     cnt.stm.xreturn = function(model, ctx, callback) {
@@ -388,7 +389,7 @@ md.load = function(cnt) {
                 ctx.w(';');
             }
             return callback(null, null);
-        });
+        })
     };
     function generateReturnType(model, ctx) {
         var rtype = u.extractTS(model, 'typeReturn');

@@ -1,0 +1,64 @@
+$group
+
+    $ 
+        var call = '(&md)';
+
+    ${'$'}
+        var md = {
+            name: "Button",
+            props: [
+                {
+                    name: "active",
+                    type: "boolean",
+                    optional: true
+                },
+                {
+                    name: "icon",
+                    type: "string"
+                },
+                {
+                    name: "children",
+                    type: "React.ReactNode"
+                },
+                {
+                    name: "onClick",
+                    type: "(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void"
+                }
+            ]
+        }
+
+    styled Button .button
+        position relative
+        border 0
+        outline 0
+        margin 0
+        height 30
+        padding 0 16px
+        appearance none
+        background-size 16
+        background-repeat no-repeat
+        background-position center right 8px
+        background-color
+            => props.active ? rgba(0, 0, 0, 0.1) : transparent
+        & :active
+            opacity
+                => props.light ? 0.5 : 0.3
+        @media min-width: 720px
+            padding 5px 32px 5px 8px
+            display
+                => props.label ? 'inline' : 'block'        
+    
+    v08/ts/react/function${call}
+        < Button 
+            @ onClick {onClick}
+            @ style
+                iif icon
+                    then
+                        { 
+                            @ backgroundImage
+                                `lit 
+                                    + url(
+                                    @ icon
+                                    + )
+                    else undefined
+            + {children}

@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\react.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\react.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -61,15 +62,15 @@ md.load = function(cnt) {
                     // log 'react.js 2 - render §§§§§§§§§§§§§§§§§§§§§§§§§§§§§'
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
             repeater_1(0);
             function next_1() {
                 // log 'react.js 3 - render §§§§§§§§§§§§§§§§§§§§§§§§§§§§§'
-                reactComponent_close(model, ctx, childrenInfo, callback);
+                reactComponent_close(model, ctx, childrenInfo, callback)
             }
-        });
+        })
     };
     function reactComponent_style(model, ctx, childrenInfo, callback) {
         if (typeof callback === 'undefined') {
@@ -88,7 +89,7 @@ md.load = function(cnt) {
                 ctx.w(");");
                 ctx.w();
                 return callback(null, null);
-            });
+            })
         }
         else {
             return callback(null, null);
@@ -109,13 +110,13 @@ md.load = function(cnt) {
                 model.wzElement = 'state';
                 ctx.w(';');
                 return callback(null, null);
-            });
+            })
         }
         else if (model.wzElement == 'ctor') {
             ctx.w('constructor(props) {');
             ctx.indent();
             ctx.w('super(props);');
-            writeMethodProps(model, ctx);
+            writeMethodProps(model, ctx)
             ctx.deindent();
             writeIndented(model.statements, ctx, cnt, function(err, notUsed) {
                 if (err) {
@@ -123,7 +124,7 @@ md.load = function(cnt) {
                 }
                 ctx.w('}');
                 return callback(null, null);
-            });
+            })
         }
         else if (model.wzElement == 'willMount') {
             writeMethod('componentWillMount', model, ctx, cnt, callback);
@@ -143,7 +144,7 @@ md.load = function(cnt) {
         else if (model.wzElement == 'didUpdate') {
             ctx.w('componentDidUpdate(prevProps, prevState) {');
             ctx.indent();
-            writeMethodProps(model, ctx);
+            writeMethodProps(model, ctx)
             ctx.deindent();
             writeIndented(model.statements, ctx, cnt, function(err, notUsed) {
                 if (err) {
@@ -151,12 +152,12 @@ md.load = function(cnt) {
                 }
                 ctx.w('}');
                 return callback(null, null);
-            });
+            })
         }
         else if (model.wzElement == 'willReceiveProps') {
             ctx.w('componentWillReceiveProps(nextProps) {');
             ctx.indent();
-            writeMethodProps(model, ctx);
+            writeMethodProps(model, ctx)
             ctx.deindent();
             writeIndented(model.statements, ctx, cnt, function(err, notUsed) {
                 if (err) {
@@ -164,7 +165,7 @@ md.load = function(cnt) {
                 }
                 ctx.w('}');
                 return callback(null, null);
-            });
+            })
         }
         else if (model.wzElement == 'render') {
             // log 'react.js - render §§§§§§§§§§§§§§§§§§§§§§§§§§§§§'
@@ -203,7 +204,7 @@ md.load = function(cnt) {
                 if (err) {
                     return callback(err);
                 }
-                writeMethodProps(model, ctx);
+                writeMethodProps(model, ctx)
                 ctx.deindent();
                 writeIndented(model.statements, ctx, cnt, function(err, notUsed) {
                     if (err) {
@@ -215,15 +216,15 @@ md.load = function(cnt) {
                     // TODO ???
                     ctx.__is_react_class = false;
                     return callback(null, null);
-                });
-            });
+                })
+            })
         }
         else if (model.wzElement == 'prop' || model.wzElement == 'style') {
             // already done
             return callback(null, null);
         }
         else {
-            cnt.genItem(model, ctx, callback);
+            cnt.genItem(model, ctx, callback)
         }
     }
     function reactComponent_close(model, ctx, childrenInfo, callback) {
@@ -244,7 +245,7 @@ md.load = function(cnt) {
                 if (open) {
                     ctx.w(',');
                 }
-                genReactPropType(p, ctx, cnt);
+                genReactPropType(p, ctx, cnt)
                 open = true;
             }
             if (open) {
@@ -311,7 +312,7 @@ md.load = function(cnt) {
                 // already done
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
+                })
             }
             else {
                 cnt.genItem(item_1, ctx, function(err, notUsed) {
@@ -320,8 +321,8 @@ md.load = function(cnt) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
         }
         repeater_1(0);
@@ -329,14 +330,14 @@ md.load = function(cnt) {
             ctx.__is_react_class = false;
             ctx.deindent();
             ctx.w('}');
-            writePropTypes(model, childrenInfo, ctx);
+            writePropTypes(model, childrenInfo, ctx)
             return callback(null, null);
         }
     };
     function writeMethod(name, model, ctx, cnt, callback) {
         ctx.w(name + '() {');
         ctx.indent();
-        writeMethodProps(model, ctx);
+        writeMethodProps(model, ctx)
         ctx.deindent();
         writeIndented(model.statements, ctx, cnt, function(err, notUsed) {
             if (err) {
@@ -344,7 +345,7 @@ md.load = function(cnt) {
             }
             ctx.w('}');
             return callback(null, null);
-        });
+        })
     }
     function writeIndented(statements, ctx, cnt, callback) {
         ctx.indent();
@@ -359,7 +360,7 @@ md.load = function(cnt) {
                 // done in writeMethodProps
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
-                });
+                })
             }
             else {
                 cnt.genItem(item_1, ctx, function(err, notUsed) {
@@ -368,8 +369,8 @@ md.load = function(cnt) {
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
-                    });
-                });
+                    })
+                })
             }
         }
         repeater_1(0);
@@ -449,7 +450,7 @@ md.load = function(cnt) {
                 if (open) {
                     ctx.w(',');
                 }
-                genReactPropType(p, ctx, cnt);
+                genReactPropType(p, ctx, cnt)
                 open = true;
             }
             if (open) {
@@ -573,11 +574,11 @@ md.load = function(cnt) {
                     // log 'wizzi-codegen.statemts.t.reactPropTypes prop.wzName: ', prop.wzName, 'prop.param.wzElement', propParam.wzElement
                     // log 'prop', propParam.wzElement, lc[propParam.wzElement]
                     if (lc[propParam.wzElement]) {
-                        lc[propParam.wzElement](prop, ctx, cnt);
+                        lc[propParam.wzElement](prop, ctx, cnt)
                     }
                     else {
                         var name = propTypeFromWzElement(propParam.wzElement);
-                        ctx.write(prop.wzName + ': PropTypes.' + name);
+                        ctx.write(prop.wzName + ': PropTypes.' + name)
                         if (prop.isRequired) {
                             ctx.write('.isRequired');
                         }
@@ -600,7 +601,7 @@ md.load = function(cnt) {
                 ctx.w(',');
             }
             var name = propTypeFromWzElement(prm.wzElement);
-            ctx.write('PropTypes.' + name);
+            ctx.write('PropTypes.' + name)
             seen = true;
         }
         if (seen) {
@@ -647,7 +648,7 @@ md.load = function(cnt) {
             if (prop.param) {
                 name = propTypeFromWzElement(prop.param.wzElement);
             }
-            ctx.write(prop.wzName + ': PropTypes.' + name);
+            ctx.write(prop.wzName + ': PropTypes.' + name)
             if (prop.isRequired) {
                 ctx.write('.isRequired');
             }
@@ -943,7 +944,7 @@ md.load = function(cnt) {
                 paramName: candidate.prm.wzName, 
                 paramType: prmTypeFromElement(candidate.prm.wzElement), 
                 accessPath: candidate.accessPath
-            });
+            })
             candidate.isRequired = true;
             if (candidate.prm.isRequired) {
                 requireParents(candidate);
@@ -959,7 +960,7 @@ md.load = function(cnt) {
                     paramName: ancestor.prm.wzName, 
                     paramType: prmTypeFromElement(ancestor.prm.wzElement), 
                     accessPath: ancestor.accessPath
-                });
+                })
                 ancestor.isRequired = true;
             }
             ancestor = ancestor.parent;

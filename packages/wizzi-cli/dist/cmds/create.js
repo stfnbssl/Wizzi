@@ -1,6 +1,6 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\create.js.ittf
 */
 'use strict';
@@ -10,9 +10,9 @@ const chalk = require('chalk');
 const wizzi = require('wizzi');
 var inquirer = require('inquirer');
 module.exports = (args) => {
-    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'express'), {
+    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'react_ts'), {
             cliCtx: {
-                pkg_name: "sigma_express_auth", 
+                pkg_name: "gamma_react_ts", 
                 wizzi_plugin_type: "syntax_structure", 
                 author: {
                     
@@ -31,7 +31,7 @@ module.exports = (args) => {
                 ]
             }
         }, {
-            destFolder: path.join(process.cwd(), 'sigma_express_auth'), 
+            destFolder: path.join(process.cwd(), 'gamma_react_ts'), 
             copyInclude: ['*'], 
             copyExclude: []
         }, function(err, genFolderResult) {

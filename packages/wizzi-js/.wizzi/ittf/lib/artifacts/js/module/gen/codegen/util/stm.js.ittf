@@ -52,6 +52,13 @@
                 return false
             return ['jsObject', 'state'].indexOf(model.wzParent.wzElement) > -1
     
+	set md.isEnumValue
+        function 
+            param model
+            if !model.wzParent
+                return false
+            return ['typeEnum'].indexOf(model.wzParent.wzElement) > -1
+
 	set md.isMemberAccess
         function 
             param model

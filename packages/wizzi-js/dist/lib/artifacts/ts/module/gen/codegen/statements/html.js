@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\html.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\html.js.ittf
 */
 'use strict';
 var util = require('util');
@@ -36,7 +37,7 @@ md.load = function(cnt) {
     var i, i_items=fb_html_supported_events, i_len=fb_html_supported_events.length, item;
     for (i=0; i<i_len; i++) {
         item = fb_html_supported_events[i];
-        html_supported_onEvents.push('on' + verify.capitalize(item));
+        html_supported_onEvents.push('on' + verify.capitalize(item))
     }
     
     cnt.stm.htmlelement = function(model, ctx, callback) {
@@ -57,7 +58,7 @@ md.load = function(cnt) {
             // @ callback
             // log 'exit statements/html/htmlelement', tag, text
             return callback(null, null);
-        });
+        })
     };
     cnt.stm.js = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -106,7 +107,7 @@ md.load = function(cnt) {
                 }
                 ctx.w('});');
                 return callback(null, null);
-            });
+            })
         }
         else {
             ctx.w('window.onload = function() {');
@@ -118,7 +119,7 @@ md.load = function(cnt) {
                 }
                 ctx.w('};');
                 return callback(null, null);
-            });
+            })
         }
     };
     md._htmlelement = function(cnt, model, tag, text, ctx, callback) {
@@ -157,7 +158,7 @@ md.load = function(cnt) {
                     name: name, 
                     value: value, 
                     statements: statements
-                });
+                })
             }
             else if (item_1.wzElement === '_style') {
                 name = 'style';
@@ -173,7 +174,7 @@ md.load = function(cnt) {
                     name: name, 
                     value: value, 
                     statements: statements
-                });
+                })
             }
             else if (item_1.wzElement === 'jsPropertyOrValue') {
                 var p = lineParser.parseNameValueRaw(item_1.wzName, item_1),
@@ -184,11 +185,11 @@ md.load = function(cnt) {
                     name: name, 
                     value: value.trim(), 
                     statements: statements
-                });
+                })
             }
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
-            });
+            })
         }
         repeater_1(0);
         function next_1() {
@@ -199,7 +200,7 @@ md.load = function(cnt) {
                 // @ callback
                 // log 'exit _htmlelement', tag
                 return callback(null, null);
-            });
+            })
         }
     };
     function _htmlelement_end(cnt, model, tag, text, ctx, attrs, callback) {
@@ -211,7 +212,7 @@ md.load = function(cnt) {
             }
             ctx.__inside_html = save___inside_html;
             return callback(null, null);
-        });
+        })
     }
     function getAttrs(model, ctx) {
         var name,
@@ -248,7 +249,7 @@ md.load = function(cnt) {
                 retval.push({
                     name: name, 
                     value: value
-                });
+                })
             }
         }
         return retval;

@@ -6,6 +6,9 @@
 	#           by the minus(-) char, see the comment element.
 	#           The sharp char(#) is used for the idRule element.
 
+  	# Preprocess the mTree before loading the wizzi model
+	mtree-is-preprocessed
+
 	e css
 		# The root element
 		is-root
@@ -113,18 +116,25 @@
 					else
 						if p.hasValue()
 							_ retval.push({ name: p.name(), value: p.value() })
+                        elif prop.styledprop
+                            _ retval.push({ name: p.name(), value: null, styledprop: prop.styledprop })
 				else
-					if prop.wzElement == 'background_image'
+					if prop.wzElement == 'background_image' || prop.wzElement == 'jscode'
 						_ retval.push
 							{
 								@ name prop.wzTag
 								@ value prop.wzName
 								@ wzElement prop.wzElement
 								@ prop prop
+                                @ styledprop prop.styledprop
 					elif verify.isNotEmpty(prop.wzName)
+                        # log 'verify.isNotEmpty(prop.wzName)', prop.wzTag, prop.wzName, prop.styledprop
 						_ retval.push({ name: prop.wzTag, value: prop.wzName })
+                    else
+                        _ retval.push({ name: prop.wzTag, value: null, styledprop: prop.styledprop })
 					for var attr in prop
 						if isPropValue(attr, prop[attr])
+                            # log 'if isPropValue(attr, prop[attr])', prop.wzTag, attr
 							_ retval.push({ name: prop.wzTag + '-' + verify.replaceAll(attr, '_', '-'), value: prop[attr] })
 			return retval
 
@@ -234,9 +244,15 @@
 
 		tag @
 
-		r propert-y/ies
+		a styledprop
+            tag =>
+        
+        r propert-y/ies
 			# Nested property
 
+	e jscode : property
+        tag js=>
+        include js module
 
 	$include css/spec-properties
 
@@ -246,10 +262,14 @@
 		a vendor
 	
 	e keyframe : rule
-		a from
-		a to
 		a value
 		a % 
+
+    e keyframeFrom : rule
+        tag from
+    
+    e keyframeTo : rule
+        tag to
 	
 	e fontface : rule
 		tag font-face
@@ -303,6 +323,8 @@
 			param v
 			if noattrs.indexOf(a) > -1
 				return false
+            if a == "styledprop"
+                return false
 			if v == null || verify.isArray(v) || verify.isObject(v) || verify.isFunction(v)
 				return false
 			return true

@@ -9,15 +9,18 @@ $group
             start "webpack serve --open --mode development"
             build "webpack --mode development"
             build:prod "webpack --mode production"
-
-    ${'$'}if wzCtx.Build.useGatsby
+    ${'$'}elif wzCtx.Build.useReactCreateApp
+        start "react-scripts start"
+        build "react-scripts build"
+        test "react-scripts test"
+        eject "react-scripts eject"
+    ${'$'}elif wzCtx.Build.useGatsby
         develop "gatsby develop"
         start "gatsby develop"
         build "gatsby build"
         serve "gatsby serve"
         clean "gatsby clean"
-      
-    ${'$'}if wzCtx.Build.useExpress
+    ${'$'}elif wzCtx.Build.useExpress
         ${'$'}if wzCtx.Build.useNetlify
             ${'$'}if wzCtx.Build.useLocalServer
                 build "netlify-lambda build ${'$'}{wzCtx.Build.netlify.functionsFolder}"
@@ -34,7 +37,6 @@ $group
             start "set NODE_ENV=development && nodemon src/index && start ${'$'}{wzCtx.App.baseUrl}"
         ${'$'}if wzCtx.Build.express.useSsl
             certificate "C:\"Program Files"\Git\usr\ssl\openssl.exe req -nodes -new -x509 -keyout server.key -out server.cert"
-
 
     ${'$'}if wzCtx.Build.useLint
         lint "eslint --debug src/"

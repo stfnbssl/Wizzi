@@ -1,6 +1,7 @@
 /*
-    artifact generator: C:\my\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    primary source IttfDocument: C:\my\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\index.js.ittf
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\index.js.ittf
 */
 'use strict';
 var chalk = require('chalk');
@@ -13,7 +14,7 @@ function example(test, expected, options) {
         test: test, 
         expected: expected, 
         options: options || {}
-    });
+    })
 }
 function getCtx() {
     return new genContext({
@@ -41,7 +42,7 @@ example({
             ]
         }
     ]
-}, 'var = tau;');
+}, 'var = tau;')
 example(nodes: [
     {
         n: "var", 
@@ -50,7 +51,7 @@ example(nodes: [
             
         ]
     }
-], "var = beta = 'astra';");
+], "var = beta = 'astra';")
 example(nodes: [
     {
         n: "var", 
@@ -65,7 +66,7 @@ example(nodes: [
             }
         ]
     }
-], "var alpha = getAlpha();");
+], "var alpha = getAlpha();")
 example(nodes: [
     {
         n: "var", 
@@ -88,7 +89,7 @@ example(nodes: [
             ]
         ]
     }
-], "var i, k = 10, name;");
+], "var i, k = 10, name;")
 example(nodes: [
     {
         n: "let", 
@@ -97,7 +98,7 @@ example(nodes: [
             
         ]
     }
-], 'let sigma = 1;');
+], 'let sigma = 1;')
 example(nodes: [
     {
         n: "let", 
@@ -106,7 +107,7 @@ example(nodes: [
             
         ]
     }
-], 'let omega = 1;');
+], 'let omega = 1;')
 example(nodes: [
     {
         n: "const", 
@@ -123,7 +124,7 @@ example(nodes: [
             ]
         ]
     }
-], "const ossian = buuh('wash')");
+], "const ossian = buuh('wash')")
 example(nodes: [
     {
         n: "react", 
@@ -235,7 +236,7 @@ example(nodes: [
     }
 ], '', {
     __jskind: 'react'
-});
+})
 var len_1 = examples.length;
 function repeater_1(index_1) {
     if (index_1 === len_1) {
@@ -263,8 +264,8 @@ function repeater_1(index_1) {
         console.log('----------------------------------------------------');
         process.nextTick(function() {
             repeater_1(index_1 + 1);
-        });
-    });
+        })
+    })
 }
 repeater_1(0);
 function next_1() {

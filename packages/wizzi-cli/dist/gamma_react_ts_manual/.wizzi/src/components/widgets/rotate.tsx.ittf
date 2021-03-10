@@ -1,0 +1,31 @@
+module
+
+    $
+        var md = {
+            name: "Rotate",
+            element: 'div',
+            props: [
+                {
+                    name: "speed",
+                    type: "number",
+                    optional: true
+                }
+            ]
+        }
+
+    v08/ts/react/styled(&md)
+        
+        $append imports
+
+            keyframes rotateAnimation
+                from
+                    transform rotate(0deg)
+                to 
+                    transform rotate(360deg)
+  
+        display inline-block
+        animation £{rotateAnimation} 2s linear infinite
+        padding 2rem 1rem
+        font-size 1.2rem
+        animation-duration 8s
+        animation-iteration-count infinite

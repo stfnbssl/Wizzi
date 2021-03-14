@@ -655,6 +655,7 @@ function genTSParams_close(s0, ctx, cnt, callback) {
     else {
         ctx.write(' = ');
         // log 'genTSParams_close 3 item.wzElement', s0.wzElement
+        if (!cnt.stm[s0.wzElement]) {console.log("s0.wzElement", s0.wzElement)}
         cnt.stm[s0.wzElement](s0, ctx, callback)
     }
 }

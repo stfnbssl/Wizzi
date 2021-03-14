@@ -18,12 +18,12 @@ color = 'red';
 
 let fullName: string = `Bob Bobbington`;
 let age: number = 37;
-let sentence: string = `Hello, my name is ${fullName}`;
-let sentence: string = "Hello, my name is " + fullName + ".\n\n" + "I'll be " + (age + 1) + " years old next month.";
+let sentence1: string = `Hello, my name is ${fullName}`;
+let sentence2: string = "Hello, my name is " + fullName + ".\n\n" + "I'll be " + (age + 1) + " years old next month.";
 
 /* Array  */
-let list: number[] = [1, 2, 3];
-let list: Array<number> = [1, 2, 3];
+let list1: number[] = [1, 2, 3];
+let list2: Array<number> = [1, 2, 3];
 
 /* Tuple*/
 
@@ -58,9 +58,9 @@ let colorName: string = Color[2];
 console.log(colorName); // Displays 'Green' as its value is 2 above
 
 /* Any*/
-let notSure: any = 4;
-notSure = "maybe a string instead";
-notSure = false; // okay, definitely a boolean
+let notSure1: any = 4;
+notSure1 = "maybe a string instead";
+notSure1 = false; // okay, definitely a boolean
 let notSure: any = 4;
 notSure.ifItExists(); // okay, ifItExists might exist at runtime
 notSure.toFixed(); // okay, toFixed exists (but the compiler doesn't check)

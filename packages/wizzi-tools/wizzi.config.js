@@ -11,6 +11,7 @@ module.exports = {
         isPackageDeploy: true,
         isWebpackTarget: false,
         isDevelopment: false,
+        isDocumentation: true,
     },
     globalContext_default: {
         isPackageDeploy: true,

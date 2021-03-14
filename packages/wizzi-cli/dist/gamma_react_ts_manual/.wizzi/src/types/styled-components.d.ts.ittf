@@ -22,7 +22,53 @@ module
                                         :string 
                                     :p white
                                         :string 
+                            :p primary2
+                                :ref IPalette
+                            :p secondary2
+                                :ref IPalette
                             :p primary
-                                :ref IPalette
-                            :p secondary
-                                :ref IPalette
+                                :string
+                            :p secondary 
+                                :string
+                            :p accent
+                                :{
+                                    :p light
+                                        :string
+                                    :p dark
+                                        :string
+                            :p error
+                                :string
+                            :p warning
+                                :string
+                            :p success
+                                :string
+                            :p text
+                                :{ 
+                                    :p light
+                                        :string 
+                                    :p dark
+                                        :string 
+                            :p background
+                                :{ 
+                                    :p light
+                                        :string 
+                                    :p dark
+                                        :string 
+                            :p content
+                                :{ 
+                                    :p light
+                                        :string 
+                                    :p dark
+                                        :string 
+                            :p ayu
+                                :{
+                                    :p mirage
+                                        :{ 
+                                            :p text
+                                                :string 
+                                            :p border
+                                                :string 
+                                            :p background
+                                                :string 
+                            :p border
+                                :string

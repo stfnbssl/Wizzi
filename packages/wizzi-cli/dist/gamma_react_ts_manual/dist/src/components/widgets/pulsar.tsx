@@ -2,8 +2,9 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\pulsar.tsx.ittf
-    utc time: Wed, 10 Mar 2021 13:28:34 GMT
+    utc time: Thu, 11 Mar 2021 20:36:35 GMT
 */
+// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 import styled, {keyframes} from 'styled-components';
 
 const breathAnimation = keyframes`
@@ -31,6 +32,7 @@ const breathAnimation = keyframes`
 interface PulsarProps {
     diameter?: number;
 }
+
 export const Pulsar = styled.div<PulsarProps>`
     height: 100px;
     width: 100px;

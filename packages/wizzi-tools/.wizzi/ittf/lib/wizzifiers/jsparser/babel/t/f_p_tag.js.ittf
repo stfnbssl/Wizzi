@@ -1,6 +1,13 @@
 ﻿$group
 	$params name, tag|@@null
 
+    $if isDocumentation
+        _ f_astNode.props.push
+            {
+                @ name "${name}"
+                @ tag "${tag}"
+                @ descr "fragment f_p_tag"
+
 	var p_${name} 
 		{
 			@ textified null

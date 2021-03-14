@@ -3,6 +3,7 @@ module
     $
         var md = {
             name: "WidgetsDemo",
+            styled: true,
             props: [
                 {
                     name: "title",
@@ -42,8 +43,22 @@ module
     import
         @ Tick
         from './tick'
+    import
+        @ ToggleSwitch
+        from './toggleSwitch'
+    import
+        @ LargeInput
+        from './largeInput'
+    import
+        @ EditableField
+        from './editableField'
 
     v08/ts/react/function(&md)
+        $append styles
+            styled DemoItem .div
+                margin 50px 50px 50px 0
+                border-bottom 1px solid #dedede
+        
         < ThemeProvider 
             @ theme {defaultTheme}
             aside 
@@ -67,37 +82,75 @@ module
                             =>
                                 _ alert('Hello')
                         + Give me five
-                h5 widget: ThemeButton
-                div
-                    < ThemeButton
-                        + Theme button
-                    < ThemeButton
-                        @ variant {VARIANT.SECONDARY}
-                        + Theme button
 
-                h5 widget: Pulsar
-                div
-                    < Pulsar
-                        @ diameter {100}
+                < DemoItem
+                    + ThemeButton
+                    div
+                        < ThemeButton
+                            + Theme button
+                        < ThemeButton
+                            @ variant {VARIANT.SECONDARY}
+                            + Theme button
 
+                < DemoItem
+                    + Dash
+                    div
+                        < Dash
+                            @ radius {50}
+                            @ color 'yellow'
+                            @ trackColor 'rgba(0,0,0,.2)'
+                            @ width {4}
+                            @ duration '1s'
 
-                h5 widget: Dash
-                div
-                    < Dash
-                        @ radius {50}
-                        @ color 'yellow'
-                        @ trackColor 'rgba(0,0,0,.2)'
-                        @ width {4}
-                        @ duration '1s'
-
-                h5 widget: Rotate
-                div
-                    < Rotate
-                        @ speed {100}
-                        + &lt; 💅🏾 &gt;
+                < DemoItem
+                    + Rotate
+                    div
+                        < Rotate
+                            @ speed {100}
+                            + &lt; 💅🏾 &gt;
                     
-                h5 widget: InputRef
-                div
-                    < InputRef
+                < DemoItem
+                    + InputRef
+                    div
+                        < InputRef
 
+                < DemoItem
+                    + ToggleSwitch
+                    div
+                        < ToggleSwitch
+                            @ checked {true}
+                            @ label yes or no
+                            @ dark {false}
+                            @ onChange
+                                =>
+                                    _ alert('ooh! ooh!')
+
+                < DemoItem
+                    + LargeInput
+                    div
+                        < LargeInput
+                            @ value Hello world
+                            @ dark {false}
+                            @ onChange
+                                =>
+                                    _ alert('aah! aah!')                                
+
+                < DemoItem
+                    + EditableField
+                    div
+                        < EditableField
+                            @ value Hello world
+                            @ dark {false}
+                            $* TODO
+                            @ onSubmitText
+                                =>
+                                    param value
+                                    _ alert('aah! aah!', value)
+                            *$
+
+                < DemoItem
+                    + Pulsar
+                    div
+                        < Pulsar
+                            @ diameter {100}
 

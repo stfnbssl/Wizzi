@@ -10,9 +10,9 @@ const chalk = require('chalk');
 const wizzi = require('wizzi');
 var inquirer = require('inquirer');
 module.exports = (args) => {
-    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'react_ts'), {
+    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'wizzi_plugin'), {
             cliCtx: {
-                pkg_name: "gamma_react_ts", 
+                pkg_name: "wizzi.plugin.pdf", 
                 wizzi_plugin_type: "syntax_structure", 
                 author: {
                     
@@ -26,12 +26,12 @@ module.exports = (args) => {
                 }, 
                 Schemas: [
                     {
-                        name: "sample"
+                        name: "pdf"
                     }
                 ]
             }
         }, {
-            destFolder: path.join(process.cwd(), 'gamma_react_ts'), 
+            destFolder: path.join(process.cwd(), 'wizzi.plugin.pdf'), 
             copyInclude: ['*'], 
             copyExclude: []
         }, function(err, genFolderResult) {

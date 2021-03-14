@@ -618,7 +618,7 @@
 		const save = options.mustBeText
 		set options.mustBeText = true
 		f_p_temp(key, true)
-		log 'ObjectProperty.p_key', p_key
+		# log 'ObjectProperty.p_key', p_key
 		set options.mustBeText = save
 		
 		if isTextualNode(p_key)

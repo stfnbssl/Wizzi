@@ -18,12 +18,40 @@
 			else if (cmd == 'ignore') { ignore = true; }
 			else {tag = cmd} ;
 		}
+
+    $if isDocumentation
+        var ${name}_astNode
+            {
+                @ name "${name}"
+                @ ittfTag "${tag}"
+                $if isName
+                    @ isName true
+                $if tagIsVar
+                    @ tagIsVar true
+                $if isText
+                    @ isText true
+                $if mustBeText
+                    @ mustBeText true
+                $if couldBeText
+                    @ couldBeText true
+                $if retIsArray
+                    @ retIsArray true
+                $if skip
+                    @ skip true
+                $if ignore
+                    @ ignore true
+                [ props
+        _ wzDocs.AstgNodes.push
+            @ ${name}_astNode
 	
 	set format.${name}
 		function
 			param parent
 			param node
 			param options
+
+            $if isDocumentation
+                var f_astNode = ${name}_astNode
 
 			var __isText = ${isText}
 

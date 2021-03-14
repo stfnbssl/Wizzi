@@ -6,7 +6,29 @@
 	var file = require('wizzi-utils').file
 	var jswizzifier = require('../../lib/wizzifiers/jsparser/babel/wizzifier')
 
-	_ go('quick')
+    var items
+        [
+            @ "variables"
+            @ "interfaces"
+
+    var fullText = []
+    foreach item in items
+        _ fullText.push
+            _ file.read
+                _ path.join
+                    @ __dirname
+                    @ 'data'
+                    @ item + '.ts'
+
+    _ file.write
+        _ path.join
+            @ __dirname
+            @ 'data'
+            @ 'full.ts'
+        _ fullText.join
+            @ '\n'
+
+	_ go('full')
 
 	function go
 		param name

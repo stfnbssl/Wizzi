@@ -8,7 +8,18 @@ var util = require('util');
 var path = require('path');
 var file = require('wizzi-utils').file;
 var jswizzifier = require('../../lib/wizzifiers/jsparser/babel/wizzifier');
-go('quick');
+var items = [
+    "variables", 
+    "interfaces"
+];
+var fullText = [];
+var i, i_items=items, i_len=items.length, item;
+for (i=0; i<i_len; i++) {
+    item = items[i];
+    fullText.push(file.read(path.join(__dirname, 'data', item + '.ts')))
+}
+file.write(path.join(__dirname, 'data', 'full.ts'), fullText.join('\n'))
+go('full');
 function go(name) {
     var src = path.join(__dirname, 'data', name + '.ts');
     var out_babel = path.join(__dirname, 'data', name + '.babel.json');

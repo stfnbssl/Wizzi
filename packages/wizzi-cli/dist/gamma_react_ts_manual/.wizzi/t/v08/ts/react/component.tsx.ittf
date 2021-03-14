@@ -1,43 +1,41 @@
 $group
     $params &md
+
+    misc( setMyProps, &md )
+    misc( setMyStateProps, &md )
+
     import React
         @ Component
         from 'react'
     $if md.styled
+        # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
         import styled
             @ keyframes
             from 'styled-components'
     +
     $hook imports
-    $if md.props && md.props.length > 0
+    $if myProps.length > 0
         :type ${md.name}Props
             :{
-                $foreach prop in md.props
-                    $if prop.type.toLowerCase() == 'date'
-                        :p ${prop.name}
-                            :ref Date
-                    $else
-                        :p ${prop.name}
-                            :${prop.type}
-    $if md.stateItems && md.stateItems.length > 0
+                $foreach prop in myProps
+                    $include setPropType
+    $if myStateProps.length > 0
         :type ${md.name}State
             :{
-                $foreach prop in md.stateItems
-                    $if prop.type == 'date'
-                        :p ${prop.name}
-                            :ref Date
-                    $else
-                        :p ${prop.name}
-                            :${prop.type}
+                $foreach prop in myStateProps
+                    $include setPropType
+    +
+    $hook styles
+    +
     export
         class ${md.name}
             super Component
-                $if md.props && md.props.length > 0
+                $if myProps.length > 0
                     :param
                         :ref ${md.name}Props
                 $else
                     :param {}
-                $if md.stateItems && md.stateItems.length > 0
+                $if myStateProps.length > 0
                     :param
                         :ref ${md.name}State
                 $else

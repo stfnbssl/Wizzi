@@ -59,8 +59,23 @@ var formatText = function(parent, ast, options, node) {
     options.returnText = saveReturnText;
     return value;
 };
+var wzDocs = {
+    AstgNodes: [
+        
+    ]
+};
 // process AST node File
+var File_astNode = {
+    name: "File", 
+    ittfTag: "File", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(File_astNode)
 format.File = function(parent, node, options) {
+    var f_astNode = File_astNode;
     var __isText = false;
     // log 'node : File ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -77,6 +92,10 @@ format.File = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property program and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "program", 
+        descr: "process AST-node-property program and append ittfNode to `ret`"
+    })
     if (node.program) {
         if (!node.program.type) {
             throw 'Node program has no type: ' + JSON.stringify(node, null, 2);
@@ -94,7 +113,17 @@ format.File = function(parent, node, options) {
     }
 };
 // process AST node Program
+var Program_astNode = {
+    name: "Program", 
+    ittfTag: "Program", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Program_astNode)
 format.Program = function(parent, node, options) {
+    var f_astNode = Program_astNode;
     var __isText = false;
     // log 'node : Program ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -112,6 +141,11 @@ format.Program = function(parent, node, options) {
     var ret = parent;
     // s( sourceType, "script" | "module"
     // process AST-node-property-collection directives and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "directives", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection directives and append ittfNode(s) to `ret`"
+    })
     if (node.directives) {
         if (typeof node.directives.length === 'undefined') {
             throw new Error('Property node.directives must be an array');
@@ -130,6 +164,11 @@ format.Program = function(parent, node, options) {
         throw new Error('AST-node-property-collection directives undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection body and append ittfNode(s) to `ret`"
+    })
     if (node.body) {
         if (typeof node.body.length === 'undefined') {
             throw new Error('Property node.body must be an array');
@@ -154,7 +193,17 @@ format.Program = function(parent, node, options) {
     }
 };
 // process AST node Identifier
+var Identifier_astNode = {
+    name: "Identifier", 
+    ittfTag: "@id", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Identifier_astNode)
 format.Identifier = function(parent, node, options) {
+    var f_astNode = Identifier_astNode;
     var __isText = true;
     // log 'node : Identifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -196,6 +245,10 @@ format.Identifier = function(parent, node, options) {
         }
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -231,7 +284,16 @@ format.Identifier = function(parent, node, options) {
     }
 };
 // process AST node PrivateName
+var PrivateName_astNode = {
+    name: "PrivateName", 
+    ittfTag: "none", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(PrivateName_astNode)
 format.PrivateName = function(parent, node, options) {
+    var f_astNode = PrivateName_astNode;
     var __isText = false;
     // log 'node : PrivateName ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -260,6 +322,12 @@ format.PrivateName = function(parent, node, options) {
     // Process AST-node-property Identifier and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "Identifier", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property Identifier and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.Identifier) {
         if (!node.Identifier.type) {
             throw 'Node Identifier has no type: ' + JSON.stringify(node, null, 2);
@@ -297,7 +365,17 @@ format.PrivateName = function(parent, node, options) {
     }
 };
 // process AST node RegExpLiteral
+var RegExpLiteral_astNode = {
+    name: "RegExpLiteral", 
+    ittfTag: "literal", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(RegExpLiteral_astNode)
 format.RegExpLiteral = function(parent, node, options) {
+    var f_astNode = RegExpLiteral_astNode;
     var __isText = true;
     // log 'node : RegExpLiteral ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -350,7 +428,17 @@ format.RegExpLiteral = function(parent, node, options) {
     }
 };
 // process AST node NullLiteral
+var NullLiteral_astNode = {
+    name: "NullLiteral", 
+    ittfTag: "literal", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(NullLiteral_astNode)
 format.NullLiteral = function(parent, node, options) {
+    var f_astNode = NullLiteral_astNode;
     var __isText = true;
     // log 'node : NullLiteral ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -399,7 +487,17 @@ format.NullLiteral = function(parent, node, options) {
     }
 };
 // process AST node StringLiteral
+var StringLiteral_astNode = {
+    name: "StringLiteral", 
+    ittfTag: "literal", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(StringLiteral_astNode)
 format.StringLiteral = function(parent, node, options) {
+    var f_astNode = StringLiteral_astNode;
     var __isText = true;
     // log 'node : StringLiteral ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -448,7 +546,17 @@ format.StringLiteral = function(parent, node, options) {
     }
 };
 // process AST node BooleanLiteral
+var BooleanLiteral_astNode = {
+    name: "BooleanLiteral", 
+    ittfTag: "literal", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(BooleanLiteral_astNode)
 format.BooleanLiteral = function(parent, node, options) {
+    var f_astNode = BooleanLiteral_astNode;
     var __isText = true;
     // log 'node : BooleanLiteral ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -501,7 +609,17 @@ format.BooleanLiteral = function(parent, node, options) {
     }
 };
 // process AST node NumericLiteral
+var NumericLiteral_astNode = {
+    name: "NumericLiteral", 
+    ittfTag: "literal", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(NumericLiteral_astNode)
 format.NumericLiteral = function(parent, node, options) {
+    var f_astNode = NumericLiteral_astNode;
     var __isText = true;
     // log 'node : NumericLiteral ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -554,7 +672,16 @@ format.NumericLiteral = function(parent, node, options) {
     }
 };
 // process AST node Function
+var Function_astNode = {
+    name: "Function", 
+    ittfTag: "function", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Function_astNode)
 format.Function = function(parent, node, options) {
+    var f_astNode = Function_astNode;
     var __isText = false;
     // log 'node : Function ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -584,6 +711,12 @@ format.Function = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -609,6 +742,11 @@ format.Function = function(parent, node, options) {
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -636,6 +774,10 @@ format.Function = function(parent, node, options) {
     processParams(ret);
     // [ Pattern ]
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -669,7 +811,16 @@ format.Function = function(parent, node, options) {
     }
 };
 // process AST node ExpressionStatement
+var ExpressionStatement_astNode = {
+    name: "ExpressionStatement", 
+    ittfTag: "stm", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ExpressionStatement_astNode)
 format.ExpressionStatement = function(parent, node, options) {
+    var f_astNode = ExpressionStatement_astNode;
     var __isText = false;
     // log 'node : ExpressionStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -697,6 +848,10 @@ format.ExpressionStatement = function(parent, node, options) {
     };
     // An expression statement, i.e., a statement consisting of a single expression.
     // process AST-node-property expression and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "expression", 
+        descr: "process AST-node-property expression and append ittfNode to `ret`"
+    })
     if (node.expression) {
         if (!node.expression.type) {
             throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
@@ -724,7 +879,17 @@ format.ExpressionStatement = function(parent, node, options) {
     }
 };
 // process AST node BlockStatement
+var BlockStatement_astNode = {
+    name: "BlockStatement", 
+    ittfTag: "block", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(BlockStatement_astNode)
 format.BlockStatement = function(parent, node, options) {
+    var f_astNode = BlockStatement_astNode;
     var __isText = false;
     // log 'node : BlockStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -741,6 +906,11 @@ format.BlockStatement = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection body and append ittfNode(s) to `ret`"
+    })
     if (node.body) {
         if (typeof node.body.length === 'undefined') {
             throw new Error('Property node.body must be an array');
@@ -759,6 +929,11 @@ format.BlockStatement = function(parent, node, options) {
         throw new Error('AST-node-property-collection body undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property-collection directives and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "directives", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection directives and append ittfNode(s) to `ret`"
+    })
     if (node.directives) {
         if (typeof node.directives.length === 'undefined') {
             throw new Error('Property node.directives must be an array');
@@ -784,7 +959,16 @@ format.BlockStatement = function(parent, node, options) {
     }
 };
 // process AST node EmptyStatement
+var EmptyStatement_astNode = {
+    name: "EmptyStatement", 
+    ittfTag: "", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(EmptyStatement_astNode)
 format.EmptyStatement = function(parent, node, options) {
+    var f_astNode = EmptyStatement_astNode;
     var __isText = false;
     // log 'node : EmptyStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -824,7 +1008,16 @@ format.EmptyStatement = function(parent, node, options) {
     }
 };
 // process AST node DebuggerStatement
+var DebuggerStatement_astNode = {
+    name: "DebuggerStatement", 
+    ittfTag: "debugger", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(DebuggerStatement_astNode)
 format.DebuggerStatement = function(parent, node, options) {
+    var f_astNode = DebuggerStatement_astNode;
     var __isText = false;
     // log 'node : DebuggerStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -864,7 +1057,16 @@ format.DebuggerStatement = function(parent, node, options) {
     }
 };
 // process AST node WithStatement
+var WithStatement_astNode = {
+    name: "WithStatement", 
+    ittfTag: "with", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(WithStatement_astNode)
 format.WithStatement = function(parent, node, options) {
+    var f_astNode = WithStatement_astNode;
     var __isText = false;
     // log 'node : WithStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -891,6 +1093,10 @@ format.WithStatement = function(parent, node, options) {
         ]
     };
     // process AST-node-property object and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "object", 
+        descr: "process AST-node-property object and append ittfNode to `ret`"
+    })
     if (node.object) {
         if (!node.object.type) {
             throw 'Node object has no type: ' + JSON.stringify(node, null, 2);
@@ -901,6 +1107,10 @@ format.WithStatement = function(parent, node, options) {
         throw new Error('AST-node-property object undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -924,7 +1134,16 @@ format.WithStatement = function(parent, node, options) {
     }
 };
 // process AST node ReturnStatement
+var ReturnStatement_astNode = {
+    name: "ReturnStatement", 
+    ittfTag: "return", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ReturnStatement_astNode)
 format.ReturnStatement = function(parent, node, options) {
+    var f_astNode = ReturnStatement_astNode;
     var __isText = false;
     // log 'node : ReturnStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -951,6 +1170,10 @@ format.ReturnStatement = function(parent, node, options) {
         ]
     };
     // process AST-node-property argument and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "argument", 
+        descr: "process AST-node-property argument and append ittfNode to `ret`"
+    })
     if (node.argument) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
@@ -982,7 +1205,16 @@ format.ReturnStatement = function(parent, node, options) {
     }
 };
 // process AST node LabeledStatement
+var LabeledStatement_astNode = {
+    name: "LabeledStatement", 
+    ittfTag: "label", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(LabeledStatement_astNode)
 format.LabeledStatement = function(parent, node, options) {
+    var f_astNode = LabeledStatement_astNode;
     var __isText = false;
     // log 'node : LabeledStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1057,6 +1289,10 @@ format.LabeledStatement = function(parent, node, options) {
     }
     ret.name = getNodeText(p_label);
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -1079,7 +1315,16 @@ format.LabeledStatement = function(parent, node, options) {
     }
 };
 // process AST node BreakStatement
+var BreakStatement_astNode = {
+    name: "BreakStatement", 
+    ittfTag: "break", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(BreakStatement_astNode)
 format.BreakStatement = function(parent, node, options) {
+    var f_astNode = BreakStatement_astNode;
     var __isText = false;
     // log 'node : BreakStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1108,6 +1353,12 @@ format.BreakStatement = function(parent, node, options) {
     // Process AST-node-property label and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "label", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property label and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.label) {
         if (!node.label.type) {
             throw 'Node label has no type: ' + JSON.stringify(node, null, 2);
@@ -1144,7 +1395,16 @@ format.BreakStatement = function(parent, node, options) {
     }
 };
 // process AST node ContinueStatement
+var ContinueStatement_astNode = {
+    name: "ContinueStatement", 
+    ittfTag: "continue", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ContinueStatement_astNode)
 format.ContinueStatement = function(parent, node, options) {
+    var f_astNode = ContinueStatement_astNode;
     var __isText = false;
     // log 'node : ContinueStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1173,6 +1433,12 @@ format.ContinueStatement = function(parent, node, options) {
     // Process AST-node-property label and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "label", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property label and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.label) {
         if (!node.label.type) {
             throw 'Node label has no type: ' + JSON.stringify(node, null, 2);
@@ -1209,7 +1475,17 @@ format.ContinueStatement = function(parent, node, options) {
     }
 };
 // process AST node IfStatement
+var IfStatement_astNode = {
+    name: "IfStatement", 
+    ittfTag: "if", 
+    retIsArray: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(IfStatement_astNode)
 format.IfStatement = function(parent, node, options) {
+    var f_astNode = IfStatement_astNode;
     var __isText = false;
     // log 'node : IfStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1235,6 +1511,11 @@ format.IfStatement = function(parent, node, options) {
             
         ]
     };
+    f_astNode.props.push({
+        name: "test", 
+        tag: "test", 
+        descr: "fragment f_p_tag"
+    })
     var p_test = {
         textified: null, 
         isText: false, 
@@ -1418,7 +1699,16 @@ format.IfStatement = function(parent, node, options) {
     }
 };
 // process AST node SwitchStatement
+var SwitchStatement_astNode = {
+    name: "SwitchStatement", 
+    ittfTag: "switch", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(SwitchStatement_astNode)
 format.SwitchStatement = function(parent, node, options) {
+    var f_astNode = SwitchStatement_astNode;
     var __isText = false;
     // log 'node : SwitchStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1500,6 +1790,11 @@ format.SwitchStatement = function(parent, node, options) {
         ret.children.push(p_discriminant)
     }
     // process AST-node-property-collection cases and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "cases", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection cases and append ittfNode(s) to `ret`"
+    })
     if (node.cases) {
         if (typeof node.cases.length === 'undefined') {
             throw new Error('Property node.cases must be an array');
@@ -1530,7 +1825,16 @@ format.SwitchStatement = function(parent, node, options) {
     }
 };
 // process AST node SwitchCase
+var SwitchCase_astNode = {
+    name: "SwitchCase", 
+    ittfTag: "case", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(SwitchCase_astNode)
 format.SwitchCase = function(parent, node, options) {
+    var f_astNode = SwitchCase_astNode;
     var __isText = false;
     // log 'node : SwitchCase ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1601,6 +1905,11 @@ format.SwitchCase = function(parent, node, options) {
         }
     }
     // process AST-node-property-collection consequent and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "consequent", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection consequent and append ittfNode(s) to `ret`"
+    })
     if (node.consequent) {
         if (typeof node.consequent.length === 'undefined') {
             throw new Error('Property node.consequent must be an array');
@@ -1645,7 +1954,16 @@ format.SwitchCase = function(parent, node, options) {
     }
 };
 // process AST node ThrowStatement
+var ThrowStatement_astNode = {
+    name: "ThrowStatement", 
+    ittfTag: "throw", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ThrowStatement_astNode)
 format.ThrowStatement = function(parent, node, options) {
+    var f_astNode = ThrowStatement_astNode;
     var __isText = false;
     // log 'node : ThrowStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1738,7 +2056,17 @@ format.ThrowStatement = function(parent, node, options) {
     }
 };
 // process AST node TryStatement
+var TryStatement_astNode = {
+    name: "TryStatement", 
+    ittfTag: "try", 
+    retIsArray: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TryStatement_astNode)
 format.TryStatement = function(parent, node, options) {
+    var f_astNode = TryStatement_astNode;
     var __isText = false;
     // log 'node : TryStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1766,6 +2094,10 @@ format.TryStatement = function(parent, node, options) {
     };
     // log 'wizzifiers.js.TryStatement', JSON.stringify(node, null, 2)
     // process AST-node-property block and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "block", 
+        descr: "process AST-node-property block and append ittfNode to `ret`"
+    })
     if (node.block) {
         if (!node.block.type) {
             throw 'Node block has no type: ' + JSON.stringify(node, null, 2);
@@ -1905,7 +2237,16 @@ format.TryStatement = function(parent, node, options) {
     }
 };
 // process AST node CatchClause
+var CatchClause_astNode = {
+    name: "CatchClause", 
+    ittfTag: "catch", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(CatchClause_astNode)
 format.CatchClause = function(parent, node, options) {
+    var f_astNode = CatchClause_astNode;
     var __isText = false;
     // log 'node : CatchClause ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -1935,6 +2276,12 @@ format.CatchClause = function(parent, node, options) {
     // Process AST-node-property param and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "param", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property param and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.param) {
         if (!node.param.type) {
             throw 'Node param has no type: ' + JSON.stringify(node, null, 2);
@@ -1959,6 +2306,10 @@ format.CatchClause = function(parent, node, options) {
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -1982,7 +2333,16 @@ format.CatchClause = function(parent, node, options) {
     }
 };
 // process AST node WhileStatement
+var WhileStatement_astNode = {
+    name: "WhileStatement", 
+    ittfTag: "while", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(WhileStatement_astNode)
 format.WhileStatement = function(parent, node, options) {
+    var f_astNode = WhileStatement_astNode;
     var __isText = false;
     // log 'node : WhileStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -2008,6 +2368,11 @@ format.WhileStatement = function(parent, node, options) {
             
         ]
     };
+    f_astNode.props.push({
+        name: "test", 
+        tag: "test", 
+        descr: "fragment f_p_tag"
+    })
     var p_test = {
         textified: null, 
         isText: false, 
@@ -2055,6 +2420,10 @@ format.WhileStatement = function(parent, node, options) {
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -2077,7 +2446,16 @@ format.WhileStatement = function(parent, node, options) {
     }
 };
 // process AST node DoWhileStatement
+var DoWhileStatement_astNode = {
+    name: "DoWhileStatement", 
+    ittfTag: "do", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(DoWhileStatement_astNode)
 format.DoWhileStatement = function(parent, node, options) {
+    var f_astNode = DoWhileStatement_astNode;
     var __isText = false;
     // log 'node : DoWhileStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -2103,6 +2481,11 @@ format.DoWhileStatement = function(parent, node, options) {
             
         ]
     };
+    f_astNode.props.push({
+        name: "test", 
+        tag: "test", 
+        descr: "fragment f_p_tag"
+    })
     var p_test = {
         textified: null, 
         isText: false, 
@@ -2150,6 +2533,10 @@ format.DoWhileStatement = function(parent, node, options) {
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -2172,7 +2559,16 @@ format.DoWhileStatement = function(parent, node, options) {
     }
 };
 // process AST node ForStatement
+var ForStatement_astNode = {
+    name: "ForStatement", 
+    ittfTag: "for", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ForStatement_astNode)
 format.ForStatement = function(parent, node, options) {
+    var f_astNode = ForStatement_astNode;
     var __isText = false;
     // log 'node : ForStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -2198,6 +2594,11 @@ format.ForStatement = function(parent, node, options) {
             
         ]
     };
+    f_astNode.props.push({
+        name: "init", 
+        tag: "init", 
+        descr: "fragment f_p_tag"
+    })
     var p_init = {
         textified: null, 
         isText: false, 
@@ -2233,6 +2634,11 @@ format.ForStatement = function(parent, node, options) {
             }
         */
     }
+    f_astNode.props.push({
+        name: "test", 
+        tag: "test", 
+        descr: "fragment f_p_tag"
+    })
     var p_test = {
         textified: null, 
         isText: false, 
@@ -2268,6 +2674,11 @@ format.ForStatement = function(parent, node, options) {
             }
         */
     }
+    f_astNode.props.push({
+        name: "update", 
+        tag: "update", 
+        descr: "fragment f_p_tag"
+    })
     var p_update = {
         textified: null, 
         isText: false, 
@@ -2312,6 +2723,10 @@ format.ForStatement = function(parent, node, options) {
     removeChildByTag(ret, 'test');
     removeChildByTag(ret, 'update');
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -2334,7 +2749,16 @@ format.ForStatement = function(parent, node, options) {
     }
 };
 // process AST node ForInStatement
+var ForInStatement_astNode = {
+    name: "ForInStatement", 
+    ittfTag: "for", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ForInStatement_astNode)
 format.ForInStatement = function(parent, node, options) {
+    var f_astNode = ForInStatement_astNode;
     var __isText = false;
     // log 'node : ForInStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -2478,6 +2902,10 @@ format.ForInStatement = function(parent, node, options) {
         })
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -2500,7 +2928,16 @@ format.ForInStatement = function(parent, node, options) {
     }
 };
 // process AST node ForOfStatement
+var ForOfStatement_astNode = {
+    name: "ForOfStatement", 
+    ittfTag: "for", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ForOfStatement_astNode)
 format.ForOfStatement = function(parent, node, options) {
+    var f_astNode = ForOfStatement_astNode;
     var __isText = false;
     // log 'node : ForOfStatement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -2644,6 +3081,10 @@ format.ForOfStatement = function(parent, node, options) {
         })
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -2666,7 +3107,16 @@ format.ForOfStatement = function(parent, node, options) {
     }
 };
 // process AST node FunctionDeclaration
+var FunctionDeclaration_astNode = {
+    name: "FunctionDeclaration", 
+    ittfTag: "function", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(FunctionDeclaration_astNode)
 format.FunctionDeclaration = function(parent, node, options) {
+    var f_astNode = FunctionDeclaration_astNode;
     var __isText = false;
     // log 'node : FunctionDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -2696,6 +3146,12 @@ format.FunctionDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -2720,6 +3176,10 @@ format.FunctionDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -2728,6 +3188,11 @@ format.FunctionDeclaration = function(parent, node, options) {
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -2808,6 +3273,10 @@ format.FunctionDeclaration = function(parent, node, options) {
         ret.children.push(p_returnType);
     }
     // process AST-node-property predicate and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "predicate", 
+        descr: "process AST-node-property predicate and append ittfNode to `ret`"
+    })
     if (node.predicate) {
         if (!node.predicate.type) {
             throw 'Node predicate has no type: ' + JSON.stringify(node, null, 2);
@@ -2815,6 +3284,10 @@ format.FunctionDeclaration = function(parent, node, options) {
         format(ret, node.predicate, options)
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -2843,7 +3316,17 @@ format.FunctionDeclaration = function(parent, node, options) {
     }
 };
 // process AST node VariableDeclaration
+var VariableDeclaration_astNode = {
+    name: "VariableDeclaration", 
+    ittfTag: "node.kind", 
+    tagIsVar: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(VariableDeclaration_astNode)
 format.VariableDeclaration = function(parent, node, options) {
+    var f_astNode = VariableDeclaration_astNode;
     var __isText = false;
     // log 'node : VariableDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -2871,6 +3354,11 @@ format.VariableDeclaration = function(parent, node, options) {
     };
     // enum "var" | "let" | "const"
     // process AST-node-property-collection declarations and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "declarations", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection declarations and append ittfNode(s) to `ret`"
+    })
     if (node.declarations) {
         if (typeof node.declarations.length === 'undefined') {
             throw new Error('Property node.declarations must be an array');
@@ -2998,7 +3486,16 @@ format.VariableDeclaration = function(parent, node, options) {
     }
 };
 // process AST node VariableDeclarator
+var VariableDeclarator_astNode = {
+    name: "VariableDeclarator", 
+    ittfTag: "decl", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(VariableDeclarator_astNode)
 format.VariableDeclarator = function(parent, node, options) {
+    var f_astNode = VariableDeclarator_astNode;
     var __isText = false;
     // log 'node : VariableDeclarator ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3086,6 +3583,10 @@ format.VariableDeclarator = function(parent, node, options) {
     }
     // log 'VariableDeclarator 1', ret
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -3190,7 +3691,16 @@ format.VariableDeclarator = function(parent, node, options) {
     }
 };
 // process AST node Decorator
+var Decorator_astNode = {
+    name: "Decorator", 
+    ittfTag: "@decorator", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Decorator_astNode)
 format.Decorator = function(parent, node, options) {
+    var f_astNode = Decorator_astNode;
     var __isText = false;
     // log 'node : Decorator ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3282,7 +3792,16 @@ format.Decorator = function(parent, node, options) {
     }
 };
 // process AST node Directive
+var Directive_astNode = {
+    name: "Directive", 
+    ittfTag: "directive", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Directive_astNode)
 format.Directive = function(parent, node, options) {
+    var f_astNode = Directive_astNode;
     var __isText = false;
     // log 'node : Directive ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3376,7 +3895,16 @@ format.Directive = function(parent, node, options) {
     }
 };
 // process AST node DirectiveLiteral
+var DirectiveLiteral_astNode = {
+    name: "DirectiveLiteral", 
+    ittfTag: "none", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(DirectiveLiteral_astNode)
 format.DirectiveLiteral = function(parent, node, options) {
+    var f_astNode = DirectiveLiteral_astNode;
     var __isText = false;
     // log 'node : DirectiveLiteral ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3415,7 +3943,16 @@ format.DirectiveLiteral = function(parent, node, options) {
     }
 };
 // process AST node Expression
+var Expression_astNode = {
+    name: "Expression", 
+    ittfTag: "expr", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Expression_astNode)
 format.Expression = function(parent, node, options) {
+    var f_astNode = Expression_astNode;
     var __isText = false;
     // log 'node : Expression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3455,7 +3992,17 @@ format.Expression = function(parent, node, options) {
     }
 };
 // process AST node Super
+var Super_astNode = {
+    name: "Super", 
+    ittfTag: "super", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Super_astNode)
 format.Super = function(parent, node, options) {
+    var f_astNode = Super_astNode;
     var __isText = true;
     // log 'node : Super ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3496,7 +4043,16 @@ format.Super = function(parent, node, options) {
     }
 };
 // process AST node Import
+var Import_astNode = {
+    name: "Import", 
+    ittfTag: "import", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Import_astNode)
 format.Import = function(parent, node, options) {
+    var f_astNode = Import_astNode;
     var __isText = false;
     // log 'node : Import ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3536,7 +4092,17 @@ format.Import = function(parent, node, options) {
     }
 };
 // process AST node ThisExpression
+var ThisExpression_astNode = {
+    name: "ThisExpression", 
+    ittfTag: "this", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ThisExpression_astNode)
 format.ThisExpression = function(parent, node, options) {
+    var f_astNode = ThisExpression_astNode;
     var __isText = true;
     // log 'node : ThisExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3577,7 +4143,16 @@ format.ThisExpression = function(parent, node, options) {
     }
 };
 // process AST node ArrowFunctionExpression
+var ArrowFunctionExpression_astNode = {
+    name: "ArrowFunctionExpression", 
+    ittfTag: "=>", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ArrowFunctionExpression_astNode)
 format.ArrowFunctionExpression = function(parent, node, options) {
+    var f_astNode = ArrowFunctionExpression_astNode;
     var __isText = false;
     // log 'node : ArrowFunctionExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3608,6 +4183,11 @@ format.ArrowFunctionExpression = function(parent, node, options) {
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -3687,6 +4267,11 @@ format.ArrowFunctionExpression = function(parent, node, options) {
         ret.children.push(p_returnType);
     }
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection body and append ittfNode(s) to `ret`"
+    })
     if (node.body) {
         if (typeof node.body.length === 'undefined') {
             throw new Error('Property node.body must be an array');
@@ -3735,7 +4320,16 @@ format.ArrowFunctionExpression = function(parent, node, options) {
     }
 };
 // process AST node YieldExpression
+var YieldExpression_astNode = {
+    name: "YieldExpression", 
+    ittfTag: "yield", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(YieldExpression_astNode)
 format.YieldExpression = function(parent, node, options) {
+    var f_astNode = YieldExpression_astNode;
     var __isText = false;
     // log 'node : YieldExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3761,6 +4355,11 @@ format.YieldExpression = function(parent, node, options) {
             
         ]
     };
+    f_astNode.props.push({
+        name: "argument", 
+        tag: "argument", 
+        descr: "fragment f_p_tag"
+    })
     var p_argument = {
         textified: null, 
         isText: false, 
@@ -3830,7 +4429,16 @@ format.YieldExpression = function(parent, node, options) {
     }
 };
 // process AST node AwaitExpression
+var AwaitExpression_astNode = {
+    name: "AwaitExpression", 
+    ittfTag: "await", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(AwaitExpression_astNode)
 format.AwaitExpression = function(parent, node, options) {
+    var f_astNode = AwaitExpression_astNode;
     var __isText = false;
     // log 'node : AwaitExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3857,6 +4465,10 @@ format.AwaitExpression = function(parent, node, options) {
         ]
     };
     // process AST-node-property argument and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "argument", 
+        descr: "process AST-node-property argument and append ittfNode to `ret`"
+    })
     if (node.argument) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
@@ -3877,7 +4489,16 @@ format.AwaitExpression = function(parent, node, options) {
     }
 };
 // process AST node ArrayExpression
+var ArrayExpression_astNode = {
+    name: "ArrayExpression", 
+    ittfTag: "[", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ArrayExpression_astNode)
 format.ArrayExpression = function(parent, node, options) {
+    var f_astNode = ArrayExpression_astNode;
     var __isText = false;
     // log 'node : ArrayExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -3904,6 +4525,11 @@ format.ArrayExpression = function(parent, node, options) {
         ]
     };
     // process AST-node-property-collection elements and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "elements", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection elements and append ittfNode(s) to `ret`"
+    })
     if (node.elements) {
         if (typeof node.elements.length === 'undefined') {
             throw new Error('Property node.elements must be an array');
@@ -3981,7 +4607,16 @@ format.ArrayExpression = function(parent, node, options) {
     }
 };
 // process AST node ObjectExpression
+var ObjectExpression_astNode = {
+    name: "ObjectExpression", 
+    ittfTag: "{", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ObjectExpression_astNode)
 format.ObjectExpression = function(parent, node, options) {
+    var f_astNode = ObjectExpression_astNode;
     var __isText = false;
     // log 'node : ObjectExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -4013,6 +4648,11 @@ format.ObjectExpression = function(parent, node, options) {
         var __skip = true;
     }
     // process AST-node-property-collection properties and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "properties", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection properties and append ittfNode(s) to `ret`"
+    })
     if (node.properties) {
         if (typeof node.properties.length === 'undefined') {
             throw new Error('Property node.properties must be an array');
@@ -4108,7 +4748,16 @@ format.ObjectExpression = function(parent, node, options) {
     }
 };
 // process AST node ObjectProperty
+var ObjectProperty_astNode = {
+    name: "ObjectProperty", 
+    ittfTag: "@", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ObjectProperty_astNode)
 format.ObjectProperty = function(parent, node, options) {
+    var f_astNode = ObjectProperty_astNode;
     var __isText = false;
     // log 'node : ObjectProperty ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -4184,7 +4833,7 @@ format.ObjectProperty = function(parent, node, options) {
     else {
         throw new Error('AST-node-property key undefined: ' + JSON.stringify(node, null, 2));
     }
-    console.log('ObjectProperty.p_key', p_key);
+    // log 'ObjectProperty.p_key', p_key
     options.mustBeText = save;
     if (isTextualNode(p_key)) {
         ret.name = getNodeText(p_key);
@@ -4203,6 +4852,11 @@ format.ObjectProperty = function(parent, node, options) {
         ret = p_computed;
     }
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "decorators", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection decorators and append ittfNode(s) to `ret`"
+    })
     if (node.decorators) {
         if (typeof node.decorators.length === 'undefined') {
             throw new Error('Property node.decorators must be an array');
@@ -4499,7 +5153,17 @@ format.ObjectProperty = function(parent, node, options) {
     }
 };
 // process AST node ObjectMethod
+var ObjectMethod_astNode = {
+    name: "ObjectMethod", 
+    ittfTag: "node.kind", 
+    tagIsVar: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ObjectMethod_astNode)
 format.ObjectMethod = function(parent, node, options) {
+    var f_astNode = ObjectMethod_astNode;
     var __isText = false;
     // log 'node : ObjectMethod ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -4581,6 +5245,11 @@ format.ObjectMethod = function(parent, node, options) {
     options.mustBeText = save;
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -4660,6 +5329,10 @@ format.ObjectMethod = function(parent, node, options) {
         ret.children.push(p_returnType);
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -4693,7 +5366,16 @@ format.ObjectMethod = function(parent, node, options) {
     }
 };
 // process AST node FunctionExpression
+var FunctionExpression_astNode = {
+    name: "FunctionExpression", 
+    ittfTag: "function", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(FunctionExpression_astNode)
 format.FunctionExpression = function(parent, node, options) {
+    var f_astNode = FunctionExpression_astNode;
     var __isText = false;
     // log 'node : FunctionExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -4722,6 +5404,12 @@ format.FunctionExpression = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -4747,6 +5435,11 @@ format.FunctionExpression = function(parent, node, options) {
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -4826,6 +5519,10 @@ format.FunctionExpression = function(parent, node, options) {
         ret.children.push(p_returnType);
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -4854,7 +5551,17 @@ format.FunctionExpression = function(parent, node, options) {
     }
 };
 // process AST node UnaryExpression
+var UnaryExpression_astNode = {
+    name: "UnaryExpression", 
+    ittfTag: "'op' + node.operator", 
+    tagIsVar: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(UnaryExpression_astNode)
 format.UnaryExpression = function(parent, node, options) {
+    var f_astNode = UnaryExpression_astNode;
     var __isText = false;
     // log 'node : UnaryExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -4987,7 +5694,17 @@ format.UnaryExpression = function(parent, node, options) {
     }
 };
 // process AST node UpdateExpression
+var UpdateExpression_astNode = {
+    name: "UpdateExpression", 
+    ittfTag: "'op' + node.operator", 
+    tagIsVar: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(UpdateExpression_astNode)
 format.UpdateExpression = function(parent, node, options) {
+    var f_astNode = UpdateExpression_astNode;
     var __isText = false;
     // log 'node : UpdateExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -5016,6 +5733,10 @@ format.UpdateExpression = function(parent, node, options) {
     // An update (increment or decrement) operator expression.
     // s( operator, UpdateOperator enum "++" | "--"
     // process AST-node-property argument and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "argument", 
+        descr: "process AST-node-property argument and append ittfNode to `ret`"
+    })
     if (node.argument) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
@@ -5084,7 +5805,17 @@ format.UpdateExpression = function(parent, node, options) {
     }
 };
 // process AST node BinaryExpression
+var BinaryExpression_astNode = {
+    name: "BinaryExpression", 
+    ittfTag: "'op' + node.operator", 
+    tagIsVar: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(BinaryExpression_astNode)
 format.BinaryExpression = function(parent, node, options) {
+    var f_astNode = BinaryExpression_astNode;
     var __isText = false;
     // log 'node : BinaryExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -5260,7 +5991,16 @@ format.BinaryExpression = function(parent, node, options) {
     }
 };
 // process AST node AssignmentExpression
+var AssignmentExpression_astNode = {
+    name: "AssignmentExpression", 
+    ittfTag: "set", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(AssignmentExpression_astNode)
 format.AssignmentExpression = function(parent, node, options) {
+    var f_astNode = AssignmentExpression_astNode;
     var __isText = false;
     // log 'node : AssignmentExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -5413,7 +6153,17 @@ format.AssignmentExpression = function(parent, node, options) {
     }
 };
 // process AST node LogicalExpression
+var LogicalExpression_astNode = {
+    name: "LogicalExpression", 
+    ittfTag: "'op' + node.operator", 
+    tagIsVar: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(LogicalExpression_astNode)
 format.LogicalExpression = function(parent, node, options) {
+    var f_astNode = LogicalExpression_astNode;
     var __isText = false;
     // log 'node : LogicalExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -5593,7 +6343,16 @@ format.LogicalExpression = function(parent, node, options) {
     }
 };
 // process AST node SpreadElement
+var SpreadElement_astNode = {
+    name: "SpreadElement", 
+    ittfTag: "...", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(SpreadElement_astNode)
 format.SpreadElement = function(parent, node, options) {
+    var f_astNode = SpreadElement_astNode;
     var __isText = false;
     // log 'node : SpreadElement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -5689,7 +6448,16 @@ format.SpreadElement = function(parent, node, options) {
     }
 };
 // process AST node MemberExpression
+var MemberExpression_astNode = {
+    name: "MemberExpression", 
+    ittfTag: "@expr", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(MemberExpression_astNode)
 format.MemberExpression = function(parent, node, options) {
+    var f_astNode = MemberExpression_astNode;
     var __isText = false;
     // log 'node : MemberExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -5884,7 +6652,16 @@ format.MemberExpression = function(parent, node, options) {
     }
 };
 // process AST node BindExpression
+var BindExpression_astNode = {
+    name: "BindExpression", 
+    ittfTag: "bind-expr", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(BindExpression_astNode)
 format.BindExpression = function(parent, node, options) {
+    var f_astNode = BindExpression_astNode;
     var __isText = false;
     // log 'node : BindExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -5911,6 +6688,10 @@ format.BindExpression = function(parent, node, options) {
         ]
     };
     // process AST-node-property object and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "object", 
+        descr: "process AST-node-property object and append ittfNode to `ret`"
+    })
     if (node.object) {
         if (!node.object.type) {
             throw 'Node object has no type: ' + JSON.stringify(node, null, 2);
@@ -5918,6 +6699,10 @@ format.BindExpression = function(parent, node, options) {
         format(ret, node.object, options)
     }
     // process AST-node-property callee and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "callee", 
+        descr: "process AST-node-property callee and append ittfNode to `ret`"
+    })
     if (node.callee) {
         if (!node.callee.type) {
             throw 'Node callee has no type: ' + JSON.stringify(node, null, 2);
@@ -5941,7 +6726,16 @@ format.BindExpression = function(parent, node, options) {
     }
 };
 // process AST node ConditionalExpression
+var ConditionalExpression_astNode = {
+    name: "ConditionalExpression", 
+    ittfTag: "iif", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ConditionalExpression_astNode)
 format.ConditionalExpression = function(parent, node, options) {
+    var f_astNode = ConditionalExpression_astNode;
     var __isText = false;
     // log 'node : ConditionalExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -5968,6 +6762,11 @@ format.ConditionalExpression = function(parent, node, options) {
         ]
     };
     // A conditional expression, i.e., a ternary `?`/`,` expression.
+    f_astNode.props.push({
+        name: "test", 
+        tag: "test", 
+        descr: "fragment f_p_tag"
+    })
     var p_test = {
         textified: null, 
         isText: false, 
@@ -6160,7 +6959,16 @@ format.ConditionalExpression = function(parent, node, options) {
     }
 };
 // process AST node CallExpression
+var CallExpression_astNode = {
+    name: "CallExpression", 
+    ittfTag: "_", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(CallExpression_astNode)
 format.CallExpression = function(parent, node, options) {
+    var f_astNode = CallExpression_astNode;
     var __isText = false;
     // log 'node : CallExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -6188,6 +6996,10 @@ format.CallExpression = function(parent, node, options) {
     };
     // A function or method call expression.
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -6408,7 +7220,17 @@ format.CallExpression = function(parent, node, options) {
     }
 };
 // process AST node NewExpression
+var NewExpression_astNode = {
+    name: "NewExpression", 
+    ittfTag: "new", 
+    couldBeText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(NewExpression_astNode)
 format.NewExpression = function(parent, node, options) {
+    var f_astNode = NewExpression_astNode;
     var __isText = false;
     options.couldBeText = true;
     // log 'node : NewExpression ----------------------------------------- parent ittf tag : ', parent.tag
@@ -6437,6 +7259,11 @@ format.NewExpression = function(parent, node, options) {
     };
     // process AST-node-property-collection arguments and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "arguments", 
+        tag: "arguments", 
+        descr: "# process AST-node-property-collection arguments and embed its array of nodes in a new tag"
+    })
     if (node.arguments) {
         if (typeof node.arguments.length === 'undefined') {
             throw new Error('Property node.arguments must be an array');
@@ -6553,7 +7380,16 @@ format.NewExpression = function(parent, node, options) {
     options.couldBeText = false;
 };
 // process AST node SequenceExpression
+var SequenceExpression_astNode = {
+    name: "SequenceExpression", 
+    ittfTag: "sequence", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(SequenceExpression_astNode)
 format.SequenceExpression = function(parent, node, options) {
+    var f_astNode = SequenceExpression_astNode;
     var __isText = false;
     // log 'node : SequenceExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -6580,6 +7416,11 @@ format.SequenceExpression = function(parent, node, options) {
         ]
     };
     // process AST-node-property-collection expressions and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "expressions", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection expressions and append ittfNode(s) to `ret`"
+    })
     if (node.expressions) {
         if (typeof node.expressions.length === 'undefined') {
             throw new Error('Property node.expressions must be an array');
@@ -6618,7 +7459,16 @@ format.SequenceExpression = function(parent, node, options) {
     }
 };
 // process AST node DoExpression
+var DoExpression_astNode = {
+    name: "DoExpression", 
+    ittfTag: "do", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(DoExpression_astNode)
 format.DoExpression = function(parent, node, options) {
+    var f_astNode = DoExpression_astNode;
     var __isText = false;
     // log 'node : DoExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -6645,6 +7495,10 @@ format.DoExpression = function(parent, node, options) {
         ]
     };
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -6667,7 +7521,16 @@ format.DoExpression = function(parent, node, options) {
     }
 };
 // process AST node TemplateLiteral
+var TemplateLiteral_astNode = {
+    name: "TemplateLiteral", 
+    ittfTag: "`lit", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TemplateLiteral_astNode)
 format.TemplateLiteral = function(parent, node, options) {
+    var f_astNode = TemplateLiteral_astNode;
     var __isText = false;
     // log 'node : TemplateLiteral ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -6770,7 +7633,16 @@ format.TemplateLiteral = function(parent, node, options) {
     }
 };
 // process AST node TaggedTemplateExpression
+var TaggedTemplateExpression_astNode = {
+    name: "TaggedTemplateExpression", 
+    ittfTag: "_`", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TaggedTemplateExpression_astNode)
 format.TaggedTemplateExpression = function(parent, node, options) {
+    var f_astNode = TaggedTemplateExpression_astNode;
     var __isText = false;
     // log 'node : TaggedTemplateExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -6914,7 +7786,16 @@ format.TaggedTemplateExpression = function(parent, node, options) {
     }
 };
 // process AST node TemplateElement
+var TemplateElement_astNode = {
+    name: "TemplateElement", 
+    ittfTag: "+", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TemplateElement_astNode)
 format.TemplateElement = function(parent, node, options) {
+    var f_astNode = TemplateElement_astNode;
     var __isText = false;
     // log 'node : TemplateElement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -6975,7 +7856,16 @@ format.TemplateElement = function(parent, node, options) {
     }
 };
 // process AST node ObjectPattern
+var ObjectPattern_astNode = {
+    name: "ObjectPattern", 
+    ittfTag: "{", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ObjectPattern_astNode)
 format.ObjectPattern = function(parent, node, options) {
+    var f_astNode = ObjectPattern_astNode;
     var __isText = false;
     // log 'node : ObjectPattern ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7003,6 +7893,11 @@ format.ObjectPattern = function(parent, node, options) {
     };
     // log 'ObjectPattern enter options.mustBeText', options.mustBeText
     // process AST-node-property-collection properties and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "properties", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection properties and append ittfNode(s) to `ret`"
+    })
     if (node.properties) {
         if (typeof node.properties.length === 'undefined') {
             throw new Error('Property node.properties must be an array');
@@ -7034,6 +7929,10 @@ format.ObjectPattern = function(parent, node, options) {
     }
     else {
         // process AST-node-property typeAnnotation and append ittfNode to `ret`
+        f_astNode.props.push({
+            name: "typeAnnotation", 
+            descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+        })
         if (node.typeAnnotation) {
             if (!node.typeAnnotation.type) {
                 throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -7073,7 +7972,16 @@ format.ObjectPattern = function(parent, node, options) {
     }
 };
 // process AST node ArrayPattern
+var ArrayPattern_astNode = {
+    name: "ArrayPattern", 
+    ittfTag: "none", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ArrayPattern_astNode)
 format.ArrayPattern = function(parent, node, options) {
+    var f_astNode = ArrayPattern_astNode;
     var __isText = false;
     // log 'node : ArrayPattern ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7100,6 +8008,11 @@ format.ArrayPattern = function(parent, node, options) {
         ]
     };
     // process AST-node-property-collection elements and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "elements", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection elements and append ittfNode(s) to `ret`"
+    })
     if (node.elements) {
         if (typeof node.elements.length === 'undefined') {
             throw new Error('Property node.elements must be an array');
@@ -7134,7 +8047,17 @@ format.ArrayPattern = function(parent, node, options) {
     }
 };
 // process AST node RestElement
+var RestElement_astNode = {
+    name: "RestElement", 
+    ittfTag: "...", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(RestElement_astNode)
 format.RestElement = function(parent, node, options) {
+    var f_astNode = RestElement_astNode;
     var __isText = true;
     // log 'node : RestElement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7161,6 +8084,10 @@ format.RestElement = function(parent, node, options) {
         ]
     };
     // process AST-node-property argument and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "argument", 
+        descr: "process AST-node-property argument and append ittfNode to `ret`"
+    })
     if (node.argument) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
@@ -7182,6 +8109,10 @@ format.RestElement = function(parent, node, options) {
         }
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -7202,7 +8133,16 @@ format.RestElement = function(parent, node, options) {
     }
 };
 // process AST node AssignmentPattern
+var AssignmentPattern_astNode = {
+    name: "AssignmentPattern", 
+    ittfTag: "none", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(AssignmentPattern_astNode)
 format.AssignmentPattern = function(parent, node, options) {
+    var f_astNode = AssignmentPattern_astNode;
     var __isText = false;
     // log 'node : AssignmentPattern ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7351,7 +8291,16 @@ format.AssignmentPattern = function(parent, node, options) {
     }
 };
 // process AST node Class
+var Class_astNode = {
+    name: "Class", 
+    ittfTag: "class", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Class_astNode)
 format.Class = function(parent, node, options) {
+    var f_astNode = Class_astNode;
     var __isText = false;
     // log 'node : Class ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7380,6 +8329,12 @@ format.Class = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -7459,6 +8414,11 @@ format.Class = function(parent, node, options) {
         }
     }
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "decorators", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection decorators and append ittfNode(s) to `ret`"
+    })
     if (node.decorators) {
         if (typeof node.decorators.length === 'undefined') {
             throw new Error('Property node.decorators must be an array');
@@ -7474,6 +8434,10 @@ format.Class = function(parent, node, options) {
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -7496,7 +8460,17 @@ format.Class = function(parent, node, options) {
     }
 };
 // process AST node ClassBody
+var ClassBody_astNode = {
+    name: "ClassBody", 
+    ittfTag: "ClassBody", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ClassBody_astNode)
 format.ClassBody = function(parent, node, options) {
+    var f_astNode = ClassBody_astNode;
     var __isText = false;
     // log 'node : ClassBody ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7513,6 +8487,11 @@ format.ClassBody = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection body and append ittfNode(s) to `ret`"
+    })
     if (node.body) {
         if (typeof node.body.length === 'undefined') {
             throw new Error('Property node.body must be an array');
@@ -7537,7 +8516,17 @@ format.ClassBody = function(parent, node, options) {
     }
 };
 // process AST node ClassMethod
+var ClassMethod_astNode = {
+    name: "ClassMethod", 
+    ittfTag: "node.kind", 
+    tagIsVar: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ClassMethod_astNode)
 format.ClassMethod = function(parent, node, options) {
+    var f_astNode = ClassMethod_astNode;
     var __isText = false;
     // log 'node : ClassMethod ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7563,6 +8552,11 @@ format.ClassMethod = function(parent, node, options) {
             
         ]
     };
+    f_astNode.props.push({
+        name: "key", 
+        tag: "key", 
+        descr: "fragment f_p_tag"
+    })
     var p_key = {
         textified: null, 
         isText: false, 
@@ -7622,6 +8616,11 @@ format.ClassMethod = function(parent, node, options) {
     // b( generator
     // b( async
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "decorators", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection decorators and append ittfNode(s) to `ret`"
+    })
     if (node.decorators) {
         if (typeof node.decorators.length === 'undefined') {
             throw new Error('Property node.decorators must be an array');
@@ -7638,6 +8637,11 @@ format.ClassMethod = function(parent, node, options) {
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -7717,6 +8721,10 @@ format.ClassMethod = function(parent, node, options) {
         ret.children.push(p_returnType);
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -7753,7 +8761,17 @@ format.ClassMethod = function(parent, node, options) {
     }
 };
 // process AST node ClassPrivateMethod
+var ClassPrivateMethod_astNode = {
+    name: "ClassPrivateMethod", 
+    ittfTag: "node.kind", 
+    tagIsVar: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ClassPrivateMethod_astNode)
 format.ClassPrivateMethod = function(parent, node, options) {
+    var f_astNode = ClassPrivateMethod_astNode;
     var __isText = false;
     // log 'node : ClassPrivateMethod ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7780,6 +8798,10 @@ format.ClassPrivateMethod = function(parent, node, options) {
         ]
     };
     // process AST-node-property key and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "key", 
+        descr: "process AST-node-property key and append ittfNode to `ret`"
+    })
     if (node.key) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
@@ -7800,6 +8822,11 @@ format.ClassPrivateMethod = function(parent, node, options) {
         })
     }
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "decorators", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection decorators and append ittfNode(s) to `ret`"
+    })
     if (node.decorators) {
         if (typeof node.decorators.length === 'undefined') {
             throw new Error('Property node.decorators must be an array');
@@ -7816,6 +8843,11 @@ format.ClassPrivateMethod = function(parent, node, options) {
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -7896,6 +8928,10 @@ format.ClassPrivateMethod = function(parent, node, options) {
         ret.children.push(p_returnType);
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -7918,7 +8954,16 @@ format.ClassPrivateMethod = function(parent, node, options) {
     }
 };
 // process AST node ClassProperty
+var ClassProperty_astNode = {
+    name: "ClassProperty", 
+    ittfTag: "p", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ClassProperty_astNode)
 format.ClassProperty = function(parent, node, options) {
+    var f_astNode = ClassProperty_astNode;
     var __isText = false;
     // log 'node : ClassProperty ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -7947,6 +8992,12 @@ format.ClassProperty = function(parent, node, options) {
     // Process AST-node-property key and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "key", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property key and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.key) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
@@ -8132,7 +9183,16 @@ format.ClassProperty = function(parent, node, options) {
     }
 };
 // process AST node ClassPrivateProperty
+var ClassPrivateProperty_astNode = {
+    name: "ClassPrivateProperty", 
+    ittfTag: "p", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ClassPrivateProperty_astNode)
 format.ClassPrivateProperty = function(parent, node, options) {
+    var f_astNode = ClassPrivateProperty_astNode;
     var __isText = false;
     // log 'node : ClassPrivateProperty ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -8159,6 +9219,10 @@ format.ClassPrivateProperty = function(parent, node, options) {
         ]
     };
     // process AST-node-property key and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "key", 
+        descr: "process AST-node-property key and append ittfNode to `ret`"
+    })
     if (node.key) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
@@ -8169,6 +9233,10 @@ format.ClassPrivateProperty = function(parent, node, options) {
         throw new Error('AST-node-property key undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property value and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "value", 
+        descr: "process AST-node-property value and append ittfNode to `ret`"
+    })
     if (node.value) {
         if (!node.value.type) {
             throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
@@ -8200,7 +9268,16 @@ format.ClassPrivateProperty = function(parent, node, options) {
     }
 };
 // process AST node ClassDeclaration
+var ClassDeclaration_astNode = {
+    name: "ClassDeclaration", 
+    ittfTag: "class", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ClassDeclaration_astNode)
 format.ClassDeclaration = function(parent, node, options) {
+    var f_astNode = ClassDeclaration_astNode;
     var __isText = false;
     // log 'node : ClassDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -8229,6 +9306,12 @@ format.ClassDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -8262,6 +9345,10 @@ format.ClassDeclaration = function(parent, node, options) {
         })
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -8430,6 +9517,11 @@ format.ClassDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "decorators", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection decorators and append ittfNode(s) to `ret`"
+    })
     if (node.decorators) {
         if (typeof node.decorators.length === 'undefined') {
             throw new Error('Property node.decorators must be an array');
@@ -8445,6 +9537,10 @@ format.ClassDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -8476,7 +9572,16 @@ format.ClassDeclaration = function(parent, node, options) {
     }
 };
 // process AST node ClassExpression
+var ClassExpression_astNode = {
+    name: "ClassExpression", 
+    ittfTag: "class", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ClassExpression_astNode)
 format.ClassExpression = function(parent, node, options) {
+    var f_astNode = ClassExpression_astNode;
     var __isText = false;
     // log 'node : ClassExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -8505,6 +9610,12 @@ format.ClassExpression = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -8587,6 +9698,10 @@ format.ClassExpression = function(parent, node, options) {
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -8609,7 +9724,16 @@ format.ClassExpression = function(parent, node, options) {
     }
 };
 // process AST node MetaProperty
+var MetaProperty_astNode = {
+    name: "MetaProperty", 
+    ittfTag: "meta", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(MetaProperty_astNode)
 format.MetaProperty = function(parent, node, options) {
+    var f_astNode = MetaProperty_astNode;
     var __isText = false;
     // log 'node : MetaProperty ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -8636,6 +9760,10 @@ format.MetaProperty = function(parent, node, options) {
         ]
     };
     // process AST-node-property meta and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "meta", 
+        descr: "process AST-node-property meta and append ittfNode to `ret`"
+    })
     if (node.meta) {
         if (!node.meta.type) {
             throw 'Node meta has no type: ' + JSON.stringify(node, null, 2);
@@ -8646,6 +9774,10 @@ format.MetaProperty = function(parent, node, options) {
         throw new Error('AST-node-property meta undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property property and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "property", 
+        descr: "process AST-node-property property and append ittfNode to `ret`"
+    })
     if (node.property) {
         if (!node.property.type) {
             throw 'Node property has no type: ' + JSON.stringify(node, null, 2);
@@ -8680,7 +9812,16 @@ format.MetaProperty = function(parent, node, options) {
     }
 };
 // process AST node ModuleDeclaration
+var ModuleDeclaration_astNode = {
+    name: "ModuleDeclaration", 
+    ittfTag: "module", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ModuleDeclaration_astNode)
 format.ModuleDeclaration = function(parent, node, options) {
+    var f_astNode = ModuleDeclaration_astNode;
     var __isText = false;
     // log 'node : ModuleDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -8720,7 +9861,16 @@ format.ModuleDeclaration = function(parent, node, options) {
     }
 };
 // process AST node ImportDeclaration
+var ImportDeclaration_astNode = {
+    name: "ImportDeclaration", 
+    ittfTag: "import", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ImportDeclaration_astNode)
 format.ImportDeclaration = function(parent, node, options) {
+    var f_astNode = ImportDeclaration_astNode;
     var __isText = false;
     // log 'node : ImportDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -8747,6 +9897,11 @@ format.ImportDeclaration = function(parent, node, options) {
         ]
     };
     // process AST-node-property-collection specifiers and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "specifiers", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection specifiers and append ittfNode(s) to `ret`"
+    })
     if (node.specifiers) {
         if (typeof node.specifiers.length === 'undefined') {
             throw new Error('Property node.specifiers must be an array');
@@ -8764,6 +9919,11 @@ format.ImportDeclaration = function(parent, node, options) {
     else {
         throw new Error('AST-node-property-collection specifiers undefined: ' + JSON.stringify(node, null, 2));
     }
+    f_astNode.props.push({
+        name: "source", 
+        tag: "from", 
+        descr: "fragment f_p_tag"
+    })
     var p_source = {
         textified: null, 
         isText: false, 
@@ -8829,7 +9989,16 @@ format.ImportDeclaration = function(parent, node, options) {
     }
 };
 // process AST node ImportSpecifier
+var ImportSpecifier_astNode = {
+    name: "ImportSpecifier", 
+    ittfTag: "@", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ImportSpecifier_astNode)
 format.ImportSpecifier = function(parent, node, options) {
+    var f_astNode = ImportSpecifier_astNode;
     var __isText = false;
     // log 'node : ImportSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -8856,6 +10025,10 @@ format.ImportSpecifier = function(parent, node, options) {
         ]
     };
     // process AST-node-property local and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "local", 
+        descr: "process AST-node-property local and append ittfNode to `ret`"
+    })
     if (node.local) {
         if (!node.local.type) {
             throw 'Node local has no type: ' + JSON.stringify(node, null, 2);
@@ -8868,6 +10041,12 @@ format.ImportSpecifier = function(parent, node, options) {
     // Process AST-node-property imported and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "imported", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property imported and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.imported) {
         if (!node.imported.type) {
             throw 'Node imported has no type: ' + JSON.stringify(node, null, 2);
@@ -8920,7 +10099,16 @@ format.ImportSpecifier = function(parent, node, options) {
     }
 };
 // process AST node ImportDefaultSpecifier
+var ImportDefaultSpecifier_astNode = {
+    name: "ImportDefaultSpecifier", 
+    ittfTag: "default", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ImportDefaultSpecifier_astNode)
 format.ImportDefaultSpecifier = function(parent, node, options) {
+    var f_astNode = ImportDefaultSpecifier_astNode;
     var __isText = false;
     // log 'node : ImportDefaultSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -8949,6 +10137,12 @@ format.ImportDefaultSpecifier = function(parent, node, options) {
     // Process AST-node-property local and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "local", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property local and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.local) {
         if (!node.local.type) {
             throw 'Node local has no type: ' + JSON.stringify(node, null, 2);
@@ -8986,7 +10180,16 @@ format.ImportDefaultSpecifier = function(parent, node, options) {
     }
 };
 // process AST node ImportNamespaceSpecifier
+var ImportNamespaceSpecifier_astNode = {
+    name: "ImportNamespaceSpecifier", 
+    ittfTag: "as", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ImportNamespaceSpecifier_astNode)
 format.ImportNamespaceSpecifier = function(parent, node, options) {
+    var f_astNode = ImportNamespaceSpecifier_astNode;
     var __isText = false;
     // log 'node : ImportNamespaceSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9013,6 +10216,10 @@ format.ImportNamespaceSpecifier = function(parent, node, options) {
         ]
     };
     // process AST-node-property local and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "local", 
+        descr: "process AST-node-property local and append ittfNode to `ret`"
+    })
     if (node.local) {
         if (!node.local.type) {
             throw 'Node local has no type: ' + JSON.stringify(node, null, 2);
@@ -9047,7 +10254,16 @@ format.ImportNamespaceSpecifier = function(parent, node, options) {
     }
 };
 // process AST node ExportNamedDeclaration
+var ExportNamedDeclaration_astNode = {
+    name: "ExportNamedDeclaration", 
+    ittfTag: "export", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ExportNamedDeclaration_astNode)
 format.ExportNamedDeclaration = function(parent, node, options) {
+    var f_astNode = ExportNamedDeclaration_astNode;
     var __isText = false;
     // log 'node : ExportNamedDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9074,6 +10290,10 @@ format.ExportNamedDeclaration = function(parent, node, options) {
         ]
     };
     // process AST-node-property declaration and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "declaration", 
+        descr: "process AST-node-property declaration and append ittfNode to `ret`"
+    })
     if (node.declaration) {
         if (!node.declaration.type) {
             throw 'Node declaration has no type: ' + JSON.stringify(node, null, 2);
@@ -9081,6 +10301,11 @@ format.ExportNamedDeclaration = function(parent, node, options) {
         format(ret, node.declaration, options)
     }
     // process AST-node-property-collection specifiers and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "specifiers", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection specifiers and append ittfNode(s) to `ret`"
+    })
     if (node.specifiers) {
         if (typeof node.specifiers.length === 'undefined') {
             throw new Error('Property node.specifiers must be an array');
@@ -9098,6 +10323,11 @@ format.ExportNamedDeclaration = function(parent, node, options) {
     else {
         throw new Error('AST-node-property-collection specifiers undefined: ' + JSON.stringify(node, null, 2));
     }
+    f_astNode.props.push({
+        name: "source", 
+        tag: "from", 
+        descr: "fragment f_p_tag"
+    })
     var p_source = {
         textified: null, 
         isText: false, 
@@ -9156,7 +10386,16 @@ format.ExportNamedDeclaration = function(parent, node, options) {
     }
 };
 // process AST node ExportSpecifier
+var ExportSpecifier_astNode = {
+    name: "ExportSpecifier", 
+    ittfTag: "@", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ExportSpecifier_astNode)
 format.ExportSpecifier = function(parent, node, options) {
+    var f_astNode = ExportSpecifier_astNode;
     var __isText = false;
     // log 'node : ExportSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9183,6 +10422,10 @@ format.ExportSpecifier = function(parent, node, options) {
         ]
     };
     // process AST-node-property exported and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "exported", 
+        descr: "process AST-node-property exported and append ittfNode to `ret`"
+    })
     if (node.exported) {
         if (!node.exported.type) {
             throw 'Node exported has no type: ' + JSON.stringify(node, null, 2);
@@ -9195,6 +10438,12 @@ format.ExportSpecifier = function(parent, node, options) {
     // Process AST-node-property local and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "local", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property local and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.local) {
         if (!node.local.type) {
             throw 'Node local has no type: ' + JSON.stringify(node, null, 2);
@@ -9242,7 +10491,16 @@ format.ExportSpecifier = function(parent, node, options) {
     }
 };
 // process AST node ExportDefaultSpecifier
+var ExportDefaultSpecifier_astNode = {
+    name: "ExportDefaultSpecifier", 
+    ittfTag: "default", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ExportDefaultSpecifier_astNode)
 format.ExportDefaultSpecifier = function(parent, node, options) {
+    var f_astNode = ExportDefaultSpecifier_astNode;
     var __isText = false;
     // log 'node : ExportDefaultSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9334,7 +10592,16 @@ format.ExportDefaultSpecifier = function(parent, node, options) {
     }
 };
 // process AST node ExportDefaultDeclaration
+var ExportDefaultDeclaration_astNode = {
+    name: "ExportDefaultDeclaration", 
+    ittfTag: "export-default", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ExportDefaultDeclaration_astNode)
 format.ExportDefaultDeclaration = function(parent, node, options) {
+    var f_astNode = ExportDefaultDeclaration_astNode;
     var __isText = false;
     // log 'node : ExportDefaultDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9427,7 +10694,16 @@ format.ExportDefaultDeclaration = function(parent, node, options) {
     }
 };
 // process AST node ExportNamespaceSpecifier
+var ExportNamespaceSpecifier_astNode = {
+    name: "ExportNamespaceSpecifier", 
+    ittfTag: "as", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ExportNamespaceSpecifier_astNode)
 format.ExportNamespaceSpecifier = function(parent, node, options) {
+    var f_astNode = ExportNamespaceSpecifier_astNode;
     var __isText = false;
     // log 'node : ExportNamespaceSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9519,7 +10795,16 @@ format.ExportNamespaceSpecifier = function(parent, node, options) {
     }
 };
 // process AST node ExportAllDeclaration
+var ExportAllDeclaration_astNode = {
+    name: "ExportAllDeclaration", 
+    ittfTag: "export", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ExportAllDeclaration_astNode)
 format.ExportAllDeclaration = function(parent, node, options) {
+    var f_astNode = ExportAllDeclaration_astNode;
     var __isText = false;
     // log 'node : ExportAllDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9546,6 +10831,11 @@ format.ExportAllDeclaration = function(parent, node, options) {
         ]
     };
     ret.name = '*';
+    f_astNode.props.push({
+        name: "source", 
+        tag: "from", 
+        descr: "fragment f_p_tag"
+    })
     var p_source = {
         textified: null, 
         isText: false, 
@@ -9594,7 +10884,16 @@ format.ExportAllDeclaration = function(parent, node, options) {
     }
 };
 // process AST node CommentBlock
+var CommentBlock_astNode = {
+    name: "CommentBlock", 
+    ittfTag: "#", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(CommentBlock_astNode)
 format.CommentBlock = function(parent, node, options) {
+    var f_astNode = CommentBlock_astNode;
     var __isText = false;
     // log 'node : CommentBlock ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9647,7 +10946,16 @@ format.CommentBlock = function(parent, node, options) {
     }
 };
 // process AST node CommentLine
+var CommentLine_astNode = {
+    name: "CommentLine", 
+    ittfTag: "#", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(CommentLine_astNode)
 format.CommentLine = function(parent, node, options) {
+    var f_astNode = CommentLine_astNode;
     var __isText = false;
     // log 'node : CommentLine ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9689,7 +10997,16 @@ format.CommentLine = function(parent, node, options) {
     }
 };
 // process AST node JSXAttribute
+var JSXAttribute_astNode = {
+    name: "JSXAttribute", 
+    ittfTag: "@", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXAttribute_astNode)
 format.JSXAttribute = function(parent, node, options) {
+    var f_astNode = JSXAttribute_astNode;
     var __isText = false;
     // log 'node : JSXAttribute ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9836,7 +11153,16 @@ format.JSXAttribute = function(parent, node, options) {
     }
 };
 // process AST node JSXClosingElement
+var JSXClosingElement_astNode = {
+    name: "JSXClosingElement", 
+    ittfTag: "jsx-close", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXClosingElement_astNode)
 format.JSXClosingElement = function(parent, node, options) {
+    var f_astNode = JSXClosingElement_astNode;
     var __isText = false;
     // log 'node : JSXClosingElement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -9876,7 +11202,16 @@ format.JSXClosingElement = function(parent, node, options) {
     }
 };
 // process AST node JSXElement
+var JSXElement_astNode = {
+    name: "JSXElement", 
+    ittfTag: "jsx-element", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXElement_astNode)
 format.JSXElement = function(parent, node, options) {
+    var f_astNode = JSXElement_astNode;
     var __isText = false;
     // log 'node : JSXElement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10055,7 +11390,17 @@ format.JSXElement = function(parent, node, options) {
     }
 };
 // process AST node JSXEmptyExpression
+var JSXEmptyExpression_astNode = {
+    name: "JSXEmptyExpression", 
+    ittfTag: "JSXEmptyExpression", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXEmptyExpression_astNode)
 format.JSXEmptyExpression = function(parent, node, options) {
+    var f_astNode = JSXEmptyExpression_astNode;
     var __isText = false;
     // log 'node : JSXEmptyExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10072,6 +11417,11 @@ format.JSXEmptyExpression = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property-collection innerComments and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "innerComments", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection innerComments and append ittfNode(s) to `ret`"
+    })
     if (node.innerComments) {
         if (typeof node.innerComments.length === 'undefined') {
             throw new Error('Property node.innerComments must be an array');
@@ -10096,7 +11446,16 @@ format.JSXEmptyExpression = function(parent, node, options) {
     }
 };
 // process AST node JSXExpressionContainer
+var JSXExpressionContainer_astNode = {
+    name: "JSXExpressionContainer", 
+    ittfTag: "none", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXExpressionContainer_astNode)
 format.JSXExpressionContainer = function(parent, node, options) {
+    var f_astNode = JSXExpressionContainer_astNode;
     var __isText = false;
     // log 'node : JSXExpressionContainer ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10203,7 +11562,16 @@ format.JSXExpressionContainer = function(parent, node, options) {
     }
 };
 // process AST node JSXSpreadChild
+var JSXSpreadChild_astNode = {
+    name: "JSXSpreadChild", 
+    ittfTag: "none", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXSpreadChild_astNode)
 format.JSXSpreadChild = function(parent, node, options) {
+    var f_astNode = JSXSpreadChild_astNode;
     var __isText = false;
     // log 'node : JSXSpreadChild ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10292,7 +11660,17 @@ format.JSXSpreadChild = function(parent, node, options) {
     }
 };
 // process AST node JSXIdentifier
+var JSXIdentifier_astNode = {
+    name: "JSXIdentifier", 
+    ittfTag: "jsx-ident", 
+    isText: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXIdentifier_astNode)
 format.JSXIdentifier = function(parent, node, options) {
+    var f_astNode = JSXIdentifier_astNode;
     var __isText = true;
     // log 'node : JSXIdentifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10336,7 +11714,16 @@ format.JSXIdentifier = function(parent, node, options) {
     }
 };
 // process AST node JSXMemberExpression
+var JSXMemberExpression_astNode = {
+    name: "JSXMemberExpression", 
+    ittfTag: "none", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXMemberExpression_astNode)
 format.JSXMemberExpression = function(parent, node, options) {
+    var f_astNode = JSXMemberExpression_astNode;
     var __isText = false;
     // log 'node : JSXMemberExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10363,6 +11750,10 @@ format.JSXMemberExpression = function(parent, node, options) {
         ]
     };
     // process AST-node-property object and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "object", 
+        descr: "process AST-node-property object and append ittfNode to `ret`"
+    })
     if (node.object) {
         if (!node.object.type) {
             throw 'Node object has no type: ' + JSON.stringify(node, null, 2);
@@ -10373,6 +11764,10 @@ format.JSXMemberExpression = function(parent, node, options) {
         throw new Error('AST-node-property object undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property property and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "property", 
+        descr: "process AST-node-property property and append ittfNode to `ret`"
+    })
     if (node.property) {
         if (!node.property.type) {
             throw 'Node property has no type: ' + JSON.stringify(node, null, 2);
@@ -10407,7 +11802,16 @@ format.JSXMemberExpression = function(parent, node, options) {
     }
 };
 // process AST node JSXNamespacedName
+var JSXNamespacedName_astNode = {
+    name: "JSXNamespacedName", 
+    ittfTag: "none", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXNamespacedName_astNode)
 format.JSXNamespacedName = function(parent, node, options) {
+    var f_astNode = JSXNamespacedName_astNode;
     var __isText = false;
     // log 'node : JSXNamespacedName ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10448,7 +11852,16 @@ format.JSXNamespacedName = function(parent, node, options) {
     }
 };
 // process AST node JSXOpeningElement
+var JSXOpeningElement_astNode = {
+    name: "JSXOpeningElement", 
+    ittfTag: "jsx-open", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXOpeningElement_astNode)
 format.JSXOpeningElement = function(parent, node, options) {
+    var f_astNode = JSXOpeningElement_astNode;
     var __isText = false;
     // log 'node : JSXOpeningElement ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10611,7 +12024,16 @@ format.JSXOpeningElement = function(parent, node, options) {
     }
 };
 // process AST node JSXSpreadAttribute
+var JSXSpreadAttribute_astNode = {
+    name: "JSXSpreadAttribute", 
+    ittfTag: "@", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXSpreadAttribute_astNode)
 format.JSXSpreadAttribute = function(parent, node, options) {
+    var f_astNode = JSXSpreadAttribute_astNode;
     var __isText = false;
     // log 'node : JSXSpreadAttribute ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10638,6 +12060,10 @@ format.JSXSpreadAttribute = function(parent, node, options) {
         ]
     };
     // process AST-node-property argument and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "argument", 
+        descr: "process AST-node-property argument and append ittfNode to `ret`"
+    })
     if (node.argument) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
@@ -10671,7 +12097,16 @@ format.JSXSpreadAttribute = function(parent, node, options) {
     }
 };
 // process AST node JSXText
+var JSXText_astNode = {
+    name: "JSXText", 
+    ittfTag: "+", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXText_astNode)
 format.JSXText = function(parent, node, options) {
+    var f_astNode = JSXText_astNode;
     var __isText = false;
     // log 'node : JSXText ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10723,7 +12158,16 @@ format.JSXText = function(parent, node, options) {
     }
 };
 // process AST node JSXFragment
+var JSXFragment_astNode = {
+    name: "JSXFragment", 
+    ittfTag: "<", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXFragment_astNode)
 format.JSXFragment = function(parent, node, options) {
+    var f_astNode = JSXFragment_astNode;
     var __isText = false;
     // log 'node : JSXFragment ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10754,6 +12198,11 @@ format.JSXFragment = function(parent, node, options) {
     // children JSXText | JSXExpressionContainer | JSXSpreadChild | JSXElement | JSXFragment
     ret.name = 'React.Fragment';
     // process AST-node-property-collection children and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "children", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection children and append ittfNode(s) to `ret`"
+    })
     if (node.children) {
         if (typeof node.children.length === 'undefined') {
             throw new Error('Property node.children must be an array');
@@ -10784,7 +12233,16 @@ format.JSXFragment = function(parent, node, options) {
     }
 };
 // process AST node JSXOpeningFragment
+var JSXOpeningFragment_astNode = {
+    name: "JSXOpeningFragment", 
+    ittfTag: "fragment-open", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXOpeningFragment_astNode)
 format.JSXOpeningFragment = function(parent, node, options) {
+    var f_astNode = JSXOpeningFragment_astNode;
     var __isText = false;
     // log 'node : JSXOpeningFragment ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10824,7 +12282,16 @@ format.JSXOpeningFragment = function(parent, node, options) {
     }
 };
 // process AST node JSXClosingFragment
+var JSXClosingFragment_astNode = {
+    name: "JSXClosingFragment", 
+    ittfTag: "fragment-close", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(JSXClosingFragment_astNode)
 format.JSXClosingFragment = function(parent, node, options) {
+    var f_astNode = JSXClosingFragment_astNode;
     var __isText = false;
     // log 'node : JSXClosingFragment ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10864,7 +12331,16 @@ format.JSXClosingFragment = function(parent, node, options) {
     }
 };
 // process AST node TypeAlias
+var TypeAlias_astNode = {
+    name: "TypeAlias", 
+    ittfTag: ":type", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TypeAlias_astNode)
 format.TypeAlias = function(parent, node, options) {
+    var f_astNode = TypeAlias_astNode;
     var __isText = false;
     // log 'node : TypeAlias ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10894,6 +12370,12 @@ format.TypeAlias = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -10918,6 +12400,10 @@ format.TypeAlias = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -10925,6 +12411,10 @@ format.TypeAlias = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property right and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "right", 
+        descr: "process AST-node-property right and append ittfNode to `ret`"
+    })
     if (node.right) {
         if (!node.right.type) {
             throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
@@ -10944,7 +12434,16 @@ format.TypeAlias = function(parent, node, options) {
     }
 };
 // process AST node OpaqueType
+var OpaqueType_astNode = {
+    name: "OpaqueType", 
+    ittfTag: ":opaque-type", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(OpaqueType_astNode)
 format.OpaqueType = function(parent, node, options) {
+    var f_astNode = OpaqueType_astNode;
     var __isText = false;
     // log 'node : OpaqueType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -10973,6 +12472,12 @@ format.OpaqueType = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -10997,6 +12502,10 @@ format.OpaqueType = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -11004,6 +12513,10 @@ format.OpaqueType = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property right and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "right", 
+        descr: "process AST-node-property right and append ittfNode to `ret`"
+    })
     if (node.right) {
         if (!node.right.type) {
             throw 'Node right has no type: ' + JSON.stringify(node, null, 2);
@@ -11023,7 +12536,17 @@ format.OpaqueType = function(parent, node, options) {
     }
 };
 // process AST node TypeParameterDeclaration
+var TypeParameterDeclaration_astNode = {
+    name: "TypeParameterDeclaration", 
+    ittfTag: "TypeParameterDeclaration", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TypeParameterDeclaration_astNode)
 format.TypeParameterDeclaration = function(parent, node, options) {
+    var f_astNode = TypeParameterDeclaration_astNode;
     var __isText = false;
     // log 'node : TypeParameterDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11041,6 +12564,11 @@ format.TypeParameterDeclaration = function(parent, node, options) {
     var ret = parent;
     // extends Node
     // process AST-node-property-collection params and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "params", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection params and append ittfNode(s) to `ret`"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -11065,7 +12593,16 @@ format.TypeParameterDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TypeParameter
+var TypeParameter_astNode = {
+    name: "TypeParameter", 
+    ittfTag: ":<", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TypeParameter_astNode)
 format.TypeParameter = function(parent, node, options) {
+    var f_astNode = TypeParameter_astNode;
     var __isText = false;
     // log 'node : TypeParameter ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11094,6 +12631,11 @@ format.TypeParameter = function(parent, node, options) {
     if (node.name) {
         ret.name = node.name;
     }
+    f_astNode.props.push({
+        name: "bound", 
+        tag: "", 
+        descr: "fragment f_p_tag"
+    })
     var p_bound = {
         textified: null, 
         isText: false, 
@@ -11129,6 +12671,11 @@ format.TypeParameter = function(parent, node, options) {
             }
         */
     }
+    f_astNode.props.push({
+        name: "default", 
+        tag: "", 
+        descr: "fragment f_p_tag"
+    })
     var p_default = {
         textified: null, 
         isText: false, 
@@ -11165,6 +12712,10 @@ format.TypeParameter = function(parent, node, options) {
         */
     }
     // process AST-node-property variance and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "variance", 
+        descr: "process AST-node-property variance and append ittfNode to `ret`"
+    })
     if (node.variance) {
         if (!node.variance.type) {
             throw 'Node variance has no type: ' + JSON.stringify(node, null, 2);
@@ -11229,7 +12780,16 @@ format.TypeParameter = function(parent, node, options) {
     }
 };
 // process AST node Variance
+var Variance_astNode = {
+    name: "Variance", 
+    ittfTag: ":variance", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(Variance_astNode)
 format.Variance = function(parent, node, options) {
+    var f_astNode = Variance_astNode;
     var __isText = false;
     // log 'node : Variance ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11269,7 +12829,17 @@ format.Variance = function(parent, node, options) {
     }
 };
 // process AST node TypeParameterInstantiation
+var TypeParameterInstantiation_astNode = {
+    name: "TypeParameterInstantiation", 
+    ittfTag: "TypeParameterInstantiation", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TypeParameterInstantiation_astNode)
 format.TypeParameterInstantiation = function(parent, node, options) {
+    var f_astNode = TypeParameterInstantiation_astNode;
     var __isText = false;
     // log 'node : TypeParameterInstantiation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11286,6 +12856,11 @@ format.TypeParameterInstantiation = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property-collection params and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "params", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection params and append ittfNode(s) to `ret`"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -11310,7 +12885,16 @@ format.TypeParameterInstantiation = function(parent, node, options) {
     }
 };
 // process AST node VoidTypeAnnotation
+var VoidTypeAnnotation_astNode = {
+    name: "VoidTypeAnnotation", 
+    ittfTag: ":void", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(VoidTypeAnnotation_astNode)
 format.VoidTypeAnnotation = function(parent, node, options) {
+    var f_astNode = VoidTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : VoidTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11350,7 +12934,16 @@ format.VoidTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node UndefinedTypeAnnotation
+var UndefinedTypeAnnotation_astNode = {
+    name: "UndefinedTypeAnnotation", 
+    ittfTag: ":undefined", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(UndefinedTypeAnnotation_astNode)
 format.UndefinedTypeAnnotation = function(parent, node, options) {
+    var f_astNode = UndefinedTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : UndefinedTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11390,7 +12983,16 @@ format.UndefinedTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node NullLiteralTypeAnnotation
+var NullLiteralTypeAnnotation_astNode = {
+    name: "NullLiteralTypeAnnotation", 
+    ittfTag: ":null", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(NullLiteralTypeAnnotation_astNode)
 format.NullLiteralTypeAnnotation = function(parent, node, options) {
+    var f_astNode = NullLiteralTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : NullLiteralTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11429,7 +13031,16 @@ format.NullLiteralTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node GenericTypeAnnotation
+var GenericTypeAnnotation_astNode = {
+    name: "GenericTypeAnnotation", 
+    ittfTag: ":<", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(GenericTypeAnnotation_astNode)
 format.GenericTypeAnnotation = function(parent, node, options) {
+    var f_astNode = GenericTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : GenericTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11458,6 +13069,12 @@ format.GenericTypeAnnotation = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -11482,6 +13099,10 @@ format.GenericTypeAnnotation = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -11501,7 +13122,16 @@ format.GenericTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node StringTypeAnnotation
+var StringTypeAnnotation_astNode = {
+    name: "StringTypeAnnotation", 
+    ittfTag: ":string", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(StringTypeAnnotation_astNode)
 format.StringTypeAnnotation = function(parent, node, options) {
+    var f_astNode = StringTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : StringTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11540,7 +13170,16 @@ format.StringTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node AnyTypeAnnotation
+var AnyTypeAnnotation_astNode = {
+    name: "AnyTypeAnnotation", 
+    ittfTag: ":any", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(AnyTypeAnnotation_astNode)
 format.AnyTypeAnnotation = function(parent, node, options) {
+    var f_astNode = AnyTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : AnyTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11580,7 +13219,16 @@ format.AnyTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node ArrayTypeAnnotation
+var ArrayTypeAnnotation_astNode = {
+    name: "ArrayTypeAnnotation", 
+    ittfTag: ":[", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ArrayTypeAnnotation_astNode)
 format.ArrayTypeAnnotation = function(parent, node, options) {
+    var f_astNode = ArrayTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : ArrayTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11608,6 +13256,10 @@ format.ArrayTypeAnnotation = function(parent, node, options) {
     };
     // extends Node, Type
     // process AST-node-property elementType and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "elementType", 
+        descr: "process AST-node-property elementType and append ittfNode to `ret`"
+    })
     if (node.elementType) {
         if (!node.elementType.type) {
             throw 'Node elementType has no type: ' + JSON.stringify(node, null, 2);
@@ -11630,7 +13282,16 @@ format.ArrayTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node BooleanLiteralTypeAnnotation
+var BooleanLiteralTypeAnnotation_astNode = {
+    name: "BooleanLiteralTypeAnnotation", 
+    ittfTag: ":boolean-lit", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(BooleanLiteralTypeAnnotation_astNode)
 format.BooleanLiteralTypeAnnotation = function(parent, node, options) {
+    var f_astNode = BooleanLiteralTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : BooleanLiteralTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11671,7 +13332,16 @@ format.BooleanLiteralTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node BooleanTypeAnnotation
+var BooleanTypeAnnotation_astNode = {
+    name: "BooleanTypeAnnotation", 
+    ittfTag: ":boolean", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(BooleanTypeAnnotation_astNode)
 format.BooleanTypeAnnotation = function(parent, node, options) {
+    var f_astNode = BooleanTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : BooleanTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11711,7 +13381,16 @@ format.BooleanTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node ClassImplements
+var ClassImplements_astNode = {
+    name: "ClassImplements", 
+    ittfTag: ":implements", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ClassImplements_astNode)
 format.ClassImplements = function(parent, node, options) {
+    var f_astNode = ClassImplements_astNode;
     var __isText = false;
     // log 'node : ClassImplements ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11741,6 +13420,12 @@ format.ClassImplements = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -11765,6 +13450,10 @@ format.ClassImplements = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -11784,7 +13473,16 @@ format.ClassImplements = function(parent, node, options) {
     }
 };
 // process AST node FunctionTypeAnnotation
+var FunctionTypeAnnotation_astNode = {
+    name: "FunctionTypeAnnotation", 
+    ittfTag: ":func", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(FunctionTypeAnnotation_astNode)
 format.FunctionTypeAnnotation = function(parent, node, options) {
+    var f_astNode = FunctionTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : FunctionTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11812,6 +13510,10 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
     };
     // extends Node, Type
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -11819,6 +13521,11 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection params and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "params", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection params and append ittfNode(s) to `ret`"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -11834,6 +13541,10 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
         }
     }
     // process AST-node-property rest and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "rest", 
+        descr: "process AST-node-property rest and append ittfNode to `ret`"
+    })
     if (node.rest) {
         if (!node.rest.type) {
             throw 'Node rest has no type: ' + JSON.stringify(node, null, 2);
@@ -11914,7 +13625,16 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node FunctionTypeParam
+var FunctionTypeParam_astNode = {
+    name: "FunctionTypeParam", 
+    ittfTag: ":param", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(FunctionTypeParam_astNode)
 format.FunctionTypeParam = function(parent, node, options) {
+    var f_astNode = FunctionTypeParam_astNode;
     var __isText = false;
     // log 'node : FunctionTypeParam ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -11944,6 +13664,12 @@ format.FunctionTypeParam = function(parent, node, options) {
     // Process AST-node-property name and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "name", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property name and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.name) {
         if (!node.name.type) {
             throw 'Node name has no type: ' + JSON.stringify(node, null, 2);
@@ -12057,7 +13783,16 @@ format.FunctionTypeParam = function(parent, node, options) {
     }
 };
 // process AST node InterfaceExtends
+var InterfaceExtends_astNode = {
+    name: "InterfaceExtends", 
+    ittfTag: ":extends-interface", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(InterfaceExtends_astNode)
 format.InterfaceExtends = function(parent, node, options) {
+    var f_astNode = InterfaceExtends_astNode;
     var __isText = false;
     // log 'node : InterfaceExtends ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12087,6 +13822,12 @@ format.InterfaceExtends = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -12111,6 +13852,10 @@ format.InterfaceExtends = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -12130,7 +13875,16 @@ format.InterfaceExtends = function(parent, node, options) {
     }
 };
 // process AST node InterfaceDeclaration
+var InterfaceDeclaration_astNode = {
+    name: "InterfaceDeclaration", 
+    ittfTag: ":interface", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(InterfaceDeclaration_astNode)
 format.InterfaceDeclaration = function(parent, node, options) {
+    var f_astNode = InterfaceDeclaration_astNode;
     var __isText = false;
     // log 'node : InterfaceDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12160,6 +13914,12 @@ format.InterfaceDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -12184,6 +13944,11 @@ format.InterfaceDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property-collection extends and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "extends", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection extends and append ittfNode(s) to `ret`"
+    })
     if (node.extends) {
         if (typeof node.extends.length === 'undefined') {
             throw new Error('Property node.extends must be an array');
@@ -12199,6 +13964,10 @@ format.InterfaceDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -12206,6 +13975,10 @@ format.InterfaceDeclaration = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -12225,7 +13998,16 @@ format.InterfaceDeclaration = function(parent, node, options) {
     }
 };
 // process AST node IntersectionTypeAnnotation
+var IntersectionTypeAnnotation_astNode = {
+    name: "IntersectionTypeAnnotation", 
+    ittfTag: ":&", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(IntersectionTypeAnnotation_astNode)
 format.IntersectionTypeAnnotation = function(parent, node, options) {
+    var f_astNode = IntersectionTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : IntersectionTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12253,6 +14035,11 @@ format.IntersectionTypeAnnotation = function(parent, node, options) {
     };
     // extends Node, Type
     // process AST-node-property-collection types and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "types", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection types and append ittfNode(s) to `ret`"
+    })
     if (node.types) {
         if (typeof node.types.length === 'undefined') {
             throw new Error('Property node.types must be an array');
@@ -12283,7 +14070,16 @@ format.IntersectionTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node MixedTypeAnnotation
+var MixedTypeAnnotation_astNode = {
+    name: "MixedTypeAnnotation", 
+    ittfTag: ":mixed", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(MixedTypeAnnotation_astNode)
 format.MixedTypeAnnotation = function(parent, node, options) {
+    var f_astNode = MixedTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : MixedTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12323,7 +14119,17 @@ format.MixedTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node NullableTypeAnnotation
+var NullableTypeAnnotation_astNode = {
+    name: "NullableTypeAnnotation", 
+    ittfTag: "NullableTypeAnnotation", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(NullableTypeAnnotation_astNode)
 format.NullableTypeAnnotation = function(parent, node, options) {
+    var f_astNode = NullableTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : NullableTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12404,7 +14210,16 @@ format.NullableTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node NumberLiteralTypeAnnotation
+var NumberLiteralTypeAnnotation_astNode = {
+    name: "NumberLiteralTypeAnnotation", 
+    ittfTag: ":number-lit", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(NumberLiteralTypeAnnotation_astNode)
 format.NumberLiteralTypeAnnotation = function(parent, node, options) {
+    var f_astNode = NumberLiteralTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : NumberLiteralTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12445,7 +14260,16 @@ format.NumberLiteralTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node NumberTypeAnnotation
+var NumberTypeAnnotation_astNode = {
+    name: "NumberTypeAnnotation", 
+    ittfTag: ":number", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(NumberTypeAnnotation_astNode)
 format.NumberTypeAnnotation = function(parent, node, options) {
+    var f_astNode = NumberTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : NumberTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12485,7 +14309,16 @@ format.NumberTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node StringLiteralTypeAnnotation
+var StringLiteralTypeAnnotation_astNode = {
+    name: "StringLiteralTypeAnnotation", 
+    ittfTag: ":string-lit", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(StringLiteralTypeAnnotation_astNode)
 format.StringLiteralTypeAnnotation = function(parent, node, options) {
+    var f_astNode = StringLiteralTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : StringLiteralTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12526,7 +14359,16 @@ format.StringLiteralTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node StringTypeAnnotation
+var StringTypeAnnotation_astNode = {
+    name: "StringTypeAnnotation", 
+    ittfTag: ":string", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(StringTypeAnnotation_astNode)
 format.StringTypeAnnotation = function(parent, node, options) {
+    var f_astNode = StringTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : StringTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12566,7 +14408,16 @@ format.StringTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node TupleTypeAnnotation
+var TupleTypeAnnotation_astNode = {
+    name: "TupleTypeAnnotation", 
+    ittfTag: ":tuple", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TupleTypeAnnotation_astNode)
 format.TupleTypeAnnotation = function(parent, node, options) {
+    var f_astNode = TupleTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : TupleTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12594,6 +14445,11 @@ format.TupleTypeAnnotation = function(parent, node, options) {
     };
     // extends Node, Type
     // process AST-node-property-collection types and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "types", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection types and append ittfNode(s) to `ret`"
+    })
     if (node.types) {
         if (typeof node.types.length === 'undefined') {
             throw new Error('Property node.types must be an array');
@@ -12624,7 +14480,16 @@ format.TupleTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node TypeofTypeAnnotation
+var TypeofTypeAnnotation_astNode = {
+    name: "TypeofTypeAnnotation", 
+    ittfTag: ":typeof", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TypeofTypeAnnotation_astNode)
 format.TypeofTypeAnnotation = function(parent, node, options) {
+    var f_astNode = TypeofTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : TypeofTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12652,6 +14517,10 @@ format.TypeofTypeAnnotation = function(parent, node, options) {
     };
     // extends Node
     // process AST-node-property argument and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "argument", 
+        descr: "process AST-node-property argument and append ittfNode to `ret`"
+    })
     if (node.argument) {
         if (!node.argument.type) {
             throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
@@ -12671,7 +14540,17 @@ format.TypeofTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node TypeAnnotation
+var TypeAnnotation_astNode = {
+    name: "TypeAnnotation", 
+    ittfTag: ":t", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TypeAnnotation_astNode)
 format.TypeAnnotation = function(parent, node, options) {
+    var f_astNode = TypeAnnotation_astNode;
     var __isText = false;
     // log 'node : TypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12745,6 +14624,11 @@ format.TypeAnnotation = function(parent, node, options) {
         }
     }
     // process AST-node-property-collection types and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "types", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection types and append ittfNode(s) to `ret`"
+    })
     if (node.types) {
         if (typeof node.types.length === 'undefined') {
             throw new Error('Property node.types must be an array');
@@ -12760,6 +14644,10 @@ format.TypeAnnotation = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -12773,7 +14661,16 @@ format.TypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node TypeCastExpression
+var TypeCastExpression_astNode = {
+    name: "TypeCastExpression", 
+    ittfTag: ":cast", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TypeCastExpression_astNode)
 format.TypeCastExpression = function(parent, node, options) {
+    var f_astNode = TypeCastExpression_astNode;
     var __isText = false;
     // log 'node : TypeCastExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12859,6 +14756,12 @@ format.TypeCastExpression = function(parent, node, options) {
     // Process AST-node-property expression and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "expression", 
+        onParent: false, 
+        iftext: true, 
+        descr: "Process AST-node-property expression and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.expression) {
         if (!node.expression.type) {
             throw 'Node expression has no type: ' + JSON.stringify(node, null, 2);
@@ -12905,7 +14808,16 @@ format.TypeCastExpression = function(parent, node, options) {
     }
 };
 // process AST node ObjectTypeAnnotation
+var ObjectTypeAnnotation_astNode = {
+    name: "ObjectTypeAnnotation", 
+    ittfTag: ":{", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ObjectTypeAnnotation_astNode)
 format.ObjectTypeAnnotation = function(parent, node, options) {
+    var f_astNode = ObjectTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : ObjectTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -12933,6 +14845,11 @@ format.ObjectTypeAnnotation = function(parent, node, options) {
     };
     // extends Node, Type
     // process AST-node-property-collection callProperties and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "callProperties", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection callProperties and append ittfNode(s) to `ret`"
+    })
     if (node.callProperties) {
         if (typeof node.callProperties.length === 'undefined') {
             throw new Error('Property node.callProperties must be an array');
@@ -12948,6 +14865,11 @@ format.ObjectTypeAnnotation = function(parent, node, options) {
         }
     }
     // process AST-node-property-collection indexers and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "indexers", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection indexers and append ittfNode(s) to `ret`"
+    })
     if (node.indexers) {
         if (typeof node.indexers.length === 'undefined') {
             throw new Error('Property node.indexers must be an array');
@@ -12963,6 +14885,11 @@ format.ObjectTypeAnnotation = function(parent, node, options) {
         }
     }
     // process AST-node-property-collection properties and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "properties", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection properties and append ittfNode(s) to `ret`"
+    })
     if (node.properties) {
         if (typeof node.properties.length === 'undefined') {
             throw new Error('Property node.properties must be an array');
@@ -12993,7 +14920,16 @@ format.ObjectTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node ObjectTypeCallProperty
+var ObjectTypeCallProperty_astNode = {
+    name: "ObjectTypeCallProperty", 
+    ittfTag: ":call-prop", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ObjectTypeCallProperty_astNode)
 format.ObjectTypeCallProperty = function(parent, node, options) {
+    var f_astNode = ObjectTypeCallProperty_astNode;
     var __isText = false;
     // log 'node : ObjectTypeCallProperty ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13030,6 +14966,10 @@ format.ObjectTypeCallProperty = function(parent, node, options) {
         })
     }
     // process AST-node-property value and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "value", 
+        descr: "process AST-node-property value and append ittfNode to `ret`"
+    })
     if (node.value) {
         if (!node.value.type) {
             throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
@@ -13052,7 +14992,16 @@ format.ObjectTypeCallProperty = function(parent, node, options) {
     }
 };
 // process AST node ObjectTypeIndexer
+var ObjectTypeIndexer_astNode = {
+    name: "ObjectTypeIndexer", 
+    ittfTag: ":[]", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ObjectTypeIndexer_astNode)
 format.ObjectTypeIndexer = function(parent, node, options) {
+    var f_astNode = ObjectTypeIndexer_astNode;
     var __isText = false;
     // log 'node : ObjectTypeIndexer ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13082,6 +15031,12 @@ format.ObjectTypeIndexer = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -13106,6 +15061,10 @@ format.ObjectTypeIndexer = function(parent, node, options) {
         }
     }
     // process AST-node-property key and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "key", 
+        descr: "process AST-node-property key and append ittfNode to `ret`"
+    })
     if (node.key) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
@@ -13113,6 +15072,10 @@ format.ObjectTypeIndexer = function(parent, node, options) {
         format(ret, node.key, options)
     }
     // process AST-node-property value and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "value", 
+        descr: "process AST-node-property value and append ittfNode to `ret`"
+    })
     if (node.value) {
         if (!node.value.type) {
             throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
@@ -13132,7 +15095,16 @@ format.ObjectTypeIndexer = function(parent, node, options) {
     }
 };
 // process AST node ObjectTypeProperty
+var ObjectTypeProperty_astNode = {
+    name: "ObjectTypeProperty", 
+    ittfTag: ":@", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ObjectTypeProperty_astNode)
 format.ObjectTypeProperty = function(parent, node, options) {
+    var f_astNode = ObjectTypeProperty_astNode;
     var __isText = false;
     // log 'node : ObjectTypeProperty ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13162,6 +15134,12 @@ format.ObjectTypeProperty = function(parent, node, options) {
     // Process AST-node-property key and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "key", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property key and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.key) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
@@ -13255,7 +15233,16 @@ format.ObjectTypeProperty = function(parent, node, options) {
     }
 };
 // process AST node QualifiedTypeIdentifier
+var QualifiedTypeIdentifier_astNode = {
+    name: "QualifiedTypeIdentifier", 
+    ittfTag: ":q-type", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(QualifiedTypeIdentifier_astNode)
 format.QualifiedTypeIdentifier = function(parent, node, options) {
+    var f_astNode = QualifiedTypeIdentifier_astNode;
     var __isText = false;
     // log 'node : QualifiedTypeIdentifier ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13285,6 +15272,12 @@ format.QualifiedTypeIdentifier = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -13368,7 +15361,16 @@ format.QualifiedTypeIdentifier = function(parent, node, options) {
     }
 };
 // process AST node UnionTypeAnnotation
+var UnionTypeAnnotation_astNode = {
+    name: "UnionTypeAnnotation", 
+    ittfTag: ":|", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(UnionTypeAnnotation_astNode)
 format.UnionTypeAnnotation = function(parent, node, options) {
+    var f_astNode = UnionTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : UnionTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13396,6 +15398,11 @@ format.UnionTypeAnnotation = function(parent, node, options) {
     };
     // extends Node, Type
     // process AST-node-property-collection types and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "types", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection types and append ittfNode(s) to `ret`"
+    })
     if (node.types) {
         if (typeof node.types.length === 'undefined') {
             throw new Error('Property node.types must be an array');
@@ -13426,7 +15433,16 @@ format.UnionTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node ExistsTypeAnnotation
+var ExistsTypeAnnotation_astNode = {
+    name: "ExistsTypeAnnotation", 
+    ittfTag: ":exists-type", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(ExistsTypeAnnotation_astNode)
 format.ExistsTypeAnnotation = function(parent, node, options) {
+    var f_astNode = ExistsTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : ExistsTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13465,7 +15481,16 @@ format.ExistsTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node InferredPredicate
+var InferredPredicate_astNode = {
+    name: "InferredPredicate", 
+    ittfTag: ":predicate", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(InferredPredicate_astNode)
 format.InferredPredicate = function(parent, node, options) {
+    var f_astNode = InferredPredicate_astNode;
     var __isText = false;
     // log 'node : InferredPredicate ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13516,7 +15541,16 @@ format.TSNullKeyword = format.NullLiteralTypeAnnotation;
 format.TSUndefinedKeyword = format.UndefinedTypeAnnotation;
 // set format.TSTupleType = format.TupleTypeAnnotation
 // process AST node TSObjectKeyword
+var TSObjectKeyword_astNode = {
+    name: "TSObjectKeyword", 
+    ittfTag: ":object", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSObjectKeyword_astNode)
 format.TSObjectKeyword = function(parent, node, options) {
+    var f_astNode = TSObjectKeyword_astNode;
     var __isText = false;
     // log 'node : TSObjectKeyword ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13555,7 +15589,16 @@ format.TSObjectKeyword = function(parent, node, options) {
     }
 };
 // process AST node TSInterfaceDeclaration
+var TSInterfaceDeclaration_astNode = {
+    name: "TSInterfaceDeclaration", 
+    ittfTag: ":interface", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSInterfaceDeclaration_astNode)
 format.TSInterfaceDeclaration = function(parent, node, options) {
+    var f_astNode = TSInterfaceDeclaration_astNode;
     var __isText = false;
     // log 'node : TSInterfaceDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13584,6 +15627,12 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -13608,6 +15657,10 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -13615,6 +15668,11 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection extends and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "extends", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection extends and append ittfNode(s) to `ret`"
+    })
     if (node.extends) {
         if (typeof node.extends.length === 'undefined') {
             throw new Error('Property node.extends must be an array');
@@ -13630,6 +15688,10 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -13658,7 +15720,17 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSInterfaceBody
+var TSInterfaceBody_astNode = {
+    name: "TSInterfaceBody", 
+    ittfTag: "TSInterfaceBody", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSInterfaceBody_astNode)
 format.TSInterfaceBody = function(parent, node, options) {
+    var f_astNode = TSInterfaceBody_astNode;
     var __isText = false;
     // log 'node : TSInterfaceBody ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13675,6 +15747,11 @@ format.TSInterfaceBody = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection body and append ittfNode(s) to `ret`"
+    })
     if (node.body) {
         if (typeof node.body.length === 'undefined') {
             throw new Error('Property node.body must be an array');
@@ -13699,7 +15776,16 @@ format.TSInterfaceBody = function(parent, node, options) {
     }
 };
 // process AST node TSConstructorType
+var TSConstructorType_astNode = {
+    name: "TSConstructorType", 
+    ittfTag: ":ctor", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSConstructorType_astNode)
 format.TSConstructorType = function(parent, node, options) {
+    var f_astNode = TSConstructorType_astNode;
     var __isText = false;
     // log 'node : TSConstructorType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13726,6 +15812,10 @@ format.TSConstructorType = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -13733,6 +15823,10 @@ format.TSConstructorType = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -13741,6 +15835,11 @@ format.TSConstructorType = function(parent, node, options) {
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "parameters", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection parameters and embed its array of nodes in a new tag"
+    })
     if (node.parameters) {
         if (typeof node.parameters.length === 'undefined') {
             throw new Error('Property node.parameters must be an array');
@@ -13779,7 +15878,16 @@ format.TSConstructorType = function(parent, node, options) {
     }
 };
 // process AST node TSConstructSignatureDeclaration
+var TSConstructSignatureDeclaration_astNode = {
+    name: "TSConstructSignatureDeclaration", 
+    ittfTag: ":new", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSConstructSignatureDeclaration_astNode)
 format.TSConstructSignatureDeclaration = function(parent, node, options) {
+    var f_astNode = TSConstructSignatureDeclaration_astNode;
     var __isText = false;
     // log 'node : TSConstructSignatureDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13806,6 +15914,10 @@ format.TSConstructSignatureDeclaration = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -13813,6 +15925,10 @@ format.TSConstructSignatureDeclaration = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -13821,6 +15937,11 @@ format.TSConstructSignatureDeclaration = function(parent, node, options) {
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "parameters", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection parameters and embed its array of nodes in a new tag"
+    })
     if (node.parameters) {
         if (typeof node.parameters.length === 'undefined') {
             throw new Error('Property node.parameters must be an array');
@@ -13859,7 +15980,16 @@ format.TSConstructSignatureDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSCallSignatureDeclaration
+var TSCallSignatureDeclaration_astNode = {
+    name: "TSCallSignatureDeclaration", 
+    ittfTag: ":call", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSCallSignatureDeclaration_astNode)
 format.TSCallSignatureDeclaration = function(parent, node, options) {
+    var f_astNode = TSCallSignatureDeclaration_astNode;
     var __isText = false;
     // log 'node : TSCallSignatureDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13886,6 +16016,10 @@ format.TSCallSignatureDeclaration = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -13893,6 +16027,10 @@ format.TSCallSignatureDeclaration = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -13901,6 +16039,11 @@ format.TSCallSignatureDeclaration = function(parent, node, options) {
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "parameters", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection parameters and embed its array of nodes in a new tag"
+    })
     if (node.parameters) {
         if (typeof node.parameters.length === 'undefined') {
             throw new Error('Property node.parameters must be an array');
@@ -13939,7 +16082,16 @@ format.TSCallSignatureDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSPropertySignature
+var TSPropertySignature_astNode = {
+    name: "TSPropertySignature", 
+    ittfTag: ":p", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSPropertySignature_astNode)
 format.TSPropertySignature = function(parent, node, options) {
+    var f_astNode = TSPropertySignature_astNode;
     var __isText = false;
     // log 'node : TSPropertySignature ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -13968,6 +16120,12 @@ format.TSPropertySignature = function(parent, node, options) {
     // Process AST-node-property key and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "key", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property key and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.key) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
@@ -14069,7 +16227,16 @@ format.TSPropertySignature = function(parent, node, options) {
     }
 };
 // process AST node TSIndexSignature
+var TSIndexSignature_astNode = {
+    name: "TSIndexSignature", 
+    ittfTag: ":index", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSIndexSignature_astNode)
 format.TSIndexSignature = function(parent, node, options) {
+    var f_astNode = TSIndexSignature_astNode;
     var __isText = false;
     // log 'node : TSIndexSignature ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14096,6 +16263,10 @@ format.TSIndexSignature = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -14113,6 +16284,11 @@ format.TSIndexSignature = function(parent, node, options) {
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "parameters", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection parameters and embed its array of nodes in a new tag"
+    })
     if (node.parameters) {
         if (typeof node.parameters.length === 'undefined') {
             throw new Error('Property node.parameters must be an array');
@@ -14151,7 +16327,16 @@ format.TSIndexSignature = function(parent, node, options) {
     }
 };
 // process AST node TSIndexedAccessType
+var TSIndexedAccessType_astNode = {
+    name: "TSIndexedAccessType", 
+    ittfTag: ":[]", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSIndexedAccessType_astNode)
 format.TSIndexedAccessType = function(parent, node, options) {
+    var f_astNode = TSIndexedAccessType_astNode;
     var __isText = false;
     // log 'node : TSIndexedAccessType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14178,6 +16363,10 @@ format.TSIndexedAccessType = function(parent, node, options) {
         ]
     };
     // process AST-node-property objectType and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "objectType", 
+        descr: "process AST-node-property objectType and append ittfNode to `ret`"
+    })
     if (node.objectType) {
         if (!node.objectType.type) {
             throw 'Node objectType has no type: ' + JSON.stringify(node, null, 2);
@@ -14188,6 +16377,10 @@ format.TSIndexedAccessType = function(parent, node, options) {
         throw new Error('AST-node-property objectType undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property indexType and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "indexType", 
+        descr: "process AST-node-property indexType and append ittfNode to `ret`"
+    })
     if (node.indexType) {
         if (!node.indexType.type) {
             throw 'Node indexType has no type: ' + JSON.stringify(node, null, 2);
@@ -14210,7 +16403,16 @@ format.TSIndexedAccessType = function(parent, node, options) {
     }
 };
 // process AST node TSModuleDeclaration
+var TSModuleDeclaration_astNode = {
+    name: "TSModuleDeclaration", 
+    ittfTag: ":module", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSModuleDeclaration_astNode)
 format.TSModuleDeclaration = function(parent, node, options) {
+    var f_astNode = TSModuleDeclaration_astNode;
     var __isText = false;
     // log 'node : TSModuleDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14239,6 +16441,12 @@ format.TSModuleDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -14263,6 +16471,10 @@ format.TSModuleDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        descr: "process AST-node-property body and append ittfNode to `ret`"
+    })
     if (node.body) {
         if (!node.body.type) {
             throw 'Node body has no type: ' + JSON.stringify(node, null, 2);
@@ -14291,7 +16503,17 @@ format.TSModuleDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSModuleBlock
+var TSModuleBlock_astNode = {
+    name: "TSModuleBlock", 
+    ittfTag: "TSModuleBlock", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSModuleBlock_astNode)
 format.TSModuleBlock = function(parent, node, options) {
+    var f_astNode = TSModuleBlock_astNode;
     var __isText = false;
     // log 'node : TSModuleBlock ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14308,6 +16530,11 @@ format.TSModuleBlock = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "body", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection body and append ittfNode(s) to `ret`"
+    })
     if (node.body) {
         if (typeof node.body.length === 'undefined') {
             throw new Error('Property node.body must be an array');
@@ -14332,7 +16559,16 @@ format.TSModuleBlock = function(parent, node, options) {
     }
 };
 // process AST node TSDeclareFunction
+var TSDeclareFunction_astNode = {
+    name: "TSDeclareFunction", 
+    ittfTag: ":function", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSDeclareFunction_astNode)
 format.TSDeclareFunction = function(parent, node, options) {
+    var f_astNode = TSDeclareFunction_astNode;
     var __isText = false;
     // log 'node : TSDeclareFunction ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14361,6 +16597,12 @@ format.TSDeclareFunction = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -14385,6 +16627,10 @@ format.TSDeclareFunction = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -14393,6 +16639,11 @@ format.TSDeclareFunction = function(parent, node, options) {
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -14499,7 +16750,16 @@ format.TSDeclareFunction = function(parent, node, options) {
     }
 };
 // process AST node TSFunctionType
+var TSFunctionType_astNode = {
+    name: "TSFunctionType", 
+    ittfTag: ":=>", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSFunctionType_astNode)
 format.TSFunctionType = function(parent, node, options) {
+    var f_astNode = TSFunctionType_astNode;
     var __isText = false;
     // log 'node : TSFunctionType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14526,6 +16786,10 @@ format.TSFunctionType = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -14533,6 +16797,10 @@ format.TSFunctionType = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -14544,6 +16812,11 @@ format.TSFunctionType = function(parent, node, options) {
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "parameters", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection parameters and embed its array of nodes in a new tag"
+    })
     if (node.parameters) {
         if (typeof node.parameters.length === 'undefined') {
             throw new Error('Property node.parameters must be an array');
@@ -14635,7 +16908,16 @@ format.TSFunctionType = function(parent, node, options) {
     }
 };
 // process AST node TSMethodSignature
+var TSMethodSignature_astNode = {
+    name: "TSMethodSignature", 
+    ittfTag: ":m", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSMethodSignature_astNode)
 format.TSMethodSignature = function(parent, node, options) {
+    var f_astNode = TSMethodSignature_astNode;
     var __isText = false;
     // log 'node : TSMethodSignature ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14664,6 +16946,12 @@ format.TSMethodSignature = function(parent, node, options) {
     // Process AST-node-property key and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "key", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property key and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.key) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
@@ -14688,6 +16976,10 @@ format.TSMethodSignature = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -14695,6 +16987,10 @@ format.TSMethodSignature = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -14703,6 +16999,11 @@ format.TSMethodSignature = function(parent, node, options) {
     }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "parameters", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection parameters and embed its array of nodes in a new tag"
+    })
     if (node.parameters) {
         if (typeof node.parameters.length === 'undefined') {
             throw new Error('Property node.parameters must be an array');
@@ -14741,7 +17042,17 @@ format.TSMethodSignature = function(parent, node, options) {
     }
 };
 // process AST node TSTypeAnnotation
+var TSTypeAnnotation_astNode = {
+    name: "TSTypeAnnotation", 
+    ittfTag: "TSTypeAnnotation", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeAnnotation_astNode)
 format.TSTypeAnnotation = function(parent, node, options) {
+    var f_astNode = TSTypeAnnotation_astNode;
     var __isText = false;
     // log 'node : TSTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14758,6 +17069,10 @@ format.TSTypeAnnotation = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -14768,6 +17083,10 @@ format.TSTypeAnnotation = function(parent, node, options) {
         throw new Error('AST-node-property typeAnnotation undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -14781,7 +17100,17 @@ format.TSTypeAnnotation = function(parent, node, options) {
     }
 };
 // process AST node TSTypeParameterInstantiation
+var TSTypeParameterInstantiation_astNode = {
+    name: "TSTypeParameterInstantiation", 
+    ittfTag: "TSTypeParameterInstantiation", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeParameterInstantiation_astNode)
 format.TSTypeParameterInstantiation = function(parent, node, options) {
+    var f_astNode = TSTypeParameterInstantiation_astNode;
     var __isText = false;
     // log 'node : TSTypeParameterInstantiation ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14855,7 +17184,17 @@ format.TSTypeParameterInstantiation = function(parent, node, options) {
     }
 };
 // process AST node TSTypeParameterDeclaration
+var TSTypeParameterDeclaration_astNode = {
+    name: "TSTypeParameterDeclaration", 
+    ittfTag: "TSTypeParameterDeclaration", 
+    skip: true, 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeParameterDeclaration_astNode)
 format.TSTypeParameterDeclaration = function(parent, node, options) {
+    var f_astNode = TSTypeParameterDeclaration_astNode;
     var __isText = false;
     // log 'node : TSTypeParameterDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14872,6 +17211,11 @@ format.TSTypeParameterDeclaration = function(parent, node, options) {
     }
     var ret = parent;
     // process AST-node-property-collection params and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "params", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection params and append ittfNode(s) to `ret`"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -14896,7 +17240,16 @@ format.TSTypeParameterDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSTypeParameter
+var TSTypeParameter_astNode = {
+    name: "TSTypeParameter", 
+    ittfTag: ":<", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeParameter_astNode)
 format.TSTypeParameter = function(parent, node, options) {
+    var f_astNode = TSTypeParameter_astNode;
     var __isText = false;
     // log 'node : TSTypeParameter ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -14924,6 +17277,10 @@ format.TSTypeParameter = function(parent, node, options) {
     };
     ret.name = node.name;
     // process AST-node-property constraint and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "constraint", 
+        descr: "process AST-node-property constraint and append ittfNode to `ret`"
+    })
     if (node.constraint) {
         if (!node.constraint.type) {
             throw 'Node constraint has no type: ' + JSON.stringify(node, null, 2);
@@ -14943,7 +17300,16 @@ format.TSTypeParameter = function(parent, node, options) {
     }
 };
 // process AST node TSParameterProperty
+var TSParameterProperty_astNode = {
+    name: "TSParameterProperty", 
+    ittfTag: ":ts-param-prop", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSParameterProperty_astNode)
 format.TSParameterProperty = function(parent, node, options) {
+    var f_astNode = TSParameterProperty_astNode;
     var __isText = false;
     // log 'node : TSParameterProperty ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15055,7 +17421,16 @@ format.TSParameterProperty = function(parent, node, options) {
     }
 };
 // process AST node TSTypeReference
+var TSTypeReference_astNode = {
+    name: "TSTypeReference", 
+    ittfTag: ":ref", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeReference_astNode)
 format.TSTypeReference = function(parent, node, options) {
+    var f_astNode = TSTypeReference_astNode;
     var __isText = false;
     // log 'node : TSTypeReference ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15140,6 +17515,10 @@ format.TSTypeReference = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -15159,7 +17538,16 @@ format.TSTypeReference = function(parent, node, options) {
     }
 };
 // process AST node TSExpressionWithTypeArguments
+var TSExpressionWithTypeArguments_astNode = {
+    name: "TSExpressionWithTypeArguments", 
+    ittfTag: ":exprwithtypeargs", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSExpressionWithTypeArguments_astNode)
 format.TSExpressionWithTypeArguments = function(parent, node, options) {
+    var f_astNode = TSExpressionWithTypeArguments_astNode;
     var __isText = false;
     // log 'node : TSExpressionWithTypeArguments ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15186,6 +17574,10 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -15257,7 +17649,16 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
     }
 };
 // process AST node TSAsExpression
+var TSAsExpression_astNode = {
+    name: "TSAsExpression", 
+    ittfTag: ":as", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSAsExpression_astNode)
 format.TSAsExpression = function(parent, node, options) {
+    var f_astNode = TSAsExpression_astNode;
     var __isText = false;
     // log 'node : TSAsExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15403,7 +17804,16 @@ format.TSAsExpression = function(parent, node, options) {
     }
 };
 // process AST node TSTupleType
+var TSTupleType_astNode = {
+    name: "TSTupleType", 
+    ittfTag: ":tuple", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTupleType_astNode)
 format.TSTupleType = function(parent, node, options) {
+    var f_astNode = TSTupleType_astNode;
     var __isText = false;
     // log 'node : TSTupleType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15430,6 +17840,11 @@ format.TSTupleType = function(parent, node, options) {
         ]
     };
     // process AST-node-property-collection elementTypes and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "elementTypes", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection elementTypes and append ittfNode(s) to `ret`"
+    })
     if (node.elementTypes) {
         if (typeof node.elementTypes.length === 'undefined') {
             throw new Error('Property node.elementTypes must be an array');
@@ -15460,7 +17875,16 @@ format.TSTupleType = function(parent, node, options) {
     }
 };
 // process AST node TSUnionType
+var TSUnionType_astNode = {
+    name: "TSUnionType", 
+    ittfTag: ":union", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSUnionType_astNode)
 format.TSUnionType = function(parent, node, options) {
+    var f_astNode = TSUnionType_astNode;
     var __isText = false;
     // log 'node : TSUnionType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15487,6 +17911,11 @@ format.TSUnionType = function(parent, node, options) {
         ]
     };
     // process AST-node-property-collection types and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "types", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection types and append ittfNode(s) to `ret`"
+    })
     if (node.types) {
         if (typeof node.types.length === 'undefined') {
             throw new Error('Property node.types must be an array');
@@ -15514,7 +17943,16 @@ format.TSUnionType = function(parent, node, options) {
     }
 };
 // process AST node TSIntersectionType
+var TSIntersectionType_astNode = {
+    name: "TSIntersectionType", 
+    ittfTag: ":intersect", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSIntersectionType_astNode)
 format.TSIntersectionType = function(parent, node, options) {
+    var f_astNode = TSIntersectionType_astNode;
     var __isText = false;
     // log 'node : TSIntersectionType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15541,6 +17979,11 @@ format.TSIntersectionType = function(parent, node, options) {
         ]
     };
     // process AST-node-property-collection types and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "types", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection types and append ittfNode(s) to `ret`"
+    })
     if (node.types) {
         if (typeof node.types.length === 'undefined') {
             throw new Error('Property node.types must be an array');
@@ -15568,7 +18011,16 @@ format.TSIntersectionType = function(parent, node, options) {
     }
 };
 // process AST node TSEnumDeclaration
+var TSEnumDeclaration_astNode = {
+    name: "TSEnumDeclaration", 
+    ittfTag: ":enum", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSEnumDeclaration_astNode)
 format.TSEnumDeclaration = function(parent, node, options) {
+    var f_astNode = TSEnumDeclaration_astNode;
     var __isText = false;
     // log 'node : TSEnumDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15597,6 +18049,12 @@ format.TSEnumDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -15621,6 +18079,11 @@ format.TSEnumDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property-collection members and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "members", 
+        throwIfUndefined: true, 
+        descr: "process AST-node-property-collection members and append ittfNode(s) to `ret`"
+    })
     if (node.members) {
         if (typeof node.members.length === 'undefined') {
             throw new Error('Property node.members must be an array');
@@ -15651,7 +18114,16 @@ format.TSEnumDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSEnumMember
+var TSEnumMember_astNode = {
+    name: "TSEnumMember", 
+    ittfTag: "@", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSEnumMember_astNode)
 format.TSEnumMember = function(parent, node, options) {
+    var f_astNode = TSEnumMember_astNode;
     var __isText = false;
     // log 'node : TSEnumMember ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15680,6 +18152,12 @@ format.TSEnumMember = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -15765,7 +18243,16 @@ format.TSEnumMember = function(parent, node, options) {
     }
 };
 // process AST node TSNeverKeyword
+var TSNeverKeyword_astNode = {
+    name: "TSNeverKeyword", 
+    ittfTag: ":never", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSNeverKeyword_astNode)
 format.TSNeverKeyword = function(parent, node, options) {
+    var f_astNode = TSNeverKeyword_astNode;
     var __isText = false;
     // log 'node : TSNeverKeyword ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15804,7 +18291,16 @@ format.TSNeverKeyword = function(parent, node, options) {
     }
 };
 // process AST node TSTypePredicate
+var TSTypePredicate_astNode = {
+    name: "TSTypePredicate", 
+    ittfTag: ":predicate", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypePredicate_astNode)
 format.TSTypePredicate = function(parent, node, options) {
+    var f_astNode = TSTypePredicate_astNode;
     var __isText = false;
     // log 'node : TSTypePredicate ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15833,6 +18329,12 @@ format.TSTypePredicate = function(parent, node, options) {
     // Process AST-node-property parameterName and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "parameterName", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property parameterName and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.parameterName) {
         if (!node.parameterName.type) {
             throw 'Node parameterName has no type: ' + JSON.stringify(node, null, 2);
@@ -15857,6 +18359,10 @@ format.TSTypePredicate = function(parent, node, options) {
         }
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -15879,7 +18385,16 @@ format.TSTypePredicate = function(parent, node, options) {
     }
 };
 // process AST node TSTypeLiteral
+var TSTypeLiteral_astNode = {
+    name: "TSTypeLiteral", 
+    ittfTag: ":{", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeLiteral_astNode)
 format.TSTypeLiteral = function(parent, node, options) {
+    var f_astNode = TSTypeLiteral_astNode;
     var __isText = false;
     // log 'node : TSTypeLiteral ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15906,6 +18421,11 @@ format.TSTypeLiteral = function(parent, node, options) {
         ]
     };
     // process AST-node-property-collection members and append ittfNode(s) to `ret`
+    f_astNode.props.push({
+        name: "members", 
+        throwIfUndefined: false, 
+        descr: "process AST-node-property-collection members and append ittfNode(s) to `ret`"
+    })
     if (node.members) {
         if (typeof node.members.length === 'undefined') {
             throw new Error('Property node.members must be an array');
@@ -15933,7 +18453,16 @@ format.TSTypeLiteral = function(parent, node, options) {
     }
 };
 // process AST node TSTypeOperator
+var TSTypeOperator_astNode = {
+    name: "TSTypeOperator", 
+    ittfTag: ":type-operator", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeOperator_astNode)
 format.TSTypeOperator = function(parent, node, options) {
+    var f_astNode = TSTypeOperator_astNode;
     var __isText = false;
     // log 'node : TSTypeOperator ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -15960,6 +18489,10 @@ format.TSTypeOperator = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -15985,7 +18518,16 @@ format.TSTypeOperator = function(parent, node, options) {
     }
 };
 // process AST node TSNonNullExpression
+var TSNonNullExpression_astNode = {
+    name: "TSNonNullExpression", 
+    ittfTag: ":!", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSNonNullExpression_astNode)
 format.TSNonNullExpression = function(parent, node, options) {
+    var f_astNode = TSNonNullExpression_astNode;
     var __isText = false;
     // log 'node : TSNonNullExpression ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16074,7 +18616,16 @@ format.TSNonNullExpression = function(parent, node, options) {
     }
 };
 // process AST node TSTypeAliasDeclaration
+var TSTypeAliasDeclaration_astNode = {
+    name: "TSTypeAliasDeclaration", 
+    ittfTag: ":type", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeAliasDeclaration_astNode)
 format.TSTypeAliasDeclaration = function(parent, node, options) {
+    var f_astNode = TSTypeAliasDeclaration_astNode;
     var __isText = false;
     // log 'node : TSTypeAliasDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16103,6 +18654,12 @@ format.TSTypeAliasDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -16127,6 +18684,10 @@ format.TSTypeAliasDeclaration = function(parent, node, options) {
         }
     }
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -16134,6 +18695,10 @@ format.TSTypeAliasDeclaration = function(parent, node, options) {
         format(ret, node.typeParameters, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -16153,7 +18718,16 @@ format.TSTypeAliasDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSLiteralType
+var TSLiteralType_astNode = {
+    name: "TSLiteralType", 
+    ittfTag: ":literal", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSLiteralType_astNode)
 format.TSLiteralType = function(parent, node, options) {
+    var f_astNode = TSLiteralType_astNode;
     var __isText = false;
     // log 'node : TSLiteralType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16240,7 +18814,16 @@ format.TSLiteralType = function(parent, node, options) {
     }
 };
 // process AST node TSConditionalType
+var TSConditionalType_astNode = {
+    name: "TSConditionalType", 
+    ittfTag: ":iif", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSConditionalType_astNode)
 format.TSConditionalType = function(parent, node, options) {
+    var f_astNode = TSConditionalType_astNode;
     var __isText = false;
     // log 'node : TSConditionalType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16492,7 +19075,16 @@ format.TSConditionalType = function(parent, node, options) {
     }
 };
 // process AST node TSMappedType
+var TSMappedType_astNode = {
+    name: "TSMappedType", 
+    ittfTag: ":mapped", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSMappedType_astNode)
 format.TSMappedType = function(parent, node, options) {
+    var f_astNode = TSMappedType_astNode;
     var __isText = false;
     // log 'node : TSMappedType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16528,6 +19120,10 @@ format.TSMappedType = function(parent, node, options) {
         })
     }
     // process AST-node-property typeParameter and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameter", 
+        descr: "process AST-node-property typeParameter and append ittfNode to `ret`"
+    })
     if (node.typeParameter) {
         if (!node.typeParameter.type) {
             throw 'Node typeParameter has no type: ' + JSON.stringify(node, null, 2);
@@ -16535,6 +19131,10 @@ format.TSMappedType = function(parent, node, options) {
         format(ret, node.typeParameter, options)
     }
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -16554,7 +19154,16 @@ format.TSMappedType = function(parent, node, options) {
     }
 };
 // process AST node TSTypeQuery
+var TSTypeQuery_astNode = {
+    name: "TSTypeQuery", 
+    ittfTag: ":typeof", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSTypeQuery_astNode)
 format.TSTypeQuery = function(parent, node, options) {
+    var f_astNode = TSTypeQuery_astNode;
     var __isText = false;
     // log 'node : TSTypeQuery ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16643,7 +19252,16 @@ format.TSTypeQuery = function(parent, node, options) {
     }
 };
 // process AST node TSInferType
+var TSInferType_astNode = {
+    name: "TSInferType", 
+    ittfTag: ":infer", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSInferType_astNode)
 format.TSInferType = function(parent, node, options) {
+    var f_astNode = TSInferType_astNode;
     var __isText = false;
     // log 'node : TSInferType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16670,6 +19288,10 @@ format.TSInferType = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeParameter and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameter", 
+        descr: "process AST-node-property typeParameter and append ittfNode to `ret`"
+    })
     if (node.typeParameter) {
         if (!node.typeParameter.type) {
             throw 'Node typeParameter has no type: ' + JSON.stringify(node, null, 2);
@@ -16689,7 +19311,16 @@ format.TSInferType = function(parent, node, options) {
     }
 };
 // process AST node TSParenthesizedType
+var TSParenthesizedType_astNode = {
+    name: "TSParenthesizedType", 
+    ittfTag: ":paren", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSParenthesizedType_astNode)
 format.TSParenthesizedType = function(parent, node, options) {
+    var f_astNode = TSParenthesizedType_astNode;
     var __isText = false;
     // log 'node : TSParenthesizedType ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16716,6 +19347,10 @@ format.TSParenthesizedType = function(parent, node, options) {
         ]
     };
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeAnnotation", 
+        descr: "process AST-node-property typeAnnotation and append ittfNode to `ret`"
+    })
     if (node.typeAnnotation) {
         if (!node.typeAnnotation.type) {
             throw 'Node typeAnnotation has no type: ' + JSON.stringify(node, null, 2);
@@ -16735,7 +19370,16 @@ format.TSParenthesizedType = function(parent, node, options) {
     }
 };
 // process AST node TSDeclareMethod
+var TSDeclareMethod_astNode = {
+    name: "TSDeclareMethod", 
+    ittfTag: ":m", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSDeclareMethod_astNode)
 format.TSDeclareMethod = function(parent, node, options) {
+    var f_astNode = TSDeclareMethod_astNode;
     var __isText = false;
     // log 'node : TSDeclareMethod ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -16764,6 +19408,12 @@ format.TSDeclareMethod = function(parent, node, options) {
     // Process AST-node-property key and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "key", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property key and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.key) {
         if (!node.key.type) {
             throw 'Node key has no type: ' + JSON.stringify(node, null, 2);
@@ -16810,6 +19460,10 @@ format.TSDeclareMethod = function(parent, node, options) {
     // TODO
     // b( computed
     // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
     if (node.typeParameters) {
         if (!node.typeParameters.type) {
             throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
@@ -16818,6 +19472,11 @@ format.TSDeclareMethod = function(parent, node, options) {
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
+    f_astNode.props.push({
+        name: "params", 
+        tag: "params", 
+        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
+    })
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
@@ -16915,7 +19574,16 @@ format.TSDeclareMethod = function(parent, node, options) {
     }
 };
 // process AST node TSQualifiedName
+var TSQualifiedName_astNode = {
+    name: "TSQualifiedName", 
+    ittfTag: ":qname", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSQualifiedName_astNode)
 format.TSQualifiedName = function(parent, node, options) {
+    var f_astNode = TSQualifiedName_astNode;
     var __isText = false;
     // log 'node : TSQualifiedName ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -17055,7 +19723,16 @@ format.TSQualifiedName = function(parent, node, options) {
     }
 };
 // process AST node TSExportAssignment
+var TSExportAssignment_astNode = {
+    name: "TSExportAssignment", 
+    ittfTag: ":export", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSExportAssignment_astNode)
 format.TSExportAssignment = function(parent, node, options) {
+    var f_astNode = TSExportAssignment_astNode;
     var __isText = false;
     // log 'node : TSExportAssignment ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -17144,7 +19821,16 @@ format.TSExportAssignment = function(parent, node, options) {
     }
 };
 // process AST node TSImportEqualsDeclaration
+var TSImportEqualsDeclaration_astNode = {
+    name: "TSImportEqualsDeclaration", 
+    ittfTag: ":import", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSImportEqualsDeclaration_astNode)
 format.TSImportEqualsDeclaration = function(parent, node, options) {
+    var f_astNode = TSImportEqualsDeclaration_astNode;
     var __isText = false;
     // log 'node : TSImportEqualsDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -17173,6 +19859,12 @@ format.TSImportEqualsDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -17206,6 +19898,10 @@ format.TSImportEqualsDeclaration = function(parent, node, options) {
         })
     }
     // process AST-node-property moduleReference and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "moduleReference", 
+        descr: "process AST-node-property moduleReference and append ittfNode to `ret`"
+    })
     if (node.moduleReference) {
         if (!node.moduleReference.type) {
             throw 'Node moduleReference has no type: ' + JSON.stringify(node, null, 2);
@@ -17225,7 +19921,16 @@ format.TSImportEqualsDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSNamespaceExportDeclaration
+var TSNamespaceExportDeclaration_astNode = {
+    name: "TSNamespaceExportDeclaration", 
+    ittfTag: ":export-ns", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSNamespaceExportDeclaration_astNode)
 format.TSNamespaceExportDeclaration = function(parent, node, options) {
+    var f_astNode = TSNamespaceExportDeclaration_astNode;
     var __isText = false;
     // log 'node : TSNamespaceExportDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -17254,6 +19959,12 @@ format.TSNamespaceExportDeclaration = function(parent, node, options) {
     // Process AST-node-property id and
     // set the resulting node.name on : ret || parent (cmd: onparent)
     // used mainly for Identifier(s)
+    f_astNode.props.push({
+        name: "id", 
+        onParent: false, 
+        iftext: false, 
+        descr: "Process AST-node-property id and set the resulting node.name on : ret || parent (cmd: onparent) used mainly for Identifier(s)"
+    })
     if (node.id) {
         if (!node.id.type) {
             throw 'Node id has no type: ' + JSON.stringify(node, null, 2);
@@ -17290,7 +20001,16 @@ format.TSNamespaceExportDeclaration = function(parent, node, options) {
     }
 };
 // process AST node TSExternalModuleReference
+var TSExternalModuleReference_astNode = {
+    name: "TSExternalModuleReference", 
+    ittfTag: ":require", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSExternalModuleReference_astNode)
 format.TSExternalModuleReference = function(parent, node, options) {
+    var f_astNode = TSExternalModuleReference_astNode;
     var __isText = false;
     // log 'node : TSExternalModuleReference ----------------------------------------- parent ittf tag : ', parent.tag
     var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
@@ -17829,6 +20549,10 @@ md.getWizziTree = function(input, options, callback) {
         syntax = md.parse(cr.codeCleaned, babelOptions);
     } 
     catch (ex) {
+        var lines = cr.codeCleaned.split('\n');
+        for (var i=0; i<lines.length-1; i++) {
+            console.log(i+1, lines[i]);
+        }
         return callback(ex);
     } 
     if (options.syntaxOutFile) {
@@ -17901,3 +20625,4 @@ md.getWizziIttf = function(input, options, callback) {
         callback(null, ittf);
     })
 };
+file.write(path.join(__dirname, "..", "..", "..", "..", "..", "..", "autodocs", "js-ts.wizzify.json"), JSON.stringify(wzDocs, null, '\t'))

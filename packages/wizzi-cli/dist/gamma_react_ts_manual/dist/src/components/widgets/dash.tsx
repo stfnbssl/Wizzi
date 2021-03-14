@@ -2,8 +2,9 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\dash.tsx.ittf
-    utc time: Wed, 10 Mar 2021 13:28:34 GMT
+    utc time: Thu, 11 Mar 2021 20:36:35 GMT
 */
+// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 import styled, {keyframes} from 'styled-components';
 
 const getCircumference = (radius: number) => radius * 2 * 3.14159;
@@ -33,6 +34,7 @@ interface DashProps {
     width: number;
     duration: string;
 }
+
 export const Dash = styled.div<DashProps>`
     height: 100px;
     width: 100px;

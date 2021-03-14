@@ -31,10 +31,10 @@ module
                 switch props.variant
                     case VARIANT.SECONDARY
                         styled
-                            color £{props.theme.palette.secondary.contrastText}
-                            background-color £{props.theme.palette.secondary.main}
+                            color £{props.theme.palette.secondary2.contrastText}
+                            background-color £{props.theme.palette.secondary2.main}
                     case VARIANT.PRIMARY
                     default
                         styled
-                            color £{props.theme.palette.primary.contrastText}
-                            background-color £{props.theme.palette.primary.main}
+                            color £{props.theme.palette.primary2.contrastText}
+                            background-color £{props.theme.palette.primary2.main}

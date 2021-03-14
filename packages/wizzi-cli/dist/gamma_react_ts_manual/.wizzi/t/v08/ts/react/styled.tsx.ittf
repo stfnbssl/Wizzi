@@ -1,36 +1,18 @@
 $group
     $params &md
 
-    misc( setmyprops, &md )
+    misc( setMyProps, &md )
 
+    # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
     import styled
         @ keyframes
         from 'styled-components'
     +
     $hook imports
     :interface ${md.name}Props
-        $foreach prop in myprops
-            :p ${prop.name}
-                $if prop.type == 'date'
-                    :ref Date
-                    $if prop.optional
-                        :optional
-                $elif prop.type == 'node'
-                    :ref React.ReactNode
-                    $if prop.optional
-                        :optional
-                $elif prop.type == 'mouse-event'
-                    :ref (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-                    $if prop.optional
-                        :optional
-                $elif prop.ref
-                    :ref ${prop.type}
-                    $if prop.optional
-                        :optional
-                $else
-                    :${prop.type}
-                    $if prop.optional
-                        :optional
+        $foreach prop in myProps
+            $include setPropType
+    +
     export
         styled ${md.name} .${md.element}<${md.name}Props>
             $hook

@@ -6,10 +6,11 @@
         // var pkgName = "lambda";
         // var pkgName = "tau_express";
         // var pkgName = "sigma_express_auth";
-        var pkgName = "gamma_react_ts";
-        // var template = "wizzi_plugin";
+        // var pkgName = "gamma_react_ts";
+        var pkgName = "wizzi.plugin.pdf";
+        var template = "wizzi_plugin";
         // var template = "express";
-        var template = "react_ts";
+        // var template = "react_ts";
         var wizzi_plugin_type = 'syntax_structure';
 
 	const path = require('path')
@@ -42,7 +43,7 @@
                                 { github
                                 [ Schemas
                                     {
-                                        @ name "sample"
+                                        @ name "pdf"
                         {
                             @ destFolder
                                 _ path.join

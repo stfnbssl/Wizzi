@@ -2,19 +2,21 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\button.tsx.ittf
-    utc time: Wed, 10 Mar 2021 13:28:34 GMT
+    utc time: Thu, 11 Mar 2021 20:36:35 GMT
 */
 import React, {FunctionComponent} from 'react';
+// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 import styled, {keyframes} from 'styled-components';
 
 type ButtonProps = { 
-    active: boolean;
+    active?: boolean;
     icon: string;
     theme: string;
     children: React.ReactNode;
     onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 } 
 ;
+
 interface ButtonStyleProps {
     active?: boolean;
     dark?: boolean;

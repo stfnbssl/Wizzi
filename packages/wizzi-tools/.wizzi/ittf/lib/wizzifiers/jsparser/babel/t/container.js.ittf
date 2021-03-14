@@ -56,6 +56,11 @@
 				_ options.formatTextNodes.pop(); 
 			set options.returnText = saveReturnText
 			return value
+
+    $if isDocumentation
+        var wzDocs
+            {
+                [ AstgNodes
 	
 	$hook
 
@@ -164,6 +169,9 @@
 				# log 'jsparser.container.cr', cr
 				set syntax = md.parse(cr.codeCleaned, babelOptions)
 			catch ex
+                var lines = cr.codeCleaned.split('\n')
+                for var i=0; i<lines.length-1; i++
+                    log i+1, lines[i]
 				return
 					_ callback
 						@ ex
@@ -244,3 +252,20 @@
 					var ittf = ittfwriter.stringify(root, { lang: 'js' });
 					# log "md.getWizziIttf\n" + ittf
 					_ callback(null, ittf)
+
+    $if isDocumentation
+        _ file.write
+            _ path.join
+                @ __dirname
+                @ ".."
+                @ ".."
+                @ ".."
+                @ ".."
+                @ ".."
+                @ ".."
+                @ "autodocs"
+                @ "js-ts.wizzify.json"
+            _ JSON.stringify
+                @ wzDocs
+                @ null
+                @ '\t'

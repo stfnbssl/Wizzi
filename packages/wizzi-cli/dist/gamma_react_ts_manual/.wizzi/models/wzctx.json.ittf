@@ -89,4 +89,67 @@
                     prop( trackColor, string, rgba(0,0,0,.2)
                     prop( width, number, 4
                     prop( duration, string, 1s
+            {
+                name "ToggleSwitch"
+                [ props
+                    prop( checked, boolean
+                    prop( label
+                    prop( onChange, input-event
+                    prop( className
+                        optional true 
+                    prop( dark, boolean
+
+            {
+                name "LargeInput"
+                [ props
+                    prop( value, union
+                        [ types
+                            {
+                                name "string"
+                            {
+                                name "undefined"
+                    prop( disabled, boolean
+                        optional true 
+                    prop( onChange, input-event
+                    prop( placeholder
+                        optional true 
+                    prop( name
+                        optional true 
+                    prop( type
+                        optional true 
+                    prop( autoFocus, boolean
+                        optional true 
+                    prop( error, union
+                        [ types
+                            {
+                                name "Error"
+                                ref true
+                            {
+                                name "null"
+                        optional true 
+                    prop( dark, boolean
+                [ stateProps
+                    prop( focused, boolean
+
+            {
+                name "EditableField"
+                [ props
+                    prop( value, string
+                    prop( onSubmitText, Promise
+                        ref true
+                        return "void"
+                        [ params
+                            {
+                                name "value"
+                                type "string"
+                        optional true 
+                    prop( dark, boolean
+                    prop( className
+                        optional true 
+                [ stateProps
+                    prop( value, string
+                    prop( focused, boolean
+
+
+
 

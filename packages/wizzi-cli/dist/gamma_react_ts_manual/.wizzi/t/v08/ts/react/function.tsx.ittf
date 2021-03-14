@@ -1,22 +1,13 @@
 $group
     $params &md
 
-    $
-        var myprops = []
-        if (md.props && md.props.length > 0) { myprops = md.props }
-        else {
-            for (var i=0; i<wzCtx.App.Components.length; i++) {
-                _.log('wzCtx.App.Components[i].name, md.name', wzCtx.App.Components[i].name, md.name)
-                if (wzCtx.App.Components[i].name == md.name && wzCtx.App.Components[i].props && wzCtx.App.Components[i].props.length > 0) {
-                    myprops = wzCtx.App.Components[i].props;
-                }
-            }
-        }
+    misc( setMyProps, &md )
 
     import React
         @ FunctionComponent
         from 'react'
     $if md.styled
+        # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
         import styled
             @ keyframes
             from 'styled-components'
@@ -24,22 +15,9 @@ $group
     $hook imports
     :type ${md.name}Props
         :{
-            $foreach prop in myprops
-                $if prop.type == 'date'
-                    :p ${prop.name}
-                        :ref Date
-                $elif prop.type == 'node'
-                    :p ${prop.name}
-                        :ref React.ReactNode
-                $elif prop.type == 'mouse-event'
-                    :p ${prop.name}
-                        :ref (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-                $elif prop.ref
-                    :p ${prop.name}
-                        :ref ${prop.type}
-                $else
-                    :p ${prop.name}
-                        :${prop.type}
+            $foreach prop in myProps
+                $include setPropType
+    +
     $hook styles
     export
         const ${md.name}
@@ -48,6 +26,6 @@ $group
                     :ref ${md.name}Props
             =>
                 {
-                    $foreach prop in myprops
+                    $foreach prop in myProps
                         @ ${prop.name}
                 $hook

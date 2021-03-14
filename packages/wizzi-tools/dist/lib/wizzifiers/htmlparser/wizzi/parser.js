@@ -510,7 +510,7 @@ priv.onopentag = function(state) {
     state.tagcount++;
     state.stack.push(state.tagname)
     if (state.tagname == 'script' || state.tagname == 'style') {
-        console.log('onopentag', state.tagname, 'line', state.line);
+        // log 'onopentag', state.tagname, 'line', state.line
     }
     state.currenttagname = state.tagname;
     if (state.onopentag) {
@@ -525,7 +525,7 @@ priv.onopentag = function(state) {
 };
 priv.onclosetag = function(state) {
     if (state.tagname == 'script' || state.tagname == 'style') {
-        console.log('onclosetag', state.tagname, 'line', state.line);
+        // log 'onclosetag', state.tagname, 'line', state.line
     }
     if (state.onclosetag) {
         if (state.tagname in voidElements) {

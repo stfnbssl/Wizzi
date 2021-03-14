@@ -122,6 +122,143 @@
                         "default": "1s"
                     }
                 ]
+            },
+            {
+                "name": "ToggleSwitch",
+                "props": [
+                    {
+                        "name": "checked",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "label",
+                        "type": "string"
+                    },
+                    {
+                        "name": "onChange",
+                        "type": "input-event"
+                    },
+                    {
+                        "name": "className",
+                        "type": "string",
+                        "optional": true
+                    },
+                    {
+                        "name": "dark",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "LargeInput",
+                "props": [
+                    {
+                        "name": "value",
+                        "type": "union",
+                        "types": [
+                            {
+                                "name": "string"
+                            },
+                            {
+                                "name": "undefined"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "disabled",
+                        "type": "boolean",
+                        "optional": true
+                    },
+                    {
+                        "name": "onChange",
+                        "type": "input-event"
+                    },
+                    {
+                        "name": "placeholder",
+                        "type": "string",
+                        "optional": true
+                    },
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "optional": true
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "optional": true
+                    },
+                    {
+                        "name": "autoFocus",
+                        "type": "boolean",
+                        "optional": true
+                    },
+                    {
+                        "name": "error",
+                        "type": "union",
+                        "types": [
+                            {
+                                "name": "Error",
+                                "ref": true
+                            },
+                            {
+                                "name": "null"
+                            }
+                        ],
+                        "optional": true
+                    },
+                    {
+                        "name": "dark",
+                        "type": "boolean"
+                    }
+                ],
+                "stateProps": [
+                    {
+                        "name": "focused",
+                        "type": "boolean"
+                    }
+                ]
+            },
+            {
+                "name": "EditableField",
+                "props": [
+                    {
+                        "name": "value",
+                        "type": "string"
+                    },
+                    {
+                        "name": "onSubmitText",
+                        "type": "Promise",
+                        "ref": true,
+                        "return": "void",
+                        "params": [
+                            {
+                                "name": "value",
+                                "type": "string"
+                            }
+                        ],
+                        "optional": true
+                    },
+                    {
+                        "name": "dark",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "className",
+                        "type": "string",
+                        "optional": true
+                    }
+                ],
+                "stateProps": [
+                    {
+                        "name": "value",
+                        "type": "string"
+                    },
+                    {
+                        "name": "focused",
+                        "type": "boolean"
+                    }
+                ]
             }
         ]
     }

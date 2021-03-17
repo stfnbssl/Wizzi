@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.plugin.pdf\.wizzi\ittf\examples\index.js.ittf
-    utc time: Sun, 14 Mar 2021 12:59:39 GMT
+    utc time: Mon, 15 Mar 2021 12:41:28 GMT
 */
 'use strict';
 var path = require('path');
@@ -18,7 +18,10 @@ var errors = wizziUtils.exampleErrors;
 var stringify = require('json-stringify-safe');
 function executeExample() {
     executeGenerateModules([
-        'first'
+        'first', 
+        'tables', 
+        'columns', 
+        'page'
     ], function(err, result) {
         if (err) {
             console.log('pdf.examples.executeGenerateModules.err', err);

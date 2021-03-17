@@ -1,4 +1,4 @@
-wfschema sample
+wfschema ${cliCtx.Schemas[0].name}
 
     $
         var call = '(&md)'
@@ -31,13 +31,13 @@ wfschema sample
             r node/s
 
         ---
-        e sample : node
+        e ${cliCtx.Schemas[0].name} : node
             is-root
 
 
     $else
         ---
-        e sample
+        e ${cliCtx.Schemas[0].name}
             is-root
 
             r item/s

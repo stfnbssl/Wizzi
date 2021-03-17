@@ -15,6 +15,9 @@ module
         _ executeGenerateModules
             [
                 @ 'first'
+                @ 'tables'
+                @ 'columns'
+                @ 'page'
             f_cb_no_throw( result )
                 if err
                     log 'pdf.examples.executeGenerateModules.err', err

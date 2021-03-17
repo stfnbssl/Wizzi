@@ -2,7 +2,7 @@ pdf first
     style-def heading1
         font-size 56
         bold
-        italic
+        italics
         color red
     style-def normal
         font-size 32
@@ -22,3 +22,25 @@ pdf first
         ul
             + list item 1
             + list item 2
+    section two
+        p Hello table
+        table
+            layout lightHorizontalLines
+            header-rows 1
+            widths '*' 'auto' 100 '*'
+            tr
+                + First
+                + Second
+                + Third
+                + The last one
+            tr
+                + Value 1
+                + Value 2
+                + Value 3
+                + Value 4
+            tr
+                + Bold value
+                    bold
+                + Val 2
+                + Val 3
+                + Val 4

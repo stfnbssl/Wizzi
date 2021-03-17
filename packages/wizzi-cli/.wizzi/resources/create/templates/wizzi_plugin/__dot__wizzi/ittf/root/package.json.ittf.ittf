@@ -10,7 +10,7 @@
 
         ${'$'}append scripts
             examples "node examples"
-            docx "node examples/dist/first.sample"
+            docx "node examples/dist/first.${cliCtx.Schemas[0].name}"
 
         ${'$'}append dependencies
             docx "^5.5.0"

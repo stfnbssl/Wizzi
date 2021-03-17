@@ -126,6 +126,11 @@ module
             $append close
                 _ ctx.w(pdfParent + '["' + pdfParentArrayName + '"].push(' + pdfNode + ');')
 
+        objectNode.js( columns, columns )   
+            _ ctx.w(pdfNode + '.columns = [];')
+            $append close
+                _ ctx.w(pdfParent + '["' + pdfParentArrayName + '"].push(' + pdfNode + ');')
+
         objectNode.js( stack, stack )   
             _ ctx.w(pdfNode + '.stack = [];')
             $append close
@@ -170,6 +175,9 @@ module
             _ ctx.w(pdfNode + '.underline = true;')
         
         
+        nodeProperty.js( pageOrientation, pageOrientation, string )
+        nodeProperty.js( pageSize, pageSize, string )
+        nodeProperty.js( pageMargins, pageMargins, array )
         nodeProperty.js( boldProp, bold, true )
         nodeProperty.js( italicsProp, italics, true )
         nodeProperty.js( underlineProp, underline, true )
@@ -203,6 +211,11 @@ module
         nodeProperty.js( height, height )
         nodeProperty.js( margin, margin, array )
         nodeProperty.js( width, width )
+        nodeProperty.js( widths, table.widths, array )
+        nodeProperty.js( headerRows, table.headerRows )
+        nodeProperty.js( layout, layout, string )
+        nodeProperty.js( noWrap, noWrap, true )
+        nodeProperty.js( columnGap, columnGap )
         
         nodePropertyChoice.js( xtype)
             if model.wzParent.wzElement == 'shading'
@@ -277,23 +290,15 @@ module
                     _ ctx.values.pdfStack.pop()
                     r_cb()
 
-        objectNode.js( table )   
-            _ ctx.w(pdfNode + '.rows = [];')
+        objectNode.js( table, body )
+            _ ctx.w(pdfNode + '.table = { body: [] };')
             $append close
                 _ ctx.w(pdfParent + '["' + pdfParentArrayName + '"].push(' + pdfNode + ');')                
 
-        objectNode.js( tr )   
-            _ ctx.w(pdfNode + '.children = [];')
-            _ ctx.w(pdfNode + '.layout = pdf.TableLayoutType.FIXED;')
+        objectNode.js( tr, tds )   
+            _ ctx.w(pdfNode + '.tds = [];')
             $append close
-                _ ctx.w(pdfParent + '.rows.push(' + pdfNode + 'Obj);')
-                _ ctx.w(pdfParent + '["' + pdfParentArrayName + '"].push(' + pdfNode + ');')                
-
-        objectNode.js( td )   
-            _ ctx.w(pdfNode + '.children = [];')
-            $append close
-                _ ctx.w(pdfParent + '.children.push(' + pdfNode + 'Obj);')
-                _ ctx.w(pdfParent + '["' + pdfParentArrayName + '"].push(' + pdfNode + ');')                
+                _ ctx.w(pdfParent + '.table.body.push(' + pdfNode + '.tds);')
 
         objectNode.js( underline )   
             $append close
@@ -306,7 +311,6 @@ module
         objectNode.js( xdefault )
             $append close
                 _ ctx.w(pdfParent + '.default = ' + pdfNode + ';')
-
 
         objectNode.js( run )
             $append close
@@ -324,6 +328,10 @@ module
                     _ ctx.w(pdfParent + '.' + model.wzName + ' = ' + pdfNode + ';')
                 else
                     _ ctx.w(pdfParent + '.styles["' + model.wzName + '"] = ' + pdfNode + ';')
+
+        objectNode.js( defaultStyleDef )
+            $append close
+                _ ctx.w(pdfParent + '.defaultStyle = ' + pdfNode + ';')
 
         objectNode.js( spacing )
             $append close

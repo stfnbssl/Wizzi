@@ -18,17 +18,6 @@ wfschema pdf
     e section : node
     e h1 : node
     e h2 : node
-    e text : node
-        tag +
-    e emphasisMark : node
-    e strike : node
-    e doubleStrike : node
-    e superScript : node
-    e subScript : node
-    e smallCaps : node
-    e allCaps : node
-    e smallCaps : node
-    e font : node
     e color : node
     e fill : node
     e size : node
@@ -38,28 +27,48 @@ wfschema pdf
     e highlight : node
     e xtype : node
         tag type
-    e table : node
-    e tr : node
-    e td : node
     e center : node
     e bullet_0 : node
     e tabStop : node
     e position : node
-    e styles : node
-    e style : node
     e basedOn : node
     e next : node
-    e paragraphStyles : node
-        tag paragraph-styles
-    e run : node
-    e xdefault : node
-        tag default
+
+    #
+    #
+    # Styles
+    #
+    e defaultStyleDef : node
+        tag default-style-def
     e styleDef : node
         tag style-def
+    e styles : node
+    e style : node
 
     #
     #
     # Layout
+    #
+    e pageSize : node
+        tag page-size
+        # '4A0', '2A0', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10',
+        # 'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10',
+        # 'C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10',
+        # 'RA0', 'RA1', 'RA2', 'RA3', 'RA4',
+        # 'SRA0', 'SRA1', 'SRA2', 'SRA3', 'SRA4',
+        # 'EXECUTIVE', 'FOLIO', 'LEGAL', 'LETTER', 'TABLOID'
+
+    e pageOrientation : node
+        tag page-orientation
+        # portrait, landscape
+  
+    e pageMargins : node
+        tag page-margins
+        # [left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins
+        m wzinitialize
+            var ss = this.wzName.split(/[\s,]+/)
+            set this.wzName = ss.join(',')
+
     e margin : node
         m wzinitialize
             var ss = this.wzName.split(/[\s,]+/)
@@ -75,17 +84,53 @@ wfschema pdf
 
     #
     #
-    # Paragraph
-    e p : node
-        # subitems are "+/text" nodes
-    e stack : node
-        # subitems are "p" nodes
-    e break : node
-        tag br
+    # Tables
+    #
+    e table : node
+    e tr : node
+    e td : node
+    e headerRows : node
+        tag header-rows
+    e widths : node
+        m wzinitialize
+            var ss = this.wzName.split(/[\s,]+/)
+            set this.wzName = ss.join(',')
+    e layout : node
+        # noBorders
+        # headerLineOnly
+        # lightHorizontalLines
+
+    #
+    #
+    # Columns
+    #
+    e columns : node
+    e columnGap : node
+        tag column-gap
+
+    #
+    #
+    # Text
+    #
+    e text : node
+        tag +
     
-    #
-    #
-    # Text styles
+    e emphasisMark : node
+    
+    e strike : node
+    
+    e doubleStrike : node
+    
+    e superScript : node
+    
+    e subScript : node
+    
+    e smallCaps : node
+    
+    e allCaps : node
+    
+    e smallCaps : node
+
     e font : node
         # string: name of the font
     
@@ -108,8 +153,9 @@ wfschema pdf
     
     e italics : node
         tag i
+    
     e italicsProp : node
-        tag italic
+        tag italics
     
     e underline : node
         tag u
@@ -140,7 +186,31 @@ wfschema pdf
         tag decoration-style
         # string: the style of the text decoration (‘dashed’ or ‘dotted’ or ‘double’ or ‘wavy’)
 
+    e noWrap : node
+        tag no-wrap
 
+    #
+    #
+    # Paragraph
+    #
+    e p : node
+        # subitems are "+/text" nodes
+    e stack : node
+        # subitems are "p" nodes
+    e break : node
+        tag br
+
+    #
+    #
+    # Lists
+    #
+    e ul : node
+    e ol : node
+
+    #
+    #
+    # Images
+    #
     e image : node
 
     e imageDef : node
@@ -150,7 +220,3 @@ wfschema pdf
     
     e imageRef : node
         tag image-ref
-
-    e ul : node
-    e ol : node
-

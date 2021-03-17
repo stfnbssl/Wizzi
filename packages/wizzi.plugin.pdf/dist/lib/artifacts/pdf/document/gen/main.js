@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.plugin.pdf\.wizzi\ittf\lib\artifacts\pdf\document\gen\main.js.ittf
-    utc time: Sun, 14 Mar 2021 12:59:40 GMT
+    utc time: Mon, 15 Mar 2021 12:41:29 GMT
 */
 'use strict';
 var util = require('util');
@@ -192,6 +192,25 @@ md.p = function(model, ctx, callback) {
     if (!verify.isEmpty(model.wzName)) {
         ctx.w(pdfNode + '.text.push("' + respace(model.wzName) + '");');
     }
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w(pdfParent + '["' + pdfParentArrayName + '"].push(' + pdfNode + ');');
+        ctx.values.pdfStack.pop();
+        return callback(null);
+    })
+};
+md.columns = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    var pdfParentArrayName = ctx.values.pdfStack[ctx.values.pdfStack.length-1].arrayName;
+    var pdfNode = "pdf_columns_" + (++ctx.values.pdfCounter);
+    ctx.values.pdfStack.push({
+        node: pdfNode, 
+        arrayName: "columns"
+    })
+    ctx.w('const ' + pdfNode + ' = {};');
+    ctx.w(pdfNode + '.columns = [];');
     md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
         if (err) {
             return callback(err);
@@ -462,6 +481,21 @@ md.underline = function(model, ctx, callback) {
         return callback(null);
     })
 };
+md.pageOrientation = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    ctx.w(pdfParent + '.pageOrientation = "' + respace(model.wzName) + '";');
+    return callback(null);
+};
+md.pageSize = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    ctx.w(pdfParent + '.pageSize = "' + respace(model.wzName) + '";');
+    return callback(null);
+};
+md.pageMargins = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    ctx.w(pdfParent + '.pageMargins = [' + respace(model.wzName) + '];');
+    return callback(null);
+};
 md.boldProp = function(model, ctx, callback) {
     var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
     ctx.w(pdfParent + '.bold = ' + true + ';');
@@ -622,6 +656,31 @@ md.width = function(model, ctx, callback) {
     ctx.w(pdfParent + '.width = ' + respace(model.wzName) + ';');
     return callback(null);
 };
+md.widths = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    ctx.w(pdfParent + '.table.widths = [' + respace(model.wzName) + '];');
+    return callback(null);
+};
+md.headerRows = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    ctx.w(pdfParent + '.table.headerRows = ' + respace(model.wzName) + ';');
+    return callback(null);
+};
+md.layout = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    ctx.w(pdfParent + '.layout = "' + respace(model.wzName) + '";');
+    return callback(null);
+};
+md.noWrap = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    ctx.w(pdfParent + '.noWrap = ' + true + ';');
+    return callback(null);
+};
+md.columnGap = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    ctx.w(pdfParent + '.columnGap = ' + respace(model.wzName) + ';');
+    return callback(null);
+};
 md.xtype = function(model, ctx, callback) {
     var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
     if (model.wzParent.wzElement == 'shading') {
@@ -718,10 +777,10 @@ md.table = function(model, ctx, callback) {
     var pdfNode = "pdf_table_" + (++ctx.values.pdfCounter);
     ctx.values.pdfStack.push({
         node: pdfNode, 
-        arrayName: ""
+        arrayName: "body"
     })
     ctx.w('const ' + pdfNode + ' = {};');
-    ctx.w(pdfNode + '.rows = [];');
+    ctx.w(pdfNode + '.table = { body: [] };');
     md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
         if (err) {
             return callback(err);
@@ -737,37 +796,15 @@ md.tr = function(model, ctx, callback) {
     var pdfNode = "pdf_tr_" + (++ctx.values.pdfCounter);
     ctx.values.pdfStack.push({
         node: pdfNode, 
-        arrayName: ""
+        arrayName: "tds"
     })
     ctx.w('const ' + pdfNode + ' = {};');
-    ctx.w(pdfNode + '.children = [];');
-    ctx.w(pdfNode + '.layout = pdf.TableLayoutType.FIXED;');
+    ctx.w(pdfNode + '.tds = [];');
     md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
         if (err) {
             return callback(err);
         }
-        ctx.w(pdfParent + '.rows.push(' + pdfNode + 'Obj);');
-        ctx.w(pdfParent + '["' + pdfParentArrayName + '"].push(' + pdfNode + ');');
-        ctx.values.pdfStack.pop();
-        return callback(null);
-    })
-};
-md.td = function(model, ctx, callback) {
-    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
-    var pdfParentArrayName = ctx.values.pdfStack[ctx.values.pdfStack.length-1].arrayName;
-    var pdfNode = "pdf_td_" + (++ctx.values.pdfCounter);
-    ctx.values.pdfStack.push({
-        node: pdfNode, 
-        arrayName: ""
-    })
-    ctx.w('const ' + pdfNode + ' = {};');
-    ctx.w(pdfNode + '.children = [];');
-    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
-        if (err) {
-            return callback(err);
-        }
-        ctx.w(pdfParent + '.children.push(' + pdfNode + 'Obj);');
-        ctx.w(pdfParent + '["' + pdfParentArrayName + '"].push(' + pdfNode + ');');
+        ctx.w(pdfParent + '.table.body.push(' + pdfNode + '.tds);');
         ctx.values.pdfStack.pop();
         return callback(null);
     })
@@ -884,6 +921,24 @@ md.styleDef = function(model, ctx, callback) {
         else {
             ctx.w(pdfParent + '.styles["' + model.wzName + '"] = ' + pdfNode + ';');
         }
+        ctx.values.pdfStack.pop();
+        return callback(null);
+    })
+};
+md.defaultStyleDef = function(model, ctx, callback) {
+    var pdfParent = ctx.values.pdfStack[ctx.values.pdfStack.length-1].node;
+    var pdfParentArrayName = ctx.values.pdfStack[ctx.values.pdfStack.length-1].arrayName;
+    var pdfNode = "pdf_defaultStyleDef_" + (++ctx.values.pdfCounter);
+    ctx.values.pdfStack.push({
+        node: pdfNode, 
+        arrayName: ""
+    })
+    ctx.w('const ' + pdfNode + ' = {};');
+    md.genItems(model.nodes, ctx, noindent, (err, notUsed) => {
+        if (err) {
+            return callback(err);
+        }
+        ctx.w(pdfParent + '.defaultStyle = ' + pdfNode + ';');
         ctx.values.pdfStack.pop();
         return callback(null);
     })

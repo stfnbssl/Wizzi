@@ -8,7 +8,7 @@ module
         var md = {
             plugin: '${cliCtx.name}',
             name: 'extended',
-            schema: 'sample',
+            schema: '${cliCtx.Schemas[0].name}',
             checkSchema: true
         };
 

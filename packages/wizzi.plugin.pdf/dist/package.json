@@ -24,9 +24,12 @@
     "scripts": {
         "test": "mocha tests/**/*.js --full-trace",
         "examples": "node examples",
-        "first": "node examples/dist/first.pdf",
+        "first": "node examples/dist/first.pdf.js",
+        "tables": "node examples/dist/tables.pdf.js",
+        "columns": "node examples/dist/columns.pdf.js",
+        "page": "node examples/dist/page.pdf.js",
         "pre": "npm run examples",
-        "docs": "npm run first",
+        "docs": "npm run first && npm run tables && npm run columns && npm run page",
         "all": "npm run pre && npm run docs"
     },
     "dependencies": {

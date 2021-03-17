@@ -166,24 +166,6 @@
           ]
         },
         {
-          "name": "table",
-          "tags": [
-            "table"
-          ]
-        },
-        {
-          "name": "tr",
-          "tags": [
-            "tr"
-          ]
-        },
-        {
-          "name": "td",
-          "tags": [
-            "td"
-          ]
-        },
-        {
           "name": "center",
           "tags": [
             "center"
@@ -205,18 +187,6 @@
           "name": "position",
           "tags": [
             "position"
-          ]
-        },
-        {
-          "name": "styles",
-          "tags": [
-            "styles"
-          ]
-        },
-        {
-          "name": "style",
-          "tags": [
-            "style"
           ]
         },
         {
@@ -244,9 +214,9 @@
           ]
         },
         {
-          "name": "xdefault",
+          "name": "defaultStyleDef",
           "tags": [
-            "default"
+            "default-style-def"
           ]
         },
         {
@@ -256,9 +226,87 @@
           ]
         },
         {
+          "name": "styles",
+          "tags": [
+            "styles"
+          ]
+        },
+        {
+          "name": "style",
+          "tags": [
+            "style"
+          ]
+        },
+        {
+          "name": "pageSize",
+          "tags": [
+            "page-size"
+          ]
+        },
+        {
+          "name": "pageOrientation",
+          "tags": [
+            "page-orientation"
+          ]
+        },
+        {
+          "name": "pageMargins",
+          "tags": [
+            "page-margins"
+          ]
+        },
+        {
           "name": "margin",
           "tags": [
             "margin"
+          ]
+        },
+        {
+          "name": "table",
+          "tags": [
+            "table"
+          ]
+        },
+        {
+          "name": "tr",
+          "tags": [
+            "tr"
+          ]
+        },
+        {
+          "name": "td",
+          "tags": [
+            "td"
+          ]
+        },
+        {
+          "name": "headerRows",
+          "tags": [
+            "header-rows"
+          ]
+        },
+        {
+          "name": "widths",
+          "tags": [
+            "widths"
+          ]
+        },
+        {
+          "name": "layout",
+          "tags": [
+            "layout"
+          ]
+        },
+        {
+          "name": "columns",
+          "tags": [
+            "columns"
+          ]
+        },
+        {
+          "name": "columnGap",
+          "tags": [
+            "column-gap"
           ]
         },
         {
@@ -324,7 +372,7 @@
         {
           "name": "italicsProp",
           "tags": [
-            "italic"
+            "italics"
           ]
         },
         {
@@ -379,6 +427,12 @@
           "name": "decorationStyle",
           "tags": [
             "decoration-style"
+          ]
+        },
+        {
+          "name": "noWrap",
+          "tags": [
+            "no-wrap"
           ]
         },
         {
@@ -1038,87 +1092,6 @@
       "comments": []
     },
     {
-      "name": "table",
-      "super": "node",
-      "isRoot": false,
-      "tags": [
-        "table"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "node",
-          "role": "nodes",
-          "tags": [
-            "node"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "node",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "tr",
-      "super": "node",
-      "isRoot": false,
-      "tags": [
-        "tr"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "node",
-          "role": "nodes",
-          "tags": [
-            "node"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "node",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "td",
-      "super": "node",
-      "isRoot": false,
-      "tags": [
-        "td"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "node",
-          "role": "nodes",
-          "tags": [
-            "node"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "node",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
       "name": "center",
       "super": "node",
       "isRoot": false,
@@ -1205,60 +1178,6 @@
       "isRoot": false,
       "tags": [
         "position"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "node",
-          "role": "nodes",
-          "tags": [
-            "node"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "node",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "styles",
-      "super": "node",
-      "isRoot": false,
-      "tags": [
-        "styles"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "node",
-          "role": "nodes",
-          "tags": [
-            "node"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "node",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "style",
-      "super": "node",
-      "isRoot": false,
-      "tags": [
-        "style"
       ],
       "flags": "",
       "attributes": [],
@@ -1389,11 +1308,11 @@
       "comments": []
     },
     {
-      "name": "xdefault",
+      "name": "defaultStyleDef",
       "super": "node",
       "isRoot": false,
       "tags": [
-        "default"
+        "default-style-def"
       ],
       "flags": "",
       "attributes": [],
@@ -1441,6 +1360,174 @@
       "restricts": [],
       "methods": [],
       "comments": []
+    },
+    {
+      "name": "styles",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "styles"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "style",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "style"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "pageSize",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "page-size"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": [
+        "'4A0', '2A0', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10',",
+        "'B0', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10',",
+        "'C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10',",
+        "'RA0', 'RA1', 'RA2', 'RA3', 'RA4',",
+        "'SRA0', 'SRA1', 'SRA2', 'SRA3', 'SRA4',",
+        "'EXECUTIVE', 'FOLIO', 'LEGAL', 'LETTER', 'TABLOID'"
+      ]
+    },
+    {
+      "name": "pageOrientation",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "page-orientation"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": [
+        "portrait, landscape"
+      ]
+    },
+    {
+      "name": "pageMargins",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "page-margins"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [
+        {
+          "name": "wzinitialize",
+          "isStatic": false,
+          "isKnownMethod": true,
+          "params": [],
+          "statements": [
+            {
+              "tag": "var",
+              "name": "xvar",
+              "value": "ss = this.wzName.split(/[\\s,]+/)",
+              "statements": []
+            },
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "this.wzName = ss.join(',')",
+              "statements": []
+            }
+          ],
+          "comments": []
+        }
+      ],
+      "comments": [
+        "[left, top, right, bottom] or [horizontal, vertical] or just a number for equal margins"
+      ]
     },
     {
       "name": "margin",
@@ -1541,6 +1628,248 @@
           "comments": []
         }
       ],
+      "comments": []
+    },
+    {
+      "name": "table",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "table"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "tr",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "tr"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "td",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "td"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "headerRows",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "header-rows"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "widths",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "widths"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [
+        {
+          "name": "wzinitialize",
+          "isStatic": false,
+          "isKnownMethod": true,
+          "params": [],
+          "statements": [
+            {
+              "tag": "var",
+              "name": "xvar",
+              "value": "ss = this.wzName.split(/[\\s,]+/)",
+              "statements": []
+            },
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "this.wzName = ss.join(',')",
+              "statements": []
+            }
+          ],
+          "comments": []
+        }
+      ],
+      "comments": []
+    },
+    {
+      "name": "layout",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "layout"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": [
+        "noBorders",
+        "headerLineOnly",
+        "lightHorizontalLines"
+      ]
+    },
+    {
+      "name": "columns",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "columns"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "columnGap",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "column-gap"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
       "comments": []
     },
     {
@@ -1830,7 +2159,7 @@
       "super": "node",
       "isRoot": false,
       "tags": [
-        "italic"
+        "italics"
       ],
       "flags": "",
       "attributes": [],
@@ -2108,6 +2437,33 @@
       "comments": [
         "string: the style of the text decoration (‘dashed’ or ‘dotted’ or ‘double’ or ‘wavy’)"
       ]
+    },
+    {
+      "name": "noWrap",
+      "super": "node",
+      "isRoot": false,
+      "tags": [
+        "no-wrap"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "node",
+          "role": "nodes",
+          "tags": [
+            "node"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "node",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
     },
     {
       "name": "image",

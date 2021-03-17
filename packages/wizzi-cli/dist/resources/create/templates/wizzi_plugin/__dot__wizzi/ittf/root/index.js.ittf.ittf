@@ -13,13 +13,13 @@ module
             # window(s) vars must be declared even if empty
             var window_modelFactories
                 {
-                    @ 'sample' require('./lib/wizzi/models/sample-factory.g')
+                    @ '${cliCtx.Schemas[0].name}' require('./lib/wizzi/models/${cliCtx.Schemas[0].name}-factory.g')
             var window_artifactGenerators
                 {
-                    @ 'sample/document' require('./lib/artifacts/sample/document/gen/main')
+                    @ '${cliCtx.Schemas[0].name}/document' require('./lib/artifacts/${cliCtx.Schemas[0].name}/document/gen/main')
             var window_transformers
                 {
-                    @ 'sample/extended' require('./lib/artifacts/sample/extended/trans/main')
+                    @ '${cliCtx.Schemas[0].name}/extended' require('./lib/artifacts/${cliCtx.Schemas[0].name}/extended/trans/main')
             var window_schemaDefinitions
                 {
 
@@ -27,13 +27,13 @@ module
             {
                 @ schemas
                     [
-                        @ 'sample'
+                        @ '${cliCtx.Schemas[0].name}'
                 @ modelTransformers
                     [
-                        @ 'sample/extended'
+                        @ '${cliCtx.Schemas[0].name}/extended'
                 @ artifactGenerators
                     [
-                        @ 'sample/document'
+                        @ '${cliCtx.Schemas[0].name}/document'
 
         @ provides
             {

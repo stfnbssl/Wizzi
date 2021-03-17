@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.plugin.pdf\.wizzi\ittf\lib\wizzi\models\pdf-mtree-preprocessor.g.js.ittf
-    utc time: Sun, 14 Mar 2021 12:59:40 GMT
+    utc time: Mon, 15 Mar 2021 12:41:29 GMT
 */
 'use strict';
 module.exports = function(mTree, context) {

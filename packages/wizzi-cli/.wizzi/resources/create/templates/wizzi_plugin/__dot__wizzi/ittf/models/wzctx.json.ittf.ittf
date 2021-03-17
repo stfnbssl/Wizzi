@@ -17,8 +17,8 @@
     
     [ Schemas
         {
-            name "Sample"
-            title "Sample wizzi schema"
+            name "${cliCtx.Schemas[0].name}"
+            title "${cliCtx.Schemas[0].name} wizzi schema"
             builtin false
             [ modelTransformers
                 {

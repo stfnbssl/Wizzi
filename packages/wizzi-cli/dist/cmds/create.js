@@ -12,7 +12,7 @@ var inquirer = require('inquirer');
 module.exports = (args) => {
     return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'wizzi_plugin'), {
             cliCtx: {
-                pkg_name: "wizzi.plugin.pdf", 
+                pkg_name: "wizzi.plugin.ppt", 
                 wizzi_plugin_type: "syntax_structure", 
                 author: {
                     
@@ -26,12 +26,12 @@ module.exports = (args) => {
                 }, 
                 Schemas: [
                     {
-                        name: "pdf"
+                        name: "ppt"
                     }
                 ]
             }
         }, {
-            destFolder: path.join(process.cwd(), 'wizzi.plugin.pdf'), 
+            destFolder: path.join(process.cwd(), 'wizzi.plugin.ppt'), 
             copyInclude: ['*'], 
             copyExclude: []
         }, function(err, genFolderResult) {

@@ -10,7 +10,7 @@ module
         var md = {
             plugin: '${cliCtx.name}',
             name: 'document',
-            schema: 'sample',
+            schema: '${cliCtx.Schemas[0].name}',
             checkSchema: true,
             isAsync: true,
         };
@@ -23,7 +23,7 @@ module
                 ${'$'}${'$'} var highlightCode = require('./highlightCode')
 
         ${'$'}append main
-            _ md.sample
+            _ md.${cliCtx.Schemas[0].name}
                 @ model
                 @ ctx
                 f_cb${openPar} )

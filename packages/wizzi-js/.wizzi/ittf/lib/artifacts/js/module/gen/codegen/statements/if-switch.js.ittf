@@ -44,15 +44,35 @@
 				@ callback
     
 	stm( xswitch
-        _ ctx.w('switch (' + u.unparen(model.wzName) + ') {')
-        _ cnt.genItems
-            @ model.statements
-            @ ctx
-            { 
-                @ indent true
-			f_cb()
-				_ ctx.w('}')
-				r_cb()
+        function doCases
+            _ cnt.genItems
+                @ model.statements
+                @ ctx
+                { 
+                    @ indent true
+                f_cb()
+                    _ ctx.w('}')
+                    r_cb()
+        if verify.isEmpty(model.wzName)
+            var condition
+            var temp = []
+            foreach item in model.statements
+                if ['xcase', 'xdefault'].indexOf(item.wzElement) < 0
+                    set condition = item
+                else
+                    _ temp.push
+                        @ item
+            set model.statements = temp
+            _ ctx.write('switch (')
+            _ cnt.genItem
+                @ condition
+                @ ctx
+                f_cb()
+                    _ ctx.w(') {')
+                    _ doCases
+        else
+            _ ctx.w('switch (' + u.unparen(model.wzName) + ') {')
+            _ doCases
     
 	stm( xcase
         var 

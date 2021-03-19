@@ -52,6 +52,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.expressionMember. Got: ' + callback);
         }
         ctx.write( model.wzName || '');
+        console.log('expressionMember', model.statements);
         cnt.genItems(model.statements, ctx, callback)
     };
     cnt.stm.xvoid = function(model, ctx, callback) {
@@ -209,6 +210,7 @@ md.load = function(cnt) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.iif_end');
         }
+        console.log('iif_end', u.isTopStatement(model, ctx));
         if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
             console.log('iif', model.wzParent.wzElement, model.wzParent.wzParent ? model.wzParent.wzParent.wzElement : '')
             ctx.w(';');

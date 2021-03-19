@@ -1,6 +1,5 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\util\jsCodeReplacer.js.ittf
 */
 'use strict';
@@ -52,8 +51,10 @@ md.clean = function(code) {
             ws.push(ch);
         }
         else if (ch == '}' && state == 3) {
-            var token = '/*;;' + ++counter + ';;*/';
+            counter++;
+            var token = '""/*;;' + counter + ';;*/';
             var key = ';;' + counter + ';;';
+            console.log('jsCodeReplacer.token', token);
             replaceds.push({
                 token: token, 
                 key: key, 
@@ -89,6 +90,7 @@ md.clean = function(code) {
     }
 };
 md.restore = function(code, replaceds) {
+    console.log('md.restore', 'code', code);
     if (!code) {
         return ;
     }
@@ -104,12 +106,14 @@ md.restoreInside = function(code, replaceds) {
         return ;
     }
     var match = md.getKey(code, replaceds);
+    console.log('md.restoreInside', 'code', code, 'match', match);
     if (match == null) {
         return ;
     }
-    return verify.replaceAll(code, '/*' + match.key + '*/', '{{' + match.code + '}}');
-};
+    return // _ verify.replaceAll(code, '/*' + match.key + '*/', '{{' + match.code + '}}')
+        verify.replaceAll(code, match.token, '{{' + match.code + '}}')};
 md.isInside = function(code, replaceds) {
+    console.log('md.isInside', 'code', code);
     var match = md.getKey(code, replaceds);
     if (match == null) {
         return false;

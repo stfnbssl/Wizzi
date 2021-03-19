@@ -1,6 +1,5 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\jsparser\babel\wizzifier.js.ittf
 */
 'use strict';
@@ -863,8 +862,11 @@ format.ExpressionStatement = function(parent, node, options) {
     }
     if (replaceWithSingleChild(ret, 'set')) {
     }
+    else if (replaceWithSingleChild(ret, '_')) {
+    }
     else {
-        replaceWithSingleChild(ret, '_');
+        console.log('ExpressionStatement.failed.ret', ret);
+        throw new Error();
     }
     if (ret != null) {
         if (__isText) {
@@ -1242,7 +1244,7 @@ format.LabeledStatement = function(parent, node, options) {
     };
     // process AST-node-property label and set it in a var
     var p_label = null;
-    if (typeof(node.label) !== 'undefined') {
+    if (typeof(node.label) !== 'undefined' && node.label != null) {
         p_label = {
             textified: null, 
             isText: false, 
@@ -1555,7 +1557,7 @@ format.IfStatement = function(parent, node, options) {
     if (node.consequent) {
         // process AST-node-property consequent and set it in a var
         var p_consequent = null;
-        if (typeof(node.consequent) !== 'undefined') {
+        if (typeof(node.consequent) !== 'undefined' && node.consequent != null) {
             p_consequent = {
                 textified: null, 
                 isText: false, 
@@ -1615,7 +1617,7 @@ format.IfStatement = function(parent, node, options) {
     if (node.alternate) {
         // process AST-node-property alternate and set it in a var
         var p_alternate = null;
-        if (typeof(node.alternate) !== 'undefined') {
+        if (typeof(node.alternate) !== 'undefined' && node.alternate != null) {
             p_alternate = {
                 textified: null, 
                 isText: false, 
@@ -1737,7 +1739,7 @@ format.SwitchStatement = function(parent, node, options) {
     // A `switch` statement.
     // process AST-node-property discriminant and set it in a var
     var p_discriminant = null;
-    if (typeof(node.discriminant) !== 'undefined') {
+    if (typeof(node.discriminant) !== 'undefined' && node.discriminant != null) {
         p_discriminant = {
             textified: null, 
             isText: false, 
@@ -1862,7 +1864,7 @@ format.SwitchCase = function(parent, node, options) {
     };
     // process AST-node-property test and set it in a var
     var p_test = null;
-    if (typeof(node.test) !== 'undefined') {
+    if (typeof(node.test) !== 'undefined' && node.test != null) {
         p_test = {
             textified: null, 
             isText: false, 
@@ -1991,7 +1993,7 @@ format.ThrowStatement = function(parent, node, options) {
     };
     // process AST-node-property argument and set it in a var
     var p_argument = null;
-    if (typeof(node.argument) !== 'undefined') {
+    if (typeof(node.argument) !== 'undefined' && node.argument != null) {
         p_argument = {
             textified: null, 
             isText: false, 
@@ -2109,7 +2111,7 @@ format.TryStatement = function(parent, node, options) {
     }
     // process AST-node-property handler and set it in a var
     var p_handler = null;
-    if (typeof(node.handler) !== 'undefined') {
+    if (typeof(node.handler) !== 'undefined' && node.handler != null) {
         p_handler = {
             textified: null, 
             isText: false, 
@@ -2153,7 +2155,7 @@ format.TryStatement = function(parent, node, options) {
     }
     // process AST-node-property finalizer and set it in a var
     var p_finalizer = null;
-    if (typeof(node.finalizer) !== 'undefined') {
+    if (typeof(node.finalizer) !== 'undefined' && node.finalizer != null) {
         p_finalizer = {
             textified: null, 
             isText: false, 
@@ -2786,7 +2788,7 @@ format.ForInStatement = function(parent, node, options) {
     };
     // process AST-node-property left and set it in a var
     var p_left = null;
-    if (typeof(node.left) !== 'undefined') {
+    if (typeof(node.left) !== 'undefined' && node.left != null) {
         p_left = {
             textified: null, 
             isText: false, 
@@ -2833,7 +2835,7 @@ format.ForInStatement = function(parent, node, options) {
     }
     // process AST-node-property right and set it in a var
     var p_right = null;
-    if (typeof(node.right) !== 'undefined') {
+    if (typeof(node.right) !== 'undefined' && node.right != null) {
         p_right = {
             textified: null, 
             isText: false, 
@@ -2880,17 +2882,42 @@ format.ForInStatement = function(parent, node, options) {
     }
     if (isTextualNode(p_left)) {
         ret.name = getNodeText(p_left);
-    }
-    if (isTextualNode(p_right)) {
-        ret.name += ' in ' + getNodeText(p_right);
+        if (isTextualNode(p_right)) {
+            ret.name += ' in ' + getNodeText(p_right);
+        }
+        else {
+            ret.children.push({
+                tag: 'in', 
+                children: [
+                    p_right
+                ]
+            })
+        }
     }
     else {
         ret.children.push({
-            tag: 'in', 
+            tag: 'left', 
             children: [
-                p_right
+                p_left
             ]
         })
+        if (isTextualNode(p_right)) {
+            ret.children.push({
+                tag: 'in', 
+                name: getNodeText(p_right), 
+                children: [
+                    
+                ]
+            })
+        }
+        else {
+            ret.children.push({
+                tag: 'in', 
+                children: [
+                    p_right
+                ]
+            })
+        }
     }
     // log 'node.await', node.await
     if (!!node.await == true) {
@@ -2965,7 +2992,7 @@ format.ForOfStatement = function(parent, node, options) {
     };
     // process AST-node-property left and set it in a var
     var p_left = null;
-    if (typeof(node.left) !== 'undefined') {
+    if (typeof(node.left) !== 'undefined' && node.left != null) {
         p_left = {
             textified: null, 
             isText: false, 
@@ -3012,7 +3039,7 @@ format.ForOfStatement = function(parent, node, options) {
     }
     // process AST-node-property right and set it in a var
     var p_right = null;
-    if (typeof(node.right) !== 'undefined') {
+    if (typeof(node.right) !== 'undefined' && node.right != null) {
         p_right = {
             textified: null, 
             isText: false, 
@@ -3220,7 +3247,7 @@ format.FunctionDeclaration = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -3402,6 +3429,8 @@ format.VariableDeclaration = function(parent, node, options) {
         else if (ret.children[0].children.length == 1) {
             ret.name = ret.children[0].name;
             ret.children[0] = ret.children[0].children[0];
+            // log 'ret.name', ret.name
+            // log 'ret.children[0]', ret.children[0]
             // set ret.textified = node.kind + ' ' + ret.name
         }
         else if (ret.children[0].children.length == 2) {
@@ -3523,7 +3552,7 @@ format.VariableDeclarator = function(parent, node, options) {
     };
     // process AST-node-property id and set it in a var
     var p_id = null;
-    if (typeof(node.id) !== 'undefined') {
+    if (typeof(node.id) !== 'undefined' && node.id != null) {
         p_id = {
             textified: null, 
             isText: false, 
@@ -3568,7 +3597,7 @@ format.VariableDeclarator = function(parent, node, options) {
     else {
         throw new Error('AST-node-property id undefined: ' + JSON.stringify(node, null, 2));
     }
-    // log 'VariableDeclarator', p_id
+    // log 'VariableDeclarator,p_id, isTextualNode(p_id)', p_id, isTextualNode(p_id)
     if (isTextualNode(p_id)) {
         ret.name = getNodeText(p_id);
     }
@@ -3595,7 +3624,7 @@ format.VariableDeclarator = function(parent, node, options) {
     }
     // process AST-node-property init and set it in a var
     var p_init = null;
-    if (typeof(node.init) !== 'undefined') {
+    if (typeof(node.init) !== 'undefined' && node.init != null) {
         p_init = {
             textified: null, 
             isText: false, 
@@ -3644,6 +3673,7 @@ format.VariableDeclarator = function(parent, node, options) {
             if (isTextualNode(p_init)) {
                 ret.name += ' = ' + getNodeText(p_init);
                 ret.textified = ret.name;
+                ret.isText = true;
             }
             else {
                 ret.children.push(p_init)
@@ -3676,6 +3706,7 @@ format.VariableDeclarator = function(parent, node, options) {
     }
     else {
         ret.textified = ret.name;
+        ret.isText = true;
     }
     // log 'VariableDeclarator 2 ret', ret
     if (ret != null) {
@@ -3728,7 +3759,7 @@ format.Decorator = function(parent, node, options) {
     };
     // process AST-node-property expression and set it in a var
     var p_expression = null;
-    if (typeof(node.expression) !== 'undefined') {
+    if (typeof(node.expression) !== 'undefined' && node.expression != null) {
         p_expression = {
             textified: null, 
             isText: false, 
@@ -3833,7 +3864,7 @@ format.Directive = function(parent, node, options) {
     else {
         // process AST-node-property value and set it in a var
         var p_value = null;
-        if (typeof(node.value) !== 'undefined') {
+        if (typeof(node.value) !== 'undefined' && node.value != null) {
             p_value = {
                 textified: null, 
                 isText: false, 
@@ -4215,7 +4246,7 @@ format.ArrowFunctionExpression = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -4686,6 +4717,7 @@ format.ObjectExpression = function(parent, node, options) {
         for (i=0; i<i_len; i++) {
             item = ret.children[i];
             if (item.tag === '...') {
+                // log 'ObjectExpression, item.tag, item.children.length', item.tag, item.textified, item.children.length
                 if (item.children.length == 0) {
                     item.name = item.textified;
                     item.tag = '@';
@@ -4697,10 +4729,16 @@ format.ObjectExpression = function(parent, node, options) {
                     if (item.textified) {
                         item.children[0].textified = '...' + item.children[0].textified;
                     }
-                    item.tag = item.children[0].tag;
-                    item.textified = item.children[0].textified;
-                    item.name = item.children[0].name;
-                    item.children = item.children[0].children;
+                    if (item.children[0].name || item.textified) {
+                        item.tag = item.children[0].tag;
+                        item.textified = item.children[0].textified;
+                        item.name = item.children[0].name;
+                        item.children = item.children[0].children;
+                        console.log('ObjectExpression length 1', item.tag, item.name, item.textified);
+                    }
+                    else {
+                        // go on
+                    }
                 }
             }
             if (item.tag === '@' && item.name === 'template' && item.children.length == 1 && item.children[0].tag === '`lit') {
@@ -4788,7 +4826,7 @@ format.ObjectProperty = function(parent, node, options) {
     options.mustBeText = true;
     // process AST-node-property key and set it in a var
     var p_key = null;
-    if (typeof(node.key) !== 'undefined') {
+    if (typeof(node.key) !== 'undefined' && node.key != null) {
         p_key = {
             textified: null, 
             isText: false, 
@@ -4871,11 +4909,11 @@ format.ObjectProperty = function(parent, node, options) {
             format(ret, item, options)
         }
     }
-    console.log('ObjectProperty.ret.name', ret.name, 'node.value.type', node.value.type);
+    // log 'ObjectProperty.ret.name', ret.name, 'node.value.type', node.value.type
     if (node.value.type === 'AssignmentPattern') {
         // process AST-node-property value.left and set it in a var
         var p_value_left = null;
-        if (typeof(node.value.left) !== 'undefined') {
+        if (typeof(node.value.left) !== 'undefined' && node.value.left != null) {
             p_value_left = {
                 textified: null, 
                 isText: false, 
@@ -4922,7 +4960,7 @@ format.ObjectProperty = function(parent, node, options) {
         }
         // process AST-node-property value.right and set it in a var
         var p_value_right = null;
-        if (typeof(node.value.right) !== 'undefined') {
+        if (typeof(node.value.right) !== 'undefined' && node.value.right != null) {
             p_value_right = {
                 textified: null, 
                 isText: false, 
@@ -5037,7 +5075,7 @@ format.ObjectProperty = function(parent, node, options) {
     else {
         // process AST-node-property value and set it in a var
         var p_value = null;
-        if (typeof(node.value) !== 'undefined') {
+        if (typeof(node.value) !== 'undefined' && node.value != null) {
             p_value = {
                 textified: null, 
                 isText: false, 
@@ -5196,7 +5234,7 @@ format.ObjectMethod = function(parent, node, options) {
     options.mustBeText = true;
     // process AST-node-property key and set it in a var
     var p_key = null;
-    if (typeof(node.key) !== 'undefined') {
+    if (typeof(node.key) !== 'undefined' && node.key != null) {
         p_key = {
             textified: null, 
             isText: false, 
@@ -5277,7 +5315,7 @@ format.ObjectMethod = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -5467,7 +5505,7 @@ format.FunctionExpression = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -5590,9 +5628,12 @@ format.UnaryExpression = function(parent, node, options) {
     // A unary operator expression.
     // s( operator, UnaryOperator enum "-" | "+" | "!" | "~" | "typeof" | "void" | "delete" | "throw"
     // b( prefix
+    if (ret.tag == 'opdelete') {
+        ret.tag = 'delete';
+    }
     // process AST-node-property argument and set it in a var
     var p_argument = null;
-    if (typeof(node.argument) !== 'undefined') {
+    if (typeof(node.argument) !== 'undefined' && node.argument != null) {
         p_argument = {
             textified: null, 
             isText: false, 
@@ -5849,7 +5890,7 @@ format.BinaryExpression = function(parent, node, options) {
     }
     // process AST-node-property left and set it in a var
     var p_left = null;
-    if (typeof(node.left) !== 'undefined') {
+    if (typeof(node.left) !== 'undefined' && node.left != null) {
         p_left = {
             textified: null, 
             isText: false, 
@@ -5897,7 +5938,7 @@ format.BinaryExpression = function(parent, node, options) {
     // log 'BinaryExpression.p_left', p_left
     // process AST-node-property right and set it in a var
     var p_right = null;
-    if (typeof(node.right) !== 'undefined') {
+    if (typeof(node.right) !== 'undefined' && node.right != null) {
         p_right = {
             textified: null, 
             isText: false, 
@@ -5971,10 +6012,10 @@ format.BinaryExpression = function(parent, node, options) {
         if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
             // is the return value of an ArrowExpression
             if (node.extra && node.extra.parenthesized == true) {
-                ret.tag = '(';
+                ret.tag = '(' + ret.tag;
             }
             else {
-                ret.tag = '+';
+                // 18/3/21 set ret.tag = '+'
             }
         }
     }
@@ -6034,7 +6075,7 @@ format.AssignmentExpression = function(parent, node, options) {
     options.mustBeText = true;
     // process AST-node-property left and set it in a var
     var p_left = null;
-    if (typeof(node.left) !== 'undefined') {
+    if (typeof(node.left) !== 'undefined' && node.left != null) {
         p_left = {
             textified: null, 
             isText: false, 
@@ -6082,7 +6123,7 @@ format.AssignmentExpression = function(parent, node, options) {
     options.mustBeText = save;
     // process AST-node-property right and set it in a var
     var p_right = null;
-    if (typeof(node.right) !== 'undefined') {
+    if (typeof(node.right) !== 'undefined' && node.right != null) {
         p_right = {
             textified: null, 
             isText: false, 
@@ -6134,12 +6175,24 @@ format.AssignmentExpression = function(parent, node, options) {
         ret.name = node.operator;
         ret.children.push(p_left)
     }
+    // log 'AssignmentExpression.isTextualNode(p_right)', isTextualNode(p_right)
+    // log 'AssignmentExpression.p_right', p_right
     if (isTextualNode(p_left) && isTextualNode(p_right)) {
         ret.name += getNodeText(p_right);
     }
     else {
-        ret.children.push(p_right)
+        if (verify.isEmpty(p_right.tag)) {
+            var i, i_items=p_right.children, i_len=p_right.children.length, item;
+            for (i=0; i<i_len; i++) {
+                item = p_right.children[i];
+                ret.children.push(item)
+            }
+        }
+        else {
+            ret.children.push(p_right)
+        }
     }
+    // log 'AssignmentExpression.ret final', ret
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -6193,7 +6246,7 @@ format.LogicalExpression = function(parent, node, options) {
     // s( operator, LogicalOperator enum "||" | "&&" | "??"
     // process AST-node-property left and set it in a var
     var p_left = null;
-    if (typeof(node.left) !== 'undefined') {
+    if (typeof(node.left) !== 'undefined' && node.left != null) {
         p_left = {
             textified: null, 
             isText: false, 
@@ -6240,7 +6293,7 @@ format.LogicalExpression = function(parent, node, options) {
     }
     // process AST-node-property right and set it in a var
     var p_right = null;
-    if (typeof(node.right) !== 'undefined') {
+    if (typeof(node.right) !== 'undefined' && node.right != null) {
         p_right = {
             textified: null, 
             isText: false, 
@@ -6380,7 +6433,7 @@ format.SpreadElement = function(parent, node, options) {
     };
     // process AST-node-property argument and set it in a var
     var p_argument = null;
-    if (typeof(node.argument) !== 'undefined') {
+    if (typeof(node.argument) !== 'undefined' && node.argument != null) {
         p_argument = {
             textified: null, 
             isText: false, 
@@ -6485,7 +6538,7 @@ format.MemberExpression = function(parent, node, options) {
     };
     // process AST-node-property object and set it in a var
     var p_object = null;
-    if (typeof(node.object) !== 'undefined') {
+    if (typeof(node.object) !== 'undefined' && node.object != null) {
         p_object = {
             textified: null, 
             isText: false, 
@@ -6532,7 +6585,7 @@ format.MemberExpression = function(parent, node, options) {
     }
     // process AST-node-property property and set it in a var
     var p_property = null;
-    if (typeof(node.property) !== 'undefined') {
+    if (typeof(node.property) !== 'undefined' && node.property != null) {
         p_property = {
             textified: null, 
             isText: false, 
@@ -6606,6 +6659,7 @@ format.MemberExpression = function(parent, node, options) {
         }
     }
     else {
+        // log 1
         if (node.computed) {
             p_property.tag = '.[';
         }
@@ -6613,10 +6667,12 @@ format.MemberExpression = function(parent, node, options) {
             p_property.tag = '.';
         }
         if (p_object.tag === '(') {
+            // log 2
             ret.children.push(p_object)
             ret.children.push(p_property)
         }
         else {
+            // log 3, p_object.tag, p_object.name
             ret.tag = p_object.tag;
             ret.name = p_object.name;
             ret.source = p_object.source;
@@ -6761,7 +6817,7 @@ format.ConditionalExpression = function(parent, node, options) {
             
         ]
     };
-    // A conditional expression, i.e., a ternary `?`/`,` expression.
+    // A conditional expression, i.e., a ternary `?`/`:` expression.
     f_astNode.props.push({
         name: "test", 
         tag: "test", 
@@ -6804,7 +6860,7 @@ format.ConditionalExpression = function(parent, node, options) {
     }
     // process AST-node-property consequent and set it in a var
     var p_consequent = null;
-    if (typeof(node.consequent) !== 'undefined') {
+    if (typeof(node.consequent) !== 'undefined' && node.consequent != null) {
         p_consequent = {
             textified: null, 
             isText: false, 
@@ -6851,7 +6907,7 @@ format.ConditionalExpression = function(parent, node, options) {
     }
     // process AST-node-property alternate and set it in a var
     var p_alternate = null;
-    if (typeof(node.alternate) !== 'undefined') {
+    if (typeof(node.alternate) !== 'undefined' && node.alternate != null) {
         p_alternate = {
             textified: null, 
             isText: false, 
@@ -6896,7 +6952,9 @@ format.ConditionalExpression = function(parent, node, options) {
     else {
         throw new Error('AST-node-property alternate undefined: ' + JSON.stringify(node, null, 2));
     }
+    // log 'ConditionalExpression 1', ret.tag
     setNameFromChildByTag(ret, 'test', true);
+    // log 'ConditionalExpression 2', ret.tag
     if (isTextualNode(p_consequent)) {
         ret.children.push({
             tag: 'then', 
@@ -6931,6 +6989,7 @@ format.ConditionalExpression = function(parent, node, options) {
             ]
         })
     }
+    // log 'ConditionalExpression 3', ret.tag
     if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
         // is the return value of an ArrowExpression
         if (node.extra && node.extra.parenthesized == true) {
@@ -6946,6 +7005,7 @@ format.ConditionalExpression = function(parent, node, options) {
             // TODO do nothing
         }
     }
+    // log 'ConditionalExpression 4', ret.tag
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -7008,7 +7068,7 @@ format.CallExpression = function(parent, node, options) {
     }
     // process AST-node-property callee and set it in a var
     var p_callee = null;
-    if (typeof(node.callee) !== 'undefined') {
+    if (typeof(node.callee) !== 'undefined' && node.callee != null) {
         p_callee = {
             textified: null, 
             isText: false, 
@@ -7076,8 +7136,9 @@ format.CallExpression = function(parent, node, options) {
         }
     }
     var lastCallee = ret;
-    // log 'p_callee', p_callee
+    // log 'CallExpression.p_callee', p_callee
     if (isTextualNode(p_callee)) {
+        // log 'CallExpression.isTextualNode(p_callee)', isTextualNode(p_callee)
         // first of all try to set ret.textified
         ret.name = getNodeText(p_callee);
         if (node.typeParameters) {
@@ -7118,7 +7179,7 @@ format.CallExpression = function(parent, node, options) {
         }
     }
     else {
-        // log 'CallExpression', 'p_callee.tag.name', p_callee.tag, p_callee.name
+        // log 'CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag
         var i, i_items=p_callee.children, i_len=p_callee.children.length, item;
         for (i=0; i<i_len; i++) {
             item = p_callee.children[i];
@@ -7134,64 +7195,84 @@ format.CallExpression = function(parent, node, options) {
         if (['[', '{'].indexOf(p_callee.tag) > -1) {
             ret.tag = p_callee.tag;
         }
-        ret.name = p_callee.name;
-        ret.children = p_callee.children;
-        if (p_callee.children.length > 0) {
-            // log 'p_callee.children.length > 0'
-            lastCallee = p_callee.children[p_callee.children.length-1];
-            if (p_arguments && p_arguments.children.length > 0) {
-                if (lastCallee.tag === '.') {
-                    lastCallee.tag = '._';
-                    var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
-                    for (i=0; i<i_len; i++) {
-                        item = p_arguments.children[i];
-                        if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
-                            item.tag = '@';
+        if (['`lit','iif'].indexOf(p_callee.tag) < 0) {
+            ret.name = p_callee.name;
+            ret.children = p_callee.children;
+            if (p_callee.children.length > 0) {
+                // log 'p_callee.children.length > 0'
+                lastCallee = p_callee.children[p_callee.children.length-1];
+                if (p_arguments && p_arguments.children.length > 0) {
+                    if (lastCallee.tag === '.') {
+                        lastCallee.tag = '._';
+                        var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
+                        for (i=0; i<i_len; i++) {
+                            item = p_arguments.children[i];
+                            if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                                item.tag = '@';
+                            }
+                            lastCallee.children.push(item)
                         }
-                        lastCallee.children.push(item)
+                    }
+                    else {
+                        var call = {
+                            tag: '(', 
+                            children: [
+                                
+                            ]
+                        };
+                        var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
+                        for (i=0; i<i_len; i++) {
+                            item = p_arguments.children[i];
+                            if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                                item.tag = '@';
+                            }
+                            call.children.push(item)
+                        }
+                        ret.children.push(call);
                     }
                 }
                 else {
-                    var call = {
-                        tag: '(', 
-                        children: [
-                            
-                        ]
-                    };
+                    if (lastCallee.tag === '.') {
+                        lastCallee.tag = '._';
+                    }
+                }
+            }
+            else {
+                // log 'p_callee.children.length == 0'
+                ret.tag = "_";
+                ret.name = p_callee.tag;
+                if (p_arguments && p_arguments.children.length > 0) {
                     var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
                     for (i=0; i<i_len; i++) {
                         item = p_arguments.children[i];
                         if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
                             item.tag = '@';
                         }
-                        call.children.push(item)
+                        ret.children.push(item)
                     }
-                    ret.children.push(call);
                 }
+                // log 'CallExpression', p_callee, ret
             }
-            else {
-                if (lastCallee.tag === '.') {
-                    lastCallee.tag = '._';
-                }
-            }
+            // log 'node.callee.type', node.callee.type, ret.tag
         }
         else {
-            // log 'p_callee.children.length == 0'
-            ret.tag = "_";
-            ret.name = p_callee.tag;
-            if (p_arguments && p_arguments.children.length > 0) {
-                var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
-                for (i=0; i<i_len; i++) {
-                    item = p_arguments.children[i];
-                    if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
-                        item.tag = '@';
-                    }
-                    ret.children.push(item)
-                }
+            var temp = [p_callee];
+            lastCallee = p_callee.children[p_callee.children.length-1];
+            if (lastCallee.tag === '.') {
+                lastCallee.tag = '._';
+                p_callee.children.length --;
+                temp.push(lastCallee)
             }
-            // log 'CallExpression', p_callee, ret
+            ret.children = temp;
+            var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
+            for (i=0; i<i_len; i++) {
+                item = p_arguments.children[i];
+                if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                    item.tag = '@';
+                }
+                lastCallee.children.push(item)
+            }
         }
-        // log 'node.callee.type', node.callee.type, ret.tag
         if (node.callee.type === 'FunctionExpression' && ret.tag === '_') {
             // log 'node.callee.type 2', node.callee.type, ret.tag
             ret.tag = 'iife' // 9/1/19;
@@ -7290,7 +7371,7 @@ format.NewExpression = function(parent, node, options) {
     }
     // process AST-node-property callee and set it in a var
     var p_callee = null;
-    if (typeof(node.callee) !== 'undefined') {
+    if (typeof(node.callee) !== 'undefined' && node.callee != null) {
         p_callee = {
             textified: null, 
             isText: false, 
@@ -7609,7 +7690,7 @@ format.TemplateLiteral = function(parent, node, options) {
         }
         var e = p_expressions.children[i];
         // log 'TemplateLiteral.e', e
-        if (['@expr', '@id', 'literal'].indexOf(e.tag) > -1) {
+        if (['@expr', '@id', 'literal', 'set'].indexOf(e.tag) > -1) {
             e.tag = '@';
         }
         ret.children.push(e);
@@ -7670,7 +7751,7 @@ format.TaggedTemplateExpression = function(parent, node, options) {
     };
     // process AST-node-property tag and set it in a var
     var p_tag = null;
-    if (typeof(node.tag) !== 'undefined') {
+    if (typeof(node.tag) !== 'undefined' && node.tag != null) {
         p_tag = {
             textified: null, 
             isText: false, 
@@ -7723,7 +7804,7 @@ format.TaggedTemplateExpression = function(parent, node, options) {
     }
     // process AST-node-property quasi and set it in a var
     var p_quasi = null;
-    if (typeof(node.quasi) !== 'undefined') {
+    if (typeof(node.quasi) !== 'undefined' && node.quasi != null) {
         p_quasi = {
             textified: null, 
             isText: false, 
@@ -7827,14 +7908,14 @@ format.TemplateElement = function(parent, node, options) {
     for (i=0; i<i_len; i++) {
         line = lines[i];
         if (line[0] === ' ') {
-            line = '\\b' + line.substr(1);
+            line = '&nbsp;' + line.substr(1);
         }
         if (line[line.length-1] === ' ') {
-            line = line.substr(0, line.length -1) + '\\b';
+            line = line.substr(0, line.length -1) + '&nbsp;';
         }
         ret.children.push({
             tag: '+', 
-            name: line + (( i < lines.length - 1) ? '\\n' : '' ), 
+            name: line + (( i < lines.length - 1) ? '&lf;' : '' ), 
             children: [
                 
             ]
@@ -8170,7 +8251,7 @@ format.AssignmentPattern = function(parent, node, options) {
     };
     // process AST-node-property left and set it in a var
     var p_left = null;
-    if (typeof(node.left) !== 'undefined') {
+    if (typeof(node.left) !== 'undefined' && node.left != null) {
         p_left = {
             textified: null, 
             isText: false, 
@@ -8217,7 +8298,7 @@ format.AssignmentPattern = function(parent, node, options) {
     }
     // process AST-node-property right and set it in a var
     var p_right = null;
-    if (typeof(node.right) !== 'undefined') {
+    if (typeof(node.right) !== 'undefined' && node.right != null) {
         p_right = {
             textified: null, 
             isText: false, 
@@ -8360,7 +8441,7 @@ format.Class = function(parent, node, options) {
     }
     // process AST-node-property superClass and set it in a var
     var p_superClass = null;
-    if (typeof(node.superClass) !== 'undefined') {
+    if (typeof(node.superClass) !== 'undefined' && node.superClass != null) {
         p_superClass = {
             textified: null, 
             isText: false, 
@@ -8669,7 +8750,7 @@ format.ClassMethod = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -8876,7 +8957,7 @@ format.ClassPrivateMethod = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -9023,7 +9104,7 @@ format.ClassProperty = function(parent, node, options) {
     }
     // process AST-node-property value and set it in a var
     var p_value = null;
-    if (typeof(node.value) !== 'undefined') {
+    if (typeof(node.value) !== 'undefined' && node.value != null) {
         p_value = {
             textified: null, 
             isText: false, 
@@ -9065,12 +9146,9 @@ format.ClassProperty = function(parent, node, options) {
             }
         }
     }
-    else {
-        throw new Error('AST-node-property value undefined: ' + JSON.stringify(node, null, 2));
-    }
     // process AST-node-property typeAnnotation and set it in a var
     var p_typeAnnotation = null;
-    if (typeof(node.typeAnnotation) !== 'undefined') {
+    if (typeof(node.typeAnnotation) !== 'undefined' && node.typeAnnotation != null) {
         p_typeAnnotation = {
             textified: null, 
             isText: false, 
@@ -9139,7 +9217,7 @@ format.ClassProperty = function(parent, node, options) {
             ]
         })
     }
-    if (p_value.tag === '=>') {
+    if (p_value && p_value.tag === '=>') {
         ret.tag = p_value.tag;
         if (p_typeAnnotation) {
             ret.children.push(p_typeAnnotation)
@@ -9160,7 +9238,7 @@ format.ClassProperty = function(parent, node, options) {
         if (node.computed) {
             ret.name = '[' + ret.name + ']';
         }
-        else if (p_value.tag) {
+        else if (p_value && p_value.tag) {
             if (['@id', '@expr', 'literal'].indexOf(p_value.tag) > -1) {
                 p_value.tag = '=';
             }
@@ -9242,9 +9320,6 @@ format.ClassPrivateProperty = function(parent, node, options) {
             throw 'Node value has no type: ' + JSON.stringify(node, null, 2);
         }
         format(ret, node.value, options)
-    }
-    else {
-        throw new Error('AST-node-property value undefined: ' + JSON.stringify(node, null, 2));
     }
     // log 'node.static', node.static
     if (!!node.static == true) {
@@ -9357,7 +9432,7 @@ format.ClassDeclaration = function(parent, node, options) {
     }
     // process AST-node-property superClass and set it in a var
     var p_superClass = null;
-    if (typeof(node.superClass) !== 'undefined') {
+    if (typeof(node.superClass) !== 'undefined' && node.superClass != null) {
         p_superClass = {
             textified: null, 
             isText: false, 
@@ -9401,7 +9476,7 @@ format.ClassDeclaration = function(parent, node, options) {
     }
     // process AST-node-property superTypeParameters and set it in a var
     var p_superTypeParameters = null;
-    if (typeof(node.superTypeParameters) !== 'undefined') {
+    if (typeof(node.superTypeParameters) !== 'undefined' && node.superTypeParameters != null) {
         p_superTypeParameters = {
             textified: null, 
             isText: false, 
@@ -9641,7 +9716,7 @@ format.ClassExpression = function(parent, node, options) {
     }
     // process AST-node-property superClass and set it in a var
     var p_superClass = null;
-    if (typeof(node.superClass) !== 'undefined') {
+    if (typeof(node.superClass) !== 'undefined' && node.superClass != null) {
         p_superClass = {
             textified: null, 
             isText: false, 
@@ -10371,7 +10446,7 @@ format.ExportNamedDeclaration = function(parent, node, options) {
     // An export named declaration, e.g., `export {foo, bar}`, `export {foo} from "mod"`, `export var foo = 1` or `export * as foo from "bar"`.
     // _Note, Having `declaration` populated with non-empty `specifiers` or non-null `source` results in an invalid state._
     if (node.exportKind === 'type') {
-        ret.tag = ':export-type';
+        // VIA 18/03/21 set ret.tag = ':export-type'
     }
     if (ret != null) {
         if (__isText) {
@@ -10528,7 +10603,7 @@ format.ExportDefaultSpecifier = function(parent, node, options) {
     };
     // process AST-node-property exported and set it in a var
     var p_exported = null;
-    if (typeof(node.exported) !== 'undefined') {
+    if (typeof(node.exported) !== 'undefined' && node.exported != null) {
         p_exported = {
             textified: null, 
             isText: false, 
@@ -10630,7 +10705,7 @@ format.ExportDefaultDeclaration = function(parent, node, options) {
     // An export default declaration, e.g., `export default function () {}` or `export default 1`.
     // process AST-node-property declaration and set it in a var
     var p_declaration = null;
-    if (typeof(node.declaration) !== 'undefined') {
+    if (typeof(node.declaration) !== 'undefined' && node.declaration != null) {
         p_declaration = {
             textified: null, 
             isText: false, 
@@ -10731,7 +10806,7 @@ format.ExportNamespaceSpecifier = function(parent, node, options) {
     };
     // process AST-node-property exported and set it in a var
     var p_exported = null;
-    if (typeof(node.exported) !== 'undefined') {
+    if (typeof(node.exported) !== 'undefined' && node.exported != null) {
         p_exported = {
             textified: null, 
             isText: false, 
@@ -10924,10 +10999,10 @@ format.CommentBlock = function(parent, node, options) {
     var i, i_items=values, i_len=values.length, value;
     for (i=0; i<i_len; i++) {
         value = values[i];
-        var v = codeReplacer.restore(value, options.replaceds);
+        // var v = codeReplacer.restore(value, options.replaceds)
         ret.children.push({
             tag: '#', 
-            name: v, 
+            name: value, 
             children: [
                 
             ]
@@ -10982,8 +11057,8 @@ format.CommentLine = function(parent, node, options) {
         ]
     };
     // log 'options.replaceds', options.replaceds
-    var v = codeReplacer.restore(node.value, options.replaceds);
-    ret.name = v;
+    // var v = codeReplacer.restore(node.value, options.replaceds)
+    ret.name = node.value;
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -11035,7 +11110,7 @@ format.JSXAttribute = function(parent, node, options) {
     options.stateAST.push('JSXAttribute')
     // process AST-node-property name and set it in a var
     var p_name = null;
-    if (typeof(node.name) !== 'undefined') {
+    if (typeof(node.name) !== 'undefined' && node.name != null) {
         p_name = {
             textified: null, 
             isText: false, 
@@ -11082,7 +11157,7 @@ format.JSXAttribute = function(parent, node, options) {
     }
     // process AST-node-property value and set it in a var
     var p_value = null;
-    if (typeof(node.value) !== 'undefined') {
+    if (typeof(node.value) !== 'undefined' && node.value != null) {
         p_value = {
             textified: null, 
             isText: false, 
@@ -11239,7 +11314,7 @@ format.JSXElement = function(parent, node, options) {
     };
     // process AST-node-property openingElement and set it in a var
     var p_openingElement = null;
-    if (typeof(node.openingElement) !== 'undefined') {
+    if (typeof(node.openingElement) !== 'undefined' && node.openingElement != null) {
         p_openingElement = {
             textified: null, 
             isText: false, 
@@ -11485,7 +11560,7 @@ format.JSXExpressionContainer = function(parent, node, options) {
         options.stateAST.push('JSXExpressionContainer')*/
     // process AST-node-property expression and set it in a var
     var p_expression = null;
-    if (typeof(node.expression) !== 'undefined') {
+    if (typeof(node.expression) !== 'undefined' && node.expression != null) {
         p_expression = {
             textified: null, 
             isText: false, 
@@ -11599,7 +11674,7 @@ format.JSXSpreadChild = function(parent, node, options) {
     };
     // process AST-node-property expression and set it in a var
     var p_expression = null;
-    if (typeof(node.expression) !== 'undefined') {
+    if (typeof(node.expression) !== 'undefined' && node.expression != null) {
         p_expression = {
             textified: null, 
             isText: false, 
@@ -11889,7 +11964,7 @@ format.JSXOpeningElement = function(parent, node, options) {
     };
     // process AST-node-property name and set it in a var
     var p_name = null;
-    if (typeof(node.name) !== 'undefined') {
+    if (typeof(node.name) !== 'undefined' && node.name != null) {
         p_name = {
             textified: null, 
             isText: false, 
@@ -12724,7 +12799,7 @@ format.TypeParameter = function(parent, node, options) {
     }
     // process AST-node-property variance and set it in a var
     var p_variance = null;
-    if (typeof(node.variance) !== 'undefined') {
+    if (typeof(node.variance) !== 'undefined' && node.variance != null) {
         p_variance = {
             textified: null, 
             isText: false, 
@@ -13553,7 +13628,7 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
     }
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -13698,7 +13773,7 @@ format.FunctionTypeParam = function(parent, node, options) {
     }
     // process AST-node-property typeAnnotation and set it in a var
     var p_typeAnnotation = null;
-    if (typeof(node.typeAnnotation) !== 'undefined') {
+    if (typeof(node.typeAnnotation) !== 'undefined' && node.typeAnnotation != null) {
         p_typeAnnotation = {
             textified: null, 
             isText: false, 
@@ -14148,7 +14223,7 @@ format.NullableTypeAnnotation = function(parent, node, options) {
     // extends Node, Type
     // process AST-node-property typeAnnotation and set it in a var
     var p_typeAnnotation = null;
-    if (typeof(node.typeAnnotation) !== 'undefined') {
+    if (typeof(node.typeAnnotation) !== 'undefined' && node.typeAnnotation != null) {
         p_typeAnnotation = {
             textified: null, 
             isText: false, 
@@ -14569,7 +14644,7 @@ format.TypeAnnotation = function(parent, node, options) {
     // extends Node
     // process AST-node-property typeAnnotation and set it in a var
     var p_typeAnnotation = null;
-    if (typeof(node.typeAnnotation) !== 'undefined') {
+    if (typeof(node.typeAnnotation) !== 'undefined' && node.typeAnnotation != null) {
         p_typeAnnotation = {
             textified: null, 
             isText: false, 
@@ -14699,7 +14774,7 @@ format.TypeCastExpression = function(parent, node, options) {
     // extends Node, Expression
     // process AST-node-property typeAnnotation and set it in a var
     var p_typeAnnotation = null;
-    if (typeof(node.typeAnnotation) !== 'undefined') {
+    if (typeof(node.typeAnnotation) !== 'undefined' && node.typeAnnotation != null) {
         p_typeAnnotation = {
             textified: null, 
             isText: false, 
@@ -15165,7 +15240,7 @@ format.ObjectTypeProperty = function(parent, node, options) {
     }
     // process AST-node-property value and set it in a var
     var p_value = null;
-    if (typeof(node.value) !== 'undefined') {
+    if (typeof(node.value) !== 'undefined' && node.value != null) {
         p_value = {
             textified: null, 
             isText: false, 
@@ -15303,7 +15378,7 @@ format.QualifiedTypeIdentifier = function(parent, node, options) {
     }
     // process AST-node-property qualification and set it in a var
     var p_qualification = null;
-    if (typeof(node.qualification) !== 'undefined') {
+    if (typeof(node.qualification) !== 'undefined' && node.qualification != null) {
         p_qualification = {
             textified: null, 
             isText: false, 
@@ -16160,7 +16235,7 @@ format.TSPropertySignature = function(parent, node, options) {
     }
     // process AST-node-property typeAnnotation and set it in a var
     var p_typeAnnotation = null;
-    if (typeof(node.typeAnnotation) !== 'undefined') {
+    if (typeof(node.typeAnnotation) !== 'undefined' && node.typeAnnotation != null) {
         p_typeAnnotation = {
             textified: null, 
             isText: false, 
@@ -16671,7 +16746,7 @@ format.TSDeclareFunction = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -16844,7 +16919,7 @@ format.TSFunctionType = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -17355,7 +17430,7 @@ format.TSParameterProperty = function(parent, node, options) {
     }
     // process AST-node-property parameter and set it in a var
     var p_parameter = null;
-    if (typeof(node.parameter) !== 'undefined') {
+    if (typeof(node.parameter) !== 'undefined' && node.parameter != null) {
         p_parameter = {
             textified: null, 
             isText: false, 
@@ -17458,7 +17533,7 @@ format.TSTypeReference = function(parent, node, options) {
     };
     // process AST-node-property typeName and set it in a var
     var p_typeName = null;
-    if (typeof(node.typeName) !== 'undefined') {
+    if (typeof(node.typeName) !== 'undefined' && node.typeName != null) {
         p_typeName = {
             textified: null, 
             isText: false, 
@@ -17586,7 +17661,7 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
     }
     // process AST-node-property expression and set it in a var
     var p_expression = null;
-    if (typeof(node.expression) !== 'undefined') {
+    if (typeof(node.expression) !== 'undefined' && node.expression != null) {
         p_expression = {
             textified: null, 
             isText: false, 
@@ -17686,7 +17761,7 @@ format.TSAsExpression = function(parent, node, options) {
     };
     // process AST-node-property expression and set it in a var
     var p_expression = null;
-    if (typeof(node.expression) !== 'undefined') {
+    if (typeof(node.expression) !== 'undefined' && node.expression != null) {
         p_expression = {
             textified: null, 
             isText: false, 
@@ -17733,7 +17808,7 @@ format.TSAsExpression = function(parent, node, options) {
     }
     // process AST-node-property typeAnnotation and set it in a var
     var p_typeAnnotation = null;
-    if (typeof(node.typeAnnotation) !== 'undefined') {
+    if (typeof(node.typeAnnotation) !== 'undefined' && node.typeAnnotation != null) {
         p_typeAnnotation = {
             textified: null, 
             isText: false, 
@@ -18183,7 +18258,7 @@ format.TSEnumMember = function(parent, node, options) {
     }
     // process AST-node-property initializer and set it in a var
     var p_initializer = null;
-    if (typeof(node.initializer) !== 'undefined') {
+    if (typeof(node.initializer) !== 'undefined' && node.initializer != null) {
         p_initializer = {
             textified: null, 
             isText: false, 
@@ -18555,7 +18630,7 @@ format.TSNonNullExpression = function(parent, node, options) {
     };
     // process AST-node-property expression and set it in a var
     var p_expression = null;
-    if (typeof(node.expression) !== 'undefined') {
+    if (typeof(node.expression) !== 'undefined' && node.expression != null) {
         p_expression = {
             textified: null, 
             isText: false, 
@@ -18755,7 +18830,7 @@ format.TSLiteralType = function(parent, node, options) {
     };
     // process AST-node-property literal and set it in a var
     var p_literal = null;
-    if (typeof(node.literal) !== 'undefined') {
+    if (typeof(node.literal) !== 'undefined' && node.literal != null) {
         p_literal = {
             textified: null, 
             isText: false, 
@@ -18851,7 +18926,7 @@ format.TSConditionalType = function(parent, node, options) {
     };
     // process AST-node-property checkType and set it in a var
     var p_checkType = null;
-    if (typeof(node.checkType) !== 'undefined') {
+    if (typeof(node.checkType) !== 'undefined' && node.checkType != null) {
         p_checkType = {
             textified: null, 
             isText: false, 
@@ -18898,7 +18973,7 @@ format.TSConditionalType = function(parent, node, options) {
     }
     // process AST-node-property extendsType and set it in a var
     var p_extendsType = null;
-    if (typeof(node.extendsType) !== 'undefined') {
+    if (typeof(node.extendsType) !== 'undefined' && node.extendsType != null) {
         p_extendsType = {
             textified: null, 
             isText: false, 
@@ -18942,7 +19017,7 @@ format.TSConditionalType = function(parent, node, options) {
     }
     // process AST-node-property trueType and set it in a var
     var p_trueType = null;
-    if (typeof(node.trueType) !== 'undefined') {
+    if (typeof(node.trueType) !== 'undefined' && node.trueType != null) {
         p_trueType = {
             textified: null, 
             isText: false, 
@@ -18989,7 +19064,7 @@ format.TSConditionalType = function(parent, node, options) {
     }
     // process AST-node-property falseType and set it in a var
     var p_falseType = null;
-    if (typeof(node.falseType) !== 'undefined') {
+    if (typeof(node.falseType) !== 'undefined' && node.falseType != null) {
         p_falseType = {
             textified: null, 
             isText: false, 
@@ -19191,7 +19266,7 @@ format.TSTypeQuery = function(parent, node, options) {
     };
     // process AST-node-property exprName and set it in a var
     var p_exprName = null;
-    if (typeof(node.exprName) !== 'undefined') {
+    if (typeof(node.exprName) !== 'undefined' && node.exprName != null) {
         p_exprName = {
             textified: null, 
             isText: false, 
@@ -19504,7 +19579,7 @@ format.TSDeclareMethod = function(parent, node, options) {
     processParams(ret);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
-    if (typeof(node.returnType) !== 'undefined') {
+    if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
         p_returnType = {
             textified: null, 
             isText: false, 
@@ -19611,7 +19686,7 @@ format.TSQualifiedName = function(parent, node, options) {
     };
     // process AST-node-property left and set it in a var
     var p_left = null;
-    if (typeof(node.left) !== 'undefined') {
+    if (typeof(node.left) !== 'undefined' && node.left != null) {
         p_left = {
             textified: null, 
             isText: false, 
@@ -19655,7 +19730,7 @@ format.TSQualifiedName = function(parent, node, options) {
     }
     // process AST-node-property right and set it in a var
     var p_right = null;
-    if (typeof(node.right) !== 'undefined') {
+    if (typeof(node.right) !== 'undefined' && node.right != null) {
         p_right = {
             textified: null, 
             isText: false, 
@@ -19760,7 +19835,7 @@ format.TSExportAssignment = function(parent, node, options) {
     };
     // process AST-node-property expression and set it in a var
     var p_expression = null;
-    if (typeof(node.expression) !== 'undefined') {
+    if (typeof(node.expression) !== 'undefined' && node.expression != null) {
         p_expression = {
             textified: null, 
             isText: false, 
@@ -20038,7 +20113,7 @@ format.TSExternalModuleReference = function(parent, node, options) {
     };
     // process AST-node-property expression and set it in a var
     var p_expression = null;
-    if (typeof(node.expression) !== 'undefined') {
+    if (typeof(node.expression) !== 'undefined' && node.expression != null) {
         p_expression = {
             textified: null, 
             isText: false, 
@@ -20113,11 +20188,12 @@ function processComments(comments, node, ittfNode, options, leading) {
             item = comments[i];
             // log 'processComments', item
             if (item.type === 'CommentLine') {
-                if (codeReplacer.isKey(item.value, options.replaceds)) {
+                if (false) {
                     if (options.commentManager.checkWritten(item) == true) {
                         options.commentManager.removeWritten(item);
                     }
-                    var value = codeReplacer.restoreInside(item.value, options.replaceds);
+                    console.log('processComments. calling, codeReplacer.restoreInside', item.value);
+                    var value = codeReplacer.restoreInside('""' + item.value, options.replaceds);
                     hb = {
                         tag: '#', 
                         name: value, 
@@ -20143,14 +20219,14 @@ function processComments(comments, node, ittfNode, options, leading) {
                 options.commentManager.addWritten(item, ittfNode.children, hb);
             }
             else if (item.type === 'CommentBlock') {
-                if (codeReplacer.isKey(item.value, options.replaceds)) {
+                if (false) {
                     // log 'codeReplacer.isKey', true
                     if (options.commentManager.checkWritten(item) == true) {
                         options.commentManager.removeWritten(item);
                     }
                     hb = {
                         tag: '{{', 
-                        name: codeReplacer.restore(item.value, options.replaceds), 
+                        name: codeReplacer.restore('""'+item.value, options.replaceds), 
                         children: [
                             
                         ]
@@ -20521,8 +20597,7 @@ md.getCodeAST = function(input, options, callback) {
     var syntax;
     var cr;
     try {
-        cr = codeReplacer.clean(input);
-        syntax = md.parse(cr.codeCleaned, babelOptions);
+        syntax = md.parse(input, babelOptions);
     } 
     catch (ex) {
         return callback(ex);
@@ -20544,12 +20619,11 @@ md.getWizziTree = function(input, options, callback) {
     var syntax;
     var cr;
     try {
-        cr = codeReplacer.clean(input);
-        // log 'jsparser.container.cr', cr
-        syntax = md.parse(cr.codeCleaned, babelOptions);
+        syntax = md.parse(input, babelOptions);
     } 
     catch (ex) {
-        var lines = cr.codeCleaned.split('\n');
+        // var lines = cr.codeCleaned.split('\n')
+        var lines = input.split('\n');
         for (var i=0; i<lines.length-1; i++) {
             console.log(i+1, lines[i]);
         }
@@ -20559,7 +20633,6 @@ md.getWizziTree = function(input, options, callback) {
         file.write(options.syntaxOutFile, JSON.stringify(cleanBabel.cleanAst(syntax, cr), null, 2))
     }
     options.starter = true;
-    options.replaceds = cr.replaceds;
     options.commentManager = new CommentManager();
     // log 'cr.codeCleaned', cr.codeCleaned
     // log 'cr.replaceds', cr.replaceds

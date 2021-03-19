@@ -283,10 +283,8 @@ md.load = function(cnt) {
         var async_str = model.xasync ? 'async ' : '';
         // log '++++ arrowfunction', model.wzName, async_str, model.xasync, model.statements[0]
         if (ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent') {
-            var save1 = ctx.arrowFunctionNoGraphs;
-            ctx.arrowFunctionNoGraphs = !u.arrowFunctionRequiresGraphs(model);
-            var openGraph = ctx.arrowFunctionNoGraphs ? '' : ' {';
-            ctx.w(model.wzName + ' = ' + async_str + '(' + model.paramNames.join(', ') + ') =>' + openGraph);
+            var implicitReturn = u.isImplicitReturn(model);
+            ctx.w(model.wzName + ' = ' + async_str + '(' + model.paramNames.join(', ') + ') =>' + (implicitReturn ? '' : '{'));
             ctx.indent();
             generateParamConstraints(name, model.constrainedParams, model.hasCallbackParam, model.hasOptionsCallbackParam, ctx, function(err, notUsed) {
                 if (err) {
@@ -299,10 +297,7 @@ md.load = function(cnt) {
                         return callback(err);
                     }
                     ctx.deindent();
-                    if (ctx.arrowFunctionNoGraphs == false) {
-                        ctx.w('}');
-                    }
-                    ctx.arrowFunctionNoGraphs = save1;
+                    ctx.w(implicitReturn ? '' : '}');
                     return callback(null, null);
                 })
             })
@@ -321,24 +316,26 @@ md.load = function(cnt) {
                 indent: true
             }, callback)
         }
+        else if (u.isImplicitReturn(model)) {
+            console.log('isImplicitReturn', model.wzElement, model.wzName);
+            var isSingleParam = u.isSingleParamForArrowFunction(model);
+            ctx.w(async_str + (isSingleParam ? '' : '(') + model.paramNames.join(', ') + (isSingleParam ? '' : ')') + ' =>');
+            cnt.genItems(model.statements, ctx, {
+                indent: true
+            }, callback)
+        }
         else {
-            var save1 = ctx.arrowFunctionNoGraphs;
-            ctx.arrowFunctionNoGraphs = !u.arrowFunctionRequiresGraphs(model);
-            var openGraph = ctx.arrowFunctionNoGraphs ? '' : ' {';
-            ctx.w(async_str + '(' + model.paramNames.join(', ') + ') =>' + openGraph);
+            ctx.w(async_str + '(' + model.paramNames.join(', ') + ') => {');
             cnt.genItems(model.statements, ctx, {
                 indent: true
             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
-                if (ctx.arrowFunctionNoGraphs == false) {
-                    ctx.write('}');
-                    if (u.isTopStatement(model, ctx)) {
-                        ctx.w();
-                    }
+                ctx.write('}');
+                if (u.isTopStatement(model, ctx)) {
+                    ctx.w();
                 }
-                ctx.arrowFunctionNoGraphs = save1;
                 return callback(null, null);
             })
         }

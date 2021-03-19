@@ -8,8 +8,12 @@
 
     var items
         [
-            @ "variables"
-            @ "interfaces"
+            @ "quick"
+            $if false
+                @ "variables"
+                @ "interfaces"
+                @ "generics"
+                @ "functions"
 
     var fullText = []
     foreach item in items
@@ -49,13 +53,13 @@
 			_ path.join
 				@ __dirname
 				@ 'data'
-				@ name + '.js.ittf'
+				@ name + '.ts.ittf'
 
-		var out_ittf_js
+		var out_ittf_ts
 			_ path.join
 				@ __dirname
 				@ 'data'
-				@ name + '.js.ittf.js'
+				@ name + '.ts.ittf.ts'
 
         _ jswizzifier.getWizziIttf
 			_ file.read

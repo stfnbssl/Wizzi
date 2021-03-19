@@ -147,7 +147,7 @@ $group
         styled-components "^5.2.1"
     
     $if wzCtx.Build.useTypescript
-        typescript "^4.1.2"
+        typescript "^4.2.3"
     
     $if wzCtx.Build.useUnderscore
         underscore "^1.9.1"
@@ -159,7 +159,7 @@ $group
         vue-server-renderer "^2.5.17"
     
     $if wzCtx.Build.useReactCreateApp
-        web-vitals "^1.0.1"
+        web-vitals "^1.1.1"
     
     $if wzCtx.Build.useYup
         yup "^0.27.0"

@@ -74,16 +74,44 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xswitch. Got: ' + callback);
         }
-        ctx.w('switch (' + u.unparen(model.wzName) + ') {');
-        cnt.genItems(model.statements, ctx, {
-            indent: true
-        }, function(err, notUsed) {
-            if (err) {
-                return callback(err);
+        function doCases() {
+            cnt.genItems(model.statements, ctx, {
+                indent: true
+            }, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.w('}');
+                return callback(null, null);
+            })
+        }
+        if (verify.isEmpty(model.wzName)) {
+            var condition;
+            var temp = [];
+            var i, i_items=model.statements, i_len=model.statements.length, item;
+            for (i=0; i<i_len; i++) {
+                item = model.statements[i];
+                if (['xcase', 'xdefault'].indexOf(item.wzElement) < 0) {
+                    condition = item;
+                }
+                else {
+                    temp.push(item)
+                }
             }
-            ctx.w('}');
-            return callback(null, null);
-        })
+            model.statements = temp;
+            ctx.write('switch (');
+            cnt.genItem(condition, ctx, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.w(') {');
+                doCases();
+            })
+        }
+        else {
+            ctx.w('switch (' + u.unparen(model.wzName) + ') {');
+            doCases();
+        }
     };
     cnt.stm.xcase = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {

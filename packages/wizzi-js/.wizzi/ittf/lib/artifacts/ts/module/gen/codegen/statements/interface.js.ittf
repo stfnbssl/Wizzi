@@ -51,12 +51,23 @@
 							@ ctx
 							f_cb()
 								set model.wzElement = ':p'
-								_ ctx.deindent();
-								_ ctx.w('');
-						r_cb()
+								_ ctx.deindent()
+								_ ctx.w('')
+						        r_cb()
 					else
-						_ ctx.w(";");
+						_ ctx.w(";")
 						r_cb()
+        elif model.statements.length == 1
+            _ ctx.write(': ')
+            _ cnt.genItem
+                @ model.statements[0]
+                @ ctx
+                f_cb()
+                    _ ctx.w(';')
+                    r_cb()
+        else
+            _ callback
+                _ ctx.error(':type typeProperty must have one children. found: ' + model.statements.length, model)
 
 	stm( typeMethod
 		_ u.genAccessorsAndExtra

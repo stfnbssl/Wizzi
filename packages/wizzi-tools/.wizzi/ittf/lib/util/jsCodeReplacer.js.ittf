@@ -45,8 +45,10 @@
 				elif (ch == ' ' || ch == '\t') && state == 3
 					_ ws.push(ch)
 				elif ch == '}' && state == 3
-					var token = '/*;;' + ++counter + ';;*/'
+                    set counter++
+					var token = '""/*;;' + counter + ';;*/'
 					var key = ';;' + counter + ';;'
+                    log 'jsCodeReplacer.token', token 
 					_ replaceds.push
 						{
 							@ token token
@@ -79,6 +81,7 @@
 		function
 			param code
 			param replaceds
+            log 'md.restore', 'code', code
 			if !code
 				return
 			foreach item in replaceds
@@ -92,15 +95,18 @@
 			if !code
 				return
 			var match = md.getKey(code, replaceds)
+            log 'md.restoreInside', 'code', code, 'match', match
 			if match == null
 				return
 			return
-				_ verify.replaceAll(code, '/*' + match.key + '*/', '{{' + match.code + '}}')
+				# _ verify.replaceAll(code, '/*' + match.key + '*/', '{{' + match.code + '}}')
+                _ verify.replaceAll(code, match.token, '{{' + match.code + '}}')
 
 	set md.isInside
 		function
 			param code
 			param replaceds
+            log 'md.isInside', 'code', code
 			var match = md.getKey(code, replaceds)
 			if match == null
 				return false

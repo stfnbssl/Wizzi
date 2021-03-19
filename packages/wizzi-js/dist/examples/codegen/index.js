@@ -43,198 +43,268 @@ example({
         }
     ]
 }, 'var = tau;')
-example(nodes: [
-    {
-        n: "var", 
-        v: "beta = 'astra'", 
-        children: [
-            
-        ]
-    }
-], "var = beta = 'astra';")
-example(nodes: [
-    {
-        n: "var", 
-        v: "alfa", 
-        children: [
-            {
-                n: "_", 
-                v: "getAlpha", 
-                children: [
-                    
-                ]
-            }
-        ]
-    }
-], "var alpha = getAlpha();")
-example(nodes: [
-    {
-        n: "var", 
-        v: "", 
-        children: [
-            n "decl", 
-            v "i", 
-            children: [
-                
-            ], 
-            n "decl", 
-            v "k = 10", 
-            children: [
-                
-            ], 
-            n "decl", 
-            v "name", 
+example({
+    nodes: [
+        {
+            n: "var", 
+            v: "beta = 'astra'", 
             children: [
                 
             ]
-        ]
-    }
-], "var i, k = 10, name;")
-example(nodes: [
-    {
-        n: "let", 
-        v: "sigma = 1", 
-        children: [
-            
-        ]
-    }
-], 'let sigma = 1;')
-example(nodes: [
-    {
-        n: "let", 
-        v: "omega = 1", 
-        children: [
-            
-        ]
-    }
-], 'let omega = 1;')
-example(nodes: [
-    {
-        n: "const", 
-        v: "ossian", 
-        children: [
-            n "_", 
-            v "buuh", 
+        }
+    ]
+}, "var = beta = 'astra';")
+example({
+    nodes: [
+        {
+            n: "var", 
+            v: "alfa", 
             children: [
-                n "@", 
-                v "wash", 
-                children: [
-                    
-                ]
+                {
+                    n: "_", 
+                    v: "getAlpha", 
+                    children: [
+                        
+                    ]
+                }
             ]
-        ]
-    }
-], "const ossian = buuh('wash')")
-example(nodes: [
-    {
-        n: "react", 
-        v: "Horse", 
-        children: [
-            n "prop", 
-            v "title", 
+        }
+    ]
+}, "var alpha = getAlpha();")
+example({
+    nodes: [
+        {
+            n: "var", 
+            v: "", 
             children: [
-                n "string", 
-                v "", 
-                children: [
-                    
-                ], 
-                n "default", 
-                v "stefi", 
-                children: [
-                    
-                ]
-            ], 
-            n "prop", 
-            v "onClick", 
-            children: [
-                n "func", 
-                v "", 
-                children: [
-                    
-                ]
-            ], 
-            n "style", 
-            v "", 
-            children: [
-                n "@", 
-                v "dark", 
-                children: [
-                    n "{", 
-                    v "", 
+                {
+                    n: "decl", 
+                    v: "i", 
                     children: [
-                        n "@", 
-                        v "color 'blue'", 
-                        children: [
-                            
-                        ]
+                        
                     ]
-                ], 
-                n "@", 
-                v "appBarHome", 
-                children: [
-                    n "{", 
-                    v "", 
+                }, 
+                {
+                    n: "decl", 
+                    v: "k = 10", 
                     children: [
-                        n "@", 
-                        v "backgroundColor 'transparent'", 
-                        children: [
-                            
-                        ], 
-                        n "@", 
-                        v "boxShadow 'none'", 
-                        children: [
-                            
-                        ]
+                        
                     ]
-                ]
-            ], 
-            n "state", 
-            v "", 
-            children: [
-                n "@", 
-                v "age 10", 
-                children: [
-                    
-                ]
-            ], 
-            n "did-mount", 
-            v "", 
-            children: [
-                n "_", 
-                v "hello", 
-                children: [
-                    
-                ]
-            ], 
-            n "will-unmount", 
-            v "", 
-            children: [
-                n "_", 
-                v "hello", 
-                children: [
-                    
-                ]
-            ], 
-            n "render", 
-            v "", 
-            children: [
-                n ".", 
-                v "hello", 
-                children: [
-                    n "<", 
-                    v "Link", 
+                }, 
+                {
+                    n: "decl", 
+                    v: "name", 
                     children: [
-                        n "@", 
-                        v "href 'miss'", 
-                        children: [
-                            
-                        ]
+                        
                     ]
-                ]
+                }
             ]
-        ]
-    }
-], '', {
+        }
+    ]
+}, "var i, k = 10, name;")
+example({
+    nodes: [
+        {
+            n: "let", 
+            v: "sigma = 1", 
+            children: [
+                
+            ]
+        }
+    ]
+}, 'let sigma = 1;')
+example({
+    nodes: [
+        {
+            n: "let", 
+            v: "omega = 1", 
+            children: [
+                
+            ]
+        }
+    ]
+}, 'let omega = 1;')
+example({
+    nodes: [
+        {
+            n: "const", 
+            v: "ossian", 
+            children: [
+                {
+                    n: "_", 
+                    v: "buuh", 
+                    children: [
+                        {
+                            n: "@", 
+                            v: "wash", 
+                            children: [
+                                
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}, "const ossian = buuh('wash')")
+example({
+    nodes: [
+        {
+            n: "react", 
+            v: "Horse", 
+            children: [
+                {
+                    n: "prop", 
+                    v: "title", 
+                    children: [
+                        {
+                            n: "string", 
+                            v: "", 
+                            children: [
+                                
+                            ]
+                        }, 
+                        {
+                            n: "default", 
+                            v: "stefi", 
+                            children: [
+                                
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    n: "prop", 
+                    v: "onClick", 
+                    children: [
+                        {
+                            n: "func", 
+                            v: "", 
+                            children: [
+                                
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    n: "style", 
+                    v: "", 
+                    children: [
+                        {
+                            n: "@", 
+                            v: "dark", 
+                            children: [
+                                {
+                                    n: "{", 
+                                    v: "", 
+                                    children: [
+                                        {
+                                            n: "@", 
+                                            v: "color 'blue'", 
+                                            children: [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }, 
+                        {
+                            n: "@", 
+                            v: "appBarHome", 
+                            children: [
+                                {
+                                    n: "{", 
+                                    v: "", 
+                                    children: [
+                                        {
+                                            n: "@", 
+                                            v: "backgroundColor 'transparent'", 
+                                            children: [
+                                                
+                                            ]
+                                        }, 
+                                        {
+                                            n: "@", 
+                                            v: "boxShadow 'none'", 
+                                            children: [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    n: "state", 
+                    v: "", 
+                    children: [
+                        {
+                            n: "@", 
+                            v: "age 10", 
+                            children: [
+                                
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    n: "did-mount", 
+                    v: "", 
+                    children: [
+                        {
+                            n: "_", 
+                            v: "hello", 
+                            children: [
+                                
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    n: "will-unmount", 
+                    v: "", 
+                    children: [
+                        {
+                            n: "_", 
+                            v: "hello", 
+                            children: [
+                                
+                            ]
+                        }
+                    ]
+                }, 
+                {
+                    n: "render", 
+                    v: "", 
+                    children: [
+                        {
+                            n: ".", 
+                            v: "hello", 
+                            children: [
+                                {
+                                    n: "<", 
+                                    v: "Link", 
+                                    children: [
+                                        {
+                                            n: "@", 
+                                            v: "href 'miss'", 
+                                            children: [
+                                                
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}, '', {
     __jskind: 'react'
 })
 var len_1 = examples.length;

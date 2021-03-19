@@ -8,7 +8,10 @@
 
 	var p_${namevar} = null
 
-	if typeof(node.${name}) !== 'undefined'
+	$$ replaced 19/3/21 if typeof(node.${name}) !== 'undefined'
+    $$ added case = null for ignoring
+    
+    if typeof(node.${name}) !== 'undefined' && node.${name} != null
 		
 		set p_${namevar} 
 			{

@@ -229,7 +229,15 @@ md.load = function(cnt) {
         else {
             ctx.write(model.wzName);
             if (model.typeParameterInsts.length > 0) {
-                ctx.write('<');
+                var graphs = false;
+                var i, i_items=model.typeParameterInsts, i_len=model.typeParameterInsts.length, item;
+                for (i=0; i<i_len; i++) {
+                    item = model.typeParameterInsts[i];
+                    if (item.statements.length == 1 && item.statements[0].wzElement == 'typeMapped') {
+                        graphs = true;
+                    }
+                }
+                ctx.write('<' + (graphs ? '{' : ''));
                 var len_1 = model.typeParameterInsts.length;
                 function repeater_1(index_1) {
                     if (index_1 === len_1) {
@@ -253,7 +261,7 @@ md.load = function(cnt) {
                 }
                 repeater_1(0);
                 function next_1() {
-                    ctx.write('>');
+                    ctx.write((graphs ? '}' : '') + '>');
                     return callback(null, null);
                 }
             }
@@ -276,6 +284,7 @@ md.load = function(cnt) {
         }
         else if (model.statements.length == 1) {
             var item = model.statements[0];
+            console.log('typeParameterInst,item.wzElement', item.wzElement);
             if (!cnt.stm[item.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
             }
@@ -528,15 +537,21 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeParameterDecl. Got: ' + callback);
         }
         var atype = u.extractTSSimpleType(model);
-        ctx.write('<'+ model.wzName + '>');
         if (atype) {
-            ctx.write(' extends ');
+            ctx.write(model.wzName);
+            if (kind == 'mapped') {
+                ctx.write(' in ');
+            }
+            else {
+                ctx.write(' extends ');
+            }
             if (!cnt.stm[atype.wzElement]) {
                 console.log('ts.module.gen.typeParameterDecl.item.wzElement not managed', atype.wzElement);
             }
             cnt.stm[atype.wzElement](atype, ctx, callback)
         }
         else {
+            ctx.write(model.wzName);
             return callback(null, null);
         }
     };
@@ -767,6 +782,7 @@ md.load = function(cnt) {
         }
         if (model.statements.length == 2) {
             var item = model.statements[0];
+            console.log('ts.module.gen.typeMapped', item.wzElement);
             if (!cnt.stm[item.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
             }
@@ -876,6 +892,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeNamespaceExportDeclaration. Got: ' + callback);
         }
         ctx.w('export as namespace ' + model.wzName + ';');
+        return callback(null, null);
     };
     cnt.stm.typeCTorDeclare = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {

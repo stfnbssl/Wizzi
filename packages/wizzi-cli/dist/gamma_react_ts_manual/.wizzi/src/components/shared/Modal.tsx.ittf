@@ -1,0 +1,135 @@
+module
+    import 
+        as React
+        from 'react'
+    import ReactDOM from 'react-dom'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    :type Props
+        :{ 
+            :p visible
+                :boolean 
+            :p children
+                :optional 
+                :ref React.ReactNode
+            :p onDismiss
+                :optional 
+                :=> 
+                    :void 
+    :type State
+        :{ 
+            :p rendered
+                :boolean 
+    export-default 
+        class Modal
+            super React.PureComponent
+                :param 
+                    :ref Props
+                :param 
+                    :ref State
+            m getDerivedStateFromProps
+                static
+                param props
+                    :ref Props
+                if props.visible
+                    return 
+                        { 
+                            @ rendered true
+                return null
+            p state
+                { 
+                    @ rendered this.props.visible
+            m componentDidMount
+                _ document.body.appendChild(this._container)
+                _ document.addEventListener('keydown', this._handleKeyDown)
+            m componentDidUpdate
+                param prevProps
+                    :ref Props
+                if this.props.visible !== prevProps.visible
+                    _ clearTimeout(this._timer)
+                    if !this.props.visible
+                        set this._timer =
+                            _ setTimeout
+                                => 
+                                    _ this.setState
+                                        { 
+                                            @ rendered false
+                                @ 300
+            m componentWillUnmount
+                _ document.body.removeChild(this._container)
+                _ document.removeEventListener('keydown', this._handleKeyDown)
+            p _container
+                _ document.createElement('div')
+            p _content
+                _ React.createRef
+                    :param 
+                        :ref HTMLDivElement
+            p _timer
+                :any 
+            => _handleDismiss
+                param e
+                    :ref React.MouseEvent
+                        :param 
+                            :ref HTMLDivElement
+                if this._content.current && this._content.current !== e.target && this._content.current.contains(e.target)
+                    return 
+                _ console.log('_handleDismiss', this._content.current, e.target)
+                && 
+                    + this.props.onDismiss
+                    _ this.props.onDismiss
+            => _handleKeyDown
+                param e
+                    :ref KeyboardEvent
+                if e.keyCode === 27 && this.props.visible
+                    # Esc was pressed
+                    _ e.preventDefault
+                    && 
+                        + this.props.onDismiss
+                        _ this.props.onDismiss
+            m render
+                return 
+                    _ ReactDOM.createPortal
+                        div 
+                            @ className
+                                _ css
+                                    @ styles.modal
+                                    iif this.props.visible
+                                        then styles.visible
+                                        else styles.hidden
+                            @ onClick {this._handleDismiss}
+                            div 
+                                @ ref {this._content}
+                                @ className {css(styles.content)}
+                                { 
+                                    iif this.state.rendered
+                                        then this.props.children
+                                        else null
+                        @ this._container
+    const styles
+        _ StyleSheet.create
+            { 
+                { modal
+                    @ position 'fixed'
+                    @ top 0
+                    @ left 0
+                    @ right 0
+                    @ bottom 0
+                    @ backgroundColor 'rgba(24, 29, 37, 0.8)'
+                    @ color '#fff'
+                    @ zIndex 999
+                    @ transitionDuration '200ms'
+                    @ '-webkit-font-smoothing' 'antialiased'
+                { content
+                    @ width '100%'
+                    @ height '100%'
+                    @ display 'flex'
+                    @ alignItems 'center'
+                    @ justifyContent 'center'
+                { visible
+                    @ opacity 1
+                    @ pointerEvents 'auto'
+                { hidden
+                    @ opacity 0
+                    @ pointerEvents 'none'

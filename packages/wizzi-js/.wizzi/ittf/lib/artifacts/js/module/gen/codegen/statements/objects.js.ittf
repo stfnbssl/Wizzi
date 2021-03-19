@@ -38,7 +38,14 @@
     
 	stm( jsRest
 		_ ctx.write('...' + model.wzName)
-		r_cb()
+        if model.statements.length > 0
+            _ cnt.genItems
+                @ model.statements
+                @ ctx
+                { 
+				@ callback
+        else
+		    r_cb()
 
 	fn( jsPropertyOrValue_with_stm_children
 		# log 'js.module.statements.object.model.wzName, model.statements.length', model.wzName, model.statements.length

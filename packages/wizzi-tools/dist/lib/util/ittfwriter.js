@@ -33,6 +33,7 @@ writer.prototype.stringify = function (node, options) {
 
 writer.prototype.node = function (node) {
     if (!this.keepDeleted && node.__deleted) return;
+    if (!node.tag) return;
     var _this = this;
     var indent = Array(this.indentValue * 4 + 1).join(" ");
     if (!node.tag) {

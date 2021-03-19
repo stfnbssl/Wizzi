@@ -184,7 +184,7 @@ function padLeft(value: string, padding: string | number) {
 // Luckily, you don’t need to abstract typeof x === "number" into its own function because TypeScript will recognize it as a type guard on its own.
 // That means we could just write these checks inline.
 
-function padLeft(value: string, padding: string | number) {
+function padLeft2(value: string, padding: string | number) {
     if (typeof padding === "number") {
         return Array(padding + 1).join(" ") + value;
     }

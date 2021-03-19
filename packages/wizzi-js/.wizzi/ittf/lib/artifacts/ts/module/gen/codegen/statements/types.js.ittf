@@ -95,7 +95,12 @@
 		else
 			_ ctx.write(model.wzName)
 			if model.typeParameterInsts.length > 0
-				_ ctx.write('<')
+                var graphs = false
+                foreach item in model.typeParameterInsts
+                    if item.statements.length == 1 && item.statements[0].wzElement == 'typeMapped'
+                        set graphs = true
+                $$ 19/3/21 added {}, waiting for damage
+				_ ctx.write('<' + (graphs ? '{' : ''))
 				repeater( 1, model.typeParameterInsts )
 					if index_1 > 0 
 						_ ctx.write(', ')
@@ -107,7 +112,7 @@
 						a_cb()
 							repeater_increment( 1 )
 					$append next
-						_ ctx.write('>')
+						_ ctx.write((graphs ? '}' : '') + '>')
 						r_cb()
 			else
 				r_cb()
@@ -118,7 +123,8 @@
 			r_cb()
 		elif model.statements.length == 1
 			var item = model.statements[0]
-			if !cnt.stm[item.wzElement]
+			log 'typeParameterInst,item.wzElement', item.wzElement
+            if !cnt.stm[item.wzElement]
 				log 'ts.module.gen.item.wzElement not managed', item.wzElement
 			_ cnt.stm[item.wzElement]
 				@ item
@@ -274,19 +280,23 @@
 				r_cb()
 
 	stm( typeParameterDecl, kind
-		var atype
+        var atype
 			_ u.extractTSSimpleType
 				@ model
-		_ ctx.write('<'+ model.wzName + '>')
-		if atype
-			_ ctx.write(' extends ')
+        if atype
+            _ ctx.write(model.wzName)
+            if kind == 'mapped'
+			    _ ctx.write(' in ')
+            else
+                _ ctx.write(' extends ')
 			if !cnt.stm[atype.wzElement]
 				log 'ts.module.gen.typeParameterDecl.item.wzElement not managed', atype.wzElement
 			_ cnt.stm[atype.wzElement]
 				@ atype
 				@ ctx
-				@ callback
+                @ callback
 		else
+            _ ctx.write(model.wzName)
 			r_cb()
 
 	stm( typeUnion, kind
@@ -301,7 +311,6 @@
 					repeater_increment( 1 )
 			$append next
 				r_cb()
-
 
 	stm( typeIntersect, kind
 		repeater( 1, model.statements )
@@ -428,6 +437,7 @@
 	stm( typeMapped, kind
 		if model.statements.length == 2
 			var item = model.statements[0]
+            log 'ts.module.gen.typeMapped', item.wzElement
 			if !cnt.stm[item.wzElement]
 				log 'ts.module.gen.item.wzElement not managed', item.wzElement
 			_ ctx.write('[')
@@ -519,7 +529,7 @@
 
 	stm( typeNamespaceExportDeclaration
 		_ ctx.w('export as namespace ' + model.wzName + ';')
-
+        r_cb()
 
 	stm( typeCTorDeclare
 		var atype

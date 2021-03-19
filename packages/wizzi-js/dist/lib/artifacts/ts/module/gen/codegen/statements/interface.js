@@ -89,14 +89,27 @@ md.load = function(cnt) {
                         model.wzElement = ':p';
                         ctx.deindent();
                         ctx.w('');
+                        return callback(null, null);
                     })
-                    return callback(null, null);
                 }
                 else {
                     ctx.w(";");
                     return callback(null, null);
                 }
             })
+        }
+        else if (model.statements.length == 1) {
+            ctx.write(': ');
+            cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.w(';');
+                return callback(null, null);
+            })
+        }
+        else {
+            callback(ctx.error(':type typeProperty must have one children. found: ' + model.statements.length, model))
         }
     };
     cnt.stm.typeMethod = function(model, ctx, callback) {

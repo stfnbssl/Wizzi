@@ -33,10 +33,11 @@
 			foreach item in comments
 				# log 'processComments', item
 				if item.type === 'CommentLine'
-					if codeReplacer.isKey(item.value, options.replaceds)
+					if false $$ codeReplacer.isKey(item.value, options.replaceds)
 						if options.commentManager.checkWritten(item) == true
 							_ options.commentManager.removeWritten(item)
-						var value = codeReplacer.restoreInside(item.value, options.replaceds)
+						log 'processComments. calling, codeReplacer.restoreInside', item.value
+                        var value = codeReplacer.restoreInside('""' + item.value, options.replaceds)
 						set hb
 							{
 								@ tag '#'
@@ -56,7 +57,7 @@
 							@ hb
 					_ options.commentManager.addWritten(item, ittfNode.children, hb)
 				elif item.type === 'CommentBlock'
-					if codeReplacer.isKey(item.value, options.replaceds)
+					if false $$ codeReplacer.isKey(item.value, options.replaceds)
 						# log 'codeReplacer.isKey', true
 						if options.commentManager.checkWritten(item) == true
 							_ options.commentManager.removeWritten(item)
@@ -72,7 +73,7 @@
 						set hb
 							{
 								@ tag '{{'
-								@ name codeReplacer.restore(item.value, options.replaceds)
+								@ name codeReplacer.restore('""'+item.value, options.replaceds)
 								[ children
 						_ ittfNode.children.push
 							@ hb

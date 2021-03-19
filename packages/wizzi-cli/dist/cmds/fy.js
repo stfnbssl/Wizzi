@@ -2,65 +2,79 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\fy.js.ittf
+    utc time: Fri, 19 Mar 2021 20:07:36 GMT
 */
 'use strict';
 const path = require('path');
 const fs = require('fs');
 const wizziUtils = require('wizzi-utils');
+const verify = wizziUtils.verify;
 const file = wizziUtils.file;
-const wizziTools = require('wizzi-tools');
+const wizziTools = require('../../../wizzi-tools/dist/index');
 const help = require('./help');
 module.exports = (args) => {
     let currentDir = process.cwd();
     let source = args.source || args.s;
     let dest = args.dest || args.d;
     console.log('fy.source.dest', source, dest);
+    var sourcePath, destPath, sourceIsFolder;
     if (source && source.length > 0) {
-        const sourcePath = path.join(currentDir, source);
-        if (dest && dest.length > 0) {
-            const destPath = path.join(currentDir, dest);
-            if (file.isDirectory(sourcePath)) {
-                console.log('ok. source && dest are folders');
-                wizziTools.importFolder(sourcePath, destPath, (err, result) => {
-                    if (err) {
-                        console.log('err', err);
-                        throw new Error(err.message);
-                    }
-                    console.log('Wizzify folder result', result);
-                })
-            }
-            else if (file.isFile(sourcePath)) {
-                console.log('ok. source && dest are files');
-                wizziTools.wizzify(file.read(sourcePath), (err, result) => {
-                    if (err) {
-                        console.log('err', err);
-                        throw new Error(err.message);
-                    }
-                    file.write(destPath, result);
-                    console.log('Wizzify file', result);
-                })
-            }
-            else {
-                console.log('error. source and dest must be both folders or both files');
-                help({_:['help', 'fy']});
-            }
+        if (verify.isAbsolutePath(source)) {
+            sourcePath = source;
         }
         else {
-            if (file.isFile(sourcePath)) {
-                console.log('ok. source is file && dest will be calculated from source');
-                wizziTools.wizzify(file.read(sourcePath), (err, result) => {
-                    if (err) {
-                        console.log('err', err);
-                        throw new Error(err.message);
-                    }
-                    file.write(sourcePath + '.ittf', result);
-                    console.log('Wizzify file', result);
-                })
+            sourcePath = path.join(currentDir, source);
+        }
+        if (!file.exists(sourcePath)) {
+            console.log('Invalid options for `fy` command.');
+            console.log('Source path not found', source);
+            help({_:['help', 'fy']});
+            return ;
+        }
+        sourceIsFolder = file.isDirectory(sourcePath);
+        if (dest && dest.length > 0) {
+            if (verify.isAbsolutePath(dest)) {
+                destPath = dest;
             }
             else {
-                console.log('error. if dest is missing source must be a file');
-                help({_:['help', 'fy']});
+                destPath = path.join(currentDir, dest);
             }
+        }
+        if (!file.exists(path.dirname(destPath))) {
+            console.log('Invalid options for `fy` command.');
+            console.log('Destination path dirname not found', dest);
+            help({_:['help', 'fy']});
+            return ;
+        }
+        if (file.isFile(destPath) && sourceIsFolder) {
+            console.log('Invalid options for `fy` command.');
+            console.log('Source path is a folder, destination path cannot be a filename', dest);
+            help({_:['help', 'fy']});
+            return ;
+        }
+        if (file.isDirectory(destPath) && !sourceIsFolder) {
+            destPath = path.join(destPath, path.basename(sourcePath) + '.ittf'());
+        }
+        if (sourceIsFolder) {
+            console.log('ok. source && dest are folders');
+            wizziTools.importFolder(sourcePath, destPath, (err, result) => {
+                if (err) {
+                    console.log('err', err);
+                    throw new Error(err.message);
+                }
+                console.log('Wizzify folder result', result);
+            })
+        }
+        else {
+            console.log('ok. source && dest are files');
+            wizziTools.wizzify(file.read(sourcePath), (err, result) => {
+                if (err) {
+                    console.log('err', err);
+                    throw new Error(err.message);
+                }
+                file.write(destPath, result);
+                console.log('Wizzify file', result);
+            })
         }
     }
     else {

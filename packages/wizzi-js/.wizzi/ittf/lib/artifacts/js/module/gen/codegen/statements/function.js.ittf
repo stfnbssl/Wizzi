@@ -196,13 +196,8 @@
 		var async_str = model.xasync ? 'async ' : ''
 		# log '++++ arrowfunction', model.wzName, async_str, model.xasync, model.statements[0]
         if ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent'
-			var save1 = ctx.arrowFunctionNoGraphs
-			set ctx.arrowFunctionNoGraphs = !u.arrowFunctionRequiresGraphs(model)
-			var openGraph
-				iif ctx.arrowFunctionNoGraphs
-					then '' 
-					else ' {'
-            _ ctx.w(model.wzName + ' = ' + async_str + '(' + model.paramNames.join(', ') + ') =>' + openGraph)
+            var implicitReturn = u.isImplicitReturn(model)
+            _ ctx.w(model.wzName + ' = ' + async_str + '(' + model.paramNames.join(', ') + ') =>' + (implicitReturn ? '' : '{'))
 			_ ctx.indent()
 			_ generateParamConstraints
 				@ name
@@ -218,9 +213,7 @@
 							@ indent false
 						f_cb()
 							_ ctx.deindent()
-							if ctx.arrowFunctionNoGraphs == false
-								_ ctx.w('}')
-							set ctx.arrowFunctionNoGraphs = save1
+                            _ ctx.w(implicitReturn ? '' : '}')
 							r_cb()
 		elif u.onlyChildIs(model, 'callOnValue') || u.onlyChildIsHtmlElement(model)
             _ ctx.write(async_str + '(' + model.paramNames.join(', ') + ') => ')
@@ -240,25 +233,27 @@
                 { 
                     @ indent true
 				@ callback
+		elif u.isImplicitReturn(model)
+            log 'isImplicitReturn', model.wzElement, model.wzName
+            var isSingleParam = u.isSingleParamForArrowFunction(model)
+            _ ctx.w(async_str + (isSingleParam ? '' : '(') + model.paramNames.join(', ') + (isSingleParam ? '' : ')') + ' =>')
+            _ cnt.genItems
+                @ model.statements
+                @ ctx
+                { 
+                    @ indent true
+                @ callback
 		else 
-			var save1 = ctx.arrowFunctionNoGraphs
-			set ctx.arrowFunctionNoGraphs = !u.arrowFunctionRequiresGraphs(model)
-			var openGraph
-				iif ctx.arrowFunctionNoGraphs
-					then '' 
-					else ' {'
-            _ ctx.w(async_str + '(' + model.paramNames.join(', ') + ') =>' + openGraph)
+            _ ctx.w(async_str + '(' + model.paramNames.join(', ') + ') => {')
             _ cnt.genItems
                 @ model.statements
                 @ ctx
                 { 
                     @ indent true
 				f_cb()
-					if ctx.arrowFunctionNoGraphs == false
-						_ ctx.write('}')
-						if u.isTopStatement(model, ctx)
-							_ ctx.w()
-					set ctx.arrowFunctionNoGraphs = save1
+					_ ctx.write('}')
+                    if u.isTopStatement(model, ctx)
+                        _ ctx.w()
 					r_cb()
     
 	stm( xreturn

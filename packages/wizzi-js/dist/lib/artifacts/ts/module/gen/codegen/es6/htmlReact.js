@@ -27,17 +27,22 @@ md.htmlelement = function(cnt, model, tag, text, ctx, attrs, callback) {
             ctx.w();
         }
     }
-    htmlelement_open(cnt, model, ctx, tag, attrs, function(err, notUsed) {
+    htmlelement_open(cnt, model, ctx, tag, attrs, function(err, done) {
         if (err) {
             return callback(err);
         }
-        htmlelement_end(cnt, model, ctx, tag, text, function(err, notUsed) {
-            if (err) {
-                return callback(err);
-            }
-            // log 'exit from htmlReact', tag
+        if (done) {
             return callback(null, null);
-        })
+        }
+        else {
+            htmlelement_end(cnt, model, ctx, tag, text, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                // log 'exit from htmlReact', tag
+                return callback(null, null);
+            })
+        }
     })
 };
 function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
@@ -61,9 +66,17 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
     }
     repeater_1(0);
     function next_1() {
-        ctx.w(">");
-        // end of open tag
-        return callback(null, null);
+        console.log('htmlelement_open.model.statements.length', model.statements.length);
+        if (model.statements.length > 0) {
+            ctx.w(">");
+            // end of open tag
+            return callback(null, false);
+        }
+        else {
+            ctx.w(" />");
+            // end of tag
+            return callback(null, true);
+        }
     }
 }
 function htmlelement_attribute(cnt, a, ctx, callback) {

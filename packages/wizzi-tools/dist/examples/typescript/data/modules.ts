@@ -12,20 +12,19 @@
     In TypeScript, just as in ECMAScript 2015, any file containing a top-level import or export is considered a module.
     Conversely, a file without any top-level import or export declarations is treated as a script whose contents are available
     in the global scope (and therefore to modules as well). */
-
 /*
     Export
     Exporting a declaration
     Any declaration (such as a variable, function, class, type alias, or interface) can be exported by adding the export keyword. */
 
 /* Validation.ts */
-export interface StringValidator {
+export interface StringValidator1 {
     isAcceptable(s: string): boolean;
 }
 
 /* ZipCodeValidator.ts */
-export const numberRegexp = /^[0-9]+$/;
-export class ZipCodeValidator implements StringValidator {
+export const numberRegexp1 = /^[0-9]+$/;
+export class ZipCodeValidator1 implements StringValidator1 {
     isAcceptable(s: string) {
         return s.length === 5 && numberRegexp.test(s);
     }
@@ -34,13 +33,13 @@ export class ZipCodeValidator implements StringValidator {
 /*
     Export statements
     Export statements are handy when exports need to be renamed for consumers, so the above example can be written as: */
-class ZipCodeValidator implements StringValidator {
+class ZipCodeValidator2 implements StringValidator1 {
     isAcceptable(s: string) {
         return s.length === 5 && numberRegexp.test(s);
     }
 }
-export { ZipCodeValidator };
-export { ZipCodeValidator as mainValidator };
+export { ZipCodeValidator2 };
+export { ZipCodeValidator2 as mainValidator };
 
 /*
     Re - exports
@@ -53,6 +52,7 @@ export class ParseIntBasedZipCodeValidator {
         return s.length === 5 && parseInt(s).toString() === s;
     }
 }
+
 // Export original validator but rename it
 export { ZipCodeValidator as RegExpBasedZipCodeValidator } from "./ZipCodeValidator";
 // Optionally, a module can wrap one or more modules and combine all their exports using export * from "module" syntax.
@@ -68,14 +68,14 @@ export * from "./ZipCodeValidator";  // exports class 'ZipCodeValidator'
 
 /* Import a single export from a module */
 import { ZipCodeValidator } from "./ZipCodeValidator";
-let myValidator = new ZipCodeValidator();
+let myValidator1 = new ZipCodeValidator();
 /* imports can also be renamed */
 import { ZipCodeValidator as ZCV } from "./ZipCodeValidator";
-let myValidator = new ZCV();
+let myValidator2 = new ZCV();
 
 /* Import the entire module into a single variable, and use it to access the module exports */
-import * as validator from "./ZipCodeValidator";
-let myValidator = new validator.ZipCodeValidator();
+import * as validator1 from "./ZipCodeValidator";
+let myValidator3 = new validator1.ZipCodeValidator();
 
 /* Import a module for side- effects only
     Though not recommended practice, some modules set up some global state that can be used by other modules.
@@ -93,6 +93,7 @@ import "./my-module.js";
 /* JQuery.d.ts */
 declare let $: JQuery;
 export default $;
+
 /* App.ts */
 import $ from "JQuery";
 $("button.continue").html("Next Step...");
@@ -101,7 +102,7 @@ $("button.continue").html("Next Step...");
     Default export class and function declaration names are optional. */
 
 /* ZipCodeValidator.ts */
-export default class ZipCodeValidator {
+export default class ZipCodeValidator3 {
     static numberRegexp = /^[0-9]+$/;
     isAcceptable(s: string) {
         return s.length === 5 && ZipCodeValidator.numberRegexp.test(s);

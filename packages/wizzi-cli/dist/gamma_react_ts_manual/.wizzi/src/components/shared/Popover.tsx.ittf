@@ -1,0 +1,190 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        @ prefTypes
+        @ withThemeName
+        from '../../features/preferences'
+    import colors from '../../configs/colors'
+    :type Props
+        :{ 
+            :p children
+                :ref React.ReactNode
+            :p content
+                :ref React.ReactNode
+            :p theme
+                :ref prefTypes.ThemeName
+    :type State
+        :{ 
+            :p visible
+                :boolean 
+    class Popover
+        super React.PureComponent
+            :param 
+                :ref Props
+            :param 
+                :ref State
+        p state
+            { 
+                @ visible false
+        m componentDidMount
+            _ document.addEventListener('click', this._handleDocumentClick)
+            _ document.addEventListener('contextmenu', this._handleDocumentContextMenu)
+        m componentWillUnmount
+            _ document.removeEventListener('click', this._handleDocumentClick)
+            _ document.removeEventListener('contextmenu', this._handleDocumentContextMenu)
+        => _handleDocumentContextMenu
+            if this.state.visible
+                _ this._hidePopover
+        => _handleDocumentClick
+            param e
+                :ref MouseEvent
+            if this.state.visible && e.target === this._anchor.current || e.target === this._popover.current || this._popover.current && this._popover.current.contains(e.target)
+                return 
+            _ this._hidePopover
+        => _togglePopover
+            if !this.state.visible
+                const popover
+                    || 
+                        && 
+                            + this._popover.current
+                            _ this._popover.current.getBoundingClientRect
+                        + {}
+                const anchor
+                    || 
+                        && 
+                            + this._anchor.current
+                            _ this._anchor.current.getBoundingClientRect
+                        + {}
+                # @ts-ignore
+                const diff = (popover.width - 10) / 2 - anchor.left
+                if this._popover.current && this._arrow.current
+                    if diff > 0
+                        set this._popover.current.style.left =
+                            `lit 
+                                + 
+                                @ diff + 5
+                                + px
+                        set this._arrow.current.style.left =
+                            # @ts-ignore
+                            `lit 
+                                + 
+                                @ anchor.left - anchor.width / 2 + 10
+                                + px
+                    else
+                        set this._popover.current.style.left = '5px'
+                        set this._arrow.current.style.left = '50%'
+            _ this.setState
+                => 
+                    param state
+                    (
+                        { 
+                            @ visible !state.visible
+        => _hidePopover
+            _ this.setState
+                { 
+                    @ visible false
+        p _anchor
+            _ React.createRef
+                :param 
+                    :ref HTMLElement
+        p _arrow
+            _ React.createRef
+                :param 
+                    :ref HTMLSpanElement
+        p _popover
+            _ React.createRef
+                :param 
+                    :ref HTMLDivElement
+        m render
+            const 
+                { 
+                    @ children
+                    @ content
+                    @ theme
+                = this.props
+            return 
+                div 
+                    @ className {css(styles.container)}
+                    { 
+                        _ React.cloneElement
+                            # @ts-ignore
+                            _ React.Children.only(children)
+                            { 
+                                @ ref this._anchor
+                                @ onClick this._togglePopover
+                    div 
+                        @ ref {this._popover}
+                        @ className
+                            _ css
+                                @ styles.popover
+                                iif theme === 'dark'
+                                    then styles.popoverDark
+                                    else styles.popoverLight
+                                iif this.state.visible
+                                    then styles.visible
+                                    else styles.hidden
+                        span 
+                            @ ref {this._arrow}
+                            @ className
+                                _ css
+                                    @ styles.arrow
+                                    iif theme === 'dark'
+                                        then styles.arrowDark
+                                        else styles.arrowLight
+                        + {content}
+    export-default withThemeName(Popover)
+    const styles
+        _ StyleSheet.create
+            { 
+                { container
+                    @ position 'relative'
+                    @ backgroundColor 'inherit'
+                { popover
+                    @ position 'absolute'
+                    @ top '100%'
+                    @ margin 12
+                    @ width '18em'
+                    @ borderRadius 3
+                    @ zIndex 99
+                    @ backgroundColor 'inherit'
+                    @ color 'inherit'
+                    @ transition 'transform .2s, opacity .2s'
+                    @ boxShadow '0 2px 6px rgba(0, 0, 0, 0.16), 0 0 3px rgba(0, 0, 0, 0.08)'
+                { popoverLight
+                    @ backgroundColor colors.content.light
+                    @ border 0
+                { popoverDark
+                    @ backgroundColor colors.content.dark
+                    @ border
+                        `lit 
+                            + 1px solid&nbsp;
+                            @ colors.ayu.mirage.border
+                            + 
+                { arrow
+                    @ position 'absolute'
+                    @ height 16
+                    @ width 16
+                    @ top -9
+                    @ transform 'translateX(-50%) rotate(45deg)'
+                    @ backgroundColor 'inherit'
+                    @ borderTopLeftRadius 4
+                    @ boxShadow '-.5px -.5px 0 rgba(0, 0, 0, .12)'
+                { arrowLight
+                    @ border 0
+                { arrowDark
+                    @ borderStyle 'solid'
+                    @ borderWidth '1px 0 0 1px'
+                    @ borderColor colors.ayu.mirage.border
+                { visible
+                    @ opacity 1
+                    @ transform 'translateX(-50%) translateY(0)'
+                { hidden
+                    @ opacity 0
+                    @ pointerEvents 'none'
+                    @ transform 'translateX(-50%) translateY(-4px)'

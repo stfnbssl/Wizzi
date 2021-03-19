@@ -122,13 +122,17 @@
         param ctx
 		param callback
         
-		if hasParens === false
-			_ ctx.write('(')
-			# VIA 20/2/19
-				if name.length > 0
-					_ ctx.write('(')
+		log 'doCallChildStatements_two', name, hasParens
+        if hasParens === false
+            # log 'doCallChildStatements_two 1', model.wzElement
+			
+			# VIA 20/2/19 if name.length > 0
+            # restored 19/3/21 for call template (`lit), waiting for damage
+            if name.length > 0 || model.wzElement == 'callOnValue'
+                _ ctx.write('(')
 
-		repeater(1, model.statements)
+		var first = true
+        repeater(1, model.statements)
 			if (u.isCallArgument(item_1) && hasParens) || u.isMemberAccess(item_1)
 				if (hasParens === false) && u.isMemberAccess(item_1)
 					if name.length > 0
@@ -140,15 +144,20 @@
 					_ remainings.push(model.statements[j])
 				return
 					_ doCallChildStatements_call(item_1, ctx, remainings, callback)
-			if index_1 > 0
+			if !first
 				_ ctx.write(', ')
+            if item_1.wzElement == 'comment'
+                _ ctx.w()
 			_ cnt.genItem
 				@ item_1
 				@ ctx
 				f_cb()
+                    if item_1.wzElement != 'comment'
+                        set first = false
 					repeater_increment(1)
 			$append next
 				+ ;
+                # log 'doCallChildStatements_two 2'
 				if hasParens === false
 					_ ctx.write(')')
 				if u.isTopStatement(model, ctx) && 

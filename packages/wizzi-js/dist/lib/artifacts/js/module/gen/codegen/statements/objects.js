@@ -77,7 +77,12 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.jsRest. Got: ' + callback);
         }
         ctx.write('...' + model.wzName);
-        return callback(null, null);
+        if (model.statements.length > 0) {
+            cnt.genItems(model.statements, ctx, {}, callback)
+        }
+        else {
+            return callback(null, null);
+        }
     };
     function jsPropertyOrValue_with_stm_children(model, ctx, callback) {
         if (typeof callback === 'undefined') {

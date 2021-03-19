@@ -4,8 +4,12 @@
 	const path = require('path')
 	const fs = require('fs')
 	const wizziUtils = require('wizzi-utils')
+    const verify = wizziUtils.verify
 	const file = wizziUtils.file
-	const wizziTools = require('wizzi-tools')
+    $if gctxIsDevelopment
+	    const wizziTools = require('../../../wizzi-tools/dist/index')
+    $else
+        const wizziTools = require('wizzi-tools')
 	const help = require('./help')
 
 	set module.exports
@@ -19,38 +23,52 @@
 
 			log 'fy.source.dest', source, dest
 
-			if source && source.length > 0
-				const sourcePath = path.join(currentDir, source)
+			var sourcePath, destPath, sourceIsFolder
+            if source && source.length > 0
+                if verify.isAbsolutePath(source)
+                    set sourcePath = source
+                else
+                    set sourcePath = path.join(currentDir, source)
+                if !file.exists(sourcePath)
+                    log 'Invalid options for `fy` command.'
+                    log 'Source path not found', source
+                    _ help({_:['help', 'fy']})
+                    return       
+                set sourceIsFolder = file.isDirectory(sourcePath)
 				if dest && dest.length > 0
-					const destPath = path.join(currentDir, dest)
-					if file.isDirectory(sourcePath) 
-						log 'ok. source && dest are folders'
-						_ wizziTools.importFolder
-							@ sourcePath
-							@ destPath
-							a_cb_throw( result )
-								log 'Wizzify folder result', result
-					elif file.isFile(sourcePath) 
-						log 'ok. source && dest are files'
-						_ wizziTools.wizzify
-							@ file.read(sourcePath)
-							a_cb_throw( result )
-								_ file.write(destPath, result)
-								log 'Wizzify file', result
-					else
-						log 'error. source and dest must be both folders or both files'
-						_ help({_:['help', 'fy']})
-				else
-					if file.isFile(sourcePath)
-						log 'ok. source is file && dest will be calculated from source'
-						_ wizziTools.wizzify
-							@ file.read(sourcePath)
-							a_cb_throw( result )
-								_ file.write(sourcePath + '.ittf', result)
-								log 'Wizzify file', result
-					else
-						log 'error. if dest is missing source must be a file'
-						_ help({_:['help', 'fy']})
+                    if verify.isAbsolutePath(dest)
+                        set destPath = dest
+                    else
+					    set destPath = path.join(currentDir, dest)
+                if !file.exists(path.dirname(destPath))
+                    log 'Invalid options for `fy` command.'
+                    log 'Destination path dirname not found', dest
+                    _ help({_:['help', 'fy']})
+                    return       
+                if file.isFile(destPath) && sourceIsFolder
+                    log 'Invalid options for `fy` command.'
+                    log 'Source path is a folder, destination path cannot be a filename', dest
+                    _ help({_:['help', 'fy']})
+                    return       
+                if file.isDirectory(destPath) && !sourceIsFolder
+                    set destPath
+                        _ path.join
+                            @ destPath
+                            _ path.basename(sourcePath) + '.ittf'
+                if sourceIsFolder
+                    log 'ok. source && dest are folders'
+                    _ wizziTools.importFolder
+                        @ sourcePath
+                        @ destPath
+                        a_cb_throw( result )
+                            log 'Wizzify folder result', result
+                else
+					log 'ok. source && dest are files'
+                    _ wizziTools.wizzify
+                        @ file.read(sourcePath)
+                        a_cb_throw( result )
+                            _ file.write(destPath, result)
+                            log 'Wizzify file', result
 			else
 				log 'Invalid options for `fy` command.'
 				_ help({_:['help', 'fy']})

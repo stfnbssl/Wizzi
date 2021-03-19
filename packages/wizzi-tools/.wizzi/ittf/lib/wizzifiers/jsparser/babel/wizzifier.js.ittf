@@ -111,8 +111,10 @@
 		# An expression statement, i.e., a statement consisting of a single expression.
 		f_p( expression )
 		if replaceWithSingleChild(ret, 'set')
-		else
-			_ replaceWithSingleChild(ret, '_')
+		elif replaceWithSingleChild(ret, '_')
+        else
+            log 'ExpressionStatement.failed.ret', ret
+            throw new Error()
 
 	f( BlockStatement, block;skip
 		f_a( body
@@ -267,14 +269,33 @@
 		f_p_temp( right, true, Expression
 		if isTextualNode(p_left)
 			set ret.name = getNodeText(p_left)
-		if isTextualNode(p_right)
-			set ret.name += ' in ' + getNodeText(p_right)
-		else
+            if isTextualNode(p_right)
+                set ret.name += ' in ' + getNodeText(p_right)
+            else
+                _ ret.children.push
+                    {
+                        @ tag 'in'
+                        [ children
+                            @ p_right
+        else
 			_ ret.children.push
 				{
-					@ tag 'in'
+					@ tag 'left'
 					[ children
-						@ p_right
+						@ p_left
+            if isTextualNode(p_right)
+                _ ret.children.push
+                    {
+                        @ tag 'in'
+                        @ name getNodeText(p_right)
+                        [ children
+            else
+                _ ret.children.push
+                    {
+                        @ tag 'in'
+                        [ children
+                            @ p_right
+
 		b( await
 		f_p( body, true, Statement
     
@@ -338,6 +359,8 @@
 			elif ret.children[0].children.length == 1
 				set ret.name = ret.children[0].name
 				set ret.children[0] = ret.children[0].children[0]
+                # log 'ret.name', ret.name
+                # log 'ret.children[0]', ret.children[0]
 				# set ret.textified = node.kind + ' ' + ret.name
 			elif ret.children[0].children.length == 2
 				var child1 = ret.children[0].children[0]
@@ -398,7 +421,7 @@
     f( VariableDeclarator, decl
 		f_p_temp(id, true)
 		
-		# log 'VariableDeclarator', p_id
+		# log 'VariableDeclarator,p_id, isTextualNode(p_id)', p_id, isTextualNode(p_id)
 		if isTextualNode(p_id)
 			set ret.name = getNodeText(p_id)
 		else
@@ -423,6 +446,7 @@
 				if isTextualNode(p_init)
 					set ret.name += ' = ' + getNodeText(p_init)
 					set ret.textified = ret.name
+                    set ret.isText = true
 				else
 					_ ret.children.push
 						@ p_init
@@ -450,6 +474,7 @@
 									@ p_init
 		else
 			set ret.textified = ret.name
+            set ret.isText = true
 
 		# log 'VariableDeclarator 2 ret', ret
 
@@ -568,6 +593,7 @@
 		else
 			foreach item in ret.children
 				if item.tag === '...' 
+                    # log 'ObjectExpression, item.tag, item.children.length', item.tag, item.textified, item.children.length
 					if item.children.length == 0
 						set item.name = item.textified
 						set item.tag = '@'
@@ -576,10 +602,14 @@
 							set item.children[0].name = '...' + item.children[0].name
 						if item.textified
 							set item.children[0].textified = '...' + item.children[0].textified
-						set item.tag = item.children[0].tag
-						set item.textified = item.children[0].textified
-						set item.name = item.children[0].name
-						set item.children = item.children[0].children
+                        if item.children[0].name || item.textified
+                            set item.tag = item.children[0].tag
+                            set item.textified = item.children[0].textified
+                            set item.name = item.children[0].name
+                            set item.children = item.children[0].children
+                            log 'ObjectExpression length 1', item.tag, item.name, item.textified
+                        else
+                            # go on
 				if item.tag === '@' && item.name === 'template' 
 					\b && item.children.length == 1 && item.children[0].tag === '`lit'
 					# log 'ObjectExpression', item.tag, item.name, getLiteral(item.children[0])
@@ -637,7 +667,7 @@
 		
 		f_a( decorators, false, Decorator
 
-		log 'ObjectProperty.ret.name', ret.name, 'node.value.type', node.value.type
+		# log 'ObjectProperty.ret.name', ret.name, 'node.value.type', node.value.type
 		if node.value.type === 'AssignmentPattern'
 			f_p_temp( value.left, true, Expression
 			f_p_temp( value.right, true, Expression
@@ -785,6 +815,9 @@
 		# A unary operator expression.
 		# s( operator, UnaryOperator enum "-" | "+" | "!" | "~" | "typeof" | "void" | "delete" | "throw"
 		# b( prefix
+
+        if ret.tag == 'opdelete'
+            set ret.tag = 'delete'
 		
 		f_p_temp( argument, true, Expression
 		if isTextualNode(p_argument)
@@ -901,9 +934,9 @@
 			if node.__parent && node.__parent.name === 'body' && node.__parent.len == 1
 				# is the return value of an ArrowExpression
 				if node.extra && node.extra.parenthesized == true
-					set ret.tag = '('
+					set ret.tag = '(' + ret.tag
 				else
-					set ret.tag = '+'
+					# 18/3/21 set ret.tag = '+'
 
     f( AssignmentExpression, set
 		# log 'AssignmentExpression enter options.mustBeText', options.mustBeText
@@ -925,11 +958,19 @@
 			set ret.name = node.operator
 			_ ret.children.push
 				@ p_left
-		if isTextualNode(p_left) && isTextualNode(p_right)
+		# log 'AssignmentExpression.isTextualNode(p_right)', isTextualNode(p_right)
+        # log 'AssignmentExpression.p_right', p_right
+        if isTextualNode(p_left) && isTextualNode(p_right)
 			set ret.name += getNodeText(p_right)
 		else
-			_ ret.children.push
-				@ p_right
+            if verify.isEmpty(p_right.tag)
+                foreach item in p_right.children
+                    _ ret.children.push
+                        @ item
+            else
+                _ ret.children.push
+                    @ p_right
+        # log 'AssignmentExpression.ret final', ret
 
     f( LogicalExpression, 'op' + node.operator;tag-is-var
 		# A logical operator expression.
@@ -1018,16 +1059,19 @@
 				_ ret.children.push
 					@ link
 		else
+            # log 1
 			if node.computed
 				set p_property.tag = '.['
 			else
 				set p_property.tag = '.'
 			if p_object.tag === '('
+                # log 2
 				_ ret.children.push
 					@ p_object
 				_ ret.children.push
 					@ p_property
 			else
+                # log 3, p_object.tag, p_object.name
 				set ret.tag = p_object.tag
 				set ret.name = p_object.name
 				set ret.source = p_object.source
@@ -1052,12 +1096,14 @@
 		# if `object` is `null`, then `callee` should be a `MemberExpression`.
 
     f( ConditionalExpression, iif
-		# A conditional expression, i.e., a ternary `?`/`,` expression.
+		# A conditional expression, i.e., a ternary `?`/`:` expression.
 		f_p_tag( test, test
 		f_p_temp( consequent, true, Expression
 		f_p_temp( alternate, true, Expression
 		
-		_ setNameFromChildByTag(ret, 'test', true)
+		# log 'ConditionalExpression 1', ret.tag
+        _ setNameFromChildByTag(ret, 'test', true)
+        # log 'ConditionalExpression 2', ret.tag
 
 		if isTextualNode(p_consequent)
 			_ ret.children.push
@@ -1085,6 +1131,8 @@
 					[ children
 						@ p_alternate
 
+        # log 'ConditionalExpression 3', ret.tag
+
 		if node.__parent && node.__parent.name === 'body' && node.__parent.len == 1
 			# is the return value of an ArrowExpression
 			if node.extra && node.extra.parenthesized == true
@@ -1096,6 +1144,7 @@
 				set ret = temp
 			else
 				# TODO do nothing
+        # log 'ConditionalExpression 4', ret.tag
 
     f( CallExpression, _
 		# A function or method call expression.
@@ -1105,9 +1154,10 @@
 		f_a_temp( arguments, true
 
 		var lastCallee = ret
-		# log 'p_callee', p_callee
+		# log 'CallExpression.p_callee', p_callee
 		
 		if isTextualNode(p_callee)
+            # log 'CallExpression.isTextualNode(p_callee)', isTextualNode(p_callee)
 
 			# first of all try to set ret.textified
 
@@ -1144,7 +1194,7 @@
 		
 		else
 
-			# log 'CallExpression', 'p_callee.tag.name', p_callee.tag, p_callee.name
+			# log 'CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag
 			
 			foreach item in p_callee.children
 				# log 'CallExpression', 'p_callee.children', i, p_callee.children[i].tag, p_callee.children[i].name
@@ -1155,46 +1205,85 @@
 			
 			if ['[', '{'].indexOf(p_callee.tag) > -1
 				set ret.tag = p_callee.tag
-			set ret.name = p_callee.name
-			set ret.children = p_callee.children
 			
-			if p_callee.children.length > 0
-				# log 'p_callee.children.length > 0'
-				set lastCallee = p_callee.children[p_callee.children.length-1]
-				if p_arguments && p_arguments.children.length > 0
-					if lastCallee.tag === '.'
-						set lastCallee.tag = '._'
-						foreach item in p_arguments.children
-							if ['@expr', '@id', 'literal'].indexOf(item.tag) > -1
-								set item.tag = '@'
-							_ lastCallee.children.push
-								@ item
-					else
-						var call
-							{
-								@ tag '('
-								[ children
-						foreach item in p_arguments.children
-							if ['@expr', '@id', 'literal'].indexOf(item.tag) > -1
-								set item.tag = '@'
-							_ call.children.push
-								@ item
-						_ ret.children.push(call)
-				else
-					if lastCallee.tag === '.'
-						set lastCallee.tag = '._'
-			else
-				# log 'p_callee.children.length == 0'
-				set ret.tag = "_"
-				set ret.name = p_callee.tag
-				if p_arguments && p_arguments.children.length > 0
-					foreach item in p_arguments.children
-						if ['@expr', '@id', 'literal'].indexOf(item.tag) > -1
-							set item.tag = '@'
-						_ ret.children.push
-							@ item
-				# log 'CallExpression', p_callee, ret
-			# log 'node.callee.type', node.callee.type, ret.tag
+            if ['`lit','iif'].indexOf(p_callee.tag) < 0
+                set ret.name = p_callee.name
+                set ret.children = p_callee.children
+
+                $$ Begin 19/3/21
+                if p_callee.children.length > 0
+                    # log 'p_callee.children.length > 0'
+                    set lastCallee = p_callee.children[p_callee.children.length-1]
+                    if p_arguments && p_arguments.children.length > 0
+                        if lastCallee.tag === '.'
+                            set lastCallee.tag = '._'
+                            foreach item in p_arguments.children
+                                if ['@expr', '@id', 'literal'].indexOf(item.tag) > -1
+                                    set item.tag = '@'
+                                _ lastCallee.children.push
+                                    @ item
+                        else
+                            var call
+                                {
+                                    @ tag '('
+                                    [ children
+                            foreach item in p_arguments.children
+                                if ['@expr', '@id', 'literal'].indexOf(item.tag) > -1
+                                    set item.tag = '@'
+                                _ call.children.push
+                                    @ item
+                            _ ret.children.push(call)
+                    else
+                        if lastCallee.tag === '.'
+                            set lastCallee.tag = '._'
+                else
+                    # log 'p_callee.children.length == 0'
+                    set ret.tag = "_"
+                    set ret.name = p_callee.tag
+                    if p_arguments && p_arguments.children.length > 0
+                        foreach item in p_arguments.children
+                            if ['@expr', '@id', 'literal'].indexOf(item.tag) > -1
+                                set item.tag = '@'
+                            _ ret.children.push
+                                @ item
+                    # log 'CallExpression', p_callee, ret
+                # log 'node.callee.type', node.callee.type, ret.tag
+                $$ End 19/3/21
+
+
+            else
+                var temp = [p_callee]
+                set lastCallee = p_callee.children[p_callee.children.length-1]
+                if lastCallee.tag === '.'
+                    set lastCallee.tag = '._'
+                    set p_callee.children.length --
+                    _ temp.push
+                        @ lastCallee
+                set ret.children = temp
+                foreach item in p_arguments.children
+                    if ['@expr', '@id', 'literal'].indexOf(item.tag) > -1
+                        set item.tag = '@'
+                    _ lastCallee.children.push
+                        @ item
+
+                $*
+                var temp = [p_callee]
+                if p_callee.children.length > 0
+                    var tempCallee = []
+                    foreach item in p_callee.children
+                        log 'item.tag', item.tag
+                        if item.tag == '._'
+                            _ temp.push
+                                @ item
+                        else
+                            _ tempCallee.push
+                                @ item
+                    set p_callee.children = tempCallee
+                set ret.children = temp
+                *$
+
+            $$ Was here 19/3/21
+			
 			if node.callee.type === 'FunctionExpression' && ret.tag === '_'
 				# log 'node.callee.type 2', node.callee.type, ret.tag
 				set ret.tag = 'iife' // 9/1/19
@@ -1259,7 +1348,7 @@
 				_ ret.children.push(item)
 			var e = p_expressions.children[i]
 			# log 'TemplateLiteral.e', e
-			if ['@expr', '@id', 'literal'].indexOf(e.tag) > -1
+			if ['@expr', '@id', 'literal', 'set'].indexOf(e.tag) > -1
 				set e.tag = '@'
 			_ ret.children.push(e)
 		if p_quasis.children[i] && p_quasis.children[i].children.length > 0
@@ -1282,13 +1371,13 @@
 		var lines = node.value.raw.split('\n')
 		foreach line in lines
 			if line[0] === ' '
-				set line = '\\b' + line.substr(1)
+				set line = '&nbsp;' + line.substr(1)
 			if line[line.length-1] === ' '
-				set line = line.substr(0, line.length -1) + '\\b'
+				set line = line.substr(0, line.length -1) + '&nbsp;'
 			_ ret.children.push
 				{
 					@ tag '+'
-					@ name line + (( i < lines.length - 1) ? '\\n' : '' )
+					@ name line + (( i < lines.length - 1) ? '&lf;' : '' )
 					[ children
 		# f_p( value
 		# f_p_p( value, cooked, optional
@@ -1437,7 +1526,7 @@
 
     f( ClassProperty, p
 		f_p_name(key, Expression
-		f_p_temp(value, true, Expression
+		f_p_temp(value, false, Expression
 		f_p_temp(typeAnnotation, false, ?TypeAnnotation
 
 		b( static
@@ -1454,7 +1543,7 @@
 					@ name ''
 					[ children
 		
-		if p_value.tag === '=>'
+		if p_value && p_value.tag === '=>'
 			set ret.tag = p_value.tag
 			if p_typeAnnotation
 				_ ret.children.push
@@ -1470,7 +1559,7 @@
 					@ p_typeAnnotation
 			if node.computed
 				set ret.name = '[' + ret.name + ']'
-			elif p_value.tag
+			elif p_value && p_value.tag
 				if ['@id', '@expr', 'literal'].indexOf(p_value.tag) > -1
 					set p_value.tag = '='
 				_ ret.children.push
@@ -1480,7 +1569,7 @@
 
     f( ClassPrivateProperty, p
 		f_p( key, true, PrivateName
-		f_p( value, true, Expression
+		f_p( value, false, Expression
 		b( static
 
     f( ClassDeclaration, class
@@ -1626,7 +1715,7 @@
 		# _Note, Having `declaration` populated with non-empty `specifiers` or non-null `source` results in an invalid state._
 		
 		if node.exportKind === 'type'
-			set ret.tag = ':export-type'
+			# VIA 18/03/21 set ret.tag = ':export-type'
 
     f( ExportSpecifier, @
 		f_p( exported, true, Identifier
@@ -1676,17 +1765,17 @@
 		var values = verify.replaceAll(node.value, '\r\n', '\n').split('\n')
 		# log 'options.replaceds', options.replaceds
 		foreach value in values
-			var v = codeReplacer.restore(value, options.replaceds)
+			# var v = codeReplacer.restore(value, options.replaceds)
 			_ ret.children.push
 				{
 					@ tag '#'
-					@ name v
+					@ name value
 					[ children
 	
 	f( CommentLine, #
 		# log 'options.replaceds', options.replaceds
-		var v = codeReplacer.restore(node.value, options.replaceds)
-		set ret.name = v
+		# var v = codeReplacer.restore(node.value, options.replaceds)
+		set ret.name = node.value
 
 	f( JSXAttribute, @
 		_ options.stateAST.push

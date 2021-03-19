@@ -18,7 +18,15 @@
         $include v08/package/scripts
     { dependencies
         $include v08/package/dependencies
+        aphrodite "^2.2.3"
+        classnames "^2.2.6"
+        escape-string-regexp "^4.0.0"
+        $$ prettier "^2.2.1"
+
     { devDependencies
         $include v08/package/devDependencies
+        @types/classnames "^2.2.7"
+        @types/escape-string-regexp "^2.0.1"
+        $$ @types/prettier "^2.2.3"
     $include v08/package/tools
     $include v08/package/browser

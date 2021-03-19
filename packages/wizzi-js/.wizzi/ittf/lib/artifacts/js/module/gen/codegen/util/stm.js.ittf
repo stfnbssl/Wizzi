@@ -36,6 +36,8 @@
 			if ctx.arrowFunctionNoGraphs
 				return false
             var prnElement = model.wzParent.wzElement
+            if prnElement == 'arrowfunction' && md.isImplicitReturn(model.wzParent)
+                return false
             return parents_of_top_statements.indexOf(prnElement) > - 1
     
 	set md.isDeclare
@@ -59,18 +61,26 @@
                 return false
             return ['typeEnum'].indexOf(model.wzParent.wzElement) > -1
 
+	set md.isBlockStatement
+        function 
+            param model
+            return ['xif','xfor','foreach','xwhile','backeach','xtry','xthrow','xswitch',
+                \b 'xyield','xawait','xdo','xlabel','xfunction','xdelete',
+                \b 'xvar','xconst','xlet','decl'].indexOf(model.wzElement) > -1
+
 	set md.isMemberAccess
         function 
             param model
             if ['memberAccess', 'memberAccessComputed', 'memberCall', 
-				\b 'decoratorCall', 'callOnValue'].indexOf(model.wzElement) > -1
+				\b 'decoratorCall', 'callOnValue', 'typeAs'].indexOf(model.wzElement) > -1
                 return true
     
 	set md.isMemberAccessOrCall
         function 
             param model
-            if ['memberAccess', 'memberAccessComputed', 'memberCall', 
-				\b 'decoratorCall', 'callOnValue'].indexOf(model.wzElement) > -1
+            $$ if ['memberAccess', 'memberAccessComputed', 'memberCall', 
+			$$ 	\b 'decoratorCall', 'callOnValue'].indexOf(model.wzElement) > -1
+            if md.isMemberAccess(model)
                 return true
             if !model.wzParent
                 return false
@@ -94,6 +104,17 @@
             param element
             return model.statements && model.statements.length == 1 && model.statements[0].wzElement === element
 
+	set md.onlyChildIsNot
+        function 
+            param model
+            param element
+            return model.statements && model.statements.length == 1 && model.statements[0].wzElement !== element
+
+	set md.isImplicitReturn
+        function 
+            param model
+            return md.onlyChildIsNot(model, 'xreturn') && !md.isBlockStatement(model.statements[0])
+
 	set md.onlyChildIsHtmlElement =
         function 
             param model
@@ -101,7 +122,14 @@
 				\b fb_html_supported_tags.indexOf(model.statements[0].wzElement) > -1 ||
 				\b model.statements[0].wzElement === 'htmlelement' )
     
-	set md.hasStatementChildren
+	set md.isSingleParamForArrowFunction
+        function 
+            param model
+            if model.params.length != 1 
+                return false
+            return model.params[0].statements.length == 0
+
+    set md.hasStatementChildren
         function 
             param model
             if model.statements && model.statements.length > 0
@@ -225,15 +253,6 @@
                     return false
             return true
     
-	set md.arrowFunctionRequiresGraphs
-        function 
-            param model
-			if model.statements.length == 0 || model.statements.length > 1
-				return true
-			if ['call', 'statement', 'set'].indexOf(model.statements[0].wzElement) > -1
-				return false
-			return true
-
 	set md.isQuoted
         function 
             param text

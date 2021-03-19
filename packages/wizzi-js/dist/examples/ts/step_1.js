@@ -134,8 +134,7 @@ var ts_step_1 = function(step_callback) {
     heading1('EXAMPLE')
     heading2('basic ts generations')
     const example_ittfs = [
-        'styled', 
-        'keyframes'
+        'quick'
     ];
     async.mapSeries(example_ittfs, function(ittf, callback) {
         console.log('======================================================================================');

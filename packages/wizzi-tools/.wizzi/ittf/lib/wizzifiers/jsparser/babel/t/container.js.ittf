@@ -134,8 +134,11 @@
 			var syntax
 			var cr
 			try
+                $* STOP codeReplacer (is for handlebars?)
 				set cr = codeReplacer.clean(input)
 				set syntax = md.parse(cr.codeCleaned, babelOptions)
+                *$
+                set syntax = md.parse(input, babelOptions)
 			catch ex
 				return
 					_ callback
@@ -165,11 +168,15 @@
 			var syntax
 			var cr
 			try
+                $* STOP codeReplacer (is for handlebars?)
 				set cr = codeReplacer.clean(input)
-				# log 'jsparser.container.cr', cr
+                # log 'jsparser.container.cr', cr
 				set syntax = md.parse(cr.codeCleaned, babelOptions)
+                *$
+                set syntax = md.parse(input, babelOptions)
 			catch ex
-                var lines = cr.codeCleaned.split('\n')
+                # var lines = cr.codeCleaned.split('\n')
+                var lines = input.split('\n')
                 for var i=0; i<lines.length-1; i++
                     log i+1, lines[i]
 				return
@@ -185,7 +192,7 @@
 						@ 2
 			
 			set options.starter = true
-			set options.replaceds = cr.replaceds
+			$$ set options.replaceds = cr.replaceds
 			set options.commentManager = new CommentManager()
 			# log 'cr.codeCleaned', cr.codeCleaned
 			# log 'cr.replaceds', cr.replaceds

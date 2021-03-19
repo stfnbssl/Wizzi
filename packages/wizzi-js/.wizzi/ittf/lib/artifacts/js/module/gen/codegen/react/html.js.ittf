@@ -39,17 +39,20 @@ module wizzi.js.artifacts.module.gen.codegen.react.html
 				@ ctx
 				@ tag
 				@ attrs
-				f_cb()
-					_ htmlelement_end
-						@ cnt
-						@ model
-						@ ctx
-						@ tag
-						@ text
-						f_cb()
-							# log 'exit from react/html *****************', tag
-							# @ callback
-							r_cb()
+				f_cb(done)
+                    if done
+                        r_cb()
+                    else
+                        _ htmlelement_end
+                            @ cnt
+                            @ model
+                            @ ctx
+                            @ tag
+                            @ text
+                            f_cb()
+                                # log 'exit from react/html *****************', tag
+                                # @ callback
+                                r_cb()
 
 	function htmlelement_open
 		param cnt
@@ -71,10 +74,16 @@ module wizzi.js.artifacts.module.gen.codegen.react.html
 				f_cb()
 					repeater_increment(1)
 			$append next
-				_ ctx.w(">");
-				# end of open tag
-				r_cb()
-	
+                log 'htmlelement_open.model.statements.length', model.statements.length
+                if model.statements.length > 0
+				    _ ctx.w(">");
+				    # end of open tag
+				    r_cb(false)
+                else
+				    _ ctx.w(" />");
+				    # end of tag
+				    r_cb(true)
+
 	function htmlelement_attribute
 		param cnt
 		param a

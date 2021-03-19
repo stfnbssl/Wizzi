@@ -91,6 +91,9 @@ md.isTopStatement = function(model, ctx) {
         return false;
     }
     var prnElement = model.wzParent.wzElement;
+    if (prnElement == 'arrowfunction' && md.isImplicitReturn(model.wzParent)) {
+        return false;
+    }
     return parents_of_top_statements.indexOf(prnElement) > - 1;
 };
 md.isDeclare = function(model) {
@@ -111,13 +114,16 @@ md.isEnumValue = function(model) {
     }
     return ['typeEnum'].indexOf(model.wzParent.wzElement) > -1;
 };
+md.isBlockStatement = function(model) {
+    return ['xif','xfor','foreach','xwhile','backeach','xtry','xthrow','xswitch', 'xyield','xawait','xdo','xlabel','xfunction','xdelete', 'xvar','xconst','xlet','decl'].indexOf(model.wzElement) > -1;
+};
 md.isMemberAccess = function(model) {
-    if (['memberAccess', 'memberAccessComputed', 'memberCall', 'decoratorCall', 'callOnValue'].indexOf(model.wzElement) > -1) {
+    if (['memberAccess', 'memberAccessComputed', 'memberCall', 'decoratorCall', 'callOnValue', 'typeAs'].indexOf(model.wzElement) > -1) {
         return true;
     }
 };
 md.isMemberAccessOrCall = function(model) {
-    if (['memberAccess', 'memberAccessComputed', 'memberCall', 'decoratorCall', 'callOnValue'].indexOf(model.wzElement) > -1) {
+    if (md.isMemberAccess(model)) {
         return true;
     }
     if (!model.wzParent) {
@@ -137,8 +143,20 @@ md.isArgumentOfCall = function(model) {
 md.onlyChildIs = function(model, element) {
     return model.statements && model.statements.length == 1 && model.statements[0].wzElement === element;
 };
+md.onlyChildIsNot = function(model, element) {
+    return model.statements && model.statements.length == 1 && model.statements[0].wzElement !== element;
+};
+md.isImplicitReturn = function(model) {
+    return md.onlyChildIsNot(model, 'xreturn') && !md.isBlockStatement(model.statements[0]);
+};
 md.onlyChildIsHtmlElement = function(model) {
     return model.statements && model.statements.length == 1 && ( fb_html_supported_tags.indexOf(model.statements[0].wzElement) > -1 || model.statements[0].wzElement === 'htmlelement' );
+};
+md.isSingleParamForArrowFunction = function(model) {
+    if (model.params.length != 1) {
+        return false;
+    }
+    return model.params[0].statements.length == 0;
 };
 md.hasStatementChildren = function(model) {
     if (model.statements && model.statements.length > 0) {
@@ -261,15 +279,6 @@ md.isParenEnclosed = function(text) {
         if (i < (text.length - 1) && count === 0) {
             return false;
         }
-    }
-    return true;
-};
-md.arrowFunctionRequiresGraphs = function(model) {
-    if (model.statements.length == 0 || model.statements.length > 1) {
-        return true;
-    }
-    if (['call', 'statement', 'set'].indexOf(model.statements[0].wzElement) > -1) {
-        return false;
     }
     return true;
 };
@@ -655,7 +664,6 @@ function genTSParams_close(s0, ctx, cnt, callback) {
     else {
         ctx.write(' = ');
         // log 'genTSParams_close 3 item.wzElement', s0.wzElement
-        if (!cnt.stm[s0.wzElement]) {console.log("s0.wzElement", s0.wzElement)}
         cnt.stm[s0.wzElement](s0, ctx, callback)
     }
 }

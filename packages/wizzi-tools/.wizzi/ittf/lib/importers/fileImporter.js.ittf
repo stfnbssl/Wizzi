@@ -20,32 +20,37 @@
 
 		const dirname = path.dirname(filePath)
 		const basename = path.basename(filePath)
-		const extension = path.extname(filePath)
-		var schema = extension.substr(1)
+		var extension = path.extname(filePath)
 		var name = basename.substr(0, basename.length - extension.length)
+        var schema
+        set extension = extension.substr(1)
 		
 		var filePathNorm = verify.replaceAll(filePath, '\\', '/')
 		var baseImportPathNorm = verify.replaceAll(baseImportPath, '\\', '/')
 		var baseExportPathNorm = verify.replaceAll(baseExportPath, '\\', '/')
 		var folderNorm = dirname.substr(baseImportPathNorm.length + 1)
 
-		# log 'importFile', baseImportPath, folderNorm, name, schema
+		# log 'importFile', baseImportPath, folderNorm, name, schema, extension
 
 		var source
 			_ vfile.read
 				@ filePath
 
 		var isVue = false
-		if schema.toLowerCase() === 'vue'
+		if extension.toLowerCase() === 'vue'
 			set source = '<vue>' + source + '</vue>'
 			set schema = 'html'
 			set isVue = true
 
-		if schema.toLowerCase() === 'tsx'
+		elif extension.toLowerCase() === 'tsx'
 			set schema = 'ts'
 
-		if schema.toLowerCase() === 'jsx'
+		elif extension.toLowerCase() === 'jsx'
 			set schema = 'js'
+            set extension = 'js'
+
+        else
+            set schema = extension
 
 		if !packageRoot.canBeWizzified(schema)
 			# log '0', folderNorm, basename
@@ -78,22 +83,20 @@
 				@ source
 				@ options
 				f_cb_no_err( result )
-					if isVue
-						set schema = 'vue'
 					var outpath
 					if folderNorm.length > 0
-						# log '1', folderNorm, name + '.' + schema + '.ittf'
+						# log '1', folderNorm, name + '.' + extension + '.ittf'
 						set outpath
 							_ path.join
 								@ baseExportPathNorm
 								@ folderNorm
-								@ name + '.' + schema + '.ittf'
+								@ name + '.' + extension + '.ittf'
 					else
-						# log '2', folderNorm, name + '.' + schema + '.ittf'
+						# log '2', folderNorm, name + '.' + extension + '.ittf'
 						set outpath
 							_ path.join
 								@ baseExportPathNorm
-								@ name + '.' + schema + '.ittf'
+								@ name + '.' + extension + '.ittf'
 					log '             to ' + outpath
 					if err
 						log 'Error', outpath, err

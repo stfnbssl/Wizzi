@@ -26,9 +26,10 @@ module
                 @ 'e2e'
                 @ 'styled'
                 @ 'types'
-                *$
                 @ 'styled'
                 @ 'keyframes'
+                *$
+                @ 'quick'
 
    		_ async.mapSeries
 			@ example_ittfs

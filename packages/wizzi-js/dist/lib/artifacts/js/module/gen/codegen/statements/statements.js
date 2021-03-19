@@ -35,9 +35,9 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.statement. Got: ' + callback);
         }
-        // log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName
+        console.log('wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild);
         if (model.__templateChild) {
-            ctx.write(verify.replaceAll(verify.replaceAll(model.wzName, '\\b', ' '), '\\n', '\n'))
+            ctx.write(verify.replaceAll(verify.replaceAll(model.wzName, '&nbsp;', ' '), '&lf;', '\n'))
             return callback(null, null);
         }
         else if (ctx.__inside_html == true && ctx.__jskind !== 'react') {
@@ -425,6 +425,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.set. Got: ' + callback);
         }
         var text;
+        console.log('set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|');
         // FIXME this hack require refactoring
         if (model.wzName === 'work.textSep = "__TS__"') {
             text = model.wzName;
@@ -449,13 +450,11 @@ md.load = function(cnt) {
         if (model.statements[0].wzEntity === 'function') {
             ctx.w('');
         }
+        console.log('set,model.statements.length', model.wzName, model.statements.length);
         if (model.statements.length == 2) {
-            cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
-                if (err) {
-                    return callback(err);
-                }
-                ctx.write(' ' + model.wzName + ' ')
-                cnt.genItem(model.statements[1], ctx, function(err, notUsed) {
+            if (model.statements[0].wzElement == 'comment') {
+                ctx.w(model.wzName + ' ')
+                cnt.genItems(model.statements, ctx, {}, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
@@ -464,7 +463,24 @@ md.load = function(cnt) {
                     }
                     return callback(null, null);
                 })
-            })
+            }
+            else {
+                cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    ctx.write(' ' + model.wzName + ' ')
+                    cnt.genItem(model.statements[1], ctx, function(err, notUsed) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        if (u.isTopStatement(model, ctx)) {
+                            ctx.w(';');
+                        }
+                        return callback(null, null);
+                    })
+                })
+            }
         }
         else {
             ctx.write(u.setOperator(text, model.statements))

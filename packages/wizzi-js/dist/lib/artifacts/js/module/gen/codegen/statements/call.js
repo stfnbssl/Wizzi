@@ -199,15 +199,16 @@ md.load = function(cnt) {
         }
     }
     function doCallChildStatements_two(model, name, hasParens, ctx, callback) {
+        console.log('doCallChildStatements_two', name, hasParens);
         if (hasParens === false) {
-            ctx.write('(');
-            /**
-                VIA 20/2/19
-                if (name.length > 0) {
-                    ctx.write('(');
-                }
-            */
+            // log 'doCallChildStatements_two 1', model.wzElement
+            // VIA 20/2/19 if name.length > 0
+            // restored 19/3/21 for call template (`lit), waiting for damage
+            if (name.length > 0 || model.wzElement == 'callOnValue') {
+                ctx.write('(');
+            }
         }
+        var first = true;
         var len_1 = model.statements.length;
         function repeater_1(index_1) {
             if (index_1 === len_1) {
@@ -229,12 +230,18 @@ md.load = function(cnt) {
                 }
                 return doCallChildStatements_call(item_1, ctx, remainings, callback);
             }
-            if (index_1 > 0) {
+            if (!first) {
                 ctx.write(', ');
+            }
+            if (item_1.wzElement == 'comment') {
+                ctx.w();
             }
             cnt.genItem(item_1, ctx, function(err, notUsed) {
                 if (err) {
                     return callback(err);
+                }
+                if (item_1.wzElement != 'comment') {
+                    first = false;
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
@@ -244,6 +251,7 @@ md.load = function(cnt) {
         repeater_1(0);
         function next_1() {
             ;
+            // log 'doCallChildStatements_two 2'
             if (hasParens === false) {
                 ctx.write(')');
             }

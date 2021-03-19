@@ -4,15 +4,15 @@
 		var lineParser = require('../util/lineParser')
 
     stm( statement
-		# log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName
+		log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild
 		if model.__templateChild
 			_ ctx.write
 				_ verify.replaceAll
 					_ verify.replaceAll
 						@ model.wzName
-						@ '\\b'
+						@ '&nbsp;'
 						@ ' '
-					@ '\\n'
+					@ '&lf;'
 					@ '\n'
 			r_cb()
         elif ctx.__inside_html == true && ctx.__jskind !== 'react'
@@ -298,6 +298,7 @@
     
 	stm( set
 		var text
+        log 'set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|'
 		# FIXME this hack require refactoring
 		if model.wzName === 'work.textSep = "__TS__"'
 			set text = model.wzName
@@ -323,20 +324,33 @@
 		if model.statements[0].wzEntity === 'function'
             _ ctx.w('')
         
-		if model.statements.length == 2
-			_ cnt.genItem
-				@ model.statements[0]
-				@ ctx
-				f_cb()
-					_ ctx.write
-						@ ' ' + model.wzName + ' ' 
-					_ cnt.genItem
-						@ model.statements[1]
-						@ ctx
-						f_cb()
-							if u.isTopStatement(model, ctx)
-								_ ctx.w(';')
-							r_cb()
+		log 'set,model.statements.length', model.wzName, model.statements.length
+        if model.statements.length == 2
+            if model.statements[0].wzElement == 'comment'
+                _ ctx.w
+                    @ model.wzName + ' ' 
+                _ cnt.genItems
+                    @ model.statements
+                    @ ctx
+                    { 
+                    f_cb()
+                        if u.isTopStatement(model, ctx)
+                            _ ctx.w(';')
+                        r_cb()
+            else
+                _ cnt.genItem
+                    @ model.statements[0]
+                    @ ctx
+                    f_cb()
+                        _ ctx.write
+                            @ ' ' + model.wzName + ' ' 
+                        _ cnt.genItem
+                            @ model.statements[1]
+                            @ ctx
+                            f_cb()
+                                if u.isTopStatement(model, ctx)
+                                    _ ctx.w(';')
+                                r_cb()
 		else
 			_ ctx.write
 				_ u.setOperator

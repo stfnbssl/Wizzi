@@ -292,15 +292,13 @@ md.load = function(cnt) {
         }
         var async_str = model.xasync ? 'async ' : '';
         if (ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent') {
-            var save1 = ctx.arrowFunctionNoGraphs;
-            ctx.arrowFunctionNoGraphs = !u.arrowFunctionRequiresGraphs(model);
-            var openGraph = ctx.arrowFunctionNoGraphs ? '' : ' {';
+            var implicitReturn = u.isImplicitReturn(model);
             ctx.w(async_str + model.wzName + ' = (');
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {
                 if (err) {
                     return callback(err);
                 }
-                ctx.w(') =>' + openGraph);
+                ctx.w(') =>' + (implicitReturn ? '' : '{'));
                 ctx.indent();
                 cnt.genItems(model.statements, ctx, {
                     indent: false
@@ -309,10 +307,7 @@ md.load = function(cnt) {
                         return callback(err);
                     }
                     ctx.deindent();
-                    if (ctx.arrowFunctionNoGraphs == false) {
-                        ctx.w('}');
-                    }
-                    ctx.arrowFunctionNoGraphs = save1;
+                    ctx.w(implicitReturn ? '' : '}');
                     return callback(null, null);
                 })
             })
@@ -342,26 +337,34 @@ md.load = function(cnt) {
                 }, callback)
             })
         }
+        else if (u.isImplicitReturn(model)) {
+            console.log('isImplicitReturn', model.wzElement, model.wzName);
+            var isSingleParam = u.isSingleParamForArrowFunction(model);
+            ctx.write(async_str + (isSingleParam ? '' : '('));
+            u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write((isSingleParam ? '' : ')') + ' => ');
+                cnt.genItems(model.statements, ctx, {
+                    indent: true
+                }, callback)
+            })
+        }
         else {
-            var save1 = ctx.arrowFunctionNoGraphs;
-            ctx.arrowFunctionNoGraphs = !u.arrowFunctionRequiresGraphs(model);
-            var openGraph = ctx.arrowFunctionNoGraphs ? '' : ' {';
             ctx.write(async_str + '(');
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {
                 if (err) {
                     return callback(err);
                 }
-                ctx.w(') =>' + openGraph);
+                ctx.w(') => {');
                 cnt.genItems(model.statements, ctx, {
                     indent: true
                 }, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
-                    if (ctx.arrowFunctionNoGraphs == false) {
-                        ctx.write('}');
-                    }
-                    ctx.arrowFunctionNoGraphs = save1;
+                    ctx.w('}');
                     return callback(null, null);
                 })
             })

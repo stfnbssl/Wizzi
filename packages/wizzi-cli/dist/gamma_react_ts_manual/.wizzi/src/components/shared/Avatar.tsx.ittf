@@ -1,0 +1,80 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    :type State
+        :{ 
+            :p loaded
+                :boolean 
+    :type Props
+        :{ 
+            :p size
+                :number 
+            :p source
+                :string 
+    export-default 
+        class Avatar
+            super React.Component
+                :param 
+                    :ref Props
+                :param 
+                    :ref State
+            p state
+                { 
+                    @ loaded false
+            => _handleLoad
+                _ this.setState
+                    { 
+                        @ loaded true
+            m render
+                return 
+                    div 
+                        @ className {css(styles.container)}
+                        @ style
+                            { 
+                                @ width this.props.size
+                                @ height this.props.size
+                                @ borderRadius this.props.size / 2
+                        div 
+                            @ className {css(styles.background)}
+                            @ style
+                                { 
+                                    @ opacity
+                                        iif this.state.loaded
+                                            then 1
+                                            else 0
+                        { 
+                            iif this.props.source
+                                then
+                                    img 
+                                        @ className {css(styles.avatar)}
+                                        @ src {this.props.source}
+                                        @ onLoad {this._handleLoad}
+                                else null
+    const styles
+        _ StyleSheet.create
+            { 
+                { container
+                    @ position 'relative'
+                    @ overflow 'hidden'
+                    @ margin 'auto'
+                { avatar
+                    @ position 'relative'
+                    @ height '100%'
+                    @ width '100%'
+                    @ margin 0
+                    @ display 'block'
+                    @ transition '100ms linear opacity'
+                    @ zIndex 1
+                { background
+                    @ position 'absolute'
+                    @ top 0
+                    @ left 0
+                    @ height '100%'
+                    @ width '100%'
+                    @ opacity 0.2
+                    @ backgroundColor 'currentColor'

@@ -15,7 +15,7 @@
 
 	stm( expressionMember
 		_ ctx.write( model.wzName || '')
-        log 'expressionMember', model.statements
+        # log 'expressionMember', model.statements
 		_ cnt.genItems
 			@ model.statements
 			@ ctx
@@ -137,7 +137,7 @@
 								@ callback
     
 	fn( iif_end )
-        log 'iif_end', u.isTopStatement(model, ctx)
+        # log 'iif_end', u.isTopStatement(model, ctx)
 		if u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false
 			_ console.log
 				@ 'iif'
@@ -173,7 +173,12 @@
                 @ indent true
 			@ callback
     
-	stm( op_eq
+    stm( op_typeof
+        _ ctx.write
+            @ 'typeof(' + model.wzName + ')'
+        r_cb()
+
+    stm( op_eq
         _ emitOperators(cnt, '==', model, ctx, callback)
     
 	stm( op_noteq

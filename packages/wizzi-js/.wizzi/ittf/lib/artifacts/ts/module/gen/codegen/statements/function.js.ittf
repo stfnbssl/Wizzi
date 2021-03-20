@@ -252,7 +252,7 @@
 							@ indent true
 						@ callback
 		elif u.isImplicitReturn(model)
-            log 'isImplicitReturn', model.wzElement, model.wzName
+            # log 'isImplicitReturn', model.wzElement, model.wzName
             var isSingleParam = u.isSingleParamForArrowFunction(model)
             _ ctx.write(async_str + (isSingleParam ? '' : '('))
 			_ u.genTSParams

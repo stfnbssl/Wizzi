@@ -8,23 +8,23 @@ $group
         { section
             title "docs"
             ariaLabel "Link to Docs home"
-            href "${gctxBaseUrl}/docs/concepts.html"
+            href "${wzConfigBaseUrl}/docs/concepts.html"
         
         [ menuGroups
             {
                 [ menus
                     {
                         title "Resources"
-                        url "${gctxBaseUrl}/docs/resources/index.html"
+                        url "${wzConfigBaseUrl}/docs/resources/index.html"
                     {
                         title "Packy"
-                        url "${gctxBaseUrl}/docs/packy/index.html"
+                        url "${wzConfigBaseUrl}/docs/packy/index.html"
                     {
                         title "News"
-                        url "${gctxBaseUrl}/docs/news/index.html"
+                        url "${wzConfigBaseUrl}/docs/news/index.html"
             {
                 [ menus
                     {
                         kind "button"
                         title "Get started"
-                        href "${gctxBaseUrl}/get-started/"
+                        href "${wzConfigBaseUrl}/get-started/"

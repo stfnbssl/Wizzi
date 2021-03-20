@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\LargeInput.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -42,13 +42,10 @@ class LargeInput extends React.Component<Props, State> {
     render() {
         return  (
                 <div className={css(styles.container)}>
-                    <input ref={this._input} autoFocus={this.props.autoFocus} className={css(styles.input, this.props.error ? styles.error : styles.normal, this.props.theme === 'dark' ? styles.inputDark : styles.inputLight)} value={this.props.value} name={this.props.name} type={this.props.type} disabled={this.props.disabled} onChange={this.props.onChange} placeholder={this.props.placeholder} onFocus={this._handleFocus} onBlur={this._handleBlur}>
-                    </input>
-                
+                    <input ref={this._input} autoFocus={this.props.autoFocus} className={css(styles.input, this.props.error ? styles.error : styles.normal, this.props.theme === 'dark' ? styles.inputDark : styles.inputLight)} value={this.props.value} name={this.props.name} type={this.props.type} disabled={this.props.disabled} onChange={this.props.onChange} placeholder={this.props.placeholder} onFocus={this._handleFocus} onBlur={this._handleBlur} />
                 {
                     this.state.focused && this.props.error ?  (
-                            <div className={css(styles.validation)}>
-                            {this.props.error.message}</div>
+                            <div className={css(styles.validation)} />
                         )
                      : null
                 }</div>

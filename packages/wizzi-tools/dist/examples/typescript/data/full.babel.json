@@ -7,103 +7,60 @@
     "interpreter": null,
     "body": [
       {
-        "type": "VariableDeclaration",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Identifier",
-              "name": "a"
-            },
-            "init": {
-              "type": "JSXElement",
-              "openingElement": {
-                "type": "JSXOpeningElement",
-                "name": {
-                  "type": "JSXIdentifier",
-                  "name": "Block"
-                },
-                "attributes": [
-                  {
-                    "type": "JSXAttribute",
-                    "name": {
-                      "type": "JSXIdentifier",
-                      "name": "white"
-                    },
-                    "value": {
-                      "type": "JSXExpressionContainer",
-                      "expression": {
-                        "type": "Identifier",
-                        "name": "white"
-                      }
-                    }
-                  },
-                  {
-                    "type": "JSXAttribute",
-                    "name": {
-                      "type": "JSXIdentifier",
-                      "name": "black"
-                    },
-                    "value": {
-                      "type": "JSXExpressionContainer",
-                      "expression": {
-                        "type": "Identifier",
-                        "name": "black"
-                      }
-                    }
-                  },
-                  {
-                    "type": "JSXAttribute",
-                    "name": {
-                      "type": "JSXIdentifier",
-                      "name": "className"
-                    },
-                    "value": {
-                      "type": "JSXExpressionContainer",
-                      "expression": {
-                        "type": "CallExpression",
-                        "callee": {
-                          "type": "Identifier",
-                          "name": "css"
-                        },
-                        "arguments": [
-                          {
-                            "type": "MemberExpression",
-                            "object": {
-                              "type": "Identifier",
-                              "name": "styles"
-                            },
-                            "computed": false,
-                            "property": {
-                              "type": "Identifier",
-                              "name": "item"
-                            }
-                          },
-                          {
-                            "type": "MemberExpression",
-                            "object": {
-                              "type": "Identifier",
-                              "name": "styles"
-                            },
-                            "computed": false,
-                            "property": {
-                              "type": "Identifier",
-                              "name": "a"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  }
-                ],
-                "selfClosing": true
+        "type": "ForOfStatement",
+        "await": false,
+        "left": {
+          "type": "VariableDeclaration",
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "id": {
+                "type": "Identifier",
+                "name": "filename"
               },
-              "closingElement": null,
-              "children": []
+              "init": null
             }
-          }
-        ],
-        "kind": "const"
+          ],
+          "kind": "const"
+        },
+        "right": {
+          "type": "CallExpression",
+          "callee": {
+            "type": "MemberExpression",
+            "object": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "MemberExpression",
+                "object": {
+                  "type": "Identifier",
+                  "name": "Object"
+                },
+                "computed": false,
+                "property": {
+                  "type": "Identifier",
+                  "name": "keys"
+                }
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "name": "files"
+                }
+              ]
+            },
+            "computed": false,
+            "property": {
+              "type": "Identifier",
+              "name": "sort"
+            }
+          },
+          "arguments": []
+        },
+        "body": {
+          "type": "BlockStatement",
+          "body": [],
+          "directives": []
+        }
       }
     ],
     "directives": []

@@ -64,8 +64,7 @@ module
             { 
                 @ children
                 :ref Props
-            const [prefs]
-                _ usePreferences
+            const [prefs] = usePreferences()
             return 
                 div 
                     @ className

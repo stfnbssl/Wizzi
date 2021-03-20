@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Spinner.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import {css, StyleSheet} from 'aphrodite';
 import React from 'react';
@@ -50,8 +50,7 @@ export default class LoadingIndicator extends React.Component<Props> {
                 segments.push(
                     <line key={ii} x1="0" y1={innerRadius} x2="0" y2={innerRadius + segmentLength} style={{
                         opacity
-                    }} transform={`rotate(${rotation})`}>
-                    </line>
+                    }} transform={`rotate(${rotation})`} />
                 )
             }
             const {
@@ -64,9 +63,7 @@ export default class LoadingIndicator extends React.Component<Props> {
             const radius = innerRadius + segmentLength + Math.ceil(segmentWidth / 2);
             return  (
                     <svg className={css(styles.indicator)} width={radius * 2} height={radius * 2}>
-                        <g stroke={rgbaColor} strokeWidth={segmentWidth} strokeLinecap="round" transform={`translate(${radius}, ${radius})`}>
-                        {segments}</g>
-                    
+                        <g stroke={rgbaColor} strokeWidth={segmentWidth} strokeLinecap="round" transform={`translate(${radius}, ${radius})`} />
                     </svg>
                 )
             ;

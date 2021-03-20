@@ -338,7 +338,7 @@ md.load = function(cnt) {
             })
         }
         else if (u.isImplicitReturn(model)) {
-            console.log('isImplicitReturn', model.wzElement, model.wzName);
+            // log 'isImplicitReturn', model.wzElement, model.wzName
             var isSingleParam = u.isSingleParamForArrowFunction(model);
             ctx.write(async_str + (isSingleParam ? '' : '('));
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {

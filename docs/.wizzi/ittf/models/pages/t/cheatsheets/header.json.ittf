@@ -10,7 +10,7 @@ $group
         { section
             title "cheatsheets"
             ariaLabel "Link to Cheatsheets home"
-            href "${gctxBaseUrl}/cheatsheets/cs-ittf.html"
+            href "${wzConfigBaseUrl}/cheatsheets/cs-ittf.html"
         
         [ menuGroups
             {
@@ -18,7 +18,7 @@ $group
                     $foreach schema in g_schemas
                         {
                             title "${_.capitalize(schema)}"
-                            href "${gctxBaseUrl}/cheatsheets/cs-${schema}.html"
+                            href "${wzConfigBaseUrl}/cheatsheets/cs-${schema}.html"
             {
                 [ menus
                     {

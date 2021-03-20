@@ -7,7 +7,7 @@
 	+
 	var md = module.exports = {}
 	+
-	$if gctx_useMongo
+	$if wzConfig_useMongo
 		var MongoDocument = require('./lib/mongodb/fs/document')
 		var MongoFsImpl = require('./lib/mongodb/mongoFsImpl')
 	$else

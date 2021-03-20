@@ -19,9 +19,9 @@ module.exports = {
     schemas: [
     ],
     globalContext: {
-        gctxIsPackageDeploy: true,
-        gctxIsDevelopment: false,
-        gctxBaseUrl: 'https://stfnbssl.github.io/wizzi'
+        wzConfigIsPackageDeploy: true,
+        wzConfigIsDevelopment: false,
+        wzConfigBaseUrl: 'https://stfnbssl.github.io/wizzi'
     },
 };
 

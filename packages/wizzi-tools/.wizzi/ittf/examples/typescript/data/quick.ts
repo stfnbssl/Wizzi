@@ -1,1 +1,4 @@
-﻿const a = <Block white={white} black={black} className={css(styles.item, styles.a)} />
+﻿
+
+
+for (const filename of Object.keys(files).sort()) {}

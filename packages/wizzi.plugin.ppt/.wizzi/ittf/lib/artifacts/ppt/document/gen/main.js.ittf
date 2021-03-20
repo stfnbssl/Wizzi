@@ -68,7 +68,7 @@ module
                 @ ctx
                 @ noindent
                 a_cb()
-                    $if gctxIsDevelopment
+                    $if wzConfigIsDevelopment
                         _ ctx.w('')
                         _ ctx.w('// Dump for test')
                         _ ctx.w('    fs.writeFileSync(__dirname + "/' + model.wzName + '.ppt.json", JSON.stringify(' + ctx.values.pptMainInstance + '_debug, null, "\t"));')
@@ -125,7 +125,7 @@ module
                     _ ctx.w(pptParent + '_items.push({ text: ' + pptNode + '_text, options: ' + pptNode + ' });')
                 else
                     _ ctx.w(pptParent + '.content = { text: ' + pptNode + '_text, options: ' + pptNode + ' };')
-                $if gctxIsDevelopment
+                $if wzConfigIsDevelopment
                     if model.wzParent.wzElement == 'slide'
                         _ ctx.w(pptParent + '_debug.items.push({ text: ' + pptNode + '_text, options: ' + pptNode + ' });')
 
@@ -137,7 +137,7 @@ module
                     _ ctx.w(pptParent + '.addText(' + pptNode + '_items, ' + pptNode + ');')
                 else
                     _ ctx.w(pptParent + '.content = { text: ' + pptNode + '_items, options: ' + pptNode + ' };')
-                $if gctxIsDevelopment
+                $if wzConfigIsDevelopment
                     if model.wzParent.wzElement == 'slide'
                         _ ctx.w(pptParent + '_debug.items.push({ pStack: ' + pptNode + '_items, options: ' + pptNode + ' });')
 
@@ -150,7 +150,7 @@ module
                     _ ctx.w(pptParent + '.addImage(' + pptNode + ');')
                 else
                     throw new Error("Image not child of slide not managed")
-                $if gctxIsDevelopment
+                $if wzConfigIsDevelopment
                     if model.wzParent.wzElement == 'slide'
                         _ ctx.w(pptParent + '_debug.items.push({ image: ' + pptNode + ' });')
 
@@ -160,7 +160,7 @@ module
                     _ ctx.w(pptParent + '.addShape(' + ctx.values.pptMainInstance + '.shapes.' + model.wzName + ', ' + pptNode + ');')
                 else
                     throw new Error("Image not child of slide not managed")
-                $if gctxIsDevelopment
+                $if wzConfigIsDevelopment
                     if model.wzParent.wzElement == 'slide'
                         _ ctx.w(pptParent + '_debug.items.push({ shape_' + model.wzName + ': ' + pptNode + ' });')
 
@@ -325,7 +325,7 @@ module
             _ ctx.w(pptNode + '_rows = [];')
             $append close
                 _ ctx.w(pptParent + '.addTable(' + pptNode + '_rows, ' + pptNode + ');')
-                $if gctxIsDevelopment
+                $if wzConfigIsDevelopment
                     _ ctx.w(pptParent + '_debug.items.push({ table: ' + pptNode + '_rows, options: ' + pptNode + ' });')
 
         arrayNode.js( tr )   
@@ -351,13 +351,13 @@ module
         objectNode.js( styleDef )
             $append close
                 _ ctx.w('styles["' + model.wzName + '"] = ' + pptNode + ';')
-                $if gctxIsDevelopment
+                $if wzConfigIsDevelopment
                     _ ctx.w(ctx.values.pptMainInstance + '_debug.styles["' + model.wzName + '"] = ' + pptNode + ';')
 
         objectNode.js( defaultStyleDef )
             $append close
                 _ ctx.w('defaultStyle.content = ' + pptNode + ';')
-                $if gctxIsDevelopment
+                $if wzConfigIsDevelopment
                     _ ctx.w(ctx.values.pptMainInstance + '_debug.defaultStyle = ' + pptNode + ';')
 
         objectNode.js( spacing )

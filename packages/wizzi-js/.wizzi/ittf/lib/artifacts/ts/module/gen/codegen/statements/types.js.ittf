@@ -123,7 +123,7 @@
 			r_cb()
 		elif model.statements.length == 1
 			var item = model.statements[0]
-			log 'typeParameterInst,item.wzElement', item.wzElement
+			# log 'typeParameterInst,item.wzElement', item.wzElement
             if !cnt.stm[item.wzElement]
 				log 'ts.module.gen.item.wzElement not managed', item.wzElement
 			_ cnt.stm[item.wzElement]
@@ -200,7 +200,7 @@
 		repeater( 1, model.statements )
 			if index_1 > 0
 				_ ctx.write(' , ')
-			log 'typeTuple.item_1.wzElement', item_1.wzElement, item_1.wzName
+			# log 'typeTuple.item_1.wzElement', item_1.wzElement, item_1.wzName
 			_ cnt.genItem
 				@ item_1
 				@ ctx
@@ -216,7 +216,7 @@
 		repeater( 1, model.statements )
 			if index_1 > 0
 				_ ctx.w(' , ')
-			log 'typeEnum.item_1.wzElement', item_1.wzElement, item_1.wzName
+			# log 'typeEnum.item_1.wzElement', item_1.wzElement, item_1.wzName
 			_ cnt.genItem
 				@ item_1
 				@ ctx
@@ -270,7 +270,7 @@
 		repeater( 1, model.statements )
 			if index_1 > 0
 				_ ctx.write(' , ')
-			log 'typeKeyOf.item_1.wzElement', item_1.wzElement, item_1.wzName
+			# log 'typeKeyOf.item_1.wzElement', item_1.wzElement, item_1.wzName
 			_ cnt.genItem
 				@ item_1
 				@ ctx
@@ -316,7 +316,7 @@
 		repeater( 1, model.statements )
 			if index_1 > 0
 				_ ctx.write(' & ')
-			log 'typeIntersect.item_1.wzElement', item_1.wzElement, item_1.wzName
+			# log 'typeIntersect.item_1.wzElement', item_1.wzElement, item_1.wzName
 			_ cnt.genItem
 				@ item_1
 				@ ctx
@@ -330,6 +330,7 @@
 		_ ctx.write( model.wzName || '')
 		if model.statements.length == 0
 			_ ctx.write('!')
+            r_cb()
 		else
 			_ cnt.genItems
 				@ model.statements
@@ -395,7 +396,7 @@
 			@ ctx
 			@ cnt
 			a_cb()
-				log '11'
+				# log '11'
 				_ ctx.write(']')
 				if atype
 					_ ctx.write(': ')
@@ -437,7 +438,7 @@
 	stm( typeMapped, kind
 		if model.statements.length == 2
 			var item = model.statements[0]
-            log 'ts.module.gen.typeMapped', item.wzElement
+            # log 'ts.module.gen.typeMapped', item.wzElement
 			if !cnt.stm[item.wzElement]
 				log 'ts.module.gen.item.wzElement not managed', item.wzElement
 			_ ctx.write('[')

@@ -6,7 +6,7 @@
 	const wizziUtils = require('wizzi-utils')
     const verify = wizziUtils.verify
 	const file = wizziUtils.file
-    $if gctxIsDevelopment
+    $if wzConfigIsDevelopment
 	    const wizziTools = require('../../../wizzi-tools/dist/index')
     $else
         const wizziTools = require('wizzi-tools')

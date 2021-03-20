@@ -310,14 +310,14 @@ md.load = function(cnt) {
             }, callback)
         }
         else if (u.onlyChildIs(model, 'arrowfunction')) {
-            console.log("u.onlyChildIs(model, 'arrowfunction')", model.statements[0].paramNames);
+            // log "u.onlyChildIs(model, 'arrowfunction')", model.statements[0].paramNames
             ctx.write(async_str + '(' + model.paramNames.join(', ') + ') => ');
             cnt.genItems(model.statements, ctx, {
                 indent: true
             }, callback)
         }
         else if (u.isImplicitReturn(model)) {
-            console.log('isImplicitReturn', model.wzElement, model.wzName);
+            // log 'isImplicitReturn', model.wzElement, model.wzName
             var isSingleParam = u.isSingleParamForArrowFunction(model);
             ctx.w(async_str + (isSingleParam ? '' : '(') + model.paramNames.join(', ') + (isSingleParam ? '' : ')') + ' =>');
             cnt.genItems(model.statements, ctx, {

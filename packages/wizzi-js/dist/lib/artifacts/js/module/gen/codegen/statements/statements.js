@@ -35,7 +35,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.statement. Got: ' + callback);
         }
-        console.log('wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild);
+        // log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild
         if (model.__templateChild) {
             ctx.write(verify.replaceAll(verify.replaceAll(model.wzName, '&nbsp;', ' '), '&lf;', '\n'))
             return callback(null, null);
@@ -425,7 +425,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.set. Got: ' + callback);
         }
         var text;
-        console.log('set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|');
+        // log 'set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|'
         // FIXME this hack require refactoring
         if (model.wzName === 'work.textSep = "__TS__"') {
             text = model.wzName;
@@ -450,7 +450,7 @@ md.load = function(cnt) {
         if (model.statements[0].wzEntity === 'function') {
             ctx.w('');
         }
-        console.log('set,model.statements.length', model.wzName, model.statements.length);
+        // log 'set,model.statements.length', model.wzName, model.statements.length
         if (model.statements.length == 2) {
             if (model.statements[0].wzElement == 'comment') {
                 ctx.w(model.wzName + ' ')

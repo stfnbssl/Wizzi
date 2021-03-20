@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ToggleSwitch.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -20,15 +20,9 @@ export default function ToggleSwitch(props: Props) {
         const [prefs] = usePreferences();
         return  (
                 <label className={classnames(css(styles.container), props.className)}>
-                    <span className={css(styles.label)}>
-                    {props.label}</span>
-                
-                    <span className={css(styles.switch, props.checked ? styles.active : styles.inactive, prefs.theme === 'dark' ? styles.dark : styles.light, prefs.theme === 'dark' ? props.checked ? styles.darkActive : styles.darkInactive : props.checked ? styles.lightActive : styles.lightInactive)}>
-                    </span>
-                
-                    <input type="checkbox" checked={props.checked} onChange={props.onChange} className={css(styles.check)}>
-                    </input>
-                
+                    <span className={css(styles.label)} />
+                    <span className={css(styles.switch, props.checked ? styles.active : styles.inactive, prefs.theme === 'dark' ? styles.dark : styles.light, prefs.theme === 'dark' ? props.checked ? styles.darkActive : styles.darkInactive : props.checked ? styles.lightActive : styles.lightInactive)} />
+                    <input type="checkbox" checked={props.checked} onChange={props.onChange} className={css(styles.check)} />
                 </label>
             )
         ;

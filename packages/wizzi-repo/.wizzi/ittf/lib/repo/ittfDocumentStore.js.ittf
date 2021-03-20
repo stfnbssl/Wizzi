@@ -6,7 +6,7 @@
 	# var uriParser = require('./uriParser')
 	var uriParser = require('wizzi-utils').uriParser
 	var FileSystemStore = require('./fileSystemStore')
-	$if gctx_useMongo
+	$if wzConfig_useMongo
 		var MongoDbStore = require('./mongoDbStore')
 	$else
 		var MongoDbStore = {}
@@ -56,7 +56,7 @@
 					return
 						_ callback(null)
 			
-			$if gctx_useMongo
+			$if wzConfig_useMongo
 				
 				elif storeInfo.storeKind === 'mongodb'
 					set this.storeImpl = new MongoDbStore()

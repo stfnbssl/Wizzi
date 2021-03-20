@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\largeInput.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import React, {Component} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -93,13 +93,10 @@ export class LargeInput extends Component<LargeInputProps, LargeInputState> {
     render() {
         return  (
                 <Container>
-                    <Input ref={this._input} autoFocus={this.props.autoFocus} value={this.props.value} name={this.props.name} type={this.props.type} disabled={this.props.disabled} onChange={this.props.onChange} placeholder={this.props.placeholder} onFocus={this._handleFocus} onBlur={this._handleBlur} dark={this.props.dark} error={!!this.props.error}>
-                    </Input>
-                
+                    <Input ref={this._input} autoFocus={this.props.autoFocus} value={this.props.value} name={this.props.name} type={this.props.type} disabled={this.props.disabled} onChange={this.props.onChange} placeholder={this.props.placeholder} onFocus={this._handleFocus} onBlur={this._handleBlur} dark={this.props.dark} error={!!this.props.error} />
                 {
                     this.state.focused && this.props.error ?  (
-                            <Validation>
-                            {this.props.error.message}</Validation>
+                            <Validation />
                         )
                      : null
                 }</Container>

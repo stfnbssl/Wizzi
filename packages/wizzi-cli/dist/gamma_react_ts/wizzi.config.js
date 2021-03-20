@@ -19,6 +19,6 @@ module.exports = {
         
     ], 
     globalContext: {
-        gctxIsDevelopment: true
+        wzConfigIsDevelopment: true
     }
 };

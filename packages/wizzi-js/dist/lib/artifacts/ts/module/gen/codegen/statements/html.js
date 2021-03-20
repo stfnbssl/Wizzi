@@ -10,6 +10,8 @@ var node = require('wizzi-utils').node;
 var u = require('../../../../../js/module/gen/codegen/util/stm');
 var lineParser = require('../../../../../js/module/gen/codegen/util/lineParser');
 var htmlReact = require('../es6/htmlReact');
+// entry point for html tags in code
+// preprocessed by [js|ts]-mtree-preprocessor
 
 var myname = 'wizzi-js.artifacts.ts.module.gen.codegen.statements.html';
 var md = module.exports = {};
@@ -139,6 +141,7 @@ md.load = function(cnt) {
                 return next_1();
             }
             var item_1 = model.statements[index_1];
+            // log 'html.md._htmlelement', item_1.wzElement
             if (item_1.isEvent) {
                 var name = item_1.wzElement;
                 if (item_1.statements && item_1.statements.length > 0) {
@@ -186,6 +189,9 @@ md.load = function(cnt) {
                     value: value.trim(), 
                     statements: statements
                 })
+            }
+            else if (item_1.wzElement === 'htmlelement') {
+                model.__hasChildElements = true;
             }
             process.nextTick(function() {
                 repeater_1(index_1 + 1);

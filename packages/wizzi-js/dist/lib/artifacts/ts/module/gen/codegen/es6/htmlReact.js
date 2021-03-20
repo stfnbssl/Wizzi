@@ -66,8 +66,8 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
     }
     repeater_1(0);
     function next_1() {
-        console.log('htmlelement_open.model.statements.length', model.statements.length);
-        if (model.statements.length > 0) {
+        // log 'htmlelement_open.model.statements.length', model.statements.length
+        if (model.__hasChildElements == true) {
             ctx.w(">");
             // end of open tag
             return callback(null, false);
@@ -75,6 +75,7 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
         else {
             ctx.w(" />");
             // end of tag
+            htmlelement_tagclose(model, ctx)
             return callback(null, true);
         }
     }
@@ -118,19 +119,22 @@ function htmlelement_end(cnt, model, ctx, tag, text, callback) {
             return callback(err);
         }
         ctx.w("</" + tag + ">");
-        ctx.deindent();
-        if (u.parentIsHtmlElement(model)) {
-            ctx.w();
-        }
-        else {
-            if (u.isArgumentOfCall(model)) {
-                // _ ctx.write(')')
-            }
-            else {
-                // _ ctx.w(');') // 7/4/2017
-                ctx.w(')');
-            }
-        }
+        htmlelement_tagclose(model, ctx)
         return callback(null, null);
     })
+}
+function htmlelement_tagclose(model, ctx) {
+    ctx.deindent();
+    if (u.parentIsHtmlElement(model)) {
+        // _ ctx.w() // 20/3/21
+    }
+    else {
+        if (u.isArgumentOfCall(model)) {
+            // _ ctx.write(')')
+        }
+        else {
+            // _ ctx.w(');') // 7/4/2017
+            ctx.w(')');
+        }
+    }
 }

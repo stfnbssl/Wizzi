@@ -1,6 +1,69 @@
 module
-    const a
-        < Block 
-            @ white {white}
-            @ black {black}
-            @ className {css(styles.item, styles.a)}
+    import 
+        @ all
+        @ fork
+        @ put
+        @ takeEvery
+        @ call
+        #
+            # , takeLatest
+        from 'redux-saga/effects'
+    import 
+        @ getType
+        from 'typesafe-actions'
+    import 
+        @ config
+        from '../config'
+    import 
+        @ packiActions
+        from '../packi'
+    import 
+        @ INITIAL_CODE
+        @ DEFAULT_PACKI_NAME
+        from '../packi/defaults'
+    import 
+        as appActions
+        from './actions'
+    import 
+        @ callApi
+        from '../../utils/api'
+    function* handleLoginUserByStoredUid
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof appActions.loginUserByStoredUid
+        try 
+            _ console.log('sagas.handleLoginUserByStoredUid.action', action)
+            const res
+                yield call(callApi, 'get', config.API_URL, 'auth/github/loggedin/' + encodeURIComponent(action.payload.uid))
+            _ console.log('sagas.handleLoginUserByStoredUid.res', res)
+            yield put(appActions.loginUserByStoredUidSuccess(res))
+            if action.payload.selectedPackiId
+                yield 
+                    _ put
+                        _ packiActions.selectPackiRequest
+                            { 
+                                @ id action.payload.selectedPackiId
+            else
+                yield 
+                    _ put
+                        _ packiActions.selectPackiSuccess
+                            { 
+                                @ id DEFAULT_PACKI_NAME
+                                @ files INITIAL_CODE
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ appActions.loginUserByStoredUidError
+                            :! err.stack
+            else
+                yield put(appActions.loginUserByStoredUidError('An unknown error occured.'))
+    function* appRequest
+        yield takeEvery(getType(appActions.loginUserByStoredUid), handleLoginUserByStoredUid)
+    function* appSaga
+        yield 
+            _ all
+                [ 
+                    @ fork(appRequest)
+    export-default appSaga

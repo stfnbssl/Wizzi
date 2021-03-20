@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ContextMenu.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -55,45 +55,13 @@ class ContextMenu extends React.PureComponent<Props> {
                         top: Math.min(position.pageY, window.innerHeight - BOTTOM_OFFSET - shownActions.length * MENU_ITEM_HEIGHT), 
                         left: position.pageX, 
                         marginTop: -8
-                    } : {}}>
-                {
-                    shownActions.map(({
-                        label, 
-                        handler, 
-                        disabled, 
-                        combo
-                    }: Action) =>  (
-                            <li key={label}>
-                                <button disabled={disabled} className={css(styles.item, disabled && styles.disabled)} onClick={() => {
-                                    handler();
-                                    onHide();
-                                }
-                                }>
-                                    <div>
-                                    {label}</div>
-                                
-                                {
-                                    combo ?  (
-                                            <kbd className={css(styles.hint)}>
-                                                <ShortcutLabel combo={combo}>
-                                                </ShortcutLabel>
-                                            
-                                            </kbd>
-                                        )
-                                     : null
-                                }</button>
-                            
-                            </li>
-                        )
-                    )
-                }</ul>
+                    } : {}} />
             )
         ;
     }
 }
 export default withThemeName(React.forwardRef((props: Props, ref: React.Ref<HTMLUListElement>) =>  (
-            <ContextMenu {...props} innerRef={ref}>
-            </ContextMenu>
+            <ContextMenu {...props} innerRef={ref} />
         )
     ))
 const c = prefColors.c;

@@ -37,29 +37,29 @@ $group
                                         [ items
                                             {
                                                 label "Documentation"
-                                                href "${gctxBaseUrl}/docs/concepts.html"
+                                                href "${wzConfigBaseUrl}/docs/concepts.html"
                                             {
                                                 label "Quick Start"
-                                                href "${gctxBaseUrl}/docs/quick-start/"
+                                                href "${wzConfigBaseUrl}/docs/quick-start/"
                                             {
                                                 label "Tutorial"
-                                                href "${gctxBaseUrl}/docs/tutorial/"
+                                                href "${wzConfigBaseUrl}/docs/tutorial/"
                                             {
                                                 label "Cheat Sheet"
-                                                href "${gctxBaseUrl}/docs/cheatsheets/cs-ittf.html"
+                                                href "${wzConfigBaseUrl}/docs/cheatsheets/cs-ittf.html"
                                     { 
                                         kind "list"
                                         title "Guides"
                                         [ items
                                             {
                                                 label "How-To Guides"
-                                                href "${gctxBaseUrl}/docs/how-to/"
+                                                href "${wzConfigBaseUrl}/docs/how-to/"
                                             {
                                                 label "Reference Guides"
-                                                href "${gctxBaseUrl}/docs/reference/"
+                                                href "${wzConfigBaseUrl}/docs/reference/"
                                             {
                                                 label "Conceptual Guides"
-                                                href "${gctxBaseUrl}/docs/conceptual/"
+                                                href "${wzConfigBaseUrl}/docs/conceptual/"
                     {
                         title "Plugins"
                         href "/plugins/"

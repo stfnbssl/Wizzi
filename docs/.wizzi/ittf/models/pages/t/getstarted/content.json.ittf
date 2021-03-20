@@ -36,11 +36,11 @@ $group
                                         kind "hint-link"
                                         p "You need Node v10+ — see the detailed"
                                         label "installation docs"
-                                        href "${gctxBaseUrl}/docs/quick-start/"
+                                        href "${wzConfigBaseUrl}/docs/quick-start/"
                                     {
                                         kind "scream-button"
                                         label "Take the tutorial"
-                                        href "${gctxBaseUrl}/docs/"
+                                        href "${wzConfigBaseUrl}/docs/"
                                         { hint
                                             svg "mit"
                                             label "MIT license"

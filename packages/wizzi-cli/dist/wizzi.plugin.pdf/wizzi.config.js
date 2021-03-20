@@ -19,6 +19,6 @@ module.exports = {
         "pdf"
     ], 
     globalContext: {
-        gctxIsDevelopment: true
+        wzConfigIsDevelopment: true
     }
 };

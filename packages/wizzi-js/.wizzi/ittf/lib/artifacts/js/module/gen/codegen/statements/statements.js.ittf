@@ -4,7 +4,7 @@
 		var lineParser = require('../util/lineParser')
 
     stm( statement
-		log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild
+		# log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild
 		if model.__templateChild
 			_ ctx.write
 				_ verify.replaceAll
@@ -298,7 +298,7 @@
     
 	stm( set
 		var text
-        log 'set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|'
+        # log 'set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|'
 		# FIXME this hack require refactoring
 		if model.wzName === 'work.textSep = "__TS__"'
 			set text = model.wzName
@@ -324,7 +324,7 @@
 		if model.statements[0].wzEntity === 'function'
             _ ctx.w('')
         
-		log 'set,model.statements.length', model.wzName, model.statements.length
+		# log 'set,model.statements.length', model.wzName, model.statements.length
         if model.statements.length == 2
             if model.statements[0].wzElement == 'comment'
                 _ ctx.w

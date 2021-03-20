@@ -19,6 +19,6 @@ module.exports = {
         "ppt"
     ], 
     globalContext: {
-        gctxIsDevelopment: true
+        wzConfigIsDevelopment: true
     }
 };

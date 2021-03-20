@@ -11,6 +11,6 @@ module.exports = {
         isPackageDeploy: true,
         isWebpackTarget: true,
         isDevelopment: false,
-        gctx_useMongo: false,
+        wzConfig_useMongo: false,
     }
 };

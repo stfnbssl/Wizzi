@@ -199,7 +199,7 @@ md.load = function(cnt) {
         }
     }
     function doCallChildStatements_two(model, name, hasParens, ctx, callback) {
-        console.log('doCallChildStatements_two', name, hasParens);
+        // log 'doCallChildStatements_two', name, hasParens
         if (hasParens === false) {
             // log 'doCallChildStatements_two 1', model.wzElement
             // VIA 20/2/19 if name.length > 0

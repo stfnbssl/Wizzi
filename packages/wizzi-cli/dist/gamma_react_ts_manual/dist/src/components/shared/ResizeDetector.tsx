@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ResizeDetector.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -34,12 +34,8 @@ export default class ResizeDetector extends React.Component<Props> {
                     {
                         //
                         
-                    }<iframe ref={this._horizontal} className={css(styles.phantom, styles.horizontal)}>
-                        </iframe>
-                    
-                        <iframe ref={this._vertical} className={css(styles.phantom, styles.vertical)}>
-                        </iframe>
-                    
+                    }<iframe ref={this._horizontal} className={css(styles.phantom, styles.horizontal)} />
+                        <iframe ref={this._vertical} className={css(styles.phantom, styles.vertical)} />
                     {this.props.children}</div>
                 )
             ;

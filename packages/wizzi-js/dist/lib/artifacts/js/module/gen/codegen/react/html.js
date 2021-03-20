@@ -67,7 +67,7 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
     }
     repeater_1(0);
     function next_1() {
-        console.log('htmlelement_open.model.statements.length', model.statements.length);
+        // log 'htmlelement_open.model.statements.length', model.statements.length
         if (model.statements.length > 0) {
             ctx.w(">");
             // end of open tag

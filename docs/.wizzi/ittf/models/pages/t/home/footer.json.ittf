@@ -28,25 +28,25 @@ $group
                                 [ items
                                     {
                                         label "Documentation"
-                                        href "${gctxBaseUrl}/docs/"
+                                        href "${wzConfigBaseUrl}/docs/"
                                     {
                                         label "Quick Start"
-                                        href "${gctxBaseUrl}/docs/quick-start/"
+                                        href "${wzConfigBaseUrl}/docs/quick-start/"
                                     {
                                         label "Tutorial"
-                                        href "${gctxBaseUrl}/docs/tutorial/"
+                                        href "${wzConfigBaseUrl}/docs/tutorial/"
                                     {
                                         label "How-To Guides"
-                                        href "${gctxBaseUrl}/docs/how-to/"
+                                        href "${wzConfigBaseUrl}/docs/how-to/"
                                     {
                                         label "Reference Guides"
-                                        href "${gctxBaseUrl}/docs/reference/"
+                                        href "${wzConfigBaseUrl}/docs/reference/"
                                     {
                                         label "Conceptual Guides"
-                                        href "${gctxBaseUrl}/docs/conceptual/"
+                                        href "${wzConfigBaseUrl}/docs/conceptual/"
                                     {
                                         label "Wizzi CLI"
-                                        href "${gctxBaseUrl}/docs/reference/wizzi-cli/"
+                                        href "${wzConfigBaseUrl}/docs/reference/wizzi-cli/"
                                     {
                                         label "Github"
                                         href "https://github.com/stfnbssl/wizzi"
@@ -84,10 +84,10 @@ $group
                                         href "/plugins/"
                                     {
                                         label "Schemas"
-                                        href "${gctxBaseUrl}/docs/schemas/"
+                                        href "${wzConfigBaseUrl}/docs/schemas/"
                                     {
                                         label "Jobs"
-                                        href "${gctxBaseUrl}/docs/jobs/"
+                                        href "${wzConfigBaseUrl}/docs/jobs/"
                                     {
                                         label "Starters"
                                         href "/starters/"

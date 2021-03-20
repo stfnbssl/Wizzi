@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\editableField.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import React, {Component} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -123,12 +123,8 @@ export class EditableField extends Component<EditableFieldProps, EditableFieldSt
     render() {
         return  (
                 <Container>
-                    <Phantom className={this.props.className}>
-                    {this.state.value.replace(/\n/g, '')}</Phantom>
-                
-                    <Input onFocus={this._handleFocus} onBlur={this._handleBlur} onKeyDown={this._handleKeyDown} value={this.state.value} onChange={this._handleChangeText} className={this.props.className} dark={this.props.dark}>
-                    </Input>
-                
+                    <Phantom className={this.props.className} />
+                    <Input onFocus={this._handleFocus} onBlur={this._handleBlur} onKeyDown={this._handleKeyDown} value={this.state.value} onChange={this._handleChangeText} className={this.props.className} dark={this.props.dark} />
                 </Container>
             )
         ;

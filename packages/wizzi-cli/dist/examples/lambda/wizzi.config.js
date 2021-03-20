@@ -19,6 +19,6 @@ module.exports = {
         "sample"
     ], 
     globalContext: {
-        gctxIsDevelopment: true
+        wzConfigIsDevelopment: true
     }
 };

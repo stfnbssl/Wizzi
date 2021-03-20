@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ModalSheet.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -24,15 +24,7 @@ type Props = ModalSheetProps & {
 function ModalSheet(props: Props) {
     return  (
             <Modal visible={props.visible} onDismiss={props.onDismiss}>
-                <div className={classnames(css(styles.modal, props.theme === 'dark' ? styles.contentDark : styles.contentLight), props.className)}>
-                {
-                    props.onDismiss ?  (
-                            <button className={css(styles.close)} onClick={props.onDismiss} data-test-id="modal-close">
-                            \n            ✕\n          </button>
-                        )
-                     : null
-                }{props.children}</div>
-            
+                <div className={classnames(css(styles.modal, props.theme === 'dark' ? styles.contentDark : styles.contentLight), props.className)} />
             </Modal>
         )
     ;

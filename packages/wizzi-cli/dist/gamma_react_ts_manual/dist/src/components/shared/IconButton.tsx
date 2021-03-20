@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\IconButton.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -29,16 +29,12 @@ function IconButton({
             <button {...rest} className={css(styles.button, theme === 'dark' ? styles.dark : styles.light, rest.disabled && styles.disabled)}>
             {children}{
                 label ?  (
-                        <span className={css(styles.label)}>
-                        {label}</span>
+                        <span className={css(styles.label)} />
                     )
                  : null
             }<span className={css(styles.phantom)}>
-                    <span className={css(styles.tooltip, theme === 'dark' ? styles.tooltipDark : styles.tooltipLight)}>
-                    {title}</span>
-                
+                    <span className={css(styles.tooltip, theme === 'dark' ? styles.tooltipDark : styles.tooltipLight)} />
                 </span>
-            
             </button>
         )
     ;

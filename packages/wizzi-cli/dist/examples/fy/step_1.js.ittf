@@ -22,7 +22,11 @@ module
             {
                 @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/shared"
                 @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/shared"
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/features/preferences"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/features/preferences"
     _ fy
         {
-            @ s "C:/My/wizzi/stfnbssl/packi/src/client/features/preferences"
-            @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/features/preferences"
+            @ s "C:/My/wizzi/stfnbssl/packi/src/client/features"
+            @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/features"

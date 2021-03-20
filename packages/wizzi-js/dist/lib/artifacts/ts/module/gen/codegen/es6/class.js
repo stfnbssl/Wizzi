@@ -250,7 +250,7 @@ function classMembers(model, ctx, callback) {
             return next_1();
         }
         var item_1 = model.statements[index_1];
-        console.log('ts.es6.class.classMembers', item_1.wzElement);
+        // log 'ts.es6.class.classMembers', item_1.wzElement
         var generator = null;
         var done = false;
         if (item_1.wzElement === 'ctor') {
@@ -306,7 +306,7 @@ function classMembers(model, ctx, callback) {
     }
     repeater_1(0);
     function next_1() {
-        console.log('ts.es6.class.classMembers end');
+        // log 'ts.es6.class.classMembers end'
         return callback(null, null);
     }
 }

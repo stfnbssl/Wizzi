@@ -3,6 +3,9 @@
 	$append requires
 		var lineParser = require('../../../../../js/module/gen/codegen/util/lineParser')
 		var htmlReact = require('../es6/htmlReact')
+
+        # entry point for html tags in code
+        # preprocessed by [js|ts]-mtree-preprocessor
 	+
 	$include data/fb-html-supported-events
 	+
@@ -91,6 +94,7 @@
 				decl value = null
 			
 			repeater(1, model.statements)
+                # log 'html.md._htmlelement', item_1.wzElement
                 if item_1.isEvent
                     var name = item_1.wzElement
 					if item_1.statements && item_1.statements.length > 0
@@ -134,6 +138,8 @@
                             @ name name
                             @ value value.trim()
 							@ statements statements
+                elif item_1.wzElement === 'htmlelement'
+                    set model.__hasChildElements = true
 				repeater_increment(1)
 
 				$append next

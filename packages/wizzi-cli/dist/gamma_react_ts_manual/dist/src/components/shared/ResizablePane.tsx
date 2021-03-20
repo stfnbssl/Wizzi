@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ResizablePane.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -94,9 +94,7 @@ export default class ResizablePane extends React.PureComponent<Props, State> {
         render() {
             return  (
                     <div ref={this._pane} className={`${css(styles.container)} ${this.props.className || ''}`}>
-                    {this.props.children}<div className={css(styles.handle, this.props.direction === 'horizontal' ? styles.horizontal : styles.vertical)} onMouseDown={this._handleMouseDown} onMouseUp={this._handleMouseUp}>
-                        </div>
-                    
+                    {this.props.children}<div className={css(styles.handle, this.props.direction === 'horizontal' ? styles.horizontal : styles.vertical)} onMouseDown={this._handleMouseDown} onMouseUp={this._handleMouseUp} />
                     </div>
                 )
             ;

@@ -22,6 +22,6 @@ module.exports = {
         "docx"
     ], 
     globalContext: {
-        gctxIsDevelopment: true
+        wzConfigIsDevelopment: true
     }
 };

@@ -19,10 +19,15 @@
 
 	f( TSInterfaceDeclaration, :interface
 		f_p_name( id, Node, # Literal | Identifier
-		f_p(typeParameters, false)
-		f_a( extends, false
+		f_p( typeParameters, false)
+		f_a_temp( extends, false
+		if p_extends != null
+			foreach item in p_extends.children
+                if item.tag == ':exprwithtypeargs'
+				    set item.tag = ':extends'
+				_ ret.children.push(item)
 		f_p( body, false
-		if node.declare
+        if node.declare
 			set ret
 				{
 					@ tag ':declare'
@@ -194,7 +199,8 @@
 		f_p( typeParameters, false, ?TSTypeParameterInstantiation
 		f_p_temp(expression, false
 		if p_expression
-			if ['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1
+            if isTextualNode(p_expression)
+			$$ 20/3/21 if ['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1
 				set ret.name = getNodeText(p_expression)
 			else
 				_ ret.children.push
@@ -319,6 +325,8 @@
 		f_p_temp(exprName , false)
 		if p_exprName.tag === '@id'
 			set ret.name = p_exprName.name
+		elif isTextualNode(p_exprName)
+			set ret.name = getNodeText(p_exprName)
 		else
 			_ ret.children.push
 				@ p_exprName
@@ -359,6 +367,8 @@
 			set ret.name = getNodeText(p_left)
 			if isTextualNode(p_right)
 				set ret.name += '.' + getNodeText(p_right)
+                set ret.textified = ret.name
+                set ret.isText = true
 			else
 				_ ret.children.push
 					@ p_right

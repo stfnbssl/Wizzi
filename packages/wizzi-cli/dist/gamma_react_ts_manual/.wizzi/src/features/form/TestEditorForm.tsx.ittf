@@ -1,0 +1,101 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ withStyles
+        @ createStyles
+        @ Theme
+        from '@material-ui/core/styles'
+    import EditorForm from './EditorForm'
+    const typeValues
+        [ 
+            @ 'one'
+            @ 'two'
+            @ 'three'
+    export 
+        const validateName
+            => 
+                param name
+                    :string 
+                iif name
+                    then
+                        iif /^[a-z_\-\d\s]+$/i.test(name)
+                            then null
+                            else new Error('Name can only contain letters, numbers, space, hyphen (-) and underscore (_).')
+                    else new Error('Name cannot be empty.')
+    export 
+        const validateRequired
+            => 
+                param value
+                    :any 
+                _ console.log
+                    @ 'validateRequired'
+                    @ value
+                    @ value.length
+                    optypeof value
+                    set value.length && value.length == 0
+                    iif typeof value === 'undefined' || value == null || value.length == 0
+                        then new Error('Required value')
+                        else null
+                return 
+                    iif typeof value === 'undefined' || value == null || value.length == 0
+                        then new Error('Required value')
+                        else null
+    :type Props
+        :{ 
+            :p classes
+                :any 
+    function TestEditorForm
+        param props
+            :ref Props
+        return 
+            div 
+                @ className {props.classes.container}
+                < EditorForm 
+                    @ title "Create New Packi"
+                    @ action "Done"
+                    @ visible {true}
+                    @ onDismiss
+                        => 
+                            _ alert('form dismissed')
+                    @ onSubmit
+                        => 
+                            param values
+                            _ alert(JSON.stringify(values))
+                    @ fields
+                        { 
+                            { name
+                                @ type 'text'
+                                @ label 'Name'
+                                @ onValidate validateName
+                            { kind
+                                @ type 'select'
+                                @ label 'Kind'
+                                @ onValidate validateRequired
+                                @ options
+                                    _ typeValues.map
+                                        => 
+                                            param name
+                                            return 
+                                                { 
+                                                    @ label name
+                                                    @ value name
+    const muiStyles
+        => 
+            param theme
+                :ref Theme
+            _ createStyles
+                { 
+                    { container
+                        @ position 'absolute'
+                        @ margin 'auto'
+                        @ top '0'
+                        @ right '0'
+                        @ bottom '0'
+                        @ left '0'
+                        @ width '400px'
+                        @ height '500px'
+                        @ backgroundColor '#ccc'
+                        @ borderRadius '3px'
+    export-default withStyles(muiStyles)(TestEditorForm)

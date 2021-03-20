@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Toast.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -81,13 +81,10 @@ class Toast extends React.Component<Props, State> {
             };
         return ReactDOM.createPortal(
                 <div {...props} className={css(styles.toast, this.props.type ? this.props.type === 'error' ? styles.error : styles.success : this.props.theme === 'dark' ? styles.dark : styles.light, this.state.dismissing ? styles.dismissing : styles.appearing)}>
-                    <div className={css(styles.label)}>
-                    {this.props.label}</div>
-                
+                    <div className={css(styles.label)} />
                 {
                     this.props.actions.map((action) =>  (
-                            <button key={action.label} className={css(styles.button, this.props.theme !== 'dark' && !this.props.type ? styles.buttonLight : null)} onClick={action.action || this._handleDismiss}>
-                            {action.label}</button>
+                            <button key={action.label} className={css(styles.button, this.props.theme !== 'dark' && !this.props.type ? styles.buttonLight : null)} onClick={action.action || this._handleDismiss} />
                         )
                     )
                 }</div>

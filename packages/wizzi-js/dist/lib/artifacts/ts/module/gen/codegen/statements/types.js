@@ -284,7 +284,7 @@ md.load = function(cnt) {
         }
         else if (model.statements.length == 1) {
             var item = model.statements[0];
-            console.log('typeParameterInst,item.wzElement', item.wzElement);
+            // log 'typeParameterInst,item.wzElement', item.wzElement
             if (!cnt.stm[item.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
             }
@@ -397,7 +397,7 @@ md.load = function(cnt) {
             if (index_1 > 0) {
                 ctx.write(' , ');
             }
-            console.log('typeTuple.item_1.wzElement', item_1.wzElement, item_1.wzName);
+            // log 'typeTuple.item_1.wzElement', item_1.wzElement, item_1.wzName
             cnt.genItem(item_1, ctx, (err, notUsed) => {
                 if (err) {
                     return callback(err);
@@ -432,7 +432,7 @@ md.load = function(cnt) {
             if (index_1 > 0) {
                 ctx.w(' , ');
             }
-            console.log('typeEnum.item_1.wzElement', item_1.wzElement, item_1.wzName);
+            // log 'typeEnum.item_1.wzElement', item_1.wzElement, item_1.wzName
             cnt.genItem(item_1, ctx, (err, notUsed) => {
                 if (err) {
                     return callback(err);
@@ -513,7 +513,7 @@ md.load = function(cnt) {
             if (index_1 > 0) {
                 ctx.write(' , ');
             }
-            console.log('typeKeyOf.item_1.wzElement', item_1.wzElement, item_1.wzName);
+            // log 'typeKeyOf.item_1.wzElement', item_1.wzElement, item_1.wzName
             cnt.genItem(item_1, ctx, (err, notUsed) => {
                 if (err) {
                     return callback(err);
@@ -604,7 +604,7 @@ md.load = function(cnt) {
             if (index_1 > 0) {
                 ctx.write(' & ');
             }
-            console.log('typeIntersect.item_1.wzElement', item_1.wzElement, item_1.wzName);
+            // log 'typeIntersect.item_1.wzElement', item_1.wzElement, item_1.wzName
             cnt.genItem(item_1, ctx, (err, notUsed) => {
                 if (err) {
                     return callback(err);
@@ -630,6 +630,7 @@ md.load = function(cnt) {
         ctx.write( model.wzName || '');
         if (model.statements.length == 0) {
             ctx.write('!');
+            return callback(null, null);
         }
         else {
             cnt.genItems(model.statements, ctx, (err, notUsed) => {
@@ -718,7 +719,7 @@ md.load = function(cnt) {
             if (err) {
                 return callback(err);
             }
-            console.log('11');
+            // log '11'
             ctx.write(']');
             if (atype) {
                 ctx.write(': ');
@@ -782,7 +783,7 @@ md.load = function(cnt) {
         }
         if (model.statements.length == 2) {
             var item = model.statements[0];
-            console.log('ts.module.gen.typeMapped', item.wzElement);
+            // log 'ts.module.gen.typeMapped', item.wzElement
             if (!cnt.stm[item.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', item.wzElement);
             }

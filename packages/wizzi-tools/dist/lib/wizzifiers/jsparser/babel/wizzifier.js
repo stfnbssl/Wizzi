@@ -3084,19 +3084,47 @@ format.ForOfStatement = function(parent, node, options) {
     else {
         throw new Error('AST-node-property right undefined: ' + JSON.stringify(node, null, 2));
     }
+    console.log('ForOfStatement', isTextualNode(p_left), isTextualNode(p_right));
     if (isTextualNode(p_left)) {
         ret.name = getNodeText(p_left);
-    }
-    if (isTextualNode(p_right)) {
-        ret.name += ' of ' + getNodeText(p_right);
+        if (isTextualNode(p_right)) {
+            ret.name += ' of ' + getNodeText(p_right);
+            ret.textified = ret.name;
+            ret.isText = true;
+        }
+        else {
+            ret.children.push({
+                tag: 'of', 
+                children: [
+                    p_right
+                ]
+            })
+        }
     }
     else {
         ret.children.push({
-            tag: 'of', 
+            tag: 'left', 
             children: [
-                p_right
+                p_left
             ]
         })
+        if (isTextualNode(p_right)) {
+            ret.children.push({
+                tag: 'of', 
+                name: getNodeText(p_right), 
+                children: [
+                    
+                ]
+            })
+        }
+        else {
+            ret.children.push({
+                tag: 'of', 
+                children: [
+                    p_right
+                ]
+            })
+        }
     }
     // log 'node.await', node.await
     if (!!node.await == true) {
@@ -4386,56 +4414,59 @@ format.YieldExpression = function(parent, node, options) {
             
         ]
     };
-    f_astNode.props.push({
-        name: "argument", 
-        tag: "argument", 
-        descr: "fragment f_p_tag"
-    })
-    var p_argument = {
-        textified: null, 
-        isText: false, 
-        ASTProp: 'argument', 
-        children: [
-            
-        ]
-    };
-    if (node.argument) {
-        if (!node.argument.type) {
-            throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
+    // process AST-node-property argument and set it in a var
+    var p_argument = null;
+    if (typeof(node.argument) !== 'undefined' && node.argument != null) {
+        p_argument = {
+            textified: null, 
+            isText: false, 
+            ASTProp: 'argument', 
+            children: [
+                
+            ]
+        };
+        if (node.argument == null) {
+            p_argument.text = "null";
         }
-        format(p_argument, node.argument, options)
-        p_argument.tag = 'argument';
-        ret.children.push(p_argument)
-        if (p_argument.children.length == 1) {
-            // log '*** f_p_tag argument children[0].textified', p_argument.children[0].textified
-            // log '*** f_p_tag argument children[0].isText', p_argument.children[0].isText
-            // log '*** f_p_tag argument children[0].name', p_argument.children[0].name
-            if (p_argument.children[0].textified) {
-                p_argument.textified = p_argument.children[0].textified;
+        else {
+            if (!node.argument.type) {
+                throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
             }
-            if (p_argument.children[0].isText) {
-                p_argument.isText = true;
-                p_argument.name = p_argument.children[0].name;
-                p_argument.children = [];
+            // log 'f_p_temp argument before format'
+            format(p_argument, node.argument, options)
+            // log 'f_p_temp argument after format', p_argument
+            if (p_argument.children.length == 1) {
+                p_argument.tag = p_argument.children[0].tag;
+                if (!(p_argument.children[0].isText || p_argument.children[0].textified)) {
+                    p_argument.name = p_argument.children[0].name;
+                    p_argument.source = p_argument.children[0].source;
+                    p_argument.children = p_argument.children[0].children;
+                }
+                else {
+                    if (p_argument.children[0].textified) {
+                        p_argument.textified = p_argument.children[0].textified;
+                        p_argument.name = p_argument.children[0].name;
+                        p_argument.source = p_argument.children[0].source;
+                    }
+                    if (p_argument.children[0].isText) {
+                        p_argument.isText = true;
+                        p_argument.name = p_argument.children[0].name;
+                        p_argument.source = p_argument.children[0].source;
+                    }
+                    p_argument.children = [];
+                }
             }
         }
-        /**
-            TODO VIA
-            else {
-                throw new Error('AST-property argument/argument not managed by f_p_tag');
-            }
-        */
     }
-    // log 'get_text_from_1_children', isChildrenCount(ret, 1)
-    var got_text_1 = false;
-    if (isChildrenCount(ret, 1)) {
-        if (ret.children[0].textified || ret.children[0].isText) {
-            var c1 = ret.children[0].textified || ret.children[0].name;
-            ret.name = c1;
-            ret.textified = ret.name;
-            ret.children = [];
-            got_text_1 = true;
-        }
+    else {
+        throw new Error('AST-node-property argument undefined: ' + JSON.stringify(node, null, 2));
+    }
+    // log 'ObjectProperty.p_value', p_value
+    if (isTextualNode(p_argument)) {
+        ret.name = getNodeText(p_argument);
+    }
+    else {
+        ret.children.push(p_argument)
     }
     // log 'node.delegate', node.delegate
     if (!!node.delegate == true) {
@@ -7120,7 +7151,7 @@ format.CallExpression = function(parent, node, options) {
             throw new Error('Property node.arguments must be an array');
         }
         var p_arguments = {
-            tag: 'true', 
+            tag: 'notUsed', 
             children: [
                 
             ]
@@ -7138,7 +7169,7 @@ format.CallExpression = function(parent, node, options) {
     var lastCallee = ret;
     // log 'CallExpression.p_callee', p_callee
     if (isTextualNode(p_callee)) {
-        // log 'CallExpression.isTextualNode(p_callee)', isTextualNode(p_callee)
+        console.log('CallExpression.isTextualNode(p_callee), node.typeParameters', isTextualNode(p_callee), getNodeText(p_callee), node.typeParameters);
         // first of all try to set ret.textified
         ret.name = getNodeText(p_callee);
         if (node.typeParameters) {
@@ -7152,11 +7183,13 @@ format.CallExpression = function(parent, node, options) {
             }
         }
         else {
-            if (p_arguments) {
+            console.log('CallExpression p_arguments', p_arguments);
+            if (p_arguments && p_arguments.children.length > 0) {
                 var tlist = getTextList(p_arguments, ', ');
                 if (tlist) {
                     ret.name += '(' + tlist + ')';
                     ret.textified = ret.name;
+                    ret.isText = true;
                 }
                 else {
                     var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
@@ -7171,15 +7204,16 @@ format.CallExpression = function(parent, node, options) {
             }
             else {
                 ret.textified = ret.name + '()';
+                ret.isText = true;
             }
             if (ret.textified && node.extra && node.extra.parenthesized == true) {
                 ret.textified = '(' + ret.textified + ')';
             }
-            // log 'CallExpression', 'ret.name,textified', ret.name, ret.textified
         }
+        console.log('CallExpression', 'ret.name,textified', ret.name, ret.textified);
     }
     else {
-        // log 'CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag
+        console.log('CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag);
         var i, i_items=p_callee.children, i_len=p_callee.children.length, item;
         for (i=0; i<i_len; i++) {
             item = p_callee.children[i];
@@ -15742,16 +15776,18 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
         }
         format(ret, node.typeParameters, options)
     }
-    // process AST-node-property-collection extends and append ittfNode(s) to `ret`
-    f_astNode.props.push({
-        name: "extends", 
-        throwIfUndefined: false, 
-        descr: "process AST-node-property-collection extends and append ittfNode(s) to `ret`"
-    })
+    // process AST-node-property-collection extends and
+    // embed its array of nodes in a temp var
     if (node.extends) {
         if (typeof node.extends.length === 'undefined') {
             throw new Error('Property node.extends must be an array');
         }
+        var p_extends = {
+            tag: 'false', 
+            children: [
+                
+            ]
+        };
         var i, i_items=node.extends, i_len=node.extends.length, item;
         for (i=0; i<i_len; i++) {
             item = node.extends[i];
@@ -15759,7 +15795,17 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
                 name: 'extends', 
                 len: node.extends.length
             };
-            format(ret, item, options)
+            format(p_extends, item, options)
+        }
+    }
+    if (p_extends != null) {
+        var i, i_items=p_extends.children, i_len=p_extends.children.length, item;
+        for (i=0; i<i_len; i++) {
+            item = p_extends.children[i];
+            if (item.tag == ':exprwithtypeargs') {
+                item.tag = ':extends';
+            }
+            ret.children.push(item);
         }
     }
     // process AST-node-property body and append ittfNode to `ret`
@@ -17704,7 +17750,7 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
         }
     }
     if (p_expression) {
-        if (['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1) {
+        if (isTextualNode(p_expression)) {
             ret.name = getNodeText(p_expression);
         }
         else {
@@ -19311,6 +19357,9 @@ format.TSTypeQuery = function(parent, node, options) {
     if (p_exprName.tag === '@id') {
         ret.name = p_exprName.name;
     }
+    else if (isTextualNode(p_exprName)) {
+        ret.name = getNodeText(p_exprName);
+    }
     else {
         ret.children.push(p_exprName)
     }
@@ -19776,6 +19825,8 @@ format.TSQualifiedName = function(parent, node, options) {
         ret.name = getNodeText(p_left);
         if (isTextualNode(p_right)) {
             ret.name += '.' + getNodeText(p_right);
+            ret.textified = ret.name;
+            ret.isText = true;
         }
         else {
             ret.children.push(p_right)

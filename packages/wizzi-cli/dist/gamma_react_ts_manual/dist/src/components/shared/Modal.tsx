@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Modal.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -65,11 +65,7 @@ export default class Modal extends React.PureComponent<Props, State> {
         render() {
             return ReactDOM.createPortal(
                     <div className={css(styles.modal, this.props.visible ? styles.visible : styles.hidden)} onClick={this._handleDismiss}>
-                        <div ref={this._content} className={css(styles.content)}>
-                        {
-                            this.state.rendered ? this.props.children : null
-                        }</div>
-                    
+                        <div ref={this._content} className={css(styles.content)} />
                     </div>
                 , this._container);
         }

@@ -31,7 +31,7 @@ md.gen = function(model, ctx, callback) {
                 return next_1();
             }
             var item_1 = model.statements[index_1];
-            console.log('wizzi-js.wziife', item_1.wzElement, item_1.wzName);
+            // log 'wizzi-js.wziife', item_1.wzElement, item_1.wzName
             statement.gen(item_1, ctx, function(err, notUsed) {
                 if (err) {
                     return callback(err);

@@ -22,7 +22,7 @@ $group
                                 text "Free, open source framework for creating fast, powerful artifacts productions."
                                 { button
                                     label "Start the tutorial"
-                                    href "${gctxBaseUrl}/docs"
+                                    href "${wzConfigBaseUrl}/docs"
                             {
                                 title "Deploy"
                                 subtitle "Wizzi Cloud"
@@ -76,7 +76,7 @@ $group
                                     "Wizzi Jobs automate common production tasks, orchestrating models build up and transformations, cascading productions, testing and deployment."
                                 { button
                                     label "Browse Recipes"
-                                    href "${gctxBaseUrl}/docs/recipes"                                
+                                    href "${wzConfigBaseUrl}/docs/recipes"                                
             {
                 kind "row"
                 [ panels

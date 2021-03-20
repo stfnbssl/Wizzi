@@ -12,4 +12,4 @@ module
                 @ 'wizzi-web'
             [ schemas
             { globalContext
-                @ gctxIsDevelopment true
+                @ wzConfigIsDevelopment true

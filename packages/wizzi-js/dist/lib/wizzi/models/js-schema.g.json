@@ -303,6 +303,13 @@
           ]
         },
         {
+          "name": "op_typeof",
+          "tags": [
+            "typeof",
+            "optypeof"
+          ]
+        },
+        {
           "name": "xrequire",
           "tags": [
             "require"
@@ -6371,6 +6378,38 @@
         "_ price",
         "@ id",
         "@ 100"
+      ]
+    },
+    {
+      "name": "op_typeof",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "typeof",
+        "optypeof"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": [
+        "ittf",
+        "var foo",
+        "typeof Foo"
       ]
     },
     {

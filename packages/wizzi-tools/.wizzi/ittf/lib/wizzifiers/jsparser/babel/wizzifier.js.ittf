@@ -302,16 +302,37 @@
 	f( ForOfStatement, for
 		f_p_temp( left, true, VariableDeclaration |  Expression
 		f_p_temp( right, true, Expression
+        log 'ForOfStatement', isTextualNode(p_left), isTextualNode(p_right)
 		if isTextualNode(p_left)
 			set ret.name = getNodeText(p_left)
-		if isTextualNode(p_right)
-			set ret.name += ' of ' + getNodeText(p_right)
-		else
+            if isTextualNode(p_right)
+                set ret.name += ' of ' + getNodeText(p_right)
+                set ret.textified = ret.name
+                set ret.isText = true
+            else
+                _ ret.children.push
+                    {
+                        @ tag 'of'
+                        [ children
+                            @ p_right
+        else
 			_ ret.children.push
 				{
-					@ tag 'of'
+					@ tag 'left'
 					[ children
-						@ p_right
+						@ p_left
+            if isTextualNode(p_right)
+                _ ret.children.push
+                    {
+                        @ tag 'of'
+                        @ name getNodeText(p_right)
+                        [ children
+            else
+                _ ret.children.push
+                    {
+                        @ tag 'of'
+                        [ children
+                            @ p_right
 		b( await
 		f_p( body, true, Statement
     
@@ -536,8 +557,15 @@
 			set ret.tag += '*'
  
     f( YieldExpression, yield
-		f_p_tag( argument, argument, Expression | null
-		get_text_from_1_children(  )
+		$$ 20/3/21 f_p_tag( argument, argument, Expression | null
+        f_p_temp( argument, true, Expression | null
+        # log 'ObjectProperty.p_value', p_value
+        if isTextualNode(p_argument)
+            set ret.name = getNodeText(p_argument)
+        else
+            _ ret.children.push
+                @ p_argument
+		$$ get_text_from_1_children(  )
 		b( delegate
 		# A `yield` expression.
 
@@ -1151,18 +1179,17 @@
 
 		f_p( typeParameters, false, ?TypeParameterInstantiation
 		f_p_temp( callee, true, | Super | Import
-		f_a_temp( arguments, true
+		f_a_temp( arguments
 
 		var lastCallee = ret
 		# log 'CallExpression.p_callee', p_callee
 		
 		if isTextualNode(p_callee)
-            # log 'CallExpression.isTextualNode(p_callee)', isTextualNode(p_callee)
-
+            log 'CallExpression.isTextualNode(p_callee), node.typeParameters', isTextualNode(p_callee), getNodeText(p_callee), node.typeParameters
 			# first of all try to set ret.textified
 
 			set ret.name = getNodeText(p_callee)
-
+            
 			if node.typeParameters
 
 				foreach item in p_arguments.children
@@ -1173,11 +1200,14 @@
 			
 			else
 
-				if p_arguments
+                log 'CallExpression p_arguments', p_arguments
+
+				if p_arguments && p_arguments.children.length > 0
 					var tlist = getTextList(p_arguments, ', ')
 					if tlist
 						set ret.name += '(' + tlist + ')'
 						set ret.textified = ret.name
+                        set ret.isText = true
 					else
 						foreach item in p_arguments.children
 							if ['@expr', '@id', 'literal'].indexOf(item.tag) > -1
@@ -1186,15 +1216,16 @@
 								@ item
 				else
 					set ret.textified = ret.name + '()'
+                    set ret.isText = true
 
 				if ret.textified && node.extra && node.extra.parenthesized == true
 					set ret.textified = '(' + ret.textified + ')'
 
-				# log 'CallExpression', 'ret.name,textified', ret.name, ret.textified
+			log 'CallExpression', 'ret.name,textified', ret.name, ret.textified
 		
 		else
 
-			# log 'CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag
+			log 'CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag
 			
 			foreach item in p_callee.children
 				# log 'CallExpression', 'p_callee.children', i, p_callee.children[i].tag, p_callee.children[i].name

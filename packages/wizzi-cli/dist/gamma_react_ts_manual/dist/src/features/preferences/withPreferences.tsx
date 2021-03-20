@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\preferences\withPreferences.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
@@ -21,18 +21,7 @@ export default function withPreferences<P extends PreferencesContextType>(Comp: 
                     ...rest
                 } = this.props;
                 return  (
-                        <PreferencesContext.Consumer>
-                        {
-                            (props) => {
-                                // @ts-ignore
-                                return  (
-                                        <Comp ref={forwardedRef} {...props} {...rest}>
-                                        </Comp>
-                                    )
-                                ;
-                            }
-                            
-                        }</PreferencesContext.Consumer>
+                        <PreferencesContext.Consumer />
                     )
                 ;
             }
@@ -41,8 +30,7 @@ export default function withPreferences<P extends PreferencesContextType>(Comp: 
         const Result = React.forwardRef((props, ref) => {
             // @ts-ignore
              (
-                <PreferenceConsumerComponent {...props} forwardedRef={ref}>
-                </PreferenceConsumerComponent>
+                <PreferenceConsumerComponent {...props} forwardedRef={ref} />
             )
         }
         );

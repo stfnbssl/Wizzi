@@ -14,4 +14,4 @@ module
                 $foreach schema in cliCtx.Schemas
                     @ "${schema.name}"
             { globalContext
-                @ gctxIsDevelopment true
+                @ wzConfigIsDevelopment true

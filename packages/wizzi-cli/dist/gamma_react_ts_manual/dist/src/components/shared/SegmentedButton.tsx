@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\SegmentedButton.tsx.ittf
-    utc time: Fri, 19 Mar 2021 20:08:21 GMT
+    utc time: Sat, 20 Mar 2021 13:20:50 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -29,24 +29,7 @@ function SegmentedButton<T extends string>({
     theme
 }: Props<T>) {
     return  (
-            <div className={css(styles.container)}>
-            {
-                segments.map(({
-                    id, 
-                    text
-                }) =>  (
-                        <button onClick={(e) => {
-                            e.preventDefault();
-                            onSelect(id);
-                        }
-                        } className={css(styles.button, selectedId === id ? theme === 'dark' ? styles.accentDark : styles.accentLight : null)} key={id}>
-                            <span>
-                            {text}</span>
-                        
-                        </button>
-                    )
-                )
-            }</div>
+            <div className={css(styles.container)} />
         )
     ;
 }

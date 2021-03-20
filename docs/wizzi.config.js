@@ -19,9 +19,9 @@ module.exports = {
     schemas: [
     ],
     globalContext: {
-        gctxIsPackageDeploy: true,
-        gctxIsDevelopment: false,
-        gctxBaseUrl: 'http://127.0.0.1:5500/docs'
+        wzConfigIsPackageDeploy: true,
+        wzConfigIsDevelopment: false,
+        wzConfigBaseUrl: 'http://127.0.0.1:5500/docs'
     },
 };
 

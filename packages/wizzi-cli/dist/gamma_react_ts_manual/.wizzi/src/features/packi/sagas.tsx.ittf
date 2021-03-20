@@ -1,0 +1,373 @@
+module
+    import 
+        @ all
+        @ fork
+        @ put
+        @ takeEvery
+        @ call
+        #
+            # , takeLatest
+        from 'redux-saga/effects'
+    import 
+        @ getType
+        from 'typesafe-actions'
+    import 
+        @ config
+        from '../config'
+    import 
+        @ appActions
+        from '../app'
+    import 
+        as packiActions
+        from './actions'
+    import 
+        as packiData
+        from './data'
+    import 
+        as packiTypes
+        from './types'
+    import 
+        @ getSelectedPacki
+        from './localManager'
+    import 
+        @ INITIAL_CODE
+        @ DEFAULT_PACKI_NAME
+        from './defaults'
+    import 
+        @ callApi
+        from '../../utils/api'
+    function* handleFetchPackiListRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.fetchPackiListRequest
+        try 
+            _ console.log('sagas.handleFetchPackiListRequest.action', action)
+            const res
+                :[ 
+                    :string 
+                yield packiData.getPackiList()
+            _ console.log('sagas.handleFetchPackiListRequest.res', res)
+            yield 
+                _ put
+                    _ packiActions.fetchPackiListSuccess
+                        { 
+                            @ packiNames res
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.fetchPackiListError
+                            :! err.stack
+            else
+                yield put(packiActions.fetchPackiListError('An unknown error occured.'))
+    function* handleInitPackiRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.initPackiRequest
+        try 
+            _ console.log('sagas.handleInitPackiRequest', action)
+            const packiId = getSelectedPacki()
+            if action.payload.preferences.trustLocalStorage && action.payload.preferences.loggedUid
+                _ console.log('sagas.handleInitPackiRequest.uid', action.payload.preferences.loggedUid)
+                yield 
+                    _ put
+                        _ appActions.loginUserByStoredUid
+                            { 
+                                @ uid action.payload.preferences.loggedUid
+                                @ selectedPackiId packiId
+            else
+                _ console.log('sagas.handleInitPackiRequest.starterPAcky', config.DEFAULT_PACKI_NAME)
+                const res
+                    yield packiData.assertDefaultPacki()
+                _ console.log('sagas.handleInitPackiRequest.assertDefaultPacki.res', res)
+                yield 
+                    _ put
+                        _ packiActions.selectPackiRequest
+                            { 
+                                @ id config.DEFAULT_PACKI_NAME
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.initPackiError
+                            :! err.stack
+            else
+                yield put(packiActions.initPackiError('An unknown error occured.'))
+    function* handleSelectPackiRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.selectPackiRequest
+        try 
+            _ console.log('sagas.handleSelectPackiRequest', action)
+            const res
+                :ref packiTypes.PackiFiles
+                yield packiData.getPackiFiles(action.payload.id)
+            yield 
+                _ put
+                    _ packiActions.selectPackiSuccess
+                        { 
+                            @ id action.payload.id
+                            @ files res
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.selectPackiError
+                            :! err.stack
+            else
+                yield put(packiActions.selectPackiError('An unknown error occured.'))
+    function* handleCreatePackiRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.createPackiRequest
+        try 
+            _ console.log('sagas.handleCreatePackiRequest', action)
+            const res
+                :ref packiTypes.PackiFiles
+                yield packiData.createPacki(action.payload.id, action.payload.options)
+            yield 
+                _ put
+                    _ packiActions.createPackiSuccess
+                        { 
+                            @ id action.payload.id
+                            @ files res
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.createPackiError
+                            :! err.stack
+            else
+                yield put(packiActions.createPackiError('An unknown error occured.'))
+    function* handleDeletePackiRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.deletePackiRequest
+        try 
+            _ console.log('sagas.handleDeletePackiRequest', action)
+            const res
+                :ref packiTypes.PackiFiles
+                yield packiData.deletePacki(action.payload.id)
+            yield 
+                _ put
+                    _ packiActions.deletePackiSuccess
+                        { 
+                            @ id action.payload.id
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.deletePackiError
+                            :! err.stack
+            else
+                yield put(packiActions.deletePackiError('An unknown error occured.'))
+    function* handleSavePackiRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.savePackiRequest
+        try 
+            _ console.log('sagas.handleSavePackiRequest', action)
+            yield packiData.savePackiFiles(action.payload.id, action.payload.filesToSave)
+            yield 
+                _ put
+                    _ packiActions.savePackiSuccess
+                        { 
+                            @ message 'Packi files saved'
+                            @ id action.payload.id
+                            @ filesToSave action.payload.filesToSave
+                            @ packiEntryFiles action.payload.packiEntryFiles
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.savePackiError
+                            :! err.stack
+            else
+                yield put(packiActions.savePackiError('An unknown error occured.'))
+    function* handleFetchPackiTemplateListRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.fetchPackiTemplateListRequest
+        try 
+            _ console.log('sagas.handleFetchPackiTemplateListRequest.action', action)
+            const res
+                yield call(callApi, 'get', config.API_URL, 'templates')
+            _ console.log('sagas.handleFetchPackiTemplateListRequest.res', res)
+            yield 
+                _ put
+                    _ packiActions.fetchPackiTemplateListSuccess
+                        { 
+                            @ packiNames res
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.fetchPackiTemplateListError
+                            :! err.stack
+            else
+                yield put(packiActions.fetchPackiTemplateListError('An unknown error occured.'))
+    function* handleFetchOwnedGitRepositoriesRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.fetchOwnedGitRepositoriesRequest
+        try 
+            _ console.log('sagas.handleFetchOwnedGitRepositoriesRequest.action', action)
+            const res
+                yield 
+                    _ call
+                        @ callApi
+                        @ 'get'
+                        @ config.API_URL
+                        `lit 
+                            + github/ownedrepos/
+                            @ action.payload.uid
+                            + 
+            _ console.log('sagas.handleFetchOwnedGitRepositoriesRequest.res', res)
+            yield 
+                _ put
+                    _ packiActions.fetchOwnedGitRepositoriesSuccess
+                        { 
+                            @ repositories res
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.fetchOwnedGitRepositoriesError
+                            :! err.stack
+            else
+                yield put(packiActions.fetchOwnedGitRepositoriesError('An unknown error occured.'))
+    function* handleCloneGitRepositoryRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.cloneGitRepositoryRequest
+        try 
+            _ console.log('sagas.handleCloneGitRepositoryRequest.action', action)
+            const res
+                yield 
+                    _ call
+                        @ callApi
+                        @ 'get'
+                        @ config.API_URL
+                        `lit 
+                            + github/clone/
+                            @ action.payload.uid
+                            + /
+                            @ action.payload.owner
+                            + /
+                            @ action.payload.name
+                            + /
+                            @ action.payload.branch
+                            + /
+                            iif action.payload.ittfOnly
+                                then 'ittf'
+                                else 'all'
+                            + 
+            _ console.log('sagas.handleCloneGitRepositoryRequest.res', res)
+            yield 
+                _ put
+                    _ packiActions.cloneGitRepositorySuccess
+                        { 
+                            @ repository res
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.cloneGitRepositoryError
+                            :! err.stack
+            else
+                yield put(packiActions.cloneGitRepositoryError('An unknown error occured.'))
+    function* handleCommitGitRepositoryRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.commitGitRepositoryRequest
+        try 
+            _ console.log('sagas.handleCommitGitRepositoryRequest.action', action)
+            const res
+                yield 
+                    _ call
+                        @ callApi
+                        @ 'post'
+                        @ config.API_URL
+                        `lit 
+                            + github/commit/
+                            @ action.payload.uid
+                            + /
+                            @ action.payload.owner
+                            + /
+                            @ action.payload.name
+                            + /
+                            @ action.payload.branch
+                            + 
+                        { 
+                            @ files action.payload.files
+            _ console.log('sagas.handleCommitGitRepositoryRequest.res', res)
+            yield put(packiActions.commitGitRepositorySuccess({}))
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.commitGitRepositoryError
+                            :! err.stack
+            else
+                yield put(packiActions.commitGitRepositoryError('An unknown error occured.'))
+    function* handleUploadPackiTemplateRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof packiActions.uploadPackiTemplateRequest
+        try 
+            _ console.log('sagas.handleUploadPackiTemplateRequest.action', action)
+            const res
+                yield 
+                    _ call
+                        @ callApi
+                        @ 'post'
+                        @ config.API_URL
+                        `lit 
+                            + templates/
+                            @ action.payload.uid
+                            + /
+                            @ action.payload.templateId
+                            + 
+                        { 
+                            @ files action.payload.files
+            _ console.log('sagas.handleUploadPackiTemplateRequest.res', res)
+            yield put(packiActions.uploadPackiTemplateSuccess({}))
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ packiActions.uploadPackiTemplateError
+                            :! err.stack
+            else
+                yield put(packiActions.uploadPackiTemplateError('An unknown error occured.'))
+    function* watchFetchRequest
+        yield takeEvery(getType(packiActions.fetchPackiListRequest), handleFetchPackiListRequest)
+        yield takeEvery(getType(packiActions.initPackiRequest), handleInitPackiRequest)
+        yield takeEvery(getType(packiActions.selectPackiRequest), handleSelectPackiRequest)
+        yield takeEvery(getType(packiActions.fetchPackiTemplateListRequest), handleFetchPackiTemplateListRequest)
+        yield takeEvery(getType(packiActions.fetchOwnedGitRepositoriesRequest), handleFetchOwnedGitRepositoriesRequest)
+        yield takeEvery(getType(packiActions.cloneGitRepositoryRequest), handleCloneGitRepositoryRequest)
+    function* watchCrudRequest
+        yield takeEvery(getType(packiActions.createPackiRequest), handleCreatePackiRequest)
+        yield takeEvery(getType(packiActions.savePackiRequest), handleSavePackiRequest)
+        yield takeEvery(getType(packiActions.deletePackiRequest), handleDeletePackiRequest)
+        yield takeEvery(getType(packiActions.commitGitRepositoryRequest), handleCommitGitRepositoryRequest)
+        yield takeEvery(getType(packiActions.uploadPackiTemplateRequest), handleUploadPackiTemplateRequest)
+    function* packiSaga
+        yield 
+            _ all
+                [ 
+                    @ fork(watchFetchRequest)
+                    @ fork(watchCrudRequest)
+    export-default packiSaga

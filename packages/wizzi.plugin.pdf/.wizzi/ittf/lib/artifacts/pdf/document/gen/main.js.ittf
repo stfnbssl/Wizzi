@@ -71,7 +71,7 @@ module
                     _ ctx.w('    });')
                     _ ctx.w('    Object.assign({}, documentDefinition.styles, section.styles);')
                     _ ctx.w('});')
-                    $if gctxIsDevelopment
+                    $if wzConfigIsDevelopment
                         _ ctx.w('')
                         _ ctx.w('// Dump for test')
                         _ ctx.w('    fs.writeFileSync(__dirname + "/' + model.wzName + '.json", JSON.stringify(documentDefinition, null, "\t"));')

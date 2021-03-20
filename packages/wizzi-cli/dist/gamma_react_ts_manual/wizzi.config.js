@@ -19,6 +19,6 @@ module.exports = {
     schemas: [
     ], 
     globalContext: {
-        gctxIsDevelopment: true
+        wzConfigIsDevelopment: true
     }
 };

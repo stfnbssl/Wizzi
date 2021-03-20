@@ -74,7 +74,7 @@ module wizzi.js.artifacts.module.gen.codegen.react.html
 				f_cb()
 					repeater_increment(1)
 			$append next
-                log 'htmlelement_open.model.statements.length', model.statements.length
+                # log 'htmlelement_open.model.statements.length', model.statements.length
                 if model.statements.length > 0
 				    _ ctx.w(">");
 				    # end of open tag

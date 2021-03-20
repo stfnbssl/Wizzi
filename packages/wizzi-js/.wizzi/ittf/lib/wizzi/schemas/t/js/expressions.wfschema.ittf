@@ -123,3 +123,10 @@
 		#       _ price
 		#         @ id
 		#       @ 100
+
+	e op_typeof : statement
+		tag typeof|optypeof
+
+		# ittf
+		#   var foo
+		#     typeof Foo

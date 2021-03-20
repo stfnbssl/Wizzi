@@ -10,6 +10,8 @@ var util = require('util');
 var async = require('async');
 var verify = require('wizzi-utils').verify;
 var GenContext = require('./genContext');
+var g_generationsCheckCounter = 0;
+var g_generationsCheck = {};
 function logme() {
     if (false) {
         console.log.apply(console, arguments);
@@ -256,7 +258,20 @@ var AsyncArtifactGenerator = {
     }, 
     _gen_item: function(genInfo, callback) {
         logme('AsyncArtifactGenerator._gen_item', 'genInfo.mainSourceModel', genInfo.mainSourceModel)
-        new genInfo.generator.gen(genInfo.mainSourceModel, genInfo.genContext, callback);
+        var generatingPath = genInfo.genContext.srcPath;
+        function checkCallback() {
+            throw new error(generatingPath + ' generation did not termitate');
+        }
+        var gNum = ++g_generationsCheckCounter;
+        g_generationsCheck['timer' + gNum] = setTimeout(checkCallback, 1000);
+        new genInfo.generator.gen(genInfo.mainSourceModel, genInfo.genContext, function(err, result) {
+            if (err) {
+                return callback(err);
+            }
+            var timer = g_generationsCheck['timer' + gNum];
+            clearTimeout(timer)
+            return callback(null, result);
+        });
     }
 };
 

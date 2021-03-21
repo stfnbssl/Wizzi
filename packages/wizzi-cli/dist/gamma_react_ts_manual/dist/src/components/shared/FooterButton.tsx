@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\FooterButton.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -12,8 +12,7 @@ type Props = {
     icon: string;
     children: React.ReactNode;
     onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-} 
-;
+};
 export default function FooterButton({
         active, 
         icon, 

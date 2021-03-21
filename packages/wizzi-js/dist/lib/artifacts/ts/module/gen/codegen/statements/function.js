@@ -291,6 +291,12 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.arrowfunction. Got: ' + callback);
         }
         var async_str = model.xasync ? 'async ' : '';
+        // log 'ctx.__is_react_class', ctx.__is_react_class
+        // log 'model.wzParent.wzElement', model.wzParent.wzElement
+        // log 'u.onlyChildIs(model, "callOnValue")', u.onlyChildIs(model, 'callOnValue')
+        // log 'u.onlyChildIsHtmlElement(model)', u.onlyChildIsHtmlElement(model)
+        // log 'u.onlyChildIs(model, "arrowfunction")', u.onlyChildIs(model, 'arrowfunction')
+        // log "u.isImplicitReturn(model)", u.isImplicitReturn(model)
         if (ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent') {
             var implicitReturn = u.isImplicitReturn(model);
             ctx.w(async_str + model.wzName + ' = (');

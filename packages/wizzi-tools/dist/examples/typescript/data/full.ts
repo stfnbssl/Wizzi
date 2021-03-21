@@ -1,4 +1,5 @@
+class Po {
 
+    _timer: any;
 
-
-for (const filename of Object.keys(files).sort()) {}
+}

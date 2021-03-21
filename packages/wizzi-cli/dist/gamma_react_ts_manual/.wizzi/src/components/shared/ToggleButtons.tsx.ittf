@@ -48,8 +48,7 @@ module
                 :ref Props
                     :param 
                         :ref T
-            const [prefs]
-                _ usePreferences
+            const [prefs] = usePreferences()
             const light = prefs.theme !== 'dark'
             return 
                 span 

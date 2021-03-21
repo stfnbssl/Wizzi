@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Spinner.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import {css, StyleSheet} from 'aphrodite';
 import React from 'react';
@@ -12,16 +12,14 @@ type Props = {
         green: number;
         blue: number;
         alpha: number;
-    } 
-    ;
+    };
     segments: number;
     segmentWidth: number;
     segmentLength: number;
     spacing: number;
     fadeTo: number;
     fadeSteps: number;
-} 
-;
+};
 export default class LoadingIndicator extends React.Component<Props> {
         static defaultProps = {
             color: {

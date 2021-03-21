@@ -2,19 +2,17 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\Form.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import {Register, Unregister, Update, FormValidation} from './types';
 type Props = { 
     onSubmit: () => void;
     children: React.ReactNode;
-} 
-;
+};
 type State = { 
     isValid: boolean;
-} 
-;
+};
 export const FormValidationContext = React.createContext<FormValidation | undefined>(undefined);
 export default class Form extends React.Component<Props, State> {
         state = {
@@ -28,13 +26,12 @@ export default class Form extends React.Component<Props, State> {
             key: number;
             validate: () => Error | null;
             focus: () => void;
-        } 
-        > = [];
-        _register = ({
+        }> = [];
+        _register:  Register = ({
             validate, 
             focus
         }) => {
-            Registerconst key = this._key++;
+            const key = this._key++;
             this._inputs.push({
                 key, 
                 validate, 
@@ -42,14 +39,12 @@ export default class Form extends React.Component<Props, State> {
             })
             return key;
         }
-        _unregister = (key: number) => {
-            Unregisterthis._inputs = this._inputs.filter(it => it.key !== key);
-        }
-        _update = () => {
-            Updatethis.setState({
+        _unregister:  Unregister = (key: number) => {
+            this._inputs = this._inputs.filter(it => it.key !== key)}
+        _update:  Update = () => {
+            this.setState({
                 isValid: this._inputs.every(it => !it.validate())
-            })
-        }
+            })}
         _handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             for (const input of this._inputs) {
@@ -67,7 +62,9 @@ export default class Form extends React.Component<Props, State> {
                         unregister: this._unregister, 
                         update: this._update, 
                         valid: this.state.isValid
-                    }} form={onSubmit {this._handleSubmit}{this.props.children}} />
+                    }}>
+                        <form onSubmit={this._handleSubmit} />
+                    </FormValidationContext.Provider>
                 )
             ;
         }

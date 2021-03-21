@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\preferences\withThemeName.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
@@ -11,8 +11,7 @@ import {prefTypes} from '../preferences';
 import {$Subtract} from '../../types';
 type InjectedProps = { 
     theme: prefTypes.ThemeName;
-} 
-;
+};
 // react-redux doesn't work with forwardRef: https://github.com/reduxjs/react-redux/issues/914
 // so this HOC always needs wrap a connect call, and a connect call cannot wrap this
 export default function withThemeName<P extends InjectedProps>(Comp: React.ComponentType<P>):  React.ComponentType<$Subtract<P, InjectedProps>> {

@@ -109,35 +109,67 @@
         var paren = ctx.parenRequired || model.statements.length > 2
         if paren
             _ ctx.write('(')
-        _ ctx.write(model.wzName + ' ? ')
-        _ cnt.genItem
-            @ model.statements[0]
-            @ ctx
-			f_cb()
-				_ ctx.write(' : ')
-				_ cnt.genItem
-					@ model.statements[1]
-					@ ctx
-					f_cb()
-						if paren
-							_ ctx.write(')')
-						if model.statements.length > 2
-							_ cnt.genItem
-								@ model.statements[2]
-								@ ctx
-								f_cb()
-									_ iif_end
-										@ model
-										@ ctx
-										@ callback
-						else
-							_ iif_end
-								@ model
-								@ ctx
-								@ callback
+        var m_test, m_then, m_else
+        foreach item in model.statements
+            if item.wzElement == 'test'
+                set m_test = item
+            elif item.wzElement == 'then'
+                set m_then = item
+            elif item.wzElement == 'xelse'
+                set m_else = item
+            else
+                # TODO error
+        function doTest
+            param callback
+            if m_test
+                _ cnt.genItem
+                    @ m_test
+                    @ ctx
+                    f_cb()
+                        _ ctx.write(' ? ')
+                        r_cb()
+            else
+                _ ctx.write(model.wzName + ' ? ')
+                r_cb()
+        function doThen
+            param callback
+            if m_then
+                _ cnt.genItem
+                    @ m_then
+                    @ ctx
+                    f_cb()
+                        _ ctx.write(' : ')
+                        r_cb()
+            else
+                # TODO error
+                r_cb()
+        function doElse
+            param callback
+            if m_else
+                _ cnt.genItem
+                    @ m_else
+                    @ ctx
+                    f_cb()
+                        r_cb()
+            else
+                # TODO error
+                r_cb()
+        _ doTest
+            f_cb()
+                _ doThen
+                    f_cb()
+                        _ doElse
+                            f_cb()
+                                _ iif_end
+                                    @ model
+                                    @ ctx
+                                    @ callback
     
 	fn( iif_end )
         # log 'iif_end', u.isTopStatement(model, ctx)
+        var paren = ctx.parenRequired || model.statements.length > 2
+        if paren
+            _ ctx.write(')')
 		if u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false
 			_ console.log
 				@ 'iif'
@@ -146,7 +178,7 @@
 					then 
 						set model.wzParent.wzParent.wzElement
 					else ''
-			_ ctx.w(';')
+			# 21/3/21 (waiting for damage) _ ctx.w(';')
 		r_cb()
 
 	stm( test

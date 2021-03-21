@@ -50,12 +50,11 @@ module
             :ref Props
         const onClick
             => 
-                _ Segment.getInstance
-                    ._ logEvent
-                        @ 'CLICKED_LINK'
-                        { 
-                            @ target rest.href
-                        @ 'previewQueue'
+                _ Segment.getInstance().logEvent
+                    @ 'CLICKED_LINK'
+                    { 
+                        @ target rest.href
+                    @ 'previewQueue'
         return 
             a 
                 @ className

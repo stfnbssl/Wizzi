@@ -60,9 +60,7 @@ module
             { 
                 @ focused true
         m focus
-            && 
-                + this._input.current
-                _ this._input.current.focus
+            set this._input.current && this._input.current.focus()
         => _handleFocus
             _ this.setState
                 { 

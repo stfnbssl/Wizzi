@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\defaults.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import {PackiFiles} from './types';
 export const DEFAULT_PACKI_NAME = 'MyPacki';
@@ -45,8 +45,7 @@ export const INITIAL_CODE: PackiFiles = {
 };
 export const INITIAL_PACKI_KINDS: { 
     [key: string]: PackiFiles;
-} 
- = {
+} = {
     'react': {
         '.wizzi/root/package.json.ittf': {
             type: 'CODE', 

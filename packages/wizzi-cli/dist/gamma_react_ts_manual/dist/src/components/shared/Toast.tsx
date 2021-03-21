@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Toast.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,15 +19,12 @@ type Props = {
         label: string;
         action?: () => void;
         primary?: boolean;
-    } 
-    >;
+    }>;
     onDismiss?: () => void;
-} 
-;
+};
 type State = { 
     dismissing: boolean;
-} 
-;
+};
 const TOAST_GROUP_ID = '__toast_group__container';
 class Toast extends React.Component<Props, State> {
     static defaultProps = {
@@ -50,7 +47,8 @@ class Toast extends React.Component<Props, State> {
             document.body.appendChild(group);
         }
         group.appendChild(this._container);
-        this.props.persistent || this._scheduleDismiss()}
+        this.props.persistent || this._scheduleDismiss();
+    }
     componentWillUnmount() {
         const group = document.getElementById(TOAST_GROUP_ID);
         if (group) {

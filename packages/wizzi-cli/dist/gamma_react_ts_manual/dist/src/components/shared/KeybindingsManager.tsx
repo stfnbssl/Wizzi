@@ -2,20 +2,17 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\KeybindingsManager.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 type Props<T extends { 
     combo: number[];
-} 
-> = { 
+}> = { 
     bindings: { 
         [key: string]: T;
-    } 
-    ;
+    };
     onTrigger: (type: string, binding: T) => void;
-} 
-;
+};
 const isMac = 'navigator' in global && /Mac/i.test(navigator.platform);
 export const KeyMap = {
     C: 67, 
@@ -55,8 +52,7 @@ export const isKeyCombo = (e: KeyboardEvent, combo: number[]) => combo.every((co
     );
 export default class KeybindingsManager<T extends { 
         combo: number[];
-    } 
-    > extends React.PureComponent<Props<T>> {
+    }> extends React.PureComponent<Props<T>> {
         componentDidMount() {
             document.addEventListener('keydown', this._handleKeydown);
         }

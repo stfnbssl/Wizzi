@@ -146,7 +146,8 @@ md.load = function(cnt) {
         repeater_1(0);
         function next_1() {
             ctx.deindent();
-            ctx.w('} ');
+            // 21/3/2021 _ ctx.w('} ')
+            ctx.write('}');
             // log 2
             return callback(null, null);
         }

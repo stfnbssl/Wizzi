@@ -1578,7 +1578,10 @@
 			set ret.tag = p_value.tag
 			if p_typeAnnotation
 				_ ret.children.push
-					@ p_typeAnnotation
+                    {
+                        @ tag ':return'
+                        @ name ''
+                        @ children [p_typeAnnotation]
 				foreach item in p_value.children
 					_ ret.children.push
 						@ item
@@ -1586,8 +1589,8 @@
 				set ret.children = p_value.children
 		else
 			if p_typeAnnotation
-				_ ret.children.push
-					@ p_typeAnnotation
+                _ ret.children.push
+                    @ p_typeAnnotation
 			if node.computed
 				set ret.name = '[' + ret.name + ']'
 			elif p_value && p_value.tag

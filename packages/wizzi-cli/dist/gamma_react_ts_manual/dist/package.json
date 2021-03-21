@@ -26,11 +26,14 @@
         "web-vitals": "^1.1.1",
         "aphrodite": "^2.2.3",
         "classnames": "^2.2.6",
-        "escape-string-regexp": "^4.0.0"
+        "escape-string-regexp": "^4.0.0",
+        "redux": "^4.0.1",
+        "redux-saga": "^1.0.1"
     },
     "devDependencies": {
         "@types/classnames": "^2.2.7",
-        "@types/escape-string-regexp": "^2.0.1"
+        "@types/escape-string-regexp": "^2.0.1",
+        "@types/react-redux": "^7.0.1"
     },
     "browserslist": {
         "production": [

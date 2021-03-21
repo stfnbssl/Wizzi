@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Modal.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -11,12 +11,10 @@ type Props = {
     visible: boolean;
     children?: React.ReactNode;
     onDismiss?: () => void;
-} 
-;
+};
 type State = { 
     rendered: boolean;
-} 
-;
+};
 export default class Modal extends React.PureComponent<Props, State> {
         static getDerivedStateFromProps(props: Props) {
             if (props.visible) {
@@ -55,12 +53,14 @@ export default class Modal extends React.PureComponent<Props, State> {
                 return ;
             }
             console.log('_handleDismiss', this._content.current, e.target);
-            this.props.onDismiss && this.props.onDismiss()}
+            this.props.onDismiss && this.props.onDismiss();
+        }
         _handleKeyDown = (e: KeyboardEvent) => {
             if (e.keyCode === 27 && this.props.visible) {
                 // Esc was pressed
                 e.preventDefault();
-                this.props.onDismiss && this.props.onDismiss()}
+                this.props.onDismiss && this.props.onDismiss();
+            }
         }
         render() {
             return ReactDOM.createPortal(

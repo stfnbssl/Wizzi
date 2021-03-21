@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\app\types.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import {prefTypes} from '../preferences';
 export type LoggedUser = { 
@@ -11,8 +11,7 @@ export type LoggedUser = {
     username: string;
     displayName: string;
     picture?: string;
-} 
-;
+};
 export type QueryParams_VIA = { 
     session_id?: string;
     // TODO local packi provider ?
@@ -27,5 +26,4 @@ export type QueryParams_VIA = {
     // iframeId?: string;
     waitForData?: 'boolean';
     theme?: prefTypes.ThemeName;
-} 
-;
+};

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\preferences\PreferencesProvider.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import {connect} from 'react-redux';
@@ -15,15 +15,12 @@ type Props = {
     cookies: { 
         get: (key: string) => string | undefined;
         set?: (key: string, value: string) => void;
-    } 
-    ;
+    };
     children: React.ReactNode;
-} 
-;
+};
 type State = { 
     preferences: PreferencesType;
-} 
-;
+};
 const PREFERENCES_KEY = config.PREFERENCES_KEY;
 const defaults: PreferencesType = {
     autoGenSingleDoc: false, 

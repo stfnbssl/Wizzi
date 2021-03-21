@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\MuiModalDialog.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -20,8 +20,7 @@ type Props = {
     children: React.ReactNode;
     autoSize?: boolean;
     onDismiss: () => void;
-} 
-;
+};
 function MuiModalDialog(props: Props) {
     return  (
             <Dialog open={props.visible} className={props.className} onClose={props.onDismiss} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">

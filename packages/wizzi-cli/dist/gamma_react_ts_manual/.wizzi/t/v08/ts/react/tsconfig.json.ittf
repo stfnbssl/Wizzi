@@ -13,6 +13,7 @@ $group
         esModuleInterop true
         allowSyntheticDefaultImports true
         strict true
+        strictFunctionTypes false $$ BAX added for compat
         forceConsistentCasingInFileNames true
         noFallthroughCasesInSwitch true
         module "esnext"

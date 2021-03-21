@@ -55,7 +55,8 @@
 					repeater_increment( 1 )
 			$append next
 				_ ctx.deindent
-				_ ctx.w('} ')
+				# 21/3/2021 _ ctx.w('} ')
+                _ ctx.write('}')
 				# log 2
 				r_cb()
 	

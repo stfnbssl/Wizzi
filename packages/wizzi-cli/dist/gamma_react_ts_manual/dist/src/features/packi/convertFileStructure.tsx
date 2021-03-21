@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\convertFileStructure.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import {isEntryPoint} from '../filelist/fileUtilities';
 import {FileSystemEntry, FileSystemEntryDiff} from '../filelist/types';
@@ -116,10 +116,8 @@ export const entryArrayToPacki = (entryArray: FileSystemEntry[]) => {
 ;
 export const entryArrayToObject = (entryArray: FileSystemEntry[]) => {
     const entriesObject: { 
-        [key: string]} 
-     = entryArray.reduce((acc: { 
-        [key: string]} 
-    , {
+        [key: string]} = entryArray.reduce((acc: { 
+        [key: string]}, {
         item
     }) => {
         acc[item.path] = item;
@@ -132,8 +130,7 @@ export const entryArrayToObject = (entryArray: FileSystemEntry[]) => {
 export const entryArrayDiff = (a: FileSystemEntry[], b: FileSystemEntry[]) => {
     const diff: { 
         [k: string]: FileSystemEntryDiff;
-    } 
-     = {};
+    } = {};
     a.forEach((entry) => {
         // console.log('-', entry.item.path)
         diff[entry.item.path] = {

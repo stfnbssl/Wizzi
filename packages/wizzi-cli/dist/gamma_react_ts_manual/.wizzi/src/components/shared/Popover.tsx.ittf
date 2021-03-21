@@ -49,18 +49,8 @@ module
             _ this._hidePopover
         => _togglePopover
             if !this.state.visible
-                const popover
-                    || 
-                        && 
-                            + this._popover.current
-                            _ this._popover.current.getBoundingClientRect
-                        + {}
-                const anchor
-                    || 
-                        && 
-                            + this._anchor.current
-                            _ this._anchor.current.getBoundingClientRect
-                        + {}
+                const popover = this._popover.current && this._popover.current.getBoundingClientRect() || {}
+                const anchor = this._anchor.current && this._anchor.current.getBoundingClientRect() || {}
                 # @ts-ignore
                 const diff = (popover.width - 10) / 2 - anchor.left
                 if this._popover.current && this._arrow.current

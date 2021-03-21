@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\LargeInput.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -18,18 +18,17 @@ type Props = {
     type?: string;
     autoFocus?: boolean;
     error?: Error | null;
-} 
-;
+};
 type State = { 
     focused: boolean;
-} 
-;
+};
 class LargeInput extends React.Component<Props, State> {
     state = {
         focused: true
     };
     focus() {
-        this._input.current && this._input.current.focus()}
+        this._input.current && this._input.current.focus();
+    }
     _handleFocus = () => {
         this.setState({
             focused: true

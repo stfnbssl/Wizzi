@@ -6604,6 +6604,17 @@
       ],
       "relations": [
         {
+          "name": "typeReturn",
+          "role": null,
+          "tags": [
+            ":return"
+          ],
+          "cardinality": "one-to-one",
+          "flags": "is-one-to-one ",
+          "inheritedFrom": null,
+          "comments": []
+        },
+        {
           "name": "typeParameterDecl",
           "role": "typeParameterDecls",
           "tags": [
@@ -6742,6 +6753,17 @@
         }
       ],
       "relations": [
+        {
+          "name": "typeReturn",
+          "role": null,
+          "tags": [
+            ":return"
+          ],
+          "cardinality": "one-to-one",
+          "flags": "is-one-to-one ",
+          "inheritedFrom": null,
+          "comments": []
+        },
         {
           "name": "statement",
           "role": "statements",

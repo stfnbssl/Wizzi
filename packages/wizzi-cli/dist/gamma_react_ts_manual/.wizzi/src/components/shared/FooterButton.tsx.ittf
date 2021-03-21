@@ -35,8 +35,7 @@ module
                 @ children
                 @ onClick
                 :ref Props
-            const [prefs]
-                _ usePreferences
+            const [prefs] = usePreferences()
             return 
                 button 
                     @ onClick {onClick}

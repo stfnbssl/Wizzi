@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ContextMenu.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -14,8 +14,7 @@ export type Action = {
     handler: () => void;
     disabled?: boolean;
     combo?: number[];
-} 
-;
+};
 type Props = { 
     innerRef?: React.Ref<HTMLUListElement>;
     visible: boolean;
@@ -23,13 +22,11 @@ type Props = {
     position?: { 
         pageX: number;
         pageY: number;
-    } 
-     | null;
+    } | null;
     onHide: () => void;
     className?: string;
     theme: prefTypes.ThemeName;
-} 
-;
+};
 const BOTTOM_OFFSET = 35;
 const MENU_ITEM_HEIGHT = 28;
 class ContextMenu extends React.PureComponent<Props> {

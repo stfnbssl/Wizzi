@@ -15,6 +15,14 @@
 	#      Reintroduce as @switch
 	# TODO the 'base' tag/element has been suspended for collision with base statement
 	#      Reintroduce as @base
+	# TODO the 'form' attribute has been suspended for collision with tag/element
+	#      Reintroduce as @form
+	# TODO the 'label' attribute has been suspended for collision with tag/element
+	#      Reintroduce as @label
+	# TODO the 'span' attribute has been suspended for collision with tag/element
+	#      Reintroduce as @span
+	# TODO the 'summary' attribute has been suspended for collision with tag/element
+	#      Reintroduce as @summary
 	
 	var _tags = "a abbr address area article aside audio b @base bdi bdo big blockquote body br" +
 		\b " button canvas caption cite code col colgroup data datalist dd del details dfn" +
@@ -37,7 +45,7 @@
 		\b " async autoComplete autoFocus autoPlay capture cellPadding cellSpacing charSet" +
 		\b " challenge checked classID className cols colSpan content contentEditable contextMenu" +
 		\b " controls coords crossOrigin data dateTime defer dir disabled download draggable" + 
-		\b " encType form formAction formEncType formMethod formNoValidate formTarget frameBorder" +
+		\b " encType @form formAction formEncType formMethod formNoValidate formTarget frameBorder" +
 		\b " headers height hidden high href hrefLang htmlFor httpEquiv icon id inputMode" +
 		\b " keyParams keyType @label lang list loop low manifest marginHeight marginWidth max" +
 		\b " maxLength media mediaGroup method min minLength multiple muted name noValidate open" +

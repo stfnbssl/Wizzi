@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\app\Segment.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 declare const analytics;
 export default class Segment {
@@ -15,8 +15,7 @@ export default class Segment {
         timers: { 
             sessionStart: number;
             [key: string]: number;
-        } 
-        ;
+        };
         commonData: object;
         static getInstance() {
             if (instance) {
@@ -37,8 +36,7 @@ export default class Segment {
         logEvent(name: string, data?: object, timerKeys: string[]) {
             const eventTenures: { 
                 [key: string]: number;
-            } 
-             = {};
+            } = {};
             for (const key of timerKeys) {
                 if (this.timers.hasOwnProperty(key)) {
                     eventTenures[`${key}Tenure`] = this._eventTenure(key);

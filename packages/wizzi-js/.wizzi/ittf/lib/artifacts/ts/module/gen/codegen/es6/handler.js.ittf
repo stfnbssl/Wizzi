@@ -27,6 +27,9 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.handler
 			@ ctx
 			@ statement
 			a_cb()
+                if model.typeReturn
+                    _ ctx.write(': ')
+                    _ statement.stm.typeReturn(model.typeReturn, ctx, () => {})
 				_ ctx.write(' = (')
 				_ u.genTSParams
 					@ model
@@ -34,9 +37,6 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.handler
 					@ statement
 					a_cb()
 						_ ctx.write(')')
-						if model.typeReturn
-							_ ctx.write(': ')
-							_ statement.stm.typeReturn(model.typeReturn, ctx, () => {})
 						_ ctx.w(' => {')
 						_ ctx.indent();
 						_ statement.genMany

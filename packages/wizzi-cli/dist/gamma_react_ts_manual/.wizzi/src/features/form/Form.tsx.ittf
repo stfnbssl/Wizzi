@@ -57,7 +57,8 @@ module
                                     :void 
                 [ 
             => _register
-                :ref Register
+                :return 
+                    :ref Register
                 { 
                     @ validate
                     @ focus
@@ -69,7 +70,8 @@ module
                         @ focus
                 return key
             => _unregister
-                :ref Unregister
+                :return 
+                    :ref Unregister
                 param key
                     :number 
                 set this._inputs =
@@ -78,7 +80,8 @@ module
                             param it
                             set it.key !== key
             => _update
-                :ref Update
+                :return 
+                    :ref Update
                 _ this.setState
                     { 
                         @ isValid

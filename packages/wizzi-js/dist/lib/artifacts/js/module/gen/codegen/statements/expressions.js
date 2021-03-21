@@ -179,30 +179,81 @@ md.load = function(cnt) {
         if (paren) {
             ctx.write('(');
         }
-        ctx.write(model.wzName + ' ? ');
-        cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+        var m_test, m_then, m_else;
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            if (item.wzElement == 'test') {
+                m_test = item;
+            }
+            else if (item.wzElement == 'then') {
+                m_then = item;
+            }
+            else if (item.wzElement == 'xelse') {
+                m_else = item;
+            }
+            else {
+                // TODO error
+            }
+        }
+        function doTest(callback) {
+            if (m_test) {
+                cnt.genItem(m_test, ctx, function(err, notUsed) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    ctx.write(' ? ');
+                    return callback(null, null);
+                })
+            }
+            else {
+                ctx.write(model.wzName + ' ? ');
+                return callback(null, null);
+            }
+        }
+        function doThen(callback) {
+            if (m_then) {
+                cnt.genItem(m_then, ctx, function(err, notUsed) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    ctx.write(' : ');
+                    return callback(null, null);
+                })
+            }
+            else {
+                // TODO error
+                return callback(null, null);
+            }
+        }
+        function doElse(callback) {
+            if (m_else) {
+                cnt.genItem(m_else, ctx, function(err, notUsed) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    return callback(null, null);
+                })
+            }
+            else {
+                // TODO error
+                return callback(null, null);
+            }
+        }
+        doTest(function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
-            ctx.write(' : ');
-            cnt.genItem(model.statements[1], ctx, function(err, notUsed) {
+            doThen(function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
-                if (paren) {
-                    ctx.write(')');
-                }
-                if (model.statements.length > 2) {
-                    cnt.genItem(model.statements[2], ctx, function(err, notUsed) {
-                        if (err) {
-                            return callback(err);
-                        }
-                        iif_end(model, ctx, callback)
-                    })
-                }
-                else {
+                doElse(function(err, notUsed) {
+                    if (err) {
+                        return callback(err);
+                    }
                     iif_end(model, ctx, callback)
-                }
+                })
             })
         })
     };
@@ -211,9 +262,13 @@ md.load = function(cnt) {
             throw new Error('Missing callback parameter in fn: ' + myname + '.iif_end');
         }
         // log 'iif_end', u.isTopStatement(model, ctx)
+        var paren = ctx.parenRequired || model.statements.length > 2;
+        if (paren) {
+            ctx.write(')');
+        }
         if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
             console.log('iif', model.wzParent.wzElement, model.wzParent.wzParent ? model.wzParent.wzParent.wzElement : '')
-            ctx.w(';');
+            // 21/3/21 (waiting for damage) _ ctx.w(';')
         }
         return callback(null, null);
     }

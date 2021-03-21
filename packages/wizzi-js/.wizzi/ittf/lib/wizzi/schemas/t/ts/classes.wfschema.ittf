@@ -91,6 +91,8 @@
 		a_flag( typePrivate, :private )
 		a_flag( typePublic, :public )
 		a_flag( typeProtected, :protected )
+        r typeReturn
+			one-to-one
 
 	e p : statement
 		a_flag( typeAbstract, :abstract )
@@ -99,6 +101,8 @@
 		a_flag( typePublic, :public )
 		a_flag( typeProtected, :protected )
 		a_flag( typeReadonly, :readonly )
+        r typeReturn
+			one-to-one
 
 	e new : statement
 	

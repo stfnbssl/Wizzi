@@ -7,59 +7,32 @@
     "interpreter": null,
     "body": [
       {
-        "type": "ForOfStatement",
-        "await": false,
-        "left": {
-          "type": "VariableDeclaration",
-          "declarations": [
-            {
-              "type": "VariableDeclarator",
-              "id": {
-                "type": "Identifier",
-                "name": "filename"
-              },
-              "init": null
-            }
-          ],
-          "kind": "const"
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "Po"
         },
-        "right": {
-          "type": "CallExpression",
-          "callee": {
-            "type": "MemberExpression",
-            "object": {
-              "type": "CallExpression",
-              "callee": {
-                "type": "MemberExpression",
-                "object": {
-                  "type": "Identifier",
-                  "name": "Object"
-                },
-                "computed": false,
-                "property": {
-                  "type": "Identifier",
-                  "name": "keys"
-                }
-              },
-              "arguments": [
-                {
-                  "type": "Identifier",
-                  "name": "files"
-                }
-              ]
-            },
-            "computed": false,
-            "property": {
-              "type": "Identifier",
-              "name": "sort"
-            }
-          },
-          "arguments": []
-        },
+        "superClass": null,
         "body": {
-          "type": "BlockStatement",
-          "body": [],
-          "directives": []
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "ClassProperty",
+              "static": false,
+              "key": {
+                "type": "Identifier",
+                "name": "_timer"
+              },
+              "computed": false,
+              "typeAnnotation": {
+                "type": "TSTypeAnnotation",
+                "typeAnnotation": {
+                  "type": "TSAnyKeyword"
+                }
+              },
+              "value": null
+            }
+          ]
         }
       }
     ],

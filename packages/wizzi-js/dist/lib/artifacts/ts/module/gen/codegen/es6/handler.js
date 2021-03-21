@@ -28,16 +28,16 @@ md.gen = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
+        if (model.typeReturn) {
+            ctx.write(': ');
+            statement.stm.typeReturn(model.typeReturn, ctx, () => {});
+        }
         ctx.write(' = (');
         u.genTSParams(model, ctx, statement, (err, notUsed) => {
             if (err) {
                 return callback(err);
             }
             ctx.write(')');
-            if (model.typeReturn) {
-                ctx.write(': ');
-                statement.stm.typeReturn(model.typeReturn, ctx, () => {});
-            }
             ctx.w(' => {');
             ctx.indent();
             statement.genMany(model.statements, ctx, (err, notUsed) => {

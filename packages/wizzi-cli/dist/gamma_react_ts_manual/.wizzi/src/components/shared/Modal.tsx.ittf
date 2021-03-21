@@ -76,18 +76,14 @@ module
                 if this._content.current && this._content.current !== e.target && this._content.current.contains(e.target)
                     return 
                 _ console.log('_handleDismiss', this._content.current, e.target)
-                && 
-                    + this.props.onDismiss
-                    _ this.props.onDismiss
+                set this.props.onDismiss && this.props.onDismiss()
             => _handleKeyDown
                 param e
                     :ref KeyboardEvent
                 if e.keyCode === 27 && this.props.visible
                     # Esc was pressed
                     _ e.preventDefault
-                    && 
-                        + this.props.onDismiss
-                        _ this.props.onDismiss
+                    set this.props.onDismiss && this.props.onDismiss()
             m render
                 return 
                     _ ReactDOM.createPortal

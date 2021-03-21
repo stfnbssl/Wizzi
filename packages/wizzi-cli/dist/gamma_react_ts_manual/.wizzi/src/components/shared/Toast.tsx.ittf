@@ -78,9 +78,7 @@ module
                         @ zIndex '999'
                 _ document.body.appendChild(group)
             _ group.appendChild(this._container)
-            || 
-                + this.props.persistent
-                _ this._scheduleDismiss
+            set this.props.persistent || this._scheduleDismiss()
         m componentWillUnmount
             const group = document.getElementById(TOAST_GROUP_ID)
             if group
@@ -104,9 +102,7 @@ module
             set this._timer =
                 _ setTimeout
                     => 
-                        && 
-                            + this.props.onDismiss
-                            _ this.props.onDismiss
+                        set this.props.onDismiss && this.props.onDismiss()
                     @ 400
         m render
             const props

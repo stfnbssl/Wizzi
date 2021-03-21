@@ -9254,7 +9254,11 @@ format.ClassProperty = function(parent, node, options) {
     if (p_value && p_value.tag === '=>') {
         ret.tag = p_value.tag;
         if (p_typeAnnotation) {
-            ret.children.push(p_typeAnnotation)
+            ret.children.push({
+                tag: ':return', 
+                name: '', 
+                children: [p_typeAnnotation]
+            })
             var i, i_items=p_value.children, i_len=p_value.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_value.children[i];

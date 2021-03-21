@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\EditorForm.tsx.ittf
-    utc time: Sat, 20 Mar 2021 13:20:50 GMT
+    utc time: Sun, 21 Mar 2021 14:14:13 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -26,16 +26,13 @@ export type FormField = {
     defaultOption?: { 
         label: string;
         value: string;
-    } 
-    ;
+    };
     options?: { 
         label: string;
         value: string;
-    } 
-    [];
+    }[];
     onValidate?: (value: string) => Error | null;
-} 
-;
+};
 function validationOk(value: string):  Error | null {
     return null;
 }
@@ -45,49 +42,41 @@ type EditFormProps = {
     action: string;
     fields: { 
         [key: string]: FormField;
-    } 
-    ;
+    };
     className?: string;
     onSubmit: (details: { 
         [key: string]: string;
-    } 
-    ) => void;
+    }) => void;
     onDismiss: () => void;
-} 
-;
+};
 type Props = EditFormProps & { 
     classes: any;
     theme: prefTypes.ThemeName;
-} 
-;
+};
 type State = { 
     values?: { 
         [key: string]: any;
-    } 
-    ;
+    };
     visible: boolean;
-} 
-;
+};
 function stateDefaultValues(fields: { 
     [key: string]: FormField;
-} 
-):  { 
+}):  { 
     [key: string]: string;
-} 
- {
+} {
     const ret: { 
         [key: string]: string;
-    } 
-     = {};
+    } = {};
     Object.keys(fields).map(k => ret[k] = fields[k].default)
     return ret;
 }
-function optionsSelected(options: { label: string; value: string; }[], value: string): any {
+function optionsSelected(options: { 
+    label: string;
+    value: string;
+}[], value: string):  any {
     const selected = options.find(option => option.value === value);
     return selected ? selected.value : undefined;
 }
-
-
 // @ts-ignore
 const SubmitButton = withStatus(Fab);
 // @ts-ignore
@@ -138,10 +127,10 @@ class EditorForm extends React.Component<Props, State> {
                                 Object.keys(fields).map((k, i) => {
                                     const field = fields[k];
                                     const value = this.state.values[k];
-                                    return ( ? (([
+                                    return ((([
                                             'text', 
                                             'checkbox'
-                                        ].indexOf(field.type)) > -1) :  (
+                                        ].indexOf(field.type)) > -1) ?  (
                                                 <div key={i} className={classes.fieldContainer}>
                                                     <ValidatedInput autoFocus type={field.type} className={classes.textField} margin="normal" label={field.label} value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({
                                                             values: {
@@ -151,7 +140,7 @@ class EditorForm extends React.Component<Props, State> {
                                                         })} placeholder={field.label} validate={field.onValidate || validationOk} />
                                                 </div>
                                             )
-                                        )field.type === 'select' ?  (
+                                         : field.type === 'select' ?  (
                                                     <div key={i} className={classes.fieldContainer}>
                                                         <ValidatedInput select className={classes.textField} label={field.label} SelectProps={{
                                                             MenuProps: {
@@ -168,7 +157,7 @@ class EditorForm extends React.Component<Props, State> {
                                                         } placeholder={field.label} validate={field.onValidate || validationOk} />
                                                     </div>
                                                 )
-                                             : null;
+                                             : null);
                                 }
                                 )
                             }<div className={css(styles.buttons)}>

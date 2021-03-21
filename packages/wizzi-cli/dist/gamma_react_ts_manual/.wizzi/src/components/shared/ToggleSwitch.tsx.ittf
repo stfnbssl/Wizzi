@@ -29,8 +29,7 @@ module
         function ToggleSwitch
             param props
                 :ref Props
-            const [prefs]
-                _ usePreferences
+            const [prefs] = usePreferences()
             return 
                 label 
                     @ className {classnames(css(styles.container), props.className)}

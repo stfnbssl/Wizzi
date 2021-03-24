@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.typeNumber = function(model, ctx, kind, callback) {
         if (typeof callback === 'undefined') {
@@ -120,6 +135,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeObjectLiteral. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         ctx.w('{ ');
         ctx.indent();
         var len_1 = model.statements.length;
@@ -215,6 +231,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeReference. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         if (model.statements.length == 1) {
             ctx.write('<' + model.wzName + '>');
             var item = model.statements[0];
@@ -303,6 +320,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeConditional. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         var item = model.typeCheck.statements[0];
         if (!cnt.stm[item.wzElement]) {
             console.log('ts.module.gen.typeConditional.wzElement not managed', item.wzElement);
@@ -422,6 +440,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeEnum. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         ctx.w('enum ' + model.wzName + ' {');
         ctx.indent();
         var len_1 = model.statements.length;
@@ -748,19 +767,21 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeAs. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         // log 'typeAs.model.statements 1', model.statements
         var atype = u.extractTSSimpleType(model);
         // log 'typeAs atype', atype
         // log 'typeAs.model.statements 2', model.statements
+        ctx.setLastNotEmptyLine();
+        ctx.write(' as ');
         if (atype) {
-            ctx.write(' as ');
             if (!cnt.stm[atype.wzElement]) {
                 console.log('ts.module.gen.item.wzElement not managed', atype.wzElement);
             }
             cnt.stm[atype.wzElement](atype, ctx, callback)
         }
         else {
-            return callback(ctx.error('typeAs must have a type.', model));
+            cnt.genItems(model.statements, ctx, callback)
         }
     };
     cnt.stm.typeLiteral = function(model, ctx, kind, callback) {
@@ -782,6 +803,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeMapped. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         if (model.statements.length == 2) {
             var item = model.statements[0];
             // log 'ts.module.gen.typeMapped', item.wzElement
@@ -814,6 +836,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeArrowFunction. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         var atype = u.extractTSSimpleType(model);
         u.genTSTypeParameters(model, ctx, cnt, (err, notUsed) => {
             if (err) {
@@ -867,6 +890,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeExportAssignment. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         ctx.w('export = ' + model.wzName + ';');
         return callback(null, null);
     };
@@ -877,6 +901,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeImportEqualsDeclaration. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         ctx.write('import ' + model.wzName + ' = ');
         if (model.statements.length == 1) {
             ctx.w('require( ' + model.statements[0].wzName + ');');
@@ -903,6 +928,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeCTorDeclare. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         var atype = u.extractTSSimpleType(model);
         ctx.write('(');
         u.genTSParams(model, ctx, cnt, (err, notUsed) => {
@@ -946,6 +972,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeConditional. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         if (!model.typeCheck || model.typeCheck.statements.length < 1) {
             return callback(ctx.error('ts.modeule.typeConditional missing typeCheck element', model));
         }

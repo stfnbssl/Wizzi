@@ -117,6 +117,12 @@ var GenContext = (function () {
         }
         this.isEmpty = false;
     }
+    GenContext.prototype.wSameLine = function(text) {
+        this.block.wSameLine(text)
+    }
+    GenContext.prototype.setLastNotEmptyLine = function() {
+        this.block.setLastNotEmptyLine();
+    }
     GenContext.prototype.appendFile = function(filePath) {
         this.block.appendFile(interpolate(filePath, this.values))
         this.isEmpty = false;

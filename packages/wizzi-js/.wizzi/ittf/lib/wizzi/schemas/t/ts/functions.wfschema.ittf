@@ -45,6 +45,9 @@
 
 		a_flag( xasync, async )
 
+		r typeReturn
+			one-to-one
+
 		# es6 feature
 		#
 		# ittf

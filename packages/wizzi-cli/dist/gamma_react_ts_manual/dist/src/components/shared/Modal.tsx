@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Modal.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -26,7 +26,8 @@ export default class Modal extends React.PureComponent<Props, State> {
         }
         state = {
             rendered: this.props.visible
-        };
+        }
+        ;
         componentDidMount() {
             document.body.appendChild(this._container);
             document.addEventListener('keydown', this._handleKeyDown);
@@ -35,9 +36,11 @@ export default class Modal extends React.PureComponent<Props, State> {
             if (this.props.visible !== prevProps.visible) {
                 clearTimeout(this._timer);
                 if (!this.props.visible) {
-                    this._timer = setTimeout(() => this.setState({
+                    this._timer = setTimeout(() => 
+                        this.setState({
                             rendered: false
-                        }), 300);
+                        })
+                    , 300);
                 }
             }
         }
@@ -46,27 +49,31 @@ export default class Modal extends React.PureComponent<Props, State> {
             document.removeEventListener('keydown', this._handleKeyDown);
         }
         _container = document.createElement('div');
-        _content = React.createRef();
+        _content = React.createRef<HTMLDivElement>();
         _timer: any;
         _handleDismiss = (e: React.MouseEvent<HTMLDivElement>) => {
-            if (this._content.current && this._content.current !== e.target && this._content.current.contains(e.target)) {
+            if (this._content.current && this._content.current !== e.target && this._content.current.contains(e.target  as Node)) {
                 return ;
             }
             console.log('_handleDismiss', this._content.current, e.target);
             this.props.onDismiss && this.props.onDismiss();
-        }
+        };
         _handleKeyDown = (e: KeyboardEvent) => {
             if (e.keyCode === 27 && this.props.visible) {
                 // Esc was pressed
                 e.preventDefault();
                 this.props.onDismiss && this.props.onDismiss();
             }
-        }
+        };
         render() {
             return ReactDOM.createPortal(
-                    <div className={css(styles.modal, this.props.visible ? styles.visible : styles.hidden)} onClick={this._handleDismiss}>
-                        <div ref={this._content} className={css(styles.content)} />
+                <div className={css(styles.modal, this.props.visible ? styles.visible : styles.hidden)} onClick={this._handleDismiss}>
+                    <div ref={this._content} className={css(styles.content)}>
+                        {
+                            this.state.rendered ? this.props.children : null
+                        }
                     </div>
+                </div>
                 , this._container);
         }
     }

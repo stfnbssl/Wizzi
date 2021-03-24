@@ -27,22 +27,33 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.handler
 			@ ctx
 			@ statement
 			a_cb()
-                if model.typeReturn
-                    _ ctx.write(': ')
-                    _ statement.stm.typeReturn(model.typeReturn, ctx, () => {})
-				_ ctx.write(' = (')
+                var isSingleParam = u.isSingleParamForArrowFunction(model)            
+				_ ctx.write(' = ' + (isSingleParam ? '' : '('))
 				_ u.genTSParams
 					@ model
 					@ ctx
 					@ statement
 					a_cb()
-						_ ctx.write(')')
-						_ ctx.w(' => {')
-						_ ctx.indent();
-						_ statement.genMany
-							@ model.statements
-							@ ctx
-							a_cb()
-								_ ctx.deindent();
-								_ ctx.w('}');
-								r_cb()
+						_ ctx.write(isSingleParam ? '' : ')')
+                        function writeBody
+                            var ir = u.isImplicitReturn(model)
+                            var ts = u.isTopStatement(model, ctx)
+                            _ ctx.w(' => ' + (ir ? '' : '{'))
+                            _ ctx.indent();
+                            _ statement.genMany
+                                @ model.statements
+                                @ ctx
+                                a_cb()
+                                    _ ctx.deindent();
+                                    _ ctx.write(ir ? '' : '}');
+                                    _ ctx.w(ts ? ';' : '');
+                                    r_cb()                            
+                        if model.typeReturn
+                            _ ctx.write(': ')
+                            _ statement.stm.typeReturn
+                                @ model.typeReturn
+                                @ ctx
+                                a_cb()
+                                    _ writeBody
+                        else
+                            _ writeBody

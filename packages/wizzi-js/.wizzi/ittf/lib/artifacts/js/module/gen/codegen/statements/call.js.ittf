@@ -1,67 +1,75 @@
 ﻿loader(call)
     
 	stm( call
-		if model.__templateChild
+        var xmodel = writeComments(model, ctx)
+		if xmodel.__templateChild
 			_ ctx.write('${')
-        var name = (model.wzName || '').trim()
+        var name = (xmodel.wzName || '').trim()
         var hasParens = u.hasArguments(name)
+        $$ 24/3/21 var hasParens = xmodel.statements.length == 0 && u.hasArguments(name) $$ waiting for big damage
 		# log hasParens, ctx.__artifact, ctx.__functionNames
 		if hasParens == false && ctx.__artifact === 'xittf/document'
 			if ctx.__functionNames.indexOf(name) < 0
 				set name = ctx.__functionProvider + '.' + name
-        if model.statements.length > 0
+        if xmodel.statements.length > 0 || (xmodel.typeParameterInsts && xmodel.typeParameterInsts.length > 0)
             _ doCallChildStatements_one
-				@ model
+				@ xmodel
 				@ name
-				@ hasParens
+				$$ 22/3/21, try forcing hasParens = false when has typeParameterInsts; not sure this is the solution
+                @ (xmodel.typeParameterInsts && xmodel.typeParameterInsts.length > 0) ? false : hasParens
 				@ ctx
 				f_cb()
-					if model.__templateChild
+					if xmodel.__templateChild
 						_ ctx.write('}')
 					r_cb()
         else 
             set name = hasParens ? name : (name + '()')
             _ ctx.write(name)
-            if u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false
+            if u.isTopStatement(xmodel, ctx) && u.isDescendentOf(xmodel, 'iif') == false
                 _ ctx.w
                     _ u.semicolon(name)
-			if model.__templateChild
+			if xmodel.__templateChild
 				_ ctx.write('}')
 			r_cb()
     
 	stm( memberCall
-        var name = (model.wzName || '').trim()
+        var xmodel = writeComments(model, ctx)
+        var name = (xmodel.wzName || '').trim()
         var hasParens = u.hasArguments(name)
-        if model.statements.length > 0
-            _ doCallChildStatements_one(model, ('.' + name), hasParens, ctx, callback)
+        $$ 24/3/21 var hasParens = xmodel.statements.length == 0 && u.hasArguments(name) $$ waiting for big damage
+        if xmodel.statements.length > 0
+            _ doCallChildStatements_one(xmodel, ('.' + name), hasParens, ctx, callback)
         else 
             set name = hasParens ? ('.' + name) : ('.' + name) + '()'
             _ ctx.write(name)
-            if u.isTopStatement(model, ctx)
+            if u.isTopStatement(xmodel, ctx)
                 _ ctx.w
                     _ u.semicolon(name)
 			r_cb()
     
 	stm( decoratorCall
-        var name = ('@' + model.wzName).trim()
+        var xmodel = writeComments(model, ctx)
+        var name = ('@' + xmodel.wzName).trim()
         var hasParens = u.hasArguments(name)
-        if model.statements.length > 0
-            _ doCallChildStatements_one(model, name, hasParens, ctx, callback)
+        $$ 24/3/21 var hasParens = xmodel.statements.length == 0 && u.hasArguments(name) $$ waiting for big damage
+        if xmodel.statements.length > 0
+            _ doCallChildStatements_one(xmodel, name, hasParens, ctx, callback)
         else 
             set name = hasParens ? name : (name + '()')
             _ ctx.write(name)
-            if (u.isTopStatement(model, ctx) && (u.isDescendentOf(model, 'iif') == false))
+            if (u.isTopStatement(xmodel, ctx) && (u.isDescendentOf(xmodel, 'iif') == false))
                 _ ctx.w
                     _ u.semicolon(name)
 			r_cb()
     
 	stm( callOnValue
+        var xmodel = writeComments(model, ctx)
         var hasParens = false
-		if model.wzParent && model.wzParent.wzElement === 'arrowfunction'
-            _ ctx.write('(' + (model.wzName || ''))
-			if model.statements.length == 1
+		if xmodel.wzParent && xmodel.wzParent.wzElement === 'arrowfunction'
+            _ ctx.write('(' + (xmodel.wzName || ''))
+			if xmodel.statements.length == 1
 				_ cnt.genItem
-					@ model.statements[0]
+					@ xmodel.statements[0]
 					@ ctx
 					f_cb()
 						_ ctx.write(')')
@@ -69,16 +77,16 @@
 			else
 				_ ctx.write(')')
 				r_cb()
-        elif model.wzParent && model.wzParent.wzElement === 'call' && model.statements.length == 1
-			_ ctx.write('(' + (model.wzName || ''))
+        elif xmodel.wzParent && xmodel.wzParent.wzElement === 'call' && xmodel.statements.length == 1
+			_ ctx.write('(' + (xmodel.wzName || ''))
 			_ cnt.genItem
-				@ model.statements[0]
+				@ xmodel.statements[0]
 				@ ctx
 				f_cb()
 					_ ctx.write(')')
 					r_cb()
-		elif model.statements.length > 0
-            _ doCallChildStatements_one(model, '', hasParens, ctx, callback)
+		elif xmodel.statements.length > 0
+            _ doCallChildStatements_one(xmodel, '', hasParens, ctx, callback)
         else 
             _ ctx.write('()')
 			r_cb()
@@ -89,6 +97,8 @@
         param hasParens
         param ctx
 		param callback
+
+        # log 'doCallChildStatements_one.model', model
 
         _ ctx.write(name)
 
@@ -146,6 +156,7 @@
 					_ doCallChildStatements_call(item_1, ctx, remainings, callback)
 			if !first
 				_ ctx.write(', ')
+            # log 'doCallChildStatements_two', item_1
             if item_1.wzElement == 'comment'
                 _ ctx.w()
 			_ cnt.genItem
@@ -180,9 +191,9 @@
                     @ wzElement 'jsPropertyOrValue'
                     @ wzName classTag + ' ' + model.wzName
                     @ wzParent model
-            set model.wzElement = 'div'
-            set model.wzName = ''
-            _ cnt.stm.div(model, ctx, callback)
+            set model.wzElement = 'htmlelement'
+            set model.wzName = 'div'
+            _ cnt.stm.htmlelement(model, ctx, callback)
         else 
             _ ctx.write('.' + model.wzName)
 			r_cb()

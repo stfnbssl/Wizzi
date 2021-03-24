@@ -30,7 +30,7 @@ module
                 { 
                     ... 
                         ( 
-                            @id entry
+                            + entry
                                 :as 
                                     :any 
                     @ item
@@ -41,7 +41,7 @@ module
                                     ... 
                                         @expr 
                                             ( 
-                                                @id updates
+                                                + updates
                                                     :as 
                                                         :any 
                                             . item
@@ -54,7 +54,7 @@ module
                                     ... 
                                         @expr 
                                             ( 
-                                                @id updates
+                                                + updates
                                                     :as 
                                                         :any 
                                             . state

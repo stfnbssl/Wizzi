@@ -1,7 +1,8 @@
 ﻿loader( module )
 
 	stm( typeDeclare
-		repeater( 1, model.statements )
+        var xmodel = writeComments(model, ctx)
+		repeater( 1, xmodel.statements )
 			_ ctx.write('declare ')
 			_ cnt.genItem
 				@ item_1
@@ -12,26 +13,28 @@
 				r_cb()
 
 	stm( typeModule
-		_ ctx.write('module ' + model.wzName)
+        var xmodel = writeComments(model, ctx)
+		_ ctx.write('module ' + xmodel.wzName)
 		_ ctx.w(' {')
 		_ cnt.genItems
-			@ model.statements
+			@ xmodel.statements
 			@ ctx
 			f_cb()
 				_ ctx.w('}')
 				r_cb()
 
 	stm( typeTypeAlias
-		_ ctx.write('type ' + model.wzName)
+        var xmodel = writeComments(model, ctx)
+		_ ctx.write('type ' + xmodel.wzName)
 		_ u.genTSTypeParameters
-			@ model
+			@ xmodel
 			@ ctx
 			@ cnt
 			a_cb()
-				if model.statements.length == 1
+				if xmodel.statements.length == 1
 					_ ctx.write(' = ')
 					_ cnt.genItem
-						@ model.statements[0]
+						@ xmodel.statements[0]
 						@ ctx
 						f_cb()
 							_ ctx.w(';')
@@ -39,30 +42,31 @@
 				else
 					return
 						_ callback
-							_ ctx.error(':type typeTypeAlias must have one children. found: ' + model.statements.length, model)
+							_ ctx.error(':type typeTypeAlias must have one children. found: ' + xmodel.statements.length, xmodel)
 
 	stm( typeFunctionDeclare
-		_ ctx.write('function ' + model.wzName)
+        var xmodel = writeComments(model, ctx)
+		_ ctx.write('function ' + xmodel.wzName)
 		# log 'typeFunctionDeclare enter 1'
 		_ u.genTSTypeParameters
-			@ model
+			@ xmodel
 			@ ctx
 			@ cnt
 			a_cb()
 				# log 'typeFunctionDeclare enter 2'
 				_ ctx.write('(')
 				_ u.genTSParams
-					@ model
+					@ xmodel
 					@ ctx
 					@ cnt
 					a_cb()
 						# log 'typeFunctionDeclare cb 1'
 						_ ctx.write(')')
-						if model.typeReturn
-							# log 'typeFunctionDeclare typeReturn', model.typeReturn.wzElement
+						if xmodel.typeReturn
+							# log 'typeFunctionDeclare typeReturn', xmodel.typeReturn.wzElement
 							_ ctx.write(': ')
 							_ cnt.stm.typeReturn
-								@ model.typeReturn
+								@ xmodel.typeReturn
 								@ ctx
 								a_cb()
 									_ ctx.w(';')

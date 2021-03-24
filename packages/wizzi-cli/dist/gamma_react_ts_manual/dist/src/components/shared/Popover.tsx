@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Popover.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -19,7 +19,8 @@ type State = {
 class Popover extends React.PureComponent<Props, State> {
     state = {
         visible: false
-    };
+    }
+    ;
     componentDidMount() {
         document.addEventListener('click', this._handleDocumentClick);
         document.addEventListener('contextmenu', this._handleDocumentContextMenu);
@@ -32,25 +33,24 @@ class Popover extends React.PureComponent<Props, State> {
         if (this.state.visible) {
             this._hidePopover();
         }
-    }
+    };
     _handleDocumentClick = (e: MouseEvent) => {
-        if (this.state.visible && e.target === this._anchor.current || e.target === this._popover.current || this._popover.current && this._popover.current.contains(e.target)) {
+        if (this.state.visible && (e.target === this._anchor.current || e.target === this._popover.current || (this._popover.current && this._popover.current.contains(e.target  as Node)))) {
             return ;
         }
         this._hidePopover();
-    }
+    };
     _togglePopover = () => {
         if (!this.state.visible) {
-            const popover = this._popover.current && this._popover.current.getBoundingClientRect() || {};
-            const anchor = this._anchor.current && this._anchor.current.getBoundingClientRect() || {};
+            const popover = (this._popover.current && this._popover.current.getBoundingClientRect()) || {};
+            const anchor = (this._anchor.current && this._anchor.current.getBoundingClientRect()) || {};
             // @ts-ignore
             const diff = (popover.width - 10) / 2 - anchor.left;
             if (this._popover.current && this._arrow.current) {
                 if (diff > 0) {
                     this._popover.current.style.left = `${diff + 5}px`;
-                    this._arrow.current.style.left = 
-                        // @ts-ignore
-                        `${anchor.left - anchor.width / 2 + 10}px`;
+                    this._arrow.current.style.left = `${anchor.left - anchor.width / 2 + 10}px// @ts-ignore
+                    `;
                 }
                 else {
                     this._popover.current.style.left = '5px';
@@ -58,17 +58,19 @@ class Popover extends React.PureComponent<Props, State> {
                 }
             }
         }
-        this.setState((state) => ({
+        this.setState((state) => 
+            ({
                 visible: !state.visible
-            }))
-    }
-    _hidePopover = () => {
+            })
+        )
+    };
+    _hidePopover = () => 
         this.setState({
             visible: false
-        })}
-    _anchor = React.createRef();
-    _arrow = React.createRef();
-    _popover = React.createRef();
+        });
+    _anchor = React.createRef<HTMLElement>();
+    _arrow = React.createRef<HTMLSpanElement>();
+    _popover = React.createRef<HTMLDivElement>();
     render() {
         const {
             children, 
@@ -76,18 +78,19 @@ class Popover extends React.PureComponent<Props, State> {
             theme
         } = this.props;
         return  (
-                <div className={css(styles.container)}>
+            <div className={css(styles.container)}>
                 {
-                    React.cloneElement(
                     // @ts-ignore
-                    React.Children.only(children), {
+                    React.cloneElement(React.Children.only(children), {
                         ref: this._anchor, 
                         onClick: this._togglePopover
                     })
-                }<div ref={this._popover} className={css(styles.popover, theme === 'dark' ? styles.popoverDark : styles.popoverLight, this.state.visible ? styles.visible : styles.hidden)}>
-                        <span ref={this._arrow} className={css(styles.arrow, theme === 'dark' ? styles.arrowDark : styles.arrowLight)} />
-                    {content}</div>
+                }
+                <div ref={this._popover} className={css(styles.popover, theme === 'dark' ? styles.popoverDark : styles.popoverLight, this.state.visible ? styles.visible : styles.hidden)}>
+                    <span ref={this._arrow} className={css(styles.arrow, theme === 'dark' ? styles.arrowDark : styles.arrowLight)} />
+                    {content}
                 </div>
+            </div>
             )
         ;
     }

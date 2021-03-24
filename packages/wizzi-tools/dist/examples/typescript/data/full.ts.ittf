@@ -1,4 +1,7 @@
 module
-    class Po
-        p _timer
-            :any 
+    for 
+        left
+            const 
+                { 
+                    @ item
+        of entryArray

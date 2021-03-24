@@ -28,6 +28,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.jsonStatementTree = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -76,11 +91,24 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.jsRest. Got: ' + callback);
         }
-        ctx.write('...' + model.wzName);
+        ctx.write('...');
         if (model.statements.length > 0) {
-            cnt.genItems(model.statements, ctx, {}, callback)
+            if (['jsArray','jsObject'].indexOf(model.statements[0].wzElement) > -1) {
+                cnt.genItems(model.statements, ctx, {}, callback)
+            }
+            else {
+                ctx.write('(');
+                cnt.genItems(model.statements, ctx, {}, function(err, notUsed) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    ctx.w(')');
+                    return callback(null, null);
+                })
+            }
         }
         else {
+            ctx.write(model.wzName);
             return callback(null, null);
         }
     };
@@ -89,7 +117,7 @@ md.load = function(cnt) {
             throw new Error('Missing callback parameter in fn: ' + myname + '.jsPropertyOrValue_with_stm_children');
         }
         // log 'js.module.statements.object.model.wzName, model.statements.length', model.wzName, model.statements.length
-        var colon = (ctx.isGraphql && !ctx.isNamedCallParam) ? ' ' : ': ';
+        var colon = ((ctx.isGraphql && !ctx.isNamedCallParam) || model.wzParent.wzElement == 'call') ? ' ' : ': ';
         if (u.parentIsHtmlElement(model)) {
             // Attributes have been already processed
             return callback(null, null);
@@ -374,7 +402,12 @@ md.load = function(cnt) {
             // log 'jsObject_close 4'
             ctx.w('');
             ctx.deindent();
-            ctx.write('}');
+            if (u.parentIsHtmlElement(model)) {
+                ctx.w('}');
+            }
+            else {
+                ctx.write('}');
+            }
             return callback(null, null);
         }
     }

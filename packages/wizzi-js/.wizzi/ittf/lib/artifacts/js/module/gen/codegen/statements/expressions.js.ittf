@@ -37,6 +37,7 @@
 					_ ctx.error('void statement element requires zero or one child elements', model)
 
     stm( not
+        set model = writeComments(model, ctx)
 		_ ctx.write('!')
 		if model.statements.length == 0
 			_ ctx.write(model.wzName)
@@ -56,6 +57,7 @@
 					_ ctx.error('not/! statement element requires zero or one child elements', model)
 
     stm( or
+        set model = writeComments(model, ctx)
 		if model.statements.length != 2
 			if model.statements.length == 0 && ctx.__allowSingleLineOp
 				_ ctx.write(' || ' + (model.wzName || ''))
@@ -79,6 +81,7 @@
 						r_cb()
     
 	stm( and
+        set model = writeComments(model, ctx)
 		if model.statements.length != 2
 			if model.statements.length == 0 && ctx.__allowSingleLineOp
 				_ ctx.write(' && ' + (model.wzName || ''))
@@ -94,18 +97,25 @@
             @ ctx
 			f_cb()
 				_ ctx.write(' && ')
+                if model.statements[1].wzElement == 'htmlelement'
+                    _ ctx.indent
 				_ cnt.genItem
 					@ model.statements[1]
 					@ ctx
 					f_cb()
+                        if model.statements[1].wzElement == 'htmlelement'
+                            _ ctx.deindent
 						set ctx.parenRequired = saveParenRequired
 						r_cb()
     
 	stm( iif
+        set model = writeComments(model, ctx)
 		if model.statements.length < 2
 			return
 				_ callback
 					_ ctx.error('iif statement element requires at least two child elements', model)
+        if model.wzParent.wzElement == 'template'
+            _ ctx.w('${')
         var paren = ctx.parenRequired || model.statements.length > 2
         if paren
             _ ctx.write('(')
@@ -126,10 +136,16 @@
                     @ m_test
                     @ ctx
                     f_cb()
+                        if model.wzParent.wzElement == 'template'
+                            _ ctx.w
                         _ ctx.write(' ? ')
                         r_cb()
             else
-                _ ctx.write(model.wzName + ' ? ')
+                if model.wzParent.wzElement == 'template'
+                    _ ctx.w(model.wzName)
+                    _ ctx.write(' ? ')
+                else
+                    _ ctx.write(model.wzName + ' ? ')
                 r_cb()
         function doThen
             param callback
@@ -138,6 +154,8 @@
                     @ m_then
                     @ ctx
                     f_cb()
+                        if model.wzParent.wzElement == 'template'
+                            _ ctx.w
                         _ ctx.write(' : ')
                         r_cb()
             else
@@ -170,6 +188,8 @@
         var paren = ctx.parenRequired || model.statements.length > 2
         if paren
             _ ctx.write(')')
+        if model.wzParent.wzElement == 'template'
+            _ ctx.w('}')
 		if u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false
 			_ console.log
 				@ 'iif'
@@ -193,22 +213,37 @@
 				r_cb()
     
 	stm( then
-		if hasStatements(model) == false
+        var xmodel = writeComments(model, ctx)
+		if hasStatements(xmodel) == false
             _ ctx.write
-                @ model.wzName
+                @ xmodel.wzName
 			r_cb()
 
         _ cnt.genItems
-            @ model.statements
+            @ xmodel.statements
             @ ctx
             { 
                 @ indent true
 			@ callback
     
     stm( op_typeof
-        _ ctx.write
-            @ 'typeof(' + model.wzName + ')'
-        r_cb()
+        var xmodel = writeComments(model, ctx)
+        if xmodel.statements.length > 0
+            _ ctx.write
+                @ 'typeof('
+            _ cnt.genItems
+                @ xmodel.statements
+                @ ctx
+                { 
+                    @ indent true
+                a_cb()
+                    _ ctx.write
+                        @ ')'
+                    r_cb()
+        else
+            _ ctx.write
+                @ 'typeof(' + model.wzName + ')'
+            r_cb()
 
     stm( op_eq
         _ emitOperators(cnt, '==', model, ctx, callback)
@@ -222,11 +257,13 @@
 	stm( op_noteq_strict
         _ emitOperators(cnt, '!==', model, ctx, callback)
     
-	stm( op_or
+	$* VIA see and, or
+    stm( op_or
         _ emitOperators(cnt, '||', model, ctx, callback)
     
 	stm( op_and
         _ emitOperators(cnt, '&&', model, ctx, callback)
+    *$
     
 	stm( op_xor
         _ emitOperators(cnt, '|', model, ctx, callback)
@@ -270,6 +307,8 @@
 		param model
 		param ctx
 		param callback
+        log 'emitOperators', 'op'
+        set model = writeComments(model, ctx)
 		if model.statements[0] && model.statements[1]
 			var requireParen1 = model.statements.length > 2
 			var requireParena1 = model.statements[0].statements.length > 0

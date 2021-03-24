@@ -85,14 +85,16 @@
                 set text = model.wzName
                 set tag = model.wzElement
             
-			#  log 'enter _htmlelement ----------------', tag
+			# log 'enter _htmlelement ----------------', tag
 
 			var attrs = getAttrs(model, ctx)
+            var comments = []
             
 			var
 				decl statements = null
 				decl value = null
-			
+                decl childStatements = []
+
 			repeater(1, model.statements)
                 # log 'html.md._htmlelement', item_1.wzElement
                 if item_1.isEvent
@@ -138,11 +140,17 @@
                             @ name name
                             @ value value.trim()
 							@ statements statements
-                elif item_1.wzElement === 'htmlelement'
+                elif ['comment','commentmultiline'].indexOf(item_1.wzElement) > -1
+                    _ comments.push
+                        @ item_1
+                elif ['htmlelement','statement','jsObject'].indexOf(item_1.wzElement) > -1
                     set model.__hasChildElements = true
+                    _ childStatements.push
+                        @ item_1
 				repeater_increment(1)
 
 				$append next
+                    set model.statements = childStatements
 					_ _htmlelement_end
 						@ cnt
 						@ model
@@ -150,6 +158,7 @@
 						@ text
 						@ ctx
 						@ attrs
+                        @ comments
 						f_cb()
 							# @ callback
 							# log 'exit _htmlelement', tag
@@ -162,6 +171,7 @@
         param text
         param ctx
 		param attrs
+        param comments
 		param callback
 
         var save___inside_html = ctx.__inside_html
@@ -173,6 +183,7 @@
 			@ text
 			@ ctx
 			@ attrs
+            @ comments
 			f_cb()
 				set ctx.__inside_html = save___inside_html
 				r_cb()

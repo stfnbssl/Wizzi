@@ -27,6 +27,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.statement = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -36,22 +51,28 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.statement. Got: ' + callback);
         }
         // log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild
+        var text = model.wzName;
+        if (model.__templateChild || ctx.__inside_html) {
+            text = verify.replaceAll(verify.replaceAll(text, '&nbsp;', ' '), '&lf;', '\n');
+        }
         if (model.__templateChild) {
-            ctx.write(verify.replaceAll(verify.replaceAll(model.wzName, '&nbsp;', ' '), '&lf;', '\n'))
+            ctx.write(text)
             return callback(null, null);
         }
         else if (ctx.__inside_html == true && ctx.__jskind !== 'react') {
-            var text = model.wzName.trim();
+            var text = text.trim();
             var ip = lineParser.parseInterpolation(text, model, ctx.__inside_handlebar, ctx.__inside_ng);
             ctx.w("__html.push(" + ip.join() + ");");
         }
         else {
-            if (u.isTopStatement(model, ctx)) {
+            if (u.isTopStatement(model, ctx) || ctx.__inside_html == true) {
                 // 4/2/19 _ ctx.write(model.wzName)
-                ctx.w(model.wzName);
+                // 22/3/21 _ ctx.w(model.wzName)
+                ctx.w(text);
             }
             else {
-                ctx.write(model.wzName);
+                // 22/3/21 _ ctx.write(text)
+                ctx.write(text);
             }
         }
         cnt.genItems(model.statements, ctx, {
@@ -424,57 +445,58 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.set. Got: ' + callback);
         }
+        var xmodel = writeComments(model, ctx);
         var text;
         // log 'set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|'
         // FIXME this hack require refactoring
-        if (model.wzName === 'work.textSep = "__TS__"') {
-            text = model.wzName;
+        if (xmodel.wzName === 'work.textSep = "__TS__"') {
+            text = xmodel.wzName;
         }
         else {
-            text = node.inlinedTextToTextLines(model.wzName, {
+            text = node.inlinedTextToTextLines(xmodel.wzName, {
                 singleLine: true
             });
         }
-        if (hasStatements(model) == false) {
-            if (u.isDeclare(model)) {
+        if (hasStatements(xmodel) == false) {
+            if (u.isDeclare(xmodel)) {
                 ctx.write(text)
             }
             else {
                 ctx.write(text)
-                if (u.isTopStatement(model, ctx)) {
+                if (u.isTopStatement(xmodel, ctx)) {
                     ctx.w(u.semicolon(text))
                 }
             }
             return callback(null, null);
         }
-        if (model.statements[0].wzEntity === 'function') {
+        if (xmodel.statements[0].wzEntity === 'function') {
             ctx.w('');
         }
-        // log 'set,model.statements.length', model.wzName, model.statements.length
-        if (model.statements.length == 2) {
-            if (model.statements[0].wzElement == 'comment') {
-                ctx.w(model.wzName + ' ')
-                cnt.genItems(model.statements, ctx, {}, function(err, notUsed) {
+        // log 'set,xmodel.statements.length', xmodel.wzName, xmodel.statements.length
+        if (xmodel.statements.length == 2) {
+            if (xmodel.statements[0].wzElement == 'comment') {
+                ctx.w(xmodel.wzName + ' ')
+                cnt.genItems(xmodel.statements, ctx, {}, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
-                    if (u.isTopStatement(model, ctx)) {
+                    if (u.isTopStatement(xmodel, ctx)) {
                         ctx.w(';');
                     }
                     return callback(null, null);
                 })
             }
             else {
-                cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+                cnt.genItem(xmodel.statements[0], ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
-                    ctx.write(' ' + model.wzName + ' ')
-                    cnt.genItem(model.statements[1], ctx, function(err, notUsed) {
+                    ctx.write(' ' + xmodel.wzName + ' ')
+                    cnt.genItem(xmodel.statements[1], ctx, function(err, notUsed) {
                         if (err) {
                             return callback(err);
                         }
-                        if (u.isTopStatement(model, ctx)) {
+                        if (u.isTopStatement(xmodel, ctx)) {
                             ctx.w(';');
                         }
                         return callback(null, null);
@@ -483,14 +505,14 @@ md.load = function(cnt) {
             }
         }
         else {
-            ctx.write(u.setOperator(text, model.statements))
-            cnt.genItems(model.statements, ctx, {
+            ctx.write(u.setOperator(text, xmodel.statements))
+            cnt.genItems(xmodel.statements, ctx, {
                 indent: false
             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
-                if (u.isTopStatement(model, ctx)) {
+                if (u.isTopStatement(xmodel, ctx)) {
                     ctx.w(';');
                 }
                 return callback(null, null);

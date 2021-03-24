@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Banner.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -28,14 +28,17 @@ export default class Banner extends React.PureComponent<Props, State> {
         }
         state = {
             rendered: this.props.visible
-        };
+        }
+        ;
         componentDidUpdate(prevProps: Props) {
             if (this.props.visible !== prevProps.visible) {
                 clearTimeout(this._timer);
                 if (!this.props.visible) {
-                    this._timer = setTimeout(() => this.setState({
+                    this._timer = setTimeout(() => 
+                        this.setState({
                             rendered: false
-                        }), 300);
+                        })
+                    , 300);
                 }
             }
         }
@@ -45,9 +48,11 @@ export default class Banner extends React.PureComponent<Props, State> {
                 return null;
             }
             return  (
-                    <div className={css(styles.container)}>
-                        <div className={classnames(this.props.className, css(styles.banner, this.props.visible ? styles.visible : styles.hidden, this.props.type === 'success' && styles.success, this.props.type === 'error' && styles.error))} />
+                <div className={css(styles.container)}>
+                    <div className={classnames(this.props.className, css(styles.banner, this.props.visible ? styles.visible : styles.hidden, this.props.type === 'success' && styles.success, this.props.type === 'error' && styles.error))}>
+                        {this.props.children}
                     </div>
+                </div>
                 )
             ;
         }

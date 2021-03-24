@@ -81,10 +81,11 @@ module
             if !visible
                 return null
             const shownActions
-                _ actions.filter
-                    => 
-                        param action
-                        + action
+                @expr
+                    _ actions.filter
+                        => 
+                            param action
+                            + action
                     :as 
                         :[ 
                             :ref Action

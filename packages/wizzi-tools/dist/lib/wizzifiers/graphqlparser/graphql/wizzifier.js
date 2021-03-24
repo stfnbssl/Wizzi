@@ -328,7 +328,7 @@ function getTextList(ittfNode, sep) {
             sb.push(item.textified);
         }
         else {
-            console.log('getTextList failed ***************', item);
+            // log 'getTextList failed ***************', item
             return null;
         }
     }

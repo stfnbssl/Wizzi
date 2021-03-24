@@ -388,6 +388,24 @@
           ]
         },
         {
+          "name": "xleft",
+          "tags": [
+            "left"
+          ]
+        },
+        {
+          "name": "xof",
+          "tags": [
+            "of"
+          ]
+        },
+        {
+          "name": "xin",
+          "tags": [
+            "in"
+          ]
+        },
+        {
           "name": "foreach",
           "tags": [
             "foreach"
@@ -6990,6 +7008,87 @@
         "log k, object3[k]",
         ""
       ]
+    },
+    {
+      "name": "xleft",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "left"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "xof",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "of"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "xin",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "in"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
     },
     {
       "name": "foreach",

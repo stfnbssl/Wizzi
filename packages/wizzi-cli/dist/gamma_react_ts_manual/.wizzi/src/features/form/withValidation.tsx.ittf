@@ -143,7 +143,7 @@ module
                                 iif error
                                     then true
                                     else false
-                            @ helperText {error && error.message || helperText}
+                            @ helperText {(error && error.message) || helperText}
                             @ {...other}
             return 
                 => 

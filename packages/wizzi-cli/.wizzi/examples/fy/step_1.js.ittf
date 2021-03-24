@@ -2,7 +2,7 @@ module
     kind jsfile
 
     var fy = require('../../cmds/fy');
-    $if false
+    $if true
         _ fy
             {
                 @ s "C:/My/wizzi/stfnbssl/packi/src/client/features/filelist"
@@ -22,11 +22,70 @@ module
             {
                 @ s "C:/My/wizzi/stfnbssl/packi/src/client/features/preferences"
                 @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/features/preferences"
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/shared"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/shared"
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/features"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/features"
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/store"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/store"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/Shell"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/Shell"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/Editor"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/Editor"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/Auth"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/Auth"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/Common"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/Common"
+        
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/filelist"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/filelist"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/utils"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/utils"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/containers"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/containers"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/services"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/services"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/client/styles"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/styles"
+
+        _ fy
+            {
+                @ s "C:/My/wizzi/stfnbssl/packi/src/common"
+                @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/common"
+
     _ fy
         {
-            @ s "C:/My/wizzi/stfnbssl/packi/src/client/components/shared"
-            @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/components/shared"
-    _ fy
-        {
-            @ s "C:/My/wizzi/stfnbssl/packi/src/client/features"
-            @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src/features"
+            @ s "C:/My/wizzi/stfnbssl/packi/src/client/index.tsx"
+            @ d "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/gamma_react_ts_manual/.wizzi/src"

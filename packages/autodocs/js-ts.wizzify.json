@@ -966,6 +966,11 @@
 			"props": []
 		},
 		{
+			"name": "TSImportType",
+			"ittfTag": ":import-type",
+			"props": []
+		},
+		{
 			"name": "TSImportEqualsDeclaration",
 			"ittfTag": ":import",
 			"props": []

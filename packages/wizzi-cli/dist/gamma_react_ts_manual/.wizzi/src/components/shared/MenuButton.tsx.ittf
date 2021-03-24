@@ -39,7 +39,20 @@ module
                     const onClick
                         => 
                             param e
-                            if e.target === root.current || root.current && root.current.contains(e.target)
+                                :ref Event
+                            :return
+                                :void 
+                            if 
+                                test
+                                    || 
+                                        + e.target === root.current
+                                        (
+                                            && 
+                                                + root.current
+                                                _ root.current.contains
+                                                    @ e.target
+                                                        :as 
+                                                            :ref Node
                                 return 
                             _ setActive(false)
                     _ document.addEventListener('click', onClick)

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\recursivelyCreateParents.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import {getParentPath} from '../fileUtilities';
 import {FileSystemEntry} from '../types';
@@ -10,7 +10,9 @@ export default function recursivelyCreateParents(entries: FileSystemEntry[], pat
         const next: FileSystemEntry[] = [];
         let parent = getParentPath(path);
         while (parent) {
-            const parentEntry = entries.find(e => e.item.path === parent);
+            const parentEntry = entries.find(e => 
+                e.item.path === parent
+            );
             if (parentEntry) {
                 if (parentEntry.item.type !== 'folder') {
                     throw new Error('File path must be inside a folder');

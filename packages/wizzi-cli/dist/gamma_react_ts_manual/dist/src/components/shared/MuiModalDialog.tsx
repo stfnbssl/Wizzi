@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\MuiModalDialog.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -23,19 +23,32 @@ type Props = {
 };
 function MuiModalDialog(props: Props) {
     return  (
-            <Dialog open={props.visible} className={props.className} onClose={props.onDismiss} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+        <Dialog open={props.visible}
+            className={props.className}
+            onClose={props.onDismiss}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+        >
             {
                 props.onDismiss ?  (
-                        <button className={props.classes.close} onClick={props.onDismiss} data-test-id="modal-close" />
+                    <button className={props.classes.close} onClick={props.onDismiss} data-test-id="modal-close">
+                        ✕
+                    </button>
                     )
                  : null
-            }<DialogTitle id="alert-dialog-title" />
-                <DialogContent />
-            </Dialog>
+            }
+            <DialogTitle id="alert-dialog-title">
+                {props.title}
+            </DialogTitle>
+            <DialogContent>
+                {props.children}
+            </DialogContent>
+        </Dialog>
         )
     ;
 }
-const muiStyles = (theme: Theme) => createStyles({
+const muiStyles = (theme: Theme) => 
+    createStyles({
         close: {
             appearance: 'none', 
             borderRadius: '1em', 
@@ -54,5 +67,6 @@ const muiStyles = (theme: Theme) => createStyles({
             fontWeight: 'bold', 
             textAlign: 'center'
         }
-    });
+    })
+;
 export default withStyles(muiStyles)(MuiModalDialog);

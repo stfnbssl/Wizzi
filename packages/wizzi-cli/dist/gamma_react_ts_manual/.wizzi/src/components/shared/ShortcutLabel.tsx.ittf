@@ -53,8 +53,8 @@ module
                                     set c === code
                         # @ts-ignore
                         if name && KeyLabels[name]
-                            # @ts-ignore
                             return KeyLabels[name]
+                                # @ts-ignore
                         else
                             return name
                     ._ join

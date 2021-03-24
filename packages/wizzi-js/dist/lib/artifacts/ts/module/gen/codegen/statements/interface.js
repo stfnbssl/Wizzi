@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.typeInterface = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -34,6 +49,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeInterface. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         ctx.write('interface ' + model.wzName);
         u.genTSTypeParameters(model, ctx, cnt, (err, notUsed) => {
             if (err) {
@@ -56,6 +72,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeProperty. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         u.genAccessorsAndExtra(model, ctx)
         ctx.write(model.wzName);
         if (model.typeOptional) {
@@ -119,6 +136,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeMethod. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         u.genAccessorsAndExtra(model, ctx)
         var atype = u.extractTSSimpleType(model);
         // log 'typeMethod atype', atype

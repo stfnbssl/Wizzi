@@ -26,6 +26,8 @@
 	e_tag( typeEnum, :enum, statement
 	
 	e_tag( typeArrowFunction, :=>, function
+		r typeReturn
+			one-to-one
 
 	e_tag( typeReturn, :return, statement
 	e_tag( typeTuple, :tuple, statement

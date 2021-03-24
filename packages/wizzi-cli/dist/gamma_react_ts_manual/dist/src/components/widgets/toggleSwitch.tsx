@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\toggleSwitch.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 05:09:46 GMT
 */
 import React, {FunctionComponent} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -87,11 +87,12 @@ export const ToggleSwitch: FunctionComponent<ToggleSwitchProps> = ({
     // import colors from '../../configs/colors'
     // import usePreferences from '../../features/preferences/usePreferences'
     return  (
-            <Container>
-                <Label />
-                <Switch checked={checked} dark={dark} />
-                <Check type="checkbox" checked={checked} onChange={onChange} />
-            </Container>
+        <Container>
+            <Label>
+                {label}</Label>
+            <Switch checked={checked} dark={dark} />
+            <Check type="checkbox" checked={checked} onChange={onChange} />
+        </Container>
         )
     ;
 }

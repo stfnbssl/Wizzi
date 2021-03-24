@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.call = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -34,10 +49,11 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.call. Got: ' + callback);
         }
-        if (model.__templateChild) {
+        var xmodel = writeComments(model, ctx);
+        if (xmodel.__templateChild) {
             ctx.write('${');
         }
-        var name = (model.wzName || '').trim();
+        var name = (xmodel.wzName || '').trim();
         var hasParens = u.hasArguments(name);
         // log hasParens, ctx.__artifact, ctx.__functionNames
         if (hasParens == false && ctx.__artifact === 'xittf/document') {
@@ -45,12 +61,12 @@ md.load = function(cnt) {
                 name = ctx.__functionProvider + '.' + name;
             }
         }
-        if (model.statements.length > 0) {
-            doCallChildStatements_one(model, name, hasParens, ctx, function(err, notUsed) {
+        if (xmodel.statements.length > 0 || (xmodel.typeParameterInsts && xmodel.typeParameterInsts.length > 0)) {
+            doCallChildStatements_one(xmodel, name, (xmodel.typeParameterInsts && xmodel.typeParameterInsts.length > 0) ? false : hasParens, ctx, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
-                if (model.__templateChild) {
+                if (xmodel.__templateChild) {
                     ctx.write('}');
                 }
                 return callback(null, null);
@@ -59,10 +75,10 @@ md.load = function(cnt) {
         else {
             name = hasParens ? name : (name + '()');
             ctx.write(name);
-            if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
+            if (u.isTopStatement(xmodel, ctx) && u.isDescendentOf(xmodel, 'iif') == false) {
                 ctx.w(u.semicolon(name))
             }
-            if (model.__templateChild) {
+            if (xmodel.__templateChild) {
                 ctx.write('}');
             }
             return callback(null, null);
@@ -75,15 +91,16 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.memberCall. Got: ' + callback);
         }
-        var name = (model.wzName || '').trim();
+        var xmodel = writeComments(model, ctx);
+        var name = (xmodel.wzName || '').trim();
         var hasParens = u.hasArguments(name);
-        if (model.statements.length > 0) {
-            doCallChildStatements_one(model, ('.' + name), hasParens, ctx, callback);
+        if (xmodel.statements.length > 0) {
+            doCallChildStatements_one(xmodel, ('.' + name), hasParens, ctx, callback);
         }
         else {
             name = hasParens ? ('.' + name) : ('.' + name) + '()';
             ctx.write(name);
-            if (u.isTopStatement(model, ctx)) {
+            if (u.isTopStatement(xmodel, ctx)) {
                 ctx.w(u.semicolon(name))
             }
             return callback(null, null);
@@ -96,15 +113,16 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.decoratorCall. Got: ' + callback);
         }
-        var name = ('@' + model.wzName).trim();
+        var xmodel = writeComments(model, ctx);
+        var name = ('@' + xmodel.wzName).trim();
         var hasParens = u.hasArguments(name);
-        if (model.statements.length > 0) {
-            doCallChildStatements_one(model, name, hasParens, ctx, callback);
+        if (xmodel.statements.length > 0) {
+            doCallChildStatements_one(xmodel, name, hasParens, ctx, callback);
         }
         else {
             name = hasParens ? name : (name + '()');
             ctx.write(name);
-            if (u.isTopStatement(model, ctx) && (u.isDescendentOf(model, 'iif') == false)) {
+            if (u.isTopStatement(xmodel, ctx) && (u.isDescendentOf(xmodel, 'iif') == false)) {
                 ctx.w(u.semicolon(name))
             }
             return callback(null, null);
@@ -117,11 +135,12 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.callOnValue. Got: ' + callback);
         }
+        var xmodel = writeComments(model, ctx);
         var hasParens = false;
-        if (model.wzParent && model.wzParent.wzElement === 'arrowfunction') {
-            ctx.write('(' + (model.wzName || ''));
-            if (model.statements.length == 1) {
-                cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+        if (xmodel.wzParent && xmodel.wzParent.wzElement === 'arrowfunction') {
+            ctx.write('(' + (xmodel.wzName || ''));
+            if (xmodel.statements.length == 1) {
+                cnt.genItem(xmodel.statements[0], ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
@@ -134,9 +153,9 @@ md.load = function(cnt) {
                 return callback(null, null);
             }
         }
-        else if (model.wzParent && model.wzParent.wzElement === 'call' && model.statements.length == 1) {
-            ctx.write('(' + (model.wzName || ''));
-            cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+        else if (xmodel.wzParent && xmodel.wzParent.wzElement === 'call' && xmodel.statements.length == 1) {
+            ctx.write('(' + (xmodel.wzName || ''));
+            cnt.genItem(xmodel.statements[0], ctx, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -144,8 +163,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
-        else if (model.statements.length > 0) {
-            doCallChildStatements_one(model, '', hasParens, ctx, callback);
+        else if (xmodel.statements.length > 0) {
+            doCallChildStatements_one(xmodel, '', hasParens, ctx, callback);
         }
         else {
             ctx.write('()');
@@ -153,6 +172,7 @@ md.load = function(cnt) {
         }
     };
     function doCallChildStatements_one(model, name, hasParens, ctx, callback) {
+        // log 'doCallChildStatements_one.model', model
         ctx.write(name);
         if (model.typeParameterInsts && model.typeParameterInsts.length > 0) {
             ctx.write('<');
@@ -233,6 +253,7 @@ md.load = function(cnt) {
             if (!first) {
                 ctx.write(', ');
             }
+            // log 'doCallChildStatements_two', item_1
             if (item_1.wzElement == 'comment') {
                 ctx.w();
             }
@@ -317,9 +338,9 @@ md.load = function(cnt) {
                 wzName: classTag + ' ' + model.wzName, 
                 wzParent: model
             })
-            model.wzElement = 'div';
-            model.wzName = '';
-            cnt.stm.div(model, ctx, callback);
+            model.wzElement = 'htmlelement';
+            model.wzName = 'div';
+            cnt.stm.htmlelement(model, ctx, callback);
         }
         else {
             ctx.write('.' + model.wzName);

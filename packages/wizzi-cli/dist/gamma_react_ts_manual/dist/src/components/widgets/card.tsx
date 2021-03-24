@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\card.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 05:09:46 GMT
 */
 import React, {FunctionComponent} from 'react';
 
@@ -15,9 +15,11 @@ export const Card: FunctionComponent<CardProps> = ({
     title, 
     paragraph
 }) =>  (
-        <aside>
-            <h2 />
-            <p />
-        </aside>
+    <aside>
+        <h2>
+            {title}</h2>
+        <p>
+            {paragraph}</p>
+    </aside>
     )
 ;

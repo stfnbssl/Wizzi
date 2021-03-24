@@ -54,7 +54,7 @@
                     set destPath
                         _ path.join
                             @ destPath
-                            _ path.basename(sourcePath) + '.ittf'
+                            @ path.basename(sourcePath) + '.ittf'
                 if sourceIsFolder
                     log 'ok. source && dest are folders'
                     _ wizziTools.importFolder
@@ -64,7 +64,22 @@
                             log 'Wizzify folder result', result
                 else
 					log 'ok. source && dest are files'
+                    var extension = path.extname(sourcePath)
+                    var schema
+                    set extension = extension.substr(1)
+                    if extension.toLowerCase() === 'vue'
+                        set source = '<vue>' + source + '</vue>'
+                        set schema = 'html'
+                        set isVue = true
+                    elif extension.toLowerCase() === 'tsx'
+                        set schema = 'ts'
+                    elif extension.toLowerCase() === 'jsx'
+                        set schema = 'js'
+                        set extension = 'js'
+                    else
+                        set schema = extension
                     _ wizziTools.wizzify
+                        @ schema
                         @ file.read(sourcePath)
                         a_cb_throw( result )
                             _ file.write(destPath, result)

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\preferences\PreferencesProvider.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {connect} from 'react-redux';
@@ -78,19 +78,23 @@ class PreferencesProvider extends React.Component<Props, State> {
         } 
     }
     , 1000);
-    _setPreferences = (overrides: Partial<PreferencesType>) => {
-        this.setState((state) => ({
+    _setPreferences = (overrides: Partial<PreferencesType>) => 
+        this.setState((state) => 
+            ({
                 preferences: {
                     ...state.preferences, 
                     ...overrides
                 }
-            }), this._persistPreferences)}
+            })
+        , this._persistPreferences);
     render() {
         return  (
-                <PreferencesContext.Provider value={{
-                    setPreferences: this._setPreferences, 
-                    preferences: this.state.preferences
-                }} />
+            <PreferencesContext.Provider value={{
+                setPreferences: this._setPreferences, 
+                preferences: this.state.preferences
+            }}>
+                {this.props.children}
+            </PreferencesContext.Provider>
             )
         ;
     }

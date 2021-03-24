@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     // void, !, or, and, iif, ==, !=, ===, !==, ||, &&, |, &,
     // -, +, *, /, ^, %,	<, <=, >, >=
@@ -81,6 +96,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.not. Got: ' + callback);
         }
+        model = writeComments(model, ctx);
         ctx.write('!');
         if (model.statements.length == 0) {
             ctx.write(model.wzName);
@@ -108,6 +124,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.or. Got: ' + callback);
         }
+        model = writeComments(model, ctx);
         if (model.statements.length != 2) {
             if (model.statements.length == 0 && ctx.__allowSingleLineOp) {
                 ctx.write(' || ' + (model.wzName || ''));
@@ -140,6 +157,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.and. Got: ' + callback);
         }
+        model = writeComments(model, ctx);
         if (model.statements.length != 2) {
             if (model.statements.length == 0 && ctx.__allowSingleLineOp) {
                 ctx.write(' && ' + (model.wzName || ''));
@@ -156,9 +174,15 @@ md.load = function(cnt) {
                 return callback(err);
             }
             ctx.write(' && ');
+            if (model.statements[1].wzElement == 'htmlelement') {
+                ctx.indent();
+            }
             cnt.genItem(model.statements[1], ctx, function(err, notUsed) {
                 if (err) {
                     return callback(err);
+                }
+                if (model.statements[1].wzElement == 'htmlelement') {
+                    ctx.deindent();
                 }
                 ctx.parenRequired = saveParenRequired;
                 return callback(null, null);
@@ -172,8 +196,12 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.iif. Got: ' + callback);
         }
+        model = writeComments(model, ctx);
         if (model.statements.length < 2) {
             return callback(ctx.error('iif statement element requires at least two child elements', model));
+        }
+        if (model.wzParent.wzElement == 'template') {
+            ctx.w('${');
         }
         var paren = ctx.parenRequired || model.statements.length > 2;
         if (paren) {
@@ -202,12 +230,21 @@ md.load = function(cnt) {
                     if (err) {
                         return callback(err);
                     }
+                    if (model.wzParent.wzElement == 'template') {
+                        ctx.w();
+                    }
                     ctx.write(' ? ');
                     return callback(null, null);
                 })
             }
             else {
-                ctx.write(model.wzName + ' ? ');
+                if (model.wzParent.wzElement == 'template') {
+                    ctx.w(model.wzName);
+                    ctx.write(' ? ');
+                }
+                else {
+                    ctx.write(model.wzName + ' ? ');
+                }
                 return callback(null, null);
             }
         }
@@ -216,6 +253,9 @@ md.load = function(cnt) {
                 cnt.genItem(m_then, ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
+                    }
+                    if (model.wzParent.wzElement == 'template') {
+                        ctx.w();
                     }
                     ctx.write(' : ');
                     return callback(null, null);
@@ -266,6 +306,9 @@ md.load = function(cnt) {
         if (paren) {
             ctx.write(')');
         }
+        if (model.wzParent.wzElement == 'template') {
+            ctx.w('}');
+        }
         if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
             console.log('iif', model.wzParent.wzElement, model.wzParent.wzParent ? model.wzParent.wzParent.wzElement : '')
             // 21/3/21 (waiting for damage) _ ctx.w(';')
@@ -297,11 +340,12 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.then. Got: ' + callback);
         }
-        if (hasStatements(model) == false) {
-            ctx.write(model.wzName)
+        var xmodel = writeComments(model, ctx);
+        if (hasStatements(xmodel) == false) {
+            ctx.write(xmodel.wzName)
             return callback(null, null);
         }
-        cnt.genItems(model.statements, ctx, {
+        cnt.genItems(xmodel.statements, ctx, {
             indent: true
         }, callback)
     };
@@ -312,8 +356,23 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_typeof. Got: ' + callback);
         }
-        ctx.write('typeof(' + model.wzName + ')')
-        return callback(null, null);
+        var xmodel = writeComments(model, ctx);
+        if (xmodel.statements.length > 0) {
+            ctx.write('typeof(')
+            cnt.genItems(xmodel.statements, ctx, {
+                indent: true
+            }, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write(')')
+                return callback(null, null);
+            })
+        }
+        else {
+            ctx.write('typeof(' + model.wzName + ')')
+            return callback(null, null);
+        }
     };
     cnt.stm.op_eq = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -350,24 +409,6 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_noteq_strict. Got: ' + callback);
         }
         emitOperators(cnt, '!==', model, ctx, callback);
-    };
-    cnt.stm.op_or = function(model, ctx, callback) {
-        if (typeof callback === 'undefined') {
-            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_or');
-        }
-        if (typeof callback !== 'function') {
-            throw new Error('The callback parameter must be a function. In ' + myname + '.op_or. Got: ' + callback);
-        }
-        emitOperators(cnt, '||', model, ctx, callback);
-    };
-    cnt.stm.op_and = function(model, ctx, callback) {
-        if (typeof callback === 'undefined') {
-            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_and');
-        }
-        if (typeof callback !== 'function') {
-            throw new Error('The callback parameter must be a function. In ' + myname + '.op_and. Got: ' + callback);
-        }
-        emitOperators(cnt, '&&', model, ctx, callback);
     };
     cnt.stm.op_xor = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -478,6 +519,8 @@ md.load = function(cnt) {
         emitOperators(cnt, '>=', model, ctx, callback);
     };
     function emitOperators(cnt, op, model, ctx, callback) {
+        console.log('emitOperators', 'op');
+        model = writeComments(model, ctx);
         if (model.statements[0] && model.statements[1]) {
             var requireParen1 = model.statements.length > 2;
             var requireParena1 = model.statements[0].statements.length > 0;

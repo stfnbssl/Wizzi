@@ -335,7 +335,7 @@ module
                                                 @ color "secondary"
                                                 @ variant "extended"
                                                 @ onClick {onDismiss}
-                                                + \n                            Cancel\n                        \b
+                                                + Cancel
                     else null
     const styles
         _ StyleSheet.create

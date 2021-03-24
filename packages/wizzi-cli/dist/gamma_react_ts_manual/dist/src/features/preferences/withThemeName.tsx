@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\preferences\withThemeName.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
@@ -24,18 +24,29 @@ export default function withThemeName<P extends InjectedProps>(Comp: React.Compo
                     ...rest
                 } = this.props;
                 return  (
-                        <PreferencesContext.Consumer />
+                    <PreferencesContext.Consumer>
+                        {
+                            // @ts-ignore
+                            (props) => {
+                                return  (
+                                    <Comp ref={__forwardedRef} theme={props.preferences.theme} {...rest} />
+                                    )
+                                ;
+                            }
+                            
+                        }
+                    </PreferencesContext.Consumer>
                     )
                 ;
             }
         }
-        const Result = React.forwardRef((props, ref) => {
-            // @ts-ignore
+        const Result = React.forwardRef(// @ts-ignore
+        (props, ref) => 
              (
-                <ThemedComponent {...props} __forwardedRef={ref} />
+            <ThemedComponent {...props} __forwardedRef={ref} />
             )
-        }
+        
         );
         hoistNonReactStatics(Result, Comp);
-        return Result;
+        return Result as any;
     }

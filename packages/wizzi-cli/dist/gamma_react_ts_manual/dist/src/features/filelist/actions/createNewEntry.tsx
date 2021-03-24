@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\createNewEntry.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import updateEntry from './updateEntry';
 import createEntryAtPath from './createEntryAtPath';
@@ -30,12 +30,14 @@ export default function createNewEntry(entries: FileSystemEntry[], type: 'file' 
         let path = at;
         if (typeof path !== 'string') {
             // Get the current folder if no path is specified
-            const entry = entries.find(e => e.state.isSelected === true);
+            const entry = entries.find(e => 
+                e.state.isSelected === true
+            );
             path = entry ? entry.item.path : undefined;
         }
         const entry = createEntryAtPath(entries, path, e);
-        const next = entries.map((e) => {
-            // Expand the parent folder
+        const next = entries.map(// Expand the parent folder
+        (e) => {
             if (e.item.type === 'folder' && isInsideFolder(entry.item.path, e.item.path) && !e.state.isExpanded) {
                 return updateEntry(e, {
                         state: {

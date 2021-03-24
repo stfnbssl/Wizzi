@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\fileUtilities.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import escapeRegExp from 'escape-string-regexp';
 import {FileSystemEntry, TextFileEntry} from './types';
@@ -21,7 +21,9 @@ export function getUniquePath(allPaths: string[], suggestedPath: string, initial
     const initialPath = parts ? parts.join('.') : suggestedPath;
     let path = suggestedPath;
     let counter = initialSuffix ? 0 : 1;
-    while (allPaths.some(p => p.toLowerCase() === path.toLowerCase())) {
+    while (allPaths.some(p => 
+        p.toLowerCase() === path.toLowerCase()
+    )) {
         const suffix = `${initialSuffix || ''} ${counter || ''}`.trim()
         ;
         if (ext) {
@@ -47,11 +49,11 @@ export function isImage(name: string):  boolean {
     return /\.(bmp|jpg|jpeg|png|gif|svg)$/.test(name);
 }
 export function isScriptFile(entry: FileSystemEntry | undefined):  entry is TextFileEntry {
-    return entry != null && entry.item.type === 'file' && !entry.item.asset && /\.(js|tsx?)$/.test(entry.item.path);
+    return (entry != null && entry.item.type === 'file' && !entry.item.asset && /\.(js|tsx?)$/.test(entry.item.path));
 }
 export function isJSFile(entry: FileSystemEntry | undefined):  entry is TextFileEntry {
-    return entry != null && entry.item.type === 'file' && !entry.item.asset && entry.item.path.endsWith('.js');
+    return (entry != null && entry.item.type === 'file' && !entry.item.asset && entry.item.path.endsWith('.js'));
 }
 export function isJSONFile(entry: FileSystemEntry | undefined):  entry is TextFileEntry {
-    return entry != null && entry.item.type === 'file' && !entry.item.asset && entry.item.path.endsWith('.json');
+    return (entry != null && entry.item.type === 'file' && !entry.item.asset && entry.item.path.endsWith('.json'));
 }

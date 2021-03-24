@@ -31,8 +31,6 @@
 			param ctx
             if !model.wzParent
                 return true
-			if typeof ctx === 'undefined'
-				throw new Error('stm.isTopStatement called withot ctx parameter')
 			if ctx.arrowFunctionNoGraphs
 				return false
             var prnElement = model.wzParent.wzElement
@@ -113,6 +111,11 @@
 	set md.isImplicitReturn
         function 
             param model
+            $* NO an handler MAY HAVE an implicit return
+            var prnElement = model.wzParent && model.wzParent.wzElement
+            if prnElement == 'xclass'
+                return false $$ an handler has no implicit return
+            *$
             return md.onlyChildIsNot(model, 'xreturn') && !md.isBlockStatement(model.statements[0])
 
 	set md.onlyChildIsHtmlElement =
@@ -313,9 +316,14 @@
             if typeof(callText) !== 'string'
                 return false
             set callText = callText.trim()
+            # log 'callText.substr(0, 1) ', callText.substr(0, 1) 
             var hasEndParens = ((callText.substr(- (1), 1) === ')') || (callText.substr(- (2), 2) === ');'))
+            # log 'hasArguments.hasEndParens', hasEndParens
             if !hasEndParens
                 return false
+            if callText.substr(0, 1) === '/'
+                # assume regular expression
+                return true
             var namecount = 0
             var enclosedcount = 0
             var seen = false
@@ -510,6 +518,7 @@
 				=>
 					param item
 					param index
+                    # log 'extractTSSimpleType', item.wzElement
 					if md.isTSSimpleType(item)
 						set ret = item
 						set retIndex = index
@@ -563,7 +572,7 @@
 			param callback
 			if !!(model.params && model.params.length > 0) == false
 				r_cb()
-			# log 'genTSParams enter', model.wzElement, model.params
+			# log 'genTSParams enter', model.wzElement
 			repeater(1, model.params)
 				var p = item_1
 				# log 'genTSParams p', p
@@ -605,7 +614,7 @@
 										repeater_increment(1)
 							else
 								repeater_increment(1)
-				elif p.statements.length == 1
+				elif p.statements.length > 0 && p.statements.length < 3
 					_ ctx.write(p.wzName)
 					if p.typeOptional
 						_ ctx.write('?')

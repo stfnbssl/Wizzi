@@ -1,5 +1,1 @@
-﻿class Po {
-
-    _timer: any;
-
-}
+﻿for (const { item } of entryArray) {}

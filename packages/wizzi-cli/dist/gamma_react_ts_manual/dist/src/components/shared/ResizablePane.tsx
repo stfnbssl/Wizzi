@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ResizablePane.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -26,7 +26,8 @@ export default class ResizablePane extends React.PureComponent<Props, State> {
             initialPosition: null, 
             initialWidth: 0, 
             initialHeight: 0
-        };
+        }
+        ;
         componentDidMount() {
             // @ts-ignore
             document.addEventListener('mouseup', this._handleMouseUp);
@@ -53,7 +54,7 @@ export default class ResizablePane extends React.PureComponent<Props, State> {
                 initialWidth: parseFloat(style.width || '0'), 
                 initialHeight: parseFloat(style.height || '0')
             })
-        }
+        };
         _handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
             if (this.state.resizing) {
                 e.preventDefault();
@@ -64,7 +65,7 @@ export default class ResizablePane extends React.PureComponent<Props, State> {
                     initialHeight: 0
                 })
             }
-        }
+        };
         _handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
             const {
                 direction
@@ -86,13 +87,14 @@ export default class ResizablePane extends React.PureComponent<Props, State> {
                 }
                 this._pane.current && this._pane.current.setAttribute('style', style);
             }
-        }
-        _pane = React.createRef();
+        };
+        _pane = React.createRef<HTMLDivElement>();
         render() {
             return  (
-                    <div ref={this._pane} className={`${css(styles.container)} ${this.props.className || ''}`}>
-                    {this.props.children}<div className={css(styles.handle, this.props.direction === 'horizontal' ? styles.horizontal : styles.vertical)} onMouseDown={this._handleMouseDown} onMouseUp={this._handleMouseUp} />
-                    </div>
+                <div ref={this._pane} className={`${css(styles.container)} ${this.props.className || ''}`}>
+                    {this.props.children}
+                    <div className={css(styles.handle, this.props.direction === 'horizontal' ? styles.horizontal : styles.vertical)} onMouseDown={this._handleMouseDown} onMouseUp={this._handleMouseUp} />
+                </div>
                 )
             ;
         }

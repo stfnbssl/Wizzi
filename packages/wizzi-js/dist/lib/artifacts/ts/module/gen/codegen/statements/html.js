@@ -30,6 +30,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     
     var __events = "copy cut paste " + " compositionEnd compositionStart compositionUpdate" + " keyDown keyPress keyUp" + " focus blur" + " change input submit" + " click contextMenu doubleClick" + " drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop" + " mouseDown mouseEnter mouseLeave mouseMove mouseOut mouseOver mouseUp" + " select" + " touchCancel touchEnd touchMove touchStart" + " scroll" + " wheel" + " abort canPlay canPlayThrough durationChange emptied encrypted"+ " ended error loadedData loadedMetadata loadStart pause play" + " playing progress rateChange seeked seeking stalled suspend" + " timeUpdate volumeChange waiting" + " load" + " transitionEnd";
@@ -133,8 +148,10 @@ md.load = function(cnt) {
         }
         // log 'enter _htmlelement ----------------', tag
         var attrs = getAttrs(model, ctx);
+        var comments = [];
         var statements = null,
-            value = null;
+            value = null,
+            childStatements = [];
         var len_1 = model.statements.length;
         function repeater_1(index_1) {
             if (index_1 === len_1) {
@@ -190,8 +207,12 @@ md.load = function(cnt) {
                     statements: statements
                 })
             }
-            else if (item_1.wzElement === 'htmlelement') {
+            else if (['comment','commentmultiline'].indexOf(item_1.wzElement) > -1) {
+                comments.push(item_1)
+            }
+            else if (['htmlelement','statement','jsObject'].indexOf(item_1.wzElement) > -1) {
                 model.__hasChildElements = true;
+                childStatements.push(item_1)
             }
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
@@ -199,7 +220,8 @@ md.load = function(cnt) {
         }
         repeater_1(0);
         function next_1() {
-            _htmlelement_end(cnt, model, tag, text, ctx, attrs, function(err, notUsed) {
+            model.statements = childStatements;
+            _htmlelement_end(cnt, model, tag, text, ctx, attrs, comments, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -209,10 +231,10 @@ md.load = function(cnt) {
             })
         }
     };
-    function _htmlelement_end(cnt, model, tag, text, ctx, attrs, callback) {
+    function _htmlelement_end(cnt, model, tag, text, ctx, attrs, comments, callback) {
         var save___inside_html = ctx.__inside_html;
         ctx.__inside_html = true;
-        htmlReact.htmlelement(cnt, model, tag, text, ctx, attrs, function(err, notUsed) {
+        htmlReact.htmlelement(cnt, model, tag, text, ctx, attrs, comments, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }

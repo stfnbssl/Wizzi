@@ -40,7 +40,7 @@ module
                     @ target "_blank"
                     @ href {experienceURL}
                     @ className {css(styles.button)}
-                    + \n      Open with Expo\n    \b
+                    + Open with Expo
     export-default OpenWithExpoButton
     const styles
         _ StyleSheet.create

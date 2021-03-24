@@ -155,7 +155,10 @@ module
                         if typeof options.data === 'string'
                             const packiTemplate
                                 await 
-                                    _ downloadPackiTemplate(options.data)
+                                    _ downloadPackiTemplate
+                                        @ options.data
+                                            :as 
+                                                :string 
                             await 
                                 _ savePackiFiles(packiId, packiTemplate.files)
                             return resolve(packiTemplate.files)

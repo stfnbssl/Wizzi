@@ -7,8 +7,16 @@
         ctor
             param options
             set this.lines = []
-            set this.options = (options || {})
-            set this.indentValue = (this.options.indent || 0)
+            set this.options
+                _ Object.assign
+                    {
+                    {
+                        @ indent 0
+                        @ indentSpaces 4
+                        @ CRLF '\n'
+                        @ isDebug false
+                    @ options || {}
+            set this.indentValue = this.options.indent
             set this.currentline = null
     
 		m forceIndent
@@ -47,7 +55,40 @@
             else 
                 set this.currentline = new line(text, this.indentValue, this.options)
     
-		m appendFile
+		m wSameLine
+            param text
+            _ this._lastLineNotBlank
+                ._ add
+                    @ text
+            _ this.w()
+
+		m setLastNotEmptyLine
+            # log 'setLastNotEmptyLine.this.currentline.begin', this.currentline, this.lines.length
+            if this.currentline != null && this.currentline.isEmpty() == false
+                return
+            while this.lines.length > 0
+                # log 'setLastNotEmptyLine.loop', this.lines[this.lines.length - 1], this.lines[this.lines.length - 1].isEmpty()
+                if this.lines[this.lines.length - 1].isEmpty() == false
+                    set this.currentline = this.lines[this.lines.length - 1]
+                    _ this.lines.pop()
+                    break
+                else
+                    _ this.lines.pop()
+            # log 'setLastNotEmptyLine.this.currentline.end', this.currentline, this.lines.length
+
+        m _lastLineNotBlank
+            if this.currentline != null && this.currentline.isEmpty() == false
+                return this.currentline
+            var prev
+            var i = this.lines.length - 1
+            while i > -1
+                set prev = this.lines[i]
+                if prev.isEmpty()
+                    set i--
+                else
+                    return prev
+
+        m appendFile
             param filePath
             
 			if this.currentline != null

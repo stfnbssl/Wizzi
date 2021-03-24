@@ -166,7 +166,9 @@
 		_ cnt.genItems
 			@ model.statements
 			@ ctx
-			@ callback
+            f_cb()
+                _ ctx.w(u.semicolon(name))
+                r_cb()
 
 	stm( xawait
 		var name = model.wzName.trim()

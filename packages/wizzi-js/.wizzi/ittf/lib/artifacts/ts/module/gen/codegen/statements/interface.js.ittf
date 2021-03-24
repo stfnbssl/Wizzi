@@ -1,6 +1,7 @@
 ﻿loader( interface )
 
 	stm( typeInterface
+        var model = writeComments(model, ctx)
 		_ ctx.write('interface ' + model.wzName)
 		_ u.genTSTypeParameters
 			@ model
@@ -16,6 +17,7 @@
 						r_cb()
 
 	stm( typeProperty
+        var model = writeComments(model, ctx)
 		_ u.genAccessorsAndExtra
 			@ model
 			@ ctx
@@ -70,6 +72,7 @@
                 _ ctx.error(':type typeProperty must have one children. found: ' + model.statements.length, model)
 
 	stm( typeMethod
+        var model = writeComments(model, ctx)
 		_ u.genAccessorsAndExtra
 			@ model
 			@ ctx

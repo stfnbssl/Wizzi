@@ -50,6 +50,7 @@ module
         => _updateContent
             param content
                 :string 
+                :optional 
             _ console.log('_updateContent.this.ifr', this.ifr)
             _ console.log('_updateContent.this.ifr.contentWindow', this.ifr.contentWindow)
             _ console.log('_updateContent.this.ifr.contentDocument', this.ifr.contentDocument)
@@ -62,6 +63,7 @@ module
                 # 
         => _updateStylesheets
             param styleSheets
+                :any 
             const document = this.ifr.contentDocument
             if document
                 const head = document.getElementsByTagName('head')[0]
@@ -82,6 +84,7 @@ module
         => _updateCss
             param css
                 :string 
+                :optional 
             const document = this.ifr.contentDocument
             if document
                 const head = document.getElementsByTagName('head')[0]

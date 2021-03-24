@@ -10,6 +10,7 @@ module
         $append imports
 
             const getCircumference = (radius: number) => radius * 2 * 3.14159
+            $*
             const dashAnimation
                 =>
                     param props: any
@@ -23,6 +24,7 @@ module
                                 stroke-dasharray £{getCircumference(props.radius)}
                                 stroke-dashoffset £{getCircumference(props.radius) * 0.5}
                                 transform rotate(-110deg)
+            *$
 
         height 100px
         width 100px

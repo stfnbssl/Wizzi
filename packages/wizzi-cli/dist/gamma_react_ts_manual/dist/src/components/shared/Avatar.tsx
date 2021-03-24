@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Avatar.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -16,27 +16,29 @@ type Props = {
 export default class Avatar extends React.Component<Props, State> {
         state = {
             loaded: false
-        };
-        _handleLoad = () => {
+        }
+        ;
+        _handleLoad = () => 
             this.setState({
                 loaded: true
-            })}
+            });
         render() {
             return  (
-                    <div className={css(styles.container)} style={{
-                        width: this.props.size, 
-                        height: this.props.size, 
-                        borderRadius: this.props.size / 2
-                    }}>
-                        <div className={css(styles.background)} style={{
-                            opacity: this.state.loaded ? 1 : 0
-                        }} />
+                <div className={css(styles.container)} style={{
+                    width: this.props.size, 
+                    height: this.props.size, 
+                    borderRadius: this.props.size / 2
+                }}>
+                    <div className={css(styles.background)} style={{
+                        opacity: this.state.loaded ? 1 : 0
+                    }} />
                     {
                         this.props.source ?  (
-                                <img className={css(styles.avatar)} src={this.props.source} onLoad={this._handleLoad} />
+                            <img className={css(styles.avatar)} src={this.props.source} onLoad={this._handleLoad} />
                             )
                          : null
-                    }</div>
+                    }
+                </div>
                 )
             ;
         }

@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.typeDeclare = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -34,12 +49,13 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeDeclare. Got: ' + callback);
         }
-        var len_1 = model.statements.length;
+        var xmodel = writeComments(model, ctx);
+        var len_1 = xmodel.statements.length;
         function repeater_1(index_1) {
             if (index_1 === len_1) {
                 return next_1();
             }
-            var item_1 = model.statements[index_1];
+            var item_1 = xmodel.statements[index_1];
             ctx.write('declare ');
             cnt.genItem(item_1, ctx, (err, notUsed) => {
                 if (err) {
@@ -62,9 +78,10 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeModule. Got: ' + callback);
         }
-        ctx.write('module ' + model.wzName);
+        var xmodel = writeComments(model, ctx);
+        ctx.write('module ' + xmodel.wzName);
         ctx.w(' {');
-        cnt.genItems(model.statements, ctx, function(err, notUsed) {
+        cnt.genItems(xmodel.statements, ctx, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -79,14 +96,15 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeTypeAlias. Got: ' + callback);
         }
-        ctx.write('type ' + model.wzName);
-        u.genTSTypeParameters(model, ctx, cnt, (err, notUsed) => {
+        var xmodel = writeComments(model, ctx);
+        ctx.write('type ' + xmodel.wzName);
+        u.genTSTypeParameters(xmodel, ctx, cnt, (err, notUsed) => {
             if (err) {
                 return callback(err);
             }
-            if (model.statements.length == 1) {
+            if (xmodel.statements.length == 1) {
                 ctx.write(' = ');
-                cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+                cnt.genItem(xmodel.statements[0], ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
@@ -95,7 +113,7 @@ md.load = function(cnt) {
                 })
             }
             else {
-                return callback(ctx.error(':type typeTypeAlias must have one children. found: ' + model.statements.length, model));
+                return callback(ctx.error(':type typeTypeAlias must have one children. found: ' + xmodel.statements.length, xmodel));
             }
         })
     };
@@ -106,24 +124,25 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeFunctionDeclare. Got: ' + callback);
         }
-        ctx.write('function ' + model.wzName);
+        var xmodel = writeComments(model, ctx);
+        ctx.write('function ' + xmodel.wzName);
         // log 'typeFunctionDeclare enter 1'
-        u.genTSTypeParameters(model, ctx, cnt, (err, notUsed) => {
+        u.genTSTypeParameters(xmodel, ctx, cnt, (err, notUsed) => {
             if (err) {
                 return callback(err);
             }
             // log 'typeFunctionDeclare enter 2'
             ctx.write('(');
-            u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+            u.genTSParams(xmodel, ctx, cnt, (err, notUsed) => {
                 if (err) {
                     return callback(err);
                 }
                 // log 'typeFunctionDeclare cb 1'
                 ctx.write(')');
-                if (model.typeReturn) {
-                    // log 'typeFunctionDeclare typeReturn', model.typeReturn.wzElement
+                if (xmodel.typeReturn) {
+                    // log 'typeFunctionDeclare typeReturn', xmodel.typeReturn.wzElement
                     ctx.write(': ');
-                    cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                    cnt.stm.typeReturn(xmodel.typeReturn, ctx, (err, notUsed) => {
                         if (err) {
                             return callback(err);
                         }

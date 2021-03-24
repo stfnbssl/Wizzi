@@ -21,25 +21,26 @@
 			@ callback
     
 	stm( xelse
-        if model.wzParent.wzElement === 'iif'
-            if model.statements.length > 0
+        var xmodel = writeComments(model, ctx)
+        if xmodel.wzParent.wzElement === 'iif'
+            if xmodel.statements.length > 0
                 _ cnt.genItems
-                    @ model.statements
+                    @ xmodel.statements
                     @ ctx
                     { 
                         @ indent true
 					@ callback
             else 
                 _ ctx.write
-                    @ model.wzName
+                    @ xmodel.wzName
 				r_cb()
         else 
             _ u.emitBlock
                 @ cnt
                 @ 'else'
-                @ model
-                @ model.statements
-                @ model.statements.length
+                @ xmodel
+                @ xmodel.statements
+                @ xmodel.statements.length
                 @ ctx
 				@ callback
     

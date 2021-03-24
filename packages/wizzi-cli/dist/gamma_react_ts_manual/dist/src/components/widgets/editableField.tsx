@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\editableField.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 05:09:46 GMT
 */
 import React, {Component} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -99,17 +99,18 @@ export class EditableField extends Component<EditableFieldProps, EditableFieldSt
     state = {
         value: this.props.value || '', 
         focused: false
-    };
-    _handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    }
+    ;
+    _handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => 
         this.setState({
             value: e.target.value
-        })}
+        });
     _handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
         e.target.select();
         this.setState({
             focused: true
         })
-    }
+    };
     _handleBlur = async () => this.setState({
             focused: false
         })
@@ -117,13 +118,21 @@ export class EditableField extends Component<EditableFieldProps, EditableFieldSt
     _handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.keyCode === RETURN_KEYCODE || e.keyCode === ESCAPE_KEYCODE) {
         }
-    }
+    };
     render() {
         return  (
-                <Container>
-                    <Phantom className={this.props.className} />
-                    <Input onFocus={this._handleFocus} onBlur={this._handleBlur} onKeyDown={this._handleKeyDown} value={this.state.value} onChange={this._handleChangeText} className={this.props.className} dark={this.props.dark} />
-                </Container>
+            <Container>
+                <Phantom className={this.props.className}>
+                    {this.state.value.replace(/\n/g, '')}</Phantom>
+                <Input onFocus={this._handleFocus}
+                    onBlur={this._handleBlur}
+                    onKeyDown={this._handleKeyDown}
+                    value={this.state.value}
+                    onChange={this._handleChangeText}
+                    className={this.props.className}
+                    dark={this.props.dark}
+                 />
+            </Container>
             )
         ;
     }

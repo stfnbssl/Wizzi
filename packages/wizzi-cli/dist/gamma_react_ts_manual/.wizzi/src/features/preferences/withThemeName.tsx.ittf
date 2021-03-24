@@ -76,4 +76,7 @@ module
                             @ {...props}
                             @ __forwardedRef {ref}
             _ hoistNonReactStatics(Result, Comp)
-            return Result
+            return 
+                + Result
+                    :as 
+                        :any 

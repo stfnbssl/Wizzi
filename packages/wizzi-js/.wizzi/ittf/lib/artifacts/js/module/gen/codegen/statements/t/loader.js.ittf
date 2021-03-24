@@ -22,6 +22,18 @@
             if item.wzElement != 'comment'
                 set count++
 		return count
+
+	function writeComments
+		param model
+        param ctx
+        var temp = []
+        foreach item in model.statements
+            if item.wzElement == 'comment'
+                _ ctx.w('// ' + item.wzName)
+            else
+                _ temp.push(item)
+        set model.statements = temp
+        return model
 	
 	set md.load
 		function

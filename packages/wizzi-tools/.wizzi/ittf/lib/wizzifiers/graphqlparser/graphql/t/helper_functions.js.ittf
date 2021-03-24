@@ -165,7 +165,7 @@
 			elif item.textified
 				_ sb.push(item.textified)
 			else
-				log 'getTextList failed ***************', item
+				# log 'getTextList failed ***************', item
 				return null
 		return sb.join(sep)
 

@@ -111,7 +111,15 @@
 							else line
 			set this.isEmpty = false
 
-		m appendFile
+		m wSameLine
+            param text
+            _ this.block.wSameLine
+                @ text
+		
+        m setLastNotEmptyLine
+            _ this.block.setLastNotEmptyLine
+
+        m appendFile
             param filePath
             _ this.block.appendFile
                 _ interpolate

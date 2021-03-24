@@ -113,9 +113,13 @@
             param item
             set this.text = item.text
             set this.indentValue = item.indentValue
+
+        m isEmpty
+            return !!this.containsFilePath == false && this.text.join('').trim().length == 0
     
 	function spaces
         param num
+        # num is never < 0
         return 
             _ Array(num + 1)
                 ._ join(" ")

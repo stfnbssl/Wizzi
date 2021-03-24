@@ -44,13 +44,26 @@ module
         => _handleDocumentClick
             param e
                 :ref MouseEvent
-            if this.state.visible && e.target === this._anchor.current || e.target === this._popover.current || this._popover.current && this._popover.current.contains(e.target)
+            if 
+                test
+                    && 
+                        + this.state.visible
+                        (
+                            || 
+                                + e.target === this._anchor.current || e.target === this._popover.current
+                                (
+                                    && 
+                                        + this._popover.current
+                                        _ this._popover.current.contains
+                                            @ e.target
+                                                :as 
+                                                    :ref Node
                 return 
             _ this._hidePopover
         => _togglePopover
             if !this.state.visible
-                const popover = this._popover.current && this._popover.current.getBoundingClientRect() || {}
-                const anchor = this._anchor.current && this._anchor.current.getBoundingClientRect() || {}
+                const popover = (this._popover.current && this._popover.current.getBoundingClientRect()) || {}
+                const anchor = (this._anchor.current && this._anchor.current.getBoundingClientRect()) || {}
                 # @ts-ignore
                 const diff = (popover.width - 10) / 2 - anchor.left
                 if this._popover.current && this._arrow.current
@@ -61,11 +74,11 @@ module
                                 @ diff + 5
                                 + px
                         set this._arrow.current.style.left =
-                            # @ts-ignore
                             `lit 
                                 + 
                                 @ anchor.left - anchor.width / 2 + 10
                                 + px
+                                # @ts-ignore
                     else
                         set this._popover.current.style.left = '5px'
                         set this._arrow.current.style.left = '50%'

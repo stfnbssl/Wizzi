@@ -73,7 +73,14 @@ module
                     :ref React.MouseEvent
                         :param 
                             :ref HTMLDivElement
-                if this._content.current && this._content.current !== e.target && this._content.current.contains(e.target)
+                if 
+                    test
+                        && 
+                            + this._content.current && this._content.current !== e.target
+                            _ this._content.current.contains
+                                @ e.target
+                                    :as 
+                                        :ref Node
                     return 
                 _ console.log('_handleDismiss', this._content.current, e.target)
                 set this.props.onDismiss && this.props.onDismiss()

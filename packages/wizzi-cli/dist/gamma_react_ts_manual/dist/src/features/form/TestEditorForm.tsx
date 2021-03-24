@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\TestEditorForm.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -12,7 +12,9 @@ const typeValues = [
     'two', 
     'three'
 ];
-export const validateName = (name: string) => name ? /^[a-z_\-\d\s]+$/i.test(name) ? null : new Error('Name can only contain letters, numbers, space, hyphen (-) and underscore (_).') : new Error('Name cannot be empty.');
+export const validateName = (name: string) => 
+    name ? /^[a-z_\-\d\s]+$/i.test(name) ? null : new Error('Name can only contain letters, numbers, space, hyphen (-) and underscore (_).') : new Error('Name cannot be empty.')
+;
 export const validateRequired = (value: any) => {
     console.log('validateRequired', value, value.length, typeof(value), value.length && value.length == 0, typeof value === 'undefined' || value == null || value.length == 0 ? new Error('Required value') : null)
     return typeof value === 'undefined' || value == null || value.length == 0 ? new Error('Required value') : null;
@@ -23,8 +25,17 @@ type Props = {
 };
 function TestEditorForm(props: Props) {
     return  (
-            <div className={props.classes.container}>
-                <EditorForm title="Create New Packi" action="Done" visible={true} onDismiss={() => alert('form dismissed')} onSubmit={values => alert(JSON.stringify(values))} fields={{
+        <div className={props.classes.container}>
+            <EditorForm title="Create New Packi"
+                action="Done"
+                visible={true}
+                onDismiss={() => 
+                    alert('form dismissed')
+                }
+                onSubmit={values => 
+                    alert(JSON.stringify(values))
+                }
+                fields={{
                     name: {
                         type: 'text', 
                         label: 'Name', 
@@ -42,12 +53,14 @@ function TestEditorForm(props: Props) {
                         }
                         )
                     }
-                }} />
-            </div>
+                }}
+             />
+        </div>
         )
     ;
 }
-const muiStyles = (theme: Theme) => createStyles({
+const muiStyles = (theme: Theme) => 
+    createStyles({
         container: {
             position: 'absolute', 
             margin: 'auto', 
@@ -60,5 +73,6 @@ const muiStyles = (theme: Theme) => createStyles({
             backgroundColor: '#ccc', 
             borderRadius: '3px'
         }
-    });
+    })
+;
 export default withStyles(muiStyles)(TestEditorForm);

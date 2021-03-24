@@ -1,6 +1,7 @@
 ﻿loader( call )
 
 	stm( typeCallSignature
+        var model = writeComments(model, ctx)
         var ptypeDecl
             _ u.extractTSParameterDecl    
                 @ model

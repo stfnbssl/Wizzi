@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\KeybindingsManager.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 type Props<T extends { 
@@ -33,7 +33,8 @@ export const KeyMap = {
     Backslash: 220, 
     Meta: isMac ? 91 : 17
 };
-export const isKeyCombo = (e: KeyboardEvent, combo: number[]) => combo.every((code) => {
+export const isKeyCombo = (e: KeyboardEvent, combo: number[]) => 
+    combo.every((code) => {
         switch (code) {
             case KeyMap.Ctrl: {
                 return e.ctrlKey;
@@ -49,7 +50,8 @@ export const isKeyCombo = (e: KeyboardEvent, combo: number[]) => combo.every((co
             }
         }
     }
-    );
+    )
+;
 export default class KeybindingsManager<T extends { 
         combo: number[];
     }> extends React.PureComponent<Props<T>> {
@@ -74,7 +76,7 @@ export default class KeybindingsManager<T extends {
                     }
                 }
             }
-        }
+        };
         render() {
             return null;
         }

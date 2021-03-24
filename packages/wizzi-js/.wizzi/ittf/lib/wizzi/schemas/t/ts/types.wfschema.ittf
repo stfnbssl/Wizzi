@@ -45,7 +45,8 @@
 		a_flag( typePrivate, :private )
 		a_flag( typePublic, :public )
 		a_flag( typeProtected, :protected )
-
+		r typeReturn
+			one-to-one
 
 	e_tag( typeMapped, :mapped, statement
 		a_flag( typeOptional, :optional )

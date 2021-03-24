@@ -1,16 +1,72 @@
 ﻿loader(loops)
 
     stm( xfor
-        _ u.emitBlock
-            @ cnt
-            @ 'for'
-            @ model
-            @ model.statements
-            @ model.statements.length
-            @ ctx
-			@ callback
+        if model.statements.length > 1 && 
+            \b model.statements[0].wzElement == 'xleft' &&
+            \b model.statements[1].wzElement == 'xof' || model.statements[1].wzElement == 'xin'
+            _ ctx.write('for (')
+            _ cnt.genItem
+                @ model.statements[0]
+                @ ctx
+                f_cb()
+                    _ ctx.write(model.statements[1].wzElement == 'xin' ? ' in ' : ' of ')
+                    _ cnt.genItem
+                        @ model.statements[1]
+                        @ ctx
+                        f_cb()
+                            _ ctx.w(') {')
+                            _ cnt.genItems
+                                @ model.statements
+                                @ ctx
+                                { 
+                                    @ indent true
+                                f_cb()
+                                    _ ctx.w('}')
+                                    r_cb()
+        else
+            _ u.emitBlock
+                @ cnt
+                @ 'for'
+                @ model
+                @ model.statements
+                @ model.statements.length
+                @ ctx
+                @ callback
     
-	stm( foreach
+	stm( xleft
+        if model.statements.length > 0
+            _ cnt.genItems
+                @ model.statements
+                @ ctx
+                { 
+                @ callback
+        else
+            _ ctx.write(model.wzName)
+            r_cb()
+
+	stm( xof
+        if model.statements.length > 0
+            _ cnt.genItems
+                @ model.statements
+                @ ctx
+                { 
+                @ callback
+        else
+            _ ctx.write(model.wzName)
+            r_cb()
+
+	stm( xin
+        if model.statements.length > 0
+            _ cnt.genItems
+                @ model.statements
+                @ ctx
+                { 
+                @ callback
+        else
+            _ ctx.write(model.wzName)
+            r_cb()
+
+    stm( foreach
         var ss
             _ model.wzName.trim()
                 ._ split(' ')

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\data.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as path from 'path';
 import {callApi} from '../../utils/api';
@@ -24,7 +24,9 @@ export async function getPackiList():  Promise<string[]> {
                 });
             console.log('getPackiList', folders);
             const ret: string[] = [];
-            folders.forEach(folder => ret.push(path.basename(folder.fullPath)))
+            folders.forEach(folder => 
+                ret.push(path.basename(folder.fullPath))
+            )
             resolve(ret);
         }
         );
@@ -37,10 +39,12 @@ export async function getPackiFiles(packiId: string):  Promise<PackiFiles> {
                     documentContent: true
                 });
             const ret: PackiFiles = {};
-            files.forEach(file => ret[file.relPath] = {
+            files.forEach(file => 
+                ret[file.relPath] = {
                     type: 'CODE', 
                     contents: (file.content as string)
-                })
+                }
+            )
             resolve(ret);
         }
         );
@@ -54,10 +58,12 @@ export async function downloadPackiTemplate(templateName: string):  Promise<Pack
                 return reject(res.error);
             }
             const files: PackiFiles = {};
-            res.forEach((element: any) => files[element.relPath] = {
+            res.forEach((element: any) => 
+                files[element.relPath] = {
                     contents: element.content, 
                     type: 'CODE'
-                })
+                }
+            )
             resolve({
                 id: templateName, 
                 files
@@ -68,7 +74,7 @@ export async function downloadPackiTemplate(templateName: string):  Promise<Pack
 export async function createPacki(packiId: string, options: CreatePackiOptions):  Promise<PackiFiles> {
     return new Promise(async (resolve) => {
             if (typeof options.data === 'string') {
-                const packiTemplate = await downloadPackiTemplate(options.data);
+                const packiTemplate = await downloadPackiTemplate(options.data  as string);
                 await savePackiFiles(packiId, packiTemplate.files);
                 return resolve(packiTemplate.files);
             }
@@ -87,7 +93,7 @@ export async function deletePacki(packiId: string):  Promise<any> {
 async function asyncmap(coll: any[], mapper: any, callback: cb<any>) {
     let newColl: any[] = [];
     const len = coll.length;
-    const repeat = (index: number) => {
+    const repeat = (index: number):  void => {
         if (index == len) {
             return callback(null, newColl);
         }

@@ -111,6 +111,13 @@
 		#   for var k in object3
 		#     log k, object3[k]
 		#
+
+    e xleft : statement
+        tag left
+    e xof : statement
+        tag of
+    e xin : statement
+        tag in
 	
 	e foreach : statement
 	

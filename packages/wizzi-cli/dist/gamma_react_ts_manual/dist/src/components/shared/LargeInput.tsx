@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\LargeInput.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -25,29 +25,44 @@ type State = {
 class LargeInput extends React.Component<Props, State> {
     state = {
         focused: true
-    };
+    }
+    ;
     focus() {
         this._input.current && this._input.current.focus();
     }
-    _handleFocus = () => {
+    _handleFocus = () => 
         this.setState({
             focused: true
-        })}
-    _handleBlur = () => {
+        });
+    _handleBlur = () => 
         this.setState({
             focused: false
-        })}
-    _input = React.createRef();
+        });
+    _input = React.createRef<HTMLInputElement>();
     render() {
         return  (
-                <div className={css(styles.container)}>
-                    <input ref={this._input} autoFocus={this.props.autoFocus} className={css(styles.input, this.props.error ? styles.error : styles.normal, this.props.theme === 'dark' ? styles.inputDark : styles.inputLight)} value={this.props.value} name={this.props.name} type={this.props.type} disabled={this.props.disabled} onChange={this.props.onChange} placeholder={this.props.placeholder} onFocus={this._handleFocus} onBlur={this._handleBlur} />
+            <div className={css(styles.container)}>
+                <input ref={this._input}
+                    autoFocus={this.props.autoFocus}
+                    className={css(styles.input, this.props.error ? styles.error : styles.normal, this.props.theme === 'dark' ? styles.inputDark : styles.inputLight)}
+                    value={this.props.value}
+                    name={this.props.name}
+                    type={this.props.type}
+                    disabled={this.props.disabled}
+                    onChange={this.props.onChange}
+                    placeholder={this.props.placeholder}
+                    onFocus={this._handleFocus}
+                    onBlur={this._handleBlur}
+                 />
                 {
                     this.state.focused && this.props.error ?  (
-                            <div className={css(styles.validation)} />
+                        <div className={css(styles.validation)}>
+                            {this.props.error.message}
+                        </div>
                         )
                      : null
-                }</div>
+                }
+            </div>
             )
         ;
     }

@@ -9,7 +9,7 @@ module.exports = {
     ], 
     pluginsBaseFolder: path.join(__dirname, '..'),
     globalContext: {
-        isPackageDeploy: true,
-        wzConfigIsDevelopment: false,
+        isPackageDeploy: false,
+        wzConfigIsDevelopment: true,
     },
 };

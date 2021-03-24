@@ -40,6 +40,7 @@
 		r_cb()
 
 	stm( typeObjectLiteral, kind
+        var model = writeComments(model, ctx)
 		_ ctx.w('{ ')
 		_ ctx.indent
 		repeater( 1, model.statements )
@@ -81,6 +82,12 @@
 		r_cb()
 
 	stm( typeReference, kind
+        $*
+        log 'typeReference', model.wzName
+        log 'model.statements.length', model.statements.length
+        log 'model.typeParameterInsts.length', model.statements.length
+        *$
+        var model = writeComments(model, ctx)
 		if model.statements.length == 1
 			_ ctx.write('<' + model.wzName + '>')
 			var item = model.statements[0]
@@ -137,6 +144,7 @@
 					_ ctx.error(':param typeParameterInst not managed. children: ' + model.statements.length, model)
 
 	stm( typeConditional, kind
+        var model = writeComments(model, ctx)
 		var item = model.typeCheck.statements[0]
 		if !cnt.stm[item.wzElement]
 			log 'ts.module.gen.typeConditional.wzElement not managed', item.wzElement
@@ -212,6 +220,7 @@
 				r_cb()
 
 	stm( typeEnum, kind
+        var model = writeComments(model, ctx)
 		_ ctx.w('enum ' + model.wzName + ' {')
         _ ctx.indent
 		repeater( 1, model.statements )
@@ -413,14 +422,16 @@
 					r_cb()
 
 	stm( typeAs, kind
+        var model = writeComments(model, ctx)
 		# log 'typeAs.model.statements 1', model.statements
 		var atype
 			_ u.extractTSSimpleType
 				@ model
 		# log 'typeAs atype', atype
 		# log 'typeAs.model.statements 2', model.statements
+        _ ctx.setLastNotEmptyLine
+        _ ctx.write(' as ')
 		if atype
-			_ ctx.write(' as ')
 			if !cnt.stm[atype.wzElement]
 				log 'ts.module.gen.item.wzElement not managed', atype.wzElement
 			_ cnt.stm[atype.wzElement]
@@ -428,15 +439,22 @@
 				@ ctx
 				@ callback
 		else
-			return
+			_ cnt.genItems
+				@ model.statements
+				@ ctx
+				@ callback
+			$*
+            return
 				_ callback
 					_ ctx.error('typeAs must have a type.', model)
+            *$
 
 	stm( typeLiteral, kind
 		_ ctx.write(model.wzName)
 		r_cb()
 
 	stm( typeMapped, kind
+        var model = writeComments(model, ctx)
 		if model.statements.length == 2
 			var item = model.statements[0]
             # log 'ts.module.gen.typeMapped', item.wzElement
@@ -463,6 +481,7 @@
 					_ ctx.error(':mapped typeMapped must have two children. found: ' + model.statements.length, model)
 
 	stm( typeArrowFunction, kind
+        var model = writeComments(model, ctx)    
 		var atype
 			_ u.extractTSSimpleType
 				@ model
@@ -516,10 +535,12 @@
 				@ callback
 
 	stm( typeExportAssignment
+        var model = writeComments(model, ctx)
 		_ ctx.w('export = ' + model.wzName + ';')
 		r_cb()
 
 	stm( typeImportEqualsDeclaration
+        var model = writeComments(model, ctx)
 		_ ctx.write('import ' + model.wzName + ' = ')
 		if model.statements.length == 1
 			_ ctx.w('require( ' + model.statements[0].wzName + ');')
@@ -534,6 +555,7 @@
         r_cb()
 
 	stm( typeCTorDeclare
+        var model = writeComments(model, ctx)
 		var atype
 			_ u.extractTSSimpleType
 				@ model
@@ -563,6 +585,7 @@
 		r_cb()
 
 	stm( typeConditional
+        var model = writeComments(model, ctx)
 
 		if !model.typeCheck || model.typeCheck.statements.length < 1
 			return

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\widgets\largeInput.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 05:09:46 GMT
 */
 import React, {Component} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -76,28 +76,43 @@ const Validation = styled.div`
 export class LargeInput extends Component<LargeInputProps, LargeInputState> {
     state = {
         focused: true
-    };
+    }
+    ;
     focus() {
         this._input.current && this._input.current.focus()}
-    _handleFocus = () => {
+    _handleFocus = () => 
         this.setState({
             focused: true
-        })}
-    _handleBlur = () => {
+        });
+    _handleBlur = () => 
         this.setState({
             focused: false
-        })}
+        });
     _input = React.createRef<HTMLInputElement>();;
     render() {
         return  (
-                <Container>
-                    <Input ref={this._input} autoFocus={this.props.autoFocus} value={this.props.value} name={this.props.name} type={this.props.type} disabled={this.props.disabled} onChange={this.props.onChange} placeholder={this.props.placeholder} onFocus={this._handleFocus} onBlur={this._handleBlur} dark={this.props.dark} error={!!this.props.error} />
+            <Container>
+                <Input ref={this._input}
+                    autoFocus={this.props.autoFocus}
+                    value={this.props.value}
+                    name={this.props.name}
+                    type={this.props.type}
+                    disabled={this.props.disabled}
+                    onChange={this.props.onChange}
+                    placeholder={this.props.placeholder}
+                    onFocus={this._handleFocus}
+                    onBlur={this._handleBlur}
+                    dark={this.props.dark}
+                    error={!!this.props.error}
+                 />
                 {
                     this.state.focused && this.props.error ?  (
-                            <Validation />
+                        <Validation>
+                            {this.props.error.message}</Validation>
                         )
                      : null
-                }</Container>
+                }
+            </Container>
             )
         ;
     }

@@ -12,7 +12,7 @@ module
                 :string 
             param expand
                 :boolean 
-                := true
+                = true
             :return
                 :[ 
                     :ref FileSystemEntry

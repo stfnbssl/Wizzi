@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\types.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 // import { persist } from 'web-worker-proxy';
 import {commonTypes} from '../../../common';
@@ -40,14 +40,15 @@ export type SaveHistory = Array<{
 type Listener = ReturnType<typeof Object, //
 >;
 // TODO should be an external type?
-export type PackiSessionOptions = { 
+export type PackiSessionOptions = // sdkVersion?: SDKVersion;
+// deviceId?: string | null;
+{ 
     files: { 
         [x: string]: { 
             contents: string;
             type: 'ASSET' | 'CODE';
         };
     };
-    // sdkVersion?: SDKVersion;
     verbose?: boolean;
     sessionId?: string;
     host?: string;
@@ -66,7 +67,6 @@ export type PackiSessionOptions = {
         idToken?: string | null;
         sessionSecret?: string | null;
     };
-    // deviceId?: string | null;
 };
 //
 export type LocalPackiData = { 

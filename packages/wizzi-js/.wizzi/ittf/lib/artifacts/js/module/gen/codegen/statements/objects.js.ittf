@@ -37,19 +37,30 @@
 					@ callback
     
 	stm( jsRest
-		_ ctx.write('...' + model.wzName)
+		_ ctx.write('...')
         if model.statements.length > 0
-            _ cnt.genItems
-                @ model.statements
-                @ ctx
-                { 
-				@ callback
+            if ['jsArray','jsObject'].indexOf(model.statements[0].wzElement) > -1 
+                _ cnt.genItems
+                    @ model.statements
+                    @ ctx
+                    { 
+                    @ callback
+            else
+                _ ctx.write('(')
+                _ cnt.genItems
+                    @ model.statements
+                    @ ctx
+                    { 
+                    f_cb()
+                        _ ctx.w(')')
+                        r_cb()
         else
+            _ ctx.write(model.wzName)
 		    r_cb()
 
 	fn( jsPropertyOrValue_with_stm_children
 		# log 'js.module.statements.object.model.wzName, model.statements.length', model.wzName, model.statements.length
-		var colon = (ctx.isGraphql && !ctx.isNamedCallParam) ? ' ' : ': '
+		var colon = ((ctx.isGraphql && !ctx.isNamedCallParam) || model.wzParent.wzElement == 'call') ? ' ' : ': '
 		if u.parentIsHtmlElement(model)
 			# Attributes have been already processed
 			r_cb()
@@ -275,7 +286,10 @@
 				# log 'jsObject_close 4'
 				_ ctx.w('')
 				_ ctx.deindent()
-				_ ctx.write('}')
+                if u.parentIsHtmlElement(model)
+                    _ ctx.w('}')
+                else
+                    _ ctx.write('}')
 				r_cb()
 
 	stm( jsArray

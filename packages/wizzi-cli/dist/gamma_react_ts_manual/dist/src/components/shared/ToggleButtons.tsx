@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ToggleButtons.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -24,7 +24,28 @@ export default function ToggleButtons<T extends string>(props: Props<T>) {
         const [prefs] = usePreferences();
         const light = prefs.theme !== 'dark';
         return  (
-                <span className={classnames(css(styles.buttons, props.disabled && styles.disabled), props.className)} />
+            <span className={classnames(css(styles.buttons, props.disabled && styles.disabled), props.className)}>
+                {
+                    props.label ?  (
+                        <span className={css(styles.label)}>
+                            {props.label}
+                        </span>
+                        )
+                     : null
+                }
+                {
+                    props.options.map((o) => 
+                         (
+                        <button key={o.value} className={css(styles.button, o.value === props.value ? props.disabled ? light ? styles.activeDisabledLight : styles.activeDisabled : styles.active : undefined)} onClick={() => 
+                            props.onValueChange(o.value)
+                        }>
+                            {o.label}
+                        </button>
+                        )
+                    
+                    )
+                }
+            </span>
             )
         ;
     }

@@ -173,7 +173,12 @@ module
                     :typeof packiActions.savePackiRequest
         try 
             _ console.log('sagas.handleSavePackiRequest', action)
-            yield packiData.savePackiFiles(action.payload.id, action.payload.filesToSave)
+            yield 
+                _ packiData.savePackiFiles
+                    @ action.payload.id
+                    @ action.payload.filesToSave
+                        :as 
+                            :ref packiTypes.PackiFiles
             yield 
                 _ put
                     _ packiActions.savePackiSuccess

@@ -7,32 +7,86 @@
     "interpreter": null,
     "body": [
       {
-        "type": "ClassDeclaration",
-        "id": {
-          "type": "Identifier",
-          "name": "Po"
-        },
-        "superClass": null,
-        "body": {
-          "type": "ClassBody",
-          "body": [
+        "type": "ForOfStatement",
+        "await": false,
+        "left": {
+          "type": "VariableDeclaration",
+          "declarations": [
             {
-              "type": "ClassProperty",
-              "static": false,
-              "key": {
-                "type": "Identifier",
-                "name": "_timer"
+              "type": "VariableDeclarator",
+              "id": {
+                "type": "ObjectPattern",
+                "properties": [
+                  {
+                    "type": "ObjectProperty",
+                    "start": 13,
+                    "end": 17,
+                    "loc": {
+                      "start": {
+                        "line": 1,
+                        "column": 13
+                      },
+                      "end": {
+                        "line": 1,
+                        "column": 17
+                      }
+                    },
+                    "extra": {
+                      "shorthand": true
+                    },
+                    "method": false,
+                    "key": {
+                      "type": "Identifier",
+                      "start": 13,
+                      "end": 17,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 13
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 17
+                        },
+                        "identifierName": "item"
+                      },
+                      "name": "item"
+                    },
+                    "computed": false,
+                    "shorthand": true,
+                    "value": {
+                      "type": "Identifier",
+                      "start": 13,
+                      "end": 17,
+                      "loc": {
+                        "start": {
+                          "line": 1,
+                          "column": 13
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 17
+                        },
+                        "identifierName": "item"
+                      },
+                      "name": "item"
+                    }
+                  }
+                ]
               },
-              "computed": false,
-              "typeAnnotation": {
-                "type": "TSTypeAnnotation",
-                "typeAnnotation": {
-                  "type": "TSAnyKeyword"
-                }
-              },
-              "value": null
+              "init": null
             }
-          ]
+          ],
+          "kind": "const"
+        },
+        "right": {
+          "type": "Identifier",
+          "name": "entryArray"
+        },
+        "body": {
+          "type": "BlockStatement",
+          "body": [],
+          "directives": []
         }
       }
     ],

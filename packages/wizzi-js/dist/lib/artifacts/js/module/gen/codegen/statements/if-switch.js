@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.xif = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -52,19 +67,20 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xelse. Got: ' + callback);
         }
-        if (model.wzParent.wzElement === 'iif') {
-            if (model.statements.length > 0) {
-                cnt.genItems(model.statements, ctx, {
+        var xmodel = writeComments(model, ctx);
+        if (xmodel.wzParent.wzElement === 'iif') {
+            if (xmodel.statements.length > 0) {
+                cnt.genItems(xmodel.statements, ctx, {
                     indent: true
                 }, callback)
             }
             else {
-                ctx.write(model.wzName)
+                ctx.write(xmodel.wzName)
                 return callback(null, null);
             }
         }
         else {
-            u.emitBlock(cnt, 'else', model, model.statements, model.statements.length, ctx, callback)
+            u.emitBlock(cnt, 'else', xmodel, xmodel.statements, xmodel.statements.length, ctx, callback)
         }
     };
     cnt.stm.xswitch = function(model, ctx, callback) {

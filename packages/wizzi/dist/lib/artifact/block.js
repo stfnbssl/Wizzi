@@ -14,8 +14,13 @@ var Block = (function () {
     function Block(options) {
         _classCallCheck(this, Block);
         this.lines = [];
-        this.options = (options || {});
-        this.indentValue = (this.options.indent || 0);
+        this.options = Object.assign({}, {
+            indent: 0, 
+            indentSpaces: 4, 
+            CRLF: '\n', 
+            isDebug: false
+        }, options || {});
+        this.indentValue = this.options.indent;
         this.currentline = null;
     }
     Block.prototype.forceIndent = function(value) {
@@ -46,6 +51,44 @@ var Block = (function () {
         }
         else {
             this.currentline = new line(text, this.indentValue, this.options);
+        }
+    }
+    Block.prototype.wSameLine = function(text) {
+        this._lastLineNotBlank().add(text)
+        this.w();
+    }
+    Block.prototype.setLastNotEmptyLine = function() {
+        // log 'setLastNotEmptyLine.this.currentline.begin', this.currentline, this.lines.length
+        if (this.currentline != null && this.currentline.isEmpty() == false) {
+            return ;
+        }
+        while (this.lines.length > 0) {
+            // log 'setLastNotEmptyLine.loop', this.lines[this.lines.length - 1], this.lines[this.lines.length - 1].isEmpty()
+            if (this.lines[this.lines.length - 1].isEmpty() == false) {
+                this.currentline = this.lines[this.lines.length - 1];
+                this.lines.pop();
+                break;
+            }
+            else {
+                this.lines.pop();
+            }
+        }
+        // log 'setLastNotEmptyLine.this.currentline.end', this.currentline, this.lines.length
+    }
+    Block.prototype._lastLineNotBlank = function() {
+        if (this.currentline != null && this.currentline.isEmpty() == false) {
+            return this.currentline;
+        }
+        var prev;
+        var i = this.lines.length - 1;
+        while (i > -1) {
+            prev = this.lines[i];
+            if (prev.isEmpty()) {
+                i--;
+            }
+            else {
+                return prev;
+            }
         }
     }
     Block.prototype.appendFile = function(filePath) {

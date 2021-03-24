@@ -2,14 +2,17 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\openEntry.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import updateEntry from './updateEntry';
 import {FileSystemEntry} from '../types';
 export default function openEntry(entries: FileSystemEntry[], path: string, focus: boolean = false):  FileSystemEntry[] {
-        const entry = entries.find(e => e.item.path === path);
+        const entry = entries.find(e => 
+            e.item.path === path
+        );
         const isFolder = entry ? entry.item.type === 'folder' : false;
-        return entries.map((e) => {
+        return entries.map(// Not the file we're trying to select
+            (e) => {
                 if (e.item.path === path) {
                     // Found the file/folder we're trying to select
                     if (e.item.type === 'file') {
@@ -37,7 +40,6 @@ export default function openEntry(entries: FileSystemEntry[], path: string, focu
                             });
                     }
                 }
-                // Not the file we're trying to select
                 if (e.item.type === 'file') {
                     if (e.state.isSelected || e.state.isFocused) {
                         // Unselect and unfocus the file

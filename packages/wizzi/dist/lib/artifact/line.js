@@ -114,10 +114,14 @@ var Line = (function () {
         this.text = item.text;
         this.indentValue = item.indentValue;
     }
+    Line.prototype.isEmpty = function() {
+        return !!this.containsFilePath == false && this.text.join('').trim().length == 0;
+    }
     return Line;
 })();
 
 function spaces(num) {
+    // num is never < 0
     return Array(num + 1).join(" ")
     ;
 }

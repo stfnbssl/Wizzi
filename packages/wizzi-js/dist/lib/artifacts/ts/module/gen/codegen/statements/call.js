@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.typeCallSignature = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -34,6 +49,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeCallSignature. Got: ' + callback);
         }
+        var model = writeComments(model, ctx);
         var ptypeDecl = u.extractTSParameterDecl(model);
         if (ptypeDecl) {
             cnt.stm[ptypeDecl.wzElement](ptypeDecl, ctx, () => {});

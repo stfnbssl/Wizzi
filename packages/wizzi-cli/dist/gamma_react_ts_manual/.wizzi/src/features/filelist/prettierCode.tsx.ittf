@@ -51,9 +51,10 @@ module
                     { 
                         @ default config
                     =
-                        await 
-                            _ import
-                                @ '../../configs/prettier.json'
+                        @expr
+                            await 
+                                _ import
+                                    @ '../../configs/prettier.json'
                             :as 
                                 :any 
                 return 

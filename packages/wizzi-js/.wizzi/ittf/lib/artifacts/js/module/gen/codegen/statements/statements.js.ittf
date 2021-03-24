@@ -5,18 +5,22 @@
 
     stm( statement
 		# log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild
-		if model.__templateChild
-			_ ctx.write
+        var text = model.wzName
+		if model.__templateChild || ctx.__inside_html
+			set text 
 				_ verify.replaceAll
 					_ verify.replaceAll
-						@ model.wzName
+						@ text
 						@ '&nbsp;'
 						@ ' '
 					@ '&lf;'
 					@ '\n'
+        if model.__templateChild
+            _ ctx.write
+                @ text
 			r_cb()
         elif ctx.__inside_html == true && ctx.__jskind !== 'react'
-            var text = model.wzName.trim()
+            var text = text.trim()
             var ip
                 _ lineParser.parseInterpolation
                     @ text
@@ -25,11 +29,13 @@
                     @ ctx.__inside_ng
             _ ctx.w("__html.push(" + ip.join() + ");")
         else
-			if u.isTopStatement(model, ctx)
+			if u.isTopStatement(model, ctx) || ctx.__inside_html == true
 				# 4/2/19 _ ctx.write(model.wzName)
-				_ ctx.w(model.wzName)
+				# 22/3/21 _ ctx.w(model.wzName)
+                _ ctx.w(text)
 			else
-				_ ctx.write(model.wzName)
+				# 22/3/21 _ ctx.write(text)
+                _ ctx.write(text)
         _ cnt.genItems
             @ model.statements
             @ ctx
@@ -297,72 +303,73 @@
 		r_cb()
     
 	stm( set
+        var xmodel = writeComments(model, ctx)
 		var text
         # log 'set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|'
 		# FIXME this hack require refactoring
-		if model.wzName === 'work.textSep = "__TS__"'
-			set text = model.wzName
+		if xmodel.wzName === 'work.textSep = "__TS__"'
+			set text = xmodel.wzName
 		else
 			set text
 				_ node.inlinedTextToTextLines
-					@ model.wzName
+					@ xmodel.wzName
 					{
 						@ singleLine true
-        if hasStatements(model) == false
-            if u.isDeclare(model)
+        if hasStatements(xmodel) == false
+            if u.isDeclare(xmodel)
                 _ ctx.write
                     @ text
             else
                 _ ctx.write
                     @ text
-                if u.isTopStatement(model, ctx)
+                if u.isTopStatement(xmodel, ctx)
                     _ ctx.w
                         _ u.semicolon
                             @ text
 			r_cb()
 
-		if model.statements[0].wzEntity === 'function'
+		if xmodel.statements[0].wzEntity === 'function'
             _ ctx.w('')
         
-		# log 'set,model.statements.length', model.wzName, model.statements.length
-        if model.statements.length == 2
-            if model.statements[0].wzElement == 'comment'
+		# log 'set,xmodel.statements.length', xmodel.wzName, xmodel.statements.length
+        if xmodel.statements.length == 2
+            if xmodel.statements[0].wzElement == 'comment'
                 _ ctx.w
-                    @ model.wzName + ' ' 
+                    @ xmodel.wzName + ' ' 
                 _ cnt.genItems
-                    @ model.statements
+                    @ xmodel.statements
                     @ ctx
                     { 
                     f_cb()
-                        if u.isTopStatement(model, ctx)
+                        if u.isTopStatement(xmodel, ctx)
                             _ ctx.w(';')
                         r_cb()
             else
                 _ cnt.genItem
-                    @ model.statements[0]
+                    @ xmodel.statements[0]
                     @ ctx
                     f_cb()
                         _ ctx.write
-                            @ ' ' + model.wzName + ' ' 
+                            @ ' ' + xmodel.wzName + ' ' 
                         _ cnt.genItem
-                            @ model.statements[1]
+                            @ xmodel.statements[1]
                             @ ctx
                             f_cb()
-                                if u.isTopStatement(model, ctx)
+                                if u.isTopStatement(xmodel, ctx)
                                     _ ctx.w(';')
                                 r_cb()
 		else
 			_ ctx.write
 				_ u.setOperator
 					@ text
-					@ model.statements
+					@ xmodel.statements
 			_ cnt.genItems
-				@ model.statements
+				@ xmodel.statements
 				@ ctx
 				{ 
 					@ indent false
 				f_cb()
-					if u.isTopStatement(model, ctx)
+					if u.isTopStatement(xmodel, ctx)
 						_ ctx.w(';')
 					r_cb()
     

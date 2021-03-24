@@ -11,7 +11,7 @@ module
                 :string 
             param separator
                 :string 
-                := '/'
+                = '/'
             const targetArr = target.split(separator)
             const sourceArr = source.split(separator).slice(0, -1)
             const filename = targetArr.pop()

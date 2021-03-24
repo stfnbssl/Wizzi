@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.xfor = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -34,7 +49,78 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xfor. Got: ' + callback);
         }
-        u.emitBlock(cnt, 'for', model, model.statements, model.statements.length, ctx, callback)
+        if (model.statements.length > 1 && model.statements[0].wzElement == 'xleft' && model.statements[1].wzElement == 'xof' || model.statements[1].wzElement == 'xin') {
+            ctx.write('for (');
+            cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write(model.statements[1].wzElement == 'xin' ? ' in ' : ' of ');
+                cnt.genItem(model.statements[1], ctx, function(err, notUsed) {
+                    if (err) {
+                        return callback(err);
+                    }
+                    ctx.w(') {');
+                    cnt.genItems(model.statements, ctx, {
+                        indent: true
+                    }, function(err, notUsed) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        ctx.w('}');
+                        return callback(null, null);
+                    })
+                })
+            })
+        }
+        else {
+            u.emitBlock(cnt, 'for', model, model.statements, model.statements.length, ctx, callback)
+        }
+    };
+    cnt.stm.xleft = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xleft');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.xleft. Got: ' + callback);
+        }
+        if (model.statements.length > 0) {
+            cnt.genItems(model.statements, ctx, {}, callback)
+        }
+        else {
+            ctx.write(model.wzName);
+            return callback(null, null);
+        }
+    };
+    cnt.stm.xof = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xof');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.xof. Got: ' + callback);
+        }
+        if (model.statements.length > 0) {
+            cnt.genItems(model.statements, ctx, {}, callback)
+        }
+        else {
+            ctx.write(model.wzName);
+            return callback(null, null);
+        }
+    };
+    cnt.stm.xin = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xin');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.xin. Got: ' + callback);
+        }
+        if (model.statements.length > 0) {
+            cnt.genItems(model.statements, ctx, {}, callback)
+        }
+        else {
+            ctx.write(model.wzName);
+            return callback(null, null);
+        }
     };
     cnt.stm.foreach = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {

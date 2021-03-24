@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ContextMenu.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -44,22 +44,57 @@ class ContextMenu extends React.PureComponent<Props> {
         if (!visible) {
             return null;
         }
-        const shownActions = actions.filter(action => action) as Action[]
-        ;
+        const shownActions = actions.filter(action => 
+                action
+            ) as Action[];
         return  (
-                <ul ref={innerRef} className={classnames(css(styles.menu, theme === 'dark' ? styles.menuDark : styles.menuLight), className)} style={position ? {
-                        position: 'fixed', 
-                        top: Math.min(position.pageY, window.innerHeight - BOTTOM_OFFSET - shownActions.length * MENU_ITEM_HEIGHT), 
-                        left: position.pageX, 
-                        marginTop: -8
-                    } : {}} />
+            <ul ref={innerRef} className={classnames(css(styles.menu, theme === 'dark' ? styles.menuDark : styles.menuLight), className)} style={position ? {
+                    position: 'fixed', 
+                    top: Math.min(position.pageY, window.innerHeight - BOTTOM_OFFSET - shownActions.length * MENU_ITEM_HEIGHT), 
+                    left: position.pageX, 
+                    marginTop: -8
+                } : {}}>
+                {
+                    shownActions.map(({
+                        label, 
+                        handler, 
+                        disabled, 
+                        combo
+                    }: Action) => 
+                         (
+                        <li key={label}>
+                            <button disabled={disabled} className={css(styles.item, disabled && styles.disabled)} onClick={() => {
+                                handler();
+                                onHide();
+                            }
+                            }>
+                                <div>
+                                    {label}
+                                </div>
+                                {
+                                    combo ?  (
+                                        <kbd className={css(styles.hint)}>
+                                            <ShortcutLabel combo={combo} />
+                                        </kbd>
+                                        )
+                                     : null
+                                }
+                            </button>
+                        </li>
+                        )
+                    
+                    )
+                }
+            </ul>
             )
         ;
     }
 }
-export default withThemeName(React.forwardRef((props: Props, ref: React.Ref<HTMLUListElement>) =>  (
-            <ContextMenu {...props} innerRef={ref} />
+export default withThemeName(React.forwardRef((props: Props, ref: React.Ref<HTMLUListElement>) => 
+         (
+        <ContextMenu {...props} innerRef={ref} />
         )
+    
     ))
 const c = prefColors.c;
 const fadeIn = {

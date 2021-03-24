@@ -1,6 +1,33 @@
 ﻿$group
 
-	function processLeadingComments
+	function splitComments
+        param ret
+        var a = []
+        var b = []
+        foreach item in ret.children
+            if item.tag == '#'
+                _ b.push(item)
+            else
+                _ a.push(item)
+        return [a,b]
+
+    function extractCommentsIf
+        param ret
+        param len
+        var a = []
+        var b = []
+        foreach item in ret.children
+            if item.tag == '#'
+                _ b.push(item)
+            else
+                _ a.push(item)
+        if a.length == len
+            set ret.children = a
+            return b
+        else
+            return []
+
+    function processLeadingComments
 		param node
 		param ittfNode
 		param options
@@ -124,20 +151,26 @@
 							_ p.children.push
 								@ ui
 					if plen == 2
+                        log 'processParams', 'plen', plen, 'p.children[0].tag', p.children[0].tag, 'p.children[1].tag', p.children[1].tag
 						if ['@id', '@expr', 'literal'].indexOf(p.children[1].tag) > -1
+                            log 111
 							# has simple default value (is AssignmentPattern)
 							set p.name = p.children[0].name
 							if p.children[0].children.length > 0
 								set p.children[0].tag = p.children[0].children[0].tag
 								set p.children[0].name = ''
 								set p.children[0].children = []
-							set p.children[1].tag = ':='
+							set p.children[1].tag = '='
 						else
+                            log 112
 							if p.AST === 'AssignmentPattern'
 								# has complex default value (is AssignmentPattern)
+                                if ['@id', '@expr', 'literal'].indexOf(p.children[0].tag) > -1
+                                    set p.name = p.children[0].name
+                                    set p.children = [p.children[0].children[0], p.children[1]]
 								set p.children[1]
 									{
-										@ tag ':='
+										@ tag '='
 										@ name ''
 										[ children
 											@ p.children[1]
@@ -153,9 +186,40 @@
 
 	function isTextualNode
 		param ittfNode
-		return ittfNode && (ittfNode.isText || ittfNode.textified)
+		return ittfNode && (ittfNode.isText || ittfNode.textified) && ittfNode.children.length == 0
 
-	function isTextualChildByTag
+	function isTextualCommentedNode
+		param ittfNode
+        foreach item in ittfNode.children
+            if item.tag != '#'
+                return false
+		return ittfNode && (ittfNode.isText || ittfNode.textified) 
+
+    function setOrInlineIfTextualNode
+        param ret
+        param ittfNode
+        param ittfTag
+
+		if isTextualNode(ittfNode)
+			_ ret.children.push
+				{
+					@ tag ittfTag
+					@ name getNodeText(ittfNode)
+					[ children
+        elif isTextualCommentedNode(ittfNode)
+			_ ret.children.push
+				{
+					@ tag ittfTag
+					@ name getNodeText(ittfNode)
+					@ children ittfNode.children
+		else
+			_ ret.children.push
+				{
+					@ tag ittfTag
+					[ children
+						@ ittfNode
+	    
+    function isTextualChildByTag
 		param ittfNode
 		param tag
 		var item = getChildByTag(ittfNode, tag)
@@ -259,9 +323,10 @@
 		param sep
 		var sb = []
 		foreach item in ittfNode.children
-			if item.isText
+            # log 'getTextList', item
+			if item.isText && item.children.length == 0
 				_ sb.push(item.name)
-			elif item.textified
+			elif item.textified && item.children.length == 0
 				_ sb.push(item.textified)
 			else
 				# log 'getTextList failed ***************', item
@@ -341,5 +406,10 @@
 	function isTypeReference
 		param s
 		return [':ref', ':string', ':number', ':boolean', ':{', ':[', ':func', ':void', ':null', ':never'].indexOf(s) > -1
+
+    function parenthesize
+        param text
+        param parenthesized
+        return (parenthesized ? '(' : '') + text + (parenthesized ? ')' : '')
 
 		

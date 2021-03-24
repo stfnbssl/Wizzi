@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\actions.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import {createStandardAction} from 'typesafe-actions';
 import {storeTypes} from '../../store';
@@ -106,37 +106,37 @@ export interface UploadPackiTemplateResponsePayload extends storeTypes.ResponseP
     writtenFiles?: number;
     deletedFiles?: number;
 }
-export const fetchPackiListRequest = createStandardAction(FETCH_PACKI_LIST_REQUEST);
-export const fetchPackiListSuccess = createStandardAction(FETCH_PACKI_LIST_SUCCESS);
-export const fetchPackiListError = createStandardAction(FETCH_PACKI_LIST_ERROR);
-export const initPackiRequest = createStandardAction(INIT_PACKI_REQUEST);
-export const initPackiSuccess = createStandardAction(INIT_PACKI_SUCCESS);
-export const initPackiError = createStandardAction(INIT_PACKI_ERROR);
-export const selectPackiRequest = createStandardAction(SELECT_PACKI_REQUEST);
-export const selectPackiSuccess = createStandardAction(SELECT_PACKI_SUCCESS);
-export const selectPackiError = createStandardAction(SELECT_PACKI_ERROR);
-export const createPackiRequest = createStandardAction(CREATE_PACKI_REQUEST);
-export const createPackiSuccess = createStandardAction(CREATE_PACKI_SUCCESS);
-export const createPackiError = createStandardAction(CREATE_PACKI_ERROR);
-export const savePackiRequest = createStandardAction(SAVE_PACKI_REQUEST);
-export const savePackiSuccess = createStandardAction(SAVE_PACKI_SUCCESS);
-export const savePackiError = createStandardAction(SAVE_PACKI_ERROR);
-export const deletePackiRequest = createStandardAction(DELETE_PACKI_REQUEST);
-export const deletePackiSuccess = createStandardAction(DELETE_PACKI_SUCCESS);
-export const deletePackiError = createStandardAction(DELETE_PACKI_ERROR);
-export const fetchPackiTemplateListRequest = createStandardAction(FETCH_PACKI_TEMPLATE_LIST_REQUEST);
-export const fetchPackiTemplateListSuccess = createStandardAction(FETCH_PACKI_TEMPLATE_LIST_SUCCESS);
-export const fetchPackiTemplateListError = createStandardAction(FETCH_PACKI_TEMPLATE_LIST_ERROR);
-export const fetchOwnedGitRepositoriesRequest = createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_REQUEST);
-export const fetchOwnedGitRepositoriesSuccess = createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_SUCCESS);
-export const fetchOwnedGitRepositoriesError = createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_ERROR);
-export const cloneGitRepositoryRequest = createStandardAction(CLONE_GIT_REPOSITORY_REQUEST);
-export const cloneGitRepositorySuccess = createStandardAction(CLONE_GIT_REPOSITORY_SUCCESS);
-export const cloneGitRepositoryError = createStandardAction(CLONE_GIT_REPOSITORY_ERROR);
-export const commitGitRepositoryRequest = createStandardAction(COMMIT_GIT_REPOSITORY_REQUEST);
-export const commitGitRepositorySuccess = createStandardAction(COMMIT_GIT_REPOSITORY_SUCCESS);
-export const commitGitRepositoryError = createStandardAction(COMMIT_GIT_REPOSITORY_ERROR);
-export const uploadPackiTemplateRequest = createStandardAction(UPLOAD_PACKI_TEMPLATE_REQUEST);
-export const uploadPackiTemplateSuccess = createStandardAction(UPLOAD_PACKI_TEMPLATE_SUCCESS);
-export const uploadPackiTemplateError = createStandardAction(UPLOAD_PACKI_TEMPLATE_ERROR);
-export const executeJobSuccess = createStandardAction(EXECUTE_JOB_SUCCESS);
+export const fetchPackiListRequest = createStandardAction(FETCH_PACKI_LIST_REQUEST)<void>();
+export const fetchPackiListSuccess = createStandardAction(FETCH_PACKI_LIST_SUCCESS)<PackiListPayload>();
+export const fetchPackiListError = createStandardAction(FETCH_PACKI_LIST_ERROR)<string>();
+export const initPackiRequest = createStandardAction(INIT_PACKI_REQUEST)<InitPackiRequestPayload>();
+export const initPackiSuccess = createStandardAction(INIT_PACKI_SUCCESS)<SelectedPackiPayload>();
+export const initPackiError = createStandardAction(INIT_PACKI_ERROR)<string>();
+export const selectPackiRequest = createStandardAction(SELECT_PACKI_REQUEST)<PackiIdPayload>();
+export const selectPackiSuccess = createStandardAction(SELECT_PACKI_SUCCESS)<SelectedPackiPayload>();
+export const selectPackiError = createStandardAction(SELECT_PACKI_ERROR)<string>();
+export const createPackiRequest = createStandardAction(CREATE_PACKI_REQUEST)<CreatePackiPayload>();
+export const createPackiSuccess = createStandardAction(CREATE_PACKI_SUCCESS)<CreatedPackiPayload>();
+export const createPackiError = createStandardAction(CREATE_PACKI_ERROR)<string>();
+export const savePackiRequest = createStandardAction(SAVE_PACKI_REQUEST)<SavePackiPayload>();
+export const savePackiSuccess = createStandardAction(SAVE_PACKI_SUCCESS)<SavePackiPayload>();
+export const savePackiError = createStandardAction(SAVE_PACKI_ERROR)<string>();
+export const deletePackiRequest = createStandardAction(DELETE_PACKI_REQUEST)<PackiIdPayload>();
+export const deletePackiSuccess = createStandardAction(DELETE_PACKI_SUCCESS)<PackiIdPayload>();
+export const deletePackiError = createStandardAction(DELETE_PACKI_ERROR)<string>();
+export const fetchPackiTemplateListRequest = createStandardAction(FETCH_PACKI_TEMPLATE_LIST_REQUEST)<void>();
+export const fetchPackiTemplateListSuccess = createStandardAction(FETCH_PACKI_TEMPLATE_LIST_SUCCESS)<PackiListPayload>();
+export const fetchPackiTemplateListError = createStandardAction(FETCH_PACKI_TEMPLATE_LIST_ERROR)<string>();
+export const fetchOwnedGitRepositoriesRequest = createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_REQUEST)<AuthRequestPayload>();
+export const fetchOwnedGitRepositoriesSuccess = createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_SUCCESS)<GitRepositoryListPayload>();
+export const fetchOwnedGitRepositoriesError = createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_ERROR)<string>();
+export const cloneGitRepositoryRequest = createStandardAction(CLONE_GIT_REPOSITORY_REQUEST)<CloneGitRepositoryPayload>();
+export const cloneGitRepositorySuccess = createStandardAction(CLONE_GIT_REPOSITORY_SUCCESS)<ClonedGitRepositoryPayload>();
+export const cloneGitRepositoryError = createStandardAction(CLONE_GIT_REPOSITORY_ERROR)<string>();
+export const commitGitRepositoryRequest = createStandardAction(COMMIT_GIT_REPOSITORY_REQUEST)<CommitGitRepositoryPayload>();
+export const commitGitRepositorySuccess = createStandardAction(COMMIT_GIT_REPOSITORY_SUCCESS)<CommittedGitRepositoryPayload>();
+export const commitGitRepositoryError = createStandardAction(COMMIT_GIT_REPOSITORY_ERROR)<string>();
+export const uploadPackiTemplateRequest = createStandardAction(UPLOAD_PACKI_TEMPLATE_REQUEST)<UploadPackiTemplatePayload>();
+export const uploadPackiTemplateSuccess = createStandardAction(UPLOAD_PACKI_TEMPLATE_SUCCESS)<UploadPackiTemplateResponsePayload>();
+export const uploadPackiTemplateError = createStandardAction(UPLOAD_PACKI_TEMPLATE_ERROR)<string>();
+export const executeJobSuccess = createStandardAction(EXECUTE_JOB_SUCCESS)<JobResponsePayload>();

@@ -48,7 +48,7 @@ module
                                 @ className {props.classes.close}
                                 @ onClick {props.onDismiss}
                                 @ data-test-id "modal-close"
-                                + \n                ✕\n            \b
+                                + ✕
                         else null
                 < DialogTitle 
                     @ id "alert-dialog-title"

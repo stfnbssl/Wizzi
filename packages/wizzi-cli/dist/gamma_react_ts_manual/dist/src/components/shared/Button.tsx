@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Button.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -53,16 +53,21 @@ function Button({
     ...rest
 }: Props) {
     return  (
-            <button type="button" className={classnames(getClassNames({
+        <button type="button"
+            className={classnames(getClassNames({
                 variant, 
                 icon, 
                 large, 
                 disabled, 
                 loading, 
                 theme
-            }), className)} disabled={disabled} style={icon ? {
+            }), className)}
+            disabled={disabled}
+            style={icon ? {
                     backgroundImage: `url(${icon})`
-                } : {}} {...rest} />
+                } : {}}
+            {...rest}
+         />
         )
     ;
 }

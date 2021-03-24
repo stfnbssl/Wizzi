@@ -26,6 +26,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.xlet = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -58,23 +73,24 @@ md.load = function(cnt) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.letvarconst');
         }
+        var xmodel = writeComments(model, ctx);
         // set ctx.__needs_crlf = ctx.__needs_comma = ctx.__inside_expr = false
         ctx.write(symbol + ' ');
-        if (model.wzName && model.wzName.length > 0) {
-            ctx.write(model.wzName);
+        if (xmodel.wzName && xmodel.wzName.length > 0) {
+            ctx.write(xmodel.wzName);
         }
-        var vtype = u.extractTSSimpleType(model);
+        var vtype = u.extractTSSimpleType(xmodel);
         if (vtype) {
             ctx.write(': ');
             cnt.stm[vtype.wzElement](vtype, ctx, (err, notUsed) => {
                 if (err) {
                     return callback(err);
                 }
-                letvarconst_step(model, ctx, callback)
+                letvarconst_step(xmodel, ctx, callback)
             })
         }
         else {
-            letvarconst_step(model, ctx, callback)
+            letvarconst_step(xmodel, ctx, callback)
         }
     }
     function letvarconst_step(model, ctx, callback) {
@@ -159,9 +175,10 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.initValue. Got: ' + callback);
         }
-        ctx.write(model.wzName)
-        if (countStatements(model) > 0) {
-            cnt.genItem(model.statements[0], ctx, callback)
+        var xmodel = writeComments(model, ctx);
+        ctx.write(xmodel.wzName)
+        if (countStatements(xmodel) > 0) {
+            cnt.genItem(xmodel.statements[0], ctx, callback)
         }
         else {
             return callback(null, null);
@@ -174,15 +191,16 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.decl. Got: ' + callback);
         }
-        ctx.write(model.wzName)
-        if (countStatements(model) > 0) {
+        var xmodel = writeComments(model, ctx);
+        ctx.write(xmodel.wzName)
+        if (countStatements(xmodel) > 0) {
             ctx.write(' = ');
-            var len_1 = model.statements.length;
+            var len_1 = xmodel.statements.length;
             function repeater_1(index_1) {
                 if (index_1 === len_1) {
                     return next_1();
                 }
-                var item_1 = model.statements[index_1];
+                var item_1 = xmodel.statements[index_1];
                 cnt.genItem(item_1, ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
@@ -212,30 +230,31 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xnew. Got: ' + callback);
         }
-        if (hasStatements(model) == false) {
-            if (model.wzName.trim().substr(-1, 1) === ')') {
-                ctx.write('new ' + model.wzName);
+        var xmodel = writeComments(model, ctx);
+        if (hasStatements(xmodel) == false) {
+            if (xmodel.wzName.trim().substr(-1, 1) === ')') {
+                ctx.write('new ' + xmodel.wzName);
             }
             else {
-                ctx.write('new ' + model.wzName + '()');
+                ctx.write('new ' + xmodel.wzName + '()');
             }
-            if (u.isTopStatement(model, ctx)) {
+            if (u.isTopStatement(xmodel, ctx)) {
                 ctx.w(';');
             }
             return callback(null, null);
         }
         ctx.write('new ');
-        xnew_type(model, ctx, function(err, startArg) {
+        xnew_type(xmodel, ctx, function(err, startArg) {
             if (err) {
                 return callback(err);
             }
             var openParen = false;
-            var len_1 = model.statements.length;
+            var len_1 = xmodel.statements.length;
             function repeater_1(index_1) {
                 if (index_1 === len_1) {
                     return next_1();
                 }
-                var item_1 = model.statements[index_1];
+                var item_1 = xmodel.statements[index_1];
                 if (u.isMemberAccess(item_1)) {
                     if (openParen) {
                         ctx.write(')');
@@ -244,7 +263,7 @@ md.load = function(cnt) {
                             if (err) {
                                 return callback(err);
                             }
-                            if (u.isTopStatement(model, ctx)) {
+                            if (u.isTopStatement(xmodel, ctx)) {
                                 ctx.w(';');
                             }
                             return callback(null, null);
@@ -271,7 +290,7 @@ md.load = function(cnt) {
                 if (openParen) {
                     ctx.write(')');
                 }
-                if (u.isTopStatement(model, ctx)) {
+                if (u.isTopStatement(xmodel, ctx)) {
                     ctx.w(';');
                 }
                 return callback(null, null);
@@ -282,9 +301,10 @@ md.load = function(cnt) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.xnew_type');
         }
-        if (model.statements[0].wzElement === 'type') {
+        var xmodel = writeComments(model, ctx);
+        if (xmodel.statements[0].wzElement === 'type') {
             ctx.write('(');
-            cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+            cnt.genItem(xmodel.statements[0], ctx, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -293,7 +313,7 @@ md.load = function(cnt) {
             })
         }
         else {
-            ctx.write(model.wzName)
+            ctx.write(xmodel.wzName)
             return callback(null, 0);
         }
     }

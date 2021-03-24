@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\MenuButton.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -21,26 +21,38 @@ export default function MenuButton({
         const [active, setActive] = React.useState<boolean>(false);
         const root = React.useRef<HTMLDivElement>(null);
         React.useEffect(() => {
-            const onClick = (e) => {
-                if (e.target === root.current || root.current && root.current.contains(e.target)) {
+            const onClick = (e: Event):  void => {
+                if (e.target === root.current || (root.current && root.current.contains(e.target  as Node))) {
                     return ;
                 }
                 setActive(false);
             }
             ;
             document.addEventListener('click', onClick);
-            return () => document.removeEventListener('click', onClick);
+            return () => 
+                    document.removeEventListener('click', onClick)
+            ;
         }
         , [])
         return  (
-                <div ref={root} className={css(styles.panelContainer)}>
-                    <FooterButton icon={icon} active={active} onClick={() => setActive(value => !value)} />
+            <div ref={root} className={css(styles.panelContainer)}>
+                <FooterButton icon={icon} active={active} onClick={() => 
+                    setActive(value => 
+                        !value
+                    
+                    )
+                }>
+                    {label}
+                </FooterButton>
                 {
                     active ?  (
-                            <div className={css(styles.pane)} />
+                        <div className={css(styles.pane)}>
+                            {content}
+                        </div>
                         )
                      : null
-                }</div>
+                }
+            </div>
             )
         ;
     }

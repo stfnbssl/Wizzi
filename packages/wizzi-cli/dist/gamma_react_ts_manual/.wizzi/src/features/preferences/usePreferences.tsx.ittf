@@ -20,7 +20,10 @@ module
                 { 
                     @ preferences
                     @ setPreferences
-                = useContext(PreferencesContext)
+                =
+                    _ useContext(PreferencesContext)
+                        :as 
+                            :ref PreferencesContextType
             return 
                 [ 
                     @ preferences

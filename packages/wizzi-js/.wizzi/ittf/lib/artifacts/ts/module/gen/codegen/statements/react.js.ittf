@@ -4,6 +4,7 @@
 		var method
     
 	stm( reactComponent
+        var model = writeComments(model, ctx)
 
 		var childrenInfo = extractReactChildren(model)
 

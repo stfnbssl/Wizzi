@@ -2,13 +2,13 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\convertFileStructure.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import {isEntryPoint} from '../filelist/fileUtilities';
 import {FileSystemEntry, FileSystemEntryDiff} from '../filelist/types';
 import {PackiFiles} from './types';
-const getFolders = (path: string) => {
-    // TODO: change this to slice and join
+const getFolders = // TODO: change this to slice and join
+(path: string):  string[] => {
     const pathSegments = path.split('/');
     if (pathSegments.length === 0) {
         return [];
@@ -20,7 +20,7 @@ const getFolders = (path: string) => {
     return result;
 }
 ;
-export const packiToEntryArray = (files: PackiFiles) => {
+export const packiToEntryArray = (files: PackiFiles):  FileSystemEntry[] => {
     const fileSystem: FileSystemEntry[] = [];
     const foldersInFileSystem = new Set();
     for (const filename of Object.keys(files).sort()) {
@@ -62,7 +62,7 @@ export const packiToEntryArray = (files: PackiFiles) => {
     return fileSystem;
 }
 ;
-export const packiFilterIttf = (files: PackiFiles) => {
+export const packiFilterIttf = (files: PackiFiles):  PackiFiles => {
     const ittfFiles: PackiFiles = {};
     Object.keys(files).forEach((k) => {
         if (k.endsWith('.ittf')) {
@@ -73,11 +73,11 @@ export const packiFilterIttf = (files: PackiFiles) => {
     return ittfFiles;
 }
 ;
-export const mixPreviousAndGeneratedPackiFilesToEntryArray = (previous: PackiFiles, generated: PackiFiles) => {
+export const mixPreviousAndGeneratedPackiFilesToEntryArray = (previous: PackiFiles, generated: PackiFiles):  FileSystemEntry[] => {
     return packiToEntryArray(mixPreviousAndGeneratedPackiFiles(previous, generated));
 }
 ;
-export const mixPreviousAndGeneratedPackiFiles = (previous: PackiFiles, generated: PackiFiles) => {
+export const mixPreviousAndGeneratedPackiFiles = (previous: PackiFiles, generated: PackiFiles):  PackiFiles => {
     const packiFiles = Object.assign({}, previous);
     Object.keys(generated).forEach((k) => {
         if (previous[k]) {
@@ -89,7 +89,7 @@ export const mixPreviousAndGeneratedPackiFiles = (previous: PackiFiles, generate
     return packiFiles;
 }
 ;
-export const entryArrayToPacki = (entryArray: FileSystemEntry[]) => {
+export const entryArrayToPacki = (entryArray: FileSystemEntry[]):  PackiFiles => {
     const sourceResult: PackiFiles = {};
     for (const  of entryArray) {
         if (item.type === 'file') {
@@ -114,7 +114,8 @@ export const entryArrayToPacki = (entryArray: FileSystemEntry[]) => {
     return sourceResult;
 }
 ;
-export const entryArrayToObject = (entryArray: FileSystemEntry[]) => {
+export const entryArrayToObject = (entryArray: FileSystemEntry[]):  { 
+    [key: string]} => {
     const entriesObject: { 
         [key: string]} = entryArray.reduce((acc: { 
         [key: string]}, {
@@ -127,26 +128,26 @@ export const entryArrayToObject = (entryArray: FileSystemEntry[]) => {
     return entriesObject;
 }
 ;
-export const entryArrayDiff = (a: FileSystemEntry[], b: FileSystemEntry[]) => {
+export const entryArrayDiff = (a: FileSystemEntry[], b: FileSystemEntry[]):  { 
+    [k: string]: FileSystemEntryDiff;
+} => {
     const diff: { 
         [k: string]: FileSystemEntryDiff;
     } = {};
-    a.forEach((entry) => {
-        // console.log('-', entry.item.path)
+    a.forEach(// console.log('-', entry.item.path)
+    entry => 
         diff[entry.item.path] = {
             kind: '-', 
             a: entry.item
-        };
-    }
+        }
     )
     b.forEach((entry) => {
         if (diff[entry.item.path]) {
             if (diff[entry.item.path].a === entry.item) {
-                // console.log('delete', entry.item.path)
                 delete diff[entry.item.path]
             }
+            // console.log('<>', entry.item.path)
             else {
-                // console.log('<>', entry.item.path)
                 diff[entry.item.path].kind === '<>';
                 diff[entry.item.path].b === entry.item;
             }

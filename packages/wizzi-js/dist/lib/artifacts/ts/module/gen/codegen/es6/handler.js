@@ -28,26 +28,40 @@ md.gen = function(model, ctx, callback) {
         if (err) {
             return callback(err);
         }
-        if (model.typeReturn) {
-            ctx.write(': ');
-            statement.stm.typeReturn(model.typeReturn, ctx, () => {});
-        }
-        ctx.write(' = (');
+        var isSingleParam = u.isSingleParamForArrowFunction(model);
+        ctx.write(' = ' + (isSingleParam ? '' : '('));
         u.genTSParams(model, ctx, statement, (err, notUsed) => {
             if (err) {
                 return callback(err);
             }
-            ctx.write(')');
-            ctx.w(' => {');
-            ctx.indent();
-            statement.genMany(model.statements, ctx, (err, notUsed) => {
-                if (err) {
-                    return callback(err);
-                }
-                ctx.deindent();
-                ctx.w('}');
-                return callback(null, null);
-            })
+            ctx.write(isSingleParam ? '' : ')');
+            function writeBody() {
+                var ir = u.isImplicitReturn(model);
+                var ts = u.isTopStatement(model, ctx);
+                ctx.w(' => ' + (ir ? '' : '{'));
+                ctx.indent();
+                statement.genMany(model.statements, ctx, (err, notUsed) => {
+                    if (err) {
+                        return callback(err);
+                    }
+                    ctx.deindent();
+                    ctx.write(ir ? '' : '}');
+                    ctx.w(ts ? ';' : '');
+                    return callback(null, null);
+                })
+            }
+            if (model.typeReturn) {
+                ctx.write(': ');
+                statement.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                    if (err) {
+                        return callback(err);
+                    }
+                    writeBody();
+                })
+            }
+            else {
+                writeBody();
+            }
         })
     })
 };

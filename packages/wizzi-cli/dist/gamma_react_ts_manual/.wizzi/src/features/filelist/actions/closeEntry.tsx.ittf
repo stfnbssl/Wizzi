@@ -9,7 +9,6 @@ module
                 :ref FileSystemEntry
             if entry.item.type === 'file'
                 if entry.state.isSelected || entry.state.isFocused || entry.state.isOpen
-                    # Unselect and unfocus the file
                     return 
                         _ updateEntry
                             @ entry
@@ -18,13 +17,14 @@ module
                                     @ isOpen false
                                     @ isSelected false
                                     @ isFocused false
+                        # Unselect and unfocus the file
             else
                 if entry.state.isSelected
-                    # Unselect the folder
                     return 
                         _ updateEntry
                             @ entry
                             { 
                                 { state
                                     @ isSelected false
+                        # Unselect the folder
             return entry

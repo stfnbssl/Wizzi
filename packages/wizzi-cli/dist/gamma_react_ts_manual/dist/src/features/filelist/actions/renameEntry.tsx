@@ -2,14 +2,17 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\renameEntry.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import updateEntry from './updateEntry';
 import recursivelyCreateParents from './recursivelyCreateParents';
 import {changeParentPath, isInsideFolder} from '../fileUtilities';
 import {FileSystemEntry} from '../types';
-export default function renameEntry(entries: FileSystemEntry[], oldPath: string, newPath: string) {
-        const entry = entries.find(e => e.item.path === oldPath);
+export default // @ts-ignore
+    function renameEntry(entries: FileSystemEntry[], oldPath: string, newPath: string) {
+        const entry = entries.find(e => 
+            e.item.path === oldPath
+        );
         if (!entry) {
             return entries;
         }
@@ -18,7 +21,6 @@ export default function renameEntry(entries: FileSystemEntry[], oldPath: string,
                 path: newPath
             }
         });
-        // @ts-ignore
         delete renamed.state.isCreating
         const next: FileSystemEntry[] = entries.map((e) => {
             if (e.item.path === entry.item.path) {

@@ -10,23 +10,24 @@
         _ cnt.stm._letvarconst(model, ctx, 'var', callback)
     
 	stm( _letvarconst, symbol
+        var xmodel = writeComments(model, ctx)
 		# set ctx.__needs_crlf = ctx.__needs_comma = ctx.__inside_expr = false
-		if hasStatements(model) == false
-            _ ctx.w(symbol + ' ' + model.wzName + u.semicolon(model.wzName))
+		if hasStatements(xmodel) == false
+            _ ctx.w(symbol + ' ' + xmodel.wzName + u.semicolon(xmodel.wzName))
 			r_cb()
 
         set ctx.__inside_expr = true
         _ ctx.write(symbol + ' ')
-        if model.wzName && model.wzName.length > 0
-            _ ctx.write(model.wzName + ' = ')
+        if xmodel.wzName && xmodel.wzName.length > 0
+            _ ctx.write(xmodel.wzName + ' = ')
         var 
             decl indented
-            decl item = model.statements[0]
+            decl item = xmodel.statements[0]
         _ cnt.genItem
 			@ item
 			@ ctx
 			f_cb()
-				repeater( 1, model.statements, 1 )
+				repeater( 1, xmodel.statements, 1 )
 					if ctx.__needs_comma
 						_ ctx.write(',')
 						set ctx.__needs_comma = false
@@ -50,11 +51,12 @@
 						r_cb()
     
 	stm( decl
+        var xmodel = writeComments(model, ctx)
         _ ctx.write
-            @ model.wzName
-        if countStatements(model) > 0
+            @ xmodel.wzName
+        if countStatements(xmodel) > 0
             _ ctx.write(' = ')
-			repeater( 1, model.statements )
+			repeater( 1, xmodel.statements )
 				_ cnt.genItem
 					@ item_1
 					@ ctx
@@ -70,35 +72,37 @@
 			r_cb()
     
 	stm( initValue
+        var xmodel = writeComments(model, ctx)
 		_ ctx.write(' = ')
         _ ctx.write
-            @ model.wzName
-		if countStatements(model) > 0
+            @ xmodel.wzName
+		if countStatements(xmodel) > 0
 			_ cnt.genItem
-				@ model.statements[0]
+				@ xmodel.statements[0]
 				@ ctx
 				@ callback
 		else
 			r_cb()
 
 	stm( xnew
-		if hasStatements(model) == false
-			if model.wzName.trim().substr(-1, 1) === ')'
-				_ ctx.write('new ' + model.wzName)
+        var xmodel = writeComments(model, ctx)
+		if hasStatements(xmodel) == false
+			if xmodel.wzName.trim().substr(-1, 1) === ')'
+				_ ctx.write('new ' + xmodel.wzName)
 			else
-				_ ctx.write('new ' + model.wzName + '()')
-			if u.isTopStatement(model, ctx)
+				_ ctx.write('new ' + xmodel.wzName + '()')
+			if u.isTopStatement(xmodel, ctx)
 				_ ctx.w(';')
 			r_cb()
 
         _ ctx.write('new ')
 		_ xnew_type
-			@ model
+			@ xmodel
 			@ ctx
 			f_cb( startArg )
 				var openParen = false
 				
-				repeater( 1, model.statements, startArg )
+				repeater( 1, xmodel.statements, startArg )
 					
 					if u.isMemberAccess(item_1)
 						if openParen
@@ -108,7 +112,7 @@
 								@ item_1
 								@ ctx
 								f_cb()
-									if u.isTopStatement(model, ctx)
+									if u.isTopStatement(xmodel, ctx)
 										_ ctx.w(';')
 									r_cb()
 					if index_1 == startArg
@@ -125,22 +129,23 @@
 					$append next
 						if openParen
 							_ ctx.write(')')
-						if u.isTopStatement(model, ctx)
+						if u.isTopStatement(xmodel, ctx)
 							_ ctx.w(';')
 						r_cb()
     
 	fn( xnew_type
-        if model.statements[0].wzElement === 'type'
+        var xmodel = writeComments(model, ctx)
+        if xmodel.statements[0].wzElement === 'type'
             _ ctx.write('(')
             _ cnt.genItem
-                @ model.statements[0]
+                @ xmodel.statements[0]
                 @ ctx
 				f_cb()
 					_ ctx.write(')')
 					r_cb( 1 )
         else 
             _ ctx.write
-                @ model.wzName
+                @ xmodel.wzName
 			r_cb( 0 )
 	
 	stm( type

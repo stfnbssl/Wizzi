@@ -208,18 +208,34 @@
 
 	f( TSAsExpression, :as
 
-		f_p_temp( expression
-		f_p_temp( typeAnnotation
+		f_p_temp( expression, true
+		f_p_temp( typeAnnotation, true
 		
-		# log 'p_typeAnnotation', p_typeAnnotation
+		# log 'p_expression', p_expression
+        # log 'p_typeAnnotation', p_typeAnnotation
 		
-		_ ret.children.push
-			@ p_typeAnnotation
 
-		_ p_expression.children.push
-			@ ret
+		if p_expression.isText || p_expression.textified
+            set p_expression.name = p_expression.textified
+            set p_expression.textified = null
+            set p_expression.isText = false
 
-		set ret = p_expression
+        _ ret.children.push
+            @ p_typeAnnotation
+        if p_expression.children.length == 0 
+            _ p_expression.children.push
+                @ ret
+            set ret = p_expression
+        else
+            set ret 
+                {
+                    @ tag '@expr'
+                    @ children [p_expression, ret]
+
+        if ['@id', 'literal'].indexOf(ret.tag) > -1
+            set ret.tag = '+'
+
+        # log 'TSAsExpression.ret', ret
 		
 		if node.extra && node.extra.parenthesized
 			set ret
@@ -356,9 +372,18 @@
 		ts-return()
 
 		if node.async
-			set ret.tag = 'async-m-decl'
-		if node.generator
-			set ret.tag += '*'
+            _ ret.children.push
+                {
+                    @ tag 'async'
+                    @ name ''
+                    [ children
+		
+        if node.generator
+            _ ret.children.push
+                {
+                    @ tag 'generator'
+                    @ name ''
+                    [ children
 
 	f( TSQualifiedName, :qname
 		f_p_temp( left, false )
@@ -386,7 +411,16 @@
 			_ ret.children.push
 				@ p_expression
 
-	f( TSImportEqualsDeclaration, :import
+	f( TSImportType, :import-type
+        f_p_temp( argument, true )
+        if isTextualNode(p_argument)
+            set ret.textified = 'import(' + getNodeText(p_argument) + ')'
+            set ret.isText = true
+        else
+            _ ret.children.push
+                @ p_argument
+    
+    f( TSImportEqualsDeclaration, :import
 		f_p_name(id, Identifier | null
 		b( isExport
 		f_p( moduleReference, false )

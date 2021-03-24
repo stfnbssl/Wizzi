@@ -35,6 +35,7 @@ md.gen = function(model, ctx, callback) {
     }
 };
 function property_step_1(model, ctx, callback) {
+    // log 'property_step_1', model
     var ivalue = u.extractTS(model, 'typeInitValue');
     if (ivalue) {
         ctx.write(' = ');

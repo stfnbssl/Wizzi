@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\fy.js.ittf
-    utc time: Sun, 21 Mar 2021 13:21:11 GMT
+    utc time: Wed, 24 Mar 2021 15:11:08 GMT
 */
 'use strict';
 const path = require('path');
@@ -53,7 +53,7 @@ module.exports = (args) => {
             return ;
         }
         if (file.isDirectory(destPath) && !sourceIsFolder) {
-            destPath = path.join(destPath, path.basename(sourcePath) + '.ittf'());
+            destPath = path.join(destPath, path.basename(sourcePath) + '.ittf');
         }
         if (sourceIsFolder) {
             console.log('ok. source && dest are folders');
@@ -67,7 +67,25 @@ module.exports = (args) => {
         }
         else {
             console.log('ok. source && dest are files');
-            wizziTools.wizzify(file.read(sourcePath), (err, result) => {
+            var extension = path.extname(sourcePath);
+            var schema;
+            extension = extension.substr(1);
+            if (extension.toLowerCase() === 'vue') {
+                source = '<vue>' + source + '</vue>';
+                schema = 'html';
+                isVue = true;
+            }
+            else if (extension.toLowerCase() === 'tsx') {
+                schema = 'ts';
+            }
+            else if (extension.toLowerCase() === 'jsx') {
+                schema = 'js';
+                extension = 'js';
+            }
+            else {
+                schema = extension;
+            }
+            wizziTools.wizzify(schema, file.read(sourcePath), (err, result) => {
                 if (err) {
                     console.log('err', err);
                     throw new Error(err.message);

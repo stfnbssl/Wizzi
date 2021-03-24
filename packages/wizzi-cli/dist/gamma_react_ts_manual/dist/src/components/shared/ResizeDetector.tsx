@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ResizeDetector.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -23,19 +23,21 @@ export default class ResizeDetector extends React.Component<Props> {
             horiz && horiz.contentWindow && horiz.contentWindow.removeEventListener('resize', this._handleResize);
             verti && verti.contentWindow && verti.contentWindow.removeEventListener('resize', this._handleResize);
         }
-        _handleResize = () => {
-            this.props.onResize()}
-        _horizontal = React.createRef();
-        _vertical = React.createRef();
+        _handleResize = () => 
+            this.props.onResize();
+        _horizontal = React.createRef<HTMLIFrameElement>();
+        _vertical = React.createRef<HTMLIFrameElement>();
         render() {
             return  (
-                    <div className={css(styles.container)}>
+                <div className={css(styles.container)}>
                     {
                         //
                         
-                    }<iframe ref={this._horizontal} className={css(styles.phantom, styles.horizontal)} />
-                        <iframe ref={this._vertical} className={css(styles.phantom, styles.vertical)} />
-                    {this.props.children}</div>
+                    }
+                    <iframe ref={this._horizontal} className={css(styles.phantom, styles.horizontal)} />
+                    <iframe ref={this._vertical} className={css(styles.phantom, styles.vertical)} />
+                    {this.props.children}
+                </div>
                 )
             ;
         }

@@ -84,9 +84,6 @@ md.isTopStatement = function(model, ctx) {
     if (!model.wzParent) {
         return true;
     }
-    if (typeof ctx === 'undefined') {
-        throw new Error('stm.isTopStatement called withot ctx parameter');
-    }
     if (ctx.arrowFunctionNoGraphs) {
         return false;
     }
@@ -331,9 +328,15 @@ md.hasArguments = function(callText) {
         return false;
     }
     callText = callText.trim();
+    // log 'callText.substr(0, 1) ', callText.substr(0, 1)
     var hasEndParens = ((callText.substr(- (1), 1) === ')') || (callText.substr(- (2), 2) === ');'));
+    // log 'hasArguments.hasEndParens', hasEndParens
     if (!hasEndParens) {
         return false;
+    }
+    if (callText.substr(0, 1) === '/') {
+        // assume regular expression
+        return true;
     }
     var namecount = 0;
     var enclosedcount = 0;
@@ -487,6 +490,7 @@ md.extractTSSimpleType = function(model) {
     }
     var ret, retIndex;
     model.statements.some((item, index) => {
+        // log 'extractTSSimpleType', item.wzElement
         if (md.isTSSimpleType(item)) {
             ret = item;
             retIndex = index;
@@ -536,7 +540,7 @@ md.genTSParams = function(model, ctx, cnt, callback) {
     if (!!(model.params && model.params.length > 0) == false) {
         return callback(null, null);
     }
-    // log 'genTSParams enter', model.wzElement, model.params
+    // log 'genTSParams enter', model.wzElement
     var len_1 = model.params.length;
     function repeater_1(index_1) {
         if (index_1 === len_1) {
@@ -598,7 +602,7 @@ md.genTSParams = function(model, ctx, cnt, callback) {
                 }
             })
         }
-        else if (p.statements.length == 1) {
+        else if (p.statements.length > 0 && p.statements.length < 3) {
             ctx.write(p.wzName);
             if (p.typeOptional) {
                 ctx.write('?');

@@ -37,14 +37,13 @@ module
                     < FormValidationContext.Consumer 
                         { 
                             => 
-                                param 
-                                    @id value
-                                        :union 
-                                            :{ 
-                                                :p valid
-                                                    :boolean 
-                                            :undefined 
-                                    := 
+                                param value
+                                    :union 
+                                        :{ 
+                                            :p valid
+                                                :boolean 
+                                        :undefined 
+                                    = 
                                         { 
                                             @ valid true
                                 < Comp 

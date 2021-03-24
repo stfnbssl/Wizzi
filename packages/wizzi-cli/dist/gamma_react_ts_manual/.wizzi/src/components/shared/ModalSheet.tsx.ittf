@@ -55,7 +55,7 @@ module
                                     @ className {css(styles.close)}
                                     @ onClick {props.onDismiss}
                                     @ data-test-id "modal-close"
-                                    + \n            ✕\n          \b
+                                    + ✕
                             else null
                     + {props.children}
     export-default withThemeName(ModalSheet)

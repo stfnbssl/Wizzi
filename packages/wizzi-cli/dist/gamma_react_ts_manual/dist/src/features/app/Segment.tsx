@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\app\Segment.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 declare const analytics;
 export default class Segment {
@@ -26,13 +26,13 @@ export default class Segment {
                 return instance;
             }
         }
-        startTimer = (name: string) => {
-            this.timers[name] = Date.now()}
+        startTimer = (name: string) => 
+            this.timers[name] = Date.now();
         clearTimer = (name: string) => {
             delete this.timers[name]
-        }
-        setCommonData = (data: object) => {
-            this.commonData = data}
+        };
+        setCommonData = (data: object) => 
+            this.commonData = data;
         logEvent(name: string, data?: object, timerKeys: string[]) {
             const eventTenures: { 
                 [key: string]: number;
@@ -55,9 +55,9 @@ export default class Segment {
             if (loggedUser) {
                 analytics.identify(loggedUser);
             }
-        }
+        };
         _eventTenure = (timerKey: string) => {
             return (Date.now() - this.timers[timerKey]) / 1000;
-        }
+        };
     }
 let instance;

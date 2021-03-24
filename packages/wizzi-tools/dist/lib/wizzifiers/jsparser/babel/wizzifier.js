@@ -1262,7 +1262,8 @@ format.LabeledStatement = function(parent, node, options) {
             }
             // log 'f_p_temp label before format'
             format(p_label, node.label, options)
-            // log 'f_p_temp label after format', p_label
+            // log 'f_p_temp label after format', p_label.children.length, p_label
+            var label_comments = extractCommentsIf(p_label, 1);
             if (p_label.children.length == 1) {
                 p_label.tag = p_label.children[0].tag;
                 if (!(p_label.children[0].isText || p_label.children[0].textified)) {
@@ -1273,16 +1274,17 @@ format.LabeledStatement = function(parent, node, options) {
                 else {
                     if (p_label.children[0].textified) {
                         p_label.textified = p_label.children[0].textified;
-                        p_label.name = p_label.children[0].name;
-                        p_label.source = p_label.children[0].source;
                     }
                     if (p_label.children[0].isText) {
                         p_label.isText = true;
-                        p_label.name = p_label.children[0].name;
-                        p_label.source = p_label.children[0].source;
                     }
+                    p_label.name = p_label.children[0].name;
+                    p_label.source = p_label.children[0].source;
                     p_label.children = [];
                 }
+            }
+            if (label_comments.length > 0) {
+                p_label.children = p_label.children.concat(label_comments);
             }
         }
     }
@@ -1575,7 +1577,8 @@ format.IfStatement = function(parent, node, options) {
                 }
                 // log 'f_p_temp consequent before format'
                 format(p_consequent, node.consequent, options)
-                // log 'f_p_temp consequent after format', p_consequent
+                // log 'f_p_temp consequent after format', p_consequent.children.length, p_consequent
+                var consequent_comments = extractCommentsIf(p_consequent, 1);
                 if (p_consequent.children.length == 1) {
                     p_consequent.tag = p_consequent.children[0].tag;
                     if (!(p_consequent.children[0].isText || p_consequent.children[0].textified)) {
@@ -1586,16 +1589,17 @@ format.IfStatement = function(parent, node, options) {
                     else {
                         if (p_consequent.children[0].textified) {
                             p_consequent.textified = p_consequent.children[0].textified;
-                            p_consequent.name = p_consequent.children[0].name;
-                            p_consequent.source = p_consequent.children[0].source;
                         }
                         if (p_consequent.children[0].isText) {
                             p_consequent.isText = true;
-                            p_consequent.name = p_consequent.children[0].name;
-                            p_consequent.source = p_consequent.children[0].source;
                         }
+                        p_consequent.name = p_consequent.children[0].name;
+                        p_consequent.source = p_consequent.children[0].source;
                         p_consequent.children = [];
                     }
+                }
+                if (consequent_comments.length > 0) {
+                    p_consequent.children = p_consequent.children.concat(consequent_comments);
                 }
             }
         }
@@ -1635,7 +1639,8 @@ format.IfStatement = function(parent, node, options) {
                 }
                 // log 'f_p_temp alternate before format'
                 format(p_alternate, node.alternate, options)
-                // log 'f_p_temp alternate after format', p_alternate
+                // log 'f_p_temp alternate after format', p_alternate.children.length, p_alternate
+                var alternate_comments = extractCommentsIf(p_alternate, 1);
                 if (p_alternate.children.length == 1) {
                     p_alternate.tag = p_alternate.children[0].tag;
                     if (!(p_alternate.children[0].isText || p_alternate.children[0].textified)) {
@@ -1646,16 +1651,17 @@ format.IfStatement = function(parent, node, options) {
                     else {
                         if (p_alternate.children[0].textified) {
                             p_alternate.textified = p_alternate.children[0].textified;
-                            p_alternate.name = p_alternate.children[0].name;
-                            p_alternate.source = p_alternate.children[0].source;
                         }
                         if (p_alternate.children[0].isText) {
                             p_alternate.isText = true;
-                            p_alternate.name = p_alternate.children[0].name;
-                            p_alternate.source = p_alternate.children[0].source;
                         }
+                        p_alternate.name = p_alternate.children[0].name;
+                        p_alternate.source = p_alternate.children[0].source;
                         p_alternate.children = [];
                     }
+                }
+                if (alternate_comments.length > 0) {
+                    p_alternate.children = p_alternate.children.concat(alternate_comments);
                 }
             }
         }
@@ -1757,7 +1763,8 @@ format.SwitchStatement = function(parent, node, options) {
             }
             // log 'f_p_temp discriminant before format'
             format(p_discriminant, node.discriminant, options)
-            // log 'f_p_temp discriminant after format', p_discriminant
+            // log 'f_p_temp discriminant after format', p_discriminant.children.length, p_discriminant
+            var discriminant_comments = extractCommentsIf(p_discriminant, 1);
             if (p_discriminant.children.length == 1) {
                 p_discriminant.tag = p_discriminant.children[0].tag;
                 if (!(p_discriminant.children[0].isText || p_discriminant.children[0].textified)) {
@@ -1768,16 +1775,17 @@ format.SwitchStatement = function(parent, node, options) {
                 else {
                     if (p_discriminant.children[0].textified) {
                         p_discriminant.textified = p_discriminant.children[0].textified;
-                        p_discriminant.name = p_discriminant.children[0].name;
-                        p_discriminant.source = p_discriminant.children[0].source;
                     }
                     if (p_discriminant.children[0].isText) {
                         p_discriminant.isText = true;
-                        p_discriminant.name = p_discriminant.children[0].name;
-                        p_discriminant.source = p_discriminant.children[0].source;
                     }
+                    p_discriminant.name = p_discriminant.children[0].name;
+                    p_discriminant.source = p_discriminant.children[0].source;
                     p_discriminant.children = [];
                 }
+            }
+            if (discriminant_comments.length > 0) {
+                p_discriminant.children = p_discriminant.children.concat(discriminant_comments);
             }
         }
     }
@@ -1882,7 +1890,8 @@ format.SwitchCase = function(parent, node, options) {
             }
             // log 'f_p_temp test before format'
             format(p_test, node.test, options)
-            // log 'f_p_temp test after format', p_test
+            // log 'f_p_temp test after format', p_test.children.length, p_test
+            var test_comments = extractCommentsIf(p_test, 1);
             if (p_test.children.length == 1) {
                 p_test.tag = p_test.children[0].tag;
                 if (!(p_test.children[0].isText || p_test.children[0].textified)) {
@@ -1893,16 +1902,17 @@ format.SwitchCase = function(parent, node, options) {
                 else {
                     if (p_test.children[0].textified) {
                         p_test.textified = p_test.children[0].textified;
-                        p_test.name = p_test.children[0].name;
-                        p_test.source = p_test.children[0].source;
                     }
                     if (p_test.children[0].isText) {
                         p_test.isText = true;
-                        p_test.name = p_test.children[0].name;
-                        p_test.source = p_test.children[0].source;
                     }
+                    p_test.name = p_test.children[0].name;
+                    p_test.source = p_test.children[0].source;
                     p_test.children = [];
                 }
+            }
+            if (test_comments.length > 0) {
+                p_test.children = p_test.children.concat(test_comments);
             }
         }
     }
@@ -2011,7 +2021,8 @@ format.ThrowStatement = function(parent, node, options) {
             }
             // log 'f_p_temp argument before format'
             format(p_argument, node.argument, options)
-            // log 'f_p_temp argument after format', p_argument
+            // log 'f_p_temp argument after format', p_argument.children.length, p_argument
+            var argument_comments = extractCommentsIf(p_argument, 1);
             if (p_argument.children.length == 1) {
                 p_argument.tag = p_argument.children[0].tag;
                 if (!(p_argument.children[0].isText || p_argument.children[0].textified)) {
@@ -2022,16 +2033,17 @@ format.ThrowStatement = function(parent, node, options) {
                 else {
                     if (p_argument.children[0].textified) {
                         p_argument.textified = p_argument.children[0].textified;
-                        p_argument.name = p_argument.children[0].name;
-                        p_argument.source = p_argument.children[0].source;
                     }
                     if (p_argument.children[0].isText) {
                         p_argument.isText = true;
-                        p_argument.name = p_argument.children[0].name;
-                        p_argument.source = p_argument.children[0].source;
                     }
+                    p_argument.name = p_argument.children[0].name;
+                    p_argument.source = p_argument.children[0].source;
                     p_argument.children = [];
                 }
+            }
+            if (argument_comments.length > 0) {
+                p_argument.children = p_argument.children.concat(argument_comments);
             }
         }
     }
@@ -2129,7 +2141,8 @@ format.TryStatement = function(parent, node, options) {
             }
             // log 'f_p_temp handler before format'
             format(p_handler, node.handler, options)
-            // log 'f_p_temp handler after format', p_handler
+            // log 'f_p_temp handler after format', p_handler.children.length, p_handler
+            var handler_comments = extractCommentsIf(p_handler, 1);
             if (p_handler.children.length == 1) {
                 p_handler.tag = p_handler.children[0].tag;
                 if (!(p_handler.children[0].isText || p_handler.children[0].textified)) {
@@ -2140,16 +2153,17 @@ format.TryStatement = function(parent, node, options) {
                 else {
                     if (p_handler.children[0].textified) {
                         p_handler.textified = p_handler.children[0].textified;
-                        p_handler.name = p_handler.children[0].name;
-                        p_handler.source = p_handler.children[0].source;
                     }
                     if (p_handler.children[0].isText) {
                         p_handler.isText = true;
-                        p_handler.name = p_handler.children[0].name;
-                        p_handler.source = p_handler.children[0].source;
                     }
+                    p_handler.name = p_handler.children[0].name;
+                    p_handler.source = p_handler.children[0].source;
                     p_handler.children = [];
                 }
+            }
+            if (handler_comments.length > 0) {
+                p_handler.children = p_handler.children.concat(handler_comments);
             }
         }
     }
@@ -2173,7 +2187,8 @@ format.TryStatement = function(parent, node, options) {
             }
             // log 'f_p_temp finalizer before format'
             format(p_finalizer, node.finalizer, options)
-            // log 'f_p_temp finalizer after format', p_finalizer
+            // log 'f_p_temp finalizer after format', p_finalizer.children.length, p_finalizer
+            var finalizer_comments = extractCommentsIf(p_finalizer, 1);
             if (p_finalizer.children.length == 1) {
                 p_finalizer.tag = p_finalizer.children[0].tag;
                 if (!(p_finalizer.children[0].isText || p_finalizer.children[0].textified)) {
@@ -2184,16 +2199,17 @@ format.TryStatement = function(parent, node, options) {
                 else {
                     if (p_finalizer.children[0].textified) {
                         p_finalizer.textified = p_finalizer.children[0].textified;
-                        p_finalizer.name = p_finalizer.children[0].name;
-                        p_finalizer.source = p_finalizer.children[0].source;
                     }
                     if (p_finalizer.children[0].isText) {
                         p_finalizer.isText = true;
-                        p_finalizer.name = p_finalizer.children[0].name;
-                        p_finalizer.source = p_finalizer.children[0].source;
                     }
+                    p_finalizer.name = p_finalizer.children[0].name;
+                    p_finalizer.source = p_finalizer.children[0].source;
                     p_finalizer.children = [];
                 }
+            }
+            if (finalizer_comments.length > 0) {
+                p_finalizer.children = p_finalizer.children.concat(finalizer_comments);
             }
         }
     }
@@ -2806,7 +2822,8 @@ format.ForInStatement = function(parent, node, options) {
             }
             // log 'f_p_temp left before format'
             format(p_left, node.left, options)
-            // log 'f_p_temp left after format', p_left
+            // log 'f_p_temp left after format', p_left.children.length, p_left
+            var left_comments = extractCommentsIf(p_left, 1);
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
                 if (!(p_left.children[0].isText || p_left.children[0].textified)) {
@@ -2817,16 +2834,17 @@ format.ForInStatement = function(parent, node, options) {
                 else {
                     if (p_left.children[0].textified) {
                         p_left.textified = p_left.children[0].textified;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
                     if (p_left.children[0].isText) {
                         p_left.isText = true;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
+                    p_left.name = p_left.children[0].name;
+                    p_left.source = p_left.children[0].source;
                     p_left.children = [];
                 }
+            }
+            if (left_comments.length > 0) {
+                p_left.children = p_left.children.concat(left_comments);
             }
         }
     }
@@ -2853,7 +2871,8 @@ format.ForInStatement = function(parent, node, options) {
             }
             // log 'f_p_temp right before format'
             format(p_right, node.right, options)
-            // log 'f_p_temp right after format', p_right
+            // log 'f_p_temp right after format', p_right.children.length, p_right
+            var right_comments = extractCommentsIf(p_right, 1);
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
                 if (!(p_right.children[0].isText || p_right.children[0].textified)) {
@@ -2864,16 +2883,17 @@ format.ForInStatement = function(parent, node, options) {
                 else {
                     if (p_right.children[0].textified) {
                         p_right.textified = p_right.children[0].textified;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
                     if (p_right.children[0].isText) {
                         p_right.isText = true;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
+                    p_right.name = p_right.children[0].name;
+                    p_right.source = p_right.children[0].source;
                     p_right.children = [];
                 }
+            }
+            if (right_comments.length > 0) {
+                p_right.children = p_right.children.concat(right_comments);
             }
         }
     }
@@ -3010,7 +3030,8 @@ format.ForOfStatement = function(parent, node, options) {
             }
             // log 'f_p_temp left before format'
             format(p_left, node.left, options)
-            // log 'f_p_temp left after format', p_left
+            // log 'f_p_temp left after format', p_left.children.length, p_left
+            var left_comments = extractCommentsIf(p_left, 1);
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
                 if (!(p_left.children[0].isText || p_left.children[0].textified)) {
@@ -3021,16 +3042,17 @@ format.ForOfStatement = function(parent, node, options) {
                 else {
                     if (p_left.children[0].textified) {
                         p_left.textified = p_left.children[0].textified;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
                     if (p_left.children[0].isText) {
                         p_left.isText = true;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
+                    p_left.name = p_left.children[0].name;
+                    p_left.source = p_left.children[0].source;
                     p_left.children = [];
                 }
+            }
+            if (left_comments.length > 0) {
+                p_left.children = p_left.children.concat(left_comments);
             }
         }
     }
@@ -3057,7 +3079,8 @@ format.ForOfStatement = function(parent, node, options) {
             }
             // log 'f_p_temp right before format'
             format(p_right, node.right, options)
-            // log 'f_p_temp right after format', p_right
+            // log 'f_p_temp right after format', p_right.children.length, p_right
+            var right_comments = extractCommentsIf(p_right, 1);
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
                 if (!(p_right.children[0].isText || p_right.children[0].textified)) {
@@ -3068,16 +3091,17 @@ format.ForOfStatement = function(parent, node, options) {
                 else {
                     if (p_right.children[0].textified) {
                         p_right.textified = p_right.children[0].textified;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
                     if (p_right.children[0].isText) {
                         p_right.isText = true;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
+                    p_right.name = p_right.children[0].name;
+                    p_right.source = p_right.children[0].source;
                     p_right.children = [];
                 }
+            }
+            if (right_comments.length > 0) {
+                p_right.children = p_right.children.concat(right_comments);
             }
         }
     }
@@ -3293,7 +3317,8 @@ format.FunctionDeclaration = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -3304,16 +3329,17 @@ format.FunctionDeclaration = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -3443,7 +3469,7 @@ format.VariableDeclaration = function(parent, node, options) {
             got_text_1 = true;
         }
     }
-    // log '=== VariableDeclaration ittf result 2', ret, 'got_text_1', got_text_1
+    console.log('=== VariableDeclaration ittf result 2', ret, 'got_text_1', got_text_1);
     if (got_text_1) {
         ret.textified = node.kind + ' ' + ret.textified;
     }
@@ -3598,7 +3624,8 @@ format.VariableDeclarator = function(parent, node, options) {
             }
             // log 'f_p_temp id before format'
             format(p_id, node.id, options)
-            // log 'f_p_temp id after format', p_id
+            // log 'f_p_temp id after format', p_id.children.length, p_id
+            var id_comments = extractCommentsIf(p_id, 1);
             if (p_id.children.length == 1) {
                 p_id.tag = p_id.children[0].tag;
                 if (!(p_id.children[0].isText || p_id.children[0].textified)) {
@@ -3609,23 +3636,24 @@ format.VariableDeclarator = function(parent, node, options) {
                 else {
                     if (p_id.children[0].textified) {
                         p_id.textified = p_id.children[0].textified;
-                        p_id.name = p_id.children[0].name;
-                        p_id.source = p_id.children[0].source;
                     }
                     if (p_id.children[0].isText) {
                         p_id.isText = true;
-                        p_id.name = p_id.children[0].name;
-                        p_id.source = p_id.children[0].source;
                     }
+                    p_id.name = p_id.children[0].name;
+                    p_id.source = p_id.children[0].source;
                     p_id.children = [];
                 }
+            }
+            if (id_comments.length > 0) {
+                p_id.children = p_id.children.concat(id_comments);
             }
         }
     }
     else {
         throw new Error('AST-node-property id undefined: ' + JSON.stringify(node, null, 2));
     }
-    // log 'VariableDeclarator,p_id, isTextualNode(p_id)', p_id, isTextualNode(p_id)
+    console.log('VariableDeclarator,p_id, isTextualNode(p_id)', p_id, isTextualNode(p_id));
     if (isTextualNode(p_id)) {
         ret.name = getNodeText(p_id);
     }
@@ -3638,7 +3666,7 @@ format.VariableDeclarator = function(parent, node, options) {
             ret.children.push(p_id)
         }
     }
-    // log 'VariableDeclarator 1', ret
+    console.log('VariableDeclarator 1', ret);
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     f_astNode.props.push({
         name: "typeAnnotation", 
@@ -3670,7 +3698,8 @@ format.VariableDeclarator = function(parent, node, options) {
             }
             // log 'f_p_temp init before format'
             format(p_init, node.init, options)
-            // log 'f_p_temp init after format', p_init
+            // log 'f_p_temp init after format', p_init.children.length, p_init
+            var init_comments = extractCommentsIf(p_init, 1);
             if (p_init.children.length == 1) {
                 p_init.tag = p_init.children[0].tag;
                 if (!(p_init.children[0].isText || p_init.children[0].textified)) {
@@ -3681,16 +3710,17 @@ format.VariableDeclarator = function(parent, node, options) {
                 else {
                     if (p_init.children[0].textified) {
                         p_init.textified = p_init.children[0].textified;
-                        p_init.name = p_init.children[0].name;
-                        p_init.source = p_init.children[0].source;
                     }
                     if (p_init.children[0].isText) {
                         p_init.isText = true;
-                        p_init.name = p_init.children[0].name;
-                        p_init.source = p_init.children[0].source;
                     }
+                    p_init.name = p_init.children[0].name;
+                    p_init.source = p_init.children[0].source;
                     p_init.children = [];
                 }
+            }
+            if (init_comments.length > 0) {
+                p_init.children = p_init.children.concat(init_comments);
             }
         }
     }
@@ -3733,10 +3763,8 @@ format.VariableDeclarator = function(parent, node, options) {
         }
     }
     else {
-        ret.textified = ret.name;
-        ret.isText = true;
     }
-    // log 'VariableDeclarator 2 ret', ret
+    console.log('VariableDeclarator 2 ret', ret);
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -3805,7 +3833,8 @@ format.Decorator = function(parent, node, options) {
             }
             // log 'f_p_temp expression before format'
             format(p_expression, node.expression, options)
-            // log 'f_p_temp expression after format', p_expression
+            // log 'f_p_temp expression after format', p_expression.children.length, p_expression
+            var expression_comments = extractCommentsIf(p_expression, 1);
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
                 if (!(p_expression.children[0].isText || p_expression.children[0].textified)) {
@@ -3816,16 +3845,17 @@ format.Decorator = function(parent, node, options) {
                 else {
                     if (p_expression.children[0].textified) {
                         p_expression.textified = p_expression.children[0].textified;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
                     if (p_expression.children[0].isText) {
                         p_expression.isText = true;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
+                    p_expression.name = p_expression.children[0].name;
+                    p_expression.source = p_expression.children[0].source;
                     p_expression.children = [];
                 }
+            }
+            if (expression_comments.length > 0) {
+                p_expression.children = p_expression.children.concat(expression_comments);
             }
         }
     }
@@ -3910,7 +3940,8 @@ format.Directive = function(parent, node, options) {
                 }
                 // log 'f_p_temp value before format'
                 format(p_value, node.value, options)
-                // log 'f_p_temp value after format', p_value
+                // log 'f_p_temp value after format', p_value.children.length, p_value
+                var value_comments = extractCommentsIf(p_value, 1);
                 if (p_value.children.length == 1) {
                     p_value.tag = p_value.children[0].tag;
                     if (!(p_value.children[0].isText || p_value.children[0].textified)) {
@@ -3921,16 +3952,17 @@ format.Directive = function(parent, node, options) {
                     else {
                         if (p_value.children[0].textified) {
                             p_value.textified = p_value.children[0].textified;
-                            p_value.name = p_value.children[0].name;
-                            p_value.source = p_value.children[0].source;
                         }
                         if (p_value.children[0].isText) {
                             p_value.isText = true;
-                            p_value.name = p_value.children[0].name;
-                            p_value.source = p_value.children[0].source;
                         }
+                        p_value.name = p_value.children[0].name;
+                        p_value.source = p_value.children[0].source;
                         p_value.children = [];
                     }
+                }
+                if (value_comments.length > 0) {
+                    p_value.children = p_value.children.concat(value_comments);
                 }
             }
         }
@@ -4292,7 +4324,8 @@ format.ArrowFunctionExpression = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -4303,16 +4336,17 @@ format.ArrowFunctionExpression = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -4434,7 +4468,8 @@ format.YieldExpression = function(parent, node, options) {
             }
             // log 'f_p_temp argument before format'
             format(p_argument, node.argument, options)
-            // log 'f_p_temp argument after format', p_argument
+            // log 'f_p_temp argument after format', p_argument.children.length, p_argument
+            var argument_comments = extractCommentsIf(p_argument, 1);
             if (p_argument.children.length == 1) {
                 p_argument.tag = p_argument.children[0].tag;
                 if (!(p_argument.children[0].isText || p_argument.children[0].textified)) {
@@ -4445,16 +4480,17 @@ format.YieldExpression = function(parent, node, options) {
                 else {
                     if (p_argument.children[0].textified) {
                         p_argument.textified = p_argument.children[0].textified;
-                        p_argument.name = p_argument.children[0].name;
-                        p_argument.source = p_argument.children[0].source;
                     }
                     if (p_argument.children[0].isText) {
                         p_argument.isText = true;
-                        p_argument.name = p_argument.children[0].name;
-                        p_argument.source = p_argument.children[0].source;
                     }
+                    p_argument.name = p_argument.children[0].name;
+                    p_argument.source = p_argument.children[0].source;
                     p_argument.children = [];
                 }
+            }
+            if (argument_comments.length > 0) {
+                p_argument.children = p_argument.children.concat(argument_comments);
             }
         }
     }
@@ -4875,7 +4911,8 @@ format.ObjectProperty = function(parent, node, options) {
             }
             // log 'f_p_temp key before format'
             format(p_key, node.key, options)
-            // log 'f_p_temp key after format', p_key
+            // log 'f_p_temp key after format', p_key.children.length, p_key
+            var key_comments = extractCommentsIf(p_key, 1);
             if (p_key.children.length == 1) {
                 p_key.tag = p_key.children[0].tag;
                 if (!(p_key.children[0].isText || p_key.children[0].textified)) {
@@ -4886,16 +4923,17 @@ format.ObjectProperty = function(parent, node, options) {
                 else {
                     if (p_key.children[0].textified) {
                         p_key.textified = p_key.children[0].textified;
-                        p_key.name = p_key.children[0].name;
-                        p_key.source = p_key.children[0].source;
                     }
                     if (p_key.children[0].isText) {
                         p_key.isText = true;
-                        p_key.name = p_key.children[0].name;
-                        p_key.source = p_key.children[0].source;
                     }
+                    p_key.name = p_key.children[0].name;
+                    p_key.source = p_key.children[0].source;
                     p_key.children = [];
                 }
+            }
+            if (key_comments.length > 0) {
+                p_key.children = p_key.children.concat(key_comments);
             }
         }
     }
@@ -4962,7 +5000,8 @@ format.ObjectProperty = function(parent, node, options) {
                 }
                 // log 'f_p_temp value_left before format'
                 format(p_value_left, node.value.left, options)
-                // log 'f_p_temp value_left after format', p_value_left
+                // log 'f_p_temp value_left after format', p_value_left.children.length, p_value_left
+                var value_left_comments = extractCommentsIf(p_value_left, 1);
                 if (p_value_left.children.length == 1) {
                     p_value_left.tag = p_value_left.children[0].tag;
                     if (!(p_value_left.children[0].isText || p_value_left.children[0].textified)) {
@@ -4973,16 +5012,17 @@ format.ObjectProperty = function(parent, node, options) {
                     else {
                         if (p_value_left.children[0].textified) {
                             p_value_left.textified = p_value_left.children[0].textified;
-                            p_value_left.name = p_value_left.children[0].name;
-                            p_value_left.source = p_value_left.children[0].source;
                         }
                         if (p_value_left.children[0].isText) {
                             p_value_left.isText = true;
-                            p_value_left.name = p_value_left.children[0].name;
-                            p_value_left.source = p_value_left.children[0].source;
                         }
+                        p_value_left.name = p_value_left.children[0].name;
+                        p_value_left.source = p_value_left.children[0].source;
                         p_value_left.children = [];
                     }
+                }
+                if (value_left_comments.length > 0) {
+                    p_value_left.children = p_value_left.children.concat(value_left_comments);
                 }
             }
         }
@@ -5009,7 +5049,8 @@ format.ObjectProperty = function(parent, node, options) {
                 }
                 // log 'f_p_temp value_right before format'
                 format(p_value_right, node.value.right, options)
-                // log 'f_p_temp value_right after format', p_value_right
+                // log 'f_p_temp value_right after format', p_value_right.children.length, p_value_right
+                var value_right_comments = extractCommentsIf(p_value_right, 1);
                 if (p_value_right.children.length == 1) {
                     p_value_right.tag = p_value_right.children[0].tag;
                     if (!(p_value_right.children[0].isText || p_value_right.children[0].textified)) {
@@ -5020,16 +5061,17 @@ format.ObjectProperty = function(parent, node, options) {
                     else {
                         if (p_value_right.children[0].textified) {
                             p_value_right.textified = p_value_right.children[0].textified;
-                            p_value_right.name = p_value_right.children[0].name;
-                            p_value_right.source = p_value_right.children[0].source;
                         }
                         if (p_value_right.children[0].isText) {
                             p_value_right.isText = true;
-                            p_value_right.name = p_value_right.children[0].name;
-                            p_value_right.source = p_value_right.children[0].source;
                         }
+                        p_value_right.name = p_value_right.children[0].name;
+                        p_value_right.source = p_value_right.children[0].source;
                         p_value_right.children = [];
                     }
+                }
+                if (value_right_comments.length > 0) {
+                    p_value_right.children = p_value_right.children.concat(value_right_comments);
                 }
             }
         }
@@ -5124,7 +5166,8 @@ format.ObjectProperty = function(parent, node, options) {
                 }
                 // log 'f_p_temp value before format'
                 format(p_value, node.value, options)
-                // log 'f_p_temp value after format', p_value
+                // log 'f_p_temp value after format', p_value.children.length, p_value
+                var value_comments = extractCommentsIf(p_value, 1);
                 if (p_value.children.length == 1) {
                     p_value.tag = p_value.children[0].tag;
                     if (!(p_value.children[0].isText || p_value.children[0].textified)) {
@@ -5135,23 +5178,24 @@ format.ObjectProperty = function(parent, node, options) {
                     else {
                         if (p_value.children[0].textified) {
                             p_value.textified = p_value.children[0].textified;
-                            p_value.name = p_value.children[0].name;
-                            p_value.source = p_value.children[0].source;
                         }
                         if (p_value.children[0].isText) {
                             p_value.isText = true;
-                            p_value.name = p_value.children[0].name;
-                            p_value.source = p_value.children[0].source;
                         }
+                        p_value.name = p_value.children[0].name;
+                        p_value.source = p_value.children[0].source;
                         p_value.children = [];
                     }
+                }
+                if (value_comments.length > 0) {
+                    p_value.children = p_value.children.concat(value_comments);
                 }
             }
         }
         else {
             throw new Error('AST-node-property value undefined: ' + JSON.stringify(node, null, 2));
         }
-        // log 'ObjectProperty.p_value', p_value
+        // log 'ObjectProperty.p_value', p_value, isTextualNode(p_value), isTextualNode(p_key)
         if (isTextualNode(p_value)) {
             if (isTextualNode(p_key)) {
                 if (options.mustBeText) {
@@ -5283,7 +5327,8 @@ format.ObjectMethod = function(parent, node, options) {
             }
             // log 'f_p_temp key before format'
             format(p_key, node.key, options)
-            // log 'f_p_temp key after format', p_key
+            // log 'f_p_temp key after format', p_key.children.length, p_key
+            var key_comments = extractCommentsIf(p_key, 1);
             if (p_key.children.length == 1) {
                 p_key.tag = p_key.children[0].tag;
                 if (!(p_key.children[0].isText || p_key.children[0].textified)) {
@@ -5294,16 +5339,17 @@ format.ObjectMethod = function(parent, node, options) {
                 else {
                     if (p_key.children[0].textified) {
                         p_key.textified = p_key.children[0].textified;
-                        p_key.name = p_key.children[0].name;
-                        p_key.source = p_key.children[0].source;
                     }
                     if (p_key.children[0].isText) {
                         p_key.isText = true;
-                        p_key.name = p_key.children[0].name;
-                        p_key.source = p_key.children[0].source;
                     }
+                    p_key.name = p_key.children[0].name;
+                    p_key.source = p_key.children[0].source;
                     p_key.children = [];
                 }
+            }
+            if (key_comments.length > 0) {
+                p_key.children = p_key.children.concat(key_comments);
             }
         }
     }
@@ -5312,6 +5358,15 @@ format.ObjectMethod = function(parent, node, options) {
     }
     ret.name = getNodeText(p_key);
     options.mustBeText = save;
+    // log 'node.async', node.async
+    if (!!node.async == true) {
+        ret.children.push({
+            tag: 'async', 
+            children: [
+                
+            ]
+        })
+    }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
     f_astNode.props.push({
@@ -5364,7 +5419,8 @@ format.ObjectMethod = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -5375,16 +5431,17 @@ format.ObjectMethod = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -5412,9 +5469,6 @@ format.ObjectMethod = function(parent, node, options) {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
     }
     ret.tag = ret.tag == 'constructor' ? 'ctor' : (ret.tag == 'method' ? 'm' : ret.tag);
-    if (node.async) {
-        ret.tag = 'async-' + ret.tag;
-    }
     setNameFromChildByTag(ret, 'key', true);
     if (ret.tag === 'ctor') {
         ret.name = '';
@@ -5554,7 +5608,8 @@ format.FunctionExpression = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -5565,16 +5620,17 @@ format.FunctionExpression = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -5682,7 +5738,8 @@ format.UnaryExpression = function(parent, node, options) {
             }
             // log 'f_p_temp argument before format'
             format(p_argument, node.argument, options)
-            // log 'f_p_temp argument after format', p_argument
+            // log 'f_p_temp argument after format', p_argument.children.length, p_argument
+            var argument_comments = extractCommentsIf(p_argument, 1);
             if (p_argument.children.length == 1) {
                 p_argument.tag = p_argument.children[0].tag;
                 if (!(p_argument.children[0].isText || p_argument.children[0].textified)) {
@@ -5693,16 +5750,17 @@ format.UnaryExpression = function(parent, node, options) {
                 else {
                     if (p_argument.children[0].textified) {
                         p_argument.textified = p_argument.children[0].textified;
-                        p_argument.name = p_argument.children[0].name;
-                        p_argument.source = p_argument.children[0].source;
                     }
                     if (p_argument.children[0].isText) {
                         p_argument.isText = true;
-                        p_argument.name = p_argument.children[0].name;
-                        p_argument.source = p_argument.children[0].source;
                     }
+                    p_argument.name = p_argument.children[0].name;
+                    p_argument.source = p_argument.children[0].source;
                     p_argument.children = [];
                 }
+            }
+            if (argument_comments.length > 0) {
+                p_argument.children = p_argument.children.concat(argument_comments);
             }
         }
     }
@@ -5939,7 +5997,8 @@ format.BinaryExpression = function(parent, node, options) {
             }
             // log 'f_p_temp left before format'
             format(p_left, node.left, options)
-            // log 'f_p_temp left after format', p_left
+            // log 'f_p_temp left after format', p_left.children.length, p_left
+            var left_comments = extractCommentsIf(p_left, 1);
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
                 if (!(p_left.children[0].isText || p_left.children[0].textified)) {
@@ -5950,16 +6009,17 @@ format.BinaryExpression = function(parent, node, options) {
                 else {
                     if (p_left.children[0].textified) {
                         p_left.textified = p_left.children[0].textified;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
                     if (p_left.children[0].isText) {
                         p_left.isText = true;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
+                    p_left.name = p_left.children[0].name;
+                    p_left.source = p_left.children[0].source;
                     p_left.children = [];
                 }
+            }
+            if (left_comments.length > 0) {
+                p_left.children = p_left.children.concat(left_comments);
             }
         }
     }
@@ -5987,7 +6047,8 @@ format.BinaryExpression = function(parent, node, options) {
             }
             // log 'f_p_temp right before format'
             format(p_right, node.right, options)
-            // log 'f_p_temp right after format', p_right
+            // log 'f_p_temp right after format', p_right.children.length, p_right
+            var right_comments = extractCommentsIf(p_right, 1);
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
                 if (!(p_right.children[0].isText || p_right.children[0].textified)) {
@@ -5998,16 +6059,17 @@ format.BinaryExpression = function(parent, node, options) {
                 else {
                     if (p_right.children[0].textified) {
                         p_right.textified = p_right.children[0].textified;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
                     if (p_right.children[0].isText) {
                         p_right.isText = true;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
+                    p_right.name = p_right.children[0].name;
+                    p_right.source = p_right.children[0].source;
                     p_right.children = [];
                 }
+            }
+            if (right_comments.length > 0) {
+                p_right.children = p_right.children.concat(right_comments);
             }
         }
     }
@@ -6024,7 +6086,7 @@ format.BinaryExpression = function(parent, node, options) {
         }
     }
     else {
-        if (isTextualNode(p_left) || (p_left.children.length == 0 && ['@expr', '@id', 'literal'].indexOf(p_left.tag) > -1)) {
+        if (isTextualNode(p_left) || (p_left.children.length == 0 && [ '@id', 'literal'].indexOf(p_left.tag) > -1)) {
             p_left.tag = '+';
             if (isTextualNode(p_left)) {
                 p_left.name = getNodeText(p_left);
@@ -6032,7 +6094,7 @@ format.BinaryExpression = function(parent, node, options) {
             }
         }
         ret.children.push(p_left)
-        if (isTextualNode(p_right) || (p_right.children.length == 0 && ['@expr', '@id', 'literal'].indexOf(p_right.tag) > -1)) {
+        if (isTextualNode(p_right) || (p_right.children.length == 0 && [ '@id', 'literal'].indexOf(p_right.tag) > -1)) {
             p_right.tag = '+';
             if (isTextualNode(p_right)) {
                 p_right.name = getNodeText(p_right);
@@ -6124,7 +6186,8 @@ format.AssignmentExpression = function(parent, node, options) {
             }
             // log 'f_p_temp left before format'
             format(p_left, node.left, options)
-            // log 'f_p_temp left after format', p_left
+            // log 'f_p_temp left after format', p_left.children.length, p_left
+            var left_comments = extractCommentsIf(p_left, 1);
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
                 if (!(p_left.children[0].isText || p_left.children[0].textified)) {
@@ -6135,16 +6198,17 @@ format.AssignmentExpression = function(parent, node, options) {
                 else {
                     if (p_left.children[0].textified) {
                         p_left.textified = p_left.children[0].textified;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
                     if (p_left.children[0].isText) {
                         p_left.isText = true;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
+                    p_left.name = p_left.children[0].name;
+                    p_left.source = p_left.children[0].source;
                     p_left.children = [];
                 }
+            }
+            if (left_comments.length > 0) {
+                p_left.children = p_left.children.concat(left_comments);
             }
         }
     }
@@ -6172,7 +6236,8 @@ format.AssignmentExpression = function(parent, node, options) {
             }
             // log 'f_p_temp right before format'
             format(p_right, node.right, options)
-            // log 'f_p_temp right after format', p_right
+            // log 'f_p_temp right after format', p_right.children.length, p_right
+            var right_comments = extractCommentsIf(p_right, 1);
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
                 if (!(p_right.children[0].isText || p_right.children[0].textified)) {
@@ -6183,16 +6248,17 @@ format.AssignmentExpression = function(parent, node, options) {
                 else {
                     if (p_right.children[0].textified) {
                         p_right.textified = p_right.children[0].textified;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
                     if (p_right.children[0].isText) {
                         p_right.isText = true;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
+                    p_right.name = p_right.children[0].name;
+                    p_right.source = p_right.children[0].source;
                     p_right.children = [];
                 }
+            }
+            if (right_comments.length > 0) {
+                p_right.children = p_right.children.concat(right_comments);
             }
         }
     }
@@ -6295,7 +6361,8 @@ format.LogicalExpression = function(parent, node, options) {
             }
             // log 'f_p_temp left before format'
             format(p_left, node.left, options)
-            // log 'f_p_temp left after format', p_left
+            // log 'f_p_temp left after format', p_left.children.length, p_left
+            var left_comments = extractCommentsIf(p_left, 1);
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
                 if (!(p_left.children[0].isText || p_left.children[0].textified)) {
@@ -6306,16 +6373,17 @@ format.LogicalExpression = function(parent, node, options) {
                 else {
                     if (p_left.children[0].textified) {
                         p_left.textified = p_left.children[0].textified;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
                     if (p_left.children[0].isText) {
                         p_left.isText = true;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
+                    p_left.name = p_left.children[0].name;
+                    p_left.source = p_left.children[0].source;
                     p_left.children = [];
                 }
+            }
+            if (left_comments.length > 0) {
+                p_left.children = p_left.children.concat(left_comments);
             }
         }
     }
@@ -6342,7 +6410,8 @@ format.LogicalExpression = function(parent, node, options) {
             }
             // log 'f_p_temp right before format'
             format(p_right, node.right, options)
-            // log 'f_p_temp right after format', p_right
+            // log 'f_p_temp right after format', p_right.children.length, p_right
+            var right_comments = extractCommentsIf(p_right, 1);
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
                 if (!(p_right.children[0].isText || p_right.children[0].textified)) {
@@ -6353,30 +6422,36 @@ format.LogicalExpression = function(parent, node, options) {
                 else {
                     if (p_right.children[0].textified) {
                         p_right.textified = p_right.children[0].textified;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
                     if (p_right.children[0].isText) {
                         p_right.isText = true;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
+                    p_right.name = p_right.children[0].name;
+                    p_right.source = p_right.children[0].source;
                     p_right.children = [];
                 }
+            }
+            if (right_comments.length > 0) {
+                p_right.children = p_right.children.concat(right_comments);
             }
         }
     }
     else {
         throw new Error('AST-node-property right undefined: ' + JSON.stringify(node, null, 2));
     }
+    var parenthesized = node.extra && node.extra.parenthesized;
+    // log 'LogicalExpression', isTextualNode(p_left), isTextualNode(p_right)
+    // log 'LogicalExpression,p_left', p_left
+    // log 'LogicalExpression,p_right', p_right
     if (isTextualNode(p_left) && isTextualNode(p_right)) {
         ret.tag = 'set';
-        ret.name = getNodeText(p_left) + ' ' + node.operator + ' ' + getNodeText(p_right);
+        ret.name = parenthesize(getNodeText(p_left) + ' ' + node.operator + ' ' + getNodeText(p_right), parenthesized);
         ret.textified = ret.name;
     }
     else {
         ret.tag = node.operator;
-        if (isTextualNode(p_left) || ['@expr', '@id', 'literal'].indexOf(p_left.tag) > -1) {
+        // log 'LogicalExpression,isTextualNode(p_left),p_left', isTextualNode(p_left), p_left
+        if (isTextualNode(p_left) || ['@expr', '@id', 'literal','set'].indexOf(p_left.tag) > -1) {
             p_left.tag = '+';
             if (isTextualNode(p_left)) {
                 p_left.name = getNodeText(p_left);
@@ -6384,8 +6459,8 @@ format.LogicalExpression = function(parent, node, options) {
             }
         }
         ret.children.push(p_left)
-        // log 'LogicalExpression.p_left', p_left
-        if (isTextualNode(p_right) || ['@expr', '@id', 'literal'].indexOf(p_right.tag) > -1) {
+        // log 'LogicalExpression,isTextualNode(p_right),p_right', isTextualNode(p_right), p_right
+        if (isTextualNode(p_right) || ['@expr', '@id', 'literal','set'].indexOf(p_right.tag) > -1) {
             p_right.tag = '+';
             if (isTextualNode(p_right)) {
                 p_right.name = getNodeText(p_right);
@@ -6393,7 +6468,12 @@ format.LogicalExpression = function(parent, node, options) {
             }
         }
         ret.children.push(p_right)
-        // log 'LogicalExpression.p_right', p_right
+        if (parenthesized) {
+            ret = {
+                tag: '(', 
+                children: [ret]
+            };
+        }
     }
     if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
         // is the return value of an ArrowExpression
@@ -6482,7 +6562,8 @@ format.SpreadElement = function(parent, node, options) {
             }
             // log 'f_p_temp argument before format'
             format(p_argument, node.argument, options)
-            // log 'f_p_temp argument after format', p_argument
+            // log 'f_p_temp argument after format', p_argument.children.length, p_argument
+            var argument_comments = extractCommentsIf(p_argument, 1);
             if (p_argument.children.length == 1) {
                 p_argument.tag = p_argument.children[0].tag;
                 if (!(p_argument.children[0].isText || p_argument.children[0].textified)) {
@@ -6493,16 +6574,17 @@ format.SpreadElement = function(parent, node, options) {
                 else {
                     if (p_argument.children[0].textified) {
                         p_argument.textified = p_argument.children[0].textified;
-                        p_argument.name = p_argument.children[0].name;
-                        p_argument.source = p_argument.children[0].source;
                     }
                     if (p_argument.children[0].isText) {
                         p_argument.isText = true;
-                        p_argument.name = p_argument.children[0].name;
-                        p_argument.source = p_argument.children[0].source;
                     }
+                    p_argument.name = p_argument.children[0].name;
+                    p_argument.source = p_argument.children[0].source;
                     p_argument.children = [];
                 }
+            }
+            if (argument_comments.length > 0) {
+                p_argument.children = p_argument.children.concat(argument_comments);
             }
         }
     }
@@ -6587,7 +6669,8 @@ format.MemberExpression = function(parent, node, options) {
             }
             // log 'f_p_temp object before format'
             format(p_object, node.object, options)
-            // log 'f_p_temp object after format', p_object
+            // log 'f_p_temp object after format', p_object.children.length, p_object
+            var object_comments = extractCommentsIf(p_object, 1);
             if (p_object.children.length == 1) {
                 p_object.tag = p_object.children[0].tag;
                 if (!(p_object.children[0].isText || p_object.children[0].textified)) {
@@ -6598,16 +6681,17 @@ format.MemberExpression = function(parent, node, options) {
                 else {
                     if (p_object.children[0].textified) {
                         p_object.textified = p_object.children[0].textified;
-                        p_object.name = p_object.children[0].name;
-                        p_object.source = p_object.children[0].source;
                     }
                     if (p_object.children[0].isText) {
                         p_object.isText = true;
-                        p_object.name = p_object.children[0].name;
-                        p_object.source = p_object.children[0].source;
                     }
+                    p_object.name = p_object.children[0].name;
+                    p_object.source = p_object.children[0].source;
                     p_object.children = [];
                 }
+            }
+            if (object_comments.length > 0) {
+                p_object.children = p_object.children.concat(object_comments);
             }
         }
     }
@@ -6634,7 +6718,8 @@ format.MemberExpression = function(parent, node, options) {
             }
             // log 'f_p_temp property before format'
             format(p_property, node.property, options)
-            // log 'f_p_temp property after format', p_property
+            // log 'f_p_temp property after format', p_property.children.length, p_property
+            var property_comments = extractCommentsIf(p_property, 1);
             if (p_property.children.length == 1) {
                 p_property.tag = p_property.children[0].tag;
                 if (!(p_property.children[0].isText || p_property.children[0].textified)) {
@@ -6645,16 +6730,17 @@ format.MemberExpression = function(parent, node, options) {
                 else {
                     if (p_property.children[0].textified) {
                         p_property.textified = p_property.children[0].textified;
-                        p_property.name = p_property.children[0].name;
-                        p_property.source = p_property.children[0].source;
                     }
                     if (p_property.children[0].isText) {
                         p_property.isText = true;
-                        p_property.name = p_property.children[0].name;
-                        p_property.source = p_property.children[0].source;
                     }
+                    p_property.name = p_property.children[0].name;
+                    p_property.source = p_property.children[0].source;
                     p_property.children = [];
                 }
+            }
+            if (property_comments.length > 0) {
+                p_property.children = p_property.children.concat(property_comments);
             }
         }
     }
@@ -6909,7 +6995,8 @@ format.ConditionalExpression = function(parent, node, options) {
             }
             // log 'f_p_temp consequent before format'
             format(p_consequent, node.consequent, options)
-            // log 'f_p_temp consequent after format', p_consequent
+            // log 'f_p_temp consequent after format', p_consequent.children.length, p_consequent
+            var consequent_comments = extractCommentsIf(p_consequent, 1);
             if (p_consequent.children.length == 1) {
                 p_consequent.tag = p_consequent.children[0].tag;
                 if (!(p_consequent.children[0].isText || p_consequent.children[0].textified)) {
@@ -6920,16 +7007,17 @@ format.ConditionalExpression = function(parent, node, options) {
                 else {
                     if (p_consequent.children[0].textified) {
                         p_consequent.textified = p_consequent.children[0].textified;
-                        p_consequent.name = p_consequent.children[0].name;
-                        p_consequent.source = p_consequent.children[0].source;
                     }
                     if (p_consequent.children[0].isText) {
                         p_consequent.isText = true;
-                        p_consequent.name = p_consequent.children[0].name;
-                        p_consequent.source = p_consequent.children[0].source;
                     }
+                    p_consequent.name = p_consequent.children[0].name;
+                    p_consequent.source = p_consequent.children[0].source;
                     p_consequent.children = [];
                 }
+            }
+            if (consequent_comments.length > 0) {
+                p_consequent.children = p_consequent.children.concat(consequent_comments);
             }
         }
     }
@@ -6956,7 +7044,8 @@ format.ConditionalExpression = function(parent, node, options) {
             }
             // log 'f_p_temp alternate before format'
             format(p_alternate, node.alternate, options)
-            // log 'f_p_temp alternate after format', p_alternate
+            // log 'f_p_temp alternate after format', p_alternate.children.length, p_alternate
+            var alternate_comments = extractCommentsIf(p_alternate, 1);
             if (p_alternate.children.length == 1) {
                 p_alternate.tag = p_alternate.children[0].tag;
                 if (!(p_alternate.children[0].isText || p_alternate.children[0].textified)) {
@@ -6967,16 +7056,17 @@ format.ConditionalExpression = function(parent, node, options) {
                 else {
                     if (p_alternate.children[0].textified) {
                         p_alternate.textified = p_alternate.children[0].textified;
-                        p_alternate.name = p_alternate.children[0].name;
-                        p_alternate.source = p_alternate.children[0].source;
                     }
                     if (p_alternate.children[0].isText) {
                         p_alternate.isText = true;
-                        p_alternate.name = p_alternate.children[0].name;
-                        p_alternate.source = p_alternate.children[0].source;
                     }
+                    p_alternate.name = p_alternate.children[0].name;
+                    p_alternate.source = p_alternate.children[0].source;
                     p_alternate.children = [];
                 }
+            }
+            if (alternate_comments.length > 0) {
+                p_alternate.children = p_alternate.children.concat(alternate_comments);
             }
         }
     }
@@ -6986,40 +7076,8 @@ format.ConditionalExpression = function(parent, node, options) {
     // log 'ConditionalExpression 1', ret.tag
     setNameFromChildByTag(ret, 'test', true);
     // log 'ConditionalExpression 2', ret.tag
-    if (isTextualNode(p_consequent)) {
-        ret.children.push({
-            tag: 'then', 
-            name: getNodeText(p_consequent), 
-            children: [
-                
-            ]
-        })
-    }
-    else {
-        ret.children.push({
-            tag: 'then', 
-            children: [
-                p_consequent
-            ]
-        })
-    }
-    if (isTextualNode(p_alternate)) {
-        ret.children.push({
-            tag: 'else', 
-            name: getNodeText(p_alternate), 
-            children: [
-                
-            ]
-        })
-    }
-    else {
-        ret.children.push({
-            tag: 'else', 
-            children: [
-                p_alternate
-            ]
-        })
-    }
+    setOrInlineIfTextualNode(ret, p_consequent, 'then')
+    setOrInlineIfTextualNode(ret, p_alternate, 'else')
     // log 'ConditionalExpression 3', ret.tag
     if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
         // is the return value of an ArrowExpression
@@ -7117,7 +7175,8 @@ format.CallExpression = function(parent, node, options) {
             }
             // log 'f_p_temp callee before format'
             format(p_callee, node.callee, options)
-            // log 'f_p_temp callee after format', p_callee
+            // log 'f_p_temp callee after format', p_callee.children.length, p_callee
+            var callee_comments = extractCommentsIf(p_callee, 1);
             if (p_callee.children.length == 1) {
                 p_callee.tag = p_callee.children[0].tag;
                 if (!(p_callee.children[0].isText || p_callee.children[0].textified)) {
@@ -7128,16 +7187,17 @@ format.CallExpression = function(parent, node, options) {
                 else {
                     if (p_callee.children[0].textified) {
                         p_callee.textified = p_callee.children[0].textified;
-                        p_callee.name = p_callee.children[0].name;
-                        p_callee.source = p_callee.children[0].source;
                     }
                     if (p_callee.children[0].isText) {
                         p_callee.isText = true;
-                        p_callee.name = p_callee.children[0].name;
-                        p_callee.source = p_callee.children[0].source;
                     }
+                    p_callee.name = p_callee.children[0].name;
+                    p_callee.source = p_callee.children[0].source;
                     p_callee.children = [];
                 }
+            }
+            if (callee_comments.length > 0) {
+                p_callee.children = p_callee.children.concat(callee_comments);
             }
         }
     }
@@ -7169,7 +7229,7 @@ format.CallExpression = function(parent, node, options) {
     var lastCallee = ret;
     // log 'CallExpression.p_callee', p_callee
     if (isTextualNode(p_callee)) {
-        console.log('CallExpression.isTextualNode(p_callee), node.typeParameters', isTextualNode(p_callee), getNodeText(p_callee), node.typeParameters);
+        // log 'CallExpression.isTextualNode(p_callee), node.typeParameters', isTextualNode(p_callee), getNodeText(p_callee), node.typeParameters
         // first of all try to set ret.textified
         ret.name = getNodeText(p_callee);
         if (node.typeParameters) {
@@ -7183,7 +7243,7 @@ format.CallExpression = function(parent, node, options) {
             }
         }
         else {
-            console.log('CallExpression p_arguments', p_arguments);
+            // log 'CallExpression p_arguments', p_arguments
             if (p_arguments && p_arguments.children.length > 0) {
                 var tlist = getTextList(p_arguments, ', ');
                 if (tlist) {
@@ -7210,10 +7270,10 @@ format.CallExpression = function(parent, node, options) {
                 ret.textified = '(' + ret.textified + ')';
             }
         }
-        console.log('CallExpression', 'ret.name,textified', ret.name, ret.textified);
+        // log 'CallExpression', 'ret.name,textified', ret.name, ret.textified
     }
     else {
-        console.log('CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag);
+        // log 'CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag
         var i, i_items=p_callee.children, i_len=p_callee.children.length, item;
         for (i=0; i<i_len; i++) {
             item = p_callee.children[i];
@@ -7423,7 +7483,8 @@ format.NewExpression = function(parent, node, options) {
             }
             // log 'f_p_temp callee before format'
             format(p_callee, node.callee, options)
-            // log 'f_p_temp callee after format', p_callee
+            // log 'f_p_temp callee after format', p_callee.children.length, p_callee
+            var callee_comments = extractCommentsIf(p_callee, 1);
             if (p_callee.children.length == 1) {
                 p_callee.tag = p_callee.children[0].tag;
                 if (!(p_callee.children[0].isText || p_callee.children[0].textified)) {
@@ -7434,16 +7495,17 @@ format.NewExpression = function(parent, node, options) {
                 else {
                     if (p_callee.children[0].textified) {
                         p_callee.textified = p_callee.children[0].textified;
-                        p_callee.name = p_callee.children[0].name;
-                        p_callee.source = p_callee.children[0].source;
                     }
                     if (p_callee.children[0].isText) {
                         p_callee.isText = true;
-                        p_callee.name = p_callee.children[0].name;
-                        p_callee.source = p_callee.children[0].source;
                     }
+                    p_callee.name = p_callee.children[0].name;
+                    p_callee.source = p_callee.children[0].source;
                     p_callee.children = [];
                 }
+            }
+            if (callee_comments.length > 0) {
+                p_callee.children = p_callee.children.concat(callee_comments);
             }
         }
     }
@@ -7803,7 +7865,8 @@ format.TaggedTemplateExpression = function(parent, node, options) {
             }
             // log 'f_p_temp tag before format'
             format(p_tag, node.tag, options)
-            // log 'f_p_temp tag after format', p_tag
+            // log 'f_p_temp tag after format', p_tag.children.length, p_tag
+            var tag_comments = extractCommentsIf(p_tag, 1);
             if (p_tag.children.length == 1) {
                 p_tag.tag = p_tag.children[0].tag;
                 if (!(p_tag.children[0].isText || p_tag.children[0].textified)) {
@@ -7814,16 +7877,17 @@ format.TaggedTemplateExpression = function(parent, node, options) {
                 else {
                     if (p_tag.children[0].textified) {
                         p_tag.textified = p_tag.children[0].textified;
-                        p_tag.name = p_tag.children[0].name;
-                        p_tag.source = p_tag.children[0].source;
                     }
                     if (p_tag.children[0].isText) {
                         p_tag.isText = true;
-                        p_tag.name = p_tag.children[0].name;
-                        p_tag.source = p_tag.children[0].source;
                     }
+                    p_tag.name = p_tag.children[0].name;
+                    p_tag.source = p_tag.children[0].source;
                     p_tag.children = [];
                 }
+            }
+            if (tag_comments.length > 0) {
+                p_tag.children = p_tag.children.concat(tag_comments);
             }
         }
     }
@@ -7856,7 +7920,8 @@ format.TaggedTemplateExpression = function(parent, node, options) {
             }
             // log 'f_p_temp quasi before format'
             format(p_quasi, node.quasi, options)
-            // log 'f_p_temp quasi after format', p_quasi
+            // log 'f_p_temp quasi after format', p_quasi.children.length, p_quasi
+            var quasi_comments = extractCommentsIf(p_quasi, 1);
             if (p_quasi.children.length == 1) {
                 p_quasi.tag = p_quasi.children[0].tag;
                 if (!(p_quasi.children[0].isText || p_quasi.children[0].textified)) {
@@ -7867,16 +7932,17 @@ format.TaggedTemplateExpression = function(parent, node, options) {
                 else {
                     if (p_quasi.children[0].textified) {
                         p_quasi.textified = p_quasi.children[0].textified;
-                        p_quasi.name = p_quasi.children[0].name;
-                        p_quasi.source = p_quasi.children[0].source;
                     }
                     if (p_quasi.children[0].isText) {
                         p_quasi.isText = true;
-                        p_quasi.name = p_quasi.children[0].name;
-                        p_quasi.source = p_quasi.children[0].source;
                     }
+                    p_quasi.name = p_quasi.children[0].name;
+                    p_quasi.source = p_quasi.children[0].source;
                     p_quasi.children = [];
                 }
+            }
+            if (quasi_comments.length > 0) {
+                p_quasi.children = p_quasi.children.concat(quasi_comments);
             }
         }
     }
@@ -8303,7 +8369,8 @@ format.AssignmentPattern = function(parent, node, options) {
             }
             // log 'f_p_temp left before format'
             format(p_left, node.left, options)
-            // log 'f_p_temp left after format', p_left
+            // log 'f_p_temp left after format', p_left.children.length, p_left
+            var left_comments = extractCommentsIf(p_left, 1);
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
                 if (!(p_left.children[0].isText || p_left.children[0].textified)) {
@@ -8314,16 +8381,17 @@ format.AssignmentPattern = function(parent, node, options) {
                 else {
                     if (p_left.children[0].textified) {
                         p_left.textified = p_left.children[0].textified;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
                     if (p_left.children[0].isText) {
                         p_left.isText = true;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
+                    p_left.name = p_left.children[0].name;
+                    p_left.source = p_left.children[0].source;
                     p_left.children = [];
                 }
+            }
+            if (left_comments.length > 0) {
+                p_left.children = p_left.children.concat(left_comments);
             }
         }
     }
@@ -8350,7 +8418,8 @@ format.AssignmentPattern = function(parent, node, options) {
             }
             // log 'f_p_temp right before format'
             format(p_right, node.right, options)
-            // log 'f_p_temp right after format', p_right
+            // log 'f_p_temp right after format', p_right.children.length, p_right
+            var right_comments = extractCommentsIf(p_right, 1);
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
                 if (!(p_right.children[0].isText || p_right.children[0].textified)) {
@@ -8361,16 +8430,17 @@ format.AssignmentPattern = function(parent, node, options) {
                 else {
                     if (p_right.children[0].textified) {
                         p_right.textified = p_right.children[0].textified;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
                     if (p_right.children[0].isText) {
                         p_right.isText = true;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
+                    p_right.name = p_right.children[0].name;
+                    p_right.source = p_right.children[0].source;
                     p_right.children = [];
                 }
+            }
+            if (right_comments.length > 0) {
+                p_right.children = p_right.children.concat(right_comments);
             }
         }
     }
@@ -8493,7 +8563,8 @@ format.Class = function(parent, node, options) {
             }
             // log 'f_p_temp superClass before format'
             format(p_superClass, node.superClass, options)
-            // log 'f_p_temp superClass after format', p_superClass
+            // log 'f_p_temp superClass after format', p_superClass.children.length, p_superClass
+            var superClass_comments = extractCommentsIf(p_superClass, 1);
             if (p_superClass.children.length == 1) {
                 p_superClass.tag = p_superClass.children[0].tag;
                 if (!(p_superClass.children[0].isText || p_superClass.children[0].textified)) {
@@ -8504,16 +8575,17 @@ format.Class = function(parent, node, options) {
                 else {
                     if (p_superClass.children[0].textified) {
                         p_superClass.textified = p_superClass.children[0].textified;
-                        p_superClass.name = p_superClass.children[0].name;
-                        p_superClass.source = p_superClass.children[0].source;
                     }
                     if (p_superClass.children[0].isText) {
                         p_superClass.isText = true;
-                        p_superClass.name = p_superClass.children[0].name;
-                        p_superClass.source = p_superClass.children[0].source;
                     }
+                    p_superClass.name = p_superClass.children[0].name;
+                    p_superClass.source = p_superClass.children[0].source;
                     p_superClass.children = [];
                 }
+            }
+            if (superClass_comments.length > 0) {
+                p_superClass.children = p_superClass.children.concat(superClass_comments);
             }
         }
     }
@@ -8719,6 +8791,24 @@ format.ClassMethod = function(parent, node, options) {
             ]
         })
     }
+    // log 'node.async', node.async
+    if (!!node.async == true) {
+        ret.children.push({
+            tag: 'async', 
+            children: [
+                
+            ]
+        })
+    }
+    // log 'node.generator', node.generator
+    if (!!node.generator == true) {
+        ret.children.push({
+            tag: 'generator', 
+            children: [
+                
+            ]
+        })
+    }
     if (node.accessibility) {
         ret.children.push({
             tag: ':' + node.accessibility, 
@@ -8728,8 +8818,6 @@ format.ClassMethod = function(parent, node, options) {
             ]
         })
     }
-    // b( generator
-    // b( async
     // process AST-node-property-collection decorators and append ittfNode(s) to `ret`
     f_astNode.props.push({
         name: "decorators", 
@@ -8802,7 +8890,8 @@ format.ClassMethod = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -8813,16 +8902,17 @@ format.ClassMethod = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -8850,9 +8940,6 @@ format.ClassMethod = function(parent, node, options) {
         throw new Error('AST-node-property body undefined: ' + JSON.stringify(node, null, 2));
     }
     ret.tag = ret.tag == 'constructor' ? 'ctor' : (ret.tag == 'method' ? 'm' : ret.tag);
-    if (node.async) {
-        ret.tag = 'async-' + ret.tag;
-    }
     setNameFromChildByTag(ret, 'key', true);
     if (ret.tag === 'ctor') {
         ret.name = '';
@@ -9009,7 +9096,8 @@ format.ClassPrivateMethod = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -9020,16 +9108,17 @@ format.ClassPrivateMethod = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -9156,7 +9245,8 @@ format.ClassProperty = function(parent, node, options) {
             }
             // log 'f_p_temp value before format'
             format(p_value, node.value, options)
-            // log 'f_p_temp value after format', p_value
+            // log 'f_p_temp value after format', p_value.children.length, p_value
+            var value_comments = extractCommentsIf(p_value, 1);
             if (p_value.children.length == 1) {
                 p_value.tag = p_value.children[0].tag;
                 if (!(p_value.children[0].isText || p_value.children[0].textified)) {
@@ -9167,16 +9257,17 @@ format.ClassProperty = function(parent, node, options) {
                 else {
                     if (p_value.children[0].textified) {
                         p_value.textified = p_value.children[0].textified;
-                        p_value.name = p_value.children[0].name;
-                        p_value.source = p_value.children[0].source;
                     }
                     if (p_value.children[0].isText) {
                         p_value.isText = true;
-                        p_value.name = p_value.children[0].name;
-                        p_value.source = p_value.children[0].source;
                     }
+                    p_value.name = p_value.children[0].name;
+                    p_value.source = p_value.children[0].source;
                     p_value.children = [];
                 }
+            }
+            if (value_comments.length > 0) {
+                p_value.children = p_value.children.concat(value_comments);
             }
         }
     }
@@ -9200,7 +9291,8 @@ format.ClassProperty = function(parent, node, options) {
             }
             // log 'f_p_temp typeAnnotation before format'
             format(p_typeAnnotation, node.typeAnnotation, options)
-            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
+            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation.children.length, p_typeAnnotation
+            var typeAnnotation_comments = extractCommentsIf(p_typeAnnotation, 1);
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
                 if (!(p_typeAnnotation.children[0].isText || p_typeAnnotation.children[0].textified)) {
@@ -9211,16 +9303,17 @@ format.ClassProperty = function(parent, node, options) {
                 else {
                     if (p_typeAnnotation.children[0].textified) {
                         p_typeAnnotation.textified = p_typeAnnotation.children[0].textified;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
                     if (p_typeAnnotation.children[0].isText) {
                         p_typeAnnotation.isText = true;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
+                    p_typeAnnotation.name = p_typeAnnotation.children[0].name;
+                    p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     p_typeAnnotation.children = [];
                 }
+            }
+            if (typeAnnotation_comments.length > 0) {
+                p_typeAnnotation.children = p_typeAnnotation.children.concat(typeAnnotation_comments);
             }
         }
     }
@@ -9488,7 +9581,8 @@ format.ClassDeclaration = function(parent, node, options) {
             }
             // log 'f_p_temp superClass before format'
             format(p_superClass, node.superClass, options)
-            // log 'f_p_temp superClass after format', p_superClass
+            // log 'f_p_temp superClass after format', p_superClass.children.length, p_superClass
+            var superClass_comments = extractCommentsIf(p_superClass, 1);
             if (p_superClass.children.length == 1) {
                 p_superClass.tag = p_superClass.children[0].tag;
                 if (!(p_superClass.children[0].isText || p_superClass.children[0].textified)) {
@@ -9499,16 +9593,17 @@ format.ClassDeclaration = function(parent, node, options) {
                 else {
                     if (p_superClass.children[0].textified) {
                         p_superClass.textified = p_superClass.children[0].textified;
-                        p_superClass.name = p_superClass.children[0].name;
-                        p_superClass.source = p_superClass.children[0].source;
                     }
                     if (p_superClass.children[0].isText) {
                         p_superClass.isText = true;
-                        p_superClass.name = p_superClass.children[0].name;
-                        p_superClass.source = p_superClass.children[0].source;
                     }
+                    p_superClass.name = p_superClass.children[0].name;
+                    p_superClass.source = p_superClass.children[0].source;
                     p_superClass.children = [];
                 }
+            }
+            if (superClass_comments.length > 0) {
+                p_superClass.children = p_superClass.children.concat(superClass_comments);
             }
         }
     }
@@ -9532,7 +9627,8 @@ format.ClassDeclaration = function(parent, node, options) {
             }
             // log 'f_p_temp superTypeParameters before format'
             format(p_superTypeParameters, node.superTypeParameters, options)
-            // log 'f_p_temp superTypeParameters after format', p_superTypeParameters
+            // log 'f_p_temp superTypeParameters after format', p_superTypeParameters.children.length, p_superTypeParameters
+            var superTypeParameters_comments = extractCommentsIf(p_superTypeParameters, 1);
             if (p_superTypeParameters.children.length == 1) {
                 p_superTypeParameters.tag = p_superTypeParameters.children[0].tag;
                 if (!(p_superTypeParameters.children[0].isText || p_superTypeParameters.children[0].textified)) {
@@ -9543,16 +9639,17 @@ format.ClassDeclaration = function(parent, node, options) {
                 else {
                     if (p_superTypeParameters.children[0].textified) {
                         p_superTypeParameters.textified = p_superTypeParameters.children[0].textified;
-                        p_superTypeParameters.name = p_superTypeParameters.children[0].name;
-                        p_superTypeParameters.source = p_superTypeParameters.children[0].source;
                     }
                     if (p_superTypeParameters.children[0].isText) {
                         p_superTypeParameters.isText = true;
-                        p_superTypeParameters.name = p_superTypeParameters.children[0].name;
-                        p_superTypeParameters.source = p_superTypeParameters.children[0].source;
                     }
+                    p_superTypeParameters.name = p_superTypeParameters.children[0].name;
+                    p_superTypeParameters.source = p_superTypeParameters.children[0].source;
                     p_superTypeParameters.children = [];
                 }
+            }
+            if (superTypeParameters_comments.length > 0) {
+                p_superTypeParameters.children = p_superTypeParameters.children.concat(superTypeParameters_comments);
             }
         }
     }
@@ -9772,7 +9869,8 @@ format.ClassExpression = function(parent, node, options) {
             }
             // log 'f_p_temp superClass before format'
             format(p_superClass, node.superClass, options)
-            // log 'f_p_temp superClass after format', p_superClass
+            // log 'f_p_temp superClass after format', p_superClass.children.length, p_superClass
+            var superClass_comments = extractCommentsIf(p_superClass, 1);
             if (p_superClass.children.length == 1) {
                 p_superClass.tag = p_superClass.children[0].tag;
                 if (!(p_superClass.children[0].isText || p_superClass.children[0].textified)) {
@@ -9783,16 +9881,17 @@ format.ClassExpression = function(parent, node, options) {
                 else {
                     if (p_superClass.children[0].textified) {
                         p_superClass.textified = p_superClass.children[0].textified;
-                        p_superClass.name = p_superClass.children[0].name;
-                        p_superClass.source = p_superClass.children[0].source;
                     }
                     if (p_superClass.children[0].isText) {
                         p_superClass.isText = true;
-                        p_superClass.name = p_superClass.children[0].name;
-                        p_superClass.source = p_superClass.children[0].source;
                     }
+                    p_superClass.name = p_superClass.children[0].name;
+                    p_superClass.source = p_superClass.children[0].source;
                     p_superClass.children = [];
                 }
+            }
+            if (superClass_comments.length > 0) {
+                p_superClass.children = p_superClass.children.concat(superClass_comments);
             }
         }
     }
@@ -10659,7 +10758,8 @@ format.ExportDefaultSpecifier = function(parent, node, options) {
             }
             // log 'f_p_temp exported before format'
             format(p_exported, node.exported, options)
-            // log 'f_p_temp exported after format', p_exported
+            // log 'f_p_temp exported after format', p_exported.children.length, p_exported
+            var exported_comments = extractCommentsIf(p_exported, 1);
             if (p_exported.children.length == 1) {
                 p_exported.tag = p_exported.children[0].tag;
                 if (!(p_exported.children[0].isText || p_exported.children[0].textified)) {
@@ -10670,16 +10770,17 @@ format.ExportDefaultSpecifier = function(parent, node, options) {
                 else {
                     if (p_exported.children[0].textified) {
                         p_exported.textified = p_exported.children[0].textified;
-                        p_exported.name = p_exported.children[0].name;
-                        p_exported.source = p_exported.children[0].source;
                     }
                     if (p_exported.children[0].isText) {
                         p_exported.isText = true;
-                        p_exported.name = p_exported.children[0].name;
-                        p_exported.source = p_exported.children[0].source;
                     }
+                    p_exported.name = p_exported.children[0].name;
+                    p_exported.source = p_exported.children[0].source;
                     p_exported.children = [];
                 }
+            }
+            if (exported_comments.length > 0) {
+                p_exported.children = p_exported.children.concat(exported_comments);
             }
         }
     }
@@ -10761,7 +10862,8 @@ format.ExportDefaultDeclaration = function(parent, node, options) {
             }
             // log 'f_p_temp declaration before format'
             format(p_declaration, node.declaration, options)
-            // log 'f_p_temp declaration after format', p_declaration
+            // log 'f_p_temp declaration after format', p_declaration.children.length, p_declaration
+            var declaration_comments = extractCommentsIf(p_declaration, 1);
             if (p_declaration.children.length == 1) {
                 p_declaration.tag = p_declaration.children[0].tag;
                 if (!(p_declaration.children[0].isText || p_declaration.children[0].textified)) {
@@ -10772,16 +10874,17 @@ format.ExportDefaultDeclaration = function(parent, node, options) {
                 else {
                     if (p_declaration.children[0].textified) {
                         p_declaration.textified = p_declaration.children[0].textified;
-                        p_declaration.name = p_declaration.children[0].name;
-                        p_declaration.source = p_declaration.children[0].source;
                     }
                     if (p_declaration.children[0].isText) {
                         p_declaration.isText = true;
-                        p_declaration.name = p_declaration.children[0].name;
-                        p_declaration.source = p_declaration.children[0].source;
                     }
+                    p_declaration.name = p_declaration.children[0].name;
+                    p_declaration.source = p_declaration.children[0].source;
                     p_declaration.children = [];
                 }
+            }
+            if (declaration_comments.length > 0) {
+                p_declaration.children = p_declaration.children.concat(declaration_comments);
             }
         }
     }
@@ -10862,7 +10965,8 @@ format.ExportNamespaceSpecifier = function(parent, node, options) {
             }
             // log 'f_p_temp exported before format'
             format(p_exported, node.exported, options)
-            // log 'f_p_temp exported after format', p_exported
+            // log 'f_p_temp exported after format', p_exported.children.length, p_exported
+            var exported_comments = extractCommentsIf(p_exported, 1);
             if (p_exported.children.length == 1) {
                 p_exported.tag = p_exported.children[0].tag;
                 if (!(p_exported.children[0].isText || p_exported.children[0].textified)) {
@@ -10873,16 +10977,17 @@ format.ExportNamespaceSpecifier = function(parent, node, options) {
                 else {
                     if (p_exported.children[0].textified) {
                         p_exported.textified = p_exported.children[0].textified;
-                        p_exported.name = p_exported.children[0].name;
-                        p_exported.source = p_exported.children[0].source;
                     }
                     if (p_exported.children[0].isText) {
                         p_exported.isText = true;
-                        p_exported.name = p_exported.children[0].name;
-                        p_exported.source = p_exported.children[0].source;
                     }
+                    p_exported.name = p_exported.children[0].name;
+                    p_exported.source = p_exported.children[0].source;
                     p_exported.children = [];
                 }
+            }
+            if (exported_comments.length > 0) {
+                p_exported.children = p_exported.children.concat(exported_comments);
             }
         }
     }
@@ -11166,7 +11271,8 @@ format.JSXAttribute = function(parent, node, options) {
             }
             // log 'f_p_temp name before format'
             format(p_name, node.name, options)
-            // log 'f_p_temp name after format', p_name
+            // log 'f_p_temp name after format', p_name.children.length, p_name
+            var name_comments = extractCommentsIf(p_name, 1);
             if (p_name.children.length == 1) {
                 p_name.tag = p_name.children[0].tag;
                 if (!(p_name.children[0].isText || p_name.children[0].textified)) {
@@ -11177,16 +11283,17 @@ format.JSXAttribute = function(parent, node, options) {
                 else {
                     if (p_name.children[0].textified) {
                         p_name.textified = p_name.children[0].textified;
-                        p_name.name = p_name.children[0].name;
-                        p_name.source = p_name.children[0].source;
                     }
                     if (p_name.children[0].isText) {
                         p_name.isText = true;
-                        p_name.name = p_name.children[0].name;
-                        p_name.source = p_name.children[0].source;
                     }
+                    p_name.name = p_name.children[0].name;
+                    p_name.source = p_name.children[0].source;
                     p_name.children = [];
                 }
+            }
+            if (name_comments.length > 0) {
+                p_name.children = p_name.children.concat(name_comments);
             }
         }
     }
@@ -11213,7 +11320,8 @@ format.JSXAttribute = function(parent, node, options) {
             }
             // log 'f_p_temp value before format'
             format(p_value, node.value, options)
-            // log 'f_p_temp value after format', p_value
+            // log 'f_p_temp value after format', p_value.children.length, p_value
+            var value_comments = extractCommentsIf(p_value, 1);
             if (p_value.children.length == 1) {
                 p_value.tag = p_value.children[0].tag;
                 if (!(p_value.children[0].isText || p_value.children[0].textified)) {
@@ -11224,16 +11332,17 @@ format.JSXAttribute = function(parent, node, options) {
                 else {
                     if (p_value.children[0].textified) {
                         p_value.textified = p_value.children[0].textified;
-                        p_value.name = p_value.children[0].name;
-                        p_value.source = p_value.children[0].source;
                     }
                     if (p_value.children[0].isText) {
                         p_value.isText = true;
-                        p_value.name = p_value.children[0].name;
-                        p_value.source = p_value.children[0].source;
                     }
+                    p_value.name = p_value.children[0].name;
+                    p_value.source = p_value.children[0].source;
                     p_value.children = [];
                 }
+            }
+            if (value_comments.length > 0) {
+                p_value.children = p_value.children.concat(value_comments);
             }
         }
     }
@@ -11243,7 +11352,7 @@ format.JSXAttribute = function(parent, node, options) {
     else {
         throw new Error('JSXAttribute.name must be textual:' + JSON.stringify(node, null, 2));
     }
-    // log 'JSXAttribute.p_value', p_value
+    // log 'JSXAttribute.p_value', p_value, isTextualNode(p_value)
     if (p_value) {
         if (isTextualNode(p_value)) {
             ret.name += ' ' + getNodeText(p_value);
@@ -11370,7 +11479,8 @@ format.JSXElement = function(parent, node, options) {
             }
             // log 'f_p_temp openingElement before format'
             format(p_openingElement, node.openingElement, options)
-            // log 'f_p_temp openingElement after format', p_openingElement
+            // log 'f_p_temp openingElement after format', p_openingElement.children.length, p_openingElement
+            var openingElement_comments = extractCommentsIf(p_openingElement, 1);
             if (p_openingElement.children.length == 1) {
                 p_openingElement.tag = p_openingElement.children[0].tag;
                 if (!(p_openingElement.children[0].isText || p_openingElement.children[0].textified)) {
@@ -11381,16 +11491,17 @@ format.JSXElement = function(parent, node, options) {
                 else {
                     if (p_openingElement.children[0].textified) {
                         p_openingElement.textified = p_openingElement.children[0].textified;
-                        p_openingElement.name = p_openingElement.children[0].name;
-                        p_openingElement.source = p_openingElement.children[0].source;
                     }
                     if (p_openingElement.children[0].isText) {
                         p_openingElement.isText = true;
-                        p_openingElement.name = p_openingElement.children[0].name;
-                        p_openingElement.source = p_openingElement.children[0].source;
                     }
+                    p_openingElement.name = p_openingElement.children[0].name;
+                    p_openingElement.source = p_openingElement.children[0].source;
                     p_openingElement.children = [];
                 }
+            }
+            if (openingElement_comments.length > 0) {
+                p_openingElement.children = p_openingElement.children.concat(openingElement_comments);
             }
         }
     }
@@ -11489,6 +11600,10 @@ format.JSXElement = function(parent, node, options) {
                 ret.children.push(item)
             }
         }
+    }
+    else if (["style","title"].indexOf(ret.tag) > -1) {
+        ret.name = ret.tag;
+        ret.tag = '<';
     }
     if (ret != null) {
         if (__isText) {
@@ -11616,7 +11731,8 @@ format.JSXExpressionContainer = function(parent, node, options) {
             }
             // log 'f_p_temp expression before format'
             format(p_expression, node.expression, options)
-            // log 'f_p_temp expression after format', p_expression
+            // log 'f_p_temp expression after format', p_expression.children.length, p_expression
+            var expression_comments = extractCommentsIf(p_expression, 1);
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
                 if (!(p_expression.children[0].isText || p_expression.children[0].textified)) {
@@ -11627,22 +11743,24 @@ format.JSXExpressionContainer = function(parent, node, options) {
                 else {
                     if (p_expression.children[0].textified) {
                         p_expression.textified = p_expression.children[0].textified;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
                     if (p_expression.children[0].isText) {
                         p_expression.isText = true;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
+                    p_expression.name = p_expression.children[0].name;
+                    p_expression.source = p_expression.children[0].source;
                     p_expression.children = [];
                 }
+            }
+            if (expression_comments.length > 0) {
+                p_expression.children = p_expression.children.concat(expression_comments);
             }
         }
     }
     else {
         throw new Error('AST-node-property expression undefined: ' + JSON.stringify(node, null, 2));
     }
+    // log 'JSXExpressionContainer.p_expression', p_expression, isTextualNode(p_expression)
     if (isTextualNode(p_expression)) {
         ret.tag = '+';
         ret.name = '{' + getNodeText(p_expression) + '}';
@@ -11651,6 +11769,8 @@ format.JSXExpressionContainer = function(parent, node, options) {
     else {
         // log 'JSXExpressionContainer.options.stateAST', options.stateAST
         // log 'JSXExpressionContainer.options.p_expression', p_expression
+        // log 'options.stateAST[options.stateAST.length-1]', options.stateAST[options.stateAST.length-1]
+        p_expression.textified = null;
         if (options.stateAST[options.stateAST.length-1] === 'JSXAttribute') {
             var __skip = true;
             parent.children.push(p_expression)
@@ -11730,7 +11850,8 @@ format.JSXSpreadChild = function(parent, node, options) {
             }
             // log 'f_p_temp expression before format'
             format(p_expression, node.expression, options)
-            // log 'f_p_temp expression after format', p_expression
+            // log 'f_p_temp expression after format', p_expression.children.length, p_expression
+            var expression_comments = extractCommentsIf(p_expression, 1);
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
                 if (!(p_expression.children[0].isText || p_expression.children[0].textified)) {
@@ -11741,16 +11862,17 @@ format.JSXSpreadChild = function(parent, node, options) {
                 else {
                     if (p_expression.children[0].textified) {
                         p_expression.textified = p_expression.children[0].textified;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
                     if (p_expression.children[0].isText) {
                         p_expression.isText = true;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
+                    p_expression.name = p_expression.children[0].name;
+                    p_expression.source = p_expression.children[0].source;
                     p_expression.children = [];
                 }
+            }
+            if (expression_comments.length > 0) {
+                p_expression.children = p_expression.children.concat(expression_comments);
             }
         }
     }
@@ -12020,7 +12142,8 @@ format.JSXOpeningElement = function(parent, node, options) {
             }
             // log 'f_p_temp name before format'
             format(p_name, node.name, options)
-            // log 'f_p_temp name after format', p_name
+            // log 'f_p_temp name after format', p_name.children.length, p_name
+            var name_comments = extractCommentsIf(p_name, 1);
             if (p_name.children.length == 1) {
                 p_name.tag = p_name.children[0].tag;
                 if (!(p_name.children[0].isText || p_name.children[0].textified)) {
@@ -12031,16 +12154,17 @@ format.JSXOpeningElement = function(parent, node, options) {
                 else {
                     if (p_name.children[0].textified) {
                         p_name.textified = p_name.children[0].textified;
-                        p_name.name = p_name.children[0].name;
-                        p_name.source = p_name.children[0].source;
                     }
                     if (p_name.children[0].isText) {
                         p_name.isText = true;
-                        p_name.name = p_name.children[0].name;
-                        p_name.source = p_name.children[0].source;
                     }
+                    p_name.name = p_name.children[0].name;
+                    p_name.source = p_name.children[0].source;
                     p_name.children = [];
                 }
+            }
+            if (name_comments.length > 0) {
+                p_name.children = p_name.children.concat(name_comments);
             }
         }
     }
@@ -12052,8 +12176,11 @@ format.JSXOpeningElement = function(parent, node, options) {
     if (isTextualNode(p_name)) {
         ret.name = getNodeText(p_name);
     }
+    else if (isTextualCommentedNode(p_name)) {
+        ret.name = getNodeText(p_name);
+        ret.children = p_name.children;
+    }
     else {
-        // throw new Error('JSXOpeningElement.name must be textual:' + JSON.stringify(node, null, 2))
         var i, i_items=p_name.children, i_len=p_name.children.length, item;
         for (i=0; i<i_len; i++) {
             item = p_name.children[i];
@@ -12246,17 +12373,12 @@ format.JSXText = function(parent, node, options) {
         ]
     };
     // if node.value.trim().length == 0 || node.value === '\n' // 11/1/19
-    if (node.value.trim().length == 0) {
+    var nametrimmed = node.value.trim();
+    if (nametrimmed == 0) {
         ret = null;
     }
     else {
-        ret.name = verify.replaceAll(node.value, '\n', '\\n');
-        if (ret.name[0] === ' ') {
-            ret.name = '\\b' + ret.name;
-        }
-        if (ret.name[ret.name.length-1] === ' ') {
-            ret.name = ret.name + '\\b';
-        }
+        ret.name = verify.replaceAll(nametrimmed, '\n', '&lf;');
     }
     if (ret != null) {
         if (__isText) {
@@ -12855,7 +12977,8 @@ format.TypeParameter = function(parent, node, options) {
             }
             // log 'f_p_temp variance before format'
             format(p_variance, node.variance, options)
-            // log 'f_p_temp variance after format', p_variance
+            // log 'f_p_temp variance after format', p_variance.children.length, p_variance
+            var variance_comments = extractCommentsIf(p_variance, 1);
             if (p_variance.children.length == 1) {
                 p_variance.tag = p_variance.children[0].tag;
                 if (!(p_variance.children[0].isText || p_variance.children[0].textified)) {
@@ -12866,16 +12989,17 @@ format.TypeParameter = function(parent, node, options) {
                 else {
                     if (p_variance.children[0].textified) {
                         p_variance.textified = p_variance.children[0].textified;
-                        p_variance.name = p_variance.children[0].name;
-                        p_variance.source = p_variance.children[0].source;
                     }
                     if (p_variance.children[0].isText) {
                         p_variance.isText = true;
-                        p_variance.name = p_variance.children[0].name;
-                        p_variance.source = p_variance.children[0].source;
                     }
+                    p_variance.name = p_variance.children[0].name;
+                    p_variance.source = p_variance.children[0].source;
                     p_variance.children = [];
                 }
+            }
+            if (variance_comments.length > 0) {
+                p_variance.children = p_variance.children.concat(variance_comments);
             }
         }
     }
@@ -13684,7 +13808,8 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -13695,16 +13820,17 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -13829,7 +13955,8 @@ format.FunctionTypeParam = function(parent, node, options) {
             }
             // log 'f_p_temp typeAnnotation before format'
             format(p_typeAnnotation, node.typeAnnotation, options)
-            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
+            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation.children.length, p_typeAnnotation
+            var typeAnnotation_comments = extractCommentsIf(p_typeAnnotation, 1);
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
                 if (!(p_typeAnnotation.children[0].isText || p_typeAnnotation.children[0].textified)) {
@@ -13840,16 +13967,17 @@ format.FunctionTypeParam = function(parent, node, options) {
                 else {
                     if (p_typeAnnotation.children[0].textified) {
                         p_typeAnnotation.textified = p_typeAnnotation.children[0].textified;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
                     if (p_typeAnnotation.children[0].isText) {
                         p_typeAnnotation.isText = true;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
+                    p_typeAnnotation.name = p_typeAnnotation.children[0].name;
+                    p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     p_typeAnnotation.children = [];
                 }
+            }
+            if (typeAnnotation_comments.length > 0) {
+                p_typeAnnotation.children = p_typeAnnotation.children.concat(typeAnnotation_comments);
             }
         }
     }
@@ -14279,7 +14407,8 @@ format.NullableTypeAnnotation = function(parent, node, options) {
             }
             // log 'f_p_temp typeAnnotation before format'
             format(p_typeAnnotation, node.typeAnnotation, options)
-            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
+            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation.children.length, p_typeAnnotation
+            var typeAnnotation_comments = extractCommentsIf(p_typeAnnotation, 1);
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
                 if (!(p_typeAnnotation.children[0].isText || p_typeAnnotation.children[0].textified)) {
@@ -14290,16 +14419,17 @@ format.NullableTypeAnnotation = function(parent, node, options) {
                 else {
                     if (p_typeAnnotation.children[0].textified) {
                         p_typeAnnotation.textified = p_typeAnnotation.children[0].textified;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
                     if (p_typeAnnotation.children[0].isText) {
                         p_typeAnnotation.isText = true;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
+                    p_typeAnnotation.name = p_typeAnnotation.children[0].name;
+                    p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     p_typeAnnotation.children = [];
                 }
+            }
+            if (typeAnnotation_comments.length > 0) {
+                p_typeAnnotation.children = p_typeAnnotation.children.concat(typeAnnotation_comments);
             }
         }
     }
@@ -14700,7 +14830,8 @@ format.TypeAnnotation = function(parent, node, options) {
             }
             // log 'f_p_temp typeAnnotation before format'
             format(p_typeAnnotation, node.typeAnnotation, options)
-            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
+            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation.children.length, p_typeAnnotation
+            var typeAnnotation_comments = extractCommentsIf(p_typeAnnotation, 1);
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
                 if (!(p_typeAnnotation.children[0].isText || p_typeAnnotation.children[0].textified)) {
@@ -14711,16 +14842,17 @@ format.TypeAnnotation = function(parent, node, options) {
                 else {
                     if (p_typeAnnotation.children[0].textified) {
                         p_typeAnnotation.textified = p_typeAnnotation.children[0].textified;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
                     if (p_typeAnnotation.children[0].isText) {
                         p_typeAnnotation.isText = true;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
+                    p_typeAnnotation.name = p_typeAnnotation.children[0].name;
+                    p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     p_typeAnnotation.children = [];
                 }
+            }
+            if (typeAnnotation_comments.length > 0) {
+                p_typeAnnotation.children = p_typeAnnotation.children.concat(typeAnnotation_comments);
             }
         }
     }
@@ -14830,7 +14962,8 @@ format.TypeCastExpression = function(parent, node, options) {
             }
             // log 'f_p_temp typeAnnotation before format'
             format(p_typeAnnotation, node.typeAnnotation, options)
-            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
+            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation.children.length, p_typeAnnotation
+            var typeAnnotation_comments = extractCommentsIf(p_typeAnnotation, 1);
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
                 if (!(p_typeAnnotation.children[0].isText || p_typeAnnotation.children[0].textified)) {
@@ -14841,16 +14974,17 @@ format.TypeCastExpression = function(parent, node, options) {
                 else {
                     if (p_typeAnnotation.children[0].textified) {
                         p_typeAnnotation.textified = p_typeAnnotation.children[0].textified;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
                     if (p_typeAnnotation.children[0].isText) {
                         p_typeAnnotation.isText = true;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
+                    p_typeAnnotation.name = p_typeAnnotation.children[0].name;
+                    p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     p_typeAnnotation.children = [];
                 }
+            }
+            if (typeAnnotation_comments.length > 0) {
+                p_typeAnnotation.children = p_typeAnnotation.children.concat(typeAnnotation_comments);
             }
         }
     }
@@ -15296,7 +15430,8 @@ format.ObjectTypeProperty = function(parent, node, options) {
             }
             // log 'f_p_temp value before format'
             format(p_value, node.value, options)
-            // log 'f_p_temp value after format', p_value
+            // log 'f_p_temp value after format', p_value.children.length, p_value
+            var value_comments = extractCommentsIf(p_value, 1);
             if (p_value.children.length == 1) {
                 p_value.tag = p_value.children[0].tag;
                 if (!(p_value.children[0].isText || p_value.children[0].textified)) {
@@ -15307,16 +15442,17 @@ format.ObjectTypeProperty = function(parent, node, options) {
                 else {
                     if (p_value.children[0].textified) {
                         p_value.textified = p_value.children[0].textified;
-                        p_value.name = p_value.children[0].name;
-                        p_value.source = p_value.children[0].source;
                     }
                     if (p_value.children[0].isText) {
                         p_value.isText = true;
-                        p_value.name = p_value.children[0].name;
-                        p_value.source = p_value.children[0].source;
                     }
+                    p_value.name = p_value.children[0].name;
+                    p_value.source = p_value.children[0].source;
                     p_value.children = [];
                 }
+            }
+            if (value_comments.length > 0) {
+                p_value.children = p_value.children.concat(value_comments);
             }
         }
     }
@@ -15434,7 +15570,8 @@ format.QualifiedTypeIdentifier = function(parent, node, options) {
             }
             // log 'f_p_temp qualification before format'
             format(p_qualification, node.qualification, options)
-            // log 'f_p_temp qualification after format', p_qualification
+            // log 'f_p_temp qualification after format', p_qualification.children.length, p_qualification
+            var qualification_comments = extractCommentsIf(p_qualification, 1);
             if (p_qualification.children.length == 1) {
                 p_qualification.tag = p_qualification.children[0].tag;
                 if (!(p_qualification.children[0].isText || p_qualification.children[0].textified)) {
@@ -15445,16 +15582,17 @@ format.QualifiedTypeIdentifier = function(parent, node, options) {
                 else {
                     if (p_qualification.children[0].textified) {
                         p_qualification.textified = p_qualification.children[0].textified;
-                        p_qualification.name = p_qualification.children[0].name;
-                        p_qualification.source = p_qualification.children[0].source;
                     }
                     if (p_qualification.children[0].isText) {
                         p_qualification.isText = true;
-                        p_qualification.name = p_qualification.children[0].name;
-                        p_qualification.source = p_qualification.children[0].source;
                     }
+                    p_qualification.name = p_qualification.children[0].name;
+                    p_qualification.source = p_qualification.children[0].source;
                     p_qualification.children = [];
                 }
+            }
+            if (qualification_comments.length > 0) {
+                p_qualification.children = p_qualification.children.concat(qualification_comments);
             }
         }
     }
@@ -16303,7 +16441,8 @@ format.TSPropertySignature = function(parent, node, options) {
             }
             // log 'f_p_temp typeAnnotation before format'
             format(p_typeAnnotation, node.typeAnnotation, options)
-            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
+            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation.children.length, p_typeAnnotation
+            var typeAnnotation_comments = extractCommentsIf(p_typeAnnotation, 1);
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
                 if (!(p_typeAnnotation.children[0].isText || p_typeAnnotation.children[0].textified)) {
@@ -16314,16 +16453,17 @@ format.TSPropertySignature = function(parent, node, options) {
                 else {
                     if (p_typeAnnotation.children[0].textified) {
                         p_typeAnnotation.textified = p_typeAnnotation.children[0].textified;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
                     if (p_typeAnnotation.children[0].isText) {
                         p_typeAnnotation.isText = true;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
+                    p_typeAnnotation.name = p_typeAnnotation.children[0].name;
+                    p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     p_typeAnnotation.children = [];
                 }
+            }
+            if (typeAnnotation_comments.length > 0) {
+                p_typeAnnotation.children = p_typeAnnotation.children.concat(typeAnnotation_comments);
             }
         }
     }
@@ -16814,7 +16954,8 @@ format.TSDeclareFunction = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -16825,16 +16966,17 @@ format.TSDeclareFunction = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -16987,7 +17129,8 @@ format.TSFunctionType = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -16998,16 +17141,17 @@ format.TSFunctionType = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -17498,7 +17642,8 @@ format.TSParameterProperty = function(parent, node, options) {
             }
             // log 'f_p_temp parameter before format'
             format(p_parameter, node.parameter, options)
-            // log 'f_p_temp parameter after format', p_parameter
+            // log 'f_p_temp parameter after format', p_parameter.children.length, p_parameter
+            var parameter_comments = extractCommentsIf(p_parameter, 1);
             if (p_parameter.children.length == 1) {
                 p_parameter.tag = p_parameter.children[0].tag;
                 if (!(p_parameter.children[0].isText || p_parameter.children[0].textified)) {
@@ -17509,16 +17654,17 @@ format.TSParameterProperty = function(parent, node, options) {
                 else {
                     if (p_parameter.children[0].textified) {
                         p_parameter.textified = p_parameter.children[0].textified;
-                        p_parameter.name = p_parameter.children[0].name;
-                        p_parameter.source = p_parameter.children[0].source;
                     }
                     if (p_parameter.children[0].isText) {
                         p_parameter.isText = true;
-                        p_parameter.name = p_parameter.children[0].name;
-                        p_parameter.source = p_parameter.children[0].source;
                     }
+                    p_parameter.name = p_parameter.children[0].name;
+                    p_parameter.source = p_parameter.children[0].source;
                     p_parameter.children = [];
                 }
+            }
+            if (parameter_comments.length > 0) {
+                p_parameter.children = p_parameter.children.concat(parameter_comments);
             }
         }
     }
@@ -17601,7 +17747,8 @@ format.TSTypeReference = function(parent, node, options) {
             }
             // log 'f_p_temp typeName before format'
             format(p_typeName, node.typeName, options)
-            // log 'f_p_temp typeName after format', p_typeName
+            // log 'f_p_temp typeName after format', p_typeName.children.length, p_typeName
+            var typeName_comments = extractCommentsIf(p_typeName, 1);
             if (p_typeName.children.length == 1) {
                 p_typeName.tag = p_typeName.children[0].tag;
                 if (!(p_typeName.children[0].isText || p_typeName.children[0].textified)) {
@@ -17612,16 +17759,17 @@ format.TSTypeReference = function(parent, node, options) {
                 else {
                     if (p_typeName.children[0].textified) {
                         p_typeName.textified = p_typeName.children[0].textified;
-                        p_typeName.name = p_typeName.children[0].name;
-                        p_typeName.source = p_typeName.children[0].source;
                     }
                     if (p_typeName.children[0].isText) {
                         p_typeName.isText = true;
-                        p_typeName.name = p_typeName.children[0].name;
-                        p_typeName.source = p_typeName.children[0].source;
                     }
+                    p_typeName.name = p_typeName.children[0].name;
+                    p_typeName.source = p_typeName.children[0].source;
                     p_typeName.children = [];
                 }
+            }
+            if (typeName_comments.length > 0) {
+                p_typeName.children = p_typeName.children.concat(typeName_comments);
             }
         }
     }
@@ -17729,7 +17877,8 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
             }
             // log 'f_p_temp expression before format'
             format(p_expression, node.expression, options)
-            // log 'f_p_temp expression after format', p_expression
+            // log 'f_p_temp expression after format', p_expression.children.length, p_expression
+            var expression_comments = extractCommentsIf(p_expression, 1);
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
                 if (!(p_expression.children[0].isText || p_expression.children[0].textified)) {
@@ -17740,16 +17889,17 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
                 else {
                     if (p_expression.children[0].textified) {
                         p_expression.textified = p_expression.children[0].textified;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
                     if (p_expression.children[0].isText) {
                         p_expression.isText = true;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
+                    p_expression.name = p_expression.children[0].name;
+                    p_expression.source = p_expression.children[0].source;
                     p_expression.children = [];
                 }
+            }
+            if (expression_comments.length > 0) {
+                p_expression.children = p_expression.children.concat(expression_comments);
             }
         }
     }
@@ -17829,7 +17979,8 @@ format.TSAsExpression = function(parent, node, options) {
             }
             // log 'f_p_temp expression before format'
             format(p_expression, node.expression, options)
-            // log 'f_p_temp expression after format', p_expression
+            // log 'f_p_temp expression after format', p_expression.children.length, p_expression
+            var expression_comments = extractCommentsIf(p_expression, 1);
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
                 if (!(p_expression.children[0].isText || p_expression.children[0].textified)) {
@@ -17840,16 +17991,17 @@ format.TSAsExpression = function(parent, node, options) {
                 else {
                     if (p_expression.children[0].textified) {
                         p_expression.textified = p_expression.children[0].textified;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
                     if (p_expression.children[0].isText) {
                         p_expression.isText = true;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
+                    p_expression.name = p_expression.children[0].name;
+                    p_expression.source = p_expression.children[0].source;
                     p_expression.children = [];
                 }
+            }
+            if (expression_comments.length > 0) {
+                p_expression.children = p_expression.children.concat(expression_comments);
             }
         }
     }
@@ -17876,7 +18028,8 @@ format.TSAsExpression = function(parent, node, options) {
             }
             // log 'f_p_temp typeAnnotation before format'
             format(p_typeAnnotation, node.typeAnnotation, options)
-            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation
+            // log 'f_p_temp typeAnnotation after format', p_typeAnnotation.children.length, p_typeAnnotation
+            var typeAnnotation_comments = extractCommentsIf(p_typeAnnotation, 1);
             if (p_typeAnnotation.children.length == 1) {
                 p_typeAnnotation.tag = p_typeAnnotation.children[0].tag;
                 if (!(p_typeAnnotation.children[0].isText || p_typeAnnotation.children[0].textified)) {
@@ -17887,26 +18040,45 @@ format.TSAsExpression = function(parent, node, options) {
                 else {
                     if (p_typeAnnotation.children[0].textified) {
                         p_typeAnnotation.textified = p_typeAnnotation.children[0].textified;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
                     if (p_typeAnnotation.children[0].isText) {
                         p_typeAnnotation.isText = true;
-                        p_typeAnnotation.name = p_typeAnnotation.children[0].name;
-                        p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     }
+                    p_typeAnnotation.name = p_typeAnnotation.children[0].name;
+                    p_typeAnnotation.source = p_typeAnnotation.children[0].source;
                     p_typeAnnotation.children = [];
                 }
+            }
+            if (typeAnnotation_comments.length > 0) {
+                p_typeAnnotation.children = p_typeAnnotation.children.concat(typeAnnotation_comments);
             }
         }
     }
     else {
         throw new Error('AST-node-property typeAnnotation undefined: ' + JSON.stringify(node, null, 2));
     }
+    // log 'p_expression', p_expression
     // log 'p_typeAnnotation', p_typeAnnotation
+    if (p_expression.isText || p_expression.textified) {
+        p_expression.name = p_expression.textified;
+        p_expression.textified = null;
+        p_expression.isText = false;
+    }
     ret.children.push(p_typeAnnotation)
-    p_expression.children.push(ret)
-    ret = p_expression;
+    if (p_expression.children.length == 0) {
+        p_expression.children.push(ret)
+        ret = p_expression;
+    }
+    else {
+        ret = {
+            tag: '@expr', 
+            children: [p_expression, ret]
+        };
+    }
+    if (['@id', 'literal'].indexOf(ret.tag) > -1) {
+        ret.tag = '+';
+    }
+    // log 'TSAsExpression.ret', ret
     if (node.extra && node.extra.parenthesized) {
         ret = {
             tag: '(', 
@@ -18326,7 +18498,8 @@ format.TSEnumMember = function(parent, node, options) {
             }
             // log 'f_p_temp initializer before format'
             format(p_initializer, node.initializer, options)
-            // log 'f_p_temp initializer after format', p_initializer
+            // log 'f_p_temp initializer after format', p_initializer.children.length, p_initializer
+            var initializer_comments = extractCommentsIf(p_initializer, 1);
             if (p_initializer.children.length == 1) {
                 p_initializer.tag = p_initializer.children[0].tag;
                 if (!(p_initializer.children[0].isText || p_initializer.children[0].textified)) {
@@ -18337,16 +18510,17 @@ format.TSEnumMember = function(parent, node, options) {
                 else {
                     if (p_initializer.children[0].textified) {
                         p_initializer.textified = p_initializer.children[0].textified;
-                        p_initializer.name = p_initializer.children[0].name;
-                        p_initializer.source = p_initializer.children[0].source;
                     }
                     if (p_initializer.children[0].isText) {
                         p_initializer.isText = true;
-                        p_initializer.name = p_initializer.children[0].name;
-                        p_initializer.source = p_initializer.children[0].source;
                     }
+                    p_initializer.name = p_initializer.children[0].name;
+                    p_initializer.source = p_initializer.children[0].source;
                     p_initializer.children = [];
                 }
+            }
+            if (initializer_comments.length > 0) {
+                p_initializer.children = p_initializer.children.concat(initializer_comments);
             }
         }
     }
@@ -18698,7 +18872,8 @@ format.TSNonNullExpression = function(parent, node, options) {
             }
             // log 'f_p_temp expression before format'
             format(p_expression, node.expression, options)
-            // log 'f_p_temp expression after format', p_expression
+            // log 'f_p_temp expression after format', p_expression.children.length, p_expression
+            var expression_comments = extractCommentsIf(p_expression, 1);
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
                 if (!(p_expression.children[0].isText || p_expression.children[0].textified)) {
@@ -18709,16 +18884,17 @@ format.TSNonNullExpression = function(parent, node, options) {
                 else {
                     if (p_expression.children[0].textified) {
                         p_expression.textified = p_expression.children[0].textified;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
                     if (p_expression.children[0].isText) {
                         p_expression.isText = true;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
+                    p_expression.name = p_expression.children[0].name;
+                    p_expression.source = p_expression.children[0].source;
                     p_expression.children = [];
                 }
+            }
+            if (expression_comments.length > 0) {
+                p_expression.children = p_expression.children.concat(expression_comments);
             }
         }
     }
@@ -18898,7 +19074,8 @@ format.TSLiteralType = function(parent, node, options) {
             }
             // log 'f_p_temp literal before format'
             format(p_literal, node.literal, options)
-            // log 'f_p_temp literal after format', p_literal
+            // log 'f_p_temp literal after format', p_literal.children.length, p_literal
+            var literal_comments = extractCommentsIf(p_literal, 1);
             if (p_literal.children.length == 1) {
                 p_literal.tag = p_literal.children[0].tag;
                 if (!(p_literal.children[0].isText || p_literal.children[0].textified)) {
@@ -18909,16 +19086,17 @@ format.TSLiteralType = function(parent, node, options) {
                 else {
                     if (p_literal.children[0].textified) {
                         p_literal.textified = p_literal.children[0].textified;
-                        p_literal.name = p_literal.children[0].name;
-                        p_literal.source = p_literal.children[0].source;
                     }
                     if (p_literal.children[0].isText) {
                         p_literal.isText = true;
-                        p_literal.name = p_literal.children[0].name;
-                        p_literal.source = p_literal.children[0].source;
                     }
+                    p_literal.name = p_literal.children[0].name;
+                    p_literal.source = p_literal.children[0].source;
                     p_literal.children = [];
                 }
+            }
+            if (literal_comments.length > 0) {
+                p_literal.children = p_literal.children.concat(literal_comments);
             }
         }
     }
@@ -18994,7 +19172,8 @@ format.TSConditionalType = function(parent, node, options) {
             }
             // log 'f_p_temp checkType before format'
             format(p_checkType, node.checkType, options)
-            // log 'f_p_temp checkType after format', p_checkType
+            // log 'f_p_temp checkType after format', p_checkType.children.length, p_checkType
+            var checkType_comments = extractCommentsIf(p_checkType, 1);
             if (p_checkType.children.length == 1) {
                 p_checkType.tag = p_checkType.children[0].tag;
                 if (!(p_checkType.children[0].isText || p_checkType.children[0].textified)) {
@@ -19005,16 +19184,17 @@ format.TSConditionalType = function(parent, node, options) {
                 else {
                     if (p_checkType.children[0].textified) {
                         p_checkType.textified = p_checkType.children[0].textified;
-                        p_checkType.name = p_checkType.children[0].name;
-                        p_checkType.source = p_checkType.children[0].source;
                     }
                     if (p_checkType.children[0].isText) {
                         p_checkType.isText = true;
-                        p_checkType.name = p_checkType.children[0].name;
-                        p_checkType.source = p_checkType.children[0].source;
                     }
+                    p_checkType.name = p_checkType.children[0].name;
+                    p_checkType.source = p_checkType.children[0].source;
                     p_checkType.children = [];
                 }
+            }
+            if (checkType_comments.length > 0) {
+                p_checkType.children = p_checkType.children.concat(checkType_comments);
             }
         }
     }
@@ -19041,7 +19221,8 @@ format.TSConditionalType = function(parent, node, options) {
             }
             // log 'f_p_temp extendsType before format'
             format(p_extendsType, node.extendsType, options)
-            // log 'f_p_temp extendsType after format', p_extendsType
+            // log 'f_p_temp extendsType after format', p_extendsType.children.length, p_extendsType
+            var extendsType_comments = extractCommentsIf(p_extendsType, 1);
             if (p_extendsType.children.length == 1) {
                 p_extendsType.tag = p_extendsType.children[0].tag;
                 if (!(p_extendsType.children[0].isText || p_extendsType.children[0].textified)) {
@@ -19052,16 +19233,17 @@ format.TSConditionalType = function(parent, node, options) {
                 else {
                     if (p_extendsType.children[0].textified) {
                         p_extendsType.textified = p_extendsType.children[0].textified;
-                        p_extendsType.name = p_extendsType.children[0].name;
-                        p_extendsType.source = p_extendsType.children[0].source;
                     }
                     if (p_extendsType.children[0].isText) {
                         p_extendsType.isText = true;
-                        p_extendsType.name = p_extendsType.children[0].name;
-                        p_extendsType.source = p_extendsType.children[0].source;
                     }
+                    p_extendsType.name = p_extendsType.children[0].name;
+                    p_extendsType.source = p_extendsType.children[0].source;
                     p_extendsType.children = [];
                 }
+            }
+            if (extendsType_comments.length > 0) {
+                p_extendsType.children = p_extendsType.children.concat(extendsType_comments);
             }
         }
     }
@@ -19085,7 +19267,8 @@ format.TSConditionalType = function(parent, node, options) {
             }
             // log 'f_p_temp trueType before format'
             format(p_trueType, node.trueType, options)
-            // log 'f_p_temp trueType after format', p_trueType
+            // log 'f_p_temp trueType after format', p_trueType.children.length, p_trueType
+            var trueType_comments = extractCommentsIf(p_trueType, 1);
             if (p_trueType.children.length == 1) {
                 p_trueType.tag = p_trueType.children[0].tag;
                 if (!(p_trueType.children[0].isText || p_trueType.children[0].textified)) {
@@ -19096,16 +19279,17 @@ format.TSConditionalType = function(parent, node, options) {
                 else {
                     if (p_trueType.children[0].textified) {
                         p_trueType.textified = p_trueType.children[0].textified;
-                        p_trueType.name = p_trueType.children[0].name;
-                        p_trueType.source = p_trueType.children[0].source;
                     }
                     if (p_trueType.children[0].isText) {
                         p_trueType.isText = true;
-                        p_trueType.name = p_trueType.children[0].name;
-                        p_trueType.source = p_trueType.children[0].source;
                     }
+                    p_trueType.name = p_trueType.children[0].name;
+                    p_trueType.source = p_trueType.children[0].source;
                     p_trueType.children = [];
                 }
+            }
+            if (trueType_comments.length > 0) {
+                p_trueType.children = p_trueType.children.concat(trueType_comments);
             }
         }
     }
@@ -19132,7 +19316,8 @@ format.TSConditionalType = function(parent, node, options) {
             }
             // log 'f_p_temp falseType before format'
             format(p_falseType, node.falseType, options)
-            // log 'f_p_temp falseType after format', p_falseType
+            // log 'f_p_temp falseType after format', p_falseType.children.length, p_falseType
+            var falseType_comments = extractCommentsIf(p_falseType, 1);
             if (p_falseType.children.length == 1) {
                 p_falseType.tag = p_falseType.children[0].tag;
                 if (!(p_falseType.children[0].isText || p_falseType.children[0].textified)) {
@@ -19143,16 +19328,17 @@ format.TSConditionalType = function(parent, node, options) {
                 else {
                     if (p_falseType.children[0].textified) {
                         p_falseType.textified = p_falseType.children[0].textified;
-                        p_falseType.name = p_falseType.children[0].name;
-                        p_falseType.source = p_falseType.children[0].source;
                     }
                     if (p_falseType.children[0].isText) {
                         p_falseType.isText = true;
-                        p_falseType.name = p_falseType.children[0].name;
-                        p_falseType.source = p_falseType.children[0].source;
                     }
+                    p_falseType.name = p_falseType.children[0].name;
+                    p_falseType.source = p_falseType.children[0].source;
                     p_falseType.children = [];
                 }
+            }
+            if (falseType_comments.length > 0) {
+                p_falseType.children = p_falseType.children.concat(falseType_comments);
             }
         }
     }
@@ -19334,7 +19520,8 @@ format.TSTypeQuery = function(parent, node, options) {
             }
             // log 'f_p_temp exprName before format'
             format(p_exprName, node.exprName, options)
-            // log 'f_p_temp exprName after format', p_exprName
+            // log 'f_p_temp exprName after format', p_exprName.children.length, p_exprName
+            var exprName_comments = extractCommentsIf(p_exprName, 1);
             if (p_exprName.children.length == 1) {
                 p_exprName.tag = p_exprName.children[0].tag;
                 if (!(p_exprName.children[0].isText || p_exprName.children[0].textified)) {
@@ -19345,16 +19532,17 @@ format.TSTypeQuery = function(parent, node, options) {
                 else {
                     if (p_exprName.children[0].textified) {
                         p_exprName.textified = p_exprName.children[0].textified;
-                        p_exprName.name = p_exprName.children[0].name;
-                        p_exprName.source = p_exprName.children[0].source;
                     }
                     if (p_exprName.children[0].isText) {
                         p_exprName.isText = true;
-                        p_exprName.name = p_exprName.children[0].name;
-                        p_exprName.source = p_exprName.children[0].source;
                     }
+                    p_exprName.name = p_exprName.children[0].name;
+                    p_exprName.source = p_exprName.children[0].source;
                     p_exprName.children = [];
                 }
+            }
+            if (exprName_comments.length > 0) {
+                p_exprName.children = p_exprName.children.concat(exprName_comments);
             }
         }
     }
@@ -19650,7 +19838,8 @@ format.TSDeclareMethod = function(parent, node, options) {
             }
             // log 'f_p_temp returnType before format'
             format(p_returnType, node.returnType, options)
-            // log 'f_p_temp returnType after format', p_returnType
+            // log 'f_p_temp returnType after format', p_returnType.children.length, p_returnType
+            var returnType_comments = extractCommentsIf(p_returnType, 1);
             if (p_returnType.children.length == 1) {
                 p_returnType.tag = p_returnType.children[0].tag;
                 if (!(p_returnType.children[0].isText || p_returnType.children[0].textified)) {
@@ -19661,16 +19850,17 @@ format.TSDeclareMethod = function(parent, node, options) {
                 else {
                     if (p_returnType.children[0].textified) {
                         p_returnType.textified = p_returnType.children[0].textified;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
                     if (p_returnType.children[0].isText) {
                         p_returnType.isText = true;
-                        p_returnType.name = p_returnType.children[0].name;
-                        p_returnType.source = p_returnType.children[0].source;
                     }
+                    p_returnType.name = p_returnType.children[0].name;
+                    p_returnType.source = p_returnType.children[0].source;
                     p_returnType.children = [];
                 }
+            }
+            if (returnType_comments.length > 0) {
+                p_returnType.children = p_returnType.children.concat(returnType_comments);
             }
         }
     }
@@ -19684,10 +19874,22 @@ format.TSDeclareMethod = function(parent, node, options) {
         ret.children.push(p_returnType);
     }
     if (node.async) {
-        ret.tag = 'async-m-decl';
+        ret.children.push({
+            tag: 'async', 
+            name: '', 
+            children: [
+                
+            ]
+        })
     }
     if (node.generator) {
-        ret.tag += '*';
+        ret.children.push({
+            tag: 'generator', 
+            name: '', 
+            children: [
+                
+            ]
+        })
     }
     if (ret != null) {
         if (__isText) {
@@ -19757,7 +19959,8 @@ format.TSQualifiedName = function(parent, node, options) {
             }
             // log 'f_p_temp left before format'
             format(p_left, node.left, options)
-            // log 'f_p_temp left after format', p_left
+            // log 'f_p_temp left after format', p_left.children.length, p_left
+            var left_comments = extractCommentsIf(p_left, 1);
             if (p_left.children.length == 1) {
                 p_left.tag = p_left.children[0].tag;
                 if (!(p_left.children[0].isText || p_left.children[0].textified)) {
@@ -19768,16 +19971,17 @@ format.TSQualifiedName = function(parent, node, options) {
                 else {
                     if (p_left.children[0].textified) {
                         p_left.textified = p_left.children[0].textified;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
                     if (p_left.children[0].isText) {
                         p_left.isText = true;
-                        p_left.name = p_left.children[0].name;
-                        p_left.source = p_left.children[0].source;
                     }
+                    p_left.name = p_left.children[0].name;
+                    p_left.source = p_left.children[0].source;
                     p_left.children = [];
                 }
+            }
+            if (left_comments.length > 0) {
+                p_left.children = p_left.children.concat(left_comments);
             }
         }
     }
@@ -19801,7 +20005,8 @@ format.TSQualifiedName = function(parent, node, options) {
             }
             // log 'f_p_temp right before format'
             format(p_right, node.right, options)
-            // log 'f_p_temp right after format', p_right
+            // log 'f_p_temp right after format', p_right.children.length, p_right
+            var right_comments = extractCommentsIf(p_right, 1);
             if (p_right.children.length == 1) {
                 p_right.tag = p_right.children[0].tag;
                 if (!(p_right.children[0].isText || p_right.children[0].textified)) {
@@ -19812,16 +20017,17 @@ format.TSQualifiedName = function(parent, node, options) {
                 else {
                     if (p_right.children[0].textified) {
                         p_right.textified = p_right.children[0].textified;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
                     if (p_right.children[0].isText) {
                         p_right.isText = true;
-                        p_right.name = p_right.children[0].name;
-                        p_right.source = p_right.children[0].source;
                     }
+                    p_right.name = p_right.children[0].name;
+                    p_right.source = p_right.children[0].source;
                     p_right.children = [];
                 }
+            }
+            if (right_comments.length > 0) {
+                p_right.children = p_right.children.concat(right_comments);
             }
         }
     }
@@ -19908,7 +20114,8 @@ format.TSExportAssignment = function(parent, node, options) {
             }
             // log 'f_p_temp expression before format'
             format(p_expression, node.expression, options)
-            // log 'f_p_temp expression after format', p_expression
+            // log 'f_p_temp expression after format', p_expression.children.length, p_expression
+            var expression_comments = extractCommentsIf(p_expression, 1);
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
                 if (!(p_expression.children[0].isText || p_expression.children[0].textified)) {
@@ -19919,16 +20126,17 @@ format.TSExportAssignment = function(parent, node, options) {
                 else {
                     if (p_expression.children[0].textified) {
                         p_expression.textified = p_expression.children[0].textified;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
                     if (p_expression.children[0].isText) {
                         p_expression.isText = true;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
+                    p_expression.name = p_expression.children[0].name;
+                    p_expression.source = p_expression.children[0].source;
                     p_expression.children = [];
                 }
+            }
+            if (expression_comments.length > 0) {
+                p_expression.children = p_expression.children.concat(expression_comments);
             }
         }
     }
@@ -19937,6 +20145,110 @@ format.TSExportAssignment = function(parent, node, options) {
     }
     else {
         ret.children.push(p_expression)
+    }
+    if (ret != null) {
+        if (__isText) {
+            ret.textified = ret.name;
+        }
+        if (typeof __skip === 'undefined' || __skip == false) {
+            // log '### add ', ret.tag , 'to', parent.tag
+            processLeadingComments(node, parent, options);
+            parent.children.push(ret);
+            processTrailingComments(node, parent, options);
+        }
+    }
+};
+// process AST node TSImportType
+var TSImportType_astNode = {
+    name: "TSImportType", 
+    ittfTag: ":import-type", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSImportType_astNode)
+format.TSImportType = function(parent, node, options) {
+    var f_astNode = TSImportType_astNode;
+    var __isText = false;
+    // log 'node : TSImportType ----------------------------------------- parent ittf tag : ', parent.tag
+    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
+    for (i=0; i<i_len; i++) {
+        item = Object.keys(node)[i];
+        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
+            if (verify.isNotEmpty(node[item])) {
+                // log 'property', item, node[item]
+            }
+            else {
+                // log 'property', item
+            }
+        }
+    }
+    var ret = {
+        tag: ':import-type', 
+        name: '', 
+        isText: false, 
+        textified: null, 
+        AST: 'TSImportType', 
+        source: options.input.substring(node.start, node.end), 
+        children: [
+            
+        ]
+    };
+    // process AST-node-property argument and set it in a var
+    var p_argument = null;
+    if (typeof(node.argument) !== 'undefined' && node.argument != null) {
+        p_argument = {
+            textified: null, 
+            isText: false, 
+            ASTProp: 'argument', 
+            children: [
+                
+            ]
+        };
+        if (node.argument == null) {
+            p_argument.text = "null";
+        }
+        else {
+            if (!node.argument.type) {
+                throw 'Node argument has no type: ' + JSON.stringify(node, null, 2);
+            }
+            // log 'f_p_temp argument before format'
+            format(p_argument, node.argument, options)
+            // log 'f_p_temp argument after format', p_argument.children.length, p_argument
+            var argument_comments = extractCommentsIf(p_argument, 1);
+            if (p_argument.children.length == 1) {
+                p_argument.tag = p_argument.children[0].tag;
+                if (!(p_argument.children[0].isText || p_argument.children[0].textified)) {
+                    p_argument.name = p_argument.children[0].name;
+                    p_argument.source = p_argument.children[0].source;
+                    p_argument.children = p_argument.children[0].children;
+                }
+                else {
+                    if (p_argument.children[0].textified) {
+                        p_argument.textified = p_argument.children[0].textified;
+                    }
+                    if (p_argument.children[0].isText) {
+                        p_argument.isText = true;
+                    }
+                    p_argument.name = p_argument.children[0].name;
+                    p_argument.source = p_argument.children[0].source;
+                    p_argument.children = [];
+                }
+            }
+            if (argument_comments.length > 0) {
+                p_argument.children = p_argument.children.concat(argument_comments);
+            }
+        }
+    }
+    else {
+        throw new Error('AST-node-property argument undefined: ' + JSON.stringify(node, null, 2));
+    }
+    if (isTextualNode(p_argument)) {
+        ret.textified = 'import(' + getNodeText(p_argument) + ')';
+        ret.isText = true;
+    }
+    else {
+        ret.children.push(p_argument)
     }
     if (ret != null) {
         if (__isText) {
@@ -20186,7 +20498,8 @@ format.TSExternalModuleReference = function(parent, node, options) {
             }
             // log 'f_p_temp expression before format'
             format(p_expression, node.expression, options)
-            // log 'f_p_temp expression after format', p_expression
+            // log 'f_p_temp expression after format', p_expression.children.length, p_expression
+            var expression_comments = extractCommentsIf(p_expression, 1);
             if (p_expression.children.length == 1) {
                 p_expression.tag = p_expression.children[0].tag;
                 if (!(p_expression.children[0].isText || p_expression.children[0].textified)) {
@@ -20197,16 +20510,17 @@ format.TSExternalModuleReference = function(parent, node, options) {
                 else {
                     if (p_expression.children[0].textified) {
                         p_expression.textified = p_expression.children[0].textified;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
                     if (p_expression.children[0].isText) {
                         p_expression.isText = true;
-                        p_expression.name = p_expression.children[0].name;
-                        p_expression.source = p_expression.children[0].source;
                     }
+                    p_expression.name = p_expression.children[0].name;
+                    p_expression.source = p_expression.children[0].source;
                     p_expression.children = [];
                 }
+            }
+            if (expression_comments.length > 0) {
+                p_expression.children = p_expression.children.concat(expression_comments);
             }
         }
     }
@@ -20229,6 +20543,42 @@ format.TSExternalModuleReference = function(parent, node, options) {
     }
 };
 var md = module.exports = {};
+function splitComments(ret) {
+    var a = [];
+    var b = [];
+    var i, i_items=ret.children, i_len=ret.children.length, item;
+    for (i=0; i<i_len; i++) {
+        item = ret.children[i];
+        if (item.tag == '#') {
+            b.push(item);
+        }
+        else {
+            a.push(item);
+        }
+    }
+    return [a,b];
+}
+function extractCommentsIf(ret, len) {
+    var a = [];
+    var b = [];
+    var i, i_items=ret.children, i_len=ret.children.length, item;
+    for (i=0; i<i_len; i++) {
+        item = ret.children[i];
+        if (item.tag == '#') {
+            b.push(item);
+        }
+        else {
+            a.push(item);
+        }
+    }
+    if (a.length == len) {
+        ret.children = a;
+        return b;
+    }
+    else {
+        return [];
+    }
+}
 function processLeadingComments(node, ittfNode, options) {
     processComments(node.leadingComments, node, ittfNode, options, true)
 }
@@ -20359,7 +20709,9 @@ function processParams(ittfNode) {
                     }
                 }
                 if (plen == 2) {
+                    console.log('processParams', 'plen', plen, 'p.children[0].tag', p.children[0].tag, 'p.children[1].tag', p.children[1].tag);
                     if (['@id', '@expr', 'literal'].indexOf(p.children[1].tag) > -1) {
+                        console.log(111);
                         // has simple default value (is AssignmentPattern)
                         p.name = p.children[0].name;
                         if (p.children[0].children.length > 0) {
@@ -20367,13 +20719,18 @@ function processParams(ittfNode) {
                             p.children[0].name = '';
                             p.children[0].children = [];
                         }
-                        p.children[1].tag = ':=';
+                        p.children[1].tag = '=';
                     }
                     else {
+                        console.log(112);
                         if (p.AST === 'AssignmentPattern') {
                             // has complex default value (is AssignmentPattern)
+                            if (['@id', '@expr', 'literal'].indexOf(p.children[0].tag) > -1) {
+                                p.name = p.children[0].name;
+                                p.children = [p.children[0].children[0], p.children[1]];
+                            }
                             p.children[1] = {
-                                tag: ':=', 
+                                tag: '=', 
                                 name: '', 
                                 children: [
                                     p.children[1]
@@ -20396,7 +20753,43 @@ function getNodeText(ittfNode) {
     return ittfNode.textified || ittfNode.name;
 }
 function isTextualNode(ittfNode) {
+    return ittfNode && (ittfNode.isText || ittfNode.textified) && ittfNode.children.length == 0;
+}
+function isTextualCommentedNode(ittfNode) {
+    var i, i_items=ittfNode.children, i_len=ittfNode.children.length, item;
+    for (i=0; i<i_len; i++) {
+        item = ittfNode.children[i];
+        if (item.tag != '#') {
+            return false;
+        }
+    }
     return ittfNode && (ittfNode.isText || ittfNode.textified);
+}
+function setOrInlineIfTextualNode(ret, ittfNode, ittfTag) {
+    if (isTextualNode(ittfNode)) {
+        ret.children.push({
+            tag: ittfTag, 
+            name: getNodeText(ittfNode), 
+            children: [
+                
+            ]
+        })
+    }
+    else if (isTextualCommentedNode(ittfNode)) {
+        ret.children.push({
+            tag: ittfTag, 
+            name: getNodeText(ittfNode), 
+            children: ittfNode.children
+        })
+    }
+    else {
+        ret.children.push({
+            tag: ittfTag, 
+            children: [
+                ittfNode
+            ]
+        })
+    }
 }
 function isTextualChildByTag(ittfNode, tag) {
     var item = getChildByTag(ittfNode, tag);
@@ -20509,10 +20902,11 @@ function getTextList(ittfNode, sep) {
     var i, i_items=ittfNode.children, i_len=ittfNode.children.length, item;
     for (i=0; i<i_len; i++) {
         item = ittfNode.children[i];
-        if (item.isText) {
+        // log 'getTextList', item
+        if (item.isText && item.children.length == 0) {
             sb.push(item.name);
         }
-        else if (item.textified) {
+        else if (item.textified && item.children.length == 0) {
             sb.push(item.textified);
         }
         else {
@@ -20598,6 +20992,9 @@ function isFlowPrimitiveTag(s) {
 }
 function isTypeReference(s) {
     return [':ref', ':string', ':number', ':boolean', ':{', ':[', ':func', ':void', ':null', ':never'].indexOf(s) > -1;
+}
+function parenthesize(text, parenthesized) {
+    return (parenthesized ? '(' : '') + text + (parenthesized ? ')' : '');
 }
 var commonPlugins = [
     'jsx', 

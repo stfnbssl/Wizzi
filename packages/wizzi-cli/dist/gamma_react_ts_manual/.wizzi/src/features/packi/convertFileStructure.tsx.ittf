@@ -139,7 +139,7 @@ module
                                     @ contents
                                         @expr 
                                             ( 
-                                                @id item
+                                                + item
                                                     :as 
                                                         :any 
                                             . content
@@ -219,16 +219,16 @@ module
                         param entry
                         if diff[entry.item.path]
                             if diff[entry.item.path].a === entry.item
-                                # console.log('delete', entry.item.path)
                                 delete diff[entry.item.path]
+                                    # console.log('delete', entry.item.path)
                             else
                                 # console.log('<>', entry.item.path)
                                 set diff[entry.item.path].kind === '<>'
                                 set diff[entry.item.path].b === entry.item
                         else
-                            # console.log('+', entry.item.path)
                             set diff[entry.item.path] =
                                 { 
                                     @ kind '+'
                                     @ b entry.item
+                                # console.log('+', entry.item.path)
                 return diff

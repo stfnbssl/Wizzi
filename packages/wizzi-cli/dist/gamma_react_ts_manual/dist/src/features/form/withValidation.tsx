@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\withValidation.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {FormValidationContext} from './Form';
@@ -38,9 +38,10 @@ export default function withValidation<P extends InjectedProps>(Comp: React.Comp
                 initial: true, 
                 error: null, 
                 value: this.props.value
-            };
+            }
+            ;
             _key: number = 0;
-            _root = React.createRef();
+            _root = React.createRef<any>();
             componentDidMount() {
                 this._key = this.props.validation.register({
                     validate: this._validate, 
@@ -55,8 +56,8 @@ export default function withValidation<P extends InjectedProps>(Comp: React.Comp
             componentWillUnmount() {
                 this.props.validation.unregister(this._key);
             }
-            _validate = () => {
-                this.props.validate(this.props.value)}
+            _validate = () => 
+                this.props.validate(this.props.value);
             _focus = () => {
                 this._root.current.focus && this._root.current.focus();
                 if (this.state.initial) {
@@ -65,7 +66,7 @@ export default function withValidation<P extends InjectedProps>(Comp: React.Comp
                         error: this.props.validate(this.props.value)
                     })
                 }
-            }
+            };
             render() {
                 // @ts-ignore
                 const {
@@ -77,13 +78,30 @@ export default function withValidation<P extends InjectedProps>(Comp: React.Comp
                     error
                 } = this.state;
                 return  (
-                        <Comp ref={this._root} error={error ? true : false} helperText={error && error.message || helperText} {...other} />
+                    <Comp ref={this._root}
+                        error={error ? true : false}
+                        helperText={(error && error.message) || helperText}
+                        {...other}
+                     />
                     )
                 ;
             }
         }
-        return (props) =>  (
-                    <FormValidationContext.Consumer />
+        return (props) => 
+                 (
+                <FormValidationContext.Consumer>
+                    {
+                        // @ts-ignore
+                        (value: any) => {
+                            return  (
+                                <EnhancedComponent validation={value} {...props} />
+                                )
+                            ;
+                        }
+                        
+                    }
+                </FormValidationContext.Consumer>
                 )
+            
         ;
     }

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Toast.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -29,10 +29,12 @@ const TOAST_GROUP_ID = '__toast_group__container';
 class Toast extends React.Component<Props, State> {
     static defaultProps = {
         timeout: 5000
-    };
+    }
+    ;
     state = {
         dismissing: false
-    };
+    }
+    ;
     componentDidMount() {
         let group = document.getElementById(TOAST_GROUP_ID);
         if (!group) {
@@ -58,34 +60,43 @@ class Toast extends React.Component<Props, State> {
     }
     _container = document.createElement('div');
     _timer: any;
-    _scheduleDismiss = () => {
-        this._timer = setTimeout(this._handleDismiss, this.props.timeout)}
+    _scheduleDismiss = () => 
+        this._timer = setTimeout(this._handleDismiss, this.props.timeout);
     _cancelDismiss = () => {
         this.setState({
             dismissing: false
         })
         clearTimeout(this._timer);
-    }
+    };
     _handleDismiss = () => {
         this.setState({
             dismissing: true
         })
-        this._timer = setTimeout(() => this.props.onDismiss && this.props.onDismiss(), 400);
-    }
+        this._timer = setTimeout(() => 
+            this.props.onDismiss && this.props.onDismiss()
+        , 400);
+    };
     render() {
         const props = this.props.persistent ? {} : {
                 onMouseEnter: this._cancelDismiss, 
                 onMouseLeave: this._scheduleDismiss
             };
         return ReactDOM.createPortal(
-                <div {...props} className={css(styles.toast, this.props.type ? this.props.type === 'error' ? styles.error : styles.success : this.props.theme === 'dark' ? styles.dark : styles.light, this.state.dismissing ? styles.dismissing : styles.appearing)}>
-                    <div className={css(styles.label)} />
+            <div {...props} className={css(styles.toast, this.props.type ? this.props.type === 'error' ? styles.error : styles.success : this.props.theme === 'dark' ? styles.dark : styles.light, this.state.dismissing ? styles.dismissing : styles.appearing)}>
+                <div className={css(styles.label)}>
+                    {this.props.label}
+                </div>
                 {
-                    this.props.actions.map((action) =>  (
-                            <button key={action.label} className={css(styles.button, this.props.theme !== 'dark' && !this.props.type ? styles.buttonLight : null)} onClick={action.action || this._handleDismiss} />
+                    this.props.actions.map((action) => 
+                         (
+                        <button key={action.label} className={css(styles.button, this.props.theme !== 'dark' && !this.props.type ? styles.buttonLight : null)} onClick={action.action || this._handleDismiss}>
+                            {action.label}
+                        </button>
                         )
+                    
                     )
-                }</div>
+                }
+            </div>
             , this._container);
     }
 }

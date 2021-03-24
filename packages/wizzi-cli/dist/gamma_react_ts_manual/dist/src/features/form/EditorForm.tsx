@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\EditorForm.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -67,14 +67,18 @@ function stateDefaultValues(fields: {
     const ret: { 
         [key: string]: string;
     } = {};
-    Object.keys(fields).map(k => ret[k] = fields[k].default)
+    Object.keys(fields).map(k => 
+        ret[k] = fields[k].default
+    )
     return ret;
 }
 function optionsSelected(options: { 
     label: string;
     value: string;
 }[], value: string):  any {
-    const selected = options.find(option => option.value === value);
+    const selected = options.find(option => 
+        option.value === value
+    );
     return selected ? selected.value : undefined;
 }
 // @ts-ignore
@@ -101,9 +105,10 @@ class EditorForm extends React.Component<Props, State> {
     state = {
         visible: this.props.visible, 
         values: stateDefaultValues(this.props.fields)
-    };
-    _handleSubmit = () => {
-        this.props.onSubmit(this.state.values)}
+    }
+    ;
+    _handleSubmit = () => 
+        this.props.onSubmit(this.state.values);
     render() {
         const {
             classes, 
@@ -117,12 +122,14 @@ class EditorForm extends React.Component<Props, State> {
         } = this.props;
         // console.log('EditForm.state.values', this.state.values);
         return visible ?  (
-                    <div className={classes.container}>
-                        <div className={classnames(css(styles.modal, theme === 'dark' ? styles.contentDark : styles.contentLight), className)}>
-                            <div className={classes.title}>
-                                <Typography variant="h6" />
-                            </div>
-                            <Form onSubmit={this._handleSubmit}>
+                <div className={classes.container}>
+                    <div className={classnames(css(styles.modal, theme === 'dark' ? styles.contentDark : styles.contentLight), className)}>
+                        <div className={classes.title}>
+                            <Typography variant="h6">
+                                {title}
+                            </Typography>
+                        </div>
+                        <Form onSubmit={this._handleSubmit}>
                             {
                                 Object.keys(fields).map((k, i) => {
                                     const field = fields[k];
@@ -130,47 +137,89 @@ class EditorForm extends React.Component<Props, State> {
                                     return ((([
                                             'text', 
                                             'checkbox'
-                                        ].indexOf(field.type)) > -1) ?  (
-                                                <div key={i} className={classes.fieldContainer}>
-                                                    <ValidatedInput autoFocus type={field.type} className={classes.textField} margin="normal" label={field.label} value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({
+                                        ].indexOf(field.type)) > -1
+                                        ) ?  (
+                                            <div key={i} className={classes.fieldContainer}>
+                                                <ValidatedInput autoFocus
+                                                    type={field.type}
+                                                    className={classes.textField}
+                                                    margin="normal"
+                                                    label={field.label}
+                                                    value={value}
+                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
+                                                        this.setState({
                                                             values: {
                                                                 ...this.state.values, 
                                                                 [k]: e.target.value
                                                             }
-                                                        })} placeholder={field.label} validate={field.onValidate || validationOk} />
-                                                </div>
+                                                        })
+                                                    }
+                                                    placeholder={field.label}
+                                                    validate={field.onValidate || validationOk}
+                                                 />
+                                            </div>
                                             )
                                          : field.type === 'select' ?  (
-                                                    <div key={i} className={classes.fieldContainer}>
-                                                        <ValidatedInput select className={classes.textField} label={field.label} SelectProps={{
+                                                <div key={i} className={classes.fieldContainer}>
+                                                    <ValidatedInput select
+                                                        className={classes.textField}
+                                                        label={field.label}
+                                                        SelectProps={{
                                                             MenuProps: {
                                                                 className: classes.menu
                                                             }
-                                                        }} helperText={field.helperText} margin="normal" value={value} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                                            // console.log('onChange', k, e.target.value);
+                                                        }}
+                                                        helperText={field.helperText}
+                                                        margin="normal"
+                                                        value={value}
+                                                        onChange={// console.log('onChange', k, e.target.value);
+                                                        (e: React.ChangeEvent<HTMLInputElement>) => 
                                                             this.setState({
                                                                 values: {
                                                                     ...this.state.values, 
                                                                     [k]: e.target.value
                                                                 }
-                                                            })}
-                                                        } placeholder={field.label} validate={field.onValidate || validationOk} />
-                                                    </div>
+                                                            })
+                                                        }
+                                                        placeholder={field.label}
+                                                        validate={field.onValidate || validationOk}
+                                                    >
+                                                        {
+                                                            field.options.map((option) => 
+                                                                 (
+                                                                <MenuItem key={option.value} value={option.value}>
+                                                                    {option.label}
+                                                                </MenuItem>
+                                                                )
+                                                            
+                                                            )
+                                                        }
+                                                    </ValidatedInput>
+                                                </div>
                                                 )
                                              : null);
                                 }
                                 )
-                            }<div className={css(styles.buttons)}>
-                                    <div className={classes.button}>
-                                        <SubmitButton type="submit" color="primary" variant="extended" />
-                                    </div>
-                                    <div className={classes.button}>
-                                        <Fab type="button" color="secondary" variant="extended" onClick={onDismiss} />
-                                    </div>
+                            }
+                            <div className={css(styles.buttons)}>
+                                <div className={classes.button}>
+                                    <SubmitButton type="submit" color="primary" variant="extended">
+                                        {action}
+                                    </SubmitButton>
                                 </div>
-                            </Form>
-                        </div>
+                                <div className={classes.button}>
+                                    <Fab type="button"
+                                        color="secondary"
+                                        variant="extended"
+                                        onClick={onDismiss}
+                                    >
+                                        Cancel
+                                    </Fab>
+                                </div>
+                            </div>
+                        </Form>
                     </div>
+                </div>
                 )
              : null;
     }
@@ -246,7 +295,8 @@ const styles = StyleSheet.create({
         border: `1px solid ${colors.border}`
     }
 });
-const muiStyles = (theme: Theme) => createStyles({
+const muiStyles = (theme: Theme) => 
+    createStyles({
         container: {
             padding: '20px'
         }, 
@@ -265,5 +315,6 @@ const muiStyles = (theme: Theme) => createStyles({
             marginRight: theme.spacing.unit, 
             width: '100%'
         }
-    });
+    })
+;
 export default withStyles(muiStyles)(withThemeName(EditorForm));

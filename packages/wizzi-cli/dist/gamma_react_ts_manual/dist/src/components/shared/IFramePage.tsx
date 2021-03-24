@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\IFramePage.tsx.ittf
-    utc time: Sun, 21 Mar 2021 14:14:13 GMT
+    utc time: Wed, 24 Mar 2021 16:19:16 GMT
 */
 import React from 'react';
 import {connect} from 'react-redux';
@@ -43,14 +43,14 @@ class IFramePage extends React.Component<Props> {
     shouldComponentUpdate() {
         return false;
     }
-    _updateContent = (content: string) => {
+    _updateContent = (content?: string) => {
         console.log('_updateContent.this.ifr', this.ifr);
         console.log('_updateContent.this.ifr.contentWindow', this.ifr.contentWindow);
         console.log('_updateContent.this.ifr.contentDocument', this.ifr.contentDocument);
         this.ifr.setAttribute('srcdoc', content);
         //
-    }
-    _updateStylesheets = (styleSheets) => {
+    };
+    _updateStylesheets = (styleSheets: any) => {
         const document = this.ifr.contentDocument;
         if (document) {
             const head = document.getElementsByTagName('head')[0];
@@ -70,8 +70,8 @@ class IFramePage extends React.Component<Props> {
                 )
             }
         }
-    }
-    _updateCss = (css: string) => {
+    };
+    _updateCss = (css?: string) => {
         const document = this.ifr.contentDocument;
         if (document) {
             const head = document.getElementsByTagName('head')[0];
@@ -94,18 +94,24 @@ class IFramePage extends React.Component<Props> {
                 this.cssNode = cssNode;
             }
         }
-    }
+    };
     render() {
         return  (
-                <div style={{
-                    width: '100%', 
-                    height: '100%'
-                }}>
-                    <iframe frameBorder={0} sandbox="allow-scripts" style={{
+            <div style={{
+                width: '100%', 
+                height: '100%'
+            }}>
+                <iframe frameBorder={0}
+                    sandbox="allow-scripts"
+                    style={{
                         width: '100%', 
                         height: '100%'
-                    }} ref={f => this.ifr = f} />
-                </div>
+                    }}
+                    ref={f => 
+                        this.ifr = f
+                    }
+                 />
+            </div>
             )
         ;
     }

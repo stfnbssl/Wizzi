@@ -27,6 +27,21 @@ function countStatements(model) {
     }
     return count;
 }
+function writeComments(model, ctx) {
+    var temp = [];
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            ctx.w('// ' + item.wzName);
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+}
 md.load = function(cnt) {
     cnt.stm.exportfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -233,7 +248,13 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         ctx.write('yield ');
-        cnt.genItems(model.statements, ctx, callback)
+        cnt.genItems(model.statements, ctx, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.w(u.semicolon(name));
+            return callback(null, null);
+        })
     };
     cnt.stm.xawait = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {

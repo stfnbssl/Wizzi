@@ -37,7 +37,7 @@ module
                 :any 
             param reset
                 :boolean 
-                := true
+                = true
             set this.payload = payload
             if reset
                 _ clearInterval(this.timer)
@@ -51,7 +51,7 @@ module
                 :number 
             param reset
                 :boolean 
-                := true
+                = true
             set this.frequence = frequence
             if reset || frequence == 0
                 _ clearInterval(this.timer)
@@ -122,7 +122,6 @@ module
         m getEventEmitter
             return this.eventEmitter
     let _eventService
-        :ref EventService
     export 
         function getEventServiceInstance
             :return

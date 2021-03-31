@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\filelist\FileListPaneButton.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -16,7 +16,7 @@ class FileListPaneButton extends React.PureComponent<Props> {
         const {
             innerRef, 
             ...rest
-        } = this.props;
+         } = this.props;
         return  (
             <button {...rest} className={css(styles.button)} ref={innerRef}>
                 <svg className={css(styles.icon)} viewBox="0 0 16 16">
@@ -40,11 +40,11 @@ const styles = StyleSheet.create({
         border: 0, 
         margin: 0, 
         outline: 0
-    }, 
+     }, 
     icon: {
         fill: 'currentColor', 
         height: 16, 
         width: 16, 
         verticalAlign: -3
-    }
-});
+     }
+ });

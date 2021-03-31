@@ -32,6 +32,16 @@ module
             @ ' + me'
         _ ctx.w
 
+
+        _ ctx.w
+            @ 'now i set inlineOn'
+        _ ctx.inlineOn
+        _ ctx.w
+            @ '- and this ctx.w() go in the same line'
+        _ ctx.inlineOff
+        _ ctx.w
+            @ '- after inlineOff ctx.w() go in a new line'
+
         _ printValue
             @ ctx.getContent()
             @ 'content'

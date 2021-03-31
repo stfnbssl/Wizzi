@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ModalDialog.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -17,7 +17,7 @@ export default function ModalDialog(props: Props) {
             title, 
             children, 
             ...rest
-        } = props;
+         } = props;
         return  (
             <ModalSheet {...rest} className={classnames(css(props.autoSize !== false && styles.small), props.className)}>
                 {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         minHeight: 0, 
         maxWidth: 420, 
         maxHeight: 'calc(100% - 100px)'
-    }, 
+     }, 
     title: {
         height: 72, 
         fontSize: 24, 
@@ -52,13 +52,13 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: 'center', 
         boxShadow: '0 1px 0 rgba(36, 44, 58, 0.1)'
-    }, 
+     }, 
     bottom: {
         padding: '16px 24px 24px 24px', 
         overflow: 'auto'
-    }, 
+     }, 
     content: {
         padding: 24, 
         overflow: 'auto'
-    }
-});
+     }
+ });

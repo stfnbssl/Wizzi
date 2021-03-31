@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\AssetViewer.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -28,8 +28,8 @@ export default class AssetViewer extends React.PureComponent<Props, State> {
                 layout: {
                     height: image.naturalHeight, 
                     width: image.naturalWidth
-                }
-            })
+                 }
+             })
         };
         render() {
             const ext = this.props.entry.item.path.includes('.') ? this.props.entry.item.path.split('.').pop() : null;
@@ -84,30 +84,30 @@ const styles = StyleSheet.create({
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center'
-    }, 
+     }, 
     inner: {
         maxHeight: '100%', 
         maxWidth: '100%', 
         textAlign: 'center'
-    }, 
+     }, 
     name: {
         marginTop: '2em', 
         fontWeight: 500
-    }, 
+     }, 
     layout: {
         opacity: 0.5
-    }, 
+     }, 
     preview: {
         maxHeight: '100%', 
         maxWidth: '100%', 
         height: 'auto', 
         width: 'auto'
-    }, 
+     }, 
     ext: {
         fill: 'currentColor', 
         fontFamily: 'var(--font-monospace)', 
         textAnchor: 'middle', 
         fontSize: 20, 
         opacity: 0.8
-    }
-});
+     }
+ });

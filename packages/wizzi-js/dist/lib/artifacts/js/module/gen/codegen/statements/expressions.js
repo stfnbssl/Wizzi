@@ -67,7 +67,6 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.expressionMember. Got: ' + callback);
         }
         ctx.write( model.wzName || '');
-        // log 'expressionMember', model.statements
         cnt.genItems(model.statements, ctx, callback)
     };
     cnt.stm.xvoid = function(model, ctx, callback) {
@@ -203,6 +202,9 @@ md.load = function(cnt) {
         if (model.wzParent.wzElement == 'template') {
             ctx.w('${');
         }
+        if (model.wzParent.wzElement == 'htmlelement') {
+            ctx.w('{');
+        }
         var paren = ctx.parenRequired || model.statements.length > 2;
         if (paren) {
             ctx.write('(');
@@ -250,6 +252,7 @@ md.load = function(cnt) {
         }
         function doThen(callback) {
             if (m_then) {
+                // log 'doThen', Object.keys(ctx), 'forceInLine', ctx.forceInLine, '__inside_expr', ctx.__inside_expr, '__inside_html', ctx.__inside_html
                 cnt.genItem(m_then, ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
@@ -306,7 +309,7 @@ md.load = function(cnt) {
         if (paren) {
             ctx.write(')');
         }
-        if (model.wzParent.wzElement == 'template') {
+        if (model.wzParent.wzElement == 'template' || model.wzParent.wzElement == 'htmlelement') {
             ctx.w('}');
         }
         if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
@@ -374,6 +377,15 @@ md.load = function(cnt) {
             return callback(null, null);
         }
     };
+    cnt.stm.op_nullish = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_nullish');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.op_nullish. Got: ' + callback);
+        }
+        emitOperators(cnt, '??', model, ctx, callback);
+    };
     cnt.stm.op_eq = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_eq');
@@ -435,7 +447,20 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_minus. Got: ' + callback);
         }
-        emitOperators(cnt, '-', model, ctx, callback);
+        if (model.statements.length == 2) {
+            emitOperators(cnt, '-', model, ctx, callback);
+        }
+        else if (model.statements.length == 1) {
+            ctx.write('-');
+            cnt.genItem(model.statements[0], ctx, callback)
+        }
+        else if (model.statements.length == 0 && ctx.__allowSingleLineOp) {
+            ctx.write(' ' + op + ' ' + (model.wzName || ''));
+            return callback(null, null);
+        }
+        else {
+            return callback(ctx.artifactGenerationError("Invalid model. One or two child statements are required. Model: " + util.inspect(model, {depth: 2}), "wizzi-codegen/lib/js/statements/expressions/op_minus", model));
+        }
     };
     cnt.stm.op_plus = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -519,8 +544,11 @@ md.load = function(cnt) {
         emitOperators(cnt, '>=', model, ctx, callback);
     };
     function emitOperators(cnt, op, model, ctx, callback) {
-        console.log('emitOperators', 'op');
+        // log 'emitOperators', op
         model = writeComments(model, ctx);
+        if (model.wzParent.wzElement == 'template') {
+            ctx.write('${');
+        }
         if (model.statements[0] && model.statements[1]) {
             var requireParen1 = model.statements.length > 2;
             var requireParena1 = model.statements[0].statements.length > 0;
@@ -560,12 +588,18 @@ md.load = function(cnt) {
                             if (u.isTopStatement(model, ctx) && (u.isDescendentOf(model, 'iif') == false)) {
                                 ctx.w(';');
                             }
+                            if (model.wzParent.wzElement == 'template') {
+                                ctx.write('}');
+                            }
                             return callback(null, null);
                         })
                     }
                     else {
                         if (u.isTopStatement(model, ctx) && (u.isDescendentOf(model, 'iif') == false)) {
                             ctx.w(';');
+                        }
+                        if (model.wzParent.wzElement == 'template') {
+                            ctx.write('}');
                         }
                         return callback(null, null);
                     }
@@ -575,6 +609,9 @@ md.load = function(cnt) {
         else {
             if (model.statements.length == 0 && ctx.__allowSingleLineOp) {
                 ctx.write(' ' + op + ' ' + (model.wzName || ''));
+                if (model.wzParent.wzElement == 'template') {
+                    ctx.write('}');
+                }
                 return callback(null, null);
             }
             else {

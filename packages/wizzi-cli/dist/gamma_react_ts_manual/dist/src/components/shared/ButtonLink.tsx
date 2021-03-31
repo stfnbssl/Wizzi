@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ButtonLink.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -26,11 +26,11 @@ function ButtonLink({
     theme, 
     className, 
     ...rest
-}: Props) {
+ }: Props) {
     const onClick = () => 
         Segment.getInstance().logEvent('CLICKED_LINK', {
             target: rest.href
-        }, 'previewQueue')
+         }, 'previewQueue')
     ;
     return  (
         <a className={classnames(getClassNames({
@@ -40,11 +40,11 @@ function ButtonLink({
                 disabled, 
                 loading, 
                 theme
-            }), className)}
+             }), className)}
             onClick={onClick}
             style={icon ? {
                     backgroundImage: `url(${icon})`
-                } : {}}
+                 } : {}}
             {...rest}
          />
         )

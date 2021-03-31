@@ -1,28 +1,33 @@
 ﻿$group
 
+    $ 
+        var mixMisc = 'misc(';
+
+    ${mixMisc} setMyProps, &md )
+
     import React
         @ FunctionComponent
         from 'react'
+    ${'$'}if md.styled
+        # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+        import styled
+            @ keyframes
+            from 'styled-components'
+    +
     ${'$'}hook imports
-
-    
     :type ${'$'}{md.name}Props
-        :{ 
-            ${'$'}foreach prop in md.props
-                ${'$'}if prop.type == 'date'
-                    :p ${'$'}{prop.name}
-                        :ref Date
-                ${'$'}else
-                    :p ${'$'}{prop.name}
-                        :${'$'}{prop.type}
-    
-    export 
+        :{
+            ${'$'}foreach prop in myProps
+                ${'$'}include setPropType
+    +
+    ${'$'}hook styles
+    export
         const ${'$'}{md.name}
             :ref FunctionComponent
-                :param 
+                :param
                     :ref ${'$'}{md.name}Props
-            => 
-                { 
-                    ${'$'}foreach prop in md.props
+            =>
+                {
+                    ${'$'}foreach prop in myProps
                         @ ${'$'}{prop.name}
                 ${'$'}hook

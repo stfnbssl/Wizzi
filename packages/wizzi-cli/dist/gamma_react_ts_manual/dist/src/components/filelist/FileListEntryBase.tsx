@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\filelist\FileListEntryBase.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -32,7 +32,7 @@ type State = {
     } | null;
     isHovered: boolean;
 };
-export let lastDraggedEntry;
+export let lastDraggedEntry: FileSystemEntry | null;
 export default class FileListEntry extends React.Component<Props, State> {
         static defaultProps = {
             draggable: true
@@ -60,11 +60,11 @@ export default class FileListEntry extends React.Component<Props, State> {
         _handleMouseEnter = () => 
             this.setState({
                 isHovered: true
-            });
+             });
         _handleMouseLeave = () => 
             this.setState({
                 isHovered: false
-            });
+             });
         _handleMouseDown = () => 
             this._click = true;
         _handleFocus = () => {
@@ -93,14 +93,14 @@ export default class FileListEntry extends React.Component<Props, State> {
         _hideContextMenu = () => 
             this.setState({
                 menu: null
-            });
+             });
         _showContextMenu = (e: MouseEvent) => 
             this.setState({
                 menu: {
                     pageX: e.pageX, 
                     pageY: e.pageY
-                }
-            });
+                 }
+             });
         _handleDocumentClick = (e: MouseEvent) => {
             if (this.state.menu) {
                 if (this._menu.current && e.target !== this._menu.current && !this._menu.current.contains(e.target  as HTMLElement)) {
@@ -149,11 +149,11 @@ export default class FileListEntry extends React.Component<Props, State> {
                 onExpand, 
                 theme, 
                 actions
-            } = this.props;
+             } = this.props;
             const {
                 menu, 
                 isHovered
-            } = this.state;
+             } = this.state;
             return  (
                 <FileListEntryDropTarget entry={entry}
                     rest={rest}
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
         cursor: 'pointer', 
         zIndex: 1, 
         whiteSpace: 'nowrap'
-    }, 
+     }, 
     highlight: {
         content: '""', 
         display: 'inline-block', 
@@ -212,16 +212,16 @@ const styles = StyleSheet.create({
         opacity: 0, 
         zIndex: 1, 
         pointerEvents: 'none'
-    }, 
+     }, 
     highlightLight: {
         backgroundColor: 'rgba(0, 0, 0, .04)'
-    }, 
+     }, 
     highlightDark: {
         backgroundColor: 'rgba(255, 255, 255, .04)'
-    }, 
+     }, 
     highlightActive: {
         opacity: 1
-    }, 
+     }, 
     more: {
         position: 'absolute', 
         left: -8, 
@@ -234,17 +234,17 @@ const styles = StyleSheet.create({
         textAlign: 'right', 
         ':hover': {
             opacity: 1
-        }
-    }, 
+         }
+     }, 
     moreInvisible: {
         opacity: 0
-    }, 
+     }, 
     moreVisible: {
         opacity: 1
-    }, 
+     }, 
     icon: {
         fill: 'currentColor', 
         height: 16, 
         width: 16
-    }
-});
+     }
+ });

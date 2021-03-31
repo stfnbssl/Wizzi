@@ -119,17 +119,6 @@
 			_ ctx.w(u.semicolon(name))
 		r_cb()
     
-	stm( typeImport
-		_ ctx.write('import ' + model.wzName)
-		_ cnt.genItems
-			@ model.statements
-			@ ctx
-			{ 
-				@ indent false
-			a_cb()
-				_ ctx.w(u.semicolon(model.wzName))
-				r_cb()
-
 	stm( typeRequire
 		_ ctx.write('require ' + model.wzName)
 		_ cnt.genItems
@@ -163,6 +152,8 @@
 		r_cb()
 
 	stm( xexport
+
+        var typekey = model.__isType ? 'type ' : ''
 		
         if ctx.__ecma === 'es5'
 			# log 'wizzi-codegen.js2.statements.ecma,jskind', ctx.__ecma, ctx.__jskind
@@ -170,7 +161,7 @@
 			r_cb()
 
 		if hasStatements(model) == false && !!model.from == false && model.specifiers.length == 0
-			_ ctx.w("export " + model.wzName + u.semicolon(model.wzName))
+			_ ctx.w("export " + typekey + model.wzName + u.semicolon(model.wzName))
 			r_cb()
         
         if model.__function
@@ -178,11 +169,16 @@
 			r_cb()
 
 		var name = model.wzName || ''
-		_ ctx.write('export ' + name)
+		_ ctx.write('export ' + typekey + name)
 
 		# log 'js.module.xexport', name, model.from, model.statements.length, model.specifiers.length
 		
 		if model.from
+            if model.statements.length == 1
+                if model.statements[0].wzElement == 'typeTypeAlias'
+                    _ ctx.write('type ')
+                else
+                    throw new Error('js.module.xexport. from clause and statements not managed')
 			_ exportSpecifiers
 				@ model
 				@ ctx
@@ -267,6 +263,9 @@
                 _ ctx.w(model.wzName ? (' ' + model.wzName) : '')
             else 
                 _ ctx.w('//' + (model.wzName ? (' ' + model.wzName) : ''))
+                if model.wzName.indexOf('@ts-ignore') > -1 
+                    log '§§§ statements.comment', model.wzName
+                    set ctx.__inlineNext = true
 			set ctx.__needs_crlf = false
 			r_cb()
 

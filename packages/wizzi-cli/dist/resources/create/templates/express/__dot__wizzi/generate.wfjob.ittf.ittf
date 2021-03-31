@@ -51,6 +51,7 @@ wfjob ${cliCtx.name}/job
         wfjobs${mix}any_js, &jobCtx)
         wfjobs${mix}any_html, &jobCtx)
         wfjobs${mix}any_css, &jobCtx)
+        wfjobs${mix}any_text, &jobCtx)
         wfjobs${mix}any_plain, &jobCtx, html)
         wfjobs${mix}any_plain, &jobCtx, css)
         wfjobs${mix}any_plain, &jobCtx, js)

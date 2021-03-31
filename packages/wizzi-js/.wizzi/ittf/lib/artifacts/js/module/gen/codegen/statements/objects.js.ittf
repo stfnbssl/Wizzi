@@ -36,7 +36,20 @@
 					@ ctx
 					@ callback
     
-	stm( jsRest
+	stm( jsPropertyOrValueComputed
+        _ ctx.write('[')
+        _ cnt.genItem
+            @ model.statements[0]
+            @ ctx
+            f_cb()
+                _ ctx.write(']: ')
+                _ cnt.genItems
+                    @ model.statements.slice(1)
+                    @ ctx
+                    {
+                    @ callback
+
+    stm( jsRest
 		_ ctx.write('...')
         if model.statements.length > 0
             if ['jsArray','jsObject'].indexOf(model.statements[0].wzElement) > -1 
@@ -76,6 +89,7 @@
 					r_cb()
         elif u.isObjectProperty(model) || u.isParamValue(model) || u.isValue(model)
 			# log 4, model.wzName + colon
+            set colon = u.onlyChildIs(model, 'initValue') ? '=' : colon
 			if model.wzName.length > 0 
 				_ ctx.write(model.wzName + colon)
 				_ cnt.genItems
@@ -95,9 +109,17 @@
 							@ ctx
 							@ callback
 			else
+				_ cnt.genItems
+					@ model.statements
+					@ ctx
+					{ 
+						@ indent false
+					@ callback
+                $*
 				return
 					_ callback
 						_ ctx.error(myname + '. Invalid jsPropertyOrValue. Ha s no name: ' + model.wzName, model)
+                *$
         elif ctx.__ecma === 'es6'
 			_ ctx.w('@' + model.wzName + '(')
             _ cnt.genItems
@@ -167,6 +189,8 @@
 			r_cb()
 
 	stm( jsObject
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
 		var 
 			decl colon = (ctx.isGraphql && !ctx.isNamedCallParam) ? ' ' : ': '
 			decl save__is_react_class = ctx.__is_react_class
@@ -187,8 +211,12 @@
 			else
 				if model.statements.length == 0
 					_ ctx.write('{}')
+                    _ u.checkInlineExit(model, ctx)
 					r_cb()
-				_ ctx.w('{')
+                if ctx.__inline
+                    _ ctx.write('{ ')
+                else
+				    _ ctx.w('{')
 			_ ctx.indent()
 			# log '++++ start', ctx.__ecma
 			if ctx.__ecma === 'es6'
@@ -200,6 +228,7 @@
 					if ctx.__ecma === 'es6'
 						# log '++++ end', ctx.__ecma
 						set ctx.__is_react_class = save__is_react_class
+                    _ u.checkInlineExit(model, ctx)
 					r_cb()
     
 	fn( jsObject_is_dslCall
@@ -244,7 +273,8 @@
 				# log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
 				if u.isMemberAccessOrCall(item_1)
 					# log 'jsObject_close 3'
-					_ ctx.w('')
+                    if !!ctx.__inline == false
+					    _ ctx.w('')
 					_ ctx.deindent()
 					_ ctx.write('}')
 					_ cnt.genItem
@@ -260,6 +290,7 @@
 									f_cb()
 										repeater_increment(2)
 								$append next
+                                    _ u.checkInlineExit(model, ctx)
 									r_cb()
                 elif item_1.wzElement == 'typeAs'
 					_ ctx.w('')
@@ -269,10 +300,14 @@
                         @ item_1
                         @ ctx
                         f_cb()
+                            _ u.checkInlineExit(model, ctx)
                             r_cb()
                 else
                     if comma && !first
-                        _ ctx.w(', ')
+                        if ctx.__inline
+                            _ ctx.write(', ')
+                        else
+                            _ ctx.w(', ')
                     set first = false
                     _ cnt.genItem
                         @ item_1
@@ -284,12 +319,14 @@
 			$append next
 				+ ;
 				# log 'jsObject_close 4'
-				_ ctx.w('')
+                if !!ctx.__inline == false
+				    _ ctx.w('')
 				_ ctx.deindent()
-                if u.parentIsHtmlElement(model)
+                if u.parentIsHtmlElement(model) && !!ctx.__inline == false
                     _ ctx.w('}')
                 else
-                    _ ctx.write('}')
+                    _ ctx.write(' }')
+                _ u.checkInlineExit(model, ctx)
 				r_cb()
 
 	stm( jsArray
@@ -303,14 +340,18 @@
 				_ ctx.write('[' + (model.wzName || '') + ']')
 				# log '601 jsArray'
 				r_cb() 
-			_ ctx.w('[')
+            if ctx.__inline
+                _ ctx.write('[')
+            else
+			    _ ctx.w('[')
         _ ctx.indent()
-        var first = true
+        var needs_comma = false
 		# log '602 jsArray'
         repeater(1, model.statements)
 			# log '607 jsArray'
             if u.isMemberAccessOrCall(item_1)
-                _ ctx.w('')
+                if !!ctx.__inline == false
+                    _ ctx.w('')
                 _ ctx.deindent()
                 _ ctx.write(']')
 				# log '605 jsArray'
@@ -331,18 +372,24 @@
 								$append next
 									r_cb()
             # log '606 jsArray'
-			if !first
-                _ ctx.w(', ')
-            set first = false
+			if needs_comma
+                if ctx.__inline
+                    _ ctx.write(', ')
+                else
+                    _ ctx.w(', ')
+                set needs_comma = false
             _ cnt.genItem
 				@ item_1
 				@ ctx
 				f_cb()
 					# log '604 jsArray'
+                    if !u.isComment(item_1) 
+                        set needs_comma = true
 					repeater_increment(1)
 			$append next
 				+ ;
-				_ ctx.w('')
+                if !!ctx.__inline == false
+				    _ ctx.w('')
 				_ ctx.deindent()
 				_ ctx.write(']')
 				r_cb()

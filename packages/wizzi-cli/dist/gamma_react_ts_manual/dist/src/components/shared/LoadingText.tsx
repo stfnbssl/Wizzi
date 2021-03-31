@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\LoadingText.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -14,15 +14,15 @@ type Props = {
 const rotate = {
     from: {
         transform: 'rotate(0deg)'
-    }, 
+     }, 
     to: {
         transform: 'rotate(360deg)'
-    }
-};
+     }
+ };
 const LoadingText = ({
     children, 
     className
-}: Props) => 
+ }: Props) => 
      (
     <div className={classnames(css(styles.loading), className)}>
         {children}
@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
             animationDuration: '1s', 
             animationIterationCount: 'infinite', 
             animationTimingFunction: 'linear'
-        }
-    }
-});
+         }
+     }
+ });

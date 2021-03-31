@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ShortcutLabel.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import findKey from 'lodash/findKey';
 import {KeyMap} from './KeybindingsManager';
@@ -20,10 +20,10 @@ const KeyLabels: Partial<{[key in KeyName] : string}> = {
     Alt: isMac ? '⌥' : 'Alt', 
     Backslash: '\\', 
     Tilde: '`'
-};
+ };
 export default function ShortcutLabel({
         combo
-    }: Props):  any {
+     }: Props):  any {
         return combo.map(// @ts-ignore
             (code) => {
                 const name = findKey(KeyMap, c => 

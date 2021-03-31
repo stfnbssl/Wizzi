@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\withValidation.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {FormValidationContext} from './Form';
@@ -32,7 +32,7 @@ export default function withValidation<P extends InjectedProps>(Comp: React.Comp
                         initial, 
                         error: initial ? null : nextProps.validate ? nextProps.validate(nextProps.value) : null, 
                         value: nextProps.value
-                    };
+                     };
             }
             state = {
                 initial: true, 
@@ -46,7 +46,7 @@ export default function withValidation<P extends InjectedProps>(Comp: React.Comp
                 this._key = this.props.validation.register({
                     validate: this._validate, 
                     focus: this._focus
-                });
+                 });
             }
             componentDidUpdate(prevProps: Props) {
                 if (prevProps.value !== this.props.value) {
@@ -64,7 +64,7 @@ export default function withValidation<P extends InjectedProps>(Comp: React.Comp
                     this.setState({
                         initial: false, 
                         error: this.props.validate(this.props.value)
-                    })
+                     })
                 }
             };
             render() {
@@ -73,10 +73,10 @@ export default function withValidation<P extends InjectedProps>(Comp: React.Comp
                     helperText, 
                     validate, 
                     ...other
-                } = this.props;
+                 } = this.props;
                 const {
                     error
-                } = this.state;
+                 } = this.state;
                 return  (
                     <Comp ref={this._root}
                         error={error ? true : false}

@@ -1,0 +1,249 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import classnames from 'classnames'
+    import 
+        @ prefTypes
+        @ withThemeName
+        from '../../features/preferences'
+    import colors from '../../configs/colors'
+    export 
+        :type ButtonCommonProps
+            :{ 
+                :p variant
+                    :optional 
+                    :union 
+                        :literal 'primary'
+                        :literal 'secondary'
+                        :literal 'accent'
+                :p large
+                    :optional 
+                    :boolean 
+                :p icon
+                    :optional 
+                    :string 
+                :p disabled
+                    :optional 
+                    :boolean 
+                :p loading
+                    :optional 
+                    :boolean 
+                :p theme
+                    :ref prefTypes.ThemeName
+    :type Props
+        :intersect 
+            :ref ButtonCommonProps
+            :{ 
+                :p type
+                    :optional 
+                    :union 
+                        :literal 'submit'
+                        :literal 'button'
+                :p className
+                    :optional 
+                    :string 
+                :p onClick
+                    :optional 
+                    :=> 
+                        :void 
+                        param event
+                            :ref React.MouseEvent
+                                :param 
+                                    :ref HTMLButtonElement
+                :p children
+                    :ref React.ReactNode
+    const rotate
+        { 
+            { from
+                @ transform 'rotate(0deg)'
+            { to
+                @ transform 'rotate(360deg)'
+    export 
+        const getClassNames
+            => 
+                { 
+                    @ variant
+                    @ icon
+                    @ large
+                    @ disabled
+                    @ loading
+                    @ theme
+                    :ref ButtonCommonProps
+                return 
+                    _ css
+                        @expr styles.button
+                        iif variant === 'primary' || variant === 'secondary'
+                            then styles[variant]
+                            else
+                                iif variant === 'accent'
+                                    then
+                                        iif theme === 'dark'
+                                            then styles.accentDark
+                                            else styles.accentLight
+                                    else
+                                        iif theme === 'dark'
+                                            then styles.normalDark
+                                            else styles.normalLight
+                        iif icon
+                            then styles.iconButton
+                            else
+                                iif large
+                                    then styles.largeButton
+                                    else styles.normalButton
+                        @expr loading && styles.loading
+                        @expr disabled && styles.disabled
+                        && 
+                            + disabled
+                            (
+                                iif variant
+                                    then styles.primaryDisabled
+                                    else styles.normalDisabled
+    function Button
+        { 
+            @ variant
+            @ icon
+            @ large
+            @ disabled
+            @ loading
+            @ className
+            @ theme
+            ... rest
+            :ref Props
+        return 
+            button 
+                @ type "button"
+                @ className
+                    _ classnames
+                        _ getClassNames
+                            { 
+                                @ variant
+                                @ icon
+                                @ large
+                                @ disabled
+                                @ loading
+                                @ theme
+                        @ className
+                @ disabled {disabled}
+                @ style
+                    iif icon
+                        then
+                            { 
+                                @ backgroundImage
+                                    `lit 
+                                        + url(
+                                        @ icon
+                                        + )
+                        else
+                            { 
+                @ {...rest}
+    export-default withThemeName(Button)
+    const styles
+        _ StyleSheet.create
+            { 
+                { button
+                    @ appearance 'none'
+                    @ backgroundColor 'transparent'
+                    @ color 'inherit'
+                    @ outline 0
+                    @ borderRadius 3
+                    @ whiteSpace 'nowrap'
+                    @ textAlign 'center'
+                    @ textDecoration 'none'
+                    @ transitionDuration '170ms'
+                    @ transitionProperty 'box-shadow'
+                    @ transitionTimingFunction 'linear'
+                    { ':hover'
+                        @ boxShadow '0 4px 16px rgba(0, 1, 31, 0.2)'
+                { primary
+                    @ color '#fff'
+                    @ backgroundColor colors.primary
+                    @ border
+                        `lit 
+                            + 1px solid transparent
+                { secondary
+                    @ color '#fff'
+                    @ backgroundColor colors.secondary
+                    @ border
+                        `lit 
+                            + 1px solid transparent
+                { accentLight
+                    @ color '#fff'
+                    @ backgroundColor colors.accent.light
+                    @ border
+                        `lit 
+                            + 1px solid transparent
+                { accentDark
+                    @ color '#000'
+                    @ backgroundColor colors.accent.dark
+                    @ border
+                        `lit 
+                            + 1px solid transparent
+                { normalLight
+                    @ color colors.text.light
+                    @ backgroundColor '#fff'
+                    @ border
+                        `lit 
+                            + 1px solid&nbsp;
+                            @ colors.border
+                            + 
+                { normalDark
+                    @ color colors.text.dark
+                    @ backgroundColor 'rgba(255, 255, 255, .08)'
+                    @ borderColor
+                        `lit 
+                            + transparent
+                { disabled
+                    @ cursor 'not-allowed'
+                    @ pointerEvents 'none'
+                { normalDisabled
+                    @ backgroundColor 'rgba(0, 0, 0, .02)'
+                    @ color '#999'
+                    @ border
+                        `lit 
+                            + 1px solid&nbsp;
+                            @ colors.border
+                            + 
+                { primaryDisabled
+                    @ opacity 0.3
+                    @ borderColor
+                        `lit 
+                            + transparent
+                { iconButton
+                    @ padding '.5em 1em .5em 36px'
+                    @ margin '.5em'
+                    @ backgroundSize 16
+                    @ backgroundRepeat 'no-repeat'
+                    @ backgroundPosition '12px center'
+                { normalButton
+                    @ padding '.5em 1em'
+                    @ margin '.5em'
+                { largeButton
+                    @ fontSize 16
+                    @ padding '1em 1.5em'
+                    @ margin '.5em 0'
+                    @ width '100%'
+                { loading
+                    { ':before'
+                        @ display 'inline-block'
+                        @ content '""'
+                        @ borderWidth 2
+                        @ borderStyle 'solid'
+                        @ borderTopColor 'rgba(255, 255, 255, 0.2)'
+                        @ borderRightColor 'rgba(255, 255, 255, 0.2)'
+                        @ borderBottomColor 'rgba(255, 255, 255, 0.2)'
+                        @ borderLeftColor '#fff'
+                        @ height 16
+                        @ width 16
+                        @ borderRadius '50%'
+                        @ marginRight '.75em'
+                        @ verticalAlign -3
+                        [ animationName
+                            @ rotate
+                        @ animationDuration '1s'
+                        @ animationIterationCount 'infinite'
+                        @ animationTimingFunction 'linear'

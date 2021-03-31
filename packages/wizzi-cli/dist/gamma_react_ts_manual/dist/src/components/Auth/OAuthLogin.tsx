@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Auth\OAuthLogin.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import React, {Component} from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -38,11 +38,11 @@ class OAuthLogin extends React.Component<Props, State> {
             socket, 
             provider, 
             loggedUser
-        } = this.props;
+         } = this.props;
         if (loggedUser) {
             this.setState({
                 user: loggedUser
-            })
+             })
         }
         console.log('components.auth.OAuthLogin.did-mount, socket.id, provider', socket.id, provider);
         socket.on(provider, (user: appTypes.LoggedUser) => {
@@ -52,7 +52,7 @@ class OAuthLogin extends React.Component<Props, State> {
             }
             this.setState({
                 user
-            })
+             })
             this.props.onLoggedOn(user);
         }
         )
@@ -61,12 +61,12 @@ class OAuthLogin extends React.Component<Props, State> {
         const check = setInterval(() => {
             const {
                 popup
-            } = this;
+             } = this;
             if (!popup || popup.closed || popup.closed === undefined) {
                 clearInterval(check);
                 this.setState({
                     disabled: ''
-                })
+                 })
                 this.popup = null;
             }
         }
@@ -76,7 +76,7 @@ class OAuthLogin extends React.Component<Props, State> {
         const {
             provider, 
             socket
-        } = this.props;
+         } = this.props;
         const width = 600,
             height = 600;
         const left = (window.innerWidth / 2) - (width / 2);
@@ -93,26 +93,26 @@ class OAuthLogin extends React.Component<Props, State> {
             this.checkPopup();
             this.setState({
                 disabled: 'disabled'
-            })
+             })
         }
     };
     closeCard = () => {
         this.setState({
             user: undefined
-        })
+         })
         this.props.onLoggedOff();
     };
     render() {
         const {
             provider, 
             classes
-        } = this.props;
+         } = this.props;
         const username = this.state.user && this.state.user.username;
         const displayName = this.state.user && this.state.user.displayName;
         const picture = this.state.user && this.state.user.picture;
         const {
             disabled
-        } = this.state;
+         } = this.state;
         const atSymbol = provider === 'twitter' ? '@' : '';
         return  (
             <div>
@@ -177,59 +177,59 @@ const muiStyles = (theme: Theme) =>
             transform: 'scale(0.7)', 
             '&:hover': {
                 boxShadow: '2px 5px 5px rgba(0, 0, 0, 0.5)'
-            }, 
+             }, 
             '&.disabled': {
                 backgroundColor: '#999 !important', 
                 cursor: 'no-drop'
-            }, 
+             }, 
             '&.disabled:hover': {
                 boxShadow: '1px 2px 2px rgba(0, 0, 0, 0.25)'
-            }, 
+             }, 
             '&.disabled:hover span': {
                 textShadow: '1px 2px 2px rgba(0, 0, 0, 0.25)'
-            }, 
+             }, 
             '& span': {
                 fontSize: '10em !important', 
                 textShadow: '1px 2px 2px rgba(0, 0, 0, 0.25)', 
                 transition: '0.3s', 
                 color: '#fff'
-            }, 
+             }, 
             '&:hover span': {
                 textShadow: '2px 5px 5px rgba(0, 0, 0, 0.5)', 
                 transform: 'rotate(-1.1deg)'
-            }, 
+             }, 
             '&.github': {
                 border: '3px solid #ffffff', 
                 background: '#767676'
-            }, 
+             }, 
             '&.github:hover': {
                 background: '#6e5494'
-            }, 
+             }, 
             '&.twitter': {
                 border: '3px solid #ffffff', 
                 background: '#433e90'
-            }, 
+             }, 
             '&.twitter:hover': {
                 background: '#326ada'
-            }, 
+             }, 
             '&.google': {
                 border: '3px solid #ffffff', 
                 background: '#0057e7'
-            }, 
+             }, 
             '&.google:hover': {
                 background: '#008744'
-            }, 
+             }, 
             '&.facebook': {
                 border: '3px solid #ffffff', 
                 background: '#8b9dc3'
-            }, 
+             }, 
             '&.facebook:hover': {
                 background: '#3b5998'
-            }
-        }, 
+             }
+         }, 
         'btnWrapper': {
             height: '300px'
-        }, 
+         }, 
         '__old_card': {
             backgroundColor: '#FFF', 
             borderRadius: '3%', 
@@ -239,7 +239,7 @@ const muiStyles = (theme: Theme) =>
             height: '100%', 
             marginBottom: '20px', 
             transition: '.5s'
-        }, 
+         }, 
         'close': {
             borderRadius: '50%', 
             textShadow: '0px 1px 1px rgba(0, 0, 0, 0.25)', 
@@ -250,23 +250,23 @@ const muiStyles = (theme: Theme) =>
             position: 'relative', 
             color: '#fff', 
             transition: '.5s'
-        }, 
+         }, 
         '&:hover': {
             cursor: 'pointer', 
             boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25)'
-        }, 
+         }, 
         card: {
             maxWidth: 345
-        }, 
+         }, 
         media: {
             height: 340, 
             width: 340
-        }, 
+         }, 
         displayFlex: {
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'center'
-        }
-    })
+         }
+     })
 ;
 export default withStyles(muiStyles)(OAuthLogin);

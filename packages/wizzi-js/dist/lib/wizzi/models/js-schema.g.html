@@ -146,6 +146,8 @@
                     </li>
                     <li><a href="#element_and">and</a>
                     </li>
+                    <li><a href="#element_op_nullish">op_nullish</a>
+                    </li>
                     <li><a href="#element_op_eq_strict">op_eq_strict</a>
                     </li>
                     <li><a href="#element_op_noteq_strict">op_noteq_strict</a>
@@ -197,8 +199,6 @@
                     <li><a href="#element_set">set</a>
                     </li>
                     <li><a href="#element_ximport">ximport</a>
-                    </li>
-                    <li><a href="#element_typeImport">typeImport</a>
                     </li>
                     <li><a href="#element_xexport">xexport</a>
                     </li>
@@ -285,6 +285,8 @@
                     <li><a href="#element_jsArray">jsArray</a>
                     </li>
                     <li><a href="#element_jsPropertyOrValue">jsPropertyOrValue</a>
+                    </li>
+                    <li><a href="#element_jsPropertyOrValueComputed">jsPropertyOrValueComputed</a>
                     </li>
                     <li><a href="#element_jsRest">jsRest</a>
                     </li>
@@ -4558,6 +4560,51 @@
                         </tbody>
                     </table>
                 </small>
+                <table id="element_op_nullish" class="pretty-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Tag</th>
+                            <th>Super</th>
+                            <th>Flags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>op_nullish</b>
+                            </td>
+                            <td>??|op??</td>
+                            <td>statement</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Relations</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Cardinality</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>statement</td>
+                                <td>statements</td>
+                                <td>one-to-many</td>
+                                <td>statement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
                 <table id="element_op_eq_strict" class="pretty-table">
                     <thead>
                         <tr>
@@ -5849,51 +5896,6 @@
                                     <div>foreach item in this.statements;</div>
                                     <div>set this.statements = temp;</div>
                                 </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <table id="element_typeImport" class="pretty-table">
-                    <thead>
-                        <tr>
-                            <th>Element</th>
-                            <th>Tag</th>
-                            <th>Super</th>
-                            <th>Flags</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <b>typeImport</b>
-                            </td>
-                            <td>:import</td>
-                            <td>statement</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>statement</td>
-                                <td>statements</td>
-                                <td>one-to-many</td>
-                                <td>statement</td>
-                                <td></td>
-                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -8312,6 +8314,76 @@
                         </tbody>
                     </table>
                 </small>
+                <h5>Relations</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Cardinality</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>statement</td>
+                                <td>statements</td>
+                                <td>one-to-many</td>
+                                <td>statement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
+                <h5>Methods</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Signature</th>
+                                <th>Statements</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>wzinitialize</div>
+                                    <div>
+                                        <span>a Dsl that uses this could be 'graphql' &nbsp;</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>set this.isDslCall = false;</div>
+                                    <div>foreach item in this.statements;</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
+                <table id="element_jsPropertyOrValueComputed" class="pretty-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Tag</th>
+                            <th>Super</th>
+                            <th>Flags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>jsPropertyOrValueComputed</b>
+                            </td>
+                            <td>@[</td>
+                            <td>statement</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <h5>Relations</h5>
                 <small>
                     <table class="table table-condensed table-bordered" style="width:100%;">

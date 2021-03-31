@@ -36,9 +36,6 @@
 					_ temp.push(item)
 			set this.statements = temp
 
-	e typeImport : statement
-		tag :import
-
 	e export : statement
 		a from
 		a_tag( xas, as

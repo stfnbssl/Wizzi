@@ -150,6 +150,28 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
+    ${'$'}elif name == 'server.cert'
+        artifact server.cert
+            src server.cert.text.ittf
+            schema text
+            generator text/document
+            dest-path server.cert
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
+    ${'$'}elif name == 'server.key'
+        artifact server.key
+            src server.key.text.ittf
+            schema text
+            generator text/document
+            dest-path server.key
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
     ${'$'}elif name == 'any_plain'
         artifact any_plain_${'$'}{ext}
             src ./**/*.${'$'}{ext}

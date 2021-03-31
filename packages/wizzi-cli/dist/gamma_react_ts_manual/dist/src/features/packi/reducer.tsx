@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\reducer.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import {Reducer} from 'redux';
 import {ActionType, getType} from 'typesafe-actions';
@@ -29,7 +29,7 @@ const initialState: PackiState = {
     packiTemplateNames: undefined, 
     ownedGitRepositories: undefined, 
     generatedArtifactContent: undefined
-};
+ };
 export type PackiAction = ActionType<typeof packiActions>;
 const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -38,7 +38,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
             return {
                     ...state, 
                     loading: true
-                };
+                 };
         }
         case getType(packiActions.fetchPackiListSuccess): {
             console.log("packiActions.fetchPackiListSuccess", action);
@@ -46,7 +46,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     packiNames: action.payload.packiNames
-                };
+                 };
         }
         case getType(packiActions.fetchPackiListError): {
             console.log("packiActions.fetchPackiListError", action);
@@ -54,35 +54,35 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(packiActions.initPackiRequest): {
             console.log("packiActions.initPackiRequest");
             return {
                     ...state, 
                     loading: true
-                };
+                 };
         }
         case getType(packiActions.initPackiSuccess): {
             console.log("packiActions.initPackiSuccess");
             return {
                     ...state, 
                     loading: false
-                };
+                 };
         }
         case getType(packiActions.initPackiError): {
             console.log("packiActions.initPackiRequest");
             return {
                     ...state, 
                     loading: false
-                };
+                 };
         }
         case getType(packiActions.selectPackiRequest): {
             console.log("packiActions.selectPackiRequest");
             return {
                     ...state, 
                     loading: true
-                };
+                 };
         }
         case getType(packiActions.selectPackiSuccess): {
             console.log("packiActions.selectPackiSuccess", action);
@@ -98,7 +98,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     localCreatedAt: Date.now(), 
                     githubCreatedAt: -1, 
                     lastCommitAt: -1
-                };
+                 };
                 savePackiData(action.payload.id, localPackiData);
             }
             setSelectedPacki(action.payload.id);
@@ -109,8 +109,8 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                         id: action.payload.id, 
                         files: action.payload.files, 
                         localPackiData
-                    }
-                };
+                     }
+                 };
         }
         case getType(packiActions.selectPackiError): {
             console.log("packiActions.selectPackiError", action);
@@ -118,7 +118,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(packiActions.createPackiRequest): {
             console.log("packiActions.createPackiRequest", action);
@@ -126,7 +126,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: true, 
                     tobeCreatedPackiName: action.payload.id
-                };
+                 };
         }
         case getType(packiActions.createPackiSuccess): {
             console.log("packiActions.createPackiSuccess", action);
@@ -140,12 +140,12 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                         id: action.payload.id, 
                         files: action.payload.files, 
                         localPackiData
-                    }, 
+                     }, 
                     packiNames: [
                         ...state.packiNames || [], 
                         action.payload.id
                     ]
-                };
+                 };
         }
         case getType(packiActions.createPackiError): {
             console.log("packiActions.createPackiError", action);
@@ -153,7 +153,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(packiActions.savePackiSuccess): {
             console.log("packiActions.savePackiSuccess", action);
@@ -163,8 +163,8 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                         id: action.payload.id, 
                         files: action.payload.packiEntryFiles, 
                         localPackiData: state.currentPacki.localPackiData
-                    }
-                };
+                     }
+                 };
         }
         case getType(packiActions.deletePackiRequest): {
             console.log("packiActions.deletePackiRequest", action);
@@ -172,7 +172,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: true, 
                     tobeDeletedPackiId: action.payload.id
-                };
+                 };
         }
         case getType(packiActions.deletePackiSuccess): {
             console.log("packiActions.deletePackiSuccess", action);
@@ -184,7 +184,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     packiNames: state.packiNames.filter(item => 
                         item !== action.payload.id
                     )
-                };
+                 };
         }
         case getType(packiActions.deletePackiError): {
             console.log("packiActions.deletePackiError", action);
@@ -192,14 +192,14 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(packiActions.fetchPackiTemplateListRequest): {
             console.log("packiActions.fetchPackiTemplateListRequest");
             return {
                     ...state, 
                     loading: true
-                };
+                 };
         }
         case getType(packiActions.fetchPackiTemplateListSuccess): {
             console.log("packiActions.fetchPackiTemplateListSuccess", action);
@@ -207,7 +207,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     packiTemplateNames: action.payload.packiNames
-                };
+                 };
         }
         case getType(packiActions.fetchPackiTemplateListError): {
             console.log("packiActions.fetchPackiTemplateListError", action);
@@ -215,14 +215,14 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(packiActions.fetchOwnedGitRepositoriesRequest): {
             console.log("packiActions.fetchOwnedGitRepositoriesRequest");
             return {
                     ...state, 
                     loading: true
-                };
+                 };
         }
         case getType(packiActions.fetchOwnedGitRepositoriesSuccess): {
             console.log("packiActions.fetchOwnedGitRepositoriesSuccess", action);
@@ -230,7 +230,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     ownedGitRepositories: action.payload.repositories
-                };
+                 };
         }
         case getType(packiActions.fetchOwnedGitRepositoriesError): {
             console.log("packiActions.fetchOwnedGitRepositoriesError", action);
@@ -238,14 +238,14 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(packiActions.cloneGitRepositoryRequest): {
             console.log("packiActions.cloneGitRepositoryRequest");
             return {
                     ...state, 
                     loading: true
-                };
+                 };
         }
         case getType(packiActions.cloneGitRepositorySuccess): {
             console.log("packiActions.cloneGitRepositorySuccess", action);
@@ -258,9 +258,9 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                         id: `${action.payload.repository.owner}_${action.payload.repository.name}`, 
                         files: action.payload.repository.files, 
                         localPackiData
-                    }, 
+                     }, 
                     currentPackiTemplate: undefined
-                };
+                 };
         }
         case getType(packiActions.cloneGitRepositoryError): {
             console.log("packiActions.cloneGitRepositoryError", action);
@@ -268,14 +268,14 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(packiActions.executeJobSuccess): {
             console.log("packiActions.executeJobSuccess", action);
             const newPacki = {
                 ...state.currentPacki, 
                 files: mixPreviousAndGeneratedPackiFiles(action.payload.previousArtifacts, action.payload.generatedArtifacts)
-            };
+             };
             console.log("packiActions.executeJobSuccess.newPacki", newPacki);
             if (!action.payload.__is_error) {
                 return {
@@ -283,8 +283,8 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                         currentPacki: {
                             ...state.currentPacki, 
                             files: mixPreviousAndGeneratedPackiFiles(action.payload.previousArtifacts, action.payload.generatedArtifacts)
-                        }
-                    };
+                         }
+                     };
             }
             else {
                 return state;

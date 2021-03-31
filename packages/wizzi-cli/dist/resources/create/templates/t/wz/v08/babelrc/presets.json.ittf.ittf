@@ -28,4 +28,5 @@ $group
         ${'$'}if wzCtx.Build.babel.useStage2
 			"@babel/stage-2"
 		${'$'}if wzCtx.Build.useTypescript
-			"@babel/typescript"
+			$$ "@babel/typescript"
+            "@babel/preset-typescript"

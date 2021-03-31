@@ -1,0 +1,358 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ Dispatch
+        from 'redux'
+    import 
+        @ connect
+        from 'react-redux'
+    import 
+        @ storeTypes
+        from '../store'
+    import 
+        @ appTypes
+        @ appActions
+        from '../features/app'
+    import 
+        @ packiTypes
+        @ packiDefaults
+        @ packiActions
+        @ packiConversions
+        from '../features/packi'
+    import 
+        @ prefTypes
+        @ withPreferences
+        from '../features/preferences'
+    import 
+        @ commonTypes
+        from '../../common'
+    import PackiManager from '../components/Editor/PackiManager'
+    import Spinner from '../components/shared/Spinner'
+    :interface StateProps
+        :p loggedUser
+            :optional 
+            :ref appTypes.LoggedUser
+        :p packiNames
+            :optional 
+            :[ 
+                :string 
+        :p currentPacki
+            :optional 
+            :ref packiTypes.Packi
+        :p packiTemplateNames
+            :optional 
+            :[ 
+                :string 
+        :p ownedGitRepositories
+            :optional 
+            :[ 
+                :ref commonTypes.GitRepositoryMeta
+    :interface DispatchProps
+        :p dispatchFetchPackiList
+            :=> 
+                :void 
+        :p dispatchSelectPacki
+            :=> 
+                :void 
+                param packiId
+                    :string 
+        :p dispatchCreatePacki
+            :=> 
+                :void 
+                param packiId
+                    :string 
+                param packiKind
+                    :string 
+        :p dispatchDeletePacki
+            :=> 
+                :void 
+                param packiId
+                    :string 
+        :p dispatchFetchPackiTemplateList
+            :=> 
+                :void 
+        :p dispatchFetchOwnedGitRepositories
+            :=> 
+                :void 
+                param uid
+                    :string 
+        :p dispatchCloneGitRepository
+            :=> 
+                :void 
+                param uid
+                    :string 
+                param owner
+                    :string 
+                param name
+                    :string 
+                param branch
+                    :string 
+                param ittfOnly
+                    :boolean 
+        :p dispatchCommitGitRepository
+            :=> 
+                :void 
+                param uid
+                    :string 
+                param owner
+                    :string 
+                param name
+                    :string 
+                param branch
+                    :string 
+                param files
+                    :ref packiTypes.PackiFiles
+        :p dispatchUploadPackiTemplate
+            :=> 
+                :void 
+                param uid
+                    :string 
+                param templateId
+                    :string 
+                param files
+                    :ref packiTypes.PackiFiles
+    const mapStateToProps
+        => 
+            param state
+                :ref storeTypes.StoreState
+            :return
+                :ref StateProps
+            (
+                { 
+                    @ loggedUser state.app.loggedUser
+                    @ packiNames state.packi.packiNames
+                    @ currentPacki state.packi.currentPacki
+                    @ packiTemplateNames state.packi.packiTemplateNames
+                    @ ownedGitRepositories state.packi.ownedGitRepositories
+    const mapDispatchToProps
+        => 
+            param dispatch
+                :ref Dispatch
+            :return
+                :ref DispatchProps
+            (
+                { 
+                    @ dispatchFetchPackiList
+                        => 
+                            _ dispatch(packiActions.fetchPackiListRequest())
+                    @ dispatchSelectPacki
+                        => 
+                            param packiId
+                                :string 
+                            _ dispatch
+                                _ packiActions.selectPackiRequest
+                                    { 
+                                        @ id packiId
+                    @ dispatchCreatePacki
+                        => 
+                            param packiId
+                                :string 
+                            param packiKind
+                                :string 
+                            _ dispatch
+                                _ packiActions.createPackiRequest
+                                    { 
+                                        @ id packiId
+                                        { options
+                                            @ data packiKind
+                    @ dispatchDeletePacki
+                        => 
+                            param packiId
+                                :string 
+                            _ dispatch
+                                _ packiActions.deletePackiRequest
+                                    { 
+                                        @ id packiId
+                    @ dispatchCloneGitRepository
+                        => 
+                            param uid
+                                :string 
+                            param owner
+                                :string 
+                            param name
+                                :string 
+                            param branch
+                                :string 
+                            param ittfOnly
+                                :boolean 
+                            _ dispatch
+                                _ packiActions.cloneGitRepositoryRequest
+                                    { 
+                                        @ uid
+                                        @ owner
+                                        @ name
+                                        @ branch 'master'
+                                        @ ittfOnly
+                                            # TODO
+                    @ dispatchCommitGitRepository
+                        => 
+                            param uid
+                                :string 
+                            param owner
+                                :string 
+                            param name
+                                :string 
+                            param branch
+                                :string 
+                            param files
+                                :ref packiTypes.PackiFiles
+                            _ dispatch
+                                _ packiActions.commitGitRepositoryRequest
+                                    { 
+                                        @ uid
+                                        @ owner
+                                        @ name
+                                        @ branch 'master'
+                                        @ files
+                                            # TODO
+                    @ dispatchFetchPackiTemplateList
+                        => 
+                            _ dispatch(packiActions.fetchPackiTemplateListRequest())
+                    @ dispatchFetchOwnedGitRepositories
+                        => 
+                            param uid
+                                :string 
+                            _ dispatch
+                                _ packiActions.fetchOwnedGitRepositoriesRequest
+                                    { 
+                                        @ uid
+                    @ dispatchUploadPackiTemplate
+                        => 
+                            param uid
+                                :string 
+                            param templateId
+                                :string 
+                            param files
+                                :ref packiTypes.PackiFiles
+                            _ dispatch
+                                _ packiActions.uploadPackiTemplateRequest
+                                    { 
+                                        @ uid
+                                        @ templateId
+                                        @ files
+    :type Props
+        :intersect 
+            :ref prefTypes.PreferencesContextType
+            :ref StateProps
+            :ref DispatchProps
+            :{ 
+                :p onClose
+                    :=> 
+                        :void 
+    :type State
+        :intersect 
+            :ref StateProps
+            :{ 
+    class PackiManagerContainer
+        super React.Component
+            :param 
+                :ref Props
+            :param 
+                :ref State
+        m componentDidMount
+            _ this.props.dispatchFetchPackiList()
+            _ this.props.dispatchFetchPackiTemplateList()
+            if this.props.preferences.connectGithubRepos
+                _ this.props.dispatchFetchOwnedGitRepositories(this.props.loggedUser.uid)
+        p _handleSelectPacki
+            async=> 
+                param packiId
+                    :string 
+                _ this.props.dispatchSelectPacki(packiId)
+                _ this.props.onClose()
+        p _handleCreatePacki
+            async=> 
+                param packiId
+                    :string 
+                param packiKind
+                    :string 
+                _ this.props.dispatchCreatePacki(packiId, packiKind)
+                _ this.props.onClose()
+        p _handleDeletePacki
+            async=> 
+                param packiId
+                    :string 
+                _ this.props.dispatchDeletePacki(packiId)
+        p _handleCloneGitRepository
+            async=> 
+                param owner
+                    :string 
+                param name
+                    :string 
+                param branch
+                    :string 
+                param ittfOnly
+                    :boolean 
+                _ this.props.dispatchCloneGitRepository(this.props.loggedUser.uid, owner, name, branch, ittfOnly)
+                _ this.props.onClose()
+        p _handleCommitGitRepository
+            async=> 
+                param owner
+                    :string 
+                param name
+                    :string 
+                param branch
+                    :string 
+                param virtualFiles
+                    :boolean 
+                const files
+                    :ref packiTypes.PackiFiles
+                    =
+                        iif virtualFiles
+                            then this.props.currentPacki.files
+                            else packiConversions.packiFilterIttf(this.props.currentPacki.files)
+                _ console.log('PackiManager._handleCommitGitRepository.virtualFiles', Object.keys(this.props.currentPacki.files), virtualFiles, Object.keys(files))
+                _ this.props.dispatchCommitGitRepository(this.props.loggedUser.uid, owner, name, branch, files)
+                _ this.props.onClose()
+        p _handleUploadPackiTemplate
+            async=> 
+                param templateId
+                    :string 
+                param virtualFiles
+                    :boolean 
+                const files
+                    :ref packiTypes.PackiFiles
+                    =
+                        iif virtualFiles
+                            then this.props.currentPacki.files
+                            else packiConversions.packiFilterIttf(this.props.currentPacki.files)
+                _ console.log('PackiManager._handleCommitGitRepository.virtualFiles', Object.keys(this.props.currentPacki.files), virtualFiles, Object.keys(files))
+                _ this.props.dispatchUploadPackiTemplate(this.props.loggedUser.uid, templateId, files)
+                _ this.props.onClose()
+        m render
+            const 
+                { 
+                    @ currentPacki
+                    @ packiNames
+                    @ packiTemplateNames
+                    @ ownedGitRepositories
+                = this.props
+            _ console.log('PackiManagerContainer.render.props', this.props)
+            if packiNames && packiTemplateNames
+                return 
+                    < PackiManager 
+                        @ currentPacki {currentPacki}
+                        @ packiNames {packiNames || []}
+                        @ packiTemplateNames {packiTemplateNames || []}
+                        @ ownedGitRepositories {ownedGitRepositories || []}
+                        @ onSelectPacki {this._handleSelectPacki}
+                        @ onCreatePacki {this._handleCreatePacki}
+                        @ onDeletePacki {this._handleDeletePacki}
+                        @ onCloneGitRepository {this._handleCloneGitRepository}
+                        @ onCommitGitRepository {this._handleCommitGitRepository}
+                        @ onUploadPackiTemplate {this._handleUploadPackiTemplate}
+            else
+                return 
+                    < Spinner 
+    export-default 
+        _ connect
+            :param 
+                :ref StateProps
+            :param 
+                :ref DispatchProps
+            @ mapStateToProps
+            @ mapDispatchToProps
+            (
+                _ withPreferences(PackiManagerContainer)

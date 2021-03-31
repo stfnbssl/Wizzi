@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\filelist\FileListImportExportMenu.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import FileListPaneButton from './FileListPaneButton';
@@ -37,18 +37,18 @@ export default class FileListImportExportMenu extends React.PureComponent<Props,
         _hideContextMenu = () => 
             this.setState({
                 menu: null
-            });
+             });
         _showContextMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
             const {
                 bottom, 
                 right
-            } = e.currentTarget.getBoundingClientRect();
+             } = e.currentTarget.getBoundingClientRect();
             this.setState({
                 menu: {
                     pageX: right - 8, 
                     pageY: bottom - 8
-                }
-            })
+                 }
+             })
         };
         _handleDocumentClick = (e: MouseEvent) => {
             if (this.state.menu) {
@@ -83,16 +83,16 @@ export default class FileListImportExportMenu extends React.PureComponent<Props,
                             {
                                 label: 'Import files', 
                                 handler: this.props.onImportFilesClick
-                            }, 
+                             }, 
                             {
                                 label: 'Import git repository', 
                                 handler: this.props.onImportRepoClick
-                            }, 
+                             }, 
                             {
                                 label: 'Export project', 
                                 handler: this.props.onExportClick, 
                                 disabled: !(isSaved && this.props.hasPackiId)
-                            }
+                             }
                         ]}
                         onHide={this._hideContextMenu}
                      />

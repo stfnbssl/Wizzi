@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Spinner.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import {css, StyleSheet} from 'aphrodite';
 import React from 'react';
@@ -27,7 +27,7 @@ export default class LoadingIndicator extends React.Component<Props> {
                 green: 0, 
                 blue: 0, 
                 alpha: 98 / 255
-            }, 
+             }, 
             segments: 12, 
             segmentWidth: 2, 
             segmentLength: 3, 
@@ -54,7 +54,7 @@ export default class LoadingIndicator extends React.Component<Props> {
                     y2={innerRadius + segmentLength}
                     style={{
                         opacity
-                    }}
+                     }}
                     transform={`rotate(${rotation})`}
                  />
                 )
@@ -64,7 +64,7 @@ export default class LoadingIndicator extends React.Component<Props> {
                 green, 
                 blue, 
                 alpha
-            } = this.props.color;
+             } = this.props.color;
             const rgbaColor = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
             const radius = innerRadius + segmentLength + Math.ceil(segmentWidth / 2);
             return  (
@@ -84,16 +84,16 @@ export default class LoadingIndicator extends React.Component<Props> {
 const spinKeyframes = {
     from: {
         transform: 'rotate(0deg)'
-    }, 
+     }, 
     to: {
         transform: 'rotate(360deg)'
-    }
-};
+     }
+ };
 const styles = StyleSheet.create({
     indicator: {
         animationDuration: '1s', 
         animationIterationCount: 'infinite', 
         animationName: spinKeyframes, 
         animationTimingFunction: 'steps(12)'
-    }
-});
+     }
+ });

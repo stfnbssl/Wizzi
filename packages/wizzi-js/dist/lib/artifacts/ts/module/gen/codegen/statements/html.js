@@ -151,7 +151,8 @@ md.load = function(cnt) {
         var comments = [];
         var statements = null,
             value = null,
-            childStatements = [];
+            childStatements = [],
+            typeParameters = [];
         var len_1 = model.statements.length;
         function repeater_1(index_1) {
             if (index_1 === len_1) {
@@ -208,11 +209,19 @@ md.load = function(cnt) {
                 })
             }
             else if (['comment','commentmultiline'].indexOf(item_1.wzElement) > -1) {
-                comments.push(item_1)
+                // will be written by u.writeComments
+                childStatements.push(item_1)
             }
-            else if (['htmlelement','statement','jsObject'].indexOf(item_1.wzElement) > -1) {
+            else if (['htmlelement','statement','jsObject','iif','call'].indexOf(item_1.wzElement) > -1) {
                 model.__hasChildElements = true;
                 childStatements.push(item_1)
+            }
+            else if (u.isTSSimpleType(item_1)) {
+                typeParameters.push(item_1)
+            }
+            else {
+                console.log('Error.model', model);
+                throw new Error('In ts._htmlelement wzElement not managed: ' + item_1.wzElement);
             }
             process.nextTick(function() {
                 repeater_1(index_1 + 1);
@@ -221,6 +230,7 @@ md.load = function(cnt) {
         repeater_1(0);
         function next_1() {
             model.statements = childStatements;
+            model.typeParameterInsts = typeParameters;
             _htmlelement_end(cnt, model, tag, text, ctx, attrs, comments, function(err, notUsed) {
                 if (err) {
                     return callback(err);

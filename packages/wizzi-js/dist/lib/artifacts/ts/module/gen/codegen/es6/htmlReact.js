@@ -9,13 +9,17 @@ var md = module.exports = {};
 var myname = 'wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact';
 md.htmlelement = function(cnt, model, tag, text, ctx, attrs, comments, callback) {
     // log 'enter in htmlReact', 'tag', tag, 'model.wzElement', model.wzElement, 'u.parentIsHtmlElement(model)', u.parentIsHtmlElement(model), 'u.isArgumentOfCall(model)', u.isArgumentOfCall(model), 'u.isGraphEnclosed(tag)', u.isGraphEnclosed(tag), 'attrs.length', attrs.length
+    u.writeComments(model, ctx);
+    u.checkInlineEnter(model, ctx);
     if (u.isGraphEnclosed(tag)) {
         ctx.w(tag);
+        u.checkInlineExit(model, ctx);
         return callback(null, null);
     }
     // @style/_style is used as an attribute in react
     // see /statements/html for attrs extraction
     if (model.wzElement === '_style') {
+        u.checkInlineExit(model, ctx);
         return callback(null, null);
     }
     if (u.parentIsHtmlElement(model) == false) {
@@ -32,6 +36,7 @@ md.htmlelement = function(cnt, model, tag, text, ctx, attrs, comments, callback)
             return callback(err);
         }
         if (done) {
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         }
         else {
@@ -40,6 +45,7 @@ md.htmlelement = function(cnt, model, tag, text, ctx, attrs, comments, callback)
                     return callback(err);
                 }
                 // log 'exit from htmlReact', tag
+                u.checkInlineExit(model, ctx);
                 return callback(null, null);
             })
         }
@@ -51,59 +57,69 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, comments, callback) {
         // _ ctx.indent() // 23/3/21
     }
     // begin open tag and write attributes
-    ctx.write("<" + tag + (singleline ? ' ' : ''));
-    var len_1 = attrs.length;
-    function repeater_1(index_1) {
-        if (index_1 === len_1) {
-            return next_1();
+    // log 'htmlelement_open.tag', tag
+    ctx.write("<" + tag);
+    u.genTSTypeParameterInsts(model, ctx, cnt, (err, notUsed) => {
+        if (err) {
+            return callback(err);
         }
-        var item_1 = attrs[index_1];
-        if (singleline) {
-            ctx.indent();
-        }
-        htmlelement_attribute(cnt, item_1, ctx, singleline, function(err, notUsed) {
-            if (err) {
-                return callback(err);
+        ctx.write(singleline ? ' ' : '');
+        var len_1 = attrs.length;
+        function repeater_1(index_1) {
+            if (index_1 === len_1) {
+                return next_1();
             }
+            var item_1 = attrs[index_1];
             if (singleline) {
-                ctx.deindent();
+                ctx.indent();
             }
-            process.nextTick(function() {
-                repeater_1(index_1 + 1);
+            htmlelement_attribute(cnt, item_1, ctx, singleline, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                if (singleline) {
+                    ctx.deindent();
+                }
+                process.nextTick(function() {
+                    repeater_1(index_1 + 1);
+                })
             })
-        })
-    }
-    repeater_1(0);
-    function next_1() {
-        // log 'htmlelement_open.model.statements.length', model.statements.length
-        cnt.genItems(comments, ctx, {
-            indent: false
-        }, function(err, notUsed) {
-            if (err) {
-                return callback(err);
-            }
-            if (model.__hasChildElements == true) {
-                ctx.w(">");
-                // end of open tag
-                return callback(null, false);
-            }
-            else {
-                ctx.w(" />");
-                // end of tag
-                htmlelement_tagclose(model, ctx)
-                return callback(null, true);
-            }
-        })
-    }
+        }
+        repeater_1(0);
+        function next_1() {
+            // log 'htmlelement_open.model.statements.length', model.statements.length
+            cnt.genItems(comments, ctx, {
+                indent: false
+            }, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                if (model.__hasChildElements == true) {
+                    ctx.w(">");
+                    // end of open tag
+                    return callback(null, false);
+                }
+                else {
+                    ctx.w(" />");
+                    // end of tag
+                    htmlelement_tagclose(model, ctx)
+                    return callback(null, true);
+                }
+            })
+        }
+    })
 }
 function htmlelement_attribute(cnt, a, ctx, singleline, callback) {
     const writer = singleline ? 'w' : 'write';
     const aindent = singleline ? '' : ' ';
     // log 'htmlelement_attribute', a
     if (a.statements && a.statements.length > 0) {
+        u.writeComments(a, ctx, true);
+    }
+    if (a.statements && a.statements.length > 0) {
         ctx.write(aindent + a.name + '={');
         cnt.genItems(a.statements, ctx, {
-            indent: false
+            indent: true
         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
@@ -163,4 +179,5 @@ function htmlelement_tagclose(model, ctx) {
             }
         }
     }
+    u.checkInlineExit(model, ctx);
 }

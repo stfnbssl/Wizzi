@@ -1,0 +1,20 @@
+module
+    import 
+        @ appTypes
+        from '../app'
+    export 
+        :type AuthProps
+            :{ 
+                :p loggedUser
+                    :optional 
+                    :union 
+                        :ref appTypes.LoggedUser
+                        :undefined 
+                :p onLoggedOn
+                    :=> 
+                        :void 
+                        param user
+                            :ref appTypes.LoggedUser
+                :p onLoggedOff
+                    :=> 
+                        :void 

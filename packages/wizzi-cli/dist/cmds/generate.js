@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\generate.js.ittf
-    utc time: Wed, 24 Mar 2021 15:11:08 GMT
+    utc time: Wed, 31 Mar 2021 20:00:14 GMT
 */
 'use strict';
 const path = require('path');
@@ -20,7 +20,7 @@ function generateSchemas(schemasToGen, wfJobFolder, destPath, packageName, plugi
             options = {
                 plugins: plugins.items, 
                 pluginsBaseFolder: plugins.baseFolder
-            };
+             };
         }
         wizzi.generateWizziModelTypes({
             configOptions: options, 
@@ -28,12 +28,12 @@ function generateSchemas(schemasToGen, wfJobFolder, destPath, packageName, plugi
                 name: schemaName, 
                 ittfDocumentUri: path.join(wfJobFolder, 'ittf', 'lib', 'wizzi', 'schemas', schemaName + '.wfschema.ittf'), 
                 outputPackageFolder: destPath
-            }
-        }, function(err, result) {
+             }
+         }, function(err, result) {
             if (err) {
                 throw new Error('Package: ' + packageName + ' schema ' + schemaName + '  wizzi models production error: ' + (util.inspect(err, {
                         depth: null
-                    })));
+                     })));
             }
             console.log('wizzi-cli.generate.Generate schema result', result);
             callback(null, result);
@@ -76,7 +76,7 @@ module.exports = (name) => {
             wfBaseFolder: __dirname, 
             plugins: x_pluginsItems, 
             pluginsBaseFolder: x_pluginsBaseFolder
-        }, 
+         }, 
         job: {
             name: configInstance.wfjobName, 
             ittfDocumentUri: configInstance.wfjobPath, 
@@ -88,12 +88,12 @@ module.exports = (name) => {
                     dumpsBaseFolder: path.join(__dirname, '_dumps'), 
                     mTreeBuildupJsWizziScript: {
                         dump: false
-                    }
-                }
-            }), 
+                     }
+                 }
+             }), 
             globalContext: configInstance.globalContext
-        }
-    }, function(err) {
+         }
+     }, function(err) {
         if (err) {
             return wizzi.printWizziJobError(configInstance.wfjobName, err);
         }
@@ -101,7 +101,7 @@ module.exports = (name) => {
             generateSchemas(configInstance.schemas, path.dirname(configInstance.wfjobPath), configInstance.destPath, configInstance.packageName || configInstance.wfjobName, {
                 items: x_pluginsItems, 
                 baseFolder: x_pluginsBaseFolder
-            })
+             })
         }
     })
 };

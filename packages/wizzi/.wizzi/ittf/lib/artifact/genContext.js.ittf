@@ -36,6 +36,7 @@
 			set this.writeFilePath = null
 			set this.isEmpty = true
 			set this.artifactGenerationErrors = []
+            set this.forceInline = false
     
 		m forceIndent
             param value
@@ -68,15 +69,22 @@
 			if this.writeFilePath != null
 				throw new Error('Cannot write when a file write has been requested: ' + this.writeFilePath)
             if verify.isString(text)
-                _ this.block.w
+                var iptext
                     iif text.indexOf('{') > -1
                         then 
                             _ interpolate
                                 @ text
                                 @ this.values
                         else text
+                if this.forceInline
+                    _ this.block.write(iptext + ' ')
+                else
+                    _ this.block.w(iptext)
             else
-                _ this.block.w('')
+                if this.forceInline
+                    _ this.block.write(' ')
+                else
+                    _ this.block.w('')
 			set this.isEmpty = false
     
 		m write
@@ -118,6 +126,13 @@
 		
         m setLastNotEmptyLine
             _ this.block.setLastNotEmptyLine
+
+        m inlineOn
+            set this.forceInline = true
+
+        m inlineOff
+            set this.forceInline = false
+            _ this.w()
 
         m appendFile
             param filePath

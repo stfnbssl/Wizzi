@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\containers\PackiManager.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {Dispatch} from 'redux';
@@ -39,7 +39,7 @@ const mapStateToProps = (state: storeTypes.StoreState):  StateProps =>
         currentPacki: state.packi.currentPacki, 
         packiTemplateNames: state.packi.packiTemplateNames, 
         ownedGitRepositories: state.packi.ownedGitRepositories
-    })
+     })
 ;
 const mapDispatchToProps = (dispatch: Dispatch):  DispatchProps => 
     ({
@@ -49,20 +49,20 @@ const mapDispatchToProps = (dispatch: Dispatch):  DispatchProps =>
         dispatchSelectPacki: (packiId: string) => 
             dispatch(packiActions.selectPackiRequest({
                 id: packiId
-            }))
+             }))
         , 
         dispatchCreatePacki: (packiId: string, packiKind: string) => 
             dispatch(packiActions.createPackiRequest({
                 id: packiId, 
                 options: {
                     data: packiKind
-                }
-            }))
+                 }
+             }))
         , 
         dispatchDeletePacki: (packiId: string) => 
             dispatch(packiActions.deletePackiRequest({
                 id: packiId
-            }))
+             }))
         , 
         dispatchCloneGitRepository: (uid: string, owner: string, name: string, branch: string, ittfOnly: boolean) => 
             dispatch(packiActions.cloneGitRepositoryRequest({
@@ -72,7 +72,7 @@ const mapDispatchToProps = (dispatch: Dispatch):  DispatchProps =>
                 branch: 'master', 
                 // TODO
                 ittfOnly
-            }))
+             }))
         , 
         dispatchCommitGitRepository: (uid: string, owner: string, name: string, branch: string, files: packiTypes.PackiFiles) => 
             dispatch(packiActions.commitGitRepositoryRequest({
@@ -82,7 +82,7 @@ const mapDispatchToProps = (dispatch: Dispatch):  DispatchProps =>
                 branch: 'master', 
                 // TODO
                 files
-            }))
+             }))
         , 
         dispatchFetchPackiTemplateList: () => 
             dispatch(packiActions.fetchPackiTemplateListRequest)
@@ -90,16 +90,16 @@ const mapDispatchToProps = (dispatch: Dispatch):  DispatchProps =>
         dispatchFetchOwnedGitRepositories: (uid: string) => 
             dispatch(packiActions.fetchOwnedGitRepositoriesRequest({
                 uid
-            }))
+             }))
         , 
         dispatchUploadPackiTemplate: (uid: string, templateId: string, files: packiTypes.PackiFiles) => 
             dispatch(packiActions.uploadPackiTemplateRequest({
                 uid, 
                 templateId, 
                 files
-            }))
+             }))
         
-    })
+     })
 ;
 type Props = prefTypes.PreferencesContextType & StateProps & DispatchProps & { 
     onClose: () => void;
@@ -153,7 +153,7 @@ class PackiManagerContainer extends React.Component<Props, State> {
             packiNames, 
             packiTemplateNames, 
             ownedGitRepositories
-        } = this.props;
+         } = this.props;
         console.log('PackiManagerContainer.render.props', this.props);
         if (packiNames && packiTemplateNames//
         ) {

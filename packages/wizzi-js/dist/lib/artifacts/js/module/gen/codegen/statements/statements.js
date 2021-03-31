@@ -185,24 +185,6 @@ md.load = function(cnt) {
         }
         return callback(null, null);
     };
-    cnt.stm.typeImport = function(model, ctx, callback) {
-        if (typeof callback === 'undefined') {
-            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeImport');
-        }
-        if (typeof callback !== 'function') {
-            throw new Error('The callback parameter must be a function. In ' + myname + '.typeImport. Got: ' + callback);
-        }
-        ctx.write('import ' + model.wzName);
-        cnt.genItems(model.statements, ctx, {
-            indent: false
-        }, (err, notUsed) => {
-            if (err) {
-                return callback(err);
-            }
-            ctx.w(u.semicolon(model.wzName));
-            return callback(null, null);
-        })
-    };
     cnt.stm.typeRequire = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeRequire');
@@ -248,13 +230,14 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xexport. Got: ' + callback);
         }
+        var typekey = model.__isType ? 'type ' : '';
         if (ctx.__ecma === 'es5') {
             // log 'wizzi-codegen.js2.statements.ecma,jskind', ctx.__ecma, ctx.__jskind
             ctx.artifactGenerationError('export statement invalid in ecma 5', 'js/module', model);
             return callback(null, null);
         }
         if (hasStatements(model) == false && !!model.from == false && model.specifiers.length == 0) {
-            ctx.w("export " + model.wzName + u.semicolon(model.wzName));
+            ctx.w("export " + typekey + model.wzName + u.semicolon(model.wzName));
             return callback(null, null);
         }
         if (model.__function) {
@@ -262,9 +245,17 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         var name = model.wzName || '';
-        ctx.write('export ' + name);
+        ctx.write('export ' + typekey + name);
         // log 'js.module.xexport', name, model.from, model.statements.length, model.specifiers.length
         if (model.from) {
+            if (model.statements.length == 1) {
+                if (model.statements[0].wzElement == 'typeTypeAlias') {
+                    ctx.write('type ');
+                }
+                else {
+                    throw new Error('js.module.xexport. from clause and statements not managed');
+                }
+            }
             exportSpecifiers(model, ctx, name)
             ctx.write(' from ' + model.from);
             ctx.w(u.semicolon(name));
@@ -387,6 +378,10 @@ md.load = function(cnt) {
             }
             else {
                 ctx.w('//' + (model.wzName ? (' ' + model.wzName) : ''));
+                if (model.wzName.indexOf('@ts-ignore') > -1) {
+                    console.log('§§§ statements.comment', model.wzName);
+                    ctx.__inlineNext = true;
+                }
             }
             ctx.__needs_crlf = false;
             return callback(null, null);

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\renameEntry.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import updateEntry from './updateEntry';
 import recursivelyCreateParents from './recursivelyCreateParents';
@@ -19,8 +19,8 @@ export default // @ts-ignore
         const renamed = updateEntry(entry, {
             item: {
                 path: newPath
-            }
-        });
+             }
+         });
         delete renamed.state.isCreating
         const next: FileSystemEntry[] = entries.map((e) => {
             if (e.item.path === entry.item.path) {
@@ -30,8 +30,8 @@ export default // @ts-ignore
                 return updateEntry(e, {
                         item: {
                             path: changeParentPath(e.item.path, entry.item.path, renamed.item.path)
-                        }
-                    });
+                         }
+                     });
             }
             return e;
         }

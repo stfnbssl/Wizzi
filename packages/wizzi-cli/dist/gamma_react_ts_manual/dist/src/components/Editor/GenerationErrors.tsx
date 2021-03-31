@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\GenerationErrors.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -21,7 +21,7 @@ class GenerationErrors extends React.Component<Props> {
             errorMessage, 
             errorLines, 
             errorStack
-        } = this.props;
+         } = this.props;
         return  (
             <div className={classes.container}>
                 <div className={classes.errorName}>
@@ -70,20 +70,20 @@ const muiStyles = (theme: Theme) =>
             width: '44vw', 
             height: '100%', 
             overflow: 'scroll'
-        }, 
+         }, 
         errorName: {
             padding: '15px 30px', 
             fontSize: '28px'
-        }, 
+         }, 
         message: {
             padding: '15px 30px', 
             fontSize: '20px'
-        }, 
+         }, 
         lines: {
             padding: '15px 30px', 
             fontSize: '18px', 
             fontFamily: 'Courier, mono'
-        }
-    })
+         }
+     })
 ;
 export default withStyles(muiStyles)(GenerationErrors);

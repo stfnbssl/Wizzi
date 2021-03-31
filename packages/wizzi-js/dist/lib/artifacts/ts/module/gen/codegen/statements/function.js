@@ -264,6 +264,7 @@ md.load = function(cnt) {
             if (u.isTopStatement(model, ctx)) {
                 ctx.w(u.semicolon(name));
             }
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         }
         ctx.write('yield ');
@@ -274,6 +275,7 @@ md.load = function(cnt) {
             if (u.isTopStatement(model, ctx)) {
                 ctx.w(u.semicolon(name));
             }
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         })
     };
@@ -284,7 +286,8 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xawait. Got: ' + callback);
         }
-        var model = writeComments(model, ctx);
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         ctx.write('await ');
         var name = model.wzName.trim();
         if (hasStatements(model) == false) {
@@ -292,6 +295,7 @@ md.load = function(cnt) {
             if (u.isTopStatement(model, ctx)) {
                 ctx.w(u.semicolon(name));
             }
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         }
         else {
@@ -302,6 +306,7 @@ md.load = function(cnt) {
                 if (u.isTopStatement(model, ctx)) {
                     ctx.w(u.semicolon(name));
                 }
+                u.checkInlineExit(model, ctx);
                 return callback(null, null);
             })
         }
@@ -313,7 +318,8 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.asyncarrowfunction. Got: ' + callback);
         }
-        var model = writeComments(model, ctx);
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         model.xasync = true;
         cnt.stm.arrowfunction(model, ctx, callback)
     };
@@ -324,7 +330,8 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.arrowfunction. Got: ' + callback);
         }
-        var model = writeComments(model, ctx);
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         var async_str = model.xasync ? 'async ' : '';
         if (ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent') {
             var implicitReturn = u.isImplicitReturn(model);
@@ -445,6 +452,7 @@ md.load = function(cnt) {
                 return callback(err);
             }
             ctx.w((implicitReturn ? '' : '}'));
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         })
     }
@@ -455,9 +463,11 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xreturn. Got: ' + callback);
         }
-        var model = writeComments(model, ctx);
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         if (hasStatements(model) == false) {
             ctx.w('return ' + (model.wzName || '') + u.semicolon(model.wzName));
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         }
         ctx.write('return ');
@@ -470,6 +480,7 @@ md.load = function(cnt) {
             if (model.statements.length == 1) {
                 ctx.w(';');
             }
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         })
     };

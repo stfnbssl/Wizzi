@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\filelist\FileListOpenEntry.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -42,14 +42,14 @@ class FileListOpenEntry extends React.PureComponent<Props, State> {
     _hideContextMenu = () => 
         this.setState({
             menu: null
-        });
+         });
     _showContextMenu = (e: MouseEvent) => 
         this.setState({
             menu: {
                 pageX: e.pageX, 
                 pageY: e.pageY
-            }
-        });
+             }
+         });
     _handleDocumentClick = (e: MouseEvent) => {
         if (this.state.menu) {
             if (this._menu.current && e.target !== this._menu.current && !this._menu.current.contains(e.target  as Node)) {
@@ -71,18 +71,18 @@ class FileListOpenEntry extends React.PureComponent<Props, State> {
     _handleMouseEnter = () => 
         this.setState({
             isHovered: true
-        });
+         });
     _handleMouseLeave = () => 
         this.setState({
             isHovered: false
-        });
+         });
     _menu = React.createRef<HTMLUListElement>();
     _item = React.createRef<HTMLLIElement>();
     render() {
         const {
             entry, 
             theme
-        } = this.props;
+         } = this.props;
         const displayName = entry.item.path.split('/').pop();
         return  (
             <li ref={this._item}
@@ -108,15 +108,15 @@ class FileListOpenEntry extends React.PureComponent<Props, State> {
                         {
                             label: 'Close', 
                             handler: this.props.onClose
-                        }, 
+                         }, 
                         {
                             label: 'Close Others', 
                             handler: this.props.onCloseOthers
-                        }, 
+                         }, 
                         {
                             label: 'Close All', 
                             handler: this.props.onCloseAll
-                        }
+                         }
                     ]}
                     onHide={this._hideContextMenu}
                  />
@@ -132,20 +132,20 @@ const styles = StyleSheet.create({
         cursor: 'pointer', 
         outline: 0, 
         whiteSpace: 'nowrap'
-    }, 
+     }, 
     label: {
         display: 'inline-block', 
         verticalAlign: -1, 
         margin: 6, 
         userSelect: 'none', 
         whiteSpace: 'nowrap'
-    }, 
+     }, 
     focusedLight: {
         backgroundColor: 'rgba(0, 0, 0, .04)'
-    }, 
+     }, 
     focusedDark: {
         backgroundColor: 'rgba(255, 255, 255, .04)'
-    }, 
+     }, 
     close: {
         padding: '7px 8px', 
         fontSize: '18px', 
@@ -156,11 +156,11 @@ const styles = StyleSheet.create({
         margin: '-3px 0 0 0', 
         background: 'none', 
         outline: 0
-    }, 
+     }, 
     closeFocused: {
         opacity: 1
-    }, 
+     }, 
     closeBlurred: {
         opacity: 0
-    }
-});
+     }
+ });

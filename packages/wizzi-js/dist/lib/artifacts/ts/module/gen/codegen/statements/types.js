@@ -231,6 +231,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeReference. Got: ' + callback);
         }
+        // log 'typeReference.model', model
         var model = writeComments(model, ctx);
         if (model.statements.length == 1) {
             ctx.write('<' + model.wzName + '>');
@@ -894,6 +895,52 @@ md.load = function(cnt) {
         ctx.w('export = ' + model.wzName + ';');
         return callback(null, null);
     };
+    cnt.stm.typeImport = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeImport');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.typeImport. Got: ' + callback);
+        }
+        var model = writeComments(model, ctx);
+        var name = model.wzName || '';
+        if (model.xas) {
+            if (name.length > 0) {
+                name += ', ';
+            }
+            name += '* as ' + model.xas;
+        }
+        ctx.write("import type " + name);
+        if (model.specifiers.length > 0) {
+            if (name.length > 0) {
+                ctx.write(', ');
+            }
+            ctx.write('{');
+            var i, i_items=model.specifiers, i_len=model.specifiers.length, item;
+            for (i=0; i<i_len; i++) {
+                item = model.specifiers[i];
+                if (i > 0) {
+                    ctx.write(', ');
+                }
+                ctx.write(item.wzName);
+                if (item.xas) {
+                    ctx.write(' as ' + item.xas);
+                }
+            }
+            ctx.write('}');
+            ctx.write(' from ' + model.from);
+        }
+        else {
+            if (model.from && model.from.length > 0) {
+                if (name.trim().length > 0) {
+                    ctx.write(' from');
+                }
+                ctx.write(' ' + model.from);
+            }
+        }
+        ctx.w(u.semicolon(name));
+        return callback(null, null);
+    };
     cnt.stm.typeImportEqualsDeclaration = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeImportEqualsDeclaration');
@@ -1017,6 +1064,16 @@ md.load = function(cnt) {
             return callback(null, null);
         }
     }
+    cnt.stm.exportType = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.exportType');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.exportType. Got: ' + callback);
+        }
+        model.__isType;
+        cnt.stm.xexport(model, ctx, callback)
+    };
     function doCallMembers_call(model, ctx, remainings, callback) {
         var len_1 = remainings.length;
         function repeater_1(index_1) {

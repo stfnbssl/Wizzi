@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\selectEntry.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import updateEntry from './updateEntry';
 import {FileSystemEntry} from '../types';
@@ -11,7 +11,7 @@ export default function selectEntry(entries: FileSystemEntry[], path: string):  
                 e.item.path === path ? updateEntry(e, {
                         state: {
                             isSelected: !e.state.isSelected
-                        }
-                    }) : e
+                         }
+                     }) : e
             );
     }

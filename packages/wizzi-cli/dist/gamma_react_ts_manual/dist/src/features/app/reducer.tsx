@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\app\reducer.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import {Reducer} from 'redux';
 import {ActionType, getType} from 'typesafe-actions';
@@ -13,7 +13,7 @@ export interface AppState {
 }
 const initialState: AppState = {
     loggedUser: undefined
-};
+ };
 export type AppAction = ActionType<typeof appActions>;
 const reducer: Reducer<AppState, AppAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -22,14 +22,14 @@ const reducer: Reducer<AppState, AppAction> = (state = initialState, action) => 
             return {
                     ...state, 
                     loggedUser: action.payload
-                };
+                 };
         }
         case getType(appActions.loginUserByStoredUidSuccess): {
             console.log("appActions.loginUserByStoredUidSuccess");
             return {
                     ...state, 
                     loggedUser: action.payload
-                };
+                 };
         }
         default: {
             return state;

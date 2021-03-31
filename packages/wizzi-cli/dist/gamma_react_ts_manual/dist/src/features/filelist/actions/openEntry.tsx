@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\openEntry.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import updateEntry from './updateEntry';
 import {FileSystemEntry} from '../types';
@@ -27,8 +27,8 @@ export default function openEntry(entries: FileSystemEntry[], path: string, focu
                                     isSelected: true, 
                                     isFocused: true, 
                                     isOpen: true
-                                }
-                            });
+                                 }
+                             });
                     }
                     else {
                         // Select and toggle the expand for the directory
@@ -36,8 +36,8 @@ export default function openEntry(entries: FileSystemEntry[], path: string, focu
                                 state: {
                                     isSelected: true, 
                                     isExpanded: focus ? e.state.isExpanded : !e.state.isExpanded
-                                }
-                            });
+                                 }
+                             });
                     }
                 }
                 if (e.item.type === 'file') {
@@ -47,8 +47,8 @@ export default function openEntry(entries: FileSystemEntry[], path: string, focu
                                 state: {
                                     isSelected: false, 
                                     isFocused: isFolder ? e.state.isFocused : false
-                                }
-                            });
+                                 }
+                             });
                     }
                 }
                 else {
@@ -57,8 +57,8 @@ export default function openEntry(entries: FileSystemEntry[], path: string, focu
                         return updateEntry(e, {
                                 state: {
                                     isSelected: false
-                                }
-                            });
+                                 }
+                             });
                     }
                 }
                 return e;

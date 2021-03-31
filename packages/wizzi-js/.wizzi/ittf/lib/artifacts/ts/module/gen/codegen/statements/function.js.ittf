@@ -177,6 +177,7 @@
 			_ ctx.write('yield ' + name)
             if u.isTopStatement(model, ctx)
                 _ ctx.w(u.semicolon(name))
+            _ u.checkInlineExit(model, ctx)
 			r_cb()
 
 		_ ctx.write('yield ')
@@ -186,16 +187,19 @@
             f_cb()
                 if u.isTopStatement(model, ctx)
                     _ ctx.w(u.semicolon(name))
+                _ u.checkInlineExit(model, ctx)
                 r_cb()
 
 	stm( xawait
-        var model = writeComments(model, ctx)
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
         _ ctx.write('await ')
 		var name = model.wzName.trim()
 		if hasStatements(model) == false
 			_ ctx.write(name)
 			if u.isTopStatement(model, ctx)
 				_ ctx.w(u.semicolon(name))
+            _ u.checkInlineExit(model, ctx)
 			r_cb()
 		else
 			_ cnt.genItems
@@ -204,10 +208,12 @@
 				f_cb()
 					if u.isTopStatement(model, ctx)
 						_ ctx.w(u.semicolon(name))
+                    _ u.checkInlineExit(model, ctx)
 					r_cb()
 
 	stm( asyncarrowfunction
-        var model = writeComments(model, ctx)
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
 		set model.xasync = true
 		_ cnt.stm.arrowfunction
 			@ model
@@ -215,7 +221,8 @@
 			@ callback
 	
 	stm( arrowfunction
-        var model = writeComments(model, ctx)
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
 		var async_str = model.xasync ? 'async ' : ''
         $*
         log 'arrowfunction, model.wzParent.wzElement', model.wzParent.wzElement
@@ -379,12 +386,15 @@
                 @ indent true
             f_cb()
                 _ ctx.w((implicitReturn ? '' : '}'))
+                _ u.checkInlineExit(model, ctx)
                 r_cb()
     
 	stm( xreturn
-        var model = writeComments(model, ctx)
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
 		if hasStatements(model) == false
 			_ ctx.w('return ' + (model.wzName || '') + u.semicolon(model.wzName))
+            _ u.checkInlineExit(model, ctx)
 			r_cb()
 
         _ ctx.write('return ')
@@ -396,7 +406,7 @@
 			f_cb()
 				if model.statements.length == 1
 					_ ctx.w(';')
+                _ u.checkInlineExit(model, ctx)
 				r_cb()
-
 	
 	$include generateParams

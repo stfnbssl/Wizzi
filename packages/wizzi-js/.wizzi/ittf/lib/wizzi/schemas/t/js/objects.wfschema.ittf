@@ -88,7 +88,17 @@
 				if item.wzElement === 'namedCallParam'
 					set this.isDslCall = true
 
-	e jsRest : statement
+	e jsPropertyOrValueComputed : statement
+		tag @[
+		
+        m wzinitialize
+			# a Dsl that uses this could be 'graphql'
+			set this.isDslCall = false
+			foreach item in this.statements
+				if item.wzElement === 'namedCallParam'
+					set this.isDslCall = true
+	
+    e jsRest : statement
 		tag ...
 
 	e namedCallParam : statement

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\preferences\PreferencesProvider.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {connect} from 'react-redux';
@@ -32,7 +32,7 @@ const defaults: PreferencesType = {
     panelsShown: false, 
     panelType: 'errors', 
     theme: 'light'
-};
+ };
 export const PreferencesContext = React.createContext<PreferencesContextType | null>(null);
 class PreferencesProvider extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -40,7 +40,7 @@ class PreferencesProvider extends React.Component<Props, State> {
         const {
             cookies, 
             search
-        } = this.props;
+         } = this.props;
         let overrides: Partial<PreferencesType> = {};
         try {
             // Restore editor preferences from saved data
@@ -53,7 +53,7 @@ class PreferencesProvider extends React.Component<Props, State> {
             const {
                 theme, 
                 platform
-            } = parse(search);
+             } = parse(search);
             if (theme === 'light' || theme === 'dark') {
                 overrides.theme = theme;
             }
@@ -64,13 +64,13 @@ class PreferencesProvider extends React.Component<Props, State> {
             preferences: {
                 ...defaults, 
                 ...overrides
-            }
-        };
+             }
+         };
     }
     _persistPreferences = debounce(() => {
         const {
             cookies
-        } = this.props;
+         } = this.props;
         try {
             cookies.set && cookies.set(PREFERENCES_KEY, JSON.stringify(this.state.preferences));
         } 
@@ -84,15 +84,15 @@ class PreferencesProvider extends React.Component<Props, State> {
                 preferences: {
                     ...state.preferences, 
                     ...overrides
-                }
-            })
+                 }
+             })
         , this._persistPreferences);
     render() {
         return  (
             <PreferencesContext.Provider value={{
                 setPreferences: this._setPreferences, 
                 preferences: this.state.preferences
-            }}>
+             }}>
                 {this.props.children}
             </PreferencesContext.Provider>
             )

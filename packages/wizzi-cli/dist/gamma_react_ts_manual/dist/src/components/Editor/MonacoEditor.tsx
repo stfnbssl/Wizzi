@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\MonacoEditor.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -38,32 +38,32 @@ global.MonacoEnvironment = {
                 // @ts-ignore
                 return new Worker('monaco-editor/esm/vs/language/json/json.worker', {
                         type: 'module'
-                    });
+                     });
             }
             case 'typescript':
             case 'javascript': {
                 // @ts-ignore
                 return new Worker('monaco-editor/esm/vs/language/typescript/ts.worker', {
                         type: 'module'
-                    });
+                     });
             }
             default: {
                 // @ts-ignore
                 return new Worker('monaco-editor/esm/vs/editor/editor.worker', {
                         type: 'module'
-                    });
+                     });
             }
         }
     }
     
-};
+ };
 monaco.editor.defineTheme('light', light);
 monaco.editor.defineTheme('dark', dark);
 //
 monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
     noSemanticValidation: true, 
     noSyntaxValidation: true
-})
+ })
 //
 const documentFormattingProvider: monaco.languages.DocumentFormattingEditProvider = {
     async provideDocumentFormattingEdits(model) {
@@ -72,11 +72,11 @@ const documentFormattingProvider: monaco.languages.DocumentFormattingEditProvide
                 {
                     range: model.getFullModelRange(), 
                     text
-                }
+                 }
             ];
     }
     
-};
+ };
 monaco.languages.registerDocumentFormattingEditProvider('javascript', documentFormattingProvider);
 monaco.languages.registerDocumentFormattingEditProvider('typescript', documentFormattingProvider);
 monaco.languages.registerDocumentFormattingEditProvider('markdown', documentFormattingProvider);
@@ -105,8 +105,8 @@ const compilerOptions: monaco.languages.typescript.CompilerOptions = {
             '*.ios', 
             '*.android'
         ]
-    }
-};
+     }
+ };
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions(compilerOptions);
 monaco.languages.typescript.javascriptDefaults.setCompilerOptions(compilerOptions);
 type DependencyList = { 
@@ -162,7 +162,7 @@ class MonacoEditor extends React.Component<Props> {
         scrollBeyondLastLine: false, 
         minimap: {
             enabled: false
-        }, 
+         }, 
         fontFamily: 'var(--font-monospace)', 
         fontLigatures: true
     }
@@ -190,14 +190,14 @@ class MonacoEditor extends React.Component<Props> {
             annotations, 
             autoFocus, 
             ...rest
-        } = this.props;
+         } = this.props;
         // The methods provided by the service are on it's prototype
         // So spreading this object doesn't work, we must mutate it
         codeEditorService.openCodeEditor = // Remove the leading slash added by the Uri
         async ({
             resource, 
             options
-        }: any, editor: monaco.editor.IStandaloneCodeEditor) => {
+         }: any, editor: monaco.editor.IStandaloneCodeEditor) => {
             await this.props.onOpenPath(resource.path.replace(/^\//, ''));
             editor.setSelection(options.selection);
             editor.revealLine(options.selection.startLineNumber);
@@ -205,7 +205,7 @@ class MonacoEditor extends React.Component<Props> {
                     getControl: () => 
                         editor
                     
-                };
+                 };
         }
         ;
         const editor = monaco.editor.create(this._node.current  as HTMLDivElement, rest, codeEditorService);
@@ -227,7 +227,7 @@ class MonacoEditor extends React.Component<Props> {
         // Load all the files so the editor can provide proper intellisense
         this.props.entries.forEach(({
             item
-        }) => {
+         }) => {
             if (item.type === 'file' && item.path !== path && !item.asset && (typeof((item as any).content)) === 'string') {
                 this._initializeFile(item.path, (item as any) .content)
             }
@@ -260,15 +260,15 @@ class MonacoEditor extends React.Component<Props> {
                                     contents: [
                                         {
                                             value: `version "${deps[string].version}"`
-                                        }
+                                         }
                                     ]
-                                };
+                                 };
                         }
                     }
                 }
             }
             
-        };
+         };
         // Completion provider to provide autocomplete for files and dependencies
         const completionProvider: monaco.languages.CompletionItemProvider = {
             triggerCharacters: [
@@ -284,7 +284,7 @@ class MonacoEditor extends React.Component<Props> {
                     startColumn: 1, 
                     endLineNumber: position.lineNumber, 
                     endColumn: position.column
-                });
+                 });
                 if (// Match `import "`, `from "`, `require("`
                 /(([\s|\n]+(import|from)\s+)|(\brequire\b\s*\())["|'][^'^"]*$/.test(textUntilPosition)) {
                     if (textUntilPosition.endsWith('.') || textUntilPosition.endsWith('/')) {
@@ -296,11 +296,11 @@ class MonacoEditor extends React.Component<Props> {
                         const prefix = typed === '.' ? './' : typed === '..' ? '../' : typed;
                         const suggestions = this.props.entries.filter(({
                                 item
-                            }) => 
+                             }) => 
                                 item.path !== this.props.path && !item.virtual
                             ).map(({
                                 item
-                            }):  monaco.languages.CompletionItem | null => {
+                             }):  monaco.languages.CompletionItem | null => {
                                 let file = getRelativePath(this.props.path, item.path);
                                 if (// Only show files that match the prefix typed by user
                                 file.startsWith(prefix) && file.split('/').length <= prefix.split('/').length// Only show files in the same directory as the prefix
@@ -314,14 +314,14 @@ class MonacoEditor extends React.Component<Props> {
                                             // Don't keep extension for JS files
                                             insertText: item.type === 'file' ? file.replace(/\.(js|tsx?)$/, '') : file, 
                                             kind: item.type === 'folder' ? monaco.languages.CompletionItemKind.Folder : monaco.languages.CompletionItemKind.File
-                                        };
+                                         };
                                 }
                                 return null;
                             }
                             ).filter(Boolean) as monaco.languages.CompletionItem[];
                         return {
                                 suggestions
-                            };
+                             };
                     }
                     else {
                         const deps = // 
@@ -334,15 +334,15 @@ class MonacoEditor extends React.Component<Props> {
                                         insertText: name, 
                                         detail: deps[name].version, 
                                         kind: monaco.languages.CompletionItemKind.Module
-                                    })
+                                     })
                                 )
-                            };
+                             };
                     }
                 }
                 return undefined;
             }
             
-        };
+         };
         this._hoverProviderJS = monaco.languages.registerHoverProvider('javascript', hoverProvider);
         this._hoverProviderTS = monaco.languages.registerHoverProvider('typescript', hoverProvider);
         this._completionProviderJS = monaco.languages.registerCompletionItemProvider('javascript', completionProvider);
@@ -359,7 +359,7 @@ class MonacoEditor extends React.Component<Props> {
             autoFocus, 
             theme, 
             ...rest
-        } = this.props;
+         } = this.props;
         if (this._editor) {
             this._editor.updateOptions(rest);
             const model = this._editor.getModel();
@@ -375,7 +375,7 @@ class MonacoEditor extends React.Component<Props> {
                         {
                             range: model.getFullModelRange(), 
                             text: value
-                        }
+                         }
                     ])
                 }
             }
@@ -398,7 +398,7 @@ class MonacoEditor extends React.Component<Props> {
             // Update all changed entries for updated intellisense
             this.props.entries.forEach(({
                 item
-            }) => {
+             }) => {
                 if (item.type === 'file' && !item.asset && item.path !== path) {
                     const previous = prevProps.entries.find(e => 
                         e.item.path === item.path
@@ -433,18 +433,18 @@ class MonacoEditor extends React.Component<Props> {
                 {
                     range: model.getFullModelRange(), 
                     text: value
-                }
+                 }
             ])
         }
         else {
             model = monaco.editor.createModel(value, undefined, monaco.Uri.from({
                 scheme: 'file', 
                 path
-            }));
+             }));
             model.updateOptions({
                 tabSize: 2, 
                 insertSpaces: true
-            })
+             })
         }
     };
     _openFile = (path: string, value: string, focus?: boolean) => {
@@ -467,7 +467,7 @@ class MonacoEditor extends React.Component<Props> {
             // @ts-ignore
             // ...mapValues(preloadedModules.dependencies[sdkVersion], version => ({ version })),
             ...dependencies
-        });
+         });
     _fetchTypings = (dependencies: DependencyList) => {
         const deps = // 
         this._getAllDependencies(dependencies);
@@ -476,7 +476,7 @@ class MonacoEditor extends React.Component<Props> {
         (qualifier) => {
             const {
                 version
-            } = deps[qualifier];
+             } = deps[qualifier];
             const match = /^(?:@([^/?]+)\/)?([^@/?]+)(?:\/([^@]+))?/.exec(qualifier);
             if (!match) {
                 return ;
@@ -490,12 +490,12 @@ class MonacoEditor extends React.Component<Props> {
             this._typingsWorker && this._typingsWorker.postMessage({
                 name, 
                 version
-            })}
+             })}
         )
     };
     _addTypings = ({
         typings
-    }: { 
+     }: { 
         typings: { 
             [key: string]: string;
         };
@@ -509,14 +509,14 @@ class MonacoEditor extends React.Component<Props> {
             const uri = monaco.Uri.from({
                 scheme: 'file', 
                 path
-            }).toString()
+             }).toString()
             ;
             const js = monaco.languages.typescript.javascriptDefaults.addExtraLib(typings[path], uri);
             const ts = monaco.languages.typescript.typescriptDefaults.addExtraLib(typings[path], uri);
             extraLibs.set(path, {
                 js, 
                 ts
-            })
+             })
         }
         );
     _updateMarkers = (annotations: Annotation[]) => {
@@ -529,7 +529,7 @@ class MonacoEditor extends React.Component<Props> {
     , 50, {
         leading: true, 
         trailing: true
-    });
+     });
     _typingsWorker: Worker | undefined;
     _hoverProviderJS: monaco.IDisposable | undefined;
     _hoverProviderTS: monaco.IDisposable | undefined;
@@ -545,7 +545,7 @@ class MonacoEditor extends React.Component<Props> {
             <div className={css(styles.container)}>
                 <style type="text/css" dangerouslySetInnerHTML={{
                     __html: overrides
-                }} />
+                 }} />
                 <ResizeDetector onResize={this._handleResize}>
                     <div ref={this._node} className={classnames(css(styles.editor), 'snack-monaco-editor', `theme-${this.props.theme}`)} />
                 </ResizeDetector>
@@ -566,9 +566,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column', 
         minWidth: 0, 
         minHeight: 0
-    }, 
+     }, 
     editor: {
         height: '100%', 
         width: '100%'
-    }
-});
+     }
+ });

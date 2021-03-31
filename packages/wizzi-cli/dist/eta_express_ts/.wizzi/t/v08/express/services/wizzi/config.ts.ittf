@@ -1,0 +1,41 @@
+$group
+    $params &md
+    import
+        as path
+        from 'path'
+    const md
+        :{
+            :index
+                :any
+                param k
+                    :string
+        =
+            {
+    var __ittfPath = path.join(__dirname, '..', '..', '..', '..', 'ittf')
+    var __dataPath = path.join(__dirname, '..', '..', '..', '..', 'data')
+    set md.repoBaseFolderUri = path.join(__ittfPath, 'repo')
+    set md.metaBasePath = path.join(__dataPath, 'meta')
+    set md.studioBasePath = path.join(__dataPath, 'studio')
+    set md.jobsBasePath = path.join(__dataPath, 'jobs')
+    set md.crawlBasePath = path.join(__dataPath, 'crawl')
+    set md.githubBasePath = path.join(__dataPath, 'github')
+    set md.cheatsheetsBasePath = path.join(__dataPath, 'models', 'cheatsheets')
+    set md.siteMetaBasePath = path.join(__dataPath, 'models', 'json')
+    set md.jsonDataMetaBasePath = path.join(__dataPath, 'models', 'sitemaps')
+    set md.storeKind = 'filesystem'
+    set md.plugins =
+        [
+            @ 'wizzi-core'
+            @ 'wizzi-meta'
+            @ 'wizzi-js'
+            @ 'wizzi-web'
+    set md.user = 'stefi'
+    set md.role = 'admin'
+    set md.set =
+        function
+            param key
+                :string
+            param value
+                :any
+            set md[key] = value
+    export-default md

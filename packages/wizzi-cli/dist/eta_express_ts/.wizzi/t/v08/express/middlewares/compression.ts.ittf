@@ -1,0 +1,19 @@
+$group
+    $params &md
+    import
+        @ Application
+        from 'express'
+    import
+        as compression
+        from 'compression'
+    import
+        @ MiddlewareType
+        from '../features/app/types'
+    export
+        const CompressionMiddleware
+            :ref MiddlewareType
+            =
+                =>
+                    param app
+                        :ref Application
+                    _ app.use(compression())

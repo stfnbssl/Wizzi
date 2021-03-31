@@ -155,6 +155,13 @@
           ]
         },
         {
+          "name": "op_nullish",
+          "tags": [
+            "??",
+            "op??"
+          ]
+        },
+        {
           "name": "op_eq_strict",
           "tags": [
             "===",
@@ -325,12 +332,6 @@
           "name": "ximport",
           "tags": [
             "import"
-          ]
-        },
-        {
-          "name": "typeImport",
-          "tags": [
-            ":import"
           ]
         },
         {
@@ -589,6 +590,12 @@
           "name": "jsPropertyOrValue",
           "tags": [
             "@"
+          ]
+        },
+        {
+          "name": "jsPropertyOrValueComputed",
+          "tags": [
+            "@["
           ]
         },
         {
@@ -5761,6 +5768,34 @@
       "comments": []
     },
     {
+      "name": "op_nullish",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "??",
+        "op??"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "op_eq_strict",
       "super": "statement",
       "isRoot": false,
@@ -6613,33 +6648,6 @@
       "comments": [
         "reference http://2ality.com/2014/09/es6-modules-final.html"
       ]
-    },
-    {
-      "name": "typeImport",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        ":import"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
     },
     {
       "name": "xexport",
@@ -8306,6 +8314,71 @@
         "from 'module-a'",
         ""
       ]
+    },
+    {
+      "name": "jsPropertyOrValueComputed",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "@["
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [
+        {
+          "name": "wzinitialize",
+          "isStatic": false,
+          "isKnownMethod": true,
+          "params": [],
+          "statements": [
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "this.isDslCall = false",
+              "statements": []
+            },
+            {
+              "tag": "foreach",
+              "name": "foreach",
+              "value": "item in this.statements",
+              "statements": [
+                {
+                  "tag": "if",
+                  "name": "xif",
+                  "value": "item.wzElement === 'namedCallParam'",
+                  "statements": [
+                    {
+                      "tag": "set",
+                      "name": "set",
+                      "value": "this.isDslCall = true",
+                      "statements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "comments": [
+            "a Dsl that uses this could be 'graphql'"
+          ]
+        }
+      ],
+      "comments": []
     },
     {
       "name": "jsRest",

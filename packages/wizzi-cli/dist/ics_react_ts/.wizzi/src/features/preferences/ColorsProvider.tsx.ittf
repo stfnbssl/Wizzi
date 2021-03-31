@@ -1,0 +1,103 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import mapKeys from 'lodash/mapKeys'
+    import usePreferences from './usePreferences'
+    :type Colors
+        :typeof light
+    const common
+        { 
+            @ primary '#4630eb'
+            @ secondary '#5844ed'
+            @ error '#f44336'
+            @ warning '#ff9800'
+            @ success '#4caf50'
+            @ border 'rgba(0, 0, 0, .08)'
+    export 
+        const light
+            { 
+                @ ...common
+                @ accent '#000'
+                @ 'accent-text' '#fff'
+                @ text '#111'
+                @ background '#fafafa'
+                @ content '#fff'
+                @ 'editor-background' '#fafafa'
+                    # Editor colors
+                @ 'editor-text' '#111'
+                @ 'editor-border' 'transparent'
+    export 
+        const dark
+            :ref Colors
+            =
+                { 
+                    @ ...common
+                    @ accent '#fff'
+                    @ 'accent-text' '#000'
+                    @ text '#D3D7CE'
+                    @ background '#212733'
+                    @ content '#242B38'
+                    @ 'editor-background' '#272D38'
+                        # Editor colors
+                    @ 'editor-text' '#D9D7CE'
+                    @ 'editor-border' '#343D4A'
+    export 
+        const c
+            => 
+                param name
+                    :keyof 
+                        :typeof light
+                `lit 
+                    + var(--color-
+                    @ name
+                    + )
+    :type Props
+        :{ 
+            :p children
+                :ref React.ReactNode
+    export-default 
+        function ColorsProvider
+            { 
+                @ children
+                :ref Props
+            const [prefs] = usePreferences()
+            return 
+                div 
+                    @ className
+                        _ css
+                            @expr styles.container
+                            iif prefs.theme === 'dark'
+                                then styles.dark
+                                else styles.light
+                    + {children}
+    const styles
+        _ StyleSheet.create
+            { 
+                { container
+                    @ height '100%'
+                    @ width '100%'
+                @ light
+                    _ mapKeys
+                        @ light
+                        => 
+                            param _
+                            param key
+                            `lit 
+                                + --color-
+                                @ key
+                                + 
+                @ dark
+                    _ mapKeys
+                        @ dark
+                        => 
+                            param _
+                            param key
+                            `lit 
+                                + --color-
+                                @ key
+                                + 

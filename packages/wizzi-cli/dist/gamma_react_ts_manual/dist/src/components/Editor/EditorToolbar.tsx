@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\EditorToolbar.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -83,13 +83,13 @@ class EditorToolbar extends React.PureComponent<Props, State> {
     _handleShowAuthModal = () => {
         this.setState({
             isLoggingIn: true
-        })
+         })
         this.props.onShowAuthModal();
     };
     _handleDismissAuthModal = () => {
         this.setState({
             isLoggingIn: false
-        })
+         })
         this.props.onDismissAuthModal();
     };
     render() {
@@ -120,7 +120,7 @@ class EditorToolbar extends React.PureComponent<Props, State> {
             onSaveCode, 
             // onPublishAsync,
             
-        } = this.props;
+         } = this.props;
         // console.log('EditorToolbar.currentPacki', currentPacki);
         const isPublishing = saveStatus === 'publishing';
         const isPublished = saveStatus === 'published';
@@ -260,57 +260,57 @@ const styles = StyleSheet.create({
         width: 36, 
         height: 'auto', 
         margin: '0 .5em 0 .75em'
-    }, 
+     }, 
     logoBox: {
         padding: '20px'
-    }, 
+     }, 
     titleBox: {
         padding: '20px'
-    }, 
+     }, 
     buttons: {
         display: 'flex', 
         flexDirection: 'row', 
         alignItems: 'center', 
         position: 'relative', 
         zIndex: 5
-    }, 
+     }, 
     saveButton: {
         minWidth: 100
-    }, 
+     }, 
     execWizziJobButton: {
         minWidth: 100
-    }
-});
+     }
+ });
 const muiStyles = (theme: Theme) => 
     createStyles({
         root: {
             flexGrow: 1
-        }, 
+         }, 
         appBar: {
             zIndex: theme.zIndex.drawer + 1, 
             marginLeft: `${Layout.MainDrawerWidth}px`, 
             width: `calc(100% - ${Layout.MainDrawerWidth}px)`
-        }, 
+         }, 
         grow: {
             flexGrow: 1
-        }, 
+         }, 
         menuButton: {
             marginLeft: -12, 
             marginRight: 20
-        }, 
+         }, 
         buttonIcon: {
             margin: theme.spacing.unit
-        }, 
+         }, 
         rightIcon: {
             marginLeft: theme.spacing.unit
-        }, 
+         }, 
         iconSmall: {
             fontSize: 20
-        }, 
+         }, 
         avatar: {
             margin: 10
-        }
-    })
+         }
+     })
 ;
 const ThemedToolbar = withThemeName(EditorToolbar);
 export default withStyles(muiStyles)(ThemedToolbar);

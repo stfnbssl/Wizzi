@@ -1,0 +1,150 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        @ isImage
+        from '../../features/filelist/fileUtilities'
+    import 
+        @ AssetFileEntry
+        from '../../features/filelist/types'
+    :type Props
+        :{ 
+            :p entry
+                :ref AssetFileEntry
+    :type State
+        :{ 
+            :p layout
+                :union 
+                    :{ 
+                        :p height
+                            :number 
+                        :p width
+                            :number 
+                    :undefined 
+                    :null 
+    export-default 
+        class AssetViewer
+            super React.PureComponent
+                :param 
+                    :ref Props
+                :param 
+                    :ref State
+            p state
+                :ref State
+                { 
+                    @ layout null
+            => _handleImageLoad
+                param e
+                    :ref React.SyntheticEvent
+                        :param 
+                            :ref HTMLImageElement
+                const image
+                    @expr e.target
+                        :as 
+                            :ref HTMLImageElement
+                _ this.setState
+                    { 
+                        { layout
+                            @ height image.naturalHeight
+                            @ width image.naturalWidth
+            m render
+                const ext
+                    iif this.props.entry.item.path.includes('.')
+                        then this.props.entry.item.path.split('.').pop()
+                        else null
+                return 
+                    div 
+                        @ className {css(styles.container)}
+                        div 
+                            @ className {css(styles.inner)}
+                            { 
+                                iif isImage(this.props.entry.item.path)
+                                    then
+                                        img 
+                                            @ onLoad {this._handleImageLoad}
+                                            @ className {css(styles.preview)}
+                                            @ src {this.props.entry.item.uri}
+                                    else
+                                        svg 
+                                            @ width "120px"
+                                            @ height "168px"
+                                            @ viewBox "0 0 120 168"
+                                            mask 
+                                                @ id "mask-2"
+                                                @ fill "white"
+                                                rect 
+                                                    @ x "0"
+                                                    @ y "0"
+                                                    @ width "119.25"
+                                                    @ height "168"
+                                            g 
+                                                @ mask "url(#mask-2)"
+                                                @ fillRule "nonzero"
+                                                @ fill "#CFCFCF"
+                                                path 
+                                                    @ d "M2.25,0 L117.75,0 L117.75,0 C118.992641,-2.28269391e-16 120,1.00735931 120,2.25 L120,165.75 L120,165.75 C120,166.992641 118.992641,168 117.75,168 L2.25,168 L2.25,168 C1.00735931,168 1.52179594e-16,166.992641 0,165.75 L0,2.25 L0,2.25 C-1.52179594e-16,1.00735931 1.00735931,2.28269391e-16 2.25,0 Z M75,0 L120,45 L120,0 L75,0 Z"
+                                                path 
+                                                    @ d "M77.25,-3 L120.75,-3 C121.992641,-3 123,-1.99264069 123,-0.75 L123,42.75 C123,43.9926407 121.992641,45 120.75,45 L77.25,45 C76.0073593,45 75,43.9926407 75,42.75 L75,-0.75 L75,-0.75 C75,-1.99264069 76.0073593,-3 77.25,-3 L77.25,-3 Z M75,0 L120,45 L120,0 L75,0 Z"
+                                                    @ fillOpacity "0.2"
+                                                    @ fill "#000000"
+                                                text 
+                                                    @ className {css(styles.ext)}
+                                                    tspan 
+                                                        @ x "56"
+                                                        @ y "100"
+                                                        { 
+                                                            iif ext
+                                                                then
+                                                                    `lit 
+                                                                        + .
+                                                                        @ ext
+                                                                        + 
+                                                                else ''
+                            h4 
+                                @ className {css(styles.name)}
+                                + {this.props.entry.item.path.split('/').pop()}
+                            div 
+                                @ className {css(styles.layout)}
+                                { 
+                                    iif this.state.layout
+                                        then
+                                            `lit 
+                                                + 
+                                                @ this.state.layout.height
+                                                + &nbsp;x&nbsp;
+                                                @ this.state.layout.width
+                                                + 
+                                        else ' '
+    const styles
+        _ StyleSheet.create
+            { 
+                { container
+                    @ flex 1
+                    @ display 'flex'
+                    @ alignItems 'center'
+                    @ justifyContent 'center'
+                { inner
+                    @ maxHeight '100%'
+                    @ maxWidth '100%'
+                    @ textAlign 'center'
+                { name
+                    @ marginTop '2em'
+                    @ fontWeight 500
+                { layout
+                    @ opacity 0.5
+                { preview
+                    @ maxHeight '100%'
+                    @ maxWidth '100%'
+                    @ height 'auto'
+                    @ width 'auto'
+                { ext
+                    @ fill 'currentColor'
+                    @ fontFamily 'var(--font-monospace)'
+                    @ textAnchor 'middle'
+                    @ fontSize 20
+                    @ opacity 0.8

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Auth\SocialLogin.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
@@ -34,7 +34,7 @@ class SocialLogin extends React.Component<Props, State> {
             if (res.ok) {
                 this.setState({
                     loading: false
-                })
+                 })
             }
         }
         )
@@ -45,7 +45,7 @@ class SocialLogin extends React.Component<Props, State> {
             loggedUser, 
             onLoggedOn, 
             onLoggedOff
-        } = this.props;
+         } = this.props;
         const buttons = (providers: string[], socket: any) => 
             providers.map((provider) => 
                  (
@@ -101,19 +101,19 @@ const muiStyles = (theme: Theme) =>
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: 'center'
-        }, 
+         }, 
         container: {
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'space-around', 
             height: '50vh', 
             width: '50vw'
-        }, 
+         }, 
         display: {
             display: 'flex', 
             flexDirection: 'column', 
             alignItems: 'center'
-        }
-    })
+         }
+     })
 ;
 export default withStyles(muiStyles)(SocialLogin);

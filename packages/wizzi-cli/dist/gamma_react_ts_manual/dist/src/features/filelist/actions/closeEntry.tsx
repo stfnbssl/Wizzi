@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\closeEntry.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import updateEntry from './updateEntry';
 import {FileSystemEntry} from '../types';
@@ -15,8 +15,8 @@ export default function closeEntry(entry: FileSystemEntry) {
                             isOpen: false, 
                             isSelected: false, 
                             isFocused: false
-                        }
-                    });
+                         }
+                     });
             }
         }
         else {
@@ -25,8 +25,8 @@ export default function closeEntry(entry: FileSystemEntry) {
                 return updateEntry(entry, {
                         state: {
                             isSelected: false
-                        }
-                    });
+                         }
+                     });
             }
         }
         return entry;

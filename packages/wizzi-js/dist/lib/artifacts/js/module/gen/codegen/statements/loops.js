@@ -49,8 +49,11 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xfor. Got: ' + callback);
         }
-        if (model.statements.length > 1 && model.statements[0].wzElement == 'xleft' && model.statements[1].wzElement == 'xof' || model.statements[1].wzElement == 'xin') {
+        if (model.statements.length > 1 && model.statements[0].wzElement == 'xleft' && (model.statements[1].wzElement == 'xof' || model.statements[1].wzElement == 'xin')) {
+            var bodystatementes = model.statements.slice(2);
             ctx.write('for (');
+            ctx.__inline = true;
+            ctx.__nosemicolon = true;
             cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
                 if (err) {
                     return callback(err);
@@ -60,8 +63,10 @@ md.load = function(cnt) {
                     if (err) {
                         return callback(err);
                     }
+                    ctx.__inline = false;
+                    ctx.__nosemicolon = false;
                     ctx.w(') {');
-                    cnt.genItems(model.statements, ctx, {
+                    cnt.genItems(bodystatementes, ctx, {
                         indent: true
                     }, function(err, notUsed) {
                         if (err) {

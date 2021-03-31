@@ -265,8 +265,11 @@
 					r_cb()
     
 	stm( xreturn
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
 		if hasStatements(model) == false
 			_ ctx.w('return ' + (model.wzName || '') + u.semicolon(model.wzName))
+            _ u.checkInlineExit(model, ctx)
 			r_cb()
 
         _ ctx.write('return ')
@@ -278,6 +281,7 @@
 			f_cb()
 				if model.statements.length == 1
 					_ ctx.w(';')
+                _ u.checkInlineExit(model, ctx)
 				r_cb()
 	
 	$include generateParamConstraints

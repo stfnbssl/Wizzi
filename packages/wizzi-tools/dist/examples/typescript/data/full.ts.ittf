@@ -1,7 +1,8 @@
 module
-    for 
-        left
-            const 
-                { 
-                    @ item
-        of entryArray
+    let cookies
+        :{ 
+            :p [SNACK_COOKIE_NAME]
+                :optional 
+                :string 
+        =
+            { 

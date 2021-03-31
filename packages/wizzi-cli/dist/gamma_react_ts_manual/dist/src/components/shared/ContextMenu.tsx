@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ContextMenu.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -40,7 +40,7 @@ class ContextMenu extends React.PureComponent<Props> {
             className, 
             // @ts-ignore
             innerRef
-        } = this.props;
+         } = this.props;
         if (!visible) {
             return null;
         }
@@ -53,14 +53,14 @@ class ContextMenu extends React.PureComponent<Props> {
                     top: Math.min(position.pageY, window.innerHeight - BOTTOM_OFFSET - shownActions.length * MENU_ITEM_HEIGHT), 
                     left: position.pageX, 
                     marginTop: -8
-                } : {}}>
+                 } : {}}>
                 {
                     shownActions.map(({
                         label, 
                         handler, 
                         disabled, 
                         combo
-                    }: Action) => 
+                     }: Action) => 
                          (
                         <li key={label}>
                             <button disabled={disabled} className={css(styles.item, disabled && styles.disabled)} onClick={() => {
@@ -100,11 +100,11 @@ const c = prefColors.c;
 const fadeIn = {
     from: {
         opacity: 0
-    }, 
+     }, 
     to: {
         opacity: 1
-    }
-};
+     }
+ };
 const styles = StyleSheet.create({
     menu: {
         zIndex: 10, 
@@ -120,14 +120,14 @@ const styles = StyleSheet.create({
         backgroundColor: c('content'), 
         borderColor: c('editor-border'), 
         color: c('text')
-    }, 
+     }, 
     menuLight: {
         borderWidth: 0
-    }, 
+     }, 
     menuDark: {
         borderWidth: 1, 
         borderStyle: 'solid'
-    }, 
+     }, 
     item: {
         lineHeight: 1, 
         display: 'flex', 
@@ -144,12 +144,12 @@ const styles = StyleSheet.create({
         ':hover': {
             background: c('primary'), 
             color: 'white'
-        }
-    }, 
+         }
+     }, 
     disabled: {
         pointerEvents: 'none', 
         opacity: 0.5
-    }, 
+     }, 
     hint: {
         color: 'inherit', 
         fontFamily: 'inherit', 
@@ -158,5 +158,5 @@ const styles = StyleSheet.create({
         boxShadow: 'none', 
         marginLeft: 24, 
         opacity: 0.3
-    }
-});
+     }
+ });

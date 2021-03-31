@@ -1,0 +1,44 @@
+module
+    function makeUnique
+        param hash
+            :string 
+        param unique
+            :{ 
+        param i = 1
+        const uniqueHash
+            iif i === 1
+                then hash
+                else
+                    `lit 
+                        + 
+                        @ hash
+                        + -
+                        @ i
+                        + 
+        if !unique[uniqueHash]
+            set unique[uniqueHash] = true
+            return uniqueHash
+        return makeUnique(hash, unique, i + 1)
+    export-default 
+        function textToHash
+            param text
+                :string 
+            param unique
+                =
+                    { 
+            return 
+                _ makeUnique
+                    _ encodeURI
+                        _ text.toLowerCase().replace(/=&gt;|&lt;| \/&gt;|<code>|<\/code>|&#39;/g, '')
+                            # eslint-disable-next-line no-useless-escape
+                            ._ replace
+                                # eslint-disable-next-line no-useless-escape
+                                @ /[!@#\$%\^&\*\(\)=_\+\[\]{}`~;:'"\|,\.<>\/\?\s]+/g
+                                @ '-'
+                            ._ replace
+                                @ /-+/g
+                                @ '-'
+                            ._ replace
+                                @ /^-|-$/g
+                                @ ''
+                    @ unique

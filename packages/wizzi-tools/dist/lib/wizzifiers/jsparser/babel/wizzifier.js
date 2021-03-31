@@ -15,6 +15,34 @@ var codeReplacer = require('../../../util/jsCodeReplacer');
 var CommentManager = require('../../../util/commentManager');
 var csswizzifier = null;
 var htmlwizzifier = null;
+// taken from packages\wizzi-js\.wizzi\ittf\lib\wizzi\models\t\html_tags.js.ittf
+// Those of facebook react
+// The 'p' tag works both as a html tag and a class property
+// TODO the 'param' tag/element (children of object element) has been suspended for
+// collision with input check param.
+// Reintroduce as @param.
+// TODO the 'filter' tag/element has been suspended for collision with array filter
+// Reintroduce as @filter.
+// TODO the 'var' tag/element has been suspended for collision with variable
+// Reintroduce as @var
+// TODO the 'set' tag/element has been suspended for collision with set statement
+// Reintroduce as @set
+// TODO the 'switch' tag/element has been suspended for collision with switch statement
+// Reintroduce as @switch
+// TODO the 'base' tag/element has been suspended for collision with base statement
+// Reintroduce as @base
+// TODO the 'form' attribute has been suspended for collision with tag/element
+// Reintroduce as @form
+// TODO the 'label' attribute has been suspended for collision with tag/element
+// Reintroduce as @label
+// TODO the 'span' attribute has been suspended for collision with tag/element
+// Reintroduce as @span
+// TODO the 'summary' attribute has been suspended for collision with tag/element
+// Reintroduce as @summary
+var _tags = "a abbr address area article aside audio b @base bdi bdo big blockquote body br" + " button canvas caption cite code col colgroup data datalist dd del details dfn" + " dialog div dl dt em embed fieldset figcaption figure @filter footer form h1 h2 h3 h4 h5" + " h6 head header hr html i iframe img input ins kbd keygen label legend li link" + " main map mark menu menuitem meta meter nav noscript object ol optgroup option" + " output picture pre progress q rp rt ruby s samp script section select" + " small source span strong @style sub summary sup table tbody td textarea tfoot th" + " thead time @title tr track u ul video wbr" + " altGlyph altGlyphDef altGlyphItem animate animateColor animateMotion animateTransform" + " circle clipPath color-profile cursor defs desc discard ellipse" + " font font-face font-face-format font-face-name font-face-src font-face-uri" + " foreignObject g glyph glyphRef hatch hatchpath hkern image line linearGradient" + " marker mask metadata missing-glyph mpath p @param path pattern polygon polyline radialGradient" + " rect @set solidcolor stop svg @switch symbol text textPath tref tspan" + " unknown use @var view vkern";
+var html_supported_tags = _tags.split(' ');
+var _attrs = "accept acceptCharset accessKey action allowFullScreen allowTransparency alt" + " async autoComplete autoFocus autoPlay capture cellPadding cellSpacing charSet" + " challenge checked classID className cols colSpan content contentEditable contextMenu" + " controls coords crossOrigin data dateTime defer dir disabled download draggable" + " encType @form formAction formEncType formMethod formNoValidate formTarget frameBorder" + " headers height hidden high href hrefLang htmlFor httpEquiv icon id inputMode" + " keyParams keyType @label lang list loop low manifest marginHeight marginWidth max" + " maxLength media mediaGroup method min minLength multiple muted name noValidate open" + " optimum pattern placeholder poster preload radioGroup readOnly rel required role" + " rows rowSpan sandbox scope scoped scrolling seamless selected shape size sizes" + " @span spellCheck src srcDoc srcSet start step style @summary tabIndex target title" + " type useMap value width wmode wrap" + " static";
+var html_supported_attrs = _attrs.split(' ');
 var format = function(parent, ast, options) {
     if (!ast) {
         throw new Error('missing ast. parent is: ' + util.inspect(parent, { depth: 2 }));
@@ -33,6 +61,14 @@ var format = function(parent, ast, options) {
     }
     if (options.verbose) {
         // log 'ast.type', ast.type
+    }
+    if (ast.type == 'OptionalMemberExpression') {
+        ast.type = 'MemberExpression';
+        ast.optional = true;
+    }
+    if (ast.type == 'OptionalCallExpression') {
+        ast.type = 'CallExpression';
+        ast.optional = true;
     }
     var formatter = format[ast.type];
     if (formatter) {
@@ -76,19 +112,6 @@ wzDocs.AstgNodes.push(File_astNode)
 format.File = function(parent, node, options) {
     var f_astNode = File_astNode;
     var __isText = false;
-    // log 'node : File ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property program and append ittfNode to `ret`
     f_astNode.props.push({
@@ -124,19 +147,6 @@ wzDocs.AstgNodes.push(Program_astNode)
 format.Program = function(parent, node, options) {
     var f_astNode = Program_astNode;
     var __isText = false;
-    // log 'node : Program ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // s( sourceType, "script" | "module"
     // process AST-node-property-collection directives and append ittfNode(s) to `ret`
@@ -204,19 +214,6 @@ wzDocs.AstgNodes.push(Identifier_astNode)
 format.Identifier = function(parent, node, options) {
     var f_astNode = Identifier_astNode;
     var __isText = true;
-    // log 'node : Identifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@id', 
         name: '', 
@@ -276,9 +273,9 @@ format.Identifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -294,19 +291,6 @@ wzDocs.AstgNodes.push(PrivateName_astNode)
 format.PrivateName = function(parent, node, options) {
     var f_astNode = PrivateName_astNode;
     var __isText = false;
-    // log 'node : PrivateName ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'none', 
         name: '', 
@@ -357,9 +341,9 @@ format.PrivateName = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -376,19 +360,6 @@ wzDocs.AstgNodes.push(RegExpLiteral_astNode)
 format.RegExpLiteral = function(parent, node, options) {
     var f_astNode = RegExpLiteral_astNode;
     var __isText = true;
-    // log 'node : RegExpLiteral ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'literal', 
         name: '', 
@@ -420,9 +391,9 @@ format.RegExpLiteral = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -439,19 +410,6 @@ wzDocs.AstgNodes.push(NullLiteral_astNode)
 format.NullLiteral = function(parent, node, options) {
     var f_astNode = NullLiteral_astNode;
     var __isText = true;
-    // log 'node : NullLiteral ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'literal', 
         name: '', 
@@ -479,9 +437,9 @@ format.NullLiteral = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -498,19 +456,6 @@ wzDocs.AstgNodes.push(StringLiteral_astNode)
 format.StringLiteral = function(parent, node, options) {
     var f_astNode = StringLiteral_astNode;
     var __isText = true;
-    // log 'node : StringLiteral ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'literal', 
         name: '', 
@@ -538,9 +483,9 @@ format.StringLiteral = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -557,19 +502,6 @@ wzDocs.AstgNodes.push(BooleanLiteral_astNode)
 format.BooleanLiteral = function(parent, node, options) {
     var f_astNode = BooleanLiteral_astNode;
     var __isText = true;
-    // log 'node : BooleanLiteral ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'literal', 
         name: '', 
@@ -601,9 +533,9 @@ format.BooleanLiteral = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -620,19 +552,6 @@ wzDocs.AstgNodes.push(NumericLiteral_astNode)
 format.NumericLiteral = function(parent, node, options) {
     var f_astNode = NumericLiteral_astNode;
     var __isText = true;
-    // log 'node : NumericLiteral ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'literal', 
         name: '', 
@@ -664,9 +583,9 @@ format.NumericLiteral = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -682,19 +601,6 @@ wzDocs.AstgNodes.push(Function_astNode)
 format.Function = function(parent, node, options) {
     var f_astNode = Function_astNode;
     var __isText = false;
-    // log 'node : Function ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'function', 
         name: '', 
@@ -738,6 +644,17 @@ format.Function = function(parent, node, options) {
         else {
             appto.name = tempid.name;
         }
+    }
+    // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
+    if (node.typeParameters) {
+        if (!node.typeParameters.type) {
+            throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
+        }
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
@@ -803,9 +720,9 @@ format.Function = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -821,19 +738,6 @@ wzDocs.AstgNodes.push(ExpressionStatement_astNode)
 format.ExpressionStatement = function(parent, node, options) {
     var f_astNode = ExpressionStatement_astNode;
     var __isText = false;
-    // log 'node : ExpressionStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'stm', 
         name: '', 
@@ -874,9 +778,9 @@ format.ExpressionStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -893,19 +797,6 @@ wzDocs.AstgNodes.push(BlockStatement_astNode)
 format.BlockStatement = function(parent, node, options) {
     var f_astNode = BlockStatement_astNode;
     var __isText = false;
-    // log 'node : BlockStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
     f_astNode.props.push({
@@ -972,19 +863,6 @@ wzDocs.AstgNodes.push(EmptyStatement_astNode)
 format.EmptyStatement = function(parent, node, options) {
     var f_astNode = EmptyStatement_astNode;
     var __isText = false;
-    // log 'node : EmptyStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '', 
         name: '', 
@@ -1003,9 +881,9 @@ format.EmptyStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1021,19 +899,6 @@ wzDocs.AstgNodes.push(DebuggerStatement_astNode)
 format.DebuggerStatement = function(parent, node, options) {
     var f_astNode = DebuggerStatement_astNode;
     var __isText = false;
-    // log 'node : DebuggerStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'debugger', 
         name: '', 
@@ -1052,9 +917,9 @@ format.DebuggerStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1070,19 +935,6 @@ wzDocs.AstgNodes.push(WithStatement_astNode)
 format.WithStatement = function(parent, node, options) {
     var f_astNode = WithStatement_astNode;
     var __isText = false;
-    // log 'node : WithStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'with', 
         name: '', 
@@ -1129,9 +981,9 @@ format.WithStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1147,19 +999,6 @@ wzDocs.AstgNodes.push(ReturnStatement_astNode)
 format.ReturnStatement = function(parent, node, options) {
     var f_astNode = ReturnStatement_astNode;
     var __isText = false;
-    // log 'node : ReturnStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'return', 
         name: '', 
@@ -1194,15 +1033,16 @@ format.ReturnStatement = function(parent, node, options) {
         }
     }
     // log 'ReturnStatement', ret
+    // log 'ReturnStatement.parent', parent.children[parent.children.length-1]
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1218,19 +1058,6 @@ wzDocs.AstgNodes.push(LabeledStatement_astNode)
 format.LabeledStatement = function(parent, node, options) {
     var f_astNode = LabeledStatement_astNode;
     var __isText = false;
-    // log 'node : LabeledStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'label', 
         name: '', 
@@ -1312,9 +1139,9 @@ format.LabeledStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1330,19 +1157,6 @@ wzDocs.AstgNodes.push(BreakStatement_astNode)
 format.BreakStatement = function(parent, node, options) {
     var f_astNode = BreakStatement_astNode;
     var __isText = false;
-    // log 'node : BreakStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'break', 
         name: '', 
@@ -1392,9 +1206,9 @@ format.BreakStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1410,19 +1224,6 @@ wzDocs.AstgNodes.push(ContinueStatement_astNode)
 format.ContinueStatement = function(parent, node, options) {
     var f_astNode = ContinueStatement_astNode;
     var __isText = false;
-    // log 'node : ContinueStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'continue', 
         name: '', 
@@ -1472,9 +1273,9 @@ format.ContinueStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1491,19 +1292,6 @@ wzDocs.AstgNodes.push(IfStatement_astNode)
 format.IfStatement = function(parent, node, options) {
     var f_astNode = IfStatement_astNode;
     var __isText = false;
-    // log 'node : IfStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'if', 
         name: '', 
@@ -1696,13 +1484,11 @@ format.IfStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
             var i, i_items=ret, i_len=ret.length, item;
             for (i=0; i<i_len; i++) {
                 item = ret[i];
                 parent.children.push(item);
             }
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1718,19 +1504,6 @@ wzDocs.AstgNodes.push(SwitchStatement_astNode)
 format.SwitchStatement = function(parent, node, options) {
     var f_astNode = SwitchStatement_astNode;
     var __isText = false;
-    // log 'node : SwitchStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'switch', 
         name: '', 
@@ -1828,9 +1601,9 @@ format.SwitchStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1846,19 +1619,6 @@ wzDocs.AstgNodes.push(SwitchCase_astNode)
 format.SwitchCase = function(parent, node, options) {
     var f_astNode = SwitchCase_astNode;
     var __isText = false;
-    // log 'node : SwitchCase ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'case', 
         name: '', 
@@ -1959,9 +1719,9 @@ format.SwitchCase = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -1977,19 +1737,6 @@ wzDocs.AstgNodes.push(ThrowStatement_astNode)
 format.ThrowStatement = function(parent, node, options) {
     var f_astNode = ThrowStatement_astNode;
     var __isText = false;
-    // log 'node : ThrowStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'throw', 
         name: '', 
@@ -2063,9 +1810,9 @@ format.ThrowStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -2082,19 +1829,6 @@ wzDocs.AstgNodes.push(TryStatement_astNode)
 format.TryStatement = function(parent, node, options) {
     var f_astNode = TryStatement_astNode;
     var __isText = false;
-    // log 'node : TryStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'try', 
         name: '', 
@@ -2220,21 +1954,14 @@ format.TryStatement = function(parent, node, options) {
         tempRet.push(p_handler);
     }
     if (p_finalizer) {
-        if (p_finalizer.children.length > 0) {
-            p_finalizer.tag = 'finally';
-            tempRet.push(p_finalizer);
-        }
-        else {
-            if (p_finalizer.tag) {
-                tempRet.push({
-                    tag: 'finally', 
-                    name: '', 
-                    children: [
-                        p_finalizer
-                    ]
-                })
-            }
-        }
+        // log 'TryStatement', 'p_finalizer', p_finalizer
+        tempRet.push({
+            tag: 'finally', 
+            name: '', 
+            children: [
+                p_finalizer
+            ]
+        })
     }
     ret = tempRet;
     // A `try` statement. If `handler` is `null` then `finalizer` must be a `BlockStatement`.
@@ -2244,13 +1971,11 @@ format.TryStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
             var i, i_items=ret, i_len=ret.length, item;
             for (i=0; i<i_len; i++) {
                 item = ret[i];
                 parent.children.push(item);
             }
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -2266,19 +1991,6 @@ wzDocs.AstgNodes.push(CatchClause_astNode)
 format.CatchClause = function(parent, node, options) {
     var f_astNode = CatchClause_astNode;
     var __isText = false;
-    // log 'node : CatchClause ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'catch', 
         name: '', 
@@ -2344,9 +2056,9 @@ format.CatchClause = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -2362,19 +2074,6 @@ wzDocs.AstgNodes.push(WhileStatement_astNode)
 format.WhileStatement = function(parent, node, options) {
     var f_astNode = WhileStatement_astNode;
     var __isText = false;
-    // log 'node : WhileStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'while', 
         name: '', 
@@ -2457,9 +2156,9 @@ format.WhileStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -2475,19 +2174,6 @@ wzDocs.AstgNodes.push(DoWhileStatement_astNode)
 format.DoWhileStatement = function(parent, node, options) {
     var f_astNode = DoWhileStatement_astNode;
     var __isText = false;
-    // log 'node : DoWhileStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'do', 
         name: '', 
@@ -2570,9 +2256,9 @@ format.DoWhileStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -2588,19 +2274,6 @@ wzDocs.AstgNodes.push(ForStatement_astNode)
 format.ForStatement = function(parent, node, options) {
     var f_astNode = ForStatement_astNode;
     var __isText = false;
-    // log 'node : ForStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'for', 
         name: '', 
@@ -2760,9 +2433,9 @@ format.ForStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -2778,19 +2451,6 @@ wzDocs.AstgNodes.push(ForInStatement_astNode)
 format.ForInStatement = function(parent, node, options) {
     var f_astNode = ForInStatement_astNode;
     var __isText = false;
-    // log 'node : ForInStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'for', 
         name: '', 
@@ -2968,9 +2628,9 @@ format.ForInStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -2986,19 +2646,6 @@ wzDocs.AstgNodes.push(ForOfStatement_astNode)
 format.ForOfStatement = function(parent, node, options) {
     var f_astNode = ForOfStatement_astNode;
     var __isText = false;
-    // log 'node : ForOfStatement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'for', 
         name: '', 
@@ -3108,7 +2755,7 @@ format.ForOfStatement = function(parent, node, options) {
     else {
         throw new Error('AST-node-property right undefined: ' + JSON.stringify(node, null, 2));
     }
-    console.log('ForOfStatement', isTextualNode(p_left), isTextualNode(p_right));
+    // log 'ForOfStatement', isTextualNode(p_left), isTextualNode(p_right)
     if (isTextualNode(p_left)) {
         ret.name = getNodeText(p_left);
         if (isTextualNode(p_right)) {
@@ -3179,9 +2826,9 @@ format.ForOfStatement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -3197,19 +2844,6 @@ wzDocs.AstgNodes.push(FunctionDeclaration_astNode)
 format.FunctionDeclaration = function(parent, node, options) {
     var f_astNode = FunctionDeclaration_astNode;
     var __isText = false;
-    // log 'node : FunctionDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'function', 
         name: '', 
@@ -3390,9 +3024,9 @@ format.FunctionDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -3409,19 +3043,6 @@ wzDocs.AstgNodes.push(VariableDeclaration_astNode)
 format.VariableDeclaration = function(parent, node, options) {
     var f_astNode = VariableDeclaration_astNode;
     var __isText = false;
-    // log 'node : VariableDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: node.kind, 
         name: '', 
@@ -3469,7 +3090,7 @@ format.VariableDeclaration = function(parent, node, options) {
             got_text_1 = true;
         }
     }
-    console.log('=== VariableDeclaration ittf result 2', ret, 'got_text_1', got_text_1);
+    // log '=== VariableDeclaration ittf result 2', ret, 'got_text_1', got_text_1
     if (got_text_1) {
         ret.textified = node.kind + ' ' + ret.textified;
     }
@@ -3555,16 +3176,15 @@ format.VariableDeclaration = function(parent, node, options) {
             ]
         };
     }
-    // log 'VariableDeclaration.exit.ret', ret
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -3580,19 +3200,6 @@ wzDocs.AstgNodes.push(VariableDeclarator_astNode)
 format.VariableDeclarator = function(parent, node, options) {
     var f_astNode = VariableDeclarator_astNode;
     var __isText = false;
-    // log 'node : VariableDeclarator ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'decl', 
         name: '', 
@@ -3653,7 +3260,7 @@ format.VariableDeclarator = function(parent, node, options) {
     else {
         throw new Error('AST-node-property id undefined: ' + JSON.stringify(node, null, 2));
     }
-    console.log('VariableDeclarator,p_id, isTextualNode(p_id)', p_id, isTextualNode(p_id));
+    // log 'VariableDeclarator,p_id, isTextualNode(p_id)', p_id, isTextualNode(p_id)
     if (isTextualNode(p_id)) {
         ret.name = getNodeText(p_id);
     }
@@ -3666,7 +3273,7 @@ format.VariableDeclarator = function(parent, node, options) {
             ret.children.push(p_id)
         }
     }
-    console.log('VariableDeclarator 1', ret);
+    // log 'VariableDeclarator 1', ret
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     f_astNode.props.push({
         name: "typeAnnotation", 
@@ -3726,7 +3333,7 @@ format.VariableDeclarator = function(parent, node, options) {
     }
     // log 'VariableDeclarator.p_init', p_init
     if (p_init) {
-        // log 'VariableDeclarator.p_init', isTextualNode(p_id), isTextualNode(p_id), 'p_id', p_id, 'p_init', p_init
+        // log 'VariableDeclarator.p_init', isTextualNode(p_id), 'p_id', p_id, 'p_init', p_init
         if (isTextualNode(p_id)) {
             if (isTextualNode(p_init)) {
                 ret.name += ' = ' + getNodeText(p_init);
@@ -3738,42 +3345,37 @@ format.VariableDeclarator = function(parent, node, options) {
             }
         }
         else {
-            if (p_id.tag === '@id') {
-                ret.children.push(p_init)
+            if (isTextualNode(p_init)) {
+                ret.children.push({
+                    tag: '=', 
+                    name: getNodeText(p_init), 
+                    children: [
+                        
+                    ]
+                })
             }
             else {
-                if (isTextualNode(p_init)) {
-                    ret.children.push({
-                        tag: '=', 
-                        name: getNodeText(p_init), 
-                        children: [
-                            
-                        ]
-                    })
-                }
-                else {
-                    ret.children.push({
-                        tag: '=', 
-                        children: [
-                            p_init
-                        ]
-                    })
-                }
+                ret.children.push({
+                    tag: '=', 
+                    children: [
+                        p_init
+                    ]
+                })
             }
         }
     }
     else {
     }
-    console.log('VariableDeclarator 2 ret', ret);
+    // log 'VariableDeclarator 2 ret', ret
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -3789,19 +3391,6 @@ wzDocs.AstgNodes.push(Decorator_astNode)
 format.Decorator = function(parent, node, options) {
     var f_astNode = Decorator_astNode;
     var __isText = false;
-    // log 'node : Decorator ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@decorator', 
         name: '', 
@@ -3874,9 +3463,9 @@ format.Decorator = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -3892,19 +3481,6 @@ wzDocs.AstgNodes.push(Directive_astNode)
 format.Directive = function(parent, node, options) {
     var f_astNode = Directive_astNode;
     var __isText = false;
-    // log 'node : Directive ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'directive', 
         name: '', 
@@ -3979,9 +3555,9 @@ format.Directive = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -3997,19 +3573,6 @@ wzDocs.AstgNodes.push(DirectiveLiteral_astNode)
 format.DirectiveLiteral = function(parent, node, options) {
     var f_astNode = DirectiveLiteral_astNode;
     var __isText = false;
-    // log 'node : DirectiveLiteral ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'none', 
         name: '', 
@@ -4027,9 +3590,9 @@ format.DirectiveLiteral = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4045,19 +3608,6 @@ wzDocs.AstgNodes.push(Expression_astNode)
 format.Expression = function(parent, node, options) {
     var f_astNode = Expression_astNode;
     var __isText = false;
-    // log 'node : Expression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'expr', 
         name: '', 
@@ -4076,9 +3626,9 @@ format.Expression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4095,19 +3645,6 @@ wzDocs.AstgNodes.push(Super_astNode)
 format.Super = function(parent, node, options) {
     var f_astNode = Super_astNode;
     var __isText = true;
-    // log 'node : Super ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'super', 
         name: '', 
@@ -4127,9 +3664,9 @@ format.Super = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4145,19 +3682,6 @@ wzDocs.AstgNodes.push(Import_astNode)
 format.Import = function(parent, node, options) {
     var f_astNode = Import_astNode;
     var __isText = false;
-    // log 'node : Import ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'import', 
         name: '', 
@@ -4176,9 +3700,9 @@ format.Import = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4195,19 +3719,6 @@ wzDocs.AstgNodes.push(ThisExpression_astNode)
 format.ThisExpression = function(parent, node, options) {
     var f_astNode = ThisExpression_astNode;
     var __isText = true;
-    // log 'node : ThisExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'this', 
         name: '', 
@@ -4227,9 +3738,9 @@ format.ThisExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4245,19 +3756,6 @@ wzDocs.AstgNodes.push(ArrowFunctionExpression_astNode)
 format.ArrowFunctionExpression = function(parent, node, options) {
     var f_astNode = ArrowFunctionExpression_astNode;
     var __isText = false;
-    // log 'node : ArrowFunctionExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '=>', 
         name: '', 
@@ -4406,9 +3904,9 @@ format.ArrowFunctionExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4424,19 +3922,6 @@ wzDocs.AstgNodes.push(YieldExpression_astNode)
 format.YieldExpression = function(parent, node, options) {
     var f_astNode = YieldExpression_astNode;
     var __isText = false;
-    // log 'node : YieldExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'yield', 
         name: '', 
@@ -4520,9 +4005,9 @@ format.YieldExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4538,19 +4023,6 @@ wzDocs.AstgNodes.push(AwaitExpression_astNode)
 format.AwaitExpression = function(parent, node, options) {
     var f_astNode = AwaitExpression_astNode;
     var __isText = false;
-    // log 'node : AwaitExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'await', 
         name: '', 
@@ -4580,9 +4052,9 @@ format.AwaitExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4598,19 +4070,6 @@ wzDocs.AstgNodes.push(ArrayExpression_astNode)
 format.ArrayExpression = function(parent, node, options) {
     var f_astNode = ArrayExpression_astNode;
     var __isText = false;
-    // log 'node : ArrayExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '[', 
         name: '', 
@@ -4670,7 +4129,7 @@ format.ArrayExpression = function(parent, node, options) {
                     item.tag = '@';
                     item.name = getNodeText(item);
                 }
-                else if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                else if (['@id', 'literal'].indexOf(item.tag) > -1) {
                     item.tag = '@';
                 }
             }
@@ -4684,7 +4143,7 @@ format.ArrayExpression = function(parent, node, options) {
                 item.tag = '@';
                 item.name = getNodeText(item);
             }
-            else if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+            else if (['@id', 'literal'].indexOf(item.tag) > -1) {
                 item.tag = '@';
             }
         }
@@ -4698,9 +4157,9 @@ format.ArrayExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4716,19 +4175,6 @@ wzDocs.AstgNodes.push(ObjectExpression_astNode)
 format.ObjectExpression = function(parent, node, options) {
     var f_astNode = ObjectExpression_astNode;
     var __isText = false;
-    // log 'node : ObjectExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '{', 
         name: '', 
@@ -4825,7 +4271,7 @@ format.ObjectExpression = function(parent, node, options) {
             }
             else {
                 // set ret.name = ret.textified = '{}' // 10/1/19
-                ret.textified = '{}';
+                // set ret.textified = '{}' // 25/3/21
             }
         }
         else {
@@ -4846,9 +4292,9 @@ format.ObjectExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -4864,19 +4310,6 @@ wzDocs.AstgNodes.push(ObjectProperty_astNode)
 format.ObjectProperty = function(parent, node, options) {
     var f_astNode = ObjectProperty_astNode;
     var __isText = false;
-    // log 'node : ObjectProperty ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@', 
         name: '', 
@@ -4950,7 +4383,7 @@ format.ObjectProperty = function(parent, node, options) {
     }
     else {
         var p_computed = {
-            tag: '[', 
+            tag: '@[', 
             children: [
                 p_key
             ]
@@ -5078,7 +4511,7 @@ format.ObjectProperty = function(parent, node, options) {
         else {
             throw new Error('AST-node-property value_right undefined: ' + JSON.stringify(node, null, 2));
         }
-        console.log('p_value_left', p_value_left);
+        // log 'p_value_left', p_value_left
         // log 'p_value_right', p_value_right
         if (node.value.left.type === 'ObjectPattern') {
             ret.children.push(p_value_left)
@@ -5259,9 +4692,9 @@ format.ObjectProperty = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -5278,19 +4711,6 @@ wzDocs.AstgNodes.push(ObjectMethod_astNode)
 format.ObjectMethod = function(parent, node, options) {
     var f_astNode = ObjectMethod_astNode;
     var __isText = false;
-    // log 'node : ObjectMethod ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: node.kind, 
         name: '', 
@@ -5482,9 +4902,9 @@ format.ObjectMethod = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -5500,19 +4920,6 @@ wzDocs.AstgNodes.push(FunctionExpression_astNode)
 format.FunctionExpression = function(parent, node, options) {
     var f_astNode = FunctionExpression_astNode;
     var __isText = false;
-    // log 'node : FunctionExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'function', 
         name: '', 
@@ -5555,6 +4962,17 @@ format.FunctionExpression = function(parent, node, options) {
         else {
             appto.name = tempid.name;
         }
+    }
+    // process AST-node-property typeParameters and append ittfNode to `ret`
+    f_astNode.props.push({
+        name: "typeParameters", 
+        descr: "process AST-node-property typeParameters and append ittfNode to `ret`"
+    })
+    if (node.typeParameters) {
+        if (!node.typeParameters.type) {
+            throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
+        }
+        format(ret, node.typeParameters, options)
     }
     // process AST-node-property-collection params and
     // embed its array of nodes in a new tag
@@ -5669,9 +5087,9 @@ format.FunctionExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -5688,19 +5106,6 @@ wzDocs.AstgNodes.push(UnaryExpression_astNode)
 format.UnaryExpression = function(parent, node, options) {
     var f_astNode = UnaryExpression_astNode;
     var __isText = false;
-    // log 'node : UnaryExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'op' + node.operator, 
         name: '', 
@@ -5817,9 +5222,9 @@ format.UnaryExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -5836,19 +5241,6 @@ wzDocs.AstgNodes.push(UpdateExpression_astNode)
 format.UpdateExpression = function(parent, node, options) {
     var f_astNode = UpdateExpression_astNode;
     var __isText = false;
-    // log 'node : UpdateExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'op' + node.operator, 
         name: '', 
@@ -5928,9 +5320,9 @@ format.UpdateExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -5947,19 +5339,6 @@ wzDocs.AstgNodes.push(BinaryExpression_astNode)
 format.BinaryExpression = function(parent, node, options) {
     var f_astNode = BinaryExpression_astNode;
     var __isText = false;
-    // log 'node : BinaryExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'op' + node.operator, 
         name: '', 
@@ -6118,9 +5497,9 @@ format.BinaryExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -6136,19 +5515,6 @@ wzDocs.AstgNodes.push(AssignmentExpression_astNode)
 format.AssignmentExpression = function(parent, node, options) {
     var f_astNode = AssignmentExpression_astNode;
     var __isText = false;
-    // log 'node : AssignmentExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'set', 
         name: '', 
@@ -6296,9 +5662,9 @@ format.AssignmentExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -6315,19 +5681,6 @@ wzDocs.AstgNodes.push(LogicalExpression_astNode)
 format.LogicalExpression = function(parent, node, options) {
     var f_astNode = LogicalExpression_astNode;
     var __isText = false;
-    // log 'node : LogicalExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'op' + node.operator, 
         name: '', 
@@ -6444,14 +5797,14 @@ format.LogicalExpression = function(parent, node, options) {
     // log 'LogicalExpression,p_left', p_left
     // log 'LogicalExpression,p_right', p_right
     if (isTextualNode(p_left) && isTextualNode(p_right)) {
-        ret.tag = 'set';
+        ret.tag = '@expr';
         ret.name = parenthesize(getNodeText(p_left) + ' ' + node.operator + ' ' + getNodeText(p_right), parenthesized);
         ret.textified = ret.name;
     }
     else {
         ret.tag = node.operator;
         // log 'LogicalExpression,isTextualNode(p_left),p_left', isTextualNode(p_left), p_left
-        if (isTextualNode(p_left) || ['@expr', '@id', 'literal','set'].indexOf(p_left.tag) > -1) {
+        if (isTextualNode(p_left) || ['@id', 'literal','set'].indexOf(p_left.tag) > -1) {
             p_left.tag = '+';
             if (isTextualNode(p_left)) {
                 p_left.name = getNodeText(p_left);
@@ -6460,7 +5813,7 @@ format.LogicalExpression = function(parent, node, options) {
         }
         ret.children.push(p_left)
         // log 'LogicalExpression,isTextualNode(p_right),p_right', isTextualNode(p_right), p_right
-        if (isTextualNode(p_right) || ['@expr', '@id', 'literal','set'].indexOf(p_right.tag) > -1) {
+        if (isTextualNode(p_right) || ['@id', 'literal','set'].indexOf(p_right.tag) > -1) {
             p_right.tag = '+';
             if (isTextualNode(p_right)) {
                 p_right.name = getNodeText(p_right);
@@ -6500,9 +5853,9 @@ format.LogicalExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -6518,19 +5871,6 @@ wzDocs.AstgNodes.push(SpreadElement_astNode)
 format.SpreadElement = function(parent, node, options) {
     var f_astNode = SpreadElement_astNode;
     var __isText = false;
-    // log 'node : SpreadElement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '...', 
         name: '', 
@@ -6607,9 +5947,9 @@ format.SpreadElement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -6625,19 +5965,6 @@ wzDocs.AstgNodes.push(MemberExpression_astNode)
 format.MemberExpression = function(parent, node, options) {
     var f_astNode = MemberExpression_astNode;
     var __isText = false;
-    // log 'node : MemberExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@expr', 
         name: '', 
@@ -6753,18 +6080,19 @@ format.MemberExpression = function(parent, node, options) {
     // If `computed` is `false`, the node corresponds to a static (`a.b`) member expression and `property` is an `Identifier`.
     // The `optional` flags indicates that the member expression can be called even if the object is null or undefined.
     // If this is the object value (null/undefined) should be returned.
-    // log 'MemberExpression.p_object', isTextualNode(p_object), p_object
+    // if p_object.name == 'Promise'
+    var qmark = node.optional ? '?' : '';
     if (isTextualNode(p_object)) {
         var obj = getNodeText(p_object);
         if (isTextualNode(p_property)) {
             var prop = getNodeText(p_property);
-            ret.name = node.computed ? obj + '[' + prop + ']' : obj + '.' + prop;
+            ret.name = node.computed ? obj + qmark + '[' + prop + ']' : obj + qmark + '.' + prop;
             ret.textified = ret.name;
             ret.children = [];
             // log 'MemberExpression.textified', ret.textified
         }
         else {
-            ret.name = obj;
+            ret.name = obj + qmark;
             var link = {
                 tag: node.computed ? '.[' : '.', 
                 children: [
@@ -6776,7 +6104,7 @@ format.MemberExpression = function(parent, node, options) {
         }
     }
     else {
-        // log 1
+        console.log(1011);
         if (node.computed) {
             p_property.tag = '.[';
         }
@@ -6785,13 +6113,15 @@ format.MemberExpression = function(parent, node, options) {
         }
         if (p_object.tag === '(') {
             // log 2
+            // 26/3/21 this is the most improbable, waiting for big damage
+            p_object.name = p_object.name + qmark;
             ret.children.push(p_object)
             ret.children.push(p_property)
         }
         else {
             // log 3, p_object.tag, p_object.name
             ret.tag = p_object.tag;
-            ret.name = p_object.name;
+            ret.name = p_object.name + qmark;
             ret.source = p_object.source;
             ret.children = p_object.children;
             ret.children.push(p_property)
@@ -6806,10 +6136,16 @@ format.MemberExpression = function(parent, node, options) {
     if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
         // is the return value of an ArrowExpression
         if (node.extra && node.extra.parenthesized == true) {
-            ret.tag = '(';
+            ret = {
+                tag: '(', 
+                children: [ret]
+            };
         }
         else {
-            ret.tag = '+';
+            ret = {
+                tag: '+', 
+                children: [ret]
+            };
         }
     }
     if (ret != null) {
@@ -6818,9 +6154,9 @@ format.MemberExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -6836,19 +6172,6 @@ wzDocs.AstgNodes.push(BindExpression_astNode)
 format.BindExpression = function(parent, node, options) {
     var f_astNode = BindExpression_astNode;
     var __isText = false;
-    // log 'node : BindExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'bind-expr', 
         name: '', 
@@ -6892,9 +6215,9 @@ format.BindExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -6910,19 +6233,6 @@ wzDocs.AstgNodes.push(ConditionalExpression_astNode)
 format.ConditionalExpression = function(parent, node, options) {
     var f_astNode = ConditionalExpression_astNode;
     var __isText = false;
-    // log 'node : ConditionalExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'iif', 
         name: '', 
@@ -7079,20 +6389,14 @@ format.ConditionalExpression = function(parent, node, options) {
     setOrInlineIfTextualNode(ret, p_consequent, 'then')
     setOrInlineIfTextualNode(ret, p_alternate, 'else')
     // log 'ConditionalExpression 3', ret.tag
-    if (node.__parent && node.__parent.name === 'body' && node.__parent.len == 1) {
-        // is the return value of an ArrowExpression
-        if (node.extra && node.extra.parenthesized == true) {
-            var temp = {
-                tag: '(', 
-                children: [
-                    ret
-                ]
-            };
-            ret = temp;
-        }
-        else {
-            // TODO do nothing
-        }
+    if (node.extra && node.extra.parenthesized == true) {
+        ret = {
+            tag: '(', 
+            name: '', 
+            children: [
+                ret
+            ]
+        };
     }
     // log 'ConditionalExpression 4', ret.tag
     if (ret != null) {
@@ -7101,9 +6405,9 @@ format.ConditionalExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -7119,19 +6423,6 @@ wzDocs.AstgNodes.push(CallExpression_astNode)
 format.CallExpression = function(parent, node, options) {
     var f_astNode = CallExpression_astNode;
     var __isText = false;
-    // log 'node : CallExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '_', 
         name: '', 
@@ -7228,15 +6519,16 @@ format.CallExpression = function(parent, node, options) {
     }
     var lastCallee = ret;
     // log 'CallExpression.p_callee', p_callee
+    var qmark = node.optional ? '?.' : '';
     if (isTextualNode(p_callee)) {
-        // log 'CallExpression.isTextualNode(p_callee), node.typeParameters', isTextualNode(p_callee), getNodeText(p_callee), node.typeParameters
+        // log 'CallExpression', 'isTextualNode(p_callee)', isTextualNode(p_callee), 'getNodeText(p_callee)', getNodeText(p_callee), 'node.typeParameters', node.typeParameters, 'p_arguments', p_arguments
         // first of all try to set ret.textified
-        ret.name = getNodeText(p_callee);
+        ret.name = getNodeText(p_callee) + qmark;
         if (node.typeParameters) {
             var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_arguments.children[i];
-                if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                if (['@id', 'literal'].indexOf(item.tag) > -1) {
                     item.tag = '@';
                 }
                 lastCallee.children.push(item)
@@ -7255,7 +6547,7 @@ format.CallExpression = function(parent, node, options) {
                     var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
                     for (i=0; i<i_len; i++) {
                         item = p_arguments.children[i];
-                        if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                        if (['@id', 'literal'].indexOf(item.tag) > -1) {
                             item.tag = '@';
                         }
                         lastCallee.children.push(item)
@@ -7263,7 +6555,8 @@ format.CallExpression = function(parent, node, options) {
                 }
             }
             else {
-                ret.textified = ret.name + '()';
+                ret.name += '()';
+                ret.textified = ret.name;
                 ret.isText = true;
             }
             if (ret.textified && node.extra && node.extra.parenthesized == true) {
@@ -7273,7 +6566,8 @@ format.CallExpression = function(parent, node, options) {
         // log 'CallExpression', 'ret.name,textified', ret.name, ret.textified
     }
     else {
-        // log 'CallExpression', 'p_callee.tag.name, p_callee.name, ret.tag', p_callee.tag, p_callee.name, ret.tag
+        // TODO implement node.optional
+        // log 'CallExpression', 'p_callee.tag', p_callee.tag, 'p_callee.name', p_callee.name, 'ret.tag', ret.tag
         var i, i_items=p_callee.children, i_len=p_callee.children.length, item;
         for (i=0; i<i_len; i++) {
             item = p_callee.children[i];
@@ -7286,7 +6580,7 @@ format.CallExpression = function(parent, node, options) {
                 // log 'CallExpression', 'p_arguments.children', i, p_arguments.children[i].tag, p_arguments.children[i].name
             }
         }
-        if (['[', '{'].indexOf(p_callee.tag) > -1) {
+        if (['[', '{', 'new'].indexOf(p_callee.tag) > -1) {
             ret.tag = p_callee.tag;
         }
         if (['`lit','iif'].indexOf(p_callee.tag) < 0) {
@@ -7301,7 +6595,7 @@ format.CallExpression = function(parent, node, options) {
                         var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
                         for (i=0; i<i_len; i++) {
                             item = p_arguments.children[i];
-                            if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                            if (['@id', 'literal'].indexOf(item.tag) > -1) {
                                 item.tag = '@';
                             }
                             lastCallee.children.push(item)
@@ -7317,7 +6611,7 @@ format.CallExpression = function(parent, node, options) {
                         var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
                         for (i=0; i<i_len; i++) {
                             item = p_arguments.children[i];
-                            if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                            if (['@id', 'literal'].indexOf(item.tag) > -1) {
                                 item.tag = '@';
                             }
                             call.children.push(item)
@@ -7339,7 +6633,7 @@ format.CallExpression = function(parent, node, options) {
                     var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
                     for (i=0; i<i_len; i++) {
                         item = p_arguments.children[i];
-                        if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                        if (['@id', 'literal'].indexOf(item.tag) > -1) {
                             item.tag = '@';
                         }
                         ret.children.push(item)
@@ -7350,6 +6644,7 @@ format.CallExpression = function(parent, node, options) {
             // log 'node.callee.type', node.callee.type, ret.tag
         }
         else {
+            // log '1203'
             var temp = [p_callee];
             lastCallee = p_callee.children[p_callee.children.length-1];
             if (lastCallee.tag === '.') {
@@ -7361,7 +6656,7 @@ format.CallExpression = function(parent, node, options) {
             var i, i_items=p_arguments.children, i_len=p_arguments.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = p_arguments.children[i];
-                if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                if (['@id', 'literal'].indexOf(item.tag) > -1) {
                     item.tag = '@';
                 }
                 lastCallee.children.push(item)
@@ -7388,9 +6683,9 @@ format.CallExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -7408,19 +6703,6 @@ format.NewExpression = function(parent, node, options) {
     var f_astNode = NewExpression_astNode;
     var __isText = false;
     options.couldBeText = true;
-    // log 'node : NewExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'new', 
         name: '', 
@@ -7527,12 +6809,13 @@ format.NewExpression = function(parent, node, options) {
         if (tlist) {
             ret.name += '(' + tlist + ')';
             ret.textified = 'new ' + ret.name;
+            ret.isText = true;
         }
         else {
             var i, i_items=argumentsNode.children, i_len=argumentsNode.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = argumentsNode.children[i];
-                if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+                if (['@id', 'literal'].indexOf(item.tag) > -1) {
                     item.tag = '@';
                 }
                 ret.children.push(item)
@@ -7549,9 +6832,9 @@ format.NewExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
     options.couldBeText = false;
@@ -7568,19 +6851,6 @@ wzDocs.AstgNodes.push(SequenceExpression_astNode)
 format.SequenceExpression = function(parent, node, options) {
     var f_astNode = SequenceExpression_astNode;
     var __isText = false;
-    // log 'node : SequenceExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'sequence', 
         name: '', 
@@ -7619,7 +6889,7 @@ format.SequenceExpression = function(parent, node, options) {
     var i, i_items=ret.children, i_len=ret.children.length, item;
     for (i=0; i<i_len; i++) {
         item = ret.children[i];
-        if (['@expr', '@id', 'literal'].indexOf(item.tag) > -1) {
+        if (['@id', 'literal'].indexOf(item.tag) > -1) {
             item.tag = 'set';
         }
     }
@@ -7629,9 +6899,9 @@ format.SequenceExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -7647,19 +6917,6 @@ wzDocs.AstgNodes.push(DoExpression_astNode)
 format.DoExpression = function(parent, node, options) {
     var f_astNode = DoExpression_astNode;
     var __isText = false;
-    // log 'node : DoExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'do', 
         name: '', 
@@ -7691,9 +6948,9 @@ format.DoExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -7709,19 +6966,6 @@ wzDocs.AstgNodes.push(TemplateLiteral_astNode)
 format.TemplateLiteral = function(parent, node, options) {
     var f_astNode = TemplateLiteral_astNode;
     var __isText = false;
-    // log 'node : TemplateLiteral ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '`lit', 
         name: '', 
@@ -7777,6 +7021,7 @@ format.TemplateLiteral = function(parent, node, options) {
             format(p_expressions, item, options)
         }
     }
+    // log 'TemplateLiteral', model
     var i = 0, j;
     for (i = 0; i < p_expressions.children.length; i++) {
         var q = p_quasis.children[i];
@@ -7803,9 +7048,9 @@ format.TemplateLiteral = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -7821,19 +7066,6 @@ wzDocs.AstgNodes.push(TaggedTemplateExpression_astNode)
 format.TaggedTemplateExpression = function(parent, node, options) {
     var f_astNode = TaggedTemplateExpression_astNode;
     var __isText = false;
-    // log 'node : TaggedTemplateExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '_`', 
         name: '', 
@@ -7960,9 +7192,9 @@ format.TaggedTemplateExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -7978,19 +7210,6 @@ wzDocs.AstgNodes.push(TemplateElement_astNode)
 format.TemplateElement = function(parent, node, options) {
     var f_astNode = TemplateElement_astNode;
     var __isText = false;
-    // log 'node : TemplateElement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '+', 
         name: '', 
@@ -8030,9 +7249,9 @@ format.TemplateElement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -8048,19 +7267,6 @@ wzDocs.AstgNodes.push(ObjectPattern_astNode)
 format.ObjectPattern = function(parent, node, options) {
     var f_astNode = ObjectPattern_astNode;
     var __isText = false;
-    // log 'node : ObjectPattern ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '{', 
         name: '', 
@@ -8146,9 +7352,9 @@ format.ObjectPattern = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -8164,19 +7370,6 @@ wzDocs.AstgNodes.push(ArrayPattern_astNode)
 format.ArrayPattern = function(parent, node, options) {
     var f_astNode = ArrayPattern_astNode;
     var __isText = false;
-    // log 'node : ArrayPattern ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'none', 
         name: '', 
@@ -8221,9 +7414,9 @@ format.ArrayPattern = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -8240,19 +7433,6 @@ wzDocs.AstgNodes.push(RestElement_astNode)
 format.RestElement = function(parent, node, options) {
     var f_astNode = RestElement_astNode;
     var __isText = true;
-    // log 'node : RestElement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '...', 
         name: '', 
@@ -8307,16 +7487,16 @@ format.RestElement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
 // process AST node AssignmentPattern
 var AssignmentPattern_astNode = {
     name: "AssignmentPattern", 
-    ittfTag: "none", 
+    ittfTag: "node.operator", 
     props: [
         
     ]
@@ -8325,21 +7505,8 @@ wzDocs.AstgNodes.push(AssignmentPattern_astNode)
 format.AssignmentPattern = function(parent, node, options) {
     var f_astNode = AssignmentPattern_astNode;
     var __isText = false;
-    // log 'node : AssignmentPattern ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
-        tag: 'none', 
+        tag: 'node.operator', 
         name: '', 
         isText: false, 
         textified: null, 
@@ -8450,12 +7617,15 @@ format.AssignmentPattern = function(parent, node, options) {
     // log 'AssignmentPattern.p_left', JSON.stringify(p_left, null, 2)
     // log 'AssignmentPattern.p_right', JSON.stringify(p_right, null, 2)
     if (isTextualNode(p_left)) {
-        ret.name = getNodeText(p_left) + ' ' + (node.operator || '=') + ' ';
+        ret.name = getNodeText(p_left);
         if (isTextualNode(p_right)) {
-            ret.name += getNodeText(p_right);
+            ret.name += ' ' + (node.operator || '=') + ' ' + getNodeText(p_right);
         }
         else {
-            ret.children.push(p_right)
+            ret.children.push({
+                tag: node.operator || '=', 
+                children: [p_right]
+            })
         }
     }
     else {
@@ -8469,9 +7639,9 @@ format.AssignmentPattern = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -8487,19 +7657,6 @@ wzDocs.AstgNodes.push(Class_astNode)
 format.Class = function(parent, node, options) {
     var f_astNode = Class_astNode;
     var __isText = false;
-    // log 'node : Class ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'class', 
         name: '', 
@@ -8640,9 +7797,9 @@ format.Class = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -8659,19 +7816,6 @@ wzDocs.AstgNodes.push(ClassBody_astNode)
 format.ClassBody = function(parent, node, options) {
     var f_astNode = ClassBody_astNode;
     var __isText = false;
-    // log 'node : ClassBody ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
     f_astNode.props.push({
@@ -8715,19 +7859,6 @@ wzDocs.AstgNodes.push(ClassMethod_astNode)
 format.ClassMethod = function(parent, node, options) {
     var f_astNode = ClassMethod_astNode;
     var __isText = false;
-    // log 'node : ClassMethod ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: node.kind, 
         name: '', 
@@ -8956,9 +8087,9 @@ format.ClassMethod = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -8975,19 +8106,6 @@ wzDocs.AstgNodes.push(ClassPrivateMethod_astNode)
 format.ClassPrivateMethod = function(parent, node, options) {
     var f_astNode = ClassPrivateMethod_astNode;
     var __isText = false;
-    // log 'node : ClassPrivateMethod ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: node.kind, 
         name: '', 
@@ -9151,9 +8269,9 @@ format.ClassPrivateMethod = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -9169,19 +8287,6 @@ wzDocs.AstgNodes.push(ClassProperty_astNode)
 format.ClassProperty = function(parent, node, options) {
     var f_astNode = ClassProperty_astNode;
     var __isText = false;
-    // log 'node : ClassProperty ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'p', 
         name: '', 
@@ -9317,6 +8422,9 @@ format.ClassProperty = function(parent, node, options) {
             }
         }
     }
+    if (node.optional) {
+        ret.name = ret.name + '?';
+    }
     // log 'node.static', node.static
     if (!!node.static == true) {
         ret.children.push({
@@ -9385,9 +8493,9 @@ format.ClassProperty = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -9403,19 +8511,6 @@ wzDocs.AstgNodes.push(ClassPrivateProperty_astNode)
 format.ClassPrivateProperty = function(parent, node, options) {
     var f_astNode = ClassPrivateProperty_astNode;
     var __isText = false;
-    // log 'node : ClassPrivateProperty ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'p', 
         name: '', 
@@ -9467,9 +8562,9 @@ format.ClassPrivateProperty = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -9485,19 +8580,6 @@ wzDocs.AstgNodes.push(ClassDeclaration_astNode)
 format.ClassDeclaration = function(parent, node, options) {
     var f_astNode = ClassDeclaration_astNode;
     var __isText = false;
-    // log 'node : ClassDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'class', 
         name: '', 
@@ -9775,9 +8857,9 @@ format.ClassDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -9793,19 +8875,6 @@ wzDocs.AstgNodes.push(ClassExpression_astNode)
 format.ClassExpression = function(parent, node, options) {
     var f_astNode = ClassExpression_astNode;
     var __isText = false;
-    // log 'node : ClassExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'class', 
         name: '', 
@@ -9895,14 +8964,60 @@ format.ClassExpression = function(parent, node, options) {
             }
         }
     }
+    // process AST-node-property superTypeParameters and set it in a var
+    var p_superTypeParameters = null;
+    if (typeof(node.superTypeParameters) !== 'undefined' && node.superTypeParameters != null) {
+        p_superTypeParameters = {
+            textified: null, 
+            isText: false, 
+            ASTProp: 'superTypeParameters', 
+            children: [
+                
+            ]
+        };
+        if (node.superTypeParameters == null) {
+            p_superTypeParameters.text = "null";
+        }
+        else {
+            if (!node.superTypeParameters.type) {
+                throw 'Node superTypeParameters has no type: ' + JSON.stringify(node, null, 2);
+            }
+            // log 'f_p_temp superTypeParameters before format'
+            format(p_superTypeParameters, node.superTypeParameters, options)
+            // log 'f_p_temp superTypeParameters after format', p_superTypeParameters.children.length, p_superTypeParameters
+            var superTypeParameters_comments = extractCommentsIf(p_superTypeParameters, 1);
+            if (p_superTypeParameters.children.length == 1) {
+                p_superTypeParameters.tag = p_superTypeParameters.children[0].tag;
+                if (!(p_superTypeParameters.children[0].isText || p_superTypeParameters.children[0].textified)) {
+                    p_superTypeParameters.name = p_superTypeParameters.children[0].name;
+                    p_superTypeParameters.source = p_superTypeParameters.children[0].source;
+                    p_superTypeParameters.children = p_superTypeParameters.children[0].children;
+                }
+                else {
+                    if (p_superTypeParameters.children[0].textified) {
+                        p_superTypeParameters.textified = p_superTypeParameters.children[0].textified;
+                    }
+                    if (p_superTypeParameters.children[0].isText) {
+                        p_superTypeParameters.isText = true;
+                    }
+                    p_superTypeParameters.name = p_superTypeParameters.children[0].name;
+                    p_superTypeParameters.source = p_superTypeParameters.children[0].source;
+                    p_superTypeParameters.children = [];
+                }
+            }
+            if (superTypeParameters_comments.length > 0) {
+                p_superTypeParameters.children = p_superTypeParameters.children.concat(superTypeParameters_comments);
+            }
+        }
+    }
     if (p_superClass) {
         if (isTextualNode(p_superClass)) {
+            // log 'p_superTypeParameters', p_superTypeParameters
+            var superchildren = p_superTypeParameters ? p_superTypeParameters.children : [];
             ret.children.push({
                 tag: 'super', 
                 name: getNodeText(p_superClass), 
-                children: [
-                    
-                ]
+                children: superchildren
             })
         }
         else {
@@ -9929,9 +9044,9 @@ format.ClassExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -9947,19 +9062,6 @@ wzDocs.AstgNodes.push(MetaProperty_astNode)
 format.MetaProperty = function(parent, node, options) {
     var f_astNode = MetaProperty_astNode;
     var __isText = false;
-    // log 'node : MetaProperty ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'meta', 
         name: '', 
@@ -10017,9 +9119,9 @@ format.MetaProperty = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10035,19 +9137,6 @@ wzDocs.AstgNodes.push(ModuleDeclaration_astNode)
 format.ModuleDeclaration = function(parent, node, options) {
     var f_astNode = ModuleDeclaration_astNode;
     var __isText = false;
-    // log 'node : ModuleDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'module', 
         name: '', 
@@ -10066,9 +9155,9 @@ format.ModuleDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10084,19 +9173,6 @@ wzDocs.AstgNodes.push(ImportDeclaration_astNode)
 format.ImportDeclaration = function(parent, node, options) {
     var f_astNode = ImportDeclaration_astNode;
     var __isText = false;
-    // log 'node : ImportDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'import', 
         name: '', 
@@ -10194,9 +9270,9 @@ format.ImportDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10212,19 +9288,6 @@ wzDocs.AstgNodes.push(ImportSpecifier_astNode)
 format.ImportSpecifier = function(parent, node, options) {
     var f_astNode = ImportSpecifier_astNode;
     var __isText = false;
-    // log 'node : ImportSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@', 
         name: '', 
@@ -10304,9 +9367,9 @@ format.ImportSpecifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10322,19 +9385,6 @@ wzDocs.AstgNodes.push(ImportDefaultSpecifier_astNode)
 format.ImportDefaultSpecifier = function(parent, node, options) {
     var f_astNode = ImportDefaultSpecifier_astNode;
     var __isText = false;
-    // log 'node : ImportDefaultSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'default', 
         name: '', 
@@ -10385,9 +9435,9 @@ format.ImportDefaultSpecifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10403,19 +9453,6 @@ wzDocs.AstgNodes.push(ImportNamespaceSpecifier_astNode)
 format.ImportNamespaceSpecifier = function(parent, node, options) {
     var f_astNode = ImportNamespaceSpecifier_astNode;
     var __isText = false;
-    // log 'node : ImportNamespaceSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'as', 
         name: '', 
@@ -10459,9 +9496,9 @@ format.ImportNamespaceSpecifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10477,19 +9514,6 @@ wzDocs.AstgNodes.push(ExportNamedDeclaration_astNode)
 format.ExportNamedDeclaration = function(parent, node, options) {
     var f_astNode = ExportNamedDeclaration_astNode;
     var __isText = false;
-    // log 'node : ExportNamedDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'export', 
         name: '', 
@@ -10591,9 +9615,9 @@ format.ExportNamedDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10609,19 +9633,6 @@ wzDocs.AstgNodes.push(ExportSpecifier_astNode)
 format.ExportSpecifier = function(parent, node, options) {
     var f_astNode = ExportSpecifier_astNode;
     var __isText = false;
-    // log 'node : ExportSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@', 
         name: '', 
@@ -10696,9 +9707,9 @@ format.ExportSpecifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10714,19 +9725,6 @@ wzDocs.AstgNodes.push(ExportDefaultSpecifier_astNode)
 format.ExportDefaultSpecifier = function(parent, node, options) {
     var f_astNode = ExportDefaultSpecifier_astNode;
     var __isText = false;
-    // log 'node : ExportDefaultSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'default', 
         name: '', 
@@ -10799,9 +9797,9 @@ format.ExportDefaultSpecifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10817,19 +9815,6 @@ wzDocs.AstgNodes.push(ExportDefaultDeclaration_astNode)
 format.ExportDefaultDeclaration = function(parent, node, options) {
     var f_astNode = ExportDefaultDeclaration_astNode;
     var __isText = false;
-    // log 'node : ExportDefaultDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'export-default', 
         name: '', 
@@ -10903,9 +9888,9 @@ format.ExportDefaultDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -10921,19 +9906,6 @@ wzDocs.AstgNodes.push(ExportNamespaceSpecifier_astNode)
 format.ExportNamespaceSpecifier = function(parent, node, options) {
     var f_astNode = ExportNamespaceSpecifier_astNode;
     var __isText = false;
-    // log 'node : ExportNamespaceSpecifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'as', 
         name: '', 
@@ -11006,9 +9978,9 @@ format.ExportNamespaceSpecifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11024,19 +9996,6 @@ wzDocs.AstgNodes.push(ExportAllDeclaration_astNode)
 format.ExportAllDeclaration = function(parent, node, options) {
     var f_astNode = ExportAllDeclaration_astNode;
     var __isText = false;
-    // log 'node : ExportAllDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'export', 
         name: '', 
@@ -11095,9 +10054,9 @@ format.ExportAllDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11113,19 +10072,6 @@ wzDocs.AstgNodes.push(CommentBlock_astNode)
 format.CommentBlock = function(parent, node, options) {
     var f_astNode = CommentBlock_astNode;
     var __isText = false;
-    // log 'node : CommentBlock ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '#', 
         name: '', 
@@ -11157,9 +10103,9 @@ format.CommentBlock = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11175,19 +10121,6 @@ wzDocs.AstgNodes.push(CommentLine_astNode)
 format.CommentLine = function(parent, node, options) {
     var f_astNode = CommentLine_astNode;
     var __isText = false;
-    // log 'node : CommentLine ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '#', 
         name: '', 
@@ -11208,9 +10141,9 @@ format.CommentLine = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11226,19 +10159,6 @@ wzDocs.AstgNodes.push(JSXAttribute_astNode)
 format.JSXAttribute = function(parent, node, options) {
     var f_astNode = JSXAttribute_astNode;
     var __isText = false;
-    // log 'node : JSXAttribute ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@', 
         name: '', 
@@ -11368,9 +10288,9 @@ format.JSXAttribute = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11386,19 +10306,6 @@ wzDocs.AstgNodes.push(JSXClosingElement_astNode)
 format.JSXClosingElement = function(parent, node, options) {
     var f_astNode = JSXClosingElement_astNode;
     var __isText = false;
-    // log 'node : JSXClosingElement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'jsx-close', 
         name: '', 
@@ -11417,9 +10324,9 @@ format.JSXClosingElement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11435,19 +10342,6 @@ wzDocs.AstgNodes.push(JSXElement_astNode)
 format.JSXElement = function(parent, node, options) {
     var f_astNode = JSXElement_astNode;
     var __isText = false;
-    // log 'node : JSXElement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'jsx-element', 
         name: '', 
@@ -11535,7 +10429,7 @@ format.JSXElement = function(parent, node, options) {
     // log 'p_children', p_children
     if (p_openingElement.name && p_openingElement.name.length > 0) {
         var char = p_openingElement.name[0];
-        if (char == char.toUpperCase()) {
+        if (char == char.toUpperCase() || html_supported_tags.indexOf(p_openingElement.name) < 0) {
             ret.tag = '< ' + p_openingElement.name;
         }
         else {
@@ -11611,9 +10505,9 @@ format.JSXElement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11630,19 +10524,6 @@ wzDocs.AstgNodes.push(JSXEmptyExpression_astNode)
 format.JSXEmptyExpression = function(parent, node, options) {
     var f_astNode = JSXEmptyExpression_astNode;
     var __isText = false;
-    // log 'node : JSXEmptyExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property-collection innerComments and append ittfNode(s) to `ret`
     f_astNode.props.push({
@@ -11685,19 +10566,6 @@ wzDocs.AstgNodes.push(JSXExpressionContainer_astNode)
 format.JSXExpressionContainer = function(parent, node, options) {
     var f_astNode = JSXExpressionContainer_astNode;
     var __isText = false;
-    // log 'node : JSXExpressionContainer ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'none', 
         name: '', 
@@ -11788,9 +10656,9 @@ format.JSXExpressionContainer = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11806,19 +10674,6 @@ wzDocs.AstgNodes.push(JSXSpreadChild_astNode)
 format.JSXSpreadChild = function(parent, node, options) {
     var f_astNode = JSXSpreadChild_astNode;
     var __isText = false;
-    // log 'node : JSXSpreadChild ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'none', 
         name: '', 
@@ -11888,9 +10743,9 @@ format.JSXSpreadChild = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11907,19 +10762,6 @@ wzDocs.AstgNodes.push(JSXIdentifier_astNode)
 format.JSXIdentifier = function(parent, node, options) {
     var f_astNode = JSXIdentifier_astNode;
     var __isText = true;
-    // log 'node : JSXIdentifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'jsx-ident', 
         name: '', 
@@ -11942,9 +10784,9 @@ format.JSXIdentifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -11960,19 +10802,6 @@ wzDocs.AstgNodes.push(JSXMemberExpression_astNode)
 format.JSXMemberExpression = function(parent, node, options) {
     var f_astNode = JSXMemberExpression_astNode;
     var __isText = false;
-    // log 'node : JSXMemberExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'none', 
         name: '', 
@@ -12030,9 +10859,9 @@ format.JSXMemberExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12048,19 +10877,6 @@ wzDocs.AstgNodes.push(JSXNamespacedName_astNode)
 format.JSXNamespacedName = function(parent, node, options) {
     var f_astNode = JSXNamespacedName_astNode;
     var __isText = false;
-    // log 'node : JSXNamespacedName ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'none', 
         name: '', 
@@ -12080,9 +10896,9 @@ format.JSXNamespacedName = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12098,19 +10914,6 @@ wzDocs.AstgNodes.push(JSXOpeningElement_astNode)
 format.JSXOpeningElement = function(parent, node, options) {
     var f_astNode = JSXOpeningElement_astNode;
     var __isText = false;
-    // log 'node : JSXOpeningElement ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'jsx-open', 
         name: '', 
@@ -12192,6 +10995,59 @@ format.JSXOpeningElement = function(parent, node, options) {
             }
         }
     }
+    // process AST-node-property typeParameters and set it in a var
+    var p_typeParameters = null;
+    if (typeof(node.typeParameters) !== 'undefined' && node.typeParameters != null) {
+        p_typeParameters = {
+            textified: null, 
+            isText: false, 
+            ASTProp: 'typeParameters', 
+            children: [
+                
+            ]
+        };
+        if (node.typeParameters == null) {
+            p_typeParameters.text = "null";
+        }
+        else {
+            if (!node.typeParameters.type) {
+                throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
+            }
+            // log 'f_p_temp typeParameters before format'
+            format(p_typeParameters, node.typeParameters, options)
+            // log 'f_p_temp typeParameters after format', p_typeParameters.children.length, p_typeParameters
+            var typeParameters_comments = extractCommentsIf(p_typeParameters, 1);
+            if (p_typeParameters.children.length == 1) {
+                p_typeParameters.tag = p_typeParameters.children[0].tag;
+                if (!(p_typeParameters.children[0].isText || p_typeParameters.children[0].textified)) {
+                    p_typeParameters.name = p_typeParameters.children[0].name;
+                    p_typeParameters.source = p_typeParameters.children[0].source;
+                    p_typeParameters.children = p_typeParameters.children[0].children;
+                }
+                else {
+                    if (p_typeParameters.children[0].textified) {
+                        p_typeParameters.textified = p_typeParameters.children[0].textified;
+                    }
+                    if (p_typeParameters.children[0].isText) {
+                        p_typeParameters.isText = true;
+                    }
+                    p_typeParameters.name = p_typeParameters.children[0].name;
+                    p_typeParameters.source = p_typeParameters.children[0].source;
+                    p_typeParameters.children = [];
+                }
+            }
+            if (typeParameters_comments.length > 0) {
+                p_typeParameters.children = p_typeParameters.children.concat(typeParameters_comments);
+            }
+        }
+    }
+    if (p_typeParameters) {
+        var i, i_items=p_typeParameters.children, i_len=p_typeParameters.children.length, item;
+        for (i=0; i<i_len; i++) {
+            item = p_typeParameters.children[i];
+            ret.children.push(item)
+        }
+    }
     // TODO ??? ts here ???
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a temp var
@@ -12257,9 +11113,9 @@ format.JSXOpeningElement = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12275,19 +11131,6 @@ wzDocs.AstgNodes.push(JSXSpreadAttribute_astNode)
 format.JSXSpreadAttribute = function(parent, node, options) {
     var f_astNode = JSXSpreadAttribute_astNode;
     var __isText = false;
-    // log 'node : JSXSpreadAttribute ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@', 
         name: '', 
@@ -12330,9 +11173,9 @@ format.JSXSpreadAttribute = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12348,19 +11191,6 @@ wzDocs.AstgNodes.push(JSXText_astNode)
 format.JSXText = function(parent, node, options) {
     var f_astNode = JSXText_astNode;
     var __isText = false;
-    // log 'node : JSXText ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '+', 
         name: '', 
@@ -12386,9 +11216,9 @@ format.JSXText = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12404,19 +11234,6 @@ wzDocs.AstgNodes.push(JSXFragment_astNode)
 format.JSXFragment = function(parent, node, options) {
     var f_astNode = JSXFragment_astNode;
     var __isText = false;
-    // log 'node : JSXFragment ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '<', 
         name: '', 
@@ -12461,9 +11278,9 @@ format.JSXFragment = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12479,19 +11296,6 @@ wzDocs.AstgNodes.push(JSXOpeningFragment_astNode)
 format.JSXOpeningFragment = function(parent, node, options) {
     var f_astNode = JSXOpeningFragment_astNode;
     var __isText = false;
-    // log 'node : JSXOpeningFragment ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'fragment-open', 
         name: '', 
@@ -12510,9 +11314,9 @@ format.JSXOpeningFragment = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12528,19 +11332,6 @@ wzDocs.AstgNodes.push(JSXClosingFragment_astNode)
 format.JSXClosingFragment = function(parent, node, options) {
     var f_astNode = JSXClosingFragment_astNode;
     var __isText = false;
-    // log 'node : JSXClosingFragment ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: 'fragment-close', 
         name: '', 
@@ -12559,9 +11350,9 @@ format.JSXClosingFragment = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12577,19 +11368,6 @@ wzDocs.AstgNodes.push(TypeAlias_astNode)
 format.TypeAlias = function(parent, node, options) {
     var f_astNode = TypeAlias_astNode;
     var __isText = false;
-    // log 'node : TypeAlias ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':type', 
         name: '', 
@@ -12662,9 +11440,9 @@ format.TypeAlias = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12680,19 +11458,6 @@ wzDocs.AstgNodes.push(OpaqueType_astNode)
 format.OpaqueType = function(parent, node, options) {
     var f_astNode = OpaqueType_astNode;
     var __isText = false;
-    // log 'node : OpaqueType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':opaque-type', 
         name: '', 
@@ -12764,9 +11529,9 @@ format.OpaqueType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -12783,19 +11548,6 @@ wzDocs.AstgNodes.push(TypeParameterDeclaration_astNode)
 format.TypeParameterDeclaration = function(parent, node, options) {
     var f_astNode = TypeParameterDeclaration_astNode;
     var __isText = false;
-    // log 'node : TypeParameterDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // extends Node
     // process AST-node-property-collection params and append ittfNode(s) to `ret`
@@ -12839,19 +11591,6 @@ wzDocs.AstgNodes.push(TypeParameter_astNode)
 format.TypeParameter = function(parent, node, options) {
     var f_astNode = TypeParameter_astNode;
     var __isText = false;
-    // log 'node : TypeParameter ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':<', 
         name: '', 
@@ -13010,9 +11749,9 @@ format.TypeParameter = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13028,19 +11767,6 @@ wzDocs.AstgNodes.push(Variance_astNode)
 format.Variance = function(parent, node, options) {
     var f_astNode = Variance_astNode;
     var __isText = false;
-    // log 'node : Variance ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':variance', 
         name: '', 
@@ -13059,9 +11785,9 @@ format.Variance = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13078,19 +11804,6 @@ wzDocs.AstgNodes.push(TypeParameterInstantiation_astNode)
 format.TypeParameterInstantiation = function(parent, node, options) {
     var f_astNode = TypeParameterInstantiation_astNode;
     var __isText = false;
-    // log 'node : TypeParameterInstantiation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property-collection params and append ittfNode(s) to `ret`
     f_astNode.props.push({
@@ -13133,19 +11846,6 @@ wzDocs.AstgNodes.push(VoidTypeAnnotation_astNode)
 format.VoidTypeAnnotation = function(parent, node, options) {
     var f_astNode = VoidTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : VoidTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':void', 
         name: '', 
@@ -13164,9 +11864,9 @@ format.VoidTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13182,19 +11882,6 @@ wzDocs.AstgNodes.push(UndefinedTypeAnnotation_astNode)
 format.UndefinedTypeAnnotation = function(parent, node, options) {
     var f_astNode = UndefinedTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : UndefinedTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':undefined', 
         name: '', 
@@ -13213,9 +11900,9 @@ format.UndefinedTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13231,19 +11918,6 @@ wzDocs.AstgNodes.push(NullLiteralTypeAnnotation_astNode)
 format.NullLiteralTypeAnnotation = function(parent, node, options) {
     var f_astNode = NullLiteralTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : NullLiteralTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':null', 
         name: '', 
@@ -13261,9 +11935,9 @@ format.NullLiteralTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13279,19 +11953,6 @@ wzDocs.AstgNodes.push(GenericTypeAnnotation_astNode)
 format.GenericTypeAnnotation = function(parent, node, options) {
     var f_astNode = GenericTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : GenericTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':<', 
         name: '', 
@@ -13352,9 +12013,9 @@ format.GenericTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13370,19 +12031,6 @@ wzDocs.AstgNodes.push(StringTypeAnnotation_astNode)
 format.StringTypeAnnotation = function(parent, node, options) {
     var f_astNode = StringTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : StringTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':string', 
         name: '', 
@@ -13400,9 +12048,9 @@ format.StringTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13418,19 +12066,6 @@ wzDocs.AstgNodes.push(AnyTypeAnnotation_astNode)
 format.AnyTypeAnnotation = function(parent, node, options) {
     var f_astNode = AnyTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : AnyTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':any', 
         name: '', 
@@ -13449,9 +12084,9 @@ format.AnyTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13467,19 +12102,6 @@ wzDocs.AstgNodes.push(ArrayTypeAnnotation_astNode)
 format.ArrayTypeAnnotation = function(parent, node, options) {
     var f_astNode = ArrayTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : ArrayTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':[', 
         name: '', 
@@ -13512,9 +12134,9 @@ format.ArrayTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13530,19 +12152,6 @@ wzDocs.AstgNodes.push(BooleanLiteralTypeAnnotation_astNode)
 format.BooleanLiteralTypeAnnotation = function(parent, node, options) {
     var f_astNode = BooleanLiteralTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : BooleanLiteralTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':boolean-lit', 
         name: '', 
@@ -13562,9 +12171,9 @@ format.BooleanLiteralTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13580,19 +12189,6 @@ wzDocs.AstgNodes.push(BooleanTypeAnnotation_astNode)
 format.BooleanTypeAnnotation = function(parent, node, options) {
     var f_astNode = BooleanTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : BooleanTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':boolean', 
         name: '', 
@@ -13611,9 +12207,9 @@ format.BooleanTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13629,19 +12225,6 @@ wzDocs.AstgNodes.push(ClassImplements_astNode)
 format.ClassImplements = function(parent, node, options) {
     var f_astNode = ClassImplements_astNode;
     var __isText = false;
-    // log 'node : ClassImplements ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':implements', 
         name: '', 
@@ -13703,9 +12286,9 @@ format.ClassImplements = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13721,19 +12304,6 @@ wzDocs.AstgNodes.push(FunctionTypeAnnotation_astNode)
 format.FunctionTypeAnnotation = function(parent, node, options) {
     var f_astNode = FunctionTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : FunctionTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':func', 
         name: '', 
@@ -13857,9 +12427,9 @@ format.FunctionTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -13875,19 +12445,6 @@ wzDocs.AstgNodes.push(FunctionTypeParam_astNode)
 format.FunctionTypeParam = function(parent, node, options) {
     var f_astNode = FunctionTypeParam_astNode;
     var __isText = false;
-    // log 'node : FunctionTypeParam ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':param', 
         name: '', 
@@ -14017,9 +12574,9 @@ format.FunctionTypeParam = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14035,19 +12592,6 @@ wzDocs.AstgNodes.push(InterfaceExtends_astNode)
 format.InterfaceExtends = function(parent, node, options) {
     var f_astNode = InterfaceExtends_astNode;
     var __isText = false;
-    // log 'node : InterfaceExtends ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':extends-interface', 
         name: '', 
@@ -14109,9 +12653,9 @@ format.InterfaceExtends = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14127,19 +12671,6 @@ wzDocs.AstgNodes.push(InterfaceDeclaration_astNode)
 format.InterfaceDeclaration = function(parent, node, options) {
     var f_astNode = InterfaceDeclaration_astNode;
     var __isText = false;
-    // log 'node : InterfaceDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':interface', 
         name: '', 
@@ -14232,9 +12763,9 @@ format.InterfaceDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14250,19 +12781,6 @@ wzDocs.AstgNodes.push(IntersectionTypeAnnotation_astNode)
 format.IntersectionTypeAnnotation = function(parent, node, options) {
     var f_astNode = IntersectionTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : IntersectionTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':&', 
         name: '', 
@@ -14304,9 +12822,9 @@ format.IntersectionTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14322,19 +12840,6 @@ wzDocs.AstgNodes.push(MixedTypeAnnotation_astNode)
 format.MixedTypeAnnotation = function(parent, node, options) {
     var f_astNode = MixedTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : MixedTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':mixed', 
         name: '', 
@@ -14353,9 +12858,9 @@ format.MixedTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14372,19 +12877,6 @@ wzDocs.AstgNodes.push(NullableTypeAnnotation_astNode)
 format.NullableTypeAnnotation = function(parent, node, options) {
     var f_astNode = NullableTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : NullableTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // extends Node, Type
     // process AST-node-property typeAnnotation and set it in a var
@@ -14464,19 +12956,6 @@ wzDocs.AstgNodes.push(NumberLiteralTypeAnnotation_astNode)
 format.NumberLiteralTypeAnnotation = function(parent, node, options) {
     var f_astNode = NumberLiteralTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : NumberLiteralTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':number-lit', 
         name: '', 
@@ -14496,9 +12975,9 @@ format.NumberLiteralTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14514,19 +12993,6 @@ wzDocs.AstgNodes.push(NumberTypeAnnotation_astNode)
 format.NumberTypeAnnotation = function(parent, node, options) {
     var f_astNode = NumberTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : NumberTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':number', 
         name: '', 
@@ -14545,9 +13011,9 @@ format.NumberTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14563,19 +13029,6 @@ wzDocs.AstgNodes.push(StringLiteralTypeAnnotation_astNode)
 format.StringLiteralTypeAnnotation = function(parent, node, options) {
     var f_astNode = StringLiteralTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : StringLiteralTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':string-lit', 
         name: '', 
@@ -14595,9 +13048,9 @@ format.StringLiteralTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14613,19 +13066,6 @@ wzDocs.AstgNodes.push(StringTypeAnnotation_astNode)
 format.StringTypeAnnotation = function(parent, node, options) {
     var f_astNode = StringTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : StringTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':string', 
         name: '', 
@@ -14644,9 +13084,9 @@ format.StringTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14662,19 +13102,6 @@ wzDocs.AstgNodes.push(TupleTypeAnnotation_astNode)
 format.TupleTypeAnnotation = function(parent, node, options) {
     var f_astNode = TupleTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : TupleTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':tuple', 
         name: '', 
@@ -14716,9 +13143,9 @@ format.TupleTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14734,19 +13161,6 @@ wzDocs.AstgNodes.push(TypeofTypeAnnotation_astNode)
 format.TypeofTypeAnnotation = function(parent, node, options) {
     var f_astNode = TypeofTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : TypeofTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':typeof', 
         name: '', 
@@ -14776,9 +13190,9 @@ format.TypeofTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -14795,19 +13209,6 @@ wzDocs.AstgNodes.push(TypeAnnotation_astNode)
 format.TypeAnnotation = function(parent, node, options) {
     var f_astNode = TypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : TypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // extends Node
     // process AST-node-property typeAnnotation and set it in a var
@@ -14917,19 +13318,6 @@ wzDocs.AstgNodes.push(TypeCastExpression_astNode)
 format.TypeCastExpression = function(parent, node, options) {
     var f_astNode = TypeCastExpression_astNode;
     var __isText = false;
-    // log 'node : TypeCastExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':cast', 
         name: '', 
@@ -15048,9 +13436,9 @@ format.TypeCastExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15066,19 +13454,6 @@ wzDocs.AstgNodes.push(ObjectTypeAnnotation_astNode)
 format.ObjectTypeAnnotation = function(parent, node, options) {
     var f_astNode = ObjectTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : ObjectTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':{', 
         name: '', 
@@ -15160,9 +13535,9 @@ format.ObjectTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15178,19 +13553,6 @@ wzDocs.AstgNodes.push(ObjectTypeCallProperty_astNode)
 format.ObjectTypeCallProperty = function(parent, node, options) {
     var f_astNode = ObjectTypeCallProperty_astNode;
     var __isText = false;
-    // log 'node : ObjectTypeCallProperty ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':call-prop', 
         name: '', 
@@ -15232,9 +13594,9 @@ format.ObjectTypeCallProperty = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15250,19 +13612,6 @@ wzDocs.AstgNodes.push(ObjectTypeIndexer_astNode)
 format.ObjectTypeIndexer = function(parent, node, options) {
     var f_astNode = ObjectTypeIndexer_astNode;
     var __isText = false;
-    // log 'node : ObjectTypeIndexer ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':[]', 
         name: '', 
@@ -15335,9 +13684,9 @@ format.ObjectTypeIndexer = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15353,19 +13702,6 @@ wzDocs.AstgNodes.push(ObjectTypeProperty_astNode)
 format.ObjectTypeProperty = function(parent, node, options) {
     var f_astNode = ObjectTypeProperty_astNode;
     var __isText = false;
-    // log 'node : ObjectTypeProperty ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':@', 
         name: '', 
@@ -15475,9 +13811,9 @@ format.ObjectTypeProperty = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15493,19 +13829,6 @@ wzDocs.AstgNodes.push(QualifiedTypeIdentifier_astNode)
 format.QualifiedTypeIdentifier = function(parent, node, options) {
     var f_astNode = QualifiedTypeIdentifier_astNode;
     var __isText = false;
-    // log 'node : QualifiedTypeIdentifier ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':q-type', 
         name: '', 
@@ -15605,9 +13928,9 @@ format.QualifiedTypeIdentifier = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15623,19 +13946,6 @@ wzDocs.AstgNodes.push(UnionTypeAnnotation_astNode)
 format.UnionTypeAnnotation = function(parent, node, options) {
     var f_astNode = UnionTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : UnionTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':|', 
         name: '', 
@@ -15677,9 +13987,9 @@ format.UnionTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15695,19 +14005,6 @@ wzDocs.AstgNodes.push(ExistsTypeAnnotation_astNode)
 format.ExistsTypeAnnotation = function(parent, node, options) {
     var f_astNode = ExistsTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : ExistsTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':exists-type', 
         name: '', 
@@ -15725,9 +14022,9 @@ format.ExistsTypeAnnotation = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15743,19 +14040,6 @@ wzDocs.AstgNodes.push(InferredPredicate_astNode)
 format.InferredPredicate = function(parent, node, options) {
     var f_astNode = InferredPredicate_astNode;
     var __isText = false;
-    // log 'node : InferredPredicate ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':predicate', 
         name: '', 
@@ -15773,9 +14057,9 @@ format.InferredPredicate = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15803,19 +14087,6 @@ wzDocs.AstgNodes.push(TSObjectKeyword_astNode)
 format.TSObjectKeyword = function(parent, node, options) {
     var f_astNode = TSObjectKeyword_astNode;
     var __isText = false;
-    // log 'node : TSObjectKeyword ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':object', 
         name: '', 
@@ -15833,9 +14104,9 @@ format.TSObjectKeyword = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15851,19 +14122,6 @@ wzDocs.AstgNodes.push(TSInterfaceDeclaration_astNode)
 format.TSInterfaceDeclaration = function(parent, node, options) {
     var f_astNode = TSInterfaceDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSInterfaceDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':interface', 
         name: '', 
@@ -15976,9 +14234,9 @@ format.TSInterfaceDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -15995,19 +14253,6 @@ wzDocs.AstgNodes.push(TSInterfaceBody_astNode)
 format.TSInterfaceBody = function(parent, node, options) {
     var f_astNode = TSInterfaceBody_astNode;
     var __isText = false;
-    // log 'node : TSInterfaceBody ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
     f_astNode.props.push({
@@ -16050,19 +14295,6 @@ wzDocs.AstgNodes.push(TSConstructorType_astNode)
 format.TSConstructorType = function(parent, node, options) {
     var f_astNode = TSConstructorType_astNode;
     var __isText = false;
-    // log 'node : TSConstructorType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':ctor', 
         name: '', 
@@ -16134,9 +14366,9 @@ format.TSConstructorType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -16152,19 +14384,6 @@ wzDocs.AstgNodes.push(TSConstructSignatureDeclaration_astNode)
 format.TSConstructSignatureDeclaration = function(parent, node, options) {
     var f_astNode = TSConstructSignatureDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSConstructSignatureDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':new', 
         name: '', 
@@ -16236,9 +14455,9 @@ format.TSConstructSignatureDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -16254,19 +14473,6 @@ wzDocs.AstgNodes.push(TSCallSignatureDeclaration_astNode)
 format.TSCallSignatureDeclaration = function(parent, node, options) {
     var f_astNode = TSCallSignatureDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSCallSignatureDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':call', 
         name: '', 
@@ -16338,9 +14544,9 @@ format.TSCallSignatureDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -16356,19 +14562,6 @@ wzDocs.AstgNodes.push(TSPropertySignature_astNode)
 format.TSPropertySignature = function(parent, node, options) {
     var f_astNode = TSPropertySignature_astNode;
     var __isText = false;
-    // log 'node : TSPropertySignature ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':p', 
         name: '', 
@@ -16411,6 +14604,9 @@ format.TSPropertySignature = function(parent, node, options) {
         else {
             appto.name = tempkey.name;
         }
+    }
+    if (node.computed) {
+        ret.name = '[' + ret.name + ']';
     }
     if (node.optional) {
         ret.children.push({
@@ -16485,9 +14681,9 @@ format.TSPropertySignature = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -16503,19 +14699,6 @@ wzDocs.AstgNodes.push(TSIndexSignature_astNode)
 format.TSIndexSignature = function(parent, node, options) {
     var f_astNode = TSIndexSignature_astNode;
     var __isText = false;
-    // log 'node : TSIndexSignature ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':index', 
         name: '', 
@@ -16585,9 +14768,9 @@ format.TSIndexSignature = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -16603,19 +14786,6 @@ wzDocs.AstgNodes.push(TSIndexedAccessType_astNode)
 format.TSIndexedAccessType = function(parent, node, options) {
     var f_astNode = TSIndexedAccessType_astNode;
     var __isText = false;
-    // log 'node : TSIndexedAccessType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':[]', 
         name: '', 
@@ -16661,9 +14831,9 @@ format.TSIndexedAccessType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -16679,19 +14849,6 @@ wzDocs.AstgNodes.push(TSModuleDeclaration_astNode)
 format.TSModuleDeclaration = function(parent, node, options) {
     var f_astNode = TSModuleDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSModuleDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':module', 
         name: '', 
@@ -16761,9 +14918,9 @@ format.TSModuleDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -16780,19 +14937,6 @@ wzDocs.AstgNodes.push(TSModuleBlock_astNode)
 format.TSModuleBlock = function(parent, node, options) {
     var f_astNode = TSModuleBlock_astNode;
     var __isText = false;
-    // log 'node : TSModuleBlock ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property-collection body and append ittfNode(s) to `ret`
     f_astNode.props.push({
@@ -16835,19 +14979,6 @@ wzDocs.AstgNodes.push(TSDeclareFunction_astNode)
 format.TSDeclareFunction = function(parent, node, options) {
     var f_astNode = TSDeclareFunction_astNode;
     var __isText = false;
-    // log 'node : TSDeclareFunction ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':function', 
         name: '', 
@@ -17010,9 +15141,9 @@ format.TSDeclareFunction = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -17028,19 +15159,6 @@ wzDocs.AstgNodes.push(TSFunctionType_astNode)
 format.TSFunctionType = function(parent, node, options) {
     var f_astNode = TSFunctionType_astNode;
     var __isText = false;
-    // log 'node : TSFunctionType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':=>', 
         name: '', 
@@ -17170,9 +15288,9 @@ format.TSFunctionType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -17188,19 +15306,6 @@ wzDocs.AstgNodes.push(TSMethodSignature_astNode)
 format.TSMethodSignature = function(parent, node, options) {
     var f_astNode = TSMethodSignature_astNode;
     var __isText = false;
-    // log 'node : TSMethodSignature ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':m', 
         name: '', 
@@ -17266,6 +15371,9 @@ format.TSMethodSignature = function(parent, node, options) {
         }
         format(ret, node.typeAnnotation, options)
     }
+    if (node.computed) {
+        ret.name = '[' + ret.name + ']';
+    }
     // process AST-node-property-collection parameters and
     // embed its array of nodes in a new tag
     f_astNode.props.push({
@@ -17304,9 +15412,9 @@ format.TSMethodSignature = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -17323,19 +15431,6 @@ wzDocs.AstgNodes.push(TSTypeAnnotation_astNode)
 format.TSTypeAnnotation = function(parent, node, options) {
     var f_astNode = TSTypeAnnotation_astNode;
     var __isText = false;
-    // log 'node : TSTypeAnnotation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property typeAnnotation and append ittfNode to `ret`
     f_astNode.props.push({
@@ -17381,19 +15476,6 @@ wzDocs.AstgNodes.push(TSTypeParameterInstantiation_astNode)
 format.TSTypeParameterInstantiation = function(parent, node, options) {
     var f_astNode = TSTypeParameterInstantiation_astNode;
     var __isText = false;
-    // log 'node : TSTypeParameterInstantiation ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property-collection params and
     // embed its array of nodes in a temp var
@@ -17465,19 +15547,6 @@ wzDocs.AstgNodes.push(TSTypeParameterDeclaration_astNode)
 format.TSTypeParameterDeclaration = function(parent, node, options) {
     var f_astNode = TSTypeParameterDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSTypeParameterDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = parent;
     // process AST-node-property-collection params and append ittfNode(s) to `ret`
     f_astNode.props.push({
@@ -17520,19 +15589,6 @@ wzDocs.AstgNodes.push(TSTypeParameter_astNode)
 format.TSTypeParameter = function(parent, node, options) {
     var f_astNode = TSTypeParameter_astNode;
     var __isText = false;
-    // log 'node : TSTypeParameter ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':<', 
         name: '', 
@@ -17562,9 +15618,9 @@ format.TSTypeParameter = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -17580,19 +15636,6 @@ wzDocs.AstgNodes.push(TSParameterProperty_astNode)
 format.TSParameterProperty = function(parent, node, options) {
     var f_astNode = TSParameterProperty_astNode;
     var __isText = false;
-    // log 'node : TSParameterProperty ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':ts-param-prop', 
         name: '', 
@@ -17685,9 +15728,9 @@ format.TSParameterProperty = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -17703,19 +15746,6 @@ wzDocs.AstgNodes.push(TSTypeReference_astNode)
 format.TSTypeReference = function(parent, node, options) {
     var f_astNode = TSTypeReference_astNode;
     var __isText = false;
-    // log 'node : TSTypeReference ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':ref', 
         name: '', 
@@ -17804,9 +15834,9 @@ format.TSTypeReference = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -17822,19 +15852,6 @@ wzDocs.AstgNodes.push(TSExpressionWithTypeArguments_astNode)
 format.TSExpressionWithTypeArguments = function(parent, node, options) {
     var f_astNode = TSExpressionWithTypeArguments_astNode;
     var __isText = false;
-    // log 'node : TSExpressionWithTypeArguments ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':exprwithtypeargs', 
         name: '', 
@@ -17917,9 +15934,9 @@ format.TSExpressionWithTypeArguments = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -17935,19 +15952,6 @@ wzDocs.AstgNodes.push(TSAsExpression_astNode)
 format.TSAsExpression = function(parent, node, options) {
     var f_astNode = TSAsExpression_astNode;
     var __isText = false;
-    // log 'node : TSAsExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':as', 
         name: '', 
@@ -18094,9 +16098,9 @@ format.TSAsExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18112,19 +16116,6 @@ wzDocs.AstgNodes.push(TSTupleType_astNode)
 format.TSTupleType = function(parent, node, options) {
     var f_astNode = TSTupleType_astNode;
     var __isText = false;
-    // log 'node : TSTupleType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':tuple', 
         name: '', 
@@ -18165,9 +16156,9 @@ format.TSTupleType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18183,19 +16174,6 @@ wzDocs.AstgNodes.push(TSUnionType_astNode)
 format.TSUnionType = function(parent, node, options) {
     var f_astNode = TSUnionType_astNode;
     var __isText = false;
-    // log 'node : TSUnionType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':union', 
         name: '', 
@@ -18233,9 +16211,9 @@ format.TSUnionType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18251,19 +16229,6 @@ wzDocs.AstgNodes.push(TSIntersectionType_astNode)
 format.TSIntersectionType = function(parent, node, options) {
     var f_astNode = TSIntersectionType_astNode;
     var __isText = false;
-    // log 'node : TSIntersectionType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':intersect', 
         name: '', 
@@ -18301,9 +16266,9 @@ format.TSIntersectionType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18319,19 +16284,6 @@ wzDocs.AstgNodes.push(TSEnumDeclaration_astNode)
 format.TSEnumDeclaration = function(parent, node, options) {
     var f_astNode = TSEnumDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSEnumDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':enum', 
         name: '', 
@@ -18404,9 +16356,9 @@ format.TSEnumDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18422,19 +16374,6 @@ wzDocs.AstgNodes.push(TSEnumMember_astNode)
 format.TSEnumMember = function(parent, node, options) {
     var f_astNode = TSEnumMember_astNode;
     var __isText = false;
-    // log 'node : TSEnumMember ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: '@', 
         name: '', 
@@ -18525,7 +16464,7 @@ format.TSEnumMember = function(parent, node, options) {
         }
     }
     if (p_initializer) {
-        if (['@expr', '@id', 'literal'].indexOf(p_initializer.tag) > -1) {
+        if (['@id', 'literal'].indexOf(p_initializer.tag) > -1) {
             ret.name += ' ' + getNodeText(p_initializer);
         }
     }
@@ -18535,9 +16474,9 @@ format.TSEnumMember = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18553,19 +16492,6 @@ wzDocs.AstgNodes.push(TSNeverKeyword_astNode)
 format.TSNeverKeyword = function(parent, node, options) {
     var f_astNode = TSNeverKeyword_astNode;
     var __isText = false;
-    // log 'node : TSNeverKeyword ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':never', 
         name: '', 
@@ -18583,9 +16509,9 @@ format.TSNeverKeyword = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18601,19 +16527,6 @@ wzDocs.AstgNodes.push(TSTypePredicate_astNode)
 format.TSTypePredicate = function(parent, node, options) {
     var f_astNode = TSTypePredicate_astNode;
     var __isText = false;
-    // log 'node : TSTypePredicate ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':predicate', 
         name: '', 
@@ -18677,9 +16590,9 @@ format.TSTypePredicate = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18695,19 +16608,6 @@ wzDocs.AstgNodes.push(TSTypeLiteral_astNode)
 format.TSTypeLiteral = function(parent, node, options) {
     var f_astNode = TSTypeLiteral_astNode;
     var __isText = false;
-    // log 'node : TSTypeLiteral ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':{', 
         name: '', 
@@ -18745,9 +16645,9 @@ format.TSTypeLiteral = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18763,19 +16663,6 @@ wzDocs.AstgNodes.push(TSTypeOperator_astNode)
 format.TSTypeOperator = function(parent, node, options) {
     var f_astNode = TSTypeOperator_astNode;
     var __isText = false;
-    // log 'node : TSTypeOperator ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':type-operator', 
         name: '', 
@@ -18810,9 +16697,9 @@ format.TSTypeOperator = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18828,19 +16715,6 @@ wzDocs.AstgNodes.push(TSNonNullExpression_astNode)
 format.TSNonNullExpression = function(parent, node, options) {
     var f_astNode = TSNonNullExpression_astNode;
     var __isText = false;
-    // log 'node : TSNonNullExpression ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':!', 
         name: '', 
@@ -18898,7 +16772,7 @@ format.TSNonNullExpression = function(parent, node, options) {
             }
         }
     }
-    if (['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1) {
+    if (['@id', 'literal'].indexOf(p_expression.tag) > -1) {
         ret.name = getNodeText(p_expression);
     }
     else {
@@ -18910,9 +16784,9 @@ format.TSNonNullExpression = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -18928,19 +16802,6 @@ wzDocs.AstgNodes.push(TSTypeAliasDeclaration_astNode)
 format.TSTypeAliasDeclaration = function(parent, node, options) {
     var f_astNode = TSTypeAliasDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSTypeAliasDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':type', 
         name: '', 
@@ -19012,9 +16873,9 @@ format.TSTypeAliasDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -19030,19 +16891,6 @@ wzDocs.AstgNodes.push(TSLiteralType_astNode)
 format.TSLiteralType = function(parent, node, options) {
     var f_astNode = TSLiteralType_astNode;
     var __isText = false;
-    // log 'node : TSLiteralType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':literal', 
         name: '', 
@@ -19110,9 +16958,9 @@ format.TSLiteralType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -19128,19 +16976,6 @@ wzDocs.AstgNodes.push(TSConditionalType_astNode)
 format.TSConditionalType = function(parent, node, options) {
     var f_astNode = TSConditionalType_astNode;
     var __isText = false;
-    // log 'node : TSConditionalType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':iif', 
         name: '', 
@@ -19379,9 +17214,9 @@ format.TSConditionalType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -19397,19 +17232,6 @@ wzDocs.AstgNodes.push(TSMappedType_astNode)
 format.TSMappedType = function(parent, node, options) {
     var f_astNode = TSMappedType_astNode;
     var __isText = false;
-    // log 'node : TSMappedType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':mapped', 
         name: '', 
@@ -19458,9 +17280,9 @@ format.TSMappedType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -19476,19 +17298,6 @@ wzDocs.AstgNodes.push(TSTypeQuery_astNode)
 format.TSTypeQuery = function(parent, node, options) {
     var f_astNode = TSTypeQuery_astNode;
     var __isText = false;
-    // log 'node : TSTypeQuery ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':typeof', 
         name: '', 
@@ -19561,9 +17370,9 @@ format.TSTypeQuery = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -19579,19 +17388,6 @@ wzDocs.AstgNodes.push(TSInferType_astNode)
 format.TSInferType = function(parent, node, options) {
     var f_astNode = TSInferType_astNode;
     var __isText = false;
-    // log 'node : TSInferType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':infer', 
         name: '', 
@@ -19620,9 +17416,9 @@ format.TSInferType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -19638,19 +17434,6 @@ wzDocs.AstgNodes.push(TSParenthesizedType_astNode)
 format.TSParenthesizedType = function(parent, node, options) {
     var f_astNode = TSParenthesizedType_astNode;
     var __isText = false;
-    // log 'node : TSParenthesizedType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':paren', 
         name: '', 
@@ -19679,9 +17462,9 @@ format.TSParenthesizedType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -19697,19 +17480,6 @@ wzDocs.AstgNodes.push(TSDeclareMethod_astNode)
 format.TSDeclareMethod = function(parent, node, options) {
     var f_astNode = TSDeclareMethod_astNode;
     var __isText = false;
-    // log 'node : TSDeclareMethod ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':m', 
         name: '', 
@@ -19897,9 +17667,9 @@ format.TSDeclareMethod = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -19915,19 +17685,6 @@ wzDocs.AstgNodes.push(TSQualifiedName_astNode)
 format.TSQualifiedName = function(parent, node, options) {
     var f_astNode = TSQualifiedName_astNode;
     var __isText = false;
-    // log 'node : TSQualifiedName ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':qname', 
         name: '', 
@@ -20052,9 +17809,9 @@ format.TSQualifiedName = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -20070,19 +17827,6 @@ wzDocs.AstgNodes.push(TSExportAssignment_astNode)
 format.TSExportAssignment = function(parent, node, options) {
     var f_astNode = TSExportAssignment_astNode;
     var __isText = false;
-    // log 'node : TSExportAssignment ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':export', 
         name: '', 
@@ -20140,7 +17884,7 @@ format.TSExportAssignment = function(parent, node, options) {
             }
         }
     }
-    if (['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1) {
+    if (['@id', 'literal'].indexOf(p_expression.tag) > -1) {
         ret.name = getNodeText(p_expression);
     }
     else {
@@ -20152,9 +17896,9 @@ format.TSExportAssignment = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -20170,19 +17914,6 @@ wzDocs.AstgNodes.push(TSImportType_astNode)
 format.TSImportType = function(parent, node, options) {
     var f_astNode = TSImportType_astNode;
     var __isText = false;
-    // log 'node : TSImportType ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':import-type', 
         name: '', 
@@ -20256,9 +17987,9 @@ format.TSImportType = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -20274,19 +18005,6 @@ wzDocs.AstgNodes.push(TSImportEqualsDeclaration_astNode)
 format.TSImportEqualsDeclaration = function(parent, node, options) {
     var f_astNode = TSImportEqualsDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSImportEqualsDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':import', 
         name: '', 
@@ -20356,9 +18074,9 @@ format.TSImportEqualsDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -20374,19 +18092,6 @@ wzDocs.AstgNodes.push(TSNamespaceExportDeclaration_astNode)
 format.TSNamespaceExportDeclaration = function(parent, node, options) {
     var f_astNode = TSNamespaceExportDeclaration_astNode;
     var __isText = false;
-    // log 'node : TSNamespaceExportDeclaration ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':export-ns', 
         name: '', 
@@ -20436,9 +18141,9 @@ format.TSNamespaceExportDeclaration = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -20454,19 +18159,6 @@ wzDocs.AstgNodes.push(TSExternalModuleReference_astNode)
 format.TSExternalModuleReference = function(parent, node, options) {
     var f_astNode = TSExternalModuleReference_astNode;
     var __isText = false;
-    // log 'node : TSExternalModuleReference ----------------------------------------- parent ittf tag : ', parent.tag
-    var i, i_items=Object.keys(node), i_len=Object.keys(node).length, item;
-    for (i=0; i<i_len; i++) {
-        item = Object.keys(node)[i];
-        if (['type', 'start', 'end', 'loc'].indexOf(item) < 0) {
-            if (verify.isNotEmpty(node[item])) {
-                // log 'property', item, node[item]
-            }
-            else {
-                // log 'property', item
-            }
-        }
-    }
     var ret = {
         tag: ':require', 
         name: '', 
@@ -20524,7 +18216,7 @@ format.TSExternalModuleReference = function(parent, node, options) {
             }
         }
     }
-    if (['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1) {
+    if (['@id', 'literal'].indexOf(p_expression.tag) > -1) {
         ret.name = getNodeText(p_expression);
     }
     else {
@@ -20536,9 +18228,9 @@ format.TSExternalModuleReference = function(parent, node, options) {
         }
         if (typeof __skip === 'undefined' || __skip == false) {
             // log '### add ', ret.tag , 'to', parent.tag
-            processLeadingComments(node, parent, options);
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
             parent.children.push(ret);
-            processTrailingComments(node, parent, options);
         }
     }
 };
@@ -20579,6 +18271,12 @@ function extractCommentsIf(ret, len) {
         return [];
     }
 }
+function assertNoComments(node) {
+    if (node.leadingComments || node.trailingComments) {
+        console.log('Node should have no comments', node);
+        throw new Error('Node should have no comments');
+    }
+}
 function processLeadingComments(node, ittfNode, options) {
     processComments(node.leadingComments, node, ittfNode, options, true)
 }
@@ -20591,13 +18289,13 @@ function processComments(comments, node, ittfNode, options, leading) {
         var i, i_items=comments, i_len=comments.length, item;
         for (i=0; i<i_len; i++) {
             item = comments[i];
-            // log 'processComments', item
+            // log 'processComments', node.type, item
             if (item.type === 'CommentLine') {
                 if (false) {
                     if (options.commentManager.checkWritten(item) == true) {
                         options.commentManager.removeWritten(item);
                     }
-                    console.log('processComments. calling, codeReplacer.restoreInside', item.value);
+                    // log 'processComments. calling, codeReplacer.restoreInside', item.value
                     var value = codeReplacer.restoreInside('""' + item.value, options.replaceds);
                     hb = {
                         tag: '#', 
@@ -20609,9 +18307,6 @@ function processComments(comments, node, ittfNode, options, leading) {
                     ittfNode.children.push(hb)
                 }
                 else {
-                    if (options.commentManager.checkWritten(item) == true) {
-                        options.commentManager.removeWritten(item);
-                    }
                     hb = {
                         tag: '#', 
                         name: item.value, 
@@ -20640,9 +18335,6 @@ function processComments(comments, node, ittfNode, options, leading) {
                 }
                 else {
                     // log 'codeReplacer.isKey', false
-                    if (options.commentManager.checkWritten(item) == true) {
-                        options.commentManager.removeWritten(item);
-                    }
                     var ss = item.value.split(/\r\n|\r|\n/);
                     hb = {
                         tag: '#', 
@@ -20709,9 +18401,9 @@ function processParams(ittfNode) {
                     }
                 }
                 if (plen == 2) {
-                    console.log('processParams', 'plen', plen, 'p.children[0].tag', p.children[0].tag, 'p.children[1].tag', p.children[1].tag);
+                    // log 'processParams', 'plen', plen, 'p.children[0].tag', p.children[0].tag, 'p.children[1].tag', p.children[1].tag
                     if (['@id', '@expr', 'literal'].indexOf(p.children[1].tag) > -1) {
-                        console.log(111);
+                        // log 111
                         // has simple default value (is AssignmentPattern)
                         p.name = p.children[0].name;
                         if (p.children[0].children.length > 0) {
@@ -20722,7 +18414,7 @@ function processParams(ittfNode) {
                         p.children[1].tag = '=';
                     }
                     else {
-                        console.log(112);
+                        // log 112
                         if (p.AST === 'AssignmentPattern') {
                             // has complex default value (is AssignmentPattern)
                             if (['@id', '@expr', 'literal'].indexOf(p.children[0].tag) > -1) {

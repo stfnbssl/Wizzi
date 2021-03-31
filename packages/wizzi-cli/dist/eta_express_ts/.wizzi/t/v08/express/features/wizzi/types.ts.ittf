@@ -1,0 +1,29 @@
+$group
+    $params &md
+    import
+        as wizzi
+        from 'wizzi'
+    import
+        @ FsJson
+        from 'wizzi-repo'
+    export
+        :type FilesystemWizziFactory
+            :{
+                :p wf
+                    :ref wizzi.WizziFactory
+    export
+        :type JsonWizziFactory
+            :{
+                :p wf
+                    :ref wizzi.WizziFactory
+                :p fsJson
+                    :ref FsJson
+    export
+        :type GeneratedArtifact
+            :{
+                :p artifactContent
+                    :string
+                :p sourcePath
+                    :string
+                :p artifactGenerator
+                    :string

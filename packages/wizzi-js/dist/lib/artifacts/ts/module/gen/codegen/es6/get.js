@@ -15,10 +15,11 @@ md.gen = function(model, ctx, callback) {
     if (typeof callback !== 'function') {
         throw new Error('The callback parameter must be a function. In ' + myname + '.gen. Got: ' + callback);
     }
+    u.writeComments(model, ctx);
+    u.genAccessorsAndExtra(model, ctx)
     if (model.static) {
         ctx.write('static ');
     }
-    u.genAccessorsAndExtra(model, ctx)
     ctx.write('get ' + model.wzName + '()');
     if (model.typeReturn) {
         ctx.write(': ');

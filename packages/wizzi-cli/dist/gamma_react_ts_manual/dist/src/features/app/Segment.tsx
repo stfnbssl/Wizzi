@@ -2,14 +2,14 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\app\Segment.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
-declare const analytics;
+declare const analytics: any;
 export default class Segment {
         constructor() {
             this.timers = {
                 sessionStart: Date.now()
-            };
+             };
             this.commonData = {};
         }
         timers: { 
@@ -48,7 +48,7 @@ export default class Segment {
                     ...eventTenures, 
                     ...this.commonData, 
                     ...data
-                })
+                 })
             }
         }
         identify = (loggedUser: object) => {
@@ -60,4 +60,4 @@ export default class Segment {
             return (Date.now() - this.timers[timerKey]) / 1000;
         };
     }
-let instance;
+let instance: Segment | undefined;

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ToggleSwitch.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         margin: 8, 
         cursor: 'pointer', 
         whiteSpace: 'nowrap'
-    }, 
+     }, 
     switch: {
         display: 'inline-block', 
         verticalAlign: -4, 
@@ -55,50 +55,50 @@ const styles = StyleSheet.create({
             margin: 2, 
             transition: '.2s', 
             transform: 'translateX(0)'
-        }
-    }, 
+         }
+     }, 
     inactive: {
         ':before': {
             transform: 'translateX(0)'
-        }
-    }, 
+         }
+     }, 
     active: {
         ':before': {
             transform: 'translateX(16px)'
-        }
-    }, 
+         }
+     }, 
     light: {
         border: `1px solid ${colors.border}`
-    }, 
+     }, 
     lightInactive: {
         ':before': {
             backgroundColor: 'rgba(0, 0, 0, .5)'
-        }
-    }, 
+         }
+     }, 
     lightActive: {
         ':before': {
             backgroundColor: colors.primary
-        }
-    }, 
+         }
+     }, 
     dark: {
         border: '1px solid rgba(255, 255, 255, .2)'
-    }, 
+     }, 
     darkInactive: {
         ':before': {
             backgroundColor: 'rgba(255, 255, 255, .5)'
-        }
-    }, 
+         }
+     }, 
     darkActive: {
         ':before': {
             backgroundColor: colors.content.light
-        }
-    }, 
+         }
+     }, 
     check: {
         display: 'none'
-    }, 
+     }, 
     label: {
         flex: 1, 
         padding: '0 .5em', 
         fontWeight: 'normal'
-    }
-});
+     }
+ });

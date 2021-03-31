@@ -53,6 +53,9 @@ md.load = function(cnt) {
         if (xmodel.__templateChild) {
             ctx.write('${');
         }
+        if (model.wzParent.wzElement == 'htmlelement') {
+            ctx.w('{');
+        }
         var name = (xmodel.wzName || '').trim();
         var hasParens = u.hasArguments(name);
         // log hasParens, ctx.__artifact, ctx.__functionNames
@@ -66,7 +69,7 @@ md.load = function(cnt) {
                 if (err) {
                     return callback(err);
                 }
-                if (xmodel.__templateChild) {
+                if (xmodel.__templateChild || model.wzParent.wzElement == 'htmlelement') {
                     ctx.write('}');
                 }
                 return callback(null, null);
@@ -75,10 +78,11 @@ md.load = function(cnt) {
         else {
             name = hasParens ? name : (name + '()');
             ctx.write(name);
-            if (u.isTopStatement(xmodel, ctx) && u.isDescendentOf(xmodel, 'iif') == false) {
+            // log 'call', 'u.isTopStatement(xmodel, ctx)', u.isTopStatement(xmodel, ctx), "u.isDescendentOf(xmodel, 'iif')", u.isDescendentOf(xmodel, 'iif')
+            if (u.isTopStatement(xmodel, ctx) && u.isChildOf(xmodel, 'iif') == false) {
                 ctx.w(u.semicolon(name))
             }
-            if (xmodel.__templateChild) {
+            if (xmodel.__templateChild || model.wzParent.wzElement == 'htmlelement') {
                 ctx.write('}');
             }
             return callback(null, null);

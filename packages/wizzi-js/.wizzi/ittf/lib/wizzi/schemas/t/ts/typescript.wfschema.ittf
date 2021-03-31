@@ -76,10 +76,26 @@
 	
 	e_tag( typeParameterInst, :param, statement
 
-	e_tag( typeExportAssignment, :export
+	e_tag( typeExportAssignment, :export, statement
 
-	e_tag( typeImportEqualsDeclaration, :import
+	e_tag( typeImport, :import-type, statement 
+		a from
+		a_tag( xas, as
 
-	e_tag( typeNamespaceExportDeclaration, :export-ns
+		m wzInitialize
+			set this.specifiers = []
+			var temp = []
+			foreach item in this.statements
+				if item.wzElement === 'jsPropertyOrValue'
+					_ this.specifiers.push(item)
+				else
+					_ temp.push(item)
+			set this.statements = temp
+    
+    e_tag( typeImportEqualsDeclaration, :import=, statement
 
-	e_tag( typeExternalModuleReference, :require
+	e_tag( typeNamespaceExportDeclaration, :export-ns, statement
+
+	e_tag( typeExternalModuleReference, :require, statement
+
+

@@ -6,8 +6,12 @@ ${'$'}group
     *$
 
     ${'$'}if wzCtx.Build.useReact
-        react "^17.0.1"
-        react-dom "^17.0.1"
+        ${'$'}if wzCtx.Build.react.useV16
+            react "^16.8.1"
+            react-dom "^16.8.1"
+        ${'$'}else
+            react "^17.0.2"
+            react-dom "^17.0.1"
         ${'$'}if wzCtx.Build.react.useFontawesome
             react-fontawesome "^1.6.1"
         ${'$'}if wzCtx.Build.react.usePerfectScrollbar
@@ -23,10 +27,10 @@ ${'$'}group
         ${'$'}if wzCtx.Build.react.useMaterialUI
             ${'$'}if wzCtx.Build.react.materialUI.useAutocomplete
                 ${'$'}if wzCtx.Build.react.materialUI.autocomplete.useReactSelect
-                    react-select "^3.0.3"
+                    react-select "^4.3.0"
         ${'$'}if wzCtx.Build.react.transition
             react-transition-group "^2.4.0"
-        ${'$'}if !!wzCtx.Build.useReactCreateApp == false
+        ${'$'}if wzCtx.Build.react.useRecompose
             recompose "^0.30.0"
 
     ${'$'}if wzCtx.Build.useGatsby

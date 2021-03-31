@@ -15,11 +15,10 @@
 
 	stm( expressionMember
 		_ ctx.write( model.wzName || '')
-        # log 'expressionMember', model.statements
 		_ cnt.genItems
 			@ model.statements
 			@ ctx
-			@ callback
+            @ callback
 
 	stm( xvoid
 		_ ctx.write('void ')
@@ -116,6 +115,8 @@
 					_ ctx.error('iif statement element requires at least two child elements', model)
         if model.wzParent.wzElement == 'template'
             _ ctx.w('${')
+        if model.wzParent.wzElement == 'htmlelement'
+            _ ctx.w('{')
         var paren = ctx.parenRequired || model.statements.length > 2
         if paren
             _ ctx.write('(')
@@ -150,6 +151,7 @@
         function doThen
             param callback
             if m_then
+                # log 'doThen', Object.keys(ctx), 'forceInLine', ctx.forceInLine, '__inside_expr', ctx.__inside_expr, '__inside_html', ctx.__inside_html
                 _ cnt.genItem
                     @ m_then
                     @ ctx
@@ -188,7 +190,8 @@
         var paren = ctx.parenRequired || model.statements.length > 2
         if paren
             _ ctx.write(')')
-        if model.wzParent.wzElement == 'template'
+        if model.wzParent.wzElement == 'template' ||
+            \b model.wzParent.wzElement == 'htmlelement'
             _ ctx.w('}')
 		if u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false
 			_ console.log
@@ -245,6 +248,9 @@
                 @ 'typeof(' + model.wzName + ')'
             r_cb()
 
+    stm( op_nullish
+        _ emitOperators(cnt, '??', model, ctx, callback)
+    
     stm( op_eq
         _ emitOperators(cnt, '==', model, ctx, callback)
     
@@ -272,7 +278,24 @@
         _ emitOperators(cnt, '&', model, ctx, callback)
     
 	stm( op_minus
-        _ emitOperators(cnt, '-', model, ctx, callback)
+        if model.statements.length == 2
+            _ emitOperators(cnt, '-', model, ctx, callback)
+        elif model.statements.length == 1
+            _ ctx.write('-')
+			_ cnt.genItem
+				@ model.statements[0]
+				@ ctx
+				@ callback
+        elif model.statements.length == 0 && ctx.__allowSingleLineOp
+            _ ctx.write(' ' + op + ' ' + (model.wzName || ''))
+            r_cb()
+        else
+            return 
+                _ callback
+                    _ ctx.artifactGenerationError
+                        @ "Invalid model. One or two child statements are required. Model: " + util.inspect(model, {depth: 2})
+                        @ "wizzi-codegen/lib/js/statements/expressions/op_minus"
+                        @ model
     
 	stm( op_plus
         _ emitOperators(cnt, '+', model, ctx, callback)
@@ -307,8 +330,10 @@
 		param model
 		param ctx
 		param callback
-        log 'emitOperators', 'op'
+        # log 'emitOperators', op
         set model = writeComments(model, ctx)
+        if model.wzParent.wzElement == 'template'
+            _ ctx.write('${')
 		if model.statements[0] && model.statements[1]
 			var requireParen1 = model.statements.length > 2
 			var requireParena1 = model.statements[0].statements.length > 0
@@ -341,14 +366,20 @@
 									f_cb()
 										if (u.isTopStatement(model, ctx) && (u.isDescendentOf(model, 'iif') == false))
 											_ ctx.w(';')
+                                        if model.wzParent.wzElement == 'template'
+                                            _ ctx.write('}')
 										r_cb()
 							else
 								if (u.isTopStatement(model, ctx) && (u.isDescendentOf(model, 'iif') == false))
 									_ ctx.w(';')
+                                if model.wzParent.wzElement == 'template'
+                                    _ ctx.write('}')
 								r_cb()
 		else 
 			if model.statements.length == 0 && ctx.__allowSingleLineOp
 				_ ctx.write(' ' + op + ' ' + (model.wzName || ''))
+                if model.wzParent.wzElement == 'template'
+                    _ ctx.write('}')
 				r_cb()
 			else
                 return 

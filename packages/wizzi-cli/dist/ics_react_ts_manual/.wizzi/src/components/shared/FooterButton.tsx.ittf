@@ -1,0 +1,91 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        @ usePreferences
+        from '../../features/preferences'
+    :type Props
+        :{ 
+            :p active
+                :optional 
+                :boolean 
+            :p icon
+                :string 
+            :p children
+                :ref React.ReactNode
+            :p onClick
+                :=> 
+                    :void 
+                    param e
+                        :ref React.MouseEvent
+                            :param 
+                                :ref HTMLButtonElement
+                            :param 
+                                :ref MouseEvent
+    export-default 
+        function FooterButton
+            { 
+                @ active
+                @ icon
+                @ children
+                @ onClick
+                :ref Props
+            const [prefs] = usePreferences()
+            return 
+                button 
+                    @ onClick {onClick}
+                    @ style
+                        iif icon
+                            then
+                                { 
+                                    @ backgroundImage
+                                        `lit 
+                                            + url(
+                                            @ icon
+                                            + )
+                            else undefined
+                    @ className
+                        _ css
+                            @ styles.button
+                            iif active
+                                then styles.buttonActive
+                                else styles.buttonInactive
+                            iif prefs.theme === 'dark'
+                                then styles.buttonDark
+                                else styles.buttonLight
+                    + {children}
+    const styles
+        _ StyleSheet.create
+            { 
+                { button
+                    @ position 'relative'
+                    @ border 0
+                    @ outline 0
+                    @ margin 0
+                    @ height 30
+                    @ padding '0 16px'
+                    @ appearance 'none'
+                    @ backgroundSize 16
+                    @ backgroundRepeat 'no-repeat'
+                    @ backgroundPosition 'center right 8px'
+                    { '@media (min-width: 720px)'
+                        @ padding '5px 32px 5px 8px'
+                { buttonLabel
+                    @ display 'none'
+                    { '@media (min-width: 720px)'
+                        @ display 'inline'
+                { buttonActive
+                    @ backgroundColor 'rgba(0, 0, 0, 0.1)'
+                { buttonInactive
+                    @ backgroundColor 'transparent'
+                { buttonLight
+                    { ':active'
+                        @ opacity 0.5
+                { buttonDark
+                    { ':active'
+                        @ opacity 0.3

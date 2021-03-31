@@ -7,12 +7,14 @@
 	var file = require('wizzi-utils').file
 	var verify = require('wizzi-utils').verify
 	var parser = require("@babel/parser")
-	var ittfwriter = require("../../../util/ittfwriter");
+	var ittfwriter = require("../../../util/ittfwriter")
 	var cleanBabel = require('./cleanBabel')
 	var codeReplacer = require('../../../util/jsCodeReplacer')
 	var CommentManager = require('../../../util/commentManager')
 	var csswizzifier = null
 	var htmlwizzifier = null
+
+    $include html_tags
 
 	var format
 		function
@@ -32,6 +34,12 @@
 
 			if options.verbose
 				# log 'ast.type', ast.type
+            if ast.type == 'OptionalMemberExpression'
+                set ast.type = 'MemberExpression'
+                set ast.optional = true
+            if ast.type == 'OptionalCallExpression'
+                set ast.type = 'CallExpression'
+                set ast.optional = true
 			var formatter = format[ast.type]
 			if formatter
 				_ options.stack.push(ast)

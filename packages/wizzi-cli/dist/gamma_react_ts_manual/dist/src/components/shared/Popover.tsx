@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Popover.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -61,13 +61,13 @@ class Popover extends React.PureComponent<Props, State> {
         this.setState((state) => 
             ({
                 visible: !state.visible
-            })
+             })
         )
     };
     _hidePopover = () => 
         this.setState({
             visible: false
-        });
+         });
     _anchor = React.createRef<HTMLElement>();
     _arrow = React.createRef<HTMLSpanElement>();
     _popover = React.createRef<HTMLDivElement>();
@@ -76,7 +76,7 @@ class Popover extends React.PureComponent<Props, State> {
             children, 
             content, 
             theme
-        } = this.props;
+         } = this.props;
         return  (
             <div className={css(styles.container)}>
                 {
@@ -84,7 +84,7 @@ class Popover extends React.PureComponent<Props, State> {
                     React.cloneElement(React.Children.only(children), {
                         ref: this._anchor, 
                         onClick: this._togglePopover
-                    })
+                     })
                 }
                 <div ref={this._popover} className={css(styles.popover, theme === 'dark' ? styles.popoverDark : styles.popoverLight, this.state.visible ? styles.visible : styles.hidden)}>
                     <span ref={this._arrow} className={css(styles.arrow, theme === 'dark' ? styles.arrowDark : styles.arrowLight)} />
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     container: {
         position: 'relative', 
         backgroundColor: 'inherit'
-    }, 
+     }, 
     popover: {
         position: 'absolute', 
         top: '100%', 
@@ -112,15 +112,15 @@ const styles = StyleSheet.create({
         color: 'inherit', 
         transition: 'transform .2s, opacity .2s', 
         boxShadow: '0 2px 6px rgba(0, 0, 0, 0.16), 0 0 3px rgba(0, 0, 0, 0.08)'
-    }, 
+     }, 
     popoverLight: {
         backgroundColor: colors.content.light, 
         border: 0
-    }, 
+     }, 
     popoverDark: {
         backgroundColor: colors.content.dark, 
         border: `1px solid ${colors.ayu.mirage.border}`
-    }, 
+     }, 
     arrow: {
         position: 'absolute', 
         height: 16, 
@@ -130,22 +130,22 @@ const styles = StyleSheet.create({
         backgroundColor: 'inherit', 
         borderTopLeftRadius: 4, 
         boxShadow: '-.5px -.5px 0 rgba(0, 0, 0, .12)'
-    }, 
+     }, 
     arrowLight: {
         border: 0
-    }, 
+     }, 
     arrowDark: {
         borderStyle: 'solid', 
         borderWidth: '1px 0 0 1px', 
         borderColor: colors.ayu.mirage.border
-    }, 
+     }, 
     visible: {
         opacity: 1, 
         transform: 'translateX(-50%) translateY(0)'
-    }, 
+     }, 
     hidden: {
         opacity: 0, 
         pointerEvents: 'none', 
         transform: 'translateX(-50%) translateY(-4px)'
-    }
-});
+     }
+ });

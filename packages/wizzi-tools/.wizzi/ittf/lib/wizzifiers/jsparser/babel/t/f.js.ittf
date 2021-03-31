@@ -62,13 +62,15 @@
 				$if couldBeText
 					set options.couldBeText = true
 
-				# log 'node : ${name} ----------------------------------------- parent ittf tag : ', parent.tag
+				$*
+                # log 'node : ${name} ----------------------------------------- parent ittf tag : ', parent.tag
 				foreach item in Object.keys(node)
 					if ['type', 'start', 'end', 'loc'].indexOf(item) < 0
 						if verify.isNotEmpty(node[item])
 							# log 'property', item, node[item]
 						else
 							# log 'property', item
+                *$
 
 				$if skip
 					var ret = parent
@@ -100,16 +102,36 @@
 					$elif skip == false
 						if typeof __skip === 'undefined' || __skip == false
 							# log '### add ', ret.tag , 'to', parent.tag
-							_ processLeadingComments(node, parent, options)
+                            $* 29/3/21 start replacement
+                            _ processLeadingComments(node, parent, options)
 							$if retIsArray
 								foreach item in ret
 									_ parent.children.push(item)
 							$else
 								_ parent.children.push(ret)
 							_ processTrailingComments(node, parent, options)
+                            *$
+							$if retIsArray
+                                $$ TODO a comment could be lost here?
+                                $$ _ assertNoComments(node)
+								foreach item in ret
+									_ parent.children.push(item)
+							$else
+                                $*
+                                if node.type == 'VariableDeclaration'
+                                    log 'node.leadingComments', node.leadingComments
+                                *$
+                                _ processLeadingComments(node, ret, options)
+                                _ processTrailingComments(node, ret, options)
+								_ parent.children.push(ret)
+                            $$ 29/3/21 end replacement
 
 				$if mustBeText
 					set options.mustBeText = false
 				$if couldBeText
 					set options.couldBeText = false
+                $*
+                if node.type == 'VariableDeclaration'
+                    log 'f.VariableDeclaration.ret', ret
+                *$
 

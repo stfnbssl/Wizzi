@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ResizeDetector.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         minWidth: 0, 
         minHeight: 0, 
         position: 'relative'
-    }, 
+     }, 
     phantom: {
         display: 'block', 
         position: 'absolute', 
@@ -58,13 +58,13 @@ const styles = StyleSheet.create({
         top: 0, 
         pointerEvents: 'none', 
         opacity: 0
-    }, 
+     }, 
     horizontal: {
         height: 1, 
         width: '100%'
-    }, 
+     }, 
     vertical: {
         height: '100%', 
         width: 1
-    }
-});
+     }
+ });

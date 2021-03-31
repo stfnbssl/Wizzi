@@ -1,0 +1,149 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        @ authTypes
+            #
+                # , withAuth
+        from '../../features/auth'
+    import Button from '../shared/Button'
+    import Banner from '../shared/Banner'
+    import LargeInput from '../shared/LargeInput'
+    import colors from '../../configs/colors'
+    :type Props
+        :intersect 
+            :ref authTypes.AuthProps
+            :{ 
+                :p onSuccess
+                    :optional 
+                    :=> 
+                        :ref Promise
+                            :param void
+                :p onError
+                    :optional 
+                    :=> 
+                        :void 
+    :type State
+        :{ 
+            :p username
+                :string 
+            :p password
+                :string 
+            :p error
+                :boolean 
+            :p loading
+                :boolean 
+    class AuthenticationForm
+        super React.Component
+            :param 
+                :ref Props
+            :param 
+                :ref State
+        p state
+            { 
+                @ username ''
+                @ password ''
+                @ error false
+                @ loading false
+        => _handleChange
+            param e
+                :ref React.ChangeEvent
+                    :param 
+                        :ref HTMLInputElement
+            _ this.setState
+                @expr
+                    { 
+                        @ [e.target.name] e.target.value
+                        @ error false
+                    :as 
+                        :any 
+        p _handleUserAuth
+            async=> 
+                param e
+                    :ref React.FormEvent
+                        :param 
+                            :ref HTMLFormElement
+                _ e.preventDefault()
+                _ this.setState
+                    { 
+                        @ loading true
+                        @ error false
+                    #
+                        # TODO
+                        # const { success } = await this.props.login({
+                        # username: this.state.username,
+                        # password: this.state.password,
+                        # });
+                        # if (success) {
+                        # this.props.onSuccess && this.props.onSuccess();
+                        # } else {
+                        # this.props.onError && this.props.onError();
+                        # }
+                        # this.setState({ loading: false, error: !success });
+                        # 
+        m render
+            return 
+                div 
+                    form 
+                        @ onSubmit {this._handleUserAuth}
+                        h4 
+                            @ className {css(styles.subtitle)}
+                            + Username
+                        < LargeInput 
+                            @ value {this.state.username}
+                            @ name "username"
+                            @ autoFocus
+                            @ onChange {this._handleChange}
+                        h4 
+                            @ className {css(styles.subtitle)}
+                            + Password
+                        < LargeInput 
+                            @ value {this.state.password}
+                            @ name "password"
+                            @ type "password"
+                            @ onChange {this._handleChange}
+                        div 
+                            @ className {css(styles.buttons)}
+                            < Button 
+                                @ large
+                                @ variant "secondary"
+                                @ type "submit"
+                                @ loading {this.state.loading}
+                                + Log in
+                        p 
+                            @ className {css(styles.caption)}
+                            a 
+                                @ className {css(styles.link)}
+                                @ href "https://packi.org/signup"
+                                @ target "blank"
+                                + Sign up for Packi
+                    < Banner 
+                        @ type "error"
+                        @ visible {this.state.error}
+                        + An error occurred while logging in to your account!
+    export-default AuthenticationForm
+    const styles
+        _ StyleSheet.create
+            { 
+                { subtitle
+                    @ fontSize 16
+                    @ fontWeight 500
+                    @ padding 0
+                    @ lineHeight '22px'
+                    @ margin '16px 0 6px 0'
+                { buttons
+                    @ margin '20px 0 0 0'
+                { caption
+                    @ marginTop 24
+                    @ fontSize '16px'
+                    @ lineHeight '22px'
+                    @ textAlign 'center'
+                { link
+                    @ cursor 'pointer'
+                    @ color colors.primary
+                    @ textDecoration 'underline'

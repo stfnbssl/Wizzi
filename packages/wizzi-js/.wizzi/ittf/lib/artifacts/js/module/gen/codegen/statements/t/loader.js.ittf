@@ -34,7 +34,7 @@
                 _ temp.push(item)
         set model.statements = temp
         return model
-	
+
 	set md.load
 		function
 			param cnt

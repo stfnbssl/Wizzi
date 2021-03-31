@@ -1,0 +1,47 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        @ prefTypes
+        @ withThemeName
+        from '../../features/preferences'
+    import colors from '../../configs/colors'
+    :type Props
+        :{ 
+            :p children
+                :ref React.ReactNode
+            :p theme
+                :ref prefTypes.ThemeName
+    function PackibarTitleShell
+        { 
+            @ children
+            @ theme
+            :ref Props
+        return 
+            div 
+                @ className
+                    _ css
+                        @ styles.toolbar
+                        iif theme === 'dark'
+                            then styles.toolbarDark
+                            else styles.toolbarLight
+                + {children}
+    export-default withThemeName(PackibarTitleShell)
+    const styles
+        _ StyleSheet.create
+            { 
+                { toolbar
+                    @ display 'flex'
+                    @ flexDirection 'column'
+                    @ alignItems 'center'
+                    @ justifyContent 'space-between'
+                    @ height 40
+                { toolbarLight
+                    @ backgroundColor colors.content.light
+                { toolbarDark
+                    @ backgroundColor colors.content.dark

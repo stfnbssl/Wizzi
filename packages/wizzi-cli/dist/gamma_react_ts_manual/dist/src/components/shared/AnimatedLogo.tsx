@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\AnimatedLogo.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -17,7 +17,7 @@ const Block = ({
     className, 
     white, 
     black
-}: ShapeProps) => 
+ }: ShapeProps) => 
      (
     <svg width="82px"
         height="95px"
@@ -42,7 +42,7 @@ const Sphere = ({
     className, 
     white, 
     black
-}: ShapeProps) => 
+ }: ShapeProps) => 
      (
     <svg width="48px"
         height="48px"
@@ -66,7 +66,7 @@ type Props = {
 };
 function AnimatedLogo({
     theme
-}: Props) {
+ }: Props) {
     const white = theme === 'dark' ? colors.content.dark : colors.content.light;
     const black = theme === 'dark' ? colors.text.dark : colors.text.light;
     return  (
@@ -93,114 +93,116 @@ const translations = {
     f: 'translate3d(0, 23px, 0)', 
     g: 'translate3d(39px, 42.5px, 0)', 
     o: 'translate3d(133px, 12.5px, 0)'
-};
+ };
 const keyframes = {
     a: {
         '0%': {
             opacity: 0
-        }, 
+         }, 
         '39.9%': {
             opacity: 0
-        }, 
+         }, 
         '40%': {
             transform: translations.c, 
             opacity: 1
-        }, 
+         }, 
         '50%': {
             transform: translations.a
-        }
-    }, 
-    b: {}, 
+         }
+     }, 
+    b: {
+        
+     }, 
     d: {
         '0%': {
             transform: translations.b
-        }, 
+         }, 
         '20%': {
             transform: translations.b
-        }, 
+         }, 
         '30%': {
             transform: translations.d
-        }
-    }, 
+         }
+     }, 
     c: {
         '0%': {
             opacity: 0
-        }, 
+         }, 
         '29.9%': {
             opacity: 0
-        }, 
+         }, 
         '30%': {
             transform: translations.d, 
             opacity: 1
-        }, 
+         }, 
         '40%': {
             transform: translations.c
-        }
-    }, 
+         }
+     }, 
     e: {
         '0%': {
             opacity: 0
-        }, 
+         }, 
         '49.9%': {
             opacity: 0
-        }, 
+         }, 
         '50%': {
             transform: translations.a, 
             opacity: 1
-        }, 
+         }, 
         '60%': {
             transform: translations.e
-        }
-    }, 
+         }
+     }, 
     f: {
         '0%': {
             opacity: 0
-        }, 
+         }, 
         '59.9%': {
             opacity: 0
-        }, 
+         }, 
         '60%': {
             transform: translations.e, 
             opacity: 1
-        }, 
+         }, 
         '70%': {
             transform: translations.f
-        }
-    }, 
+         }
+     }, 
     g: {
         '0%': {
             opacity: 0
-        }, 
+         }, 
         '69.9%': {
             opacity: 0
-        }, 
+         }, 
         '70%': {
             transform: translations.f, 
             opacity: 1
-        }, 
+         }, 
         '80%': {
             transform: translations.g
-        }
-    }, 
+         }
+     }, 
     o: {
         '0%': {
             transform: `${translations.o} scale(0)`
-        }, 
+         }, 
         '80%': {
             transform: `${translations.o} scale(0)`
-        }, 
+         }, 
         '90%': {
             transform: `${translations.o} scale(1)`
-        }
-    }
-};
+         }
+     }
+ };
 const styles = StyleSheet.create({
     container: {
         position: 'relative', 
         height: 182, 
         width: 182, 
         overflow: 'hidden'
-    }, 
+     }, 
     item: {
         position: 'absolute', 
         top: 0, 
@@ -209,37 +211,37 @@ const styles = StyleSheet.create({
         animationDelay: '1s', 
         animationIterationCount: 'infinite', 
         animationDirection: 'alternate-reverse'
-    }, 
+     }, 
     a: {
         transform: translations.a, 
         animationName: keyframes.a
-    }, 
+     }, 
     b: {
         transform: translations.b, 
         animationName: keyframes.b
-    }, 
+     }, 
     c: {
         transform: translations.c, 
         animationName: keyframes.c
-    }, 
+     }, 
     d: {
         transform: translations.d, 
         animationName: keyframes.d
-    }, 
+     }, 
     e: {
         transform: translations.e, 
         animationName: keyframes.e
-    }, 
+     }, 
     f: {
         transform: translations.f, 
         animationName: keyframes.f
-    }, 
+     }, 
     g: {
         transform: translations.g, 
         animationName: keyframes.g
-    }, 
+     }, 
     o: {
         transform: translations.o, 
         animationName: keyframes.o
-    }
-});
+     }
+ });

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\wizzi\reducer.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import {Reducer} from 'redux';
 import {ActionType, getType} from 'typesafe-actions';
@@ -22,9 +22,13 @@ export interface WizziState {
 const initialState: WizziState = {
     loading: false, 
     generatedArtifact: undefined, 
-    jobGeneratedArtifacts: {}, 
-    timedServices: {}
-};
+    jobGeneratedArtifacts: {
+        
+     }, 
+    timedServices: {
+        
+     }
+ };
 export type WizziAction = ActionType<typeof wizziActions>;
 const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action) => {
     switch (action.type) {
@@ -33,7 +37,7 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
             return {
                     ...state, 
                     loading: true
-                };
+                 };
         }
         case getType(wizziActions.generateArtifactSuccess): {
             console.log("wizziActions.generateArtifactSuccess", action);
@@ -48,8 +52,8 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
                             errorMessage: action.payload.message, 
                             errorName: action.payload.name, 
                             errorStack: action.payload.stack
-                        }
-                    };
+                         }
+                     };
             }
             else {
                 return {
@@ -58,8 +62,8 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
                         generatedArtifact: {
                             isError: false, 
                             ...action.payload.generatedArtifact
-                        }
-                    };
+                         }
+                     };
             }
         }
         case getType(wizziActions.generateArtifactError): {
@@ -68,14 +72,14 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(wizziActions.executeJobRequest): {
             console.log("wizziActions.executeJobRequest");
             return {
                     ...state, 
                     loading: true
-                };
+                 };
         }
         case getType(wizziActions.executeJobSuccess): {
             console.log("wizziActions.executeJobSuccess", action);
@@ -89,8 +93,8 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
                             errorMessage: action.payload.message, 
                             errorName: action.payload.name, 
                             errorStack: action.payload.stack
-                        }
-                    };
+                         }
+                     };
             }
             else {
                 return {
@@ -98,7 +102,7 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
                         loading: false, 
                         jobGeneratedArtifacts: action.payload.generatedArtifacts, 
                         jobError: undefined
-                    };
+                     };
             }
         }
         case getType(wizziActions.executeJobError): {
@@ -107,7 +111,7 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
                     ...state, 
                     loading: false, 
                     errors: action.payload
-                };
+                 };
         }
         case getType(wizziActions.setTimedService): {
             console.log("wizziActions.setTimedService", action);
@@ -121,9 +125,9 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
                             onOff: action.payload.onOff, 
                             payload: action.payload.payload, 
                             frequence: action.payload.frequence
-                        }
-                    }
-                };
+                         }
+                     }
+                 };
         }
         default: {
             return state;

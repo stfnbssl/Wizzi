@@ -94,6 +94,7 @@
 				decl statements = null
 				decl value = null
                 decl childStatements = []
+                decl typeParameters = []
 
 			repeater(1, model.statements)
                 # log 'html.md._htmlelement', item_1.wzElement
@@ -141,16 +142,29 @@
                             @ value value.trim()
 							@ statements statements
                 elif ['comment','commentmultiline'].indexOf(item_1.wzElement) > -1
+                    $*
                     _ comments.push
                         @ item_1
-                elif ['htmlelement','statement','jsObject'].indexOf(item_1.wzElement) > -1
+                    *$
+                    # will be written by u.writeComments
+                    _ childStatements.push
+                        @ item_1
+                elif ['htmlelement','statement','jsObject','iif','call'].indexOf(item_1.wzElement) > -1
                     set model.__hasChildElements = true
                     _ childStatements.push
                         @ item_1
+                elif u.isTSSimpleType(item_1)
+                    _ typeParameters.push
+                        @ item_1
+                else
+                    log 'Error.model', model
+                    throw new Error('In ts._htmlelement wzElement not managed: ' + item_1.wzElement)
+
 				repeater_increment(1)
 
 				$append next
                     set model.statements = childStatements
+                    set model.typeParameterInsts = typeParameters
 					_ _htmlelement_end
 						@ cnt
 						@ model

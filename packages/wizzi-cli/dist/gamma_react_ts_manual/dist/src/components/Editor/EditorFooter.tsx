@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\EditorFooter.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -58,36 +58,36 @@ function Footer(props: Props) {
         onShowShortcuts, 
         // onPrettifyCode,
         theme
-    } = props;
+     } = props;
     const _toggleAutoGenSingleDoc = () => 
         props.setPreferences({
             autoGenSingleDoc: !props.preferences.autoGenSingleDoc
-        })
+         })
     ;
     const _toggleAutoExecJob = () => 
         props.setPreferences({
             autoExecJob: !props.preferences.autoExecJob
-        })
+         })
     ;
     const _toggleTrustLocalStorage = () => 
         props.setPreferences({
             trustLocalStorage: !props.preferences.trustLocalStorage
-        })
+         })
     ;
     const _toggleConnectGithubRepos = () => 
         props.setPreferences({
             connectGithubRepos: !props.preferences.connectGithubRepos
-        })
+         })
     ;
     const _toggleFileTree = () => 
         props.setPreferences({
             fileTreeShown: !props.preferences.fileTreeShown
-        })
+         })
     ;
     const _toggleTheme = () => 
         props.setPreferences({
             theme: props.preferences.theme === 'light' ? 'dark' : 'light'
-        })
+         })
     ;
     // 
     const isErrorFatal = false;
@@ -121,7 +121,7 @@ function Footer(props: Props) {
             <React.Fragment>
                 <div style={{
                     paddingLeft: '15px'
-                }}>
+                 }}>
                     Logged uid:
                     {loggedUid}
                 </div>
@@ -179,12 +179,12 @@ const styles = StyleSheet.create({
         flex: 1, 
         minWidth: 0, 
         overflow: 'hidden'
-    }, 
+     }, 
     loadingText: {
         textOverflow: 'ellipsis', 
         whiteSpace: 'nowrap', 
         padding: '.5em'
-    }, 
+     }, 
     statusText: {
         border: 0, 
         outline: 0, 
@@ -201,17 +201,17 @@ const styles = StyleSheet.create({
         minWidth: 200, 
         width: '100%', 
         textAlign: 'left'
-    }, 
+     }, 
     successText: {
         backgroundImage: `url(${require('../../assets/checkmark.png')})`
-    }, 
+     }, 
     errorText: {
         backgroundImage: `url(${require('../../assets/cross-red.png')})`, 
         color: colors.error
-    }, 
+     }, 
     errorTextFatal: {
         backgroundImage: `url(${require('../../assets/cross-light.png')})`
-    }, 
+     }, 
     devicesCount: {
         position: 'absolute', 
         top: 4, 
@@ -222,49 +222,49 @@ const styles = StyleSheet.create({
         backgroundColor: c('text'), 
         color: c('background'), 
         opacity: 0.5
-    }, 
+     }, 
     devicePane: {
         padding: '0 16px'
-    }, 
+     }, 
     devicePaneItem: {
         margin: '0 -16px'
-    }, 
+     }, 
     deviceLabel: {
         display: 'flex', 
         alignItems: 'center', 
         whiteSpace: 'nowrap', 
         padding: '8px 0'
-    }, 
+     }, 
     deviceIcon: {
         height: 16, 
         width: 16, 
         marginRight: 8, 
         fill: 'currentColor'
-    }, 
+     }, 
     noDevicesMessage: {
         whiteSpace: 'nowrap', 
         margin: 8
-    }, 
+     }, 
     buttonLabel: {
         display: 'none', 
         '@media (min-width: 720px)': {
             display: 'inline'
-        }
-    }, 
+         }
+     }, 
     buttonItem: {
         display: 'flex', 
         flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'space-between'
-    }, 
+     }, 
     buttonItemEditorPane: {
         margin: '-8px 12px 0 12px'
-    }, 
+     }, 
     buttonItemDevicePane: {
         margin: -4
-    }, 
+     }, 
     title: {
         margin: '16px 0 8px'
-    }
-});
+     }
+ });
 export default withPreferences(Footer);

@@ -131,6 +131,13 @@
           ]
         },
         {
+          "name": "op_nullish",
+          "tags": [
+            "??",
+            "op??"
+          ]
+        },
+        {
           "name": "op_eq_strict",
           "tags": [
             "===",
@@ -301,12 +308,6 @@
           "name": "ximport",
           "tags": [
             "import"
-          ]
-        },
-        {
-          "name": "typeImport",
-          "tags": [
-            ":import"
           ]
         },
         {
@@ -568,6 +569,12 @@
           ]
         },
         {
+          "name": "jsPropertyOrValueComputed",
+          "tags": [
+            "@["
+          ]
+        },
+        {
           "name": "jsRest",
           "tags": [
             "..."
@@ -733,6 +740,12 @@
           "name": "typeConditional",
           "tags": [
             ":conditional"
+          ]
+        },
+        {
+          "name": "exportType",
+          "tags": [
+            "export-type"
           ]
         },
         {
@@ -1226,6 +1239,36 @@
           "name": "typeParameterInst",
           "tags": [
             ":param"
+          ]
+        },
+        {
+          "name": "typeExportAssignment",
+          "tags": [
+            ":export"
+          ]
+        },
+        {
+          "name": "typeImport",
+          "tags": [
+            ":import-type"
+          ]
+        },
+        {
+          "name": "typeImportEqualsDeclaration",
+          "tags": [
+            ":import="
+          ]
+        },
+        {
+          "name": "typeNamespaceExportDeclaration",
+          "tags": [
+            ":export-ns"
+          ]
+        },
+        {
+          "name": "typeExternalModuleReference",
+          "tags": [
+            ":require"
           ]
         }
       ],
@@ -1776,6 +1819,34 @@
       "tags": [
         "&&",
         "op&&"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "op_nullish",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "??",
+        "op??"
       ],
       "flags": "",
       "attributes": [],
@@ -2650,33 +2721,6 @@
       "comments": [
         "reference http://2ality.com/2014/09/es6-modules-final.html"
       ]
-    },
-    {
-      "name": "typeImport",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        ":import"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
     },
     {
       "name": "xexport",
@@ -4345,6 +4389,71 @@
       ]
     },
     {
+      "name": "jsPropertyOrValueComputed",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "@["
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [
+        {
+          "name": "wzinitialize",
+          "isStatic": false,
+          "isKnownMethod": true,
+          "params": [],
+          "statements": [
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "this.isDslCall = false",
+              "statements": []
+            },
+            {
+              "tag": "foreach",
+              "name": "foreach",
+              "value": "item in this.statements",
+              "statements": [
+                {
+                  "tag": "if",
+                  "name": "xif",
+                  "value": "item.wzElement === 'namedCallParam'",
+                  "statements": [
+                    {
+                      "tag": "set",
+                      "name": "set",
+                      "value": "this.isDslCall = true",
+                      "statements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "comments": [
+            "a Dsl that uses this could be 'graphql'"
+          ]
+        }
+      ],
+      "comments": []
+    },
+    {
       "name": "jsRest",
       "super": "statement",
       "isRoot": false,
@@ -5947,6 +6056,33 @@
       "isRoot": false,
       "tags": [
         ":conditional"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "exportType",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "export-type"
       ],
       "flags": "",
       "attributes": [],
@@ -46143,29 +46279,164 @@
     },
     {
       "name": "typeExportAssignment",
-      "super": null,
+      "super": "statement",
       "isRoot": false,
       "tags": [
         ":export"
       ],
       "flags": "",
       "attributes": [],
-      "relations": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
       "derived": [],
       "restricts": [],
       "methods": [],
       "comments": []
     },
     {
-      "name": "typeImportEqualsDeclaration",
-      "super": null,
+      "name": "typeImport",
+      "super": "statement",
       "isRoot": false,
       "tags": [
-        ":import"
+        ":import-type"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "from",
+          "type": "string",
+          "tags": [
+            "from"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "xas",
+          "type": "string",
+          "tags": [
+            "as"
+          ],
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [
+        {
+          "name": "wzInitialize",
+          "isStatic": false,
+          "isKnownMethod": true,
+          "params": [],
+          "statements": [
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "this.specifiers = []",
+              "statements": []
+            },
+            {
+              "tag": "var",
+              "name": "xvar",
+              "value": "temp = []",
+              "statements": []
+            },
+            {
+              "tag": "foreach",
+              "name": "foreach",
+              "value": "item in this.statements",
+              "statements": [
+                {
+                  "tag": "if",
+                  "name": "xif",
+                  "value": "item.wzElement === 'jsPropertyOrValue'",
+                  "statements": [
+                    {
+                      "tag": "_",
+                      "name": "call",
+                      "value": "this.specifiers.push(item)",
+                      "statements": []
+                    }
+                  ]
+                },
+                {
+                  "tag": "else",
+                  "name": "xelse",
+                  "value": "",
+                  "statements": [
+                    {
+                      "tag": "_",
+                      "name": "call",
+                      "value": "temp.push(item)",
+                      "statements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "this.statements = temp",
+              "statements": []
+            }
+          ],
+          "comments": []
+        }
+      ],
+      "comments": []
+    },
+    {
+      "name": "typeImportEqualsDeclaration",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        ":import="
       ],
       "flags": "",
       "attributes": [],
-      "relations": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
       "derived": [],
       "restricts": [],
       "methods": [],
@@ -46173,14 +46444,26 @@
     },
     {
       "name": "typeNamespaceExportDeclaration",
-      "super": null,
+      "super": "statement",
       "isRoot": false,
       "tags": [
         ":export-ns"
       ],
       "flags": "",
       "attributes": [],
-      "relations": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
       "derived": [],
       "restricts": [],
       "methods": [],
@@ -46188,14 +46471,26 @@
     },
     {
       "name": "typeExternalModuleReference",
-      "super": null,
+      "super": "statement",
       "isRoot": false,
       "tags": [
         ":require"
       ],
       "flags": "",
       "attributes": [],
-      "relations": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
       "derived": [],
       "restricts": [],
       "methods": [],

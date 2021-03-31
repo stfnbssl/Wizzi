@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\filelist\FileList.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -116,8 +116,8 @@ class FileList extends React.PureComponent<Props, State> {
                             path: getUniquePath(this.props.entries.map(it => 
                                 it.item.path
                             ), e.item.path)
-                        }
-                    })
+                         }
+                     })
                 ))
             
         ]);
@@ -127,7 +127,7 @@ class FileList extends React.PureComponent<Props, State> {
                 deleted: state.deleted.filter(g => 
                     g.id !== id
                 )
-            })
+             })
         );
     _handleEntryClose = (path: string) => 
         this.props.onEntriesChange(this.props.entries.map((e) => {
@@ -171,9 +171,9 @@ class FileList extends React.PureComponent<Props, State> {
                         id: this._currentDeleteID++, 
                         path: entry ? entry.item.path : 'Item', 
                         entries
-                    }
+                     }
                 ]
-            })
+             })
         )
     };
     _currentDeleteID: number = 0;
@@ -185,22 +185,22 @@ class FileList extends React.PureComponent<Props, State> {
             clipboard: this.props.entries.filter(e => 
                 e.item.path === path
             )
-        });
+         });
     _handleClearClipboard = () => 
         this.setState({
             clipboard: []
-        });
+         });
     _toggleOpenFilesPane = () => 
         this.setState((state) => 
             ({
                 openFilesPane: !state.openFilesPane
-            })
+             })
         );
     _toggleProjectPane = () => 
         this.setState((state) => 
             ({
                 projectPane: !state.projectPane
-            })
+             })
         );
     _handleCreateFile = (path?: string | undefined) => 
         this.props.onEntriesChange(createNewEntry(this.props.entries, 'file', path));
@@ -211,12 +211,12 @@ class FileList extends React.PureComponent<Props, State> {
         Segment.getInstance().startTimer('importStart');
         this.setState({
             isRepoManagerShown: true
-        })
+         })
     };
     _handleHideRepoManager = () => 
         this.setState({
             isRepoManagerShown: false
-        });
+         });
     render() {
         return  (
             <FileListImportManager className={css(styles.container)}
@@ -224,7 +224,7 @@ class FileList extends React.PureComponent<Props, State> {
                 uploadFileAsync={this.props.uploadFileAsync}
                 render={({
                     onImportStart
-                }) => 
+                 }) => 
                     this.props.visible ?  (
                         <ResizablePane direction="horizontal" className={css(styles.pane)}>
                             <SidebarShell //
@@ -311,11 +311,11 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex', 
         flexDirection: 'column'
-    }, 
+     }, 
     list: {
         padding: '0 12px', 
         height: '100%'
-    }, 
+     }, 
     pane: {
         flex: 1, 
         display: 'flex', 
@@ -324,17 +324,17 @@ const styles = StyleSheet.create({
         minWidth: 240, 
         height: '100%', 
         zIndex: 10
-    }, 
+     }, 
     project: {
         flex: 1
-    }, 
+     }, 
     files: {
         flex: 1, 
         overflow: 'auto'
-    }, 
+     }, 
     children: {
         position: 'relative'
-    }, 
+     }, 
     tabs: {
         margin: 0, 
         listStyle: 'none', 
@@ -342,15 +342,15 @@ const styles = StyleSheet.create({
         overflow: 'auto', 
         ':empty': {
             display: 'none'
-        }
-    }, 
+         }
+     }, 
     toolbar: {
         padding: 8
-    }, 
+     }, 
     toasts: {
         position: 'fixed', 
         bottom: '3em', 
         left: '1em', 
         zIndex: 10
-    }
-});
+     }
+ });

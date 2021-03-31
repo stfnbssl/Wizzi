@@ -1,1 +1,1 @@
-for (const { item } of entryArray) {}
+let cookies: { [SNACK_COOKIE_NAME]?: string } = {};

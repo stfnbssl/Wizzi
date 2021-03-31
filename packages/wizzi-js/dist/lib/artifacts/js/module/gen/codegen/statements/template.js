@@ -49,6 +49,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.template. Got: ' + callback);
         }
+        var indented = u.writeComments_2(model, ctx, true, true);
         ctx.write('`');
         cnt.genItems(model.statements, ctx, {
             indent: false
@@ -58,6 +59,9 @@ md.load = function(cnt) {
             }
             // w -> write 1/3/19
             ctx.write('`');
+            if (indented) {
+                ctx.deindent();
+            }
             return callback(null, null);
         })
     };
@@ -68,6 +72,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.taggedTemplate. Got: ' + callback);
         }
+        var indented = u.writeComments_2(model, ctx, true, true);
         ctx.write('`');
         cnt.genItems(model.statements, ctx, {
             indent: false
@@ -77,6 +82,9 @@ md.load = function(cnt) {
             }
             // w -> write 1/3/19
             ctx.write('`');
+            if (indented) {
+                ctx.deindent();
+            }
             return callback(null, null);
         })
     };
@@ -87,6 +95,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.tagFunctionCall. Got: ' + callback);
         }
+        var indented = u.writeComments_2(model, ctx, true, true);
         ctx.write( model.wzName + '`');
         cnt.genItems(model.statements, ctx, {
             indent: false
@@ -98,6 +107,9 @@ md.load = function(cnt) {
             if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
                 ctx.write(';');
             }
+            if (indented) {
+                ctx.deindent();
+            }
             return callback(null, null);
         })
     };
@@ -108,6 +120,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.macroExpr. Got: ' + callback);
         }
+        var indented = u.writeComments_2(model, ctx, true, true);
         ctx.write('${' + (model.wzName || ''));
         cnt.genItems(model.statements, ctx, {
             indent: false
@@ -116,6 +129,9 @@ md.load = function(cnt) {
                 return callback(err);
             }
             ctx.write('}');
+            if (indented) {
+                ctx.deindent();
+            }
             return callback(null, null);
         })
     };

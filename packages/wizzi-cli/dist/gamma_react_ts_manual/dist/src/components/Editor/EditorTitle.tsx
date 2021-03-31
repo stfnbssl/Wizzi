@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\EditorTitle.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -44,7 +44,7 @@ class EditorTitle extends React.Component<Props, State> {
         this._timer = setInterval(() => 
             this.setState({
                 date: new Date()
-            })
+             })
         , 10000);
     }
     componentWillUnmount() {
@@ -55,7 +55,7 @@ class EditorTitle extends React.Component<Props, State> {
         this.props.onSubmitMetadata({
             name, 
             description: this.props.description || ''
-        });
+         });
     render() {
         const {
             name, 
@@ -72,7 +72,7 @@ class EditorTitle extends React.Component<Props, State> {
             onDismissEditModal, 
             // onLogInClick,
             
-        } = this.props;
+         } = this.props;
         const lastSave = saveHistory.length ? saveHistory[0] : null;
         const savedAt = lastSave ? lastSave.savedAt : createdAt;
         const hasPermanentHistory = saveHistory ? saveHistory.some(item => 
@@ -90,7 +90,7 @@ class EditorTitle extends React.Component<Props, State> {
                     const timestamp = this.state.date > dtSavedAt ? `${distanceInWords(this.state.date, dtSavedAt, {
                             includeSeconds: true, 
                             addSuffix: true
-                        })}` : '';
+                         })}` : '';
                     if (saveStatus === 'changed') {
                         statusText = `Last saved ${timestamp}`;
                     }
@@ -205,22 +205,22 @@ export default withThemeName(EditorTitle);
 const spin = {
     from: {
         transform: 'rotate(0deg)'
-    }, 
+     }, 
     to: {
         transform: 'rotate(360deg)'
-    }
-};
+     }
+ };
 const styles = StyleSheet.create({
     container: {
         display: 'flex', 
         alignItems: 'center', 
         minWidth: 0, 
         height: '100%'
-    }, 
+     }, 
     header: {
         padding: 2, 
         minWidth: 0
-    }, 
+     }, 
     title: {
         fontSize: '1.3em', 
         lineHeight: '1.3em', 
@@ -228,23 +228,23 @@ const styles = StyleSheet.create({
         margin: 0, 
         textOverflow: 'ellipsis', 
         overflow: 'hidden'
-    }, 
+     }, 
     titleContainer: {
         display: 'flex', 
         flexDirection: 'row', 
         alignItems: 'flex-end'
-    }, 
+     }, 
     metadata: {
         display: 'flex', 
         flexDirection: 'row', 
         alignItems: 'center'
-    }, 
+     }, 
     status: {
         fontSize: 12, 
         margin: '0 6px', 
         textOverflow: 'ellipsis', 
         overflow: 'hidden'
-    }, 
+     }, 
     textButton: {
         appearance: 'none', 
         background: 'none', 
@@ -252,10 +252,10 @@ const styles = StyleSheet.create({
         margin: 0, 
         padding: 0, 
         textDecoration: 'underline'
-    }, 
+     }, 
     statusText: {
         opacity: 0.5
-    }, 
+     }, 
     spinner: {
         borderStyle: 'solid', 
         borderTopColor: colors.primary, 
@@ -273,10 +273,10 @@ const styles = StyleSheet.create({
         ], 
         animationIterationCount: 'infinite', 
         animationTimingFunction: 'linear'
-    }, 
+     }, 
     check: {
         marginBottom: -4
-    }, 
+     }, 
     icon: {
         display: 'block', 
         position: 'relative', 
@@ -295,24 +295,24 @@ const styles = StyleSheet.create({
         transition: '.2s', 
         ':hover': {
             opacity: 0.8
-        }
-    }, 
+         }
+     }, 
     description: {
         margin: 16
-    }, 
+     }, 
     modal: {
         padding: '1em 1.5em', 
         borderRadius: 3, 
         width: 360, 
         maxWidth: '100%', 
         boxShadow: '0 1px 8px rgba(0, 0, 0, 0.07)'
-    }, 
+     }, 
     infoLight: {
         backgroundImage: `url(${require('../../assets/info-icon.png')})`
-    }, 
+     }, 
     infoDark: {
         backgroundImage: `url(${require('../../assets/info-icon-light.png')})`
-    }, 
+     }, 
     editButton: {
         width: '100%', 
         background: 'none', 
@@ -320,5 +320,5 @@ const styles = StyleSheet.create({
         borderWidth: '1px 0 0 0', 
         borderColor: colors.border, 
         padding: '8px 16px'
-    }
-});
+     }
+ });

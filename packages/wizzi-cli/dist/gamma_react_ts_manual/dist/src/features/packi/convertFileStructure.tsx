@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\convertFileStructure.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import {isEntryPoint} from '../filelist/fileUtilities';
 import {FileSystemEntry, FileSystemEntryDiff} from '../filelist/types';
@@ -30,9 +30,11 @@ export const packiToEntryArray = (files: PackiFiles):  FileSystemEntry[] => {
                     item: {
                         path: folder, 
                         type: 'folder'
-                    }, 
-                    state: {}
-                })
+                     }, 
+                    state: {
+                        
+                     }
+                 })
                 foldersInFileSystem.add(folder);
             }
         }
@@ -43,21 +45,23 @@ export const packiToEntryArray = (files: PackiFiles):  FileSystemEntry[] => {
                     type: 'file', 
                     uri: files[filename].contents, 
                     asset: true
-                }, 
-                state: {}
-            } : {
+                 }, 
+                state: {
+                    
+                 }
+             } : {
                 item: {
                     path: filename, 
                     type: 'file', 
                     content: files[filename].contents, 
                     generated: files[filename].generated
-                }, 
+                 }, 
                 state: {
                     isOpen: isEntry, 
                     isSelected: isEntry, 
                     isFocused: isEntry
-                }
-            })
+                 }
+             })
     }
     return fileSystem;
 }
@@ -91,7 +95,7 @@ export const mixPreviousAndGeneratedPackiFiles = (previous: PackiFiles, generate
 ;
 export const entryArrayToPacki = (entryArray: FileSystemEntry[]):  PackiFiles => {
     const sourceResult: PackiFiles = {};
-    for (const  of entryArray) {
+    for (const { item } of entryArray) {
         if (item.type === 'file') {
             if (item.asset) {
                 sourceResult[item.path] = {
@@ -99,7 +103,7 @@ export const entryArrayToPacki = (entryArray: FileSystemEntry[]):  PackiFiles =>
                     type: 'ASSET', 
                     // TODO: support for different types
                     
-                };
+                 };
             }
             else {
                 sourceResult[item.path] = {
@@ -107,7 +111,7 @@ export const entryArrayToPacki = (entryArray: FileSystemEntry[]):  PackiFiles =>
                     type: 'CODE', 
                     // TODO: support for different types
                     
-                };
+                 };
             }
         }
     }
@@ -120,7 +124,7 @@ export const entryArrayToObject = (entryArray: FileSystemEntry[]):  {
         [key: string]} = entryArray.reduce((acc: { 
         [key: string]}, {
         item
-    }) => {
+     }) => {
         acc[item.path] = item;
         return acc;
     }
@@ -139,7 +143,7 @@ export const entryArrayDiff = (a: FileSystemEntry[], b: FileSystemEntry[]):  {
         diff[entry.item.path] = {
             kind: '-', 
             a: entry.item
-        }
+         }
     )
     b.forEach((entry) => {
         if (diff[entry.item.path]) {
@@ -157,7 +161,7 @@ export const entryArrayDiff = (a: FileSystemEntry[], b: FileSystemEntry[]):  {
             diff[entry.item.path] = {
                 kind: '+', 
                 b: entry.item
-            };
+             };
         }
     }
     )

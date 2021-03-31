@@ -1,0 +1,191 @@
+module
+    import React from 'react'
+    import 
+        @ withStyles
+        @ createStyles
+        @ Theme
+        from '@material-ui/core/styles'
+    import classnames from 'classnames'
+    import Editor from 'react-simple-code-editor'
+    import escape from 'escape-html'
+    import 
+        @ highlight
+        @ languages
+        from 'prismjs/components/prism-core'
+    import 'prismjs/components/prism-clike'
+    import 'prismjs/components/prism-javascript'
+    import 'prismjs/components/prism-typescript'
+    import 'prismjs/components/prism-markup'
+    import 'prismjs/components/prism-jsx'
+    import 'prismjs/components/prism-json'
+    import 'prismjs/components/prism-markdown'
+    import 
+        @ prefTypes
+        @ withThemeName
+        from '../../features/preferences'
+    import 
+        @ light
+        @ dark
+        from './themes/simple-editor'
+    :type Props
+        :{ 
+            :p classes
+                :any 
+            :p path
+                :string 
+            :p value
+                :string 
+            :p onValueChange
+                :=> 
+                    :void 
+                    param value
+                        :string 
+            :p lineNumbers
+                :union 
+                    :literal 'on'
+                    :literal 'off'
+            :p theme
+                :ref prefTypes.ThemeName
+    # Store selection and undo stack
+    const sessions = new Map()
+    class SimpleEditor
+        super React.Component
+            :param 
+                :ref Props
+        p defaultProps
+            static
+            :ref Partial
+                :param 
+                    :ref Props
+            { 
+                @ lineNumbers 'on'
+        m removePath
+            static
+            param path
+                :string 
+            _ sessions.delete(path)
+        m renamePath
+            static
+            param oldPath
+                :string 
+            param newPath
+                :string 
+            const session = sessions.get(oldPath)
+            _ sessions.delete(oldPath)
+            _ sessions.set(newPath, session)
+        m componentDidUpdate
+            param prevProps
+                :ref Props
+            const editor = this._editor.current
+            if this.props.path !== prevProps.path && editor
+                # Save the editor state for the previous file so we can restore it when it's re-opened
+                _ sessions.set(prevProps.path, editor.session)
+                # If we find a previous session for the current file, restore it
+                # Otherwise set the session session to a fresh one
+                const session = sessions.get(this.props.path)
+                if session
+                    set editor.session = session
+                else
+                    set editor.session =
+                        { 
+                            { history
+                                @ stack []
+                                @ offset -1
+        => _highlight
+            param code
+                :string 
+            if this.props.path.endsWith('.ts') || this.props.path.endsWith('.tsx')
+                return highlight(code, languages.ts)
+            else
+                if this.props.path.endsWith('.js')
+                    return highlight(code, languages.jsx)
+                else
+                    if this.props.path.endsWith('.json')
+                        return highlight(code, languages.json)
+                    else
+                        if this.props.path.endsWith('.md')
+                            return highlight(code, languages.markdown)
+            return escape(code)
+        p _editor
+            _ React.createRef
+                :param 
+                    :ref Editor
+        m render
+            const 
+                { 
+                    @ classes
+                    @ value
+                    @ lineNumbers
+                    @ theme
+                    @ onValueChange
+                = this.props
+            return 
+                div 
+                    @ className {classnames(classes.container, lineNumbers === 'on' && classes.containerWithLineNumbers)}
+                    < Editor 
+                        # @ts-ignore
+                        # @ts-ignore
+                        @ ref {this._editor}
+                        @ value {value}
+                        @ onValueChange {onValueChange}
+                        @ highlight
+                            => 
+                                param code
+                                    :string 
+                                iif lineNumbers === 'on'
+                                    then
+                                        _ this._highlight(code).split('\n').map
+                                            => 
+                                                param line
+                                                    :string 
+                                                `lit 
+                                                    + <span class="
+                                                    @ classes.line
+                                                    + ">
+                                                    @ line
+                                                    + </span>
+                                            ._ join
+                                                @ '\n'
+                                    else this._highlight(code)
+                        @ padding
+                            iif lineNumbers === 'on'
+                                then 0
+                                else 8
+                        @ className {classnames(classes.editor, 'prism-code')}
+                    < style
+                        @ type "text/css"
+                        @ dangerouslySetInnerHTML
+                            { 
+                                @ __html
+                                    iif theme === 'dark'
+                                        then dark
+                                        else light
+    const muiStyles
+        => 
+            param theme
+                :ref Theme
+            _ createStyles
+                { 
+                    { container
+                        @ flex 1
+                        @ height '100%'
+                        @ width '100%'
+                        @ overflow 'auto'
+                    { containerWithLineNumbers
+                        @ paddingLeft 64
+                    { editor
+                        @ fontFamily 'var(--font-monospace)'
+                        @ fontSize 12
+                        @ minHeight '100%'
+                        @ counterReset 'line'
+                    { line
+                        { '&:before'
+                            @ position 'absolute'
+                            @ right '100%'
+                            @ marginRight 26
+                            @ textAlign 'right'
+                            @ opacity 0.5
+                            @ userSelect 'none'
+                            @ counterIncrement 'line'
+                            @ content 'counter(line)'
+    export-default withStyles(muiStyles)(withThemeName(SimpleEditor))

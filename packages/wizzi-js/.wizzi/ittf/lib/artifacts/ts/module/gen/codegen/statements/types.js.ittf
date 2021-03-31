@@ -87,6 +87,7 @@
         log 'model.statements.length', model.statements.length
         log 'model.typeParameterInsts.length', model.statements.length
         *$
+        # log 'typeReference.model', model
         var model = writeComments(model, ctx)
 		if model.statements.length == 1
 			_ ctx.write('<' + model.wzName + '>')
@@ -539,6 +540,34 @@
 		_ ctx.w('export = ' + model.wzName + ';')
 		r_cb()
 
+	stm( typeImport
+        var model = writeComments(model, ctx)
+        var name = model.wzName || ''
+        if model.xas
+            if name.length > 0
+                set name += ', '
+            set name += '* as ' + model.xas
+        _ ctx.write("import type " + name)
+        if model.specifiers.length > 0
+            if name.length > 0
+                _ ctx.write(', ')
+            _ ctx.write('{')
+            foreach item in model.specifiers
+                if i > 0
+                    _ ctx.write(', ')
+                _ ctx.write(item.wzName)
+                if item.xas
+                    _ ctx.write(' as ' + item.xas)
+            _ ctx.write('}')
+            _ ctx.write(' from ' + model.from)
+        else
+            if model.from && model.from.length > 0
+                if name.trim().length > 0
+                    _ ctx.write(' from')
+                _ ctx.write(' ' + model.from)
+        _ ctx.w(u.semicolon(name))
+        r_cb()
+
 	stm( typeImportEqualsDeclaration
         var model = writeComments(model, ctx)
 		_ ctx.write('import ' + model.wzName + ' = ')
@@ -634,5 +663,12 @@
 				@ callback
 		else
 			r_cb()
+
+	stm( exportType
+        set model.__isType
+        _ cnt.stm.xexport
+            @ model
+            @ ctx
+            @ callback
 
 	$include doCallMembers_call

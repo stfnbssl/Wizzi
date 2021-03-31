@@ -358,7 +358,7 @@
 		},
 		{
 			"name": "AssignmentPattern",
-			"ittfTag": "none",
+			"ittfTag": "node.operator",
 			"props": []
 		},
 		{

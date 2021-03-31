@@ -9,7 +9,10 @@ $group
 		{
             @ mode "development"
 			[ entry
-				@ './src/index.js'
+                ${'$'}if wzCtx.Build.useTypescript
+                    @ './src/index.tsx'
+                ${'$'}else
+				    @ './src/index.js'
 			
 			{ module
 				[ rules

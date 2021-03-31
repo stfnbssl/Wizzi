@@ -1,0 +1,41 @@
+$group
+
+    import 
+        @ Router
+        @ Request
+        @ Response
+        from 'express'
+    
+    import 
+        @ ControllerType
+        @ AppInitializerType
+        from '../../features/app/types'
+
+    import { sendHtml } from '../../utils/sendResponse'
+    
+    export 
+        class HomeController
+            :implements ControllerType
+            p path
+                :public 
+                = ''
+            p router
+                :public 
+                _ Router()
+            => initialize
+                param initValues
+                    :ref AppInitializerType
+                _ this.router.get
+                    `lit 
+                        + /
+                    @expr this.home
+            p home
+                :private 
+                async=> 
+                    param request
+                        :ref Request
+                    param response
+                        :ref Response
+                    _ sendHtml
+                        @ response
+                        @ '<h1>Hello world</h1>'

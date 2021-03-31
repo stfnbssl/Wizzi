@@ -45,6 +45,11 @@ var artifact_step_1 = function(step_callback) {
     ctx.setLastNotEmptyLine();
     ctx.write(' + me')
     ctx.w();
+    ctx.w('now i set inlineOn')
+    ctx.inlineOn();
+    ctx.w('- and this ctx.w() go in the same line')
+    ctx.inlineOff();
+    ctx.w('- after inlineOff ctx.w() go in a new line')
     printValue(ctx.getContent(), 'content')
 };
 artifact_step_1.__name = 'artifact_step_1';

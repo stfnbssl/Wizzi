@@ -1,0 +1,56 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        @ prefTypes
+        @ withThemeName
+        from '../../features/preferences'
+    import colors from '../../configs/colors'
+    :type Props
+        :{ 
+            :p children
+                :optional 
+                :ref React.ReactNode
+            :p theme
+                :ref prefTypes.ThemeName
+    function EmbeddedToolbarShell
+        { 
+            @ children
+            @ theme
+            :ref Props
+        return 
+            div 
+                @ className
+                    _ css
+                        @expr styles.toolbar
+                        iif theme === 'dark'
+                            then styles.toolbarDark
+                            else styles.toolbarLight
+                + {children}
+    export-default withThemeName(EmbeddedToolbarShell)
+    const styles
+        _ StyleSheet.create
+            { 
+                { toolbar
+                    @ display 'flex'
+                    @ flexDirection 'row'
+                    @ alignItems 'center'
+                    @ justifyContent 'space-between'
+                    @ borderBottom
+                        `lit 
+                            + 1px solid&nbsp;
+                            @ colors.border
+                            + 
+                    @ padding 4
+                    @ height 48
+                { toolbarLight
+                    @ backgroundColor colors.content.light
+                    @ color colors.text.light
+                { toolbarDark
+                    @ backgroundColor colors.content.dark
+                    @ color colors.text.dark

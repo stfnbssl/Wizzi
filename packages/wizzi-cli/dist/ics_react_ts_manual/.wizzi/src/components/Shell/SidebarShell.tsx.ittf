@@ -1,0 +1,52 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        @ prefTypes
+        @ withThemeName
+        from '../../features/preferences'
+    import colors from '../../configs/colors'
+    :type Props
+        :{ 
+            :p children
+                :optional 
+                :ref React.ReactNode
+            :p theme
+                :ref prefTypes.ThemeName
+    function SidebarShell
+        { 
+            @ children
+            @ theme
+            :ref Props
+        return 
+            div 
+                @ className
+                    _ css
+                        @ styles.sidebar
+                        iif theme === 'dark'
+                            then styles.sidebarDark
+                            else styles.sidebarLight
+                + {children}
+    export-default withThemeName(SidebarShell)
+    const styles
+        _ StyleSheet.create
+            { 
+                { sidebar
+                    @ height '100%'
+                    @ display 'flex'
+                    @ flexDirection 'column'
+                    @ minWidth 240
+                    @ borderRight
+                        `lit 
+                            + 1px solid&nbsp;
+                            @ colors.border
+                            + 
+                { sidebarLight
+                    @ backgroundColor colors.content.light
+                { sidebarDark
+                    @ backgroundColor colors.content.dark

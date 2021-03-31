@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\containers\App.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {Dispatch} from 'redux';
@@ -60,7 +60,7 @@ const mapStateToProps = (state: storeTypes.StoreState):  StateProps =>
         generatedArtifact: state.wizzi.generatedArtifact, 
         jobGeneratedArtifacts: state.wizzi.jobGeneratedArtifacts, 
         jobError: state.wizzi.jobError
-    })
+     })
 ;
 const mapDispatchToProps = (dispatch: Dispatch):  DispatchProps => 
     ({
@@ -73,46 +73,46 @@ const mapDispatchToProps = (dispatch: Dispatch):  DispatchProps =>
         dispatchInitPacki: (preferences: prefTypes.PreferencesType) => 
             dispatch(packiActions.initPackiRequest({
                 preferences
-            }))
+             }))
         , 
         dispatchSelectPacki: (packiId: string) => 
             dispatch(packiActions.selectPackiRequest({
                 id: packiId
-            }))
+             }))
         , 
         dispatchSavePacki: (packiId: string, filesToSave: packiTypes.PackiFiles, packiEntryFiles: packiTypes.PackiFiles) => 
             dispatch(packiActions.savePackiRequest({
                 id: packiId, 
                 filesToSave, 
                 packiEntryFiles
-            }))
+             }))
         , 
         dispatchCreatePacki: (packiId: string, packiKind: string) => 
             dispatch(packiActions.createPackiRequest({
                 id: packiId, 
                 options: {
                     data: packiKind
-                }
-            }))
+                 }
+             }))
         , 
         dispatchDeletePacki: (packiId: string) => 
             dispatch(packiActions.deletePackiRequest({
                 id: packiId
-            }))
+             }))
         , 
         dispatchGenerateArtifact: (filePath: string, files: packiTypes.PackiFiles) => {
             if (filePath.endsWith('.ittf') && !filePath.endsWith('wfjob.ittf')) {
                 dispatch(wizziActions.generateArtifactRequest({
                     filePath, 
                     files
-                }))
+                 }))
             }
         }
         , 
         dispatchExecuteJob: (files: packiTypes.PackiFiles) => 
             dispatch(wizziActions.executeJobRequest({
                 files
-            }))
+             }))
         , 
         dispatchSetTimedService: (name: string, onOff: boolean, payload?: any, frequence?: number) => 
             dispatch(wizziActions.setTimedService({
@@ -120,9 +120,9 @@ const mapDispatchToProps = (dispatch: Dispatch):  DispatchProps =>
                 onOff, 
                 payload, 
                 frequence
-            }))
+             }))
         
-    })
+     })
 ;
 type Props = authTypes.AuthProps & prefTypes.PreferencesContextType & StateProps & DispatchProps & // from router
 // from router
@@ -160,8 +160,8 @@ class App extends React.Component<Props, State> {
         const params: Params = {
             ...!props.match.params.id && props.match.params.username && props.match.params.repoName ? {
                     id: `@${props.match.params.username}/${props.match.params.repoName}`
-                } : null
-        };
+                 } : null
+         };
         this.state = {
             packiStoreId: undefined, 
             packiSessionReady: false, 
@@ -177,13 +177,13 @@ class App extends React.Component<Props, State> {
             isWizziJobWaiting: false, 
             lastJobfileEntries: [], 
             params
-        };
+         };
     }
     static getDerivedStateFromProps(props: Props, state: State) {
         if (props.currentPacki && props.currentPacki.id !== state.packiStoreId) {
             const {
                 files
-            } = props.currentPacki;
+             } = props.currentPacki;
             if (files) {
                 const fileEntries = packiToEntryArray(files);
                 console.log("App.getDerivedStateFromProps.Loaded packi", props.currentPacki.id);
@@ -195,7 +195,7 @@ class App extends React.Component<Props, State> {
                         ).length
                         ) > 0) ? true : false), 
                         lastJobfileEntries: fileEntries
-                    };
+                     };
             }
         }
         if (props.jobGeneratedArtifacts && props.jobGeneratedArtifacts !== state.jobGeneratedArtifacts) {
@@ -206,12 +206,12 @@ class App extends React.Component<Props, State> {
             return {
                     fileEntries: mixPreviousAndGeneratedPackiFilesToEntryArray(notGenerated, props.jobGeneratedArtifacts), 
                     jobGeneratedArtifacts: props.jobGeneratedArtifacts
-                };
+                 };
         }
         if (props.jobError !== state.jobError) {
             return {
                     jobError: props.jobError
-                };
+                 };
         }
         return null;
     }
@@ -259,7 +259,7 @@ class App extends React.Component<Props, State> {
             if (didIttfFilesChange) {
                 this.setState({
                     isWizziJobWaiting: true
-                })
+                 })
             }
         }
     }
@@ -269,21 +269,21 @@ class App extends React.Component<Props, State> {
     async () => 
         this.setState({
             packiSessionReady: true
-        })
+         })
     
     ;
     _handleLoggedOn = async (user: appTypes.LoggedUser) => {
         this.props.dispatchLoggedOn(user);
         this.props.setPreferences({
             loggedUid: user.uid
-        })
+         })
     }
     ;
     _handleLoggedOff = async () => {
         this.props.dispatchLoggedOff();
         this.props.setPreferences({
             loggedUid: undefined
-        })
+         })
     }
     ;
     _handleSelectPacki = async (packiId: string) => 
@@ -303,12 +303,12 @@ class App extends React.Component<Props, State> {
         entries.find(({
             item, 
             state
-        }) => 
+         }) => 
             item.type === 'file' && state.isFocused === true
         )
     };
     _handleChangeCode = (content: string) => {
-        let focusedEntry;
+        let focusedEntry: FileSystemEntry;
         this.setState((state: State) => {
             return {
                     saveStatus: 'changed', 
@@ -318,13 +318,13 @@ class App extends React.Component<Props, State> {
                             return updateEntry(entry, {
                                     item: {
                                         content
-                                    }
-                                });
+                                     }
+                                 });
                         }
                         return entry;
                     }
                     )
-                };
+                 };
         }
         , () => {
             if (focusedEntry.item.path.endsWith('.ittf')) {
@@ -339,7 +339,7 @@ class App extends React.Component<Props, State> {
                     let fileEntries = nextFileEntries;
                     return {
                             fileEntries
-                        };
+                         };
                 }
                 , resolve)
             );
@@ -372,7 +372,7 @@ class App extends React.Component<Props, State> {
             this.setState({
                 lastJobfileEntries: this.state.fileEntries, 
                 isWizziJobWaiting: false
-            })
+             })
             // 20/4 entryArrayToPacki(this.state.fileEntries.filter(e => e.item.path.endsWith('.ittf')))
             this.props.dispatchExecuteJob(entryArrayToPacki(this.state.fileEntries))
         }

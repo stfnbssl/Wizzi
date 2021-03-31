@@ -1,26 +1,17 @@
 $group
     ---
+    {
+        @ test /\.(js|jsx)?$/
+        @ exclude /node_modules/
+        [ use
+            @ 'babel-loader'
+
 	${'$'}if wzCtx.Build.useTypescript
-		${'$'}if wzCtx.Build.useBabel
-			{
-				@ test /\.(ts|js|jsx)x?$/
-				@ exclude /node_modules/
-				[ use
-					@ 'babel-loader'
-		${'$'}else
-			{
-				@ test /\.tsx?$/
-				@ loader "awesome-typescript-loader" 
-			{
-				@ test /\.js$/
-				@ loader "source-map-loader"
-				@ enforce "pre"
-	${'$'}else
-		{	
-			@ test /\.(js|jsx)$/
-			@ exclude /node_modules/
-			[ use
-				@ 'babel-loader'
+        {
+            @ test /\.(ts|tsx)$/
+            @ exclude /node_modules/
+            [ use
+                @ "ts-loader"
 	
 	${'$'}if wzCtx.Build.webpack.useHtml
         {
@@ -51,3 +42,8 @@ $group
 			@ exclude /(node_modules)/
 			[ use
 				@ 'sass-loader'
+    ---
+    {
+        @ test /\.(jpg|jpeg|png|gif|mp3|svg)$/
+        [ use
+            @ "file-loader"

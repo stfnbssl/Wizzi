@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Button.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -26,11 +26,11 @@ type Props = ButtonCommonProps & {
 const rotate = {
     from: {
         transform: 'rotate(0deg)'
-    }, 
+     }, 
     to: {
         transform: 'rotate(360deg)'
-    }
-};
+     }
+ };
 export const getClassNames = ({
     variant, 
     icon, 
@@ -38,7 +38,7 @@ export const getClassNames = ({
     disabled, 
     loading, 
     theme
-}: ButtonCommonProps) => {
+ }: ButtonCommonProps) => {
     return css(styles.button, variant === 'primary' || variant === 'secondary' ? styles[variant] : variant === 'accent' ? theme === 'dark' ? styles.accentDark : styles.accentLight : theme === 'dark' ? styles.normalDark : styles.normalLight, icon ? styles.iconButton : large ? styles.largeButton : styles.normalButton, loading && styles.loading, disabled && styles.disabled, disabled && (variant ? styles.primaryDisabled : styles.normalDisabled));
 }
 ;
@@ -51,7 +51,7 @@ function Button({
     className, 
     theme, 
     ...rest
-}: Props) {
+ }: Props) {
     return  (
         <button type="button"
             className={classnames(getClassNames({
@@ -61,11 +61,11 @@ function Button({
                 disabled, 
                 loading, 
                 theme
-            }), className)}
+             }), className)}
             disabled={disabled}
             style={icon ? {
                     backgroundImage: `url(${icon})`
-                } : {}}
+                 } : {}}
             {...rest}
          />
         )
@@ -87,68 +87,68 @@ const styles = StyleSheet.create({
         transitionTimingFunction: 'linear', 
         ':hover': {
             boxShadow: '0 4px 16px rgba(0, 1, 31, 0.2)'
-        }
-    }, 
+         }
+     }, 
     primary: {
         color: '#fff', 
         backgroundColor: colors.primary, 
         border: `1px solid transparent`
-    }, 
+     }, 
     secondary: {
         color: '#fff', 
         backgroundColor: colors.secondary, 
         border: `1px solid transparent`
-    }, 
+     }, 
     accentLight: {
         color: '#fff', 
         backgroundColor: colors.accent.light, 
         border: `1px solid transparent`
-    }, 
+     }, 
     accentDark: {
         color: '#000', 
         backgroundColor: colors.accent.dark, 
         border: `1px solid transparent`
-    }, 
+     }, 
     normalLight: {
         color: colors.text.light, 
         backgroundColor: '#fff', 
         border: `1px solid ${colors.border}`
-    }, 
+     }, 
     normalDark: {
         color: colors.text.dark, 
         backgroundColor: 'rgba(255, 255, 255, .08)', 
         borderColor: `transparent`
-    }, 
+     }, 
     disabled: {
         cursor: 'not-allowed', 
         pointerEvents: 'none'
-    }, 
+     }, 
     normalDisabled: {
         backgroundColor: 'rgba(0, 0, 0, .02)', 
         color: '#999', 
         border: `1px solid ${colors.border}`
-    }, 
+     }, 
     primaryDisabled: {
         opacity: 0.3, 
         borderColor: `transparent`
-    }, 
+     }, 
     iconButton: {
         padding: '.5em 1em .5em 36px', 
         margin: '.5em', 
         backgroundSize: 16, 
         backgroundRepeat: 'no-repeat', 
         backgroundPosition: '12px center'
-    }, 
+     }, 
     normalButton: {
         padding: '.5em 1em', 
         margin: '.5em'
-    }, 
+     }, 
     largeButton: {
         fontSize: 16, 
         padding: '1em 1.5em', 
         margin: '.5em 0', 
         width: '100%'
-    }, 
+     }, 
     loading: {
         ':before': {
             display: 'inline-block', 
@@ -170,6 +170,6 @@ const styles = StyleSheet.create({
             animationDuration: '1s', 
             animationIterationCount: 'infinite', 
             animationTimingFunction: 'linear'
-        }
-    }
-});
+         }
+     }
+ });

@@ -1,0 +1,57 @@
+$group
+    $params &md
+    export
+        :type ConfigType
+            :{
+                :p port
+                    :number
+                :p sessionSecret
+                    :string
+                :p noCache
+                    :boolean
+                $if wzCtx.Build.useCors
+                    :p corsClientOrigin
+                        :string
+                $if wzCtx.Build.useMongoDb
+                    :p mongoPath
+                        :string
+                    :p mongoUser
+                        :string
+                    :p mongoPassword
+                        :string
+                $if wzCtx.Build.useAuthentication
+                    :p Auth0Domain
+                        :string
+                    :p Auth0PackiClientId
+                        :string
+                    :p Auth0PackiClientSecret
+                        :string
+                    :p Auth0PackiCallbackUrl
+                        :string
+                    :p Auth0PackiBackendAppId
+                        :string
+                    :p Auth0PackiBackendAppSecret
+                        :string
+                    :p Auth0PackiApiId
+                        :string
+                    $if wzCtx.Build.authentication.useGithub
+                        :p GithubClientID
+                            :string
+                        :p GithubClientSecret
+                            :string
+                        :p GithubCallbackURL
+                            :string
+                $if wzCtx.Build.useWizzi
+                    :p IsWizziDev
+                        :boolean
+                    :p MetaHtmlIttfPath
+                        :string
+                    :p MetaFolderIttfPath
+                        :string
+                    :p MetaHtmlTextPath
+                        :string
+                $if wzCtx.Build.usePacki
+                    :p packiTemplatesFolder
+                        :string
+                    :p PackiApiEndpoint
+                        :string

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\themes\colors-light.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 export const syntax = {
     text: '#5c6773', 
@@ -20,14 +20,14 @@ export const syntax = {
     keyword: '#f2590c', 
     operator: '#778899', 
     predefined: '#FF00FF'
-};
+ };
 export const ui = {
     background: '#fafafa', 
     text: '#5c6773', 
     indent: {
         active: '#e0e0e0', 
         inactive: '#ecebec'
-    }
-};
+     }
+ };
 export type SyntaxColors = typeof syntax;
 export type UIColors = typeof ui;

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\LazyLoad.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 type Props<T> = { 
@@ -35,16 +35,16 @@ export default class LazyLoad<T> extends React.Component<Props<T>, State<T>> {
             }
             this.setState({
                 data
-            })
+             })
         }
         ;
         render() {
             return this.props.children(this.state.data ? {
                         loaded: true, 
                         data: this.state.data
-                    } : {
+                     } : {
                         loaded: false, 
                         data: null
-                    });
+                     });
         }
     }

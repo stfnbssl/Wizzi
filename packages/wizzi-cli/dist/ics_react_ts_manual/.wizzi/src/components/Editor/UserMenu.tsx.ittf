@@ -1,0 +1,173 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import Avatar from '../shared/Avatar'
+    import ContextMenu from '../shared/ContextMenu'
+    import 
+        @ authTypes
+        from '../../features/auth'
+    # import withAuth, { AuthProps } from '../auth/withAuth';
+    :type State
+        :{ 
+            :p visible
+                :boolean 
+    :type Props
+        :intersect 
+            :ref authTypes.AuthProps
+            :{ 
+                :p onLogInClick
+                    :=> 
+                        :void 
+    class UserMenu
+        super React.Component
+            :param 
+                :ref Props
+            :param 
+                :ref State
+        p state
+            { 
+                @ visible false
+                @ isLoggingIn false
+        m componentDidMount
+            _ document.addEventListener('click', this._handleDocumentClick)
+            _ document.addEventListener('contextmenu', this._handleDocumentContextMenu)
+        m componentWillUnmount
+            _ document.removeEventListener('click', this._handleDocumentClick)
+            _ document.removeEventListener('contextmenu', this._handleDocumentContextMenu)
+        => _handleDocumentClick
+            param e
+                :ref MouseEvent
+            if this.state.visible
+                if 
+                    test
+                        && 
+                            + this._menu.current && e.target !== this._menu.current
+                            op! 
+                                _ this._menu.current.contains
+                                    @ e.target
+                                        :as 
+                                            :ref HTMLElement
+                    _ this._hideMenu
+            else
+                if 
+                    test
+                        && 
+                            + this._avatar.current
+                            (
+                                || 
+                                    + e.target === this._avatar.current
+                                    _ this._avatar.current.contains
+                                        @ e.target
+                                            :as 
+                                                :ref Node
+                    _ this.setState
+                        => 
+                            param state
+                            (
+                                { 
+                                    @ visible !state.visible
+        => _handleDocumentContextMenu
+            if this.state.visible
+                _ this._hideMenu
+        => _hideMenu
+            _ this.setState
+                { 
+                    @ visible false
+        p _menu
+            _ React.createRef
+                :param 
+                    :ref HTMLUListElement
+        p _avatar
+            _ React.createRef
+                :param 
+                    :ref HTMLButtonElement
+        m render
+            const 
+                { 
+                    @ loggedUser
+                    @ logout
+                = this.props
+            return 
+                div 
+                    @ className {css(styles.container)}
+                    button 
+                        @ ref {this._avatar}
+                        @ className {css(styles.button)}
+                        < Avatar 
+                            @ source
+                                iif loggedUser && loggedUser.picture
+                                    then loggedUser.picture
+                                    else require('../assets/avatar.svg')
+                            @ size {40}
+                    < ContextMenu 
+                        @ ref {this._menu}
+                        @ visible {this.state.visible}
+                        @ actions
+                            iif loggedUser
+                                then
+                                    [ 
+                                        { 
+                                            @ label 'View profile'
+                                            @ handler
+                                                => 
+                                                    _ window.open
+                                                        `lit 
+                                                            + https://expo.io/@
+                                                            @ loggedUser.username
+                                                            + /
+                                        { 
+                                            @ label 'View snacks'
+                                            @ handler
+                                                => 
+                                                    _ window.open
+                                                        `lit 
+                                                            + https://expo.io/snacks/@
+                                                            @ loggedUser.username
+                                                            + /
+                                        { 
+                                            @ label 'Edit account'
+                                            @ handler
+                                                => 
+                                                    _ window.open
+                                                        `lit 
+                                                            + https://expo.io/settings/profile/
+                                        { 
+                                            @ label 'Log out'
+                                            @ handler logout
+                                else
+                                    [ 
+                                        { 
+                                            @ label 'Log in'
+                                            @ handler this.props.onLogInClick
+                        @ onHide {this._hideMenu}
+                        @ className {css(styles.menu)}
+    export-default 
+        @id UserMenu
+            #
+                # withAuth(UserMenu)
+    const styles
+        _ StyleSheet.create
+            { 
+                { container
+                    @ position 'relative'
+                    @ display 'flex'
+                    @ flexDirection 'row'
+                    @ alignItems 'center'
+                    @ margin '0 16px 0 12px'
+                { menu
+                    @ position 'absolute'
+                    @ margin '10px 0'
+                    @ right 0
+                    @ top '100%'
+                { button
+                    @ appearance 'none'
+                    @ background 'transparent'
+                    @ padding 0
+                    @ margin 0
+                    @ border 0
+                    @ outline 0

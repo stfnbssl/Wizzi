@@ -3,8 +3,11 @@
     stm( xfor
         if model.statements.length > 1 && 
             \b model.statements[0].wzElement == 'xleft' &&
-            \b model.statements[1].wzElement == 'xof' || model.statements[1].wzElement == 'xin'
+            \b (model.statements[1].wzElement == 'xof' || model.statements[1].wzElement == 'xin')
+            var bodystatementes = model.statements.slice(2)
             _ ctx.write('for (')
+            set ctx.__inline = true
+            set ctx.__nosemicolon = true
             _ cnt.genItem
                 @ model.statements[0]
                 @ ctx
@@ -14,9 +17,11 @@
                         @ model.statements[1]
                         @ ctx
                         f_cb()
+                            set ctx.__inline = false
+                            set ctx.__nosemicolon = false
                             _ ctx.w(') {')
                             _ cnt.genItems
-                                @ model.statements
+                                @ bodystatementes
                                 @ ctx
                                 { 
                                     @ indent true

@@ -1,0 +1,138 @@
+module
+    import 
+        as React
+        from 'react'
+    import format from 'date-fns/format'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        @ prefTypes
+        @ withThemeName
+        from '../../features/preferences'
+    import 
+        @ packiTypes
+        from '../../features/packi'
+    :type Props
+        :{ 
+            :p saveHistory
+                :ref packiTypes.SaveHistory
+            :p theme
+                :ref prefTypes.ThemeName
+    class PreviousSaves
+        super React.Component
+            :param 
+                :ref Props
+        m render
+            const 
+                { 
+                    @ saveHistory
+                    @ theme
+                = this.props
+            const previousSaves
+                _ saveHistory.filter
+                    => 
+                        param data
+                        + !data.isDraft
+            return 
+                div 
+                    @ className {css(styles.container)}
+                    { 
+                        iif previousSaves.length
+                            then
+                                < React.Fragment 
+                                    p 
+                                        @ className {css(styles.hint)}
+                                        + Click on a previous save to open it in a new tab. You can make changes and then save&lf;              it to overwrite the current version, or change the name to save as a new Snack.
+                                    { 
+                                        _ previousSaves.map
+                                            => 
+                                                param data
+                                                a 
+                                                    @ key {data.id}
+                                                    @ target "_blank"
+                                                    @ href
+                                                        `lit 
+                                                            + /
+                                                            @ data.id
+                                                            + 
+                                                    @ className
+                                                        _ css
+                                                            @ styles.item
+                                                            iif theme === 'dark'
+                                                                then styles.dark
+                                                                else styles.light
+                                                    div 
+                                                        h4 
+                                                            @ className {css(styles.title)}
+                                                            + {format(data.savedAt, 'hh:mm a, dddd')}
+                                                        p 
+                                                            @ className {css(styles.description)}
+                                                            + {format(data.savedAt, 'Do MMMM YYYY')}
+                                                    img 
+                                                        @ className {css(styles.icon)}
+                                                        @ src
+                                                            iif theme === 'dark'
+                                                                then require('../../assets/open-link-icon-light.png')
+                                                                else require('../../assets/open-link-icon.png')
+                                                        @ alt "Open in new tab"
+                            else
+                                p 
+                                    @ className {css(styles.placeholder)}
+                                    + There are no previous saves for this Snack.
+    export-default withThemeName(PreviousSaves)
+    const styles
+        _ StyleSheet.create
+            { 
+                { container
+                    @ margin -12
+                    @ paddingTop 8
+                    @ textAlign 'left'
+                { hint
+                    @ margin 12
+                { item
+                    @ display 'flex'
+                    @ alignItems 'center'
+                    @ justifyContent 'space-between'
+                    @ padding 12
+                    @ cursor 'pointer'
+                    @ color 'inherit'
+                    @ textDecoration 'none'
+                    @ borderRadius 3
+                    @ '--icon-opacity' '0'
+                    { ':hover'
+                        @ '--icon-opacity' '1'
+                { light
+                    { ':hover'
+                        @ backgroundColor 'rgba(0, 0, 0, .08)'
+                { dark
+                    { ':hover'
+                        @ backgroundColor 'rgba(255, 255, 255, .08)'
+                { title
+                    @ fontSize 16
+                    @ fontWeight 'bold'
+                    @ marginTop 0
+                    @ marginBottom 4
+                { description
+                    @ fontSize 14
+                    @ margin 0
+                    @ whiteSpace 'nowrap'
+                    @ textOverflow 'ellipsis'
+                @ icon
+                    @expr
+                        { 
+                            @ margin 8
+                            @ height 16
+                            @ width 16
+                            @ opacity 'var(--icon-opacity)'
+                        :as 
+                            :any 
+                { placeholder
+                    @ display 'flex'
+                    @ alignItems 'center'
+                    @ justifyContent 'center'
+                    @ minHeight 96
+                    @ margin 24
+                    @ fontSize 16
+                    @ opacity 0.5

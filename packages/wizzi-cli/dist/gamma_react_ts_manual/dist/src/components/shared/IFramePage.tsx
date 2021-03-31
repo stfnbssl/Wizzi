@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\IFramePage.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import React from 'react';
 import {connect} from 'react-redux';
@@ -100,13 +100,13 @@ class IFramePage extends React.Component<Props> {
             <div style={{
                 width: '100%', 
                 height: '100%'
-            }}>
+             }}>
                 <iframe frameBorder={0}
                     sandbox="allow-scripts"
                     style={{
                         width: '100%', 
                         height: '100%'
-                    }}
+                     }}
                     ref={f => 
                         this.ifr = f
                     }

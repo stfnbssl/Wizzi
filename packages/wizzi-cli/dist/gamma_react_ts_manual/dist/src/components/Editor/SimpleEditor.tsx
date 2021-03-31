@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\SimpleEditor.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -58,8 +58,8 @@ class SimpleEditor extends React.Component<Props> {
                     history: {
                         stack: [], 
                         offset: -1
-                    }
-                };
+                     }
+                 };
             }
         }
     }
@@ -92,7 +92,7 @@ class SimpleEditor extends React.Component<Props> {
             lineNumbers, 
             theme, 
             onValueChange
-        } = this.props;
+         } = this.props;
         return  (
             <div className={classnames(classes.container, lineNumbers === 'on' && classes.containerWithLineNumbers)}>
                 <Editor ref={this._editor}
@@ -111,7 +111,7 @@ class SimpleEditor extends React.Component<Props> {
                  />
                 <style type="text/css" dangerouslySetInnerHTML={{
                     __html: theme === 'dark' ? dark : light
-                }} />
+                 }} />
             </div>
             )
         ;
@@ -124,16 +124,16 @@ const muiStyles = (theme: Theme) =>
             height: '100%', 
             width: '100%', 
             overflow: 'auto'
-        }, 
+         }, 
         containerWithLineNumbers: {
             paddingLeft: 64
-        }, 
+         }, 
         editor: {
             fontFamily: 'var(--font-monospace)', 
             fontSize: 12, 
             minHeight: '100%', 
             counterReset: 'line'
-        }, 
+         }, 
         line: {
             '&:before': {
                 position: 'absolute', 
@@ -144,8 +144,8 @@ const muiStyles = (theme: Theme) =>
                 userSelect: 'none', 
                 counterIncrement: 'line', 
                 content: 'counter(line)'
-            }
-        }
-    })
+             }
+         }
+     })
 ;
 export default withStyles(muiStyles)(withThemeName(SimpleEditor));

@@ -1,0 +1,7 @@
+﻿html
+    ${'$'}
+        var md = {
+        }
+
+    $$ TODO $if cliCtx.useStaticIttf
+    $include wz/v08/express/site/views/wizzi/index.html

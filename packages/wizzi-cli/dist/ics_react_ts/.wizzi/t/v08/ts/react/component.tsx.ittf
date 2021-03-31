@@ -1,0 +1,40 @@
+$group
+    $params &md
+    import React
+        @ Component
+        from 'react'
+    $hook imports
+    $if md.props.length > 0
+        :type ${md.name}Props
+            :{
+                $foreach prop in md.props
+                    $if prop.type.toLowerCase() == 'date'
+                        :p ${prop.name}
+                            :ref Date
+                    $else
+                        :p ${prop.name}
+                            :${prop.type}
+    $if md.stateItems.length > 0
+        :type ${md.name}State
+            :{
+                $foreach prop in md.stateItems
+                    $if prop.type == 'date'
+                        :p ${prop.name}
+                            :ref Date
+                    $else
+                        :p ${prop.name}
+                            :${prop.type}
+    export
+        class ${md.name}
+            super Component
+                $if md.props.length > 0
+                    :param
+                        :ref ${md.name}Props
+                $else
+                    :param {}
+                $if md.stateItems.length > 0
+                    :param
+                        :ref ${md.name}State
+                $else
+                    :param {}
+            $hook

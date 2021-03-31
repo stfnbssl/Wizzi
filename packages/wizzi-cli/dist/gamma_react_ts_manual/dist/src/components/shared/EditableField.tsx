@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\EditableField.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -26,7 +26,7 @@ class EditableField extends React.Component<Props, State> {
         if (state.value !== props.value && !state.focused) {
             return {
                     value: props.value || ''
-                };
+                 };
         }
         return null;
     }
@@ -38,18 +38,18 @@ class EditableField extends React.Component<Props, State> {
     _handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => 
         this.setState({
             value: e.target.value
-        });
+         });
     _handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
         e.target.select();
         this.setState({
             focused: true
-        })
+         })
     };
     _handleBlur = async () => {
         await this.props.onSubmitText(this.state.value);
         this.setState({
             focused: false
-        })
+         })
     }
     ;
     _handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -82,12 +82,12 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         maxWidth: '100%', 
         position: 'relative'
-    }, 
+     }, 
     field: {
         display: 'inline-block', 
         margin: 0, 
         padding: '1px 6px'
-    }, 
+     }, 
     editable: {
         position: 'absolute', 
         appearance: 'none', 
@@ -99,21 +99,21 @@ const styles = StyleSheet.create({
         borderRadius: 0, 
         ':focus': {
             boxShadow: `inset 0 0 0 1px ${colors.primary}`
-        }, 
+         }, 
         ':hover:focus': {
             boxShadow: `inset 0 0 0 1px ${colors.primary}`
-        }
-    }, 
+         }
+     }, 
     editableLight: {
         ':hover': {
             boxShadow: `inset 0 0 0 1px rgba(0, 0, 0, .16)`
-        }
-    }, 
+         }
+     }, 
     editableDark: {
         ':hover': {
             boxShadow: `inset 0 0 0 1px rgba(255, 255, 255, .16)`
-        }
-    }, 
+         }
+     }, 
     phantom: {
         display: 'inline-block', 
         maxWidth: '100%', 
@@ -121,5 +121,5 @@ const styles = StyleSheet.create({
         whiteSpace: 'pre', 
         overflow: 'hidden', 
         opacity: 0
-    }
-});
+     }
+ });

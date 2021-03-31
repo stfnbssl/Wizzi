@@ -39,4 +39,12 @@ $group
             h4 widget: Button
             div
                 < Button
+                    @ active {true}
+                    @ icon https://material.io/resources/icons/static/ic_material_192px_light.svg
+                    @ theme dark
+                    @ onClick  
+                        =>
+                            _ alert('Hello')
+                    + Give me five
+
 

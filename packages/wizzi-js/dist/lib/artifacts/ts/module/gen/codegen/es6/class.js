@@ -22,6 +22,7 @@ md.gen = function(model, ctx, callback) {
     var zclass = model.wzName,
         zsuper = model.super;
     // log 'ts.es6.class', model
+    u.writeComments(model, ctx);
     classDecorators(model, ctx, (err, notUsed) => {
         if (err) {
             return callback(err);

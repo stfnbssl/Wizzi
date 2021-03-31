@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Auth\AuthenticationForm.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -33,14 +33,14 @@ class AuthenticationForm extends React.Component<Props, State> {
         this.setState({
             [e.target.name]: e.target.value, 
             error: false
-        }  as any);
+         }  as any);
     _handleUserAuth = // 
     async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         this.setState({
             loading: true, 
             error: false
-        })
+         })
     }
     ;
     render() {
@@ -94,19 +94,19 @@ const styles = StyleSheet.create({
         padding: 0, 
         lineHeight: '22px', 
         margin: '16px 0 6px 0'
-    }, 
+     }, 
     buttons: {
         margin: '20px 0 0 0'
-    }, 
+     }, 
     caption: {
         marginTop: 24, 
         fontSize: '16px', 
         lineHeight: '22px', 
         textAlign: 'center'
-    }, 
+     }, 
     link: {
         cursor: 'pointer', 
         color: colors.primary, 
         textDecoration: 'underline'
-    }
-});
+     }
+ });

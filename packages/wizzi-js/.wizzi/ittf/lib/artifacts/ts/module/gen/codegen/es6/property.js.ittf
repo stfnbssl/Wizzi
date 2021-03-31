@@ -8,12 +8,14 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.property
 
 	md-gen-class( gen )
 
-		if model.static
-			_ ctx.write('static ');
-
-		_ u.genAccessorsAndExtra
+        _ u.writeComments(model, ctx)
+        
+        _ u.genAccessorsAndExtra
 			@ model
 			@ ctx
+
+		if model.static
+			_ ctx.write('static ');
 
 		_ ctx.write(model.wzName);
 

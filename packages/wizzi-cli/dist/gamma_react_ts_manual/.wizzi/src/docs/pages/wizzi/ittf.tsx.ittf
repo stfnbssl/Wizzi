@@ -1,0 +1,18 @@
+module
+    import React from 'react'
+    import DocsMarkdown from '../../DocsMarkdown'
+    const content = require('./ittf.md')
+    const title = 'Ittf'
+    :type Props
+        :{ 
+            :p location
+                :any 
+    function Page
+        param props
+            :ref Props
+        return 
+            < DocsMarkdown 
+                @ title {title}
+                @ content {content}
+                @ location {props.location}
+    export-default Page

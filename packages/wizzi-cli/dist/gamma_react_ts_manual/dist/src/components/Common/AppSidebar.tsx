@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Common\AppSidebar.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -42,7 +42,7 @@ function AppSidebar(props: Props) {
     return  (
         <Drawer variant="permanent" classes={{
             paper: props.classes.drawerPaper
-        }}>
+         }}>
             <List>
                 {
                     //
@@ -59,10 +59,10 @@ const muiStyles = (theme: Theme) =>
             top: 0, 
             // 'auto'
             width: `${Layout.MainDrawerWidth}px`
-        }, 
+         }, 
         iconButton: {
             padding: '10px'
-        }
-    })
+         }
+     })
 ;
 export default withStyles(muiStyles)(AppSidebar);

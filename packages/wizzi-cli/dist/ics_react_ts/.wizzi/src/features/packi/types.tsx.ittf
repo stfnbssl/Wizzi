@@ -1,0 +1,229 @@
+module
+    import 
+        @ commonTypes
+        from '../../../common'
+        # import { persist } from 'web-worker-proxy';
+    export 
+        :type PackiFiles
+            :ref commonTypes.PackiFiles
+    export 
+        :type GitRepositoryMeta
+            :ref commonTypes.GitRepositoryMeta
+    export 
+        :type ClonedGitRepository
+            :ref commonTypes.ClonedGitRepository
+    export 
+        :type Packi
+            :{ 
+                :p id
+                    :string 
+                :p files
+                    :optional 
+                    :ref PackiFiles
+                :p dependencies
+                    :optional 
+                    :{ 
+                        :index 
+                            :string 
+                            param key
+                                :string 
+                :p history
+                    :optional 
+                    :ref SaveHistory
+                :p isDraft
+                    :optional 
+                    :boolean 
+                :p localPackiData
+                    :ref LocalPackiData
+    export 
+        :type PackiTemplate
+            :{ 
+                :p id
+                    :string 
+                :p files
+                    :ref PackiFiles
+                :p dependencies
+                    :optional 
+                    :{ 
+                        :index 
+                            :string 
+                            param key
+                                :string 
+    export 
+        :type PackiFilesOrKind
+            :union 
+                :ref PackiFiles
+                :string 
+    export 
+        :type CreatePackiOptions
+            :{ 
+                :p data
+                    :ref PackiFilesOrKind
+    export 
+        :type SaveStatus
+            :union 
+                :literal 'changed'
+                :literal 'saving-draft'
+                :literal 'saved-draft'
+                :literal 'publishing'
+                :literal 'published'
+    export 
+        :type SaveHistory
+            :ref Array
+                :param 
+                    :{ 
+                        :p id
+                            :string 
+                        :p savedAt
+                            :string 
+                        :p isDraft
+                            :optional 
+                            :boolean 
+    :type Listener
+        :ref ReturnType
+            :param 
+                :typeof Object
+                    #
+                        # persist
+        #
+            # 
+            # export type PackiSessionState = {
+            # name: string;
+            # description: string;
+            # files: PackiFiles;
+            # dependencies: { [key: string]: { version: string } };
+            # // sdkVersion: SDKVersion;
+            # isSaved: boolean;
+            # isResolving: boolean;
+            # loadingMessage: string | undefined;
+            # };
+            # 
+    export 
+        :type PackiSessionOptions
+            :{ 
+                :p files
+                    :{ 
+                        :index 
+                            :{ 
+                                :p contents
+                                    :string 
+                                :p type
+                                    :union 
+                                        :literal 'ASSET'
+                                        :literal 'CODE'
+                            param x
+                                :string 
+                :p verbose
+                    :optional 
+                    :boolean 
+                    # sdkVersion?: SDKVersion;
+                :p sessionId
+                    :optional 
+                    :string 
+                :p host
+                    :optional 
+                    :string 
+                :p sessionSecret
+                    :optional 
+                    :string 
+                :p packiId
+                    :optional 
+                    :string 
+                :p name
+                    :optional 
+                    :string 
+                :p description
+                    :optional 
+                    :string 
+                :p dependencies
+                    :optional 
+                    :{ 
+                        :index 
+                            :{ 
+                                :p version
+                                    :string 
+                            param key
+                                :string 
+                :p authorizationToken
+                    :optional 
+                    :string 
+                :p disableDevSession
+                    :optional 
+                    :boolean 
+                :p user
+                    :{ 
+                        :p idToken
+                            :optional 
+                            :union 
+                                :string 
+                                :null 
+                        :p sessionSecret
+                            :optional 
+                            :union 
+                                :string 
+                                :null 
+                    # deviceId?: string | null;
+        # TODO should be an external type?
+    export 
+        :type LocalPackiData
+            :{ 
+                :p origin
+                    :string 
+                :p id
+                    :string 
+                :p owner
+                    :optional 
+                    :string 
+                :p repoName
+                    :optional 
+                    :string 
+                :p branch
+                    :optional 
+                    :string 
+                :p description
+                    :optional 
+                    :string 
+                :p localCreatedAt
+                    :number 
+                :p githubCreatedAt
+                    :number 
+                :p lastCommitAt
+                    :number 
+        #
+            # 
+            # export type PackiSessionProxy = {
+            # create: (options: PackiSessionOptions) => Promise<void>;
+            # session: {
+            # // expoApiUrl: string;
+            # packigerUrl: string;
+            # packigerCloudfrontUrl: string;
+            # host: string;
+            # startAsync: () => Promise<void>;
+            # saveAsync: (options: {
+            # isDraft?: boolean;
+            # }) => Promise<{
+            # id: string;
+            # }>;
+            # uploadAssetAsync: (asset: File) => Promise<string>;
+            # syncDependenciesAsync: (
+            # modules: {
+            # [name: string]: string | undefined;
+            # },
+            # callback: Listener
+            # ) => Promise<void>;
+            # sendCodeAsync: (payload: PackiFiles) => Promise<void>;
+            # // setSdkVersion: (version: SDKVersion) => Promise<void>;
+            # setUser: (user: { sessionSecret: string | undefined }) => Promise<void>;
+            # setName: (name: string) => Promise<void>;
+            # setDescription: (description: string) => Promise<void>;
+            # // setDeviceId: (id: string) => Promise<void>;
+            # getState: () => Promise<PackiSessionState>;
+            # // getChannel: () => Promise<string>;
+            # };
+            # addStateListener: (listener: Listener) => Promise<void>;
+            # addPresenceListener: (listener: Listener) => Promise<void>;
+            # addErrorListener: (listener: Listener) => Promise<void>;
+            # addLogListener: (listener: Listener) => Promise<void>;
+            # setDependencyErrorListener: (listener: Listener) => Promise<void>;
+            # };
+            # 

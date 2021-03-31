@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\actions\createNewEntry.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import updateEntry from './updateEntry';
 import createEntryAtPath from './createEntryAtPath';
@@ -14,19 +14,19 @@ export default function createNewEntry(entries: FileSystemEntry[], type: 'file' 
                     path: 'Untitled file.js', 
                     type: 'file', 
                     content: ''
-                }, 
+                 }, 
                 state: {
                     isCreating: true
-                }
-            } : {
+                 }
+             } : {
                 item: {
                     path: 'Untitled folder', 
                     type: 'folder'
-                }, 
+                 }, 
                 state: {
                     isCreating: true
-                }
-            };
+                 }
+             };
         let path = at;
         if (typeof path !== 'string') {
             // Get the current folder if no path is specified
@@ -42,8 +42,8 @@ export default function createNewEntry(entries: FileSystemEntry[], type: 'file' 
                 return updateEntry(e, {
                         state: {
                             isExpanded: true
-                        }
-                    });
+                         }
+                     });
             }
             return e;
         }

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ModalSheet.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         textAlign: 'center', 
         borderRadius: 4, 
         boxShadow: '0 1px 4px rgba(36, 44, 58, 0.3)'
-    }, 
+     }, 
     close: {
         appearance: 'none', 
         borderRadius: '1em', 
@@ -64,14 +64,14 @@ const styles = StyleSheet.create({
         fontSize: '1em', 
         fontWeight: 'bold', 
         textAlign: 'center'
-    }, 
+     }, 
     contentLight: {
         backgroundColor: colors.content.light, 
         color: colors.text.light
-    }, 
+     }, 
     contentDark: {
         backgroundColor: colors.content.dark, 
         color: colors.text.dark, 
         border: `1px solid ${colors.border}`
-    }
-});
+     }
+ });

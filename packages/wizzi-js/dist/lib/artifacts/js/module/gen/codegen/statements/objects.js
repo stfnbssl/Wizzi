@@ -84,6 +84,22 @@ md.load = function(cnt) {
             }
         }
     };
+    cnt.stm.jsPropertyOrValueComputed = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.jsPropertyOrValueComputed');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.jsPropertyOrValueComputed. Got: ' + callback);
+        }
+        ctx.write('[');
+        cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.write(']: ');
+            cnt.genItems(model.statements.slice(1), ctx, {}, callback)
+        })
+    };
     cnt.stm.jsRest = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.jsRest');
@@ -136,6 +152,7 @@ md.load = function(cnt) {
         }
         else if (u.isObjectProperty(model) || u.isParamValue(model) || u.isValue(model)) {
             // log 4, model.wzName + colon
+            colon = u.onlyChildIs(model, 'initValue') ? '=' : colon;
             if (model.wzName.length > 0) {
                 ctx.write(model.wzName + colon);
                 cnt.genItems(model.statements, ctx, {
@@ -152,7 +169,9 @@ md.load = function(cnt) {
                 })
             }
             else {
-                return callback(ctx.error(myname + '. Invalid jsPropertyOrValue. Ha s no name: ' + model.wzName, model));
+                cnt.genItems(model.statements, ctx, {
+                    indent: false
+                }, callback)
             }
         }
         else if (ctx.__ecma === 'es6') {
@@ -229,6 +248,8 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.jsObject. Got: ' + callback);
         }
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         var colon = (ctx.isGraphql && !ctx.isNamedCallParam) ? ' ' : ': ',
             save__is_react_class = ctx.__is_react_class;
         if (model.isDslCall) {
@@ -247,9 +268,15 @@ md.load = function(cnt) {
             else {
                 if (model.statements.length == 0) {
                     ctx.write('{}');
+                    u.checkInlineExit(model, ctx);
                     return callback(null, null);
                 }
-                ctx.w('{');
+                if (ctx.__inline) {
+                    ctx.write('{ ');
+                }
+                else {
+                    ctx.w('{');
+                }
             }
             ctx.indent();
             // log '++++ start', ctx.__ecma
@@ -264,6 +291,7 @@ md.load = function(cnt) {
                     // log '++++ end', ctx.__ecma
                     ctx.__is_react_class = save__is_react_class;
                 }
+                u.checkInlineExit(model, ctx);
                 return callback(null, null);
             })
         }
@@ -336,7 +364,9 @@ md.load = function(cnt) {
                 // log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
                 if (u.isMemberAccessOrCall(item_1)) {
                     // log 'jsObject_close 3'
-                    ctx.w('');
+                    if (!!ctx.__inline == false) {
+                        ctx.w('');
+                    }
                     ctx.deindent();
                     ctx.write('}');
                     cnt.genItem(item_1, ctx, function(err, notUsed) {
@@ -363,6 +393,7 @@ md.load = function(cnt) {
                         }
                         repeater_2(index_1 + 1);
                         function next_2() {
+                            u.checkInlineExit(model, ctx);
                             return callback(null, null);
                         }
                     })
@@ -375,12 +406,18 @@ md.load = function(cnt) {
                         if (err) {
                             return callback(err);
                         }
+                        u.checkInlineExit(model, ctx);
                         return callback(null, null);
                     })
                 }
                 else {
                     if (comma && !first) {
-                        ctx.w(', ');
+                        if (ctx.__inline) {
+                            ctx.write(', ');
+                        }
+                        else {
+                            ctx.w(', ');
+                        }
                     }
                     first = false;
                     cnt.genItem(item_1, ctx, function(err, notUsed) {
@@ -400,14 +437,17 @@ md.load = function(cnt) {
         function next_1() {
             ;
             // log 'jsObject_close 4'
-            ctx.w('');
+            if (!!ctx.__inline == false) {
+                ctx.w('');
+            }
             ctx.deindent();
-            if (u.parentIsHtmlElement(model)) {
+            if (u.parentIsHtmlElement(model) && !!ctx.__inline == false) {
                 ctx.w('}');
             }
             else {
-                ctx.write('}');
+                ctx.write(' }');
             }
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         }
     }
@@ -430,10 +470,15 @@ md.load = function(cnt) {
                 // log '601 jsArray'
                 return callback(null, null);
             }
-            ctx.w('[');
+            if (ctx.__inline) {
+                ctx.write('[');
+            }
+            else {
+                ctx.w('[');
+            }
         }
         ctx.indent();
-        var first = true;
+        var needs_comma = false;
         // log '602 jsArray'
         var len_1 = model.statements.length;
         function repeater_1(index_1) {
@@ -443,7 +488,9 @@ md.load = function(cnt) {
             var item_1 = model.statements[index_1];
             // log '607 jsArray'
             if (u.isMemberAccessOrCall(item_1)) {
-                ctx.w('');
+                if (!!ctx.__inline == false) {
+                    ctx.w('');
+                }
                 ctx.deindent();
                 ctx.write(']');
                 // log '605 jsArray'
@@ -477,15 +524,23 @@ md.load = function(cnt) {
                     });
             }
             // log '606 jsArray'
-            if (!first) {
-                ctx.w(', ');
+            if (needs_comma) {
+                if (ctx.__inline) {
+                    ctx.write(', ');
+                }
+                else {
+                    ctx.w(', ');
+                }
+                needs_comma = false;
             }
-            first = false;
             cnt.genItem(item_1, ctx, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
                 // log '604 jsArray'
+                if (!u.isComment(item_1)) {
+                    needs_comma = true;
+                }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
@@ -494,7 +549,9 @@ md.load = function(cnt) {
         repeater_1(0);
         function next_1() {
             ;
-            ctx.w('');
+            if (!!ctx.__inline == false) {
+                ctx.w('');
+            }
             ctx.deindent();
             ctx.write(']');
             return callback(null, null);

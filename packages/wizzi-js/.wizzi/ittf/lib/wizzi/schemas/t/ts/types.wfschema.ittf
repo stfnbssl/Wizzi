@@ -52,4 +52,6 @@
 		a_flag( typeOptional, :optional )
 
 	e_tag( typeConditional, :conditional, statement
+
+    e_tag( exportType, export-type, statement
 	

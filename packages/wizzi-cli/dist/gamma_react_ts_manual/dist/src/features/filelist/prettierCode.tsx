@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\filelist\prettierCode.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import getFileLanguage from './getFileLanguage';
 export default async function prettierCode(path: string, code: string):  Promise<string> {
@@ -38,12 +38,12 @@ export default async function prettierCode(path: string, code: string):  Promise
             const prettier = await import('prettier/standalone');
             const {
                 default: config
-            } = await import('../../configs/prettier.json') as any;
+             } = await import('../../configs/prettier.json') as any;
             return prettier.format(code, {
                     parser, 
                     plugins, 
                     ...config
-                });
+                 });
         }
         return code;
     }

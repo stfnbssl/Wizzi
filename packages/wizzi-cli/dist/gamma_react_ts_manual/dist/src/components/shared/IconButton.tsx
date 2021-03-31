@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\IconButton.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -23,7 +23,7 @@ function IconButton({
     children, 
     theme, 
     ...rest
-}: Props) {
+ }: Props) {
     return  (
         <button {...rest} className={css(styles.button, theme === 'dark' ? styles.dark : styles.light, rest.disabled && styles.disabled)}>
             {children}
@@ -66,19 +66,19 @@ const styles = StyleSheet.create({
         textDecoration: 'none', 
         ':active': {
             opacity: 0.8
-        }
-    }, 
+         }
+     }, 
     dark: {
         fill: colors.accent.dark
-    }, 
+     }, 
     light: {
         fill: colors.accent.light
-    }, 
+     }, 
     disabled: {
         cursor: 'not-allowed', 
         pointerEvents: 'none', 
         opacity: 0.3
-    }, 
+     }, 
     phantom: {
         position: 'absolute', 
         top: 0, 
@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
         ':hover': {
             opacity: 1, 
             pointerEvents: 'auto'
-        }
-    }, 
+         }
+     }, 
     tooltip: {
         position: 'absolute', 
         top: '100%', 
@@ -112,24 +112,24 @@ const styles = StyleSheet.create({
             top: -5, 
             left: -2.5, 
             marginLeft: '50%'
-        }
-    }, 
+         }
+     }, 
     tooltipLight: {
         backgroundColor: colors.accent.light, 
         color: '#fff', 
         ':before': {
             borderBottom: `5px solid ${colors.accent.light}`
-        }
-    }, 
+         }
+     }, 
     tooltipDark: {
         backgroundColor: colors.accent.dark, 
         color: '#000', 
         ':before': {
             borderBottom: `5px solid ${colors.accent.dark}`
-        }
-    }, 
+         }
+     }, 
     label: {
         margin: '0 12px', 
         color: c('text')
-    }
-});
+     }
+ });

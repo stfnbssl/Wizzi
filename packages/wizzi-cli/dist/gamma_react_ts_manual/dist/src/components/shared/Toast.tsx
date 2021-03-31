@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Toast.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -45,7 +45,7 @@ class Toast extends React.Component<Props, State> {
                 bottom: '3em', 
                 left: '1em', 
                 zIndex: '999'
-            })
+             })
             document.body.appendChild(group);
         }
         group.appendChild(this._container);
@@ -65,13 +65,13 @@ class Toast extends React.Component<Props, State> {
     _cancelDismiss = () => {
         this.setState({
             dismissing: false
-        })
+         })
         clearTimeout(this._timer);
     };
     _handleDismiss = () => {
         this.setState({
             dismissing: true
-        })
+         })
         this._timer = setTimeout(() => 
             this.props.onDismiss && this.props.onDismiss()
         , 400);
@@ -80,7 +80,7 @@ class Toast extends React.Component<Props, State> {
         const props = this.props.persistent ? {} : {
                 onMouseEnter: this._cancelDismiss, 
                 onMouseLeave: this._scheduleDismiss
-            };
+             };
         return ReactDOM.createPortal(
             <div {...props} className={css(styles.toast, this.props.type ? this.props.type === 'error' ? styles.error : styles.success : this.props.theme === 'dark' ? styles.dark : styles.light, this.state.dismissing ? styles.dismissing : styles.appearing)}>
                 <div className={css(styles.label)}>
@@ -104,19 +104,19 @@ export default withThemeName(Toast);
 const fadeIn = {
     from: {
         opacity: 0
-    }, 
+     }, 
     to: {
         opacity: 1
-    }
-};
+     }
+ };
 const fadeOut = {
     from: {
         opacity: 1
-    }, 
+     }, 
     to: {
         opacity: 0
-    }
-};
+     }
+ };
 const styles = StyleSheet.create({
     toast: {
         display: 'flex', 
@@ -127,40 +127,40 @@ const styles = StyleSheet.create({
         boxShadow: '0 4px 16px rgba(0, 1, 31, 0.2)', 
         minWidth: '27em', 
         whiteSpace: 'nowrap'
-    }, 
+     }, 
     light: {
         backgroundColor: colors.background.light, 
         color: colors.text.light
-    }, 
+     }, 
     dark: {
         backgroundColor: '#434852', 
         color: '#fff'
-    }, 
+     }, 
     success: {
         backgroundColor: colors.success, 
         color: '#fff'
-    }, 
+     }, 
     error: {
         backgroundColor: colors.error, 
         color: '#fff'
-    }, 
+     }, 
     appearing: {
         animationName: fadeIn, 
         animationDuration: '250ms', 
         opacity: 1
-    }, 
+     }, 
     dismissing: {
         animationName: fadeOut, 
         animationDuration: '400ms', 
         opacity: 0
-    }, 
+     }, 
     label: {
         flex: 1, 
         minWidth: 0, 
         overflow: 'hidden', 
         textOverflow: 'ellipsis', 
         padding: '.75em'
-    }, 
+     }, 
     button: {
         appearance: 'none', 
         background: 'transparent', 
@@ -172,12 +172,12 @@ const styles = StyleSheet.create({
         outline: 0, 
         ':hover': {
             backgroundColor: 'rgba(0, 0, 0, .08)'
-        }, 
+         }, 
         ':active': {
             backgroundColor: 'rgba(0, 0, 0, .12)'
-        }
-    }, 
+         }
+     }, 
     buttonLight: {
         color: colors.primary
-    }
-});
+     }
+ });

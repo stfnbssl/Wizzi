@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\create.js.ittf
-    utc time: Wed, 24 Mar 2021 15:11:08 GMT
+    utc time: Wed, 31 Mar 2021 20:00:14 GMT
 */
 'use strict';
 const path = require('path');
@@ -11,31 +11,28 @@ const chalk = require('chalk');
 const wizzi = require('wizzi');
 var inquirer = require('inquirer');
 module.exports = (args) => {
-    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'wizzi_plugin'), {
+    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'express_ts'), {
             cliCtx: {
-                pkg_name: "wizzi.plugin.ppt", 
-                wizzi_plugin_type: "syntax_structure", 
+                pkg_name: "eta_express_ts", 
                 author: {
                     
-                }, 
+                 }, 
                 license: {
                     name: "MIT", 
                     copy: "copy 2021"
-                }, 
+                 }, 
                 github: {
                     
-                }, 
+                 }, 
                 Schemas: [
-                    {
-                        name: "ppt"
-                    }
+                    {}
                 ]
-            }
-        }, {
-            destFolder: path.join(process.cwd(), 'wizzi.plugin.ppt'), 
+             }
+         }, {
+            destFolder: path.join(process.cwd(), 'eta_express_ts'), 
             copyInclude: ['*'], 
             copyExclude: []
-        }, function(err, genFolderResult) {
+         }, function(err, genFolderResult) {
             if (err) {
                 console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                 console.log('err', err);
@@ -48,15 +45,15 @@ module.exports = (args) => {
         console.log('create.answers', answers);
         wizzi.model(path.join(__dirname, '..', 'resources', 'create', 'contexts', answers.pkg_type + ".json.ittf"), {
             answers: answers
-        }, (err, jsonctx) => {
+         }, (err, jsonctx) => {
             console.log('create.jsonctx', jsonctx);
             wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', answers.__template), {
                 cliCtx: jsonctx
-            }, {
+             }, {
                 destFolder: path.join(process.cwd(), answers.pkg_name), 
                 copyInclude: ['*'], 
                 copyExclude: []
-            }, function(err, genFolderResult) {
+             }, function(err, genFolderResult) {
                 if (err) {
                     console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
                     console.log('err', err);
@@ -131,7 +128,7 @@ function promptPkgType(callback) {
         filter: function(val) {
             return val.toLowerCase();
         }
-    };
+     };
     inquirer.prompt(questions).then((answers) => {
         console.log('\nNew package type:');
         console.log(JSON.stringify(answers, null, '  '));
@@ -153,7 +150,7 @@ function promptWizziPlugin(callback) {
         filter: function(val) {
             return val.toLowerCase();
         }
-    };
+     };
     inquirer.prompt(questions).then((answers) => {
         console.log('\nWizzi plugin type:');
         console.log(JSON.stringify(answers, null, '  '));
@@ -179,7 +176,7 @@ function promptWebpack(callback) {
         filter: function(val) {
             return val.toLowerCase();
         }
-    };
+     };
     inquirer.prompt(questions).then((answers) => {
         console.log('\nNew webpack package type:');
         console.log(JSON.stringify(answers, null, '  '));
@@ -199,13 +196,13 @@ function promptPkgName(callback) {
                 }
                 return 'Please enter a valid project name';
             }
-        }, 
+         }, 
         {
             type: 'confirm', 
             name: 'pkg_enterinfo', 
             message: 'Whould you like to enter package info? Otherwise defaults are used', 
             default: false
-        }
+         }
     ];
     inquirer.prompt(questions).then((answers) => {
         console.log('\nNew package name:');
@@ -231,12 +228,12 @@ function promptPkgInfo(callback) {
             type: 'input', 
             name: 'author', 
             message: "Who is the author?"
-        }, 
+         }, 
         {
             type: 'input', 
             name: 'author_email', 
             message: "The author has an e-mail?"
-        }, 
+         }, 
         {
             type: 'list', 
             name: 'license_type', 
@@ -249,7 +246,7 @@ function promptPkgInfo(callback) {
             filter: function(val) {
                 return val.toLowerCase();
             }
-        }
+         }
     ];
     inquirer.prompt(questions).then((answers) => {
         console.log('\nNew package info:');

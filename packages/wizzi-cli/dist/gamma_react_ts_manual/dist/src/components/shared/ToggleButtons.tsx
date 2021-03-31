@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ToggleButtons.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -55,18 +55,18 @@ const styles = StyleSheet.create({
         opacity: 0.5, 
         pointerEvents: 'none', 
         cursor: 'not-allowed'
-    }, 
+     }, 
     label: {
         flex: 1, 
         margin: '0 .5em'
-    }, 
+     }, 
     buttons: {
         display: 'flex', 
         alignItems: 'center', 
         whiteSpace: 'nowrap', 
         margin: '0 .5em', 
         borderRadius: 10
-    }, 
+     }, 
     button: {
         appearance: 'none', 
         outline: 0, 
@@ -80,22 +80,22 @@ const styles = StyleSheet.create({
             borderRightWidth: 0, 
             borderRadius: '10px 0 0 10px', 
             padding: '0 .5em 0 1em'
-        }, 
+         }, 
         ':last-of-type': {
             borderLeftWidth: 0, 
             borderRadius: '0 10px 10px 0', 
             padding: '0 1em 0 .5em'
-        }
-    }, 
+         }
+     }, 
     active: {
         backgroundColor: colors.primary, 
         color: '#fff'
-    }, 
+     }, 
     activeDisabled: {
         backgroundColor: '#999', 
         color: '#fff'
-    }, 
+     }, 
     activeDisabledLight: {
         backgroundColor: 'rgba(255, 255, 255, 0.5)'
-    }
-});
+     }
+ });

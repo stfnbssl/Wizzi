@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\EditorPanelLogs.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -29,7 +29,7 @@ type Props = {
 };
 export default function EditorPanelLogs({
         deviceLogs
-    }: Props) {
+     }: Props) {
         const logs = deviceLogs.reduce(// If the last log and current are the same, increment the count
         (acc: GroupedLog[], log) => {
             const last = acc[acc.length - 1];
@@ -51,7 +51,7 @@ export default function EditorPanelLogs({
                     device: log.device.name, 
                     method: log.method, 
                     times: 1
-                })
+                 })
             }
             return acc;
         }
@@ -64,7 +64,7 @@ export default function EditorPanelLogs({
                         device, 
                         method, 
                         times
-                    }: GroupedLog, i) => {
+                     }: GroupedLog, i) => {
                         return  (
                             <div className={css(styles.container)} key={i}>
                                 <div className={css(styles.device)}>
@@ -113,25 +113,25 @@ const styles = StyleSheet.create({
         fontSize: 13, 
         minHeight: 16, 
         margin: '4px 0'
-    }, 
+     }, 
     line: {
         display: 'flex', 
         flexDirection: 'row', 
         flexWrap: 'wrap'
-    }, 
+     }, 
     item: {
         marginRight: 8
-    }, 
+     }, 
     error: {
         color: colors.error
-    }, 
+     }, 
     warning: {
         color: colors.warning
-    }, 
+     }, 
     device: {
         opacity: 0.5, 
         marginRight: 8
-    }, 
+     }, 
     counter: {
         position: 'relative', 
         bottom: -1, 
@@ -144,5 +144,5 @@ const styles = StyleSheet.create({
         backgroundColor: colors.primary, 
         color: 'white', 
         opacity: 0.5
-    }
-});
+     }
+ });

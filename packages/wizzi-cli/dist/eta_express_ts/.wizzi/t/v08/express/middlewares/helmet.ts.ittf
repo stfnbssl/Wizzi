@@ -1,0 +1,19 @@
+$group
+    $params &md
+    import
+        @ Application
+        from 'express'
+    import
+        as helmet
+        from 'helmet'
+    import
+        @ MiddlewareType
+        from '../features/app/types'
+    export
+        const HelmetMiddleware
+            :ref MiddlewareType
+            =
+                =>
+                    param app
+                        :ref Application
+                    _ app.use(helmet())

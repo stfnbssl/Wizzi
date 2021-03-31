@@ -27,6 +27,12 @@
         else
             return []
 
+    function assertNoComments
+        param node
+        if node.leadingComments || node.trailingComments
+            log 'Node should have no comments', node
+            throw new Error('Node should have no comments')
+    
     function processLeadingComments
 		param node
 		param ittfNode
@@ -58,12 +64,12 @@
 		if verify.isArray(comments) && comments.length > 0
 			var hb
 			foreach item in comments
-				# log 'processComments', item
+				# log 'processComments', node.type, item
 				if item.type === 'CommentLine'
 					if false $$ codeReplacer.isKey(item.value, options.replaceds)
 						if options.commentManager.checkWritten(item) == true
 							_ options.commentManager.removeWritten(item)
-						log 'processComments. calling, codeReplacer.restoreInside', item.value
+						# log 'processComments. calling, codeReplacer.restoreInside', item.value
                         var value = codeReplacer.restoreInside('""' + item.value, options.replaceds)
 						set hb
 							{
@@ -73,8 +79,10 @@
 						_ ittfNode.children.push
 							@ hb
 					else
+                        $* VIA 30/3/21
 						if options.commentManager.checkWritten(item) == true
 							_ options.commentManager.removeWritten(item)
+                        *$
 						set hb
 							{
 								@ tag '#'
@@ -106,8 +114,10 @@
 							@ hb
 					else
 						# log 'codeReplacer.isKey', false
+                        $* VIA 30/3/21
 						if options.commentManager.checkWritten(item) == true
 							_ options.commentManager.removeWritten(item)
+                        *$
 						var ss = item.value.split(/\r\n|\r|\n/)
 						set hb
 							{
@@ -151,9 +161,9 @@
 							_ p.children.push
 								@ ui
 					if plen == 2
-                        log 'processParams', 'plen', plen, 'p.children[0].tag', p.children[0].tag, 'p.children[1].tag', p.children[1].tag
+                        # log 'processParams', 'plen', plen, 'p.children[0].tag', p.children[0].tag, 'p.children[1].tag', p.children[1].tag
 						if ['@id', '@expr', 'literal'].indexOf(p.children[1].tag) > -1
-                            log 111
+                            # log 111
 							# has simple default value (is AssignmentPattern)
 							set p.name = p.children[0].name
 							if p.children[0].children.length > 0
@@ -162,7 +172,7 @@
 								set p.children[0].children = []
 							set p.children[1].tag = '='
 						else
-                            log 112
+                            # log 112
 							if p.AST === 'AssignmentPattern'
 								# has complex default value (is AssignmentPattern)
                                 if ['@id', '@expr', 'literal'].indexOf(p.children[0].tag) > -1

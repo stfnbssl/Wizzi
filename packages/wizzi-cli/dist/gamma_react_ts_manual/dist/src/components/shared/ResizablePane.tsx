@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\ResizablePane.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -50,10 +50,10 @@ export default class ResizablePane extends React.PureComponent<Props, State> {
                 initialPosition: {
                     pageX: e.pageX, 
                     pageY: e.pageY
-                }, 
+                 }, 
                 initialWidth: parseFloat(style.width || '0'), 
                 initialHeight: parseFloat(style.height || '0')
-            })
+             })
         };
         _handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
             if (this.state.resizing) {
@@ -63,19 +63,19 @@ export default class ResizablePane extends React.PureComponent<Props, State> {
                     initialPosition: null, 
                     initialWidth: 0, 
                     initialHeight: 0
-                })
+                 })
             }
         };
         _handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
             const {
                 direction
-            } = this.props;
+             } = this.props;
             const {
                 resizing, 
                 initialPosition, 
                 initialWidth, 
                 initialHeight
-            } = this.state;
+             } = this.state;
             if (resizing && initialPosition) {
                 e.preventDefault();
                 let style;
@@ -102,23 +102,23 @@ export default class ResizablePane extends React.PureComponent<Props, State> {
 const styles = StyleSheet.create({
     container: {
         position: 'relative'
-    }, 
+     }, 
     handle: {
         position: 'absolute', 
         zIndex: 1
-    }, 
+     }, 
     horizontal: {
         right: -12, 
         top: 0, 
         bottom: 0, 
         width: 12, 
         cursor: 'col-resize'
-    }, 
+     }, 
     vertical: {
         top: -12, 
         left: 0, 
         right: 0, 
         height: 12, 
         cursor: 'row-resize'
-    }
-});
+     }
+ });

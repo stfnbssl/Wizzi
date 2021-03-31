@@ -1,0 +1,167 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import classnames from 'classnames'
+    import 
+        @ prefTypes
+        @ withThemeName
+        from '../../features/preferences'
+    import colors from '../../configs/colors'
+    :type Props
+        :{ 
+            :p value
+                :string 
+            :p onSubmitText
+                :=> 
+                    :ref Promise
+                        :param void
+                    param value
+                        :string 
+            :p className
+                :optional 
+                :string 
+            :p theme
+                :ref prefTypes.ThemeName
+    :type State
+        :{ 
+            :p value
+                :string 
+            :p focused
+                :boolean 
+    const RETURN_KEYCODE = 13
+    const ESCAPE_KEYCODE = 27
+    class EditableField
+        super React.Component
+            :param 
+                :ref Props
+            :param 
+                :ref State
+        m getDerivedStateFromProps
+            static
+            param props
+                :ref Props
+            param state
+                :ref State
+            if state.value !== props.value && !state.focused
+                return 
+                    { 
+                        @ value props.value || ''
+            return null
+        p state
+            { 
+                @ value this.props.value || ''
+                @ focused false
+        => _handleChangeText
+            param e
+                :ref React.ChangeEvent
+                    :param 
+                        :ref HTMLInputElement
+            _ this.setState
+                { 
+                    @ value e.target.value
+        => _handleFocus
+            param e
+                :ref React.FocusEvent
+                    :param 
+                        :ref HTMLInputElement
+            _ e.target.select
+            _ this.setState
+                { 
+                    @ focused true
+        p _handleBlur
+            async=> 
+                await 
+                    _ this.props.onSubmitText(this.state.value)
+                _ this.setState
+                    { 
+                        @ focused false
+        => _handleKeyDown
+            param e
+                :ref React.KeyboardEvent
+                    :param 
+                        :ref HTMLInputElement
+            if e.keyCode === RETURN_KEYCODE || e.keyCode === ESCAPE_KEYCODE
+                _ 
+                    ( 
+                        @expr e.target
+                            :as 
+                                :ref HTMLInputElement
+                    ._ blur
+        m render
+            return 
+                div 
+                    @ className {css(styles.container)}
+                    div 
+                        @ className {classnames(css(styles.field, styles.phantom), this.props.className)}
+                        + {this.state.value.replace(/\n/g, '')}
+                    input 
+                        @ onFocus {this._handleFocus}
+                        @ onBlur {this._handleBlur}
+                        @ onKeyDown {this._handleKeyDown}
+                        @ value {this.state.value}
+                        @ onChange {this._handleChangeText}
+                        @ className
+                            _ classnames
+                                _ css
+                                    @ styles.field
+                                    @ styles.editable
+                                    iif this.props.theme === 'dark'
+                                        then styles.editableDark
+                                        else styles.editableLight
+                                @ this.props.className
+    export-default withThemeName(EditableField)
+    const styles
+        _ StyleSheet.create
+            { 
+                { container
+                    @ display 'flex'
+                    @ alignItems 'center'
+                    @ maxWidth '100%'
+                    @ position 'relative'
+                { field
+                    @ display 'inline-block'
+                    @ margin 0
+                    @ padding '1px 6px'
+                { editable
+                    @ position 'absolute'
+                    @ appearance 'none'
+                    @ background 'none'
+                    @ outline 0
+                    @ border 0
+                    @ left 0
+                    @ width '100%'
+                    @ borderRadius 0
+                    { ':focus'
+                        @ boxShadow
+                            `lit 
+                                + inset 0 0 0 1px&nbsp;
+                                @ colors.primary
+                                + 
+                    { ':hover:focus'
+                        @ boxShadow
+                            `lit 
+                                + inset 0 0 0 1px&nbsp;
+                                @ colors.primary
+                                + 
+                { editableLight
+                    { ':hover'
+                        @ boxShadow
+                            `lit 
+                                + inset 0 0 0 1px rgba(0, 0, 0, .16)
+                { editableDark
+                    { ':hover'
+                        @ boxShadow
+                            `lit 
+                                + inset 0 0 0 1px rgba(255, 255, 255, .16)
+                { phantom
+                    @ display 'inline-block'
+                    @ maxWidth '100%'
+                    @ pointerEvents 'none'
+                    @ whiteSpace 'pre'
+                    @ overflow 'hidden'
+                    @ opacity 0

@@ -4,4 +4,4 @@
 	${'$'}
 		var md = {};
 	
-    v08/ts/react/tsconfig${call}    
+    v08/ts/tsconfig${call}    

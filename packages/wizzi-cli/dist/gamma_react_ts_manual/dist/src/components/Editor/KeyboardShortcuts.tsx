@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\KeyboardShortcuts.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -19,7 +19,7 @@ export const Shortcuts = {
             KeyMap.Meta, 
             KeyMap.S
         ]
-    }, 
+     }, 
     update: {
         type: 'update', 
         description: 'Update code on device', 
@@ -27,21 +27,21 @@ export const Shortcuts = {
             KeyMap.Meta, 
             KeyMap.U
         ]
-    }, 
+     }, 
     tree: {
         description: 'Toggle sidebar', 
         combo: [
             KeyMap.Meta, 
             KeyMap.Backslash
         ]
-    }, 
+     }, 
     panels: {
         description: 'Toggle error and log panels', 
         combo: [
             KeyMap.Ctrl, 
             KeyMap.Tilde
         ]
-    }, 
+     }, 
     format: {
         description: 'Format code with prettier', 
         combo: [
@@ -49,7 +49,7 @@ export const Shortcuts = {
             KeyMap.Alt, 
             KeyMap.F
         ]
-    }, 
+     }, 
     shortcuts: {
         description: 'Show keyboard shortcuts', 
         combo: [
@@ -57,8 +57,8 @@ export const Shortcuts = {
             KeyMap.Alt, 
             KeyMap.Shift
         ]
-    }
-};
+     }
+ };
 class KeyboardShortcuts extends React.PureComponent<Props> {
     render() {
         return  (
@@ -92,16 +92,16 @@ const styles = StyleSheet.create({
     shortcutList: {
         fontSize: '1.2em', 
         tableLayout: 'fixed'
-    }, 
+     }, 
     shortcutCell: {
         padding: '6px 8px'
-    }, 
+     }, 
     shortcutLabelCell: {
         textAlign: 'right'
-    }, 
+     }, 
     shortcutDescriptionCell: {
         textAlign: 'left'
-    }, 
+     }, 
     shortcutLabel: {
         color: 'inherit', 
         fontFamily: 'inherit', 
@@ -110,5 +110,5 @@ const styles = StyleSheet.create({
         boxShadow: 'none', 
         padding: 0, 
         display: 'inline-block'
-    }
-});
+     }
+ });

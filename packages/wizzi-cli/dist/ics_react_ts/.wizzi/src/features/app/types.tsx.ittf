@@ -1,0 +1,48 @@
+module
+    import 
+        @ prefTypes
+        from '../preferences'
+    export 
+        :type LoggedUser
+            :{ 
+                :p id
+                    :string 
+                :p uid
+                    :string 
+                :p username
+                    :string 
+                :p displayName
+                    :string 
+                :p picture
+                    :optional 
+                    :string 
+    export 
+        :type QueryParams_VIA
+            :{ 
+                :p session_id
+                    :optional 
+                    :string 
+                :p code
+                    :optional 
+                    :string 
+                    # TODO local packi provider ?
+                    # local_packiger?: 'true' | 'false';
+                    # preview?: 'true' | 'false';
+                :p name
+                    :optional 
+                    :string 
+                :p description
+                    :optional 
+                    :string 
+                :p dependencies
+                    :optional 
+                    :string 
+                :p waitForData
+                    :optional 
+                    :literal 'boolean'
+                    # sdkVersion?: SDKVersion;
+                    # appetizePayerCode?: string;
+                    # iframeId?: string;
+                :p theme
+                    :optional 
+                    :ref prefTypes.ThemeName

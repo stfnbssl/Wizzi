@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\EditorImportTitle.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -39,7 +39,7 @@ export class EditorImportTitle extends React.PureComponent<Props, State> {
         this.setState({
             status: 'idle', 
             description: this.props.description
-        });
+         });
     _handleReimport = // TODO: this parsing isn't necessarily sufficient, ideally someone with
     // more regex experience than me would look over this for holes. My worry
     // is that additional fields will require more complex regexes
@@ -47,14 +47,14 @@ export class EditorImportTitle extends React.PureComponent<Props, State> {
         this.setState({
             status: 'importing', 
             description: 'Importing latest commit...'
-        })
+         })
         try {
             // If the import hangs we want to make sure to throw an error
             const hangTimer = setTimeout(() => {
                 if (this.state.status === 'importing') {
                     this.setState({
                         status: 'error'
-                    })
+                     })
                 }
             }
             , TIMEOUT_MS);
@@ -80,7 +80,7 @@ export class EditorImportTitle extends React.PureComponent<Props, State> {
                 branch?: string;
             } = {
                 repo
-            };
+             };
             // Takes data of the form: [host]/[owner]/[repo]:[path]@[branch]
             // and extracts the path
             const subpath = data.match(/:([\w,\-,\_.\/]+)/);
@@ -100,7 +100,7 @@ export class EditorImportTitle extends React.PureComponent<Props, State> {
                 this.setState({
                     status: 'idle', 
                     description: this.props.description
-                })
+                 })
             }
             else {
                 throw await res.text();
@@ -110,7 +110,7 @@ export class EditorImportTitle extends React.PureComponent<Props, State> {
             this.setState({
                 status: 'error', 
                 description: 'There was an error updating your project'
-            })
+             })
         } 
     }
     ;
@@ -118,7 +118,7 @@ export class EditorImportTitle extends React.PureComponent<Props, State> {
         const {
             status, 
             description
-        } = this.state;
+         } = this.state;
         return  (
             <div className={css(styles.container)}>
                 <div className={css(styles.header)}>
@@ -129,7 +129,7 @@ export class EditorImportTitle extends React.PureComponent<Props, State> {
                     </div>
                     <p className={css(styles.description)} style={{
                         opacity: status !== 'error' ? 0.5 : 1
-                    }}>
+                     }}>
                         <svg className={status !== 'importing' ? css(styles.reimportBtn) : css(styles.spinningBtn)}
                             xmlns="http://www.w3.org/2000/svg"
                             width="18"
@@ -138,7 +138,7 @@ export class EditorImportTitle extends React.PureComponent<Props, State> {
                             onClick={this._handleClick}
                             style={{
                                 fill: status === 'error' ? 'red' : undefined
-                            }}
+                             }}
                         >
                             <path d={status !== 'error' ? // Circular Arrow
                             'M9 13.5c-2.49 0-4.5-2.01-4.5-4.5S6.51 4.5 9 4.5c1.24 0 2.36.52 3.17 1.33L10 8h5V3l-1.76 1.76C12.15 3.68 10.66 3 9 3 5.69 3 3.01 5.69 3.01 9S5.69 15 9 15c2.97 0 5.43-2.16 5.9-5h-1.52c-.46 2-2.24 3.5-4.38 3.5z' : // Cancel cross TODO make this red
@@ -158,11 +158,11 @@ export default withThemeName(EditorImportTitle);
 const rotation = {
     '0%': {
         transform: `rotate(0deg)`
-    }, 
+     }, 
     '100%': {
         transform: `rotate(360deg)`
-    }
-};
+     }
+ };
 const styles = StyleSheet.create({
     container: {
         display: 'flex', 
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         minWidth: 0, 
         margin: '0 1em', 
         padding: '.25em 0'
-    }, 
+     }, 
     header: {
         display: 'block', 
         appearance: 'none', 
@@ -185,20 +185,20 @@ const styles = StyleSheet.create({
         whiteSpace: 'nowrap', 
         '@media (max-width: 480px)': {
             whiteSpace: 'normal'
-        }
-    }, 
+         }
+     }, 
     title: {
         fontSize: '1.3em', 
         fontWeight: 500, 
         margin: 0, 
         textOverflow: 'ellipsis', 
         overflow: 'hidden'
-    }, 
+     }, 
     titleContainer: {
         display: 'flex', 
         flexDirection: 'row', 
         alignItems: 'flex-end'
-    }, 
+     }, 
     description: {
         display: 'flex', 
         alignItems: 'center', 
@@ -207,14 +207,14 @@ const styles = StyleSheet.create({
         overflow: 'hidden', 
         '@media (max-width: 480px)': {
             margin: '.5em 0 0'
-        }
-    }, 
+         }
+     }, 
     error: {
         color: 'red'
-    }, 
+     }, 
     reimportBtn: {
         cursor: 'pointer'
-    }, 
+     }, 
     spinningBtn: {
         animationDuration: '1s', 
         animationName: [
@@ -222,5 +222,5 @@ const styles = StyleSheet.create({
         ], 
         animationIterationCount: 'infinite', 
         animationTimingFunction: 'linear'
-    }
-});
+     }
+ });

@@ -23,14 +23,19 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
                 \b 'u.isArgumentOfCall(model)', u.isArgumentOfCall(model),
                 \b 'u.isGraphEnclosed(tag)', u.isGraphEnclosed(tag),
                 \b 'attrs.length', attrs.length
+
+            _ u.writeComments(model, ctx)
+            _ u.checkInlineEnter(model, ctx)
 			
 			if u.isGraphEnclosed(tag)
 				_ ctx.w(tag);
+                _ u.checkInlineExit(model, ctx)
 				r_cb()
 			
 			# @style/_style is used as an attribute in react
 			# see /statements/html for attrs extraction
 			if model.wzElement === '_style'
+                _ u.checkInlineExit(model, ctx)
 				r_cb()
 			
 			if u.parentIsHtmlElement(model) == false
@@ -49,6 +54,7 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
                 @ comments
 				f_cb(done)
                     if done
+                        _ u.checkInlineExit(model, ctx)
                         r_cb()
                     else
                         _ htmlelement_end
@@ -59,6 +65,7 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
                             @ text
                             f_cb()
                                 # log 'exit from htmlReact', tag
+                                _ u.checkInlineExit(model, ctx)
                                 r_cb()
 
 	function htmlelement_open
@@ -76,38 +83,45 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
             # _ ctx.indent() // 23/3/21
 
 		# begin open tag and write attributes
-		_ ctx.write("<" + tag + (singleline ? ' ' : ''))
-		repeater(1, attrs)
-            if singleline
-                _ ctx.indent
-			_ htmlelement_attribute
-				@ cnt
-				@ item_1
-				@ ctx
-                @ singleline
-				f_cb()
+        # log 'htmlelement_open.tag', tag
+		_ ctx.write("<" + tag)
+        _ u.genTSTypeParameterInsts
+            @ model
+            @ ctx
+            @ cnt
+            a_cb()
+                _ ctx.write(singleline ? ' ' : '')
+                repeater(1, attrs)
                     if singleline
-                        _ ctx.deindent
-					repeater_increment(1)
-			$append next
-                # log 'htmlelement_open.model.statements.length', model.statements.length
-                _ cnt.genItems
-                    @ comments
-                    @ ctx
-                    {
-                        @ indent false
-                    f_cb()
-                        if model.__hasChildElements == true
-                            _ ctx.w(">");
-                            # end of open tag
-                            r_cb(false)
-                        else
-                            _ ctx.w(" />");
-                            # end of tag
-                            _ htmlelement_tagclose
-                                @ model
-                                @ ctx
-                            r_cb(true)
+                        _ ctx.indent
+                    _ htmlelement_attribute
+                        @ cnt
+                        @ item_1
+                        @ ctx
+                        @ singleline
+                        f_cb()
+                            if singleline
+                                _ ctx.deindent
+                            repeater_increment(1)
+                    $append next
+                        # log 'htmlelement_open.model.statements.length', model.statements.length
+                        _ cnt.genItems
+                            @ comments
+                            @ ctx
+                            {
+                                @ indent false
+                            f_cb()
+                                if model.__hasChildElements == true
+                                    _ ctx.w(">");
+                                    # end of open tag
+                                    r_cb(false)
+                                else
+                                    _ ctx.w(" />");
+                                    # end of tag
+                                    _ htmlelement_tagclose
+                                        @ model
+                                        @ ctx
+                                    r_cb(true)
 	
 	function htmlelement_attribute
 		param cnt
@@ -120,6 +134,8 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
         const aindent = singleline ? '' : ' '
 
         # log 'htmlelement_attribute', a
+		if a.statements && a.statements.length > 0
+            _ u.writeComments(a, ctx, true)
 
 		if a.statements && a.statements.length > 0
 			_ ctx.write(aindent + a.name + '={')
@@ -127,7 +143,7 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
 				@ a.statements
 				@ ctx
 				{
-					@ indent false
+					@ indent true
 				f_cb()
 					_ ctx[writer]('}')
 					r_cb()
@@ -188,4 +204,4 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
                 _ ctx.w(')')
                 if ind
                     _ ctx.indent() $$ 23/3/21 waiting for damage
-
+        _ u.checkInlineExit(model, ctx)

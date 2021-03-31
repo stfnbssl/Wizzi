@@ -29,6 +29,7 @@ wfjob ${cliCtx.name}/job
         wfjobs${mix}any_tsx, &jobCtx)
         wfjobs${mix}any_json, &jobCtx)
         wfjobs${mix}any_md, &jobCtx)
+        wfjobs${mix}.babelrc, &jobCtx)
         wfjobs${mix}.gitignore, &jobCtx)
 	---
     line ittf-src

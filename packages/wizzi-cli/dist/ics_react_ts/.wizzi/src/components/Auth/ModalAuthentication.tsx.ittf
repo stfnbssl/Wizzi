@@ -1,0 +1,53 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ authTypes
+        from '../../features/auth'
+    import 
+        @ appTypes
+        from '../../features/app'
+    import ModalDialog from '../shared/MuiModalDialog'
+    import SocialLogin from './SocialLogin'
+    :type Props
+        :intersect 
+            :ref authTypes.AuthProps
+            :{ 
+                :p visible
+                    :boolean 
+                :p onDismiss
+                    :=> 
+                        :void 
+                :p onComplete
+                    :=> 
+                        :void 
+    :type State
+        :{ 
+            :p error
+                :boolean 
+    class ModalAuthentication
+        super React.Component
+            :param 
+                :ref Props
+            :param 
+                :ref State
+        m componentDidUpdate
+            param prevProps
+                :ref Props
+            if this.props.visible && this.props.loggedUser !== prevProps.loggedUser
+                _ this.props.onComplete()
+        m render
+            return 
+                < ModalDialog 
+                    @ visible {this.props.visible}
+                    @ onDismiss {this.props.onDismiss}
+                    @ title
+                        iif this.props.loggedUser
+                            then 'Your profile'
+                            else "Log in to Packi"
+                    < SocialLogin 
+                        @ loggedUser {this.props.loggedUser}
+                        @ onLoggedOn {this.props.onLoggedOn}
+                        @ onLoggedOff {this.props.onLoggedOff}
+    export-default ModalAuthentication

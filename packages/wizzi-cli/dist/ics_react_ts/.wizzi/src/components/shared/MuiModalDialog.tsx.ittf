@@ -1,0 +1,85 @@
+module
+    import React from 'react'
+    import 
+        @ withStyles
+        @ createStyles
+        @ Theme
+        from '@material-ui/core/styles'
+    import Button from '@material-ui/core/Button'
+    import Dialog from '@material-ui/core/Dialog'
+    import DialogContent from '@material-ui/core/DialogContent'
+        # import DialogActions from '@material-ui/core/DialogActions';
+    import DialogTitle from '@material-ui/core/DialogTitle'
+        # import DialogContentText from '@material-ui/core/DialogContentText';
+    :type Props
+        :{ 
+            :p visible
+                :boolean 
+            :p className
+                :optional 
+                :string 
+            :p classes
+                :any 
+            :p title
+                :optional 
+                :string 
+            :p children
+                :ref React.ReactNode
+            :p autoSize
+                :optional 
+                :boolean 
+            :p onDismiss
+                :=> 
+                    :void 
+    function MuiModalDialog
+        param props
+            :ref Props
+        return 
+            < Dialog 
+                @ open {props.visible}
+                @ className {props.className}
+                @ onClose {props.onDismiss}
+                @ aria-labelledby "alert-dialog-title"
+                @ aria-describedby "alert-dialog-description"
+                { 
+                    iif props.onDismiss
+                        then
+                            button 
+                                @ className {props.classes.close}
+                                @ onClick {props.onDismiss}
+                                @ data-test-id "modal-close"
+                                + ✕
+                        else null
+                < DialogTitle 
+                    @ id "alert-dialog-title"
+                    + {props.title}
+                < DialogContent 
+                    + {props.children}
+    const muiStyles
+        => 
+            param theme
+                :ref Theme
+            _ createStyles
+                { 
+                    { close
+                        @ appearance 'none'
+                        @ borderRadius '1em'
+                        @ outline 0
+                        @ padding 0
+                        @ position 'absolute'
+                        @ right '.5em'
+                        @ top '.5em'
+                        @ width '2em'
+                        @ height '2em'
+                        @ background theme.palette.primary.dark
+                        @ border
+                            `lit 
+                                + 2px solid&nbsp;
+                                @ theme.palette.primary.light
+                                + 
+                        @ boxShadow '0 1.5px 3px rgba(0, 0, 0, .16)'
+                        @ color 'white'
+                        @ fontSize '1em'
+                        @ fontWeight 'bold'
+                        @ textAlign 'center'
+    export-default withStyles(muiStyles)(MuiModalDialog)

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\PreviousSaves.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import format from 'date-fns/format';
@@ -18,7 +18,7 @@ class PreviousSaves extends React.Component<Props> {
         const {
             saveHistory, 
             theme
-        } = this.props;
+         } = this.props;
         const previousSaves = saveHistory.filter(data => 
             !data.isDraft
         );
@@ -73,10 +73,10 @@ const styles = StyleSheet.create({
         margin: -12, 
         paddingTop: 8, 
         textAlign: 'left'
-    }, 
+     }, 
     hint: {
         margin: 12
-    }, 
+     }, 
     item: {
         display: 'flex', 
         alignItems: 'center', 
@@ -89,36 +89,36 @@ const styles = StyleSheet.create({
         '--icon-opacity': '0', 
         ':hover': {
             '--icon-opacity': '1'
-        }
-    }, 
+         }
+     }, 
     light: {
         ':hover': {
             backgroundColor: 'rgba(0, 0, 0, .08)'
-        }
-    }, 
+         }
+     }, 
     dark: {
         ':hover': {
             backgroundColor: 'rgba(255, 255, 255, .08)'
-        }
-    }, 
+         }
+     }, 
     title: {
         fontSize: 16, 
         fontWeight: 'bold', 
         marginTop: 0, 
         marginBottom: 4
-    }, 
+     }, 
     description: {
         fontSize: 14, 
         margin: 0, 
         whiteSpace: 'nowrap', 
         textOverflow: 'ellipsis'
-    }, 
+     }, 
     icon: {
             margin: 8, 
             height: 16, 
             width: 16, 
             opacity: 'var(--icon-opacity)'
-        } as any, 
+         } as any, 
     placeholder: {
         display: 'flex', 
         alignItems: 'center', 
@@ -127,5 +127,5 @@ const styles = StyleSheet.create({
         margin: 24, 
         fontSize: 16, 
         opacity: 0.5
-    }
-});
+     }
+ });

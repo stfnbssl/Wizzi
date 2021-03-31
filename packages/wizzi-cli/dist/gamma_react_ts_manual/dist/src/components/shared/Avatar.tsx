@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Avatar.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -21,17 +21,17 @@ export default class Avatar extends React.Component<Props, State> {
         _handleLoad = () => 
             this.setState({
                 loaded: true
-            });
+             });
         render() {
             return  (
                 <div className={css(styles.container)} style={{
                     width: this.props.size, 
                     height: this.props.size, 
                     borderRadius: this.props.size / 2
-                }}>
+                 }}>
                     <div className={css(styles.background)} style={{
                         opacity: this.state.loaded ? 1 : 0
-                    }} />
+                     }} />
                     {
                         this.props.source ?  (
                             <img className={css(styles.avatar)} src={this.props.source} onLoad={this._handleLoad} />
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         position: 'relative', 
         overflow: 'hidden', 
         margin: 'auto'
-    }, 
+     }, 
     avatar: {
         position: 'relative', 
         height: '100%', 
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         display: 'block', 
         transition: '100ms linear opacity', 
         zIndex: 1
-    }, 
+     }, 
     background: {
         position: 'absolute', 
         top: 0, 
@@ -66,5 +66,5 @@ const styles = StyleSheet.create({
         width: '100%', 
         opacity: 0.2, 
         backgroundColor: 'currentColor'
-    }
-});
+     }
+ });

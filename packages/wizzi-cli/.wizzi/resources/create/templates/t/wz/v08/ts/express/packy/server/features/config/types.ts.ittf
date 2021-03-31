@@ -1,0 +1,46 @@
+module
+    export 
+        :type ConfigType
+            :{ 
+                :p port
+                    :number 
+                :p sessionSecret
+                    :string 
+                :p packiTemplatesFolder
+                    :string 
+                :p mongoPath
+                    :string 
+                :p mongoUser
+                    :string 
+                :p mongoPassword
+                    :string 
+                :p Auth0Domain
+                    :string 
+                :p Auth0PackiClientId
+                    :string 
+                :p Auth0PackiClientSecret
+                    :string 
+                :p Auth0PackiCallbackUrl
+                    :string 
+                :p Auth0PackiBackendAppId
+                    :string 
+                :p Auth0PackiBackendAppSecret
+                    :string 
+                :p Auth0PackiApiId
+                    :string 
+                :p GithubClientID
+                    :string 
+                :p GithubClientSecret
+                    :string 
+                :p GithubCallbackURL
+                    :string 
+                :p IsWizziDev
+                    :boolean 
+                :p MetaHtmlIttfPath
+                    :string 
+                :p MetaFolderIttfPath
+                    :string 
+                :p MetaHtmlTextPath
+                    :string 
+                :p PackiApiEndpoint
+                    :string 

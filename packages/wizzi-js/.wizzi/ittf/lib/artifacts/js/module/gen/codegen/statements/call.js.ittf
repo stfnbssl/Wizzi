@@ -4,6 +4,8 @@
         var xmodel = writeComments(model, ctx)
 		if xmodel.__templateChild
 			_ ctx.write('${')
+        if model.wzParent.wzElement == 'htmlelement'
+            _ ctx.w('{')
         var name = (xmodel.wzName || '').trim()
         var hasParens = u.hasArguments(name)
         $$ 24/3/21 var hasParens = xmodel.statements.length == 0 && u.hasArguments(name) $$ waiting for big damage
@@ -15,20 +17,24 @@
             _ doCallChildStatements_one
 				@ xmodel
 				@ name
-				$$ 22/3/21, try forcing hasParens = false when has typeParameterInsts; not sure this is the solution
+				$$ 22/3/21, try forcing hasParens = false when has typeParameterInsts; 
+                $$ not sure this is the solution
                 @ (xmodel.typeParameterInsts && xmodel.typeParameterInsts.length > 0) ? false : hasParens
 				@ ctx
 				f_cb()
-					if xmodel.__templateChild
+					if xmodel.__templateChild ||
+                        \b model.wzParent.wzElement == 'htmlelement'
 						_ ctx.write('}')
 					r_cb()
         else 
             set name = hasParens ? name : (name + '()')
             _ ctx.write(name)
-            if u.isTopStatement(xmodel, ctx) && u.isDescendentOf(xmodel, 'iif') == false
+            # log 'call', 'u.isTopStatement(xmodel, ctx)', u.isTopStatement(xmodel, ctx), "u.isDescendentOf(xmodel, 'iif')", u.isDescendentOf(xmodel, 'iif')
+            if u.isTopStatement(xmodel, ctx) && u.isChildOf(xmodel, 'iif') == false
                 _ ctx.w
                     _ u.semicolon(name)
-			if xmodel.__templateChild
+			if xmodel.__templateChild ||
+                \b model.wzParent.wzElement == 'htmlelement'
 				_ ctx.write('}')
 			r_cb()
     

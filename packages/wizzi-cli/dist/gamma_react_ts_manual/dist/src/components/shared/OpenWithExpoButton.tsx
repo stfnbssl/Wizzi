@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\OpenWithExpoButton.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -18,12 +18,12 @@ const OpenWithExpoButton = ({
     sdkVersion, 
     channel, 
     snackId
-}: Props) => {
+ }: Props) => {
     const experienceURL = constructExperienceURL({
         sdkVersion, 
         channel, 
         snackId
-    });
+     });
     return  (
         <ButtonLink variant="primary"
             target="_blank"
@@ -40,5 +40,5 @@ export default OpenWithExpoButton;
 const styles = StyleSheet.create({
     button: {
         display: 'block'
-    }
-});
+     }
+ });

@@ -71,6 +71,12 @@ var parents_of_top_statements = [
 var __tags = "a abbr address area article aside audio b base bdi bdo big blockquote body br" + " button canvas caption cite code col colgroup data datalist dd del details dfn" + " dialog div dl dt em embed fieldset figcaption figure footer form h1 h2 h3 h4 h5" + " h6 head header hr html i iframe img input ins kbd keygen label legend li link" + " main map mark menu menuitem meta meter nav noscript object ol optgroup option" + " output p param picture pre progress q rp rt ruby s samp script section select" + " small source span strong _style sub summary sup svg table tbody td textarea tfoot th" + " thead time title tr track u ul var video wbr" + " altGlyph altGlyphDef altGlyphItem animate animateColor animateMotion animateTransform" + " circle clipPath color-profile cursor defs desc discard ellipse" + " @filter font font-face font-face-format font-face-name font-face-src font-face-uri" + " foreignObject g glyph glyphRef hatch hatchpath hkern image line linearGradient" + " marker mask metadata missing-glyph mpath @param path pattern polygon polyline radialGradient" + " rect solidcolor stop style svg switch symbol text textPath tref tspan" + " unknown use video view vkern";
 
 var fb_html_supported_tags = __tags.split(' ');
+md.isChildOf = function(model, parent) {
+    if (!model.wzParent) {
+        return false;
+    }
+    return model.wzParent.wzElement == parent;
+};
 md.isDescendentOf = function(model, ancestor) {
     if (!model.wzParent) {
         return false;
@@ -111,6 +117,76 @@ md.isEnumValue = function(model) {
     }
     return ['typeEnum'].indexOf(model.wzParent.wzElement) > -1;
 };
+md.writeComments = function(model, ctx, newline) {
+    var temp = [];
+    var written = false;
+    var indented = false;
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            if (newline && !written) {
+                ctx.w();
+            }
+            ctx.w('// ' + item.wzName);
+            written = true;
+            if (item.wzName.indexOf('@ts-ignore') > -1) {
+                console.log('§§§ stm.writeComments', model.wzName);
+                ctx.__inlineNext = true;
+            }
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return model;
+};
+md.writeComments_2 = function(model, ctx, newline, newlineindent) {
+    var temp = [];
+    var written = false;
+    var indented = false;
+    var i, i_items=model.statements, i_len=model.statements.length, item;
+    for (i=0; i<i_len; i++) {
+        item = model.statements[i];
+        if (item.wzElement == 'comment') {
+            if (newline && !written) {
+                if (newlineindent) {
+                    ctx.indent();
+                    indented = true;
+                }
+                ctx.w();
+            }
+            ctx.w('// ' + item.wzName);
+            written = true;
+            if (item.wzName.indexOf('@ts-ignore') > -1) {
+                console.log('§§§ stm.writeComments', model.wzName);
+                ctx.__inlineNext = true;
+            }
+        }
+        else {
+            temp.push(item);
+        }
+    }
+    model.statements = temp;
+    return indented;
+};
+md.isComment = function(model) {
+    return ['comment', 'commentmultiline'].indexOf(model.wzElement) > -1;
+};
+md.nonCommentStatements = function(model) {
+    var ret = [];
+    if (model.statements) {
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            if (md.isComment(item) == false) {
+                ret.push(item);
+            }
+        }
+    }
+    return ret;
+};
 md.isBlockStatement = function(model) {
     return ['xif','xfor','foreach','xwhile','backeach','xtry','xthrow','xswitch', 'xyield','xawait','xdo','xlabel','xfunction','xdelete', 'xvar','xconst','xlet','decl'].indexOf(model.wzElement) > -1;
 };
@@ -138,32 +214,32 @@ md.isArgumentOfCall = function(model) {
     return model.wzParent && ['call', 'memberCall', 'decoratorCall', 'callOnValue'].indexOf(model.wzParent.wzElement) > -1;
 };
 md.onlyChildIs = function(model, element) {
-    return model.statements && model.statements.length == 1 && model.statements[0].wzElement === element;
+    var ss = md.nonCommentStatements(model);
+    return ss.length == 1 && ss[0].wzElement === element;
 };
 md.onlyChildIsNot = function(model, element) {
-    return model.statements && model.statements.length == 1 && model.statements[0].wzElement !== element;
+    var ss = md.nonCommentStatements(model);
+    return ss.length == 1 && ss[0].wzElement !== element;
 };
 md.isImplicitReturn = function(model) {
-    return md.onlyChildIsNot(model, 'xreturn') && !md.isBlockStatement(model.statements[0]);
+    var ss = md.nonCommentStatements(model);
+    return md.onlyChildIsNot(model, 'xreturn') && !md.isBlockStatement(ss[0]);
 };
 md.onlyChildIsHtmlElement = function(model) {
-    return model.statements && model.statements.length == 1 && ( fb_html_supported_tags.indexOf(model.statements[0].wzElement) > -1 || model.statements[0].wzElement === 'htmlelement' );
+    var ss = md.nonCommentStatements(model);
+    return ss.length == 1 && ( fb_html_supported_tags.indexOf(ss[0].wzElement) > -1 || ss[0].wzElement === 'htmlelement' );
 };
 md.isSingleParamForArrowFunction = function(model) {
     if (model.params.length != 1) {
         return false;
     }
-    return model.params[0].statements.length == 0;
+    var ss = md.nonCommentStatements(model.params[0]);
+    return ss.length == 0;
 };
 md.hasStatementChildren = function(model) {
-    if (model.statements && model.statements.length > 0) {
-        var i, i_items=model.statements, i_len=model.statements.length, stm;
-        for (i=0; i<i_len; i++) {
-            stm = model.statements[i];
-            if (stm.wzElement != 'comment') {
-                return true;
-            }
-        }
+    var ss = md.nonCommentStatements(model);
+    if (ss.length > 0) {
+        return true;
     }
     return false;
 };
@@ -294,6 +370,19 @@ md.unquote = function(text) {
     }
     else {
         return text;
+    }
+};
+md.checkInlineEnter = function(model, ctx) {
+    if (ctx.__inlineNext) {
+        ctx.inlineOn();
+        model.__inlineNext = true;
+        ctx.__inlineNext = false;
+    }
+};
+md.checkInlineExit = function(model, ctx) {
+    if (model.__inlineNext) {
+        delete model.__inlineNext
+        ctx.inlineOff();
     }
 };
 var op1 = [
@@ -689,6 +778,7 @@ md.genAccessorsAndExtra = function(model, ctx) {
     }
 };
 md.genTSTypeParameters = function(model, ctx, cnt, callback) {
+    // log 'model.statements.length', model.statements.length, 'Object.keys(model)', Object.keys(model)
     genTSTypeParameters_partial(model, ctx, cnt, (err, notUsed) => {
         if (err) {
             return callback(err);
@@ -736,6 +826,38 @@ function genTSTypeParameters_partial(model, ctx, cnt, callback) {
         return callback(null, null);
     }
 }
+md.genTSTypeParameterInsts = function(model, ctx, cnt, callback) {
+    // log 'genTSTypeParameterInsts', Object.keys(model), model.typeParameterInsts
+    if (model.typeParameterInsts && model.typeParameterInsts.length > 0) {
+        ctx.write('<');
+        var len_1 = model.typeParameterInsts.length;
+        function repeater_1(index_1) {
+            if (index_1 === len_1) {
+                return next_1();
+            }
+            var item_1 = model.typeParameterInsts[index_1];
+            if (index_1 > 0) {
+                ctx.write(', ');
+            }
+            cnt.stm[item_1.wzElement](item_1, ctx, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                process.nextTick(function() {
+                    repeater_1(index_1 + 1);
+                })
+            })
+        }
+        repeater_1(0);
+        function next_1() {
+            ctx.write('>');
+            return callback(null, null);
+        }
+    }
+    else {
+        return callback(null, null);
+    }
+};
 md.indexedTSNeedsGraphs = function(model) {
     return [
             'typeMapped', 

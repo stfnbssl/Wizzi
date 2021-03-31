@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\TestEditorForm.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -40,7 +40,7 @@ function TestEditorForm(props: Props) {
                         type: 'text', 
                         label: 'Name', 
                         onValidate: validateName
-                    }, 
+                     }, 
                     kind: {
                         type: 'select', 
                         label: 'Kind', 
@@ -49,11 +49,11 @@ function TestEditorForm(props: Props) {
                             return {
                                     label: name, 
                                     value: name
-                                };
+                                 };
                         }
                         )
-                    }
-                }}
+                     }
+                 }}
              />
         </div>
         )
@@ -72,7 +72,7 @@ const muiStyles = (theme: Theme) =>
             height: '500px', 
             backgroundColor: '#ccc', 
             borderRadius: '3px'
-        }
-    })
+         }
+     })
 ;
 export default withStyles(muiStyles)(TestEditorForm);

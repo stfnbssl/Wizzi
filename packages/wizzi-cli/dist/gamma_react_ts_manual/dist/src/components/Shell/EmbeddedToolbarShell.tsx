@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Shell\EmbeddedToolbarShell.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -15,7 +15,7 @@ type Props = {
 function EmbeddedToolbarShell({
     children, 
     theme
-}: Props) {
+ }: Props) {
     return  (
         <div className={css(styles.toolbar, theme === 'dark' ? styles.toolbarDark : styles.toolbarLight)}>
             {children}
@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
         borderBottom: `1px solid ${colors.border}`, 
         padding: 4, 
         height: 48
-    }, 
+     }, 
     toolbarLight: {
         backgroundColor: colors.content.light, 
         color: colors.text.light
-    }, 
+     }, 
     toolbarDark: {
         backgroundColor: colors.content.dark, 
         color: colors.text.dark
-    }
-});
+     }
+ });

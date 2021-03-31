@@ -18,7 +18,9 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 			decl zsuper = model.super
 
 		# log 'ts.es6.class', model
-		
+        
+        _ u.writeComments(model, ctx)
+
         _ classDecorators
             @ model
             @ ctx

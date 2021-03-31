@@ -16,13 +16,14 @@ md.gen = function(model, ctx, callback) {
         throw new Error('The callback parameter must be a function. In ' + myname + '.gen. Got: ' + callback);
     }
     var method = model.wzName;
+    u.writeComments(model, ctx);
+    u.genAccessorsAndExtra(model, ctx)
     if (model.static) {
         ctx.write('static ');
     }
     if (model.async) {
         ctx.write('async ');
     }
-    u.genAccessorsAndExtra(model, ctx)
     ctx.write(method);
     u.genTSTypeParameters(model, ctx, statement, (err, notUsed) => {
         if (err) {

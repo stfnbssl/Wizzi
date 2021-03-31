@@ -58,6 +58,9 @@
 
 	f( TSPropertySignature, :p
 		f_p_name( key, Node, # Literal | Identifier
+        if node.computed
+			set ret.name = '[' + ret.name + ']'
+
 		if node.optional
 			_ ret.children.push
 				{
@@ -124,6 +127,8 @@
 		f_p_name(key, Identifier | null
 		f_p(typeParameters, false)
 		f_p(typeAnnotation, false)
+        if node.computed
+			set ret.name = '[' + ret.name + ']'
 		f_a_in_tag( parameters, params
 		_ processParams(ret)
 
@@ -200,7 +205,7 @@
 		f_p_temp(expression, false
 		if p_expression
             if isTextualNode(p_expression)
-			$$ 20/3/21 if ['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1
+			$$ 20/3/21 if [$*'@expr', 27/3/21*$'@id', 'literal'].indexOf(p_expression.tag) > -1
 				set ret.name = getNodeText(p_expression)
 			else
 				_ ret.children.push
@@ -213,7 +218,6 @@
 		
 		# log 'p_expression', p_expression
         # log 'p_typeAnnotation', p_typeAnnotation
-		
 
 		if p_expression.isText || p_expression.textified
             set p_expression.name = p_expression.textified
@@ -262,7 +266,7 @@
 		f_p_name( id
 		f_p_temp(initializer, false
 		if p_initializer
-			if ['@expr', '@id', 'literal'].indexOf(p_initializer.tag) > -1
+			if [$*'@expr', 27/3/21*$'@id', 'literal'].indexOf(p_initializer.tag) > -1
 				set ret.name += ' ' + getNodeText(p_initializer)
 
 	f( TSNeverKeyword, :never
@@ -281,7 +285,7 @@
 
 	f( TSNonNullExpression, :!
 		f_p_temp( expression, false )
-		if ['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1
+		if [$*'@expr', 27/3/21*$'@id', 'literal'].indexOf(p_expression.tag) > -1
 			set ret.name = getNodeText(p_expression)
 		else
 			_ ret.children.push
@@ -405,7 +409,7 @@
 
 	f( TSExportAssignment, :export
 		f_p_temp( expression, false )
-		if ['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1
+		if [$*'@expr', 27/3/21*$'@id', 'literal'].indexOf(p_expression.tag) > -1
 			set ret.name = getNodeText(p_expression)
 		else
 			_ ret.children.push
@@ -430,7 +434,7 @@
 
 	f( TSExternalModuleReference, :require
 		f_p_temp( expression, false )
-		if ['@expr', '@id', 'literal'].indexOf(p_expression.tag) > -1
+		if [$*'@expr', 27/3/21*$'@id', 'literal'].indexOf(p_expression.tag) > -1
 			set ret.name = getNodeText(p_expression)
 		else
 			_ ret.children.push

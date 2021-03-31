@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\SegmentedButton.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -25,14 +25,14 @@ function SegmentedButton<T extends string>({
     onSelect, 
     segments, 
     theme
-}: Props<T>) {
+ }: Props<T>) {
     return  (
         <div className={css(styles.container)}>
             {
                 segments.map(({
                     id, 
                     text
-                }) => 
+                 }) => 
                      (
                     <button onClick={(e) => {
                         e.preventDefault();
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         boxShadow: `inset 0 0 0 1px ${colors.border}`, 
         borderRadius: 3, 
         overflow: 'hidden'
-    }, 
+     }, 
     button: {
         flex: 1, 
         cursor: 'pointer', 
@@ -76,20 +76,20 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent', 
         ':hover': {
             backgroundColor: 'rgba(0, 0, 0, .08)'
-        }
-    }, 
+         }
+     }, 
     accentLight: {
         color: '#fff', 
         backgroundColor: colors.accent.light, 
         ':hover': {
             backgroundColor: colors.accent.light
-        }
-    }, 
+         }
+     }, 
     accentDark: {
         color: '#000', 
         backgroundColor: colors.accent.dark, 
         ':hover': {
             backgroundColor: colors.accent.dark
-        }
-    }
-});
+         }
+     }
+ });

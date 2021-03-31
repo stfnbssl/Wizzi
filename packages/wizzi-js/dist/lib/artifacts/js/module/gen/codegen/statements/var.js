@@ -77,9 +77,13 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '._letvarconst. Got: ' + callback);
         }
         var xmodel = writeComments(model, ctx);
-        // set ctx.__needs_crlf = ctx.__needs_comma = ctx.__inside_expr = false
         if (hasStatements(xmodel) == false) {
-            ctx.w(symbol + ' ' + xmodel.wzName + u.semicolon(xmodel.wzName));
+            if (ctx.__inline) {
+                ctx.write(symbol + ' ' + xmodel.wzName + u.semicolon(xmodel.wzName));
+            }
+            else {
+                ctx.w(symbol + ' ' + xmodel.wzName + u.semicolon(xmodel.wzName));
+            }
             return callback(null, null);
         }
         ctx.__inside_expr = true;
@@ -123,7 +127,12 @@ md.load = function(cnt) {
             }
             repeater_1(1);
             function next_1() {
-                ctx.w(';');
+                if (ctx.__inline) {
+                    ctx.write(';');
+                }
+                else {
+                    ctx.w(';');
+                }
                 if (indented) {
                     ctx.deindent();
                 }

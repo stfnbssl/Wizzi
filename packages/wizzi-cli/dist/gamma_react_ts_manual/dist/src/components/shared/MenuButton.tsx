@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\MenuButton.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -17,7 +17,7 @@ export default function MenuButton({
         icon, 
         label, 
         content
-    }: Props) {
+     }: Props) {
         const [active, setActive] = React.useState<boolean>(false);
         const root = React.useRef<HTMLDivElement>(null);
         React.useEffect(() => {
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         position: 'relative', 
         display: 'flex', 
         alignItems: 'center'
-    }, 
+     }, 
     pane: {
         display: 'flex', 
         alignItems: 'stretch', 
@@ -81,5 +81,5 @@ const styles = StyleSheet.create({
         boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.16)', 
         color: c('text'), 
         zIndex: -1
-    }
-});
+     }
+ });

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\CollapsibleObject.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -22,7 +22,7 @@ export default class CollapsibleObject extends React.Component<Props, State> {
             this.setState((state) => 
                 ({
                     isExpanded: !state.isExpanded
-                })
+                 })
             );
         _renderValue = (value: any) => 
              (
@@ -133,40 +133,40 @@ export default class CollapsibleObject extends React.Component<Props, State> {
 const styles = StyleSheet.create({
     container: {
         cursor: 'default'
-    }, 
+     }, 
     pair: {
         margin: '0 4px', 
         verticalAlign: 'middle'
-    }, 
+     }, 
     preview: {
         margin: '0 4px', 
         verticalAlign: 1
-    }, 
+     }, 
     triangle: {
         display: 'inline-block', 
         verticalAlign: 'middle', 
         width: 8, 
         fontSize: 9, 
         opacity: 0.7
-    }, 
+     }, 
     label: {
         marginLeft: 6, 
         opacity: 0.7
-    }, 
+     }, 
     key: {
         marginRight: 4, 
         opacity: 0.7
-    }, 
+     }, 
     value: {
         color: '#a27cca'
-    }, 
+     }, 
     string: {
         color: '#87b121'
-    }, 
+     }, 
     expanded: {
         marginLeft: 14
-    }, 
+     }, 
     item: {
         marginLeft: 8
-    }
-});
+     }
+ });

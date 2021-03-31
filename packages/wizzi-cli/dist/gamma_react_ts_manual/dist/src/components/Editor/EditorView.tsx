@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\EditorView.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -85,10 +85,10 @@ class EditorView extends React.Component<Props, State> {
         if (props.entry !== state.previousEntry) {
             const {
                 entry
-            } = props;
+             } = props;
             const {
                 previousEntry
-            } = state;
+             } = state;
             if (entry) {
                 props.onEntrySelected(entry);
             }
@@ -100,7 +100,7 @@ class EditorView extends React.Component<Props, State> {
             return {
                     isMarkdownPreview, 
                     previousEntry: entry
-                };
+                 };
         }
         return null;
     }
@@ -119,53 +119,53 @@ class EditorView extends React.Component<Props, State> {
     _handleChangeSplitViewKind = (e: React.ChangeEvent<HTMLSelectElement>) => 
         this.setState({
             splitViewKind: e.target.value as SplitViewKind
-        });
+         });
     _handleDismissEditModal = () => {
         Segment.getInstance().logEvent('DISMISSED_AUTH_MODAL', {
             currentModal: this.state.currentModal
-        })
+         })
         this.setState({
             currentModal: null
-        })
+         })
     };
     _handleShowTitleDescriptionModal = () => 
         this.setState({
             currentModal: 'edit-info'
-        });
+         });
     _handleShowPackiManager = () => 
         this.setState({
             currentModal: 'packi-manager'
-        });
+         });
     _handleShowGithubCommit = () => 
         this.setState({
             currentModal: 'github-commit'
-        });
+         });
     _handleShowGithubCreate = () => 
         this.setState({
             currentModal: 'github-create'
-        });
+         });
     _handleShowAuthModal = () => 
         this.setState({
             currentModal: 'auth'
-        });
+         });
     _handleShowShortcuts = () => {
         console.log("_handleShowShortcuts");
         this.setState({
             currentModal: 'shortcuts'
-        })
+         })
     };
     _handleShowPreviousSaves = () => 
         this.setState({
             currentModal: 'previous-saves'
-        });
+         });
     _handleHideModal = () => 
         this.setState({
             currentModal: null
-        });
+         });
     _handleShowModal = (name: any) => 
         this.setState({
             currentModal: name
-        });
+         });
     _handleSelectPacki = (id: string) => {
         this._handleDismissEditModal();
         this.props.onSelectPacki && this.props.onSelectPacki(id);
@@ -185,13 +185,13 @@ class EditorView extends React.Component<Props, State> {
     _handleRemoveFile = (path: string) => {
         const entry = this.props.fileEntries.find(({
             item
-        }) => 
+         }) => 
             item.path === path
         );
         if (entry && entry.item.type === 'folder') {
             this.props.fileEntries.forEach(({
                 item
-            }) => {
+             }) => {
                 if (fileUtils.isInsideFolder(item.path, path)) {
                     this._EditorComponent && this._EditorComponent.removePath(item.path);
                 }
@@ -205,13 +205,13 @@ class EditorView extends React.Component<Props, State> {
     _handleRenameFile = (oldPath: string, newPath: string) => {
         const entry = this.props.fileEntries.find(({
             item
-        }) => 
+         }) => 
             item.path === oldPath
         );
         if (entry && entry.item.type === 'folder') {
             this.props.fileEntries.forEach(({
                 item
-            }) => {
+             }) => {
                 if (fileUtils.isInsideFolder(item.path, oldPath)) {
                     const renamedPath = fileUtils.changeParentPath(item.path, oldPath, newPath);
                     this._EditorComponent && this._EditorComponent.renamePath(item.path, renamedPath);
@@ -227,31 +227,31 @@ class EditorView extends React.Component<Props, State> {
     _showErrorPanel = () => 
         this.props.setPreferences({
             panelType: 'errors'
-        });
+         });
     _togglePanels = () => 
         this.props.setPreferences({
             panelsShown: !this.props.preferences.panelsShown
-        });
+         });
     _toggleFileTree = () => 
         this.props.setPreferences({
             fileTreeShown: !this.props.preferences.fileTreeShown
-        });
+         });
     _toggleTheme = () => 
         this.props.setPreferences({
             theme: this.props.preferences.theme === 'light' ? 'dark' : 'light'
-        });
+         });
     _toggleMarkdownPreview = () => 
         this.setState((state) => 
             ({
                 isMarkdownPreview: !state.isMarkdownPreview
-            })
+             })
         );
     render() {
         const {
             currentModal, 
             //
             isDownloading
-        } = this.state;
+         } = this.state;
         const {
             classes, 
             currentPacki, 
@@ -270,7 +270,7 @@ class EditorView extends React.Component<Props, State> {
             onSaveCode, 
             // uploadFileAsync,
             preferences
-        } = this.props;
+         } = this.props;
         // console.log('EditorView', generatedArtifact);
         // console.log('EditorView.currentPacki', currentPacki);
         // const annotations: Annotation[] = [];
@@ -280,7 +280,7 @@ class EditorView extends React.Component<Props, State> {
         //
         const {
             fileEntries
-        } = this.props;
+         } = this.props;
         if (fileEntries.length == 0) {
             return  (
                 <h1>
@@ -311,7 +311,7 @@ class EditorView extends React.Component<Props, State> {
                             panels: this._togglePanels, 
                             // format: this._prettier,
                             shortcuts: this._handleShowShortcuts
-                        };
+                         };
                         const fn = commands[type];
                         if (fn) {
                             fn();
@@ -386,22 +386,22 @@ class EditorView extends React.Component<Props, State> {
                                     (this.state.splitViewKind == 'both' || this.state.splitViewKind == 'left')
                                      &&  (
                                         <LazyLoad load={():  Promise<typeof import('./MonacoEditor')> => {
-                                            let timeout;
+                                            let timeout: any;
                                             const MonacoEditorPromise = // 
                                             import('./MonacoEditor').then((editor) => 
                                                 ({
                                                     editor, 
                                                     type: 'monaco'
-                                                })
+                                                 })
                                             )
                                             ;
                                             return MonacoEditorPromise.then(({
                                                     editor, 
                                                     type
-                                                }: any) => {
+                                                 }: any) => {
                                                     this.setState({
                                                         loadedEditor: type
-                                                    })
+                                                     })
                                                     clearTimeout(timeout);
                                                     return editor;
                                                 }
@@ -417,7 +417,7 @@ class EditorView extends React.Component<Props, State> {
                                                 ({
                                                     loaded, 
                                                     data: Comp
-                                                }) => {
+                                                 }) => {
                                                     this._EditorComponent = Comp;
                                                     if (entry && entry.item.type === 'file') {
                                                         if (entry.item.asset) {
@@ -428,7 +428,7 @@ class EditorView extends React.Component<Props, State> {
                                                         }
                                                         const {
                                                             content
-                                                        } = (entry as filelistTypes.TextFileEntry) (
+                                                         } = (entry as filelistTypes.TextFileEntry) (
                                                             <div className="item" />
                                                             )
                                                         ;
@@ -439,7 +439,7 @@ class EditorView extends React.Component<Props, State> {
                                                                     <Comp dependencies={{
                                                                             //
                                                                             
-                                                                        }}
+                                                                         }}
                                                                         entries="fileEntries"
                                                                         autoFocus={!entry.state.isCreating}
                                                                         annotations={[
@@ -562,20 +562,20 @@ class EditorView extends React.Component<Props, State> {
                                             label: 'Owner', 
                                             default: currentPacki.localPackiData.owner, 
                                             onValidate: packiValids.validatePackiName
-                                        }, 
+                                         }, 
                                         repoName: {
                                             type: 'text', 
                                             label: 'Repo', 
                                             default: currentPacki.localPackiData.repoName, 
                                             onValidate: packiValids.validatePackiName
-                                        }, 
+                                         }, 
                                         branch: {
                                             type: 'text', 
                                             label: 'Branch', 
                                             default: currentPacki.localPackiData.branch, 
                                             onValidate: packiValids.validatePackiName
-                                        }
-                                    }}
+                                         }
+                                     }}
                                  />
                             </ModalDialog>
                             )
@@ -600,20 +600,20 @@ class EditorView extends React.Component<Props, State> {
                                             label: 'Owner', 
                                             default: currentPacki.localPackiData.owner, 
                                             onValidate: packiValids.validatePackiName
-                                        }, 
+                                         }, 
                                         repoName: {
                                             type: 'text', 
                                             label: 'Repo', 
                                             default: currentPacki.localPackiData.repoName, 
                                             onValidate: packiValids.validatePackiName
-                                        }, 
+                                         }, 
                                         branch: {
                                             type: 'text', 
                                             label: 'Branch', 
                                             default: currentPacki.localPackiData.branch, 
                                             onValidate: packiValids.validatePackiName
-                                        }
-                                    }}
+                                         }
+                                     }}
                                  />
                             </ModalDialog>
                             )
@@ -634,7 +634,7 @@ const styles = StyleSheet.create({
         minWidth: 0, 
         minHeight: 0, 
         height: '100%'
-    }, 
+     }, 
     editorAreaOuterWrapper: {
         display: 'flex', 
         flex: 1, 
@@ -644,16 +644,16 @@ const styles = StyleSheet.create({
         marginTop: '12px', 
         marginLeft: '72px', 
         height: '100%'
-    }
-});
+     }
+ });
 const muiStyles = (theme: Theme) => 
     createStyles({
         drawerPaper: {
             top: 0, 
             // 'auto'
             
-        }
-    })
+         }
+     })
 ;
 const StyledComp = withStyles(muiStyles)(EditorView);
 export default withPreferences(StyledComp);

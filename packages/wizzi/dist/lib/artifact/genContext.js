@@ -58,6 +58,7 @@ var GenContext = (function () {
         this.writeFilePath = null;
         this.isEmpty = true;
         this.artifactGenerationErrors = [];
+        this.forceInline = false;
     }
     GenContext.prototype.forceIndent = function(value) {
         return this.block.forceIndent(value);
@@ -84,10 +85,21 @@ var GenContext = (function () {
             throw new Error('Cannot write when a file write has been requested: ' + this.writeFilePath);
         }
         if (verify.isString(text)) {
-            this.block.w(text.indexOf('{') > -1 ? interpolate(text, this.values) : text)
+            var iptext = text.indexOf('{') > -1 ? interpolate(text, this.values) : text;
+            if (this.forceInline) {
+                this.block.write(iptext + ' ');
+            }
+            else {
+                this.block.w(iptext);
+            }
         }
         else {
-            this.block.w('');
+            if (this.forceInline) {
+                this.block.write(' ');
+            }
+            else {
+                this.block.w('');
+            }
         }
         this.isEmpty = false;
     }
@@ -122,6 +134,13 @@ var GenContext = (function () {
     }
     GenContext.prototype.setLastNotEmptyLine = function() {
         this.block.setLastNotEmptyLine();
+    }
+    GenContext.prototype.inlineOn = function() {
+        this.forceInline = true;
+    }
+    GenContext.prototype.inlineOff = function() {
+        this.forceInline = false;
+        this.w();
     }
     GenContext.prototype.appendFile = function(filePath) {
         this.block.appendFile(interpolate(filePath, this.values))

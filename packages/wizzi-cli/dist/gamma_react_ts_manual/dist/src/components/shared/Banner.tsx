@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Banner.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import classnames from 'classnames';
@@ -22,7 +22,7 @@ export default class Banner extends React.PureComponent<Props, State> {
             if (props.visible) {
                 return {
                         rendered: true
-                    };
+                     };
             }
             return null;
         }
@@ -37,7 +37,7 @@ export default class Banner extends React.PureComponent<Props, State> {
                     this._timer = setTimeout(() => 
                         this.setState({
                             rendered: false
-                        })
+                         })
                     , 300);
                 }
             }
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         zIndex: 999, 
         textAlign: 'center', 
         pointerEvents: 'none'
-    }, 
+     }, 
     banner: {
         display: 'inline-block', 
         margin: 'auto', 
@@ -78,19 +78,19 @@ const styles = StyleSheet.create({
         borderRadius: '0 0 4px 4px', 
         transitionDuration: '200ms', 
         pointerEvents: 'all'
-    }, 
+     }, 
     visible: {
         transform: 'translateY(0)', 
         pointerEvents: 'auto'
-    }, 
+     }, 
     hidden: {
         transform: 'translateY(-100%)', 
         pointerEvents: 'none'
-    }, 
+     }, 
     success: {
         backgroundColor: colors.success
-    }, 
+     }, 
     error: {
         backgroundColor: colors.error
-    }
-});
+     }
+ });

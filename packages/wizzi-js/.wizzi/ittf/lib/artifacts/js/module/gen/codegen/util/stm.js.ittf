@@ -12,6 +12,14 @@
 	$include data/parents-of-top-statements
 	$include data/fb-html-supported-tags
 	
+	set md.isChildOf
+        function 
+            param model
+            param parent
+            if !model.wzParent
+                return false
+            return model.wzParent.wzElement == parent
+
 	set md.isDescendentOf
         function 
             param model
@@ -59,7 +67,70 @@
                 return false
             return ['typeEnum'].indexOf(model.wzParent.wzElement) > -1
 
-	set md.isBlockStatement
+	set md.writeComments
+        function
+            param model
+            param ctx
+            param newline
+            var temp = []
+            var written = false
+            var indented = false
+            foreach item in model.statements
+                if item.wzElement == 'comment'
+                    if newline && !written
+                        _ ctx.w
+                    _ ctx.w('// ' + item.wzName)
+                    set written = true
+                    if item.wzName.indexOf('@ts-ignore') > -1 
+                        log '§§§ stm.writeComments', model.wzName
+                        set ctx.__inlineNext = true
+                else
+                    _ temp.push(item)
+            set model.statements = temp
+            return model
+
+	set md.writeComments_2
+        function
+            param model
+            param ctx
+            param newline
+            param newlineindent
+            var temp = []
+            var written = false
+            var indented = false
+            foreach item in model.statements
+                if item.wzElement == 'comment'
+                    if newline && !written
+                        if newlineindent
+                            _ ctx.indent
+                            set indented = true
+                        _ ctx.w
+                    _ ctx.w('// ' + item.wzName)
+                    set written = true
+                    if item.wzName.indexOf('@ts-ignore') > -1 
+                        log '§§§ stm.writeComments', model.wzName
+                        set ctx.__inlineNext = true
+                else
+                    _ temp.push(item)
+            set model.statements = temp
+            return indented
+	
+    set md.isComment
+        function
+            param model
+            return ['comment', 'commentmultiline'].indexOf(model.wzElement) > -1
+
+	set md.nonCommentStatements
+        function
+            param model
+            var ret = []
+            if model.statements
+                foreach item in model.statements
+                    if md.isComment(item) == false
+                        _ ret.push(item)
+            return ret
+
+    set md.isBlockStatement
         function 
             param model
             return ['xif','xfor','foreach','xwhile','backeach','xtry','xthrow','xswitch',
@@ -100,13 +171,15 @@
         function 
             param model
             param element
-            return model.statements && model.statements.length == 1 && model.statements[0].wzElement === element
+            var ss = md.nonCommentStatements(model)
+            return ss.length == 1 && ss[0].wzElement === element
 
 	set md.onlyChildIsNot
         function 
             param model
             param element
-            return model.statements && model.statements.length == 1 && model.statements[0].wzElement !== element
+            var ss = md.nonCommentStatements(model)
+            return ss.length == 1 && ss[0].wzElement !== element
 
 	set md.isImplicitReturn
         function 
@@ -116,29 +189,31 @@
             if prnElement == 'xclass'
                 return false $$ an handler has no implicit return
             *$
-            return md.onlyChildIsNot(model, 'xreturn') && !md.isBlockStatement(model.statements[0])
+            var ss = md.nonCommentStatements(model)
+            return md.onlyChildIsNot(model, 'xreturn') && !md.isBlockStatement(ss[0])
 
 	set md.onlyChildIsHtmlElement =
         function 
             param model
-			return model.statements && model.statements.length == 1 && (
-				\b fb_html_supported_tags.indexOf(model.statements[0].wzElement) > -1 ||
-				\b model.statements[0].wzElement === 'htmlelement' )
+            var ss = md.nonCommentStatements(model)
+			return ss.length == 1 && (
+				\b fb_html_supported_tags.indexOf(ss[0].wzElement) > -1 ||
+				\b ss[0].wzElement === 'htmlelement' )
     
 	set md.isSingleParamForArrowFunction
         function 
             param model
             if model.params.length != 1 
                 return false
-            return model.params[0].statements.length == 0
+            var ss = md.nonCommentStatements(model.params[0])
+            return ss.length == 0
 
     set md.hasStatementChildren
         function 
             param model
-            if model.statements && model.statements.length > 0
-				foreach stm in model.statements
-					if stm.wzElement != 'comment'
-						return true
+            var ss = md.nonCommentStatements(model)
+            if ss.length > 0
+                return true
 			return false
 
 	set md.parentIs
@@ -273,6 +348,23 @@
                 return text.substr(1, text.length-2)
 			else
 				return text
+
+    set md.checkInlineEnter
+        function 
+            param model 
+            param ctx
+            if ctx.__inlineNext
+                _ ctx.inlineOn
+                set model.__inlineNext = true
+                set ctx.__inlineNext = false
+    
+    set md.checkInlineExit
+        function 
+            param model 
+            param ctx
+            if model.__inlineNext
+                delete model.__inlineNext
+                _ ctx.inlineOff
 
 	var op1
         [ 
@@ -693,12 +785,13 @@
 			if model.typeAbstract
 				_ ctx.write('abstract ')
 
-	set md.genTSTypeParameters
+    set md.genTSTypeParameters
         function 
             param model
 			param ctx
 			param cnt
 			param callback
+            # log 'model.statements.length', model.statements.length, 'Object.keys(model)', Object.keys(model)
 			_ genTSTypeParameters_partial
 				@ model
 				@ ctx
@@ -736,7 +829,31 @@
 		else
 			r_cb()
 
-	set md.indexedTSNeedsGraphs
+	
+    set md.genTSTypeParameterInsts   
+        function 
+            param model
+            param ctx
+            param cnt
+            param callback
+            # log 'genTSTypeParameterInsts', Object.keys(model), model.typeParameterInsts
+            if model.typeParameterInsts && model.typeParameterInsts.length > 0
+                _ ctx.write('<')
+                repeater( 1, model.typeParameterInsts
+                    if index_1 > 0
+                        _ ctx.write(', ')
+                    _ cnt.stm[item_1.wzElement]
+                        @ item_1
+                        @ ctx
+                        a_cb()
+                            repeater_increment( 1 )
+                    $append next
+                        _ ctx.write('>')
+                        r_cb()
+            else
+                r_cb()
+    
+    set md.indexedTSNeedsGraphs
         function 
             param model
 			return

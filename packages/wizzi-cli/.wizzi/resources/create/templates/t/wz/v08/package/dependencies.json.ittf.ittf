@@ -1,15 +1,5 @@
 ﻿$group
     ---
-    ${'$'}if wzCtx.Build.useTypescript
-        ${'$'}if wzCtx.Build.useJest
-            @types/jest "^26.0.15"
-        @types/node "^12.0.0"
-        ${'$'}if wzCtx.Build.useStyledComponents
-            @types/styled-components "^5.1.7"
-    ${'$'}if wzCtx.Build.useReact
-        ${'$'}if wzCtx.Build.useTypescript
-            @types/react "^17.0.0"
-            @types/react-dom "^17.0.0"
     ${'$'}if wzCtx.Build.useBabel
         ${'$'}if wzCtx.Build.babel.useRuntime
             @babel/runtime "^7.12.5"
@@ -65,6 +55,8 @@
         isomorphic-fetch "^2.2.1"
     ${'$'}if wzCtx.Build.useIsomorphicUnfetch
         isomorphic-unfetch "^3.0.0"
+    ${'$'}if wzCtx.Build.useStringifySafe
+        json-stringify-safe "^5.0.1"
     ${'$'}if wzCtx.Build.useMoment
         moment "^2.24.0"
 	${'$'}if wzCtx.Build.useMongoDb
@@ -73,6 +65,8 @@
         ${'$'}if wzCtx.Build.useLogger
             ${'$'}if wzCtx.Build.logger.useMorgan
                 morgan "^1.9.0"
+    ${'$'}if wzCtx.Build.useParseUrl
+        parseurl "^1.3.3"
     ${'$'}if wzCtx.Build.useExpress
         ${'$'}if wzCtx.Build.useAuthentication
             passport "^0.4.1"
@@ -94,7 +88,7 @@
         styled-components "^5.2.1"
     ---    
     ${'$'}if wzCtx.Build.useTypescript
-        typescript "^4.1.2"
+        typescript "^4.2.3"
     ---    
     ${'$'}if wzCtx.Build.useUnderscore
         underscore "^1.9.1"
@@ -105,7 +99,7 @@
         vue "^2.5.17"
         vue-server-renderer "^2.5.17"
     ---
-    ${'$'}if wzCtx.Build.useReactCreateApp
+    ${'$'}if (wzCtx.Build.useReactCreateApp || wzCtx.Build.useTypescript) && !! wzCtx.Build.useExpress
         web-vitals "^1.0.1"
     ---
     ${'$'}if wzCtx.Build.useYup

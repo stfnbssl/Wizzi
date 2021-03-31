@@ -2,20 +2,20 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\newpackage.js.ittf
-    utc time: Wed, 24 Mar 2021 15:11:08 GMT
+    utc time: Wed, 31 Mar 2021 20:00:14 GMT
 */
 'use strict';
 // This example shows specifying the arguments for the program to pass to the action handler.
 // const { Command } = require('commander'); // (normal include)
 const {
     Command
-} = require('commander');
+ } = require('commander');
 // include commander in git clone of commander repo
 const program = new Command();
 program.version('0.1.0').arguments('<username> [password]').description('test command', {
     username: 'user to login', 
     password: 'password for user, if required'
-}).action((username, password) => {
+ }).action((username, password) => {
     console.log('username:', username);
     console.log('environment:', password || 'no password given');
 })

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\GeneratedView.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -34,27 +34,27 @@ class GeneratedView extends React.Component<Props, State> {
     _handleGenerated = () => 
         this.setState({
             view: 'generated'
-        });
+         });
     _handleMTree = () => 
         this.setState({
             view: 'mtree'
-        });
+         });
     _handleDebug = () => 
         this.setState({
             view: 'debug'
-        });
+         });
     _handleBrowser = () => 
         this.setState({
             view: 'browser'
-        });
+         });
     render() {
         const {
             classes, 
             splitViewKind
-        } = this.props;
+         } = this.props;
         const {
             view
-        } = this.state;
+         } = this.state;
         return  (
             <div className={splitViewKind === 'right' ? classes.containerFull : classes.container}>
                 {
@@ -102,7 +102,7 @@ class GeneratedView extends React.Component<Props, State> {
                             <Tooltip title="View generated content">
                                 <IconButton onClick={this._handleGenerated} classes={{
                                     root: classes.iconButton
-                                }}>
+                                 }}>
                                     <ViewListIcon />
                                 </IconButton>
                             </Tooltip>
@@ -111,7 +111,7 @@ class GeneratedView extends React.Component<Props, State> {
                             <Tooltip title="View mTree">
                                 <IconButton onClick={this._handleMTree} classes={{
                                     root: classes.iconButton
-                                }}>
+                                 }}>
                                     <HelpIcon />
                                 </IconButton>
                             </Tooltip>
@@ -120,7 +120,7 @@ class GeneratedView extends React.Component<Props, State> {
                             <Tooltip title="View mTree build script">
                                 <IconButton onClick={this._handleDebug} classes={{
                                     root: classes.iconButton
-                                }}>
+                                 }}>
                                     <InfoIcon />
                                 </IconButton>
                             </Tooltip>
@@ -129,7 +129,7 @@ class GeneratedView extends React.Component<Props, State> {
                             <Tooltip title="Browse artifact">
                                 <IconButton onClick={this._handleBrowser} classes={{
                                     root: classes.iconButton
-                                }}>
+                                 }}>
                                     <InfoIcon />
                                 </IconButton>
                             </Tooltip>
@@ -149,27 +149,27 @@ const muiStyles = (theme: Theme) =>
             borderLeft: '1px solid #cccccc', 
             width: '44vw', 
             height: '100%'
-        }, 
+         }, 
         containerFull: {
             display: 'flex', 
             flexDirection: 'row', 
             borderLeft: '1px solid #cccccc', 
             width: '100%', 
             height: '100%'
-        }, 
+         }, 
         editor: {
             padding: '5px', 
             flex: 'auto'
-        }, 
+         }, 
         sidebar: {
             display: 'flex', 
             flexDirection: 'column', 
             padding: '15px', 
             background: theme.palette.primary.light
-        }, 
+         }, 
         iconButton: {
             padding: '10px'
-        }
-    })
+         }
+     })
 ;
 export default withStyles(muiStyles)(GeneratedView);

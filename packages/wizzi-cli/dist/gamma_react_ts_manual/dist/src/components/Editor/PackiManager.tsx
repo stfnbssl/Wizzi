@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\PackiManager.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -50,12 +50,12 @@ class PackiManager extends React.PureComponent<Props, State> {
         console.log('_handleDismissModal');
         this.setState({
             modalVisible: 'none'
-        })
+         })
     };
     _handleShowModal = (kind: modalKind) => 
         this.setState({
             modalVisible: kind
-        });
+         });
     _handleCreatePacki = (name: string, kind: string) => {
         this._handleDismissModal();
         // alert('Create packi ' + name + ' of kind ' + kind);
@@ -85,10 +85,10 @@ class PackiManager extends React.PureComponent<Props, State> {
             ownedGitRepositories, 
             onSelectPacki, 
             onDeletePacki
-        } = this.props;
+         } = this.props;
         const {
             modalVisible
-        } = this.state;
+         } = this.state;
         const gitBranchesTODO = [
             'master'
         ];
@@ -160,7 +160,7 @@ class PackiManager extends React.PureComponent<Props, State> {
                             type: 'text', 
                             label: 'Name', 
                             onValidate: packiValids.validatePackiName
-                        }, 
+                         }, 
                         kind: {
                             type: 'select', 
                             label: 'Kind', 
@@ -168,11 +168,11 @@ class PackiManager extends React.PureComponent<Props, State> {
                                 return {
                                         label: name, 
                                         value: name
-                                    };
+                                     };
                             }
                             )
-                        }
-                    }}
+                         }
+                     }}
                  />
                 <EditorForm title="Clone git package"
                     action="Confirm"
@@ -192,10 +192,10 @@ class PackiManager extends React.PureComponent<Props, State> {
                                 return {
                                         label: `${item.owner}_${item.name}`, 
                                         value: `${item.owner}_${item.name}`
-                                    };
+                                     };
                             }
                             )
-                        }, 
+                         }, 
                         branch: {
                             type: 'select', 
                             label: 'Branch', 
@@ -203,16 +203,16 @@ class PackiManager extends React.PureComponent<Props, State> {
                                 return {
                                         label: name, 
                                         value: name
-                                    };
+                                     };
                             }
                             )
-                        }, 
+                         }, 
                         ittfOnly: {
                             type: 'checkbox', 
                             label: 'Clone ittf only', 
                             default: true
-                        }
-                    }}
+                         }
+                     }}
                  />
                 {
                     currentPacki
@@ -233,25 +233,25 @@ class PackiManager extends React.PureComponent<Props, State> {
                                     label: 'Owner', 
                                     default: currentPacki.localPackiData.owner, 
                                     onValidate: packiValids.validatePackiName
-                                }, 
+                                 }, 
                                 repoName: {
                                     type: 'text', 
                                     label: 'Repo', 
                                     default: currentPacki.localPackiData.repoName, 
                                     onValidate: packiValids.validatePackiName
-                                }, 
+                                 }, 
                                 branch: {
                                     type: 'text', 
                                     label: 'Branch', 
                                     default: currentPacki.localPackiData.branch, 
                                     onValidate: packiValids.validatePackiName
-                                }, 
+                                 }, 
                                 virtualFiles: {
                                     type: 'checkbox', 
                                     label: 'Virtual files', 
                                     default: true
-                                }
-                            }}
+                                 }
+                             }}
                          />
                         )
                     
@@ -275,13 +275,13 @@ class PackiManager extends React.PureComponent<Props, State> {
                                     label: 'Template id', 
                                     default: currentPacki.localPackiData.id, 
                                     onValidate: packiValids.validatePackiName
-                                }, 
+                                 }, 
                                 virtualFiles: {
                                     type: 'checkbox', 
                                     label: 'Virtual files', 
                                     default: true
-                                }
-                            }}
+                                 }
+                             }}
                          />
                         )
                     
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
         fontSize: 13, 
         minHeight: 16, 
         margin: '4px 0'
-    }, 
+     }, 
     title: {
         height: 72, 
         fontSize: 24, 
@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: 'center', 
         boxShadow: '0 1px 0 rgba(36, 44, 58, 0.1)'
-    }, 
+     }, 
     buttons: {
         display: 'flex', 
         flexDirection: 'row', 
@@ -321,11 +321,11 @@ const styles = StyleSheet.create({
         zIndex: 5, 
         marginTop: '6px', 
         borderTop: '1px black solid'
-    }, 
+     }, 
     shortcutList: {
         fontSize: '1.2em', 
         tableLayout: 'fixed'
-    }, 
+     }, 
     shortcutCell: {
         padding: '6px 8px', 
         color: c('primary'), 
@@ -333,14 +333,14 @@ const styles = StyleSheet.create({
         ':hover': {
             background: c('primary'), 
             color: 'white'
-        }
-    }, 
+         }
+     }, 
     shortcutLabelCell: {
         textAlign: 'right'
-    }, 
+     }, 
     shortcutDescriptionCell: {
         textAlign: 'left'
-    }, 
+     }, 
     shortcutLabel: {
         color: 'inherit', 
         fontFamily: 'inherit', 
@@ -349,17 +349,17 @@ const styles = StyleSheet.create({
         boxShadow: 'none', 
         padding: 0, 
         display: 'inline-block'
-    }, 
+     }, 
     saveButton: {
         minWidth: 100
-    }
-});
+     }
+ });
 const muiStyles = (theme: Theme) => 
     createStyles({
         fabButton: {
             margin: theme.spacing.unit
-        }
-    })
+         }
+     })
 ;
 const StyledComp = withStyles(muiStyles)(PackiManager);
 export default withThemeName(StyledComp);

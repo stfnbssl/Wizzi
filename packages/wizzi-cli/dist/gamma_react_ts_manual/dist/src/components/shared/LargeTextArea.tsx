@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\LargeTextArea.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -21,7 +21,7 @@ type Props = {
 function LargeTextArea({
     theme, 
     ...rest
-}: Props) {
+ }: Props) {
     return  (
         <Textarea className={css(styles.input, theme === 'light' ? styles.inputLight : styles.inputDark)} {...rest} />
         )
@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
         width: '100%', 
         ':focus': {
             borderColor: colors.primary
-        }
-    }, 
+         }
+     }, 
     inputLight: {
         backgroundColor: '#FFFFFF'
-    }, 
+     }, 
     inputDark: {
         backgroundColor: 'rgba(0, 0, 0, .16)'
-    }
-});
+     }
+ });

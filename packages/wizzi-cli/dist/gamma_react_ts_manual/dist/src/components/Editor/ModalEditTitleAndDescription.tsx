@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\ModalEditTitleAndDescription.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -43,12 +43,12 @@ export default class ModalEditTitleAndDescription extends React.Component<Props,
                             name: props.name || '', 
                             description: props.description || '', 
                             visible: props.visible
-                        };
+                         };
                 }
                 else {
                     return {
                             visible: props.visible
-                        };
+                         };
                 }
             }
             return null;
@@ -63,7 +63,7 @@ export default class ModalEditTitleAndDescription extends React.Component<Props,
             this.props.onSubmit({
                 name: this.state.name, 
                 description: this.state.description
-            });
+             });
         _validateName = (name: string) => 
             name ? /^[a-z_\-\d\s]+$/i.test(name) ? null : new Error('Name can only contain letters, numbers, space, hyphen (-) and underscore (_).') : new Error('Name cannot be empty.');
         render() {
@@ -73,7 +73,7 @@ export default class ModalEditTitleAndDescription extends React.Component<Props,
                 onDismiss, 
                 isWorking, 
                 action
-            } = this.props;
+             } = this.props;
             return  (
                 <ModalDialog visible={visible} title={title} onDismiss={onDismiss}>
                     <Form onSubmit={this._handleSubmit}>
@@ -85,7 +85,7 @@ export default class ModalEditTitleAndDescription extends React.Component<Props,
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
                                 this.setState({
                                     name: e.target.value
-                                })
+                                 })
                             }
                             placeholder={'Unnamed Packi'}
                             validate={this._validateName}
@@ -97,7 +97,7 @@ export default class ModalEditTitleAndDescription extends React.Component<Props,
                             onChange={e => 
                                 this.setState({
                                     description: e.target.value
-                                })
+                                 })
                             }
                             minRows={4}
                             placeholder={packiDefaults.DEFAULT_DESCRIPTION}
@@ -124,19 +124,19 @@ const styles = StyleSheet.create({
         padding: 0, 
         lineHeight: '22px', 
         margin: '16px 0 6px 0'
-    }, 
+     }, 
     buttons: {
         margin: '20px 0 0 0'
-    }, 
+     }, 
     caption: {
         marginTop: 24, 
         fontSize: '16px', 
         lineHeight: '22px', 
         textAlign: 'center'
-    }, 
+     }, 
     link: {
         cursor: 'pointer', 
         color: colors.primary, 
         textDecoration: 'underline'
-    }
-});
+     }
+ });

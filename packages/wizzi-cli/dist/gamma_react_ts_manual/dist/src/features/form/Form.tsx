@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\Form.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {Register, Unregister, Update, FormValidation} from './types';
@@ -31,13 +31,13 @@ export default class Form extends React.Component<Props, State> {
         _register = ({
             validate, 
             focus
-        }):  Register => {
+         }):  Register => {
             const key = this._key++;
             this._inputs.push({
                 key, 
                 validate, 
                 focus
-            })
+             })
             return key;
         };
         _unregister = (key: number):  Unregister => 
@@ -49,7 +49,7 @@ export default class Form extends React.Component<Props, State> {
                 isValid: this._inputs.every(it => 
                     !it.validate()
                 )
-            });
+             });
         _handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault();
             for (const input of this._inputs) {
@@ -67,7 +67,7 @@ export default class Form extends React.Component<Props, State> {
                     unregister: this._unregister, 
                     update: this._update, 
                     valid: this.state.isValid
-                }}>
+                 }}>
                     <form onSubmit={this._handleSubmit}>
                         {this.props.children}
                     </form>

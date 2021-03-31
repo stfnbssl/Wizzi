@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\Editor\UserMenu.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -41,7 +41,7 @@ class UserMenu extends React.Component<Props, State> {
                 this.setState((state) => 
                     ({
                         visible: !state.visible
-                    })
+                     })
                 )
             }
         }
@@ -54,14 +54,14 @@ class UserMenu extends React.Component<Props, State> {
     _hideMenu = () => 
         this.setState({
             visible: false
-        });
+         });
     _menu = React.createRef<HTMLUListElement>();
     _avatar = React.createRef<HTMLButtonElement>();
     render() {
         const {
             loggedUser, 
             logout
-        } = this.props;
+         } = this.props;
         return  (
             <div className={css(styles.container)}>
                 <button ref={this._avatar} className={css(styles.button)}>
@@ -75,28 +75,28 @@ class UserMenu extends React.Component<Props, State> {
                                 handler: () => 
                                     window.open(`https://expo.io/@${loggedUser.username}/`)
                                 
-                            }, 
+                             }, 
                             {
                                 label: 'View snacks', 
                                 handler: () => 
                                     window.open(`https://expo.io/snacks/@${loggedUser.username}/`)
                                 
-                            }, 
+                             }, 
                             {
                                 label: 'Edit account', 
                                 handler: () => 
                                     window.open(`https://expo.io/settings/profile/`)
                                 
-                            }, 
+                             }, 
                             {
                                 label: 'Log out', 
                                 handler: logout
-                            }
+                             }
                         ] : [
                             {
                                 label: 'Log in', 
                                 handler: this.props.onLogInClick
-                            }
+                             }
                         ]}
                     onHide={this._hideMenu}
                     className={css(styles.menu)}
@@ -114,13 +114,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center', 
         margin: '0 16px 0 12px'
-    }, 
+     }, 
     menu: {
         position: 'absolute', 
         margin: '10px 0', 
         right: 0, 
         top: '100%'
-    }, 
+     }, 
     button: {
         appearance: 'none', 
         background: 'transparent', 
@@ -128,5 +128,5 @@ const styles = StyleSheet.create({
         margin: 0, 
         border: 0, 
         outline: 0
-    }
-});
+     }
+ });

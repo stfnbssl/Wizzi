@@ -10,15 +10,17 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.handler
 		var
 			decl method = model.wzName
 
+		_ u.writeComments(model, ctx)
+        
+        _ u.genAccessorsAndExtra
+			@ model
+			@ ctx
+
 		if model.static
 			_ ctx.write('static ')
 
 		if model.async
 			_ ctx.write('async ')
-
-		_ u.genAccessorsAndExtra
-			@ model
-			@ ctx
 
 		_ ctx.write(method)
 

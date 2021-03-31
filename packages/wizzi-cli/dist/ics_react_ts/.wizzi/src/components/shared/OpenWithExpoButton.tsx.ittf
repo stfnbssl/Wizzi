@@ -1,0 +1,49 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import ButtonLink from './ButtonLink'
+    import constructExperienceURL from '../../utils/constructExperienceURL'
+    import 
+        @ SDKVersion
+        from '../../configs/sdk'
+    :type Props
+        :{ 
+            :p sdkVersion
+                :ref SDKVersion
+            :p channel
+                :string 
+            :p snackId
+                :union 
+                    :string 
+                    :undefined 
+    const OpenWithExpoButton
+        => 
+            { 
+                @ sdkVersion
+                @ channel
+                @ snackId
+                :ref Props
+            const experienceURL
+                _ constructExperienceURL
+                    { 
+                        @ sdkVersion
+                        @ channel
+                        @ snackId
+            return 
+                < ButtonLink 
+                    @ variant "primary"
+                    @ target "_blank"
+                    @ href {experienceURL}
+                    @ className {css(styles.button)}
+                    + Open with Expo
+    export-default OpenWithExpoButton
+    const styles
+        _ StyleSheet.create
+            { 
+                { button
+                    @ display 'block'

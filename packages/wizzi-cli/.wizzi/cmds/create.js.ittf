@@ -6,13 +6,15 @@
         // var pkgName = "lambda";
         // var pkgName = "tau_express";
         // var pkgName = "sigma_express_auth";
-        // var pkgName = "gamma_react_ts";
-        var pkgName = "wizzi.plugin.ppt";
-        var template = "wizzi_plugin";
+        // var pkgName = "ics_react_ts";
+        var pkgName = "eta_express_ts";
+        // var pkgName = "wizzi.plugin.ppt";
+        // var template = "wizzi_plugin";
         // var template = "express";
         // var template = "react_ts";
-        var wizzi_plugin_type = 'syntax_structure';
-        var wizzi_plugin_schema = 'ppt';
+        var template = "express_ts";
+        // var wizzi_plugin_type = 'syntax_structure';
+        // var wizzi_plugin_schema = 'ppt';
 
 	const path = require('path')
 	const fs = require('fs')
@@ -36,7 +38,7 @@
                         {
                             { cliCtx 
                                 @ pkg_name "${pkgName}"
-                                @ wizzi_plugin_type "${wizzi_plugin_type}"
+                                $$ @ wizzi_plugin_type "${wizzi_plugin_type}"
                                 { author
                                 { license
                                     @ name "MIT"
@@ -44,7 +46,7 @@
                                 { github
                                 [ Schemas
                                     {
-                                        @ name "${wizzi_plugin_schema}"
+                                        $$ @ name "${wizzi_plugin_schema}"
                         {
                             @ destFolder
                                 _ path.join

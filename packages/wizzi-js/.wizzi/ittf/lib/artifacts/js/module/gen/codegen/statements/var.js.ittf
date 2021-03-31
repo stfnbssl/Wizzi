@@ -11,9 +11,11 @@
     
 	stm( _letvarconst, symbol
         var xmodel = writeComments(model, ctx)
-		# set ctx.__needs_crlf = ctx.__needs_comma = ctx.__inside_expr = false
 		if hasStatements(xmodel) == false
-            _ ctx.w(symbol + ' ' + xmodel.wzName + u.semicolon(xmodel.wzName))
+            if ctx.__inline
+                _ ctx.write(symbol + ' ' + xmodel.wzName + u.semicolon(xmodel.wzName))
+            else
+                _ ctx.w(symbol + ' ' + xmodel.wzName + u.semicolon(xmodel.wzName))
 			r_cb()
 
         set ctx.__inside_expr = true
@@ -31,7 +33,7 @@
 					if ctx.__needs_comma
 						_ ctx.write(',')
 						set ctx.__needs_comma = false
-					if ctx.__needs_crlf
+					if ctx.__needs_crlf 
 						# log 1001
 						_ ctx.w()
 						set ctx.__needs_crlf = false
@@ -44,7 +46,10 @@
 						f_cb()
 							repeater_increment( 1 )
 					$append next
-						_ ctx.w(';')
+                        if ctx.__inline
+                            _ ctx.write(';')
+                        else
+						    _ ctx.w(';')
 						if indented
 							_ ctx.deindent()
 						set ctx.__needs_crlf = ctx.__needs_comma = ctx.__inside_expr = false

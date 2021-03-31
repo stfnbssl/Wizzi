@@ -1,0 +1,36 @@
+$group
+
+    import 
+        as path
+        from 'path'
+    import 
+        as wizzi
+        from 'wizzi'
+    import 
+        @ ConfigType
+        from '../../features/config'
+    import wizzifile from './wizzifile'
+    export-default 
+        async-function start
+            param config
+                :ref ConfigType
+            :return
+                :ref Promise
+                    :param void
+            return 
+                new Promise
+                    => 
+                        param resolve
+                        param reject
+                        _ console.log('wizzifile', wizzifile)
+                        _ wizzi.startRunnerServer
+                            { 
+                                @ cwd __dirname
+                                @ userid 'stefi'
+                                @ role 'admin'
+                                @ wizzifile
+                            function 
+                                param err
+                                if err
+                                    return reject(err)
+                                _ resolve()

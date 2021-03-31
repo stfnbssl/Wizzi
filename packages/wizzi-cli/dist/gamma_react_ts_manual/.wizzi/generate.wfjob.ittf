@@ -37,9 +37,15 @@ wfjob /job
         wfjobs(any_html, &jobCtx)
         wfjobs(any_css, &jobCtx)
         wfjobs(any_svg, &jobCtx)
+        wfjobs(any_json, &jobCtx)
+        wfjobs(any_md, &jobCtx)
         wfjobs(any_plain, &jobCtx, js)
         wfjobs(any_plain, &jobCtx, html)
         wfjobs(any_plain, &jobCtx, css)
+        wfjobs(any_plain, &jobCtx, md)
+        wfjobs(any_plain, &jobCtx, png)
+        wfjobs(any_plain, &jobCtx, svg)
+        wfjobs(any_plain, &jobCtx, jpg)
     
     line ittf-common
         cwd-folder ${jobCtx.ittf_common_folder}

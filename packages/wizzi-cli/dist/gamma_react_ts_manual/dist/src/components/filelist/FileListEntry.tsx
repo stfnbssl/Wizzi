@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\filelist\FileListEntry.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -51,12 +51,12 @@ export default class FileListEntry extends React.Component<Props, State> {
             super(props);
             const {
                 entry
-            } = props;
+             } = props;
             this.state = {
                 name: entry.state.isCreating ? entry.item.path.split('/').pop() || '' : '', 
                 error: null, 
                 isRenaming: !entry.item.asset && !!entry.state.isCreating
-            };
+             };
         }
         state: State;
         componentDidMount() {
@@ -75,11 +75,11 @@ export default class FileListEntry extends React.Component<Props, State> {
                         isRenaming: false, 
                         name: '', 
                         error: null
-                    } : {
+                     } : {
                         isRenaming: true, 
                         name: props.entry.item.path.split('/').pop() || '', 
                         error: null
-                    }
+                     }
             )
         };
         _handleDelete = () => 
@@ -87,7 +87,7 @@ export default class FileListEntry extends React.Component<Props, State> {
         _handleNameChange = (name: string) => {
             const {
                 entry
-            } = this.props;
+             } = this.props;
             if (name && (name !== entry.item.path.split('/').pop() || entry.state.isCreating)) {
                 const newPath = entry.item.path.replace(/[^/]+$/, name);
                 this.props.onRename(entry.item.path, newPath);
@@ -98,7 +98,7 @@ export default class FileListEntry extends React.Component<Props, State> {
             this.setState({
                 name, 
                 error: this._validateName(name)
-            })
+             })
         };
         _validateName = (name: string) => {
             if (name === this.props.entry.item.path.split('/').pop()) {
@@ -150,7 +150,7 @@ export default class FileListEntry extends React.Component<Props, State> {
                 isRenaming: false, 
                 name: '', 
                 error: null
-            })
+             })
         };
         _handleInputKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
             switch (e.keyCode) {
@@ -176,7 +176,7 @@ export default class FileListEntry extends React.Component<Props, State> {
                 clipboard, 
                 onPaste, 
                 onClearClipboard
-            } = this.props;
+             } = this.props;
             clipboard.forEach(e => 
                 onPaste(entry.item.path, e)
             )
@@ -186,7 +186,7 @@ export default class FileListEntry extends React.Component<Props, State> {
             const {
                 entry, 
                 onPaste
-            } = this.props;
+             } = this.props;
             const path = entry.item.path.includes('/') ? entry.item.type === 'folder' ? getParentPath(entry.item.path) : entry.item.path : undefined;
             onPaste(path, entry);
         };
@@ -199,18 +199,18 @@ export default class FileListEntry extends React.Component<Props, State> {
                 {
                     label: 'New file', 
                     handler: this._handleCreateFile
-                }, 
+                 }, 
                 {
                     label: 'New folder', 
                     handler: this._handleCreateFolder
-                }, 
+                 }, 
                 this.props.entry.item.type === 'folder' ? {
                         label: this.props.entry.item.type === 'folder' && this.props.entry.state.isExpanded ? 'Collapse' : 'Expand', 
                         handler: this._handleToggleExpand, 
                         combo: [
                             KeyMap.Enter
                         ]
-                    } : undefined, 
+                     } : undefined, 
                 this.props.clipboard.length ? {
                         label: 'Paste', 
                         handler: this._handlePaste, 
@@ -218,14 +218,14 @@ export default class FileListEntry extends React.Component<Props, State> {
                             KeyMap.Meta, 
                             KeyMap.V
                         ]
-                    } : !this.props.entry.item.virtual ? {
+                     } : !this.props.entry.item.virtual ? {
                             label: 'Copy', 
                             handler: this._handleCopy, 
                             combo: [
                                 KeyMap.Meta, 
                                 KeyMap.C
                             ]
-                        } : undefined, 
+                         } : undefined, 
                 !this.props.entry.item.virtual ? {
                         label: 'Duplicate', 
                         handler: this._handleDuplicate, 
@@ -233,12 +233,12 @@ export default class FileListEntry extends React.Component<Props, State> {
                             KeyMap.Meta, 
                             KeyMap.D
                         ]
-                    } : undefined, 
+                     } : undefined, 
                 ((isEntryPoint(this.props.entry.item.path) && // 
                 !this.props.entry.item.path.endsWith('.js')) ? {
                         label: `Rename to ${toggleTSExt(this.props.entry.item.path)}`, 
                         handler: this._handleToggleTSExt
-                    } : undefined), 
+                     } : undefined), 
                 ...(!isEntryPoint(this.props.entry.item.path) && !this.props.entry.item.virtual ? [
                             {
                                 label: 'Rename', 
@@ -246,25 +246,25 @@ export default class FileListEntry extends React.Component<Props, State> {
                                 combo: [
                                     KeyMap.F2
                                 ]
-                            }, 
+                             }, 
                             {
                                 label: 'Delete', 
                                 handler: this._handleDelete, 
                                 combo: [
                                     KeyMap.Delete
                                 ]
-                            }
+                             }
                         ] : [])
                 
             ];
         _renderItem = () => {
             const {
                 entry
-            } = this.props;
+             } = this.props;
             const {
                 isRenaming, 
                 name
-            } = this.state;
+             } = this.state;
             const displayName = isRenaming ? '\u00A0' : entry.item.path.split('/').pop();
             return  (
                 <div>
@@ -315,7 +315,7 @@ export default class FileListEntry extends React.Component<Props, State> {
                 onCopy, 
                 onClearClipboard, 
                 theme
-            } = this.props;
+             } = this.props;
             return entry.item.type === 'folder' && rest.length && entry.state.isExpanded ?  (
                     <div className={css(styles.child)}>
                         <FileListChildren parent={entry.item.path}
@@ -357,7 +357,7 @@ export default class FileListEntry extends React.Component<Props, State> {
                 onRename, 
                 onExpand, 
                 theme
-            } = this.props;
+             } = this.props;
             // Disable drag n drop for the entry file and virtual files
             // Also disable for files being created because they will have a nested input
             // Otherwise it'll be impossible to move the cursor in the input by dragging
@@ -383,12 +383,12 @@ export default class FileListEntry extends React.Component<Props, State> {
 const styles = StyleSheet.create({
     child: {
         marginLeft: 16
-    }, 
+     }, 
     label: {
         verticalAlign: -1, 
         margin: '0 6px', 
         userSelect: 'none'
-    }, 
+     }, 
     input: {
         position: 'absolute', 
         top: 0, 
@@ -399,7 +399,7 @@ const styles = StyleSheet.create({
         background: 'rgba(0, 0, 0, .08)', 
         outline: 0, 
         paddingLeft: 2
-    }, 
+     }, 
     error: {
         backgroundColor: colors.error, 
         color: '#fff', 
@@ -408,11 +408,11 @@ const styles = StyleSheet.create({
         marginTop: -32, 
         marginLeft: 20, 
         borderRadius: 3
-    }, 
+     }, 
     icon: {
         height: 16, 
         width: 16, 
         opacity: 0.7, 
         fill: 'currentColor'
-    }
-});
+     }
+ });

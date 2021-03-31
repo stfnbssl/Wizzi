@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\Modal.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -20,7 +20,7 @@ export default class Modal extends React.PureComponent<Props, State> {
             if (props.visible) {
                 return {
                         rendered: true
-                    };
+                     };
             }
             return null;
         }
@@ -39,7 +39,7 @@ export default class Modal extends React.PureComponent<Props, State> {
                     this._timer = setTimeout(() => 
                         this.setState({
                             rendered: false
-                        })
+                         })
                     , 300);
                 }
             }
@@ -89,20 +89,20 @@ const styles = StyleSheet.create({
         zIndex: 999, 
         transitionDuration: '200ms', 
         '-webkit-font-smoothing': 'antialiased'
-    }, 
+     }, 
     content: {
         width: '100%', 
         height: '100%', 
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center'
-    }, 
+     }, 
     visible: {
         opacity: 1, 
         pointerEvents: 'auto'
-    }, 
+     }, 
     hidden: {
         opacity: 0, 
         pointerEvents: 'none'
-    }
-});
+     }
+ });

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\localManager.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import {LocalPackiData} from './types';
 export function savePackiData(packiId: string, packiData: LocalPackiData) {
@@ -25,7 +25,7 @@ export function packiCreatedFromTemplate(packiId: string):  LocalPackiData {
         localCreatedAt: Date.now(), 
         githubCreatedAt: -1, 
         lastCommitAt: -1
-    };
+     };
     savePackiData(packiId, packiData);
     return packiData;
 }
@@ -40,7 +40,7 @@ export function packiCreatedFromGithubClone(owner: string, repoName: string):  L
         localCreatedAt: Date.now(), 
         githubCreatedAt: -1, 
         lastCommitAt: -1
-    };
+     };
     savePackiData(packiId, packiData);
     return packiData;
 }

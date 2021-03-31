@@ -7,87 +7,44 @@
     "interpreter": null,
     "body": [
       {
-        "type": "ForOfStatement",
-        "await": false,
-        "left": {
-          "type": "VariableDeclaration",
-          "declarations": [
-            {
-              "type": "VariableDeclarator",
-              "id": {
-                "type": "ObjectPattern",
-                "properties": [
-                  {
-                    "type": "ObjectProperty",
-                    "start": 13,
-                    "end": 17,
-                    "loc": {
-                      "start": {
-                        "line": 1,
-                        "column": 13
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "cookies",
+              "typeAnnotation": {
+                "type": "TSTypeAnnotation",
+                "typeAnnotation": {
+                  "type": "TSTypeLiteral",
+                  "members": [
+                    {
+                      "type": "TSPropertySignature",
+                      "computed": true,
+                      "key": {
+                        "type": "Identifier",
+                        "name": "SNACK_COOKIE_NAME"
                       },
-                      "end": {
-                        "line": 1,
-                        "column": 17
+                      "optional": true,
+                      "typeAnnotation": {
+                        "type": "TSTypeAnnotation",
+                        "typeAnnotation": {
+                          "type": "TSStringKeyword"
+                        }
                       }
-                    },
-                    "extra": {
-                      "shorthand": true
-                    },
-                    "method": false,
-                    "key": {
-                      "type": "Identifier",
-                      "start": 13,
-                      "end": 17,
-                      "loc": {
-                        "start": {
-                          "line": 1,
-                          "column": 13
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 17
-                        },
-                        "identifierName": "item"
-                      },
-                      "name": "item"
-                    },
-                    "computed": false,
-                    "shorthand": true,
-                    "value": {
-                      "type": "Identifier",
-                      "start": 13,
-                      "end": 17,
-                      "loc": {
-                        "start": {
-                          "line": 1,
-                          "column": 13
-                        },
-                        "end": {
-                          "line": 1,
-                          "column": 17
-                        },
-                        "identifierName": "item"
-                      },
-                      "name": "item"
                     }
-                  }
-                ]
-              },
-              "init": null
+                  ]
+                }
+              }
+            },
+            "init": {
+              "type": "ObjectExpression",
+              "properties": []
             }
-          ],
-          "kind": "const"
-        },
-        "right": {
-          "type": "Identifier",
-          "name": "entryArray"
-        },
-        "body": {
-          "type": "BlockStatement",
-          "body": [],
-          "directives": []
-        }
+          }
+        ],
+        "kind": "let"
       }
     ],
     "directives": []

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\data.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as path from 'path';
 import {callApi} from '../../utils/api';
@@ -17,11 +17,11 @@ export async function getPackiList():  Promise<string[]> {
             console.log('getPackiList');
             const allFiles = await bfs.getFiles(config.BROWSERFS_PACKIES_ROOT, {
                     deep: true
-                });
+                 });
             console.log('getPackiList.forDebug.allFiles', allFiles);
             const folders = await bfs.getFolders(config.BROWSERFS_PACKIES_FOLDER, {
                     deep: false
-                });
+                 });
             console.log('getPackiList', folders);
             const ret: string[] = [];
             folders.forEach(folder => 
@@ -37,13 +37,13 @@ export async function getPackiFiles(packiId: string):  Promise<PackiFiles> {
             const files = await bfs.getFiles(folderPath, {
                     deep: true, 
                     documentContent: true
-                });
+                 });
             const ret: PackiFiles = {};
             files.forEach(file => 
                 ret[file.relPath] = {
                     type: 'CODE', 
                     contents: (file.content as string)
-                }
+                 }
             )
             resolve(ret);
         }
@@ -62,12 +62,12 @@ export async function downloadPackiTemplate(templateName: string):  Promise<Pack
                 files[element.relPath] = {
                     contents: element.content, 
                     type: 'CODE'
-                }
+                 }
             )
             resolve({
                 id: templateName, 
                 files
-            })
+             })
         }
         );
 }
@@ -132,7 +132,7 @@ export async function savePackiFiles(packiId: string, files: PackiFiles):  Promi
                 console.log('savePackiFiles.isDirectory', isDirectory, folderPath);
                 const savedfiles = await bfs.getFiles(folderPath, {
                         deep: true
-                    });
+                     });
                 console.log('savePackiFiles.savedfiles', savedfiles, folderPath);
                 resolve();
             }
@@ -148,7 +148,7 @@ export async function assertDefaultPacki():  Promise<void> {
             console.log('assertDefaultPacki.isDirectory', isDirectory, folderPath);
             const files = await bfs.getFiles(folderPath, {
                     deep: true
-                });
+                 });
             console.log('assertDefaultPacki.files', files, folderPath);
             if (isDirectory) {
                 console.log('assertDefaultPacki.already exists', folderPath);

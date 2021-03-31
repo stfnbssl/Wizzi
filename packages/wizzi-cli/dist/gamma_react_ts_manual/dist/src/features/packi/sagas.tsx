@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\packi\sagas.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import {all, fork, put, takeEvery, call} from 'redux-saga/effects';
 import {getType} from 'typesafe-actions';
@@ -21,7 +21,7 @@ function* handleFetchPackiListRequest(action: ReturnType<typeof packiActions.fet
         console.log('sagas.handleFetchPackiListRequest.res', res);
         yield put(packiActions.fetchPackiListSuccess({
                 packiNames: res
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -41,7 +41,7 @@ function* handleInitPackiRequest(action: ReturnType<typeof packiActions.initPack
             yield put(appActions.loginUserByStoredUid({
                     uid: action.payload.preferences.loggedUid, 
                     selectedPackiId: packiId
-                }));
+                 }));
         }
         else {
             console.log('sagas.handleInitPackiRequest.starterPAcky', config.DEFAULT_PACKI_NAME);
@@ -49,7 +49,7 @@ function* handleInitPackiRequest(action: ReturnType<typeof packiActions.initPack
             console.log('sagas.handleInitPackiRequest.assertDefaultPacki.res', res);
             yield put(packiActions.selectPackiRequest({
                     id: config.DEFAULT_PACKI_NAME
-                }));
+                 }));
         }
     } 
     catch (err) {
@@ -68,7 +68,7 @@ function* handleSelectPackiRequest(action: ReturnType<typeof packiActions.select
         yield put(packiActions.selectPackiSuccess({
                 id: action.payload.id, 
                 files: res
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -86,7 +86,7 @@ function* handleCreatePackiRequest(action: ReturnType<typeof packiActions.create
         yield put(packiActions.createPackiSuccess({
                 id: action.payload.id, 
                 files: res
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -103,7 +103,7 @@ function* handleDeletePackiRequest(action: ReturnType<typeof packiActions.delete
         const res: packiTypes.PackiFiles = yield packiData.deletePacki(action.payload.id);
         yield put(packiActions.deletePackiSuccess({
                 id: action.payload.id
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -123,7 +123,7 @@ function* handleSavePackiRequest(action: ReturnType<typeof packiActions.savePack
                 id: action.payload.id, 
                 filesToSave: action.payload.filesToSave, 
                 packiEntryFiles: action.payload.packiEntryFiles
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -141,7 +141,7 @@ function* handleFetchPackiTemplateListRequest(action: ReturnType<typeof packiAct
         console.log('sagas.handleFetchPackiTemplateListRequest.res', res);
         yield put(packiActions.fetchPackiTemplateListSuccess({
                 packiNames: res
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -159,7 +159,7 @@ function* handleFetchOwnedGitRepositoriesRequest(action: ReturnType<typeof packi
         console.log('sagas.handleFetchOwnedGitRepositoriesRequest.res', res);
         yield put(packiActions.fetchOwnedGitRepositoriesSuccess({
                 repositories: res
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -181,7 +181,7 @@ function* handleCloneGitRepositoryRequest(action: ReturnType<typeof packiActions
         console.log('sagas.handleCloneGitRepositoryRequest.res', res);
         yield put(packiActions.cloneGitRepositorySuccess({
                 repository: res
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -197,7 +197,7 @@ function* handleCommitGitRepositoryRequest(action: ReturnType<typeof packiAction
         console.log('sagas.handleCommitGitRepositoryRequest.action', action);
         const res = yield call(callApi, 'post', config.API_URL, `github/commit/${action.payload.uid}/${action.payload.owner}/${action.payload.name}/${action.payload.branch}`, {
                 files: action.payload.files
-            });
+             });
         console.log('sagas.handleCommitGitRepositoryRequest.res', res);
         yield put(packiActions.commitGitRepositorySuccess({}));
     } 
@@ -215,7 +215,7 @@ function* handleUploadPackiTemplateRequest(action: ReturnType<typeof packiAction
         console.log('sagas.handleUploadPackiTemplateRequest.action', action);
         const res = yield call(callApi, 'post', config.API_URL, `templates/${action.payload.uid}/${action.payload.templateId}`, {
                 files: action.payload.files
-            });
+             });
         console.log('sagas.handleUploadPackiTemplateRequest.res', res);
         yield put(packiActions.uploadPackiTemplateSuccess({}));
     } 

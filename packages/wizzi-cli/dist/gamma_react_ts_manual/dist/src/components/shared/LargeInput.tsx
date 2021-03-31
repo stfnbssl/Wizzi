@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\shared\LargeInput.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -33,11 +33,11 @@ class LargeInput extends React.Component<Props, State> {
     _handleFocus = () => 
         this.setState({
             focused: true
-        });
+         });
     _handleBlur = () => 
         this.setState({
             focused: false
-        });
+         });
     _input = React.createRef<HTMLInputElement>();
     render() {
         return  (
@@ -71,7 +71,7 @@ export default withThemeName(LargeInput);
 const styles = StyleSheet.create({
     container: {
         position: 'relative'
-    }, 
+     }, 
     input: {
         outline: 0, 
         fontSize: 16, 
@@ -81,22 +81,22 @@ const styles = StyleSheet.create({
         width: '100%', 
         borderWidth: 1, 
         borderStyle: 'solid'
-    }, 
+     }, 
     normal: {
         borderColor: 'rgba(36, 44, 58, 0.1)', 
         ':focus': {
             borderColor: colors.primary
-        }
-    }, 
+         }
+     }, 
     error: {
         borderColor: colors.error
-    }, 
+     }, 
     inputLight: {
         backgroundColor: '#FFFFFF'
-    }, 
+     }, 
     inputDark: {
         backgroundColor: 'rgba(0, 0, 0, .16)'
-    }, 
+     }, 
     validation: {
         position: 'absolute', 
         backgroundColor: colors.error, 
@@ -116,6 +116,6 @@ const styles = StyleSheet.create({
             borderLeft: '6px solid transparent', 
             borderRight: '6px solid transparent', 
             borderBottom: `6px solid ${colors.error}`
-        }
-    }
-});
+         }
+     }
+ });

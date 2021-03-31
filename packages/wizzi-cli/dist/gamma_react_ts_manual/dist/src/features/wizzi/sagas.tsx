@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\wizzi\sagas.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import {all, fork, put, takeEvery, call} from 'redux-saga/effects';
 import {getType} from 'typesafe-actions';
@@ -37,7 +37,7 @@ function* handleExecuteJobRequest(action: ReturnType<typeof wizziActions.execute
         yield put(packiActions.executeJobSuccess({
                 generatedArtifacts: res.generatedArtifacts, 
                 previousArtifacts: action.payload.files
-            }));
+             }));
     } 
     catch (err) {
         if (err instanceof Error) {

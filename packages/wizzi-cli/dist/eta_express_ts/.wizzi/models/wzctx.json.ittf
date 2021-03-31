@@ -1,0 +1,126 @@
+{
+    name ""
+    version ""
+    description ""
+    { author
+        name ""
+        email ""
+    { App
+        siteUrl "https://localhost"
+        port 5000
+        baseUrl "https://localhost:5000"
+    { Build
+        useTypescript true
+        { typescript
+        useExpress true
+        { express
+            useSsl true
+            useErrors false
+        useSession true
+        { session
+            name ""
+        noCache true
+        useSocketIO false
+        { socketIO
+        useSite true
+        { site
+        useStaticIttf true
+        { ittfStatic
+        useNetlify false
+        { netlify
+        useWizzi true
+        { wizzi
+            isDev true
+        useAuthentication false
+        { authentication
+            tenant "dev-qwf9-zob.eu"
+            clientID "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV"
+            longRandomString "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg"
+            baseURL "https://localhost:5000"
+            authRequired false
+            userInfo false
+            useGithub true
+            { github
+                clientID "6a42cd4cb7247bb4e823"
+                clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
+                callbackURL "https://localhost:5000/authenticate/github/callback"
+            useLocal true
+            { local
+        useAuthorization false
+        { authorization
+        useAccount false
+        { account
+        useConfig true
+        { config
+            useEnvalid true
+            { envalid
+        useLogger false
+        { logger
+            useMorgan false
+            { morgan
+        useCors false
+        { cors
+        usePassport false
+        { passport
+        usePassportAuth0 false
+        { passportAuth0
+        useCompression false
+        { compression
+        useHelmet false
+        { helmet
+        useStaticFiles true
+        { staticFiles
+        useWizziViewEngine false
+        { wizziViewEngine
+        useStringifySafe true
+        useParseUrl true
+        useWebpackApp false
+        { webpackApp
+            [ items
+                {
+                    name "hello"
+                    writeToDisk false
+                {
+                    name "blog"
+                    writeToDisk false
+        useMongoDb false
+        { mongodb
+            user "yanez"
+            password "x5csosPN5YAsrl4Z"
+            dbPath "@cluster0.idlk7.mongodb.net"
+            dbName "wizzi"
+        useBlog false
+        { blog
+            name "blog"
+            Name "Blog"
+            [ dataModels
+                {
+                    name "post"
+                    Name "Post"
+                    Title "Blog post"
+                    Titles "Blog posts"
+                    collectionName "posts"
+                    [ fields
+                        {
+                            name "_id"
+                            type "oid"
+                            isListItem true
+                            ctrlId "fd_1_post_id"
+                            test "id"
+                        {
+                            name "author"
+                            type "string"
+                            isListItem true
+                            ctrlId "fd_1_post_author"
+                            test "Stefi"
+                        {
+                            name "title"
+                            type "string"
+                            isListItem true
+                            ctrlId "fd_1_post_title"
+                            test "My postulates"
+                        {
+                            name "content"
+                            type "string"
+                            ctrlId "fd_1_post_content"
+                            test "Bla bla"

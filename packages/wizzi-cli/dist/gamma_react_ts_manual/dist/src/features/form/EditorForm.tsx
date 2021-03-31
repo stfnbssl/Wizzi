@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\features\form\EditorForm.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -92,12 +92,12 @@ class EditorForm extends React.Component<Props, State> {
                 return {
                         visible: props.visible, 
                         values: stateDefaultValues(props.fields)
-                    };
+                     };
             }
             else {
                 return {
                         visible: props.visible
-                    };
+                     };
             }
         }
         return null;
@@ -119,7 +119,7 @@ class EditorForm extends React.Component<Props, State> {
             theme, 
             className, 
             onDismiss
-        } = this.props;
+         } = this.props;
         // console.log('EditForm.state.values', this.state.values);
         return visible ?  (
                 <div className={classes.container}>
@@ -151,8 +151,8 @@ class EditorForm extends React.Component<Props, State> {
                                                             values: {
                                                                 ...this.state.values, 
                                                                 [k]: e.target.value
-                                                            }
-                                                        })
+                                                             }
+                                                         })
                                                     }
                                                     placeholder={field.label}
                                                     validate={field.onValidate || validationOk}
@@ -167,8 +167,8 @@ class EditorForm extends React.Component<Props, State> {
                                                         SelectProps={{
                                                             MenuProps: {
                                                                 className: classes.menu
-                                                            }
-                                                        }}
+                                                             }
+                                                         }}
                                                         helperText={field.helperText}
                                                         margin="normal"
                                                         value={value}
@@ -178,8 +178,8 @@ class EditorForm extends React.Component<Props, State> {
                                                                 values: {
                                                                     ...this.state.values, 
                                                                     [k]: e.target.value
-                                                                }
-                                                            })
+                                                                 }
+                                                             })
                                                         }
                                                         placeholder={field.label}
                                                         validate={field.onValidate || validationOk}
@@ -235,30 +235,30 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: 'center', 
         boxShadow: '0 1px 0 rgba(36, 44, 58, 0.1)'
-    }, 
+     }, 
     subtitle: {
         fontSize: 16, 
         fontWeight: 500, 
         padding: 0, 
         lineHeight: '22px', 
         margin: '16px 0 6px 0'
-    }, 
+     }, 
     buttons: {
         margin: '20px 0 0 0', 
         display: 'flex', 
         justifyContent: 'space-around'
-    }, 
+     }, 
     caption: {
         marginTop: 24, 
         fontSize: '16px', 
         lineHeight: '22px', 
         textAlign: 'center'
-    }, 
+     }, 
     link: {
         cursor: 'pointer', 
         color: colors.primary, 
         textDecoration: 'underline'
-    }, 
+     }, 
     modal: {
         display: 'flex', 
         flexDirection: 'column', 
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
         textAlign: 'start', 
         borderRadius: 4, 
         boxShadow: '0 1px 4px rgba(36, 44, 58, 0.3)'
-    }, 
+     }, 
     close: {
         appearance: 'none', 
         borderRadius: '1em', 
@@ -284,37 +284,37 @@ const styles = StyleSheet.create({
         fontSize: '1em', 
         fontWeight: 'bold', 
         textAlign: 'center'
-    }, 
+     }, 
     contentLight: {
         backgroundColor: colors.content.light, 
         color: colors.text.light
-    }, 
+     }, 
     contentDark: {
         backgroundColor: colors.content.dark, 
         color: colors.text.dark, 
         border: `1px solid ${colors.border}`
-    }
-});
+     }
+ });
 const muiStyles = (theme: Theme) => 
     createStyles({
         container: {
             padding: '20px'
-        }, 
+         }, 
         title: {
             padding: '10px', 
             boxShadow: '0 1px 0 rgba(36, 44, 58, 0.1)'
-        }, 
+         }, 
         fieldContainer: {
             padding: '10px'
-        }, 
+         }, 
         button: {
             padding: '5px'
-        }, 
+         }, 
         textField: {
             marginLeft: theme.spacing.unit, 
             marginRight: theme.spacing.unit, 
             width: '100%'
-        }
-    })
+         }
+     })
 ;
 export default withStyles(muiStyles)(withThemeName(EditorForm));

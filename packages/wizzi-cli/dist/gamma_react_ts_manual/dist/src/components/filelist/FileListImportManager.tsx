@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\gamma_react_ts_manual\.wizzi\src\components\filelist\FileListImportManager.tsx.ittf
-    utc time: Wed, 24 Mar 2021 16:19:16 GMT
+    utc time: Thu, 25 Mar 2021 16:39:06 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -66,7 +66,7 @@ class FileListImportManager extends React.PureComponent<Props, State> {
             if (!this.state.isDragging) {
                 this.setState({
                     isDragging: true
-                })
+                 })
             }
             clearTimeout(this._dragTimer);
             this._dragTimer = setTimeout(this._handleDragEnd, 300);
@@ -76,7 +76,7 @@ class FileListImportManager extends React.PureComponent<Props, State> {
         if (this.state.isDragging) {
             this.setState({
                 isDragging: false
-            })
+             })
         }
     };
     _handleDrop = (e: DragEvent) => {
@@ -93,12 +93,12 @@ class FileListImportManager extends React.PureComponent<Props, State> {
     _showImportModal = () => 
         this.setState({
             isImportModalShown: true
-        });
+         });
     _hideImportModal = () => 
         this.setState({
             isImportModalShown: false, 
             itemsToImport: []
-        });
+         });
     _handleSelectFilesForImport = (items: FileItem[]) => 
         this.setState((state) => 
             ({
@@ -108,7 +108,7 @@ class FileListImportManager extends React.PureComponent<Props, State> {
                     ...items
                 ], 
                 itemsErrored: []
-            })
+             })
         );
     //
     _handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,7 +121,7 @@ class FileListImportManager extends React.PureComponent<Props, State> {
                 itemsToImport: state.itemsToImport.filter(f => 
                     f !== file
                 )
-            })
+             })
         );
     _handleProgressDismiss = () => 
         this.setState({
@@ -129,7 +129,7 @@ class FileListImportManager extends React.PureComponent<Props, State> {
             itemsErrored: [], 
             importProgress: 0, 
             isImporting: false
-        });
+         });
     render() {
         const {
             isImporting, 
@@ -139,17 +139,17 @@ class FileListImportManager extends React.PureComponent<Props, State> {
             isDragging, 
             isImportModalShown, 
             importTotal
-        } = this.state;
+         } = this.state;
         const {
             theme
-        } = this.props;
+         } = this.props;
         const importedFiles = importProgress - itemsErrored.length;
         return  (
             <div className={this.props.className}>
                 {
                     this.props.render({
                         onImportStart: this._showImportModal
-                    })
+                     })
                 }
                 {
                     isImporting ?  (
@@ -278,29 +278,29 @@ const styles = StyleSheet.create({
         padding: 48, 
         border: `2px dashed ${colors.text.dark}`, 
         borderRadius: 4
-    }, 
+     }, 
     dropzoneSmall: {
         border: `1px dashed rgba(0, 0, 0, .32)`, 
         borderRadius: 3, 
         height: '12em', 
         marginBottom: 8
-    }, 
+     }, 
     dropzoneSmallLight: {
         backgroundColor: 'rgba(255, 255, 255, .5)'
-    }, 
+     }, 
     dropzoneSmallDark: {
         backgroundColor: 'rgba(0, 0, 0, .2)'
-    }, 
+     }, 
     dropzonePlaceholder: {
         width: '100%', 
         height: '100%', 
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center'
-    }, 
+     }, 
     paragraph: {
         margin: '8px 0 16px'
-    }, 
+     }, 
     fileInputLabel: {
         margin: 0, 
         paddingLeft: 4, 
@@ -309,11 +309,11 @@ const styles = StyleSheet.create({
         cursor: 'pointer', 
         ':hover': {
             textDecoration: 'underline'
-        }
-    }, 
+         }
+     }, 
     fileInput: {
         display: 'none'
-    }, 
+     }, 
     fileList: {
         listStyle: 'none', 
         textAlign: 'left', 
@@ -321,24 +321,24 @@ const styles = StyleSheet.create({
         height: '100%', 
         width: '100%', 
         overflow: 'auto'
-    }, 
+     }, 
     fileEntry: {
         display: 'flex', 
         borderBottom: '1px solid rgba(0, 0, 0, .06)', 
         alignItems: 'center'
-    }, 
+     }, 
     fileEntrySize: {
         flex: 1, 
         opacity: 0.5, 
         margin: 8
-    }, 
+     }, 
     fileEntryName: {
         margin: 8, 
         maxWidth: '15em', 
         whiteSpace: 'nowrap', 
         textOverflow: 'ellipsis', 
         overflow: 'hidden'
-    }, 
+     }, 
     fileEntryClose: {
         padding: '4px 12px', 
         margin: '0 4px', 
@@ -346,7 +346,7 @@ const styles = StyleSheet.create({
         background: 'none', 
         border: 'none', 
         appearance: 'none'
-    }, 
+     }, 
     importProgress: {
         position: 'fixed', 
         zIndex: 10, 
@@ -358,25 +358,25 @@ const styles = StyleSheet.create({
         backgroundColor: c('editor-background'), 
         border: `1px solid ${c('editor-border')}`, 
         boxShadow: '0 2px 8px rgba(36, 44, 58, 0.3)'
-    }, 
+     }, 
     importProgressHeader: {
         display: 'flex', 
         flexDirection: 'row', 
         alignItems: 'center', 
         margin: '4px 0'
-    }, 
+     }, 
     importProgressLabel: {
         flex: 1, 
         fontSize: '1em', 
         fontWeight: 500, 
         margin: 0
-    }, 
+     }, 
     importProgressButton: {
         appearance: 'none', 
         background: 'none', 
         border: 0, 
         color: colors.primary
-    }, 
+     }, 
     importProgressBar: {
         appearance: 'none', 
         width: '100%', 
@@ -386,15 +386,15 @@ const styles = StyleSheet.create({
         overflow: 'hidden', 
         '::-webkit-progress-bar': {
             backgroundColor: 'rgba(0, 0, 0, .08)'
-        }, 
+         }, 
         '::-webkit-progress-value': {
             backgroundColor: colors.primary
-        }, 
+         }, 
         '::-moz-progress-bar': {
             backgroundColor: 'rgba(0, 0, 0, .16)'
-        }, 
+         }, 
         '::-moz-progress-value': {
             backgroundColor: colors.primary
-        }
-    }
-});
+         }
+     }
+ });

@@ -1,8 +1,20 @@
 module
-    const var i = 0
-    for 
-        left
+    class a
+        m render
             const 
                 { 
-                    @ item
-        of entryArray
+                    @ forwardedRef
+                    ... rest
+                = this.props
+                # @ts-ignore
+            return 
+                < PreferencesContext.Consumer 
+                    { 
+                        => 
+                            param props
+                            return 
+                                < Comp 
+                                    @ ref {forwardedRef}
+                                    @ {...props}
+                                    @ {...rest}
+                                # @ts-ignore

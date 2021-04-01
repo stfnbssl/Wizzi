@@ -1,0 +1,59 @@
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\eta_express_ts\.wizzi\src\features\packi\controllers\productions.ts.ittf
+    utc time: Thu, 01 Apr 2021 15:10:45 GMT
+*/
+import {Router, Request, Response} from 'express';
+import * as bodyParser from 'body-parser';
+import {ControllerType, AppInitializerType} from '../../app/types';
+import {fsTypes} from '../../filesystem';
+import {wizziTypes, wizziProds, WizziFactory} from '../../wizzi';
+import {PackiFiles, TemplateList, Template} from '../types';
+import {sendPromiseResult, sendSuccess, sendFailure} from '../../../utils/response';
+import {file} from 'wizzi';
+var jsonParser = bodyParser.json();
+export class ProductionsController implements ControllerType {
+    public path = '/api/v1/productions';
+    public router = Router();
+    public fsDb: fsTypes.FsDb | undefined;
+    initialize = (initValues: AppInitializerType) => {
+        this.fsDb = initValues.fsDb;
+        this.router.post(`${this.path}/artifact/:id`, this.generateArtifact)
+        this.router.post(`${this.path}/job`, this.executeJob)
+    };
+    private generateArtifact = async (request: Request, response: Response) => {
+        const id = request.params.id;
+        const files: PackiFiles = request.body;
+        console.log('generateArtifact.received files', Object.keys(files));
+        wizziProds.generateArtifact(id, files).then((value) => {
+            console.log('ga', value);
+            sendSuccess(response, {
+                generatedArtifact: value
+             })
+        }
+        ).catch((err) => {
+            console.log('features.packi.controllers.production.generateArtifact.err', err);
+            sendFailure(response, err, 501);
+        }
+        )
+    }
+    ;
+    private executeJob = async (request: Request, response: Response) => {
+        const files: PackiFiles = request.body;
+        console.log('ProductionsController.executeJob.received files', Object.keys(files));
+        wizziProds.executeJobs(files).then(async (fsJson) => {
+            const files = await WizziFactory.extractGeneratedFiles(fsJson);
+            console.log('features.packi.controllers.production.executeJob.generatedArtifacts', Object.keys(files));
+            sendSuccess(response, {
+                generatedArtifacts: files
+             })
+        }
+        ).catch((err) => {
+            console.log('features.packi.controllers.production.executeJob.err', err);
+            sendFailure(response, err, 501);
+        }
+        )
+    }
+    ;
+}

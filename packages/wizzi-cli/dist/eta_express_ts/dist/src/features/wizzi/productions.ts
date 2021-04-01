@@ -2,17 +2,18 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\eta_express_ts\.wizzi\src\features\wizzi\productions.ts.ittf
-    utc time: Wed, 31 Mar 2021 20:00:35 GMT
+    utc time: Thu, 01 Apr 2021 15:10:45 GMT
 */
-import * as path from 'path';
-import * as fs from 'fs';
-import * as wizzi from 'wizzi';
+import path from 'path';
+import fs from 'fs';
+import wizzi from 'wizzi';
 import {ittfDocumentScanner, folderBrowse, IttfMTreeState, FolderBrowseResult} from 'wizzi-utils';
 import {packiTypes} from '../packi';
 import {config} from '../config';
 import {createFsJsonAndFactory, ensurePackiFilePrefix, createFilesystemFactory} from './factory';
 import {GeneratedArtifact} from './types';
 import {FsJson} from 'wizzi-repo';
+
 export async function generateArtifact(filePath: string, files: packiTypes.PackiFiles):  Promise<GeneratedArtifact> {
     return new Promise(async (resolve, reject) => {
             const generator = generatorFor(filePath);
@@ -60,6 +61,7 @@ export async function generateArtifact(filePath: string, files: packiTypes.Packi
         }
         );
 }
+
 export async function loadModelJson(wf: wizzi.WizziFactory, filePath: string, context: any):  Promise<wizzi.WizziModel> {
     return new Promise(async (resolve, reject) => {
             const schemaName = schemaFromFilePath(filePath);
@@ -79,6 +81,7 @@ export async function loadModelJson(wf: wizzi.WizziFactory, filePath: string, co
         }
         );
 }
+
 export async function loadModelFs(filePath: string, context: any):  Promise<wizzi.WizziModel> {
     return new Promise(async (resolve, reject) => {
             const schemaName = schemaFromFilePath(filePath);
@@ -99,29 +102,33 @@ export async function loadModelFs(filePath: string, context: any):  Promise<wizz
         }
         );
 }
+
 export async function generateArtifactFs(filePath: string, context?: any):  Promise<GeneratedArtifact> {
     return new Promise(async (resolve, reject) => {
             const generator = generatorFor(filePath);
             if (generator) {
-                console.log('using artifact generator', generator);
+                console.log('wizzi.productions.using artifact generator', generator);
                 const wf = await createFilesystemFactory();
                 const generationContext = {
-                    modelRequestContext: {
-                        mTreeBuildUpContext: context || {}
-                     }
+                    modelRequestContext: context || {}
                  };
-                wf.loadModelAndGenerateArtifact(filePath, generationContext, generator, (err, result) => {
-                    if (err) {
-                        return reject(err);
+                try {
+                    wf.loadModelAndGenerateArtifact(filePath, generationContext, generator, (err, result) => {
+                        if (err) {
+                            return reject(err);
+                        }
+                        // console.log('Generated artifact', result);
+                        resolve({
+                            artifactContent: result, 
+                            sourcePath: filePath, 
+                            artifactGenerator: generator
+                         })
                     }
-                    // console.log('Generated artifact', result);
-                    resolve({
-                        artifactContent: result, 
-                        sourcePath: filePath, 
-                        artifactGenerator: generator
-                     })
-                }
-                )
+                    )
+                } 
+                catch (ex) {
+                    return reject(ex);
+                } 
             }
             else {
                 reject('No artifact generator available for document ' + filePath);
@@ -129,6 +136,7 @@ export async function generateArtifactFs(filePath: string, context?: any):  Prom
         }
         );
 }
+
 export async function executeJob(filePath: string, files: packiTypes.PackiFiles):  Promise<FsJson> {
     return new Promise(async (resolve, reject) => {
             const ittfDocumentUri = ensurePackiFilePrefix(filePath);
@@ -150,6 +158,7 @@ export async function executeJob(filePath: string, files: packiTypes.PackiFiles)
         }
         );
 }
+
 export async function executeJobs(files: packiTypes.PackiFiles):  Promise<FsJson> {
     return new Promise(async (resolve, reject) => {
             const jobDocumentUris = Object.keys(files).filter(k => 
@@ -184,6 +193,7 @@ export async function executeJobs(files: packiTypes.PackiFiles):  Promise<FsJson
         }
         );
 }
+
 export async function scanIttfDocument(filePath: string, rootFolder: string):  Promise<IttfMTreeState> {
     return new Promise((resolve, reject) => 
             ittfDocumentScanner.scan(filePath, {
@@ -197,6 +207,7 @@ export async function scanIttfDocument(filePath: string, rootFolder: string):  P
             )
         );
 }
+
 export async function scanIttfFolder(filePath: string, rootFolder: string):  Promise<FolderBrowseResult> {
     return new Promise((resolve, reject) => 
             folderBrowse.scan(filePath, {
@@ -210,6 +221,7 @@ export async function scanIttfFolder(filePath: string, rootFolder: string):  Pro
             )
         );
 }
+
 export async function inferAndLoadContextJson(wf: wizzi.WizziFactory, files: packiTypes.PackiFiles, filePath: string, exportName: string):  Promise<any> {
     return new Promise((resolve, reject) => {
             const pf = parseFilePath(filePath);
@@ -239,6 +251,7 @@ export async function inferAndLoadContextJson(wf: wizzi.WizziFactory, files: pac
         }
         );
 }
+
 export async function inferAndLoadContextFs(filePath: string, exportName: string):  Promise<any> {
     return new Promise((resolve, reject) => {
             const pf = parseFilePath(filePath);
@@ -263,6 +276,7 @@ export async function inferAndLoadContextFs(filePath: string, exportName: string
         }
         );
 }
+
 const schemaModuleMap: { 
     [k: string]: string;
 } = {
@@ -281,6 +295,7 @@ const schemaModuleMap: {
     vue: 'vue/document', 
     xml: 'xml/document'
  };
+
 function generatorFor(filePath: string):  string | undefined {
     const pf = parseFilePath(filePath);
     if (pf.isIttfDocument) {
@@ -288,6 +303,7 @@ function generatorFor(filePath: string):  string | undefined {
     }
     return undefined;
 }
+
 function schemaFromFilePath(filePath: string):  string | undefined {
     const pf = parseFilePath(filePath);
     if (pf.isIttfDocument) {
@@ -295,11 +311,13 @@ function schemaFromFilePath(filePath: string):  string | undefined {
     }
     return undefined;
 }
+
 type parsedFilePath = { 
     seedname: string;
     schema: string;
     isIttfDocument: boolean;
 };
+
 export function parseFilePath(filePath: string):  parsedFilePath {
     const nameParts = path.basename(filePath).split('.');
     if (nameParts[nameParts.length - 1] === 'ittf') {

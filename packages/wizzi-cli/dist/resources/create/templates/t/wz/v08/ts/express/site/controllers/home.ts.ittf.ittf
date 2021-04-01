@@ -1,41 +1,24 @@
 $group
 
-    import 
-        @ Router
-        @ Request
-        @ Response
-        from 'express'
+    $
+        var lparen = '(';
     
-    import 
-        @ ControllerType
-        @ AppInitializerType
-        from '../../features/app/types'
+    ${'$'}
+        var ctrl = {
+            name: 'Home',
+            path: ''
+        }
 
-    import { sendHtml } from '../../utils/sendResponse'
-    
-    export 
-        class HomeController
-            :implements ControllerType
-            p path
-                :public 
-                = ''
-            p router
-                :public 
-                _ Router()
-            => initialize
-                param initValues
-                    :ref AppInitializerType
-                _ this.router.get
-                    `lit 
-                        + /
-                    @expr this.home
-            p home
-                :private 
-                async=> 
-                    param request
-                        :ref Request
-                    param response
-                        :ref Response
-                    _ sendHtml
-                        @ response
-                        @ '<h1>Hello world</h1>'
+    controller${lparen} &ctrl )
+        
+        _ this.router.get
+            `lit 
+                + /
+            @expr this.home
+
+        ${'$'}append handlers
+
+            handler${lparen} home )
+                _ sendHtml
+                    @ response
+                    @ '<h1>Hello world</h1>'

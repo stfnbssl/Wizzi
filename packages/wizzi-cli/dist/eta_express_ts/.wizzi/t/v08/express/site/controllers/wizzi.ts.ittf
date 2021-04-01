@@ -1,0 +1,15 @@
+$group
+    $params &md
+    $
+        var ctrl = {
+            name: 'Wizzi',
+            path: '/wizzi'
+        }
+    controller( &ctrl )
+        _ this.router.get(`/`, this.index)
+        $append handlers
+            handler( index )
+                _ response.render
+                    @ 'wizzi/index.html.ittf'
+                    {
+                        @ title 'Wizzi section'

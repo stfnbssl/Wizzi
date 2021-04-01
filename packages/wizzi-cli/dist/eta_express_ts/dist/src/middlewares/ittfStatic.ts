@@ -2,21 +2,21 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\eta_express_ts\.wizzi\src\middlewares\ittfStatic.ts.ittf
-    utc time: Wed, 31 Mar 2021 20:00:35 GMT
+    utc time: Thu, 01 Apr 2021 15:10:45 GMT
 */
-import * as stringify from 'json-stringify-safe';
-import * as util from 'util';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as parseUrl from 'parseurl';
+import util from 'util';
+import path from 'path';
+import fs from 'fs';
+import stringify from 'json-stringify-safe';
+import parseUrl from 'parseurl';
 import {Application, RequestHandler, Request, Response} from 'express';
 import {MiddlewareType} from '../features/app/types';
 import {config} from '../features/config';
 import {wizziProds} from '../features/wizzi';
 import {WizziModel} from 'wizzi';
 export const IttfStaticMiddleware: MiddlewareType = (app: Application) => {
-    console.log('IttfStaticMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', '..', 'ittf'));
-    app.use('/ittf', ittfMiddleware(path.resolve(__dirname, '..', '..', '..', 'ittf'), '/ittf'));
+    console.log('IttfStaticMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', 'ittf'));
+    app.use('/ittf', ittfMiddleware(path.resolve(__dirname, '..', '..', 'ittf'), '/ittf'));
 }
 ;
 const extContentTypeMap: { 
@@ -40,6 +40,7 @@ const extContentTypeMap: {
     '.yml': 'text/yanl', 
     '.xml': 'text/xml'
  };
+
 function contentTypeFor(file: string):  string | undefined {
     const nameParts = path.basename(file).split('.');
     if (nameParts[nameParts.length - 1] === 'ittf') {
@@ -47,6 +48,7 @@ function contentTypeFor(file: string):  string | undefined {
     }
     return undefined;
 }
+
 // 
 function ittfMiddleware(basePath: string, routePath: string):  RequestHandler {
     return async (req: Request, res: Response, next: Function) => {
@@ -63,22 +65,24 @@ function ittfMiddleware(basePath: string, routePath: string):  RequestHandler {
             // ??? urlPathName.substr(routePath.length);
             const filePath = path.join(basePath, pathname);
             const extname = path.extname(filePath);
-            console.log('ittf.pathname, pathname, filePath', urlPathName, pathname, filePath, path.extname(filePath));
+            var queryMeta = (req.query.meta as string);
+            console.log('middleware.ittfStatic', 'urlPathName', urlPathName, 'pathname', pathname, 'filePath', filePath, 'path.extname(filePath)', path.extname(filePath), 'queryMeta', queryMeta);
             if (fs.existsSync(filePath) === false) {
                 console.log('filePath do not exists', filePath);
                 return next();
             }
             if (fs.statSync(filePath).isDirectory()) {
-                return sendFolderScan(filePath, basePath, req.query.meta, res);
+                console.log('filePath is directory', filePath);
+                return sendFolderScan(filePath, basePath, queryMeta, res);
             }
             let contentType = contentTypeFor(filePath);
             console.log('contentType', contentType);
             if (contentType) {
-                if (req.query.meta && req.query.meta === 'html') {
+                if (queryMeta && queryMeta === 'html') {
                     try {
                         const documentState = await wizziProds.scanIttfDocument(filePath, path.dirname(basePath));
                         // console.log('generated.meta.document', generated.artifactContent);
-                        const generated = await wizziProds.generateArtifactFs(config.MetaHtmlIttfPath, {
+                        const generated = await wizziProds.generateArtifactFs(config.metaHtmlIttfPath, {
                                 wizzischema: 'html', 
                                 path: filePath, 
                                 req, 
@@ -99,10 +103,9 @@ function ittfMiddleware(basePath: string, routePath: string):  RequestHandler {
                 }
                 return contextLoader(filePath, req, function(err: any, modelContext: WizziModel) {
                         if (err) {
-                            res.writeHead(200, {
-                                'Content-Type': 'application/json'
-                             })
-                            return res.end(err);
+                            return sendError(res, err, {
+                                    format: 'json'
+                                 });
                         }
                         wizziProds.generateArtifactFs(filePath, modelContext).then((generated) => {
                             console.log('generated.artifactContent', generated.artifactContent);
@@ -113,10 +116,9 @@ function ittfMiddleware(basePath: string, routePath: string):  RequestHandler {
                             res.end(generated.artifactContent);
                         }
                         ).catch((err) => {
-                            res.writeHead(200, {
-                                'Content-Type': 'application/json'
-                             })
-                            res.end(err);
+                            return sendError(res, err, {
+                                    format: 'json'
+                                 });
                         }
                         )
                     });
@@ -135,7 +137,7 @@ type contextRequest = {
     relPath: any;
 };
 async function contextLoader(resourceFilePath: string, req: Request, callback: any) {
-    const contextRequest: string = req.query._context;
+    const contextRequest: string = (req.query._context as string);
     if (contextRequest && contextRequest.length > 0) {
         const ss = contextRequest.split(';');
         const requests: contextRequest[] = [];
@@ -145,7 +147,7 @@ async function contextLoader(resourceFilePath: string, req: Request, callback: a
                 fullPath: undefined, 
                 relPath: undefined
              };
-            const type_path = req.query['_' + element];
+            const type_path = (req.query['_' + element] as string);
             console.log('contextLoader exportName, type_path', element, type_path);
             if (!type_path) {
                 return (callback({
@@ -209,15 +211,17 @@ async function contextLoader(resourceFilePath: string, req: Request, callback: a
         } 
     }
 }
+
 async function sendFolderScan(folderPath: string, root: string, meta: string, res: Response) {
     try {
         const folderState = await wizziProds.scanIttfFolder(folderPath, path.dirname(root));
+        console.log('sendFolderScan', 'folderState.keys', Object.keys(folderState));
         if (meta === 'json') {
             return sendJSONStringified(res, folderState);
         }
         else {
             // console.log('generated.meta.document', generated.artifactContent);
-            const generated = await wizziProds.generateArtifactFs(config.MetaFolderIttfPath, {
+            const generated = await wizziProds.generateArtifactFs(config.metaFolderIttfPath, {
                     wizzischema: 'html', 
                     path: folderPath, 
                     fs: folderState
@@ -231,14 +235,17 @@ async function sendFolderScan(folderPath: string, root: string, meta: string, re
         }
     } 
     catch (ex) {
+        console.log('sendFolderScan.exception', ex);
         sendError(res, ex, {
             format: 'json'
          })
     } 
 }
+
 function sendJSONStringified(res: Response, wizziModelInstance: any) {
     res.send('<pre>' + stringify(cleanCircular(wizziModelInstance, []), null, 2) + '</pre>');
 }
+
 function cleanCircular(obj: any, stock: any[]) {
     if (!obj) {
         return ;
@@ -288,6 +295,7 @@ function cleanCircular(obj: any, stock: any[]) {
     }
     return obj;
 }
+
 function sendError(res: Response, err: any, options: any) {
     options = options || {};
     const code = options.code || 999;

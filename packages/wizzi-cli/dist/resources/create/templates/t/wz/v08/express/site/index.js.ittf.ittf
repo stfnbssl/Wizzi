@@ -4,6 +4,7 @@ $group
         import 
             @ HomeNoViewController
             from './controllers/homeNoView.js'
+    ${'$'}if wzCtx.Build.useWizziViewEngine
         import 
             @ WizziController
             from './controllers/wizzi.js'
@@ -18,6 +19,7 @@ $group
         [ 
             ${'$'}if wzCtx.Build.useSite
                 @ new HomeNoViewController()
+            ${'$'}if wzCtx.Build.useWizziViewEngine
                 @ new WizziController()
             ${'$'}if wzCtx.Build.useSite
                 ${'$'}if wzCtx.Build.useAuth

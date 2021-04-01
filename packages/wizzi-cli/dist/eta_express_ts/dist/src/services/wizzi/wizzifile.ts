@@ -2,45 +2,59 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\eta_express_ts\.wizzi\src\services\wizzi\wizzifile.ts.ittf
-    utc time: Wed, 31 Mar 2021 20:00:35 GMT
+    utc time: Thu, 01 Apr 2021 15:10:45 GMT
 */
-import * as util from 'util';
-import * as path from 'path';
-import * as chokidar from 'chokidar';
-import config from './config';
+import util from 'util';
+import path from 'path';
+import chokidar from 'chokidar';
+import {getConfigValues} from './config';
+import {ConfigType} from '../../features/config';
+import {WizziConfigType} from './types';
 const FACTORY_SITE = 'site';
 const MODEL_TICKET_MAINSITE = 'mainsite';
-console.log('config', config);
-const __ittfPath = path.join(__dirname, '..', '..', '..', '..', 'ittf');
+var appConfig: ConfigType;
+var wizziConfig: WizziConfigType;
+var runnerModelsFolder: string;
+var watcher: chokidar.FSWatcher;
 const md: { 
     [k: string]: any;
 } = {};
+md.setAppConfig = function(config: ConfigType) {
+    appConfig = config;
+    wizziConfig = getConfigValues(appConfig.ittfPath, appConfig.dataPath);
+    console.log('wizziConfig', wizziConfig);
+    runnerModelsFolder = path.join(appConfig.ittfPath, 'meta', 'models');
+    watcher = chokidar.watch(runnerModelsFolder + '/**/*.ittf', {
+        persistent: true
+     });
+    console.log('wizzifile is watching', runnerModelsFolder + '/**/*.ittf');
+};
 md.models = {};
 let runnerServerInstance: any = null;
-const runnerModelsFolder = path.join(__ittfPath, 'meta', 'models');
-const watcher = chokidar.watch(runnerModelsFolder + '/**/*.ittf', {
-    persistent: true
- });
 md.onConfig = function(wizziConfig: any, callback: Function) {
     // 
     // 
-    wizziConfig.set('meta-html-ittf-path', path.join(__ittfPath, 'meta', 'html', 'index.html.ittf'));
+    wizziConfig.set('meta-html-ittf-path', path.join(appConfig.ittfPath, 'meta', 'html', 'index.html.ittf'))
     // 
     // 
-    wizziConfig.set('meta-folder-ittf-path', path.join(__ittfPath, 'meta', 'folder', 'index.html.ittf'));
+    wizziConfig.set('meta-folder-ittf-path', path.join(appConfig.ittfPath, 'meta', 'folder', 'index.html.ittf'))
     // 
-    wizziConfig.set('meta-html-text-path', path.join(__ittfPath, 'meta', 'text', 'index.html.ittf'));
+    wizziConfig.set('meta-html-text-path', path.join(appConfig.ittfPath, 'meta', 'text', 'index.html.ittf'))
     console.log('wizzifile.onConfig');
     callback(null);
 };
+
 md.onStart = function(runnerServer: any, wizziConfig: any, callback: Function) {
     console.log('wizzifile.onStart.enter');
     runnerServerInstance = runnerServer;
     runnerServer.registerFsNoAclFactory(FACTORY_SITE, {
         plugins: {
-            pluginsBaseFolder: __dirname, 
+            pluginsBaseFolder: 'C:/My/wizzi/stfnbssl/wizzi/packages', 
             items: [
-                'wizzi-web'
+                './wizzi-core/dist/index.js', 
+                './wizzi-js/dist/index.js', 
+                './wizzi-web/dist/index.js', 
+                './wizzi-meta/dist/index.js'
             ]
          }
      })
@@ -48,6 +62,7 @@ md.onStart = function(runnerServer: any, wizziConfig: any, callback: Function) {
     console.log('wizzifile.onStart.exit');
     callback(null);
 };
+
 md.onPrepare = function(factoryName: string, runnerServer: any, wizziConfig: any, callback: Function) {
     console.log('wizzifile.onPrepare.enter.factoryName', factoryName);
     if (factoryName === FACTORY_SITE) {
@@ -74,6 +89,7 @@ md.onPrepare = function(factoryName: string, runnerServer: any, wizziConfig: any
         callback(null);
     }
 };
+
 md.defaultApi = function(name: string, query: string) {
     console.log('wizzifile.defaultApi.request', name, query);
     if (name === 'demos') {
@@ -94,6 +110,7 @@ md.defaultApi = function(name: string, query: string) {
     }
     throw new Error('wizzifile.defaultApi. Unknown api name: ' + name);
 };
+
 function loadRuntimeModels(callback?: Function) {
     var mainSiteIttfPath = path.join(runnerModelsFolder, 'main.site.ittf');
     console.log('wizzifile loading', mainSiteIttfPath);

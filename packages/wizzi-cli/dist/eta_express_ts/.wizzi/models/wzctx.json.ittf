@@ -31,6 +31,20 @@
         useWizzi true
         { wizzi
             isDev true
+            [ plugins
+                "./wizzi-core/dist/index.js"
+                "./wizzi-js/dist/index.js"
+                "./wizzi-web/dist/index.js"
+                "./wizzi-meta/dist/index.js"
+            pluginsBaseFolder "C:/My/wizzi/stfnbssl/wizzi/packages"
+            { globalContext
+                wzConfigIsDevelopment true
+        useWizziViewEngine true
+        { wizziViewEngine
+        usePacki true
+        { packi
+            endPoint "http://localhost:5000/api/v1"
+            templatesFolder "data/packi/templates"
         useAuthentication false
         { authentication
             tenant "dev-qwf9-zob.eu"
@@ -70,8 +84,6 @@
         { helmet
         useStaticFiles true
         { staticFiles
-        useWizziViewEngine false
-        { wizziViewEngine
         useStringifySafe true
         useParseUrl true
         useWebpackApp false

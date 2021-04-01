@@ -1,11 +1,7 @@
 $group
     $params &md
-    import
-        as path
-        from 'path'
-    import
-        as wizzi
-        from 'wizzi'
+    import path from 'path'
+    import wizzi from 'wizzi'
     import
         @ JsonComponents
         @ JsonDocumentDto
@@ -28,6 +24,7 @@ $group
     import
         @ config
         from 'isomorphic-git'
+    +
     export
         function packiFilesToJsonDocuments
             param files
@@ -49,6 +46,7 @@ $group
                                 @ path filePath
                                 @ content files[value].contents
             return jsonDocuments
+    +
     export
         async-function createFilesystemFactory
             param globalContext
@@ -70,7 +68,7 @@ $group
                             :string
                 =
                     {
-            if appConfig.IsWizziDev
+            if appConfig.isWizziDev
                 set gc['isWizziStudio'] = true
             return
                 new Promise
@@ -81,9 +79,9 @@ $group
                             {
                                 { plugins
                                     [ items
-                                        @ 'wizzi-core'
-                                        @ 'wizzi-js'
-                                        @ 'wizzi-web'
+                                        $foreach item in wzCtx.Build.wizzi.plugins
+                                            @ '${item}'
+                                    @ pluginsBaseFolder '${wzCtx.Build.wizzi.pluginsBaseFolder}'
                                 @ globalContext
                                     _ Object.assign
                                         {
@@ -97,6 +95,7 @@ $group
                                 if err
                                     return reject(err)
                                 _ resolve(wf)
+    +
     export
         async-function createFsJsonAndFactory
             param files
@@ -155,6 +154,7 @@ $group
                                             {
                                                 @ wf
                                                 @ fsJson
+    +
     export
         async-function createFsJson
             param files
@@ -190,6 +190,7 @@ $group
                                 if err
                                     return reject(err)
                                 _ resolve(result)
+    +
     export
         async-function extractGeneratedFiles
             param fsJson
@@ -228,6 +229,7 @@ $group
                                                                 :string
                                                     @ generated true
                                 _ resolve(files)
+    +
     const schemaPluginMap
         :{
             :index
@@ -267,6 +269,7 @@ $group
                     @ 'wizzi-web'
                 [ vue
                     @ 'wizzi-web'
+    +
     function pluginsFor
         param file
             :string
@@ -277,6 +280,7 @@ $group
         if nameParts[nameParts.length - 1] === 'ittf'
             return schemaPluginMap[nameParts[nameParts.length - 2]] || []
         return []
+    +
     export
         function ensurePackiFilePrefix
             param filePath

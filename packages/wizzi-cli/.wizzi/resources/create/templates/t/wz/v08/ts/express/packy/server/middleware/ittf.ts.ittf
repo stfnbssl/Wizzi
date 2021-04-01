@@ -120,7 +120,7 @@ module
                             const generated
                                 await 
                                     _ wizziProds.generateArtifactFs
-                                        @expr config.MetaHtmlIttfPath
+                                        @expr config.metaHtmlIttfPath
                                         { 
                                             @ wizzischema 'html'
                                             @ path filePath
@@ -346,7 +346,7 @@ module
                 const generated
                     await 
                         _ wizziProds.generateArtifactFs
-                            @expr config.MetaFolderIttfPath
+                            @expr config.metaFolderIttfPath
                             { 
                                 @ wizzischema 'html'
                                 @ path folderPath

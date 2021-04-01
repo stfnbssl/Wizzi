@@ -73,7 +73,7 @@ function ittfMiddleware(basePath, routePath) {
                 if (req.query.meta && req.query.meta === 'html') {
                     try {
                         const documentState = await wizziProds.scanIttfDocument(filePath, path.dirname(basePath));
-                        const generated = await wizziProds.generateArtifactFs(config.MetaHtmlIttfPath, {
+                        const generated = await wizziProds.generateArtifactFs(config.metaHtmlIttfPath, {
                                 wizzischema: 'html', 
                                 path: filePath, 
                                 req, 
@@ -190,7 +190,7 @@ async function sendFolderScan(folderPath, root, meta, res) {
             return sendJSONStringified(res, folderState);
         }
         else {
-            const generated = await wizziProds.generateArtifactFs(config.MetaFolderIttfPath, {
+            const generated = await wizziProds.generateArtifactFs(config.metaFolderIttfPath, {
                     wizzischema: 'html', 
                     path: folderPath, 
                     fs: folderState

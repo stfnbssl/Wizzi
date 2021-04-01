@@ -22,7 +22,9 @@ $group
                     => 
                         param resolve
                         param reject
-                        _ console.log('wizzifile', wizzifile)
+                        _ wizzifile.setAppConfig
+                            @ config
+                        log 'wizzifile', wizzifile
                         _ wizzi.startRunnerServer
                             { 
                                 @ cwd __dirname

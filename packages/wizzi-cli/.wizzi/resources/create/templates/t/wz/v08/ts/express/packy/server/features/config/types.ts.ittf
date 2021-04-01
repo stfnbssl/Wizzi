@@ -34,13 +34,13 @@ module
                     :string 
                 :p GithubCallbackURL
                     :string 
-                :p IsWizziDev
+                :p isWizziDev
                     :boolean 
-                :p MetaHtmlIttfPath
+                :p metaHtmlIttfPath
                     :string 
-                :p MetaFolderIttfPath
+                :p metaFolderIttfPath
                     :string 
-                :p MetaHtmlTextPath
+                :p metaHtmlTextPath
                     :string 
-                :p PackiApiEndpoint
+                :p packiApiEndpoint
                     :string 

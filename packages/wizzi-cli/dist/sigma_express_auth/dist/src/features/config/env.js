@@ -41,9 +41,9 @@ export default function create() {
             githubClientID: checkedEnv.GITHUB_CLIENT_ID, 
             githubClientSecret: checkedEnv.GITHUB_CLIENT_SECRET, 
             githubCallbackURL: checkedEnv.GITHUB_CALLBACK_URL, 
-            MetaHtmlIttfPath: path.join(__ittfPath, 'meta', 'html', 'index.html.ittf'), 
-            MetaFolderIttfPath: path.join(__ittfPath, 'meta', 'folder', 'index.html.ittf'), 
-            MetaHtmlTextPath: path.join(__ittfPath, 'meta', 'text', 'index.html.ittf')
+            metaHtmlIttfPath: path.join(__ittfPath, 'meta', 'html', 'index.html.ittf'), 
+            metaFolderIttfPath: path.join(__ittfPath, 'meta', 'folder', 'index.html.ittf'), 
+            metaHtmlTextPath: path.join(__ittfPath, 'meta', 'text', 'index.html.ittf')
         };
         Object.keys(config).forEach((element) => {
             if (element.indexOf("Pass") < 0 && element.indexOf("Secr") < 0) {

@@ -2,16 +2,17 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\dist\eta_express_ts\.wizzi\src\features\wizzi\factory.ts.ittf
-    utc time: Wed, 31 Mar 2021 20:00:35 GMT
+    utc time: Thu, 01 Apr 2021 15:10:45 GMT
 */
-import * as path from 'path';
-import * as wizzi from 'wizzi';
+import path from 'path';
+import wizzi from 'wizzi';
 import {JsonComponents, JsonDocumentDto, FsJson} from 'wizzi-repo';
 import {packiFilePrefix} from '../config/env';
 import {packiTypes} from '../packi';
 import {config as appConfig} from '../config';
 import {JsonWizziFactory, FilesystemWizziFactory} from './types';
 import {config} from 'isomorphic-git';
+
 export function packiFilesToJsonDocuments(files: packiTypes.PackiFiles):  JsonDocumentDto[] {
     const jsonDocuments: JsonDocumentDto[] = [];
     Object.keys(files).map((value) => {
@@ -26,23 +27,26 @@ export function packiFilesToJsonDocuments(files: packiTypes.PackiFiles):  JsonDo
     )
     return jsonDocuments;
 }
+
 export async function createFilesystemFactory(globalContext?: { 
     [k: string]: any;
 }):  Promise<wizzi.WizziFactory> {
     const gc: { 
         [k: string]: any;
     } = {};
-    if (appConfig.IsWizziDev) {
+    if (appConfig.isWizziDev) {
         gc['isWizziStudio'] = true;
     }
     return new Promise((resolve, reject) => 
             wizzi.fsFactory({
                 plugins: {
                     items: [
-                        'wizzi-core', 
-                        'wizzi-js', 
-                        'wizzi-web'
-                    ]
+                        './wizzi-core/dist/index.js', 
+                        './wizzi-js/dist/index.js', 
+                        './wizzi-web/dist/index.js', 
+                        './wizzi-meta/dist/index.js'
+                    ], 
+                    pluginsBaseFolder: 'C:/My/wizzi/stfnbssl/wizzi/packages'
                  }, 
                 globalContext: Object.assign({}, gc, globalContext || {})
              }, function(err, wf) {
@@ -53,6 +57,7 @@ export async function createFilesystemFactory(globalContext?: {
             })
         );
 }
+
 export async function createFsJsonAndFactory(files: packiTypes.PackiFiles):  Promise<JsonWizziFactory> {
     const plugins: string[] = [];
     const jsonDocuments: JsonDocumentDto[] = [];
@@ -97,6 +102,7 @@ export async function createFsJsonAndFactory(files: packiTypes.PackiFiles):  Pro
             )
         );
 }
+
 export async function createFsJson(files: packiTypes.PackiFiles):  Promise<FsJson> {
     const jsonDocuments: JsonDocumentDto[] = [];
     Object.keys(files).map((value) => {
@@ -120,6 +126,7 @@ export async function createFsJson(files: packiTypes.PackiFiles):  Promise<FsJso
             )
         );
 }
+
 export async function extractGeneratedFiles(fsJson: FsJson):  Promise<packiTypes.PackiFiles> {
     const files: packiTypes.PackiFiles = {};
     return new Promise((resolve, reject) => 
@@ -144,6 +151,7 @@ export async function extractGeneratedFiles(fsJson: FsJson):  Promise<packiTypes
             )
         );
 }
+
 const schemaPluginMap: { 
     [k: string]: string[];
 } = {
@@ -192,6 +200,7 @@ const schemaPluginMap: {
         'wizzi-web'
     ]
  };
+
 function pluginsFor(file: string):  string[] {
     const nameParts = path.basename(file).split('.');
     if (nameParts[nameParts.length - 1] === 'ittf') {
@@ -199,6 +208,7 @@ function pluginsFor(file: string):  string[] {
     }
     return [];
 }
+
 export function ensurePackiFilePrefix(filePath: string) {
     return filePath.startsWith(packiFilePrefix) ? filePath : packiFilePrefix + filePath;
 }

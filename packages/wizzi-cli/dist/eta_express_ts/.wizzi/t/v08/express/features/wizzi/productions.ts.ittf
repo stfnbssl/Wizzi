@@ -1,14 +1,8 @@
 $group
     $params &md
-    import
-        as path
-        from 'path'
-    import
-        as fs
-        from 'fs'
-    import
-        as wizzi
-        from 'wizzi'
+    import path from 'path'
+    import fs from 'fs'
+    import wizzi from 'wizzi'
     import
         @ ittfDocumentScanner
         @ folderBrowse
@@ -32,6 +26,7 @@ $group
     import
         @ FsJson
         from 'wizzi-repo'
+    +
     export
         async-function generateArtifact
             param filePath
@@ -48,7 +43,7 @@ $group
                         param resolve
                         param reject
                         const generator = generatorFor(filePath)
-                        _ console.log('wizzi.productions.using artifact generator', generator)
+                        log 'wizzi.productions.using artifact generator', generator
                         if generator
                             let jsonwf
                                 :any
@@ -85,7 +80,7 @@ $group
                                         ...
                                             await
                                                 _ inferAndLoadContextJson(jsonwf.wf, files, ittfDocumentUri, 'twin')
-                                _ console.log('wizzi.productions.generateArtifact.context', Object.keys(context))
+                                log 'wizzi.productions.generateArtifact.context', Object.keys(context)
                             catch ex
                                 return reject(ex)
                             _ jsonwf.wf.loadModelAndGenerateArtifact
@@ -109,6 +104,7 @@ $group
                                         # console.log('Generated artifact', result);
                         else
                             _ reject('No artifact generator available for document ' + filePath)
+    +
     export
         async-function loadModelJson
             param wf
@@ -141,6 +137,7 @@ $group
                                     return reject(err)
                                 _ resolve(result)
                                     # console.log('Generated artifact', result);
+    +
     export
         async-function loadModelFs
             param filePath
@@ -174,6 +171,7 @@ $group
                                     return reject(err)
                                 _ resolve(result)
                                     # console.log('Generated artifact', result);
+    +
     export
         async-function generateArtifactFs
             param filePath
@@ -192,34 +190,37 @@ $group
                         param reject
                         const generator = generatorFor(filePath)
                         if generator
-                            _ console.log('using artifact generator', generator)
+                            log 'wizzi.productions.using artifact generator', generator
                             const wf
                                 await
                                     _ createFilesystemFactory()
                             const generationContext
                                 {
-                                    { modelRequestContext
-                                        @ mTreeBuildUpContext
-                                            ||
-                                                + context
-                                                {
-                            _ wf.loadModelAndGenerateArtifact
-                                @ filePath
-                                @ generationContext
-                                @ generator
-                                =>
-                                    param err
-                                    param result
-                                    if err
-                                        return reject(err)
-                                    _ resolve
-                                        {
-                                            @ artifactContent result
-                                            @ sourcePath filePath
-                                            @ artifactGenerator generator
-                                        # console.log('Generated artifact', result);
+                                    @ modelRequestContext
+                                        ||
+                                            + context
+                                            {
+                            try
+                                _ wf.loadModelAndGenerateArtifact
+                                    @ filePath
+                                    @ generationContext
+                                    @ generator
+                                    =>
+                                        param err
+                                        param result
+                                        if err
+                                            return reject(err)
+                                        _ resolve
+                                            {
+                                                @ artifactContent result
+                                                @ sourcePath filePath
+                                                @ artifactGenerator generator
+                                            # console.log('Generated artifact', result);
+                            catch ex
+                                return reject(ex)
                         else
                             _ reject('No artifact generator available for document ' + filePath)
+    +
     export
         async-function executeJob
             param filePath
@@ -251,6 +252,7 @@ $group
                                     return reject(err)
                                 _ console.log('Job executed. result', result)
                                 _ resolve(jsonwf.fsJson)
+    +
     export
         async-function executeJobs
             param files
@@ -297,6 +299,7 @@ $group
                                         _ console.log('Job executed. result', result)
                                         _ execJob(index + 1)
                         _ execJob(0)
+    +
     export
         async-function scanIttfDocument
             param filePath
@@ -322,6 +325,7 @@ $group
                                 if err
                                     return reject(err)
                                 _ resolve(result)
+    +
     export
         async-function scanIttfFolder
             param filePath
@@ -347,6 +351,7 @@ $group
                                 if err
                                     return reject(err)
                                 _ resolve(result)
+    +
     export
         async-function inferAndLoadContextJson
             param wf
@@ -396,6 +401,7 @@ $group
                         else
                             _ resolve
                                 {
+    +
     export
         async-function inferAndLoadContextFs
             param filePath
@@ -433,6 +439,7 @@ $group
                         else
                             _ resolve
                                 {
+    +
     const schemaModuleMap
         :{
             :index
@@ -455,6 +462,7 @@ $group
                 @ vml 'vml/document'
                 @ vue 'vue/document'
                 @ xml 'xml/document'
+    +
     function generatorFor
         param filePath
             :string
@@ -466,6 +474,7 @@ $group
         if pf.isIttfDocument
             return schemaModuleMap[pf.schema]
         return undefined
+    +
     function schemaFromFilePath
         param filePath
             :string
@@ -477,6 +486,7 @@ $group
         if pf.isIttfDocument
             return pf.schema
         return undefined
+    +
     :type parsedFilePath
         :{
             :p seedname
@@ -485,6 +495,7 @@ $group
                 :string
             :p isIttfDocument
                 :boolean
+    +
     export
         function parseFilePath
             param filePath

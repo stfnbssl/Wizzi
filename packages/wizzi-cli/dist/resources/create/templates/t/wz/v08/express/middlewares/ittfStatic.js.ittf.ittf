@@ -91,7 +91,7 @@ $group
                             const generated
                                 await 
                                     _ wizziProds.generateArtifactFs
-                                        @ config.MetaHtmlIttfPath
+                                        @ config.metaHtmlIttfPath
                                         { 
                                             @ wizzischema 'html'
                                             @ path filePath
@@ -258,7 +258,7 @@ $group
                 const generated
                     await 
                         _ wizziProds.generateArtifactFs
-                            @ config.MetaFolderIttfPath
+                            @ config.metaFolderIttfPath
                             { 
                                 @ wizzischema 'html'
                                 @ path folderPath

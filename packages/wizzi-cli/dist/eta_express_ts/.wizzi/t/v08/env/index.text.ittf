@@ -5,6 +5,9 @@ $group
     NO_CACHE=${wzCtx.Build.noCache}
     $if wzCtx.Build.useWizzi
         IS_WIZZI_DEV=${wzCtx.Build.wizzi.isDev}
+    $if wzCtx.Build.usePacki
+        PACKI_API_ENDPOINT=${wzCtx.Build.packi.endPoint}
+        PACKI_TEMPLATES_FOLDER=${wzCtx.Build.packi.templatesFolder}
     $if wzCtx.Build.useAuthentication
         AUTH0_ISSUER_BASE_URL=https://${wzCtx.Build.authentication.tenant}.auth0.com
         AUTH0_CLIENT_ID=${wzCtx.Build.authentication.clientID}

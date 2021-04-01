@@ -1,20 +1,10 @@
 $group
     $params &md
-    import
-        as stringify
-        from 'json-stringify-safe'
-    import
-        as util
-        from 'util'
-    import
-        as path
-        from 'path'
-    import
-        as fs
-        from 'fs'
-    import
-        as parseUrl
-        from 'parseurl'
+    import util from 'util'
+    import path from 'path'
+    import fs from 'fs'
+    import stringify from 'json-stringify-safe'
+    import parseUrl from 'parseurl'
     import
         @ Application
         @ RequestHandler
@@ -40,8 +30,8 @@ $group
                 =>
                     param app
                         :ref Application
-                    log 'IttfStaticMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', '..', 'ittf')
-                    _ app.use('/ittf', ittfMiddleware(path.resolve(__dirname, '..', '..', '..', 'ittf'), '/ittf'))
+                    log 'IttfStaticMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', 'ittf')
+                    _ app.use('/ittf', ittfMiddleware(path.resolve(__dirname, '..', '..', 'ittf'), '/ittf'))
     const extContentTypeMap
         :{
             :index
@@ -67,6 +57,7 @@ $group
                 @ '.yaml' 'text/yanl'
                 @ '.yml' 'text/yanl'
                 @ '.xml' 'text/xml'
+    +
     function contentTypeFor
         param file
             :string
@@ -78,6 +69,7 @@ $group
         if nameParts[nameParts.length - 1] === 'ittf'
             return extContentTypeMap['.' + nameParts[nameParts.length - 2]]
         return undefined
+    +
     function ittfMiddleware
         param basePath
             :string
@@ -104,16 +96,18 @@ $group
                 const filePath = path.join(basePath, pathname)
                     # ??? urlPathName.substr(routePath.length);
                 const extname = path.extname(filePath)
-                _ console.log('ittf.pathname, pathname, filePath', urlPathName, pathname, filePath, path.extname(filePath))
+                var queryMeta = (req.query.meta as string)
+                log 'middleware.ittfStatic', 'urlPathName', urlPathName, 'pathname', pathname, 'filePath', filePath, 'path.extname(filePath)', path.extname(filePath), 'queryMeta', queryMeta
                 if fs.existsSync(filePath) === false
-                    _ console.log('filePath do not exists', filePath)
+                    log 'filePath do not exists', filePath
                     return next()
                 if fs.statSync(filePath).isDirectory()
-                    return sendFolderScan(filePath, basePath, req.query.meta, res)
+                    log 'filePath is directory', filePath
+                    return sendFolderScan(filePath, basePath, queryMeta, res)
                 let contentType = contentTypeFor(filePath)
-                _ console.log('contentType', contentType)
+                log 'contentType', contentType
                 if contentType
-                    if req.query.meta && req.query.meta === 'html'
+                    if queryMeta && queryMeta === 'html'
                         try
                             const documentState
                                 await
@@ -121,7 +115,7 @@ $group
                             const generated
                                 await
                                     _ wizziProds.generateArtifactFs
-                                        @expr config.MetaHtmlIttfPath
+                                        @ config.metaHtmlIttfPath
                                         {
                                             @ wizzischema 'html'
                                             @ path filePath
@@ -151,11 +145,12 @@ $group
                                 param modelContext
                                     :ref WizziModel
                                 if err
-                                    _ res.writeHead
-                                        @ 200
-                                        {
-                                            @ 'Content-Type' 'application/json'
-                                    return res.end(err)
+                                    return
+                                        _ sendError
+                                            @ res
+                                            @ err
+                                            {
+                                                @ format 'json'
                                 _ wizziProds.generateArtifactFs(filePath, modelContext).then
                                     =>
                                         param generated
@@ -169,11 +164,12 @@ $group
                                     ._ catch
                                         =>
                                             param err
-                                            _ res.writeHead
-                                                @ 200
-                                                {
-                                                    @ 'Content-Type' 'application/json'
-                                            _ res.end(err)
+                                            return
+                                                _ sendError
+                                                    @ res
+                                                    @ err
+                                                    {
+                                                        @ format 'json'
                 _ next()
                     #
                         #
@@ -191,7 +187,7 @@ $group
                         # next();
                         #
         #
-            # *
+            #
             # req.query._context contains a semicolon separated list of context models export names.
             # For each <export-name> must exists a req.query._<export-name> parameter
             # with a type;path value pair.
@@ -222,7 +218,7 @@ $group
             :p relPath
                 :any
         #
-            # *
+            #
             # req.query._context contains a semicolon separated list of context models export names.
             # For each <export-name> must exists a req.query._<export-name> parameter
             # with a type;path value pair.
@@ -247,7 +243,7 @@ $group
             :any
         const contextRequest
             :string
-            = req.query._context
+            = (req.query._context as string)
         if contextRequest && contextRequest.length > 0
             const ss = contextRequest.split(';')
             const requests
@@ -264,8 +260,8 @@ $group
                                 @ exportName element
                                 @ fullPath undefined
                                 @ relPath undefined
-                    const type_path = req.query['_' + element]
-                    _ console.log('contextLoader exportName, type_path', element, type_path)
+                    const type_path = (req.query['_' + element] as string)
+                    log 'contextLoader exportName, type_path', element, type_path
                     if !type_path
                         return
                             (
@@ -328,6 +324,7 @@ $group
                 return (callback(null, twinJsonContext))
             catch ex
                 return callback(ex)
+    +
     async-function sendFolderScan
         param folderPath
             :string
@@ -341,13 +338,14 @@ $group
             const folderState
                 await
                     _ wizziProds.scanIttfFolder(folderPath, path.dirname(root))
+            log 'sendFolderScan', 'folderState.keys', Object.keys(folderState)
             if meta === 'json'
                 return sendJSONStringified(res, folderState)
             else
                 const generated
                     await
                         _ wizziProds.generateArtifactFs
-                            @expr config.MetaFolderIttfPath
+                            @ config.metaFolderIttfPath
                             {
                                 @ wizzischema 'html'
                                 @ path folderPath
@@ -361,17 +359,20 @@ $group
                     # console.log('generated.meta.document', generated.artifactContent);
                 _ res.end(generated.artifactContent)
         catch ex
+            log 'sendFolderScan.exception', ex
             _ sendError
                 @ res
                 @ ex
                 {
                     @ format 'json'
+    +
     function sendJSONStringified
         param res
             :ref Response
         param wizziModelInstance
             :any
         _ res.send('<pre>' + stringify(cleanCircular(wizziModelInstance, []), null, 2) + '</pre>')
+    +
     function cleanCircular
         param obj
             :any
@@ -419,6 +420,7 @@ $group
                     else
                         _ cleanCircular(item, stock)
         return obj
+    +
     function sendError
         param res
             :ref Response

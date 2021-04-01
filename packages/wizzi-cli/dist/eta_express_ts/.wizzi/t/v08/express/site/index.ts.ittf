@@ -7,7 +7,7 @@ $group
         import
             @ HomeController
             from './controllers/home'
-        $if wzCtx.Build.useWizzi
+        $if wzCtx.Build.useWizziViewEngine
             import
                 @ WizziController
                 from './controllers/wizzi'
@@ -22,7 +22,7 @@ $group
             [
                 $if wzCtx.Build.useSite
                     @ new HomeController()
-                    $if wzCtx.Build.useWizzi
+                    $if wzCtx.Build.useWizziViewEngine
                         @ new WizziController()
                     $if wzCtx.Build.useAuth
                         @ new AccountController()

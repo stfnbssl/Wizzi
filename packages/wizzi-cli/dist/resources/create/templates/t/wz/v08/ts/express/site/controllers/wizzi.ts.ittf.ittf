@@ -1,0 +1,22 @@
+$group
+
+    $
+        var lparen = '(';
+    
+    ${'$'}
+        var ctrl = {
+            name: 'Wizzi',
+            path: '/wizzi'
+        }
+
+    controller${lparen} &ctrl )
+        
+        _ this.router.get(`/`, this.index)
+        
+        ${'$'}append handlers
+
+            handler${lparen} index )
+                _ response.render
+                    @ 'wizzi/index.html.ittf'
+                    {
+                        @ title 'Wizzi section'

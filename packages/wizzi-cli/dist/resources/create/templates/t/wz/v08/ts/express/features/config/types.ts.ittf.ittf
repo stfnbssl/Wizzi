@@ -42,16 +42,20 @@ $group
                         :p GithubCallbackURL
                             :string 
                 ${'$'}if wzCtx.Build.useWizzi
-                    :p IsWizziDev
+                    :p isWizziDev
                         :boolean 
-                    :p MetaHtmlIttfPath
+                    :p ittfPath
                         :string 
-                    :p MetaFolderIttfPath
+                    :p dataPath
                         :string 
-                    :p MetaHtmlTextPath
+                    :p metaHtmlIttfPath
+                        :string 
+                    :p metaFolderIttfPath
+                        :string 
+                    :p metaHtmlTextPath
                         :string 
                 ${'$'}if wzCtx.Build.usePacki
                     :p packiTemplatesFolder
                         :string 
-                    :p PackiApiEndpoint
+                    :p packiApiEndpoint
                         :string 

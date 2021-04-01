@@ -33,9 +33,9 @@ export default function create() {
             mongoPath: checkedEnv.MONGO_PATH, 
             mongoUser: checkedEnv.MONGO_USER, 
             mongoPassword: checkedEnv.MONGO_PASSWORD, 
-            MetaHtmlIttfPath: path.join(__ittfPath, 'meta', 'html', 'index.html.ittf'), 
-            MetaFolderIttfPath: path.join(__ittfPath, 'meta', 'folder', 'index.html.ittf'), 
-            MetaHtmlTextPath: path.join(__ittfPath, 'meta', 'text', 'index.html.ittf')
+            metaHtmlIttfPath: path.join(__ittfPath, 'meta', 'html', 'index.html.ittf'), 
+            metaFolderIttfPath: path.join(__ittfPath, 'meta', 'folder', 'index.html.ittf'), 
+            metaHtmlTextPath: path.join(__ittfPath, 'meta', 'text', 'index.html.ittf')
         };
         Object.keys(config).forEach((element) => {
             if (element.indexOf("Pass") < 0 && element.indexOf("Secr") < 0) {

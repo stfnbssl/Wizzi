@@ -171,7 +171,7 @@ $group
                                 _ wizziProds.generateArtifactFs(filePath, modelContext).then
                                     => 
                                         param generated
-                                        _ console.log('generated.artifactContent', generated.artifactContent)
+                                        # log 'generated.artifactContent', generated.artifactContent
                                         _ res.writeHead
                                             @ 200
                                             { 
@@ -293,15 +293,15 @@ $group
                         set request.relPath = './index.' + tp[0] + '.ittf'
                     else
                         set request.relPath = tp[1]
-                    _ console.log('contextLoader exportName, type_path, relPath', element, type_path, request.relPath)
+                    log 'contextLoader exportName, type_path, relPath', element, type_path, request.relPath
                     if request.type === 'cheatsheet'
                         set request.name = request.relPath
                         _ requests.push(request)
                     else
                         set request.fullPath = path.join(path.dirname(resourceFilePath), request.relPath)
                         _ requests.push(request)
-                    _ console.log('contextLoader request', request)
-            _ console.log('contextLoader.requests', requests)
+                    log 'contextLoader request', request
+            log 'contextLoader.requests', requests
             const resultContext
                 :{ 
                     :index 

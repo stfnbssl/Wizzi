@@ -142,6 +142,8 @@
                     </li>
                     <li><a href="#element_not">not</a>
                     </li>
+                    <li><a href="#element_notnot">notnot</a>
+                    </li>
                     <li><a href="#element_or">or</a>
                     </li>
                     <li><a href="#element_and">and</a>
@@ -203,12 +205,6 @@
                     <li><a href="#element_xexport">xexport</a>
                     </li>
                     <li><a href="#element_exportDefault">exportDefault</a>
-                    </li>
-                    <li><a href="#element_typeExport">typeExport</a>
-                    </li>
-                    <li><a href="#element_typeExportNamespace">typeExportNamespace</a>
-                    </li>
-                    <li><a href="#element_typeRequire">typeRequire</a>
                     </li>
                     <li><a href="#element_xif">xif</a>
                     </li>
@@ -4470,6 +4466,51 @@
                         </tbody>
                     </table>
                 </small>
+                <table id="element_notnot" class="pretty-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Tag</th>
+                            <th>Super</th>
+                            <th>Flags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>notnot</b>
+                            </td>
+                            <td>!!</td>
+                            <td>statement</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Relations</h5>
+                <small>
+                    <table class="table table-condensed table-bordered" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Cardinality</th>
+                                <th>Inherited</th>
+                                <th>Flags</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>statement</td>
+                                <td>statements</td>
+                                <td>one-to-many</td>
+                                <td>statement</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </small>
                 <table id="element_or" class="pretty-table">
                     <thead>
                         <tr>
@@ -6038,141 +6079,6 @@
                                 <b>exportDefault</b>
                             </td>
                             <td>export-default</td>
-                            <td>statement</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>statement</td>
-                                <td>statements</td>
-                                <td>one-to-many</td>
-                                <td>statement</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <table id="element_typeExport" class="pretty-table">
-                    <thead>
-                        <tr>
-                            <th>Element</th>
-                            <th>Tag</th>
-                            <th>Super</th>
-                            <th>Flags</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <b>typeExport</b>
-                            </td>
-                            <td>:export</td>
-                            <td>statement</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>statement</td>
-                                <td>statements</td>
-                                <td>one-to-many</td>
-                                <td>statement</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <table id="element_typeExportNamespace" class="pretty-table">
-                    <thead>
-                        <tr>
-                            <th>Element</th>
-                            <th>Tag</th>
-                            <th>Super</th>
-                            <th>Flags</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <b>typeExportNamespace</b>
-                            </td>
-                            <td>:export-ns</td>
-                            <td>statement</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h5>Relations</h5>
-                <small>
-                    <table class="table table-condensed table-bordered" style="width:100%;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Cardinality</th>
-                                <th>Inherited</th>
-                                <th>Flags</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>statement</td>
-                                <td>statements</td>
-                                <td>one-to-many</td>
-                                <td>statement</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </small>
-                <table id="element_typeRequire" class="pretty-table">
-                    <thead>
-                        <tr>
-                            <th>Element</th>
-                            <th>Tag</th>
-                            <th>Super</th>
-                            <th>Flags</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <b>typeRequire</b>
-                            </td>
-                            <td>:require</td>
                             <td>statement</td>
                             <td></td>
                         </tr>

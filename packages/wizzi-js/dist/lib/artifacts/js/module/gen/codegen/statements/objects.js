@@ -200,7 +200,13 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         else if (u.isEnumValue(model)) {
-            ctx.write(model.wzName)
+            var p = lineParser.parseNameValueRaw(model.wzName, model, {
+                objectProperty: true
+            });
+            ctx.write(p.name())
+            if (p.value()) {
+                ctx.write(' = ' + p.value())
+            }
             return callback(null, null);
         }
         else if (u.isObjectProperty(model)) {

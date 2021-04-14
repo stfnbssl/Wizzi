@@ -177,6 +177,26 @@ $group
             src ./**/*.${'$'}{ext}
             extension ${'$'}{ext}
 
+    ${'$'}elif name == 'any_plain_image'
+        artifact any_plain_jpeg
+            src ./**/*.jpeg
+            extension jpeg
+        artifact any_plain_jpg
+            src ./**/*.jpg
+            extension jpg
+        artifact any_plain_gif
+            src ./**/*.gif
+            extension gif
+        artifact any_plain_png
+            src ./**/*.png
+            extension png
+        artifact any_plain_bmp
+            src ./**/*.bmp
+            extension bmp
+        artifact any_plain_svg
+            src ./**/*.svg
+            extension svg
+
     ${'$'}else
         
         ${'$'}throw wfjob name not managed: ${'$'}{name}

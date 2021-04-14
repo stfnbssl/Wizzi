@@ -55,6 +55,27 @@
 				_ callback
 					_ ctx.error('not/! statement element requires zero or one child elements', model)
 
+    stm( notnot
+        set model = writeComments(model, ctx)
+		_ ctx.write('!!(')
+		if model.statements.length == 0
+			_ ctx.write(model.wzName + ')')
+			r_cb()
+		elif model.statements.length == 1
+			var saveParenRequired = ctx.parenRequired
+			set ctx.parenRequired = true
+			_ cnt.genItem
+				@ model.statements[0]
+				@ ctx
+				f_cb()
+                    _ ctx.write(')')
+					set ctx.parenRequired = saveParenRequired
+					r_cb()
+		else
+			return
+				_ callback
+					_ ctx.error('not/! statement element requires zero or one child elements', model)
+
     stm( or
         set model = writeComments(model, ctx)
 		if model.statements.length != 2

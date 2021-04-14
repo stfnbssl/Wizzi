@@ -29,7 +29,7 @@ $group
         @ sendPromiseResult
         @ sendSuccess
         @ sendFailure
-        from '../../../utils/response'
+        from '../../../utils/sendResponse'
     import 
         @ TokenError
         from 'passport-oauth2'

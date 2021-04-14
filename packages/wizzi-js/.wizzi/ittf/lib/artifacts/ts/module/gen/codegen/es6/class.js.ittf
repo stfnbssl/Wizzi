@@ -7,6 +7,7 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 	var handler = require('./handler')
 	var property = require('./property')
 	var xget = require('./get')
+    var xset = require('./set')
 	$$ TODO var html = require('./html')
 
 	var md = module.exports = {}
@@ -91,6 +92,7 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 	fn( classSuper )
 		if model.super
 			_ ctx.write(' extends ' + model.super)
+            # log 'classSuper', 'model.superType', model.superType
 			if model.superType && model.superType.typeParameterInsts.length > 0
 				_ ctx.write('<')
 				repeater( 1, model.superType.typeParameterInsts )
@@ -205,6 +207,8 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 				set generator = property
 			elif item_1.wzElement === 'get'
 				set generator = xget
+			elif item_1.wzElement === 'set'
+				set generator = xset
 			else
 				set generator = null
 			if generator

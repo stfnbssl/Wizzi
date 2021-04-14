@@ -10,48 +10,57 @@ $group
         from './types'
         # import { UserModelBuilder, GetUserModel } from './mongo/user';
     
-    import 
-        @ PackiModelBuilder
-        @ GetPackiModel
-        from './mongo/packi'
-        # import { UserModelBuilder, GetUserModel } from './mongo/user';
+    ${'$'}if wzCtx.Build.useMongoDb
+        import 
+            @ PackiModelBuilder
+            @ GetPackiModel
+            from './mongo/packi'
+            # import { UserModelBuilder, GetUserModel } from './mongo/user';
     
-    import 
-        @ TemplatesController
-        from './controllers/templates'
+    ${'$'}if wzCtx.Build.useFilesystem
+        import 
+            @ TemplatesController
+            from './controllers/templates'
     
     import 
         @ ProductionsController
         from './controllers/productions'
     
-    import 
-        @ GithubController
-        from './controllers/github'
+    ${'$'}if wzCtx.Build.useMongoDb
+        ${'$'}if wzCtx.Build.useGithub
+            import 
+                @ GithubController
+                from './controllers/github'
     
-    const packiModelGetters
-        { 
-            @ GetPackiModel
-                # GetUserModel,
-    
-    const packiModelBuilders
-        :[ 
-            :ref ModelBuilderType
-        =
-            [ 
-                @ PackiModelBuilder
-                    # UserModelBuilder,
+    ${'$'}if wzCtx.Build.useMongoDb
+        const packiModelGetters
+            { 
+                @ GetPackiModel
+                    # GetUserModel
+        
+        const packiModelBuilders
+            :[ 
+                :ref ModelBuilderType
+            =
+                [ 
+                    @ PackiModelBuilder
+                        # UserModelBuilder
     
     const packiControllers
         :[ 
             :ref ControllerType
         =
             [ 
-                @ new TemplatesController()
+                ${'$'}if wzCtx.Build.useFilesystem
+                    @ new TemplatesController()
                 @ new ProductionsController()
-                @ new GithubController()
+                ${'$'}if wzCtx.Build.useMongoDb
+                    ${'$'}if wzCtx.Build.useGithub
+                        @ new GithubController()
     
     export 
         @ packiTypes
-        @ packiModelGetters
-        @ packiModelBuilders
+        ${'$'}if wzCtx.Build.useMongoDb
+            @ packiModelGetters
+            @ packiModelBuilders
         @ packiControllers

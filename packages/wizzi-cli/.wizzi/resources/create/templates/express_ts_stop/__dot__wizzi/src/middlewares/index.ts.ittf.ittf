@@ -16,7 +16,7 @@ module
     ${'$'}if wzCtx.Build.usePassportAuth0
         import { PassportAuth0Middleware } from './passportAuth0.js'
     ${'$'}if wzCtx.Build.useSite
-        ${'$'}if wzCtx.Build.site.useStaticIttf
+        ${'$'}if wzCtx.Build.site.useIttfStatic
             import { IttfStaticMiddleware } from './ittfStatic.js'
     import { BodyParserMiddleware } from './bodyParser.js'
     import { CacheControlMiddleware } from './cacheControl.js'
@@ -50,7 +50,7 @@ module
                 ${'$'}if wzCtx.Build.usePassportAuth0
                     @ PassportAuth0Middleware
             ${'$'}if wzCtx.Build.useSite
-                ${'$'}if wzCtx.Build.site.useStaticIttf
+                ${'$'}if wzCtx.Build.site.useIttfStatic
                     @ IttfStaticMiddleware
             ${'$'}if wzCtx.Build.useAuthorization
                 @ AuthorizationMiddleware

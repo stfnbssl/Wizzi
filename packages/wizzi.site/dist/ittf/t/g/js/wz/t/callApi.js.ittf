@@ -1,0 +1,42 @@
+$group
+    
+    +
+    async-function callApi
+        param method
+        param path
+        param data
+        const API_URL = 'http://localhost:5000/api/v1' 
+        log 'callApi.params', method, API_URL, path, data
+        _ console.log
+            @ 'callApi.url'
+            `lit 
+                + 
+                @ API_URL
+                + /
+                @ path
+                + 
+        const res
+            await 
+                _ fetch
+                    `lit 
+                        + 
+                        @ API_URL
+                        + /
+                        @ path
+                        + 
+                    { 
+                        @ method
+                        { headers
+                            @ Accept 'application/json'
+                            @ 'Content-Type' 'application/json'
+                        @ body JSON.stringify(data)
+        log 'callApi.res', res
+        if res.ok
+            return 
+                await 
+                    _ res.json
+        else
+            return 
+                await 
+                    _ res.text
+

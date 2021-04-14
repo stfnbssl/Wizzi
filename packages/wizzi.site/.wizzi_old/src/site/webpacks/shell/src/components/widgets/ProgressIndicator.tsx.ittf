@@ -1,0 +1,57 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "ProgressIndicator",
+            props: [
+                { name: "theme", type: "ThemeName", ref: true },
+                { name: "delay", type: "number", xdefault: '0' },
+                { name: "duration", type: "number", xdefault: '2000' },
+                { name: "className", type: "string" }
+            ]
+        }
+    v08/ts/react/function(&md)
+        < StyledRoot
+            @ theme {theme}
+            @ delay {delay}
+            @ duration {duration}
+            @ className {className}
+        $append imports
+            import
+                @ c
+                @ ThemeName
+                from '../ThemeProvider'
+        $append styles
+            :interface RootStyleProps
+                :p theme
+                    :ref ThemeName
+                :p delay
+                    :number
+                :p duration
+                    :number
+            keyframes progressKeyframes
+                keyframe 0%
+                    transform scale3d(0, 1, 1)
+                    opacity 1
+                keyframe 75%
+                    transform scale3d(1, 1, 1)
+                    opacity 1
+                keyframe 100%
+                    transform scale3d(1, 1, 1)
+                    opacity 0
+            styled StyledRoot .div<RootStyleProps>
+                position absolute
+                left 0
+                right 0
+                height 2px
+                z-index 1
+                background-color
+                    => c('primary', props.theme)
+                transform scale3d(0, 1, 1)
+                transform-origin top left
+                animation-name progressKeyframes
+                animation-iteration-count infinite
+                animation-delay
+                    => props.delay + 'ms'
+                animation-duration
+                    => props.duration + 'ms'

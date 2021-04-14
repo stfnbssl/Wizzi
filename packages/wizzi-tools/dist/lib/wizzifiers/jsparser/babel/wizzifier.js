@@ -6745,6 +6745,33 @@ format.NewExpression = function(parent, node, options) {
             ret.children.push(temparguments)
         }
     }
+    // process AST-node-property typeParameters and set it in a var
+    var p_typeParameters = null;
+    if (typeof(node.typeParameters) !== 'undefined' && node.typeParameters != null) {
+        p_typeParameters = {
+            textified: null, 
+            isText: false, 
+            ASTProp: 'typeParameters', 
+            children: [
+                
+            ]
+        };
+        if (node.typeParameters == null) {
+            p_typeParameters.text = "null";
+        }
+        else {
+            if (!node.typeParameters.type) {
+                throw 'Node typeParameters has no type: ' + JSON.stringify(node, null, 2);
+            }
+            // log 'f_p_temp typeParameters before format'
+            format(p_typeParameters, node.typeParameters, options)
+            // log 'f_p_temp typeParameters after format', p_typeParameters.children.length, p_typeParameters
+            var typeParameters_comments = extractCommentsIf(p_typeParameters, 1);
+            if (typeParameters_comments.length > 0) {
+                p_typeParameters.children = p_typeParameters.children.concat(typeParameters_comments);
+            }
+        }
+    }
     // process AST-node-property callee and set it in a var
     var p_callee = null;
     if (typeof(node.callee) !== 'undefined' && node.callee != null) {
@@ -6802,16 +6829,29 @@ format.NewExpression = function(parent, node, options) {
     }
     var argumentsNode = getChildByTag(ret, 'arguments');
     ret.children = [];
-    if (argumentsNode) {
-        var tlist = getTextList(argumentsNode, ', ');
-        // log 'NewExpression.tlist', tlist
-        // if tlist && tlist.length < 15
+    // log 'NewExpression.ret', ret
+    console.log('NewExpression.p_typeParameters', p_typeParameters);
+    console.log('NewExpression.argumentsNode', argumentsNode);
+    var tlist;
+    if (node.arguments && node.arguments.length > 0) {
+        // log 101
+        if (!p_typeParameters) {
+            tlist = getTextList(argumentsNode, ', ');
+        }
+        console.log('NewExpression.tlist', tlist);
         if (tlist) {
             ret.name += '(' + tlist + ')';
             ret.textified = 'new ' + ret.name;
             ret.isText = true;
         }
         else {
+            if (p_typeParameters) {
+                var i, i_items=p_typeParameters.children, i_len=p_typeParameters.children.length, item;
+                for (i=0; i<i_len; i++) {
+                    item = p_typeParameters.children[i];
+                    ret.children.push(item)
+                }
+            }
             var i, i_items=argumentsNode.children, i_len=argumentsNode.children.length, item;
             for (i=0; i<i_len; i++) {
                 item = argumentsNode.children[i];
@@ -6823,7 +6863,17 @@ format.NewExpression = function(parent, node, options) {
         }
     }
     else {
-        ret.textified = 'new ' + ret.name + '()';
+        // log 102
+        if (p_typeParameters) {
+            var i, i_items=p_typeParameters.children, i_len=p_typeParameters.children.length, item;
+            for (i=0; i<i_len; i++) {
+                item = p_typeParameters.children[i];
+                ret.children.push(item)
+            }
+        }
+        else {
+            ret.textified = 'new ' + ret.name + '()';
+        }
     }
     // log 'NewExpression.ret', ret
     if (ret != null) {
@@ -16463,8 +16513,9 @@ format.TSEnumMember = function(parent, node, options) {
             }
         }
     }
+    // log 'TSEnumMember', 'p_initializer', p_initializer
     if (p_initializer) {
-        if (['@id', 'literal'].indexOf(p_initializer.tag) > -1) {
+        if (p_initializer.children.length == 0) {
             ret.name += ' ' + getNodeText(p_initializer);
         }
     }
@@ -18222,6 +18273,41 @@ format.TSExternalModuleReference = function(parent, node, options) {
     else {
         ret.children.push(p_expression)
     }
+    if (ret != null) {
+        if (__isText) {
+            ret.textified = ret.name;
+        }
+        if (typeof __skip === 'undefined' || __skip == false) {
+            // log '### add ', ret.tag , 'to', parent.tag
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
+            parent.children.push(ret);
+        }
+    }
+};
+// process AST node TSUnknownKeyword
+var TSUnknownKeyword_astNode = {
+    name: "TSUnknownKeyword", 
+    ittfTag: ":unknown", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSUnknownKeyword_astNode)
+format.TSUnknownKeyword = function(parent, node, options) {
+    var f_astNode = TSUnknownKeyword_astNode;
+    var __isText = false;
+    var ret = {
+        tag: ':unknown', 
+        name: '', 
+        isText: false, 
+        textified: null, 
+        AST: 'TSUnknownKeyword', 
+        source: options.input.substring(node.start, node.end), 
+        children: [
+            
+        ]
+    };
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;

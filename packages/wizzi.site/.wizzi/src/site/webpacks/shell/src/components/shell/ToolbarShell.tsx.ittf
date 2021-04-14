@@ -1,0 +1,40 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "ToolbarShell",
+            props: [
+                {
+                    name: "theme",
+                    type: "ThemeName",
+                    ref: true
+                },
+                {
+                    name: "children",
+                    type: "node"
+                }
+            ]
+        }
+    v08/ts/react/function(&md)
+        < StyledRoot
+            @ theme {theme}
+            + {children}
+        $append imports
+            import
+                @ c
+                @ ThemeName
+                from '../ThemeProvider'
+        $append styles
+            :interface RootStyleProps
+                :p theme
+                    :ref ThemeName
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+                flex-direction row
+                align-items center
+                justify-content space-between
+                border-bottom
+                    => "1px solid " + c('border', props.theme)
+                height 60px
+                background-color
+                    => c('content', props.theme)

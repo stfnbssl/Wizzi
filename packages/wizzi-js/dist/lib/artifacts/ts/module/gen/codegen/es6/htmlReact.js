@@ -4,14 +4,15 @@
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\htmlReact.js.ittf
 */
 'use strict';
+var verify = require('wizzi-utils').verify;
 var u = require('../../../../../js/module/gen/codegen/util/stm');
 var md = module.exports = {};
 var myname = 'wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact';
 md.htmlelement = function(cnt, model, tag, text, ctx, attrs, comments, callback) {
     // log 'enter in htmlReact', 'tag', tag, 'model.wzElement', model.wzElement, 'u.parentIsHtmlElement(model)', u.parentIsHtmlElement(model), 'u.isArgumentOfCall(model)', u.isArgumentOfCall(model), 'u.isGraphEnclosed(tag)', u.isGraphEnclosed(tag), 'attrs.length', attrs.length
-    u.writeComments(model, ctx);
-    u.checkInlineEnter(model, ctx);
     if (u.isGraphEnclosed(tag)) {
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         ctx.w(tag);
         u.checkInlineExit(model, ctx);
         return callback(null, null);
@@ -31,6 +32,8 @@ md.htmlelement = function(cnt, model, tag, text, ctx, attrs, comments, callback)
             ctx.w();
         }
     }
+    u.writeComments(model, ctx);
+    u.checkInlineEnter(model, ctx);
     htmlelement_open(cnt, model, ctx, tag, attrs, comments, function(err, done) {
         if (err) {
             return callback(err);
@@ -64,6 +67,7 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, comments, callback) {
             return callback(err);
         }
         ctx.write(singleline ? ' ' : '');
+        u.forceInlineOff(model, ctx);
         var len_1 = attrs.length;
         function repeater_1(index_1) {
             if (index_1 === len_1) {

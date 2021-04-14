@@ -16,9 +16,7 @@
 		a_flag( generator )
 
 		r typeParameterDecl/s
-
 		r param/s
-
 		r typeReturn
 			one-to-one
 
@@ -44,6 +42,9 @@
 		tag =>
 
 		a_flag( xasync, async )
+		a_flag( typePrivate, :private )
+		a_flag( typePublic, :public )
+		a_flag( typeProtected, :protected )
 
 		r typeReturn
 			one-to-one
@@ -58,6 +59,10 @@
 
 	e asyncarrowfunction : function
 		tag async=>
+
+		a_flag( typePrivate, :private )
+		a_flag( typePublic, :public )
+		a_flag( typeProtected, :protected )
 
 		# es6 feature
 		#

@@ -18,6 +18,7 @@
 					_ ctx.write(': ')
 					_ cnt.stm.typeReturn(model.typeReturn, ctx, () => {})
 				_ ctx.w(' {')
+                _ u.forceInlineOff(model, ctx)
 				_ ctx.indent()
 				_ cnt.genItems
 					@ model.statements
@@ -83,6 +84,7 @@
 
     fn( xfunction_end, iife
 		_ ctx.w(' {')
+        _ u.forceInlineOff(model, ctx)
 		_ ctx.indent()
 		_ cnt.genItems
 			@ model.statements
@@ -129,7 +131,8 @@
 				if model.typeReturn
 					_ ctx.write(': ')
 					_ cnt.stm.typeReturn(model.typeReturn, ctx, () => {})
-				_ ctx.w(' {')
+                _ ctx.w(' {')
+                _ u.forceInlineOff(model, ctx)
 				_ ctx.indent()
 				_ cnt.genItems
 					@ model.statements
@@ -232,6 +235,11 @@
         log 'arrowfunction, u.onlyChildIs(model, "arrowfunction")', u.onlyChildIs(model, 'arrowfunction')
         log "arrowfunction, u.isImplicitReturn(model)", u.isImplicitReturn(model)
         *$
+        
+        _ u.genAccessorsAndExtra
+			@ model
+			@ ctx
+
         if ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent'
             var implicitReturn = u.isImplicitReturn(model)
             _ ctx.w(async_str + model.wzName + ' = (')
@@ -379,6 +387,7 @@
         param implicitReturn
 		param callback
         _ ctx.w(' => ' + (implicitReturn ? '' : '{'))
+        _ u.forceInlineOff(model, ctx)
         _ cnt.genItems
             @ model.statements
             @ ctx

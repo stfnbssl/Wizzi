@@ -86,9 +86,20 @@ md.stm.css = function(model, ctx, callback) {
         ctx.write('@charset "' + model.charset + '";');
     }
     emitResources(model.resources, ctx);
-    md.genItems(model.rules, ctx, {
+    md.genItems(model.statements, ctx, {
         indent: false
-    }, callback)
+    }, function(err, notUsed) {
+        if (err) {
+            return callback(err);
+        }
+        md.genItems(model.rules, ctx, {
+            indent: false
+        }, callback)
+    })
+};
+md.stm.statement = function(model, ctx, callback) {
+    ctx.w(model.wzName);
+    return callback(null);
 };
 function main_init(model, ctx) {
     // log 'css.document.gen.main, ctx.values', ctx.values, !!ctx.values.noGeneratorComments

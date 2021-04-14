@@ -26,7 +26,7 @@
         
         useSite true
         { site
-            useStaticIttf true
+            useIttfStatic true
             { ittfStatic
         
         useNetlify false

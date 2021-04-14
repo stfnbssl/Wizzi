@@ -24,7 +24,7 @@ $group
         @ sendPromiseResult
         @ sendSuccess
         @ sendFailure
-        from '../../../utils/response'
+        from '../../../utils/sendResponse'
     var jsonParser = bodyParser.json()
     export 
         class TemplatesController
@@ -63,6 +63,8 @@ $group
                         @ this.path
                         + /:uid/:id
                     @expr this.saveTemplate
+            
+            +
             p getAllTemplates
                 :private 
                 async=> 
@@ -81,6 +83,8 @@ $group
                                     :as 
                                         :ref fsTypes.FsDb
                             ._ getPackiTemplatesList
+            
+            +
             p getTemplateById
                 :private 
                 async=> 
@@ -99,6 +103,8 @@ $group
                                 ._ getPackiTemplate
                                     @ id
                     _ sendSuccess(response, template)
+            
+            +
             p getStarterTemplate
                 :private 
                 async=> 
@@ -116,6 +122,7 @@ $group
                                 ._ getStarterTemplate
                     _ sendSuccess(response, template)
             
+            +
             p saveTemplate
                 :private 
                 async=> 

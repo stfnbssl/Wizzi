@@ -1,0 +1,64 @@
+$group
+    $params &md
+    import
+        @ Strategy
+        from 'passport-github2'
+    import
+        @ GetUserModel
+        @ UserModelType
+        from '../mongo/user'
+    import
+        @ GetAccountModel
+        @ AccountModelType
+        from '../mongo/account'
+    import
+        @ config
+        from '../../config'
+    import
+        @ AuthRequest
+        from '../types'
+    let accountModel
+        :ref AccountModelType
+        # let userModel: UserModelType;
+    export
+        function createStrategy
+            set accountModel = GetAccountModel()
+                # userModel = GetUserModel();
+            log 'features.auth.strategies.github.createStrategy'
+            return
+                new Strategy
+                    {
+                        @ clientID config.githubClientId
+                        @ clientSecret config.githubClientSecret
+                        @ callbackURL config.githubCallbackURL
+                        @ passReqToCallback true
+                    function
+                        param req
+                            :ref AuthRequest
+                        param accessToken
+                            :string
+                        param refreshToken
+                            :string
+                        param profile
+                            :any
+                        param done
+                            :any
+                        log 'features.auth.strategies.github.req.session.socketId,socketUserId', req.session.socketId, req.session.socketUserId
+                        log 'features.auth.strategies.github.req.sessionID,session', req.sessionID, req.session
+                        log 'features.auth.strategies.github.req.user', req.user
+                        log 'features.auth.strategies.github.accessToken.refreshToken', accessToken, refreshToken
+                        log 'features.auth.strategies.github.profile', profile
+                        var account = new accountModel()
+                        set account.domain = 'github.com'
+                        set account.uid = profile.id
+                        set account.username = profile.username
+                        set account.displayName = profile.displayName
+                        set account.avatar_url = profile._json.avatar_url
+                        var t
+                            {
+                                @ kind 'oauth'
+                                @ token accessToken
+                                { attributes
+                                    @ refreshToken
+                        _ account.tokens.push(t)
+                        return done(null, account)

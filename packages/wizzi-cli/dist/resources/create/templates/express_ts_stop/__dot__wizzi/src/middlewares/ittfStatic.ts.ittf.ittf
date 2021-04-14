@@ -8,5 +8,5 @@ module
         }
 
     ${'$'}if wzCtx.Build.useSite
-        ${'$'}if wzCtx.Build.site.useStaticIttf
+        ${'$'}if wzCtx.Build.site.useIttfStatic
             v08/express/middlewares/ittfStatic${call}

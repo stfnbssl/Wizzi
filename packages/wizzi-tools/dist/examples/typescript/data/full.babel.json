@@ -7,44 +7,231 @@
     "interpreter": null,
     "body": [
       {
-        "type": "VariableDeclaration",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Identifier",
-              "name": "cookies",
-              "typeAnnotation": {
-                "type": "TSTypeAnnotation",
-                "typeAnnotation": {
-                  "type": "TSTypeLiteral",
-                  "members": [
-                    {
-                      "type": "TSPropertySignature",
-                      "computed": true,
-                      "key": {
+        "type": "FunctionDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "a"
+        },
+        "generator": false,
+        "async": false,
+        "params": [],
+        "body": {
+          "type": "BlockStatement",
+          "body": [
+            {
+              "type": "SwitchStatement",
+              "discriminant": {
+                "type": "CallExpression",
+                "callee": {
+                  "type": "MemberExpression",
+                  "object": {
+                    "type": "CallExpression",
+                    "callee": {
+                      "type": "MemberExpression",
+                      "object": {
                         "type": "Identifier",
-                        "name": "SNACK_COOKIE_NAME"
+                        "name": "path"
                       },
-                      "optional": true,
-                      "typeAnnotation": {
-                        "type": "TSTypeAnnotation",
-                        "typeAnnotation": {
-                          "type": "TSStringKeyword"
-                        }
+                      "computed": false,
+                      "property": {
+                        "type": "Identifier",
+                        "name": "split"
+                      }
+                    },
+                    "arguments": [
+                      {
+                        "type": "StringLiteral",
+                        "extra": {
+                          "rawValue": ".",
+                          "raw": "'.'"
+                        },
+                        "value": "."
+                      }
+                    ]
+                  },
+                  "computed": false,
+                  "property": {
+                    "type": "Identifier",
+                    "name": "pop"
+                  }
+                },
+                "arguments": []
+              },
+              "cases": [
+                {
+                  "type": "SwitchCase",
+                  "consequent": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "StringLiteral",
+                        "extra": {
+                          "rawValue": "javascript",
+                          "raw": "'javascript'"
+                        },
+                        "value": "javascript"
                       }
                     }
-                  ]
+                  ],
+                  "test": {
+                    "type": "StringLiteral",
+                    "extra": {
+                      "rawValue": "js",
+                      "raw": "'js'"
+                    },
+                    "value": "js"
+                  }
+                },
+                {
+                  "type": "SwitchCase",
+                  "consequent": [],
+                  "test": {
+                    "type": "StringLiteral",
+                    "extra": {
+                      "rawValue": "ts",
+                      "raw": "'ts'"
+                    },
+                    "value": "ts"
+                  }
+                },
+                {
+                  "type": "SwitchCase",
+                  "consequent": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "StringLiteral",
+                        "extra": {
+                          "rawValue": "typescript",
+                          "raw": "'typescript'"
+                        },
+                        "value": "typescript"
+                      }
+                    }
+                  ],
+                  "test": {
+                    "type": "StringLiteral",
+                    "extra": {
+                      "rawValue": "tsx",
+                      "raw": "'tsx'"
+                    },
+                    "value": "tsx"
+                  }
+                },
+                {
+                  "type": "SwitchCase",
+                  "consequent": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "StringLiteral",
+                        "extra": {
+                          "rawValue": "json",
+                          "raw": "'json'"
+                        },
+                        "value": "json"
+                      }
+                    }
+                  ],
+                  "test": {
+                    "type": "StringLiteral",
+                    "extra": {
+                      "rawValue": "json",
+                      "raw": "'json'"
+                    },
+                    "value": "json"
+                  }
+                },
+                {
+                  "type": "SwitchCase",
+                  "consequent": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "StringLiteral",
+                        "extra": {
+                          "rawValue": "css",
+                          "raw": "'css'"
+                        },
+                        "value": "css"
+                      }
+                    }
+                  ],
+                  "test": {
+                    "type": "StringLiteral",
+                    "extra": {
+                      "rawValue": "css",
+                      "raw": "'css'"
+                    },
+                    "value": "css"
+                  }
+                },
+                {
+                  "type": "SwitchCase",
+                  "consequent": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "StringLiteral",
+                        "extra": {
+                          "rawValue": "html",
+                          "raw": "'html'"
+                        },
+                        "value": "html"
+                      }
+                    }
+                  ],
+                  "test": {
+                    "type": "StringLiteral",
+                    "extra": {
+                      "rawValue": "html",
+                      "raw": "'html'"
+                    },
+                    "value": "html"
+                  }
+                },
+                {
+                  "type": "SwitchCase",
+                  "consequent": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "StringLiteral",
+                        "extra": {
+                          "rawValue": "markdown",
+                          "raw": "'markdown'"
+                        },
+                        "value": "markdown"
+                      }
+                    }
+                  ],
+                  "test": {
+                    "type": "StringLiteral",
+                    "extra": {
+                      "rawValue": "md",
+                      "raw": "'md'"
+                    },
+                    "value": "md"
+                  }
+                },
+                {
+                  "type": "SwitchCase",
+                  "consequent": [
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "Identifier",
+                        "name": "undefined"
+                      }
+                    }
+                  ],
+                  "test": null
                 }
-              }
-            },
-            "init": {
-              "type": "ObjectExpression",
-              "properties": []
+              ]
             }
-          }
-        ],
-        "kind": "let"
+          ],
+          "directives": []
+        }
       }
     ],
     "directives": []

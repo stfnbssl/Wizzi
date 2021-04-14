@@ -2,7 +2,7 @@
     $include cli/v08/wzctx-info.json
 
     $
-        var useSsl = true;
+        var useSsl = false;
         var http = useSsl ? 'https' : 'http';
 
     $$ type "module"
@@ -11,8 +11,21 @@
         siteUrl "${http}://localhost"
         port 5000
         baseUrl "${http}://localhost:5000"
+        [ Components
     
     { Build
+        { utils
+            useEscapeRegexp true
+            useNullThrows true
+            useLodash true
+            useStringifySafe true
+            useParseUrl true
+            useEs6Error true
+            useJsCookie true
+            useQueryString true
+            useSanitizeHtml true
+            useDateFns true
+        
         useTypescript true
         { typescript
 
@@ -30,10 +43,13 @@
         useSocketIO false 
         { socketIO
         
+        useCookie true
+        { cookie
+
         useSite true
         { site
         
-        useStaticIttf true
+        useIttfStatic true
         { ittfStatic
         
         useNetlify false
@@ -55,25 +71,47 @@
         
         usePacki true
         { packi
-            endPoint "http://localhost:5000/api/v1"
+            endPoint "${http}://localhost:5000/api/v1"
             templatesFolder "data/packi/templates"
+            apiId_rem "identifier for the API. This value will be used as the audience parameter on authorization calls."
+            apiId "https://packi/api/v1" $$ AUTH0_PACKI_API_ID
+            clientId_rem ""
+            clientId "gPb1dqyNzRHfJgNVawKxPFP65LuNcUI8" $$ AUTH0_PACKI_CLIENT_ID
+            clientSecret_rem ""
+            clientSecret "-DVUr9qiz5hivZUmfiJtFDEV-zylvAem8P-X0OH8zwlry06rZNCIDUTF7s9sgWNm" $$ AUTH0_PACKI_CLIENT_SECRET
+            backendId_rem ""
+            backendId "awRaG0ilBVlaHQ2xK5JgehLjkBzLNthp" $$ AUTH0_PACKI_BACKEND_APP_ID
+            backendSecret_rem ""
+            backendSecret "1iDRuv92BtmZA521Od3BIU923cDL-EsoSNNTAUJkGfrpNmEDr85I_lsWqZAe5UNG" $$ AUTH0_PACKI_BACKEND_APP_SECRET
 
-        useAuthentication false
+        useAuthentication true
         { authentication
             tenant "dev-qwf9-zob.eu"
-            clientID "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV"
+            clientId "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV"
             longRandomString "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg"
             baseURL "${http}://localhost:5000"
             authRequired false
             userInfo false
-            useGithub true
-            { github
-                clientID "6a42cd4cb7247bb4e823"
-                clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
-                callbackURL "${http}://localhost:5000/authenticate/github/callback" 
             useLocal true
             { local
+            useGithub true
+            { github
+                clientId "6a42cd4cb7247bb4e823"
+                clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
+                callbackURL "${http}://localhost:5000/authenticate/github/callback"
+            
+        useCrypto true
+        { crypto
+        useJwt true
+        { jwt
+
         
+        useGithub true
+        { github
+            clientId "6a42cd4cb7247bb4e823"
+            clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
+            callbackURL "${http}://localhost:5000/authenticate/github/callback" 
+
         useAuthorization false
         { authorization
         
@@ -90,15 +128,16 @@
             useMorgan false
             { morgan
         
-        useCors false
+        useCors true
         { cors
+            clientOrigin "${http}://localhost:5000"
         
         usePassport false
         { passport
         
         usePassportAuth0 false
         { passportAuth0
-        
+
         useCompression false
         { compression
         
@@ -107,20 +146,58 @@
         
         useStaticFiles true
         { staticFiles
+
+        useTailwindcss true
+        { tailwindcss
         
 
-        useStringifySafe true
-        useParseUrl true
-        
-        useWebpackApp false
+        useWebpackApp true
         { webpackApp
             [ items
                 {
                     name "hello"
                     writeToDisk false
                 {
-                    name "blog"
+                    name "shell"
                     writeToDisk false
+
+        useBabel true
+        { babel
+            useParser true
+            useRuntime false
+
+        useReact true
+        { react
+            useV16 true
+            useRedux true
+            { redux
+            useRouter false
+            useHelmetAsync true
+            useSimpleCodeEditor true
+            useTextareaAutosize true
+            useVirtualized true
+            
+        useHoistNonReactStatic true
+        
+        useStyledComponents true
+        { styledComponents
+
+        useAphrodite true
+        { aphrodite
+
+        useMarked true
+
+        useExpoStyles true
+        { expoStyles
+
+        useMonacoEditor true
+
+        usePrettier true
+        { prettier
+
+        usePrismjs true
+
+        useGraphql true
         
         useMongoDb false
         { mongodb
@@ -129,6 +206,9 @@
             dbPath "@cluster0.idlk7.mongodb.net"
             dbName "wizzi"
         
+        useFilesystem true
+        { filesystem
+
         useBlog false
         { blog
             name "blog"

@@ -1,8 +1,0 @@
-module
-    kind es6
-    $
-        var md = {
-            name: 'blog'
-        }
-    $if wzCtx.Build.useWebpackApp
-        v08/express/site/webpacks/webpack.config(&md)

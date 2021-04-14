@@ -171,7 +171,7 @@
 		var name = model.wzName || ''
 		_ ctx.write('export ' + typekey + name)
 
-		# log 'js.module.xexport', name, model.from, model.statements.length, model.specifiers.length
+		# log 'js.module.xexport', 'model.__isType', model.__isType, name, model.from, model.statements.length, model.specifiers.length
 		
 		if model.from
             if model.statements.length == 1
@@ -248,9 +248,11 @@
 			_ ctx.write('}')
 
 	stm( typeExport
-		_ ctx.write('export = ')
-		_ ctx.w(u.semicolon(model.wzName))
-		r_cb()
+        set model.__isType = true
+        _ cnt.stm.xexport
+            @ model
+            @ ctx
+            @ callback
 
 	stm( typeExportNamespace
 		_ ctx.w('export as namespace ')

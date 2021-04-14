@@ -19,6 +19,7 @@
 		r resource/s
 		r rule/s
 		r comment/s
+        r statement/s
 
 		m wzInitialize
 			if verify.isObject(this.extends)
@@ -42,7 +43,10 @@
 					return ret
 			return ret
 
-	e resource
+	e statement
+        tag +
+
+    e resource
 		# A known resource (a fragment of a stylesheet), stored in a repository,
 		# that must be included in the generated artifact.
 

@@ -1,0 +1,57 @@
+module
+    import 
+        as React
+        from 'react'
+    import 
+        @ $Subtract
+        from '../../types'
+    import 
+        @ FormValidationContext
+        from './Form'
+    :type InjectedProps
+        :{ 
+            :p disabled
+                :union 
+                    :boolean 
+                    :undefined 
+    export-default 
+        function withStatus
+            :< P
+                :ref InjectedProps
+            param Comp
+                :ref React.ComponentType
+                    :param 
+                        :ref P
+            :return
+                :ref React.ComponentType
+                    :param 
+                        :ref $Subtract
+                            :param 
+                                :ref P
+                            :param 
+                                :ref InjectedProps
+            function withStatusFn
+                param props
+                    :any 
+                return 
+                    < FormValidationContext.Consumer 
+                        { 
+                            => 
+                                param value
+                                    :union 
+                                        :{ 
+                                            :p valid
+                                                :boolean 
+                                        :undefined 
+                                    = 
+                                        { 
+                                            @ valid true
+                                < Comp 
+                                    @ disabled {!value.valid}
+                                    @ {...props}
+            set withStatusFn.displayName =
+                `lit 
+                    + withStatus(
+                    @ Comp.displayName ?? Comp.name
+                    + )
+            return withStatusFn

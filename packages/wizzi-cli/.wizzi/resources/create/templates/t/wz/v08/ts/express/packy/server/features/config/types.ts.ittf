@@ -14,25 +14,25 @@ module
                     :string 
                 :p mongoPassword
                     :string 
-                :p Auth0Domain
+                :p auth0Domain
                     :string 
-                :p Auth0PackiClientId
+                :p auth0PackiClientId
                     :string 
-                :p Auth0PackiClientSecret
+                :p auth0PackiClientSecret
                     :string 
-                :p Auth0PackiCallbackUrl
+                :p auth0PackiCallbackUrl
                     :string 
-                :p Auth0PackiBackendAppId
+                :p auth0PackiBackendAppId
                     :string 
-                :p Auth0PackiBackendAppSecret
+                :p auth0PackiBackendAppSecret
                     :string 
-                :p Auth0PackiApiId
+                :p auth0PackiApiId
                     :string 
                 :p GithubClientID
                     :string 
-                :p GithubClientSecret
+                :p githubClientSecret
                     :string 
-                :p GithubCallbackURL
+                :p githubCallbackURL
                     :string 
                 :p isWizziDev
                     :boolean 

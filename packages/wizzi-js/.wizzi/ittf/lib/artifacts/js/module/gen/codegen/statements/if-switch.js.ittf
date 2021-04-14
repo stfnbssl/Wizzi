@@ -1,6 +1,7 @@
 ﻿loader( if-switch )
 
     stm( xif
+        _ writeComments(model, ctx)
         _ u.emitBlock
             @ cnt
             @ 'if'
@@ -11,7 +12,8 @@
 			@ callback
     
 	stm( elif
-		_ u.emitBlock
+		_ writeComments(model, ctx)
+        _ u.emitBlock
 			@ cnt
 			@ 'else if'
 			@ model
@@ -54,6 +56,7 @@
                 f_cb()
                     _ ctx.w('}')
                     r_cb()
+        _ writeComments(model, ctx)
         if verify.isEmpty(model.wzName)
             var condition
             var temp = []

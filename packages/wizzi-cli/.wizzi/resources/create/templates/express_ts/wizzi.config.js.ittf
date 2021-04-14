@@ -16,7 +16,8 @@ module
                 @ './wizzi-core/dist/index.js' 
                 @ './wizzi-js/dist/index.js' 
                 @ './wizzi-web/dist/index.js' 
-            @ pluginsBaseFolder path.join(__dirname, '..', '..', '..')
+            $$ @ pluginsBaseFolder path.join(__dirname, '..', '..', '..')
+            @ pluginsBaseFolder path.join(__dirname, '..')
             [ schemas
             { globalContext
                 @ wzConfigIsDevelopment true

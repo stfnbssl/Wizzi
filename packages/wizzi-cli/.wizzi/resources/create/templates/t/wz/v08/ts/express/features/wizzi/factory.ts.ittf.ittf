@@ -21,9 +21,6 @@ $group
         @ JsonWizziFactory
         @ FilesystemWizziFactory
         from './types'
-    import 
-        @ config
-        from 'isomorphic-git'
     
     +
     export 
@@ -145,8 +142,15 @@ $group
                                 _ wizzi.jsonFactory
                                     { 
                                         @ fsJson
+                                        $* TODO
                                         { plugins
                                             @ items plugins
+                                        *$
+                                        { plugins
+                                            [ items
+                                                ${'$'}foreach item in wzCtx.Build.wizzi.plugins
+                                                    @ '${'$'}{item}'
+                                            @ pluginsBaseFolder '${'$'}{wzCtx.Build.wizzi.pluginsBaseFolder}'
                                     function 
                                         param err
                                         param wf

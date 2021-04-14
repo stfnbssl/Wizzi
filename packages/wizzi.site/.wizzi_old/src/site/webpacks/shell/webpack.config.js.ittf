@@ -1,0 +1,47 @@
+module
+    kind es6
+    import path from 'path'
+    export
+        const config
+            {
+                @ mode "development"
+                { resolve
+                    [ extensions
+                        @ ".tsx"
+                        @ ".ts"
+                        @ ".js"
+                @ entry
+                    _ path.resolve
+                        @ __dirname
+                        @ './src/index.tsx'
+                { module
+                    [ rules
+                        {
+                            @ test /\.(js|ts|tsx)$/
+                            @ exclude /node_modules/
+                            { use
+                                @ loader 'babel-loader'
+                                { options
+                                    [ presets
+                                        @ '@babel/preset-env'
+                                        @ '@babel/preset-react'
+                                        @ '@babel/preset-typescript'
+                                    [ plugins
+                                        @ '@babel/plugin-syntax-dynamic-import'
+                                        @ '@babel/plugin-proposal-class-properties'
+                        {
+                            @ test /\.(css|scss)$/
+                            [ use
+                                @ "css-loader"
+                        {
+                            @ test /\.(jpg|jpeg|png|gif|mp3|svg)$/
+                            [ use
+                                @ "file-loader"
+                { output
+                    @ path
+                        _ path.resolve
+                            @ __dirname
+                            @ 'static'
+                    @ filename 'shell.bundle.js'
+                    @ publicPath '/webpacks/shell'
+                @ devtool 'cheap-module-source-map'

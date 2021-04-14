@@ -1,0 +1,48 @@
+$group
+    $params &md
+    import
+        @ Router
+        @ Request
+        @ Response
+        from 'express'
+    import
+        @ ControllerType
+        @ AppInitializerType
+        from '../../app/types'
+    import
+        @ GetAccountModel
+        @ AccountModelType
+        from '../mongo/account'
+    import
+        @ authenticate
+        @ jwtAuth
+        @ getLoggedUserFromAccount
+        from '../manager'
+    import
+        @ sendPromiseResult
+        @ sendSuccess
+        @ sendFailure
+        from '../../../utils/sendResponse'
+    :interface AuthRequest
+        :extends Request
+        :p session
+            :any
+    +
+    export
+        class AuthController
+            :implements ControllerType
+            p path
+                :public
+                = '/api/v1/auth'
+            p router
+                :public
+                _ Router()
+            => initialize
+                param initValues
+                    :ref AppInitializerType
+            m githubConnect
+                :private
+                param req
+                    :ref Request
+                param res
+                    :ref Response

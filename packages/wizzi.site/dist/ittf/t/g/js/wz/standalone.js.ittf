@@ -1,0 +1,134 @@
+$group
+
+    $include callApi
+
+	iife
+		
+		if !window.wz
+			set window.wz = {}
+	
+		set wz.canGen
+			function
+				param schemaName
+				param callback
+                # TODO
+                r_cb( true )
+
+		#
+			# param
+			#   { options
+			#     { modelContext
+			#       optional
+			#     { artifactContext
+			#       optional
+			#     string artifactName
+			#       optional
+		set wz.gen
+			function
+				param filePath
+				param options
+				param callback
+
+				if typeof callback === 'undefined'
+					set callback = options
+					set options = {}
+
+                _ callApi
+                    @ 'POST'
+                    @ 'productions/artifactFS/' + encodeURIComponent(filePath)
+                    @ options
+                    ._ then
+                        =>
+                            param result
+                            _ callback
+                                @ null
+                                @ result['x'].contents
+                    ._ catch
+                        => 
+                            param err
+                            _ callback
+                                @ err
+
+		set wz.genFromText
+			function
+				param ittfContent
+				param options
+				param callback
+
+				if typeof callback === 'undefined'
+					set callback = options
+					set options = {}
+
+                var filePath = 'x.' + options.schema + '.ittf'
+                var files
+                    {
+                        @ ['x.' + options.schema + '.ittf']
+                            { 
+                                @ type 'CODE'
+                                @ contents ittfContent
+
+                _ callApi
+                    @ 'POST'
+                    @ 'productions/artifact/' + encodeURIComponent(filePath)
+                    @ files
+                    ._ then
+                        =>
+                            param result
+                            var json = result
+                            log 'wz.genFromText.json', json
+                            _ callback
+                                @ null
+                                @ json.generatedArtifact.artifactContent
+                    ._ catch
+                        => 
+                            param err
+                            _ callback
+                                @ err
+		
+        set wz.canWizzify
+			function
+				param schemaName
+				# TODO
+                return true
+
+		set wz.wizzify
+			function
+				param schemaName
+				param snippet
+				param callback
+
+                var files 
+                    {
+                        @ ['x.' + schemaName]
+                            { 
+                                @ type 'CODE'
+                                @ contents snippet
+                _ callApi
+                    @ 'POST'
+                    @ 'productions/wizzify'
+                    @ files
+                    ._ then
+                        =>
+                            param result
+                            var json = result.packiResult
+                            log 'wz.wizzify.json', json
+                            _ callback
+                                @ null
+                                @ json['x.' + schemaName + '.ittf'].contents
+                    ._ catch
+                        => 
+                            param err
+                            _ callback
+                                @ err
+
+		$*
+        set wz.getCodeAST
+			function
+				param mime
+				param snippet
+				param callback
+				_ wz.tools[mime + 'wizzifier'].getCodeAST
+					@ snippet
+					{
+					@ callback
+        *$

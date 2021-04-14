@@ -28,18 +28,22 @@ $group
             import { siteControllers } from './site/index'
 
     ${'$'}if wzCtx.Build.useAuthentication
-        import 
-            @ authenticationControllers
-            ${'$'}if wzCtx.Build.useMongoDb
-                @ authenticationModelBuilders
-            from './features/auth/index'
+        $$ For now auth needs MongoDb
+        ${'$'}if wzCtx.Build.useMongoDb
+            import 
+                @ authenticationControllers
+                ${'$'}if wzCtx.Build.useMongoDb
+                    @ authenticationModelBuilders
+                from './features/auth/index'
     
     ${'$'}if wzCtx.Build.useAuthorization
-        import 
-            @ authorizationControllers
-            ${'$'}if wzCtx.Build.useMongoDb
-                @ authorizationModelBuilders
-            from './features/auth/index'
+        $$ For now auth needs MongoDb
+        ${'$'}if wzCtx.Build.useMongoDb
+            import 
+                @ authorizationControllers
+                ${'$'}if wzCtx.Build.useMongoDb
+                    @ authorizationModelBuilders
+                from './features/auth/index'
     
     ${'$'}if wzCtx.Build.useAccount
         import 
@@ -58,6 +62,11 @@ $group
             @ siteControllers
             from './site/index'
     
+    ${'$'}if wzCtx.Build.usePacki
+        import 
+            @ packiControllers
+            from './features/packi/index'
+
     import 
         @ appMiddlewaresPre
         @ appMiddlewaresPost

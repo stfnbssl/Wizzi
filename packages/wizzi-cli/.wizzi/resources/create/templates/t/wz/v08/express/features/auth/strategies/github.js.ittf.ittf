@@ -29,7 +29,7 @@ $group
             return 
                 new Strategy
                     { 
-                        @ clientID config.githubClientID
+                        @ clientID config.githubClientId
                         @ clientSecret config.githubClientSecret
                         @ callbackURL config.githubCallbackURL
                         @ passReqToCallback true

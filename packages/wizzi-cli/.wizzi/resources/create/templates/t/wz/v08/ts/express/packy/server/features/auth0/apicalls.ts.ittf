@@ -12,14 +12,14 @@ module
                 _ getApiToken
                     `lit 
                         + https://
-                        @ config.Auth0Domain
+                        @ config.auth0Domain
                         + /api/v2/
     export 
         function getPackiApiToken
             :return
                 :ref Promise
                     :param any
-            return getApiToken(config.Auth0PackiApiId)
+            return getApiToken(config.auth0PackiApiId)
     export 
         function getApiToken
             param audience
@@ -31,7 +31,7 @@ module
                 _ fetch
                     `lit 
                         + https://
-                        @ config.Auth0Domain
+                        @ config.auth0Domain
                         + /oauth/token
                     { 
                         @ method 'POST'
@@ -40,8 +40,8 @@ module
                         @ body
                             _ JSON.stringify
                                 { 
-                                    @ client_id config.Auth0PackiBackendAppId
-                                    @ client_secret config.Auth0PackiBackendAppSecret
+                                    @ client_id config.auth0PackiBackendAppId
+                                    @ client_secret config.auth0PackiBackendAppSecret
                                     @ audience
                                     @ grant_type "client_credentials"
                     ._ then
@@ -69,7 +69,7 @@ module
                             _ fetch
                                 `lit 
                                     + https://
-                                    @ config.Auth0Domain
+                                    @ config.auth0Domain
                                     + /api/v2/users
                                 _ getOptions(data.access_token)
                                 ._ then
@@ -97,7 +97,7 @@ module
                             _ fetch
                                 `lit 
                                     + https://
-                                    @ config.Auth0Domain
+                                    @ config.auth0Domain
                                     + /api/v2/users/
                                     @ userId
                                     + 

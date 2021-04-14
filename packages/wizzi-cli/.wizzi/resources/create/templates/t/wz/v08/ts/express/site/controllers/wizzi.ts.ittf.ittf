@@ -12,6 +12,7 @@ $group
     controller${lparen} &ctrl )
         
         _ this.router.get(`/`, this.index)
+        _ this.router.post(`${this.path}/alpha/:id`, this.test)
         
         ${'$'}append handlers
 
@@ -20,3 +21,9 @@ $group
                     @ 'wizzi/index.html.ittf'
                     {
                         @ title 'Wizzi section'
+
+            handler${lparen} test )
+                _ response.render
+                    @ 'wizzi/index.html.ittf'
+                    {
+                        @ title 'Wizzi section: ' + request.params.id

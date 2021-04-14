@@ -12,12 +12,8 @@ $group
         import session
             from 'express-session'
         ${'$'}if wzCtx.Build.useMongoDb
-            import 
-                as mongoSessionStore
-                from 'connect-mongo'
-            import 
-                as mongoose
-                from 'mongoose'
+            import mongoSessionStore from 'connect-mongo'
+            import mongoose from 'mongoose'
         import 
             @ config
             from '../features/config'

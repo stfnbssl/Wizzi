@@ -3,9 +3,7 @@ $group
     import 
         @ Application
         from 'express'
-    import 
-        as cors
-        from 'cors'
+    import cors from 'cors'
     import 
         @ MiddlewareType
         from '../features/app/types'

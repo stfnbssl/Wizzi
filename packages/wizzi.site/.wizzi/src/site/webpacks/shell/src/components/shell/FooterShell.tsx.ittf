@@ -1,0 +1,41 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "FooterShell",
+            props: [
+                { name: "theme", type: "ThemeName", ref: true },
+                { name: "type", type: "union", types:[
+                    { name: 'loading', literal:true },
+                    { name: 'error', literal:true },
+                    { name: 'null' },
+                ]},
+                { name: "children", type: "node" }
+            ]
+        }
+    v08/ts/react/function(&md)
+        < StyledRoot
+            + {children}
+        $append imports
+            import
+                @ c
+                @ ThemeName
+                from '../ThemeProvider'
+        $append styles
+            :interface RootStyleProps
+                :p theme
+                    :ref ThemeName
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+                position relative
+                flex-direction row
+                align-items center
+                padding 0 .25em
+                border-top
+                    => "1px solid " + c('border', props.theme)
+                background-color
+                    => props.type === 'error' ? c('error', props.theme) : props.type === 'loading' ? c('primary', props.theme) : c('content', props.theme)
+                color
+                    => props.type === 'error' ? c('error-text', props.theme) : props.type === 'loading' ? c('primary-text', props.theme) : c('soft', props.theme)
+                height 30px
+                zIndex 10

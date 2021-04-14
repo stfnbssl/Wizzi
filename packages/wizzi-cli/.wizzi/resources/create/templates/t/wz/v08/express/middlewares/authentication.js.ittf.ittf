@@ -20,7 +20,7 @@ $group
                 @ secret config.auth0Secret
                 @ issuerBaseURL config.auth0IssuerBaseURL
                 @ baseURL config.auth0BaseURL
-                @ clientID config.auth0ClientID
+                @ clientID config.auth0ClientId
                 $$ @ clientSecret config.auth0ClientSecret
                 ${'$'}if wzCtx.Build.authentication.authRequired
                     @ authRequired true

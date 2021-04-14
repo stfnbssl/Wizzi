@@ -116,6 +116,35 @@ md.load = function(cnt) {
             return callback(ctx.error('not/! statement element requires zero or one child elements', model));
         }
     };
+    cnt.stm.notnot = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.notnot');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.notnot. Got: ' + callback);
+        }
+        model = writeComments(model, ctx);
+        ctx.write('!!(');
+        if (model.statements.length == 0) {
+            ctx.write(model.wzName + ')');
+            return callback(null, null);
+        }
+        else if (model.statements.length == 1) {
+            var saveParenRequired = ctx.parenRequired;
+            ctx.parenRequired = true;
+            cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write(')');
+                ctx.parenRequired = saveParenRequired;
+                return callback(null, null);
+            })
+        }
+        else {
+            return callback(ctx.error('not/! statement element requires zero or one child elements', model));
+        }
+    };
     cnt.stm.or = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.or');

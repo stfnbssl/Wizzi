@@ -1,41 +1,58 @@
 $group
+    
+    $ 
+        var mixMisc = 'misc(';
+
+    ${'$'}
+        var defaultProps = [];
+
+    ${mixMisc} setMyProps, &md )
+    ${mixMisc} setMyStateProps, &md )
 
     import React
-        @ Component
+        @ ${'$'}{md.isPure ? 'Pure' : ''}Component
         from 'react'
+    import ReactDOM from 'react-dom'
+    ${'$'}if md.styled
+        # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+        import styled
+            @ keyframes
+            from 'styled-components'
+    ${'$'}if md.aphrodite
+        import 
+            @ StyleSheet
+            @ css
+            from 'aphrodite'
+        import classnames from 'classnames'
     ${'$'}hook imports
 
-    ${'$'}if md.props.length > 0
+    ${'$'}if myProps.length > 0
+        +
         :type ${'$'}{md.name}Props
             :{ 
-                ${'$'}foreach prop in md.props
-                    ${'$'}if prop.type.toLowerCase() == 'date'
-                        :p ${'$'}{prop.name}
-                            :ref Date
-                    ${'$'}else
-                        :p ${'$'}{prop.name}
-                            :${'$'}{prop.type}
+                ${'$'}foreach prop in myProps
+                    ${'$'} if (prop.xdefault) { defaultProps.push(prop); }
+                    ${'$'}include setPropType
     
-    ${'$'}if md.stateItems.length > 0
+    ${'$'}if myStateProps.length > 0
+        +
         :type ${'$'}{md.name}State
             :{ 
-                ${'$'}foreach prop in md.stateItems
-                    ${'$'}if prop.type == 'date'
-                        :p ${'$'}{prop.name}
-                            :ref Date
-                    ${'$'}else
-                        :p ${'$'}{prop.name}
-                            :${'$'}{prop.type}
+                ${'$'}foreach prop in myStateProps
+                    ${'$'}include setPropType
     
-    export 
+    +
+    ${'$'}hook styles
+    +    
+    export-default
         class ${'$'}{md.name}
-            super Component
-                ${'$'}if md.props.length > 0
+            super ${'$'}{md.isPure ? 'Pure' : ''}Component
+                ${'$'}if myProps.length > 0
                     :param 
                         :ref ${'$'}{md.name}Props
                 ${'$'}else
                     :param {}
-                ${'$'}if md.stateItems.length > 0
+                ${'$'}if myStateProps.length > 0
                     :param 
                         :ref ${'$'}{md.name}State
                 ${'$'}else

@@ -1,0 +1,10 @@
+module
+    import
+        @ IStorageBackend
+        from './types'
+    import StorageHandler
+        from './backends'
+    +
+    export
+        @ IStorageBackend
+        @ StorageHandler

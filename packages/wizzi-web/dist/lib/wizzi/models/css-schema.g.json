@@ -71,6 +71,17 @@
           "flags": "",
           "inheritedFrom": null,
           "comments": []
+        },
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": null,
+          "comments": []
         }
       ],
       "derived": [],
@@ -190,6 +201,21 @@
       "comments": [
         "The root element"
       ]
+    },
+    {
+      "name": "statement",
+      "super": null,
+      "isRoot": false,
+      "tags": [
+        "+"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
     },
     {
       "name": "resource",

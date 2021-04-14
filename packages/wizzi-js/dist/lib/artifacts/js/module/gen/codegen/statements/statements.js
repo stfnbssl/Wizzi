@@ -246,7 +246,7 @@ md.load = function(cnt) {
         }
         var name = model.wzName || '';
         ctx.write('export ' + typekey + name);
-        // log 'js.module.xexport', name, model.from, model.statements.length, model.specifiers.length
+        // log 'js.module.xexport', 'model.__isType', model.__isType, name, model.from, model.statements.length, model.specifiers.length
         if (model.from) {
             if (model.statements.length == 1) {
                 if (model.statements[0].wzElement == 'typeTypeAlias') {
@@ -350,9 +350,8 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.typeExport. Got: ' + callback);
         }
-        ctx.write('export = ');
-        ctx.w(u.semicolon(model.wzName));
-        return callback(null, null);
+        model.__isType = true;
+        cnt.stm.xexport(model, ctx, callback)
     };
     cnt.stm.typeExportNamespace = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {

@@ -137,6 +137,12 @@
           ]
         },
         {
+          "name": "notnot",
+          "tags": [
+            "!!"
+          ]
+        },
+        {
           "name": "or",
           "tags": [
             "\\",
@@ -344,24 +350,6 @@
           "name": "exportDefault",
           "tags": [
             "export-default"
-          ]
-        },
-        {
-          "name": "typeExport",
-          "tags": [
-            ":export"
-          ]
-        },
-        {
-          "name": "typeExportNamespace",
-          "tags": [
-            ":export-ns"
-          ]
-        },
-        {
-          "name": "typeRequire",
-          "tags": [
-            ":require"
           ]
         },
         {
@@ -5708,6 +5696,33 @@
       "comments": []
     },
     {
+      "name": "notnot",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "!!"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "or",
       "super": "statement",
       "isRoot": false,
@@ -6782,87 +6797,6 @@
       "isRoot": false,
       "tags": [
         "export-default"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "typeExport",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        ":export"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "typeExportNamespace",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        ":export-ns"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "typeRequire",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        ":require"
       ],
       "flags": "",
       "attributes": [],

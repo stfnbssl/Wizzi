@@ -9,6 +9,7 @@ $group
     import 
         @ MiddlewareType
         from '../features/app/types'
+    +
     export 
         const BodyParserMiddleware
             :ref MiddlewareType

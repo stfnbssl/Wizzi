@@ -27,6 +27,7 @@ wfjob ${cliCtx.name}/job
 
 		wfjobs${mix}any_js, &jobCtx)
         wfjobs${mix}any_ts, &jobCtx)
+        wfjobs${mix}any_tsx, &jobCtx)
         wfjobs${mix}any_json, &jobCtx)
         wfjobs${mix}any_md, &jobCtx)
         wfjobs${mix}.env, &jobCtx)
@@ -41,13 +42,17 @@ wfjob ${cliCtx.name}/job
 
         wfjobs${mix}any_js, &jobCtx)
         wfjobs${mix}any_ts, &jobCtx)
-        $$ wfjobs${mix}any_html, &jobCtx)
-        $$ wfjobs${mix}any_css, &jobCtx)
+        wfjobs${mix}any_tsx, &jobCtx)
+        wfjobs${mix}any_css, &jobCtx)
+        wfjobs${mix}any_json, &jobCtx)
+        wfjobs${mix}any_md, &jobCtx)
         wfjobs${mix}any_plain, &jobCtx, js)
+        wfjobs${mix}any_plain, &jobCtx, d.ts)
         wfjobs${mix}any_plain, &jobCtx, html)
         wfjobs${mix}any_plain, &jobCtx, html.ittf)
         wfjobs${mix}any_plain, &jobCtx, css)
         wfjobs${mix}any_plain, &jobCtx, css.ittf)
+        wfjobs${mix}any_plain_image, &jobCtx)
 	---
     line ittf-static
         cwd-folder ${'$'}{jobCtx.ittf_static_folder}
@@ -59,12 +64,14 @@ wfjob ${cliCtx.name}/job
         wfjobs${mix}any_plain, &jobCtx, html)
         wfjobs${mix}any_plain, &jobCtx, css)
         wfjobs${mix}any_plain, &jobCtx, js)
+        wfjobs${mix}any_plain_image, &jobCtx)
 	---
     line ittf-ittf
         cwd-folder ${'$'}{jobCtx.ittf_ittf_folder}
         dest-folder ${'$'}{jobCtx.dest_folder}/ittf
 
         wfjobs${mix}any_plain, &jobCtx, ittf)
+        wfjobs${mix}any_plain_image, &jobCtx)
     ---
     production
 		dest-folder ${'$'}{jobCtx.dest_folder}

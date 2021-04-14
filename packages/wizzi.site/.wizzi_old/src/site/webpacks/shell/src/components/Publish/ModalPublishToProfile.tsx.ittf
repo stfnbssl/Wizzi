@@ -1,0 +1,128 @@
+module
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        as React
+        from 'react'
+    import 
+        @ connect
+        from 'react-redux'
+    import 
+        @ c
+        from '../ThemeProvider'
+    import Button from '../shared/Button'
+    import ModalDialog from '../shared/ModalDialog'
+    :type Props
+        :{ 
+            :p authFlow
+                :optional 
+                :union 
+                    :literal 'save1'
+                    :literal 'save2'
+            :p visible
+                :boolean 
+            :p snackUrl
+                :optional 
+                :string 
+            :p zipUrl
+                :optional 
+                :string 
+            :p isPublishing
+                :boolean 
+            :p onDismiss
+                :=> 
+                    :void 
+            :p onPublish
+                :=> 
+                    :void 
+    class ModalPublishToProfile
+        super React.Component
+            :param 
+                :ref Props
+        m componentDidMount
+            _ document.addEventListener('keydown', this._handleKeyDown)
+        m componentWillUnmount
+            _ document.removeEventListener('keydown', this._handleKeyDown)
+        => _handleKeyDown
+            param e
+                :ref KeyboardEvent
+            if this.props.visible && e.keyCode === 13
+                _ e.preventDefault()
+                _ this.props.onPublish()
+        m render
+            const copy
+                iif this.props.authFlow === 'save2'
+                    then 'Want a stable and easy to remember URL?'
+                    else 'Want to easily find this snack again?'
+            const cta
+                iif this.props.authFlow === 'save2'
+                    then 'Save to your Expo Profile'
+                    else 'Save to Profile'
+            return 
+                < ModalDialog 
+                    @ visible {this.props.visible}
+                    @ title "Save your snack"
+                    @ onDismiss {this.props.onDismiss}
+                    p 
+                        @ className {css(styles.text)}
+                        @ style
+                            { 
+                                @ marginTop 16
+                        + The shareable link to your Snack
+                        + {' '}
+                        a 
+                            @ href {this.props.snackUrl}
+                            @ target "blank"
+                            + {this.props.snackUrl}
+                    p 
+                        @ className {css(styles.text)}
+                        + Every time you save, your will get a new link to share.
+                        + {copy}
+                        + Log in or sign up and save&lf;          to your profile!
+                    < Button 
+                        @ large
+                        @ variant "primary"
+                        @ onClick {this.props.onPublish}
+                        @ loading {this.props.isPublishing}
+                        + {cta}
+                    { 
+                        iif this.props.zipUrl
+                            then
+                                p 
+                                    @ className {css(styles.caption)}
+                                    a 
+                                        @ className {css(styles.link)}
+                                        @ href {this.props.zipUrl}
+                                        @ target "blank"
+                                        + Download .zip file
+                            else null
+    export-default 
+        _ connect
+            => 
+                param state
+                    :any 
+                (
+                    { 
+                        @ authFlow state.splitTestSettings.authFlow || 'save1'
+            (
+                @ ModalPublishToProfile
+    const styles
+        _ StyleSheet.create
+            { 
+                { text
+                    @ marginBottom 24
+                    @ fontSize '16px'
+                    @ padding '0 24px 0 24px'
+                    @ lineHeight '22px'
+                    @ textAlign 'center'
+                { caption
+                    @ marginTop 24
+                    @ fontSize '16px'
+                    @ lineHeight '22px'
+                    @ textAlign 'center'
+                { link
+                    @ color c('primary')
+                    @ cursor 'pointer'
+                    @ textDecoration 'underline'

@@ -36,14 +36,19 @@ $group
             [ 
                 ${'$'}if wzCtx.Build.useSite
                     @ ...siteControllers
-                ${'$'}if wzCtx.Build.useAuthentication
-                    @ ...authenticationControllers
-                ${'$'}if wzCtx.Build.useAuthorization
-                    @ ...authorizationControllers
+                $$ For now auth needs MongoDb
+                ${'$'}if wzCtx.Build.useMongoDb
+                    ${'$'}if wzCtx.Build.useAuthentication
+                        @ ...authenticationControllers
+                    ${'$'}if wzCtx.Build.useAuthorization
+                        @ ...authorizationControllers
                 ${'$'}if wzCtx.Build.useAccount
                     @ ...accountControllers
                 ${'$'}if wzCtx.Build.useBlog
                     @ ...blogControllers
+                ${'$'}if wzCtx.Build.usePacki
+                    @ ...packiControllers
+
         +
     log 'Starting app. Config:', config
     

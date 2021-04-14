@@ -1,0 +1,21 @@
+$group
+    $params &md
+    $
+        var ctrl = {
+            name: 'Wizzi',
+            path: '/wizzi'
+        }
+    controller( &ctrl )
+        _ this.router.get(`/`, this.index)
+        _ this.router.post(`${this.path}/alpha/:id`, this.test)
+        $append handlers
+            handler( index )
+                _ response.render
+                    @ 'wizzi/index.html.ittf'
+                    {
+                        @ title 'Wizzi section'
+            handler( test )
+                _ response.render
+                    @ 'wizzi/index.html.ittf'
+                    {
+                        @ title 'Wizzi section: ' + request.params.id

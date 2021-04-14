@@ -21,14 +21,14 @@ $group
                                 @ jwksUri
                                     `lit 
                                         + https://
-                                        @ config.Auth0Domain
+                                        @ config.auth0Domain
                                         + /.well-known/jwks.json
                     # Validate the audience and the issuer.
-                    @ audience config.Auth0PackiApiId
+                    @ audience config.auth0PackiApiId
                     @ issuer
                         `lit 
                             + https://
-                            @ config.Auth0Domain
+                            @ config.auth0Domain
                             + /
                     [ algorithms
                         @ 'RS256'

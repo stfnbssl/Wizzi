@@ -25,6 +25,9 @@
 	e not : statement
 		tag not|op!
 
+	e notnot : statement
+		tag !!
+
 	e or : statement
 		tag \|\||op\|\|
 	

@@ -140,7 +140,7 @@
         # log 'ReturnStatement.parent', parent.children[parent.children.length-1]
 
     f( LabeledStatement, label
-		f_p_temp( label, true, Identifier
+		f_p_temp( label, true, true, Identifier
 		set ret.name = getNodeText(p_label)
 		f_p( body
 
@@ -179,7 +179,7 @@
 
     f( SwitchStatement, switch
 		# A `switch` statement.
-		f_p_temp( discriminant, true, Expression
+		f_p_temp( discriminant, true, true, Expression
 		if isTextualNode(p_discriminant)
 			set ret.name = p_discriminant.textified || p_discriminant.name
 			set ret.textified = ret.name
@@ -189,7 +189,7 @@
 		f_a( cases, true, SwitchCase
 
     f( SwitchCase, case
-		f_p_temp( test, false, Expression | null
+		f_p_temp( test, false, true, Expression | null
 		f_a( consequent, true, Statement
 		# A `case` (if `test` is an `Expression`) or `default` (if `test === null`) clause in the body of a `switch` statement.
 		#
@@ -214,8 +214,8 @@
     f( TryStatement, try;ret-is-array
 		# log 'wizzifiers.js.TryStatement', JSON.stringify(node, null, 2)
 		f_p( block, true, BlockStatement
-		f_p_temp( handler, false, CatchClause, optional
-		f_p_temp( finalizer, false, BlockStatement | null
+		f_p_temp( handler, false, true, CatchClause, optional
+		f_p_temp( finalizer, false, true, BlockStatement | null
 		var tempRet = [ ret ]
 		# log 'TryStatement.p_handler', p_handler
 		# log 'TryStatement.p_finalizer', p_finalizer
@@ -263,8 +263,8 @@
 		f_p( body, true, Statement
 
     f( ForInStatement, for
-		f_p_temp( left, true, VariableDeclaration |  Expression
-		f_p_temp( right, true, Expression
+		f_p_temp( left, true, true, VariableDeclaration |  Expression
+		f_p_temp( right, true, true, Expression
 		if isTextualNode(p_left)
 			set ret.name = getNodeText(p_left)
             if isTextualNode(p_right)
@@ -298,8 +298,8 @@
 		f_p( body, true, Statement
     
 	f( ForOfStatement, for
-		f_p_temp( left, true, VariableDeclaration |  Expression
-		f_p_temp( right, true, Expression
+		f_p_temp( left, true, true, VariableDeclaration |  Expression
+		f_p_temp( right, true, true, Expression
         # log 'ForOfStatement', isTextualNode(p_left), isTextualNode(p_right)
 		if isTextualNode(p_left)
 			set ret.name = getNodeText(p_left)
@@ -340,7 +340,7 @@
 		f_p( typeParameters, false, ?TypeParameterInstantiation
 		f_a_in_tag( params, params
 		_ processParams(ret)
-		f_p_temp( returnType, false
+		f_p_temp( returnType, false, true
 		if p_returnType
 			# log 'p_returnType', JSON.stringify(p_returnType)
 			set p_returnType
@@ -437,7 +437,7 @@
 		
 
     f( VariableDeclarator, decl
-		f_p_temp(id, true)
+		f_p_temp(id, true, true)
 		
 		# log 'VariableDeclarator,p_id, isTextualNode(p_id)', p_id, isTextualNode(p_id)
 		if isTextualNode(p_id)
@@ -454,7 +454,7 @@
 
 		f_p( typeAnnotation, false, ?TypeAnnotation
 
-		f_p_temp( init, false, Expression | null
+		f_p_temp( init, false, true, Expression | null
 		
 		# log 'VariableDeclarator.p_init', p_init
 		
@@ -501,7 +501,7 @@
 		# log 'VariableDeclarator 2 ret', ret
 
     f( Decorator, @decorator
-		f_p_temp( expression, true, Expression
+		f_p_temp( expression, true, true, Expression
 		if isTextualNode(p_expression)
 			set ret.name = getNodeText(p_expression)
 		else
@@ -512,7 +512,7 @@
 		if node.value && node.value.value === 'use strict'
 			set ret = null
 		else
-			f_p_temp( value, true, DirectiveLiteral
+			f_p_temp( value, true, true, DirectiveLiteral
 			if isTextualNode(p_value)
 				set ret.name = getNodeText(p_value)
 
@@ -559,7 +559,7 @@
  
     f( YieldExpression, yield
 		$$ 20/3/21 f_p_tag( argument, argument, Expression | null
-        f_p_temp( argument, true, Expression | null
+        f_p_temp( argument, true, true, Expression | null
         # log 'ObjectProperty.p_value', p_value
         if isTextualNode(p_argument)
             set ret.name = getNodeText(p_argument)
@@ -698,8 +698,8 @@
 
 		# log 'ObjectProperty.ret.name', ret.name, 'node.value.type', node.value.type
 		if node.value.type === 'AssignmentPattern'
-			f_p_temp( value.left, true, Expression
-			f_p_temp( value.right, true, Expression
+			f_p_temp( value.left, true, true, Expression
+			f_p_temp( value.right, true, true, Expression
 			# log 'p_value_left', p_value_left
 			# log 'p_value_right', p_value_right
 			if node.value.left.type === 'ObjectPattern'
@@ -748,7 +748,7 @@
 							[ children
 								@ p_value_right
 		else
-			f_p_temp( value, true, Expression
+			f_p_temp( value, true, true, Expression
 			# log 'ObjectProperty.p_value', p_value, isTextualNode(p_value), isTextualNode(p_key)
 			if isTextualNode(p_value)
 				if isTextualNode(p_key)
@@ -848,7 +848,7 @@
         if ret.tag == 'opdelete'
             set ret.tag = 'delete'
 		
-		f_p_temp( argument, true, Expression
+		f_p_temp( argument, true, true, Expression
 		if isTextualNode(p_argument)
 			set ret.name = getNodeText(p_argument)
 			const space = ['-','+','!','{'].indexOf(node.operator) > -1 ? '' : ' '
@@ -932,9 +932,9 @@
 		if node.operator.length > 1
 			set ret.tag = node.operator
 		
-		f_p_temp( left, true, Expression
+		f_p_temp( left, true, true, Expression
 		# log 'BinaryExpression.p_left', p_left
-		f_p_temp( right, true, Expression
+		f_p_temp( right, true, true, Expression
 		# log 'BinaryExpression.p_right', p_right
 
 		if isTextualNode(p_left) && isTextualNode(p_right)
@@ -975,9 +975,9 @@
 			\b | "|=" | "^=" | "&="
 		const save = options.mustBeText
 		set options.mustBeText = true
-		f_p_temp( left, true, Pattern | Expression
+		f_p_temp( left, true, true, Pattern | Expression
 		set options.mustBeText = save
-		f_p_temp( right, true, Expression
+		f_p_temp( right, true, true, Expression
 		
 		if isTextualNode(p_left)
 			set ret.name = getNodeText(p_left) + ' ' + node.operator + ' '
@@ -1003,8 +1003,8 @@
 		# A logical operator expression.
 		# s( operator, LogicalOperator enum "||" | "&&" | "??"
 		
-		f_p_temp( left, true, Expression
-		f_p_temp( right, true, Expression
+		f_p_temp( left, true, true, Expression
+		f_p_temp( right, true, true, Expression
 
         var parenthesized = node.extra && node.extra.parenthesized
 
@@ -1071,7 +1071,7 @@
 					# TODO Do nothing is OK?
 
     f( SpreadElement, ...
-		f_p_temp( argument, true, Expression
+		f_p_temp( argument, true, true, Expression
 		# log 'SpreadElement.p_argument', p_argument
 		if isTextualNode(p_argument)
 			set ret.name = getNodeText(p_argument)
@@ -1169,8 +1169,8 @@
     f( ConditionalExpression, iif
 		# A conditional expression, i.e., a ternary `?`/`:` expression.
 		f_p_tag( test, test
-		f_p_temp( consequent, true, Expression
-		f_p_temp( alternate, true, Expression
+		f_p_temp( consequent, true, true, Expression
+		f_p_temp( alternate, true, true, Expression
 		
 		# log 'ConditionalExpression 1', ret.tag
         _ setNameFromChildByTag(ret, 'test', true)
@@ -1245,7 +1245,7 @@
 		# A function or method call expression.
 
 		f_p( typeParameters, false, ?TypeParameterInstantiation
-		f_p_temp( callee, true, | Super | Import
+		f_p_temp( callee, true, true, | Super | Import
 		f_a_temp( arguments
 
 		var lastCallee = ret
@@ -1410,6 +1410,7 @@
 
     f( NewExpression, new;could-be-text
 		f_a_in_tag( arguments, arguments
+		f_p_temp( typeParameters, false, false, TSTypeParameterInstantiation
 		f_p_temp( callee
 
 		if p_callee.isText || p_callee.textified
@@ -1420,22 +1421,38 @@
 		var argumentsNode = getChildByTag(ret, 'arguments')
 		set ret.children = []
 
-		if argumentsNode
-			var tlist = getTextList(argumentsNode, ', ')
-			# log 'NewExpression.tlist', tlist
-			# if tlist && tlist.length < 15
-			if tlist 
+        # log 'NewExpression.ret', ret
+        log 'NewExpression.p_typeParameters', p_typeParameters
+        log 'NewExpression.argumentsNode', argumentsNode
+
+		var tlist
+        if node.arguments && node.arguments.length > 0
+            # log 101
+            if !p_typeParameters
+                set tlist = getTextList(argumentsNode, ', ')
+			log 'NewExpression.tlist', tlist
+            if tlist 
 				set ret.name += '(' + tlist + ')'
 				set ret.textified = 'new ' + ret.name
                 set ret.isText = true
 			else
+                if p_typeParameters
+                    foreach item in p_typeParameters.children
+                        _ ret.children.push
+                            @ item
 				foreach item in argumentsNode.children
 					if [$*'@expr', 27/3/21*$'@id', 'literal'].indexOf(item.tag) > -1
 						set item.tag = '@'
 					_ ret.children.push
 						@ item
 		else
-			set ret.textified = 'new ' + ret.name + '()'
+            # log 102
+            if p_typeParameters
+                foreach item in p_typeParameters.children
+                    _ ret.children.push
+                        @ item
+            else
+			    set ret.textified = 'new ' + ret.name + '()'
 		# log 'NewExpression.ret', ret
 
     f( SequenceExpression, sequence
@@ -1469,12 +1486,12 @@
 				_ ret.children.push(item)
 
     f( TaggedTemplateExpression, _`
-		f_p_temp( tag, true, Expression
+		f_p_temp( tag, true, true, Expression
 		if isTextualNode(p_tag)
 			set ret.name = getNodeText(p_tag)
 		else
 			throw new Error('TaggedTemplateExpression.tag must be textual:' + JSON.stringify(node, null, 2))
-		f_p_temp( quasi, true, TemplateLiteral
+		f_p_temp( quasi, true, true, TemplateLiteral
 		foreach item in p_quasi.children
 			_ ret.children.push(item)
 
@@ -1537,8 +1554,8 @@
 		set ret.textified = '...' + ret.name
 
     f( AssignmentPattern, node.operator
-		f_p_temp( left, true, Pattern | Expression
-		f_p_temp( right, true, Expression
+		f_p_temp( left, true, true, Pattern | Expression
+		f_p_temp( right, true, true, Expression
 		# log 'AssignmentPattern.p_left', JSON.stringify(p_left, null, 2)
 		# log 'AssignmentPattern.p_right', JSON.stringify(p_right, null, 2)
 		if isTextualNode(p_left)
@@ -1559,7 +1576,7 @@
 
 	f( Class, class
 		f_p_name(id, Identifier | null
-		f_p_temp(superClass, false, Expression | null
+		f_p_temp(superClass, false, true, Expression | null
 		if p_superClass
 			if isTextualNode(p_superClass)
 				_ ret.children.push
@@ -1639,8 +1656,8 @@
 
     f( ClassProperty, p
 		f_p_name(key, Expression
-		f_p_temp(value, false, Expression
-		f_p_temp(typeAnnotation, false, ?TypeAnnotation
+		f_p_temp(value, false, true, Expression
+		f_p_temp(typeAnnotation, false, true, ?TypeAnnotation
 
         if node.optional
             set ret.name = ret.name + '?'
@@ -1695,8 +1712,8 @@
 		f_p_name( id, Identifier
 		b( abstract, :abstract
 		f_p( typeParameters, false, ?TypeParameterInstantiation
-		f_p_temp(superClass, false, Expression | null
-		f_p_temp(superTypeParameters, false, TypeParameterInstantiation | null
+		f_p_temp(superClass, false, true, Expression | null
+		f_p_temp(superTypeParameters, false, true, TypeParameterInstantiation | null
 		var p_super
 		if p_superClass
 			if isTextualNode(p_superClass)
@@ -1747,8 +1764,8 @@
 
     f( ClassExpression, class
 		f_p_name( id, Identifier
-		f_p_temp(superClass, false, Expression | null
-        f_p_temp(superTypeParameters, false
+		f_p_temp(superClass, false, true, Expression | null
+        f_p_temp(superTypeParameters, false, true
 		if p_superClass
 			if isTextualNode(p_superClass)
                 # log 'p_superTypeParameters', p_superTypeParameters
@@ -1855,7 +1872,7 @@
 			set ret.children = []
 
 	f( ExportDefaultSpecifier, default
-		f_p_temp( exported, true, OptFunctionDeclaration | OptClassDeclaration | Expression
+		f_p_temp( exported, true, true, OptFunctionDeclaration | OptClassDeclaration | Expression
 		if isTextualNode(p_exported)
 			set ret.name = getNodeText(p_exported)
 		else
@@ -1864,7 +1881,7 @@
 
 	f( ExportDefaultDeclaration, export-default
 		# An export default declaration, e.g., `export default function () {}` or `export default 1`.
-		f_p_temp( declaration, true, OptFunctionDeclaration | OptClassDeclaration | Expression
+		f_p_temp( declaration, true, true, OptFunctionDeclaration | OptClassDeclaration | Expression
 		if isTextualNode(p_declaration)
 			set ret.name = getNodeText(p_declaration)
 		else
@@ -1872,7 +1889,7 @@
 				@ p_declaration
 
     f( ExportNamespaceSpecifier, as
-		f_p_temp( exported, true, OptFunctionDeclaration | OptClassDeclaration | Expression
+		f_p_temp( exported, true, true, OptFunctionDeclaration | OptClassDeclaration | Expression
 		if isTextualNode(p_exported)
 			set ret.name = getNodeText(p_exported)
 		else
@@ -1902,8 +1919,8 @@
 	f( JSXAttribute, @
 		_ options.stateAST.push
 			@ 'JSXAttribute'
-		f_p_temp( name, true, JSXnamespacedName
-		f_p_temp( value, false, JSXElement | JSXFragment | StringLiteral | JSXExpressionContainer
+		f_p_temp( name, true, true, JSXnamespacedName
+		f_p_temp( value, false, true, JSXElement | JSXFragment | StringLiteral | JSXExpressionContainer
 
 		if isTextualNode(p_name)
 			set ret.name = getNodeText(p_name)
@@ -1924,7 +1941,7 @@
 		# name JSXIdentifier | JSXMemberExpression
 
 	f( JSXElement, jsx-element
-		f_p_temp( openingElement, true, JSXOpeningElement
+		f_p_temp( openingElement, true, true, JSXOpeningElement
 		# f_p( closingElement, true, JSXClosingElement
 		f_a_temp( children, true, JSXText | JSXExpressionContainer | JSXSpreadChild | JSXElement | JSXFragment
 		# log 'p_openingElement', p_openingElement
@@ -2014,7 +2031,7 @@
 			_ options.stateAST.pop
 
 	f( JSXSpreadChild
-		f_p_temp( expression, true, Expression
+		f_p_temp( expression, true, true, Expression
 		set ret.tag = p_expression.tag
 		set ret.name = '...' + p_expression.name
 		set ret.children = p_expression.children
@@ -2032,7 +2049,7 @@
 		# name JSXIdentifier
 
 	f( JSXOpeningElement, jsx-open
-		f_p_temp( name, true, JSXIdentifier | JSXMemberExpression
+		f_p_temp( name, true, true, JSXIdentifier | JSXMemberExpression
         
 		# selfClosing boolean
 
@@ -2050,7 +2067,7 @@
 					_ ret.children.push
 						@ item
 		
-		f_p_temp( typeParameters, false, TSTypeParameterInstantiation
+		f_p_temp( typeParameters, false, true, TSTypeParameterInstantiation
         if p_typeParameters
 			foreach item in p_typeParameters.children
 				_ ret.children.push

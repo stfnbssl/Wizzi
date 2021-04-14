@@ -22,6 +22,8 @@
 			_ new webpack.DefinePlugin
 				{
 					@ 'process.browser' true
+        new webpack.ContextReplacementPlugin
+            @ /monaco-editor(\\|\/)esm(\\|\/)vs(\\|\/)editor(\\|\/)common(\\|\/)services/
     ---
 	${'$'}if wzCtx.Build.useMonaco2
 		${'$'}${'$'} https://github.com/Microsoft/monaco-editor-webpack-plugin#options

@@ -20,5 +20,7 @@ $group
                         :ref Application
                     log 'StaticFilesMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', 'static')
                     _ app.use('/static', expressStatic(path.resolve(__dirname, '..', '..', 'static')))
-                        # simply browse ittfs when IttfDocumentsMiddleware is not used
-                        # app.use('/ittf', expressStatic(path.resolve(__dirname, '..', '..', 'ittf')));
+                    ${'$'}if wzCtx.Build.useIttfStatic
+                        log 'StaticFilesMiddleware. Folder served from ', path.resolve(__dirname, '..', '..', 'ittf')
+                        _ app.use('/ittf', expressStatic(path.resolve(__dirname, '..', '..', 'ittf')))
+                            # simply browse ittfs when IttfDocumentsMiddleware is not used

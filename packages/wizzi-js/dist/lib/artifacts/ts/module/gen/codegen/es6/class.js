@@ -10,6 +10,7 @@ var method = require('./method');
 var handler = require('./handler');
 var property = require('./property');
 var xget = require('./get');
+var xset = require('./set');
 var md = module.exports = {};
 var myname = 'wizzi.js.artifacts.module.gen.codegen.es6.class';
 md.gen = function(model, ctx, callback) {
@@ -132,6 +133,7 @@ function classSuper(model, ctx, callback) {
     }
     if (model.super) {
         ctx.write(' extends ' + model.super);
+        // log 'classSuper', 'model.superType', model.superType
         if (model.superType && model.superType.typeParameterInsts.length > 0) {
             ctx.write('<');
             var len_1 = model.superType.typeParameterInsts.length;
@@ -273,6 +275,9 @@ function classMembers(model, ctx, callback) {
         }
         else if (item_1.wzElement === 'get') {
             generator = xget;
+        }
+        else if (item_1.wzElement === 'set') {
+            generator = xset;
         }
         else {
             generator = null;

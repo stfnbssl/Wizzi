@@ -3,6 +3,9 @@
     $ 
         var mixMisc = 'misc(';
 
+    ${'$'}
+        var defaultProps = [];
+
     ${mixMisc} setMyProps, &md )
 
     import React
@@ -13,11 +16,18 @@
         import styled
             @ keyframes
             from 'styled-components'
+    ${'$'}if md.aphrodite
+        import 
+            @ StyleSheet
+            @ css
+            from 'aphrodite'
+        import classnames from 'classnames'
     +
     ${'$'}hook imports
     :type ${'$'}{md.name}Props
         :{
             ${'$'}foreach prop in myProps
+                ${'$'} if (prop.xdefault) { defaultProps.push(prop); }
                 ${'$'}include setPropType
     +
     ${'$'}hook styles
@@ -31,3 +41,12 @@
                     ${'$'}foreach prop in myProps
                         @ ${'$'}{prop.name}
                 ${'$'}hook
+
+    ${'$'}if defaultProps.length > 0
+        set ${'$'}{md.name}.defaultProps
+            {
+                ${'$'}foreach prop in defaultProps
+                    ${'$'}if prop.type == 'string'
+                        @ ${'$'}{prop.name} "${'$'}{prop.xdefault}"
+                    ${'$'}else
+                        @ ${'$'}{prop.name} ${'$'}{prop.xdefault}

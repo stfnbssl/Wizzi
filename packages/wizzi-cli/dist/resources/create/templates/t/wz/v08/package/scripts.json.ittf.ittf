@@ -52,3 +52,6 @@ $group
     
     ${'$'}if wzCtx.Build.usePrettier
         prettier "prettier --write src/**/*.js"
+
+    ${'$'}if wzCtx.Build.useTailwindcss
+        build-css "tailwindcss build src/styles/tailwind.css -o static/styles/tailwind.css"

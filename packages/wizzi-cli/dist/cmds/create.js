@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\create.js.ittf
-    utc time: Thu, 01 Apr 2021 15:10:28 GMT
+    utc time: Wed, 14 Apr 2021 15:52:41 GMT
 */
 'use strict';
 const path = require('path');
@@ -13,7 +13,7 @@ var inquirer = require('inquirer');
 module.exports = (args) => {
     return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'express_ts'), {
             cliCtx: {
-                pkg_name: "eta_express_ts", 
+                pkg_name: "wizzi.site", 
                 author: {
                     
                  }, 
@@ -29,7 +29,7 @@ module.exports = (args) => {
                 ]
              }
          }, {
-            destFolder: path.join(process.cwd(), 'eta_express_ts'), 
+            destFolder: path.join('C:/My/wizzi/stfnbssl/wizzi/packages', 'wizzi.site'), 
             copyInclude: ['*'], 
             copyExclude: []
          }, function(err, genFolderResult) {
@@ -63,7 +63,8 @@ module.exports = (args) => {
             })
         })
     })
-};
+}
+;
 function newpkg(callback) {
     promptPkgType(function(err, type_answers) {
         if (err) {

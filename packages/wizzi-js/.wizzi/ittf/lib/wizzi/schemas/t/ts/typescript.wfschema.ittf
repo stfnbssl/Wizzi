@@ -17,6 +17,7 @@
 	e_tag( typeNull, :null, typeSimple
 	e_tag( typeUndefined, :undefined, typeSimple
 	e_tag( typeNever, :never, typeSimple
+    e_tag( typeUnknown, :unknown, typeSimple
 	
 	e_tag( typeTypeof, :typeof, typeSimple
 	e_tag( typeAs, :as, typeSimple
@@ -70,13 +71,28 @@
 		r typeElse
 			one-to-one
 
-	e_tag( typeParenthesized, :paren, statement
+	e_tag( typeRequire, :require, statement
+
+    e_tag( typeParenthesized, :paren, statement
 	
 	e_tag( typeInfer, :infer, statement
 	
 	e_tag( typeParameterInst, :param, statement
 
-	e_tag( typeExportAssignment, :export, statement
+	e_tag( typeExport, :export-type, statement
+		m wzInitialize
+			set this.specifiers = []
+			var temp = []
+			foreach item in this.statements
+				if item.wzElement === 'jsPropertyOrValue'
+					_ this.specifiers.push(item)
+				else
+					_ temp.push(item)
+			set this.statements = temp
+
+    e_tag( typeExportAssignment, :export, statement
+
+    e_tag( typeExportNamespace, :export-ns, statement
 
 	e_tag( typeImport, :import-type, statement 
 		a from

@@ -1,20 +1,7 @@
 module
-    class a
-        m render
-            const 
-                { 
-                    @ forwardedRef
-                    ... rest
-                = this.props
-                # @ts-ignore
-            return 
-                < PreferencesContext.Consumer 
-                    { 
-                        => 
-                            param props
-                            return 
-                                < Comp 
-                                    @ ref {forwardedRef}
-                                    @ {...props}
-                                    @ {...rest}
-                                # @ts-ignore
+
+    class WithAuthWrapper
+        super React.Component
+            :param AuthProps
+        m componentDidMount
+            _ this.updateViewer()

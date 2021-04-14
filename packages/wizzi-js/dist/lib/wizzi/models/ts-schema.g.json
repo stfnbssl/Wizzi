@@ -113,6 +113,12 @@
           ]
         },
         {
+          "name": "notnot",
+          "tags": [
+            "!!"
+          ]
+        },
+        {
           "name": "or",
           "tags": [
             "\\",
@@ -320,24 +326,6 @@
           "name": "exportDefault",
           "tags": [
             "export-default"
-          ]
-        },
-        {
-          "name": "typeExport",
-          "tags": [
-            ":export"
-          ]
-        },
-        {
-          "name": "typeExportNamespace",
-          "tags": [
-            ":export-ns"
-          ]
-        },
-        {
-          "name": "typeRequire",
-          "tags": [
-            ":require"
           ]
         },
         {
@@ -743,12 +731,6 @@
           ]
         },
         {
-          "name": "exportType",
-          "tags": [
-            "export-type"
-          ]
-        },
-        {
           "name": "typeImplements",
           "tags": [
             ":implements"
@@ -1080,6 +1062,12 @@
           ]
         },
         {
+          "name": "typeUnknown",
+          "tags": [
+            ":unknown"
+          ]
+        },
+        {
           "name": "typeTypeof",
           "tags": [
             ":typeof"
@@ -1224,6 +1212,12 @@
           ]
         },
         {
+          "name": "typeRequire",
+          "tags": [
+            ":require"
+          ]
+        },
+        {
           "name": "typeParenthesized",
           "tags": [
             ":paren"
@@ -1242,9 +1236,21 @@
           ]
         },
         {
+          "name": "typeExport",
+          "tags": [
+            ":export-type"
+          ]
+        },
+        {
           "name": "typeExportAssignment",
           "tags": [
             ":export"
+          ]
+        },
+        {
+          "name": "typeExportNamespace",
+          "tags": [
+            ":export-ns"
           ]
         },
         {
@@ -1759,6 +1765,33 @@
       "tags": [
         "not",
         "op!"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "notnot",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        "!!"
       ],
       "flags": "",
       "attributes": [],
@@ -2855,87 +2888,6 @@
       "isRoot": false,
       "tags": [
         "export-default"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "typeExport",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        ":export"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "typeExportNamespace",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        ":export-ns"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "typeRequire",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        ":require"
       ],
       "flags": "",
       "attributes": [],
@@ -5028,6 +4980,45 @@
           "comments": []
         },
         {
+          "name": "typePrivate",
+          "type": "boolean",
+          "tags": [
+            ":private"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "typePublic",
+          "type": "boolean",
+          "tags": [
+            ":public"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "typeProtected",
+          "type": "boolean",
+          "tags": [
+            ":protected"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
           "name": "xasync",
           "type": "boolean",
           "tags": [
@@ -5133,6 +5124,45 @@
       ],
       "flags": "",
       "attributes": [
+        {
+          "name": "typePrivate",
+          "type": "boolean",
+          "tags": [
+            ":private"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "typePublic",
+          "type": "boolean",
+          "tags": [
+            ":public"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "typeProtected",
+          "type": "boolean",
+          "tags": [
+            ":protected"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
         {
           "name": "xasync",
           "type": "boolean",
@@ -6056,33 +6086,6 @@
       "isRoot": false,
       "tags": [
         ":conditional"
-      ],
-      "flags": "",
-      "attributes": [],
-      "relations": [
-        {
-          "name": "statement",
-          "role": "statements",
-          "tags": [
-            "+"
-          ],
-          "cardinality": "one-to-many",
-          "flags": "",
-          "inheritedFrom": "statement",
-          "comments": []
-        }
-      ],
-      "derived": [],
-      "restricts": [],
-      "methods": [],
-      "comments": []
-    },
-    {
-      "name": "exportType",
-      "super": "statement",
-      "isRoot": false,
-      "tags": [
-        "export-type"
       ],
       "flags": "",
       "attributes": [],
@@ -7062,7 +7065,99 @@
       ],
       "derived": [],
       "restricts": [],
-      "methods": [],
+      "methods": [
+        {
+          "name": "wzInitialize",
+          "isStatic": false,
+          "isKnownMethod": true,
+          "params": [],
+          "statements": [
+            {
+              "tag": "var",
+              "name": "xvar",
+              "value": "tpi = []",
+              "statements": []
+            },
+            {
+              "tag": "var",
+              "name": "xvar",
+              "value": "ss = []",
+              "statements": []
+            },
+            {
+              "tag": "log",
+              "name": "log",
+              "value": "'wzInitialize', this.statements.length",
+              "statements": []
+            },
+            {
+              "tag": "foreach",
+              "name": "foreach",
+              "value": "s in this.statements",
+              "statements": [
+                {
+                  "tag": "log",
+                  "name": "log",
+                  "value": "'wzInitialize.s', s.wzElement",
+                  "statements": []
+                },
+                {
+                  "tag": "if",
+                  "name": "xif",
+                  "value": "s.wzElement == 'typeParameterInst'",
+                  "statements": [
+                    {
+                      "tag": "_",
+                      "name": "call",
+                      "value": "tpi.push(s)",
+                      "statements": []
+                    }
+                  ]
+                },
+                {
+                  "tag": "else",
+                  "name": "xelse",
+                  "value": "",
+                  "statements": [
+                    {
+                      "tag": "_",
+                      "name": "call",
+                      "value": "ss.push(s)",
+                      "statements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tag": "if",
+              "name": "xif",
+              "value": "tpi.length > 0",
+              "statements": [
+                {
+                  "tag": "set",
+                  "name": "set",
+                  "value": "this.typeParameterInsts = tpi",
+                  "statements": []
+                },
+                {
+                  "tag": "set",
+                  "name": "set",
+                  "value": "this.statements = ss",
+                  "statements": []
+                },
+                {
+                  "tag": "log",
+                  "name": "log",
+                  "value": "'this.typeParameterInsts', this.typeParameterInsts",
+                  "statements": []
+                }
+              ]
+            }
+          ],
+          "comments": []
+        }
+      ],
       "comments": []
     },
     {
@@ -45035,6 +45130,12 @@
           ]
         },
         {
+          "name": "typeUnknown",
+          "tags": [
+            ":unknown"
+          ]
+        },
+        {
           "name": "typeTypeof",
           "tags": [
             ":typeof"
@@ -45354,6 +45455,33 @@
       "isRoot": false,
       "tags": [
         ":never"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "typeUnknown",
+      "super": "typeSimple",
+      "isRoot": false,
+      "tags": [
+        ":unknown"
       ],
       "flags": "",
       "attributes": [],
@@ -46197,6 +46325,33 @@
       "comments": []
     },
     {
+      "name": "typeRequire",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        ":require"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
       "name": "typeParenthesized",
       "super": "statement",
       "isRoot": false,
@@ -46278,11 +46433,126 @@
       "comments": []
     },
     {
+      "name": "typeExport",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        ":export-type"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [
+        {
+          "name": "wzInitialize",
+          "isStatic": false,
+          "isKnownMethod": true,
+          "params": [],
+          "statements": [
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "this.specifiers = []",
+              "statements": []
+            },
+            {
+              "tag": "var",
+              "name": "xvar",
+              "value": "temp = []",
+              "statements": []
+            },
+            {
+              "tag": "foreach",
+              "name": "foreach",
+              "value": "item in this.statements",
+              "statements": [
+                {
+                  "tag": "if",
+                  "name": "xif",
+                  "value": "item.wzElement === 'jsPropertyOrValue'",
+                  "statements": [
+                    {
+                      "tag": "_",
+                      "name": "call",
+                      "value": "this.specifiers.push(item)",
+                      "statements": []
+                    }
+                  ]
+                },
+                {
+                  "tag": "else",
+                  "name": "xelse",
+                  "value": "",
+                  "statements": [
+                    {
+                      "tag": "_",
+                      "name": "call",
+                      "value": "temp.push(item)",
+                      "statements": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "tag": "set",
+              "name": "set",
+              "value": "this.statements = temp",
+              "statements": []
+            }
+          ],
+          "comments": []
+        }
+      ],
+      "comments": []
+    },
+    {
       "name": "typeExportAssignment",
       "super": "statement",
       "isRoot": false,
       "tags": [
         ":export"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "typeExportNamespace",
+      "super": "statement",
+      "isRoot": false,
+      "tags": [
+        ":export-ns"
       ],
       "flags": "",
       "attributes": [],

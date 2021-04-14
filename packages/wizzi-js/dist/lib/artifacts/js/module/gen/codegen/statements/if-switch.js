@@ -49,6 +49,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xif. Got: ' + callback);
         }
+        writeComments(model, ctx);
         u.emitBlock(cnt, 'if', model, model.statements, model.statements.length, ctx, callback)
     };
     cnt.stm.elif = function(model, ctx, callback) {
@@ -58,6 +59,7 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.elif. Got: ' + callback);
         }
+        writeComments(model, ctx);
         u.emitBlock(cnt, 'else if', model, model.statements, model.statements.length, ctx, callback)
     };
     cnt.stm.xelse = function(model, ctx, callback) {
@@ -101,6 +103,7 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
+        writeComments(model, ctx);
         if (verify.isEmpty(model.wzName)) {
             var condition;
             var temp = [];

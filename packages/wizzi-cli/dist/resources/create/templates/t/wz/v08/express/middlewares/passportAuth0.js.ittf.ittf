@@ -13,10 +13,10 @@ $group
     var strategy
         new Auth0Strategy
             { 
-                @ domain config.Auth0Domain
-                @ clientID config.Auth0PackiClientId
-                @ clientSecret config.Auth0PackiClientSecret
-                @ callbackURL config.Auth0PackiCallbackUrl
+                @ domain config.auth0Domain
+                @ clientID config.auth0PackiClientId
+                @ clientSecret config.auth0PackiClientSecret
+                @ callbackURL config.auth0PackiCallbackUrl
             function 
                 param accessToken
                 param refreshToken

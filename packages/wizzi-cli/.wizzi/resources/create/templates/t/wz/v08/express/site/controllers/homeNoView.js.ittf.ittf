@@ -77,9 +77,9 @@ $group
                     a A Wizzi pre-generated html document served by the 'express.static' middleware.
                         href static/wizzi.html
             ${'$'}if wzCtx.Build.useSite
-                ${'$'}if wzCtx.Build.site.useStaticIttf
+                ${'$'}if wzCtx.Build.site.useIttfStatic
                     h3 Static ittf files
-                    p It seems that the 'useStaticIttf' flag was set to 'true' in the generation context object (wzCtx).
+                    p It seems that the 'useIttfStatic' flag was set to 'true' in the generation context object (wzCtx).
                     p If it is so you may visit
                     p
                         a A Wizzi html document generated on the fly and served by the  'ittfStatic' middleware.

@@ -88,7 +88,7 @@ function html_index(ctx) {
     __html.push("Static ittf files");
     __html.push('</h3>');
     __html.push('<p>');
-    __html.push("It seems that the 'useStaticIttf' flag was set to 'true' in the generation context object (wzCtx).");
+    __html.push("It seems that the 'useIttfStatic' flag was set to 'true' in the generation context object (wzCtx).");
     __html.push('</p>');
     __html.push('<p>');
     __html.push("If it is so you may visit");

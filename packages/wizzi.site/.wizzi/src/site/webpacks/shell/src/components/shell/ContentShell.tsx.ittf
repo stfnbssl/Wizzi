@@ -1,0 +1,40 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "ContentShell",
+            props: [
+                {
+                    name: "children",
+                    type: "node"
+                },
+                {
+                    name: "theme",
+                    type: "ThemeName",
+                    ref: true
+                }
+            ]
+        }
+    v08/ts/react/function(&md)
+        < StyledRoot
+            @ theme {theme}
+            + {children}
+        $append imports
+            import
+                @ c
+                @ ThemeName
+                from '../ThemeProvider'
+        $append styles
+            :interface RootStyleProps
+                :p theme
+                    :ref ThemeName
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+                flex-direction column
+                height 100%
+                width 100%
+                overflow hidden
+                background-color
+                    => c('background', props.theme)
+                color
+                    => c('text', props.theme)

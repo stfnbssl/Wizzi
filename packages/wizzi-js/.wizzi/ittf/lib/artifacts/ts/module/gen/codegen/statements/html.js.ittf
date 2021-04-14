@@ -96,6 +96,8 @@
                 decl childStatements = []
                 decl typeParameters = []
 
+            set model.__hasChildElements = text && text.length > 0
+
 			repeater(1, model.statements)
                 # log 'html.md._htmlelement', item_1.wzElement
                 if item_1.isEvent

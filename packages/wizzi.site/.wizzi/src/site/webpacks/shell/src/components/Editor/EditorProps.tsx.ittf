@@ -1,0 +1,104 @@
+module
+    import 
+        $if wzCtx.Build.useExpo
+            @ SDKVersion
+            @ SnackDependencies
+        from '../../types'
+    import 
+        @ SnackFiles
+        @ SnackFile
+        from '../../features/packi/index'
+    import 
+        @ Annotation
+        from '../../features/annotations/index'
+    $if wzCtx.Build.useExpo
+        export 
+            :type EditorMode
+                :union 
+                    :literal 'normal'
+                    :literal 'vim'
+    export 
+        :type EditorProps
+            :{ 
+                :p files
+                    :ref SnackFiles
+                $if wzCtx.Build.useExpo
+                    :p dependencies
+                        :ref SnackDependencies
+                    :p sdkVersion
+                        :ref SDKVersion
+                :p updateFiles
+                    :=> 
+                        :void 
+                        param updateFn
+                            :=> 
+                                :{ 
+                                    :index 
+                                        :union 
+                                            :ref SnackFile
+                                            :null 
+                                        param path
+                                            :string 
+                                param files
+                                    :ref SnackFiles
+                :p selectedFile
+                    :string 
+                $if wzCtx.Build.useExpo
+                    :p mode
+                        :ref EditorMode
+                :p onSelectFile
+                    :=> 
+                        :void 
+                        param path
+                            :string 
+                :p annotations
+                    :[ 
+                        :ref Annotation
+                :p lineNumbers
+                    :optional 
+                    :union 
+                        :literal 'on'
+                        :literal 'off'
+                        :literal 'relative'
+                        :literal 'interval'
+                :p wordWrap
+                    :optional 
+                    :union 
+                        :literal 'off'
+                        :literal 'on'
+                        :literal 'wordWrapColumn'
+                        :literal 'bounded'
+                :p scrollBeyondLastLine
+                    :optional 
+                    :boolean 
+                :p minimap
+                    :optional 
+                    :{ 
+                        :p enabled
+                            :optional 
+                            :boolean 
+                        :p maxColumn
+                            :optional 
+                            :number 
+                        :p renderCharacters
+                            :optional 
+                            :boolean 
+                        :p showSlider
+                            :optional 
+                            :union 
+                                :literal 'always'
+                                :literal 'mouseover'
+                        :p side
+                            :optional 
+                            :union 
+                                :literal 'right'
+                                :literal 'left'
+                :p autoFocus
+                    :optional 
+                    :boolean 
+                :p fontFamily
+                    :optional 
+                    :string 
+                :p fontLigatures
+                    :optional 
+                    :boolean 

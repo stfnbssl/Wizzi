@@ -7,7 +7,7 @@
         // var pkgName = "tau_express";
         // var pkgName = "sigma_express_auth";
         // var pkgName = "ics_react_ts";
-        var pkgName = "eta_express_ts";
+        var pkgName = "wizzi.site";
         // var pkgName = "wizzi.plugin.ppt";
         // var template = "wizzi_plugin";
         // var template = "express";
@@ -50,12 +50,13 @@
                         {
                             @ destFolder
                                 _ path.join
-                                    _ process.cwd
+                                    @ 'C:/My/wizzi/stfnbssl/wizzi/packages'
+                                    $$_ process.cwd
                                     @ '${pkgName}'
                             @ copyInclude ['*']
                             @ copyExclude []
                         f_cb_test(genFolderResult)
-                            log 'genFolderResult', genFolderResult            
+                            log 'genFolderResult', genFolderResult
                             return
 
             _ newpkg

@@ -73,6 +73,10 @@
 		_ ctx.write('undefined')
 		r_cb()
 
+	stm( typeUnknown, kind
+		_ ctx.write('unknown')
+		r_cb()
+
 	stm( typeNever, kind
 		_ ctx.write('never')
 		r_cb()
@@ -664,11 +668,5 @@
 		else
 			r_cb()
 
-	stm( exportType
-        set model.__isType
-        _ cnt.stm.xexport
-            @ model
-            @ ctx
-            @ callback
 
 	$include doCallMembers_call

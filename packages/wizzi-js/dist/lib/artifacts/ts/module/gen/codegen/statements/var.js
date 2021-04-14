@@ -249,7 +249,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xnew. Got: ' + callback);
         }
         u.writeComments(model, ctx);
-        if (hasStatements(model) == false) {
+        if (hasStatements(model) == false && (model.typeParameterInsts && model.typeParameterInsts.length > 0) == false) {
             if (model.wzName.trim().substr(-1, 1) === ')') {
                 ctx.write('new ' + model.wzName);
             }
@@ -266,53 +266,67 @@ md.load = function(cnt) {
             if (err) {
                 return callback(err);
             }
-            var openParen = false;
-            var len_1 = model.statements.length;
-            function repeater_1(index_1) {
-                if (index_1 === len_1) {
-                    return next_1();
+            u.genTSTypeParameterInsts(model, ctx, cnt, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
                 }
-                var item_1 = model.statements[index_1];
-                if (u.isMemberAccess(item_1)) {
+                var openParen = false;
+                if (model.statements.length <= startArg) {
+                    if (model.wzName.trim().substr(-1, 1) !== ')') {
+                        ctx.write('()');
+                    }
+                    if (u.isTopStatement(model, ctx)) {
+                        ctx.w(';');
+                    }
+                    return callback(null, null);
+                }
+                var len_1 = model.statements.length;
+                function repeater_1(index_1) {
+                    if (index_1 === len_1) {
+                        return next_1();
+                    }
+                    var item_1 = model.statements[index_1];
+                    if (u.isMemberAccess(item_1)) {
+                        if (openParen) {
+                            ctx.write(')');
+                        }
+                        return cnt.genItem(item_1, ctx, function(err, notUsed) {
+                                if (err) {
+                                    return callback(err);
+                                }
+                                if (u.isTopStatement(model, ctx)) {
+                                    ctx.w(';');
+                                }
+                                return callback(null, null);
+                            });
+                    }
+                    if (index_1 == startArg) {
+                        ctx.write('(');
+                        openParen = true;
+                    }
+                    if (index_1 > startArg) {
+                        ctx.write(', ');
+                    }
+                    cnt.genItem(item_1, ctx, function(err, notUsed) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        process.nextTick(function() {
+                            repeater_1(index_1 + 1);
+                        })
+                    })
+                }
+                repeater_1(startArg);
+                function next_1() {
                     if (openParen) {
                         ctx.write(')');
                     }
-                    return cnt.genItem(item_1, ctx, function(err, notUsed) {
-                            if (err) {
-                                return callback(err);
-                            }
-                            if (u.isTopStatement(model, ctx)) {
-                                ctx.w(';');
-                            }
-                            return callback(null, null);
-                        });
-                }
-                if (index_1 == startArg) {
-                    ctx.write('(');
-                    openParen = true;
-                }
-                if (index_1 > startArg) {
-                    ctx.write(', ');
-                }
-                cnt.genItem(item_1, ctx, function(err, notUsed) {
-                    if (err) {
-                        return callback(err);
+                    if (u.isTopStatement(model, ctx)) {
+                        ctx.w(';');
                     }
-                    process.nextTick(function() {
-                        repeater_1(index_1 + 1);
-                    })
-                })
-            }
-            repeater_1(startArg);
-            function next_1() {
-                if (openParen) {
-                    ctx.write(')');
+                    return callback(null, null);
                 }
-                if (u.isTopStatement(model, ctx)) {
-                    ctx.w(';');
-                }
-                return callback(null, null);
-            }
+            })
         })
     };
     function xnew_type(model, ctx, callback) {
@@ -320,7 +334,7 @@ md.load = function(cnt) {
             throw new Error('Missing callback parameter in fn: ' + myname + '.xnew_type');
         }
         u.writeComments(model, ctx);
-        if (model.statements[0].wzElement === 'type') {
+        if (model.statements.length > 0 && model.statements[0].wzElement === 'type') {
             ctx.write('(');
             cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
                 if (err) {

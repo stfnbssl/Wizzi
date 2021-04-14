@@ -265,8 +265,10 @@
 	f( TSEnumMember, @
 		f_p_name( id
 		f_p_temp(initializer, false
+        # log 'TSEnumMember', 'p_initializer', p_initializer
 		if p_initializer
-			if [$*'@expr', 27/3/21*$'@id', 'literal'].indexOf(p_initializer.tag) > -1
+			$$ 12/4/21 if [$*'@expr', 27/3/21*$'@id', 'literal'].indexOf(p_initializer.tag) > -1
+            if p_initializer.children.length == 0
 				set ret.name += ' ' + getNodeText(p_initializer)
 
 	f( TSNeverKeyword, :never
@@ -439,3 +441,5 @@
 		else
 			_ ret.children.push
 				@ p_expression
+
+    f( TSUnknownKeyword, :unknown

@@ -1,5 +1,6 @@
 module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
 	kind jsfile
+    var verify = require('wizzi-utils').verify
 	var u = require('../../../../../js/module/gen/codegen/util/stm')
 
 	var md = module.exports = {}
@@ -24,10 +25,10 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
                 \b 'u.isGraphEnclosed(tag)', u.isGraphEnclosed(tag),
                 \b 'attrs.length', attrs.length
 
-            _ u.writeComments(model, ctx)
-            _ u.checkInlineEnter(model, ctx)
 			
 			if u.isGraphEnclosed(tag)
+                _ u.writeComments(model, ctx)
+                _ u.checkInlineEnter(model, ctx)
 				_ ctx.w(tag);
                 _ u.checkInlineExit(model, ctx)
 				r_cb()
@@ -44,6 +45,9 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
 				else
 					_ ctx.write(' (')
 					_ ctx.w()
+
+            _ u.writeComments(model, ctx)
+            _ u.checkInlineEnter(model, ctx)
 			
 			_ htmlelement_open
 				@ cnt
@@ -91,6 +95,7 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.htmlReact
             @ cnt
             a_cb()
                 _ ctx.write(singleline ? ' ' : '')
+                _ u.forceInlineOff(model, ctx)
                 repeater(1, attrs)
                     if singleline
                         _ ctx.indent

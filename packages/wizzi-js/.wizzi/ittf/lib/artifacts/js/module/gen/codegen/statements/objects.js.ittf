@@ -142,8 +142,17 @@
                 @ model.wzName
 			r_cb()
         elif u.isEnumValue(model)
+            var p
+                _ lineParser.parseNameValueRaw
+                    @ model.wzName
+                    @ model
+                    {
+                        @ objectProperty true
             _ ctx.write
-                @ model.wzName
+                _ p.name
+            if p.value()
+                _ ctx.write
+                    @ ' = ' + p.value()
 			r_cb()
         elif u.isObjectProperty(model)
             var 

@@ -8,6 +8,8 @@ module
         var baseDest = "C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/snack/website/.wizzi/src";
         var destClient = baseDest + "/client";
         var destServer = baseDest + "/server";
+        var srcSnackSdk = 'C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/snack/packages/snack-sdk/src'
+        var destSnackSdk = 'C:/My/wizzi/stfnbssl/wizzi/packages/wizzi-cli/dist/snack/packages/snack-sdk/.wizzi'
 
     var fy = require('../../cmds/fy');
     
@@ -40,7 +42,11 @@ module
             {
                 @ s "${srcClient}/components"
                 @ d "${destClient}/components"                
+        _ fy
+            {
+                @ s "${srcServer}"
+                @ d "${destServer}"
     _ fy
         {
-            @ s "${srcServer}"
-            @ d "${destServer}"
+            @ s "${srcSnackSdk}"
+            @ d "${destSnackSdk}"

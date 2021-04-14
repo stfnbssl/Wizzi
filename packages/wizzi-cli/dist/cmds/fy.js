@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\fy.js.ittf
-    utc time: Thu, 01 Apr 2021 15:10:28 GMT
+    utc time: Wed, 14 Apr 2021 15:52:41 GMT
 */
 'use strict';
 const path = require('path');
@@ -53,7 +53,8 @@ module.exports = (args) => {
             return ;
         }
         if (file.isDirectory(destPath) && !sourceIsFolder) {
-            destPath = path.join(destPath, path.basename(sourcePath) + '.ittf');
+            destPath = path.join(destPath, path.basename(sourcePath) + '.ittf')
+            ;
         }
         if (sourceIsFolder) {
             console.log('ok. source && dest are folders');
@@ -99,4 +100,5 @@ module.exports = (args) => {
         console.log('Invalid options for `fy` command.');
         help({_:['help', 'fy']});
     }
-};
+}
+;

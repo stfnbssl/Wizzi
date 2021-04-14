@@ -104,13 +104,23 @@
 			_ ctx.write('@charset "' + model.charset + '";')
 		_ emitResources(model.resources, ctx)
 		_ md.genItems
-			@ model.rules
+			@ model.statements
 			@ ctx
 			{
 				@ indent false
-			@ callback
+			f_cb()
+                _ md.genItems
+                    @ model.rules
+                    @ ctx
+                    {
+                        @ indent false
+                    @ callback
 
-	function main_init
+	async/md-stm( statement )
+        _ ctx.w(model.wzName)
+        r_cb()
+
+    function main_init
 		param model
 		param ctx
 

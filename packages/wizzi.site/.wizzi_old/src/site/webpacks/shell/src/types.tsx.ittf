@@ -1,0 +1,112 @@
+module
+    import
+        @ ThemeName
+        from './components/preferences/index'
+    +
+    export
+        :type $SetComplement
+            :< A
+            :< A1
+                :ref A
+            :iif
+                :check
+                    :ref A
+                :extends
+                    :ref A1
+                :then
+                    :never
+                :else
+                    :ref A
+    +
+    export
+        :type $Subtract
+            :< T
+                :ref T1
+            :< T1
+                :object
+            :ref Pick
+                :param
+                    :ref T
+                :param
+                    :ref $SetComplement
+                        :param
+                            :keyof
+                                :ref T
+                        :param
+                            :keyof
+                                :ref T1
+    +
+    export
+        :type QueryInitParams
+            :{
+                :p code
+                    :optional
+                    :string
+                :p sourceUrl
+                    :optional
+                    :string
+                :p name
+                    :optional
+                    :string
+                :p description
+                    :optional
+                    :string
+                :p dependencies
+                    :optional
+                    :string
+                :p files
+                    :optional
+                    :string
+                $if wzCtx.Build.useExpo
+                    :p sdkVersion
+                        :optional
+                        :ref SDKVersion
+                :p iframeId
+                    :optional
+                    :string
+                :p waitForData
+                    :optional
+                    :literal 'boolean'
+                :p saveToAccount
+                    :optional
+                    :union
+                        :literal 'true'
+                        :literal 'false'
+    +
+    export
+        :type QueryStateParams
+            :{
+                :p preview
+                    :optional
+                    :union
+                        :literal 'true'
+                        :literal 'false'
+                $if wzCtx.Build.useExpo
+                    :p platform
+                        :optional
+                        :ref Platform
+                :p theme
+                    :optional
+                    :ref ThemeName
+                :p supportedPlatforms
+                    :optional
+                    :string
+                :p appetizePayerCode
+                    :optional
+                    :string
+                :p verbose
+                    :optional
+                    :union
+                        :literal 'true'
+                        :literal 'false'
+                :p hideQueryParams
+                    :optional
+                    :union
+                        :literal 'true'
+                        :literal 'false'
+    +
+    export
+        :type QueryParams
+            :intersect
+                :ref QueryInitParams
+                :ref QueryStateParams

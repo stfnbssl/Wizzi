@@ -6,5 +6,5 @@ module
         var md = {
         }
 
-    ${'$'}if wzCtx.Build.useConfig
+    ${'$'}if wzCtx.Build.useMongoDb
         v08/express/features/packi/mongo/user${call}

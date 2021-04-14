@@ -1,0 +1,32 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "SidebarShell",
+            props: [
+                { name: "theme", type: "ThemeName", ref: true },
+                { name: "children", type: "node" }
+            ]
+        }
+    v08/ts/react/function(&md)
+        < StyledRoot
+            @ theme {theme}
+            + {children}
+        $append imports
+            import
+                @ c
+                @ ThemeName
+                from '../ThemeProvider'
+        $append styles
+            :interface RootStyleProps
+                :p theme
+                    :ref ThemeName
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+                flex-direction column
+                height 100%
+                min-width 240px
+                border-right
+                    => "1px solid " + c('border', props.theme)
+                background-color
+                    => c('content', props.theme)

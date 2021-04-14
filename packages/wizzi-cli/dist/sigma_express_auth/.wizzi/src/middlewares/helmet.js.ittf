@@ -1,7 +1,0 @@
-module
-    kind es6
-    $
-        var md = {
-        }
-    $if wzCtx.Build.useHelmet
-        v08/express/middlewares/helmet(&md)

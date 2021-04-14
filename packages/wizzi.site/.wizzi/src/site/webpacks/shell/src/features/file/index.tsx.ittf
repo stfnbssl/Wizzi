@@ -1,0 +1,45 @@
+module
+    import
+        @ isInsideFolder
+        @ getParentPath
+        @ changeParentPath
+        @ getUniquePath
+        @ isEntryPoint
+        @ isPackageJson
+        @ isESLintConfig
+        @ isImage
+        @ isScript
+        @ isJson
+        @ isJS
+        @ isTS
+        @ isTest
+        from './fileUtilities'
+    import getFileLanguage
+        from './getFileLanguage'
+    import getFilesFromQuery
+        from './getFilesFromQuery'
+    import
+        @ getRelativePath
+        @ getBasePath
+        @ getAbsolutePath
+        from './path'
+    +
+    export
+        @ isInsideFolder
+        @ getParentPath
+        @ changeParentPath
+        @ getUniquePath
+        @ isEntryPoint
+        @ isPackageJson
+        @ isESLintConfig
+        @ isImage
+        @ isScript
+        @ isJson
+        @ isJS
+        @ isTS
+        @ isTest
+        @ getFileLanguage
+        @ getFilesFromQuery
+        @ getRelativePath
+        @ getBasePath
+        @ getAbsolutePath

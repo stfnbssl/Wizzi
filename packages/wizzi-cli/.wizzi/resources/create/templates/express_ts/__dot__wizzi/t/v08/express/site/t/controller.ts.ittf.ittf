@@ -1,4 +1,4 @@
 ${'$'}group
     ${'$'}params &ctrl
 
-    $include wz/v08/ts/express/t/site/controller.ts
+    wz/v08/ts/express/t/site/controller.ts(2)

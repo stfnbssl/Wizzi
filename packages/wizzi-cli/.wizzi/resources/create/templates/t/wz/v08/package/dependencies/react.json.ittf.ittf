@@ -14,6 +14,8 @@
             react-dom "^17.0.1"
         ${'$'}if wzCtx.Build.react.useFontawesome
             react-fontawesome "^1.6.1"
+        ${'$'}if wzCtx.Build.react.useHelmetAsync
+            react-helmet-async "^1.0.9"
         ${'$'}if wzCtx.Build.react.usePerfectScrollbar
             react-perfect-scrollbar "^1.4.4"
 		${'$'}if wzCtx.Build.react.useRedux
@@ -28,8 +30,14 @@
             ${'$'}if wzCtx.Build.react.materialUI.useAutocomplete
                 ${'$'}if wzCtx.Build.react.materialUI.autocomplete.useReactSelect
                     react-select "^4.3.0"
+        ${'$'}if wzCtx.Build.react.useSimpleCodeEditor
+            react-simple-code-editor "latest"
+        ${'$'}if wzCtx.Build.react.useTextareaAutosize
+            react-textarea-autosize "latest"
         ${'$'}if wzCtx.Build.react.transition
             react-transition-group "^2.4.0"
+        ${'$'}if wzCtx.Build.react.useVirtualized
+            react-virtualized "latest"
         ${'$'}if wzCtx.Build.react.useRecompose
             recompose "^0.30.0"
 

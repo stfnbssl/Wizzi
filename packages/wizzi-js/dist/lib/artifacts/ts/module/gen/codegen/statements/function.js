@@ -64,6 +64,7 @@ md.load = function(cnt) {
                 cnt.stm.typeReturn(model.typeReturn, ctx, () => {});
             }
             ctx.w(' {');
+            u.forceInlineOff(model, ctx);
             ctx.indent();
             cnt.genItems(model.statements, ctx, {
                 indent: false
@@ -133,6 +134,7 @@ md.load = function(cnt) {
             throw new Error('Missing callback parameter in fn: ' + myname + '.xfunction_end');
         }
         ctx.w(' {');
+        u.forceInlineOff(model, ctx);
         ctx.indent();
         cnt.genItems(model.statements, ctx, {
             indent: false
@@ -191,6 +193,7 @@ md.load = function(cnt) {
                 cnt.stm.typeReturn(model.typeReturn, ctx, () => {});
             }
             ctx.w(' {');
+            u.forceInlineOff(model, ctx);
             ctx.indent();
             cnt.genItems(model.statements, ctx, {
                 indent: false
@@ -333,6 +336,7 @@ md.load = function(cnt) {
         u.writeComments(model, ctx);
         u.checkInlineEnter(model, ctx);
         var async_str = model.xasync ? 'async ' : '';
+        u.genAccessorsAndExtra(model, ctx)
         if (ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent') {
             var implicitReturn = u.isImplicitReturn(model);
             ctx.w(async_str + model.wzName + ' = (');
@@ -445,6 +449,7 @@ md.load = function(cnt) {
     };
     function arrowfunction_body(model, ctx, cnt, implicitReturn, callback) {
         ctx.w(' => ' + (implicitReturn ? '' : '{'));
+        u.forceInlineOff(model, ctx);
         cnt.genItems(model.statements, ctx, {
             indent: true
         }, function(err, notUsed) {

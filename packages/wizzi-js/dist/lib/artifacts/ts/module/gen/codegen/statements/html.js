@@ -153,6 +153,7 @@ md.load = function(cnt) {
             value = null,
             childStatements = [],
             typeParameters = [];
+        model.__hasChildElements = text && text.length > 0;
         var len_1 = model.statements.length;
         function repeater_1(index_1) {
             if (index_1 === len_1) {

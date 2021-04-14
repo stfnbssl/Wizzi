@@ -137,7 +137,7 @@
     
 	stm( xnew
         _ u.writeComments(model, ctx)
-		if hasStatements(model) == false
+		if hasStatements(model) == false && (model.typeParameterInsts && model.typeParameterInsts.length > 0) == false
 			if model.wzName.trim().substr(-1, 1) === ')'
 				_ ctx.write('new ' + model.wzName)
 			else
@@ -151,42 +151,54 @@
 			@ model
 			@ ctx
 			f_cb( startArg )
-				var openParen = false
-				
-				repeater( 1, model.statements, startArg )
-					
-					if u.isMemberAccess(item_1)
-						if openParen
-							_ ctx.write(')')
-						return
-							_ cnt.genItem
-								@ item_1
-								@ ctx
-								f_cb()
-									if u.isTopStatement(model, ctx)
-										_ ctx.w(';')
-									r_cb()
-					if index_1 == startArg
-						_ ctx.write('(')
-						set openParen = true
-					if index_1 > startArg
-						_ ctx.write(', ')
-					_ cnt.genItem
-						@ item_1
-						@ ctx
-						f_cb()
-							repeater_increment( 1 )
-					
-					$append next
-						if openParen
-							_ ctx.write(')')
-						if u.isTopStatement(model, ctx)
-							_ ctx.w(';')
-						r_cb()
+                _ u.genTSTypeParameterInsts
+                    @ model
+                    @ ctx
+                    @ cnt
+                    f_cb()
+                        var openParen = false
+
+                        if model.statements.length <= startArg
+                            if model.wzName.trim().substr(-1, 1) !== ')'
+                                _ ctx.write('()')
+                            if u.isTopStatement(model, ctx)
+                                _ ctx.w(';')
+                            r_cb()
+                        
+                        repeater( 1, model.statements, startArg )
+                            
+                            if u.isMemberAccess(item_1)
+                                if openParen
+                                    _ ctx.write(')')
+                                return
+                                    _ cnt.genItem
+                                        @ item_1
+                                        @ ctx
+                                        f_cb()
+                                            if u.isTopStatement(model, ctx)
+                                                _ ctx.w(';')
+                                            r_cb()
+                            if index_1 == startArg
+                                _ ctx.write('(')
+                                set openParen = true
+                            if index_1 > startArg
+                                _ ctx.write(', ')
+                            _ cnt.genItem
+                                @ item_1
+                                @ ctx
+                                f_cb()
+                                    repeater_increment( 1 )
+                            
+                            $append next
+                                if openParen
+                                    _ ctx.write(')')
+                                if u.isTopStatement(model, ctx)
+                                    _ ctx.w(';')
+                                r_cb()
     
 	fn( xnew_type
         _ u.writeComments(model, ctx)
-        if model.statements[0].wzElement === 'type'
+        if model.statements.length > 0 && model.statements[0].wzElement === 'type'
             _ ctx.write('(')
             _ cnt.genItem
                 @ model.statements[0]

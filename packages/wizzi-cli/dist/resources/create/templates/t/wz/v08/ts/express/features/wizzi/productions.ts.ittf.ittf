@@ -3,6 +3,7 @@ $group
     import path from 'path'
     import fs from 'fs'
     import wizzi from 'wizzi'
+    import wizziTools from 'wizzi-tools'
     import 
         @ ittfDocumentScanner
         @ folderBrowse
@@ -26,86 +27,10 @@ $group
     import 
         @ FsJson
         from 'wizzi-repo'
-    
-    +
-    export 
-        async-function generateArtifact
-            param filePath
-                :string 
-            param files
-                :ref packiTypes.PackiFiles
-            :return
-                :ref Promise
-                    :param 
-                        :ref GeneratedArtifact
-            return 
-                new Promise
-                    async=> 
-                        param resolve
-                        param reject
-                        const generator = generatorFor(filePath)
-                        log 'wizzi.productions.using artifact generator', generator
-                        if generator
-                            let jsonwf
-                                :any 
-                                =
-                                    { 
-                            let context
-                                :any 
-                                =
-                                    { 
-                            const ittfDocumentUri
-                                _ ensurePackiFilePrefix(filePath)
-                                    :as 
-                                        :string 
-                            const siteDocumentUri
-                                _ Object.keys(files).find
-                                    => 
-                                        param k
-                                        _ k.endsWith('site.json.ittf')
-                            try 
-                                set jsonwf =
-                                    await 
-                                        _ createFsJsonAndFactory(files)
-                                set context =
-                                    { 
-                                        @ site
-                                            iif siteDocumentUri
-                                                then
-                                                    await 
-                                                        _ loadModelJson
-                                                            @expr jsonwf.wf
-                                                            _ ensurePackiFilePrefix(siteDocumentUri)
-                                                            { 
-                                                else null
-                                        ... 
-                                            await 
-                                                _ inferAndLoadContextJson(jsonwf.wf, files, ittfDocumentUri, 'twin')
-                                log 'wizzi.productions.generateArtifact.context', Object.keys(context)
-                            catch ex
-                                return reject(ex)
-                            _ jsonwf.wf.loadModelAndGenerateArtifact
-                                @ ittfDocumentUri
-                                { 
-                                    { modelRequestContext
-                                        @ mTreeBuildUpContext context
-                                @ generator
-                                => 
-                                    param err
-                                        :any 
-                                    param result
-                                        :string 
-                                    if err
-                                        return reject(err)
-                                    _ resolve
-                                        { 
-                                            @ artifactContent result
-                                            @ sourcePath filePath
-                                            @ artifactGenerator generator
-                                        # console.log('Generated artifact', result);
-                        else
-                            _ reject('No artifact generator available for document ' + filePath)
-    
+    $include productions/loadMTree.ts
+    $include productions/generate.ts
+    $include productions/executeJob.ts
+    $include productions/wizzify.ts
     +
     export 
         async-function loadModelJson
@@ -175,136 +100,6 @@ $group
                                 _ resolve(result)
                                     # console.log('Generated artifact', result);
     
-    +
-    export 
-        async-function generateArtifactFs
-            param filePath
-                :string 
-            param context
-                :any 
-                :optional 
-            :return
-                :ref Promise
-                    :param 
-                        :ref GeneratedArtifact
-            return 
-                new Promise
-                    async=> 
-                        param resolve
-                        param reject
-                        const generator = generatorFor(filePath)
-                        if generator
-                            log 'wizzi.productions.using artifact generator', generator
-                            const wf
-                                await 
-                                    _ createFilesystemFactory()
-                            const generationContext
-                                { 
-                                    @ modelRequestContext
-                                        || 
-                                            + context
-                                            { 
-                            try
-                                _ wf.loadModelAndGenerateArtifact
-                                    @ filePath
-                                    @ generationContext
-                                    @ generator
-                                    => 
-                                        param err
-                                        param result
-                                        if err
-                                            return reject(err)
-                                        _ resolve
-                                            { 
-                                                @ artifactContent result
-                                                @ sourcePath filePath
-                                                @ artifactGenerator generator
-                                            # console.log('Generated artifact', result);
-                            catch ex
-                                return reject(ex)
-                        else
-                            _ reject('No artifact generator available for document ' + filePath)
-    
-    +
-    export 
-        async-function executeJob
-            param filePath
-                :string 
-            param files
-                :ref packiTypes.PackiFiles
-            :return
-                :ref Promise
-                    :param 
-                        :ref FsJson
-            return 
-                new Promise
-                    async=> 
-                        param resolve
-                        param reject
-                        const ittfDocumentUri = ensurePackiFilePrefix(filePath)
-                        const jsonwf
-                            await 
-                                _ createFsJsonAndFactory(files)
-                        _ jsonwf.wf.executeJob
-                            { 
-                                @ name ''
-                                @ path ittfDocumentUri
-                                { productionOptions
-                            => 
-                                param err
-                                param result
-                                if err
-                                    return reject(err)
-                                _ console.log('Job executed. result', result)
-                                _ resolve(jsonwf.fsJson)
-    
-    +
-    export 
-        async-function executeJobs
-            param files
-                :ref packiTypes.PackiFiles
-            :return
-                :ref Promise
-                    :param 
-                        :ref FsJson
-            return 
-                new Promise
-                    async=> 
-                        param resolve
-                        param reject
-                        const jobDocumentUris
-                            _ Object.keys(files).filter
-                                => 
-                                    param k
-                                    _ k.endsWith('.wfjob.ittf')
-                        _ console.log('Executing jobs', jobDocumentUris, 'files', Object.keys(files))
-                        const jsonwf
-                            await 
-                                _ createFsJsonAndFactory(files)
-                        const execJob
-                            => 
-                                param index
-                                    :number 
-                                :return
-                                    :void 
-                                if index == jobDocumentUris.length
-                                    _ console.log('Jobs executed.')
-                                    return resolve(jsonwf.fsJson)
-                                const ittfDocumentUri = ensurePackiFilePrefix(jobDocumentUris[index])
-                                _ console.log('Executing job', ittfDocumentUri)
-                                _ jsonwf.wf.executeJob
-                                    { 
-                                        @ name ''
-                                        @ path ittfDocumentUri
-                                        { productionOptions
-                                    => 
-                                        param err
-                                        param result
-                                        if err
-                                            return reject(err)
-                                        _ console.log('Job executed. result', result)
-                                        _ execJob(index + 1)
-                        _ execJob(0)
     
     +
     export 

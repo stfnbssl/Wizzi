@@ -6,6 +6,7 @@ $group
     import 
         @ FsJson
         from 'wizzi-repo'
+    +
     export 
         :type FilesystemWizziFactory
             :{ 

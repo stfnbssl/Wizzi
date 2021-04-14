@@ -68,14 +68,6 @@
 
 	e_tag( exportDefault, export-default, statement
 
-	e typeExport : statement
-		tag :export
-
-	e typeExportNamespace : statement
-		tag :export-ns
-
-	e typeRequire : statement
-		tag :require
 
 	e if : statement
 		

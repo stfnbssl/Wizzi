@@ -201,6 +201,17 @@ md.load = function(cnt) {
         ctx.write('undefined');
         return callback(null, null);
     };
+    cnt.stm.typeUnknown = function(model, ctx, kind, callback) {
+        if (typeof callback === 'undefined') {
+            callback = kind;
+            kind = null;
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.typeUnknown. Got: ' + callback);
+        }
+        ctx.write('unknown');
+        return callback(null, null);
+    };
     cnt.stm.typeNever = function(model, ctx, kind, callback) {
         if (typeof callback === 'undefined') {
             callback = kind;
@@ -1064,16 +1075,6 @@ md.load = function(cnt) {
             return callback(null, null);
         }
     }
-    cnt.stm.exportType = function(model, ctx, callback) {
-        if (typeof callback === 'undefined') {
-            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.exportType');
-        }
-        if (typeof callback !== 'function') {
-            throw new Error('The callback parameter must be a function. In ' + myname + '.exportType. Got: ' + callback);
-        }
-        model.__isType;
-        cnt.stm.xexport(model, ctx, callback)
-    };
     function doCallMembers_call(model, ctx, remainings, callback) {
         var len_1 = remainings.length;
         function repeater_1(index_1) {

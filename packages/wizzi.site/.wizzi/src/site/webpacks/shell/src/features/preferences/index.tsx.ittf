@@ -1,0 +1,21 @@
+module
+    :import-type
+        @ ThemeName
+        @ PanelType
+        @ PreferencesType
+        @ PreferencesContextType
+        from './types'
+    import usePreferences from './usePreferences'
+    import withPreferences from './withPreferences'
+    import withThemeName from './withThemeName'
+    +
+    :export-type
+        @ ThemeName
+        @ PreferencesType
+        @ PanelType
+        @ PreferencesContextType
+    +
+    export
+        @ usePreferences
+        @ withPreferences
+        @ withThemeName

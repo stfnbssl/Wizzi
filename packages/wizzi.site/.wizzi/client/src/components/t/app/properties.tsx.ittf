@@ -1,0 +1,21 @@
+$group
+    $params level|1
+    p _Packi
+        :ref Packi
+    p _PackiStateListener?
+        :ref PackiListenerSubscription
+    $if wzCtx.Build.useExpo
+        p _snackLogListener?
+            :ref PackiListenerSubscription
+        p _broadcastChannel
+            :ref BroadcastChannel
+            + undefined
+                :as 
+                    :any 
+    p _isFocused
+        :boolean 
+        = false
+    p _focusTimer
+        :union 
+            :number 
+            :undefined 

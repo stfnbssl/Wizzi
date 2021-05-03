@@ -29,6 +29,11 @@ $group
 				@ 'mongodb' false
 				@ 'mongodb-core' false
                 @ os false
+        ${'$'}if wzCtx.Build.useAphrodite
+            ${'$'}if wzCtx.Build.aphrodite.disableImportant
+                # https://github.com/Khan/aphrodite#disabling-important
+                @ aphrodite 'aphrodite/no-important'
+
     ---
     { fallback 
         ${'$'}if wzCtx.Build.useWebpack

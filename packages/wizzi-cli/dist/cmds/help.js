@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\help.js.ittf
-    utc time: Wed, 14 Apr 2021 15:52:41 GMT
+    utc time: Mon, 03 May 2021 06:58:19 GMT
 */
 'use strict';
 const menus = {
@@ -40,6 +40,7 @@ const menus = {
     ].join('\n')
  };
 module.exports = (args) => {
+
     const subCmd = args._[0] === 'help' ? args._[1] : args._[0];
     console.log(menus[subCmd] || menus.main);
 }

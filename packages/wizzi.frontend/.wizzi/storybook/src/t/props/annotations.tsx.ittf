@@ -1,0 +1,24 @@
+$group
+    $params name|@@null
+
+    [ ${name}
+        {
+            @ message 'annotation 1'
+            @ severity 2
+            @ source 'Web'
+            { location
+                @ fileName 'file1.txt'
+                @ startLineNumber 2
+                @ endLineNumber 2
+                @ startColumn 10
+                @ endColumn 18
+        {
+            @ message 'annotation 2'
+            @ severity 3
+            @ source 'Web'
+            { location
+                @ fileName 'file2.txt'
+                @ startLineNumber 3
+                @ endLineNumber 3
+                @ startColumn 10
+                @ endColumn 18

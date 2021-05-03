@@ -1,0 +1,26 @@
+module
+
+    $
+        var md = {
+            name: 'CollapsibleObject',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < CollapsibleObject
+                @ {...args}
+
+        v08/ts/react/story(Tree_item)
+            @ label "tree"
+            { object
+                @ name "root"
+                @ value "1"
+                [ children
+                    {
+                        @ name "leaf"
+                        @ value "2"
+

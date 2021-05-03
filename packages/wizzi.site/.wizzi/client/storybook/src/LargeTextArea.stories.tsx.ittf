@@ -1,0 +1,30 @@
+module
+
+    $
+        var md = {
+            name: 'LargeTextArea',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < LargeTextArea
+                @ {...args}
+
+        v08/ts/react/story(With_4_rows_min)
+            @ minRows 4
+            @ value undefined
+            @ placeholder "Name"
+            @ name "name"
+            @ autoFocus true
+
+        v08/ts/react/story(With_8_rows_min)
+            @ minRows 8
+            @ value undefined
+            @ placeholder "Name"
+            @ name "name"
+            @ autoFocus true
+

@@ -78,6 +78,7 @@
 			# Attributes have been already processed
 			r_cb()
         elif model.isDslCall
+            _ u.writeComments(model, ctx)
 			_ ctx.write(model.wzName + '(')
             _ cnt.genItems
                 @ model.statements
@@ -89,6 +90,7 @@
 					r_cb()
         elif u.isObjectProperty(model) || u.isParamValue(model) || u.isValue(model)
 			# log 4, model.wzName + colon
+            _ u.writeComments(model, ctx)
             set colon = u.onlyChildIs(model, 'initValue') ? '=' : colon
 			if model.wzName.length > 0 
 				_ ctx.write(model.wzName + colon)
@@ -121,6 +123,7 @@
 						_ ctx.error(myname + '. Invalid jsPropertyOrValue. Ha s no name: ' + model.wzName, model)
                 *$
         elif ctx.__ecma === 'es6'
+            _ u.writeComments(model, ctx)
 			_ ctx.w('@' + model.wzName + '(')
             _ cnt.genItems
                 @ model.statements
@@ -142,6 +145,7 @@
                 @ model.wzName
 			r_cb()
         elif u.isEnumValue(model)
+            _ u.writeComments(model, ctx)
             var p
                 _ lineParser.parseNameValueRaw
                     @ model.wzName
@@ -155,6 +159,7 @@
                     @ ' = ' + p.value()
 			r_cb()
         elif u.isObjectProperty(model)
+            _ u.writeComments(model, ctx)
             var 
                 decl tk
                 decl p
@@ -186,6 +191,7 @@
         elif u.parentIsHtmlElement(model)
 			r_cb()
         else 
+            _ u.writeComments(model, ctx)
             if ctx.__ecma === 'es6'
                 _ ctx.w('@' + model.wzName)
 			elif ctx.__artifact === 'xittf/document'
@@ -198,6 +204,14 @@
 			r_cb()
 
 	stm( jsObject
+        # log 'model.jsPropertyOrValues', model.jsPropertyOrValues && model.jsPropertyOrValues.length
+        if model.jsPropertyOrValues && model.jsPropertyOrValues.length > 0
+            if !model.statements
+                set model.statements = []
+            foreach item in model.jsPropertyOrValues
+                _ model.statements.push
+                    @ item
+
         _ u.writeComments(model, ctx)
         _ u.checkInlineEnter(model, ctx)
 		var 
@@ -339,6 +353,8 @@
 				r_cb()
 
 	stm( jsArray
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
 		var colon = (ctx.isGraphql && !ctx.isNamedCallParam) ? ' ' : ': '
 		# log '600 jsArray'
 		if model.wzName && model.wzName.length > 0
@@ -348,6 +364,7 @@
 			if model.statements.length == 0
 				_ ctx.write('[' + (model.wzName || '') + ']')
 				# log '601 jsArray'
+                _ u.checkInlineExit(model, ctx)
 				r_cb() 
             if ctx.__inline
                 _ ctx.write('[')
@@ -379,6 +396,7 @@
 									f_cb()
 										repeater_increment(2)
 								$append next
+                                    _ u.checkInlineExit(model, ctx)
 									r_cb()
             # log '606 jsArray'
 			if needs_comma
@@ -401,9 +419,12 @@
 				    _ ctx.w('')
 				_ ctx.deindent()
 				_ ctx.write(']')
+                _ u.checkInlineExit(model, ctx)
 				r_cb()
 
 	stm( get
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
 		_ ctx.w('get ' + model.wzName + '() {')
         _ ctx.indent()
 		_ cnt.genItems
@@ -412,4 +433,5 @@
 			f_cb()
 				_ ctx.deindent()
 				_ ctx.write('}')
+                _ u.checkInlineExit(model, ctx)
 				r_cb()

@@ -133,7 +133,7 @@ function classSuper(model, ctx, callback) {
     }
     if (model.super) {
         ctx.write(' extends ' + model.super);
-        // log 'classSuper', 'model.superType', model.superType
+        console.log('classSuper', 'model.superType',);
         if (model.superType && model.superType.typeParameterInsts.length > 0) {
             ctx.write('<');
             var len_1 = model.superType.typeParameterInsts.length;

@@ -1,0 +1,55 @@
+module
+
+    $
+        var md = {
+            name: 'IconButton',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < IconButton
+                @ {...args}
+                svg 
+                    @ width "20px"
+                    @ height "18px"
+                    @ viewBox "0 0 20 18"
+                    @ fill "none"
+                    path 
+                        @ d "M13.333 15l5-5-5-5M6.667 5l-5 5 5 5"
+                        @ strokeWidth "2"
+                        @ strokeLinecap "round"
+                        @ strokeLinejoin "round"
+
+        v08/ts/react/story(Titled)
+            @ title 'Icon button title'
+
+        v08/ts/react/story(Labeled)
+            @ label 'Icon button label'
+
+        v08/ts/react/story(Titled_labeled)
+            @ title 'Icon button title'
+            @ label 'Icon button label'
+
+        v08/ts/react/story(Disabled)
+            @ title 'Icon button title'
+            @ label 'Icon button label'
+            @ disabled true
+
+        v08/ts/react/story(Responsive)
+            @ title 'Icon button title'
+            @ label 'Icon button label'
+            @ responsive true
+
+        v08/ts/react/story(Small)
+            @ title 'Icon button title'
+            @ label 'Icon button label'
+            @ small true
+
+        v08/ts/react/story(Submit)
+            @ title 'Icon button title'
+            @ label 'Icon button label'
+            @ type 'submit'

@@ -1,0 +1,7 @@
+$group
+    $params name|@@null
+
+    { ${name}
+        @ "defaultConnectionMethod" "account"
+        @ "authFlow" "save2"
+        @ "snackFirstSeen" "2021-04-28"

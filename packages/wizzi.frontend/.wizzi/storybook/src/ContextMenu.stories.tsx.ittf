@@ -1,0 +1,36 @@
+module
+
+    $
+        var md = {
+            name: 'ContextMenu',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+
+        $append imports2
+            const _menu = React.createRef<HTMLUListElement>();
+        
+        $append template
+            < ContextMenu
+                @ {...args}
+
+        v08/ts/react/story(Menu_1)
+            @ ref _menu
+            @ visible true
+            [ actions
+                {
+                    @ label 'Dago'
+                    @ handler
+                        => 
+                            _ window.open(`https://www.dagospia.com`)
+                {
+                    @ label 'Account Settings'
+                    @ handler
+                        => 
+                {
+                    @ label 'Help'
+                    @ handler
+                        => 

@@ -1,0 +1,25 @@
+module
+
+    $
+        var md = {
+            name: 'Popover',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+
+        $append template
+            < Popover
+                @ {...args}
+
+        v08/ts/react/story(Dialog_1)
+            @ content
+                < React.Fragment
+                    p Description
+                    button
+                        + Edit details
+            @ children
+                button
+                    + popover

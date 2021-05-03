@@ -30,7 +30,7 @@
 						_ ctx.write('}')
 						r_cb()
     
-	stm( xfunction
+    stm( xfunction
         var model = writeComments(model, ctx)
         var 
             decl name = model.wzName.trim()
@@ -242,6 +242,7 @@
 
         if ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent'
             var implicitReturn = u.isImplicitReturn(model)
+            var firstChildIsTemplate = u.firstChildIs(model, ['template'])
             _ ctx.w(async_str + model.wzName + ' = (')
 			_ u.genTSParams
 				@ model
@@ -260,6 +261,7 @@
                                     @ ctx
                                     @ cnt
                                     @ implicitReturn
+                                    @ firstChildIsTemplate
                                     @ callback
                     else
                         _ arrowfunction_body
@@ -267,6 +269,7 @@
                             @ ctx
                             @ cnt
                             @ implicitReturn
+                            @ firstChildIsTemplate
                             @ callback
 		elif u.onlyChildIs(model, 'callOnValue') || u.onlyChildIsHtmlElement(model)
             _ ctx.write(async_str + '(')
@@ -288,6 +291,7 @@
                                     @ ctx
                                     @ cnt
                                     @ true
+                                    @ false
                                     @ callback
                     else
                         _ arrowfunction_body
@@ -295,6 +299,7 @@
                             @ ctx
                             @ cnt
                             @ true
+                            @ false
                             @ callback
 		elif u.onlyChildIs(model, 'arrowfunction')
             _ ctx.write(async_str + '(')
@@ -315,6 +320,7 @@
                                     @ ctx
                                     @ cnt
                                     @ false
+                                    @ false
                                     @ callback
                     else
                         _ arrowfunction_body
@@ -322,10 +328,14 @@
                             @ ctx
                             @ cnt
                             @ false
+                            @ false
                             @ callback
 		elif u.isImplicitReturn(model)
             # log 'isImplicitReturn', model.wzElement, model.wzName
             var isSingleParam = u.isSingleParamForArrowFunction(model)
+            var firstChildIsTemplate = u.firstChildIs(model, ['template'])
+            # log 'function.isSingleParam', isSingleParam
+            # log 'function.firstChildIs template', firstChildIsTemplate
             _ ctx.write(async_str + (isSingleParam ? '' : '('))
 			_ u.genTSParams
 				@ model
@@ -344,6 +354,7 @@
                                     @ ctx
                                     @ cnt
                                     @ true
+                                    @ firstChildIsTemplate
                                     @ callback
                     else
                         _ arrowfunction_body
@@ -351,6 +362,7 @@
                             @ ctx
                             @ cnt
                             @ true
+                            @ firstChildIsTemplate
                             @ callback
 		else 
             _ ctx.write(async_str + '(')
@@ -371,12 +383,14 @@
                                     @ ctx
                                     @ cnt
                                     @ false
+                                    @ false
                                     @ callback
                     else
                         _ arrowfunction_body
                             @ model
                             @ ctx
                             @ cnt
+                            @ false
                             @ false
                             @ callback
 
@@ -385,9 +399,13 @@
 		param ctx
         param cnt
         param implicitReturn
+        param firstChildIsTemplate
 		param callback
-        _ ctx.w(' => ' + (implicitReturn ? '' : '{'))
-        _ u.forceInlineOff(model, ctx)
+        if firstChildIsTemplate
+            _ ctx.write(' => ' + (implicitReturn ? '' : '{'))
+        else
+            _ ctx.w(' => ' + (implicitReturn ? '' : '{'))
+            _ u.forceInlineOff(model, ctx)
         _ cnt.genItems
             @ model.statements
             @ ctx
@@ -397,8 +415,8 @@
                 _ ctx.w((implicitReturn ? '' : '}'))
                 _ u.checkInlineExit(model, ctx)
                 r_cb()
-    
-	stm( xreturn
+	
+    stm( xreturn
         _ u.writeComments(model, ctx)
         _ u.checkInlineEnter(model, ctx)
 		if hasStatements(model) == false

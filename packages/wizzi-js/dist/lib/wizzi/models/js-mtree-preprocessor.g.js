@@ -48,6 +48,9 @@ svg_supported_attrs = svg_supported_attrs.concat(temp);
 module.exports = function(mTree, context) {
     // log 'wizzi-js.js.preprocess.mTree', mTree
     var state = {
+        svgOn: false, 
+        htmlOn: false, 
+        styledOn: false, 
         actions: [
             
         ]
@@ -85,11 +88,11 @@ module.exports = function(mTree, context) {
     return mTree;
 };
 function traverse(node, state) {
-    var saveHtmlOn = state.htmlOn;
-    var saveSvgOn = state.svgOn;
     if (preprocessNode(node, state)) {
         return ;
     }
+    var saveHtmlOn = state.htmlOn;
+    var saveSvgOn = state.svgOn;
     var saveParent = state.parent;
     var i, i_items=node.children, i_len=node.children.length, item;
     for (i=0; i<i_len; i++) {
@@ -160,7 +163,19 @@ function preprocessNode(node, state) {
         state.svgOn = true;
         // log 'js-mtree-processor svgOn'
     }
-    else if (node.n === 'styled' || node.n === 'keyframes') {
+    else if (node.n === 'if' && state.styledOn) {
+        var nCssStyled = createNode(node, '<', '--styled--', node.children);
+        var nCss = createNode(node, 'css', null, [nCssStyled]);
+        var nJsStyled = createNode(node, 'styled', null, [nCss]);
+        var nJsIf = createNode(node, node.n, node.v, [nJsStyled]);
+        var nJsModule = createNode(node, 'module', null, [nJsIf]);
+        node.n = 'js=>';
+        node.v = null;
+        node.children = [nJsModule];
+        console.log('node', node);
+        return true;
+    }
+    else if (node.n === 'styled' || node.n === 'keyframes' || node.n === 'styled-css' || (node.n === 'css' && state.styledOn)) {
         if (node.children.length == 1 && node.children[0].n == "css") {
             return false;
         }
@@ -195,12 +210,17 @@ function preprocessNode(node, state) {
                 }
             ]
         };
+        if (node.n == 'css') {
+            node.n == 'styled-css';
+        }
         node.children = arrow ? [arrow, cssnode] : [cssnode];
+        state.styledOn = true;
         var i, i_items=savedchildren, i_len=savedchildren.length, child;
         for (i=0; i<i_len; i++) {
             child = savedchildren[i];
             traverse(child, state)
         }
+        state.styledOn = false;
         return true;
     }
     return false;
@@ -212,4 +232,15 @@ function addAttr(state, node, attr) {
         n: attr, 
         v: ''
     })
+}
+function createNode(node, name, value, childrenFrom) {
+    return {
+            n: name, 
+            v: value, 
+            r: node.r, 
+            c: node.c, 
+            s: node.s, 
+            u: node.u, 
+            children: childrenFrom || []
+        };
 }

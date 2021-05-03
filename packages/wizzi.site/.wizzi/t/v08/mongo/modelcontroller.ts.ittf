@@ -1,0 +1,99 @@
+$group
+    $params &md
+    $
+        var ctrl = {
+            name: md.ctrlName,
+            path: md.ctrlPath,
+            modelName: md.Name
+        }
+    controller( &ctrl )
+        _ this.router.get(`/`, this.get${md.Names})
+        _ this.router.post(`/`, this.addNew${md.Name})
+        _ this.router.get(`/:id`, this.get${md.Name}ById)
+        _ this.router.put(`/:id`, this.update${md.Name})
+        _ this.router.delete(`/:id`, this.delete${md.Name})
+        $append imports
+            import
+                @ ${md.Name}ModelType
+                @ Get${md.Name}Model
+                from '../mongo/${md.name}'
+        $append handlers
+            handler( addNew${md.Name} )
+                let new${md.Name} = new this.${md.Name}Model(request.body)
+                _ new${md.Name}.save
+                    =>
+                        param err
+                        param ${md.name}
+                        if err
+                            _ sendFailure
+                                @ response
+                                @ err
+                                @ 501
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ data ${md.name}
+            handler( get${md.Names} )
+                _ this.${md.Name}Model.find
+                    {
+                    =>
+                        param err
+                        param ${md.name}
+                        if err
+                            _ sendFailure
+                                @ response
+                                @ err
+                                @ 501
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ data ${md.name}
+            handler( get${md.Name}ById )
+                _ this.${md.Name}Model.findById
+                    @ request.params.id
+                    =>
+                        param err
+                        param ${md.name}
+                        if err
+                            _ sendFailure
+                                @ response
+                                @ err
+                                @ 501
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ data ${md.name}
+            handler( update${md.Name} )
+                _ this.${md.Name}Model.findOneAndUpdate
+                    {
+                        @ _id request.params.id
+                    @ request.body
+                    {
+                        @ new true
+                    =>
+                        param err
+                        param ${md.name}
+                        if err
+                            _ sendFailure
+                                @ response
+                                @ err
+                                @ 501
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ data ${md.name}
+            handler( delete${md.Name} )
+                _ this.${md.Name}Model.remove
+                    {
+                        @ _id request.params.id
+                    =>
+                        param err
+                        if err
+                            _ sendFailure
+                                @ response
+                                @ err
+                                @ 501
+                        _ sendSuccess
+                            @ response
+                            {
+                                @ message 'Successfully deleted ${md.name}!'

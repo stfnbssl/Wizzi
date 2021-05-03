@@ -34,7 +34,7 @@ $group
                 param res
                     :ref Response
                 param error
-                    :ref HttpException
+                    :any
                 param status
                     :number
                 _ res.status

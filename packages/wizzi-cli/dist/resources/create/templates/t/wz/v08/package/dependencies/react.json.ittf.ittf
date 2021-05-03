@@ -31,13 +31,13 @@ ${'$'}group
                 ${'$'}if wzCtx.Build.react.materialUI.autocomplete.useReactSelect
                     react-select "^4.3.0"
         ${'$'}if wzCtx.Build.react.useSimpleCodeEditor
-            react-simple-code-editor "latest"
+            react-simple-code-editor "^0.11.0"
         ${'$'}if wzCtx.Build.react.useTextareaAutosize
-            react-textarea-autosize "latest"
+            react-textarea-autosize "^8.3.2"
         ${'$'}if wzCtx.Build.react.transition
             react-transition-group "^2.4.0"
         ${'$'}if wzCtx.Build.react.useVirtualized
-            react-virtualized "latest"
+            react-virtualized "^9.22.3"
         ${'$'}if wzCtx.Build.react.useRecompose
             recompose "^0.30.0"
 

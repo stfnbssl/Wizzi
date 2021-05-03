@@ -2,7 +2,7 @@
 
     stm( template
         var indented
-            _ u.writeComments_2(model, ctx, true, true)
+            _ u.writeComments_template(model, ctx, true, true)
         _ ctx.write('`')
         _ cnt.genItems
             @ model.statements
@@ -18,7 +18,7 @@
     
     stm( taggedTemplate
         var indented
-            _ u.writeComments_2(model, ctx, true, true)
+            _ u.writeComments_template(model, ctx, true, true)
         _ ctx.write('`')
         _ cnt.genItems
             @ model.statements
@@ -34,7 +34,7 @@
 
 	stm( tagFunctionCall
         var indented
-            _ u.writeComments_2(model, ctx, true, true)
+            _ u.writeComments_template(model, ctx, true, true)
 		_ ctx.write( model.wzName + '`')
         _ cnt.genItems
             @ model.statements
@@ -51,7 +51,7 @@
 
 	stm( macroExpr
         var indented
-            _ u.writeComments_2(model, ctx, true, true)
+            _ u.writeComments_template(model, ctx, true, true)
         _ ctx.write('${' + (model.wzName || ''))
         _ cnt.genItems
             @ model.statements

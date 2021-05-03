@@ -92,7 +92,7 @@ module wizzi.ts.artifacts.module.gen.codegen.es6.class
 	fn( classSuper )
 		if model.super
 			_ ctx.write(' extends ' + model.super)
-            # log 'classSuper', 'model.superType', model.superType
+            log 'classSuper', 'model.superType', 
 			if model.superType && model.superType.typeParameterInsts.length > 0
 				_ ctx.write('<')
 				repeater( 1, model.superType.typeParameterInsts )

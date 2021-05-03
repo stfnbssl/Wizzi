@@ -110,7 +110,7 @@
             var ss = []
             log 'wzInitialize', this.statements.length
             foreach s in this.statements
-                log 'wzInitialize.s', s.wzElement
+                # log 'wzInitialize.s', s.wzElement
                 if s.wzElement == 'typeParameterInst'
                     _ tpi.push(s)
                 else
@@ -118,6 +118,6 @@
             if tpi.length > 0
                 set this.typeParameterInsts = tpi
                 set this.statements = ss
-                log 'this.typeParameterInsts', this.typeParameterInsts
+                # log 'this.typeParameterInsts', this.typeParameterInsts
 	
 	e type : statement

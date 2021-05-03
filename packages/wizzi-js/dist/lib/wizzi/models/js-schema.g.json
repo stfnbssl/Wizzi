@@ -2454,6 +2454,12 @@
           ]
         },
         {
+          "name": "styledCss",
+          "tags": [
+            "styled-css"
+          ]
+        },
+        {
           "name": "htmlParam",
           "tags": [
             "@param"
@@ -14126,6 +14132,12 @@
           ]
         },
         {
+          "name": "styledCss",
+          "tags": [
+            "styled-css"
+          ]
+        },
+        {
           "name": "htmlParam",
           "tags": [
             "@param"
@@ -17814,6 +17826,201 @@
       "isRoot": false,
       "tags": [
         "styled"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "global",
+          "type": "boolean",
+          "tags": [
+            "global"
+          ],
+          "default": "false",
+          "defaultWhenDeclared": "true",
+          "flags": "",
+          "inheritedFrom": null,
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoCapitalize",
+          "type": "string",
+          "tags": [
+            "autoCapitalize"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoCorrect",
+          "type": "string",
+          "tags": [
+            "autoCorrect"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "property",
+          "type": "string",
+          "tags": [
+            "property"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemProp",
+          "type": "string",
+          "tags": [
+            "itemProp"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemScope",
+          "type": "string",
+          "tags": [
+            "itemScope"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemType",
+          "type": "string",
+          "tags": [
+            "itemType"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemRef",
+          "type": "string",
+          "tags": [
+            "itemRef"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "itemID",
+          "type": "string",
+          "tags": [
+            "itemID"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "unselectable",
+          "type": "string",
+          "tags": [
+            "unselectable"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "results",
+          "type": "string",
+          "tags": [
+            "results"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "autoSave",
+          "type": "string",
+          "tags": [
+            "autoSave"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "class",
+          "type": "string",
+          "tags": [
+            "class"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "aria__",
+          "type": "string",
+          "tags": [
+            "aria-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "data__",
+          "type": "string",
+          "tags": [
+            "data-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "htmlelement",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "statement",
+          "role": "statements",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "statement",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "styledCss",
+      "super": "htmlelement",
+      "isRoot": false,
+      "tags": [
+        "styled-css"
       ],
       "flags": "",
       "attributes": [

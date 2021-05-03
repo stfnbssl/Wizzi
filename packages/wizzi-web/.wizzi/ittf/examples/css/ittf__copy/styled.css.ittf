@@ -2,6 +2,11 @@
 
 
     < --styled--
+        + color
+        ${'$'} color
+        ${'$'} space
+
+    < --styled--
         background-color orange
         background-image linear-gradient(to right, orange, red)
         color white

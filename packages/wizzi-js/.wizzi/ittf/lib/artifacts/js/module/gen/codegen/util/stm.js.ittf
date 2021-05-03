@@ -76,17 +76,20 @@
             var written = false
             var indented = false
             foreach item in model.statements
-                if item.wzElement == 'comment'
+                if item.wzElement == 'comment' || item.wzElement == 'commentmultiline'
                     $*
                     if newline && !written
                         _ ctx.w
                     *$
                     $$ TODO implement ctx.lf_w(..) (line feed + w)
                     _ ctx.w
-                    _ ctx.w('// ' + item.wzName)
+                    _ __writeComments
+                        @ item
+                        @ ctx
+                        @ item.wzElement == 'commentmultiline'
                     set written = true
                     if item.wzName.indexOf('@ts-ignore') > -1 
-                        log '§§§ stm.writeComments', model.wzName
+                        # log '§§§ stm.writeComments', model.wzName
                         set ctx.__inlineNext = true
                     else
                         set ctx.__inlineNext = false
@@ -95,7 +98,41 @@
             set model.statements = temp
             return model
 
-	set md.writeComments_2
+	function __writeComments
+		param model
+        param ctx
+        param multi
+        # log '__writeComments-model', model
+        if multi || model.statements.length > 0
+            _ ctx.w('/**')
+            _ ctx.indent
+            set ctx.__inside_comment = true
+            if verify.isNotEmpty(model.wzName)
+                _ ctx.w('* ' + model.wzName)
+            foreach item in model.statements
+                _ __writeCommentLine
+                    @ item
+                    @ ctx
+        else
+            _ ctx.w('// ' + model.wzName)
+        if multi || model.statements.length > 0
+            _ ctx.deindent
+            set ctx.__inside_comment = false
+            _ ctx.w('*/')
+
+    function __writeCommentLine            
+		param model
+        param ctx
+        _ ctx.w((ctx.__inside_comment ? '* ' : '// ') + model.wzName)
+        if model.statements.length > 0
+            _ ctx.indent
+            foreach item in model.statements
+                _ __writeCommentLine
+                    @ item
+                    @ ctx
+            _ ctx.deindent
+
+	set md.writeComments_template
         function
             param model
             param ctx
@@ -114,7 +151,7 @@
                     _ ctx.w('// ' + item.wzName)
                     set written = true
                     if item.wzName.indexOf('@ts-ignore') > -1 
-                        log '§§§ stm.writeComments', model.wzName
+                        # log '§§§ stm.writeComments', model.wzName
                         set ctx.__inlineNext = true
                     else
                         set ctx.__inlineNext = false
@@ -134,6 +171,10 @@
             var ret = []
             if model.statements
                 foreach item in model.statements
+                    if md.isComment(item) == false
+                        _ ret.push(item)
+            if model.jsPropertyOrValues
+                foreach item in model.jsPropertyOrValues
                     if md.isComment(item) == false
                         _ ret.push(item)
             return ret
@@ -175,6 +216,14 @@
             param model
             return model.wzParent && ['call', 'memberCall', 'decoratorCall', 'callOnValue'].indexOf(model.wzParent.wzElement) > -1
     
+	set md.firstChildIs
+        function 
+            param model
+            param elementsArray
+            var ss = md.nonCommentStatements(model)
+            # log 'firstChildIs', ss.length > 0 && ss[0].wzElement
+            return ss.length > 0 && elementsArray.indexOf(ss[0].wzElement) > -1
+
 	set md.onlyChildIs
         function 
             param model
@@ -213,7 +262,10 @@
             param model
             if model.params.length != 1 
                 return false
+            # log 'model.params', model.params
+            # log 'model.params[0]', model.params[0]
             var ss = md.nonCommentStatements(model.params[0])
+            # log 'return', ss.length == 0
             return ss.length == 0
 
     set md.hasStatementChildren
@@ -672,6 +724,79 @@
 			if ret
 				_ model.statements.splice(retIndex, 1)
 			return ret
+
+	set md.genParams
+        function 
+            param model
+			param ctx
+			param cnt
+			param callback
+			if !!(model.params && model.params.length > 0) == false
+				r_cb()
+			# log 'genParams enter', model.wzElement
+			repeater(1, model.params)
+				var p = item_1
+				# log 'genParams p', p
+				if index_1 > 0
+					_ ctx.write(', ')
+				# log 'genParams', index_1, (p.statements && p.statements.length) || (p.jsPropertyOrValues && p.jsPropertyOrValues.length)
+				if (!p.statements || p.statements.length == 0) && (!p.jsPropertyOrValues || p.jsPropertyOrValues.length == 0)
+					_ ctx.write(p.wzName)
+					repeater_increment(1)
+				elif p.wzElement === 'objectParam' || p.wzElement === 'jsObject'
+					set p.wzElement = 'jsObject'
+					_ cnt.stm[p.wzElement]
+						@ p
+						@ ctx
+						a_cb()
+							set p.wzElement = 'objectParam'
+							repeater_increment(1)
+				elif p.statements.length > 0 && p.statements.length < 3
+					_ ctx.write(p.wzName)
+					var s0 = p.statements[0]
+					# log 'genParams.s0.wzElement', s0.wzElement
+					# if s0.wzElement === 'typeInitValue' || s0.wzElement === 'typeCTor' || s0.wzElement === 'typeNever'
+					# log 'genParams.s0.statements.length', s0.statements.length
+                    _ genParams_close
+                        @ s0
+                        @ ctx
+                        @ cnt
+                        a_cb()
+                            repeater_increment(1)
+				else
+					# log 'jswizzifier.genParams.p', p, 'statements', p.statements
+					_ callback
+						_ ctx.error(myname + '.genParams.statements.length should be 0 or 1.found: ' + p.statements.length, model)
+				$append next
+					# log 'genParams.exit'
+					r_cb()
+
+	function genParams_close
+		param s0
+		param ctx
+		param cnt
+		param callback
+		if s0.statements.length == 2
+			var item = s0.statements[0]
+			# log 'genParams_close 1 item.wzElement', item.wzElement
+			_ cnt.stm[item.wzElement]
+				@ item
+				@ ctx
+				a_cb()
+					_ ctx.write(' = ')
+					var item = s0.statements[1]
+					# log 'genParams_close 2 item.wzElement', item.wzElement
+					_ cnt.stm[item.wzElement]
+						@ item
+						@ ctx
+						@ callback
+		else
+			_ ctx.write(' = ')
+			# log 'genParams_close 3 item.wzElement', s0.wzElement
+			_ cnt.stm[s0.wzElement]
+				@ s0
+				@ ctx
+				@ callback
 
 	set md.genTSParams
         function 

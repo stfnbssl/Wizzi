@@ -1,0 +1,29 @@
+module
+
+    $
+        var md = {
+            name: 'ProgressIndicator',
+            from: '../../src/components/widgets'
+        }
+
+    v08/ts/react/stories(&md)
+
+        $append decorators
+            < Story 
+
+        $append template
+            < ProgressIndicator 
+                @ {...args}
+
+        v08/ts/react/story(Quick)
+            @ delay 0
+            @ duration 500
+
+        v08/ts/react/story(Slow)
+            @ delay 0
+            @ duration 4500
+
+        v08/ts/react/story(With_delay)
+            @ delay 1000
+            @ duration 2000
+

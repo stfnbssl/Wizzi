@@ -1,0 +1,25 @@
+$group
+    $params name|@@null
+
+    [ ${name}
+        { 
+            { item
+                @ path "/mydir/myfile.txt"
+                @ type 'file'
+                @ content 'file entry content'
+            { state
+                @ isExpanded true
+        {
+            { item
+                @ path "/mydir/myfile2.txt"
+                @ type 'file'
+                @ content 'file2 entry content'
+            { state
+                @ isExpanded true
+        {
+            { item
+                @ path "/mydir/myfile3.txt"
+                @ type 'file'
+                @ content 'file3 entry content'
+            { state
+                @ isExpanded true

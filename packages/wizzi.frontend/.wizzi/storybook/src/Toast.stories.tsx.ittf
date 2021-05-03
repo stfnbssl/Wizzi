@@ -1,0 +1,29 @@
+module
+
+    $
+        var md = {
+            name: 'Toast',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+
+        $append imports2
+            import Button from '../../src/components/widgets/Button'
+
+        $append template
+            < Toast
+                @ {...args}
+
+        v08/ts/react/story(Dialog_1)
+            @ key "group 1"
+            @ label `Deleted alpha`
+            [ actions
+                {
+                    @ label 'Undo' 
+                    @ action
+                        =>
+                {
+                    @ label 'Dismiss'

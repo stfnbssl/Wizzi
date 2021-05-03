@@ -7,29 +7,25 @@ $group
 
 	set module.exports
 		{
-            @ mode "development"
+            @ mode
+                iif process.env.NODE_ENV === 'production'
+                    then 'production'
+                    else 'development'
+            @ devtool
+                iif process.env.NODE_ENV === 'production'
+                    then 'source-map'
+                    $$ else 'eval-source-map'
+                    else 'cheap-module-source-map'
 			[ entry
-                ${'$'}if wzCtx.Build.useTypescript
-                    @ './src/index.tsx'
-                ${'$'}else
-				    @ './src/index.js'
-			
+                v08/webpack/entry${mix}
 			{ module
 				[ rules
                     v08/webpack/module.rules${mix}
-
 			{ resolve
                 v08/webpack/resolve${mix}
-			
 			{ output
-				@ path path.resolve(__dirname, '..', 'dist', 'scripts')
-				@ filename '${'$'}{wzCtx.name}.js'
                 v08/webpack/output${mix}
-			
 			[ plugins
                 v08/webpack/plugins${mix}
-			
-			@ devtool 'cheap-module-source-map'
-			
 			{ devServer
                 v08/webpack/devServer${mix}

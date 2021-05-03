@@ -1,0 +1,498 @@
+$group
+    $params level|1
+    => _handleFocusChangeInterval
+        const isFocused = document.hasFocus()
+        if this._isFocused !== isFocused
+            set this._isFocused = isFocused
+            if isFocused
+                _ this._Packi.setFocus()
+    $if wzCtx.Build.useExpo
+        => _handleBroadcastChannelMessage
+            param e
+                :any 
+            const 
+                { 
+                    @ id
+                = this.state.session
+                # Only respond to messages which have the same snack
+            if e.id !== id || !e.id
+                return 
+            switch e.type
+                case 'NEW_TAB'
+                    let autosaveEnabled
+                    if this.state.isSavedOnce
+                        set autosaveEnabled = this.state.autosaveEnabled
+                    else
+                        _ this.setState
+                            { 
+                                @ autosaveEnabled false
+                            # If we have never saved in this tab, disable autosave in this tab
+                            # It allows the user to autosave in the new tab which is more covenient
+                        set autosaveEnabled = false
+                    _ this._broadcastChannel.postMessage
+                        { 
+                            @ type 'DUPLICATE_TAB'
+                            @ id
+                            @ autosaveEnabled
+                        # If another tab with same snack is opened,
+                        # Let it know that there's a duplicate tab
+                    break 
+                case 'DUPLICATE_TAB'
+                    if e.autosaveEnabled
+                        _ this.setState
+                            { 
+                                @ autosaveEnabled false
+                    break 
+        p _handleUnload
+            async=> 
+                if navigator.sendBeacon && this.state.session.sendBeaconCloseRequest
+                    const 
+                        { 
+                            @ url
+                            @ data
+                        = this.state.session.sendBeaconCloseRequest
+                    _ navigator.sendBeacon(url, data)
+        => _handleDeviceConnectionAttempt
+            _ this._snack.setOnline(true)
+    => _handleToggleSendCode
+        _ this.setState
+            => 
+                { 
+                    @ sendCodeOnChangeEnabled
+                _ this._Packi.setCodeChangesDelay
+                    iif sendCodeOnChangeEnabled
+                        then -1
+                        else 1000
+                return 
+                    { 
+                        @ sendCodeOnChangeEnabled !sendCodeOnChangeEnabled
+    => _handleSendCode
+        _ this._Packi.sendCodeChanges()
+    $if wzCtx.Build.useExpo
+        => _handleSessionLog
+            param event
+                :ref SnackLogEvent
+            const deviceLog
+                :ref DeviceLog
+                =
+                    { 
+                        { device
+                            @ name event.connectedClient?.name ?? ''
+                            @ id event.connectedClient?.id ?? ''
+                            @ platform
+                                @expr (event.connectedClient?.platform ?? '')
+                                    :as 
+                                        :any 
+                            @ status 'connected'
+                            @ timestamp Date.now()
+                        @ method
+                            @expr event.type
+                                :as 
+                                    :any 
+                        [ payload
+                            @ event.message
+            _ this.setState
+                => 
+                    param state
+                    (
+                        { 
+                            [ deviceLogs
+                                @ ...state.deviceLogs.slice(-99)
+                                @ deviceLog
+    => _handleSessionStateChange
+        param state
+            :ref PackiState
+        param prevState
+            :ref PackiState
+        _ this.setState
+            => 
+                param st
+                $if wzCtx.Build.useExpo
+                    const 
+                        { 
+                            @ connectedClients
+                        = state
+                let annotations
+                    :union 
+                        :[ 
+                            :ref Annotation
+                        :undefined 
+                $if wzCtx.Build.useExpo
+                    let connectedDevices
+                        :union 
+                            :[ 
+                                :ref Device
+                            :undefined 
+                        # Update connected devices
+                    if state.connectedClients !== prevState.connectedClients
+                        set connectedDevices = connectedDevices ?? []
+                        for 
+                            left
+                                const key
+                            in connectedClients
+                            const 
+                                { 
+                                    @ id
+                                    @ name
+                                    @ platform
+                                = connectedClients[key]
+                            _ connectedDevices.push
+                                { 
+                                    @ name
+                                    @ id
+                                    @ platform
+                                        + platform
+                                            :as 
+                                                :any 
+                                    @ status 'connected'
+                                    @ timestamp 0
+                    if state.connectedClients !== prevState.connectedClients
+                        set annotations = annotations ?? []
+                        for 
+                            left
+                                const key
+                            in connectedClients
+                            const 
+                                { 
+                                    @ error
+                                    @ transport
+                                = connectedClients[key]
+                            if error
+                                _ annotations.push
+                                    { 
+                                        @ message error.message
+                                        @ location
+                                            iif error.fileName
+                                                then
+                                                    { 
+                                                        @ fileName error.fileName
+                                                        @ startLineNumber error.lineNumber ?? 0
+                                                        @ endLineNumber error.lineNumber ?? 0
+                                                        @ startColumn (error.columnNumber ?? 0) + 1
+                                                        @ endColumn (error.columnNumber ?? 0) + 1
+                                                else undefined
+                                        @ severity 4
+                                        @ source
+                                            iif transport === 'web-player'
+                                                then 'Web'
+                                                else 'Device'
+                const saveStatus
+                    :ref SaveStatus
+                    =
+                        iif state.unsaved && (st.saveStatus === 'saved-draft' || st.saveStatus === 'published' || st.saveStatus === 'unsaved')
+                            then
+                                iif this.edited
+                                    then 'edited'
+                                    else 'unsaved'
+                            else st.saveStatus
+                    # Set save-status to changed if needed
+                return 
+                    { 
+                        @ session state
+                        @ saveStatus
+                        @ annotations annotations ?? st.annotations
+                        $if wzCtx.Build.useExpo
+                            @ connectedDevices connectedDevices ?? st.connectedDevices
+                    # Update session state
+            => 
+                _ this._saveDraftIfNeeded(true)
+            # console.log('Session state change: ', diff(prevState, state), state); // deep-object-diff
+        $if wzCtx.Build.useExpo
+            # Record any dependency errors
+            if state.dependencies !== prevState.dependencies
+                for 
+                    left
+                        const name
+                    in state.dependencies
+                    const dep = state.dependencies[name]
+                    if dep.error && dep.error !== prevState.dependencies[name]?.error
+                        _ Raven.captureMessage(dep.error.message)
+    $if wzCtx.Build.useExpo
+        => _reloadSnack
+            _ this._snack.reloadConnectedClients()
+    => _handleSubmitMetadata
+        param details
+            :{ 
+                :p name
+                    :string 
+                :p description
+                    :string 
+        set this.edited = true
+        _ this._Packi.setName(details.name)
+        _ this._Packi.setDescription(details.description)
+    $if wzCtx.Build.useExpo
+        => _handleChangeSDKVersion
+            param sdkVersion
+                :ref SDKVersion
+            param isLocalWebPreview
+                :boolean 
+                :optional 
+            set this.edited = true
+            _ this._snack.setSDKVersion(sdkVersion)
+            if this.state.isLocalWebPreview !== !!isLocalWebPreview
+                _ this.setState
+                    { 
+                        @ isLocalWebPreview !!isLocalWebPreview
+        => _handleClearDeviceLogs
+            _ this.setState
+                { 
+                    @ deviceLogs []
+    p _handleDownloadAsync
+        async=> 
+            _ this.setState
+                { 
+                    @ isDownloading true
+            const 
+                { 
+                    @ saveStatus
+                = this.state
+                # Make sure file is saved before downloading
+            if saveStatus !== 'published'
+                await 
+                    _ this._saveAsync
+                        { 
+                            @ ignoreUser true
+                            @ excludeFromHistory true
+            let once = true
+            _ this.setState
+                => 
+                    param state
+                    const 
+                        { 
+                            @ id
+                        = state.session
+                    if !id
+                        return 
+                            { 
+                                @ saveStatus
+                                @ isDownloading false
+                            # this shouldn't happen
+                    if once
+                        set once = false
+                        $if wzCtx.Build.useExpo
+                            _ Analytics.getInstance().logEvent('DOWNLOADED_CODE')
+                        const url
+                            `lit 
+                                @ process.env.API_SERVER_URL
+                                + /--/api/v2/snack/download/
+                                @ id
+                        const element = document.createElement('a')
+                            # Simulate link click to download file
+                        if element && document.body
+                            _ document.body.appendChild(element)
+                            _ element.setAttribute('href', url)
+                            _ element.setAttribute('download', 'snack.zip')
+                            set element.style.display = ''
+                            _ element.click()
+                            _ document.body.removeChild(element)
+                    return 
+                        { 
+                            @ saveStatus
+                            @ isDownloading false
+    => _saveDraftIfNeeded
+        param debounced
+            :boolean 
+            :optional 
+        if this.state.session.user && this.state.session.unsaved && this.state.autosaveEnabled && this.state.saveStatus === 'edited'
+            if debounced
+                _ this._saveDraftIfNeededDebounced()
+            else
+                _ this._saveAsync
+                    { 
+                        @ isDraft true
+    p _saveDraftIfNeededDebounced
+        _ debounce(this._saveDraftIfNeeded, 3000)
+    p _saveAsync
+        async=> 
+            param options
+                :ref SaveOptions
+                = 
+                    { 
+            const 
+                { 
+                    @ isDraft
+                    @ ignoreUser
+                    @ excludeFromHistory
+                = options
+            _ this.setState
+                { 
+                    @ saveStatus
+                        iif isDraft || excludeFromHistory
+                            then 'saving-draft'
+                            else 'publishing'
+            if !isDraft
+                let cntCodeFile = 0
+                let cntAssetFile = 0
+                $if wzCtx.Build.useExpo
+                    const cntDependencies = Object.keys(this.state.session.dependencies).length
+                let codeSize = 0
+                for 
+                    left
+                        const path
+                    in this.state.session.files
+                    const file = this.state.session.files[path]
+                    if file.type === 'CODE'
+                        set cntCodeFile++
+                        set codeSize += file.contents.length
+                    else
+                        set cntAssetFile++
+                $if wzCtx.Build.useExpo
+                    _ Analytics.getInstance().logEvent
+                        @ 'SAVED_SNACK'
+                        { 
+                            @ cntCodeFile
+                            @ cntAssetFile
+                            @ codeSize
+                            @ cntDependencies
+                        @ 'lastSave'
+                    _ Analytics.getInstance().startTimer('lastSave')
+            try 
+                set this.edited = false
+                const saveResult
+                    await 
+                        _ this._Packi.saveAsync
+                            { 
+                                @ isDraft
+                                @ ignoreUser
+                if !excludeFromHistory
+                    _ this.props.history.push
+                        { 
+                            @ pathname
+                                `lit 
+                                    + /
+                                    @ saveResult.id
+                                    + 
+                            @ search this.props.location.search
+                _ this.setState
+                    => 
+                        param state
+                        (
+                            { 
+                                @ isSavedOnce true
+                                @ saveHistory
+                                    iif excludeFromHistory
+                                        then state.saveHistory
+                                        else
+                                            [ 
+                                                { 
+                                                    @ hashId saveResult.hashId ?? ''
+                                                    @ savedAt new Date().toISOString()
+                                                    @ isDraft
+                                                @ ...state.saveHistory
+                                @ saveStatus
+                                    iif state.session.unsaved
+                                        then
+                                            iif this.edited
+                                                then 'edited'
+                                                else 'unsaved'
+                                        else
+                                            iif isDraft
+                                                then 'saved-draft'
+                                                else 'published'
+            catch e
+                set this.edited = true
+                _ this.setState
+                    { 
+                        @ saveStatus 'edited'
+                throw e
+    $if wzCtx.Build.useExpo
+        => _setDeviceId
+            param deviceId
+                :string 
+            if typeof window !== 'undefined' && window.localStorage
+                try 
+                    _ window.localStorage.setItem(DEVICE_ID_KEY, deviceId)
+                catch e
+            _ this._snack.setDeviceId(deviceId)
+    => _handleOpenEditor
+        _ this.setState
+            { 
+                @ isPreview false
+    => _uploadAssetAsync
+        param asset
+            :ref File
+        return this._Packi.uploadAssetAsync(asset)
+    => _handleTogglePreview
+        $if wzCtx.Build.useExpo
+            if !this.props.isEmbedded
+                _ this.props.setPreferences
+                    { 
+                        @ devicePreviewShown !this.state.devicePreviewShown
+        $else
+            _ this.props.setPreferences
+                { 
+                    @ devicePreviewShown !this.state.devicePreviewShown
+        _ this.setState
+            => 
+                param state
+                (
+                    { 
+                        @ devicePreviewShown !state.devicePreviewShown
+            $if wzCtx.Build.useExpo        
+                @expr this._enablePubNubIfNeeded
+    $if wzCtx.Build.useExpo
+        => _handleChangePreviewPlatform
+            param platform
+                :ref Platform
+            if !this.props.isEmbedded
+                _ this.props.setPreferences
+                    { 
+                        @ devicePreviewPlatform platform
+            _ this.setState
+                => 
+                    (
+                        { 
+                            @ devicePreviewPlatform platform
+                @expr this._enablePubNubIfNeeded
+    => _handleSelectFile
+        param path
+            :string 
+        _ this.setState
+            => 
+                param state
+                ( 
+                    iif state.selectedFile !== path
+                        then
+                            { 
+                                @ selectedFile path
+                        else null
+    $if wzCtx.Build.useExpo
+        => _enablePubNubIfNeeded
+            if !this.props.isEmbedded || (this.state.devicePreviewShown && this.state.devicePreviewPlatform === 'mydevice')
+                _ this._snack.setOnline(true)
+    => _updateFiles
+        param updateFn
+            :=> 
+                :{ 
+                    :index 
+                        :union 
+                            :ref PackiFile
+                            :null 
+                        param path
+                            :string 
+                param files
+                    :ref PackiFiles
+        const state = this._Packi.getState()
+        const filesUpdate = updateFn(state.files)
+        if Object.keys(filesUpdate).length
+            set this.edited = true
+            _ this._Packi.updateFiles(filesUpdate)
+    $if wzCtx.Build.useExpo
+        => _updateDependencies
+            param updateFn
+                :=> 
+                    :{ 
+                        :index 
+                            :union 
+                                :ref SnackDependency
+                                :null 
+                            param path
+                                :string 
+                    param dependencies
+                        :ref SnackDependencies
+            const state = this._snack.getState()
+            const dependenciesUpdate = updateFn(state.dependencies)
+            if Object.keys(dependenciesUpdate).length
+                set this.edited = true
+                _ this._snack.updateDependencies(dependenciesUpdate)
+            return this._snack.getState().dependencies

@@ -1,0 +1,36 @@
+$group
+    
+    $append imports1
+        import cookies from 'js-cookie'
+        import 
+            @ Provider
+            from 'react-redux'
+        $*
+        import 
+            @ BrowserRouter
+            from 'react-router-dom'
+        *$
+        import 
+            @ PreferencesProvider 
+            from '../../src/features/preferences/index'
+        import 
+            @ ThemeProvider 
+            from '../../src/components/ThemeProvider'
+        import createStore
+            from '../../src/store/createRedux'
+        $$ import Router from '../../src/components/Router'
+        const store
+            _ createStore
+                { 
+                    { splitTestSettings
+                        $$ __INITIAL_DATA__.splitTestSettings 
+
+    $append decorators
+        < Provider 
+            @ store {store}
+            < PreferencesProvider
+                @ cookies {cookies}
+                @ queryParams {{ theme: 'light' }}
+                < ThemeProvider
+                    < Story 
+

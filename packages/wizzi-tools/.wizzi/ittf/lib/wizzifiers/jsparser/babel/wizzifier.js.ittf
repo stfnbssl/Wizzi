@@ -33,7 +33,7 @@
 			set __isText = false
 			set ret.isText = false
 			set ret.textified = null
-			set ret.CICCIO = "MAGIC"
+			# set ret.CICCIO = "MAGIC"
 		# log 'Identifier', ret
 
 	f( PrivateName
@@ -338,8 +338,10 @@
 		# A function [declaration](#functiondeclaration) or [expression](#functionexpression).
 		f_p_name(id, Identifier | null
 		f_p( typeParameters, false, ?TypeParameterInstantiation
-		f_a_in_tag( params, params
-		_ processParams(ret)
+		# f_a_in_tag( params, params
+		# _ processParams(ret)
+        f_a_temp( params
+        _ processParams2(ret, p_params)
 		f_p_temp( returnType, false, true
 		if p_returnType
 			# log 'p_returnType', JSON.stringify(p_returnType)
@@ -1551,9 +1553,10 @@
 		f_p(argument, true , Pattern
 		get_text_from_1_children(  )
 		f_p( typeAnnotation, false
-		set ret.textified = '...' + ret.name
+		set ret.name = '...' + ret.name
+        set ret.textified = ret.name
 
-    f( AssignmentPattern, node.operator
+    f( AssignmentPattern, node.operator||'=';tag-is-var
 		f_p_temp( left, true, true, Pattern | Expression
 		f_p_temp( right, true, true, Expression
 		# log 'AssignmentPattern.p_left', JSON.stringify(p_left, null, 2)
@@ -1572,7 +1575,7 @@
 				@ p_left
 			_ ret.children.push
 				@ p_right
-		# log 'AssignmentPattern', JSON.stringify(ret, null, 2)
+		log 'AssignmentPattern', JSON.stringify(ret, null, 2)
 
 	f( Class, class
 		f_p_name(id, Identifier | null
@@ -1676,7 +1679,8 @@
 					@ name ''
 					[ children
 		
-		if p_value && p_value.tag === '=>'
+		$*
+        if p_value && p_value.tag === '=>'
 			set ret.tag = p_value.tag
 			if p_typeAnnotation
 				_ ret.children.push
@@ -1690,18 +1694,19 @@
 			else
 				set ret.children = p_value.children
 		else
-			if p_typeAnnotation
-                _ ret.children.push
-                    @ p_typeAnnotation
-			if node.computed
-				set ret.name = '[' + ret.name + ']'
-			elif p_value && p_value.tag
-				if ['@id', '@expr', 'literal'].indexOf(p_value.tag) > -1
-					set p_value.tag = '='
-				_ ret.children.push
-					@ p_value
-			else
-				# do nothing
+        *$
+        if p_typeAnnotation
+            _ ret.children.push
+                @ p_typeAnnotation
+        if node.computed
+            set ret.name = '[' + ret.name + ']'
+        elif p_value && p_value.tag
+            if ['@id', '@expr', 'literal'].indexOf(p_value.tag) > -1
+                set p_value.tag = '='
+            _ ret.children.push
+                @ p_value
+        else
+            # do nothing
 
     f( ClassPrivateProperty, p
 		f_p( key, true, PrivateName

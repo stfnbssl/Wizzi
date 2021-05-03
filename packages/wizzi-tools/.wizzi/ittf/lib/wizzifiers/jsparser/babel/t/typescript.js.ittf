@@ -119,9 +119,10 @@
 	f( TSFunctionType, :=>
 		f_p(typeParameters, false)
 		f_p(typeAnnotation)
-		f_a_in_tag( parameters, params
-		_ processParams(ret)
+        f_a_temp( parameters
+        _ processParams2(ret, p_parameters)
 		ts-return()
+        log 'TSFunctionType', 'ret', ret
 
 	f( TSMethodSignature, :m
 		f_p_name(key, Identifier | null

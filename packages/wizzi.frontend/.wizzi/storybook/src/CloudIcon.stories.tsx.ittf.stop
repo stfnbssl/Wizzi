@@ -1,0 +1,26 @@
+module
+
+    $
+        var md = {
+            name: 'CloudIcon',
+            from: '../../src/components/widgets'
+        }
+
+    v08/ts/react/stories(&md)
+
+        $append decorators
+            < Story 
+
+        $append template
+            < CloudIcon 
+                @ {...args}
+
+        v08/ts/react/story(Small)
+            @ width 24
+
+        v08/ts/react/story(Medium)
+            @ width 48
+
+        v08/ts/react/story(Large)
+            @ width 96
+

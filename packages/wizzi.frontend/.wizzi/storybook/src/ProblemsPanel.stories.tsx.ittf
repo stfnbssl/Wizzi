@@ -1,0 +1,41 @@
+module
+
+    $
+        var md = {
+            name: 'ProblemsPanel',
+            from: '../../src/components/EditorView',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < ProblemsPanel
+                @ {...args}
+
+        v08/ts/react/story(Warning)
+            [ annotations
+                {
+                    @ message 'annotation 1'
+                    @ severity 2
+                    @ source 'Web'
+                    { location
+                        @ fileName 'file1.txt'
+                        @ startLineNumber 2
+                        @ endLineNumber 2
+                        @ startColumn 10
+                        @ endColumn 18
+            @ onSelectFile
+                => 
+                    param path
+                        :string 
+                    log 'onSelectFile', path
+
+        v08/ts/react/story(Error)
+            props/annotations(annotations)
+            @ onSelectFile
+                => 
+                    param path
+                        :string 
+                    log 'onSelectFile', path                    

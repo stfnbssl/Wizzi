@@ -1,5 +1,15 @@
 $group
     ---
+    ${'$'}if wzCtx.Build.webpack.useCodeSplitting
+        @ globalObject 'self'
+        @ path path.resolve(__dirname, 'dist')
+        $$ @ publicPath '/dist/'
+        @ filename '[name].bundle.js'
+        @ chunkFilename '[id].[hash].chunk.js'
+    ${'$'}else
+        @ path path.resolve(__dirname, '..', 'dist', 'scripts')
+        @ filename '${'$'}{wzCtx.name}.js'
+    ---
 	${'$'}if wzCtx.Build.isLibrary
 		@ library '${'$'}{wzCtx.Build.library.name}'
         ${'$'}if wzCtx.Build.library.target

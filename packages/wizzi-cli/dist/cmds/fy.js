@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\fy.js.ittf
-    utc time: Wed, 14 Apr 2021 15:52:41 GMT
+    utc time: Mon, 03 May 2021 06:58:19 GMT
 */
 'use strict';
 const path = require('path');
@@ -13,6 +13,7 @@ const file = wizziUtils.file;
 const wizziTools = require('../../../wizzi-tools/dist/index');
 const help = require('./help');
 module.exports = (args) => {
+
     let currentDir = process.cwd();
     let source = args.source || args.s;
     let dest = args.dest || args.d;
@@ -59,12 +60,14 @@ module.exports = (args) => {
         if (sourceIsFolder) {
             console.log('ok. source && dest are folders');
             wizziTools.importFolder(sourcePath, destPath, (err, result) => {
+            
                 if (err) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
                 console.log('Wizzify folder result', result);
-            })
+            }
+            )
         }
         else {
             console.log('ok. source && dest are files');
@@ -87,13 +90,15 @@ module.exports = (args) => {
                 schema = extension;
             }
             wizziTools.wizzify(schema, file.read(sourcePath), (err, result) => {
+            
                 if (err) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
                 file.write(destPath, result);
                 console.log('Wizzify file', result);
-            })
+            }
+            )
         }
     }
     else {

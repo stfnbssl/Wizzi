@@ -1,0 +1,24 @@
+module
+
+    $
+        var md = {
+            name: 'MenuButton',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < MenuButton
+                @ {...args}
+
+        v08/ts/react/story(Sample_1)
+            @ label
+                div
+                    + Label
+            @ content
+                div 
+                    h1 Content title
+                    p Content paragraph

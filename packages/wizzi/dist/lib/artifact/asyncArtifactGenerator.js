@@ -263,13 +263,13 @@ var AsyncArtifactGenerator = {
             throw new error(generatingPath + ' generation did not termitate');
         }
         var gNum = ++g_generationsCheckCounter;
-        g_generationsCheck['timer' + gNum] = setTimeout(checkCallback, 1000);
+        g_generationsCheck['timer' + gNum] = setTimeout(checkCallback, 2000);
         new genInfo.generator.gen(genInfo.mainSourceModel, genInfo.genContext, function(err, result) {
             if (err) {
                 return callback(err);
             }
-            var timer = g_generationsCheck['timer' + gNum];
-            clearTimeout(timer)
+            // var timer = g_generationsCheck['timer' + gNum]
+            clearTimeout(g_generationsCheck['timer' + gNum])
             return callback(null, result);
         });
     }

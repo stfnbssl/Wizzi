@@ -1,0 +1,264 @@
+module
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    import 
+        as React
+        from 'react'
+    $if wzCtx.Build.useOk
+        import 
+            @ SaveStatus
+            @ SaveHistory
+            @ SaveOptions
+            from '../../features/packi/index'
+        import 
+            @ Viewer
+            from '../../features/account/index'
+    $else
+        import 
+            @ SaveStatus
+            @ SaveHistory
+            @ SaveOptions
+            @ Viewer
+            from './mocks'
+    import EditorTitle from './EditorTitle'
+    import
+        @ usePreferences 
+        from '../../features/preferences/index'
+    import SearchButton from '../Search/SearchButton'
+    import 
+        @ ToolbarShell 
+        from '../shell/ToolbarShell'
+    import 
+        @ ToolbarTitleShell 
+        from '../shell/ToolbarTitleShell'
+    import UserMenu from './UserMenu'
+    import 
+        @ Button 
+        from '../widgets/Button'
+    import IconButton from '../widgets/IconButton'
+    import packiIconDark from '../../assets/snack-icon-dark.svg'
+    import packiIconLight from '../../assets/snack-icon.svg'
+    export
+        :type EditorToolbarProps
+            :{ 
+                :p name
+                    :string 
+                :p description
+                    :string 
+                :p createdAt
+                    :union 
+                        :string 
+                        :undefined 
+                :p saveStatus
+                    :ref SaveStatus
+                :p saveHistory
+                    :ref SaveHistory
+                :p viewer
+                    :union 
+                        :ref Viewer
+                        :undefined 
+                :p isDownloading
+                    :boolean 
+                $if wzCtx.Build.useExpo
+                    :p isResolving
+                        :boolean 
+                :p isEditModalVisible
+                    :boolean 
+                :p onSubmitMetadata
+                    :=> 
+                        :void 
+                        param details
+                            :{ 
+                                :p name
+                                    :string 
+                                :p description
+                                    :string 
+                $if wzCtx.Build.useExpo
+                    :p onShowPreviousSaves
+                        :=> 
+                            :void 
+                :p onShowEditModal
+                    :=> 
+                        :void 
+                :p onDismissEditModal
+                    :=> 
+                        :void 
+                $if wzCtx.Build.useExpo
+                    :p onShowEmbedCode
+                        :=> 
+                            :void 
+                :p onDownloadCode
+                    :=> 
+                        :ref Promise
+                            :param void
+                $if wzCtx.Build.useExpo
+                    :p onShowQRCode
+                        :=> 
+                            :void 
+                :p onPublishAsync
+                    :=> 
+                        :ref Promise
+                            :param void
+                        param options
+                            :ref SaveOptions
+                            :optional 
+    export
+        function EditorToolbar
+            param props
+                :ref EditorToolbarProps
+            const [preferences] = usePreferences()
+            const 
+                { 
+                    @ name
+                    @ description
+                    @ createdAt
+                    @ saveHistory
+                    @ saveStatus
+                    @ viewer
+                    @ isDownloading
+                    $if wzCtx.Build.useExpo
+                        @ isResolving
+                    @ isEditModalVisible
+                    @ onSubmitMetadata
+                    $if wzCtx.Build.useExpo
+                        @ onShowPreviousSaves
+                    @ onShowEditModal
+                    @ onDismissEditModal
+                    $if wzCtx.Build.useExpo
+                        @ onShowEmbedCode
+                    @ onDownloadCode
+                    $if wzCtx.Build.useExpo
+                        @ onShowQRCode
+                    @ onPublishAsync
+                = props
+            const 
+                { 
+                    @ theme
+                = preferences
+            const isPublishing = saveStatus === 'publishing'
+            const isPublished = saveStatus === 'published'
+            return 
+                < ToolbarShell 
+                    < ToolbarTitleShell 
+                        img 
+                            @ src
+                                iif theme === 'dark'
+                                    then packiIconDark
+                                    else packiIconLight
+                            @ alt "Snack"
+                            @ className {css(styles.logo)}
+                        < EditorTitle 
+                            @ name {name}
+                            @ description {description}
+                            @ createdAt {createdAt}
+                            @ saveHistory {saveHistory}
+                            @ saveStatus {saveStatus}
+                            @ viewer {viewer}
+                            @ isEditModalVisible {isEditModalVisible}
+                            @ onSubmitMetadata {onSubmitMetadata}
+                            $if wzCtx.Build.useExpo
+                                @ onShowPreviousSaves {onShowPreviousSaves}
+                            @ onShowEditModal {onShowEditModal}
+                            @ onDismissEditModal {onDismissEditModal}
+                    div 
+                        @ className {css(styles.buttons)}
+                        < Button 
+                            @ variant "secondary"
+                            @ onClick
+                                => 
+                                    _ onPublishAsync()
+                            $if wzCtx.Build.useExpo
+                                @ disabled {isPublishing || isResolving || isPublished}
+                            $else
+                                @ disabled {isPublishing || isPublished}
+                            @ loading {isPublishing}
+                            @ className {css(styles.saveButton)}
+                            { 
+                                iif isPublishing
+                                    then 'Saving…'
+                                    else
+                                        iif isPublished
+                                            then 'Saved'
+                                            else 'Save'
+                        $if wzCtx.Build.useExpo
+                            < IconButton 
+                                @ responsive
+                                @ title "Run on device"
+                                @ onClick {onShowQRCode}
+                                svg 
+                                    @ width "20"
+                                    @ height "20"
+                                    @ viewBox "0 0 20 20"
+                                    path 
+                                        @ d "M8.333 7.083v5.667l4.534-2.833-4.534-2.834z"
+                                        @ stroke "none"
+                                    path 
+                                        @ d "M8.333 10H2.5"
+                                        @ strokeWidth "1.25"
+                                        @ strokeLinecap "round"
+                                    path 
+                                        @ d "M5.444 11.889v3.778c0 1.043.846 1.889 1.89 1.889h6.61a1.889 1.889 0 001.89-1.89V4.334a1.889 1.889 0 00-1.89-1.889h-6.61a1.889 1.889 0 00-1.89 1.89V8.11"
+                                        @ fill "none"
+                                        @ strokeWidth "1.667"
+                                    rect 
+                                        @ x "8.333"
+                                        @ y "1.667"
+                                        @ width "5"
+                                        @ height "2.5"
+                                        @ rx ".833"
+                                        @ stroke "none"
+                        < IconButton 
+                            @ responsive
+                            @ title "Download as zip"
+                            @ onClick {onDownloadCode}
+                            @ disabled {isDownloading || isPublishing}
+                            svg 
+                                @ width "20"
+                                @ height "20"
+                                path 
+                                    @ d "M14.167 10H5.833L10 16.667 14.167 10z"
+                                path 
+                                    @ d "M2.5 18.333h15M10 10V1.667"
+                                    @ strokeWidth "2"
+                                    @ strokeLinecap "round"
+                        $if wzCtx.Build.useExpo
+                            < IconButton 
+                                @ responsive
+                                @ title "Show embed code"
+                                @ onClick {onShowEmbedCode}
+                                svg 
+                                    @ width "20px"
+                                    @ height "18px"
+                                    @ viewBox "0 0 20 18"
+                                    @ fill "none"
+                                    path 
+                                        @ d "M13.333 15l5-5-5-5M6.667 5l-5 5 5 5"
+                                        @ strokeWidth "2"
+                                        @ strokeLinecap "round"
+                                        @ strokeLinejoin "round"
+                        < SearchButton 
+                            @ responsive
+                        < UserMenu 
+    export-default EditorToolbar
+    const styles
+        _ StyleSheet.create
+            { 
+                { logo
+                    @ width 24
+                    @ height 24
+                    @ marginLeft 16
+                    @ marginRight 16
+                { buttons
+                    @ display 'flex'
+                    @ flexDirection 'row'
+                    @ alignItems 'center'
+                    @ position 'relative'
+                    @ zIndex 5
+                { saveButton
+                    @ height 40
+                    @ fontWeight 600
+                    @ minWidth 80
+                    @ fontSize '16px'
+                    @ marginRight 16

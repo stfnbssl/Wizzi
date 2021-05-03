@@ -21,7 +21,7 @@ function countStatements(model) {
     var i, i_items=model.statements, i_len=model.statements.length, item;
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
-        if (item.wzElement != 'comment') {
+        if (item.wzElement != 'comment' && item.wzElement != 'commentmultiline') {
             count++;
         }
     }
@@ -33,7 +33,10 @@ function writeComments(model, ctx) {
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
         if (item.wzElement == 'comment') {
-            ctx.w('// ' + item.wzName);
+            __writeComments(item, ctx, false)
+        }
+        else if (item.wzElement == 'commentmultiline') {
+            __writeComments(item, ctx, true)
         }
         else {
             temp.push(item);
@@ -41,6 +44,40 @@ function writeComments(model, ctx) {
     }
     model.statements = temp;
     return model;
+}
+function __writeComments(model, ctx, multi) {
+    // log '__writeComments-model', model
+    if (multi || model.statements.length > 0) {
+        ctx.w('/**');
+        ctx.indent();
+        if (verify.isNotEmpty(model.wzName)) {
+            ctx.w(model.wzName);
+        }
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+    }
+    else {
+        ctx.w('// ' + model.wzName);
+    }
+    if (multi || model.statements.length > 0) {
+        ctx.deindent();
+        ctx.w('*/');
+    }
+}
+function __writeCommentLine(model, ctx) {
+    ctx.w('// ' + model.wzName);
+    if (model.statements.length > 0) {
+        ctx.indent();
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+        ctx.deindent();
+    }
 }
 md.load = function(cnt) {
     cnt.stm.exportfunction = function(model, ctx, callback) {
@@ -70,6 +107,398 @@ md.load = function(cnt) {
             })
         })
     };
+    cnt.stm.xfunction = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xfunction');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.xfunction. Got: ' + callback);
+        }
+        var model = writeComments(model, ctx);
+        var name = model.wzName.trim(),
+            aster = ctx.__aster || '',
+            xasync = model.xasync ? 'async ' : '';
+        var f,
+            iifeInvoke,
+            iife = model.statements.length > 0 && model.statements[(model.statements.length - 1)].wzElement === 'memberCall';
+        if (iife) {
+            f = '(' + (name.length > 0 ? (xasync + 'function' + aster + ' ' + name) : (xasync + 'function'));
+            iifeInvoke = model.statements[(model.statements.length - 1)];
+            iifeInvoke.wzParent = {
+                wzElement: 'call'
+            };
+            model.statements.splice((model.statements.length - 1), 1);
+        }
+        else {
+            f = name.length > 0 ? (xasync + 'function' + aster + ' ' + name) : (xasync + 'function' + aster);
+        }
+        ctx.write(f);
+        u.genTSTypeParameters(model, ctx, cnt, (err, notUsed) => {
+            if (err) {
+                return callback(err);
+            }
+            ctx.write('(');
+            u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write(')');
+                if (model.typeReturn) {
+                    ctx.write(': ');
+                    cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                        if (err) {
+                            return callback(err);
+                        }
+                        xfunction_end(model, ctx, iife, callback)
+                    })
+                }
+                else {
+                    xfunction_end(model, ctx, iife, callback)
+                }
+            })
+        })
+    };
+    function xfunction_end(model, ctx, iife, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in fn: ' + myname + '.xfunction_end');
+        }
+        ctx.w(' {');
+        u.forceInlineOff(model, ctx);
+        ctx.indent();
+        cnt.genItems(model.statements, ctx, {
+            indent: false
+        }, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.deindent();
+            ctx.write('}');
+            if (iife) {
+                return cnt.genItems([
+                        iifeInvoke
+                    ], ctx, {
+                        indent: false
+                    }, function(err, notUsed) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        ctx.write(')');
+                        if (u.isTopStatement(model, ctx)) {
+                            ctx.w('');
+                        }
+                        return callback(null, null);
+                    });
+            }
+            if (u.isTopStatement(model, ctx)) {
+                ctx.w('');
+            }
+            return callback(null, null);
+        })
+    }
+    cnt.stm.iife = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.iife');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.iife. Got: ' + callback);
+        }
+        var model = writeComments(model, ctx);
+        var invokeCall = null;
+        if (model.statements.length > 0 && model.statements[(model.statements.length - 1)].wzElement === 'callOnValue') {
+            invokeCall = model.statements[model.statements.length - 1];
+            model.statements.splice(model.statements.length - 1, 1);
+        }
+        if (model.unary_prefix) {
+            ctx.write(model.unary_prefix)
+        }
+        ctx.write('(function(');
+        u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+            if (err) {
+                return callback(err);
+            }
+            ctx.write(')');
+            if (model.typeReturn) {
+                ctx.write(': ');
+                cnt.stm.typeReturn(model.typeReturn, ctx, () => {});
+            }
+            ctx.w(' {');
+            u.forceInlineOff(model, ctx);
+            ctx.indent();
+            cnt.genItems(model.statements, ctx, {
+                indent: false
+            }, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.deindent();
+                ctx.write('})');
+                if (invokeCall) {
+                    cnt.genItem(invokeCall, ctx, function(err, notUsed) {
+                        if (err) {
+                            return callback(err);
+                        }
+                        ctx.w(';');
+                        return callback(null, null);
+                    })
+                }
+                else {
+                    ctx.w('();');
+                    return callback(null, null);
+                }
+            })
+        })
+    };
+    cnt.stm.generatorfunction = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.generatorfunction');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.generatorfunction. Got: ' + callback);
+        }
+        var model = writeComments(model, ctx);
+        ctx.__aster = '*';
+        cnt.stm.xfunction(model, ctx, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.__aster = null;
+            return callback(null, null);
+        })
+    };
+    cnt.stm.asyncfunction = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.asyncfunction');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.asyncfunction. Got: ' + callback);
+        }
+        var model = writeComments(model, ctx);
+        model.xasync = true;
+        cnt.stm.xfunction(model, ctx, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.__aster = null;
+            return callback(null, null);
+        })
+    };
+    cnt.stm.xyield = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xyield');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.xyield. Got: ' + callback);
+        }
+        var model = writeComments(model, ctx);
+        var name = model.wzName.trim();
+        if (hasStatements(model) == false) {
+            ctx.write('yield ' + name);
+            if (u.isTopStatement(model, ctx)) {
+                ctx.w(u.semicolon(name));
+            }
+            u.checkInlineExit(model, ctx);
+            return callback(null, null);
+        }
+        ctx.write('yield ');
+        cnt.genItems(model.statements, ctx, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            if (u.isTopStatement(model, ctx)) {
+                ctx.w(u.semicolon(name));
+            }
+            u.checkInlineExit(model, ctx);
+            return callback(null, null);
+        })
+    };
+    cnt.stm.xawait = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xawait');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.xawait. Got: ' + callback);
+        }
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
+        ctx.write('await ');
+        var name = model.wzName.trim();
+        if (hasStatements(model) == false) {
+            ctx.write(name);
+            if (u.isTopStatement(model, ctx)) {
+                ctx.w(u.semicolon(name));
+            }
+            u.checkInlineExit(model, ctx);
+            return callback(null, null);
+        }
+        else {
+            cnt.genItems(model.statements, ctx, function(err, notUsed) {
+                if (err) {
+                    return callback(err);
+                }
+                if (u.isTopStatement(model, ctx)) {
+                    ctx.w(u.semicolon(name));
+                }
+                u.checkInlineExit(model, ctx);
+                return callback(null, null);
+            })
+        }
+    };
+    cnt.stm.asyncarrowfunction = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.asyncarrowfunction');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.asyncarrowfunction. Got: ' + callback);
+        }
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
+        model.xasync = true;
+        cnt.stm.arrowfunction(model, ctx, callback)
+    };
+    cnt.stm.arrowfunction = function(model, ctx, callback) {
+        if (typeof callback === 'undefined') {
+            throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.arrowfunction');
+        }
+        if (typeof callback !== 'function') {
+            throw new Error('The callback parameter must be a function. In ' + myname + '.arrowfunction. Got: ' + callback);
+        }
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
+        var async_str = model.xasync ? 'async ' : '';
+        u.genAccessorsAndExtra(model, ctx)
+        if (ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent') {
+            var implicitReturn = u.isImplicitReturn(model);
+            var firstChildIsTemplate = u.firstChildIs(model, ['template']);
+            ctx.w(async_str + model.wzName + ' = (');
+            u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.w(')');
+                if (model.typeReturn) {
+                    ctx.write(': ');
+                    cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                        if (err) {
+                            return callback(err);
+                        }
+                        arrowfunction_body(model, ctx, cnt, implicitReturn, firstChildIsTemplate, callback)
+                    })
+                }
+                else {
+                    arrowfunction_body(model, ctx, cnt, implicitReturn, firstChildIsTemplate, callback)
+                }
+            })
+        }
+        else if (u.onlyChildIs(model, 'callOnValue') || u.onlyChildIsHtmlElement(model)) {
+            ctx.write(async_str + '(');
+            u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write(')');
+                // TODO what if it needs generateParams ?
+                if (model.typeReturn) {
+                    ctx.write(': ');
+                    cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                        if (err) {
+                            return callback(err);
+                        }
+                        arrowfunction_body(model, ctx, cnt, true, false, callback)
+                    })
+                }
+                else {
+                    arrowfunction_body(model, ctx, cnt, true, false, callback)
+                }
+            })
+        }
+        else if (u.onlyChildIs(model, 'arrowfunction')) {
+            ctx.write(async_str + '(');
+            u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write(')');
+                if (model.typeReturn) {
+                    ctx.write(': ');
+                    cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                        if (err) {
+                            return callback(err);
+                        }
+                        arrowfunction_body(model, ctx, cnt, false, false, callback)
+                    })
+                }
+                else {
+                    arrowfunction_body(model, ctx, cnt, false, false, callback)
+                }
+            })
+        }
+        else if (u.isImplicitReturn(model)) {
+            // log 'isImplicitReturn', model.wzElement, model.wzName
+            var isSingleParam = u.isSingleParamForArrowFunction(model);
+            var firstChildIsTemplate = u.firstChildIs(model, ['template']);
+            // log 'function.isSingleParam', isSingleParam
+            // log 'function.firstChildIs template', firstChildIsTemplate
+            ctx.write(async_str + (isSingleParam ? '' : '('));
+            u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write(isSingleParam ? '' : ')');
+                if (model.typeReturn) {
+                    ctx.write(': ');
+                    cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                        if (err) {
+                            return callback(err);
+                        }
+                        arrowfunction_body(model, ctx, cnt, true, firstChildIsTemplate, callback)
+                    })
+                }
+                else {
+                    arrowfunction_body(model, ctx, cnt, true, firstChildIsTemplate, callback)
+                }
+            })
+        }
+        else {
+            ctx.write(async_str + '(');
+            u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                ctx.write(')');
+                if (model.typeReturn) {
+                    ctx.write(': ');
+                    cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                        if (err) {
+                            return callback(err);
+                        }
+                        arrowfunction_body(model, ctx, cnt, false, false, callback)
+                    })
+                }
+                else {
+                    arrowfunction_body(model, ctx, cnt, false, false, callback)
+                }
+            })
+        }
+    };
+    function arrowfunction_body(model, ctx, cnt, implicitReturn, firstChildIsTemplate, callback) {
+        if (firstChildIsTemplate) {
+            ctx.write(' => ' + (implicitReturn ? '' : '{'));
+        }
+        else {
+            ctx.w(' => ' + (implicitReturn ? '' : '{'));
+            u.forceInlineOff(model, ctx);
+        }
+        cnt.genItems(model.statements, ctx, {
+            indent: true
+        }, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.w((implicitReturn ? '' : '}'));
+            u.checkInlineExit(model, ctx);
+            return callback(null, null);
+        })
+    }
     cnt.stm.xfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xfunction');
@@ -302,13 +731,15 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.arrowfunction. Got: ' + callback);
         }
         var async_str = model.xasync ? 'async ' : '';
-        // log '++++ arrowfunction', model.wzName, async_str, model.xasync, model.statements[0]
-        // log 'ctx.__is_react_class', ctx.__is_react_class
-        // log 'model.wzParent.wzElement', model.wzParent.wzElement
-        // log 'u.onlyChildIs(model, "callOnValue")', u.onlyChildIs(model, 'callOnValue')
-        // log 'u.onlyChildIsHtmlElement(model)', u.onlyChildIsHtmlElement(model)
-        // log 'u.onlyChildIs(model, "arrowfunction")', u.onlyChildIs(model, 'arrowfunction')
-        // log "u.isImplicitReturn(model)", u.isImplicitReturn(model)
+        /**
+            console.log('++++ arrowfunction', model.wzName, async_str, model.xasync, model.statements[0]);
+            console.log('ctx.__is_react_class', ctx.__is_react_class);
+            console.log('model.wzParent.wzElement', model.wzParent.wzElement);
+            console.log('u.onlyChildIs(model, "callOnValue")', u.onlyChildIs(model, 'callOnValue'));
+            console.log('u.onlyChildIsHtmlElement(model)', u.onlyChildIsHtmlElement(model));
+            console.log('u.onlyChildIs(model, "arrowfunction")', u.onlyChildIs(model, 'arrowfunction'));
+            console.log("u.isImplicitReturn(model)", u.isImplicitReturn(model));
+        */
         if (ctx.__is_react_class && model.wzParent.wzElement == 'reactComponent') {
             var implicitReturn = u.isImplicitReturn(model);
             ctx.w(model.wzName + ' = ' + async_str + '(' + model.paramNames.join(', ') + ') =>' + (implicitReturn ? '' : '{'));
@@ -346,27 +777,42 @@ md.load = function(cnt) {
         else if (u.isImplicitReturn(model)) {
             // log 'isImplicitReturn', model.wzElement, model.wzName
             var isSingleParam = u.isSingleParamForArrowFunction(model);
-            ctx.w(async_str + (isSingleParam ? '' : '(') + model.paramNames.join(', ') + (isSingleParam ? '' : ')') + ' =>');
-            cnt.genItems(model.statements, ctx, {
-                indent: true
-            }, callback)
-        }
-        else {
-            ctx.w(async_str + '(' + model.paramNames.join(', ') + ') => {');
-            cnt.genItems(model.statements, ctx, {
-                indent: true
-            }, function(err, notUsed) {
+            var firstChildIsTemplate = u.firstChildIs(model, ['template']);
+            // log 'function.isSingleParam', isSingleParam
+            // log 'function.firstChildIs template', firstChildIsTemplate
+            ctx.write(async_str + (isSingleParam ? '' : '('));
+            u.genParams(model, ctx, cnt, (err, notUsed) => {
                 if (err) {
                     return callback(err);
                 }
-                ctx.write('}');
-                if (u.isTopStatement(model, ctx)) {
-                    ctx.w();
-                }
-                return callback(null, null);
+                ctx.write(isSingleParam ? '' : ')');
+                arrowfunction_body(model, ctx, cnt, true, firstChildIsTemplate, callback)
             })
         }
+        else {
+            ctx.write(async_str + '(' + model.paramNames.join(', ') + ')');
+            arrowfunction_body(model, ctx, cnt, false, false, callback)
+        }
     };
+    function arrowfunction_body(model, ctx, cnt, implicitReturn, firstChildIsTemplate, callback) {
+        if (firstChildIsTemplate) {
+            ctx.write(' => ' + (implicitReturn ? '' : '{'));
+        }
+        else {
+            ctx.w(' => ' + (implicitReturn ? '' : '{'));
+            u.forceInlineOff(model, ctx);
+        }
+        cnt.genItems(model.statements, ctx, {
+            indent: true
+        }, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.w((implicitReturn ? '' : '}'));
+            u.checkInlineExit(model, ctx);
+            return callback(null, null);
+        })
+    }
     cnt.stm.xreturn = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xreturn');

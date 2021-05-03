@@ -15,6 +15,7 @@ $group
         # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
         import styled
             @ keyframes
+            @ css
             from 'styled-components'
     ${'$'}if md.aphrodite
         import 
@@ -24,8 +25,9 @@ $group
         import classnames from 'classnames'
     +
     ${'$'}hook imports
-    :type ${'$'}{md.name}Props
-        :{
+    export
+        :interface ${'$'}{md.name}Props
+            $$ :{
             ${'$'}foreach prop in myProps
                 ${'$'} if (prop.xdefault) { defaultProps.push(prop); }
                 ${'$'}include setPropType
@@ -50,3 +52,5 @@ $group
                         @ ${'$'}{prop.name} "${'$'}{prop.xdefault}"
                     ${'$'}else
                         @ ${'$'}{prop.name} ${'$'}{prop.xdefault}
+
+    export-default ${'$'}{md.name}

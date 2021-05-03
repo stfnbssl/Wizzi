@@ -12,6 +12,10 @@
 		a_flag( global
 		include css
 
+	e_tag(styledCss, styled-css, htmlelement)
+		a_flag( global
+		include css
+
 	e_tag(keyframes, keyframes, statement)
 		a_flag( global
 		include css

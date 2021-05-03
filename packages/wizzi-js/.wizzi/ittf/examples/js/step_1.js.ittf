@@ -17,6 +17,7 @@ module
 
         const example_ittfs
             [
+                $*
                 @ 'call'
                 @ 'class'
                 @ 'debug'
@@ -26,6 +27,8 @@ module
                 @ 'graphql'
                 @ 'html'
                 @ 'if-switch'
+                *$
+                @ 'quick'
 
    		_ async.mapSeries
 			@ example_ittfs

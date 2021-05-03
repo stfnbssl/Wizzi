@@ -1,6 +1,0 @@
-html
-    $---
-        title "Hello"
-        category "Happy"
-    body
-        h1 Hello

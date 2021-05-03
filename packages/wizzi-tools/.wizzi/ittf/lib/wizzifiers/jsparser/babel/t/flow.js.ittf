@@ -44,6 +44,8 @@
 
 	f( StringTypeAnnotation, :string
 
+    f( TSSymbolKeyword, :symbol
+
 	f( AnyTypeAnnotation, :any
 		# extends Node, Type
 

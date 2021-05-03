@@ -1,0 +1,49 @@
+module
+
+    $
+        var md = {
+            name: 'EditorToolbar',
+            from: '../../src/components/EditorView',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < EditorToolbar
+                @ {...args}
+
+        v08/ts/react/story(Saved_draft)
+            @ name 'My name'
+            @ description 'My description'
+            @ createdAt '10/8/88'
+            @ saveStatus 'saved-draft'
+            [ saveHistory
+                {
+                    @ hashId 'xyz'
+                    @ savedAt 'boh'
+                    @ isDraft true
+            { viewer
+                @ username 'stefi'
+                @ nickname 'yanez'
+            @ isEditModalVisible true
+            @ onShowEditModal
+                => 
+                    log 'onShowEditModal'
+            @ onDismissEditModal
+                => 
+                    log 'onDismissEditModal'
+            @ onSubmitMetadata
+                => 
+                    param details
+                    log 'onSubmitMetadata', details
+            @ isDownloading false
+            @ isEditModalVisible true
+            @ onDownloadCode
+                => 
+                    log 'onDownloadCode'
+            @ onPublishAsync
+                => 
+                    param options
+                    log 'onPublishAsync', options

@@ -22,7 +22,7 @@ function countStatements(model) {
     var i, i_items=model.statements, i_len=model.statements.length, item;
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
-        if (item.wzElement != 'comment') {
+        if (item.wzElement != 'comment' && item.wzElement != 'commentmultiline') {
             count++;
         }
     }
@@ -34,7 +34,10 @@ function writeComments(model, ctx) {
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
         if (item.wzElement == 'comment') {
-            ctx.w('// ' + item.wzName);
+            __writeComments(item, ctx, false)
+        }
+        else if (item.wzElement == 'commentmultiline') {
+            __writeComments(item, ctx, true)
         }
         else {
             temp.push(item);
@@ -42,6 +45,40 @@ function writeComments(model, ctx) {
     }
     model.statements = temp;
     return model;
+}
+function __writeComments(model, ctx, multi) {
+    // log '__writeComments-model', model
+    if (multi || model.statements.length > 0) {
+        ctx.w('/**');
+        ctx.indent();
+        if (verify.isNotEmpty(model.wzName)) {
+            ctx.w(model.wzName);
+        }
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+    }
+    else {
+        ctx.w('// ' + model.wzName);
+    }
+    if (multi || model.statements.length > 0) {
+        ctx.deindent();
+        ctx.w('*/');
+    }
+}
+function __writeCommentLine(model, ctx) {
+    ctx.w('// ' + model.wzName);
+    if (model.statements.length > 0) {
+        ctx.indent();
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+        ctx.deindent();
+    }
 }
 md.load = function(cnt) {
     cnt.stm.jsonStatementTree = function(model, ctx, callback) {
@@ -139,6 +176,7 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         else if (model.isDslCall) {
+            u.writeComments(model, ctx);
             ctx.write(model.wzName + '(');
             cnt.genItems(model.statements, ctx, {
                 indent: true
@@ -152,6 +190,7 @@ md.load = function(cnt) {
         }
         else if (u.isObjectProperty(model) || u.isParamValue(model) || u.isValue(model)) {
             // log 4, model.wzName + colon
+            u.writeComments(model, ctx);
             colon = u.onlyChildIs(model, 'initValue') ? '=' : colon;
             if (model.wzName.length > 0) {
                 ctx.write(model.wzName + colon);
@@ -175,6 +214,7 @@ md.load = function(cnt) {
             }
         }
         else if (ctx.__ecma === 'es6') {
+            u.writeComments(model, ctx);
             ctx.w('@' + model.wzName + '(');
             cnt.genItems(model.statements, ctx, {
                 indent: true
@@ -200,6 +240,7 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         else if (u.isEnumValue(model)) {
+            u.writeComments(model, ctx);
             var p = lineParser.parseNameValueRaw(model.wzName, model, {
                 objectProperty: true
             });
@@ -210,6 +251,7 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         else if (u.isObjectProperty(model)) {
+            u.writeComments(model, ctx);
             var tk,
                 p = lineParser.parseNameValueRaw(model.wzName, model, {
                     objectProperty: true
@@ -235,6 +277,7 @@ md.load = function(cnt) {
             return callback(null, null);
         }
         else {
+            u.writeComments(model, ctx);
             if (ctx.__ecma === 'es6') {
                 ctx.w('@' + model.wzName);
             }
@@ -253,6 +296,17 @@ md.load = function(cnt) {
         }
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.jsObject. Got: ' + callback);
+        }
+        // log 'model.jsPropertyOrValues', model.jsPropertyOrValues && model.jsPropertyOrValues.length
+        if (model.jsPropertyOrValues && model.jsPropertyOrValues.length > 0) {
+            if (!model.statements) {
+                model.statements = [];
+            }
+            var i, i_items=model.jsPropertyOrValues, i_len=model.jsPropertyOrValues.length, item;
+            for (i=0; i<i_len; i++) {
+                item = model.jsPropertyOrValues[i];
+                model.statements.push(item)
+            }
         }
         u.writeComments(model, ctx);
         u.checkInlineEnter(model, ctx);
@@ -464,6 +518,8 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.jsArray. Got: ' + callback);
         }
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         var colon = (ctx.isGraphql && !ctx.isNamedCallParam) ? ' ' : ': ';
         // log '600 jsArray'
         if (model.wzName && model.wzName.length > 0) {
@@ -474,6 +530,7 @@ md.load = function(cnt) {
             if (model.statements.length == 0) {
                 ctx.write('[' + (model.wzName || '') + ']');
                 // log '601 jsArray'
+                u.checkInlineExit(model, ctx);
                 return callback(null, null);
             }
             if (ctx.__inline) {
@@ -525,6 +582,7 @@ md.load = function(cnt) {
                         }
                         repeater_2(index_1 + 1);
                         function next_2() {
+                            u.checkInlineExit(model, ctx);
                             return callback(null, null);
                         }
                     });
@@ -560,6 +618,7 @@ md.load = function(cnt) {
             }
             ctx.deindent();
             ctx.write(']');
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         }
     };
@@ -570,6 +629,8 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.get. Got: ' + callback);
         }
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         ctx.w('get ' + model.wzName + '() {');
         ctx.indent();
         cnt.genItems(model.statements, ctx, function(err, notUsed) {
@@ -578,6 +639,7 @@ md.load = function(cnt) {
             }
             ctx.deindent();
             ctx.write('}');
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         })
     };

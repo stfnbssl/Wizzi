@@ -21,7 +21,7 @@ function countStatements(model) {
     var i, i_items=model.statements, i_len=model.statements.length, item;
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
-        if (item.wzElement != 'comment') {
+        if (item.wzElement != 'comment' && item.wzElement != 'commentmultiline') {
             count++;
         }
     }
@@ -33,7 +33,10 @@ function writeComments(model, ctx) {
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
         if (item.wzElement == 'comment') {
-            ctx.w('// ' + item.wzName);
+            __writeComments(item, ctx, false)
+        }
+        else if (item.wzElement == 'commentmultiline') {
+            __writeComments(item, ctx, true)
         }
         else {
             temp.push(item);
@@ -41,6 +44,40 @@ function writeComments(model, ctx) {
     }
     model.statements = temp;
     return model;
+}
+function __writeComments(model, ctx, multi) {
+    // log '__writeComments-model', model
+    if (multi || model.statements.length > 0) {
+        ctx.w('/**');
+        ctx.indent();
+        if (verify.isNotEmpty(model.wzName)) {
+            ctx.w(model.wzName);
+        }
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+    }
+    else {
+        ctx.w('// ' + model.wzName);
+    }
+    if (multi || model.statements.length > 0) {
+        ctx.deindent();
+        ctx.w('*/');
+    }
+}
+function __writeCommentLine(model, ctx) {
+    ctx.w('// ' + model.wzName);
+    if (model.statements.length > 0) {
+        ctx.indent();
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+        ctx.deindent();
+    }
 }
 md.load = function(cnt) {
     cnt.stm.statement = function(model, ctx, callback) {
@@ -418,9 +455,20 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.commentmultiline. Got: ' + callback);
         }
         ctx.w('/**');
-        ctx.w(('    ' + model.wzName));
-        ctx.w('*/');
-        return callback(null, null);
+        if (verify.isNotEmpty(model.wzName)) {
+            ctx.w(('    ' + model.wzName));
+        }
+        ctx.__inside_comment = true;
+        cnt.genItems(model.statements, ctx, {
+            indent: true
+        }, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.w('*/');
+            ctx.__inside_comment = false;
+            return callback(null, null);
+        })
     };
     cnt.stm.xdelete = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
@@ -439,76 +487,81 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.set. Got: ' + callback);
         }
-        var xmodel = writeComments(model, ctx);
+        u.writeComments(model, ctx);
+        u.checkInlineEnter(model, ctx);
         var text;
         // log 'set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|'
         // FIXME this hack require refactoring
-        if (xmodel.wzName === 'work.textSep = "__TS__"') {
-            text = xmodel.wzName;
+        if (model.wzName === 'work.textSep = "__TS__"') {
+            text = model.wzName;
         }
         else {
-            text = node.inlinedTextToTextLines(xmodel.wzName, {
+            text = node.inlinedTextToTextLines(model.wzName, {
                 singleLine: true
             });
         }
-        if (hasStatements(xmodel) == false) {
-            if (u.isDeclare(xmodel)) {
+        if (hasStatements(model) == false) {
+            if (u.isDeclare(model)) {
                 ctx.write(text)
             }
             else {
                 ctx.write(text)
-                if (u.isTopStatement(xmodel, ctx)) {
+                if (u.isTopStatement(model, ctx)) {
                     ctx.w(u.semicolon(text))
                 }
             }
+            u.checkInlineExit(model, ctx);
             return callback(null, null);
         }
-        if (xmodel.statements[0].wzEntity === 'function') {
+        if (model.statements[0].wzEntity === 'function') {
             ctx.w('');
         }
-        // log 'set,xmodel.statements.length', xmodel.wzName, xmodel.statements.length
-        if (xmodel.statements.length == 2) {
-            if (xmodel.statements[0].wzElement == 'comment') {
-                ctx.w(xmodel.wzName + ' ')
-                cnt.genItems(xmodel.statements, ctx, {}, function(err, notUsed) {
+        // log 'set,model.statements.length', model.wzName, model.statements.length
+        if (model.statements.length == 2) {
+            if (model.statements[0].wzElement == 'comment') {
+                ctx.w(model.wzName + ' ')
+                cnt.genItems(model.statements, ctx, {}, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
-                    if (u.isTopStatement(xmodel, ctx)) {
+                    if (u.isTopStatement(model, ctx)) {
                         ctx.w(';');
                     }
+                    u.checkInlineExit(model, ctx);
                     return callback(null, null);
                 })
             }
             else {
-                cnt.genItem(xmodel.statements[0], ctx, function(err, notUsed) {
+                cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
-                    ctx.write(' ' + xmodel.wzName + ' ')
-                    cnt.genItem(xmodel.statements[1], ctx, function(err, notUsed) {
+                    ctx.write(' ' + model.wzName + ' ')
+                    cnt.genItem(model.statements[1], ctx, function(err, notUsed) {
                         if (err) {
                             return callback(err);
                         }
-                        if (u.isTopStatement(xmodel, ctx)) {
+                        if (u.isTopStatement(model, ctx)) {
                             ctx.w(';');
                         }
+                        u.checkInlineExit(model, ctx);
                         return callback(null, null);
                     })
                 })
             }
         }
         else {
-            ctx.write(u.setOperator(text, xmodel.statements))
-            cnt.genItems(xmodel.statements, ctx, {
+            ctx.write(u.setOperator(text, model.statements))
+            cnt.genItems(model.statements, ctx, {
                 indent: false
             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
-                if (u.isTopStatement(xmodel, ctx)) {
+                if (u.isTopStatement(model, ctx)) {
                     ctx.w(';');
                 }
+                u.checkInlineExit(model, ctx);
                 return callback(null, null);
             })
         }

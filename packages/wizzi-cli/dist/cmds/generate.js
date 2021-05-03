@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\generate.js.ittf
-    utc time: Wed, 14 Apr 2021 15:52:41 GMT
+    utc time: Mon, 03 May 2021 06:58:19 GMT
 */
 'use strict';
 const path = require('path');
@@ -45,6 +45,7 @@ function generateSchemas(schemasToGen, wfJobFolder, destPath, packageName, plugi
     })
 }
 module.exports = (name) => {
+
     let configPath = config.getPath(name);
     if (!configPath) {
         console.error(`config file "wizzi.config.' + (name ? name + '.' : '') + 'js" not found`);

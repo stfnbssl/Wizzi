@@ -1,7 +1,75 @@
 module
 
-    class WithAuthWrapper
-        super React.Component
-            :param AuthProps
-        m componentDidMount
-            _ this.updateViewer()
+    new StatsWriterPlugin
+        { 
+            @ filename 'build-stats.js'
+            [ fields
+                @ 'hash'
+                @ 'assets'
+                @ 'assetsByChunkName'
+            @ transform
+                => 
+                    { 
+                        @ hash
+                        @ assets
+                        @ assetsByChunkName
+                    `lit 
+                        + &lf;
+                        + &nbsp;       // This script is used in the service worker&lf;
+                        + &nbsp;       self.__WEBPACK_BUILD_STATS__ =&nbsp;
+                        _ JSON.stringify
+                            { 
+                                @ hash
+                                @ entry assetsByChunkName.app[0]
+                                @ assets
+                                    _ assets.map
+                                        => 
+                                            param a
+                                            `lit 
+                                                + /dist/
+                                                @ a.name
+                                                + 
+                                        ._ filter
+                                            => 
+                                                param a
+                                                + !a.endsWith('.map')
+                        + &lf;
+                        + &nbsp;    &nbsp;
+
+    $*
+    set config 
+        { 
+            @ parser 'babel-eslint'
+            @ ...JSON.parse(files[eslintrc].contents)
+            
+        # Use the babel-eslint parser by default since it's what we bundle
+        # This avoids having to specify the parser which might not be obvious
+        # @ts-ignore
+
+
+    const config 
+        { 
+            @ parser 'babel-eslint'
+            @ ...JSON.parse(files[eslintrc].contents)
+                $$ # @ts-ignore
+        # Use the babel-eslint parser by default since it's what we bundle
+        # This avoids having to specify the parser which might not be obvious
+        # @ts-ignore
+
+
+    const p
+        < ThemedComponent
+            @ {...props}
+            @ __forwardedRef {ref}
+                # @ts-ignore           
+
+    const w
+        < Comp
+            @ getSessionSecret {this._handleGetSessionSecret}
+                # @ts-ignore
+            @ setMetadata {this._handleSetMetadata}
+                # @ts-ignore
+            @ {...this.props}
+                # @ts-ignore
+            # @ts-ignore 'xxx' is specified more than once, so this usage will be overwritten.
+    *$

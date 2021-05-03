@@ -20,8 +20,8 @@ module
                 $$ @ 'basic'
                 $$ @ 'svg'
                 $$ @ 'styled'
-                $$ @ 'styled_js'
-                @ 'keyframes'
+                @ 'styled_js'
+                $$ @ 'keyframes'
 
    		_ async.mapSeries
 			@ example_ittfs

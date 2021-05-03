@@ -1,0 +1,119 @@
+module
+
+    $
+        var md = {
+            name: 'Flex',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include sccomp
+
+        $append imports2
+            import
+                @ Box
+                from '../../src/components/widgets/Box'
+        
+        $append template
+            < Flex
+                @ {...args}
+                + Hello flex
+
+        export 
+            const Basic
+                => 
+                    < Flex 
+                        @ alignItems 'center'
+                        < Box 
+                            @ width {1 / 2}
+                            @ p {3}
+                            @ color 'white'
+                            @ bg 'blue'
+                            + Flex
+                        < Box 
+                            @ width {1 / 2}
+                            @ p {1}
+                            @ color 'white'
+                            @ bg 'green'
+                            + Box
+        export 
+            const Wrap
+                => 
+                    < Flex 
+                        @ flexWrap 'wrap'
+                        < Box 
+                            @ width
+                                [ 
+                                    @ 1
+                                    @ 1 / 2
+                            @ p {3}
+                            @ color 'white'
+                            @ bg 'blue'
+                            + Flex
+                        < Box 
+                            @ width
+                                [ 
+                                    @ 1
+                                    @ 1 / 2
+                            @ p {1}
+                            @ color 'white'
+                            @ bg 'green'
+                            + Wrap
+        export 
+            const Justify
+                => 
+                    < Flex 
+                        @ justifyContent 'space-around'
+                        < Box 
+                            @ width {1 / 3}
+                            @ p {2}
+                            @ color 'white'
+                            @ bg 'blue'
+                            + Flex
+                        < Box 
+                            @ width {1 / 3}
+                            @ p {2}
+                            @ color 'white'
+                            @ bg 'green'
+                            + Justify
+        export 
+            const DeprecatedAlignShim
+                => 
+                    < Flex 
+                        @ align 'center'
+                        < Box 
+                            @ width {1 / 2}
+                            @ p {3}
+                            @ color 'white'
+                            @ bg 'blue'
+                            + Flex
+                        < Box 
+                            @ width {1 / 2}
+                            @ p {1}
+                            @ color 'white'
+                            @ bg 'green'
+                            + Box
+        set DeprecatedAlignShim.story =
+            { 
+                @ name 'deprecated align shim'
+        export 
+            const DeprecatedBgShim
+                => 
+                    < Flex 
+                        @ bg 'blue'
+                        < Box 
+                            @ width {1 / 2}
+                            @ p {3}
+                            @ color 'white'
+                            @ bg 'blue'
+                            + Flex
+                        < Box 
+                            @ width {1 / 2}
+                            @ p {1}
+                            @ color 'white'
+                            @ bg 'green'
+                            + Box
+        set DeprecatedBgShim.story =
+            { 
+                @ name 'deprecated bg shim'

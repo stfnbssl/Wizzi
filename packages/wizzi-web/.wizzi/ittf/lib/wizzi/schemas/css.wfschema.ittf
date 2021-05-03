@@ -254,7 +254,10 @@
         r propert-y/ies
 			# Nested property
 
-	e jscode : property
+    e styledVar : property
+        tag $
+	
+    e jscode : property
         tag js=>
         include js module
 

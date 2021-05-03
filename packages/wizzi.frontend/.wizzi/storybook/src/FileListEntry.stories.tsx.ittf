@@ -1,0 +1,112 @@
+module
+
+    $
+        var md = {
+            name: 'FileListEntry',
+            from: '../../src/components/FileList',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+
+        $append imports2
+        
+        $append template
+            < FileListEntry
+                @ {...args}
+
+        v08/ts/react/story(FileEntry)
+            { entry
+                { item
+                    @ path "/mydir/myfile.txt"
+                    @ type 'file'
+                    @ content 'file entry content'
+                { state
+                    @ isExpanded true
+            [ rest
+                {
+                    { item
+                        @ path "/mydir/myfile2.txt"
+                        @ type 'file'
+                        @ content 'file2 entry content'
+                    { state
+                        @ isExpanded true
+                {
+                    { item
+                        @ path "/mydir/myfile3.txt"
+                        @ type 'file'
+                        @ content 'file3 entry content'
+                    { state
+                        @ isExpanded true
+            [ clipboard
+            @ onOpen
+                =>
+                    param path
+                        :string 
+                    log 'onOpen clicked', path
+            @ onFocus
+                =>
+                    param path
+                        :string 
+                    log 'onFocus', path
+            @ onSelect
+                =>
+                    param path
+                        :string 
+                    log 'onSelect', path
+            @ onDelete
+                =>
+                    param path
+                        :string 
+                    log 'onDelete', path
+            @ onCopy
+                =>
+                    param path
+                        :string 
+                    log 'onCopy', path
+            @ onExpand
+                =>
+                    param path
+                        :string 
+                    param expand
+                        :boolean 
+                    log 'onExpand', path, expand
+            @ onRename
+                => 
+                    param oldPath
+                        :string 
+                    param newPath
+                        :string 
+                    log 'onRename', oldPath, newPath
+            @ onCreateFile
+                => 
+                    param path
+                        :string 
+                    log 'onCreateFile', path
+            @ onCreateFolder
+                => 
+                    param path
+                        :string 
+                    log 'onCreateFolder', path
+            @ onPaste
+                => 
+                    param path
+                        :string 
+                    log 'onPaste', path
+
+            @ onPaste
+                => 
+                    param path
+                        :union 
+                            :string 
+                            :undefined 
+                    param entry
+                        :ref FileSystemEntry
+            @ onClearClipboard
+                => 
+            @ getAdjacentEntries
+                =>
+                    return
+                        [ 
+            @ theme 'dark'

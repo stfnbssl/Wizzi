@@ -1,0 +1,154 @@
+module
+    import 
+        @ Reducer
+        from 'redux'
+    import 
+        @ ActionType
+        @ getType
+        from 'typesafe-actions'
+    import 
+        @ TimedServiceState
+        @ getEventServiceInstance
+        from '../../services'
+    import 
+        @ PackiFiles
+        from '../packi'
+    import 
+        @ GeneratedArtifact
+        @ JobError
+        from './types'
+    import 
+        as wizziActions
+        from './actions'
+    +
+    export 
+        :interface WizziState
+            :p loading
+                :boolean 
+            :p generatedArtifact
+                :optional 
+                :ref GeneratedArtifact
+            :p jobGeneratedArtifacts
+                :optional 
+                :ref PackiFiles
+            :p jobError
+                :optional 
+                :ref JobError
+            :p timedServices
+                :{ 
+                    :index 
+                        :ref TimedServiceState
+                        param k
+                            :string 
+    +
+    const initialState
+        :ref WizziState
+        =
+            { 
+                @ loading false
+                @ generatedArtifact undefined
+                { jobGeneratedArtifacts
+                { timedServices
+    +
+    export 
+        :type WizziAction
+            :ref ActionType
+                :param 
+                    :typeof wizziActions
+    +
+    const reducer
+        :ref Reducer
+            :param 
+                :ref WizziState
+            :param 
+                :ref WizziAction
+        => 
+            param state = initialState
+            param action
+            switch action.type
+                case getType(wizziActions.generateArtifactRequest)
+                    log "wizziActions.generateArtifactRequest"
+                    return 
+                        { 
+                            @ ...state
+                            @ loading true
+                case getType(wizziActions.generateArtifactSuccess)
+                    log "wizziActions.generateArtifactSuccess", action
+                    if action.payload.errorLines || action.payload.stack
+                        return 
+                            { 
+                                @ ...state
+                                @ loading false
+                                { generatedArtifact
+                                    @ isError true
+                                    @ errorLines action.payload.errorLines
+                                    @ errorInfo action.payload.info
+                                    @ errorMessage action.payload.message
+                                    @ errorName action.payload.name
+                                    @ errorStack action.payload.stack
+                    else
+                        return 
+                            { 
+                                @ ...state
+                                @ loading false
+                                { generatedArtifact
+                                    @ isError false
+                                    @ ...action.payload.generatedArtifact
+                case getType(wizziActions.generateArtifactError)
+                    log "wizziActions.generateArtifactError", action
+                    return 
+                        { 
+                            @ ...state
+                            @ loading false
+                            @ errors action.payload
+                case getType(wizziActions.executeJobRequest)
+                    log "wizziActions.executeJobRequest"
+                    return 
+                        { 
+                            @ ...state
+                            @ loading true
+                case getType(wizziActions.executeJobSuccess)
+                    log "wizziActions.executeJobSuccess", action
+                    if action.payload.__is_error
+                        return 
+                            { 
+                                @ ...state
+                                @ loading false
+                                @ jobGeneratedArtifacts undefined
+                                { jobError
+                                    @ errorInfo action.payload.info
+                                    @ errorMessage action.payload.message
+                                    @ errorName action.payload.name
+                                    @ errorStack action.payload.stack
+                    else
+                        return 
+                            { 
+                                @ ...state
+                                @ loading false
+                                @ jobGeneratedArtifacts action.payload.generatedArtifacts
+                                @ jobError undefined
+                case getType(wizziActions.executeJobError)
+                    log "wizziActions.executeJobError", action
+                    return 
+                        { 
+                            @ ...state
+                            @ loading false
+                            @ errors action.payload
+                +
+                case getType(wizziActions.setTimedService)
+                    log "wizziActions.setTimedService", action
+                    _ getEventServiceInstance().setTimed(action.payload.serviceName, action.payload.onOff, action.payload.payload, action.payload.frequence)
+                    return 
+                        { 
+                            @ ...state
+                            { timedServices
+                                @ ...state.timedServices
+                                { [action.payload.serviceName]
+                                    @ name action.payload.serviceName
+                                    @ onOff action.payload.onOff
+                                    @ payload action.payload.payload
+                                    @ frequence action.payload.frequence
+                default 
+                    return state
+    +
+    export-default reducer

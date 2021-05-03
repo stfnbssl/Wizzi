@@ -6,7 +6,7 @@ $group
         ${'$'}elif prop.type == 'node'
             :ref React.ReactNode
         ${'$'}elif prop.type == 'mouse-event'
-            :ref (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+            :ref (e: React.MouseEvent<HTMLElement>) => void
         ${'$'}elif prop.type == 'input-event'
             :=> 
                 :void 

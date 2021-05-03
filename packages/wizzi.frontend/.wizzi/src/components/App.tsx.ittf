@@ -1,0 +1,542 @@
+module
+    import 
+        as React
+        from 'react'
+    # Redux
+    import 
+        @ connect
+        from 'react-redux'
+    # Styles
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    # Features
+    import 
+        @ getFilesFromQuery 
+        from '../features/file'
+    import
+        @ withAuth
+        @ AuthProps
+        from '../features/auth'
+    import
+        @ withPreferences
+        @ PreferencesContextType
+        from '../features/preferences'
+    import
+        @ Annotation
+        from '../features/annotations'
+    import 
+        @ SavedPacki
+        @ QueryParams
+        @ SaveStatus
+        @ SaveHistory
+        @ SaveOptions
+        $if wzCtx.Build.useExpo
+            @ SDKVersion
+            @ Device
+            @ DeviceLog
+            @ Platform
+        @ PackiState
+        @ PackiFile
+        @ PackiFiles
+        $if wzCtx.Build.useExpo
+            @ PackiDependencies
+            @ PackiDependency
+        @ PackiDefaults
+        from '../features/packi'
+    import 
+        @ Packi
+        $if wzCtx.Build.useExpo
+            @ PackiLogEvent
+        @ PackiListenerSubscription
+        $if wzCtx.Build.useExpo
+            @ isModulePreloaded
+        $if wzCtx.Build.useExpo
+            from 'packi-sdk'
+        $else
+            from '../features/packi'
+    # Utils
+    import nullthrows from 'nullthrows'    
+    import debounce from 'lodash/debounce'    
+    import 
+        @ isMobile
+        from '../utils/detectPlatform'
+    # Widgets
+    import 
+        @ AnimatedLogo 
+        from './widgets/AnimatedLogo'
+    import 
+        @ CollapsibleObject 
+        from './widgets/CollapsibleObject'
+    # Components
+    import AppShell from './shell/AppShell'
+    import AppDetails from './AppDetails'    
+    import 
+        @ EditorViewProps
+        from './EditorView/EditorViewProps'
+    import LazyLoad from './widgets/LazyLoad'
+    # Defaults
+    import 
+        @ DEFAULT_DESCRIPTION
+        @ DEFAULT_CODE
+        $if wzCtx.Build.useExpo
+            @ DEFAULT_DEPENDENCIES
+        from '../configs/defaults'
+
+    :type Params
+        :{ 
+            :p id
+                :optional 
+                :string 
+            :p username
+                :optional 
+                :string 
+            :p projectName
+                :optional 
+                :string 
+    :type Props
+        :intersect 
+            :ref AuthProps
+            :ref PreferencesContextType
+            :{ 
+                :p Packi
+                    :optional 
+                    :ref SavedPacki
+                :p history
+                    :{ 
+                        :p push
+                            :=> 
+                                :void 
+                                param props
+                                    :{ 
+                                        :p pathname
+                                            :string 
+                                        :p search
+                                            :string 
+                :p match
+                    :{ 
+                        :p params
+                            :ref Params
+                :p location
+                    :{ 
+                        :p search
+                            :string 
+                :p query
+                    :ref QueryParams
+                :p userAgent
+                    :string 
+                $if wzCtx.Build.useExpo
+                    :p isEmbedded
+                        :optional 
+                        :boolean 
+                :p files
+                    :ref PackiFiles
+                :p defaults
+                    :ref PackiDefaults
+    :type State
+        :{ 
+            :p session
+                :ref PackiState
+            :p selectedFile
+                :string 
+            :p sendCodeOnChangeEnabled
+                :boolean 
+            :p autosaveEnabled
+                :boolean 
+            :p isSavedOnce
+                :boolean 
+            :p saveHistory
+                :ref SaveHistory
+            :p saveStatus
+                :ref SaveStatus
+            $if wzCtx.Build.useExpo
+                :p connectedDevices
+                    :[ 
+                        :ref Device
+                :p deviceLogs
+                    :[ 
+                        :ref DeviceLog
+            :p isPreview
+                :boolean 
+            $if wzCtx.Build.useExpo
+                :p wasUpgraded
+                    :boolean 
+                :p initialSdkVersion
+                    :ref SDKVersion
+            :p isDownloading
+                :boolean 
+            :p devicePreviewShown
+                :boolean 
+            $if wzCtx.Build.useExpo
+                :p devicePreviewPlatform
+                    :ref Platform
+                :p devicePreviewPlatformOptions
+                    :[ 
+                        :ref PlatformOption
+            :p webPreviewURL
+                :string 
+            :p isLocalWebPreview
+                :boolean 
+            :p verbose
+                :boolean 
+            :p annotations
+                :[ 
+                    :ref Annotation
+            :p snackagerURL
+                :string 
+
+    class Main
+        super React.Component
+            :param 
+                :ref Props
+            :param 
+                :ref State
+        p _previewRef
+            _ React.createRef
+                :param 
+                    :ref Window
+        p edited
+            :private 
+            :boolean 
+            = false
+        
+        app/ctor()
+        app/properties()
+        app/handlers()
+
+        m render
+
+            if this.props && this.state
+                $if false
+                    return
+                        div
+                            < CollapsibleObject
+                                @ label "props"
+                                @ object {this.props}
+                            < CollapsibleObject
+                                @ label "state"
+                                @ object {this.state}
+                $if wzCtx.Build.useExpo
+                    const 
+                        { 
+                            @ isEmbedded
+                        = this.props
+                const experienceURL = this.state.session.url
+                if this.state.isPreview
+                    return 
+                        < AppDetails 
+                            @ name {this.state.session.name}
+                            @ description {this.state.session.description}
+                            @ experienceURL {experienceURL}
+                            @ onOpenEditor {this._handleOpenEditor}
+                            @ userAgent {this.props.userAgent}
+                            $if wzCtx.Build.useExpo
+                                @ onDeviceConnectionAttempt {this._handleDeviceConnectionAttempt}
+                $if wzCtx.Build.useExpo
+                    let isResolving = false
+                    for const name in this.state.session.dependencies
+                        const dep = this.state.session.dependencies[name]
+                        if !dep.handle && !dep.error && !isResolving && !this.state.session.disabled && !isModulePreloaded(name, this.state.session.sdkVersion)
+                            set isResolving = true
+                return 
+                    < LazyLoad 
+                        :ref React.ComponentType
+                            :param 
+                                :ref EditorViewProps
+                        @ load
+                            => 
+                                ( 
+                                    $if wzCtx.Build.useExpo
+                                        iif isEmbedded
+                                            then
+                                                _ import
+                                                    @ './EditorView/EmbeddedEditorView'
+                                            else
+                                                _ import
+                                                    @ './EditorView/EditorView'
+                                    $else
+                                        _ import
+                                            @ './EditorView/EditorView'
+                        { 
+                            => 
+                                { 
+                                    @ loaded
+                                    @ data Comp
+                                iif loaded && Comp
+                                    then
+                                        < Comp 
+                                            @ annotations {this.state.annotations}
+                                            @ autosaveEnabled {this.state.autosaveEnabled}
+                                            $if wzCtx.Build.useExpo
+                                                @ connectedDevices {this.state.connectedDevices}
+                                            @ createdAt
+                                                iif this.props.Packi
+                                                    then this.props.Packi.created
+                                                    else undefined
+                                            $if wzCtx.Build.useExpo
+                                                @ dependencies {this.state.session.dependencies}
+                                                @ missingDependencies {this.state.session.missingDependencies}
+                                            @ description {this.state.session.description}
+                                            $if wzCtx.Build.useExpo
+                                                @ deviceId {this.state.session.deviceId}
+                                                @ deviceLogs {this.state.deviceLogs}
+                                            @ experienceURL {experienceURL}
+                                            $if wzCtx.Build.useExpo
+                                                @ experienceName {this.state.session.onlineName ?? this.state.session.name}
+                                            @ files {this.state.session.files}
+                                            @ isDownloading {this.state.isDownloading}
+                                            $if wzCtx.Build.useExpo
+                                                @ isLocalWebPreview {this.state.isLocalWebPreview}
+                                                @ isResolving {isResolving}
+                                            @ name {this.state.session.name}
+                                            @ id {this.state.session.id}
+                                            $if wzCtx.Build.useExpo
+                                                @ onChangeSDKVersion {this._handleChangeSDKVersion}
+                                                @ onClearDeviceLogs {this._handleClearDeviceLogs}
+                                                @ onDeviceConnectionAttempt {this._handleDeviceConnectionAttempt}
+                                            @ onDownloadAsync {this._handleDownloadAsync}
+                                            @ onPublishAsync {this._saveAsync}
+                                            $if wzCtx.Build.useExpo
+                                                @ onReloadSnack {this._reloadSnack}
+                                            @ onSendCode {this._handleSendCode}
+                                            @ onSubmitMetadata {this._handleSubmitMetadata}
+                                            @ onToggleSendCode {this._handleToggleSendCode}
+                                            @ onTogglePreview {this._handleTogglePreview}
+                                            $if wzCtx.Build.useExpo
+                                                @ onChangePlatform {this._handleChangePreviewPlatform}
+                                            @ onSelectFile {this._handleSelectFile}
+                                            $if wzCtx.Build.useExpo
+                                                @ platform {this.state.devicePreviewPlatform}
+                                                @ platformOptions {this.state.devicePreviewPlatformOptions}
+                                            @ previewRef {this._previewRef}
+                                            @ previewShown {this.state.devicePreviewShown}
+                                            @ previewURL {this.state.webPreviewURL}
+                                            $if wzCtx.Build.useExpo
+                                                @ payerCode {this.props.query.appetizePayerCode}
+                                            @ saveHistory {this.state.saveHistory}
+                                            @ saveStatus {this.state.saveStatus}
+                                            $if wzCtx.Build.useExpo
+                                                @ sdkVersion {this.state.session.sdkVersion}
+                                            @ selectedFile {this.state.selectedFile}
+                                            @ sendCodeOnChangeEnabled {this.state.sendCodeOnChangeEnabled}
+                                            $if wzCtx.Build.useExpo
+                                                @ setDeviceId {this._setDeviceId}
+                                            @ snackagerURL {this.state.snackagerURL}
+                                            $if wzCtx.Build.useExpo
+                                                @ updateDependencies {this._updateDependencies}
+                                            @ updateFiles {this._updateFiles}
+                                            @ uploadFileAsync {this._uploadAssetAsync}
+                                            @ userAgent {this.props.userAgent}
+                                            @ verbose {this.state.verbose}
+                                            $if wzCtx.Build.useExpo
+                                                @ wasUpgraded {this.state.wasUpgraded}
+                                    else
+                                        $if wzCtx.Build.useExpo
+                                            iif isEmbedded
+                                                then
+                                                    < EmbeddedShell 
+                                                else
+                                                    < AppShell 
+                                                        @ title {this.state.session.name}
+                                                        @ previewShown {this.state.devicePreviewShown}
+                                        $else
+                                            < AppShell 
+                                                @ title {this.state.session.name}
+                                                @ previewShown {this.state.devicePreviewShown}
+            else
+                return
+                    div
+                        + Not ready
+
+    const MainContainer
+        _ withPreferences
+            _ connect
+                => 
+                    param state
+                        :any 
+                    (
+                        { 
+                            @ viewer state.viewer
+                (
+                    _ withAuth(Main)
+        #
+            # 
+            # Fetch code from a remote source (if provided) before rendering the main app
+            # 
+    :type AsyncState
+        :{ 
+            :p isReady
+                :boolean 
+            :p files
+                :ref PackiFiles
+            :p error
+                :optional 
+                :ref Error
+    export-default 
+        class AsyncApp
+            super React.Component
+                :param 
+                    :ref Props
+                :param 
+                    :ref AsyncState
+            ctor 
+                param props
+                    :ref Props
+                _ super(props)
+                try 
+                    const files = getFilesFromQuery(props.query, DEFAULT_CODE)
+                    const isReady
+                        op! 
+                            _ Object.values(files).find
+                                => 
+                                    param file
+                                        :any 
+                                    +
+                                        @expr file.url
+                    set this.state =
+                        { 
+                            @ files
+                            @ isReady
+                catch e
+                    set this.state =
+                        { 
+                            @ error e
+                            @ files DEFAULT_CODE
+                            @ isReady true
+            m componentDidMount
+                if !this.state.isReady
+                    _ this.loadFilesAsync(this.state.files)
+                else
+                    if this.state.error
+                        _ alert(this.state.error.message)
+            m loadFilesAsync
+                async
+                :private 
+                param files
+                    :any 
+                const MIN_LOADING_MS = 1500
+                    # Minimum amount of time to show the loading indicator for, so it doesn't
+                    # just flicker in and out
+                const startTime = Date.now()
+                const paths = Object.keys(files)
+                    # Load all files with external urls
+                try 
+                    const contents
+                        await 
+                            _ Promise.all
+                                _ Object.values(files).map
+                                    async=> 
+                                        param file
+                                            :any 
+                                        param index
+                                            :number 
+                                        const path = paths[index]
+                                        if file.url
+                                            try 
+                                                const response
+                                                    await 
+                                                        _ fetch(file.url)
+                                                if !response.ok
+                                                    throw 
+                                                        new Error
+                                                            `lit 
+                                                                @ response.status
+                                                                + &nbsp;-&nbsp;
+                                                                @ response.statusText
+                                                const code
+                                                    await 
+                                                        _ response.text()
+                                                return code
+                                            catch e
+                                                throw 
+                                                    new Error
+                                                        `lit 
+                                                            + We were unable to load code for file "
+                                                            @ path
+                                                            + " (
+                                                            @ e.message
+                                                            + )
+                                        else
+                                            if file.contents
+                                                return file.contents
+                                            else
+                                                throw 
+                                                    new Error
+                                                        `lit 
+                                                            + No code specified for file "
+                                                            @ path
+                                                            + "
+                    set files =
+                        { 
+                            @ ...files
+                    _ paths.forEach
+                        => 
+                            param path
+                            param index
+                            set files[path] =
+                                { 
+                                    @ type files[path].type
+                                    @ contents contents[index]
+                catch e
+                    _ alert(e.message)
+                    set files =
+                        { 
+                            @ ...files
+                    _ paths.forEach
+                        => 
+                            param path
+                            set files[path] =
+                                { 
+                                    @ type files[path].type
+                                    @ contents ''
+                    _ this.setState
+                        { 
+                            @ isReady true
+                            @ files
+                    return 
+                const duration = Date.now() - startTime
+                    # Upon load, show the whole Packi
+                _ setTimeout
+                    => 
+                        _ this.setState
+                            { 
+                                @ isReady true
+                                @ files
+                    iif duration < MIN_LOADING_MS
+                        then MIN_LOADING_MS - duration
+                        else 0
+            m render
+                if this.state.isReady
+                    return 
+                        < MainContainer 
+                            @ {...this.props}
+                            @ files {this.state.files}
+                else
+                    return 
+                        div 
+                            @ className {css(styles.container)}
+                            div 
+                                @ className {css(styles.logo)}
+                                < AnimatedLogo 
+                            p 
+                                @ className {css(styles.loadingText)}
+                                + Loading code from external source...
+
+    const styles
+        _ StyleSheet.create
+            { 
+                { container
+                    @ flexDirection 'column'
+                    @ display 'flex'
+                    @ height '100%'
+                    @ width '100%'
+                    @ alignItems 'center'
+                    @ justifyContent 'center'
+                { logo
+                    @ transform 'scale(0.5)'
+                    @ opacity 0.9
+                { loadingText
+                    @ marginTop 0
+                    @ opacity 0.7
+                    @ fontSize 18

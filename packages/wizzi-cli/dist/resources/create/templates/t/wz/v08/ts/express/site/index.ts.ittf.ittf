@@ -16,6 +16,7 @@ $group
             import 
                 @ AccountController
                 from './controllers/account'
+        ${'$'}hook imports
     
     const siteControllers
         :[ 
@@ -28,5 +29,6 @@ $group
                         @ new WizziController()
                     ${'$'}if wzCtx.Build.useAuth
                         @ new AccountController()
+                ${'$'}hook controllers
     export
         @ siteControllers

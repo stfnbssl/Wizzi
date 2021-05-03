@@ -1,0 +1,28 @@
+module
+
+    $
+        var md = {
+            name: 'SegmentedButton',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < SegmentedButton
+                @ {...args}
+
+        v08/ts/react/story(Sample_1)
+            [ segments
+                { 
+                    @ id 'device-id'
+                    @ text 'Device ID'
+                { 
+                    @ id 'account'
+                    @ text 'Account'
+                { 
+                    @ id 'qr-code'
+                    @ text 'QR Code'
+

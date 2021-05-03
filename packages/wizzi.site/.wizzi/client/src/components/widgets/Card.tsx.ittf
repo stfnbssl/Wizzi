@@ -1,0 +1,72 @@
+module
+    import styled from 'styled-components'
+    import 
+        @ borderRadius
+        @ BorderRadiusProps
+        from 'styled-system'
+    import 
+        @ Box
+        from './Box'
+    import 
+        @ applyVariations
+        @ getPaletteColor
+        $$ @ deprecatedColorValue
+        from '../styles/utils'
+    +
+    const boxBorder
+        => 
+            { 
+                @ borderWidth
+                @ borderColor
+                ... props
+                :any
+            (
+                { 
+                    @ border
+                        iif borderWidth === 0
+                            then '0'
+                            else
+                                `lit 
+                                    @ borderWidth
+                                    + px solid&nbsp;
+                                    _ getPaletteColor(borderColor, 'base')(props)
+    
+    +
+    :interface StyledCardProps
+        :p borderColor
+            :string
+        :p borderRadius
+            :number
+        :p borderWidth
+            :number
+
+    styled Card (Box)<StyledCardProps>
+        ${'$'} applyVariations('Card')
+        ${'$'} boxBorder
+        ${'$'} borderRadius
+    
+    $*
+    + 
+    set Card.propTypes =
+        { 
+            @ ...borderRadius.propTypes
+            @ borderColor deprecatedColorValue()
+            @ color deprecatedColorValue()
+            @ borderWidth
+                _ PropTypes.oneOf
+                    [ 
+                        @ 0
+                        @ 1
+                        @ 2
+    *$
+    +
+    set Card.defaultProps =
+        { 
+            @ borderColor 'border'
+            @ borderRadius 1
+            @ borderWidth 1
+    
+    +
+    set Card.displayName = 'Card'
+    +
+    export-default Card

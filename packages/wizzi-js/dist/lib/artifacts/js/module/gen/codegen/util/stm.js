@@ -126,12 +126,12 @@ md.writeComments = function(model, ctx, newline) {
     var i, i_items=model.statements, i_len=model.statements.length, item;
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
-        if (item.wzElement == 'comment') {
+        if (item.wzElement == 'comment' || item.wzElement == 'commentmultiline') {
             ctx.w();
-            ctx.w('// ' + item.wzName);
+            __writeComments(item, ctx, item.wzElement == 'commentmultiline')
             written = true;
             if (item.wzName.indexOf('@ts-ignore') > -1) {
-                console.log('§§§ stm.writeComments', model.wzName);
+                // log '§§§ stm.writeComments', model.wzName
                 ctx.__inlineNext = true;
             }
             else {
@@ -145,7 +145,43 @@ md.writeComments = function(model, ctx, newline) {
     model.statements = temp;
     return model;
 };
-md.writeComments_2 = function(model, ctx, newline, newlineindent) {
+function __writeComments(model, ctx, multi) {
+    // log '__writeComments-model', model
+    if (multi || model.statements.length > 0) {
+        ctx.w('/**');
+        ctx.indent();
+        ctx.__inside_comment = true;
+        if (verify.isNotEmpty(model.wzName)) {
+            ctx.w('* ' + model.wzName);
+        }
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+    }
+    else {
+        ctx.w('// ' + model.wzName);
+    }
+    if (multi || model.statements.length > 0) {
+        ctx.deindent();
+        ctx.__inside_comment = false;
+        ctx.w('*/');
+    }
+}
+function __writeCommentLine(model, ctx) {
+    ctx.w((ctx.__inside_comment ? '* ' : '// ') + model.wzName);
+    if (model.statements.length > 0) {
+        ctx.indent();
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+        ctx.deindent();
+    }
+}
+md.writeComments_template = function(model, ctx, newline, newlineindent) {
     var temp = [];
     var written = false;
     var indented = false;
@@ -163,7 +199,7 @@ md.writeComments_2 = function(model, ctx, newline, newlineindent) {
             ctx.w('// ' + item.wzName);
             written = true;
             if (item.wzName.indexOf('@ts-ignore') > -1) {
-                console.log('§§§ stm.writeComments', model.wzName);
+                // log '§§§ stm.writeComments', model.wzName
                 ctx.__inlineNext = true;
             }
             else {
@@ -186,6 +222,15 @@ md.nonCommentStatements = function(model) {
         var i, i_items=model.statements, i_len=model.statements.length, item;
         for (i=0; i<i_len; i++) {
             item = model.statements[i];
+            if (md.isComment(item) == false) {
+                ret.push(item);
+            }
+        }
+    }
+    if (model.jsPropertyOrValues) {
+        var i, i_items=model.jsPropertyOrValues, i_len=model.jsPropertyOrValues.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.jsPropertyOrValues[i];
             if (md.isComment(item) == false) {
                 ret.push(item);
             }
@@ -219,6 +264,11 @@ md.isCallArgument = function(model) {
 md.isArgumentOfCall = function(model) {
     return model.wzParent && ['call', 'memberCall', 'decoratorCall', 'callOnValue'].indexOf(model.wzParent.wzElement) > -1;
 };
+md.firstChildIs = function(model, elementsArray) {
+    var ss = md.nonCommentStatements(model);
+    // log 'firstChildIs', ss.length > 0 && ss[0].wzElement
+    return ss.length > 0 && elementsArray.indexOf(ss[0].wzElement) > -1;
+};
 md.onlyChildIs = function(model, element) {
     var ss = md.nonCommentStatements(model);
     return ss.length == 1 && ss[0].wzElement === element;
@@ -239,7 +289,10 @@ md.isSingleParamForArrowFunction = function(model) {
     if (model.params.length != 1) {
         return false;
     }
+    // log 'model.params', model.params
+    // log 'model.params[0]', model.params[0]
     var ss = md.nonCommentStatements(model.params[0]);
+    // log 'return', ss.length == 0
     return ss.length == 0;
 };
 md.hasStatementChildren = function(model) {
@@ -638,6 +691,87 @@ md.extractTS = function(model, element) {
     }
     return ret;
 };
+md.genParams = function(model, ctx, cnt, callback) {
+    if (!!(model.params && model.params.length > 0) == false) {
+        return callback(null, null);
+    }
+    // log 'genParams enter', model.wzElement
+    var len_1 = model.params.length;
+    function repeater_1(index_1) {
+        if (index_1 === len_1) {
+            return next_1();
+        }
+        var item_1 = model.params[index_1];
+        var p = item_1;
+        // log 'genParams p', p
+        if (index_1 > 0) {
+            ctx.write(', ');
+        }
+        // log 'genParams', index_1, (p.statements && p.statements.length) || (p.jsPropertyOrValues && p.jsPropertyOrValues.length)
+        if ((!p.statements || p.statements.length == 0) && (!p.jsPropertyOrValues || p.jsPropertyOrValues.length == 0)) {
+            ctx.write(p.wzName);
+            process.nextTick(function() {
+                repeater_1(index_1 + 1);
+            })
+        }
+        else if (p.wzElement === 'objectParam' || p.wzElement === 'jsObject') {
+            p.wzElement = 'jsObject';
+            cnt.stm[p.wzElement](p, ctx, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                p.wzElement = 'objectParam';
+                process.nextTick(function() {
+                    repeater_1(index_1 + 1);
+                })
+            })
+        }
+        else if (p.statements.length > 0 && p.statements.length < 3) {
+            ctx.write(p.wzName);
+            var s0 = p.statements[0];
+            // log 'genParams.s0.wzElement', s0.wzElement
+            // if s0.wzElement === 'typeInitValue' || s0.wzElement === 'typeCTor' || s0.wzElement === 'typeNever'
+            // log 'genParams.s0.statements.length', s0.statements.length
+            genParams_close(s0, ctx, cnt, (err, notUsed) => {
+                if (err) {
+                    return callback(err);
+                }
+                process.nextTick(function() {
+                    repeater_1(index_1 + 1);
+                })
+            })
+        }
+        else {
+            // log 'jswizzifier.genParams.p', p, 'statements', p.statements
+            callback(ctx.error(myname + '.genParams.statements.length should be 0 or 1.found: ' + p.statements.length, model))
+        }
+    }
+    repeater_1(0);
+    function next_1() {
+        // log 'genParams.exit'
+        return callback(null, null);
+    }
+};
+function genParams_close(s0, ctx, cnt, callback) {
+    if (s0.statements.length == 2) {
+        var item = s0.statements[0];
+        // log 'genParams_close 1 item.wzElement', item.wzElement
+        cnt.stm[item.wzElement](item, ctx, (err, notUsed) => {
+            if (err) {
+                return callback(err);
+            }
+            ctx.write(' = ');
+            var item = s0.statements[1];
+            // log 'genParams_close 2 item.wzElement', item.wzElement
+            cnt.stm[item.wzElement](item, ctx, callback)
+        })
+    }
+    else {
+        ctx.write(' = ');
+        // log 'genParams_close 3 item.wzElement', s0.wzElement
+        cnt.stm[s0.wzElement](s0, ctx, callback)
+    }
+}
 md.genTSParams = function(model, ctx, cnt, callback) {
     if (!!(model.params && model.params.length > 0) == false) {
         return callback(null, null);

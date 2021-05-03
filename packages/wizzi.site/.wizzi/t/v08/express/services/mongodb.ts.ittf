@@ -18,7 +18,8 @@ $group
             +
             const { mongoUser, mongoPassword, mongoPath } = config;
             const connectUrl = `mongodb+srv://${mongoUser}:${mongoPassword}${mongoPath}`;
-            set mongoose.Promise = global.Promise
+            +
+                # TODO (VIA) set mongoose.Promise = global.Promise
             return
                 _ mongoose.connect
                     @ connectUrl

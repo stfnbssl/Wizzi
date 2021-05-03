@@ -1,0 +1,79 @@
+module
+
+    $
+        var md = {
+            name: 'EditorView',
+            from: '../../src/components/EditorView',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < EditorView
+                @ {...args}
+
+        v08/ts/react/story(Saved_draft)
+            @ name 'My name'
+            @ description 'My description'
+            @ createdAt '10/8/88'
+            @ saveStatus 'saved-draft'
+            props/packiFiles( files )
+            props/annotations( annotations )
+            @ updateFiles
+                => 
+                    log 'updateFiles'
+            @ selectedFile 'file1.js'
+            [ saveHistory
+                {
+                    @ hashId 'xyz'
+                    @ savedAt 'boh'
+                    @ isDraft true
+            { viewer
+                @ username 'stefi'
+                @ nickname 'yanez'
+            @ isEditModalVisible true
+            @ previewShown false
+            @ isDownloading false
+            @ sendCodeOnChangeEnabled false
+            @ onShowEditModal
+                => 
+                    log 'onShowEditModal'
+            @ onDismissEditModal
+                => 
+                    log 'onDismissEditModal'
+            @ onSubmitMetadata
+                => 
+                    param details
+                    log 'onSubmitMetadata', details
+            @ onSendCode
+                => 
+                    log 'onSendCode'
+            @ id 'MyId'
+            @ experienceURL null
+            @ onToggleSendCode
+                => 
+            @ onTogglePreview
+                => 
+            @ onSubmitMetadata
+                => 
+            @ onPublishAsync
+                => 
+            @ onDownloadAsync
+                => 
+            @ onSelectFile
+                => 
+                    param path
+                        :string 
+                    log 'onSelectFile', path
+            @ updateFiles
+                => 
+            @ uploadFileAsync
+                => 
+            @ autosaveEnabled false
+            @ userAgent null
+            @ previewRef
+            @ previewURL null
+            @ verbose true
+            @ snackagerURL null

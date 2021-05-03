@@ -1,14 +1,34 @@
 $group
     
-    $if wzCtx.Build.useWebpack
+    $if wzCtx.Build.isClientServer
+        $if wzCtx.Build.useWebpack
+            $if wzCtx.Build.webpack.useEnv
+                serve:client "env-cmd -f deploy/client/development.env webpack serve --open --mode development"
+                build:client "env-cmd -f deploy/client/development.env webpack --mode development"
+                build:client:prod "env-cmd -f deploy/client/production.env webpack --mode production"
+            $else
+                serve:client "webpack serve --open --mode development"
+                build:client "webpack --mode development"
+                build:client:prod "webpack --mode production"
+        $if wzCtx.Build.useExpress
+            $if wzCtx.Build.useTypescript
+                start "set NODE_ENV=development && nodemon --watch src/** --ext ts,json --ignore src/**/*.spec.ts --exec ts-node src/server/index.ts"
+                watch "env-cmd -f deploy/client/development.env tsnd --require tsconfig-paths/register --inspect=9211 --quiet src/server/index.ts"
+                build:server "babel --source-maps --extensions '.ts,.tsx' --out-dir build/ src/"
+    $elif wzCtx.Build.useWebpack
         $if wzCtx.Build.webpack.useDevAndProd
             start "webpack serve --mode development --config ./webpack.base.config.js --open --hot --history-api-fallback --env.PLATFORM=local --env.VERSION=stag"
             prebuild "webpack --mode production --config ./webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag --progress"
             build "node server"
         $else
-            start "webpack serve --open --mode development"
-            build "webpack --mode development"
-            build:prod "webpack --mode production"
+            $if wzCtx.Build.webpack.useEnv
+                start "env-cmd -f deploy/development.env webpack serve --open --mode development"
+                build "env-cmd -f deploy/development.env webpack --mode development"
+                build:prod "env-cmd -f deploy/production.env webpack --mode production"
+            $else
+                start "webpack serve --open --mode development"
+                build "webpack --mode development"
+                build:prod "webpack --mode production"
     $elif wzCtx.Build.useReactCreateApp
         start "react-scripts start"
         build "react-scripts build"
@@ -35,19 +55,33 @@ $group
                 test "react-scripts test --env=jsdom"
         $else
             $if wzCtx.Build.useTypescript
-                start "set NODE_ENV=development && nodemon --watch src/** --ext ts,json --ignore src/**/*.spec.ts --exec ts-node src/index.ts"
+                $if wzCtx.Build.isClientServer
+                    start "set NODE_ENV=development && nodemon --watch src/** --ext ts,json --ignore src/**/*.spec.ts --exec ts-node src/server/index.ts"
+                $else
+                    start "set NODE_ENV=development && nodemon --watch src/** --ext ts,json --ignore src/**/*.spec.ts --exec ts-node src/index.ts"
             $else
                 start "set NODE_ENV=development && nodemon src/index && start ${wzCtx.App.baseUrl}"
         $if wzCtx.Build.express.useSsl
             certificate "C:\"Program Files"\Git\usr\ssl\openssl.exe req -nodes -new -x509 -keyout server.key -out server.cert"
     $if wzCtx.Build.useLint
-        lint "eslint --debug src/"
-        lint:write "eslint --debug src/ --fix"
+        $ var debug = false;
+        $if wzCtx.Build.useTypescript
+            lint "eslint -c ./.eslintrc.js ./src/**/*.tsx ${debug ? '--debug' : ''}"
+            lint:write "eslint -c ./.eslintrc.js --fix ./src/**/*.tsx ${debug ? '--debug' : ''}"
+        $else
+            lint "eslint -c ./.eslintrc.js ./src/**/*.js ${debug ? '--debug' : ''}"
+            lint:write "eslint -c ./.eslintrc.js --fix ./src/**/*.js ${debug ? '--debug' : ''}"
     $if wzCtx.Build.useTest && wzCtx.Build.test.useJest
         test "jest"
         test:watch "jest --watch"
         test:coverage "jest --coverage --colors"
     $if wzCtx.Build.usePrettier
-        prettier "prettier --write src/**/*.js"
+        $if wzCtx.Build.useTypescript
+            prettier "prettier --write src/**/*.tsx"
+        $else
+            prettier "prettier --write src/**/*.js"
     $if wzCtx.Build.useTailwindcss
         build-css "tailwindcss build src/styles/tailwind.css -o static/styles/tailwind.css"
+    $if wzCtx.Build.useStorybook
+        storybook "start-storybook -p 6006"
+        build-storybook "build-storybook"

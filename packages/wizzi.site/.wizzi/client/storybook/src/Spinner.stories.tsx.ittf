@@ -1,0 +1,54 @@
+module
+
+    $
+        var md = {
+            name: 'Spinner',
+            from: '../../src/components/widgets'
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+
+        $append template
+            < Spinner
+                @ {...args}
+
+        v08/ts/react/story(Small)
+            { rgba
+                @ red 0
+                @ green 0
+                @ blue 255
+                @ alpha 1
+            @ segments 8
+            @ segmentWidth 1
+            @ segmentLength 3
+            @ spacing 4
+            @ fadeTo 31 / 98
+            @ fadeSteps 6
+
+        v08/ts/react/story(Medium)
+            { rgba
+                @ red 255
+                @ green 0
+                @ blue 0
+                @ alpha 1
+            @ segments 12
+            @ segmentWidth 2
+            @ segmentLength 6
+            @ spacing 4
+            @ fadeTo 31 / 98
+            @ fadeSteps 6
+
+        v08/ts/react/story(Large)
+            { rgba
+                @ red 0
+                @ green 255
+                @ blue 0
+                @ alpha 1
+            @ segments 16
+            @ segmentWidth 3
+            @ segmentLength 9
+            @ spacing 6
+            @ fadeTo 31 / 98
+            @ fadeSteps 6

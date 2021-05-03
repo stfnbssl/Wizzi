@@ -1,0 +1,74 @@
+module
+    import cookies from 'js-cookie'
+    import 
+        as React
+        from 'react'
+    import ReactDOM from 'react-dom'
+    import 
+        @ HelmetProvider
+        from 'react-helmet-async'
+    import 
+        @ Provider
+        from 'react-redux'
+    import 
+        @ BrowserRouter
+        from 'react-router-dom'
+    import 
+        @ PreferencesProvider 
+        from './features/preferences'
+    import Router from './components/Router'
+    $if wzCtx.Build.useExpo
+        import ServiceWorkerManager from './components/ServiceWorkerManager'
+    import ThemeProvider from './components/ThemeProvider'
+    import createStore from './store/createRedux'
+    :import-type 
+        @ RouterData
+        @ QueryParams
+        from './features/packi'
+    $*
+    :declare 
+        const __INITIAL_DATA__
+            :{ 
+                :p data
+                    :ref RouterData
+                :p queryParams
+                    :ref QueryParams
+                :p splitTestSettings
+                    :any 
+    *$
+    const __INITIAL_DATA__
+        { 
+            initial_RouterData( data )  $$ :ref RouterData
+            initial_QueryParams( queryParams ) $$ :ref QueryParams
+            initial_splitTestSettings( splitTestSettings ) $$ :any 
+    +
+    const store
+        _ createStore
+            { 
+                @ splitTestSettings __INITIAL_DATA__.splitTestSettings
+    +
+    function PackiApp
+        return 
+            < React.StrictMode 
+                $if wzCtx.Build.useExpo
+                    < ServiceWorkerManager 
+                < HelmetProvider 
+                    < Provider 
+                        @ store {store}
+                        < PreferencesProvider 
+                            @ cookies {cookies}
+                            @ queryParams {__INITIAL_DATA__.queryParams}
+                            < ThemeProvider 
+                                < BrowserRouter 
+                                    < Router 
+                                        @ data {__INITIAL_DATA__.data}
+                                        @ queryParams {__INITIAL_DATA__.queryParams}
+                                        @ userAgent {navigator.userAgent}
+    $*
+    _ ReactDOM.hydrate
+        < PackiApp 
+        _ document.getElementById('root')
+    *$
+    _ ReactDOM.render
+        < PackiApp 
+        _ document.getElementById('root')

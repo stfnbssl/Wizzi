@@ -2174,6 +2174,12 @@
       ],
       "derived": [
         {
+          "name": "styledVar",
+          "tags": [
+            "$"
+          ]
+        },
+        {
           "name": "jscode",
           "tags": [
             "js=>"
@@ -3804,6 +3810,47 @@
         "webkit-super-exotic: quark;",
         "}"
       ]
+    },
+    {
+      "name": "styledVar",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "$"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "styledprop",
+          "type": "string",
+          "tags": [
+            "=>"
+          ],
+          "flags": "",
+          "inheritedFrom": "property",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
     },
     {
       "name": "jscode",

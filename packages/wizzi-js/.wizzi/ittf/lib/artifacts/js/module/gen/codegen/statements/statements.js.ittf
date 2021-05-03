@@ -295,84 +295,99 @@
     
 	stm( commentmultiline
         _ ctx.w('/**')
-        _ ctx.w(('    ' + model.wzName))
-        _ ctx.w('*/')
-		r_cb()
+        if verify.isNotEmpty(model.wzName)
+            _ ctx.w(('    ' + model.wzName))
+        set ctx.__inside_comment = true
+        _ cnt.genItems
+            @ model.statements
+            @ ctx
+            { 
+                @ indent true
+			f_cb()
+                _ ctx.w('*/')
+                set ctx.__inside_comment = false
+		        r_cb()
     
 	stm( xdelete
         _ ctx.w('delete ' + model.wzName)
 		r_cb()
     
 	stm( set
-        var xmodel = writeComments(model, ctx)
+        _ u.writeComments(model, ctx)
+        _ u.checkInlineEnter(model, ctx)
+
 		var text
         # log 'set,wzParent,wzName', model.wzParent.wzElement, model.wzName, '|'
 		# FIXME this hack require refactoring
-		if xmodel.wzName === 'work.textSep = "__TS__"'
-			set text = xmodel.wzName
+		if model.wzName === 'work.textSep = "__TS__"'
+			set text = model.wzName
 		else
 			set text
 				_ node.inlinedTextToTextLines
-					@ xmodel.wzName
+					@ model.wzName
 					{
 						@ singleLine true
-        if hasStatements(xmodel) == false
-            if u.isDeclare(xmodel)
+        if hasStatements(model) == false
+            if u.isDeclare(model)
                 _ ctx.write
                     @ text
             else
                 _ ctx.write
                     @ text
-                if u.isTopStatement(xmodel, ctx)
+                if u.isTopStatement(model, ctx)
                     _ ctx.w
                         _ u.semicolon
                             @ text
-			r_cb()
+			_ u.checkInlineExit(model, ctx)
+            r_cb()
 
-		if xmodel.statements[0].wzEntity === 'function'
+		if model.statements[0].wzEntity === 'function'
             _ ctx.w('')
         
-		# log 'set,xmodel.statements.length', xmodel.wzName, xmodel.statements.length
-        if xmodel.statements.length == 2
-            if xmodel.statements[0].wzElement == 'comment'
+		# log 'set,model.statements.length', model.wzName, model.statements.length
+        if model.statements.length == 2
+            if model.statements[0].wzElement == 'comment'
                 _ ctx.w
-                    @ xmodel.wzName + ' ' 
+                    @ model.wzName + ' ' 
                 _ cnt.genItems
-                    @ xmodel.statements
+                    @ model.statements
                     @ ctx
                     { 
                     f_cb()
-                        if u.isTopStatement(xmodel, ctx)
+                        if u.isTopStatement(model, ctx)
                             _ ctx.w(';')
+                        _ u.checkInlineExit(model, ctx)
                         r_cb()
             else
                 _ cnt.genItem
-                    @ xmodel.statements[0]
+                    @ model.statements[0]
                     @ ctx
                     f_cb()
                         _ ctx.write
-                            @ ' ' + xmodel.wzName + ' ' 
+                            @ ' ' + model.wzName + ' ' 
                         _ cnt.genItem
-                            @ xmodel.statements[1]
+                            @ model.statements[1]
                             @ ctx
                             f_cb()
-                                if u.isTopStatement(xmodel, ctx)
+                                if u.isTopStatement(model, ctx)
                                     _ ctx.w(';')
+                                _ u.checkInlineExit(model, ctx)
                                 r_cb()
 		else
 			_ ctx.write
 				_ u.setOperator
 					@ text
-					@ xmodel.statements
+					@ model.statements
 			_ cnt.genItems
-				@ xmodel.statements
+				@ model.statements
 				@ ctx
 				{ 
 					@ indent false
 				f_cb()
-					if u.isTopStatement(xmodel, ctx)
+					if u.isTopStatement(model, ctx)
 						_ ctx.w(';')
-					r_cb()
+					_ u.checkInlineExit(model, ctx)
+                    r_cb()
     
 	stm( block
 		_ cnt.genItems(model.statements, ctx, callback)

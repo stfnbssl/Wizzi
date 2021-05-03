@@ -1,0 +1,40 @@
+module
+
+    $
+        var md = {
+            name: 'EditorTitle',
+            from: '../../src/components/EditorView',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < EditorTitle
+                @ {...args}
+
+        v08/ts/react/story(Saved_draft)
+            @ name 'My name'
+            @ description 'My description'
+            @ createdAt '10/8/88'
+            @ saveStatus 'saved-draft'
+            [ saveHistory
+                {
+                    @ hashId 'xyz'
+                    @ savedAt 'boh'
+                    @ isDraft true
+            { viewer
+                @ username 'stefi'
+                @ nickname 'yanez'
+            @ isEditModalVisible true
+            @ onShowEditModal
+                => 
+                    log 'onShowEditModal'
+            @ onDismissEditModal
+                => 
+                    log 'onDismissEditModal'
+            @ onSubmitMetadata
+                => 
+                    param details
+                    log 'onSubmitMetadata', details

@@ -1,0 +1,29 @@
+module
+    $
+        var ctrl = {
+            name: 'Packi',
+            path: '/packi'
+        }    
+
+    controller( &ctrl )
+
+        $append imports
+            import ReactDOMServer from 'react-dom/server'
+            function Hello
+                return
+                    div
+                        h1 Server rendered
+                        h3 Hello world
+
+        _ this.router.get(`/`, this.index)
+        
+        $append handlers
+            handler( index )
+                const index
+                    op+ 
+                        + '<!DOCTYPE html>'
+                        _ ReactDOMServer.renderToStaticMarkup
+                            < Hello 
+                _ sendHtml
+                    @ response
+                    @ index

@@ -1,0 +1,53 @@
+'use strict';
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WorkerPlugin = require('worker-plugin');
+
+module.exports = {
+    devtool: 'inline-source-map',
+    mode: 'development',
+    entry: [
+        './src/index.tsx'
+    ], 
+    output: {
+        path: path.resolve(__dirname, '..', 'dist', 'scripts'), 
+        filename: 'wizzi.frontend.js'
+    }, 
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                exclude: /(node_modules|(vendor\/.+\.js))/, 
+                loader: 'ts-loader'
+            },
+            {
+                test: /\.css$/, 
+                use: [
+                    'style-loader', 
+                    'css-loader', 
+                    MiniCssExtractPlugin.loader
+                ]
+             }, 
+             {
+                test: /\.(jpg|jpeg|png|gif|mp3|svg|ttf)$/, 
+                use: [
+                    "file-loader"
+                ]
+             }, 
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html', 
+            filename: 'index.html'
+         }), 
+        new webpack.IgnorePlugin(/^((fs)|(path)|(os)|(crypto)|(source-map-support))$/, /vs(\/|\\)language(\/|\\)typescript(\/|\\)lib/), 
+        new MiniCssExtractPlugin(), 
+        new WorkerPlugin()
+    ], 
+    resolve: {
+        extensions: [ '.ts', '.tsx', '.js' ]
+    }
+};

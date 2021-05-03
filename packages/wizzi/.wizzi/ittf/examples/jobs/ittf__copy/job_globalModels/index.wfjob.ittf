@@ -25,6 +25,13 @@
 			generator js/module
 			extension js
 
+		# Generates a single text document
+		artifact step_1_text_document
+			src step_1.text.ittf
+			schema text
+			generator text/document
+			extension @@null
+
 	line posts
 		cwd-folder ${ittf_posts_folder}
 

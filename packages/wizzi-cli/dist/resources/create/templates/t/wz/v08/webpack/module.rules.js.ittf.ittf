@@ -2,16 +2,27 @@ $group
     ---
     {
         @ test /\.(js|jsx)?$/
-        @ exclude /node_modules/
-        [ use
-            @ 'babel-loader'
+        @ exclude /(node_modules|(vendor\/.+\.js))/        
+        { use
+            @ loader 'babel-loader'
+            { options
+                @ cacheDirectory true
 
 	${'$'}if wzCtx.Build.useTypescript
-        {
-            @ test /\.(ts|tsx)$/
-            @ exclude /node_modules/
-            [ use
-                @ "ts-loader"
+        ${'$'}if wzCtx.Build.typescript.useBabelLoader
+            {
+                @ test /\.(ts|tsx)?$/
+                @ exclude /(node_modules|(vendor\/.+\.js))/        
+                { use
+                    @ loader 'babel-loader'
+                    { options
+                        @ cacheDirectory true
+        ${'$'}else
+            {
+                @ test /\.(ts|tsx)$/
+                @ exclude /(node_modules|(vendor\/.+\.js))/        
+                [ use
+                    @ "ts-loader"
 	
 	${'$'}if wzCtx.Build.webpack.useHtml
         {
@@ -31,8 +42,11 @@ $group
         {
             @ test /\.css$/
             [ use
-                @ 'style-loader'
+                ${'$'}if wzCtx.Build.webpack.useMiniCssExtract
+                    @ MiniCssExtractPlugin.loader
                 @ 'css-loader'
+                ${'$'}if wzCtx.Build.webpack.useStyleLoader
+                    @ 'style-loader'
                 ${'$'}if wzCtx.Build.useVue
                     @ 'vue-style-loader'
     ---
@@ -44,6 +58,15 @@ $group
 				@ 'sass-loader'
     ---
     {
-        @ test /\.(jpg|jpeg|png|gif|mp3|svg)$/
-        [ use
-            @ "file-loader"
+        @ test /\.(jpg|jpeg|png|gif|mp3|svg|ttf)$/
+        { use
+            @ loader "file-loader"
+            { options
+                @ outputPath 'assets/'
+    ---
+    ${'$'}if wzCtx.Build.useGraphql
+        ${'$'}if wzCtx.Build.graphql.excludePolyfill
+            { 
+                @ test path.resolve(__dirname, 'node_modules/cross-fetch/dist/browser-polyfill.js')
+                    # graphql-request includes this polyfill
+                @ use 'null-loader'

@@ -1,7 +1,7 @@
 {
-    "name": "",
-    "version": "",
-    "description": "",
+    "name": "wizzi.site",
+    "version": "0.0.1",
+    "description": "wizzi.site",
     "author": {
         "name": "",
         "email": ""
@@ -10,11 +10,23 @@
         "siteUrl": "http://localhost",
         "port": 5000,
         "baseUrl": "http://localhost:5000",
+        "constants": {
+            "preview": {
+                "minWidth": 700
+            }
+        },
         "Components": []
     },
+    "Style": {
+        "vpadRatio": 0.25,
+        "bodyFontSize": "12px",
+        "bodyLineHeight": 1.3165
+    },
     "Build": {
+        "useRegeneratorRuntime": false,
         "utils": {
             "useEscapeRegexp": true,
+            "useEscapeHtml": true,
             "useNullThrows": true,
             "useLodash": true,
             "useStringifySafe": true,
@@ -23,18 +35,33 @@
             "useJsCookie": true,
             "useQueryString": true,
             "useSanitizeHtml": true,
-            "useDateFns": true
+            "useDateFns": true,
+            "useFetchPonyfill": true,
+            "useNanoId": true,
+            "useGitUrlParse": true,
+            "useJsonToAst": true
         },
+        "styles": {
+            "usePalx": true
+        },
+        "isClientServer": true,
+        "useVExpo": false,
         "useTypescript": true,
-        "typescript": {},
+        "typescript": {
+            "useBabelLoader": true
+        },
         "useExpress": true,
         "express": {
             "useSsl": false,
-            "useErrors": false
+            "useErrors": false,
+            "useStaticFiles": true,
+            "staticFiles": {
+                "basePath": "__dirname, '..', '..', '..'"
+            }
         },
         "useSession": true,
         "session": {
-            "name": ""
+            "name": "wizzi.site"
         },
         "noCache": true,
         "useSocketIO": false,
@@ -47,6 +74,8 @@
         "ittfStatic": {},
         "useNetlify": false,
         "netlify": {},
+        "useStorybook": true,
+        "storybook": {},
         "useWizzi": true,
         "wizzi": {
             "isDev": true,
@@ -131,8 +160,6 @@
         "compression": {},
         "useHelmet": false,
         "helmet": {},
-        "useStaticFiles": true,
-        "staticFiles": {},
         "useTailwindcss": true,
         "tailwindcss": {},
         "useWebpackApp": true,
@@ -141,24 +168,100 @@
                 {
                     "name": "hello",
                     "writeToDisk": false
-                },
-                {
-                    "name": "shell",
-                    "writeToDisk": false
                 }
             ]
         },
+        "useWebpack": true,
+        "webpack": {
+            "useCss": true,
+            "css": {},
+            "useStyleLoader": false,
+            "styles": {},
+            "useMiniCssExtract": true,
+            "miniCssExtract": {},
+            "useSass": false,
+            "sass": {},
+            "useHtml": true,
+            "html": {
+                "template": "./src/client/index.html",
+                "filename": "index.html"
+            },
+            "useMinimizer": true,
+            "useWorker": true,
+            "useStatsWriter": false,
+            "useIgnore": true,
+            "useCodeSplitting": true,
+            "useEnv": true,
+            "env": {
+                "items": [
+                    {
+                        "name": "NODE_ENV",
+                        "value": "env('NODE_ENV')"
+                    },
+                    {
+                        "name": "SERVER_URL",
+                        "value": "env('SERVER_URL')"
+                    },
+                    {
+                        "name": "API_SERVER_URL",
+                        "value": "env('API_SERVER_URL')"
+                    },
+                    {
+                        "name": "SNACK_SEGMENT_KEY",
+                        "value": "env('SNACK_SEGMENT_KEY')"
+                    },
+                    {
+                        "name": "SNACK_AMPLITUDE_KEY",
+                        "value": "env('SNACK_AMPLITUDE_KEY')"
+                    },
+                    {
+                        "name": "SNACK_WEBPLAYER_URL",
+                        "value": "env('SNACK_WEBPLAYER_URL')"
+                    },
+                    {
+                        "name": "IMPORT_SERVER_URL",
+                        "value": "env('IMPORT_SERVER_URL')"
+                    },
+                    {
+                        "name": "DEPLOY_ENVIRONMENT",
+                        "value": "env('DEPLOY_ENVIRONMENT')"
+                    },
+                    {
+                        "name": "BUILD_TIMESTAMP",
+                        "value": "Date.now()"
+                    }
+                ]
+            },
+            "useDevServer": true,
+            "devServer": {
+                "contentBase": "path.join(__dirname, 'src')"
+            }
+        },
+        "useResolutions": true,
         "useBabel": true,
         "babel": {
             "useParser": true,
-            "useRuntime": false
+            "useRuntime": false,
+            "useDinamicImport": true,
+            "addModuleExport": false,
+            "useVendor": true,
+            "vendor": {
+                "compactPath": "./src/vendor"
+            },
+            "useResolutions": true,
+            "resolutions": [
+                {
+                    "name": "**/babel-core",
+                    "value": "7.0.0-bridge.0"
+                }
+            ]
         },
         "useReact": true,
         "react": {
             "useV16": true,
             "useRedux": true,
             "redux": {},
-            "useRouter": false,
+            "useRouter": true,
             "useHelmetAsync": true,
             "useSimpleCodeEditor": true,
             "useTextareaAutosize": true,
@@ -167,17 +270,30 @@
         "useHoistNonReactStatic": true,
         "useStyledComponents": true,
         "styledComponents": {},
+        "useStyledSystem": true,
+        "styledSystem": {},
         "useAphrodite": true,
-        "aphrodite": {},
+        "aphrodite": {
+            "disableImportant": true
+        },
         "useMarked": true,
         "useExpoStyles": true,
         "expoStyles": {},
-        "useMonacoEditor": true,
+        "useMonacoEditor": false,
+        "monacoEditor": {},
         "usePrettier": true,
         "prettier": {},
         "usePrismjs": true,
+        "prismjs": {
+            "modes": []
+        },
+        "useLint": true,
+        "lint": {},
         "useGraphql": true,
-        "useMongoDb": false,
+        "graphql": {
+            "excludePolyfill": true
+        },
+        "useMongoDb": true,
         "mongodb": {
             "user": "yanez",
             "password": "x5csosPN5YAsrl4Z",
@@ -186,6 +302,8 @@
         },
         "useFilesystem": true,
         "filesystem": {},
+        "useJest": true,
+        "jest": {},
         "useBlog": false,
         "blog": {
             "name": "blog",

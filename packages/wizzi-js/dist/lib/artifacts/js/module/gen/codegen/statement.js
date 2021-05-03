@@ -109,7 +109,7 @@ md.genItem = function(model, ctx, callback) {
                 ctx.w("const " + nv.name() + " = styled" + nv.value() + "(");
             }
             else {
-                ctx.w("return `");
+                ctx.w("return css`");
             }
             ctx.indent();
             md.genItem(model.statements[0], ctx, function(err, notUsed) {
@@ -132,7 +132,7 @@ md.genItem = function(model, ctx, callback) {
                 ctx.w("const " + nv.name() + " = styled" + nv.value() + "`");
             }
             else {
-                ctx.w("return `");
+                ctx.w("return css`");
             }
             include_writers.writeIncludeCss(ctx, model, function(err, notUsed) {
                 if (err) {
@@ -151,6 +151,22 @@ md.genItem = function(model, ctx, callback) {
         }
         else {
             ctx.w("keyframes`");
+        }
+        include_writers.writeIncludeCss(ctx, model, function(err, notUsed) {
+            if (err) {
+                return callback(err);
+            }
+            ctx.w("`");
+            return callback(null, null);
+        })
+    }
+    else if (['styledCss'].indexOf(key) >= 0 && model.get_css) {
+        var nv = verify.parseNameValue(model.wzName);
+        if (model.wzName && model.wzName.length > 0) {
+            ctx.w("const " + nv.name() + " = css`");
+        }
+        else {
+            ctx.w("css`");
         }
         include_writers.writeIncludeCss(ctx, model, function(err, notUsed) {
             if (err) {

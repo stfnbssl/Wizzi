@@ -1,0 +1,23 @@
+module
+
+    $
+        var md = {
+            name: 'Avatar',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < Avatar
+                @ {...args}
+
+        v08/ts/react/story(Size_40)
+            @ size 40
+            @ source require('../../src/assets/avatar.svg')
+        
+        v08/ts/react/story(Size_80)
+            @ size 80
+            @ source require('../../src/assets/avatar.svg')

@@ -20,7 +20,7 @@ $group
             if model.wzName && model.wzName.length > 0
                 _ ctx.w("const " + nv.name() + " = styled" + nv.value() + "(")
             else
-                _ ctx.w("return `")
+                _ ctx.w("return css`")
             _ ctx.indent
             _ md.genItem
                 @ model.statements[0]
@@ -28,10 +28,6 @@ $group
                 f_cb()
                     _ ctx.deindent
                     _ ctx.w(")`")
-                    $*
-                    if model.global
-                        _ ctx.write(" global")
-                    *$
                     _ include_writers.writeIncludeCss
                         @ ctx
                         @ model
@@ -42,11 +38,7 @@ $group
             if model.wzName && model.wzName.length > 0
                 _ ctx.w("const " + nv.name() + " = styled" + nv.value() + "`")
             else
-                _ ctx.w("return `")
-            $*
-            if model.global
-                _ ctx.write(" global")
-            *$
+                _ ctx.w("return css`")
             _ include_writers.writeIncludeCss
                 @ ctx
                 @ model
@@ -65,6 +57,19 @@ $group
         if model.global
             _ ctx.write(" global")
         *$
+        _ include_writers.writeIncludeCss
+            @ ctx
+            @ model
+            f_cb()
+                _ ctx.w("`")
+                r_cb()
+
+    elif ['styledCss'].indexOf(key) >= 0 && model.get_css
+        var nv = verify.parseNameValue(model.wzName)
+        if model.wzName && model.wzName.length > 0
+            _ ctx.w("const " + nv.name() + " = css`")
+        else
+            _ ctx.w("css`")
         _ include_writers.writeIncludeCss
             @ ctx
             @ model

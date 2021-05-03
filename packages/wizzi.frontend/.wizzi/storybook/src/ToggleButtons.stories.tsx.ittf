@@ -1,0 +1,61 @@
+module
+
+    $
+        var md = {
+            name: 'ToggleButtons',
+            from: '../../src/components/widgets',
+            TParam: 'string',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < ToggleButtons
+                @ {...args}
+                span ToggleButtons
+
+        v08/ts/react/story(On)
+            @ value '1'
+            [ options
+                {
+                    @ label 'on'
+                    @ value '1'
+                {
+                    @ label 'off'
+                    @ value '0'
+
+        v08/ts/react/story(Off)
+            @ value '0'
+            [ options
+                {
+                    @ label 'on'
+                    @ value '1'
+                {
+                    @ label 'off'
+                    @ value '0'
+
+        v08/ts/react/story(Option_3)
+            @ value '2'
+            [ options
+                {
+                    @ label 'Option 1'
+                    @ value '0'
+                {
+                    @ label 'Option 2'
+                    @ value '1'
+                {
+                    @ label 'Option 3'
+                    @ value '2'
+
+        v08/ts/react/story(Disabled)
+            @ disabled true
+            @ value '0'
+            [ options
+                {
+                    @ label 'on'
+                    @ value '1'
+                {
+                    @ label 'off'
+                    @ value '0'

@@ -1,0 +1,29 @@
+module
+
+    $
+        var md = {
+            name: 'FooterButton',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < FooterButton
+                @ {...args}
+
+        v08/ts/react/story(Active)
+            @ active true
+            @ icon require('../../src/assets/prettify-icon.png')
+            @ children
+                div
+                    + Active footer button
+
+        v08/ts/react/story(Inactive)
+            @ active false
+            @ icon require('../../src/assets/prettify-icon.png')
+            @ children
+                div
+                    + Inctive footer button

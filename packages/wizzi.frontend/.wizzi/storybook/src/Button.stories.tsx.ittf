@@ -1,0 +1,30 @@
+module
+
+    $
+        var md = {
+            name: 'Button',
+            from: '../../src/components/widgets'
+        }
+
+    v08/ts/react/stories(&md)
+
+        $append decorators
+            < Story 
+
+        $append template
+            < Button 
+                @ {...args}
+                span Button
+
+        v08/ts/react/story(Primary)
+            @ variant 'primary'
+
+        v08/ts/react/story(Secondary)
+            @ variant 'secondary'
+        
+        v08/ts/react/story(Large)
+            @ large true
+        
+        v08/ts/react/story(Loading)
+            @ loading true
+            @ variant 'primary'

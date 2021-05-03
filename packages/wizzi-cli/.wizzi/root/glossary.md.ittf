@@ -13,27 +13,32 @@
         \b 'gatsby', 'express', ...).
     
     h3 Meta production
-    p A Wizzi production that processes meta ittf documents into artifact ittf documents
-        \b (.js.ittf, .html.ittf, .css.ittf, json.ittf, ...).
+    p A Wizzi production that processes meta ittf documents into artifact ittf documents.
 
     h3 Meta ittf document
-    p A templated ittf document of schema 'ittf' (extension 'ittf.ittf') that is processed
-        \b in a meta production for generating the ittf document of an artifact production.
+    p A templated ittf document of schema 'ittf' (.js.ittf.ittf, .html.ittf.ittf, ...) that in a meta production
+        \b is processed for generating an ittf document (.js.ittf, .html.ittf, ...) of an artifact production.
     
     h3 Artifact ittf document
-    p An ittf document that in a Wizzi production generates a software artifact
-        \b (.js, .html, .css, json, ...).
+    p An ittf document (.js.ittf, .html.ittf, ...) that in a Wizzi production generates a software artifact
+        \b (.js, .html, ...).
 
-    h3 Artifact production
-    p The common Wizzi production, a generation of a set of software artifacts 
-        \b processing a set of ittf documents.
+    h3 Wizzi production (artifacts production)
+    p The generation of a set of software artifacts 
+        \b processed from a set of ittf documents.
 
-    h3 object answersCtx
-    p The context object created by the CLI interactive 'inquirer'. Is preprocessed 
+    h3 Wizzi production type
+    p A set of meta ittf documents targeting a specific technology ('webpack',
+        \b 'gatsby', 'express', ...). Is selected and configured through the 
+        \b Wizzi CLI interactive 'inquirer'.
+
+    h3 object 'answersCtx'
+    p The context object created by the Wizzi CLI interactive 'inquirer'. Is preprocessed 
         \b for creating the cliCtx object.
     
-    h3 object cliCtx
-    p The context object of a wizzi-cli meta production.
+    h3 object 'cliCtx'
+    p The context object of a wizzi-cli meta production. Is preprocessed
+        \b for creating the wzCtx object.
     
-    h3 object wzCtx
-    p The standard main context object of an artifact production (Wizzi production).
+    h3 object 'wzCtx'
+    p The context object of an artifact production (Wizzi production).

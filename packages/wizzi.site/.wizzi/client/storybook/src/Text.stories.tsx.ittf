@@ -1,0 +1,193 @@
+module
+
+    $
+        var md = {
+            name: 'Text',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include sccomp
+
+        $append template
+            < Text
+                @ {...args}
+                + Hello text
+
+        $append parameters.docs
+            { description
+                @ component `A low-level layout component for setting color, display, height, margin, maxHeight, maxWidth, minHeight, minWidth, padding, size, textAlign, and width.`
+
+        export 
+            const TypographyComponent
+                => 
+                    < Text 
+                        @ m {3}
+                        + Hello
+        export 
+            const FontSize
+                => 
+                    div 
+                        < Text 
+                            @ fontSize {6}
+                            + Hello 6
+                        < Text 
+                            @ fontSize {5}
+                            + Hello 5
+                        < Text 
+                            @ fontSize {4}
+                            + Hello 4
+                        < Text 
+                            @ fontSize {3}
+                            + Hello 3
+                        < Text 
+                            @ fontSize {2}
+                            + Hello 2
+                        < Text 
+                            @ fontSize {1}
+                            + Hello 1
+                        < Text 
+                            @ fontSize {0}
+                            + Hello 0
+        set FontSize.story =
+            { 
+                @ name 'fontSize'
+        export 
+            const TextAlign
+                => 
+                    div 
+                        < Text 
+                            @ textAlign 'left'
+                            + Hello Left
+                        < Text 
+                            @ textAlign 'center'
+                            + Hello Center
+                        < Text 
+                            @ textAlign 'right'
+                            + Hello Right
+        set TextAlign.story =
+            { 
+                @ name 'textAlign'
+        export 
+            const Regular
+                => 
+                    < Text 
+                        @ regular
+                        + Hello Regular
+        set Regular.story =
+            { 
+                @ name 'regular'
+        export 
+            const Bold
+                => 
+                    < Text 
+                        @ bold
+                        + Hello Bold
+        set Bold.story =
+            { 
+                @ name 'bold'
+        export 
+            const Caps
+                => 
+                    < Text 
+                        @ caps
+                        + Hello Caps
+        set Caps.story =
+            { 
+                @ name 'caps'
+        export 
+            const Italic
+                => 
+                    < Text 
+                        @ italic
+                        + Hello italic
+        set Italic.story =
+            { 
+                @ name 'italic'
+        export 
+            const Strikethrough
+                => 
+                    < Text.s 
+                        + Hello Strikethrough
+        set Strikethrough.story =
+            { 
+                @ name 'strikethrough'
+        export 
+            const Margin
+                => 
+                    < Text 
+                        @ mt {4}
+                        @ mb {2}
+                        + Hello Margin
+        set Margin.story =
+            { 
+                @ name 'margin'
+        export 
+            const Color
+                => 
+                    div 
+                        < Text 
+                            @ color 'blue'
+                            + Hello Blue
+                        < Text 
+                            @ color 'green'
+                            + Hello Green
+        set Color.story =
+            { 
+                @ name 'color'
+        export 
+            const MinMaxHeight
+                => 
+                    div 
+                        < Text 
+                            @ color 'blue'
+                            @ minHeight {200}
+                            @ minWidth {300}
+                            @ width {1}
+                            + Hello Blue
+                        < Text 
+                            @ color 'green'
+                            @ maxHeight {200}
+                            @ maxWidth {300}
+                            + Hello Green
+        set MinMaxHeight.story =
+            { 
+                @ name 'min/maxHeight'
+        export 
+            const HideOnLgBreakpoints
+                => 
+                    div 
+                        < Text 
+                            @ color 'primary'
+                            @ display
+                                [ 
+                                    @ null
+                                    @ null
+                                    @ null
+                                    @ 'none'
+                            @ fontSize {4}
+                            @ width {1}
+                            + Hidden text on larger screens
+                        < Text 
+                            @ color 'secondary'
+                            @ fontSize {4}
+                            @ width {1}
+                            + I am always show. But the text above, hides on larger screens.
+        export 
+            const Span
+                => 
+                    < Text 
+                        + Just some text
+                        < Text.span 
+                            @ bold
+                            + Some span text
+                        + Just some more&lf;    text
+        export 
+            const Paragraph
+                => 
+                    < Text.p 
+                        + Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod&lf;    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,&lf;    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo&lf;    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse&lf;    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat&lf;    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        set HideOnLgBreakpoints.story =
+            { 
+                @ name 'Hide on > lg breakpoints'

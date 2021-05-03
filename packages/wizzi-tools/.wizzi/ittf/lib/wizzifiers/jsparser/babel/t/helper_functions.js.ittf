@@ -132,7 +132,41 @@
 						_ ittfNode.children.push(hb)
 					_ options.commentManager.addWritten(item, ittfNode.children, hb)
 	
-	function processParams
+    function processParams2
+        param ret
+        param p_params
+		if p_params != null
+			foreach item in p_params.children
+                log 'TSFunctionType', 'p_params.item', item
+                if item.tag == '@id'
+				    set item.tag = 'param'
+				    _ ret.children.push(item)
+                elif item.tag == '='
+                    if item.children.length == 2
+                        var assignItem = item.children[1]
+                        set item.tag = 'param'
+                        set item.name = item.children[0].name || item.children[0].textified
+                        set item.children = item.children[0].children
+                        if assignItem.children.length == 0
+                            set assignItem.tag = '='
+                            _ item.children.push
+                                @ assignItem
+                        else
+                            _ item.children.push
+                                {
+                                    @ tag '='
+                                    @ children [assignItem]
+                        _ ret.children.push(item)
+                    else
+                        throw new Error('processParams2 - state not managed')
+                elif item.tag == '...'
+				    set item.tag = 'param'
+                    set item.name = '...' + item.name
+				    _ ret.children.push(item)
+                else
+                    throw new Error('processParams2 - state not managed')
+
+    function processParams
 		param ittfNode
 		var pos = getChildPosByTag(ittfNode, 'params')
 		var temp = []
@@ -317,7 +351,7 @@
 		param sep
 		var sb = []
 		foreach item in ittfNode.children
-			# log 'setTextList', item.tag, item.isText, item.textified
+			log 'setTextList', item.tag, item.isText, item.textified
 			if item.isText
 				_ sb.push(item.name)
 			elif item.textified

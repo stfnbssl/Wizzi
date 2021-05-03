@@ -22,7 +22,7 @@ function countStatements(model) {
     var i, i_items=model.statements, i_len=model.statements.length, item;
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
-        if (item.wzElement != 'comment') {
+        if (item.wzElement != 'comment' && item.wzElement != 'commentmultiline') {
             count++;
         }
     }
@@ -34,7 +34,10 @@ function writeComments(model, ctx) {
     for (i=0; i<i_len; i++) {
         item = model.statements[i];
         if (item.wzElement == 'comment') {
-            ctx.w('// ' + item.wzName);
+            __writeComments(item, ctx, false)
+        }
+        else if (item.wzElement == 'commentmultiline') {
+            __writeComments(item, ctx, true)
         }
         else {
             temp.push(item);
@@ -42,6 +45,40 @@ function writeComments(model, ctx) {
     }
     model.statements = temp;
     return model;
+}
+function __writeComments(model, ctx, multi) {
+    // log '__writeComments-model', model
+    if (multi || model.statements.length > 0) {
+        ctx.w('/**');
+        ctx.indent();
+        if (verify.isNotEmpty(model.wzName)) {
+            ctx.w(model.wzName);
+        }
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+    }
+    else {
+        ctx.w('// ' + model.wzName);
+    }
+    if (multi || model.statements.length > 0) {
+        ctx.deindent();
+        ctx.w('*/');
+    }
+}
+function __writeCommentLine(model, ctx) {
+    ctx.w('// ' + model.wzName);
+    if (model.statements.length > 0) {
+        ctx.indent();
+        var i, i_items=model.statements, i_len=model.statements.length, item;
+        for (i=0; i<i_len; i++) {
+            item = model.statements[i];
+            __writeCommentLine(item, ctx)
+        }
+        ctx.deindent();
+    }
 }
 md.load = function(cnt) {
     cnt.stm.reactComponent = function(model, ctx, callback) {

@@ -204,7 +204,7 @@
                                 @ generatingPath + ' generation did not termitate'
                     var gNum = ++g_generationsCheckCounter
                     set g_generationsCheck['timer' + gNum]
-                        _ setTimeout(checkCallback, 1000)
+                        _ setTimeout(checkCallback, 2000)
 
                     new genInfo.generator.gen
                         @ genInfo.mainSourceModel
@@ -212,7 +212,7 @@
                         $$ 20/3/21 @ callback
                         $$ try to catch missing callbacks
                         f_cb(result)
-                            var timer = g_generationsCheck['timer' + gNum]
+                            # var timer = g_generationsCheck['timer' + gNum]
                             _ clearTimeout
-                                @ timer
+                                @ g_generationsCheck['timer' + gNum]
                             r_cb(result)

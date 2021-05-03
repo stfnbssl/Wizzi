@@ -1,0 +1,38 @@
+module
+
+    $
+        var md = {
+            name: 'SimpleEditor',
+            from: '../../src/components/Editor',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < SimpleEditor
+                @ {...args}
+
+        v08/ts/react/story(Saved_draft)
+            props/packiFiles( files )
+            @ updateFiles
+                => 
+            @ selectedFile 'file1.js'
+            @ onSelectFile
+                => 
+                    param path
+                    log 'onSelectFile', path
+            [ annotations
+            @ lineNumbers 'on'
+            @ wordWrap 'off'
+            @ scrollBeyondLastLine true
+            { minimap
+                @ enabled false
+                @ maxColumn 20
+                @ renderCharacters true
+                @ showSlider 'mouseover'
+                @ side 'right'
+            @ autoFocus true
+            @ fontFamily 'mono'
+            @ fontLigatures true

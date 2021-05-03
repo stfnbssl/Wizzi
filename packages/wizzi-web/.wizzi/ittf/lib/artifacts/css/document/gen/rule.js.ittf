@@ -317,7 +317,10 @@
                                     # log myname, 'artifactText', code
                                     _ ctx.w(code)
                                     r_cb()
-				else
+				elif name == '$'
+                    _ ctx.w('$' + '{' + value + '}')
+                    r_cb()
+                else
                     if prop.styledprop
                         set value = "£{props => " + prop.styledprop + "}"
                     set value = verify.replaceAll(value, "£{", "${")

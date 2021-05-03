@@ -1,0 +1,67 @@
+module
+
+    $
+        var md = {
+            name: 'FileList',
+            from: '../../src/components/FileList',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+
+        $append imports2
+        
+        $append template
+            < FileList
+                @ {...args}
+
+        v08/ts/react/story(Files)
+            @ visible true
+            props/packiFiles( files )
+            props/annotations( annotations )
+            @ selectedFile 'file1.js'
+            @ updateFiles
+                => 
+                    param updateFn
+                        :any
+            @ onSelectFile
+                =>
+                    param path
+                        :string 
+                    log 'onSelectFile', path
+            @ onRemoveFile
+                =>
+                    param path
+                        :string 
+                    log 'onRemoveFile', path
+            @ onCopy
+                =>
+                    param path
+                        :string 
+                    log 'onCopy', path
+            @ onExpand
+                =>
+                    param path
+                        :string 
+                    param expand
+                        :boolean 
+                    log 'onExpand', path, expand
+            @ onRenameFile
+                => 
+                    param oldPath
+                        :string 
+                    param newPath
+                        :string 
+                    log 'onRenameFile', oldPath, newPath
+            @ uploadFileAsync
+                => 
+            @ onDownloadCode
+                => 
+            @ onImportRepo
+                => 
+            @ onImportProduction
+                => 
+            @ hasSnackId true
+            @ saveStatus 'saved-draft'
+            @ theme 'light'

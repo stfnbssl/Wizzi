@@ -1,0 +1,24 @@
+module
+
+    $
+        var md = {
+            name: 'AppShell',
+            from: '../../src/components/shell',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < AppShell
+                @ {...args}
+
+        v08/ts/react/story(Titled)
+            @ title "App shell title"
+
+        v08/ts/react/story(With_preview)
+            @ title "App shell title"
+            @ previewShown true
+
+        v08/ts/react/story(No_title)

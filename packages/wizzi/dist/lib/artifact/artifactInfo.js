@@ -199,14 +199,23 @@ var ArtifactInfo = (function () {
                     return this.error('A not empty srcPath is required', 'getDestinationUri');
                 }
                 destpath = path.join(dest.folder, srcPath);
-                if (this.isFinalArtifact() === false && dest.extension !== '@@null') {
-                    var ext = (dest.extension || 'js');
-                    ext = verify.startsWith(ext, '.') ? ext.substr(1) : ext;
-                    if (this.options.dotgExtensionPrefix) {
-                        ext = 'g.' + ext;
+                if (this.isFinalArtifact() === false) {
+                    if (dest.extension === '@@null') {
+                        destpath = verify.stripIttfExtension(destpath);
+                        destpath = verify.replaceExtension(destpath, '');
+                        if (verify.endsWith(destpath, '.')) {
+                            destpath = destpath.substr(0, destpath.length - 1);
+                        }
                     }
-                    destpath = verify.stripIttfExtension(destpath);
-                    destpath = verify.replaceExtension(destpath, ext);
+                    else {
+                        var ext = (dest.extension || 'js');
+                        ext = verify.startsWith(ext, '.') ? ext.substr(1) : ext;
+                        if (this.options.dotgExtensionPrefix) {
+                            ext = 'g.' + ext;
+                        }
+                        destpath = verify.stripIttfExtension(destpath);
+                        destpath = verify.replaceExtension(destpath, ext);
+                    }
                 }
             }
         }

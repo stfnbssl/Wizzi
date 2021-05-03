@@ -1,0 +1,33 @@
+module
+
+    $
+        var md = {
+            name: 'Banner',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < Banner
+                @ {...args}
+
+        v08/ts/react/story(Success)
+            @ visible true
+            @ type "success"
+            @ children
+                h3 Congratulations!
+
+        v08/ts/react/story(Error)
+            @ visible true
+            @ type "error"
+            @ children
+                h3 Sorry! S.t. went wrong!
+
+        v08/ts/react/story(Info)
+            @ visible true
+            @ type "info"
+            @ children
+                h3 Your component is building

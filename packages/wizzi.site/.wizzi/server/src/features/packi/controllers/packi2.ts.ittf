@@ -1,0 +1,19 @@
+module
+    $
+        var md = {
+            name: 'packi2',
+            Name: 'Packi2',
+            ctrlName: 'Packi',
+            ctrlPath: '/api/v1/packi',
+            fields: [
+                { name: 'id', type: 'string' },
+                { name: 'userName', type: 'string' },
+                { name: 'projectName', type: 'string' },
+                { name: 'code', type: 'string' },
+                { name: 'files', type: 'string' },
+            ],
+            collectionName: 'packis2'
+        }
+
+    $if wzCtx.Build.useMongoDb
+        v08/mongo/modelcontroller(&md)

@@ -104,6 +104,17 @@ $group
                     export-name ${'$'}{jobCtx.job_model}
             ${'$'}hook
 
+    ${'$'}elif name == 'any_text_no_extension'
+        artifact any_text
+            src ./**/*.text.ittf
+            schema text
+            generator text/document
+            extension @@null
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
     ${'$'}elif name == 'any_ittf'
         artifact any_ittf
             src ./**/*.ittf.ittf
@@ -145,6 +156,66 @@ $group
             schema text
             generator text/document
             dest-path .gitignore
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
+    ${'$'}elif name == '.prettierrc'
+        artifact .prettierrc
+            src .prettierrc.json.ittf
+            schema json
+            generator json/document
+            dest-path .prettierrc.json
+            extension json
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
+    ${'$'}elif name == '.prettierignore'
+        artifact .prettierignore
+            src .prettierignore.text.ittf
+            schema text
+            generator text/document
+            dest-path .prettierignore
+            extension text
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
+    ${'$'}elif name == '.eslintrc'
+        artifact .eslintrc
+            src .eslintrc.js.ittf
+            schema js
+            generator js/module
+            dest-path .eslintrc.js
+            extension js
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
+    ${'$'}elif name == '.eslintignore'
+        artifact .eslintignore
+            src .eslintignore.text.ittf
+            schema text
+            generator text/document
+            dest-path .eslintignore
+            extension text
+            ${'$'}if jobCtx.job_model
+                model-ref ${'$'}{jobCtx.job_model}
+                    export-name ${'$'}{jobCtx.job_model}
+            ${'$'}hook
+
+    ${'$'}elif name == '.npmignore'
+        artifact .npmignore
+            src .npmignore.text.ittf
+            schema text
+            generator text/document
+            dest-path .npmignore
+            extension text
             ${'$'}if jobCtx.job_model
                 model-ref ${'$'}{jobCtx.job_model}
                     export-name ${'$'}{jobCtx.job_model}

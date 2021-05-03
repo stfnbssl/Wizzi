@@ -1,0 +1,88 @@
+module
+    import 
+        @ all
+        @ fork
+        @ put
+        @ takeEvery
+        @ call
+        from 'redux-saga/effects'
+    import 
+        @ getType
+        from 'typesafe-actions'
+    import 
+        @ config
+        from '../config'
+    import 
+        as wizziActions
+        from './actions'
+    import 
+        @ packiActions
+        from '../packi'
+    import 
+        @ callApi
+        from '../../utils/api'
+    import 
+        @ packiFilterIttf
+        from '../packi/convertFileStructure'
+        # import { getInstance } from '../../services/EventService';
+    #
+    function* handleGenerateArtifactRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof wizziActions.generateArtifactRequest
+        try 
+            log 'sagas.handleGenerateArtifactRequest.action', action
+            const res
+                yield call(callApi, 'post', config.API_URL, 'productions/artifact/' + encodeURIComponent(action.payload.filePath), action.payload.files)
+            log 'sagas.handleGenerateArtifactRequest.res', res
+            yield put(wizziActions.generateArtifactSuccess(res))
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ wizziActions.generateArtifactError
+                            :! 
+                                @expr err.stack
+            else
+                yield put(wizziActions.generateArtifactError('An unknown error occured.'))
+        # import { getInstance } from '../../services/EventService';
+    #
+    function* handleExecuteJobRequest
+        param action
+            :ref ReturnType
+                :param 
+                    :typeof wizziActions.executeJobRequest
+        try 
+            log 'sagas.handleExecuteJobRequest.action', action
+            const res
+                yield call(callApi, 'post', config.API_URL, 'productions/job/', packiFilterIttf(action.payload.files))
+            log 'sagas.handleExecuteJobRequest.res', res
+            yield put(wizziActions.executeJobSuccess(res))
+            yield 
+                _ put
+                    _ packiActions.executeJobSuccess
+                        { 
+                            @ generatedArtifacts res.generatedArtifacts
+                            @ previousArtifacts action.payload.files
+        catch err
+            if err instanceof Error
+                yield 
+                    _ put
+                        _ wizziActions.executeJobError
+                            :! 
+                                @expr err.stack
+            else
+                yield put(wizziActions.executeJobError('An unknown error occured.'))
+    #
+    function* wizziRequest
+        yield takeEvery(getType(wizziActions.generateArtifactRequest), handleGenerateArtifactRequest)
+        yield takeEvery(getType(wizziActions.executeJobRequest), handleExecuteJobRequest)
+    #
+    function* wizziSaga
+        yield 
+            _ all
+                [ 
+                    @ fork(wizziRequest)
+    #
+    export-default wizziSaga

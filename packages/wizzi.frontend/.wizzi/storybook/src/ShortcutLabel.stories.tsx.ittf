@@ -1,0 +1,48 @@
+module
+
+    $
+        var md = {
+            name: 'ShortcutLabel',
+            from: '../../src/components/widgets'
+        }
+
+    v08/ts/react/stories(&md)
+
+        $append imports2
+            import
+                @ KeyMap
+                from '../../src/components/widgets/KeybindingsManager'
+
+        $include snackcomp
+
+        $append template
+            < ShortcutLabel
+                @ {...args}
+
+        const Shortcuts
+            { 
+                { save
+                    @ description 'Save changes'
+                    [ combo
+                        @ KeyMap.Meta
+                        @ KeyMap.S
+                { tree
+                    @ description 'Toggle sidebar'
+                    [ combo
+                        @ KeyMap.Meta
+                        @ KeyMap.Backslash
+                { format
+                    @ description 'Format code with prettier'
+                    [ combo
+                        @ KeyMap.Ctrl
+                        @ KeyMap.Alt
+                        @ KeyMap.F
+
+        v08/ts/react/story(Save)
+            @ combo Shortcuts.save.combo
+
+        v08/ts/react/story(Tree)
+            @ combo Shortcuts.tree.combo
+
+        v08/ts/react/story(Format)
+            @ combo Shortcuts.format.combo

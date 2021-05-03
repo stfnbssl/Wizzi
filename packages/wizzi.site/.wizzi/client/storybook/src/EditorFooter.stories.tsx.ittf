@@ -1,0 +1,46 @@
+module
+
+    $
+        var md = {
+            name: 'EditorFooter',
+            from: '../../src/components/EditorView',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+        
+        $append template
+            < EditorFooter
+                @ {...args}
+
+        v08/ts/react/story(Show_every)
+            props/annotations(annotations)
+            @ fileTreeShown true
+            @ previewShown true
+            @ panelsShown true
+            @ sendCodeOnChangeEnabled false
+            @ onToggleTheme
+                => 
+                    log 'onToggleTheme'
+            @ onTogglePanels
+                => 
+                    param panelType
+                        :ref PanelType
+                    log 'onTogglePanels', panelType
+            @ onToggleFileTree
+                => 
+                    log 'onToggleFileTree'
+            @ onTogglePreview
+                => 
+                    log 'onTogglePreview'
+            @ onToggleSendCode
+                => 
+                    log 'onToggleSendCode'
+            @ onShowShortcuts
+                => 
+                    log 'onShowShortcuts'
+            @ onSendCode
+                => 
+                    log 'onSendCode'
+            @ theme 'light'

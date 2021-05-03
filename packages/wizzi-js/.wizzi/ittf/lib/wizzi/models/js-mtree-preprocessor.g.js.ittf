@@ -13,6 +13,9 @@
 
 			var state
 				{
+                    @ svgOn false
+                    @ htmlOn false
+                    @ styledOn false
 					[ actions
 			
 			foreach item in mTree.nodes[0].children
@@ -40,10 +43,10 @@
 		param node
 		param state
 
-		var saveHtmlOn = state.htmlOn
-		var saveSvgOn = state.svgOn
 		if preprocessNode(node, state)
 			return
+		var saveHtmlOn = state.htmlOn
+		var saveSvgOn = state.svgOn
 		var saveParent = state.parent
 		foreach item in node.children
 			set state.parent = node
@@ -132,3 +135,18 @@
 				@ to node
 				@ n attr
 				@ v ''
+
+    function createNode
+        param node
+        param name
+        param value
+        param childrenFrom
+        return
+            {
+                @ n name
+                @ v value
+                @ r node.r
+                @ c node.c
+                @ s node.s
+                @ u node.u
+                @ children childrenFrom || []

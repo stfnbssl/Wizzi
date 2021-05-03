@@ -1,0 +1,68 @@
+module
+    $
+        var Comp = 'Flex';
+        var ssfuncs = [
+            'space',
+            'width',
+            'alignItems',
+            'justifyContent',
+            'flexWrap',
+            'flexDirection',
+        ];
+    import styled from 'styled-components'
+    import 
+        $foreach f in ssfuncs
+            @ ${f}
+            @ ${_.capitalize(f)}Props
+        from 'styled-system'
+    import
+        @ applyVariations
+        from '../styles/utils'
+    import Box from './Box'
+
+    export
+        :type ${Comp}Props
+            :union 
+                $foreach f in ssfuncs
+                    :ref ${_.capitalize(f)}Props
+                :{ 
+                    :p as
+                        :optional 
+                        :union 
+                            :keyof 
+                                :ref JSX.IntrinsicElements
+                            :ref React.ComponentType
+                                :param any
+                    # eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+    $foreach f in ssfuncs
+        log '${f}', ${f}
+
+    :interface Styled${Comp}Props
+        :p wrap
+            :boolean
+        :p align
+            :string
+        :p justify
+            :string
+
+    export
+        styled ${Comp} (Box).attrs<Styled${Comp}Props>
+            =>
+                { 
+                        @ wrap
+                        @ align
+                        @ justify
+                        @ ...props
+                (
+                    {
+                        @ flexWrap wrap ? 'wrap' : undefined
+                        @ alignItems align
+                        @ justifyContent justify
+                        @ ...props
+            display flex
+            ${'$'} applyVariations('Flex')
+            $foreach f in ssfuncs
+                ${'$'} ${f}
+        
+    export-default ${Comp}

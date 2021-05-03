@@ -262,14 +262,20 @@
 								@ 'A not empty srcPath is required'
 								@ 'getDestinationUri'
 					set destpath = path.join(dest.folder, srcPath)
-					if this.isFinalArtifact() === false && dest.extension !== '@@null'
-						var ext = (dest.extension || 'js')
-						set ext = verify.startsWith(ext, '.') ? ext.substr(1) : ext
-						if this.options.dotgExtensionPrefix
-							set ext = 'g.' + ext
-						set destpath = verify.stripIttfExtension(destpath)
-						set destpath = verify.replaceExtension(destpath, ext)
-            
+					if this.isFinalArtifact() === false
+                        if dest.extension === '@@null'
+                            set destpath = verify.stripIttfExtension(destpath)
+                            set destpath = verify.replaceExtension(destpath, '')
+                            if verify.endsWith(destpath, '.')
+                                set destpath = destpath.substr(0, destpath.length - 1)
+                        else
+                            var ext = (dest.extension || 'js')
+                            set ext = verify.startsWith(ext, '.') ? ext.substr(1) : ext
+                            if this.options.dotgExtensionPrefix
+                                set ext = 'g.' + ext
+                            set destpath = verify.stripIttfExtension(destpath)
+                            set destpath = verify.replaceExtension(destpath, ext)
+                
 			if this.isFinalArtifact() === true
 				set destpath = verify.replaceAll(destpath, '__copy', '')
             

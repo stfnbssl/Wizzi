@@ -1,0 +1,21 @@
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\utils\detectPlatform.tsx.ittf
+    utc time: Mon, 03 May 2021 09:48:27 GMT
+*/
+
+export function isAndroid(userAgent: string) {
+
+    return /Android/i.test(userAgent);
+}
+
+export function isIOS(userAgent: string) {
+
+    return /iPhone|iPad|iPod/i.test(userAgent);
+}
+
+export function isMobile(userAgent: string = typeof navigator !== 'undefined' ? navigator.userAgent : '') {
+
+    return isAndroid(userAgent) || isIOS(userAgent);
+}

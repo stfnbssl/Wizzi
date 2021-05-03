@@ -45,11 +45,19 @@ $group
             p router
                 :public 
                 _ Router()
+            ${'$'}if ctrl.modelName
+                +
+                p ${'$'}{ctrl.modelName}Model
+                    :public 
+                    :ref ${'$'}{ctrl.modelName}ModelType
             +
             => initialize
                 param initValues
                     :ref AppInitializerType
                 log 'Entering ${'$'}{ctrl.name}Controller.initialize'
+                ${'$'}if ctrl.modelName
+                    set this.${'$'}{ctrl.modelName}Model 
+                        _ Get${'$'}{ctrl.modelName}Model
                 ${'$'}hook
             
             ${'$'}hook handlers

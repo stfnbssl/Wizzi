@@ -264,7 +264,7 @@ format.Identifier = function(parent, node, options) {
         __isText = false;
         ret.isText = false;
         ret.textified = null;
-        ret.CICCIO = "MAGIC";
+        // set ret.CICCIO = "MAGIC"
     }
     // log 'Identifier', ret
     if (ret != null) {
@@ -2899,38 +2899,31 @@ format.FunctionDeclaration = function(parent, node, options) {
         }
         format(ret, node.typeParameters, options)
     }
+    // f_a_in_tag( params, params
+    // _ processParams(ret)
     // process AST-node-property-collection params and
-    // embed its array of nodes in a new tag
-    f_astNode.props.push({
-        name: "params", 
-        tag: "params", 
-        descr: "# process AST-node-property-collection params and embed its array of nodes in a new tag"
-    })
+    // embed its array of nodes in a temp var
     if (node.params) {
         if (typeof node.params.length === 'undefined') {
             throw new Error('Property node.params must be an array');
         }
-        if (node.params.length > 0) {
-            var tempparams = {
-                tag: 'params', 
-                ASTProp: 'params', 
-                children: [
-                    
-                ]
+        var p_params = {
+            tag: 'notUsed', 
+            children: [
+                
+            ]
+        };
+        var i, i_items=node.params, i_len=node.params.length, item;
+        for (i=0; i<i_len; i++) {
+            item = node.params[i];
+            item.__parent = {
+                name: 'params', 
+                len: node.params.length
             };
-            var i, i_items=node.params, i_len=node.params.length, item;
-            for (i=0; i<i_len; i++) {
-                item = node.params[i];
-                item.__parent = {
-                    name: 'params', 
-                    len: node.params.length
-                };
-                format(tempparams, item, options)
-            }
-            ret.children.push(tempparams)
+            format(p_params, item, options)
         }
     }
-    processParams(ret);
+    processParams2(ret, p_params);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
     if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
@@ -7530,7 +7523,8 @@ format.RestElement = function(parent, node, options) {
         }
         format(ret, node.typeAnnotation, options)
     }
-    ret.textified = '...' + ret.name;
+    ret.name = '...' + ret.name;
+    ret.textified = ret.name;
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -7546,7 +7540,8 @@ format.RestElement = function(parent, node, options) {
 // process AST node AssignmentPattern
 var AssignmentPattern_astNode = {
     name: "AssignmentPattern", 
-    ittfTag: "node.operator", 
+    ittfTag: "node.operator||'='", 
+    tagIsVar: true, 
     props: [
         
     ]
@@ -7556,7 +7551,7 @@ format.AssignmentPattern = function(parent, node, options) {
     var f_astNode = AssignmentPattern_astNode;
     var __isText = false;
     var ret = {
-        tag: 'node.operator', 
+        tag: node.operator||'=', 
         name: '', 
         isText: false, 
         textified: null, 
@@ -7682,7 +7677,7 @@ format.AssignmentPattern = function(parent, node, options) {
         ret.children.push(p_left)
         ret.children.push(p_right)
     }
-    // log 'AssignmentPattern', JSON.stringify(ret, null, 2)
+    console.log('AssignmentPattern', JSON.stringify(ret, null, 2));
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -8502,40 +8497,20 @@ format.ClassProperty = function(parent, node, options) {
             ]
         })
     }
-    if (p_value && p_value.tag === '=>') {
-        ret.tag = p_value.tag;
-        if (p_typeAnnotation) {
-            ret.children.push({
-                tag: ':return', 
-                name: '', 
-                children: [p_typeAnnotation]
-            })
-            var i, i_items=p_value.children, i_len=p_value.children.length, item;
-            for (i=0; i<i_len; i++) {
-                item = p_value.children[i];
-                ret.children.push(item)
-            }
+    if (p_typeAnnotation) {
+        ret.children.push(p_typeAnnotation)
+    }
+    if (node.computed) {
+        ret.name = '[' + ret.name + ']';
+    }
+    else if (p_value && p_value.tag) {
+        if (['@id', '@expr', 'literal'].indexOf(p_value.tag) > -1) {
+            p_value.tag = '=';
         }
-        else {
-            ret.children = p_value.children;
-        }
+        ret.children.push(p_value)
     }
     else {
-        if (p_typeAnnotation) {
-            ret.children.push(p_typeAnnotation)
-        }
-        if (node.computed) {
-            ret.name = '[' + ret.name + ']';
-        }
-        else if (p_value && p_value.tag) {
-            if (['@id', '@expr', 'literal'].indexOf(p_value.tag) > -1) {
-                p_value.tag = '=';
-            }
-            ret.children.push(p_value)
-        }
-        else {
-            // do nothing
-        }
+        // do nothing
     }
     if (ret != null) {
         if (__isText) {
@@ -12104,6 +12079,41 @@ format.StringTypeAnnotation = function(parent, node, options) {
         }
     }
 };
+// process AST node TSSymbolKeyword
+var TSSymbolKeyword_astNode = {
+    name: "TSSymbolKeyword", 
+    ittfTag: ":symbol", 
+    props: [
+        
+    ]
+};
+wzDocs.AstgNodes.push(TSSymbolKeyword_astNode)
+format.TSSymbolKeyword = function(parent, node, options) {
+    var f_astNode = TSSymbolKeyword_astNode;
+    var __isText = false;
+    var ret = {
+        tag: ':symbol', 
+        name: '', 
+        isText: false, 
+        textified: null, 
+        AST: 'TSSymbolKeyword', 
+        source: options.input.substring(node.start, node.end), 
+        children: [
+            
+        ]
+    };
+    if (ret != null) {
+        if (__isText) {
+            ret.textified = ret.name;
+        }
+        if (typeof __skip === 'undefined' || __skip == false) {
+            // log '### add ', ret.tag , 'to', parent.tag
+            processLeadingComments(node, ret, options);
+            processTrailingComments(node, ret, options);
+            parent.children.push(ret);
+        }
+    }
+};
 // process AST node AnyTypeAnnotation
 var AnyTypeAnnotation_astNode = {
     name: "AnyTypeAnnotation", 
@@ -15246,37 +15256,28 @@ format.TSFunctionType = function(parent, node, options) {
         throw new Error('AST-node-property typeAnnotation undefined: ' + JSON.stringify(node, null, 2));
     }
     // process AST-node-property-collection parameters and
-    // embed its array of nodes in a new tag
-    f_astNode.props.push({
-        name: "parameters", 
-        tag: "params", 
-        descr: "# process AST-node-property-collection parameters and embed its array of nodes in a new tag"
-    })
+    // embed its array of nodes in a temp var
     if (node.parameters) {
         if (typeof node.parameters.length === 'undefined') {
             throw new Error('Property node.parameters must be an array');
         }
-        if (node.parameters.length > 0) {
-            var tempparameters = {
-                tag: 'params', 
-                ASTProp: 'parameters', 
-                children: [
-                    
-                ]
+        var p_parameters = {
+            tag: 'notUsed', 
+            children: [
+                
+            ]
+        };
+        var i, i_items=node.parameters, i_len=node.parameters.length, item;
+        for (i=0; i<i_len; i++) {
+            item = node.parameters[i];
+            item.__parent = {
+                name: 'parameters', 
+                len: node.parameters.length
             };
-            var i, i_items=node.parameters, i_len=node.parameters.length, item;
-            for (i=0; i<i_len; i++) {
-                item = node.parameters[i];
-                item.__parent = {
-                    name: 'parameters', 
-                    len: node.parameters.length
-                };
-                format(tempparameters, item, options)
-            }
-            ret.children.push(tempparameters)
+            format(p_parameters, item, options)
         }
     }
-    processParams(ret);
+    processParams2(ret, p_parameters);
     // process AST-node-property returnType and set it in a var
     var p_returnType = null;
     if (typeof(node.returnType) !== 'undefined' && node.returnType != null) {
@@ -15332,6 +15333,7 @@ format.TSFunctionType = function(parent, node, options) {
         };
         ret.children.push(p_returnType);
     }
+    console.log('TSFunctionType', 'ret', ret);
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -18446,6 +18448,49 @@ function processComments(comments, node, ittfNode, options, leading) {
         }
     }
 }
+function processParams2(ret, p_params) {
+    if (p_params != null) {
+        var i, i_items=p_params.children, i_len=p_params.children.length, item;
+        for (i=0; i<i_len; i++) {
+            item = p_params.children[i];
+            console.log('TSFunctionType', 'p_params.item', item);
+            if (item.tag == '@id') {
+                item.tag = 'param';
+                ret.children.push(item);
+            }
+            else if (item.tag == '=') {
+                if (item.children.length == 2) {
+                    var assignItem = item.children[1];
+                    item.tag = 'param';
+                    item.name = item.children[0].name || item.children[0].textified;
+                    item.children = item.children[0].children;
+                    if (assignItem.children.length == 0) {
+                        assignItem.tag = '=';
+                        item.children.push(assignItem)
+                    }
+                    else {
+                        item.children.push({
+                            tag: '=', 
+                            children: [assignItem]
+                        })
+                    }
+                    ret.children.push(item);
+                }
+                else {
+                    throw new Error('processParams2 - state not managed');
+                }
+            }
+            else if (item.tag == '...') {
+                item.tag = 'param';
+                item.name = '...' + item.name;
+                ret.children.push(item);
+            }
+            else {
+                throw new Error('processParams2 - state not managed');
+            }
+        }
+    }
+}
 function processParams(ittfNode) {
     var pos = getChildPosByTag(ittfNode, 'params');
     var temp = [];
@@ -18660,7 +18705,7 @@ function setTextList(ittfNode, sep) {
     var i, i_items=ittfNode.children, i_len=ittfNode.children.length, item;
     for (i=0; i<i_len; i++) {
         item = ittfNode.children[i];
-        // log 'setTextList', item.tag, item.isText, item.textified
+        console.log('setTextList', item.tag, item.isText, item.textified);
         if (item.isText) {
             sb.push(item.name);
         }

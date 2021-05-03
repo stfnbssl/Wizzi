@@ -1,0 +1,30 @@
+module
+
+    $
+        var md = {
+            name: 'ModalDialog',
+            from: '../../src/components/widgets',
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include snackcomp
+
+        $append imports2
+            import Button from '../../src/components/widgets/Button'
+
+        $append template
+            < ModalDialog
+                @ {...args}
+
+        v08/ts/react/story(Dialog_1)
+            @ visible true
+            @ title "Experience already exists!"
+            @ children
+                div
+                    p You already have an experience published
+                        \b in your profile. Please choose another name.
+                    < Button
+                        @ large {true}
+                        @ variant "secondary"
+                        + Choose another name

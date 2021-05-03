@@ -355,6 +355,10 @@ function getWriteProperty(ctx) {
                     })
                 })
             }
+            else if (name == '$') {
+                ctx.w('$' + '{' + value + '}');
+                return callback(null);
+            }
             else {
                 if (prop.styledprop) {
                     value = "£{props => " + prop.styledprop + "}";

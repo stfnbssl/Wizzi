@@ -7,5 +7,5 @@ module
         var md = {
         }
 
-    ${'$'}if wzCtx.Build.useStaticFiles
+    ${'$'}if wzCtx.Build.express.useStaticFiles
         v08/express/middlewares/static${call}

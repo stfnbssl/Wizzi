@@ -27,7 +27,7 @@ module
     ${'$'}if wzCtx.Build.useNetlify
         import { NetlifyServerMiddleware } from './netlifyServer.js'
     import {UserInViewMiddleware} from './userInViews.js'
-    ${'$'}if wzCtx.Build.useStaticFiles
+    ${'$'}if wzCtx.Build.express.useStaticFiles
         import { StaticFilesMiddleware } from './static.js'
     ${'$'}if wzCtx.Build.useWizziViewEngine
         import { WizziViewEngineMiddleware } from './wizziViewEngine.js'
@@ -63,7 +63,7 @@ module
             ${'$'}if wzCtx.Build.useNetlify
                 @ NetlifyServerMiddleware
             @ UserInViewMiddleware
-            ${'$'}if wzCtx.Build.useStaticFiles
+            ${'$'}if wzCtx.Build.express.useStaticFiles
                 @ StaticFilesMiddleware
             ${'$'}if wzCtx.Build.useWizziViewEngine
                 @ WizziViewEngineMiddleware

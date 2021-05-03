@@ -358,7 +358,8 @@
 		},
 		{
 			"name": "AssignmentPattern",
-			"ittfTag": "node.operator",
+			"ittfTag": "node.operator||'='",
+			"tagIsVar": true,
 			"props": []
 		},
 		{
@@ -606,6 +607,11 @@
 		{
 			"name": "StringTypeAnnotation",
 			"ittfTag": ":string",
+			"props": []
+		},
+		{
+			"name": "TSSymbolKeyword",
+			"ittfTag": ":symbol",
 			"props": []
 		},
 		{

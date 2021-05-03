@@ -8,11 +8,15 @@
         // var pkgName = "sigma_express_auth";
         // var pkgName = "ics_react_ts";
         var pkgName = "wizzi.site";
+        // var pkgName = "frontend";
+        // var pkgName = "wizzi.frontend";
         // var pkgName = "wizzi.plugin.ppt";
         // var template = "wizzi_plugin";
         // var template = "express";
         // var template = "react_ts";
-        var template = "express_ts";
+        // var template = "express_ts";
+        // var template = "webpack_react_ts";
+        var template = "ts/express_site";
         // var wizzi_plugin_type = 'syntax_structure';
         // var wizzi_plugin_schema = 'ppt';
 
@@ -37,7 +41,9 @@
                             @ '${template}'
                         {
                             { cliCtx 
-                                @ pkg_name "${pkgName}"
+                                @ name "${pkgName}"
+                                @ description "${pkgName}"
+                                @ version "0.0.1"
                                 $$ @ wizzi_plugin_type "${wizzi_plugin_type}"
                                 { author
                                 { license
@@ -51,7 +57,9 @@
                             @ destFolder
                                 _ path.join
                                     @ 'C:/My/wizzi/stfnbssl/wizzi/packages'
-                                    $$_ process.cwd
+                                    $$ _ process.cwd
+                                    $$ @ '${pkgMonoName}'
+                                    $$ @ 'packages'
                                     @ '${pkgName}'
                             @ copyInclude ['*']
                             @ copyExclude []

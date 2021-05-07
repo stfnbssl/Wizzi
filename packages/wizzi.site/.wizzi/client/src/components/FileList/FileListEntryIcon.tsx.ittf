@@ -7,17 +7,15 @@ module
         as React
         from 'react'
     import 
+        @ FileSystemEntry
         @ isEntryPoint
         @ isPackageJson
         @ isImage
         @ isTest
-        from '../../features/file/index'
+        from '../../features/file'
     import 
         @ c
         from '../ThemeProvider'
-    import 
-        @ FileSystemEntry
-        from './types'
     :type Props
         :{ 
             :p entry

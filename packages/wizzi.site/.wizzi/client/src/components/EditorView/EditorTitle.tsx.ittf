@@ -10,18 +10,18 @@ module
     $if wzCtx.Build.useOk
         import 
             @ getLoginHref
-            from '../../features/auth/index'
+            from '../../features/auth'
     import 
         @ c
         from '../ThemeProvider'
-    $if wzCtx.Build.useOk
+    $if true
         import 
             @ SaveStatus
             @ SaveHistory
-            from '../../features/packi/index'
+            from '../../features/packi'
         import 
             @ Viewer
-            from '../../features/account/index'
+            from '../../features/account'
     $else
         import 
             @ SaveStatus

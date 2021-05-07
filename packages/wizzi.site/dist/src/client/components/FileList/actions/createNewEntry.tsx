@@ -2,10 +2,9 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\FileList\actions\createNewEntry.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
-import {isInsideFolder} from '../../../features/file/index';
-import {FileSystemEntry} from '../types';
+import {FileSystemEntry, isInsideFolder} from '../../../features/file';
 import createEntryAtPath from './createEntryAtPath';
 import updateEntry from './updateEntry';
 export default function createNewEntry(entries: FileSystemEntry[], type: 'file' | 'folder', at?: string | undefined) {

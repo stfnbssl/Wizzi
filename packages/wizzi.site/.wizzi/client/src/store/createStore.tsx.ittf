@@ -19,6 +19,7 @@ module
         function createStoreWithPreloadedState
             param preloadedState
                 :ref StoreState
+            log 'createStoreWithPreloadedState', 'preloadedState', preloadedState
             const composeEnhancer
                 :typeof compose
                 =
@@ -34,7 +35,6 @@ module
             const store = createStore(createRootReducer(), preloadedState, composeEnhancer(applyMiddleware(sagaMiddleware)))
             let sagaTask = sagaMiddleware.run(createRootSaga())
                 # Hot reloading
-            #
             if module.hot
                 const newCreateRootReducer = require('./reducers')
                 _ module.hot.accept
@@ -51,4 +51,5 @@ module
                         set sagaTask = sagaMiddleware.run(newCreateRootSaga())
                             # FIXME https://github.com/GuillaumeCisco/redux-sagas-injector/blob/master/src/redux-sagas-injector.js
                     # Enable Webpack hot module replacement for sagas
+                # Hot reloading
             return store

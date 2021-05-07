@@ -18,13 +18,14 @@ module
                     :ref PackiState
                 :p wizzi
                     :ref WizziState
+                :p splitTestSettings
+                    :any
+                :p viewer
+                    :any
     #
     export 
         :interface ResponsePayload
             $*
-            :p error
-                :optional 
-                :boolean 
             :p code
                 :optional 
                 :string 
@@ -32,3 +33,10 @@ module
             :p message
                 :optional 
                 :string 
+            :p error
+                :optional 
+                :{ 
+                    :index 
+                        :any 
+                        param k
+                            :string 

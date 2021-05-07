@@ -2,9 +2,24 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\packi\types.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import {ThemeName} from '../preferences/index';
+
+export type Packi = { 
+    id: string;
+    files: PackiFiles;
+    dependencies?: { 
+        [key: string]: string;
+    };
+};
+export type PackiTemplate = { 
+    id: string;
+    files: PackiFiles;
+    dependencies?: { 
+        [key: string]: string;
+    };
+};
 
 export type PackiCodeFile = { 
     type: 'CODE';
@@ -52,8 +67,7 @@ export type PackiUser = {
 export type PackiState = { 
     /**
         // 
-        // Files that make up the content (code & assets) of the Packi. There should
-        // always be a file called "App.js" or "App.tsx" as the main entry point.
+        // Files that make up the content of the Packi.
         // 
     */
     files: PackiFiles;
@@ -133,7 +147,7 @@ export type PackiState = {
     channel: string;
 };
 
-export type SaveStatus = 'unsaved' | 'edited' | 'saving-draft' | 'saved-draft' | 'publishing' | 'published';
+export type SaveStatus = 'unsaved' | 'edited' | 'saving-draft' | 'saved-draft' | 'publishing' | 'published' | 'changed';
 
 export type SaveHistory = { 
     hashId: string;

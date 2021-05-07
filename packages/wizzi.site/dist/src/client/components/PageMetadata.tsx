@@ -2,11 +2,11 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\PageMetadata.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import * as React from 'react';
 import Helmet from 'react-helmet-async';
-import {DEFAULT_DESCRIPTION, DEFAULT_METADATA_NAME, DEFAULT_METADATA_DESCRIPTION_EMPTY, DEFAULT_METADATA_DESCRIPTION_SAVED} from '../configs/defaults';
+import {DEFAULT_DESCRIPTION, DEFAULT_METADATA_NAME, DEFAULT_METADATA_DESCRIPTION_EMPTY, DEFAULT_METADATA_DESCRIPTION_SAVED} from '../features/config';
 import {isIntentionallyNamed} from '../utils/projectNames';
 type Props = { 
     name: string;

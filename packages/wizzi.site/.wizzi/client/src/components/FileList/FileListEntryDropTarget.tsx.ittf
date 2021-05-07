@@ -3,19 +3,17 @@ module
         as React
         from 'react'
     import 
+        @ FileSystemEntry
         @ getUniquePath
         @ dragEventIncludes
-        from '../../features/file/index'
+        from '../../features/file'
     import 
         @ withThemeName
         @ ThemeName
-        from '../../features/preferences/index'
+        from '../../features/preferences'
     import 
         @ lastDraggedEntry
         from './FileListEntryBase'
-    import 
-        @ FileSystemEntry
-        from './types'
     :type Props
         :{ 
             :p entry

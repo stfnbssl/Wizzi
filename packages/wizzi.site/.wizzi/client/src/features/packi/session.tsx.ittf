@@ -81,7 +81,7 @@ module
         @ createUserHeader
         from './utils'
     export-default
-        class Packi
+        class PackiSession
             p state
                 :private
                 :ref PackiState
@@ -671,11 +671,13 @@ module
                                 :null
                             param path
                                 :string
+                log 'PackiSession', 'updateFiles', files
                 return
                     _ this.setState
                         =>
                             param state
                             const newFiles = State.updateObjects(state.files, files)
+                            log 'PackiSession', 'newFiles', newFiles
                             return
                                 iif newFiles !== state.files
                                     then

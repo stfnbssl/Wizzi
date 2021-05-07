@@ -9,7 +9,7 @@ module
         from 'react'
     import 
         @ Annotation
-        from '../../features/annotations/index'
+        from '../../features/annotations'
     import 
         @ c
         @ s

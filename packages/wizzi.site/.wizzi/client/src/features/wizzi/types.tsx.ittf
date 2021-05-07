@@ -6,8 +6,10 @@ module
                     :optional 
                     :string 
                 :p sourcePath
+                    :optional 
                     :string 
                 :p artifactGenerator
+                    :optional 
                     :string 
                 :p errorMessage
                     :optional 

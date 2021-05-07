@@ -2,11 +2,11 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\EditorView\EditorTitleName.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import * as React from 'react';
-import {withThemeName, ThemeName} from '../../features/preferences/index';
+import {withThemeName, ThemeName} from '../../features/preferences';
 import {c} from '../ThemeProvider';
 import Popover from '../widgets/Popover';
 type Props = { 
@@ -110,7 +110,7 @@ class EditorTitleName extends React.Component<Props, State> {
                         >
                             <p
                              className={css(styles.description)}>
-                                {description ?? 'defaults.DEFAULT_DESCRIPTION'}
+                                {description ?? DEFAULT_DESCRIPTION}
                             </p>
                             <button
                              onClick={onShowEditModal} className={css(styles.editButton)}>

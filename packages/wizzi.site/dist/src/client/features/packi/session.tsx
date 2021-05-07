@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\packi\session.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import mapValues from 'lodash/mapValues';
 import nullthrows from 'nullthrows';
@@ -11,7 +11,7 @@ import * as State from './State';
 import defaultConfig, {PackiIdentityState} from './defaultConfig';
 import {PackiFiles, PackiFile, PackiState, PackiUser, PackiWindowRef, PackiOptions, PackiStateListener, PackiListenerSubscription, PackiSaveOptions} from './types';
 import {createChannel, fetch, createURL, createError, createUserHeader} from './utils';
-export default class Packi {
+export default class PackiSession {
         constructor(options: PackiOptions) {
             const channel = createChannel(options.channel);
             this.apiURL = options.apiURL ?? defaultConfig.apiURL;
@@ -360,9 +360,11 @@ export default class Packi {
         updateFiles(files: { 
             [path: string]: PackiFile | null;
         }) {
+            console.log('PackiSession', 'updateFiles', files);
             return this.setState((state) => {
                 
                     const newFiles = State.updateObjects(state.files, files);
+                    console.log('PackiSession', 'newFiles', newFiles);
                     return newFiles !== state.files ? {
                                 files: newFiles
                              } : null;

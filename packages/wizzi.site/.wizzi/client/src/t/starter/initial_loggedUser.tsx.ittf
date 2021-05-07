@@ -1,0 +1,9 @@
+$group
+    $params name|@@null
+
+    { ${name}
+        @ id 'Stefi'
+        @ uid '0001'
+        @ username 'stefi un'
+        @ displayName 'stefi dn'
+        @ picture 'https://avatars.githubusercontent.com/u/728956?s=400&v=4'

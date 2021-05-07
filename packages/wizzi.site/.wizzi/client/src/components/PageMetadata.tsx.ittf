@@ -8,7 +8,7 @@ module
         @ DEFAULT_METADATA_NAME
         @ DEFAULT_METADATA_DESCRIPTION_EMPTY
         @ DEFAULT_METADATA_DESCRIPTION_SAVED
-        from '../configs/defaults'
+        from '../features/config'
     import 
         @ isIntentionallyNamed
         from '../utils/projectNames'

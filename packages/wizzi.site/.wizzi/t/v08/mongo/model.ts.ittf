@@ -46,8 +46,18 @@ $group
                                 @ type Map
                             $elif field.type == 'schema'
                                 @ type Schema
+                $if md.setUpdatedAt
+                    { updated_at
+                        @ type Date
             {
                 @ collection '${md.collectionName}'
+    $if md.setUpdatedAt
+        _ ${md.Name}Schema.pre
+            @ 'save'
+            function
+                param next
+                set this.updated_at = Date.now()
+                _ next()
     +
     export
         :type ${md.Name}ModelType

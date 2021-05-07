@@ -2,42 +2,61 @@ module
     import
         @ Viewer
         from '../account'
+    $if wzCtx.Build.usePackiAspects
+        import
+            @ loggedUser
+            from '../app'
     export
         :type AuthProps
             :{
-                :p legacyLogout
-                    :optional
-                    :=>
-                        :ref Promise
-                            :param void
-                :p getSessionSecret
-                    :=>
-                        :string
-                :p setMetadata
-                    :=>
-                        :ref Promise
-                            :param void
-                        param metadata
-                            :{
-                                :p appetizeCode
-                                    :string
-                :p viewer
-                    :optional
-                    :union
-                        :ref Viewer
-                        :undefined
-                :p dispatch
-                    :=>
-                        :void
-                        param action
-                            :{
-                                :p type
-                                    :literal 'UPDATE_VIEWER'
-                                :p viewer
-                                    :union
-                                        :ref Viewer
-                                        :null
-                                        :undefined
+                $if wzCtx.Build.usePackiAspects
+                    :p loggedUser
+                        :optional
+                        :union
+                            :ref appTypes.LoggedUser
+                            :undefined
+                    :p onLoggedOn
+                        :=>
+                            :void
+                            param user
+                                :ref appTypes.LoggedUser
+                    :p onLoggedOff
+                        :=>
+                            :void
+                $else
+                    :p legacyLogout
+                        :optional
+                        :=>
+                            :ref Promise
+                                :param void
+                    :p getSessionSecret
+                        :=>
+                            :string
+                    :p setMetadata
+                        :=>
+                            :ref Promise
+                                :param void
+                            param metadata
+                                :{
+                                    :p appetizeCode
+                                        :string
+                    :p viewer
+                        :optional
+                        :union
+                            :ref Viewer
+                            :undefined
+                    :p dispatch
+                        :=>
+                            :void
+                            param action
+                                :{
+                                    :p type
+                                        :literal 'UPDATE_VIEWER'
+                                    :p viewer
+                                        :union
+                                            :ref Viewer
+                                            :null
+                                            :undefined
     +
     export
         :type Auth0UserData

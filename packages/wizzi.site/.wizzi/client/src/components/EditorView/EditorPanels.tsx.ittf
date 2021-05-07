@@ -12,12 +12,12 @@ module
             from '../types'
     import 
         @ Annotation
-        from '../../features/annotations/index'
+        from '../../features/annotations'
     $if wzCtx.Build.useExpo
         import EditorPanelLogs from './EditorPanelLogs'
     :import-type 
         @ PanelType
-        from '../../features/preferences/index'
+        from '../../features/preferences'
     import ProblemsPanel from './ProblemsPanel'
     import 
         @ c

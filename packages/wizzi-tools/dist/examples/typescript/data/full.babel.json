@@ -12,6 +12,148 @@
           {
             "type": "VariableDeclarator",
             "id": {
+              "type": "ObjectPattern",
+              "properties": [
+                {
+                  "type": "ObjectProperty",
+                  "start": 10,
+                  "end": 20,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 18
+                    }
+                  },
+                  "extra": {
+                    "shorthand": true
+                  },
+                  "method": false,
+                  "key": {
+                    "type": "Identifier",
+                    "start": 10,
+                    "end": 20,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 18
+                      },
+                      "identifierName": "helperText"
+                    },
+                    "name": "helperText"
+                  },
+                  "computed": false,
+                  "shorthand": true,
+                  "value": {
+                    "type": "Identifier",
+                    "start": 10,
+                    "end": 20,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 18
+                      },
+                      "identifierName": "helperText"
+                    },
+                    "name": "helperText"
+                  }
+                },
+                {
+                  "type": "ObjectProperty",
+                  "start": 22,
+                  "end": 30,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 20
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 28
+                    }
+                  },
+                  "extra": {
+                    "shorthand": true
+                  },
+                  "method": false,
+                  "key": {
+                    "type": "Identifier",
+                    "start": 22,
+                    "end": 30,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 28
+                      },
+                      "identifierName": "validate"
+                    },
+                    "name": "validate"
+                  },
+                  "computed": false,
+                  "shorthand": true,
+                  "value": {
+                    "type": "Identifier",
+                    "start": 22,
+                    "end": 30,
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 28
+                      },
+                      "identifierName": "validate"
+                    },
+                    "name": "validate"
+                  }
+                },
+                {
+                  "type": "RestElement",
+                  "argument": {
+                    "type": "Identifier",
+                    "name": "other"
+                  }
+                }
+              ]
+            },
+            "init": {
+              "type": "MemberExpression",
+              "object": {
+                "type": "ThisExpression"
+              },
+              "computed": false,
+              "property": {
+                "type": "Identifier",
+                "name": "props"
+              }
+            }
+          }
+        ],
+        "kind": "const"
+      },
+      {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
               "type": "ArrayPattern",
               "elements": [
                 {

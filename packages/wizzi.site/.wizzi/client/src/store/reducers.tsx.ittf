@@ -8,6 +8,10 @@ module
     import appReducer from '../features/app/reducer'
     import packiReducer from '../features/packi/reducer'
     import wizziReducer from '../features/wizzi/reducer'
+    import
+        @ viewer
+        @ splitTestSettings    
+        from './createRedux'
     export 
         const createRootReducer
             => 
@@ -18,3 +22,5 @@ module
                         @ app appReducer
                         @ packi packiReducer
                         @ wizzi wizziReducer
+                        @ viewer
+                        @ splitTestSettings

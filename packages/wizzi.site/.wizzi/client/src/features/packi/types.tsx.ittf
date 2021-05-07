@@ -2,6 +2,36 @@ module
     import
         @ ThemeName
         from '../preferences/index'
+    $if wzCtx.Build.usePackiAspects
+        +
+        export
+            :type Packi
+                :{
+                    :p id
+                        :string
+                    :p files
+                        :ref PackiFiles
+                    :p dependencies
+                        :optional
+                        :{
+                            :index
+                                :string
+                                param key
+                                    :string
+        export
+            :type PackiTemplate
+                :{
+                    :p id
+                        :string
+                    :p files
+                        :ref PackiFiles
+                    :p dependencies
+                        :optional
+                        :{
+                            :index
+                                :string
+                                param key
+                                    :string
     +
     export
         :type PackiCodeFile
@@ -108,8 +138,7 @@ module
                     :ref PackiFiles
                     #
                         #
-                        # Files that make up the content (code & assets) of the Packi. There should
-                        # always be a file called "App.js" or "App.tsx" as the main entry point.
+                        # Files that make up the content of the Packi. 
                         #
                 :p name
                     :string
@@ -200,6 +229,7 @@ module
                 :literal 'saved-draft'
                 :literal 'publishing'
                 :literal 'published'
+                :literal 'changed'
     +
     export
         :type SaveHistory

@@ -2,9 +2,9 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\FileList\actions\openEntry.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
-import {FileSystemEntry} from '../types';
+import {FileSystemEntry} from '../../../features/file';
 import updateEntry from './updateEntry';
 export default function openEntry(entries: FileSystemEntry[], path: string, focus: boolean = false):  FileSystemEntry[] {
     

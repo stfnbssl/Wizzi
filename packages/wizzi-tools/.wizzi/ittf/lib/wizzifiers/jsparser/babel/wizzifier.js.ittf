@@ -1549,12 +1549,14 @@
 		else
 			throw new Error('ArrayPattern must be textual: ' + JSON.stringify(node, null, 2))
 
-    f( RestElement, ...;is-text
+    f( RestElement, ...$$;is-text
 		f_p(argument, true , Pattern
 		get_text_from_1_children(  )
 		f_p( typeAnnotation, false
-		set ret.name = '...' + ret.name
-        set ret.textified = ret.name
+		$$ set ret.name = '...' + ret.name
+        $$ set ret.textified = ret.name
+        set ret.textified = '...' + ret.name
+        log 'RestElement', ret.tag, ret.name, ret.textified
 
     f( AssignmentPattern, node.operator||'=';tag-is-var
 		f_p_temp( left, true, true, Pattern | Expression

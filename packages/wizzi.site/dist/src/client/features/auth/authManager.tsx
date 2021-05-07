@@ -2,11 +2,11 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\auth\authManager.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import ExtendableError from 'es6-error';
 import {getAuthStorageKey} from './config';
-import {StorageHandler} from '../storage/index';
+import {StorageHandler} from '../storage';
 import {Auth0UserData, Auth0TokenData} from './types';
 
 export default class AuthenticationManager {

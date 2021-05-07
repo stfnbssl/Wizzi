@@ -1,11 +1,9 @@
 module
     import 
+        @ FileSystemEntry
         @ isInsideFolder
         @ changeParentPath
-        from '../../../features/file/index'
-    import 
-        @ FileSystemEntry
-        from '../types'
+        from '../../../features/file'
     import createEntryAtPath from './createEntryAtPath'
     import updateEntry from './updateEntry'
     export-default 

@@ -1,11 +1,11 @@
 $group
     $params level|1
-    p _Packi
-        :ref Packi
+    p _PackiSession
+        :ref PackiSession
     p _PackiStateListener?
         :ref PackiListenerSubscription
     $if wzCtx.Build.useExpo
-        p _snackLogListener?
+        p _packiLogListener?
             :ref PackiListenerSubscription
         p _broadcastChannel
             :ref BroadcastChannel

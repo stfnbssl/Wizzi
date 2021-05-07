@@ -53,8 +53,8 @@ module
                 if !onOff
                     _ ts.setFrequence(0)
                 else
-                    @expr payload && ts.setPayload(payload)
-                    @expr frequence && ts.setFrequence(frequence)
+                    + payload && ts.setPayload(payload)
+                    + frequence && ts.setFrequence(frequence)
             else
                 set this.timedServices[event] =
                     new TimedService

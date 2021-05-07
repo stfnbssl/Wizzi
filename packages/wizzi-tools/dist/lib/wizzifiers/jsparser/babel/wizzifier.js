@@ -7467,7 +7467,6 @@ format.ArrayPattern = function(parent, node, options) {
 var RestElement_astNode = {
     name: "RestElement", 
     ittfTag: "...", 
-    isText: true, 
     props: [
         
     ]
@@ -7475,11 +7474,11 @@ var RestElement_astNode = {
 wzDocs.AstgNodes.push(RestElement_astNode)
 format.RestElement = function(parent, node, options) {
     var f_astNode = RestElement_astNode;
-    var __isText = true;
+    var __isText = false;
     var ret = {
         tag: '...', 
         name: '', 
-        isText: true, 
+        isText: false, 
         textified: null, 
         AST: 'RestElement', 
         source: options.input.substring(node.start, node.end), 
@@ -7523,8 +7522,8 @@ format.RestElement = function(parent, node, options) {
         }
         format(ret, node.typeAnnotation, options)
     }
-    ret.name = '...' + ret.name;
-    ret.textified = ret.name;
+    ret.textified = '...' + ret.name;
+    console.log('RestElement', ret.tag, ret.name, ret.textified);
     if (ret != null) {
         if (__isText) {
             ret.textified = ret.name;
@@ -18705,7 +18704,7 @@ function setTextList(ittfNode, sep) {
     var i, i_items=ittfNode.children, i_len=ittfNode.children.length, item;
     for (i=0; i<i_len; i++) {
         item = ittfNode.children[i];
-        console.log('setTextList', item.tag, item.isText, item.textified);
+        console.log('setTextList', item.tag, item.isText, item.name, item.textified);
         if (item.isText) {
             sb.push(item.name);
         }

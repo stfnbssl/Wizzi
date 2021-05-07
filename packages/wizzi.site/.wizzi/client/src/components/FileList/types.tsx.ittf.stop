@@ -12,6 +12,9 @@ module
                                     :literal 'file'
                                 :p content
                                     :string 
+                                :p generated
+                                    :optional 
+                                    :boolean
                                 :p virtual
                                     :optional 
                                     :literal true
@@ -56,6 +59,9 @@ module
                                     :string 
                                 :p asset
                                     :literal true
+                                :p generated
+                                    :optional 
+                                    :boolean
                                 :p virtual
                                     :optional 
                                     :literal true
@@ -96,6 +102,9 @@ module
                                 :p asset
                                     :optional 
                                     :literal false
+                                :p generated
+                                    :optional 
+                                    :boolean
                                 :p virtual
                                     :optional 
                                     :literal false

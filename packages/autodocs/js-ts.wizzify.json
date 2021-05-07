@@ -353,7 +353,6 @@
 		{
 			"name": "RestElement",
 			"ittfTag": "...",
-			"isText": true,
 			"props": []
 		},
 		{

@@ -19,144 +19,155 @@ module
         @ SaveOptions
         @ ${pack_Name}Files
         @ ${pack_Name}File
-        from '../../features/packi/index'
+        from '../../features/packi'
+
+    import
+        @ LoggedUser
+        from '../../features/app'
+
+    import 
+        @ AuthProps
+        from '../../features/auth'
+
+    import
+        @ GeneratedArtifact
+        @ JobError
+        from '../../features/wizzi'
+
+    import
+        @ Packi
+        from '../../features/packi'
+
+    import
+        @ FileSystemEntry
+        @ TextFileEntry
+        @ AssetFileEntry
+        from '../../features/file'
+
     import 
         @ Annotation
-        from '../../features/annotations/index'
+        from '../../features/annotations'
     $if wzCtx.Build.useExpo
         import 
             @ PlatformOption
             from '../../utils/PlatformOptions'
     export 
         :type EditorViewProps
-            :{ 
-                :p createdAt
-                    :union 
-                        :string 
-                        :undefined 
-                :p saveHistory
-                    :ref SaveHistory
-                :p saveStatus
-                    :ref SaveStatus
-                :p selectedFile
-                    :string 
-                :p files
-                    :ref ${pack_Name}Files
-                :p name
-                    :string 
-                :p description
-                    :string
-                $if wzCtx.Build.useExpo 
-                    :p dependencies
-                        :ref SnackDependencies
-                    :p missingDependencies
-                        :ref SnackMissingDependencies
-                :p id
-                    :optional 
-                    :string 
-                $if wzCtx.Build.useExpo 
-                    :p isResolving
-                        :boolean 
-                :p isDownloading
-                    :boolean 
-                $if wzCtx.Build.useExpo 
-                    :p connectedDevices
-                        :[ 
-                            :ref Device
-                :p annotations
-                    :[ 
-                        :ref Annotation
-                $if wzCtx.Build.useExpo 
-                    :p deviceLogs
-                        :[ 
-                            :ref DeviceLog
-                :p experienceURL
-                    :string 
-                $if wzCtx.Build.useExpo 
-                    :p experienceName
-                        :string 
-                    :p sdkVersion
-                        :ref SDKVersion
-                :p sendCodeOnChangeEnabled
-                    :boolean 
-                $if wzCtx.Build.useExpo 
-                    :p isLocalWebPreview
-                        :boolean 
-                :p onSendCode
-                    :=> 
-                        :void 
-                $if wzCtx.Build.useExpo 
-                    :p onReloadSnack
-                        :=> 
-                            :void 
-                :p onToggleSendCode
-                    :=> 
-                        :void 
-                :p onTogglePreview
-                    :=> 
-                        :void 
-                $if wzCtx.Build.useExpo 
-                    :p onChangePlatform
-                        :=> 
-                            :void 
-                            param platform
-                                :ref Platform
-                    :p onDeviceConnectionAttempt
-                        :=> 
-                            :void 
-                    :p onClearDeviceLogs
-                        :=> 
-                            :void 
-                :p onSubmitMetadata
-                    :=> 
-                        :void 
-                        param details
-                            :{ 
-                                :p name
-                                    :string 
-                                :p description
-                                    :string 
-                $if wzCtx.Build.useExpo 
-                    :p onChangeSDKVersion
-                        :=> 
-                            :void 
-                            param sdkVersion
-                                :ref SDKVersion
-                            param isLocalWebPreview
-                                :boolean 
-                                :optional 
-                :p onPublishAsync
-                    :=> 
-                        :ref Promise
-                            :param void
-                        param options
-                            :ref SaveOptions
-                            :optional 
-                :p onDownloadAsync
-                    :=> 
-                        :ref Promise
-                            :param void
-                :p onSelectFile
-                    :=> 
-                        :void 
-                        param path
+            :intersect
+                :ref AuthProps
+                :{ 
+                    :p createdAt
+                        :union 
                             :string 
-                :p updateFiles
-                    :=> 
-                        :void 
-                        param updateFn
+                            :undefined 
+                    :p saveHistory
+                        :ref SaveHistory
+                    :p saveStatus
+                        :ref SaveStatus
+                    :p selectedFile
+                        :string 
+                    :p files
+                        :ref ${pack_Name}Files
+                    :p name
+                        :string 
+                    :p description
+                        :string
+                    $if wzCtx.Build.useExpo 
+                        :p dependencies
+                            :ref SnackDependencies
+                        :p missingDependencies
+                            :ref SnackMissingDependencies
+                    :p id
+                        :optional 
+                        :string 
+                    $if wzCtx.Build.useExpo 
+                        :p isResolving
+                            :boolean 
+                    :p isDownloading
+                        :boolean 
+                    $if wzCtx.Build.useExpo 
+                        :p connectedDevices
+                            :[ 
+                                :ref Device
+                    :p annotations
+                        :[ 
+                            :ref Annotation
+                    $if wzCtx.Build.useExpo 
+                        :p deviceLogs
+                            :[ 
+                                :ref DeviceLog
+                    :p experienceURL
+                        :string 
+                    $if wzCtx.Build.useExpo 
+                        :p experienceName
+                            :string 
+                        :p sdkVersion
+                            :ref SDKVersion
+                    :p sendCodeOnChangeEnabled
+                        :boolean 
+                    $if wzCtx.Build.useExpo 
+                        :p isLocalWebPreview
+                            :boolean 
+                    :p onSendCode
+                        :=> 
+                            :void 
+                    $if wzCtx.Build.useExpo 
+                        :p onReloadSnack
                             :=> 
+                                :void 
+                    :p onToggleSendCode
+                        :=> 
+                            :void 
+                    :p onTogglePreview
+                        :=> 
+                            :void 
+                    $if wzCtx.Build.useExpo 
+                        :p onChangePlatform
+                            :=> 
+                                :void 
+                                param platform
+                                    :ref Platform
+                        :p onDeviceConnectionAttempt
+                            :=> 
+                                :void 
+                        :p onClearDeviceLogs
+                            :=> 
+                                :void 
+                    :p onSubmitMetadata
+                        :=> 
+                            :void 
+                            param details
                                 :{ 
-                                    :index 
-                                        :union 
-                                            :ref ${pack_Name}File
-                                            :null 
-                                        param path
-                                            :string 
-                                param files
-                                    :ref ${pack_Name}Files
-                $if wzCtx.Build.useExpo 
-                    :p updateDependencies
+                                    :p name
+                                        :string 
+                                    :p description
+                                        :string 
+                    $if wzCtx.Build.useExpo 
+                        :p onChangeSDKVersion
+                            :=> 
+                                :void 
+                                param sdkVersion
+                                    :ref SDKVersion
+                                param isLocalWebPreview
+                                    :boolean 
+                                    :optional 
+                    :p onPublishAsync
+                        :=> 
+                            :ref Promise
+                                :param void
+                            param options
+                                :ref SaveOptions
+                                :optional 
+                    :p onDownloadAsync
+                        :=> 
+                            :ref Promise
+                                :param void
+                    :p onSelectFile
+                        :=> 
+                            :void 
+                            param path
+                                :string 
+                    :p updateFiles
                         :=> 
                             :void 
                             param updateFn
@@ -164,57 +175,146 @@ module
                                     :{ 
                                         :index 
                                             :union 
-                                                :ref SnackDependency
+                                                :ref ${pack_Name}File
                                                 :null 
-                                            param name
+                                            param path
                                                 :string 
-                                    param dependencies
-                                        :ref SnackDependencies
-                :p uploadFileAsync
-                    :=> 
-                        :ref Promise
-                            :param string
-                        param file
-                            :ref File
-                $if wzCtx.Build.useExpo 
-                    :p setDeviceId
+                                    param files
+                                        :ref ${pack_Name}Files
+                    $if wzCtx.Build.useExpo 
+                        :p updateDependencies
+                            :=> 
+                                :void 
+                                param updateFn
+                                    :=> 
+                                        :{ 
+                                            :index 
+                                                :union 
+                                                    :ref SnackDependency
+                                                    :null 
+                                                param name
+                                                    :string 
+                                        param dependencies
+                                            :ref SnackDependencies
+                    :p uploadFileAsync
                         :=> 
-                            :void 
-                            param deviceId
-                                :string 
-                    :p deviceId
-                        :union 
-                            :string 
-                            :undefined 
-                $if wzCtx.Build.useExpo 
-                    :p wasUpgraded
-                        :boolean 
-                :p autosaveEnabled
-                    :boolean 
-                $if wzCtx.Build.useExpo 
-                    :p payerCode
-                        :union 
-                            :string 
-                            :undefined 
-                :p userAgent
-                    :string 
-                :p previewRef
-                    :ref React.MutableRefObject
-                        :param 
+                            :ref Promise
+                                :param string
+                            param file
+                                :ref File
+                    $if wzCtx.Build.useExpo 
+                        :p setDeviceId
+                            :=> 
+                                :void 
+                                param deviceId
+                                    :string 
+                        :p deviceId
                             :union 
-                                :ref Window
-                                :null 
-                :p previewShown
-                    :boolean 
-                :p previewURL
-                    :string 
-                $if wzCtx.Build.useExpo 
-                    :p platform
-                        :ref Platform
-                    :p platformOptions
-                        :[ 
-                            :ref PlatformOption
-                :p verbose
-                    :boolean 
-                :p snackagerURL
-                    :string 
+                                :string 
+                                :undefined 
+                    $if wzCtx.Build.useExpo 
+                        :p wasUpgraded
+                            :boolean 
+                    :p autosaveEnabled
+                        :boolean 
+                    $if wzCtx.Build.useExpo 
+                        :p payerCode
+                            :union 
+                                :string 
+                                :undefined 
+                    :p userAgent
+                        :string 
+                    :p previewRef
+                        :ref React.MutableRefObject
+                            :param 
+                                :union 
+                                    :ref Window
+                                    :null 
+                    :p previewShown
+                        :boolean 
+                    :p previewURL
+                        :string 
+                    $if wzCtx.Build.useExpo 
+                        :p platform
+                            :ref Platform
+                        :p platformOptions
+                            :[ 
+                                :ref PlatformOption
+                    :p verbose
+                        :boolean 
+                    :p snackagerURL
+                        :string 
+                    $if wzCtx.Build.usePackiAspects
+                        :p loggedUser
+                            :optional 
+                            :ref LoggedUser
+                        :p creatorUsername
+                            :optional 
+                            :string 
+                        :p currentPacki
+                            :optional 
+                            :ref Packi
+                        :p fileEntries
+                            :[ 
+                                :ref FileSystemEntry
+                        :p entry
+                            :union 
+                                :ref TextFileEntry
+                                :ref AssetFileEntry
+                                :undefined 
+                        :p params
+                            :{ 
+                                :p id
+                                    :optional 
+                                    :string 
+                        :p generatedArtifact
+                            :optional 
+                            :ref GeneratedArtifact
+                        :p jobError
+                            :optional 
+                            :ref JobError
+                            # loadingMessage: string | undefined;
+                        :p isWizziJobWaiting
+                            :boolean 
+                        :p onSelectPacki
+                            :=> 
+                                :void 
+                                param packiId
+                                    :string 
+                        :p onCreatePacki
+                            :=> 
+                                :void 
+                                param packiId
+                                    :string 
+                                param packiKind
+                                    :string 
+                        :p onDeletePacki
+                            :=> 
+                                :void 
+                                param packiId
+                                    :string 
+                        :p onFileEntriesChange
+                            :=> 
+                                :ref Promise
+                                    :param void
+                                param entries
+                                    :[ 
+                                        :ref FileSystemEntry
+                        :p onChangeCode
+                            :=> 
+                                :void 
+                                param code
+                                    :string 
+                        :p onEntrySelected
+                            :=> 
+                                :void 
+                                param entry
+                                    :ref FileSystemEntry
+                        :p onExecuteWizziJob
+                            :=> 
+                                :void 
+                        :p onSaveCode
+                            :=> 
+                                :void 
+
+

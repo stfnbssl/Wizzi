@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\preferences\PreferencesProvider.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import debounce from 'lodash/debounce';
 import * as React from 'react';
@@ -29,7 +29,12 @@ const defaults: PreferencesType = {
     fileTreeShown: true, 
     panelsShown: false, 
     panelType: 'errors', 
-    theme: 'light'
+    theme: 'light', 
+    autoGenSingleDoc: false, 
+    autoExecJob: false, 
+    loggedUid: undefined, 
+    connectGithubRepos: false, 
+    trustLocalStorage: false
  };
 
 class PreferencesProvider extends React.Component<Props, State> {

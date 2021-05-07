@@ -2,13 +2,14 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\EditorView\EditorToolbar.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import * as React from 'react';
-import {SaveStatus, SaveHistory, SaveOptions, Viewer} from './mocks';
+import {SaveStatus, SaveHistory, SaveOptions} from '../../features/packi';
+import {Viewer} from '../../features/account';
 import EditorTitle from './EditorTitle';
-import {usePreferences} from '../../features/preferences/index';
+import {usePreferences} from '../../features/preferences';
 import SearchButton from '../Search/SearchButton';
 import {ToolbarShell} from '../shell/ToolbarShell';
 import {ToolbarTitleShell} from '../shell/ToolbarTitleShell';
@@ -17,6 +18,10 @@ import {Button} from '../widgets/Button';
 import IconButton from '../widgets/IconButton';
 import packiIconDark from '../../assets/snack-icon-dark.svg';
 import packiIconLight from '../../assets/snack-icon.svg';
+import {LoggedUser} from '../../features/app';
+import {Packi} from '../../features/packi';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 export type EditorToolbarProps = { 
     name: string;
     description: string;
@@ -34,6 +39,19 @@ export type EditorToolbarProps = {
     onDismissEditModal: () => void;
     onDownloadCode: () => Promise<void>;
     onPublishAsync: (options?: SaveOptions) => Promise<void>;
+    currentPacki?: Packi;
+    loggedUser: LoggedUser | undefined;
+    splitViewKind: string;
+    // isResolving: boolean;
+    isAuthModalVisible: boolean;
+    isWizziJobWaiting: boolean;
+    onLoggedOn: (user: LoggedUser) => void;
+    onLoggedOff: () => void;
+    onChangeSplitViewKind: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    onExecuteWizziJob: () => void;
+    onShowPackiManager: () => void;
+    onSaveCode: () => void;
+    creatorUsername?: string;
 };
 export function EditorToolbar(props: EditorToolbarProps) {
 
@@ -51,7 +69,16 @@ export function EditorToolbar(props: EditorToolbarProps) {
         onShowEditModal, 
         onDismissEditModal, 
         onDownloadCode, 
-        onPublishAsync
+        onPublishAsync, 
+        splitViewKind, 
+        onChangeSplitViewKind, 
+        onLoggedOn, 
+        onLoggedOff, 
+        loggedUser, 
+        isAuthModalVisible, 
+        isWizziJobWaiting, 
+        onExecuteWizziJob, 
+        onShowPackiManager
      } = props;
     const {
         theme
@@ -94,6 +121,21 @@ export function EditorToolbar(props: EditorToolbarProps) {
                         isPublishing ? 'Saving…' : isPublished ? 'Saved' : 'Save'
                     }
                 </Button>
+                <Select
+                 value={splitViewKind} onChange={onChangeSplitViewKind}>
+                    <MenuItem
+                     value={'left'}>
+                        Left
+                    </MenuItem>
+                    <MenuItem
+                     value={'right'}>
+                        Right
+                    </MenuItem>
+                    <MenuItem
+                     value={'both'}>
+                        Both
+                    </MenuItem>
+                </Select>
                 <IconButton 
                     responsive
                     title="Download as zip"

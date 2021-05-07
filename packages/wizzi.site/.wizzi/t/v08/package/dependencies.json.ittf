@@ -12,25 +12,24 @@ $group
     $if wzCtx.Build.useReact && wzCtx.Build.useStyledSystem
         @styled-system/theme-get "^5.1.2"
     
-    $group
-        $if wzCtx.Build.useReact
-            $if wzCtx.Build.react.useMaterialUI
-                $if wzCtx.Build.react.materialUI.usePickers
-                    @date-io/date-fns "^1.3.6"
+    $if wzCtx.Build.useReact
+        $if wzCtx.Build.react.useMaterialUI
+            $if wzCtx.Build.react.materialUI.usePickers
+                @date-io/date-fns "^1.3.6"
+            $if wzCtx.Build.react.useV16
+                @material-ui/core "^4.11.2"
+            $else
+                @material-ui/core "^4.11.3"
+            $if wzCtx.Build.react.materialUI.useIcons
                 $if wzCtx.Build.react.useV16
-                    @material-ui/core "^3.9.4"
+                    @material-ui/icons "^4.11.2"
                 $else
-                    @material-ui/core "^4.11.3"
-                $if wzCtx.Build.react.materialUI.useIcons
-                    $if wzCtx.Build.react.useV16
-                        @material-ui/icons "^3.0.0"
-                    $else
-                        @material-ui/icons "^4.11.2"
-                $if wzCtx.Build.react.materialUI.useLab
-                    @material-ui/lab "^4.0.0-alpha.14"
-                $if wzCtx.Build.react.materialUI.usePickers
-                    @material-ui/pickers "^3.0.0"
-                @material-ui/styles "^4.11.2"
+                    @material-ui/icons "^4.11.2"
+            $if wzCtx.Build.react.materialUI.useLab
+                @material-ui/lab "^4.0.0-alpha.14"
+            $if wzCtx.Build.react.materialUI.usePickers
+                @material-ui/pickers "^3.0.0"
+            @material-ui/styles "^4.11.2"
     
     $if wzCtx.Build.useAphrodite
         aphrodite "^2.4.0"
@@ -229,6 +228,8 @@ $group
             $if wzCtx.Build.react.useRedux
                 $if wzCtx.Build.react.redux.useThunk
                     redux-thunk "^2.3.0"
+                $if wzCtx.Build.react.redux.useSaga
+                    redux-saga "latest"
     $if wzCtx.Build.useRegeneratorRuntime
         regenerator-runtime "^0.13.7"
     
@@ -246,6 +247,10 @@ $group
     
     $if wzCtx.Build.useTailwindcss
         tailwindcss "^2.0.4"
+    $if wzCtx.Build.useReact
+        $if wzCtx.Build.react.useRedux
+            $if wzCtx.Build.react.redux.useSaga
+                typesafe-actions "latest"
     $if wzCtx.Build.useTypescript
         typescript "^4.2.3"
     

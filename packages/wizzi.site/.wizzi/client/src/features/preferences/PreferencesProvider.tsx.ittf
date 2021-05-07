@@ -82,6 +82,12 @@ module
                 @ panelsShown false
                 @ panelType 'errors'
                 @ theme 'light'
+                $if wzCtx.Build.usePackiAspects
+                    @ autoGenSingleDoc false
+                    @ autoExecJob false
+                    @ loggedUid undefined
+                    @ connectGithubRepos false
+                    @ trustLocalStorage false
     +
     class PreferencesProvider
         super React.Component

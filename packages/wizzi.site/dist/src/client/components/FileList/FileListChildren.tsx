@@ -2,15 +2,14 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\FileList\FileListChildren.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import escapeRegexp from 'escape-string-regexp';
 import * as React from 'react';
-import {isInsideFolder} from '../../features/file/index';
-import {ThemeName} from '../../features/preferences/index';
+import {FileSystemEntry, isInsideFolder} from '../../features/file';
+import {ThemeName} from '../../features/preferences';
 import FileListEntry from './FileListEntry';
-import {FileSystemEntry} from './types';
 type Props = { 
     parent: string;
     entries: FileSystemEntry[];

@@ -1,9 +1,13 @@
 module
+    import
+        @ deprecated 
+        from "typesafe-actions"
+    const 
+        {
+            @ createStandardAction
+        = deprecated
     import 
-        @ createStandardAction
-        from 'typesafe-actions'
-    import 
-        @ storeTypes
+        @ ResponsePayload
         from '../../store'
     import 
         @ PackiFiles
@@ -28,7 +32,7 @@ module
     +
     export 
         :interface ArtifactResponsePayload
-            :extends storeTypes.ResponsePayload
+            :extends ResponsePayload
             :p generatedArtifact
                 :ref GeneratedArtifact
     +
@@ -39,7 +43,7 @@ module
     +
     export 
         :interface JobResponsePayload
-            :extends storeTypes.ResponsePayload
+            :extends ResponsePayload
             :p generatedArtifacts
                 :ref PackiFiles
     +

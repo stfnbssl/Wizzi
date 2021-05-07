@@ -42,7 +42,8 @@ $group
                     @ 'html'
     
     $if wzCtx.Build.webpack.useWorker
-        new WorkerPlugin()
+        # Needed no more see https://github.com/GoogleChromeLabs/worker-plugin/issues/88
+        # new WorkerPlugin()
     
     $if wzCtx.Build.webpack.useMiniCssExtract
         new MiniCssExtractPlugin()

@@ -351,7 +351,7 @@
 		param sep
 		var sb = []
 		foreach item in ittfNode.children
-			log 'setTextList', item.tag, item.isText, item.textified
+			log 'setTextList', item.tag, item.isText, item.name, item.textified
 			if item.isText
 				_ sb.push(item.name)
 			elif item.textified

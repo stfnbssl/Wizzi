@@ -17,3 +17,5 @@ ${'$'}group
         ${'$'}if wzCtx.Build.react.useRedux
             ${'$'}if wzCtx.Build.react.redux.useThunk
                 redux-thunk "^2.3.0"
+            ${'$'}if wzCtx.Build.react.redux.useSaga
+                redux-saga "latest"

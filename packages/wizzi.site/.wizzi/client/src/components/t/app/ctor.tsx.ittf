@@ -94,7 +94,6 @@ $group
                         @ props.match.params.username
                         + /
                         @ props.match.params.projectName
-                        + 
                 else
                     $if wzCtx.Build.useExpo
                         iif props.match.params.id && !wasUpgraded
@@ -108,11 +107,14 @@ $group
         $if wzCtx.Build.useExpo
             const isWorker = true
         const sendCodeOnChangeEnabled = true
-        const sessionSecret = props.getSessionSecret()
+        $if wzCtx.Build.usePackiAspects
+            const sessionSecret = null
+        $else
+            const sessionSecret = props.getSessionSecret()
         const snackagerURL = nullthrows(process.env.IMPORT_SERVER_URL)
         const isLocalWebPreview = false
-        set this._Packi =
-            new Packi
+        set this._PackiSession =
+            new PackiSession
                 { 
                     @ disabled true
                     $if wzCtx.Build.useExpo
@@ -215,9 +217,28 @@ $group
                                     iif Object.keys(files).length
                                         then Object.keys(files)[0]
                                         else ''
+        
+        $if wzCtx.Build.usePackiAspects
+            const params
+                :ref Params
+                =
+                    { 
+                        ... 
+                            ( 
+                                iif !props.match.params.id && props.match.params.username && props.match.params.repoName
+                                    then
+                                        { 
+                                            @ id
+                                                `lit 
+                                                    + @
+                                                    @ props.match.params.username
+                                                    + /
+                                                    @ props.match.params.repoName
+                                    else null
+        
         set this.state =
             { 
-                @ session this._Packi.getState()
+                @ session this._PackiSession.getState()
                 @ selectedFile
                 @ sendCodeOnChangeEnabled
                 $if wzCtx.Build.useExpo
@@ -252,3 +273,13 @@ $group
                 @ annotations []
                 @ snackagerURL
                 @ webPreviewURL ''
+                $if wzCtx.Build.usePackiAspects
+                    @ packiStoreId undefined
+                    @ packiSessionReady false
+                    @ fileEntries []
+                    @ generatedArtifact undefined
+                    @ jobGeneratedArtifacts undefined
+                    @ jobError undefined
+                    @ isWizziJobWaiting false
+                    @ lastJobfileEntries []
+                    @ params

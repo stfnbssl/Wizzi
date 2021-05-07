@@ -1,11 +1,9 @@
 module
     import 
+        @ FileSystemEntry
         @ getUniquePath
         @ getParentPath
-        from '../../../features/file/index'
-    import 
-        @ FileSystemEntry
-        from '../types'
+        from '../../../features/file'
     import updateEntry from './updateEntry'
     export-default 
         function createEntryAtPath

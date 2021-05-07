@@ -1,7 +1,7 @@
 module
     import 
         @ FileSystemEntry
-        from '../types'
+        from '../../features/file'
     import updateEntry from './updateEntry'
     export-default 
         function closeEntry

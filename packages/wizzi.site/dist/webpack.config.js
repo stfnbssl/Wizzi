@@ -2,19 +2,22 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\root\webpack.config.js.ittf
-    utc time: Mon, 03 May 2021 14:32:28 GMT
+    utc time: Fri, 07 May 2021 11:38:43 GMT
 */
 'use strict';
 const path = require('path');
 const resolve = path.resolve;
 const webpack = require('webpack');
+// const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
+// const MonacoWebpackPlugin = require('monaco-editor-webpack-3-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 /**
     // eslint-disable import/no-commonjs
 */
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
-const WorkerPlugin = require('worker-plugin');
+// Needed no more see https://github.com/GoogleChromeLabs/worker-plugin/issues/88
+// const WorkerPlugin = require('worker-plugin')
 function env(key, def) {
     const value = process.env[key];
     if (value !== undefined) {
@@ -116,6 +119,17 @@ module.exports = {
         filename: '[name].bundle.js', 
         chunkFilename: '[id].[hash].chunk.js'
      }, 
+    
+    /**
+        * MonacoWebpackPlugin()
+        * webpack.DefinePlugin
+            * 
+                * 'process.browser' true
+    */
+    
+    // Needed no more see https://github.com/GoogleChromeLabs/worker-plugin/issues/88
+    
+    // new WorkerPlugin()
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
@@ -131,7 +145,7 @@ module.exports = {
              }
          }), 
         new webpack.IgnorePlugin(/^((fs)|(path)|(os)|(crypto)|(source-map-support))$/, /vs(\/|\\)language(\/|\\)typescript(\/|\\)lib/), 
-        new WorkerPlugin(), 
+        new webpack.ContextReplacementPlugin(/monaco-editor(\\|\/)esm(\\|\/)vs(\\|\/)editor(\\|\/)common(\\|\/)services/), 
         new MiniCssExtractPlugin(), 
         new HtmlWebpackPlugin({
             template: './src/client/index.html', 

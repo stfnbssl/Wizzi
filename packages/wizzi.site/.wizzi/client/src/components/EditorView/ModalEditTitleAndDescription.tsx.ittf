@@ -6,10 +6,9 @@ module
     import 
         as React
         from 'react'
-    $if wzCtx.Build.useOk
-        import 
-            as defaults
-            from '../../configs/defaults'
+    import 
+        @ DEFAULT_DESCRIPTION
+        from '../../features/config'
     import Form from '../Form/Form'
     import withStatus from '../Form/withStatus'
     import withValidation from '../Form/withValidation'
@@ -157,9 +156,9 @@ module
                                                 @ description e.target.value
                                 @ minRows {4}
                                 $if wzCtx.Build.useOk
-                                    @ placeholder {defaults.DEFAULT_DESCRIPTION}
+                                    @ placeholder {DEFAULT_DESCRIPTION}
                                 $else
-                                    @ placeholder 'defaults.DEFAULT_DESCRIPTION'
+                                    @ placeholder {DEFAULT_DESCRIPTION}
                             div 
                                 @ className {css(styles.buttons)}
                                 < FormButton 

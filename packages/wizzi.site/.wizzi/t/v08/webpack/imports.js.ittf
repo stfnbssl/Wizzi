@@ -31,7 +31,8 @@ $group
         const TerserPlugin = require('terser-webpack-plugin')
     
     $if wzCtx.Build.webpack.useWorker
-        const WorkerPlugin = require('worker-plugin')
+        # Needed no more see https://github.com/GoogleChromeLabs/worker-plugin/issues/88
+        # const WorkerPlugin = require('worker-plugin')
     
     $if wzCtx.Build.webpack.useStatsWriter
         const

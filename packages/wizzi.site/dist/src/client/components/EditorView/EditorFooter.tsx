@@ -2,13 +2,13 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\EditorView\EditorFooter.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import * as React from 'react';
-import {Annotation} from '../../features/annotations/index';
+import {Annotation} from '../../features/annotations';
 import {Shortcuts} from './KeyboardShortcuts';
-import type {PanelType} from '../../features/preferences/index';
+import {PreferencesContextType, PanelType, withPreferences} from '../../features/preferences';
 import {FooterShell} from '../shell/FooterShell';
 import {c} from '../ThemeProvider';
 import FooterButton from '../widgets/FooterButton';
@@ -17,7 +17,7 @@ import LoadingText from '../widgets/LoadingText';
 import MenuButton from '../widgets/MenuButton';
 import ShortcutLabel from '../widgets/ShortcutLabel';
 import ToggleSwitch from '../widgets/ToggleSwitch';
-type EditorFooterProps = { 
+export type EditorFooterProps = PreferencesContextType & { 
     annotations: Annotation[];
     fileTreeShown: boolean;
     previewShown: boolean;
@@ -31,8 +31,12 @@ type EditorFooterProps = {
     onShowShortcuts: () => void;
     onSendCode: () => void;
     theme: string;
+    loggedUid: string;
+    autoGenSingleDoc: boolean;
+    autoExecJob: boolean;
+    trustLocalStorage: boolean;
 };
-export function EditorFooter(props: EditorFooterProps) {
+function EditorFooterComp(props: EditorFooterProps) {
 
     const {
         annotations, 
@@ -47,8 +51,30 @@ export function EditorFooter(props: EditorFooterProps) {
         onTogglePreview, 
         onToggleSendCode, 
         onShowShortcuts, 
-        theme
+        theme, 
+        loggedUid, 
+        autoGenSingleDoc, 
+        autoExecJob, 
+        trustLocalStorage
      } = props;
+    const _toggleAutoGenSingleDoc = () => 
+    
+        props.setPreferences({
+            autoGenSingleDoc: !props.preferences.autoGenSingleDoc
+         })
+    ;
+    const _toggleAutoExecJob = () => 
+    
+        props.setPreferences({
+            autoExecJob: !props.preferences.autoExecJob
+         })
+    ;
+    const _toggleTrustLocalStorage = () => 
+    
+        props.setPreferences({
+            trustLocalStorage: !props.preferences.trustLocalStorage
+         })
+    ;
     const loadingItems = annotations.filter(a => 
     
         a.severity < 0
@@ -148,6 +174,45 @@ export function EditorFooter(props: EditorFooterProps) {
              icon={require('../../assets/settings-icon.png')} label={ (
                 <span
                  className={css(styles.buttonLabel)}>
+                    Auth
+                </span>
+                )
+            } content={ (
+                <React.Fragment
+                >
+                    <div
+                     style={{
+                            paddingLeft: '15px'
+                         }}>
+                        Logged uid:
+                        {loggedUid}
+                    </div>
+                    <ToggleSwitch
+                     checked={trustLocalStorage} onChange={_toggleTrustLocalStorage} label="Trust local storage" />
+                </React.Fragment>
+                )
+            } />
+            <MenuButton
+             icon={require('../../assets/settings-icon.png')} label={ (
+                <span
+                 className={css(styles.buttonLabel)}>
+                    Wizzi
+                </span>
+                )
+            } content={ (
+                <React.Fragment
+                >
+                    <ToggleSwitch
+                     checked={autoGenSingleDoc} onChange={_toggleAutoGenSingleDoc} label="Auto gen single doc" />
+                    <ToggleSwitch
+                     checked={autoExecJob} onChange={_toggleAutoExecJob} label="Auto exec job" />
+                </React.Fragment>
+                )
+            } />
+            <MenuButton
+             icon={require('../../assets/settings-icon.png')} label={ (
+                <span
+                 className={css(styles.buttonLabel)}>
                     Editor
                 </span>
                 )
@@ -184,7 +249,10 @@ export function EditorFooter(props: EditorFooterProps) {
         )
     ;
 }
+
+export const EditorFooter = withPreferences(EditorFooterComp);
 export default EditorFooter;
+
 const styles = StyleSheet.create({
     left: {
         display: 'flex', 

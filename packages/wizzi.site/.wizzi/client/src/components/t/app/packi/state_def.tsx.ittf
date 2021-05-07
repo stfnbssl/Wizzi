@@ -1,0 +1,45 @@
+$group
+
+    :p packiStoreId
+        :optional 
+        :string 
+    :p packiSessionReady
+        :boolean 
+    :p loggedUser
+        :optional 
+        :ref LoggedUser
+    :p packiNames
+        :optional 
+        :[ 
+            :string 
+    :p currentPacki
+        :optional 
+        :ref Packi
+    :p packiTemplateNames
+        :optional 
+        :[ 
+            :string 
+    :p ownedGitRepositories
+        :optional 
+        :[ 
+            :ref GitRepositoryMeta
+    :p generatedArtifact
+        :optional 
+        :ref GeneratedArtifact
+    :p jobGeneratedArtifacts
+        :optional 
+        :ref PackiFiles
+    :p jobError
+        :optional 
+        :ref JobError
+    :p params
+        :ref Params
+    :p fileEntries
+        :[ 
+            :ref FileSystemEntry
+    :p isWizziJobWaiting
+        :boolean 
+    :p lastJobfileEntries
+        :[ 
+            :ref FileSystemEntry
+

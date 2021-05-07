@@ -5,7 +5,7 @@ module
         from './config'
     import
         @ StorageHandler
-        from '../storage/index'
+        from '../storage'
     import
         @ Auth0UserData
         @ Auth0TokenData
@@ -150,7 +150,6 @@ module
                                                                         `lit
                                                                             + Bearer&nbsp;
                                                                             @ idToken
-                                                                            +
                                                             else
                                                                 {
                         return result.data

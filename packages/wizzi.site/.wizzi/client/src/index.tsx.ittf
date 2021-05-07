@@ -20,7 +20,7 @@ module
     $if wzCtx.Build.useExpo
         import ServiceWorkerManager from './components/ServiceWorkerManager'
     import ThemeProvider from './components/ThemeProvider'
-    import createStore from './store/createRedux'
+    import createStore from './store/createStore'
     :import-type 
         @ RouterData
         @ QueryParams
@@ -38,18 +38,30 @@ module
     *$
     const __INITIAL_DATA__
         { 
-            initial_RouterData( data )  $$ :ref RouterData
-            initial_QueryParams( queryParams ) $$ :ref QueryParams
-            initial_splitTestSettings( splitTestSettings ) $$ :any 
+            starter/initial_RouterData( data )  $$ :ref RouterData
+            starter/initial_QueryParams( queryParams ) $$ :ref QueryParams
+            starter/initial_splitTestSettings( splitTestSettings ) $$ :any 
     +
     const store
         _ createStore
             { 
+                { app
+                    starter/initial_loggedUser( loggedUser )
+                { packi
+                    @ loading false
+                { wizzi
+                    @ loading false
+                    @ jobError undefined
+                    @ generatedArtifact undefined
+                    { jobGeneratedArtifacts
+                    { timedServices
                 @ splitTestSettings __INITIAL_DATA__.splitTestSettings
+                @ viewer null
     +
     function PackiApp
         return 
-            < React.StrictMode 
+            $$ < React.StrictMode 
+            < React.Fragment
                 $if wzCtx.Build.useExpo
                     < ServiceWorkerManager 
                 < HelmetProvider 

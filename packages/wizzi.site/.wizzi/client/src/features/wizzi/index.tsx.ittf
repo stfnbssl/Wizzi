@@ -1,11 +1,17 @@
 module
     import 
-        as wizziTypes
+        @ GeneratedArtifact
+        @ WizziError
+        @ JobError
         from './types'
     import 
         as wizziActions
         from './actions'
     +
     export 
-        @ wizziTypes
         @ wizziActions
+
+    :export-type
+        @ GeneratedArtifact
+        @ WizziError
+        @ JobError

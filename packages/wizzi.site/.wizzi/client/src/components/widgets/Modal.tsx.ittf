@@ -117,7 +117,7 @@ module
                 right 0
                 bottom 0
                 color #fff
-                zIndex 999
+                z-index 999
                 transition-property opacity
                 transition-duration 200ms
                 -webkit-font-smoothing antialiased

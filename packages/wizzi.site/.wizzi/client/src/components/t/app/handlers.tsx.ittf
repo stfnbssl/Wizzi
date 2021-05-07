@@ -5,7 +5,7 @@ $group
         if this._isFocused !== isFocused
             set this._isFocused = isFocused
             if isFocused
-                _ this._Packi.setFocus()
+                _ this._PackiSession.setFocus()
     $if wzCtx.Build.useExpo
         => _handleBroadcastChannelMessage
             param e
@@ -59,7 +59,7 @@ $group
             => 
                 { 
                     @ sendCodeOnChangeEnabled
-                _ this._Packi.setCodeChangesDelay
+                _ this._PackiSession.setCodeChangesDelay
                     iif sendCodeOnChangeEnabled
                         then -1
                         else 1000
@@ -67,7 +67,8 @@ $group
                     { 
                         @ sendCodeOnChangeEnabled !sendCodeOnChangeEnabled
     => _handleSendCode
-        _ this._Packi.sendCodeChanges()
+        _ this._PackiSession.sendCodeChanges()
+    
     $if wzCtx.Build.useExpo
         => _handleSessionLog
             param event
@@ -210,6 +211,7 @@ $group
     $if wzCtx.Build.useExpo
         => _reloadSnack
             _ this._snack.reloadConnectedClients()
+    +
     => _handleSubmitMetadata
         param details
             :{ 
@@ -218,9 +220,11 @@ $group
                 :p description
                     :string 
         set this.edited = true
-        _ this._Packi.setName(details.name)
-        _ this._Packi.setDescription(details.description)
+        _ this._PackiSession.setName(details.name)
+        _ this._PackiSession.setDescription(details.description)
+    
     $if wzCtx.Build.useExpo
+        +
         => _handleChangeSDKVersion
             param sdkVersion
                 :ref SDKVersion
@@ -237,6 +241,7 @@ $group
             _ this.setState
                 { 
                     @ deviceLogs []
+    +
     p _handleDownloadAsync
         async=> 
             _ this.setState
@@ -289,6 +294,7 @@ $group
                         { 
                             @ saveStatus
                             @ isDownloading false
+    +
     => _saveDraftIfNeeded
         param debounced
             :boolean 
@@ -302,6 +308,7 @@ $group
                         @ isDraft true
     p _saveDraftIfNeededDebounced
         _ debounce(this._saveDraftIfNeeded, 3000)
+    +
     p _saveAsync
         async=> 
             param options
@@ -350,7 +357,7 @@ $group
                 set this.edited = false
                 const saveResult
                     await 
-                        _ this._Packi.saveAsync
+                        _ this._PackiSession.saveAsync
                             { 
                                 @ isDraft
                                 @ ignoreUser
@@ -411,7 +418,7 @@ $group
     => _uploadAssetAsync
         param asset
             :ref File
-        return this._Packi.uploadAssetAsync(asset)
+        return this._PackiSession.uploadAssetAsync(asset)
     => _handleTogglePreview
         $if wzCtx.Build.useExpo
             if !this.props.isEmbedded
@@ -456,10 +463,13 @@ $group
                             { 
                                 @ selectedFile path
                         else null
+    
     $if wzCtx.Build.useExpo
+        +
         => _enablePubNubIfNeeded
             if !this.props.isEmbedded || (this.state.devicePreviewShown && this.state.devicePreviewPlatform === 'mydevice')
                 _ this._snack.setOnline(true)
+    +
     => _updateFiles
         param updateFn
             :=> 
@@ -472,12 +482,16 @@ $group
                             :string 
                 param files
                     :ref PackiFiles
-        const state = this._Packi.getState()
+        const state = this._PackiSession.getState()
         const filesUpdate = updateFn(state.files)
+        log 'App._updateFiles', filesUpdate
         if Object.keys(filesUpdate).length
             set this.edited = true
-            _ this._Packi.updateFiles(filesUpdate)
+            _ this._PackiSession.updateFiles(filesUpdate)
+            _ this._generateArtifact(filesUpdate)
+    
     $if wzCtx.Build.useExpo
+        +
         => _updateDependencies
             param updateFn
                 :=> 
@@ -496,3 +510,5 @@ $group
                 set this.edited = true
                 _ this._snack.updateDependencies(dependenciesUpdate)
             return this._snack.getState().dependencies
+    
+    

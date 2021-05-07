@@ -178,6 +178,10 @@ $group
     ---
     ${'$'}if wzCtx.Build.useTailwindcss
         tailwindcss "^2.0.4"
+    ${'$'}if wzCtx.Build.useReact
+        ${'$'}if wzCtx.Build.react.useRedux
+            ${'$'}if wzCtx.Build.react.redux.useSaga
+                typesafe-actions "latest"
     ${'$'}if wzCtx.Build.useTypescript
         typescript "^4.2.3"
     ---    

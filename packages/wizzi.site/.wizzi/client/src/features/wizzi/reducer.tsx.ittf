@@ -74,18 +74,18 @@ module
                             @ loading true
                 case getType(wizziActions.generateArtifactSuccess)
                     log "wizziActions.generateArtifactSuccess", action
-                    if action.payload.errorLines || action.payload.stack
+                    if action.payload.error
                         return 
                             { 
                                 @ ...state
                                 @ loading false
                                 { generatedArtifact
                                     @ isError true
-                                    @ errorLines action.payload.errorLines
-                                    @ errorInfo action.payload.info
+                                    @ errorLines action.payload.error['lines']
+                                    @ errorInfo action.payload.error['info']
                                     @ errorMessage action.payload.message
-                                    @ errorName action.payload.name
-                                    @ errorStack action.payload.stack
+                                    @ errorName action.payload.error['name']
+                                    @ errorStack action.payload.error['stack']
                     else
                         return 
                             { 
@@ -109,17 +109,18 @@ module
                             @ loading true
                 case getType(wizziActions.executeJobSuccess)
                     log "wizziActions.executeJobSuccess", action
-                    if action.payload.__is_error
+                    if action.payload.error
                         return 
                             { 
                                 @ ...state
                                 @ loading false
                                 @ jobGeneratedArtifacts undefined
                                 { jobError
-                                    @ errorInfo action.payload.info
+                                    @ errorLines action.payload.error['lines']
+                                    @ errorInfo action.payload.error['info']
                                     @ errorMessage action.payload.message
-                                    @ errorName action.payload.name
-                                    @ errorStack action.payload.stack
+                                    @ errorName action.payload.error['name']
+                                    @ errorStack action.payload.error['stack']
                     else
                         return 
                             { 

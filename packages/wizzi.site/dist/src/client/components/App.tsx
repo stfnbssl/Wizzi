@@ -2,20 +2,20 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\App.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import * as React from 'react';
 // Redux
-import {connect} from 'react-redux';
+import {connect, ConnectedProps} from 'react-redux';
 // Styles
 import {StyleSheet, css} from 'aphrodite';
 // Features
-import {getFilesFromQuery} from '../features/file';
+import {getFilesFromQuery, fileConversions} from '../features/file';
 import {withAuth, AuthProps} from '../features/auth';
 import {withPreferences, PreferencesContextType} from '../features/preferences';
 import {Annotation} from '../features/annotations';
 import {SavedPacki, QueryParams, SaveStatus, SaveHistory, SaveOptions, PackiState, PackiFile, PackiFiles, PackiDefaults} from '../features/packi';
-import {Packi, PackiListenerSubscription} from '../features/packi';
+import {PackiSession, PackiListenerSubscription} from '../features/packi';
 // Utils
 import nullthrows from 'nullthrows';
 import debounce from 'lodash/debounce';
@@ -28,14 +28,143 @@ import AppShell from './shell/AppShell';
 import AppDetails from './AppDetails';
 import {EditorViewProps} from './EditorView/EditorViewProps';
 import LazyLoad from './widgets/LazyLoad';
+import {Dispatch} from 'redux';
+import {MuiThemeProvider} from '@material-ui/core/styles';
+import {LoggedUser, appActions} from '../features/app';
+import {Packi, packiActions} from '../features/packi';
+import {GitRepositoryMeta} from '../features/github';
+import {GeneratedArtifact, JobError, wizziActions} from '../features/wizzi';
+import {PreferencesType} from '../features/preferences';
+import {StoreState} from '../store';
+import {getEventServiceInstance} from '../services';
+import {packiToEntryArray, entryArrayToPacki, mixPreviousAndGeneratedPackiFilesToEntryArray, entryArrayDiff} from '../features/file/convertFileStructure';
+import {FileSystemEntry, TextFileEntry, AssetFileEntry} from '../features/file';
+import updateEntry from './FileList/actions/updateEntry';
 // Defaults
-import {DEFAULT_DESCRIPTION, DEFAULT_CODE} from '../configs/defaults';
+import {config} from '../features/config';
+const {
+    DEFAULT_DESCRIPTION, 
+    DEFAULT_CODE
+ } = config;
+
+
+interface PackiStateProps {
+    loggedUser?: LoggedUser;
+    packiNames?: string[];
+    currentPacki?: Packi;
+    packiTemplateNames?: string[];
+    ownedGitRepositories?: GitRepositoryMeta[];
+    generatedArtifact?: GeneratedArtifact;
+    jobGeneratedArtifacts?: PackiFiles;
+    jobError?: JobError;
+}
+
+interface PackiDispatchProps {
+    dispatchLoggedOn: (user: LoggedUser) => void;
+    dispatchLoggedOff: () => void;
+    dispatchInitPacki: (preferences: PreferencesType) => void;
+    dispatchSelectPacki: (packiId: string) => void;
+    dispatchSavePacki: (packiId: string, filesToSave: PackiFiles, packiEntryFiles: PackiFiles) => void;
+    dispatchCreatePacki: (packiId: string, packiKind: string) => void;
+    dispatchDeletePacki: (packiId: string) => void;
+    dispatchGenerateArtifact: (fileName: string, files: PackiFiles) => void;
+    dispatchExecuteJob: (files: PackiFiles) => void;
+    dispatchSetTimedService: (name: string, onOff: boolean, payload?: any, frequence?: number) => void;
+}
+
+const packiMapStateToProps = (state: StoreState):  PackiStateProps => 
+
+    ({
+        loggedUser: state.app.loggedUser, 
+        currentPacki: state.packi.currentPacki, 
+        packiNames: state.packi.packiNames, 
+        packiTemplateNames: state.packi.packiTemplateNames, 
+        ownedGitRepositories: state.packi.ownedGitRepositories, 
+        generatedArtifact: state.wizzi.generatedArtifact, 
+        jobGeneratedArtifacts: state.wizzi.jobGeneratedArtifacts, 
+        jobError: state.wizzi.jobError
+     })
+;
+const packiMapDispatchToProps = (dispatch: Dispatch):  PackiDispatchProps => 
+
+    ({
+        dispatchLoggedOn: (user: LoggedUser) => 
+        
+            dispatch(appActions.updateLoggedUser(user))
+        , 
+        dispatchLoggedOff: () => 
+        
+            dispatch(appActions.updateLoggedUser(undefined))
+        , 
+        dispatchInitPacki: (preferences: PreferencesType) => 
+        
+            dispatch(packiActions.initPackiRequest({
+                preferences
+             }))
+        , 
+        dispatchSelectPacki: (packiId: string) => 
+        
+            dispatch(packiActions.selectPackiRequest({
+                id: packiId
+             }))
+        , 
+        dispatchSavePacki: (packiId: string, filesToSave: PackiFiles, packiEntryFiles: PackiFiles) => 
+        
+            dispatch(packiActions.savePackiRequest({
+                id: packiId, 
+                filesToSave, 
+                packiEntryFiles
+             }))
+        , 
+        dispatchCreatePacki: (packiId: string, packiKind: string) => 
+        
+            dispatch(packiActions.createPackiRequest({
+                id: packiId, 
+                options: {
+                    data: packiKind
+                 }
+             }))
+        , 
+        dispatchDeletePacki: (packiId: string) => 
+        
+            dispatch(packiActions.deletePackiRequest({
+                id: packiId
+             }))
+        , 
+        dispatchGenerateArtifact: (filePath: string, files: PackiFiles) => {
+        
+            if (filePath.endsWith('.ittf') && !filePath.endsWith('wfjob.ittf')) {
+                dispatch(wizziActions.generateArtifactRequest({
+                    filePath, 
+                    files
+                 }))
+            }
+        }
+        , 
+        dispatchExecuteJob: (files: PackiFiles) => 
+        
+            dispatch(wizziActions.executeJobRequest({
+                files
+             }))
+        , 
+        dispatchSetTimedService: (name: string, onOff: boolean, payload?: any, frequence?: number) => 
+        
+            dispatch(wizziActions.setTimedService({
+                serviceName: name, 
+                onOff, 
+                payload, 
+                frequence
+             }))
+        
+     })
+;
 type Params = { 
     id?: string;
     username?: string;
     projectName?: string;
+    repoName?: string;
 };
-type Props = AuthProps & PreferencesContextType & { 
+type Props = AuthProps & PreferencesContextType & PropsFromRedux & { 
     Packi?: SavedPacki;
     history: { 
         push: (props: { 
@@ -54,7 +183,7 @@ type Props = AuthProps & PreferencesContextType & {
     files: PackiFiles;
     defaults: PackiDefaults;
 };
-type State = { 
+type State = PackiStateProps & { 
     session: PackiState;
     selectedFile: string;
     sendCodeOnChangeEnabled: boolean;
@@ -70,6 +199,20 @@ type State = {
     verbose: boolean;
     annotations: Annotation[];
     snackagerURL: string;
+    packiStoreId?: string;
+    packiSessionReady: boolean;
+    loggedUser?: LoggedUser;
+    packiNames?: string[];
+    currentPacki?: Packi;
+    packiTemplateNames?: string[];
+    ownedGitRepositories?: GitRepositoryMeta[];
+    generatedArtifact?: GeneratedArtifact;
+    jobGeneratedArtifacts?: PackiFiles;
+    jobError?: JobError;
+    params: Params;
+    fileEntries: FileSystemEntry[];
+    isWizziJobWaiting: boolean;
+    lastJobfileEntries: FileSystemEntry[];
 };
 class Main extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -101,10 +244,10 @@ class Main extends React.Component<Props, State> {
         const id = !props.match.params.id && props.match.params.username && props.match.params.projectName ? `@${props.match.params.username}/${props.match.params.projectName}` : props.match.params.id ? props.match.params.id : undefined;
         const verbose = props.query.verbose === 'true';
         const sendCodeOnChangeEnabled = true;
-        const sessionSecret = props.getSessionSecret();
+        const sessionSecret = null;
         const snackagerURL = nullthrows(process.env.IMPORT_SERVER_URL);
         const isLocalWebPreview = false;
-        this._Packi = new Packi({
+        this._PackiSession = new PackiSession({
             disabled: true, 
             name, 
             description, 
@@ -128,8 +271,14 @@ class Main extends React.Component<Props, State> {
         ;
         const devicePreviewShown = props.query.preview ? props.query.preview !== 'false' : props.preferences.devicePreviewShown;
         const selectedFile = files['App.js'] ? 'App.js' : files['App.tsx'] ? 'App.tsx' : files['app.js'] ? 'app.js' : Object.keys(files).length ? Object.keys(files)[0] : '';
+        const params: Params = {
+            ...((!props.match.params.id && props.match.params.username && props.match.params.repoName ? {
+                        id: `@${props.match.params.username}/${props.match.params.repoName}`
+                     } : null))
+            
+         };
         this.state = {
-            session: this._Packi.getState(), 
+            session: this._PackiSession.getState(), 
             selectedFile, 
             sendCodeOnChangeEnabled, 
             autosaveEnabled: true, 
@@ -143,21 +292,115 @@ class Main extends React.Component<Props, State> {
             verbose, 
             annotations: [], 
             snackagerURL, 
-            webPreviewURL: ''
+            webPreviewURL: '', 
+            packiStoreId: undefined, 
+            packiSessionReady: false, 
+            fileEntries: [], 
+            generatedArtifact: undefined, 
+            jobGeneratedArtifacts: undefined, 
+            jobError: undefined, 
+            isWizziJobWaiting: false, 
+            lastJobfileEntries: [], 
+            params
          };
     }
     _previewRef = React.createRef<Window>();
     private edited: boolean = false;
-    _Packi: Packi;
+    _PackiSession: PackiSession;
     _PackiStateListener?: PackiListenerSubscription;
     _isFocused: boolean = false;
     _focusTimer: number | undefined;
+    
+    _initializePackiSession() {
+        async () => 
+        
+            // lots of inits
+            this.setState({
+                packiSessionReady: true
+             })
+        
+    }
+    
+    _generateArtifactNotDebounced = (files: { 
+        [path: string]: PackiFile | null;
+    }) => {
+    
+        console.log('_generateArtifactNotDebounced', 'state.selectedFile', this.state.selectedFile);
+        console.log('_generateArtifactNotDebounced', 'Object.keys(files)', Object.keys(files));
+        console.log('_generateArtifactNotDebounced', 'state.session.files', this.state.session.files);
+        if (Object.keys(files).length) {
+            const filePath = Object.keys(files)[0];
+            if (filePath.endsWith('.ittf')) {
+                console.log('_generateArtifactNotDebounced', 'filePath', filePath);
+                // TODO send only fileEntries of the same schema of focusedEntry + json schema
+                this.props.dispatchGenerateArtifact(filePath, fileConversions.packiFilterIttf(this.state.session.files))
+            }
+        }
+    }
+    ;
+    _generateArtifact = debounce(this._generateArtifactNotDebounced, 1000);
+    
+    _executeJobNotDebounced = () => {
+    
+        const jobEntries = this.state.fileEntries.filter(e => 
+        
+            e.item.path.endsWith('.wfjob.ittf')
+        );
+        if (jobEntries.length > 0) {
+            this.setState({
+                lastJobfileEntries: this.state.fileEntries, 
+                isWizziJobWaiting: false
+             })
+            this.props.dispatchExecuteJob(// 20/4 entryArrayToPacki(this.state.fileEntries.filter(e => e.item.path.endsWith('.ittf')))
+            entryArrayToPacki(this.state.fileEntries))
+        }
+    }
+    ;
+    _executeJob = debounce(this._executeJobNotDebounced, 5000);
+    
+    _saveCodeNotDebounced = () => 
+    
+        this.props.dispatchSavePacki(this.state.packiStoreId as string, entryArrayToPacki(this.state.fileEntries.filter(e => 
+        
+            !e.item.virtual && !e.item.generated
+        )), entryArrayToPacki(this.state.fileEntries))
+    ;
+    _saveCode = debounce(this._saveCodeNotDebounced, 1000);
+    static getDerivedStateFromProps(_props: Props, state: State) {
+        return null;
+    }
+    
+    componentDidMount() {
+        this._PackiStateListener = this._PackiSession.addStateListener(this._handleSessionStateChange);
+        this._PackiSession.setDisabled(false);
+        this._isFocused = document.hasFocus();
+        this._focusTimer = window.setInterval(this._handleFocusChangeInterval, 500);
+    }
+    
+    componentWillUnmount() {
+        this._PackiStateListener?.();
+        this._PackiSession.setDisabled(true);
+        this._PackiSession.setOnline(false);
+        clearInterval(this._focusTimer);
+        this._focusTimer = undefined;
+    }
+    
+    componentDidUpdate(prevProps: Props, prevState: State) {
+        if (this.props.viewer !== prevProps.viewer) {
+            const sessionSecret = this.props.getSessionSecret();
+            if (this.state.session.user?.sessionSecret !== sessionSecret) {
+                this._PackiSession.setUser(sessionSecret ? {
+                        sessionSecret
+                     } : undefined)
+            }
+        }
+    }
     _handleFocusChangeInterval = () => {
         const isFocused = document.hasFocus();
         if (this._isFocused !== isFocused) {
             this._isFocused = isFocused;
             if (isFocused) {
-                this._Packi.setFocus();
+                this._PackiSession.setFocus();
             }
         }
     };
@@ -166,14 +409,14 @@ class Main extends React.Component<Props, State> {
             sendCodeOnChangeEnabled
          }) => {
         
-            this._Packi.setCodeChangesDelay(sendCodeOnChangeEnabled ? -1 : 1000)
+            this._PackiSession.setCodeChangesDelay(sendCodeOnChangeEnabled ? -1 : 1000)
             return {
                     sendCodeOnChangeEnabled: !sendCodeOnChangeEnabled
                  };
         }
         );
     _handleSendCode = () => 
-        this._Packi.sendCodeChanges();
+        this._PackiSession.sendCodeChanges();
     _handleSessionStateChange = (state: PackiState, prevState: PackiState) => 
         // console.log('Session state change: ', diff(prevState, state), state); // deep-object-diff
         this.setState((st) => {
@@ -194,14 +437,16 @@ class Main extends React.Component<Props, State> {
         
             this._saveDraftIfNeeded(true)
         );
+    
     _handleSubmitMetadata = (details: { 
         name: string;
         description: string;
     }) => {
         this.edited = true;
-        this._Packi.setName(details.name);
-        this._Packi.setDescription(details.description);
+        this._PackiSession.setName(details.name);
+        this._PackiSession.setDescription(details.description);
     };
+    
     _handleDownloadAsync = async () => {
     
         this.setState({
@@ -255,6 +500,7 @@ class Main extends React.Component<Props, State> {
         )
     }
     ;
+    
     _saveDraftIfNeeded = (debounced?: boolean) => {
         if (this.state.session.user && this.state.session.unsaved && this.state.autosaveEnabled && this.state.saveStatus === 'edited') {
             if (debounced) {
@@ -268,6 +514,7 @@ class Main extends React.Component<Props, State> {
         }
     };
     _saveDraftIfNeededDebounced = debounce(this._saveDraftIfNeeded, 3000);
+    
     _saveAsync = async (options: SaveOptions = {}) => {
     
         const {
@@ -295,7 +542,7 @@ class Main extends React.Component<Props, State> {
         }
         try {
             this.edited = false;
-            const saveResult = await this._Packi.saveAsync({
+            const saveResult = await this._PackiSession.saveAsync({
                     isDraft, 
                     ignoreUser
                  });
@@ -335,7 +582,7 @@ class Main extends React.Component<Props, State> {
             isPreview: false
          });
     _uploadAssetAsync = (asset: File) => {
-        return this._Packi.uploadAssetAsync(asset);
+        return this._PackiSession.uploadAssetAsync(asset);
     };
     _handleTogglePreview = () => {
         this.props.setPreferences({
@@ -355,16 +602,118 @@ class Main extends React.Component<Props, State> {
                     selectedFile: path
                  } : null)
         );
+    
     _updateFiles = (updateFn: (files: PackiFiles) => { 
         [path: string]: PackiFile | null;
     }) => {
-        const state = this._Packi.getState();
+        const state = this._PackiSession.getState();
         const filesUpdate = updateFn(state.files);
+        console.log('App._updateFiles', filesUpdate);
         if (Object.keys(filesUpdate).length) {
             this.edited = true;
-            this._Packi.updateFiles(filesUpdate);
+            this._PackiSession.updateFiles(filesUpdate);
+            this._generateArtifact(filesUpdate);
         }
     };
+    _handleLoggedOn = async (user: LoggedUser) => {
+    
+        this.props.dispatchLoggedOn(user);
+        this.props.setPreferences({
+            loggedUid: user.uid
+         })
+    }
+    ;
+    _handleLoggedOff = async () => {
+    
+        this.props.dispatchLoggedOff();
+        this.props.setPreferences({
+            loggedUid: undefined
+         })
+    }
+    ;
+    _handleSelectPacki = async (packiId: string) => 
+    
+        this.props.dispatchSelectPacki(packiId);
+    
+    ;
+    _handleCreatePacki = async (packiId: string, packiKind: string) => 
+    
+        this.props.dispatchCreatePacki(packiId, packiKind);
+    
+    ;
+    _handleDeletePacki = async (packiId: string) => 
+    
+        this.props.dispatchDeletePacki(packiId);
+    
+    ;
+    _findFocusedEntry = (entries: FileSystemEntry[]):  TextFileEntry | AssetFileEntry | undefined => 
+    
+        // @ts-ignore
+        entries.find(({
+            item, 
+            state
+         }) => 
+        
+            item.type === 'file' && state.isFocused === true
+        )
+    ;
+    _handleChangeCode = (content: string) => {
+    
+        let focusedEntry: FileSystemEntry;
+        console.log('_handleChangeCode', 'content', content);
+        this.setState((state: State) => {
+        
+            return {
+                    saveStatus: 'changed', 
+                    fileEntries: state.fileEntries.map((entry) => {
+                    
+                        if (entry.item.type === 'file' && entry.state.isFocused) {
+                            focusedEntry = entry;
+                            return updateEntry(entry, {
+                                    item: {
+                                        content
+                                     }
+                                 });
+                        }
+                        return entry;
+                    }
+                    )
+                 };
+        }
+        , () => 
+        
+            this._generateArtifact()
+        )
+    }
+    ;
+    _handleFileEntriesChange = (nextFileEntries: FileSystemEntry[]):  Promise<void> => {
+    
+        return new Promise(resolve => 
+            
+                this.setState((state) => {
+                
+                    let fileEntries = nextFileEntries;
+                    return {
+                            fileEntries
+                         };
+                }
+                , resolve)
+            );
+    }
+    ;
+    _handleEntrySelected = (entry: FileSystemEntry) => {
+    
+        console.log('App._handleEntrySelected', this.props.preferences.autoGenSingleDoc, entry.item.path);
+        if (this.props.preferences.autoGenSingleDoc) {
+            if (entry.item.path.endsWith('.ittf') && entry.item.path.indexOf('/t/') < 0) {
+                this.props.dispatchGenerateArtifact(entry.item.path, entryArrayToPacki(this.state.fileEntries.filter(e => 
+                
+                    e.item.path.endsWith('.ittf')
+                )))
+            }
+        }
+    }
+    ;
     render() {
         if (this.props && this.state) {
             const experienceURL = this.state.session.url;
@@ -422,6 +771,24 @@ class Main extends React.Component<Props, State> {
                                     uploadFileAsync={this._uploadAssetAsync}
                                     userAgent={this.props.userAgent}
                                     verbose={this.state.verbose}
+                                    params={this.state.params}
+                                    loggedUser={this.props.loggedUser}
+                                    currentPacki={this.props.currentPacki}
+                                    generatedArtifact={this.props.generatedArtifact}
+                                    fileEntries={this.state.fileEntries}
+                                    entry={this._findFocusedEntry(this.state.fileEntries)}
+                                    isWizziJobWaiting={this.state.isWizziJobWaiting}
+                                    jobError={this.state.jobError}
+                                    onLoggedOn={this._handleLoggedOn}
+                                    onLoggedOff={this._handleLoggedOff}
+                                    onChangeCode={this._handleChangeCode}
+                                    onFileEntriesChange={this._handleFileEntriesChange}
+                                    onEntrySelected={this._handleEntrySelected}
+                                    onSelectPacki={this._handleSelectPacki}
+                                    onCreatePacki={this._handleCreatePacki}
+                                    onDeletePacki={this._handleDeletePacki}
+                                    onExecuteWizziJob={this._executeJobNotDebounced}
+                                    onSaveCode={this._saveCode}
                                  />
                                 )
                              :  (
@@ -446,19 +813,9 @@ class Main extends React.Component<Props, State> {
         }
     }
 }
-
-/**
-    * 
-    * Fetch code from a remote source (if provided) before rendering the main app
-    * 
-*/
-const MainContainer = withPreferences(connect((state: any) => 
-
-    ({
-        viewer: state.viewer
-     })
-)(withAuth(Main))
-);
+const connector = connect(packiMapStateToProps, packiMapDispatchToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+const MainContainer = withPreferences(connector(Main));
 type AsyncState = { 
     isReady: boolean;
     files: PackiFiles;

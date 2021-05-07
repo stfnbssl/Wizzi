@@ -23,6 +23,7 @@
         "bodyLineHeight": 1.3165
     },
     "Build": {
+        "usePackiAspects": true,
         "useRegeneratorRuntime": false,
         "utils": {
             "useEscapeRegexp": true,
@@ -259,8 +260,26 @@
         "useReact": true,
         "react": {
             "useV16": true,
+            "useMaterialUI": true,
+            "materialUI": {
+                "useIcons": true
+            },
             "useRedux": true,
-            "redux": {},
+            "redux": {
+                "useSaga": true,
+                "saga": {
+                    "see": [
+                        {
+                            "url": "https://github.com/piotrwitek/react-redux-typescript-realworld-app",
+                            "title": "React, Redux, TypeScript - RealWorld App"
+                        },
+                        {
+                            "url": "https://github.com/piotrwitek/react-redux-typescript-guide",
+                            "title": "React & Redux in TypeScript - Complete Guide"
+                        }
+                    ]
+                }
+            },
             "useRouter": true,
             "useHelmetAsync": true,
             "useSimpleCodeEditor": true,
@@ -279,7 +298,7 @@
         "useMarked": true,
         "useExpoStyles": true,
         "expoStyles": {},
-        "useMonacoEditor": false,
+        "useMonacoEditor": true,
         "monacoEditor": {},
         "usePrettier": true,
         "prettier": {},

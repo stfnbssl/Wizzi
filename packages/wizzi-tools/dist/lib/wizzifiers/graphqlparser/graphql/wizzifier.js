@@ -301,7 +301,7 @@ function setTextList(ittfNode, sep) {
     var i, i_items=ittfNode.children, i_len=ittfNode.children.length, item;
     for (i=0; i<i_len; i++) {
         item = ittfNode.children[i];
-        console.log('setTextList', item.tag, item.isText, item.textified);
+        console.log('setTextList', item.tag, item.name, item.isText, item.textified);
         if (item.isText) {
             sb.push(item.name);
         }

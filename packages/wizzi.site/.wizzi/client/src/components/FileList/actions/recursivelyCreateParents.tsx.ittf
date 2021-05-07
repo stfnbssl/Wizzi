@@ -1,10 +1,8 @@
 module
     import 
-        @ getParentPath
-        from '../../../features/file/index'
-    import 
         @ FileSystemEntry
-        from '../types'
+        @ getParentPath
+        from '../../../features/file'
     export-default 
         function recursivelyCreateParents
             param entries

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\widgets\Modal.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import React, {PureComponent} from 'react';
 import ReactDOM from 'react-dom';
@@ -32,7 +32,7 @@ const StyledRoot = styled.div<RootStyleProps>`
     right: 0;
     bottom: 0;
     color: #fff;
-    zIndex: 999;
+    z-index: 999;
     transition-property: opacity;
     transition-duration: 200ms;
     background-color: ${props => props.initial ? "rgba(24, 29, 37, 0.8)" : "inherit"};

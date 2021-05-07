@@ -1,5 +1,12 @@
 module
     import
+        @ TextFileEntry
+        @ AssetFileEntry
+        @ FolderEntry
+        @ FileSystemEntry
+        @ FileSystemEntryDiff
+        from './types'
+    import
         @ isInsideFolder
         @ getParentPath
         @ changeParentPath
@@ -26,6 +33,16 @@ module
     import
         @ dragEventIncludes
         from './dragUtilities'
+    import
+        as fileConversions
+        from './convertFileStructure'
+    +
+    :export-type
+        @ TextFileEntry
+        @ AssetFileEntry
+        @ FolderEntry
+        @ FileSystemEntry
+        @ FileSystemEntryDiff
     +
     export
         @ isInsideFolder
@@ -47,3 +64,4 @@ module
         @ getBasePath
         @ getAbsolutePath
         @ dragEventIncludes
+        @ fileConversions

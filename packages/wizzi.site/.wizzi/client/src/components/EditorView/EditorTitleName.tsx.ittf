@@ -8,12 +8,12 @@ module
         from 'react'
     $if wzCtx.Build.useOk
         import 
-            as defaults
-            from '../../configs/defaults'
+            @ DEFAULT_DESCRIPTION
+            from '../../features/config'
     import 
         @ withThemeName
         @ ThemeName
-        from '../../features/preferences/index'
+        from '../../features/preferences'
     import 
         @ c
         from '../ThemeProvider'
@@ -156,9 +156,9 @@ module
                                     p 
                                         @ className {css(styles.description)}
                                         $if wzCtx.Build.useOk
-                                            + {description ?? defaults.DEFAULT_DESCRIPTION}
+                                            + {description ?? DEFAULT_DESCRIPTION}
                                         $else
-                                            + {description ?? 'defaults.DEFAULT_DESCRIPTION'}
+                                            + {description ?? DEFAULT_DESCRIPTION}
                                     button 
                                         @ onClick {onShowEditModal}
                                         @ className {css(styles.editButton)}

@@ -1,14 +1,17 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\FileList\types.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\file\types.tsx.ittf
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
+
 export type TextFileEntry = Readonly<{ 
     item: { 
         path: string;
         type: 'file';
         content: string;
+        generated?: boolean;
+        bothRealAndGenerated?: boolean;
         virtual?: true;
         asset?: false;
     };
@@ -18,15 +21,15 @@ export type TextFileEntry = Readonly<{
         isSelected?: boolean;
         isCreating?: boolean;
         isExpanded?: false;
-        isError?: boolean;
-        isLoading?: boolean;
     };
 }>;
+
 export type AssetFileEntry = Readonly<{ 
     item: { 
         path: string;
         type: 'file';
         uri: string;
+        generated?: false;
         asset: true;
         virtual?: true;
     };
@@ -36,16 +39,16 @@ export type AssetFileEntry = Readonly<{
         isSelected?: boolean;
         isCreating?: boolean;
         isExpanded?: false;
-        isError?: boolean;
-        isLoading?: boolean;
     };
 }>;
+
 export type FolderEntry = Readonly<{ 
     item: { 
         path: string;
         type: 'folder';
         asset?: false;
         virtual?: false;
+        generated?: false;
     };
     state: { 
         isOpen?: boolean;
@@ -53,8 +56,13 @@ export type FolderEntry = Readonly<{
         isExpanded?: boolean;
         isSelected?: boolean;
         isCreating?: boolean;
-        isError?: boolean;
-        isLoading?: boolean;
     };
 }>;
+
 export type FileSystemEntry = TextFileEntry | AssetFileEntry | FolderEntry;
+
+export type FileSystemEntryDiff = { 
+    kind: string;
+    a?: FileSystemEntry['item'];
+    b?: FileSystemEntry['item'];
+};

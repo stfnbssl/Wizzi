@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\index.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import cookies from 'js-cookie';
 import * as React from 'react';
@@ -13,7 +13,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {PreferencesProvider} from './features/preferences';
 import Router from './components/Router';
 import ThemeProvider from './components/ThemeProvider';
-import createStore from './store/createRedux';
+import createStore from './store/createStore';
 import type {RouterData, QueryParams} from './features/packi';
 const __INITIAL_DATA__ = {
     data: {
@@ -34,13 +34,37 @@ const __INITIAL_DATA__ = {
  };
 
 const store = createStore({
-    splitTestSettings: __INITIAL_DATA__.splitTestSettings
+    app: {
+        loggedUser: {
+            id: 'Stefi', 
+            uid: '0001', 
+            username: 'stefi un', 
+            displayName: 'stefi dn', 
+            picture: 'https://avatars.githubusercontent.com/u/728956?s=400&v=4'
+         }
+     }, 
+    packi: {
+        loading: false
+     }, 
+    wizzi: {
+        loading: false, 
+        jobError: undefined, 
+        generatedArtifact: undefined, 
+        jobGeneratedArtifacts: {
+            
+         }, 
+        timedServices: {
+            
+         }
+     }, 
+    splitTestSettings: __INITIAL_DATA__.splitTestSettings, 
+    viewer: null
  });
 
 function PackiApp() {
 
     return  (
-        <React.StrictMode
+        <React.Fragment
         >
             <HelmetProvider
             >
@@ -59,7 +83,7 @@ function PackiApp() {
                     </PreferencesProvider>
                 </Provider>
             </HelmetProvider>
-        </React.StrictMode>
+        </React.Fragment>
         )
     ;
 }

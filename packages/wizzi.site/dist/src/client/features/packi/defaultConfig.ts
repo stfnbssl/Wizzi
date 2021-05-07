@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\packi\defaultConfig.ts.ittf
-    utc time: Mon, 03 May 2021 09:48:22 GMT
+    utc time: Fri, 07 May 2021 18:42:03 GMT
 */
 import {PackiState} from './types';
 export const apiURL: string = 'https://exp.host';

@@ -2,11 +2,16 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\EditorView\EditorViewProps.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
-import {SaveStatus, SaveHistory, SaveOptions, PackiFiles, PackiFile} from '../../features/packi/index';
-import {Annotation} from '../../features/annotations/index';
-export type EditorViewProps = { 
+import {SaveStatus, SaveHistory, SaveOptions, PackiFiles, PackiFile} from '../../features/packi';
+import {LoggedUser} from '../../features/app';
+import {AuthProps} from '../../features/auth';
+import {GeneratedArtifact, JobError} from '../../features/wizzi';
+import {Packi} from '../../features/packi';
+import {FileSystemEntry, TextFileEntry, AssetFileEntry} from '../../features/file';
+import {Annotation} from '../../features/annotations';
+export type EditorViewProps = AuthProps & { 
     createdAt: string | undefined;
     saveHistory: SaveHistory;
     saveStatus: SaveStatus;
@@ -40,4 +45,24 @@ export type EditorViewProps = {
     previewURL: string;
     verbose: boolean;
     snackagerURL: string;
+    loggedUser?: LoggedUser;
+    creatorUsername?: string;
+    currentPacki?: Packi;
+    fileEntries: FileSystemEntry[];
+    entry: TextFileEntry | AssetFileEntry | undefined;
+    params: { 
+        id?: string;
+    };
+    generatedArtifact?: GeneratedArtifact;
+    // loadingMessage: string | undefined;
+    jobError?: JobError;
+    isWizziJobWaiting: boolean;
+    onSelectPacki: (packiId: string) => void;
+    onCreatePacki: (packiId: string, packiKind: string) => void;
+    onDeletePacki: (packiId: string) => void;
+    onFileEntriesChange: (entries: FileSystemEntry[]) => Promise<void>;
+    onChangeCode: (code: string) => void;
+    onEntrySelected: (entry: FileSystemEntry) => void;
+    onExecuteWizziJob: () => void;
+    onSaveCode: () => void;
 };

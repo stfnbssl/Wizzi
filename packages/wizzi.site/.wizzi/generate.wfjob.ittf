@@ -65,4 +65,4 @@ wfjob wizzi.site/job
         line-ref ittf-root
         line-ref ittf-static
         line-ref ittf-ittf
-        # line-ref ittf-typings
+        line-ref ittf-typings

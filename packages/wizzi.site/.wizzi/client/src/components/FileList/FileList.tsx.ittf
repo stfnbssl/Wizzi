@@ -18,22 +18,25 @@ module
         @ SaveStatus
         @ PackiFiles
         @ PackiFile
-        from '../../features/packi/index'
+        from '../../features/packi'
     import 
         @ Annotation
-        from '../../features/annotations/index'
+        from '../../features/annotations'
     import 
+        @ FileSystemEntry
+        @ TextFileEntry
+        @ AssetFileEntry
         @ isPackageJson
         @ getUniquePath
         @ isInsideFolder
         @ isESLintConfig
-        from '../../features/file/index'
+        from '../../features/file'
     import ImportExportMenu from '../Import/ImportExportMenu'
     import ImportFilesManager from '../Import/ImportFilesManager'
     import 
         @ withThemeName
         @ ThemeName
-        from '../../features/preferences/index'
+        from '../../features/preferences'
     import 
         @ SidebarShell 
         from '../shell/SidebarShell'
@@ -56,11 +59,6 @@ module
     import renameEntry from './actions/renameEntry'
     import selectEntry from './actions/selectEntry'
     import updateEntry from './actions/updateEntry'
-    import 
-        @ FileSystemEntry
-        @ TextFileEntry
-        @ AssetFileEntry
-        from './types'
     import 
         @ filesToEntries
         @ findFocusedEntry

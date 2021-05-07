@@ -2,18 +2,18 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\FileList\FileList.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import pickBy from 'lodash/pickBy';
 import * as React from 'react';
 import eslintrc from '../../features/lint/eslint.json';
-import {SaveStatus, PackiFiles, PackiFile} from '../../features/packi/index';
-import {Annotation} from '../../features/annotations/index';
-import {isPackageJson, getUniquePath, isInsideFolder, isESLintConfig} from '../../features/file/index';
+import {SaveStatus, PackiFiles, PackiFile} from '../../features/packi';
+import {Annotation} from '../../features/annotations';
+import {FileSystemEntry, TextFileEntry, AssetFileEntry, isPackageJson, getUniquePath, isInsideFolder, isESLintConfig} from '../../features/file';
 import ImportExportMenu from '../Import/ImportExportMenu';
 import ImportFilesManager from '../Import/ImportFilesManager';
-import {withThemeName, ThemeName} from '../../features/preferences/index';
+import {withThemeName, ThemeName} from '../../features/preferences';
 import {SidebarShell} from '../shell/SidebarShell';
 import {c} from '../ThemeProvider';
 import ResizablePane from '../widgets/ResizablePane';
@@ -32,7 +32,6 @@ import recursivelyCreateParents from './actions/recursivelyCreateParents';
 import renameEntry from './actions/renameEntry';
 import selectEntry from './actions/selectEntry';
 import updateEntry from './actions/updateEntry';
-import {FileSystemEntry, TextFileEntry, AssetFileEntry} from './types';
 import {filesToEntries, findFocusedEntry} from './utils/convertFileStructure';
 export type FileListProps = { 
     visible: boolean;

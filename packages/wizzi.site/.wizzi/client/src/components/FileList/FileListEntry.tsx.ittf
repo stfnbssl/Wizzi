@@ -11,14 +11,15 @@ module
             @ SDKVersion
             from '../../types'
     import 
+        @ FileSystemEntry
         @ isEntryPoint
         @ getParentPath
         @ isTest
-        from '../../features/file/index'
+        from '../../features/file'
 
     import 
         @ ThemeName
-        from '../../features/preferences/index'
+        from '../../features/preferences'
     import 
         @ c
         from '../ThemeProvider'
@@ -31,9 +32,6 @@ module
     import FileListChildren from './FileListChildren'
     import FileListEntryBase from './FileListEntryBase'
     import FileListEntryIcon from './FileListEntryIcon'
-    import 
-        @ FileSystemEntry
-        from './types'
     export
         :type FileListEntryProps
             :{ 

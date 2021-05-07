@@ -2,20 +2,14 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\auth\types.tsx.ittf
-    utc time: Mon, 03 May 2021 09:48:27 GMT
+    utc time: Fri, 07 May 2021 18:42:12 GMT
 */
 import {Viewer} from '../account';
+import {loggedUser} from '../app';
 export type AuthProps = { 
-    legacyLogout?: () => Promise<void>;
-    getSessionSecret: () => string;
-    setMetadata: (metadata: { 
-        appetizeCode: string;
-    }) => Promise<void>;
-    viewer?: Viewer | undefined;
-    dispatch: (action: { 
-        type: 'UPDATE_VIEWER';
-        viewer: Viewer | null | undefined;
-    }) => void;
+    loggedUser?: appTypes.LoggedUser | undefined;
+    onLoggedOn: (user: appTypes.LoggedUser) => void;
+    onLoggedOff: () => void;
 };
 
 export type Auth0UserData = { 

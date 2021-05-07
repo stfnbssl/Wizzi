@@ -12,15 +12,13 @@ module
             @ SDKVersion
             from '../../types'
     import 
+        @ FileSystemEntry
         @ isInsideFolder
-        from '../../features/file/index'
+        from '../../features/file'
     import 
         @ ThemeName
-        from '../../features/preferences/index'
+        from '../../features/preferences'
     import FileListEntry from './FileListEntry'
-    import 
-        @ FileSystemEntry
-        from './types'
     :type Props
         :{ 
             :p parent

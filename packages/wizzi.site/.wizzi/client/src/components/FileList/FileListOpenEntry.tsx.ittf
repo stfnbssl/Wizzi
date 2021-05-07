@@ -9,7 +9,7 @@ module
     import 
         @ withThemeName
         @ ThemeName
-        from '../../features/preferences/index'
+        from '../../features/preferences'
     import 
         @ c
         from '../ThemeProvider'
@@ -18,7 +18,7 @@ module
     import 
         @ TextFileEntry
         @ AssetFileEntry
-        from './types'
+        from '../../features/file'
     :type Props
         :{ 
             :p entry

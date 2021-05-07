@@ -8,7 +8,7 @@ module
         from '../../../client/components/PageMetadata'
     import 
         @ DEFAULT_DESCRIPTION
-        from '../../../client/configs/defaults'
+        from '../../../client/features/config'
     :import-type 
         @ RouterData
         @ QueryParams

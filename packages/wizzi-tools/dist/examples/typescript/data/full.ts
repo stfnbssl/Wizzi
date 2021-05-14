@@ -1,3 +1,5 @@
-
-const { helperText, validate, ...other} = this.props;
-const [first, ...rest] = name.split(' ')
+function Functions() {
+    function add(x: number, y: number): number {
+        return x + y;
+    }
+}

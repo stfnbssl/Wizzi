@@ -1,0 +1,34 @@
+$group
+    $params &md
+    import
+        @ ModelBuilderType
+        @ ControllerType
+        from '../app/types'
+    $foreach schema in md.feature.dataModels
+        import
+            @ ${schema.Name}ModelBuilder
+            @ Get${schema.Name}Model
+            from './mongo/${schema.name}'
+        import
+            @ ${schema.Name}Controller
+            from './controllers/${schema.name}'
+    const ${md.feature.name}Models
+        {
+            $foreach schema in md.feature.dataModels
+                @ Get${schema.Name}Model
+    const ${md.feature.name}ModelBuilders
+        :[
+            :ref ModelBuilderType
+        [
+            $foreach schema in md.feature.dataModels
+                @ ${schema.Name}ModelBuilder
+    const ${md.feature.name}Controllers
+        :[
+            :ref ControllerType
+        [
+            $foreach schema in md.feature.dataModels
+                @ new ${schema.Name}Controller()
+    export
+        @ ${md.feature.name}Models
+        @ ${md.feature.name}ModelBuilders
+        @ ${md.feature.name}Controllers

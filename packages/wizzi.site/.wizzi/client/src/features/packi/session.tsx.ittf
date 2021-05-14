@@ -671,13 +671,11 @@ module
                                 :null
                             param path
                                 :string
-                log 'PackiSession', 'updateFiles', files
                 return
                     _ this.setState
                         =>
                             param state
                             const newFiles = State.updateObjects(state.files, files)
-                            log 'PackiSession', 'newFiles', newFiles
                             return
                                 iif newFiles !== state.files
                                     then
@@ -840,6 +838,56 @@ module
                         # by the client so that the next time it doesn't need to be uploaded again.
             +
             m saveAsync
+                async
+                param options
+                    :ref PackiSaveOptions
+                    :optional
+                const prevState = this.state
+                await
+                    _ this.fileUploader.waitForCompletion()
+                    # Wait for any pending asset uploads the complete before saving
+                const
+                    {
+                        @ name
+                        @ description
+                        $if wzCtx.Build.useExpo
+                            @ sdkVersion
+                        @ files
+                        $if wzCtx.Build.useExpo
+                            @ dependencies
+                        @ user
+                    = this.state
+                const payload
+                    :any
+                    = files
+                const url
+                    `lit
+                        @ this.apiURL
+                        + /api/v1/packi/save/
+                        @ encodeURIComponent('guest/test')
+                log 'PackiSession.saveAsync', url
+                const response
+                    await
+                        _ fetch
+                            @ url
+                            {
+                                @ method 'POST'
+                                @ body JSON.stringify(payload)
+                                { headers
+                                    @ 'Content-Type' 'application/json'
+                                    $if wzCtx.Build.useExpo
+                                        ...
+                                            (
+                                                iif options?.ignoreUser
+                                                    then
+                                                        {
+                                                    else createUserHeader(user)
+                const data
+                    await
+                        _ response.json()
+                log 'PackiSession.saveAsync.response.data', url
+            +
+            m saveAsync_Old
                 async
                 param options
                     :ref PackiSaveOptions

@@ -64,6 +64,8 @@ $group
                     :p metaHtmlTextPath
                         :string 
                 ${'$'}if wzCtx.Build.usePacki
+                    :p packiStoreFolder
+                        :string 
                     :p packiTemplatesFolder
                         :string 
                     :p packiApiEndpoint

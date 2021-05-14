@@ -2,7 +2,9 @@ module
     import 
         as React
         from 'react'
-    import Helmet from 'react-helmet-async'
+    import 
+        @ Helmet 
+        from 'react-helmet-async'
     import 
         @ DEFAULT_DESCRIPTION
         @ DEFAULT_METADATA_NAME
@@ -11,7 +13,7 @@ module
         from '../features/config'
     import 
         @ isIntentionallyNamed
-        from '../utils/projectNames'
+        from '../features/packi'
     :type Props
         :{ 
             :p name

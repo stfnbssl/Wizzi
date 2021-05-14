@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\App.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import * as React from 'react';
 // Redux
@@ -425,6 +425,7 @@ class Main extends React.Component<Props, State> {
             
             // Set save-status to changed if needed
             const saveStatus: SaveStatus = state.unsaved && (st.saveStatus === 'saved-draft' || st.saveStatus === 'published' || st.saveStatus === 'unsaved') ? this.edited ? 'edited' : 'unsaved' : st.saveStatus;
+            console.log('App._handleSessionStateChange', 'saveStatus', saveStatus);
             
             // Update session state
             return {
@@ -433,9 +434,11 @@ class Main extends React.Component<Props, State> {
                     annotations: annotations ?? st.annotations
                  };
         }
-        , () => 
+        , () => {
         
-            this._saveDraftIfNeeded(true)
+            console.log('App._handleSessionStateChange', 'calling _saveDraftIfNeeded');
+            this._saveDraftIfNeeded(true);
+        }
         );
     
     _handleSubmitMetadata = (details: { 
@@ -502,7 +505,8 @@ class Main extends React.Component<Props, State> {
     ;
     
     _saveDraftIfNeeded = (debounced?: boolean) => {
-        if (this.state.session.user && this.state.session.unsaved && this.state.autosaveEnabled && this.state.saveStatus === 'edited') {
+        console.log('App._saveDraftIfNeeded', 'this.state.session.user', this.state.session.user, 'this.state.autosaveEnabled', this.state.autosaveEnabled, 'this.state.saveStatus', this.state.saveStatus);
+        if (true) {
             if (debounced) {
                 this._saveDraftIfNeededDebounced();
             }
@@ -546,24 +550,10 @@ class Main extends React.Component<Props, State> {
                     isDraft, 
                     ignoreUser
                  });
-            if (!excludeFromHistory) {
-                this.props.history.push({
-                    pathname: `/${saveResult.id}`, 
-                    search: this.props.location.search
-                 })
-            }
             this.setState((state) => 
             
                 ({
                     isSavedOnce: true, 
-                    saveHistory: excludeFromHistory ? state.saveHistory : [
-                            {
-                                hashId: saveResult.hashId ?? '', 
-                                savedAt: new Date().toISOString(), 
-                                isDraft
-                             }, 
-                            ...state.saveHistory
-                        ], 
                     saveStatus: state.session.unsaved ? this.edited ? 'edited' : 'unsaved' : isDraft ? 'saved-draft' : 'published'
                  })
             )
@@ -659,31 +649,6 @@ class Main extends React.Component<Props, State> {
     ;
     _handleChangeCode = (content: string) => {
     
-        let focusedEntry: FileSystemEntry;
-        console.log('_handleChangeCode', 'content', content);
-        this.setState((state: State) => {
-        
-            return {
-                    saveStatus: 'changed', 
-                    fileEntries: state.fileEntries.map((entry) => {
-                    
-                        if (entry.item.type === 'file' && entry.state.isFocused) {
-                            focusedEntry = entry;
-                            return updateEntry(entry, {
-                                    item: {
-                                        content
-                                     }
-                                 });
-                        }
-                        return entry;
-                    }
-                    )
-                 };
-        }
-        , () => 
-        
-            this._generateArtifact()
-        )
     }
     ;
     _handleFileEntriesChange = (nextFileEntries: FileSystemEntry[]):  Promise<void> => {
@@ -772,15 +737,14 @@ class Main extends React.Component<Props, State> {
                                     userAgent={this.props.userAgent}
                                     verbose={this.state.verbose}
                                     params={this.state.params}
-                                    loggedUser={this.props.loggedUser}
                                     currentPacki={this.props.currentPacki}
                                     generatedArtifact={this.props.generatedArtifact}
                                     fileEntries={this.state.fileEntries}
                                     entry={this._findFocusedEntry(this.state.fileEntries)}
                                     isWizziJobWaiting={this.state.isWizziJobWaiting}
                                     jobError={this.state.jobError}
-                                    onLoggedOn={this._handleLoggedOn}
-                                    onLoggedOff={this._handleLoggedOff}
+                                    //onLoggedOn={this._handleLoggedOn}
+                                    //onLoggedOff={this._handleLoggedOff}
                                     onChangeCode={this._handleChangeCode}
                                     onFileEntriesChange={this._handleFileEntriesChange}
                                     onEntrySelected={this._handleEntrySelected}
@@ -815,7 +779,7 @@ class Main extends React.Component<Props, State> {
 }
 const connector = connect(packiMapStateToProps, packiMapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
-const MainContainer = withPreferences(connector(Main));
+const MainContainer = withPreferences(withAuth(connector(Main)));
 type AsyncState = { 
     isReady: boolean;
     files: PackiFiles;

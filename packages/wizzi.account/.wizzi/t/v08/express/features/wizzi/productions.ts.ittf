@@ -1,0 +1,659 @@
+$group
+    $params &md
+    import path from 'path'
+    import fs from 'fs'
+    import wizzi from 'wizzi'
+    $if wzCtx.Build.usePacki
+        import wizziTools from 'wizzi-tools'
+    import
+        @ ittfDocumentScanner
+        @ folderBrowse
+        @ IttfMTreeState
+        @ FolderBrowseResult
+        from 'wizzi-utils'
+    $if wzCtx.Build.usePacki
+        import
+            @ packiTypes
+            from '../packi'
+    import
+        @ config
+        from '../config'
+    import
+        $if wzCtx.Build.usePacki
+            @ createFsJsonAndFactory
+            @ ensurePackiFilePrefix
+        @ createFilesystemFactory
+        from './factory'
+    import
+        @ GeneratedArtifact
+        from './types'
+    import
+        @ FsJson
+        from 'wizzi-repo'
+    $if wzCtx.Build.usePacki
+        +
+        export
+            async-function mTreeDebugInfo
+                param filePath
+                    :string
+                param files
+                    :ref packiTypes.PackiFiles
+                param context
+                    :any
+                :return
+                    :ref Promise
+                        :param
+                            :string
+                return
+                    new Promise
+                        async=>
+                            param resolve
+                            param reject
+                            const ittfDocumentUri
+                                _ ensurePackiFilePrefix(filePath)
+                                    :as
+                                        :string
+                            let jsonwf
+                                :any
+                                =
+                                    {
+                            try
+                                set jsonwf =
+                                    await
+                                        _ createFsJsonAndFactory(files)
+                            catch ex
+                                return reject(ex)
+                            _ jsonwf.wf.loadMTreeDebugInfo
+                                @ ittfDocumentUri
+                                @ context
+                                =>
+                                    param err
+                                        :any
+                                    param buildUpScript
+                                        :string
+                                    if err
+                                        return reject(err)
+                                    _ resolve
+                                        @ buildUpScript
+    $if wzCtx.Build.usePacki
+        +
+        export
+            async-function generateArtifact
+                param filePath
+                    :string
+                param files
+                    :ref packiTypes.PackiFiles
+                :return
+                    :ref Promise
+                        :param
+                            :ref GeneratedArtifact
+                return
+                    new Promise
+                        async=>
+                            param resolve
+                            param reject
+                            const generator = generatorFor(filePath)
+                            log 'wizzi.productions.using artifact generator', generator
+                            if generator
+                                let jsonwf
+                                    :any
+                                    =
+                                        {
+                                let context
+                                    :any
+                                    =
+                                        {
+                                const ittfDocumentUri
+                                    _ ensurePackiFilePrefix(filePath)
+                                        :as
+                                            :string
+                                const siteDocumentUri
+                                    _ Object.keys(files).find
+                                        =>
+                                            param k
+                                            _ k.endsWith('site.json.ittf')
+                                try
+                                    set jsonwf =
+                                        await
+                                            _ createFsJsonAndFactory(files)
+                                    set context =
+                                        {
+                                            @ site
+                                                iif siteDocumentUri
+                                                    then
+                                                        await
+                                                            _ loadModelJson
+                                                                @expr jsonwf.wf
+                                                                _ ensurePackiFilePrefix(siteDocumentUri)
+                                                                {
+                                                    else null
+                                            ...
+                                                await
+                                                    _ inferAndLoadContextJson(jsonwf.wf, files, ittfDocumentUri, 'twin')
+                                    log 'wizzi.productions.generateArtifact.context', Object.keys(context)
+                                catch ex
+                                    return reject(ex)
+                                _ jsonwf.wf.loadModelAndGenerateArtifact
+                                    @ ittfDocumentUri
+                                    {
+                                        { modelRequestContext
+                                            @ mTreeBuildUpContext context
+                                    @ generator
+                                    =>
+                                        param err
+                                            :any
+                                        param result
+                                            :string
+                                        if err
+                                            return reject(err)
+                                        _ resolve
+                                            {
+                                                @ artifactContent result
+                                                @ sourcePath filePath
+                                                @ artifactGenerator generator
+                                            # console.log('Generated artifact', result);
+                            else
+                                _ reject('No artifact generator available for document ' + filePath)
+    +
+    export
+        async-function generateArtifactFs
+            param filePath
+                :string
+            param context
+                :any
+                :optional
+            :return
+                :ref Promise
+                    :param
+                        :ref GeneratedArtifact
+            return
+                new Promise
+                    async=>
+                        param resolve
+                        param reject
+                        const generator = generatorFor(filePath)
+                        if generator
+                            log 'wizzi.productions.using artifact generator', generator
+                            const wf
+                                await
+                                    _ createFilesystemFactory()
+                            const generationContext
+                                {
+                                    @ modelRequestContext
+                                        ||
+                                            + context
+                                            {
+                            try
+                                _ wf.loadModelAndGenerateArtifact
+                                    @ filePath
+                                    @ generationContext
+                                    @ generator
+                                    =>
+                                        param err
+                                        param result
+                                        if err
+                                            return reject(err)
+                                        _ resolve
+                                            {
+                                                @ artifactContent result
+                                                @ sourcePath filePath
+                                                @ artifactGenerator generator
+                                            # console.log('Generated artifact', result);
+                            catch ex
+                                return reject(ex)
+                        else
+                            _ reject('No artifact generator available for document ' + filePath)
+    $if wzCtx.Build.usePacki
+        +
+        export
+            async-function executeJob
+                param filePath
+                    :string
+                param files
+                    :ref packiTypes.PackiFiles
+                :return
+                    :ref Promise
+                        :param
+                            :ref FsJson
+                return
+                    new Promise
+                        async=>
+                            param resolve
+                            param reject
+                            const ittfDocumentUri = ensurePackiFilePrefix(filePath)
+                            const jsonwf
+                                await
+                                    _ createFsJsonAndFactory(files)
+                            _ jsonwf.wf.executeJob
+                                {
+                                    @ name ''
+                                    @ path ittfDocumentUri
+                                    { productionOptions
+                                =>
+                                    param err
+                                    param result
+                                    if err
+                                        return reject(err)
+                                    _ console.log('Job executed. result', result)
+                                    _ resolve(jsonwf.fsJson)
+        +
+        export
+            async-function executeJobs
+                param files
+                    :ref packiTypes.PackiFiles
+                :return
+                    :ref Promise
+                        :param
+                            :ref FsJson
+                return
+                    new Promise
+                        async=>
+                            param resolve
+                            param reject
+                            const jobDocumentUris
+                                _ Object.keys(files).filter
+                                    =>
+                                        param k
+                                        _ k.endsWith('.wfjob.ittf')
+                            _ console.log('Executing jobs', jobDocumentUris, 'files', Object.keys(files))
+                            const jsonwf
+                                await
+                                    _ createFsJsonAndFactory(files)
+                            const execJob
+                                =>
+                                    param index
+                                        :number
+                                    :return
+                                        :void
+                                    if index == jobDocumentUris.length
+                                        _ console.log('Jobs executed.')
+                                        return resolve(jsonwf.fsJson)
+                                    const ittfDocumentUri = ensurePackiFilePrefix(jobDocumentUris[index])
+                                    _ console.log('Executing job', ittfDocumentUri)
+                                    _ jsonwf.wf.executeJob
+                                        {
+                                            @ name ''
+                                            @ path ittfDocumentUri
+                                            { productionOptions
+                                        =>
+                                            param err
+                                            param result
+                                            if err
+                                                return reject(err)
+                                            _ console.log('Job executed. result', result)
+                                            _ execJob(index + 1)
+                            _ execJob(0)
+    $if wzCtx.Build.usePacki
+        +
+        export
+            async-function wizzify
+                param files
+                    :ref packiTypes.PackiFiles
+                :return
+                    :ref Promise
+                        :param
+                            :ref packiTypes.PackiFiles
+                return
+                    new Promise
+                        async=>
+                            param resolve
+                            param reject
+                            var result
+                                :ref packiTypes.PackiFiles
+                                =
+                                    {
+                            for const k of Object.keys(files)
+                                var extension = path.extname(k)
+                                log 'productions.wizzify', k, extension
+                                const ittfResult
+                                    await
+                                        _ handleWizzify
+                                            @ extension
+                                            @ files[k].contents
+                                set result[k + '.ittf']
+                                    {
+                                        @ type 'CODE'
+                                        @ contents ittfResult
+                            return
+                                _ resolve
+                                    @ result
+    +
+    const extSchemaMap
+        :{
+            :index
+                :string
+                param k
+                    :string
+        =
+            {
+                @ '.js' 'js'
+                @ '.jsx' 'js'
+                @ '.ts' 'ts'
+                @ '.tsx' 'ts'
+                @ '.html' 'html'
+                @ '.css' 'css'
+                @ '.svg' 'svg'
+                @ '.md' 'md'
+                @ '.xml' 'xml'
+                @ '.json' 'json'
+                @ '.graphql' 'graphql'
+    $if wzCtx.Build.usePacki
+        +
+        function handleWizzify
+            param extension
+                :string
+            param codeSnippet
+                :string
+            :return
+                :ref Promise
+                    :param
+                        :string
+            return
+                new Promise
+                    async=>
+                        param resolve
+                        param reject
+                        var schema = extSchemaMap[extension]
+                        if schema
+                            _ wizziTools.wizzify
+                                @ schema
+                                @ codeSnippet
+                                {
+                                function
+                                    param err
+                                        :any
+                                    param ittfResult
+                                        :string
+                                    if err
+                                        _ reject
+                                            @ err
+                                    _ resolve
+                                        @ ittfResult
+                        else
+                            _ reject
+                                new Error
+                                    @ 'Extension "' + extension + '" has no wizzifier'
+    +
+    export
+        async-function loadModelJson
+            param wf
+                :ref wizzi.WizziFactory
+            param filePath
+                :string
+            param context
+                :any
+            :return
+                :ref Promise
+                    :param
+                        :ref wizzi.WizziModel
+            return
+                new Promise
+                    async=>
+                        param resolve
+                        param reject
+                        const schemaName = schemaFromFilePath(filePath)
+                        if !schemaName
+                            return reject('File is not a known ittf document: ' + filePath)
+                        _ wf.loadModel
+                            @ schemaName
+                            @ filePath
+                            {
+                                @ mTreeBuildUpContext context
+                            =>
+                                param err
+                                param result
+                                if err
+                                    return reject(err)
+                                _ resolve(result)
+                                    # console.log('Generated artifact', result);
+    +
+    export
+        async-function loadModelFs
+            param filePath
+                :string
+            param context
+                :any
+            :return
+                :ref Promise
+                    :param
+                        :ref wizzi.WizziModel
+            return
+                new Promise
+                    async=>
+                        param resolve
+                        param reject
+                        const schemaName = schemaFromFilePath(filePath)
+                        if !schemaName
+                            return reject('File is not a known ittf document: ' + filePath)
+                        const wf
+                            await
+                                _ createFilesystemFactory()
+                        _ wf.loadModel
+                            @ schemaName
+                            @ filePath
+                            {
+                                @ mTreeBuildUpContext context
+                            =>
+                                param err
+                                param result
+                                if err
+                                    return reject(err)
+                                _ resolve(result)
+                                    # console.log('Generated artifact', result);
+    +
+    export
+        async-function scanIttfDocument
+            param filePath
+                :string
+            param rootFolder
+                :string
+            :return
+                :ref Promise
+                    :param
+                        :ref IttfMTreeState
+            return
+                new Promise
+                    =>
+                        param resolve
+                        param reject
+                        _ ittfDocumentScanner.scan
+                            @ filePath
+                            {
+                                @ rootFolder
+                            =>
+                                param err
+                                param result
+                                if err
+                                    return reject(err)
+                                _ resolve(result)
+    +
+    export
+        async-function scanIttfFolder
+            param filePath
+                :string
+            param rootFolder
+                :string
+            :return
+                :ref Promise
+                    :param
+                        :ref FolderBrowseResult
+            return
+                new Promise
+                    =>
+                        param resolve
+                        param reject
+                        _ folderBrowse.scan
+                            @ filePath
+                            {
+                                @ rootFolder
+                            =>
+                                param err
+                                param result
+                                if err
+                                    return reject(err)
+                                _ resolve(result)
+    $if wzCtx.Build.usePacki
+        +
+        export
+            async-function inferAndLoadContextJson
+                param wf
+                    :ref wizzi.WizziFactory
+                param files
+                    :ref packiTypes.PackiFiles
+                param filePath
+                    :string
+                param exportName
+                    :string
+                :return
+                    :ref Promise
+                        :param any
+                return
+                    new Promise
+                        =>
+                            param resolve
+                            param reject
+                            const pf = parseFilePath(filePath)
+                            if pf.isIttfDocument && pf.schema !== 'json'
+                                var twinJsonBaseName = pf.seedname + '.json.ittf'
+                                _ console.log('features.wizzi.productions.inferAndLoadContextJson.twinJsonBaseName', twinJsonBaseName)
+                                const twinDocumentUri
+                                    _ Object.keys(files).find
+                                        =>
+                                            param k
+                                            _ k.endsWith('/' + twinJsonBaseName)
+                                _ console.log('features.wizzi.productions.inferAndLoadContextJson.twinDocumentUri', twinDocumentUri, Object.keys(files))
+                                if twinDocumentUri
+                                    _ loadModelJson
+                                        @ wf
+                                        _ ensurePackiFilePrefix(twinDocumentUri)
+                                        {
+                                        ._ then
+                                            =>
+                                                param model
+                                                _ resolve
+                                                    {
+                                                        @ [exportName] model
+                                        ._ catch
+                                            =>
+                                                param err
+                                                _ reject(err)
+                                else
+                                    _ resolve
+                                        {
+                            else
+                                _ resolve
+                                    {
+    +
+    export
+        async-function inferAndLoadContextFs
+            param filePath
+                :string
+            param exportName
+                :string
+            :return
+                :ref Promise
+                    :param any
+            return
+                new Promise
+                    =>
+                        param resolve
+                        param reject
+                        const pf = parseFilePath(filePath)
+                        if pf.isIttfDocument && pf.schema !== 'json'
+                            var twinJsonPath = path.join(path.dirname(filePath), pf.seedname + '.json.ittf')
+                            if fs.existsSync(twinJsonPath)
+                                _ loadModelFs
+                                    @ twinJsonPath
+                                    {
+                                    ._ then
+                                        =>
+                                            param model
+                                            _ resolve
+                                                {
+                                                    @ [exportName] model
+                                    ._ catch
+                                        =>
+                                            param err
+                                            _ reject(err)
+                            else
+                                _ resolve
+                                    {
+                        else
+                            _ resolve
+                                {
+    +
+    const schemaModuleMap
+        :{
+            :index
+                :string
+                param k
+                    :string
+        =
+            {
+                @ css 'css/document'
+                @ graphql 'graphql/document'
+                @ ittf 'ittf/document'
+                @ js 'js/module'
+                @ json 'json/document'
+                @ html 'html/document'
+                @ md 'md/document'
+                @ scss 'scss/document'
+                @ svg 'svg/document'
+                @ text 'text/document'
+                @ ts 'ts/module'
+                @ vml 'vml/document'
+                @ vue 'vue/document'
+                @ xml 'xml/document'
+    +
+    function generatorFor
+        param filePath
+            :string
+        :return
+            :union
+                :string
+                :undefined
+        const pf = parseFilePath(filePath)
+        if pf.isIttfDocument
+            return schemaModuleMap[pf.schema]
+        return undefined
+    +
+    function schemaFromFilePath
+        param filePath
+            :string
+        :return
+            :union
+                :string
+                :undefined
+        const pf = parseFilePath(filePath)
+        if pf.isIttfDocument
+            return pf.schema
+        return undefined
+    +
+    :type parsedFilePath
+        :{
+            :p seedname
+                :string
+            :p schema
+                :string
+            :p isIttfDocument
+                :boolean
+    +
+    export
+        function parseFilePath
+            param filePath
+                :string
+            :return
+                :ref parsedFilePath
+            const nameParts = path.basename(filePath).split('.')
+            if nameParts[nameParts.length - 1] === 'ittf'
+                return
+                    {
+                        @ isIttfDocument true
+                        @ schema nameParts[nameParts.length - 2]
+                        @ seedname nameParts.slice(0, -2).join('.')
+            else
+                return
+                    {
+                        @ isIttfDocument false
+                        @ schema nameParts[nameParts.length - 1]
+                        @ seedname nameParts.slice(0, -1).join('.')

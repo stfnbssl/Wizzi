@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\widgets\Text.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import styled, {css} from 'styled-components';
 import {system, display, DisplayProps, fontSize, FontSizeProps, fontWeight, FontWeightProps, height, HeightProps, lineHeight, LineHeightProps, maxHeight, MaxHeightProps, maxWidth, MaxWidthProps, minHeight, MinHeightProps, minWidth, MinWidthProps, overflow, OverflowProps, space, SpaceProps, textAlign, TextAlignProps, textStyle, TextStyleProps, width, WidthProps, zIndex, ZIndexProps} from 'styled-system';

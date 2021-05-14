@@ -63,9 +63,9 @@ module
                                     return
                                         < Comp
                                             @ ref {__forwardedRef}
-                                                # @ts-ignore
                                             @ theme {props && props.preferences.theme}
                                             @ {...rest}
+                                            # @ts-ignore
             const Result
                 _ React.forwardRef
                     =>

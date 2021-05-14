@@ -52,6 +52,7 @@ $group
         => 
             param content
                 :string 
+            $* VIA olf version 
             let focusedEntry
                 :ref FileSystemEntry
             log '_handleChangeCode', 'content', content
@@ -77,6 +78,7 @@ $group
                                         return entry
                 => 
                     _ this._generateArtifact()
+            *$
     p _handleFileEntriesChange
         => 
             param nextFileEntries

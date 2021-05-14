@@ -82,6 +82,7 @@
         usePacki true
         { packi
             endPoint "http://localhost:5000/api/v1"
+            storeFolder "data/packi/store"
             templatesFolder "data/packi/templates"
             apiId_rem "identifier for the API. This value will be used as the audience parameter on authorization calls."
             apiId "https://packi/api/v1"

@@ -194,7 +194,7 @@ $group
         vue "^2.5.17"
         vue-server-renderer "^2.5.17"
     ---
-    ${'$'}if (wzCtx.Build.useReactCreateApp || wzCtx.Build.useTypescript) && !! wzCtx.Build.useExpress
+    ${'$'}if wzCtx.Build.utils.useWebVitals
         web-vitals "^1.0.1"
     ${'$'}if wzCtx.Build.useWizzi
         wizzi-tools "file:../../wizzi-tools/dist"

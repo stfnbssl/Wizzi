@@ -1,0 +1,29 @@
+module
+
+    +
+    export
+        :type Account
+            :{
+                :p code
+                    :string
+    +
+    export
+        :type AccountManifest
+            :{
+                :p name
+                    :string
+                :p description
+                    :string
+    +
+    export
+        :type SavedAccount
+            :{
+                :p id
+                    :string
+                :p created
+                    :string
+                :p code
+                    :optional
+                    :string
+                :p manifest
+                    :ref AccountManifest

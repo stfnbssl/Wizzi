@@ -1,0 +1,308 @@
+{
+    "name": "wizzi.account",
+    "version": "0.0.1",
+    "description": "wizzi.account",
+    "author": {
+        "name": "",
+        "email": ""
+    },
+    "App": {
+        "siteUrl": "http://localhost",
+        "port": 4000,
+        "baseUrl": "http://localhost:4000",
+        "Components": []
+    },
+    "Style": {
+        "vpadRatio": 0.25,
+        "bodyFontSize": "12px",
+        "bodyLineHeight": 1.3165
+    },
+    "Build": {
+        "isClientServer": true,
+        "useEnvCmd": true,
+        "useSite": true,
+        "site": {},
+        "useNetlify": false,
+        "netlify": {},
+        "useStorybook": false,
+        "storybook": {},
+        "useGithub": true,
+        "github": {
+            "clientId": "6a42cd4cb7247bb4e823",
+            "clientSecret": "dedced0ac262cae62557e4c3f567a6227b17bfb7",
+            "callbackURL": "http://localhost:4000/authenticate/github/callback"
+        },
+        "useAccount": true,
+        "account": {},
+        "useConfig": true,
+        "config": {
+            "useEnvalid": true,
+            "envalid": {}
+        },
+        "useMarked": false,
+        "useMonacoEditor": false,
+        "monacoEditor": {},
+        "usePassport": false,
+        "passport": {},
+        "usePassportAuth0": false,
+        "passportAuth0": {},
+        "usePacki": false,
+        "packi": {
+            "endPoint": "http://localhost:4000/api/v1",
+            "storeFolder": "data/packi/store",
+            "templatesFolder": "data/packi/templates",
+            "apiId_rem": "identifier for the API. This value will be used as the audience parameter on authorization calls.",
+            "apiId": "https://packi/api/v1",
+            "clientId_rem": "",
+            "clientId": "gPb1dqyNzRHfJgNVawKxPFP65LuNcUI8",
+            "clientSecret_rem": "",
+            "clientSecret": "-DVUr9qiz5hivZUmfiJtFDEV-zylvAem8P-X0OH8zwlry06rZNCIDUTF7s9sgWNm",
+            "backendId_rem": "",
+            "backendId": "awRaG0ilBVlaHQ2xK5JgehLjkBzLNthp",
+            "backendSecret_rem": "",
+            "backendSecret": "1iDRuv92BtmZA521Od3BIU923cDL-EsoSNNTAUJkGfrpNmEDr85I_lsWqZAe5UNG"
+        },
+        "useAuthentication": true,
+        "authentication": {
+            "authRequired": false,
+            "userInfo": false,
+            "useAuth0": false,
+            "auth0": {
+                "tenant": "dev-qwf9-zob.eu",
+                "clientId": "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV",
+                "longRandomString": "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg",
+                "baseURL": "http://localhost:4000"
+            },
+            "useLocal": true,
+            "local": {},
+            "useGithub": true,
+            "github": {
+                "clientId": "6a42cd4cb7247bb4e823",
+                "clientSecret": "dedced0ac262cae62557e4c3f567a6227b17bfb7",
+                "callbackURL": "http://localhost:4000/api/v1/authenticate/github/callback"
+            }
+        },
+        "useAuthorization": false,
+        "authorization": {},
+        "useCrypto": false,
+        "crypto": {},
+        "useJwt": true,
+        "jwt": {},
+        "useBabel": true,
+        "babel": {
+            "useParser": true,
+            "useRuntime": false,
+            "useDinamicImport": true,
+            "addModuleExport": false,
+            "useVendor": true,
+            "vendor": {
+                "compactPath": "./src/vendor"
+            },
+            "useResolutions": true,
+            "resolutions": [
+                {
+                    "name": "**/babel-core",
+                    "value": "7.0.0-bridge.0"
+                }
+            ]
+        },
+        "useWebpackApp": false,
+        "webpackApp": {
+            "items": [
+                {
+                    "name": "hello",
+                    "writeToDisk": false
+                }
+            ]
+        },
+        "useWebpack": true,
+        "webpack": {
+            "useCss": true,
+            "css": {},
+            "useStyleLoader": false,
+            "styles": {},
+            "useMiniCssExtract": true,
+            "miniCssExtract": {},
+            "useSass": false,
+            "sass": {},
+            "useHtml": true,
+            "html": {
+                "template": "./src/client/index.html",
+                "filename": "index.html"
+            },
+            "useMinimizer": true,
+            "useWorker": true,
+            "useStatsWriter": false,
+            "useIgnore": true,
+            "useCodeSplitting": true,
+            "useEnv": false,
+            "env": {
+                "items": [
+                    {
+                        "name": "NODE_ENV",
+                        "value": "env('NODE_ENV')"
+                    },
+                    {
+                        "name": "SERVER_URL",
+                        "value": "env('SERVER_URL')"
+                    },
+                    {
+                        "name": "API_SERVER_URL",
+                        "value": "env('API_SERVER_URL')"
+                    },
+                    {
+                        "name": "SNACK_SEGMENT_KEY",
+                        "value": "env('SNACK_SEGMENT_KEY')"
+                    },
+                    {
+                        "name": "SNACK_AMPLITUDE_KEY",
+                        "value": "env('SNACK_AMPLITUDE_KEY')"
+                    },
+                    {
+                        "name": "SNACK_WEBPLAYER_URL",
+                        "value": "env('SNACK_WEBPLAYER_URL')"
+                    },
+                    {
+                        "name": "IMPORT_SERVER_URL",
+                        "value": "env('IMPORT_SERVER_URL')"
+                    },
+                    {
+                        "name": "DEPLOY_ENVIRONMENT",
+                        "value": "env('DEPLOY_ENVIRONMENT')"
+                    },
+                    {
+                        "name": "BUILD_TIMESTAMP",
+                        "value": "Date.now()"
+                    }
+                ]
+            },
+            "useDevServer": true,
+            "devServer": {
+                "contentBase": "path.join(__dirname, 'src')"
+            }
+        },
+        "useResolutions": true,
+        "useTypescript": true,
+        "typescript": {
+            "useBabelLoader": true
+        },
+        "usePrettier": true,
+        "prettier": {},
+        "usePrismjs": true,
+        "prismjs": {
+            "modes": []
+        },
+        "useLint": true,
+        "lint": {},
+        "useGraphql": false,
+        "graphql": {
+            "excludePolyfill": true
+        },
+        "useMongoDb": true,
+        "mongodb": {
+            "user": "yanez",
+            "password": "x5csosPN5YAsrl4Z",
+            "dbPath": "@cluster0.idlk7.mongodb.net",
+            "dbName": "wizzi"
+        },
+        "useFilesystem": false,
+        "filesystem": {},
+        "useExpress": true,
+        "express": {
+            "useSsl": false,
+            "useErrors": false,
+            "useStaticFiles": true,
+            "staticFiles": {
+                "basePath": "__dirname, '..', '..', '..'"
+            }
+        },
+        "useSession": true,
+        "session": {
+            "name": "wizzi.account"
+        },
+        "noCache": true,
+        "useSocketIO": false,
+        "socketIO": {},
+        "useCookie": true,
+        "cookie": {},
+        "useLogger": false,
+        "logger": {
+            "useMorgan": false,
+            "morgan": {}
+        },
+        "useCompression": false,
+        "compression": {},
+        "useHelmet": false,
+        "helmet": {},
+        "useCors": true,
+        "cors": {
+            "clientOrigin": "http://localhost:4000"
+        },
+        "useReact": true,
+        "react": {
+            "useV16": true,
+            "useMaterialUI": false,
+            "materialUI": {
+                "useIcons": true
+            },
+            "useRedux": false,
+            "redux": {
+                "useSaga": true,
+                "saga": {
+                    "see": [
+                        {
+                            "url": "https://github.com/piotrwitek/react-redux-typescript-realworld-app",
+                            "title": "React, Redux, TypeScript - RealWorld App"
+                        },
+                        {
+                            "url": "https://github.com/piotrwitek/react-redux-typescript-guide",
+                            "title": "React & Redux in TypeScript - Complete Guide"
+                        }
+                    ]
+                }
+            },
+            "useRouter": true,
+            "useHelmetAsync": true,
+            "useSimpleCodeEditor": true,
+            "useTextareaAutosize": true,
+            "useVirtualized": true
+        },
+        "useHoistNonReactStatic": false,
+        "styles": {
+            "usePalx": false
+        },
+        "useStyledComponents": true,
+        "styledComponents": {},
+        "useStyledSystem": true,
+        "styledSystem": {},
+        "useAphrodite": true,
+        "aphrodite": {
+            "disableImportant": true
+        },
+        "useTailwindcss": false,
+        "tailwindcss": {},
+        "useExpoStyles": false,
+        "expoStyles": {},
+        "useJest": false,
+        "jest": {},
+        "utils": {},
+        "useWizzi": true,
+        "wizzi": {
+            "isDev": true,
+            "plugins": [
+                "./wizzi-core/dist/index.js",
+                "./wizzi-js/dist/index.js",
+                "./wizzi-web/dist/index.js",
+                "./wizzi-meta/dist/index.js"
+            ],
+            "pluginsBaseFolder": "C:/My/wizzi/stfnbssl/wizzi/packages",
+            "globalContext": {
+                "wzConfigIsDevelopment": true
+            }
+        },
+        "useIttfStatic": false,
+        "ittfStatic": {},
+        "useWizziViewEngine": true,
+        "wizziViewEngine": {}
+    }
+}

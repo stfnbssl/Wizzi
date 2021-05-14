@@ -1,0 +1,32 @@
+module
+    import
+        @ ACCOUNT
+        from '../account'
+    +
+    export
+        :type ConfigType
+            :{
+                :p SERVER_URL
+                    :string
+                :p API_URL
+                    :string
+                :p AUTH_URL
+                    :string
+                :p AUTH_PROVIDERS_URL
+                    :string
+                :p VERSION
+                    :string
+                :p DEFAULT_DATA_NAME
+                    :string
+                :p DEFAULT_METADATA_NAME
+                    :string
+                :p DEFAULT_METADATA_DESCRIPTION_SAVED
+                    :string
+                :p DEFAULT_METADATA_DESCRIPTION_EMPTY
+                    :string
+                :p DEFAULT_DESCRIPTION
+                    :string
+                :p DEFAULT_ACCOUNT
+                    :ref ACCOUNT
+                :p PREFERENCES_KEY
+                    :string

@@ -1,0 +1,50 @@
+module
+    import
+        @ ConfigType
+        from './types'
+    import
+        as defaults
+        from './defaults'
+    +
+    const ENV
+        iif process.env.NODE_ENV
+            then process.env.NODE_ENV
+            else 'development'
+    +
+    const PLATFORM
+        iif process.env.PLATFORM
+            then process.env.PLATFORM
+            else 'local'
+    +
+    const VERSION
+        iif process.env.VERSION
+            then process.env.VERSION
+            else '0.0.1'
+    +
+    let _config
+        :ref ConfigType
+    +
+    function getConfig
+        if _config == null
+            set _config =
+                {
+                    @ SERVER_URL '${wzCtx.App.baseUrl}'
+                    @ API_URL '${wzCtx.App.baseUrl}/api/v1'
+                    @ AUTH_URL '${wzCtx.App.baseUrl}/api/v1/auth'
+                    @ AUTH_PROVIDERS_URL '${wzCtx.App.baseUrl}/auth'
+                    @ VERSION
+                    @ DEFAULT_DATA_NAME defaults.DEFAULT_DATA_NAME
+                    @ DEFAULT_METADATA_NAME defaults.DEFAULT_DATA_NAME
+                    @ DEFAULT_METADATA_DESCRIPTION_SAVED defaults.DEFAULT_DATA_NAME
+                    @ DEFAULT_METADATA_DESCRIPTION_EMPTY defaults.DEFAULT_METADATA_DESCRIPTION_EMPTY
+                    @ DEFAULT_DESCRIPTION defaults.DEFAULT_DESCRIPTION
+                    @ DEFAULT_ACCOUNT defaults.DEFAULT_ACCOUNT
+                    @ PREFERENCES_KEY '${wzCtx.name}.preferences.config'
+            log 'features.config', _config
+        return _config
+    +
+    export
+        const config
+            :ref ConfigType
+            = getConfig()
+    export-default config

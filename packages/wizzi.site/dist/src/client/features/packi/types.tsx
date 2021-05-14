@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\packi\types.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import {ThemeName} from '../preferences/index';
 
@@ -24,6 +24,8 @@ export type PackiTemplate = {
 export type PackiCodeFile = { 
     type: 'CODE';
     contents: string;
+    generated?: boolean;
+    bothRealAndGenerated?: boolean;
     error?: Error;
 };
     //
@@ -33,6 +35,8 @@ export type PackiAssetFile = {
     type: 'ASSET';
     // string = url
     contents: string | File | Blob | FormData;
+    generated?: boolean;
+    bothRealAndGenerated?: boolean;
     // string = url
     error?: Error;
 };
@@ -67,7 +71,8 @@ export type PackiUser = {
 export type PackiState = { 
     /**
         // 
-        // Files that make up the content of the Packi.
+        // Files that make up the content (code & assets) of the Packi. There should
+        // always be a file called "App.js" or "App.tsx" as the main entry point.
         // 
     */
     files: PackiFiles;
@@ -179,7 +184,6 @@ export type PackiManifest = {
 
 export type PackiDefaults = { 
     name: string;
-    channel: string;
 };
 
 export type PackiWindowRef = { 
@@ -241,4 +245,10 @@ export type RouterData = {
         message: string;
     };
     defaults: PackiDefaults;
+};
+
+export type PackiFilesOrKind = PackiFiles | string;
+
+export type CreatePackiOptions = { 
+    data: PackiFilesOrKind;
 };

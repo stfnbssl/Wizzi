@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\index.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import cookies from 'js-cookie';
 import * as React from 'react';
@@ -15,23 +15,7 @@ import Router from './components/Router';
 import ThemeProvider from './components/ThemeProvider';
 import createStore from './store/createStore';
 import type {RouterData, QueryParams} from './features/packi';
-const __INITIAL_DATA__ = {
-    data: {
-        type: 'success', 
-        defaults: {
-            name: 'MyPackiName', 
-            channel: 'MyPackiChannel'
-         }
-    } as RouterData, 
-    queryParams: {
-        
-     }, 
-    splitTestSettings: {
-        "defaultConnectionMethod": "account", 
-        "authFlow": "save2", 
-        "snackFirstSeen": "2021-04-28"
-     }
- };
+import {__INITIAL_DATA__} from './initialData';
 
 const store = createStore({
     app: {

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\packi\mongo\packi2.ts.ittf
-    utc time: Mon, 03 May 2021 18:21:10 GMT
+    utc time: Mon, 10 May 2021 17:56:08 GMT
 */
 import {Schema, Model, model} from "mongoose";
 import {ModelBuilderType} from "../../app/types";
@@ -26,10 +26,18 @@ const Packi2Schema = new Schema<IPacki2Model>({
      }, 
     files: {
         type: String
+     }, 
+    updated_at: {
+        type: Date
      }
  }, {
     collection: 'packis2'
  });
+Packi2Schema.pre('save', function(next) {
+
+    this.updated_at = Date.now();
+    next();
+})
 
 export type Packi2ModelType = Model<IPacki2Model>;
 

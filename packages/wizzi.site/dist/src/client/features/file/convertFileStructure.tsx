@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\file\convertFileStructure.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import {isEntryPoint} from './fileUtilities';
 import {FileSystemEntry, FileSystemEntryDiff} from './types';
@@ -46,7 +46,7 @@ export const packiToEntryArray = (files: PackiFiles):  FileSystemEntry[] => {
                 item: {
                     path: filename, 
                     type: 'file', 
-                    uri: files[filename].contents, 
+                    uri: files[filename].contents as string, 
                     asset: true
                  }, 
                 state: {
@@ -56,7 +56,7 @@ export const packiToEntryArray = (files: PackiFiles):  FileSystemEntry[] => {
                 item: {
                     path: filename, 
                     type: 'file', 
-                    content: files[filename].contents, 
+                    content: files[filename].contents as string, 
                     generated: files[filename].generated
                  }, 
                 state: {
@@ -125,22 +125,6 @@ export const entryArrayToPacki = (entryArray: FileSystemEntry[]):  PackiFiles =>
         }
     }
     return sourceResult;
-}
-;
-export const entryArrayToObject = (entryArray: FileSystemEntry[]):  { 
-    [key: string]} => {
-
-    const entriesObject: { 
-        [key: string]} = entryArray.reduce((acc: { 
-        [key: string]}, {
-        item
-     }) => {
-    
-        acc[item.path] = item;
-        return acc;
-    }
-    , {});
-    return entriesObject;
 }
 ;
 export const entryArrayDiff = (a: FileSystemEntry[], b: FileSystemEntry[]):  { 

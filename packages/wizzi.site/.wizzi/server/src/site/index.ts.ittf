@@ -3,3 +3,9 @@ module
         var md = {
         }
     v08/express/site/index(&md)
+        $append imports
+            import
+                @ PackiController
+                from './controllers/packi'
+        $append controllers
+            @ new PackiController()

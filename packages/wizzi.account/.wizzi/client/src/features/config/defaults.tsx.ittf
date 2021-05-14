@@ -1,0 +1,19 @@
+module
+    export
+        const DEFAULT_DATA_NAME = 'MyAccount'
+    export
+        const DEFAULT_METADATA_NAME = 'Account'
+    export
+        const DEFAULT_METADATA_DESCRIPTION_SAVED
+            `lit
+                + ... saved account description ...
+    export
+        const DEFAULT_METADATA_DESCRIPTION_EMPTY
+            `lit
+                + ... empty account description ...
+    export
+        const DEFAULT_DESCRIPTION = 'No description'
+    export
+        const DEFAULT_ACCOUNT
+            {
+                @ code 'sayHello();'

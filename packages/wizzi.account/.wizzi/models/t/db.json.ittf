@@ -1,0 +1,12 @@
+$group
+    useGraphql false
+    { graphql
+        excludePolyfill true
+    useMongoDb true
+    { mongodb
+        user "yanez"
+        password "x5csosPN5YAsrl4Z"
+        dbPath "@cluster0.idlk7.mongodb.net"
+        dbName "wizzi"
+    useFilesystem false
+    { filesystem

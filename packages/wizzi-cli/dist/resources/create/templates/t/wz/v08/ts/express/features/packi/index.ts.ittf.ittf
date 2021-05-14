@@ -23,6 +23,10 @@ $group
             from './controllers/templates'
     
     import 
+        @ PackiController
+        from './controllers/packi'
+
+    import 
         @ ProductionsController
         from './controllers/productions'
     
@@ -53,6 +57,7 @@ $group
             [ 
                 ${'$'}if wzCtx.Build.useFilesystem
                     @ new TemplatesController()
+                @ new PackiController()
                 @ new ProductionsController()
                 ${'$'}if wzCtx.Build.useMongoDb
                     ${'$'}if wzCtx.Build.useGithub

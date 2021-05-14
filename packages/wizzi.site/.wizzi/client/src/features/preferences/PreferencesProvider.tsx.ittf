@@ -9,7 +9,6 @@ module
             from 'react-redux'
         :import-type
             @ Platform
-            @ QueryStateParams
             from '../../types'
         import
             @ isMobile
@@ -18,6 +17,9 @@ module
             @ ConnectionMethod
             from '../DeviceInstructions/DeviceInstructionsModal'
     $else
+        :import-type
+            @ QueryStateParams
+            from '../packi'
     :import-type
         @ PanelType
         @ ThemeName
@@ -31,7 +33,7 @@ module
     :type Props
         :{
             :p queryParams
-                :any
+                :ref QueryStateParams
             :p cookies
                 :{
                     :p get

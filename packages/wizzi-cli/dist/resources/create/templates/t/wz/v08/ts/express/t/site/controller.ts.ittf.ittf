@@ -51,6 +51,8 @@ $group
                     :public 
                     :ref ${'$'}{ctrl.modelName}ModelType
             +
+            ${'$'}hook properties
+            +
             => initialize
                 param initValues
                     :ref AppInitializerType

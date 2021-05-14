@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\packi\session.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import mapValues from 'lodash/mapValues';
 import nullthrows from 'nullthrows';
@@ -360,11 +360,9 @@ export default class PackiSession {
         updateFiles(files: { 
             [path: string]: PackiFile | null;
         }) {
-            console.log('PackiSession', 'updateFiles', files);
             return this.setState((state) => {
                 
                     const newFiles = State.updateObjects(state.files, files);
-                    console.log('PackiSession', 'newFiles', newFiles);
                     return newFiles !== state.files ? {
                                 files: newFiles
                              } : null;
@@ -450,6 +448,31 @@ export default class PackiSession {
             )
         ;
         
+        async saveAsync(options?: PackiSaveOptions) {
+            const prevState = this.state;
+            
+            // Wait for any pending asset uploads the complete before saving
+            await this.fileUploader.waitForCompletion();
+            const {
+                name, 
+                description, 
+                files, 
+                user
+             } = this.state;
+            const payload: any = files;
+            const url = `${this.apiURL}/api/v1/packi/save/${encodeURIComponent('guest/test')}`;
+            console.log('PackiSession.saveAsync', url);
+            const response = await fetch(url, {
+                    method: 'POST', 
+                    body: JSON.stringify(payload), 
+                    headers: {
+                        'Content-Type': 'application/json'
+                     }
+                 });
+            const data = await response.json();
+            console.log('PackiSession.saveAsync.response.data', url);
+        }
+        
         
         // 
         
@@ -462,7 +485,7 @@ export default class PackiSession {
             * * Uploads the current code to Expo's servers and return a url that points to that version of the code.
             * 
         */
-        async saveAsync(options?: PackiSaveOptions) {
+        async saveAsync_Old(options?: PackiSaveOptions) {
             const prevState = this.state;
             
             // Wait for any pending asset uploads the complete before saving

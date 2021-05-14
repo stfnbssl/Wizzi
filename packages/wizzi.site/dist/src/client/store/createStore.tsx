@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\store\createStore.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import {createStore, compose, applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
@@ -13,11 +13,15 @@ import {createRootSaga} from './sagas';
 export default function createStoreWithPreloadedState(preloadedState: StoreState) {
     
         console.log('createStoreWithPreloadedState', 'preloadedState', preloadedState);
-        const composeEnhancer: typeof compose = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+        let composeEnhancer: typeof compose;
+        if (typeof window !== 'undefined') {
+            composeEnhancer = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+        }
+        else {
+            composeEnhancer = compose;
+        }
         const sagaMiddleware = createSagaMiddleware();
         const store = createStore(createRootReducer(), preloadedState, composeEnhancer(applyMiddleware(sagaMiddleware)));
-        
-        // Hot reloading
         let sagaTask = sagaMiddleware.run(createRootSaga());
         
         // Hot reloading

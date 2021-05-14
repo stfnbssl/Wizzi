@@ -1,0 +1,1 @@
+{".wizzi/index.html.ittf":{"type":"CODE","contents":"html\n  body\n    h1 Hello world\n    p bye\n  "},".wizzi/main.js.ittf":{"type":"CODE","contents":"module\n  kind es6\n  log 'Hello world 2'\n  "},".wizzi/main.wfjob.ittf":{"contents":"wfjob\n  ","type":"CODE"},"README.md":{"contents":"# Sample Packi\n  ","type":"CODE"}}

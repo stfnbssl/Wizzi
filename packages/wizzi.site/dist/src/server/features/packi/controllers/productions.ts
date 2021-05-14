@@ -2,11 +2,12 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\packi\controllers\productions.ts.ittf
-    utc time: Mon, 03 May 2021 18:21:10 GMT
+    utc time: Mon, 10 May 2021 17:56:08 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
 import {sendHtml, sendSuccess, sendPromiseResult, sendFailure} from '../../../utils/sendResponse';
+import fs from 'fs';
 import {fsTypes} from '../../filesystem';
 import {wizziTypes, wizziProds, WizziFactory} from '../../wizzi';
 import {PackiFiles, TemplateList, Template} from '../types';

@@ -61,7 +61,7 @@ module
                                     { item
                                         @ path filename
                                         @ type 'file'
-                                        @ uri files[filename].contents
+                                        @ uri files[filename].contents as string
                                         @ asset true
                                     { state
                             else
@@ -69,7 +69,7 @@ module
                                     { item
                                         @ path filename
                                         @ type 'file'
-                                        @ content files[filename].contents
+                                        @ content files[filename].contents as string
                                         @ generated files[filename].generated
                                     { state
                                         @ isOpen isEntry
@@ -162,45 +162,6 @@ module
                                     @ type 'CODE'
                                         # TODO: support for different types
                 return sourceResult
-    export
-        const entryArrayToObject
-            =>
-                param entryArray
-                    :[
-                        :ref FileSystemEntry
-                :return
-                    :{
-                        :index
-                            :[]
-                                :ref FileSystemEntry
-                                :literal 'item'
-                            param key
-                                :string
-                const entriesObject
-                    :{
-                        :index
-                            :[]
-                                :ref FileSystemEntry
-                                :literal 'item'
-                            param key
-                                :string
-                    =
-                        _ entryArray.reduce
-                            =>
-                                param acc
-                                    :{
-                                        :index
-                                            :[]
-                                                :ref FileSystemEntry
-                                                :literal 'item'
-                                            param key
-                                                :string
-                                {
-                                    @ item
-                                set acc[item.path] = item
-                                return acc
-                            {
-                return entriesObject
     export
         const entryArrayDiff
             =>

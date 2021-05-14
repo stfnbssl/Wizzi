@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\config\env.ts.ittf
-    utc time: Mon, 03 May 2021 18:21:10 GMT
+    utc time: Mon, 10 May 2021 17:56:08 GMT
 */
 import path from 'path';
 import dotenv from 'dotenv';
@@ -34,6 +34,7 @@ function validateEnv() {
         GITHUB_CLIENT_SECRET: str(), 
         GITHUB_CALLBACK_URL: str(), 
         IS_WIZZI_DEV: bool(), 
+        PACKI_STORE_FOLDER: str(), 
         PACKI_TEMPLATES_FOLDER: str(), 
         PACKI_API_ENDPOINT: str()
      });
@@ -78,6 +79,7 @@ export default function create():  ConfigType {
                 metaHtmlIttfPath: path.join(__ittfPath, 'meta', 'html', 'index.html.ittf'), 
                 metaFolderIttfPath: path.join(__ittfPath, 'meta', 'folder', 'index.html.ittf'), 
                 metaHtmlTextPath: path.join(__ittfPath, 'meta', 'text', 'index.html.ittf'), 
+                packiStoreFolder: checkedEnv.PACKI_STORE_FOLDER, 
                 packiTemplatesFolder: checkedEnv.PACKI_TEMPLATES_FOLDER, 
                 packiApiEndpoint: checkedEnv.PACKI_API_ENDPOINT
              };

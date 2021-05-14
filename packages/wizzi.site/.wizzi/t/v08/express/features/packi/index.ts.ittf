@@ -19,6 +19,9 @@ $group
             @ TemplatesController
             from './controllers/templates'
     import
+        @ PackiController
+        from './controllers/packi'
+    import
         @ ProductionsController
         from './controllers/productions'
     $if wzCtx.Build.useMongoDb
@@ -45,6 +48,7 @@ $group
             [
                 $if wzCtx.Build.useFilesystem
                     @ new TemplatesController()
+                @ new PackiController()
                 @ new ProductionsController()
                 $if wzCtx.Build.useMongoDb
                     $if wzCtx.Build.useGithub

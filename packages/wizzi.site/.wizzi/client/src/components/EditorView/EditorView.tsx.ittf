@@ -25,6 +25,9 @@ module
             @ GeneratedArtifact
             @ JobError
             from '../../features/wizzi'
+        import
+            @ LoggedUser
+            from '../../features/app'
     import 
         @ Viewer
         from '../../features/account'
@@ -73,7 +76,7 @@ module
         @ Shortcuts
         from './KeyboardShortcuts'
     import NoFileSelected from './NoFileSelected'
-    import PageMetadata from './PageMetadata'
+    import PageMetadata from '../PageMetadata'
     
     :import-type
         @ PanelType
@@ -135,6 +138,11 @@ module
                     :p viewer
                         :optional 
                         :ref Viewer
+                :{ 
+                    :p loggedUser
+                        :optional 
+                        :ref LoggedUser
+
 
     :type ModalName
         :union 
@@ -677,6 +685,13 @@ module
                         else this.props.annotations
                 $else
                     = this.props.annotations
+            const testPreviewURL
+                `lit
+                    @ process.env.API_SERVER_URL
+                    + /api/v1/packi/render/
+                    @ encodeURIComponent('guest/test')
+                    + /
+                    @ encodeURIComponent(selectedFile)
             return 
                 < ContentShell 
                     { 
@@ -1008,6 +1023,7 @@ module
                                                                     < GeneratedView 
                                                                         @ generatedContent {generatedArtifact.artifactContent}
                                                                         @ generatedSourcePath {generatedArtifact.sourcePath}
+                                                                        @ generatedPreviewURL {testPreviewURL}
                                                                         @ splitViewKind {this.state.splitViewKind}
                                                                 else
                                                                     iif generatedArtifact && generatedArtifact.errorLines
@@ -1210,6 +1226,7 @@ module
                         (
                             { 
                                 @ viewer state.viewer
+                                @ loggedUser state.loggedUser
                     (
                         $if wzCtx.Build.useExpo 
                             _ withDependencyManager(EditorViewComp)

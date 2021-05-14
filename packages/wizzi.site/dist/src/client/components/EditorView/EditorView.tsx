@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\EditorView\EditorView.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import debounce from 'lodash/debounce';
@@ -10,6 +10,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {PackiFiles} from '../../features/packi';
 import {GeneratedArtifact, JobError} from '../../features/wizzi';
+import {LoggedUser} from '../../features/app';
 import {Viewer} from '../../features/account';
 import {Annotation} from '../../features/annotations';
 import {isScript, isJson, isTest} from '../../features/file/index';
@@ -21,7 +22,7 @@ import {EditorViewProps as BaseEditorViewProps} from './EditorViewProps';
 import FileList from '../FileList/FileList';
 import KeyboardShortcuts, {Shortcuts} from './KeyboardShortcuts';
 import NoFileSelected from './NoFileSelected';
-import PageMetadata from './PageMetadata';
+import PageMetadata from '../PageMetadata';
 import type {PanelType} from '../../features/preferences/index';
 import {withPreferences, PreferencesContextType} from '../../features/preferences/index';
 import PublishManager, {PublishModals} from '../Publish/PublishManager';
@@ -45,6 +46,8 @@ const EDITOR_LOAD_FALLBACK_TIMEOUT = 3000;
 
 export type EditorViewProps = PreferencesContextType & BaseEditorViewProps & { 
     viewer?: Viewer;
+} & { 
+    loggedUser?: LoggedUser;
 };
 type ModalName = 'auth' | 'packi-manager' | 'github-commit' | 'github-create' | 'edit-info' | 'shortcuts' | 'previous-saves' | 'import-repo' | 'import-production';
 type BannerName = 'connected' | 'disconnected' | 'reconnect' | 'autosave-disabled' | 'export-unavailable' | 'slow-connection';
@@ -245,6 +248,7 @@ class EditorViewComp extends React.Component<EditorViewProps, State> {
             onSaveCode
          } = this.props;
         const annotations = this.props.annotations;
+        const testPreviewURL = `${process.env.API_SERVER_URL}/api/v1/packi/render/${encodeURIComponent('guest/test')}/${encodeURIComponent(selectedFile)}`;
         return  (
             <ContentShell
             >
@@ -533,8 +537,12 @@ class EditorViewComp extends React.Component<EditorViewProps, State> {
                                                 }
                                                 {
                                                     ((this.state.splitViewKind == 'both' || this.state.splitViewKind == 'right') && generatedArtifact) && generatedArtifact.artifactContent ?  (
-                                                        <GeneratedView
-                                                         generatedContent={generatedArtifact.artifactContent} generatedSourcePath={generatedArtifact.sourcePath} splitViewKind={this.state.splitViewKind} />
+                                                        <GeneratedView 
+                                                            generatedContent={generatedArtifact.artifactContent}
+                                                            generatedSourcePath={generatedArtifact.sourcePath}
+                                                            generatedPreviewURL={testPreviewURL}
+                                                            splitViewKind={this.state.splitViewKind}
+                                                         />
                                                         )
                                                      : generatedArtifact && generatedArtifact.errorLines ?  (
                                                             <GenerationErrors 
@@ -651,7 +659,8 @@ class EditorViewComp extends React.Component<EditorViewProps, State> {
 export const EditorView = withPreferences(connect((state: any) => 
 
     ({
-        viewer: state.viewer
+        viewer: state.viewer, 
+        loggedUser: state.loggedUser
      })
 )(EditorViewComp)
 );

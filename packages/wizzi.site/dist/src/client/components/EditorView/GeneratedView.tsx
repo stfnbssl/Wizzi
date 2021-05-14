@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\components\EditorView\GeneratedView.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import * as React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -14,12 +14,13 @@ import ViewListIcon from '@material-ui/icons/ViewList';
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
 import SimpleEditor from '../Editor/SimpleEditor';
-import IFramePage from '../widgets/IFramePage';
+import WebFrame from '../widgets/WebFrame';
 type ViewKindType = 'generated' | 'mtree' | 'debug' | 'browser';
 type Props = { 
     classes: any;
     generatedContent: string;
     generatedSourcePath?: string;
+    generatedPreviewURL?: string;
     splitViewKind: string;
 };
 type State = { 
@@ -100,8 +101,8 @@ class GeneratedView extends React.Component<Props, State> {
                          className={classes.editor}>
                             {
                                 ((this.props.generatedSourcePath.endsWith('.html.ittf') || this.props.generatedSourcePath.endsWith('.svg.ittf')) ?  (
-                                    <IFramePage
-                                     content={this.props.generatedContent} />
+                                    <WebFrame
+                                     previewURL={this.props.generatedPreviewURL} />
                                     )
                                  :  (
                                     <h1

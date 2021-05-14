@@ -2,12 +2,12 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\site\pages\Document.tsx.ittf
-    utc time: Mon, 03 May 2021 18:21:11 GMT
+    utc time: Mon, 10 May 2021 17:56:08 GMT
 */
 import jsesc from 'jsesc';
 import React from 'react';
 import {getPageMetadata} from '../../../client/components/PageMetadata';
-import {DEFAULT_DESCRIPTION} from '../../../client/configs/defaults';
+import {DEFAULT_DESCRIPTION} from '../../../client/features/config';
 import type {RouterData, QueryParams} from '../../../client/features/packi';
 type Props = { 
     id: string | undefined;

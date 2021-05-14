@@ -1,0 +1,82 @@
+$group
+    $params &md
+    +
+    export
+        function getData
+            param url
+            return
+                _ executeFetch
+                    @ url
+    +
+    export
+        function postData
+            param url = ''
+            param data = {}
+            return
+                _ executeFetch
+                    @ url
+                    @ data
+                    {
+                        @ method 'POST'
+    +
+    export
+        function putData
+            param url = ''
+            param data = {}
+            return
+                _ executeFetch
+                    @ url
+                    @ data
+                    {
+                        @ method 'PUT'
+    +
+    export
+        function deleteData
+            param url = ''
+            param data = {}
+            return
+                _ executeFetch
+                    @ url
+                    @ data
+                    {
+                        @ method 'DELETE'
+    +
+    function executeFetch
+        param url
+            :string
+        param data
+            :{
+        param options
+            :union
+                :{
+                :ref Function
+        param callback
+            :ref Function
+            :optional
+        if typeof options == 'undefined'
+            set callback = data
+            set options
+                {
+                    @ method 'GET'
+        elif typeof callback == 'undefined'
+            set callback = options
+        let fetchOptions
+            {
+                @ method options.method || "GET"
+        if fetchOptions.method == 'GET' || fetchOptions.method == 'HEAD'
+        else
+            if typeof data == 'object' && data != null
+                set fetchOptions.body = JSON.stringify(data)
+                set fetchOptions.headers
+                    {
+                        @ 'Content-Type' 'application/json'
+        log 'executeFetch', 'url', url, 'fetchOptions', fetchOptions
+        set fetchOptions.mode = 'cors'
+        set fetchOptions.cache = 'no-cache'
+        set fetchOptions.credentials = 'same-origin'
+        set fetchOptions.redirect = 'follow'
+        set fetchOptions.referrerPolicy = 'no-referrer'
+        return
+            _ fetch
+                @ url
+                @ fetchOptions

@@ -25,22 +25,9 @@ module
         @ RouterData
         @ QueryParams
         from './features/packi'
-    $*
-    :declare 
-        const __INITIAL_DATA__
-            :{ 
-                :p data
-                    :ref RouterData
-                :p queryParams
-                    :ref QueryParams
-                :p splitTestSettings
-                    :any 
-    *$
-    const __INITIAL_DATA__
-        { 
-            starter/initial_RouterData( data )  $$ :ref RouterData
-            starter/initial_QueryParams( queryParams ) $$ :ref QueryParams
-            starter/initial_splitTestSettings( splitTestSettings ) $$ :any 
+    import
+        @ __INITIAL_DATA__
+        from './initialData'
     +
     const store
         _ createStore
@@ -81,6 +68,6 @@ module
         < PackiApp 
         _ document.getElementById('root')
     *$
-    _ ReactDOM.render
+    _ ReactDOM.hydrate
         < PackiApp 
         _ document.getElementById('root')

@@ -22,6 +22,7 @@ module
                 :ref QueryParams
             :p userAgent
                 :string 
+                :optional
     export-default 
         class Router
             super React.Component

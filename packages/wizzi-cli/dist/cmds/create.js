@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-cli\.wizzi\cmds\create.js.ittf
-    utc time: Mon, 03 May 2021 06:58:19 GMT
+    utc time: Fri, 14 May 2021 07:24:22 GMT
 */
 'use strict';
 const path = require('path');
@@ -10,40 +10,42 @@ const fs = require('fs');
 const chalk = require('chalk');
 const wizzi = require('wizzi');
 var inquirer = require('inquirer');
-module.exports = (args) => {
+module.exports = (options) => {
 
-    return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', 'ts/express_site'), {
-            cliCtx: {
-                name: "wizzi.site", 
-                description: "wizzi.site", 
-                version: "0.0.1", 
-                author: {
-                    
-                 }, 
-                license: {
-                    name: "MIT", 
-                    copy: "copy 2021"
-                 }, 
-                github: {
-                    
-                 }, 
-                Schemas: [
-                    {}
-                ]
-             }
-         }, {
-            destFolder: path.join('C:/My/wizzi/stfnbssl/wizzi/packages', 'wizzi.site'), 
-            copyInclude: ['*'], 
-            copyExclude: []
-         }, function(err, genFolderResult) {
-            if (err) {
-                console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-                console.log('err', err);
-                throw new Error(err.message);
-            }
-            console.log('genFolderResult', genFolderResult);
-            return ;
-        });
+    if (options) {
+        return wizzi.genFolder(path.join(__dirname, '..', 'resources', 'create', 'templates', options.template), {
+                cliCtx: {
+                    name: options.pkgName, 
+                    description: options.pkgName, 
+                    version: "0.0.1", 
+                    author: {
+                        
+                     }, 
+                    license: {
+                        name: "MIT", 
+                        copy: "copy 2021"
+                     }, 
+                    github: {
+                        
+                     }, 
+                    Schemas: [
+                        {}
+                    ]
+                 }
+             }, {
+                destFolder: path.join('C:/My/wizzi/stfnbssl/wizzi/packages', options.pkgName), 
+                copyInclude: ['*'], 
+                copyExclude: []
+             }, function(err, genFolderResult) {
+                if (err) {
+                    console.log('Test error >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+                    console.log('err', err);
+                    throw new Error(err.message);
+                }
+                console.log('genFolderResult', genFolderResult);
+                return ;
+            });
+    }
     newpkg((err, answers) => {
     
         console.log('create.answers', answers);

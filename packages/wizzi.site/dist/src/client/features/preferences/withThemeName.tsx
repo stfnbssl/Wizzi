@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\preferences\withThemeName.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import * as React from 'react';
@@ -30,9 +30,9 @@ export default function withThemeName<P extends InjectedProps>(Comp: React.Compo
                             (props) => {
                             
                                 return  (
-                                    <Comp
                                     
                                     // @ts-ignore
+                                    <Comp
                                      ref={__forwardedRef} theme={props && props.preferences.theme} {...rest} />
                                     )
                                 ;
@@ -44,7 +44,8 @@ export default function withThemeName<P extends InjectedProps>(Comp: React.Compo
                 ;
             }
         }
-        const Result = React.forwardRef((props, ref) =>  
+        const Result = React.forwardRef((props, ref) => 
+        
              (
             <ThemedComponent
              {...props}
@@ -53,7 +54,6 @@ export default function withThemeName<P extends InjectedProps>(Comp: React.Compo
             )
         
         );
-        
         hoistNonReactStatics(Result, Comp);
         return Result as any; 
     }

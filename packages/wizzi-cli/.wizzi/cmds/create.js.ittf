@@ -7,7 +7,7 @@
         // var pkgName = "tau_express";
         // var pkgName = "sigma_express_auth";
         // var pkgName = "ics_react_ts";
-        var pkgName = "wizzi.site";
+        // var pkgName = "wizzi.site";
         // var pkgName = "frontend";
         // var pkgName = "wizzi.frontend";
         // var pkgName = "wizzi.plugin.ppt";
@@ -16,9 +16,11 @@
         // var template = "react_ts";
         // var template = "express_ts";
         // var template = "webpack_react_ts";
-        var template = "ts/express_site";
+        // var template = "ts/express_site";
         // var wizzi_plugin_type = 'syntax_structure';
         // var wizzi_plugin_schema = 'ppt';
+        var template = "ts/account_site";
+        var pkgName = "wizzi.account";
 
 	const path = require('path')
 	const fs = require('fs')
@@ -28,8 +30,8 @@
 	
     set module.exports
 		=>
-			param args
-            $if quick
+			param options
+            if options
                 return
                     _ wizzi.genFolder
                         _ path.join
@@ -38,11 +40,11 @@
                             @ 'resources'
                             @ 'create'
                             @ 'templates'
-                            @ '${template}'
+                            @ options.template
                         {
                             { cliCtx 
-                                @ name "${pkgName}"
-                                @ description "${pkgName}"
+                                @ name options.pkgName
+                                @ description options.pkgName
                                 @ version "0.0.1"
                                 $$ @ wizzi_plugin_type "${wizzi_plugin_type}"
                                 { author
@@ -60,7 +62,7 @@
                                     $$ _ process.cwd
                                     $$ @ '${pkgMonoName}'
                                     $$ @ 'packages'
-                                    @ '${pkgName}'
+                                    @ options.pkgName
                             @ copyInclude ['*']
                             @ copyExclude []
                         f_cb_test(genFolderResult)

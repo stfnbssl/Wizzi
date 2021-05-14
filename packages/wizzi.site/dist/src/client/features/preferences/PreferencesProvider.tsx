@@ -2,15 +2,16 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\preferences\PreferencesProvider.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import debounce from 'lodash/debounce';
 import * as React from 'react';
+import type {QueryStateParams} from '../packi';
 import type {PanelType, ThemeName, PreferencesType, SetPreferencesType} from './types';
 import {PreferencesContext} from './types';
 
 type Props = { 
-    queryParams: any;
+    queryParams: QueryStateParams;
     cookies: { 
         get: (key: string) => string | undefined;
         set?: (key: string, value: string) => void;

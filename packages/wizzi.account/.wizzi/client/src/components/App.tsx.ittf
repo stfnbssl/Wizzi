@@ -1,0 +1,110 @@
+module
+    import 
+        as React
+        from 'react'
+    # Styles
+    import 
+        @ StyleSheet
+        @ css
+        from 'aphrodite'
+    # Features
+    $*
+    import
+        @ withAuth
+        @ AuthProps
+        from '../features/auth'
+    *$
+    import 
+        @ QueryParams
+        from '../features/app'
+    import 
+        @ Account
+        from '../features/account'
+
+    :type Params
+        :{ 
+            :p id
+                :optional 
+                :string 
+            :p username
+                :optional 
+                :string 
+            :p projectName
+                :optional 
+                :string 
+
+    :type AppProps
+        $*
+        :intersect 
+            :ref AuthProps
+        *$
+        :{ 
+            :p account
+                :optional 
+                :ref Account
+            :p history
+                :{ 
+                    :p push
+                        :=> 
+                            :void 
+                            param props
+                                :{ 
+                                    :p pathname
+                                        :string 
+                                    :p search
+                                        :string 
+            :p match
+                :{ 
+                    :p params
+                        :ref Params
+            :p location
+                :{ 
+                    :p search
+                        :string 
+            :p query
+                :ref QueryParams
+
+    :type State
+        :{ 
+            :p selected
+                :string 
+
+    class AppComp
+        super React.Component
+            :param 
+                :ref AppProps
+            :param 
+                :ref State
+        ctor 
+            param props
+                :ref AppProps
+            _ super(props)
+            set this.state
+                {
+                    @ selected 'first'
+
+        m render
+            if this.props && this.state
+                $if false
+                    return
+                        div
+                            < CollapsibleObject
+                                @ label "props"
+                                @ object {this.props}
+                            < CollapsibleObject
+                                @ label "state"
+                                @ object {this.state}
+                return 
+                    div
+                        pre
+                            code
+                                + {JSON.stringify(this.props, null, 2)}
+                        pre
+                            code
+                                + {JSON.stringify(this.state, null, 2)}
+            else
+                return
+                    div
+                        + Not ready      
+
+    export-default AppComp

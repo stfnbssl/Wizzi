@@ -226,7 +226,7 @@ module
                                 @ ...state
                                 @ loading false
                                 @ packiNames
-                                    _ state.packiNames.filter
+                                    _ state.packiNames && state.packiNames.filter
                                         => 
                                             param item
                                             set item !== action.payload.id
@@ -295,11 +295,9 @@ module
                                 { currentPacki
                                     @ id
                                         `lit 
-                                            + 
                                             @ action.payload.repository.owner
                                             + _
                                             @ action.payload.repository.name
-                                            + 
                                     @ files action.payload.repository.files
                                     $if wzCtx.Build.usePackiLocal
                                         @ localPackiData
@@ -325,6 +323,8 @@ module
                                     { currentPacki
                                         @ ...state.currentPacki
                                         @ files mixPreviousAndGeneratedPackiFiles(action.payload.previousArtifacts, action.payload.generatedArtifacts)
+                                        :as 
+                                            :ref Packi
                         else
                             return state
                     default 

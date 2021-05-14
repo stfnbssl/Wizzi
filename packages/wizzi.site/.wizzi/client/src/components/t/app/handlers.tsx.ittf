@@ -187,6 +187,7 @@ $group
                                     else 'unsaved'
                             else st.saveStatus
                     # Set save-status to changed if needed
+                log 'App._handleSessionStateChange', 'saveStatus', saveStatus
                 return 
                     { 
                         @ session state
@@ -196,6 +197,7 @@ $group
                             @ connectedDevices connectedDevices ?? st.connectedDevices
                     # Update session state
             => 
+                log 'App._handleSessionStateChange', 'calling _saveDraftIfNeeded'
                 _ this._saveDraftIfNeeded(true)
             # console.log('Session state change: ', diff(prevState, state), state); // deep-object-diff
         $if wzCtx.Build.useExpo
@@ -299,7 +301,10 @@ $group
         param debounced
             :boolean 
             :optional 
-        if this.state.session.user && this.state.session.unsaved && this.state.autosaveEnabled && this.state.saveStatus === 'edited'
+        log 'App._saveDraftIfNeeded', 'this.state.session.user', this.state.session.user,
+            \b 'this.state.autosaveEnabled', this.state.autosaveEnabled,
+            \b 'this.state.saveStatus', this.state.saveStatus
+        if true $$ TODO this.state.session.user && this.state.session.unsaved && this.state.autosaveEnabled && this.state.saveStatus === 'edited'
             if debounced
                 _ this._saveDraftIfNeededDebounced()
             else
@@ -361,31 +366,33 @@ $group
                             { 
                                 @ isDraft
                                 @ ignoreUser
-                if !excludeFromHistory
-                    _ this.props.history.push
-                        { 
-                            @ pathname
-                                `lit 
-                                    + /
-                                    @ saveResult.id
-                                    + 
-                            @ search this.props.location.search
+                $if wzCtx.Build.useExpo
+                    if !excludeFromHistory
+                        _ this.props.history.push
+                            { 
+                                @ pathname
+                                    `lit 
+                                        + /
+                                        @ saveResult.id
+                                        + 
+                                @ search this.props.location.search
                 _ this.setState
                     => 
                         param state
                         (
                             { 
                                 @ isSavedOnce true
-                                @ saveHistory
-                                    iif excludeFromHistory
-                                        then state.saveHistory
-                                        else
-                                            [ 
-                                                { 
-                                                    @ hashId saveResult.hashId ?? ''
-                                                    @ savedAt new Date().toISOString()
-                                                    @ isDraft
-                                                @ ...state.saveHistory
+                                $if wzCtx.Build.useExpo
+                                    @ saveHistory
+                                        iif excludeFromHistory
+                                            then state.saveHistory
+                                            else
+                                                [ 
+                                                    { 
+                                                        @ hashId saveResult.hashId ?? ''
+                                                        @ savedAt new Date().toISOString()
+                                                        @ isDraft
+                                                    @ ...state.saveHistory
                                 @ saveStatus
                                     iif state.session.unsaved
                                         then

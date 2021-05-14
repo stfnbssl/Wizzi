@@ -1,0 +1,13 @@
+module
+    $
+        var md = {};
+        if (wzCtx.Build.useBlog && wzCtx.Build.useMongoDb) {
+            md.tobeIncluded = true;
+            md.schema = wzCtx.Build.blog.dataModels[0];
+        }
+    $if md.tobeIncluded
+        v08/react/dataModels/pageComponents(&md)
+            $append defs
+                post/pageDef.tsx(&md)
+                v08/react/dataModels/listDef.tsx(&md)
+                v08/react/dataModels/formDef.tsx(&md)

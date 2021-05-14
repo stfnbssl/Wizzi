@@ -18484,6 +18484,9 @@ function processParams2(ret, p_params) {
                 item.name = '...' + item.name;
                 ret.children.push(item);
             }
+            else if (item.tag == '{') {
+                ret.children.push(item);
+            }
             else {
                 throw new Error('processParams2 - state not managed');
             }

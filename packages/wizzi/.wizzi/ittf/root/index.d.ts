@@ -626,5 +626,5 @@ export function startRunnerServer(config: RunnerServerConfig, callback: cb<Wizzi
  */
 export namespace file {
     export function write(filePath: string, content: string): void;
-    export function read(filePath: string): void;
+    export function read(filePath: string): string;
 }

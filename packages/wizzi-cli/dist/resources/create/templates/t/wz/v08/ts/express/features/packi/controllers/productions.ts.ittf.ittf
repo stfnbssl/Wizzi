@@ -1,7 +1,7 @@
 $group
 
     $
-        var lparen = '(';
+        var lp = '(';
     
     ${'$'}
         var ctrl = {
@@ -9,8 +9,10 @@ $group
             path: '/api/v1/productions'
         }
 
-    controller${lparen} &ctrl )
+    controller${lp} &ctrl )
         ${'$'}append imports
+            import fs
+                from 'fs'
             import 
                 @ fsTypes
                 from '../../filesystem'
@@ -47,7 +49,7 @@ $group
 
         ${'$'}append handlers
 
-            handler${lparen} mTreeDebugInfo )
+            handler${lp} mTreeDebugInfo )
                 const id = request.params.id
                 const files
                     :ref PackiFiles
@@ -67,7 +69,7 @@ $group
                             log 'features.packi.controllers.production.mTreeDebugInfo.err', err
                             _ sendFailure(response, err, 501)
 
-            handler${lparen} generateArtifact )
+            handler${lp} generateArtifact )
                 const id = request.params.id
                 const files
                     :ref PackiFiles
@@ -87,7 +89,7 @@ $group
                             log 'features.packi.controllers.production.generateArtifact.err', err
                             _ sendFailure(response, err, 501)
             
-            handler${lparen} executeJob )
+            handler${lp} executeJob )
                 const files
                     :ref PackiFiles
                     = request.body
@@ -109,7 +111,7 @@ $group
                             log 'features.packi.controllers.production.executeJob.err', err
                             _ sendFailure(response, err, 501)
 
-            handler${lparen} wizzify )
+            handler${lp} wizzify )
                 const id = request.params.id
                 const files
                     :ref PackiFiles

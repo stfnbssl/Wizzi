@@ -20,9 +20,10 @@ module
             param preloadedState
                 :ref StoreState
             log 'createStoreWithPreloadedState', 'preloadedState', preloadedState
-            const composeEnhancer
+            let composeEnhancer
                 :typeof compose
-                =
+            if typeof window !== 'undefined' 
+                set composeEnhancer
                     || 
                         @expr 
                             ( 
@@ -31,10 +32,11 @@ module
                                         :any 
                             . __REDUX_DEVTOOLS_EXTENSION_COMPOSE__
                         + compose
+            else
+                set composeEnhancer = compose
             const sagaMiddleware = createSagaMiddleware()
             const store = createStore(createRootReducer(), preloadedState, composeEnhancer(applyMiddleware(sagaMiddleware)))
             let sagaTask = sagaMiddleware.run(createRootSaga())
-                # Hot reloading
             if module.hot
                 const newCreateRootReducer = require('./reducers')
                 _ module.hot.accept

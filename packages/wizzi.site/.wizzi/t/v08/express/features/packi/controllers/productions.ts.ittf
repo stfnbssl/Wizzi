@@ -7,6 +7,8 @@ $group
         }
     controller( &ctrl )
         $append imports
+            import fs
+                from 'fs'
             import
                 @ fsTypes
                 from '../../filesystem'

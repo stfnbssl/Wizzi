@@ -15,7 +15,7 @@ module
     import HelpIcon from '@material-ui/icons/Help'
     import InfoIcon from '@material-ui/icons/Info'
     import SimpleEditor from '../Editor/SimpleEditor'
-    import IFramePage from '../widgets/IFramePage'
+    import WebFrame from '../widgets/WebFrame'
     $if wzCtx.TODO
         import MarkdownElement from '../../docs/MarkdownElement'
     :type ViewKindType
@@ -31,6 +31,9 @@ module
             :p generatedContent
                 :string 
             :p generatedSourcePath
+                :string 
+                :optional
+            :p generatedPreviewURL
                 :string 
                 :optional
             :p splitViewKind
@@ -118,8 +121,8 @@ module
                                 { 
                                     iif (this.props.generatedSourcePath.endsWith('.html.ittf') || this.props.generatedSourcePath.endsWith('.svg.ittf'))
                                         then
-                                            < IFramePage 
-                                                @ content {this.props.generatedContent}
+                                            < WebFrame 
+                                                @ previewURL {this.props.generatedPreviewURL}
                                         else
                                             $if wzCtx.TODO
                                                 iif this.props.generatedSourcePath.endsWith('.md.ittf')

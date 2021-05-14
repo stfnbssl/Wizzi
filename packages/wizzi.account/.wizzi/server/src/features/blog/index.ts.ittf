@@ -1,0 +1,9 @@
+module
+    $
+        var md = {};
+        if (wzCtx.Build.useBlog) {
+            md.tobeIncluded = true;
+            md.feature = wzCtx.Build.blog;
+        }
+    $if md.tobeIncluded
+        v08/express/features/data/modelIndex(&md)

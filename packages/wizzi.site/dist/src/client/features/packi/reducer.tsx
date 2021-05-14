@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\client\src\features\packi\reducer.tsx.ittf
-    utc time: Fri, 07 May 2021 18:42:12 GMT
+    utc time: Tue, 11 May 2021 04:47:43 GMT
 */
 import {Reducer} from 'redux';
 import {ActionType, getType} from 'typesafe-actions';
@@ -156,7 +156,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
             return {
                     ...state, 
                     loading: false, 
-                    packiNames: state.packiNames.filter(item => 
+                    packiNames: state.packiNames && state.packiNames.filter(item => 
                     
                         item !== action.payload.id
                     )
@@ -256,7 +256,7 @@ const reducer: Reducer<PackiState, PackiAction> = (state = initialState, action)
                         currentPacki: {
                             ...state.currentPacki, 
                             files: mixPreviousAndGeneratedPackiFiles(action.payload.previousArtifacts, action.payload.generatedArtifacts)
-                         }
+                        } as Packi
                      };
             }
             else {

@@ -371,7 +371,6 @@ module
                                                 @ wasUpgraded {this.state.wasUpgraded}
                                             $if wzCtx.Build.usePackiAspects
                                                 @ params {this.state.params}
-                                                @ loggedUser {this.props.loggedUser}
                                                 @ currentPacki {this.props.currentPacki}
                                                 @ generatedArtifact {this.props.generatedArtifact}
                                                 $$ VIA @ creatorUsername {this.state.params.username}
@@ -379,8 +378,8 @@ module
                                                 @ entry {this._findFocusedEntry(this.state.fileEntries)}
                                                 @ isWizziJobWaiting {this.state.isWizziJobWaiting}
                                                 @ jobError {this.state.jobError}
-                                                @ onLoggedOn {this._handleLoggedOn}
-                                                @ onLoggedOff {this._handleLoggedOff}
+                                                $$ VIA @ onLoggedOn {this._handleLoggedOn}
+                                                $$ VIA @ onLoggedOff {this._handleLoggedOff}
                                                 @ onChangeCode {this._handleChangeCode}
                                                 @ onFileEntriesChange {this._handleFileEntriesChange}
                                                 @ onEntrySelected {this._handleEntrySelected}
@@ -415,7 +414,8 @@ module
                     :typeof connector
         const MainContainer
             _ withPreferences
-                _ connector(Main)
+                _ withAuth
+                    _ connector(Main)
     $else
         const MainContainer
             _ withPreferences

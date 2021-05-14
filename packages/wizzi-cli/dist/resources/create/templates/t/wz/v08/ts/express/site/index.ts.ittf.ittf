@@ -12,7 +12,7 @@ $group
             import 
                 @ WizziController
                 from './controllers/wizzi'
-        ${'$'}if wzCtx.Build.useAuth
+        ${'$'}if wzCtx.Build.useAuthentication
             import 
                 @ AccountController
                 from './controllers/account'
@@ -27,7 +27,7 @@ $group
                     @ new HomeController()
                     ${'$'}if wzCtx.Build.useWizziViewEngine
                         @ new WizziController()
-                    ${'$'}if wzCtx.Build.useAuth
+                    ${'$'}if wzCtx.Build.useAuthentication
                         @ new AccountController()
                 ${'$'}hook controllers
     export

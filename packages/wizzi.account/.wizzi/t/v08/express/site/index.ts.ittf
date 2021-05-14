@@ -1,0 +1,32 @@
+$group
+    $params &md
+    import
+        @ ControllerType
+        from '../features/app'
+    $if wzCtx.Build.useSite
+        import
+            @ HomeController
+            from './controllers/home'
+        $if wzCtx.Build.useWizziViewEngine
+            import
+                @ WizziController
+                from './controllers/wizzi'
+        $if wzCtx.Build.useAuthentication
+            import
+                @ AccountController
+                from './controllers/account'
+        $hook imports
+    const siteControllers
+        :[
+            :ref ControllerType
+        =
+            [
+                $if wzCtx.Build.useSite
+                    @ new HomeController()
+                    $if wzCtx.Build.useWizziViewEngine
+                        @ new WizziController()
+                    $if wzCtx.Build.useAuthentication
+                        @ new AccountController()
+                $hook controllers
+    export
+        @ siteControllers

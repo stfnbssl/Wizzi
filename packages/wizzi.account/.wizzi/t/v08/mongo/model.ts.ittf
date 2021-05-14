@@ -1,0 +1,92 @@
+$group
+    $params &md
+    import
+        @ Schema
+        @ Model
+        @ model
+        from "mongoose"
+    import
+        @ ModelBuilderType
+        from "../../app/types"
+    import
+        @ I${md.Name}Model
+        from "../types"
+    import
+        @ TokenSchema
+        from "./token"
+    +
+    # see https://mongoosejs.com/docs/schematypes.html
+    +
+    const ${md.Name}Schema
+        new Schema
+            :param I${md.Name}Model
+            {
+                $foreach field in md.fields
+                    $if field.type != 'oid'
+                        { ${field.name}
+                            $if field.type == 'string'
+                                @ type String
+                            $elif field.type == 'number' || field.type == 'integer' || field.float == 'integer'
+                                @ type Number
+                            $elif field.type == 'date'
+                                @ type Date
+                            $elif field.type == 'buffer'
+                                @ type Buffer
+                            $elif field.type == 'boolean'
+                                @ type Boolean
+                            $elif field.type == 'mixed'
+                                @ type Mixed
+                            $elif field.type == 'id'
+                                @ type ObjectId
+                            $elif field.type == 'array'
+                                @ type Array
+                            $elif field.type == 'decimal'
+                                @ type Decimal128
+                            $elif field.type == 'map'
+                                @ type Map
+                            $elif field.type == 'schema'
+                                @ type Schema
+                $if md.setUpdatedAt
+                    { updated_at
+                        @ type Date
+            {
+                @ collection '${md.collectionName}'
+    $if md.setUpdatedAt
+        _ ${md.Name}Schema.pre
+            @ 'save'
+            function
+                param next
+                set this.updated_at = Date.now()
+                _ next()
+    +
+    export
+        :type ${md.Name}ModelType
+            :ref Model
+                :param
+                    :ref I${md.Name}Model
+    +
+    let ${md.name}Model
+        :ref ${md.Name}ModelType
+    +
+    export
+        function Get${md.Name}Model
+            :return
+                :ref ${md.Name}ModelType
+            return ${md.name}Model
+    +
+    export
+        const ${md.Name}ModelBuilder
+            :ref ModelBuilderType
+            =
+                {
+                    @ buildModel
+                        =>
+                            set ${md.name}Model =
+                                _ model
+                                    :param
+                                        :ref I${md.Name}Model
+                                    @ '${md.Name}'
+                                    @ ${md.Name}Schema
+        # mongoose models creation is centralized at the app level
+        # after connection has been established, the mongodb service calls buildModel(),
+        # then the controllers when initializing call Get${md.Name}Model()

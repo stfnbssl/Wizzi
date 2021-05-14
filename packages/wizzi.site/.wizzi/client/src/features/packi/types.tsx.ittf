@@ -40,6 +40,12 @@ module
                     :literal 'CODE'
                 :p contents
                     :string
+                :p generated
+                    :optional
+                    :boolean
+                :p bothRealAndGenerated
+                    :optional
+                    :boolean
                 :p error
                     :optional
                     :ref Error
@@ -62,6 +68,12 @@ module
                         :ref Blob
                         :ref FormData
                     # string = url
+                :p generated
+                    :optional
+                    :boolean
+                :p bothRealAndGenerated
+                    :optional
+                    :boolean
                 :p error
                     :optional
                     :ref Error
@@ -138,7 +150,8 @@ module
                     :ref PackiFiles
                     #
                         #
-                        # Files that make up the content of the Packi. 
+                        # Files that make up the content (code & assets) of the Packi. There should
+                        # always be a file called "App.js" or "App.tsx" as the main entry point.
                         #
                 :p name
                     :string
@@ -299,8 +312,9 @@ module
             :{
                 :p name
                     :string
-                :p channel
-                    :string
+                $if wzCtx.Build.useExpo
+                    :p channel
+                        :string
     +
     export
         :type PackiWindowRef
@@ -508,3 +522,13 @@ module
                                 :string
                     :p defaults
                         :ref PackiDefaults
+    +
+    export
+        :type PackiFilesOrKind
+            = PackiFiles | string
+    +
+    export
+        :type CreatePackiOptions
+            :{
+                :p data
+                    :ref PackiFilesOrKind

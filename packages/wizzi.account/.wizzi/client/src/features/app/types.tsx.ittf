@@ -1,0 +1,28 @@
+module
+    import
+        @ SavedAccount
+        from '../account'
+    +
+    export
+        :type RouterData
+            :union
+                :{
+                    :p type
+                        :literal "success"
+                    :p account
+                        :optional
+                        :ref SavedAccount
+                :{
+                    :p type
+                        :literal "error"
+                    :p error
+                        :{
+                            :p message
+                                :string
+    +
+    export
+        :type QueryParams
+            :{
+                :p name
+                    :optional
+                    :string

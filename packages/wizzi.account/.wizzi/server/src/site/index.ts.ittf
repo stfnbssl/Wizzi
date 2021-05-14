@@ -1,0 +1,11 @@
+module
+    $
+        var md = {
+        }
+    v08/express/site/index(&md)
+        $append imports
+            import
+                @ AppController
+                from './controllers/app'
+        $append controllers
+            @ new AppController()

@@ -163,6 +163,8 @@
 				    set item.tag = 'param'
                     set item.name = '...' + item.name
 				    _ ret.children.push(item)
+                elif item.tag == '{'
+                    _ ret.children.push(item)
                 else
                     throw new Error('processParams2 - state not managed')
 

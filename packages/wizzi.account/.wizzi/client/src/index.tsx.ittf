@@ -1,0 +1,47 @@
+module
+    import cookies from 'js-cookie'
+    import 
+        as React
+        from 'react'
+    import ReactDOM from 'react-dom'
+    import 
+        @ HelmetProvider
+        from 'react-helmet-async'
+    import 
+        @ BrowserRouter
+        from 'react-router-dom'
+    import
+        @ RouterData
+        @ QueryParams
+        from './features/app'
+    import Router from './components/Router'
+    +
+    const __INITIAL_DATA__
+        { 
+            { data 
+                :ref RouterData
+                @ type 'success'
+                { account
+                    @ code 'say("Hello")'
+            { queryParams 
+                :ref QueryParams
+                @ name 'simple'
+    +
+    function AccountApp
+        return 
+            $$ < React.StrictMode 
+            < React.Fragment
+                < HelmetProvider 
+                    < BrowserRouter 
+                        < Router 
+                            @ data {__INITIAL_DATA__.data}
+                            @ queryParams {__INITIAL_DATA__.queryParams}
+    $*
+    _ ReactDOM.hydrate
+        < AccountApp 
+        _ document.getElementById('root')
+    *$
+    _ ReactDOM.render
+        < AccountApp 
+        _ document.getElementById('root')
+

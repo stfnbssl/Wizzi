@@ -45,6 +45,7 @@ module
                         :boolean
                     :p loggedUid
                         :string
+                        :optional
                     :p trustLocalStorage
                         :boolean
     +

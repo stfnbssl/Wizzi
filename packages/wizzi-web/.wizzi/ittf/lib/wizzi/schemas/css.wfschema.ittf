@@ -205,6 +205,9 @@
 	e ampersand : rule
 		tag &
 
+	e pseudoElementRule : rule
+		tag ::
+
 	e placeholder : rule
 		tag %
 

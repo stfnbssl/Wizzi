@@ -1,0 +1,39 @@
+$group
+
+    const __listDef
+        {
+            @ id 'books'
+            @ title 'Books'
+            [ columns
+                {
+                    @ id 'author'
+                {
+                    @ id 'title'
+
+    const __items
+        [
+            {
+                @ author 'Stefi'
+                @ title 'Philos'
+                @ read false
+            {
+                @ author 'Annie'
+                @ title 'Flower'
+                @ read true
+    +
+    const __formDef
+        {
+            @ id 'books'
+            @ title 'Books'
+            [ controls
+                {
+                    @ id 'author'
+                    @ type 'text'
+                    @ required true
+                {
+                    @ id 'title'
+                    @ type 'text'
+                    @ required true
+                {
+                    @ id 'read'
+                    @ type 'checkbox'

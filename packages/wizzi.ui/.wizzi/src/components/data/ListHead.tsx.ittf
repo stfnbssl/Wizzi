@@ -1,0 +1,38 @@
+module
+    $
+        var md = {
+            name: "ListHead",
+            props: [
+                { name: "columns", type: "ColumnDef[]", ref: true },
+            ],
+            styled: true
+        }
+    v08/ts/react/function(&md)
+        $append imports
+            import
+                @ ColumnDef
+                from './types'
+        < StyledRoot
+            tr
+                {
+                    _ columns.map
+                        =>
+                            param column
+                            param ndx
+                            < StyledHeadCell
+                                @ key {ndx}
+                                + { column.label || column.id }
+
+        $append styles
+            $if false
+                styled StyledRoot .li
+                    display flex
+                    flex-direction row
+                    justify-content space-between
+                    font-weight 600
+                styled StyledHeadCell .div
+                    padding 4px
+            $else
+                styled StyledRoot .thead
+                styled StyledHeadCell .th
+                    padding 4px

@@ -32,3 +32,5 @@
             background blue $$ <Thing> tagged with an additional CSS class ".something"
         # id
             background violet $$ <Thing> tagged with an additional CSS class ".something"
+        :: -ms-clear
+            display none

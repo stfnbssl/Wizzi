@@ -43,6 +43,14 @@ md.load = function(cnt) {
             return callback(null);
         }
     };
+    cnt.stm.pseudoElementRule = function(model, ctx, callback) {
+        if (model.hasContent()) {
+            return writeRule(cnt, model, ctx, callback);;
+        }
+        else {
+            return callback(null);
+        }
+    };
     cnt.stm.ampersand = function(model, ctx, callback) {
         if (model.hasContent()) {
             return writeRule(cnt, model, ctx, callback);;
@@ -253,7 +261,7 @@ function writeRule(cnt, model, ctx, callback) {
         ctx.indent();
     }
     else if (isInsideStyledComponent) {
-        var pref = model.wzElement === 'classRule' ? '.' : model.wzElement === 'elementRule' ? '' : model.wzElement === 'idRule' ? '#' : model.wzElement + '-not-mamaged';
+        var pref = model.wzElement === 'classRule' ? '.' : model.wzElement === 'pseudoElementRule' ? '::' : model.wzElement === 'elementRule' ? '' : model.wzElement === 'idRule' ? '#' : model.wzElement + '-not-mamaged';
         ctx.w(pref + model.wzName + ' {');
         ctx.indent();
     }

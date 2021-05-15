@@ -19,8 +19,8 @@ module
             [
                 $$ @ 'basic'
                 $$ @ 'svg'
-                $$ @ 'styled'
-                @ 'styled_js'
+                @ 'styled'
+                $$ @ 'styled_js'
                 $$ @ 'keyframes'
 
    		_ async.mapSeries

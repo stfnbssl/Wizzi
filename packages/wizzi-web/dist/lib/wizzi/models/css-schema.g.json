@@ -400,6 +400,12 @@
           ]
         },
         {
+          "name": "pseudoElementRule",
+          "tags": [
+            "::"
+          ]
+        },
+        {
           "name": "placeholder",
           "tags": [
             "%"
@@ -1681,6 +1687,144 @@
       "isRoot": false,
       "tags": [
         "&"
+      ],
+      "flags": "",
+      "attributes": [
+        {
+          "name": "_webkit__",
+          "type": "string",
+          "tags": [
+            "-webkit-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_ms__",
+          "type": "string",
+          "tags": [
+            "-ms-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_o__",
+          "type": "string",
+          "tags": [
+            "-o-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "_moz__",
+          "type": "string",
+          "tags": [
+            "-moz-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "___",
+          "type": "string",
+          "tags": [
+            "--*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        },
+        {
+          "name": "v__",
+          "type": "string",
+          "tags": [
+            "v-*"
+          ],
+          "flags": "",
+          "inheritedFrom": "rule",
+          "restricts": [],
+          "comments": []
+        }
+      ],
+      "relations": [
+        {
+          "name": "otherRuleSelector",
+          "role": "otherRuleSelectors",
+          "tags": [
+            "+"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "otherClassSelector",
+          "role": "otherClassSelectors",
+          "tags": [
+            "+."
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "otherAmpersandSelector",
+          "role": "otherAmpersandSelectors",
+          "tags": [
+            "+&"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        },
+        {
+          "name": "rule",
+          "role": "rules",
+          "tags": [
+            "rule"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "rule",
+          "comments": []
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "pseudoElementRule",
+      "super": "rule",
+      "isRoot": false,
+      "tags": [
+        "::"
       ],
       "flags": "",
       "attributes": [

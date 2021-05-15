@@ -9,6 +9,12 @@ module
                 }
             ]
         }
+    import 
+        @ theme
+        from '../SCTheme'
+    import 
+        @ ThemeProvider 
+        from 'styled-components'
     import
         @ Button
         from './button'
@@ -18,10 +24,29 @@ module
     import
         @ Tick
         from './tick'
+    import
+        @ Box
+        from './Box'
+    import
+        @ Text
+        from './Text'
+    import
+        @ DataList
+        from '../data/DataList'
+    import
+        @ DataForm
+        from '../data/DataForm'
+    import
+        @ DataEntry
+        from '../data/DataEntry'
+    +
+    $include data/initialData
+    +
     v08/ts/react/function(&md)
         aside
             h2
                 + {title}
+            $*
             h4 widget: Card
             div
                 < Card
@@ -40,3 +65,40 @@ module
                         =>
                             _ alert('Hello')
                     + Give me five
+            h4 widget: Box
+            div
+                < ThemeProvider
+                    @ theme {theme}
+                    < Box       
+                        @ boxShadowSize 'sm'
+                        @ p 2
+                        @ mb '42px'
+                        @ color 'primary'
+                        @ bg 'blue.3'
+                        < Text
+                            @ color 'gray.8'
+                            + My Box component
+            
+            h4 widget: Data list
+            div
+                < ThemeProvider
+                    @ theme {theme}
+                    < DataList
+                        @ listData {listData}
+
+            
+            h4 widget: Data form
+            div
+                < ThemeProvider
+                    @ theme {theme}
+                    < DataForm
+                        @ formData {formData}
+            *$
+            div
+                < ThemeProvider
+                    @ theme {theme}
+                    < DataEntry
+                        @ formDef {__formDef}
+                        @ listDef {__listDef}
+                        @ items {__items}
+

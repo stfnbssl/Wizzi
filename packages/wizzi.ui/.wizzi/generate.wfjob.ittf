@@ -55,7 +55,7 @@ wfjob wizzi.ui/job
     
     line ittf-storybook
         cwd-folder ${jobCtx.ittf_storybook_folder}
-        dest-folder ${jobCtx.dest_root}/.storybook
+        dest-folder ${jobCtx.dest_folder}/.storybook
         wfjobs(any_js, &jobCtx)
         wfjobs(any_ts, &jobCtx)
         wfjobs(any_tsx, &jobCtx)

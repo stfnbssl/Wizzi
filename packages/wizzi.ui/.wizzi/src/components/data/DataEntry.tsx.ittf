@@ -1,0 +1,69 @@
+module
+
+    $
+        var md = {
+            name: "DataEntry",
+            props: [
+                { name: "formDef", type: "FormDef", ref: true },
+                { name: "listDef", type: "ListDef", ref: true },
+                { name: "items", type: "object[]", ref: true },
+            ],
+            stateProps: [
+                { name: "isEditing", type: "boolean" },
+                { name: "items", type: "object[]", ref: true },
+                { name: "formValues", type: "object" }
+            ],
+            styled: true
+        }
+
+    v08/ts/react/component(&md)
+        $append imports
+            import
+                @ FormDef
+                @ ListDef
+                from './types'
+            import DataForm from './DataForm'
+            import DataList from './DataList'
+            
+        
+        ctor 
+            param props
+                :ref ${md.name}Props
+            _ super(props)
+            set this.state
+                {
+                    @ isEditing false
+                    { formValues
+                    @ items props.items
+
+        => handleEdit
+            param item
+                :ref object
+            _ this.setState
+                =>
+                    param state
+                    (
+                        {
+                            @ isEditing true
+            _ alert('Edit: ' + JSON.stringify(item))
+       
+        => handleRemove
+            param item
+                :ref object
+            _ alert('Remove: ' + JSON.stringify(item))
+        
+        m render
+            return
+                div
+                    {
+                        iif this.state.isEditing
+                            then
+                                < DataForm
+                                    @ formDef {this.props.formDef}
+                                    @ values {this.state.formValues}
+                            else
+                                < DataList
+                                    @ listDef {this.props.listDef}
+                                    @ items {this.state.items}
+                                    @ onEdit {this.handleEdit}
+                                    @ onRemove {this.handleRemove}

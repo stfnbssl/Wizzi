@@ -59,8 +59,9 @@ $group
             @types/escape-html "^1.0.1"
         ${'$'}if wzCtx.Build.utils.useGitUrlParse
             @types/git-url-parse "^9.0.0"
-        ${'$'}if wzCtx.Build.express.useHelmet
-            @types/helmet "^4.0.0"
+        ${'$'}if wzCtx.Build.useExpress
+            ${'$'}if wzCtx.Build.express.useHelmet
+                @types/helmet "^4.0.0"
         ${'$'}if wzCtx.Build.useJest
             @types/jest "^26.0.15"
         ${'$'}if wzCtx.Build.utils.useJsCookie
@@ -96,7 +97,7 @@ $group
                 @types/passport-local "^1.0.33"
             ${'$'}if wzCtx.Build.authentication.useGithub
                 @types/passport-github2 "^1.2.4"
-        ${'$'}if wzCtx.Build.styles.usePalx
+        ${'$'}if wzCtx.Build.styles.usePalx || wzCtx.Build.useStorybook
             @types/palx "^1.0.1"
         ${'$'}if wzCtx.Build.usePrettier
             @types/prettier "^2.0.0"

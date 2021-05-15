@@ -1,0 +1,55 @@
+module
+    $
+        var md = {
+            name: "ListRow",
+            props: [
+                { name: "columns", type: "ColumnDef[]", ref: true },
+                { name: "item", type: "{" },
+                { name: "onRemove", type: "handler" },
+                { name: "onEdit", type: "handler" },
+                { name: "onSelect", type: "handler" },
+            ],
+            styled: true
+        }
+    v08/ts/react/function(&md)
+        $append imports
+            import Box from '../widgets/Box'        
+            import
+                @ ColumnDef
+                from './types'
+        < StyledRoot
+            {
+                _ columns.map
+                    =>
+                        param column
+                        param ndx
+                        < StyledCell
+                            @ key {ndx}
+                            + { item[column.id] }
+                            @ onClick {onSelect}
+            < StyledButton
+                button Edit
+                    @ onClick {onEdit}
+            < StyledButton
+                button Remove
+                    @ onClick {onRemove}
+
+        $append styles
+            $if false
+                styled StyledRoot .ul
+                    display flex
+                    flex-direction row
+                    justify-content space-between
+                styled StyledCell .li
+                    padding 4px
+                styled StyledButton .li
+                    padding 4px
+            $else
+                styled StyledRoot .tr
+                    margin-top 5px
+                    border-top 1px solid #bebebe
+                styled StyledCell .td
+                    padding 4px
+                styled StyledButton .td
+                    padding 4px
+

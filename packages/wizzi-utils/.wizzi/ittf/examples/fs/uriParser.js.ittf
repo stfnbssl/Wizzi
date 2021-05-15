@@ -29,6 +29,9 @@
 		@ 'db://stefi/wizzi/index.js.ittf'
 	_ parse
 		@ 'ls://stefi/wizzi/index.js.ittf'
+	# TODO error not managed:
+    _ parse
+		@ './storybook'
 
 	function parse
 		param uri

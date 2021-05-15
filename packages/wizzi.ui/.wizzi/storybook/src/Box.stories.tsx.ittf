@@ -1,0 +1,87 @@
+module
+
+    $
+        var md = {
+            name: 'Box',
+            from: '../../src/components/widgets',
+            imports: ['Text']
+        }
+
+    v08/ts/react/stories(&md)
+
+        $include sccomp
+
+        $append template
+            < Box
+                @ {...args}
+                + Hello box
+
+        $append parameters.docs
+            { description
+                @ component `A low-level layout component for setting color, display, height, margin, maxHeight, maxWidth, minHeight, minWidth, padding, size, textAlign, and width.`
+
+        v08/ts/react/story(Display_And_Size)
+            @ color 'alert.base'
+            [ display
+                @ 'none'
+                @ null
+                @ 'block'
+            @ size 250
+
+        v08/ts/react/story(Padding)
+            @ p 4
+            @ color 'background.base'
+
+        v08/ts/react/story(Height)
+            @ color 'warning.base'
+            [ height
+                @ 250
+                @ 350
+                @ 450
+                @ 550
+            [ width
+                @ 150
+                @ 250
+                @ 350
+                @ 450
+        
+        v08/ts/react/story(Max_And_Min_Values)
+            @ color 'priceSecondary.base'
+            @ maxHeight [300, null, 400, null, 500]
+            @ maxWidth [300, null, 400, null, 500]
+            @ minHeight [100, null, 200, null, 300]
+            @ minWidth [300, null, 200, null, 100]
+
+        v08/ts/react/story(Margin)
+            @ m 3
+            @ color 'background.base'
+
+        v08/ts/react/story(Color)
+            @ color 'primary.base'
+
+        v08/ts/react/story(BoxShadow)
+            @ boxShadowSize 'sm'
+            @ p 2
+            @ mb '42px'
+            @ color 'primary.base'
+
+        v08/ts/react/story(Size)
+            @ color 'primary.base'
+            @ size 200
+
+        const DimsChildren = () => <Text color='text.lightest'>Box Dimensions</Text>
+
+        v08/ts/react/story(Width)
+            @ color 'primary.base'
+            @ width 1 / 2
+            @ children <DimsChildren />
+
+        v08/ts/react/story(PixelWidth)
+            @ color 'primary.base'
+            @ width 256
+            @ children <DimsChildren />
+
+        v08/ts/react/story(VwWidth)
+            @ color 'primary.base'
+            @ width '75vw'
+            @ children <DimsChildren />            

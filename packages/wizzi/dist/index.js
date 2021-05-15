@@ -1446,7 +1446,7 @@ md.generateFolderArtifacts = function(ittfDocumentPath, context, options, callba
             if (err) {
                 return callback(err);
             }
-            console.log('generateFolderArtifacts\n', stringify(items, null, 2));
+            // log 'generateFolderArtifacts\n', stringify(items, null, 2)
             async.mapSeries(items, function(item, callback) {
                 if (item.isIttfDocument) {
                     console.log('generating', item.fullPath);

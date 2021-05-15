@@ -1,0 +1,14 @@
+$group
+    
+    $append imports1
+        import 
+            @ theme
+            from '../../src/components/SCTheme'
+        import 
+            @ ThemeProvider 
+            from 'styled-components'
+
+    $append decorators
+        < ThemeProvider
+            @ theme {theme}
+            < Story

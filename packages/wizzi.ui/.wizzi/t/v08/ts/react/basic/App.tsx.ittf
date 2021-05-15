@@ -22,17 +22,16 @@ $group
                         @ className "App-logo"
                         @ alt "logo"
                     p
-                        + \n          Edit 
+                        + Edit
                         code
                             + src/App.tsx
-                        +  and save to reload.\n        
+                        +  and save to reload.
                     a
                         @ className "App-link"
                         @ href "https://reactjs.org"
                         @ target "_blank"
                         @ rel "noopener noreferrer"
-                        + \n          Learn React\n        
+                        + Learn React
                 section
                     < WidgetsDemo
                         @ title "Some example widgets"
-    export-default App

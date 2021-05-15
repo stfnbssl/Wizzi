@@ -134,7 +134,7 @@ var css_step_1 = function(step_callback) {
     heading1('EXAMPLE')
     heading2('basic css generations')
     const example_ittfs = [
-        'styled_js'
+        'styled'
     ];
     async.mapSeries(example_ittfs, function(ittf, callback) {
         console.log('======================================================================================');

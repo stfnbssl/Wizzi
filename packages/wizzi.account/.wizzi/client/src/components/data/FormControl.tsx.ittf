@@ -1,0 +1,140 @@
+module
+    $
+        var md = {
+            name: "FormControl",
+            props: [
+                { name: "control", type: "ControlDef", ref: true },
+                { name: "value", type: "any" },
+                { name: "onChange", type: "handler", params: [{name: "value", type: "any"}] },
+            ],
+            styled: true
+        }
+    v08/react/function(&md)
+        $append imports
+            import Select
+                @ ValueType
+                from "react-select"
+            import
+                @ SelectOption 
+                @ ControlDef
+                from './types'
+            $$ import {SingleDatePicker} from "react-dates"
+            import DatePicker from "react-datepicker"
+            import "react-datepicker/dist/react-datepicker.css";            
+            import { registerLocale, setDefaultLocale } from  "react-datepicker"
+            import it from 'date-fns/locale/it'
+            _ registerLocale('it', it)
+  
+        function pad
+            param s
+                :number
+            return 
+                iif (s < 10)
+                    then '0' + s
+                    else s
+
+        function handleChange
+            param event
+                :any
+                $$ :ref React.ChangeEvent<HTMLInputElement>
+            log 'handleChange', 'event', event
+            if control.type == 'text'
+                _ onChange(event.target.value)
+            elif control.type == 'checkbox'
+                _ onChange(event.target.checked)
+            elif control.type == 'select'
+                _ onChange(event ? event.value : undefined)
+            elif control.type == 'date'
+                _ onChange
+                    [ 
+                        @ pad(event.getDate())
+                        @ pad(event.getMonth() + 1)
+                        @ event.getFullYear()
+                        ._ join
+                            @ '/'
+
+        let selectValue = null
+        let dateValue = null
+        if control.type == 'select' && control.options
+            foreach option in control.options
+                if option.value == value
+                    set selectValue = option
+        if control.type == 'date'
+            log 'date value', value
+            if value
+                const parts = value.split('/') 
+                set dateValue = new Date(parts[2] + '/' + parts[1] + '/' + parts[0])
+        return
+
+            < StyledRoot
+                < StyledLabel
+                    @ control {control}
+                    + { control.label || control.id }
+                {
+                    &&
+                        + control.type == 'text'
+                        < StyledText
+                            @ value {value}
+                            @ onChange {handleChange}
+                {
+                    &&
+                        + control.type == 'checkbox'
+                        < StyledCheckBox
+                            @ checked {value}
+                            @ onChange {handleChange}
+                {
+                    &&
+                        + control.type == 'select'
+                        < Select 
+                            :ref SelectOption
+                            @ value {selectValue}
+                            @ getOptionLabel
+                                => 
+                                    param option
+                                        :ref SelectOption
+                                    @expr option.label
+                            @ getOptionValue
+                                => 
+                                    param option
+                                        :ref SelectOption
+                                    @expr option.value
+                            @ options {control.options}
+                            @ isClearable {true}
+                            @ backspaceRemovesValue {true}
+                            @ onChange {handleChange}
+                {
+                    &&
+                        + control.type == 'date'
+                        < DatePicker 
+                            @ selected {dateValue}
+                            @ onChange {handleChange}
+                            @ locale 'it'
+                            @ dateFormat 'dd/MM/yyyy'
+
+        $append styles
+            :interface StyledControlProps
+                :p control
+                    :ref ControlDef
+            styled StyledRoot .div
+                text-align left
+                padding 5px
+            styled StyledLabel .div<StyledControlProps>
+                position
+                    => props.control.required ? 'relative' : 'inherit'
+                if props.control.required
+                    & :after
+                        content '*'
+                        margin-left 2px
+                        color #b90000
+            styled StyledText .input.attrs
+                =>
+                    param props
+                    (
+                        {
+                            @ type 'text'
+            styled StyledCheckBox .input.attrs
+                =>
+                    param props
+                    (
+                        {
+                            @ type 'checkbox'

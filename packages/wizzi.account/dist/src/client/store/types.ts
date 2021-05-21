@@ -1,0 +1,18 @@
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\store\types.ts.ittf
+    utc time: Fri, 21 May 2021 20:28:08 GMT
+*/
+import {StateType, ActionType} from 'typesafe-actions';
+//
+export type Store = StateType<typeof import('./index').default>;
+export type RootAction = ActionType<typeof import('./root-action').default>;
+export type RootState = StateType<ReturnType<typeof import('./root-reducer').default>>;
+//
+export interface ResponsePayload {
+    message?: string;
+    error?: { 
+        [k: string]: any;
+    };
+}

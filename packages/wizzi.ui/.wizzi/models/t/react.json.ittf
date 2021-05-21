@@ -44,4 +44,7 @@ $group
         useSimpleCodeEditor true
         useTextareaAutosize true
         useVirtualized true
+        useSelect true
+        useRange true
+        useDate true
     useHoistNonReactStatic false

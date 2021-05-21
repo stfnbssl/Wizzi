@@ -3,6 +3,7 @@ $group
     $
         var schema = md.schema;
     const ${schema.name}FormDef
+        :ref FormDef
         {
             @ id "${schema.name}Form"
             @ title "${schema.Title}"
@@ -11,11 +12,8 @@ $group
                     {
                         @ id "${field.name}"
                         @ label "${field.label ? field.label : field.name}"
-                        @ ctrlId "${field.ctrlId}"
+                        @ type "${field.type}"
                         $if field.type == "oid"
-                            @ type "oid"
                             @ isKey true
-                        $else
-                            @ type "text"
                         $if field.required
                             @ required true

@@ -31,6 +31,13 @@ $group
                         :${param.type}
         $elif prop.type == 'handler'
             :=>
+                $if prop.params
+                    $foreach param in prop.params
+                        param ${param.name}
+                            $if param.ref
+                                :ref ${param.type}
+                            $else
+                                :${param.type}
                 :void
         $elif prop.ref
             :ref ${prop.type}

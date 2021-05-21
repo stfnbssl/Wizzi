@@ -1,6 +1,6 @@
 $group
     { styles
-        usePalx false
+        usePalx true
     useStyledComponents true
     { styledComponents
     useStyledSystem true

@@ -8,8 +8,8 @@
     },
     "App": {
         "siteUrl": "http://localhost",
-        "port": 4000,
-        "baseUrl": "http://localhost:4000",
+        "port": 3900,
+        "baseUrl": "http://localhost:3900",
         "Components": []
     },
     "Style": {
@@ -30,7 +30,7 @@
         "github": {
             "clientId": "6a42cd4cb7247bb4e823",
             "clientSecret": "dedced0ac262cae62557e4c3f567a6227b17bfb7",
-            "callbackURL": "http://localhost:4000/authenticate/github/callback"
+            "callbackURL": "http://localhost:3900/authenticate/github/callback"
         },
         "useAccount": true,
         "account": {},
@@ -48,7 +48,7 @@
         "passportAuth0": {},
         "usePacki": false,
         "packi": {
-            "endPoint": "http://localhost:4000/api/v1",
+            "endPoint": "http://localhost:3900/api/v1",
             "storeFolder": "data/packi/store",
             "templatesFolder": "data/packi/templates",
             "apiId_rem": "identifier for the API. This value will be used as the audience parameter on authorization calls.",
@@ -71,7 +71,7 @@
                 "tenant": "dev-qwf9-zob.eu",
                 "clientId": "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV",
                 "longRandomString": "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg",
-                "baseURL": "http://localhost:4000"
+                "baseURL": "http://localhost:3900"
             },
             "useLocal": true,
             "local": {},
@@ -79,7 +79,7 @@
             "github": {
                 "clientId": "6a42cd4cb7247bb4e823",
                 "clientSecret": "dedced0ac262cae62557e4c3f567a6227b17bfb7",
-                "callbackURL": "http://localhost:4000/api/v1/authenticate/github/callback"
+                "callbackURL": "http://localhost:3900/api/v1/authenticate/github/callback"
             }
         },
         "useAuthorization": false,
@@ -115,6 +115,8 @@
                 }
             ]
         },
+        "useHotReplacement": false,
+        "hotReplacement": {},
         "useWebpack": true,
         "webpack": {
             "useCss": true,
@@ -207,6 +209,10 @@
         },
         "useFilesystem": false,
         "filesystem": {},
+        "useLocalStorage": false,
+        "localStorage": {
+            "key": "wr-state"
+        },
         "useExpress": true,
         "express": {
             "useSsl": false,
@@ -236,8 +242,10 @@
         "helmet": {},
         "useCors": true,
         "cors": {
-            "clientOrigin": "http://localhost:4000"
+            "clientOrigin": "http://localhost:3900"
         },
+        "useReactCreateApp": false,
+        "reactCreateApp": {},
         "useReact": true,
         "react": {
             "useV16": true,
@@ -245,7 +253,7 @@
             "materialUI": {
                 "useIcons": true
             },
-            "useRedux": false,
+            "useRedux": true,
             "redux": {
                 "useSaga": true,
                 "saga": {
@@ -265,11 +273,14 @@
             "useHelmetAsync": true,
             "useSimpleCodeEditor": true,
             "useTextareaAutosize": true,
-            "useVirtualized": true
+            "useVirtualized": true,
+            "useSelect": true,
+            "useRange": true,
+            "useDate": true
         },
         "useHoistNonReactStatic": false,
         "styles": {
-            "usePalx": false
+            "usePalx": true
         },
         "useStyledComponents": true,
         "styledComponents": {},
@@ -285,7 +296,9 @@
         "expoStyles": {},
         "useJest": false,
         "jest": {},
-        "utils": {},
+        "utils": {
+            "useLodash": true
+        },
         "useWizzi": true,
         "wizzi": {
             "isDev": true,
@@ -303,6 +316,48 @@
         "useIttfStatic": false,
         "ittfStatic": {},
         "useWizziViewEngine": true,
-        "wizziViewEngine": {}
+        "wizziViewEngine": {},
+        "useBlog": true,
+        "useData": true,
+        "data": {
+            "reduxItems": [
+                {
+                    "name": "post",
+                    "Name": "Post",
+                    "Title": "Blog post",
+                    "Titles": "Blog posts",
+                    "collectionName": "posts",
+                    "fields": [
+                        {
+                            "name": "_id",
+                            "type": "oid",
+                            "isListItem": true,
+                            "ctrlId": "fd_1_post_id",
+                            "test": "id"
+                        },
+                        {
+                            "name": "author",
+                            "type": "string",
+                            "isListItem": true,
+                            "ctrlId": "fd_1_post_author",
+                            "test": "Stefi"
+                        },
+                        {
+                            "name": "title",
+                            "type": "string",
+                            "isListItem": true,
+                            "ctrlId": "fd_1_post_title",
+                            "test": "My postulates"
+                        },
+                        {
+                            "name": "content",
+                            "type": "string",
+                            "ctrlId": "fd_1_post_content",
+                            "test": "Bla bla"
+                        }
+                    ]
+                }
+            ]
+        }
     }
 }

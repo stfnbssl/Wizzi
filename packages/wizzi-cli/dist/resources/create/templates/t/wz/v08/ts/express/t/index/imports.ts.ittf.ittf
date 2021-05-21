@@ -53,9 +53,9 @@ $group
     
     ${'$'}if wzCtx.Build.useBlog
         import 
-            @ blogControllers
-            @ blogModelBuilders
-            from './features/blog/index'
+            @ postControllers
+            @ postModelBuilders
+            from './features/post/index'
     
     ${'$'}if wzCtx.Build.useSite
         import 

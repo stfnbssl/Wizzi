@@ -106,10 +106,14 @@ $group
                 $else
                     @types/react "^17.0.3"
                     @types/react-dom "^17.0.3"
+                $if wzCtx.Build.react.useDate
+                    @types/react-datepicker "latest"
                 $if wzCtx.Build.react.useRedux
                     @types/react-redux "^7.0.1"
                 $if wzCtx.Build.react.useRouter
                     @types/react-router-dom "^4.3.1"
+                $if wzCtx.Build.react.useSelect
+                    @types/react-select "latest"
                 $if wzCtx.Build.react.useTextareaAutosize
                     @types/react-textarea-autosize "^4.3.3"
                 $if wzCtx.Build.react.useVirtualized

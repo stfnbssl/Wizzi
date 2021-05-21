@@ -1,11 +1,13 @@
 $group
+    useReactCreateApp false
+    { reactCreateApp
     useReact true
     { react
         useV16 true
         useMaterialUI false
         { materialUI
             useIcons true
-        useRedux false
+        useRedux true
         { redux
             useSaga true
             { saga
@@ -21,4 +23,8 @@ $group
         useSimpleCodeEditor true
         useTextareaAutosize true
         useVirtualized true
+        useHelmetAsync true
+        useSelect true
+        useRange true
+        useDate true
     useHoistNonReactStatic false

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.ui\.wizzi\src\components\widgets\demo.tsx.ittf
-    utc time: Sat, 15 May 2021 12:57:34 GMT
+    utc time: Tue, 18 May 2021 13:32:19 GMT
 */
 import {theme} from '../SCTheme';
 import {ThemeProvider} from 'styled-components';
@@ -15,6 +15,7 @@ import {DataList} from '../data/DataList';
 import {DataForm} from '../data/DataForm';
 import {DataEntry} from '../data/DataEntry';
 
+
 const __listDef = {
     id: 'books', 
     title: 'Books', 
@@ -24,21 +25,12 @@ const __listDef = {
          }, 
         {
             id: 'title'
+         }, 
+        {
+            id: 'genre'
          }
     ]
  };
-const __items = [
-    {
-        author: 'Stefi', 
-        title: 'Philos', 
-        read: false
-     }, 
-    {
-        author: 'Annie', 
-        title: 'Flower', 
-        read: true
-     }
-];
 
 const __formDef = {
     id: 'books', 
@@ -55,11 +47,51 @@ const __formDef = {
             required: true
          }, 
         {
+            id: 'genre', 
+            type: 'select', 
+            required: true, 
+            options: [
+                {
+                    label: 'Noir', 
+                    value: 'Noir'
+                 }, 
+                {
+                    label: 'Novel', 
+                    value: 'Novel'
+                 }, 
+                {
+                    label: 'Tales', 
+                    value: 'Tales'
+                 }
+            ]
+         }, 
+        {
             id: 'read', 
             type: 'checkbox'
+         }, 
+        {
+            id: 'readEnded', 
+            type: 'date'
          }
     ]
  };
+
+const __items = [
+    {
+        author: 'Stefi', 
+        title: 'Philos', 
+        read: false, 
+        genre: 'Noir', 
+        readEnded: '30/11/2021'
+     }, 
+    {
+        author: 'Annie', 
+        title: 'Flower', 
+        read: true, 
+        genre: 'Tales', 
+        readEnded: '31/12/2021'
+     }
+];
 
 import React, {FunctionComponent} from 'react';
 

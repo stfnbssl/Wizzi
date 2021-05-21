@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.ui\.wizzi\src\components\data\ListRow.tsx.ittf
-    utc time: Sat, 15 May 2021 12:57:34 GMT
+    utc time: Tue, 18 May 2021 13:32:19 GMT
 */
 import React, {FunctionComponent} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -43,6 +43,10 @@ export const ListRow: FunctionComponent<ListRowProps> = ({
      (
     <StyledRoot
     >
+        <StyledCell
+         key={-1} onClick={onSelect}>
+            { item['_id'] }
+        </StyledCell>
         {
             columns.map((column, ndx) => 
             

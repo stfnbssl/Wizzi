@@ -1,0 +1,21 @@
+module
+
+    $
+        var md = {
+            name: "DashboardLayout",
+            props: [
+                { name: "children", type: "node" },
+            ],
+            styled: true
+        }
+
+    v08/react/function(&md)
+        $append imports
+        < React.Fragment
+            div
+                + Header
+            div
+                + {children}
+            div
+                + Footer
+

@@ -26,7 +26,7 @@ $group
                         { ${field.name}
                             $if field.type == 'string'
                                 @ type String
-                            $elif field.type == 'number' || field.type == 'integer' || field.float == 'integer'
+                            $elif field.type == 'number' || field.type == 'integer' || field.type == 'float'
                                 @ type Number
                             $elif field.type == 'date'
                                 @ type Date

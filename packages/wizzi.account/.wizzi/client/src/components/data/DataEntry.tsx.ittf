@@ -1,0 +1,186 @@
+module
+
+    $
+        var md = {
+            name: "DataEntry",
+            props: [
+                { name: "formDef", type: "FormDef", ref: true },
+                { name: "listDef", type: "ListDef", ref: true },
+                { name: "items", type: "object[]", ref: true },
+            ],
+            stateProps: [
+                { name: "isEditing", type: "boolean" },
+                { name: "idCounter", type: "number" },
+                { name: "items", type: "object[]", ref: true },
+                { name: "workItems", type: "object[]", ref: true },
+                { name: "formValues", type: "object" }
+            ],
+            styled: true
+        }
+
+    v08/react/component(&md)
+        $append imports
+            import
+                @ FormDef
+                @ ListDef
+                from './types'
+            import DataForm from './DataForm'
+            import DataList from './DataList'
+        
+        ctor 
+            param props
+                :ref ${md.name}Props
+            _ super(props)
+            set this.state
+                {
+                    @ isEditing false
+                    @ idCounter 0
+                    { formValues
+                    [ items
+                    [ workItems
+
+        m getDerivedStateFromProps
+            static
+            param props
+                :ref ${md.name}Props
+            param state
+                :ref ${md.name}State
+            if props.items !== state.items
+                let idCounter = 0
+                const workItems
+                    _ props.items.map
+                        => 
+                            param item
+                            _ Object.assign({}, item, { _id: ++idCounter} )
+                # log 'getDerivedStateFromProps.workItems', workItems
+                return 
+                    { 
+                        @ idCounter
+                        @ isEditing false
+                        { formValues
+                        @ items props.items
+                        @ workItems workItems
+            return null
+        
+        => handleFormChangeValue
+            param name
+                :string
+            param value
+                :any
+            # log 'handleFormChangeValue', name, value
+            _ this.setState
+                =>
+                    param state
+                    (
+                        {
+                            { formValues
+                                ... this.state.formValues
+                                @ [name] value
+
+        => handleFormConfirm
+            const newItems 
+                _ this.state.workItems.map
+                    =>
+                        param item
+                        return 
+                            iif item._id == this.state.formValues._id 
+                                then this.state.formValues
+                                else item
+            _ this.setState
+                =>
+                    param state
+                    (
+                        {
+                            @ isEditing false
+                            @ workItems newItems
+                            { formValues
+
+        => handleFormCancel
+            _ this.setState
+                =>
+                    param state
+                    (
+                        {
+                            @ isEditing false
+                            { formValues
+
+        => handleEditItem
+            param item
+                :ref object
+            _ this.setState
+                =>
+                    param state
+                    (
+                        {
+                            @ isEditing true
+                            @ formValues item
+            # _ alert('Edit: ' + JSON.stringify(item))
+       
+        => handleRemoveItem
+            param item
+                :ref object
+            const newItems = this.state.workItems
+            var removeIndex = newItems.map(a => a._id).indexOf(item._id)
+            + ~removeIndex && newItems.splice(removeIndex, 1)                
+            _ this.setState
+                =>
+                    param state
+                    (
+                        {
+                            @ workItems newItems
+            # _ alert('Remove: ' + JSON.stringify(item))
+
+        => handleAddItem
+            let idCounter = this.state.idCounter
+            const newItem
+                :any
+                {
+                    @ _id ++idCounter
+            _ this.props.formDef.controls.map
+                =>
+                    param control
+                    if control.type == 'boolean'
+                        set newItem[control.id] = false
+                    else
+                        set newItem[control.id] = ''
+            _ this.setState
+                =>
+                    param state
+                    (
+                        {
+                            @ idCounter idCounter
+                            @ workItems 
+                                [
+                                    ... this.state.workItems
+                                    @ newItem
+                            @ formValues newItem
+                            @ isEditing true
+        
+        m render
+            return
+                < StyledRoot
+                    {
+                        iif this.state.isEditing
+                            then
+                                < DataForm
+                                    @ formDef {this.props.formDef}
+                                    @ values {this.state.formValues}
+                                    @ onChangeValue {this.handleFormChangeValue}
+                                    @ onConfirm {this.handleFormConfirm}
+                                    @ onCancel {this.handleFormCancel}
+                            else
+                                div
+                                    < StyledAdd
+                                        @ onClick {this.handleAddItem}
+                                        + Add
+                                    < DataList
+                                        @ listDef {this.props.listDef}
+                                        @ items {this.state.workItems}
+                                        @ onEdit {this.handleEditItem}
+                                        @ onRemove {this.handleRemoveItem}
+        $append styles
+            styled StyledRoot .div
+                border 1px solid #ff0000
+                padding 20px
+            styled StyledAdd .button
+                color green

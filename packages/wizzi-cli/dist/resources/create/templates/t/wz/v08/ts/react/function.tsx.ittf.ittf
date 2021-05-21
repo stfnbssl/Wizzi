@@ -11,6 +11,14 @@ $group
     import React
         @ FunctionComponent
         from 'react'
+    ${'$'}if md.connected
+        import 
+            @ bindActionCreators
+            @ Dispatch
+            from 'redux'
+        import 
+            @ connect
+            from 'react-redux'
     ${'$'}if md.styled
         # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
         import styled
@@ -25,12 +33,29 @@ $group
         import classnames from 'classnames'
     +
     ${'$'}hook imports
-    export
-        :interface ${'$'}{md.name}Props
-            $$ :{
-            ${'$'}foreach prop in myProps
-                ${'$'} if (prop.xdefault) { defaultProps.push(prop); }
-                ${'$'}include setPropType
+    +
+    ${'$'}if md.connected
+        export
+            :type ${'$'}{md.name}Props
+                :intersect 
+                    :ref ReturnType
+                        :param 
+                            :typeof mapStateToProps
+                    :ref ReturnType
+                        :param 
+                            :typeof mapDispatchToProps
+                    :{ 
+                        ${'$'}foreach prop in myProps
+                            ${'$'} if (prop.xdefault) { defaultProps.push(prop); }
+                            ${'$'}include setPropType
+
+    ${'$'}else
+        export
+            :interface ${'$'}{md.name}Props
+                ${'$'}foreach prop in myProps
+                    ${'$'} if (prop.xdefault) { defaultProps.push(prop); }
+                    ${'$'}include setPropType
+
     +
     ${'$'}hook styles
     export
@@ -53,4 +78,14 @@ $group
                     ${'$'}else
                         @ ${'$'}{prop.name} ${'$'}{prop.xdefault}
 
-    export-default ${'$'}{md.name}
+    ${'$'}if md.connected
+        export
+            const ${'$'}{md.name}Connected
+                _ connect
+                    @ mapStateToProps
+                    @ mapDispatchToProps
+                    (
+                        @ ${'$'}{md.name}
+        export-default ${'$'}{md.name}Connected
+    ${'$'}else
+        export-default ${'$'}{md.name}

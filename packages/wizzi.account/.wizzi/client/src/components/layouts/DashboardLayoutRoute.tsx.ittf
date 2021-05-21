@@ -1,0 +1,39 @@
+module
+    import React
+        @ Component
+        @ ComponentType
+        from 'react'
+    import 
+        @ Route
+        @ RouteProps
+        from 'react-router-dom'
+    import DashboardLayout
+        from './DashboardLayout'
+    +
+    export
+        :interface DashboardLayoutRouteProps
+            :extends RouteProps
+            :p component
+                :ref ComponentType
+                    :param any
+    export 
+        const DashboardLayoutRoute
+            => 
+                { 
+                    @ component Comp
+                    ... rest
+                    :ref DashboardLayoutRouteProps
+                return 
+                    < Route 
+                        @ {...rest}
+                        @ render
+                            => 
+                                param matchProps
+                                < DashboardLayout 
+                                    h1 Hello
+                                    $*
+                                    < Comp 
+                                        @ {...matchProps}
+                                    *$
+
+    export-default DashboardLayoutRoute

@@ -10,3 +10,6 @@ $group
         dbName "wizzi"
     useFilesystem false
     { filesystem
+    useLocalStorage false
+    { localStorage
+        key "wr-state"

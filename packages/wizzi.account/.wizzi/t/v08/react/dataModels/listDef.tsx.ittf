@@ -8,11 +8,10 @@ $group
                 testItems.push(i);
             }
         const ${schema.name}ListDef
+            :ref ListDef
             {
                 @ id "${schema.name}List"
                 @ title "${schema.Titles}"
-                @ kind "table"
-                @ isEditAdd true
                 @ hasSearch true
                 [ columns
                     $foreach field in schema.fields
@@ -20,13 +19,9 @@ $group
                             {
                                 @ id "${field.name}"
                                 @ label "${field.label ? field.label : field.name}"
-                                @ ctrlId "${field.ctrlId}"
-                                @ type "text"
+                                @ type "${field.type}"
                                 $if field.type == 'oid'
                                     @ isKey true
-                @ onRemove console.log
-                @ onAdd console.log
-                @ onUpdate console.log
         const ${schema.name}ListData
             {
                 [ items

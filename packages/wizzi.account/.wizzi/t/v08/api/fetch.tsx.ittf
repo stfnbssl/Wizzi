@@ -4,14 +4,17 @@ $group
     export
         function getData
             param url
+                :string
             return
                 _ executeFetch
                     @ url
     +
     export
         function postData
-            param url = ''
-            param data = {}
+            param url
+                :string
+            param data
+                :{
             return
                 _ executeFetch
                     @ url
@@ -21,8 +24,10 @@ $group
     +
     export
         function putData
-            param url = ''
-            param data = {}
+            param url
+                :string
+            param data
+                :{
             return
                 _ executeFetch
                     @ url
@@ -32,12 +37,12 @@ $group
     +
     export
         function deleteData
-            param url = ''
-            param data = {}
+            param url
+                :string
             return
                 _ executeFetch
                     @ url
-                    @ data
+                    {
                     {
                         @ method 'DELETE'
     +
@@ -46,6 +51,7 @@ $group
             :string
         param data
             :{
+            :optional
         param options
             :union
                 :{

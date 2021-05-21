@@ -30,6 +30,8 @@ $group
         classnames "^2.2.6"
     ${'$'}if wzCtx.Build.useMongoDb
         connect-mongo "^3.2.0"
+    ${'$'}if wzCtx.Build.useReact && wzCtx.Build.react.useRouter && wzCtx.Build.react.useRedux
+        connected-react-router "latest"
     ${'$'}if wzCtx.Build.useExpress
         ${'$'}if wzCtx.Build.useCompression
             compression "^1.7.2"
@@ -43,7 +45,7 @@ $group
     ${'$'}if wzCtx.Build.useCrypto
         crypto "^1.0.1"
     ---
-    ${'$'}if wzCtx.Build.utils.useDateFns
+    ${'$'}if wzCtx.Build.utils.useDateFns || wzCtx.Build.useReact && wzCtx.Build.react.useDate
         date-fns "^2.0.0"
     ${'$'}elif wzCtx.Build.useReact
         ${'$'}if wzCtx.Build.react.useMaterialUI
@@ -178,6 +180,8 @@ $group
     ---
     ${'$'}if wzCtx.Build.useTailwindcss
         tailwindcss "^2.0.4"
+    ${'$'}if wzCtx.Build.useTypescript
+        tslib "^2.2.0"
     ${'$'}if wzCtx.Build.useReact
         ${'$'}if wzCtx.Build.react.useRedux
             ${'$'}if wzCtx.Build.react.redux.useSaga

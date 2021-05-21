@@ -13,7 +13,7 @@ $group
                     ${'$'}if wzCtx.Build.useAccount
                         @ ...accountModelBuilders
                     ${'$'}if wzCtx.Build.useBlog
-                        @ ...blogModelBuilders
+                        @ ...postModelBuilders
         await mongodbStart(config, modelBuilders)
         +
     let middlewaresPre
@@ -45,7 +45,7 @@ $group
                 ${'$'}if wzCtx.Build.useAccount
                     @ ...accountControllers
                 ${'$'}if wzCtx.Build.useBlog
-                    @ ...blogControllers
+                    @ ...postControllers
                 ${'$'}if wzCtx.Build.usePacki
                     @ ...packiControllers
 

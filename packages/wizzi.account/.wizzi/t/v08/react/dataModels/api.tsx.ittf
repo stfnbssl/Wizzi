@@ -7,7 +7,10 @@ $group
         @ postData
         @ putData
         @ deleteData
-        from '../../common/apiFetch'
+        from '../api/fetch'
+    import
+        @ I${schema.Name}
+        from './types'
     const apiUrl = '${wzCtx.App.baseUrl}/api/v1'
     +
     export
@@ -19,6 +22,7 @@ $group
     export
         function create${schema.Name}
             param ${schema.name}
+                :ref I${schema.Name}
             return
                 _ postData
                     @ apiUrl + "/${schema.collectionName}"
@@ -28,6 +32,7 @@ $group
     export
         function get${schema.Name}ById
             param id
+                :string
             return
                 _ getData
                     @ apiUrl + "/${schema.collectionName}" + "/" + id
@@ -35,7 +40,9 @@ $group
     export
         function update${schema.Name}
             param id
+                :string
             param ${schema.name}
+                :ref I${schema.Name}
             return
                 _ putData
                     @ apiUrl + "/${schema.collectionName}" + "/" + id
@@ -45,6 +52,7 @@ $group
     export
         function delete${schema.Name}
             param id
+                :string
             return
                 _ deleteData
                     @ apiUrl + "/${schema.collectionName}" + "/" + id

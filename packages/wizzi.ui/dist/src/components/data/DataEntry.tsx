@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.ui\.wizzi\src\components\data\DataEntry.tsx.ittf
-    utc time: Sat, 15 May 2021 12:57:34 GMT
+    utc time: Tue, 18 May 2021 13:32:19 GMT
 */
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
@@ -20,53 +20,182 @@ export interface DataEntryProps {
 
 type DataEntryState = { 
     isEditing: boolean;
+    idCounter: number;
     items: object[];
+    workItems: object[];
     formValues: object;
 };
 
+const StyledRoot = styled.div`
+    border: 1px solid #ff0000;
+    padding: 20px;
+    
+`
+const StyledAdd = styled.button`
+    color: green;
+    
+`
 
 export class DataEntry extends Component<DataEntryProps, DataEntryState> {
     constructor(props: DataEntryProps) {
         super(props);
         this.state = {
             isEditing: false, 
+            idCounter: 0, 
             formValues: {
                 
              }, 
-            items: props.items
+            items: [
+                
+            ], 
+            workItems: [
+                
+            ]
          };
     }
-    handleEdit = (item: object) => {
+    static getDerivedStateFromProps(props: DataEntryProps, state: DataEntryState) {
+        
+        // log 'getDerivedStateFromProps.workItems', workItems
+        if (props.items !== state.items) {
+            let idCounter = 0;
+            const workItems = props.items.map(item => 
+            
+                Object.assign({}, item, { _id: ++idCounter} )
+            );
+            return {
+                    idCounter, 
+                    isEditing: false, 
+                    formValues: {
+                        
+                     }, 
+                    items: props.items, 
+                    workItems: workItems
+                 };
+        }
+        return null;
+    }
+    
+    // log 'handleFormChangeValue', name, value
+    handleFormChangeValue = (name: string, value: any) => 
         this.setState((state) => 
         
             ({
+                formValues: {
+                    ...this.state.formValues, 
+                    [name]: value
+                 }
+             })
+        );
+    handleFormConfirm = () => {
+        const newItems = this.state.workItems.map((item) => {
+        
+            return item._id == this.state.formValues._id ? this.state.formValues : item;
+        }
+        );
+        this.setState((state) => 
+        
+            ({
+                isEditing: false, 
+                workItems: newItems, 
+                formValues: {
+                    
+                 }
+             })
+        )
+    };
+    handleFormCancel = () => 
+        this.setState((state) => 
+        
+            ({
+                isEditing: false, 
+                formValues: {
+                    
+                 }
+             })
+        );
+    
+    // _ alert('Edit: ' + JSON.stringify(item))
+    handleEditItem = (item: object) => 
+        this.setState((state) => 
+        
+            ({
+                isEditing: true, 
+                formValues: item
+             })
+        );
+    
+    // _ alert('Remove: ' + JSON.stringify(item))
+    handleRemoveItem = (item: object) => {
+        const newItems = this.state.workItems;
+        var removeIndex = newItems.map(a => a._id).indexOf(item._id);
+        ~removeIndex && newItems.splice(removeIndex, 1)
+        this.setState((state) => 
+        
+            ({
+                workItems: newItems
+             })
+        )
+    };
+    handleAddItem = () => {
+        let idCounter = this.state.idCounter;
+        const newItem: any = {
+            _id: ++idCounter
+         };
+        this.props.formDef.controls.map((control) => {
+        
+            if (control.type == 'boolean') {
+                newItem[control.id] = false;
+            }
+            else {
+                newItem[control.id] = '';
+            }
+        }
+        )
+        this.setState((state) => 
+        
+            ({
+                idCounter: idCounter, 
+                workItems: [
+                    ...this.state.workItems, 
+                    newItem
+                ], 
+                formValues: newItem, 
                 isEditing: true
              })
         )
-        alert('Edit: ' + JSON.stringify(item));
     };
-    handleRemove = (item: object) => 
-        alert('Remove: ' + JSON.stringify(item));
     render() {
         return  (
-            <div
+            <StyledRoot
             >
                 {
                     this.state.isEditing ?  (
-                        <DataForm
-                         formDef={this.props.formDef} values={this.state.formValues} />
+                        <DataForm 
+                            formDef={this.props.formDef}
+                            values={this.state.formValues}
+                            onChangeValue={this.handleFormChangeValue}
+                            onConfirm={this.handleFormConfirm}
+                            onCancel={this.handleFormCancel}
+                         />
                         )
                      :  (
-                        <DataList 
-                            listDef={this.props.listDef}
-                            items={this.state.items}
-                            onEdit={this.handleEdit}
-                            onRemove={this.handleRemove}
-                         />
+                        <div
+                        >
+                            <StyledAdd
+                             onClick={this.handleAddItem}>
+                                Add
+                            </StyledAdd>
+                            <DataList 
+                                listDef={this.props.listDef}
+                                items={this.state.workItems}
+                                onEdit={this.handleEditItem}
+                                onRemove={this.handleRemoveItem}
+                             />
+                        </div>
                         )
                     
                 }
-            </div>
+            </StyledRoot>
             )
         ;
     }

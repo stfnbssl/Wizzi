@@ -60,7 +60,7 @@ $group
     $if wzCtx.Build.useCrypto
         crypto "^1.0.1"
     
-    $if wzCtx.Build.utils.useDateFns
+    $if wzCtx.Build.utils.useDateFns || wzCtx.Build.useReact && wzCtx.Build.react.useDate
         date-fns "^2.0.0"
     $elif wzCtx.Build.useReact
         $if wzCtx.Build.react.useMaterialUI
@@ -183,12 +183,16 @@ $group
             $else
                 react "^17.0.2"
                 react-dom "^17.0.1"
+            $if wzCtx.Build.react.useDate
+                react-datepicker "latest"
             $if wzCtx.Build.react.useFontawesome
                 react-fontawesome "^1.6.1"
             $if wzCtx.Build.react.useHelmetAsync
                 react-helmet-async "^1.0.9"
             $if wzCtx.Build.react.usePerfectScrollbar
                 react-perfect-scrollbar "^1.4.4"
+            $if wzCtx.Build.react.useRange
+                react-range "latest"
             $if wzCtx.Build.react.useRedux
                 react-redux "^7.2.2"
                 $if wzCtx.Build.react.redux.useFirestore
@@ -197,10 +201,8 @@ $group
                 react-router-dom "^5.2.0"
             $if wzCtx.Build.useReactCreateApp
                 react-scripts "^4.0.3"
-            $if wzCtx.Build.react.useMaterialUI
-                $if wzCtx.Build.react.materialUI.useAutocomplete
-                    $if wzCtx.Build.react.materialUI.autocomplete.useReactSelect
-                        react-select "^4.3.0"
+            $if wzCtx.Build.react.useSelect
+                react-select "^4.3.0"
             $if wzCtx.Build.react.useSimpleCodeEditor
                 react-simple-code-editor "^0.11.0"
             $if wzCtx.Build.react.useTextareaAutosize

@@ -1,7 +1,0 @@
-module
-    $
-        var md = {
-            hasBorderedControls: true
-        }
-    $if wzCtx.Build.useData
-        v08/react/dataUi/lists(&md)

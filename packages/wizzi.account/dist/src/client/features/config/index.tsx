@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\features\config\index.tsx.ittf
-    utc time: Fri, 14 May 2021 03:50:01 GMT
+    utc time: Fri, 21 May 2021 20:28:10 GMT
 */
 import {ConfigType} from './types';
 import * as defaults from './defaults';
@@ -19,10 +19,10 @@ function getConfig() {
 
     if (_config == null) {
         _config = {
-            SERVER_URL: 'http://localhost:4000', 
-            API_URL: 'http://localhost:4000/api/v1', 
-            AUTH_URL: 'http://localhost:4000/api/v1/auth', 
-            AUTH_PROVIDERS_URL: 'http://localhost:4000/auth', 
+            SERVER_URL: 'http://localhost:3900', 
+            API_URL: 'http://localhost:3900/api/v1', 
+            AUTH_URL: 'http://localhost:3900/api/v1/auth', 
+            AUTH_PROVIDERS_URL: 'http://localhost:3900/auth', 
             VERSION, 
             DEFAULT_DATA_NAME: defaults.DEFAULT_DATA_NAME, 
             DEFAULT_METADATA_NAME: defaults.DEFAULT_DATA_NAME, 

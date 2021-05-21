@@ -18026,12 +18026,65 @@ format.TSImportType = function(parent, node, options) {
     else {
         throw new Error('AST-node-property argument undefined: ' + JSON.stringify(node, null, 2));
     }
-    if (isTextualNode(p_argument)) {
+    // process AST-node-property qualifier and set it in a var
+    var p_qualifier = null;
+    if (typeof(node.qualifier) !== 'undefined' && node.qualifier != null) {
+        p_qualifier = {
+            textified: null, 
+            isText: false, 
+            ASTProp: 'qualifier', 
+            children: [
+                
+            ]
+        };
+        if (node.qualifier == null) {
+            p_qualifier.text = "null";
+        }
+        else {
+            if (!node.qualifier.type) {
+                throw 'Node qualifier has no type: ' + JSON.stringify(node, null, 2);
+            }
+            // log 'f_p_temp qualifier before format'
+            format(p_qualifier, node.qualifier, options)
+            // log 'f_p_temp qualifier after format', p_qualifier.children.length, p_qualifier
+            var qualifier_comments = extractCommentsIf(p_qualifier, 1);
+            if (p_qualifier.children.length == 1) {
+                p_qualifier.tag = p_qualifier.children[0].tag;
+                if (!(p_qualifier.children[0].isText || p_qualifier.children[0].textified)) {
+                    p_qualifier.name = p_qualifier.children[0].name;
+                    p_qualifier.source = p_qualifier.children[0].source;
+                    p_qualifier.children = p_qualifier.children[0].children;
+                }
+                else {
+                    if (p_qualifier.children[0].textified) {
+                        p_qualifier.textified = p_qualifier.children[0].textified;
+                    }
+                    if (p_qualifier.children[0].isText) {
+                        p_qualifier.isText = true;
+                    }
+                    p_qualifier.name = p_qualifier.children[0].name;
+                    p_qualifier.source = p_qualifier.children[0].source;
+                    p_qualifier.children = [];
+                }
+            }
+            if (qualifier_comments.length > 0) {
+                p_qualifier.children = p_qualifier.children.concat(qualifier_comments);
+            }
+        }
+    }
+    // log 'TSImportType', p_qualifier
+    if (isTextualNode(p_argument) && (p_qualifier == null || isTextualNode(p_qualifier))) {
         ret.textified = 'import(' + getNodeText(p_argument) + ')';
+        if (p_qualifier) {
+            ret.textified += '.' + getNodeText(p_qualifier);
+        }
         ret.isText = true;
     }
     else {
         ret.children.push(p_argument)
+        if (p_qualifier) {
+            ret.children.push(p_qualifier)
+        }
     }
     if (ret != null) {
         if (__isText) {

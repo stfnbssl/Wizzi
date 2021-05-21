@@ -3,7 +3,7 @@
         var md = {
             useSsl: false,
             host: 'localhost',
-            port: 4000,
+            port: 3900,
             apiVersion: 'v1'
         };
         md.http = md.useSsl ? 'https' : 'http';
@@ -124,6 +124,8 @@
                     {
                         name "hello"
                         writeToDisk false
+            useHotReplacement false
+            { hotReplacement
             useWebpack true
             { webpack
                 useCss true
@@ -202,6 +204,9 @@
                 dbName "wizzi"
             useFilesystem false
             { filesystem
+            useLocalStorage false
+            { localStorage
+                key "wr-state"
         
         $group
             useExpress true
@@ -232,13 +237,15 @@
                 clientOrigin "${md.http}://localhost:${md.port}"
         
         $group
+            useReactCreateApp false
+            { reactCreateApp
             useReact true
             { react
                 useV16 true
                 useMaterialUI false
                 { materialUI
                     useIcons true
-                useRedux false
+                useRedux true
                 { redux
                     useSaga true
                     { saga
@@ -254,11 +261,15 @@
                 useSimpleCodeEditor true
                 useTextareaAutosize true
                 useVirtualized true
+                useHelmetAsync true
+                useSelect true
+                useRange true
+                useDate true
             useHoistNonReactStatic false
         
         $group
             { styles
-                usePalx false
+                usePalx true
             useStyledComponents true
             { styledComponents
             useStyledSystem true
@@ -277,6 +288,7 @@
         
         $group
             { utils
+                useLodash true
         
         $group
             useWizzi true
@@ -296,14 +308,10 @@
             { wizziViewEngine
         
         $group
+            useBlog true
             useData true
             { data
-            
-            useBlog true
-            { blog
-                name "blog"
-                Name "Blog"
-                [ dataModels
+                [ reduxItems
                     {
                         name "post"
                         Name "Post"

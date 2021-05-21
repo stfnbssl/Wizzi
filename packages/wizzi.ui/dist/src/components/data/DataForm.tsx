@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.ui\.wizzi\src\components\data\DataForm.tsx.ittf
-    utc time: Sat, 15 May 2021 12:57:34 GMT
+    utc time: Tue, 18 May 2021 13:32:19 GMT
 */
 import React, {FunctionComponent} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -13,7 +13,10 @@ import {FormDef} from './types';
 import FormControl from './FormControl';
 export interface DataFormProps {
     formDef: FormDef;
-    values: object;
+    values: any;
+    onChangeValue: (name: string, value: any) => void;
+    onConfirm: () => void;
+    onCancel: () => void;
 }
 
 const StyledRoot = styled.div`
@@ -57,7 +60,10 @@ const StyledCancel = styled.button`
 `
 export const DataForm: FunctionComponent<DataFormProps> = ({
     formDef, 
-    values
+    values, 
+    onChangeValue, 
+    onConfirm, 
+    onCancel
  }) => 
 
      (
@@ -79,8 +85,15 @@ export const DataForm: FunctionComponent<DataFormProps> = ({
                     formDef.controls.map((control, ndx) => 
                     
                          (
-                        <FormControl
-                         key={ndx} control={control} value={values[control.id]} />
+                        <FormControl 
+                            key={ndx}
+                            control={control}
+                            value={values[control.id]}
+                            onChange={(value: any) => 
+                                
+                                    onChangeValue(control.id, value)
+                            }
+                         />
                         )
                     
                     )
@@ -89,17 +102,11 @@ export const DataForm: FunctionComponent<DataFormProps> = ({
             <StyledButtons
             >
                 <StyledConfirm
-                 onClick={() => 
-                    
-                        alert('Form confirm')
-                }>
+                 onClick={onConfirm}>
                     Confirm
                 </StyledConfirm>
                 <StyledCancel
-                 onClick={() => 
-                    
-                        alert('Form cancel')
-                }>
+                 onClick={onCancel}>
                     Cancel
                 </StyledCancel>
             </StyledButtons>

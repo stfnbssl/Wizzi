@@ -1,0 +1,19 @@
+module
+    $
+        var ctrl = {
+            name: 'Blog',
+            path: '/blog'
+        }
+
+    controller( &ctrl )
+
+        $append imports
+
+        _ this.router.get('/edit', this.edit)
+
+        $append handlers
+            handler( edit )
+                _ response.render
+                    @ 'blog/edit.html.ittf'
+                    {
+                        @ title 'Posts editor'

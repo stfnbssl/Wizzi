@@ -12,6 +12,10 @@ module
         from '../features/app'
     import App from './App'
     import NonExistent from './NonExistent'
+    import DashboardLayoutRoute from './layouts/DashboardLayoutRoute'
+    import 
+        @ PostApiDataEntry 
+        from '../features/post'
     +
     :type RouterProps
         :{ 
@@ -43,7 +47,8 @@ module
                             @ account data.account
                     log 'Router', 'appProps', appProps
                     return 
-                        < App 
+                        $$ < App 
+                        < PostApiDataEntry
                             @ {...appProps}
                 else
                     return 
@@ -63,5 +68,9 @@ module
                             @ exact
                             @ path "/"
                             @ render {this._renderRoute}
+                        < DashboardLayoutRoute
+                            @ exact 
+                            @ path "/blog/edit"
+                            @ component {PostApiDataEntry}
                         < Route 
                             @ component {NonExistent}

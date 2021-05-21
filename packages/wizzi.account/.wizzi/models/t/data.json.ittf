@@ -1,12 +1,8 @@
 $group
+    useBlog true
     useData true
     { data
-    
-    useBlog true
-    { blog
-        name "blog"
-        Name "Blog"
-        [ dataModels
+        [ reduxItems
             {
                 name "post"
                 Name "Post"

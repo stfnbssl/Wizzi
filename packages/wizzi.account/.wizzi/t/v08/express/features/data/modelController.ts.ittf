@@ -11,7 +11,7 @@ $group
             import
                 @ I${schema.Name}
                 @ Get${schema.Name}Model
-                from '../mongo/${schema.name}.js'
+                from '../mongo/${schema.name}'
         $append properties
             p ${schema.name}Model
                 :any

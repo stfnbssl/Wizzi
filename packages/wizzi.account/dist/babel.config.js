@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\root\babel.config.js.ittf
-    utc time: Wed, 12 May 2021 12:31:09 GMT
+    utc time: Fri, 21 May 2021 20:06:48 GMT
 */
 'use strict';
 const path = require('path');
@@ -17,6 +17,7 @@ module.exports = (api) => {
                 "@babel/plugin-syntax-dynamic-import", 
                 '@babel/plugin-proposal-class-properties', 
                 "@babel/plugin-proposal-object-rest-spread", 
+                'lodash', 
                 ...((isWebpack ? [
                             'webpack-chunkname'
                         ] : [

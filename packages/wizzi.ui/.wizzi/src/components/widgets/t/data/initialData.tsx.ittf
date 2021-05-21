@@ -1,5 +1,6 @@
 $group
 
+    +
     const __listDef
         {
             @ id 'books'
@@ -9,17 +10,8 @@ $group
                     @ id 'author'
                 {
                     @ id 'title'
-
-    const __items
-        [
-            {
-                @ author 'Stefi'
-                @ title 'Philos'
-                @ read false
-            {
-                @ author 'Annie'
-                @ title 'Flower'
-                @ read true
+                {
+                    @ id 'genre'
     +
     const __formDef
         {
@@ -35,5 +27,38 @@ $group
                     @ type 'text'
                     @ required true
                 {
+                    @ id 'genre'
+                    @ type 'select'
+                    @ required true
+                    [ options
+                        {
+                            @ label 'Noir'
+                            @ value 'Noir'
+                        {
+                            @ label 'Novel'
+                            @ value 'Novel'
+                        {
+                            @ label 'Tales'
+                            @ value 'Tales'
+                {
                     @ id 'read'
                     @ type 'checkbox'
+                {
+                    @ id 'readEnded'
+                    @ type 'date'
+
+    +
+    const __items
+        [
+            {
+                @ author 'Stefi'
+                @ title 'Philos'
+                @ read false
+                @ genre 'Noir'
+                @ readEnded '30/11/2021'
+            {
+                @ author 'Annie'
+                @ title 'Flower'
+                @ read true
+                @ genre 'Tales'
+                @ readEnded '31/12/2021'

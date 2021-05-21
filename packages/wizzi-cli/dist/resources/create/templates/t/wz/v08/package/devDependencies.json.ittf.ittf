@@ -113,10 +113,15 @@ $group
                 ${'$'}else
                     @types/react "^17.0.3"
                     @types/react-dom "^17.0.3"
+                ${'$'}if wzCtx.Build.react.useDate
+                    $$ @types/react-dates "latest"
+                    @types/react-datepicker "latest"
                 ${'$'}if wzCtx.Build.react.useRedux
                     @types/react-redux "^7.0.1"
                 ${'$'}if wzCtx.Build.react.useRouter
                     @types/react-router-dom "^4.3.1"
+                ${'$'}if wzCtx.Build.react.useSelect
+                    @types/react-select "latest"
                 ${'$'}if wzCtx.Build.react.useTextareaAutosize
                     @types/react-textarea-autosize "^4.3.3"
                 ${'$'}if wzCtx.Build.react.useVirtualized
@@ -147,10 +152,12 @@ $group
         babel-jest "^23.4.2"
     ${'$'}if wzCtx.Build.useBabel || wzCtx.Build.useWebpack 
         babel-loader "^8.2.2"
-    ${'$'}if (wzCtx.Build.useBabel || wzCtx.Build.useWebpack) && wzCtx.Build.utils.useLodash
-        babel-plugin-lodash "^3.3.4"
     ${'$'}if wzCtx.Build.useBabel || wzCtx.Build.useWebpack 
         babel-plugin-add-module-exports "^1.0.4"
+    ${'$'}if wzCtx.Build.isClientServer
+        babel-plugin-file-loader "latest"
+    ${'$'}if (wzCtx.Build.useBabel || wzCtx.Build.useWebpack) && wzCtx.Build.utils.useLodash
+        babel-plugin-lodash "^3.3.4"
     ${'$'}if wzCtx.Build.useBabel
         ${'$'}if wzCtx.Build.useWebpack 
             ${'$'}if wzCtx.Build.webpack.useCodeSplitting

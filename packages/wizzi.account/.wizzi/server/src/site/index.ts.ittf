@@ -5,7 +5,7 @@ module
     v08/express/site/index(&md)
         $append imports
             import
-                @ AppController
-                from './controllers/app'
+                @ BlogController
+                from './controllers/blog'
         $append controllers
-            @ new AppController()
+            @ new BlogController()

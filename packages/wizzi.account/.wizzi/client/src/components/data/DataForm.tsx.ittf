@@ -1,0 +1,72 @@
+module
+    $
+        var md = {
+            name: "DataForm",
+            props: [
+                { name: "formDef", type: "FormDef", ref: true },
+                { name: "values", type: "any" },
+                { name: "onChangeValue", type: "handler", params: [
+                    {name: "name", type: "string"},
+                    {name: "value", type: "any"},
+                ]},
+                { name: "onConfirm", type: "handler" },
+                { name: "onCancel", type: "handler" },
+            ],
+            styled: true
+        }
+    v08/react/function(&md)
+        $append imports
+            import Box from '../widgets/Box'
+            import
+                @ FormDef
+                from './types'
+            import FormControl from './FormControl'
+        
+        < Box
+            @ bg 'blue.4'
+            @ color 'lime.9'
+            @ width '600px'
+            @ p 3
+            < StyledRoot
+                < StyledTitle
+                    + { formDef.title }
+                < StyledControls
+                    id { formDef.id }
+                    {
+                        _ formDef.controls.map
+                            =>
+                                param control
+                                param ndx
+                                < FormControl
+                                    @ key {ndx}
+                                    @ control {control}
+                                    @ value {values[control.id]}
+                                    @ onChange
+                                        =>
+                                            param value
+                                                :any
+                                            _ onChangeValue(control.id, value)
+                < StyledButtons
+                    < StyledConfirm
+                        @ onClick {onConfirm}
+                        + Confirm
+                    < StyledCancel
+                        @ onClick {onCancel}
+                        + Cancel
+
+        $append styles
+            styled StyledRoot .div
+                overflow hidden
+                border-radius 3px
+                background #fff
+            styled StyledTitle .div
+                font-weight 700
+            styled StyledControls .div
+            styled StyledButtons .div
+                display flex
+                flex-direction row
+                justify-content space-between
+            styled StyledConfirm .button
+                color green
+            styled StyledCancel .button
+                color gray

@@ -7,6 +7,15 @@ module
     import 
         @ HelmetProvider
         from 'react-helmet-async'
+    import
+        @ Provider
+        from 'react-redux' 
+    import 
+        @ ConnectedRouter
+        from 'connected-react-router'
+    import store
+        @ history
+        from './store'
     import 
         @ BrowserRouter
         from 'react-router-dom'
@@ -18,24 +27,28 @@ module
     +
     const __INITIAL_DATA__
         { 
-            { data 
-                :ref RouterData
+            { data
                 @ type 'success'
                 { account
                     @ code 'say("Hello")'
-            { queryParams 
-                :ref QueryParams
-                @ name 'simple'
+                :as
+                    :ref RouterData
+            { queryParams
+                @ name 'simple' 
+                :as
+                    :ref QueryParams
     +
     function AccountApp
         return 
             $$ < React.StrictMode 
             < React.Fragment
                 < HelmetProvider 
-                    < BrowserRouter 
-                        < Router 
-                            @ data {__INITIAL_DATA__.data}
-                            @ queryParams {__INITIAL_DATA__.queryParams}
+                    < Provider
+                        @ store {store}
+                        < BrowserRouter 
+                            < Router 
+                                @ data {__INITIAL_DATA__.data}
+                                @ queryParams {__INITIAL_DATA__.queryParams}
     $*
     _ ReactDOM.hydrate
         < AccountApp 

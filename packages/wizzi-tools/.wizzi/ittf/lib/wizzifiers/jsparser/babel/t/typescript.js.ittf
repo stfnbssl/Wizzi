@@ -420,12 +420,19 @@
 
 	f( TSImportType, :import-type
         f_p_temp( argument, true )
-        if isTextualNode(p_argument)
+        f_p_temp( qualifier, false )
+        # log 'TSImportType', p_qualifier
+        if isTextualNode(p_argument) && (p_qualifier == null || isTextualNode(p_qualifier))
             set ret.textified = 'import(' + getNodeText(p_argument) + ')'
+            if p_qualifier
+                set ret.textified += '.' + getNodeText(p_qualifier)
             set ret.isText = true
         else
             _ ret.children.push
                 @ p_argument
+            if p_qualifier
+                _ ret.children.push
+                    @ p_qualifier
     
     f( TSImportEqualsDeclaration, :import
 		f_p_name(id, Identifier | null

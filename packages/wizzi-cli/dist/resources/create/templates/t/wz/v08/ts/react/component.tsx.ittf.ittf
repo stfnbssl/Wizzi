@@ -13,6 +13,14 @@ $group
         @ ${'$'}{md.isPure ? 'Pure' : ''}Component
         from 'react'
     import ReactDOM from 'react-dom'
+    ${'$'}if md.connected
+        import 
+            @ bindActionCreators
+            @ Dispatch
+            from 'redux'
+        import 
+            @ connect
+            from 'react-redux'
     ${'$'}if md.styled
         # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
         import styled

@@ -19,6 +19,8 @@ $group
             {
                 name "hello"
                 writeToDisk false
+    useHotReplacement false
+    { hotReplacement
     useWebpack true
     { webpack
         useCss true

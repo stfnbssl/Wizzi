@@ -1,2 +1,3 @@
 $group
     { utils
+        useLodash true

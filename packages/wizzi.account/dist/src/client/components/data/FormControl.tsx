@@ -2,12 +2,13 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\components\data\FormControl.tsx.ittf
-    utc time: Fri, 21 May 2021 20:28:10 GMT
+    utc time: Tue, 25 May 2021 15:10:47 GMT
 */
 import React, {FunctionComponent} from 'react';
-// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
-import styled, {keyframes, css} from 'styled-components';
+import {StyleSheet, css} from 'aphrodite';
+import classnames from 'classnames';
 
+import {c} from '../AphroditeTheme';
 import Select, {ValueType} from "react-select";
 import {SelectOption, ControlDef} from './types';
 import DatePicker from "react-datepicker";
@@ -19,54 +20,48 @@ registerLocale('it', it);
 export interface FormControlProps {
     control: ControlDef;
     value: any;
+    error?: any;
     onChange: (value: any) => void;
 }
 
-interface StyledControlProps {
-    control: ControlDef;
-}
-const StyledRoot = styled.div`
-    text-align: left;
-    padding: 5px;
-    
-`
-const StyledLabel = styled.div<StyledControlProps>`
-    position: ${props => props.control.required ? 'relative' : 'inherit'};
-    ${props => {
-        if (props.control.required) {
-            return css`
-                &:after {
-                    content: '*';
-                    margin-left: 2px;
-                    color: #b90000;
-                }
-                
-            `
-        }
-        
-    }}
-`
-const StyledText = styled.input.attrs(
-    (props) => 
-    
-        ({
-            type: 'text'
-         })
-)`
-    
-`
-const StyledCheckBox = styled.input.attrs(
-    (props) => 
-    
-        ({
-            type: 'checkbox'
-         })
-)`
-    
-`
+const styles = StyleSheet.create({
+    root: {
+        textAlign: "left", 
+        padding: "5px"
+     }, 
+    required: {
+        position: 'relative', 
+        "& :after": {
+            content: "'*'", 
+            marginLeft: "2px", 
+            color: "#b90000"
+         }
+     }, 
+    input: {
+        outline: 0, 
+        fontSize: 12, 
+        borderRadius: 3, 
+        padding: '6px 7px 6px 7px', 
+        lineHeight: '12px', 
+        width: '100%', 
+        borderWidth: 1, 
+        borderStyle: 'solid', 
+        backgroundColor: c('error'), 
+        normal: {
+            borderColor: c('border'), 
+            ':focus': {
+                borderColor: c('selected')
+             }
+         }, 
+        error: {
+            borderColor: c('error')
+         }
+     }
+ });
 export const FormControl: FunctionComponent<FormControlProps> = ({
     control, 
     value, 
+    error, 
     onChange
  }) => {
 
@@ -74,29 +69,50 @@ export const FormControl: FunctionComponent<FormControlProps> = ({
     
         return (s < 10) ? '0' + s : s;
     }
+    // log 'handleChange', 'event', event
     function handleChange(event: any) {
     
-        console.log('handleChange', 'event', event);
-        if (control.type == 'text') {
+        if (control.controlType == 'text' || control.controlType == 'string') {
             onChange(event.target.value);
         }
-        else if (control.type == 'checkbox') {
+        else if (control.controlType == 'checkbox' || control.controlType == 'boolean') {
             onChange(event.target.checked);
         }
-        else if (control.type == 'select') {
+        else if (control.controlType == 'select') {
             onChange(event ? event.value : undefined);
         }
-        else if (control.type == 'date') {
+        else if (control.controlType == 'date') {
             onChange([
                 pad(event.getDate()), 
                 pad(event.getMonth() + 1), 
                 event.getFullYear()
             ].join('/'))
         }
+        else if (control.controlType == 'folder') {
+            console.log('event.target.files', event.target.files);
+            const value = {};
+            const promises = [];
+            [...event.target.files].forEach(file => 
+            
+                promises.push(file.text().then((text) => {
+                
+                    value[file.webkitRelativePath] = text;
+                    console.log('file', file.webkitRelativePath, text);
+                }
+                )
+                )
+            )
+            Promise.all(promises).then(() => {
+            
+                console.log('folder.value', value);
+                onChange(JSON.stringify(value));
+            }
+            )
+        }
     }
     let selectValue = null;
     let dateValue = null;
-    if (control.type == 'select' && control.options) {
+    if (control.controlType == 'select' && control.options) {
         var i, i_items=control.options, i_len=control.options.length, option;
         for (i=0; i<i_len; i++) {
             option = control.options[i];
@@ -105,38 +121,43 @@ export const FormControl: FunctionComponent<FormControlProps> = ({
             }
         }
     }
-    if (control.type == 'date') {
-        console.log('date value', value);
+    
+    // log 'date value', value
+    if (control.controlType == 'date') {
         if (value) {
             const parts = value.split('/');
             dateValue = new Date(parts[2] + '/' + parts[1] + '/' + parts[0]);
         }
     }
     return  (
-        <StyledRoot
-        >
-            <StyledLabel
-             control={control}>
+        <div
+         className={css(styles.root)}>
+            <div
+             className={control.required ? css(styles.required) : ''}>
                 { control.label || control.id }
-            </StyledLabel>
+            </div>
             {
-                control.type == 'text'
+                (control.controlType == 'text' || control.controlType == 'string')
                  &&  (
-                    <StyledText
-                     value={value} onChange={handleChange} />
+                    <input 
+                        type="text"
+                        className={css(styles.input, (error ? styles.error : styles.normal))}
+                        value={value}
+                        onChange={handleChange}
+                     />
                     )
                 
             }
             {
-                control.type == 'checkbox'
+                (control.controlType == 'checkbox' || control.controlType == 'boolean')
                  &&  (
-                    <StyledCheckBox
-                     checked={value} onChange={handleChange} />
+                    <input
+                     type="checkbox" checked={value} onChange={handleChange} />
                     )
                 
             }
             {
-                control.type == 'select'
+                control.controlType == 'select'
                  &&  (
                     <Select<SelectOption> 
                         value={selectValue}
@@ -157,7 +178,7 @@ export const FormControl: FunctionComponent<FormControlProps> = ({
                 
             }
             {
-                control.type == 'date'
+                control.controlType == 'date'
                  &&  (
                     <DatePicker 
                         selected={dateValue}
@@ -168,7 +189,19 @@ export const FormControl: FunctionComponent<FormControlProps> = ({
                     )
                 
             }
-        </StyledRoot>
+            {
+                control.controlType == 'folder'
+                 &&  (
+                    <input 
+                        type='file'
+                        webkitdirectory='true'
+                        multiple={true}
+                        onChange={handleChange}
+                     />
+                    )
+                
+            }
+        </div>
         )
     ;
 }

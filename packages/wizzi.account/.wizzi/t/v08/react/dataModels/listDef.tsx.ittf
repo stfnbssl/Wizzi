@@ -20,6 +20,12 @@ $group
                                 @ id "${field.name}"
                                 @ label "${field.label ? field.label : field.name}"
                                 @ type "${field.type}"
+                                $if field.listControlType
+                                    @ controlType "${field.listControlType}"
+                                $elif field.type == 'string'
+                                    @ controlType "text"
+                                $else
+                                    @ controlType "${field.type}"
                                 $if field.type == 'oid'
                                     @ isKey true
         const ${schema.name}ListData

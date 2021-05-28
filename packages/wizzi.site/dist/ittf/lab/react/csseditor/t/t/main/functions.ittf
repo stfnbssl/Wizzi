@@ -1,0 +1,48 @@
+$group
+
+    function updateRuleData
+        param ruleData
+        param htmlData
+
+        var changed = false
+        # previous
+        var previousClassNames = {}
+        foreach rule in ruleData
+            set previousClassNames[rule.name] = 1
+
+        const classNames = {}
+        var regEx = /class[ \t]*=[ \t]*["|']([^'^"]+)["|']/g
+        var match = regEx.exec(htmlData)
+        while match !== null
+            set classNames[match[1]] = true
+            set match = regEx.exec(htmlData)
+        log 'class names', Object.keys(classNames)
+
+        foreach className in Object.keys(classNames)
+            var found = false
+            foreach rule in ruleData
+                # log rule.name, className
+                if rule.name == className
+                    set found = true
+                    set previousClassNames[rule.name] = 0
+            if !found
+                _ ruleData.push
+                    {
+                        @ name className
+                        { styles
+                log 'added rule', className
+                set changed = true
+        
+        foreach className in Object.keys(previousClassNames)
+            var test =  previousClassNames[className]
+            log 'test', test
+            if test == 1
+                # does not exists in html classNames
+                for var xi = ruleData.length - 1; xi >= 0; --xi
+                    if ruleData[xi].name == className
+                        # remove
+                        _ ruleData.splice(xi, 1)
+                        log 'deleted', className
+                        set changed = true
+
+        return changed

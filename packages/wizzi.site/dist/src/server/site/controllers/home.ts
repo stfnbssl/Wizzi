@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\site\controllers\home.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../features/app/types';
@@ -14,6 +14,7 @@ export class HomeController implements ControllerType {
     
     public router = Router();
     
+    
     initialize = (initValues: AppInitializerType) => {
         console.log('Entering HomeController.initialize');
         this.router.get(`/`, this.home)
@@ -21,7 +22,9 @@ export class HomeController implements ControllerType {
     
     private home = async (request: Request, response: Response) => 
     
-        sendHtml(response, '<h1>Hello world</h1>')
+        response.render('home/index.html.ittf', {
+            title: 'Wizzi site'
+         })
     
     ;
 }

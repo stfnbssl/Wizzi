@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\auth\controllers\authentication.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
@@ -17,6 +17,7 @@ export class AuthenticationController implements ControllerType {
     
     public router = Router();
     
+    
     initialize = (initValues: AppInitializerType) => {
         console.log('Entering AuthenticationController.initialize');
         this.router.use(function(request: AuthRequest, res: Response, next: any) {
@@ -29,16 +30,16 @@ export class AuthenticationController implements ControllerType {
             }
             next();
         })
-        this.router.get(`/auth/github`, authenticate('github', {
+        this.router.get(`/github`, authenticate('github', {
             scope: [
                 'user:email', 
                 'public_repo'
             ]
          }), this.githubConnect.bind(this))
-        this.router.get(`/auth/github/callback`, authenticate('github', {
+        this.router.get(`/github/callback`, authenticate('github', {
             failureRedirect: `${this.path}/account`
          }), this.githubConnectCallback.bind(this))
-        this.router.get(`${this.path}/github/loggedin/:uid`, this.getGithubLoggedIn)
+        this.router.get(`${this.path}/github/loggedin/:uid`, this.getGithubLoggedIn.bind(this))
     };
     
     private githubConnect = async (request: Request, response: Response) => {
@@ -50,8 +51,9 @@ export class AuthenticationController implements ControllerType {
     // Successful authentication
     async (request: Request, response: Response) => {
     
-        console.log('features.auth.controllers.auth.githubCallback.request.sessionID,session', request.sessionID, request.session);
-        console.log('features.auth.controllers.auth.githubCallback.request.user', request.user);
+        console.log('============================================================');
+        console.log('Successful authentication');
+        console.log('features.auth.controllers.auth.githubCallback', 'request.sessionID', request.sessionID, 'request.session', request.session, 'request.user', request.user);
         const ruser: any = (request.user as any);
         const user = {
             id: ruser._id, 
@@ -76,14 +78,14 @@ export class AuthenticationController implements ControllerType {
             ]
          };
         const AccountModel = GetAccountModel();
-        const result = await AccountModel.update({
+        const result = await AccountModel.updateOne({
                 uid: ruser.uid, 
                 domain: 'github.com'
              }, account, {
                 upsert: true
              });
-        console.log('features.auth.controllers.auth.githubCallback.account.save.result', result);
-        response.end();
+        console.log('features.auth.controllers.auth.githubCallback.account.save', 'result', result);
+        response.redirect('/account/profile');
     }
     ;
     

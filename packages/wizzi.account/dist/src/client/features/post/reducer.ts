@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\features\post\reducer.ts.ittf
-    utc time: Fri, 21 May 2021 20:28:08 GMT
+    utc time: Tue, 25 May 2021 15:10:46 GMT
 */
 import {combineReducers} from 'redux';
 import {ActionType, getType} from 'typesafe-actions';
@@ -11,7 +11,7 @@ import * as postActions from './actions';
 
 export type PostState = Readonly<{ 
     items: IPost[];
-    item?: IPost;
+    item: IPost | null;
 }>;
 const initialState: PostState = {
     items: [], 
@@ -23,6 +23,7 @@ export type PostAction = ActionType<typeof postActions>;
 export default combineReducers<PostState, PostAction>({
         items: (state = initialState.items, action) => {
         
+            console.log('Post.items.action', action);
             switch (action.type) {
                 case getType(postActions.getPostListSuccess): {
                     return action.payload.posts;
@@ -56,6 +57,7 @@ export default combineReducers<PostState, PostAction>({
         , 
         item: (state = initialState.item, action) => {
         
+            console.log('Post.item.action', action);
             switch (action.type) {
                 case getType(postActions.getPostByIdSuccess): {
                     return action.payload.post;

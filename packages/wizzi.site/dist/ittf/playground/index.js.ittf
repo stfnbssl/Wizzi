@@ -20,7 +20,6 @@ module
 	let glEventHub = new EventEmitter3()
 	set window.glEventHub = glEventHub
 	$$ TODO set window.path = wz.utils.path
-	
 
     async-function prompt
         param text

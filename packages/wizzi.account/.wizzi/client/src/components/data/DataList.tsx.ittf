@@ -9,51 +9,61 @@ module
                 { name: "onEdit", type: "handler", params: [{name: "item", type: "object"}]},
                 { name: "onRemove", type: "handler", params: [{name: "item", type: "object"}]},
             ],
-            styled: true
+            // styled: true,
+            aphrodite: true,
         }
 
     v08/react/function(&md)
         $append imports
-            import Box from '../widgets/Box'
             import
                 @ ListDef
                 from './types'
             import ListHead from './ListHead'
             import ListRow from './ListRow'
         
-        < Box
-            @ bg 'blue.4'
-            @ color 'lime.9'
-            @ width '600px'
-            @ p 3
-            < StyledRoot
-                < StyledTitle
-                    + { listDef.title }
-                < StyledList
-                    id { listDef.id }
-                    < ListHead
-                        @ columns {listDef.columns}
-                    tbody
-                        {
-                            _ items.map
-                                =>
-                                    param item
-                                    param ndx
-                                    < ListRow
-                                        @ key {ndx}
-                                        @ columns {listDef.columns}
-                                        @ item {item}
-                                        @ onEdit
-                                            =>
-                                                _ onEdit(item)
-                                                
-                                        @ onRemove
-                                            =>
-                                                _ onRemove(item)
-                                                
-                                        @ onSelect
-                                            =>
-                                                # _ alert('Select: ' + JSON.stringify(item))
+        div
+            @ className {css(styles.root)}
+            div
+                @ className {css(styles.title)}
+                + { listDef.title }
+            table
+                @ className {css(styles.table)}
+                id { listDef.id }
+                < ListHead
+                    @ columns {listDef.columns}
+                tbody
+                    {
+                        _ items.map
+                            =>
+                                param item
+                                param ndx
+                                < ListRow
+                                    @ key {ndx}
+                                    @ columns {listDef.columns}
+                                    @ item {item}
+                                    @ onEdit
+                                        =>
+                                            _ onEdit(item)
+                                            
+                                    @ onRemove
+                                        =>
+                                            _ onRemove(item)
+                                            
+                                    @ onSelect
+                                        =>
+                                            # _ alert('Select: ' + JSON.stringify(item))
+        $append styles_aphrodite
+            { root
+                @ overflow "hidden"
+                @ borderRadius "3px"
+                @ background "#fff"
+                @ width '600px'
+                @ padding "30px"
+            { title
+                @ fontWeight 700
+            { table        
+        
+        $*
         $append styles
             styled StyledRoot .div
                 overflow hidden
@@ -65,3 +75,4 @@ module
                 styled StyledList .div
             $else
                 styled StyledList .table
+        *$

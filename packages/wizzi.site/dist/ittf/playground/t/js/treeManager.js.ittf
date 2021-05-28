@@ -10,7 +10,7 @@
 
 		m initialize
 			
-			on( schema-selected-ready
+			event_on( schema-selected-ready
 				_ this.getSchemaTreeView
 					@ data.name
 					@ data.json
@@ -39,7 +39,7 @@
 						@ name
 						@ json
 					a_cb_throw( element )
-						log 'treeView.render', element
+						# log 'treeView.render', element
 						set this.schemaTreeViews[name] = element
 						_ wz.replaceChildren
 							@ 'items-tree-view'

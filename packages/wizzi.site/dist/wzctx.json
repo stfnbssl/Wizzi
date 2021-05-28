@@ -24,75 +24,37 @@
     },
     "Build": {
         "usePackiAspects": true,
-        "useRegeneratorRuntime": false,
-        "utils": {
-            "useEscapeRegexp": true,
-            "useEscapeHtml": true,
-            "useNullThrows": true,
-            "useLodash": true,
-            "useStringifySafe": true,
-            "useParseUrl": true,
-            "useEs6Error": true,
-            "useJsCookie": true,
-            "useQueryString": true,
-            "useSanitizeHtml": true,
-            "useDateFns": true,
-            "useFetchPonyfill": true,
-            "useNanoId": true,
-            "useGitUrlParse": true,
-            "useJsonToAst": true
-        },
-        "styles": {
-            "usePalx": true
-        },
         "isClientServer": true,
+        "useEnvCmd": true,
         "useVExpo": false,
-        "useTypescript": true,
-        "typescript": {
-            "useBabelLoader": true
-        },
-        "useExpress": true,
-        "express": {
-            "useSsl": false,
-            "useErrors": false,
-            "useStaticFiles": true,
-            "staticFiles": {
-                "basePath": "__dirname, '..', '..', '..'"
-            }
-        },
-        "useSession": true,
-        "session": {
-            "name": "wizzi.site"
-        },
-        "noCache": true,
-        "useSocketIO": false,
-        "socketIO": {},
-        "useCookie": true,
-        "cookie": {},
         "useSite": true,
         "site": {},
-        "useIttfStatic": true,
-        "ittfStatic": {},
         "useNetlify": false,
         "netlify": {},
         "useStorybook": true,
         "storybook": {},
-        "useWizzi": true,
-        "wizzi": {
-            "isDev": true,
-            "plugins": [
-                "./wizzi-core/dist/index.js",
-                "./wizzi-js/dist/index.js",
-                "./wizzi-web/dist/index.js",
-                "./wizzi-meta/dist/index.js"
-            ],
-            "pluginsBaseFolder": "C:/My/wizzi/stfnbssl/wizzi/packages",
-            "globalContext": {
-                "wzConfigIsDevelopment": true
-            }
+        "useGithub": true,
+        "github": {
+            "clientId": "6a42cd4cb7247bb4e823",
+            "clientSecret": "dedced0ac262cae62557e4c3f567a6227b17bfb7",
+            "callbackURL": "http://localhost:5000/authenticate/github/callback"
         },
-        "useWizziViewEngine": true,
-        "wizziViewEngine": {},
+        "useAccount": false,
+        "account": {},
+        "useConfig": true,
+        "config": {
+            "useEnvalid": true,
+            "envalid": {}
+        },
+        "useMarked": true,
+        "useMonacoEditor": true,
+        "monacoEditor": {},
+        "useFilesystem": false,
+        "filesystem": {},
+        "usePassport": false,
+        "passport": {},
+        "usePassportAuth0": false,
+        "passportAuth0": {},
         "usePacki": true,
         "packi": {
             "endPoint": "http://localhost:5000/api/v1",
@@ -111,59 +73,50 @@
         },
         "useAuthentication": true,
         "authentication": {
-            "tenant": "dev-qwf9-zob.eu",
-            "clientId": "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV",
-            "longRandomString": "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg",
-            "baseURL": "http://localhost:5000",
             "authRequired": false,
             "userInfo": false,
+            "useAuth0": false,
+            "auth0": {
+                "tenant": "dev-qwf9-zob.eu",
+                "clientId": "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV",
+                "longRandomString": "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg",
+                "baseURL": "http://localhost:5000"
+            },
             "useLocal": true,
             "local": {},
             "useGithub": true,
             "github": {
                 "clientId": "6a42cd4cb7247bb4e823",
                 "clientSecret": "dedced0ac262cae62557e4c3f567a6227b17bfb7",
-                "callbackURL": "http://localhost:5000/authenticate/github/callback"
+                "callbackURL": "http://localhost:5000/api/v1/authenticate/github/callback"
             }
-        },
-        "useCrypto": true,
-        "crypto": {},
-        "useJwt": true,
-        "jwt": {},
-        "useGithub": true,
-        "github": {
-            "clientId": "6a42cd4cb7247bb4e823",
-            "clientSecret": "dedced0ac262cae62557e4c3f567a6227b17bfb7",
-            "callbackURL": "http://localhost:5000/authenticate/github/callback"
         },
         "useAuthorization": false,
         "authorization": {},
-        "useAccount": false,
-        "account": {},
-        "useConfig": true,
-        "config": {
-            "useEnvalid": true,
-            "envalid": {}
+        "useCrypto": false,
+        "crypto": {},
+        "useJwt": true,
+        "jwt": {},
+        "useBabel": true,
+        "babel": {
+            "useParser": true,
+            "useRuntime": false,
+            "useDinamicImport": true,
+            "addModuleExport": false,
+            "useVendor": true,
+            "vendor": {
+                "compactPath": "./src/vendor"
+            },
+            "useResolutions": true,
+            "resolutions": [
+                {
+                    "name": "**/babel-core",
+                    "value": "7.0.0-bridge.0"
+                }
+            ]
         },
-        "useLogger": false,
-        "logger": {
-            "useMorgan": false,
-            "morgan": {}
-        },
-        "useCors": true,
-        "cors": {
-            "clientOrigin": "http://localhost:5000"
-        },
-        "usePassport": false,
-        "passport": {},
-        "usePassportAuth0": false,
-        "passportAuth0": {},
-        "useCompression": false,
-        "compression": {},
-        "useHelmet": false,
-        "helmet": {},
-        "useTailwindcss": true,
-        "tailwindcss": {},
+        "useResolutions": true,
+        "useRegeneratorRuntime": false,
         "useWebpackApp": true,
         "webpackApp": {
             "items": [
@@ -173,6 +126,8 @@
                 }
             ]
         },
+        "useHotReplacement": false,
+        "hotReplacement": {},
         "useWebpack": true,
         "webpack": {
             "useCss": true,
@@ -239,28 +194,72 @@
                 "contentBase": "path.join(__dirname, 'src')"
             }
         },
-        "useResolutions": true,
-        "useBabel": true,
-        "babel": {
-            "useParser": true,
-            "useRuntime": false,
-            "useDinamicImport": true,
-            "addModuleExport": false,
-            "useVendor": true,
-            "vendor": {
-                "compactPath": "./src/vendor"
-            },
-            "useResolutions": true,
-            "resolutions": [
-                {
-                    "name": "**/babel-core",
-                    "value": "7.0.0-bridge.0"
-                }
-            ]
+        "useTypescript": true,
+        "typescript": {
+            "useBabelLoader": true
         },
+        "usePrettier": true,
+        "prettier": {},
+        "usePrismjs": true,
+        "prismjs": {
+            "modes": []
+        },
+        "useLint": true,
+        "lint": {},
+        "useGraphql": true,
+        "graphql": {
+            "excludePolyfill": true
+        },
+        "useMongoDb": true,
+        "mongodb": {
+            "user": "yanez",
+            "password": "x5csosPN5YAsrl4Z",
+            "dbPath": "@cluster0.idlk7.mongodb.net",
+            "dbName": "wizzi"
+        },
+        "useLocalStorage": false,
+        "localStorage": {
+            "key": "wr-state"
+        },
+        "useDemoControllers": false,
+        "demoControllers": {},
+        "useExpress": true,
+        "express": {
+            "useSsl": false,
+            "useErrors": false,
+            "useStaticFiles": true,
+            "staticFiles": {
+                "basePath": "__dirname, '..', '..', '..'"
+            }
+        },
+        "useSession": true,
+        "session": {
+            "name": "wizzi.site"
+        },
+        "noCache": true,
+        "useSocketIO": false,
+        "socketIO": {},
+        "useCookie": true,
+        "cookie": {},
+        "useLogger": false,
+        "logger": {
+            "useMorgan": false,
+            "morgan": {}
+        },
+        "useCompression": false,
+        "compression": {},
+        "useHelmet": false,
+        "helmet": {},
+        "useCors": true,
+        "cors": {
+            "clientOrigin": "http://localhost:5000"
+        },
+        "useReactCreateApp": false,
+        "reactCreateApp": {},
         "useReact": true,
         "react": {
             "useV16": true,
+            "useV17": false,
             "useMaterialUI": true,
             "materialUI": {
                 "useIcons": true
@@ -285,9 +284,15 @@
             "useHelmetAsync": true,
             "useSimpleCodeEditor": true,
             "useTextareaAutosize": true,
-            "useVirtualized": true
+            "useVirtualized": false,
+            "useSelect": true,
+            "useRange": true,
+            "useDate": true
         },
         "useHoistNonReactStatic": true,
+        "styles": {
+            "usePalx": true
+        },
         "useStyledComponents": true,
         "styledComponents": {},
         "useStyledSystem": true,
@@ -296,72 +301,80 @@
         "aphrodite": {
             "disableImportant": true
         },
-        "useMarked": true,
+        "useTailwindcss": true,
+        "tailwindcss": {},
         "useExpoStyles": true,
         "expoStyles": {},
-        "useMonacoEditor": true,
-        "monacoEditor": {},
-        "usePrettier": true,
-        "prettier": {},
-        "usePrismjs": true,
-        "prismjs": {
-            "modes": []
-        },
-        "useLint": true,
-        "lint": {},
-        "useGraphql": true,
-        "graphql": {
-            "excludePolyfill": true
-        },
-        "useMongoDb": true,
-        "mongodb": {
-            "user": "yanez",
-            "password": "x5csosPN5YAsrl4Z",
-            "dbPath": "@cluster0.idlk7.mongodb.net",
-            "dbName": "wizzi"
-        },
-        "useFilesystem": true,
-        "filesystem": {},
         "useJest": true,
         "jest": {},
-        "useBlog": false,
-        "blog": {
-            "name": "blog",
-            "Name": "Blog",
-            "dataModels": [
+        "utils": {
+            "useEscapeRegexp": true,
+            "useEscapeHtml": true,
+            "useNullThrows": true,
+            "useLodash": true,
+            "useStringifySafe": true,
+            "useParseUrl": true,
+            "useEs6Error": true,
+            "useJsCookie": true,
+            "useQueryString": true,
+            "useSanitizeHtml": true,
+            "useDateFns": true,
+            "useFetchPonyfill": true,
+            "useNanoId": true,
+            "useGitUrlParse": true,
+            "useJsonToAst": true
+        },
+        "useWizzi": true,
+        "wizzi": {
+            "isDev": true,
+            "plugins": [
+                "./wizzi-core/dist/index.js",
+                "./wizzi-js/dist/index.js",
+                "./wizzi-web/dist/index.js",
+                "./wizzi-meta/dist/index.js"
+            ],
+            "pluginsBaseFolder": "C:/My/wizzi/stfnbssl/wizzi/packages",
+            "globalContext": {
+                "wzConfigIsDevelopment": true
+            }
+        },
+        "useIttfStatic": true,
+        "ittfStatic": {},
+        "useWizziViewEngine": true,
+        "wizziViewEngine": {},
+        "useData": true,
+        "data": {
+            "reduxItems": [
                 {
-                    "name": "post",
-                    "Name": "Post",
-                    "Title": "Blog post",
-                    "Titles": "Blog posts",
-                    "collectionName": "posts",
+                    "name": "packidb",
+                    "Name": "PackiDb",
+                    "Title": "Packi",
+                    "Titles": "Packies",
+                    "collectionName": "packies",
                     "fields": [
                         {
                             "name": "_id",
                             "type": "oid",
-                            "isListItem": true,
-                            "ctrlId": "fd_1_post_id",
-                            "test": "id"
+                            "isListItem": true
                         },
                         {
-                            "name": "author",
+                            "name": "owner",
                             "type": "string",
-                            "isListItem": true,
-                            "ctrlId": "fd_1_post_author",
-                            "test": "Stefi"
+                            "isListItem": true
                         },
                         {
-                            "name": "title",
+                            "name": "name",
                             "type": "string",
-                            "isListItem": true,
-                            "ctrlId": "fd_1_post_title",
-                            "test": "My postulates"
+                            "isListItem": true
                         },
                         {
-                            "name": "content",
+                            "name": "description",
+                            "type": "string"
+                        },
+                        {
+                            "name": "packifiles",
                             "type": "string",
-                            "ctrlId": "fd_1_post_content",
-                            "test": "Bla bla"
+                            "formControlType": "folder"
                         }
                     ]
                 }

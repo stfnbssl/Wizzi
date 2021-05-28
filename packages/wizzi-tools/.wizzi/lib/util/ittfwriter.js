@@ -92,7 +92,7 @@ writer.prototype.node = function (node) {
     this.indentValue++;
     indent = Array(this.indentValue * 4 + 1).join(" ");
     
-    for (k in node.attribs) {
+    for (var k in node.attribs) {
         this.stream.write(indent + k + ' ' + formatAttrib(node.attribs[k]) + '\n');
     }
     if (node.lines && node.lines.length > 0) {

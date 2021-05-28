@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\wizzi\productions.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import path from 'path';
 import fs from 'fs';
@@ -22,13 +22,8 @@ export async function mTreeDebugInfo(filePath: string, files: packiTypes.PackiFi
             const ittfDocumentUri = ensurePackiFilePrefix(filePath) as string
             ;
             let jsonwf: any = {};
-            try {
-                jsonwf = await createFsJsonAndFactory(files);
-                ;
-            } 
-            catch (ex) {
-                return reject(ex);
-            } 
+            jsonwf = await createFsJsonAndFactory(files);
+            ;
             jsonwf.wf.loadMTreeDebugInfo(ittfDocumentUri, context, (err: any, buildUpScript: string) => {
             
                 if (err) {
@@ -65,27 +60,27 @@ export async function generateArtifact(filePath: string, files: packiTypes.Packi
                         
                      };
                     console.log('wizzi.productions.generateArtifact.context', Object.keys(context));
+                    jsonwf.wf.loadModelAndGenerateArtifact(ittfDocumentUri, {
+                        modelRequestContext: {
+                            mTreeBuildUpContext: context
+                         }
+                     }, generator, (err: any, result: string) => {
+                    
+                        if (err) {
+                            return reject(err);
+                        }
+                        // console.log('Generated artifact', result);
+                        resolve({
+                            artifactContent: result, 
+                            sourcePath: filePath, 
+                            artifactGenerator: generator
+                         })
+                    }
+                    )
                 } 
                 catch (ex) {
                     return reject(ex);
                 } 
-                jsonwf.wf.loadModelAndGenerateArtifact(ittfDocumentUri, {
-                    modelRequestContext: {
-                        mTreeBuildUpContext: context
-                     }
-                 }, generator, (err: any, result: string) => {
-                
-                    if (err) {
-                        return reject(err);
-                    }
-                    // console.log('Generated artifact', result);
-                    resolve({
-                        artifactContent: result, 
-                        sourcePath: filePath, 
-                        artifactGenerator: generator
-                     })
-                }
-                )
             }
             else {
                 reject('No artifact generator available for document ' + filePath);
@@ -105,24 +100,19 @@ export async function generateArtifactFs(filePath: string, context?: any):  Prom
                 const generationContext = {
                     modelRequestContext: context || {}
                  };
-                try {
-                    wf.loadModelAndGenerateArtifact(filePath, generationContext, generator, (err, result) => {
-                    
-                        if (err) {
-                            return reject(err);
-                        }
-                        // console.log('Generated artifact', result);
-                        resolve({
-                            artifactContent: result, 
-                            sourcePath: filePath, 
-                            artifactGenerator: generator
-                         })
+                wf.loadModelAndGenerateArtifact(filePath, generationContext, generator, (err, result) => {
+                
+                    if (err) {
+                        return reject(err);
                     }
-                    )
-                } 
-                catch (ex) {
-                    return reject(ex);
-                } 
+                    // console.log('Generated artifact', result);
+                    resolve({
+                        artifactContent: result, 
+                        sourcePath: filePath, 
+                        artifactGenerator: generator
+                     })
+                }
+                )
             }
             else {
                 reject('No artifact generator available for document ' + filePath);

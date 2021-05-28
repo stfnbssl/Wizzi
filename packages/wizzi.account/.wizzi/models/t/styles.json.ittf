@@ -1,9 +1,9 @@
 $group
     { styles
         usePalx true
-    useStyledComponents true
+    useStyledComponents false
     { styledComponents
-    useStyledSystem true
+    useStyledSystem false
     { styledSystem
     useAphrodite true
     { aphrodite

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\root\.eslintrc.js.ittf
-    utc time: Mon, 10 May 2021 15:08:26 GMT
+    utc time: Thu, 27 May 2021 12:53:18 GMT
 */
 'use strict';
 // https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md

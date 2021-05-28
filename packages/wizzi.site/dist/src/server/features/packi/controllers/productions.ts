@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\packi\controllers\productions.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
@@ -18,6 +18,7 @@ export class ProductionsController implements ControllerType {
     public path = '/api/v1/productions';
     
     public router = Router();
+    
     
     initialize = (initValues: AppInitializerType) => {
         console.log('Entering ProductionsController.initialize');

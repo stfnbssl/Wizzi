@@ -2,30 +2,42 @@ module
     $
         var md = {
             name: "ListHead",
+            autoId: false,
             props: [
                 { name: "columns", type: "ColumnDef[]", ref: true },
             ],
-            styled: true
+            // styled: true,
+            aphrodite: true
         }
     v08/react/function(&md)
         $append imports
             import
                 @ ColumnDef
                 from './types'
-        < StyledRoot
+        thead
             tr
-                < StyledHeadCell
-                    @ key {-1}
-                    + _id
+                $if md.autoId
+                    th
+                        @ className {css(styles.cell)}
+                        @ key {-1}
+                        + _id
                 {
                     _ columns.map
                         =>
                             param column
                             param ndx
-                            < StyledHeadCell
-                                @ key {ndx}
-                                + { column.label || column.id }
+                            if !!column.isKey == false
+                                return
+                                    th
+                                        @ className {css(styles.cell)}
+                                        @ key {ndx}
+                                        + { column.label || column.id }
 
+        $append styles_aphrodite
+            { cell
+                @ padding "4px"
+
+        $*
         $append styles
             $if false
                 styled StyledRoot .li
@@ -39,3 +51,4 @@ module
                 styled StyledRoot .thead
                 styled StyledHeadCell .th
                     padding 4px
+        *$

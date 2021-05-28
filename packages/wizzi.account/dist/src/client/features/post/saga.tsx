@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\features\post\saga.tsx.ittf
-    utc time: Fri, 21 May 2021 20:28:10 GMT
+    utc time: Tue, 25 May 2021 15:10:47 GMT
 */
 import {all, fork, put, takeEvery, call} from 'redux-saga/effects';
 import {getType} from 'typesafe-actions';
@@ -15,6 +15,7 @@ function* handleGetPostListRequest(action: ReturnType<typeof postActions.getPost
     try {
         console.log('sagas.handleGetPostListRequest.action', action);
         const res: IPost[] = yield getPostList();
+        console.log('Saga post.getList', res);
         yield put(postActions.getPostListSuccess({
                 posts: res, 
                 message: "Post created"
@@ -35,6 +36,7 @@ function* handleGetPostByIdRequest(action: ReturnType<typeof postActions.getPost
     try {
         console.log('sagas.handleGetPostByIdRequest.action', action);
         const res: IPost = yield getPostById(action.payload);
+        console.log('Saga post.getById', res);
         yield put(postActions.getPostByIdSuccess({
                 post: res, 
                 message: "Post retrieved"
@@ -55,6 +57,7 @@ function* handleCreatePostRequest(action: ReturnType<typeof postActions.createPo
     try {
         console.log('sagas.handleCreatePostRequest.action', action);
         const res: IPost = yield createPost(action.payload);
+        console.log('Saga post.create.res', res);
         yield put(postActions.createPostSuccess({
                 post: res, 
                 message: "Post created"
@@ -75,6 +78,7 @@ function* handleUpdatePostRequest(action: ReturnType<typeof postActions.updatePo
     try {
         console.log('sagas.handleUpdatePostRequest.action', action);
         const res: IPost = yield updatePost(action.payload.id, action.payload.post);
+        console.log('Saga post.update', res);
         yield put(postActions.updatePostSuccess({
                 post: res, 
                 message: "Post updated"
@@ -95,6 +99,7 @@ function* handleDeletePostRequest(action: ReturnType<typeof postActions.deletePo
     try {
         console.log('sagas.handleDeletePostRequest.action', action);
         const res: IPost = yield deletePost(action.payload);
+        console.log('Saga post.delete', res);
         yield put(postActions.deletePostSuccess({
                 post: res, 
                 message: "Post deleted"

@@ -85,7 +85,12 @@ $group
             prettier "prettier --write src/**/*.js"
 
     ${'$'}if wzCtx.Build.useTailwindcss
-        build-css "tailwindcss build src/styles/tailwind.css -o static/styles/tailwind.css"
+        ${'$'}if wzCtx.Build.isClientServer
+            build-css "tailwindcss build src/server/styles/tailwind.css -o static/styles/tailwind.css"
+            postcss "postcss src/server/styles/tailwind.css -o static/styles/tailwind.css"
+        ${'$'}else
+            build-css "tailwindcss build src/styles/tailwind.css -o static/styles/tailwind.css"
+            postcss "postcss src/styles/tailwind.css -o static/styles/tailwind.css"
 
     ${'$'}if wzCtx.Build.useStorybook
         $* see https://github.com/hackclub/design-system/blob/master/package.json

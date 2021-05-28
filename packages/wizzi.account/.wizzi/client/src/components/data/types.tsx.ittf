@@ -10,6 +10,10 @@ module
             :p type
                 :string
                 :optional
+                :optional
+            :p controlType
+                :string
+                :optional
             :p isKey
                 :boolean
                 :optional
@@ -36,6 +40,10 @@ module
                 :optional
             :p type
                 :string
+                :optional
+            :p controlType
+                :string
+                :optional
             :p options
                 :[
                     :ref SelectOption

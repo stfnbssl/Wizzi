@@ -2,6 +2,7 @@ module
     $
         var md = {
             name: "ListRow",
+            autoId: false,
             props: [
                 { name: "columns", type: "ColumnDef[]", ref: true },
                 { name: "item", type: "{" },
@@ -9,35 +10,53 @@ module
                 { name: "onEdit", type: "handler" },
                 { name: "onSelect", type: "handler" },
             ],
-            styled: true
+            // styled: true,
+            aphrodite: true
         }
     v08/react/function(&md)
         $append imports
-            import Box from '../widgets/Box'        
             import
                 @ ColumnDef
                 from './types'
-        < StyledRoot
-            < StyledCell
-                @ key {-1}
-                + { item['_id'] }
-                @ onClick {onSelect}
+        tr
+            @ className {css(styles.root)}
+            $if md.autoId
+                td
+                    @ className {css(styles.cell)}
+                    @ key {-1}
+                    + { item['_id'] }
+                    @ onClick {onSelect}
             {
                 _ columns.map
                     =>
                         param column
                         param ndx
-                        < StyledCell
-                            @ key {ndx}
-                            + { item[column.id] }
-                            @ onClick {onSelect}
-            < StyledButton
+                        if !!column.isKey == false
+                            return
+                                td
+                                    @ className {css(styles.cell)}
+                                    @ key {ndx}
+                                    + { item[column.id] }
+                                    @ onClick {onSelect}
+            td
+                @ className {css(styles.button)}
                 button Edit
                     @ onClick {onEdit}
-            < StyledButton
+            td
+                @ className {css(styles.button)}
                 button Remove
                     @ onClick {onRemove}
 
+        $append styles_aphrodite
+            { root
+                @ marginTop "5px"
+                @ borderTop "1px solid #bebebe"
+            { cell
+                @ padding "4px"
+            { button
+                @ padding "4px"
+        
+        $*
         $append styles
             $if false
                 styled StyledRoot .ul
@@ -56,4 +75,4 @@ module
                     padding 4px
                 styled StyledButton .td
                     padding 4px
-
+        *$

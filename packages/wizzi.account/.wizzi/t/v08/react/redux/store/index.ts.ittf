@@ -8,6 +8,8 @@ $group
         import
             @ Services
             from '../services/types'
+    $if wzCtx.Build.react.redux.useSaga
+        import createSagaMiddleware from 'redux-saga'
     import
         @ createStore
         @ applyMiddleware
@@ -28,6 +30,10 @@ $group
         @ composeEnhancers
         from './utils'
     import rootReducer from './root-reducer'
+    $if wzCtx.Build.react.redux.useSaga
+        import
+            @ createRootSaga
+            from './root-saga'
     $if wzCtx.Build.react.redux.useEpic
         import rootEpic from './root-epic'
         import services from '../services'
@@ -57,6 +63,8 @@ $group
                         :ref Services
                     {
                         @ dependencies services
+    $if wzCtx.Build.react.redux.useSaga
+        const sagaMiddleware = createSagaMiddleware()
     $if wzCtx.Build.react.useRouter
         +
         const routerMiddleware = createRouterMiddleware(history)
@@ -65,6 +73,8 @@ $group
         [
             $if wzCtx.Build.react.redux.useEpic
                 @ epicMiddleware
+            $if wzCtx.Build.react.redux.useSaga
+                @ sagaMiddleware
             $if wzCtx.Build.react.useRouter
                 @ routerMiddleware
         # configure middlewares
@@ -82,6 +92,8 @@ $group
         +
         _ epicMiddleware.run(rootEpic)
             # export store singleton instance
+    $if wzCtx.Build.react.redux.useSaga
+        let sagaTask = sagaMiddleware.run(createRootSaga())
     +
     export-default store
         # export store singleton instance

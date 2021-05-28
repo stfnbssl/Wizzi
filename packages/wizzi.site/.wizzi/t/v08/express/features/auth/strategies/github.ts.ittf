@@ -27,7 +27,8 @@ $group
             $if wzCtx.Build.useMongoDb
                 set accountModel = GetAccountModel()
                     # userModel = GetUserModel();
-            log 'features.auth.strategies.github.createStrategy'
+            log '============================================================'
+            log 'features.auth.strategies.github.createStrategy', 'config.githubClientId', config.githubClientId, 'config.clientSecret', config.githubClientSecret, 'config.githubCallbackURL', config.githubCallbackURL
             return
                 new Strategy
                     {
@@ -46,11 +47,8 @@ $group
                             :any
                         param done
                             :any
-                        log 'features.auth.strategies.github.req.session.socketId,socketUserId', req.session.socketId, req.session.socketUserId
-                        log 'features.auth.strategies.github.req.sessionID,session', req.sessionID, req.session
-                        log 'features.auth.strategies.github.req.user', req.user
-                        log 'features.auth.strategies.github.accessToken.refreshToken', accessToken, refreshToken
-                        log 'features.auth.strategies.github.profile', profile
+                        log '============================================================'
+                        log 'features.auth.strategies.github.callback', 'req.session.socketId', req.session.socketId, 'req.session.socketUserId', req.session.socketUserId, 'req.sessionID', req.sessionID, 'req.session', req.session, 'req.user', req.user, 'accessToken', accessToken, 'refreshToken', refreshToken, 'profile', profile
                         $if wzCtx.Build.useMongoDb
                             var account = new accountModel()
                             set account.domain = 'github.com'

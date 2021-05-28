@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\auth\index.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import {ModelBuilderType, ControllerType} from '../app/types';
 import * as authTypes from './types';
@@ -10,6 +10,7 @@ import {UserModelBuilder, GetUserModel} from './mongo/user';
 import {TokenModelBuilder, GetTokenModel} from './mongo/token';
 import {AccountModelBuilder, GetAccountModel} from './mongo/account';
 import {AuthenticationController} from './controllers/authentication';
+import {ensureAuthenticated} from './ensureAuthenticated';
 import * as authManager from './manager';
 
 const authModelGetters = {
@@ -32,4 +33,4 @@ const authenticationControllers: ControllerType[] = [
 
 const authorizationControllers: ControllerType[] = [];
 
-export {authTypes, authModelGetters, authenticationModelBuilders, authorizationModelBuilders, authenticationControllers, authorizationControllers, authManager};
+export {authTypes, authModelGetters, authenticationModelBuilders, authorizationModelBuilders, authenticationControllers, authorizationControllers, ensureAuthenticated, authManager};

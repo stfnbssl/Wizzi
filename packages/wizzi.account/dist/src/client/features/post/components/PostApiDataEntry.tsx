@@ -2,17 +2,14 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\features\post\components\PostApiDataEntry.tsx.ittf
-    utc time: Fri, 21 May 2021 20:28:10 GMT
+    utc time: Tue, 25 May 2021 15:10:47 GMT
 */
-import React, {FunctionComponent} from 'react';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {bindActionCreators, Dispatch} from 'redux';
 import {connect} from 'react-redux';
-// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
-import styled, {keyframes, css} from 'styled-components';
-
-import {theme} from '../../../components/SCTheme';
-import {ThemeProvider} from 'styled-components';
-import {DataEntry, FormDef, ListDef} from '../../../../../../../wizzi.ui/dist/index';
+import DataEntry from '../../../components/data/DataEntry';
+import {FormDef, ListDef} from '../../../components/data';
 import {RootState, RootAction} from '../../../store/types';
 import * as postActions from '../actions';
 import {IPost} from '../types';
@@ -33,28 +30,45 @@ const mapDispatchToProps = (dispatch: Dispatch<RootAction>) =>
         onCreate: (post: IPost) => 
         
             dispatch(postActions.createPostRequest(post))
+        , 
+        onUpdate: (id: string, post: IPost) => 
+        
+            dispatch(postActions.updatePostRequest({
+                id, 
+                post
+             }))
+        , 
+        onDelete: (id: string) => 
+        
+            dispatch(postActions.deletePostRequest(id))
         
      })
 ;
-
 export type PostApiDataEntryProps = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & { 
 };
 
-export const PostApiDataEntry: FunctionComponent<PostApiDataEntryProps> = () => {
 
-    return  (
-        <div
-        >
-            <ThemeProvider
-             theme={theme}>
-                <DataEntry
-                 formDef={ postFormDef } listDef={ postListDef } items={ postListData.items } />
-            </ThemeProvider>
-        </div>
-        )
-    ;
+export class PostApiDataEntry extends Component<PostApiDataEntryProps, {}> {
+    componentDidMount() {
+        this.props.onGetList();
+    }
+    render() {
+        return  (
+            <div
+            >
+                <DataEntry 
+                    formDef={ postFormDef }
+                    listDef={ postListDef }
+                    items={ this.props.items }
+                    onCreate={this.props.onCreate}
+                    onUpdate={this.props.onUpdate}
+                    onDelete={this.props.onDelete}
+                 />
+            </div>
+            )
+        ;
+    }
 }
-;
 export const PostApiDataEntryConnected = connect(mapStateToProps, mapDispatchToProps)(PostApiDataEntry)
 ;
 export default PostApiDataEntryConnected;
@@ -67,17 +81,20 @@ const postListDef: ListDef = {
             id: "_id", 
             label: "_id", 
             type: "oid", 
+            controlType: "oid", 
             isKey: true
          }, 
         {
             id: "author", 
             label: "author", 
-            type: "string"
+            type: "string", 
+            controlType: "text"
          }, 
         {
             id: "title", 
             label: "title", 
-            type: "string"
+            type: "string", 
+            controlType: "text"
          }
     ]
  };
@@ -143,22 +160,32 @@ const postFormDef: FormDef = {
             id: "_id", 
             label: "_id", 
             type: "oid", 
+            controlType: "oid", 
             isKey: true
          }, 
         {
             id: "author", 
             label: "author", 
-            type: "string"
+            type: "string", 
+            controlType: "text"
          }, 
         {
             id: "title", 
             label: "title", 
-            type: "string"
+            type: "string", 
+            controlType: "text"
          }, 
         {
             id: "content", 
             label: "content", 
-            type: "string"
+            type: "string", 
+            controlType: "text"
+         }, 
+        {
+            id: "packifiles", 
+            label: "packifiles", 
+            type: "string", 
+            controlType: "folder"
          }
     ]
  };

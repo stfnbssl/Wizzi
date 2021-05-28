@@ -5,7 +5,11 @@ module
     v08/express/site/index(&md)
         $append imports
             import
+                @ HomeController
+                from './controllers/home'
+            import
                 @ PackiController
                 from './controllers/packi'
         $append controllers
+            @ new HomeController()
             @ new PackiController()

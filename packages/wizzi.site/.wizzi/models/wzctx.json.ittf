@@ -5,304 +5,367 @@
     { author
         name ""
         email ""
+    $
+        var md = {
+            useSsl: false,
+            host: 'localhost',
+            port: 5000,
+            apiVersion: 'v1'
+        };
+        md.http = md.useSsl ? 'https' : 'http';
+    
     { App
-        siteUrl "http://localhost"
-        port 5000
-        baseUrl "http://localhost:5000"
+        siteUrl "${md.http}://localhost"
+        port ${md.port}
+        baseUrl "${md.http}://localhost:${md.port}"
         { constants
             { preview
                 minWidth 700
         [ Components
+    
     { Style
         vpadRatio 0.25
         bodyFontSize "12px"
         bodyLineHeight 1.3165
+    
     { Build
         usePackiAspects true
-        useRegeneratorRuntime false
-        { utils
-            useEscapeRegexp true
-            useEscapeHtml true
-            useNullThrows true
-            useLodash true
-            useStringifySafe true
-            useParseUrl true
-            useEs6Error true
-            useJsCookie true
-            useQueryString true
-            useSanitizeHtml true
-            useDateFns true
-            useFetchPonyfill true
-            useNanoId true
-            useGitUrlParse true
-            useJsonToAst true
-        { styles
-            usePalx true
+        
         isClientServer true
+        useEnvCmd true
         useVExpo false
-        useTypescript true
-        { typescript
-            useBabelLoader true
-        useExpress true
-        { express
-            useSsl false
-            useErrors false
-            useStaticFiles true
-            { staticFiles
-                basePath "__dirname, '..', '..', '..'"
-        useSession true
-        { session
-            name "wizzi.site"
-        noCache true
-        useSocketIO false
-        { socketIO
-        useCookie true
-        { cookie
+        
         useSite true
         { site
-        useIttfStatic true
-        { ittfStatic
+        
         useNetlify false
         { netlify
+        
         useStorybook true
         { storybook
-        useWizzi true
-        { wizzi
-            isDev true
-            [ plugins
-                "./wizzi-core/dist/index.js"
-                "./wizzi-js/dist/index.js"
-                "./wizzi-web/dist/index.js"
-                "./wizzi-meta/dist/index.js"
-            pluginsBaseFolder "C:/My/wizzi/stfnbssl/wizzi/packages"
-            { globalContext
-                wzConfigIsDevelopment true
-        useWizziViewEngine true
-        { wizziViewEngine
-        usePacki true
-        { packi
-            endPoint "http://localhost:5000/api/v1"
-            storeFolder "data/packi/store"
-            templatesFolder "data/packi/templates"
-            apiId_rem "identifier for the API. This value will be used as the audience parameter on authorization calls."
-            apiId "https://packi/api/v1"
-            clientId_rem ""
-            clientId "gPb1dqyNzRHfJgNVawKxPFP65LuNcUI8"
-            clientSecret_rem ""
-            clientSecret "-DVUr9qiz5hivZUmfiJtFDEV-zylvAem8P-X0OH8zwlry06rZNCIDUTF7s9sgWNm"
-            backendId_rem ""
-            backendId "awRaG0ilBVlaHQ2xK5JgehLjkBzLNthp"
-            backendSecret_rem ""
-            backendSecret "1iDRuv92BtmZA521Od3BIU923cDL-EsoSNNTAUJkGfrpNmEDr85I_lsWqZAe5UNG"
-        useAuthentication true
-        { authentication
-            tenant "dev-qwf9-zob.eu"
-            clientId "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV"
-            longRandomString "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg"
-            baseURL "http://localhost:5000"
-            authRequired false
-            userInfo false
-            useLocal true
-            { local
-            useGithub true
-            { github
-                clientId "6a42cd4cb7247bb4e823"
-                clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
-                callbackURL "http://localhost:5000/authenticate/github/callback"
-        useCrypto true
-        { crypto
-        useJwt true
-        { jwt
+        
         useGithub true
         { github
             clientId "6a42cd4cb7247bb4e823"
             clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
             callbackURL "http://localhost:5000/authenticate/github/callback"
-        useAuthorization false
-        { authorization
+        
         useAccount false
         { account
+        
         useConfig true
         { config
             useEnvalid true
             { envalid
-        useLogger false
-        { logger
-            useMorgan false
-            { morgan
-        useCors true
-        { cors
-            clientOrigin "http://localhost:5000"
-        usePassport false
-        { passport
-        usePassportAuth0 false
-        { passportAuth0
-        useCompression false
-        { compression
-        useHelmet false
-        { helmet
-        useTailwindcss true
-        { tailwindcss
-        useWebpackApp true
-        { webpackApp
-            [ items
-                {
-                    name "hello"
-                    writeToDisk false
-        useWebpack true
-        { webpack
-            useCss true
-            { css
-            useStyleLoader false
-            { styles
-            useMiniCssExtract true
-            { miniCssExtract
-            useSass false
-            { sass
-            useHtml true
-            { html
-                template "./src/client/index.html"
-                filename "index.html"
-            useMinimizer true
-            useWorker true
-            useStatsWriter false
-            useIgnore true
-            useCodeSplitting true
-            useEnv true
-            { env
-                [ items
-                    {
-                        name "NODE_ENV"
-                        value "env('NODE_ENV')"
-                    {
-                        name "SERVER_URL"
-                        value "env('SERVER_URL')"
-                    {
-                        name "API_SERVER_URL"
-                        value "env('API_SERVER_URL')"
-                    {
-                        name "SNACK_SEGMENT_KEY"
-                        value "env('SNACK_SEGMENT_KEY')"
-                    {
-                        name "SNACK_AMPLITUDE_KEY"
-                        value "env('SNACK_AMPLITUDE_KEY')"
-                    {
-                        name "SNACK_WEBPLAYER_URL"
-                        value "env('SNACK_WEBPLAYER_URL')"
-                    {
-                        name "IMPORT_SERVER_URL"
-                        value "env('IMPORT_SERVER_URL')"
-                    {
-                        name "DEPLOY_ENVIRONMENT"
-                        value "env('DEPLOY_ENVIRONMENT')"
-                    {
-                        name "BUILD_TIMESTAMP"
-                        value "Date.now()"
-            useDevServer true
-            { devServer
-                contentBase "path.join(__dirname, 'src')"
-        useResolutions true
-        useBabel true
-        { babel
-            useParser true
-            useRuntime false
-            useDinamicImport true
-            addModuleExport false
-            useVendor true
-            { vendor
-                compactPath "./src/vendor"
-            useResolutions true
-            [ resolutions
-                {
-                    name "**/babel-core"
-                    value "7.0.0-bridge.0"
-        useReact true
-        { react
-            useV16 true
-            useMaterialUI true
-            { materialUI
-                useIcons true
-            useRedux true
-            { redux
-                useSaga true
-                { saga
-                    [ see
-                        {
-                            url "https://github.com/piotrwitek/react-redux-typescript-realworld-app"
-                            title "React, Redux, TypeScript - RealWorld App"
-                        {
-                            url "https://github.com/piotrwitek/react-redux-typescript-guide"
-                            title "React & Redux in TypeScript - Complete Guide"
-            useRouter true
-            useHelmetAsync true
-            useSimpleCodeEditor true
-            useTextareaAutosize true
-            useVirtualized true
-        useHoistNonReactStatic true
-        useStyledComponents true
-        { styledComponents
-        useStyledSystem true
-        { styledSystem
-        useAphrodite true
-        { aphrodite
-            disableImportant true
+        
         useMarked true
-        useExpoStyles true
-        { expoStyles
+        
         useMonacoEditor true
         { monacoEditor
-        usePrettier true
-        { prettier
-        usePrismjs true
-        { prismjs
-            [ modes
-        useLint true
-        { lint
-        useGraphql true
-        { graphql
-            excludePolyfill true
-        useMongoDb true
-        { mongodb
-            user "yanez"
-            password "x5csosPN5YAsrl4Z"
-            dbPath "@cluster0.idlk7.mongodb.net"
-            dbName "wizzi"
+        
         useFilesystem true
         { filesystem
-        useJest true
-        { jest
-        useBlog false
-        { blog
-            name "blog"
-            Name "Blog"
-            [ dataModels
-                {
-                    name "post"
-                    Name "Post"
-                    Title "Blog post"
-                    Titles "Blog posts"
-                    collectionName "posts"
-                    [ fields
+        
+        $group
+            usePassport false
+            { passport
+            usePassportAuth0 false
+            { passportAuth0
+            usePacki true
+            { packi
+                endPoint "${md.http}://localhost:${md.port}/api/${md.apiVersion}"
+                storeFolder "data/packi/store"
+                templatesFolder "data/packi/templates"
+                apiId_rem "identifier for the API. This value will be used as the audience parameter on authorization calls."
+                apiId "https://packi/api/${md.apiVersion}" $$ AUTH0_PACKI_API_ID
+                clientId_rem ""
+                clientId "gPb1dqyNzRHfJgNVawKxPFP65LuNcUI8" $$ AUTH0_PACKI_CLIENT_ID
+                clientSecret_rem ""
+                clientSecret "-DVUr9qiz5hivZUmfiJtFDEV-zylvAem8P-X0OH8zwlry06rZNCIDUTF7s9sgWNm" $$ AUTH0_PACKI_CLIENT_SECRET
+                backendId_rem ""
+                backendId "awRaG0ilBVlaHQ2xK5JgehLjkBzLNthp" $$ AUTH0_PACKI_BACKEND_APP_ID
+                backendSecret_rem ""
+                backendSecret "1iDRuv92BtmZA521Od3BIU923cDL-EsoSNNTAUJkGfrpNmEDr85I_lsWqZAe5UNG" $$ AUTH0_PACKI_BACKEND_APP_SECRET
+            useAuthentication true
+            { authentication
+                authRequired false
+                userInfo false
+                useAuth0 false
+                { auth0
+                    tenant "dev-qwf9-zob.eu"
+                    clientId "dJoAkgjkJmbElAgqMxqsBPlfoZ3xdAdV"
+                    longRandomString "gdftr75ujgklfòlvposg908495r7o34tklvgklgeòmvojg"
+                    baseURL "${md.http}://localhost:${md.port}"
+                useLocal true
+                { local
+                useGithub true
+                { github
+                    clientId "6a42cd4cb7247bb4e823"
+                    clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
+                    callbackURL "${md.http}://localhost:${md.port}/api/${md.apiVersion}/authenticate/github/callback"
+            useAuthorization false
+            { authorization
+            useCrypto false
+            { crypto
+            useJwt true
+            { jwt
+        
+        $group
+            useBabel true
+            { babel
+                useParser true
+                useRuntime false
+                useDinamicImport true
+                addModuleExport false
+                useVendor true
+                { vendor
+                    compactPath "./src/vendor"
+                useResolutions true
+                [ resolutions
+                    {
+                        name "**/babel-core"
+                        value "7.0.0-bridge.0"
+            useResolutions true
+            useRegeneratorRuntime false
+            useWebpackApp true
+            { webpackApp
+                [ items
+                    {
+                        name "hello"
+                        writeToDisk false
+            useHotReplacement false
+            { hotReplacement
+            useWebpack true
+            { webpack
+                useCss true
+                { css
+                useStyleLoader false
+                { styles
+                useMiniCssExtract true
+                { miniCssExtract
+                useSass false
+                { sass
+                useHtml true
+                { html
+                    template "./src/client/index.html"
+                    filename "index.html"
+                useMinimizer true
+                useWorker true
+                useStatsWriter false
+                useIgnore true
+                useCodeSplitting true
+                useEnv true
+                { env
+                    [ items
                         {
-                            name "_id"
-                            type "oid"
-                            isListItem true
-                            ctrlId "fd_1_post_id"
-                            test "id"
+                            name "NODE_ENV"
+                            value "env('NODE_ENV')"
                         {
-                            name "author"
-                            type "string"
-                            isListItem true
-                            ctrlId "fd_1_post_author"
-                            test "Stefi"
+                            name "SERVER_URL"
+                            value "env('SERVER_URL')"
                         {
-                            name "title"
-                            type "string"
-                            isListItem true
-                            ctrlId "fd_1_post_title"
-                            test "My postulates"
+                            name "API_SERVER_URL"
+                            value "env('API_SERVER_URL')"
                         {
-                            name "content"
-                            type "string"
-                            ctrlId "fd_1_post_content"
-                            test "Bla bla"
+                            name "SNACK_SEGMENT_KEY"
+                            value "env('SNACK_SEGMENT_KEY')"
+                        {
+                            name "SNACK_AMPLITUDE_KEY"
+                            value "env('SNACK_AMPLITUDE_KEY')"
+                        {
+                            name "SNACK_WEBPLAYER_URL"
+                            value "env('SNACK_WEBPLAYER_URL')"
+                        {
+                            name "IMPORT_SERVER_URL"
+                            value "env('IMPORT_SERVER_URL')"
+                        {
+                            name "DEPLOY_ENVIRONMENT"
+                            value "env('DEPLOY_ENVIRONMENT')"
+                        {
+                            name "BUILD_TIMESTAMP"
+                            value "Date.now()"
+                useDevServer true
+                { devServer
+                    contentBase "path.join(__dirname, 'src')"
+        
+        $group
+            useTypescript true
+            { typescript
+                useBabelLoader true
+            usePrettier true
+            { prettier
+            usePrismjs true
+            { prismjs
+                [ modes
+            useLint true
+            { lint
+        
+        $group
+            useGraphql true
+            { graphql
+                excludePolyfill true
+            useMongoDb true
+            { mongodb
+                user "yanez"
+                password "x5csosPN5YAsrl4Z"
+                dbPath "@cluster0.idlk7.mongodb.net"
+                dbName "wizzi"
+            useFilesystem false
+            { filesystem
+            useLocalStorage false
+            { localStorage
+                key "wr-state"
+        
+        $group
+            useDemoControllers false
+            { demoControllers
+        
+        $group
+            useExpress true
+            { express
+                useSsl ${md.useSsl ? 'true' : 'false'}
+                useErrors false
+                useStaticFiles true
+                { staticFiles
+                    basePath "__dirname, '..', '..', '..'"
+            useSession true
+            { session
+                name "wizzi.site"
+            noCache true
+            useSocketIO false
+            { socketIO
+            useCookie true
+            { cookie
+            useLogger false
+            { logger
+                useMorgan false
+                { morgan
+            useCompression false
+            { compression
+            useHelmet false
+            { helmet
+            useCors true
+            { cors
+                clientOrigin "${md.http}://localhost:${md.port}"
+            usePassport false
+            { passport
+            usePassportAuth0 false
+            { passportAuth0
+            useHelmet false
+            { helmet
+        
+        $group
+            useReactCreateApp false
+            { reactCreateApp
+            useReact true
+            { react
+                useV16 true
+                useV17 false
+                useMaterialUI true
+                { materialUI
+                    useIcons true
+                useRedux true
+                { redux
+                    useSaga true
+                    { saga
+                        [ see
+                            {
+                                url "https://github.com/piotrwitek/react-redux-typescript-realworld-app"
+                                title "React, Redux, TypeScript - RealWorld App"
+                            {
+                                url "https://github.com/piotrwitek/react-redux-typescript-guide"
+                                title "React & Redux in TypeScript - Complete Guide"
+                useRouter true
+                useHelmetAsync true
+                useSimpleCodeEditor true
+                useTextareaAutosize true
+                useVirtualized false
+                useSelect true
+                useRange true
+                useDate true
+            useHoistNonReactStatic true
+        
+        $group
+            { styles
+                usePalx true
+            useStyledComponents true
+            { styledComponents
+            useStyledSystem true
+            { styledSystem
+            useAphrodite true
+            { aphrodite
+                disableImportant true
+            useTailwindcss true
+            { tailwindcss
+            useExpoStyles true
+            { expoStyles
+        
+        $group
+            useJest true
+            { jest
+        
+        $group
+            { utils
+                useEscapeRegexp true
+                useEscapeHtml true
+                useNullThrows true
+                useLodash true
+                useStringifySafe true
+                useParseUrl true
+                useEs6Error true
+                useJsCookie true
+                useQueryString true
+                useSanitizeHtml true
+                useDateFns true
+                useFetchPonyfill true
+                useNanoId true
+                useGitUrlParse true
+                useJsonToAst true
+        
+        $group
+            useWizzi true
+            { wizzi
+                isDev true
+                [ plugins
+                    "./wizzi-core/dist/index.js"
+                    "./wizzi-js/dist/index.js"
+                    "./wizzi-web/dist/index.js"
+                    "./wizzi-meta/dist/index.js"
+                pluginsBaseFolder "C:/My/wizzi/stfnbssl/wizzi/packages"
+                { globalContext
+                    wzConfigIsDevelopment true
+            useIttfStatic true
+            { ittfStatic
+            useWizziViewEngine true
+            { wizziViewEngine
+        
+        $group
+            useData true
+            { data
+                [ reduxItems
+                    {
+                        name "packidb"
+                        Name "PackiDb"
+                        Title "Packi"
+                        Titles "Packies"
+                        collectionName "packies"
+                        [ fields
+                            {
+                                name "_id"
+                                type "oid"
+                                isListItem true
+                            {
+                                name "owner"
+                                type "string"
+                                isListItem true
+                            {
+                                name "name"
+                                type "string"
+                                isListItem true
+                            {
+                                name "description"
+                                type "string"
+                            {
+                                name "packifiles"
+                                type "string"
+                                formControlType "folder"

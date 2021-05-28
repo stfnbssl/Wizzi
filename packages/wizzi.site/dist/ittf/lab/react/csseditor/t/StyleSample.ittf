@@ -1,0 +1,79 @@
+$group
+
+    const StyleSampleRoot
+        _ styled.div
+            => 
+                param props
+                (
+                    { 
+                        @ display 'flex'
+                        @ flexDirection 'column'
+                        @ border '2px solid blue'
+                        @ width '100%'
+
+    react StyleSample
+    
+        ctor
+            set this.store = new LocalStorage('cssEditor')
+            set this.storeSamples = new LocalStorage('cssEditorSamples')
+            set this.state
+                {
+                    @ currentSampleName ''
+                    @ currentSample null
+                    @ storedSamplesNames []
+                    @ createNewSampleOpen false
+                    @ newSampleName ''
+                    @ newSampleHtml ''                    
+
+        did-mount
+            let currentSample
+            const recentSample = this.store.get('recentSample')
+            log 'recentSample', recentSample
+            if !recentSample
+                _ this.createNewSample
+                    @ 'sidebar'
+            else
+                log 'recentSample', recentSample
+                _ this.setSample
+                    @ recentSample
+
+        $include stylesample/methods
+        $include stylesample/handlers
+
+        render
+
+            if this.state.currentSample
+                return
+                    < React.Fragment
+                        < StyleSampleRoot
+                            div
+                                style {{ display: 'flex', flexDirection: 'row'}}
+                                fieldset
+                                    label Sample
+                                        style {{ width: '100px', display: 'inline-block' }}
+                                    select
+                                        style {{ width: '150px' }}
+                                        @ onChange {this.handleChangeSample}
+                                        @ value {this.state.currentSampleName}
+                                        {
+                                            _ this.state.storedSamplesNames.map
+                                                =>
+                                                    param sampleName
+                                                    param ndx 
+                                                    option
+                                                        @ key {ndx}
+                                                        @ value {sampleName}
+                                                        + {sampleName}
+                                button
+                                    @ onClick {this.handleCreateNewSampleRequest}
+                                    + Create new sample
+                            < Main
+                                @ cssDefs {__constants.cssDefs}
+                                @ sampleName {this.state.currentSampleName}
+                                @ ruleData {this.state.currentSample.ruleData}
+                                @ htmlData {this.state.currentSample.htmlData}
+                        $include stylesample/modals
+            else
+                return
+                    h1 
+                        + ...loading...

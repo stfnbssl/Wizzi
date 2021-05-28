@@ -2,13 +2,12 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\components\data\ListRow.tsx.ittf
-    utc time: Fri, 21 May 2021 20:28:10 GMT
+    utc time: Tue, 25 May 2021 15:10:47 GMT
 */
 import React, {FunctionComponent} from 'react';
-// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
-import styled, {keyframes, css} from 'styled-components';
+import {StyleSheet, css} from 'aphrodite';
+import classnames from 'classnames';
 
-import Box from '../widgets/Box';
 import {ColumnDef} from './types';
 
 export interface ListRowProps {
@@ -20,19 +19,18 @@ export interface ListRowProps {
     onSelect: () => void;
 }
 
-const StyledRoot = styled.tr`
-    margin-top: 5px;
-    border-top: 1px solid #bebebe;
-    
-`
-const StyledCell = styled.td`
-    padding: 4px;
-    
-`
-const StyledButton = styled.td`
-    padding: 4px;
-    
-`
+const styles = StyleSheet.create({
+    root: {
+        marginTop: "5px", 
+        borderTop: "1px solid #bebebe"
+     }, 
+    cell: {
+        padding: "4px"
+     }, 
+    button: {
+        padding: "4px"
+     }
+ });
 export const ListRow: FunctionComponent<ListRowProps> = ({
     columns, 
     item, 
@@ -42,39 +40,38 @@ export const ListRow: FunctionComponent<ListRowProps> = ({
  }) => 
 
      (
-    <StyledRoot
-    >
-        <StyledCell
-         key={-1} onClick={onSelect}>
-            { item['_id'] }
-        </StyledCell>
+    <tr
+     className={css(styles.root)}>
         {
-            columns.map((column, ndx) => 
+            columns.map((column, ndx) => {
             
-                 (
-                <StyledCell
-                 key={ndx} onClick={onSelect}>
-                    { item[column.id] }
-                </StyledCell>
-                )
-            
+                if (!!column.isKey == false) {
+                    return  (
+                        <td
+                         className={css(styles.cell)} key={ndx} onClick={onSelect}>
+                            { item[column.id] }
+                        </td>
+                        )
+                    ;
+                }
+            }
             )
         }
-        <StyledButton
-        >
+        <td
+         className={css(styles.button)}>
             <button
              onClick={onEdit}>
             Edit
             </button>
-        </StyledButton>
-        <StyledButton
-        >
+        </td>
+        <td
+         className={css(styles.button)}>
             <button
              onClick={onRemove}>
             Remove
             </button>
-        </StyledButton>
-    </StyledRoot>
+        </td>
+    </tr>
     )
 
 ;

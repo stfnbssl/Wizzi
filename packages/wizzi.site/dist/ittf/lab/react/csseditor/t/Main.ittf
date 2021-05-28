@@ -1,0 +1,153 @@
+$group
+
+    const MainRoot
+        _ styled.div
+            => 
+                param props
+                (
+                    { 
+                        @ display 'flex'
+                        @ ['flex-direction'] 'row'
+                        @ border '2px solid red'
+                        @ width '100%'
+
+    const HtmlPreview
+        _ styled.div
+            => 
+                param props
+                (
+                    { 
+                        @ padding '30px'
+                        @ background '#fff'
+                        @ border '1px solid gray'
+                        @ width '50%'
+
+    const CssPreview
+        _ styled.div
+            => 
+                param props
+                (
+                    { 
+                        @ padding '30px'
+                        @ background '#aaa'
+                        @ border '1px solid green'
+
+    $include main/functions
+    
+    react Main
+    
+        ctor
+            set this.store = new LocalStorage('cssEditor')
+            set this.storeSamples = new LocalStorage('cssEditorSamples')
+            set this.state
+                {
+                    @ sampleName ''
+                    @ ruleData null
+                    @ htmlData ''
+                    @ cssRule ''
+                    { values
+                    @ editHtmlModalOpen false
+                    @ htmlEdit ''
+
+        did-mount
+            _ this.setState
+                {
+                    @ sampleName this.props.sampleName
+                    @ ruleData this.props.ruleData 
+                    @ htmlData this.props.htmlData 
+
+            set this.executeValuesChangeDebounced
+                _ wz.debounce
+                    =>
+                        param newRuleData
+                        param cssRule
+                        if newRuleData
+                            const newSampleData
+                                {
+                                    @ sampleName this.props.sampleName
+                                    @ ruleData newRuleData
+                                    @ htmlData this.state.htmlData
+                            _ this.storeSamples.set
+                                @ this.props.sampleName
+                                _ JSON.stringify
+                                    @ newSampleData
+                        if cssRule
+                            var sheetToBeRemoved = document.getElementById('demo_styles')
+                            var sheetParent = sheetToBeRemoved.parentNode
+                            _ sheetParent.removeChild(sheetToBeRemoved)                           
+                            var sheetToBeAdded = document.createElement('style')
+                            set sheetToBeAdded.id = 'demo_styles'
+                            set sheetToBeAdded.innerHTML = cssRule
+                            _ sheetParent.appendChild(sheetToBeAdded);            
+                    @ 1000
+
+        did-update
+            if this.props.sampleName != prevProps.sampleName
+                log 'Main.did-update', prevProps.sampleName, 'changed to ',this.props.sampleName
+                _ this.setState
+                    {
+                        @ sampleName this.props.sampleName
+                        @ ruleData this.props.ruleData 
+                        @ htmlData this.props.htmlData 
+
+        => handleValuesChange
+            param values
+            const newRuleData = []
+            const cssStyles = []
+            _ this.state.ruleData.map
+                =>
+                    param rule
+                    const newRuleStyles
+                        {
+                            @ name rule.name
+                            { styles
+                    _ cssStyles.push('.' + rule.name + ' {')
+                    const styleValues = values[rule.name]
+                    _ Object.keys(styleValues).map
+                        =>
+                            param styleName
+                            if styleValues[styleName] && styleValues[styleName].length > 0
+                                _ cssStyles.push('\t' + styleName + ':' + styleValues[styleName] + ';')
+                                set newRuleStyles.styles[styleName] = styleValues[styleName]
+                    _ cssStyles.push('}')
+                    _ newRuleData.push(newRuleStyles)
+            const cssRule = cssStyles.join('\n')
+            _ this.setState
+                =>
+                    param state
+                    return
+                        {
+                            @ cssRule cssRule
+                            @ values values
+            _ this.executeValuesChangeDebounced
+                @ newRuleData
+                @ cssRule
+
+        $include main/handlers
+        
+        render
+
+            if !this.state.ruleData
+                return
+                    h1
+                        + ...loading...
+
+            return
+                < React.Fragment
+                    button
+                        @ onClick {this.handleEditHtmlRequest}
+                        + Edit html
+                    < MainRoot
+                        < RuleEditor
+                            @ cssDefs {this.props.cssDefs}
+                            @ ruleData {this.state.ruleData}
+                            @ onChange {this.handleValuesChange}
+                        < HtmlPreview
+                            @ dangerouslySetInnerHTML {{__html: this.state.htmlData}}
+                        < CssPreview
+                            pre
+                                code
+                                    + {this.state.cssRule}
+                    $include main/modals
+                    
+

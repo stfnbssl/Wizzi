@@ -8,6 +8,14 @@ $group
         @ ${md.isPure ? 'Pure' : ''}Component
         from 'react'
     import ReactDOM from 'react-dom'
+    $if md.connected
+        import
+            @ bindActionCreators
+            @ Dispatch
+            from 'redux'
+        import
+            @ connect
+            from 'react-redux'
     $if md.styled
         # see https://mxstbr.blog/2016/11/styled-components-magic-explained/
         import styled
@@ -21,13 +29,28 @@ $group
             from 'aphrodite'
         import classnames from 'classnames'
     $hook imports
-    $if myProps.length > 0
-        +
+    $if md.connected
         export
-            :interface ${md.name}Props
-                $foreach prop in myProps
-                    $ if (prop.xdefault) { defaultProps.push(prop); }
-                    $include setPropType
+            :type ${md.name}Props
+                :intersect
+                    :ref ReturnType
+                        :param
+                            :typeof mapStateToProps
+                    :ref ReturnType
+                        :param
+                            :typeof mapDispatchToProps
+                    :{
+                        $foreach prop in myProps
+                            $ if (prop.xdefault) { defaultProps.push(prop); }
+                            $include setPropType
+    $else
+        $if myProps.length > 0
+            +
+            export
+                :interface ${md.name}Props
+                    $foreach prop in myProps
+                        $ if (prop.xdefault) { defaultProps.push(prop); }
+                        $include setPropType
     $if myStateProps.length > 0
         +
         :type ${md.name}State
@@ -35,12 +58,17 @@ $group
                 $foreach prop in myStateProps
                     $include setPropType
     +
+    $if md.aphrodite
+        const styles
+            _ StyleSheet.create
+                {
+                    $hook styles_aphrodite
     $hook styles
     +
     export
         class ${md.name}
             super ${md.isPure ? 'Pure' : ''}Component
-                $if myProps.length > 0
+                $if md.connected || myProps.length > 0
                     :param
                         :ref ${md.name}Props
                 $else
@@ -51,4 +79,14 @@ $group
                 $else
                     :param {}
             $hook
-    export-default ${md.name}
+    $if md.connected
+        export
+            const ${md.name}Connected
+                _ connect
+                    @ mapStateToProps
+                    @ mapDispatchToProps
+                    (
+                        @ ${md.name}
+        export-default ${md.name}Connected
+    $else
+        export-default ${md.name}

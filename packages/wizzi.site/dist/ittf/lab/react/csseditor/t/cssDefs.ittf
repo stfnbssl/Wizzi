@@ -1,0 +1,88 @@
+$group
+
+    const __constants
+        {
+            { cssDefs
+                [ categories
+                    {
+                        @ name 'box'
+                        [ styles
+                            {
+                                @ name 'display'
+                                [ enum
+                                    @ "inline" 
+                                    @ "table-row-group" 
+                                    @ "table-row" 
+                                    @ "table-header-group" 
+                                    @ "table-footer-group" 
+                                    @ "table-column-group" 
+                                    @ "table-column" 
+                                    @ "table-cell" 
+                                    @ "table-caption" 
+                                    @ "table" 
+                                    @ "run-in" 
+                                    @ "none" 
+                                    @ "list-item" 
+                                    @ "inline-table" 
+                                    @ "inline-flex" 
+                                    @ "inline-block" 
+                                    @ "flex" 
+                                    @ "compact" 
+                                    @ "block" 
+
+                            {
+                                @ name 'flex-direction'
+                            {
+                                @ name 'justify-content'
+                            {
+                                @ name 'align-items'
+                            {
+                                @ name 'align-content'
+                    {
+                        @ name 'layout'
+                        [ styles
+                            {
+                                @ name 'padding'
+                            {
+                                @ name 'margin'
+                            {
+                                @ name 'position'
+                            {
+                                @ name 'height'
+                            {
+                                @ name 'width'
+                    {
+                        @ name 'colors'
+                        [ styles
+                            {
+                                @ name 'color'
+                            {
+                                @ name 'background'
+                            {
+                                @ name 'opacity'
+                            {
+                                @ name 'border'
+                    {
+                        @ name 'text'
+                        [ styles
+                            {
+                                @ name 'font-family'
+                            {
+                                @ name 'font-size'
+                            {
+                                @ name 'font-weight'
+                            {
+                                @ name 'text-transform'
+                            {
+                                @ name 'text-decoration'
+                            {
+                                @ name 'text-shadow'
+                            {
+                                @ name 'text-align'
+                            {
+                                @ name 'line-height'
+                            {
+                                @ name 'word-spacing'
+                            {
+                                @ name 'letter-spacing'
+

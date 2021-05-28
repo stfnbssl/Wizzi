@@ -3,7 +3,7 @@ $group
     { reactCreateApp
     useReact true
     { react
-        useV16 true
+        useV17 true
         useMaterialUI false
         { materialUI
             useIcons true
@@ -20,10 +20,9 @@ $group
                         title "React & Redux in TypeScript - Complete Guide"
         useRouter true
         useHelmetAsync true
-        useSimpleCodeEditor true
-        useTextareaAutosize true
-        useVirtualized true
-        useHelmetAsync true
+        useSimpleCodeEditor false
+        useTextareaAutosize false
+        useVirtualized false
         useSelect true
         useRange true
         useDate true

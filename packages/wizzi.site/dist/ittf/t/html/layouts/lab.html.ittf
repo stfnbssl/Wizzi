@@ -1,0 +1,15 @@
+$group
+	$params &wzCtx
+
+    . h-screen w-screen
+
+        . p-2
+            style height: 5vh
+            h1 
+                + Lab - ${wzCtx.title}
+        . p-4 border border-solid border-gray-200
+            style height: 90vh
+            $hook
+        . p-2
+            style height: 5vh
+            + Press CTRL+h to see ittf source documents.

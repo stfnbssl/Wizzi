@@ -2,11 +2,11 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\components\data\ListHead.tsx.ittf
-    utc time: Fri, 21 May 2021 20:28:10 GMT
+    utc time: Tue, 25 May 2021 15:10:47 GMT
 */
 import React, {FunctionComponent} from 'react';
-// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
-import styled, {keyframes, css} from 'styled-components';
+import {StyleSheet, css} from 'aphrodite';
+import classnames from 'classnames';
 
 import {ColumnDef} from './types';
 
@@ -14,40 +14,37 @@ export interface ListHeadProps {
     columns: ColumnDef[];
 }
 
-const StyledRoot = styled.thead`
-    
-`
-const StyledHeadCell = styled.th`
-    padding: 4px;
-    
-`
+const styles = StyleSheet.create({
+    cell: {
+        padding: "4px"
+     }
+ });
 export const ListHead: FunctionComponent<ListHeadProps> = ({
     columns
  }) => 
 
      (
-    <StyledRoot
+    <thead
     >
         <tr
         >
-            <StyledHeadCell
-             key={-1}>
-                _id
-            </StyledHeadCell>
             {
-                columns.map((column, ndx) => 
+                columns.map((column, ndx) => {
                 
-                     (
-                    <StyledHeadCell
-                     key={ndx}>
-                        { column.label || column.id }
-                    </StyledHeadCell>
-                    )
-                
+                    if (!!column.isKey == false) {
+                        return  (
+                            <th
+                             className={css(styles.cell)} key={ndx}>
+                                { column.label || column.id }
+                            </th>
+                            )
+                        ;
+                    }
+                }
                 )
             }
         </tr>
-    </StyledRoot>
+    </thead>
     )
 
 ;

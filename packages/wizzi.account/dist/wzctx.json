@@ -248,7 +248,7 @@
         "reactCreateApp": {},
         "useReact": true,
         "react": {
-            "useV16": true,
+            "useV17": true,
             "useMaterialUI": false,
             "materialUI": {
                 "useIcons": true
@@ -271,9 +271,9 @@
             },
             "useRouter": true,
             "useHelmetAsync": true,
-            "useSimpleCodeEditor": true,
-            "useTextareaAutosize": true,
-            "useVirtualized": true,
+            "useSimpleCodeEditor": false,
+            "useTextareaAutosize": false,
+            "useVirtualized": false,
             "useSelect": true,
             "useRange": true,
             "useDate": true
@@ -282,9 +282,9 @@
         "styles": {
             "usePalx": true
         },
-        "useStyledComponents": true,
+        "useStyledComponents": false,
         "styledComponents": {},
-        "useStyledSystem": true,
+        "useStyledSystem": false,
         "styledSystem": {},
         "useAphrodite": true,
         "aphrodite": {

@@ -7,9 +7,10 @@ $group
     import
         @ ConfigType
         from '../config'
-    import
-        @ fsTypes
-        from '../filesystem'
+    $if wzCtx.Build.useFilesystem
+        import
+            @ fsTypes
+            from '../filesystem'
     import
         @ RequestHandlerParams
         from 'express-serve-static-core'

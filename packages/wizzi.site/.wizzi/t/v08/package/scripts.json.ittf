@@ -81,7 +81,12 @@ $group
         $else
             prettier "prettier --write src/**/*.js"
     $if wzCtx.Build.useTailwindcss
-        build-css "tailwindcss build src/styles/tailwind.css -o static/styles/tailwind.css"
+        $if wzCtx.Build.isClientServer
+            build-css "tailwindcss build src/server/styles/tailwind.css -o static/styles/tailwind.css"
+            postcss "postcss src/server/styles/tailwind.css -o static/styles/tailwind.css"
+        $else
+            build-css "tailwindcss build src/styles/tailwind.css -o static/styles/tailwind.css"
+            postcss "postcss src/styles/tailwind.css -o static/styles/tailwind.css"
     $if wzCtx.Build.useStorybook
         storybook "start-storybook -p 6006"
         build-storybook "build-storybook"

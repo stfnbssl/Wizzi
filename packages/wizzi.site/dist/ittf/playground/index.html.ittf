@@ -1,12 +1,15 @@
 html
 
+    $include wzctx/wizzi.init
+
 	$
-		var opt = {}
-		opt.title = 'Wizzi repl 1';
-		opt.useWizzi = true;
-		opt.useAce = true;
-		opt.useSweetalert = true;
-		opt.useEventEmitter = true;
+		
+		wzCtx.title = 'Wizzi playground';
+		wzCtx.Build.useWizzi = true;
+		wzCtx.Build.useAce = true;
+		wzCtx.Build.useSweetalert = true;
+		wzCtx.Build.useEventEmitter = true;
+        var opt = {}
         opt.schemas = [
             'css',
             'html',
@@ -21,8 +24,8 @@ html
             'vue',
             'xml'
         ];
-	
-    h/root/empty_layout_opt(&opt)
+
+    html/pages/basic(&wzCtx)
 
 		$append head-styles
 		    $if isWizziStudio
@@ -36,88 +39,65 @@ html
             $else			  
                 js ./index.js
 
-		# root
+		$$ html/layouts/lab(&wzCtx)
+            
+        # root
 
-			. sh
+            . sh
 
-				. sh-he
-					. logo
-					    a
+                . sh-he
+                    . logo
+                        a
                             $if isWizziStudio
                                 href #
                             $else
                                 href /
-    						img
-    						    $if isWizziStudio
-    							    src /ittf/images/logo.svg.ittf
-    							$else
-    							    src /images/logo.svg
-    							width 100px
-    							height 40px
+                            img
+                                $if isWizziStudio
+                                    src /ittf/images/logo.svg.ittf
+                                $else
+                                    src /images/logo.svg
+                                width 100px
+                                height 40px
                     . m2
                         ul
                             $$ $include h/menu_2
-				
-				. sh-bo
+                
+                . sh-bo
+                    . sh-bo-lsb
 
-					. sh-bo-lsb
-
-						. control-panel
-							style display: flex; flex-direction: column;
-
-							$* OLD VIA
-                            . control
-								label schema
-								select
-									id selectedSchema
-									style display: none;
-									option css
-									option html
-									option graphql
-									option js
-									option json
-									option md
-									option scss
-									option svg
-									option ts
-									option vtt
-									option vue
-									option xml
-
-							. control
-								# items-tree-view
-
-                            *$
+                        . control-panel
+                            style display: flex; flex-direction: column;
 
                             $foreach schema in opt.schemas
                                 . sh-bo-lsb-schema-button        
                                     id id_${schema}
                                     + ${schema}
 
-					. sh-bo-co
+                    . sh-bo-co
 
-						. sh-bo-co-ge
-						
-							. sh-bo-co-ge-ittf
+                        . sh-bo-co-ge
+                        
+                            . sh-bo-co-ge-ittf
                                 . sh-bo-co-title
                                     + Ittf
-								# gen-ittf-editor
+                                # gen-ittf-editor
 
-							. sh-bo-co-ge-result
+                            . sh-bo-co-ge-result
                                 . sh-bo-co-title
                                     + Generated
-								# gen-result-editor
+                                # gen-result-editor
 
-						. sh-bo-co-wi
+                        . sh-bo-co-wi
 
-							. sh-bo-co-wi-snippet
+                            . sh-bo-co-wi-snippet
                                 . sh-bo-co-title
-								    + Snippet
+                                    + Snippet
                                 # snippet-source-editor
 
-							. sh-bo-co-wi-result
+                            . sh-bo-co-wi-result
                                 . sh-bo-co-title
-								    + Wizzified
+                                    + Wizzified
                                 # snippet-result-editor
-						
-				. sh-fo
+                        
+                . sh-fo

@@ -31,17 +31,17 @@
 				=>
 					log 'onChangeSchema', event.target.value
 					set this.selectedSchema = event.target.value
-					emit( schema-selected
+					event_emit( schema-selected
 						@ name this.selectedSchema
 					_ this.store.set('lastSchema', this.selectedSchema)
 
-			emit( schema-selected
+			event_emit( schema-selected
 				@ name this.selectedSchema
 
 			_ wz.show('selectedSchema')
 
 		m setEvents
-			on( schema-selected-ready
+			event_on( schema-selected-ready
 				log 'schema-selected-ready data', data
 				_ Template
 					{

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\auth\manager.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import passport from 'passport';
 import jwt from 'express-jwt';
@@ -23,15 +23,18 @@ function initPassport() {
     passport.use(createGithubStrategy());
     passport.serializeUser(function(user: any, done: any) {
     
-        console.log('features.auth.manager.serializeUser.user', user);
-        done(null, user.id);
+        console.log('============================================================');
+        console.log('features.auth.manager.serializeUser', 'user', user);
+        done(null, user);
     })
     passport.deserializeUser(function(id: string, done: any) {
     
-        console.log('features.auth.manager.deserializeUser.id', id);
+        console.log('============================================================');
+        console.log('features.auth.manager.deserializeUser', 'id', id);
+        return done(null, id);
         userModel.findById(id, function(err: any, user: any) {
         
-            console.log('features.auth.manager.deserializeUser.err, user', err, user);
+            console.log('features.auth.manager.deserializeUser', 'err', err, 'user', user);
             done(err, user || false);
         })
     })
@@ -61,6 +64,8 @@ export function getPassport() {
 
 export function authenticate(strategyName: string, options: passport.AuthenticateOptions, callback?: any) {
 
+    console.log('============================================================');
+    console.log('auth.manager.authenticate', 'strategyName', strategyName, 'options', options);
     return passport.authenticate(strategyName, options, callback);
 }
 

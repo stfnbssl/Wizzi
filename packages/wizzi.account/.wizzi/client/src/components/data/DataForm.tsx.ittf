@@ -12,48 +12,69 @@ module
                 { name: "onConfirm", type: "handler" },
                 { name: "onCancel", type: "handler" },
             ],
-            styled: true
+            // styled: true,
+            aphrodite: true,
         }
     v08/react/function(&md)
         $append imports
-            import Box from '../widgets/Box'
             import
                 @ FormDef
                 from './types'
             import FormControl from './FormControl'
         
-        < Box
-            @ bg 'blue.4'
-            @ color 'lime.9'
-            @ width '600px'
-            @ p 3
-            < StyledRoot
-                < StyledTitle
-                    + { formDef.title }
-                < StyledControls
-                    id { formDef.id }
-                    {
-                        _ formDef.controls.map
-                            =>
-                                param control
-                                param ndx
-                                < FormControl
-                                    @ key {ndx}
-                                    @ control {control}
-                                    @ value {values[control.id]}
-                                    @ onChange
-                                        =>
-                                            param value
-                                                :any
-                                            _ onChangeValue(control.id, value)
-                < StyledButtons
-                    < StyledConfirm
-                        @ onClick {onConfirm}
-                        + Confirm
-                    < StyledCancel
-                        @ onClick {onCancel}
-                        + Cancel
+        div
+            @ className {css(styles.root)}
+            div
+                @ className {css(styles.title)}
+                + { formDef.title }
+            div
+                @ className {css(styles.controls)}
+                id { formDef.id }
+                {
+                    _ formDef.controls.map
+                        =>
+                            param control
+                            param ndx
+                            < FormControl
+                                @ key {ndx}
+                                @ control {control}
+                                @ value {values[control.id]}
+                                @ onChange
+                                    =>
+                                        param value
+                                            :any
+                                        _ onChangeValue(control.id, value)
+            div
+                @ className {css(styles.buttons)}
+                button
+                    @ className {css(styles.confirm)}
+                    @ onClick {onConfirm}
+                    + Confirm
+                button
+                    @ className {css(styles.cancel)}
+                    @ onClick {onCancel}
+                    + Cancel
 
+        $append styles_aphrodite
+            { root
+                @ overflow "hidden"
+                @ borderRadius "3px"
+                @ background "#fff"
+                @ width "600px"
+                @ padding "30px"
+            { title
+                @ fontWeight 700
+            { controls
+            { buttons
+                @ display "flex"
+                @ flexDirection "row"
+                @ justifyContent "space-between"
+            { confirm
+                @ color "green"
+            { cancel
+                @ color "gray"
+
+        $*
         $append styles
             styled StyledRoot .div
                 overflow hidden
@@ -70,3 +91,4 @@ module
                 color green
             styled StyledCancel .button
                 color gray
+        *$

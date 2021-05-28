@@ -2,12 +2,12 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\client\src\components\data\DataEntry.tsx.ittf
-    utc time: Fri, 21 May 2021 20:28:10 GMT
+    utc time: Tue, 25 May 2021 15:10:47 GMT
 */
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
-import styled, {keyframes, css} from 'styled-components';
+import {StyleSheet, css} from 'aphrodite';
+import classnames from 'classnames';
 import {FormDef, ListDef} from './types';
 import DataForm from './DataForm';
 import DataList from './DataList';
@@ -16,32 +16,35 @@ export interface DataEntryProps {
     formDef: FormDef;
     listDef: ListDef;
     items: object[];
+    onCreate: (item: any) => void;
+    onUpdate: (id: string, item: any) => void;
+    onDelete: (id: string) => void;
 }
 
 type DataEntryState = { 
     isEditing: boolean;
-    idCounter: number;
+    isUpdating: boolean;
     items: object[];
     workItems: object[];
     formValues: object;
 };
 
-const StyledRoot = styled.div`
-    border: 1px solid #ff0000;
-    padding: 20px;
-    
-`
-const StyledAdd = styled.button`
-    color: green;
-    
-`
+const styles = StyleSheet.create({
+    root: {
+        border: "1px solid #ff0000", 
+        padding: "20px"
+     }, 
+    add: {
+        color: "green"
+     }
+ });
 
 export class DataEntry extends Component<DataEntryProps, DataEntryState> {
     constructor(props: DataEntryProps) {
         super(props);
         this.state = {
             isEditing: false, 
-            idCounter: 0, 
+            isUpdating: false, 
             formValues: {
                 
              }, 
@@ -57,14 +60,13 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
         
         // log 'getDerivedStateFromProps.workItems', workItems
         if (props.items !== state.items) {
-            let idCounter = 0;
             const workItems = props.items.map(item => 
             
-                Object.assign({}, item, { _id: ++idCounter} )
+                Object.assign({}, item )
             );
             return {
-                    idCounter, 
                     isEditing: false, 
+                    isUpdating: false, 
                     formValues: {
                         
                      }, 
@@ -92,10 +94,18 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
             return item._id == this.state.formValues._id ? this.state.formValues : item;
         }
         );
+        if (this.state.isUpdating) {
+            this.props.onUpdate(this.state.formValues._id, this.state.formValues)
+        }
+        else {
+            delete this.state.formValues._id
+            this.props.onCreate(this.state.formValues)
+        }
         this.setState((state) => 
         
             ({
                 isEditing: false, 
+                isUpdating: false, 
                 workItems: newItems, 
                 formValues: {
                     
@@ -108,6 +118,7 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
         
             ({
                 isEditing: false, 
+                isUpdating: false, 
                 formValues: {
                     
                  }
@@ -120,12 +131,14 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
         
             ({
                 isEditing: true, 
+                isUpdating: true, 
                 formValues: item
              })
         );
     
     // _ alert('Remove: ' + JSON.stringify(item))
     handleRemoveItem = (item: object) => {
+        this.props.onDelete(item._id)
         const newItems = this.state.workItems;
         var removeIndex = newItems.map(a => a._id).indexOf(item._id);
         ~removeIndex && newItems.splice(removeIndex, 1)
@@ -137,10 +150,7 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
         )
     };
     handleAddItem = () => {
-        let idCounter = this.state.idCounter;
-        const newItem: any = {
-            _id: ++idCounter
-         };
+        const newItem: any = {};
         this.props.formDef.controls.map((control) => {
         
             if (control.type == 'boolean') {
@@ -154,7 +164,6 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
         this.setState((state) => 
         
             ({
-                idCounter: idCounter, 
                 workItems: [
                     ...this.state.workItems, 
                     newItem
@@ -166,8 +175,8 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
     };
     render() {
         return  (
-            <StyledRoot
-            >
+            <div
+             className={css(styles.root)}>
                 {
                     this.state.isEditing ?  (
                         <DataForm 
@@ -181,10 +190,10 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
                      :  (
                         <div
                         >
-                            <StyledAdd
-                             onClick={this.handleAddItem}>
+                            <button
+                             className={css(styles.add)} onClick={this.handleAddItem}>
                                 Add
-                            </StyledAdd>
+                            </button>
                             <DataList 
                                 listDef={this.props.listDef}
                                 items={this.state.workItems}
@@ -195,7 +204,7 @@ export class DataEntry extends Component<DataEntryProps, DataEntryState> {
                         )
                     
                 }
-            </StyledRoot>
+            </div>
             )
         ;
     }

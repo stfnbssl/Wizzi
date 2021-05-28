@@ -24,6 +24,9 @@ $group
         @ AuthenticationController
         from './controllers/authentication'
     import
+        @ ensureAuthenticated
+        from './ensureAuthenticated'
+    import
         as authManager
         from './manager'
     $if wzCtx.Build.useMongoDb
@@ -70,4 +73,5 @@ $group
             @ authorizationModelBuilders
         @ authenticationControllers
         @ authorizationControllers
+        @ ensureAuthenticated
         @ authManager

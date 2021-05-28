@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\auth\strategies\github.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import {Strategy} from 'passport-github2';
 import {GetUserModel, UserModelType} from '../mongo/user';
@@ -17,7 +17,8 @@ export function createStrategy() {
     
     // userModel = GetUserModel();
     accountModel = GetAccountModel();
-    console.log('features.auth.strategies.github.createStrategy');
+    console.log('============================================================');
+    console.log('features.auth.strategies.github.createStrategy', 'config.githubClientId', config.githubClientId, 'config.clientSecret', config.githubClientSecret, 'config.githubCallbackURL', config.githubCallbackURL);
     return new Strategy({
             clientID: config.githubClientId, 
             clientSecret: config.githubClientSecret, 
@@ -25,11 +26,8 @@ export function createStrategy() {
             passReqToCallback: true
          }, function(req: AuthRequest, accessToken: string, refreshToken: string, profile: any, done: any) {
         
-            console.log('features.auth.strategies.github.req.session.socketId,socketUserId', req.session.socketId, req.session.socketUserId);
-            console.log('features.auth.strategies.github.req.sessionID,session', req.sessionID, req.session);
-            console.log('features.auth.strategies.github.req.user', req.user);
-            console.log('features.auth.strategies.github.accessToken.refreshToken', accessToken, refreshToken);
-            console.log('features.auth.strategies.github.profile', profile);
+            console.log('============================================================');
+            console.log('features.auth.strategies.github.callback', 'req.session.socketId', req.session.socketId, 'req.session.socketUserId', req.session.socketUserId, 'req.sessionID', req.sessionID, 'req.session', req.session, 'req.user', req.user, 'accessToken', accessToken, 'refreshToken', refreshToken, 'profile', profile);
             var account = new accountModel();
             account.domain = 'github.com';
             account.uid = profile.id;

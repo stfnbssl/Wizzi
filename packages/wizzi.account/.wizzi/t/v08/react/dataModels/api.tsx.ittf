@@ -14,45 +14,116 @@ $group
     const apiUrl = '${wzCtx.App.baseUrl}/api/v1'
     +
     export
-        function get${schema.Name}List
-            return
-                _ getData
-                    @ apiUrl + "/${schema.collectionName}"
+        async-function get${schema.Name}List
+            :return
+                :ref Promise
+                    :param
+                        :[
+                            :ref I${schema.Name}
+            const res
+                await
+                    _ getData
+                        @ apiUrl + "/${schema.collectionName}"
+            if res.ok
+                return
+                    _ res.json
+                        ._ then
+                            =>
+                                param data
+                                return data.${schema.collectionName}
+            else
+                throw new Error(res.statusText)
     +
     export
-        function create${schema.Name}
+        async-function create${schema.Name}
+            :return
+                :ref Promise
+                    :param
+                        :ref I${schema.Name}
             param ${schema.name}
                 :ref I${schema.Name}
-            return
-                _ postData
-                    @ apiUrl + "/${schema.collectionName}"
-                    {
-                        @ data ${schema.name}
+            const res
+                await
+                    _ postData
+                        @ apiUrl + "/${schema.collectionName}"
+                        {
+                            @ data ${schema.name}
+            if res.ok
+                return
+                    _ res.json
+                        ._ then
+                            =>
+                                param data
+                                return data.${schema.name}
+            else
+                throw new Error(res.statusText)
     +
     export
-        function get${schema.Name}ById
+        async-function get${schema.Name}ById
+            :return
+                :ref Promise
+                    :param
+                        :ref I${schema.Name}
             param id
                 :string
-            return
-                _ getData
-                    @ apiUrl + "/${schema.collectionName}" + "/" + id
+            const res
+                await
+                    _ getData
+                        @ apiUrl + "/${schema.collectionName}" + "/" + id
+            if res.ok
+                return
+                    _ res.json
+                        ._ then
+                            =>
+                                param data
+                                return data.${schema.name}
+            else
+                throw new Error(res.statusText)
     +
     export
-        function update${schema.Name}
+        async-function update${schema.Name}
+            :return
+                :ref Promise
+                    :param
+                        :ref I${schema.Name}
             param id
                 :string
             param ${schema.name}
                 :ref I${schema.Name}
-            return
-                _ putData
-                    @ apiUrl + "/${schema.collectionName}" + "/" + id
-                    {
-                        @ data ${schema.name}
+            const res
+                await
+                    _ putData
+                        @ apiUrl + "/${schema.collectionName}" + "/" + id
+                        {
+                            @ data ${schema.name}
+            if res.ok
+                return
+                    _ res.json
+                        ._ then
+                            =>
+                                param data
+                                return data.${schema.name}
+            else
+                throw new Error(res.statusText)
     +
     export
-        function delete${schema.Name}
+        async-function delete${schema.Name}
+            :return
+                :ref Promise
+                    :param
+                        :ref I${schema.Name}
             param id
                 :string
-            return
-                _ deleteData
-                    @ apiUrl + "/${schema.collectionName}" + "/" + id
+            const res
+                await
+                    _ deleteData
+                        @ apiUrl + "/${schema.collectionName}" + "/" + id
+            if res.ok
+                return
+                    _ res.json
+                        ._ then
+                            =>
+                                param data
+                                return data.${schema.name}
+            else
+                throw new Error(res.statusText)

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.account\.wizzi\server\src\features\post\controllers\post.ts.ittf
-    utc time: Fri, 21 May 2021 16:01:34 GMT
+    utc time: Tue, 25 May 2021 12:34:40 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
@@ -62,8 +62,9 @@ export class PostController implements ControllerType {
             console.log('createPost.err', err);
             sendFailure(response, {
                 message: "Post could not be created.", 
-                err
-             }, 501)
+                origMessage: err._message, 
+                origErrorDetail: err.errors
+             }, 400)
         }
         )
     }
@@ -78,8 +79,9 @@ export class PostController implements ControllerType {
                 console.log('getPostById.err', err);
                 return sendFailure(response, {
                         message: "Post could not be retrieved.", 
-                        err
-                     }, 501);
+                        origMessage: err._message, 
+                        origErrorDetail: err.errors
+                     }, 400);
             }
             sendSuccess(response, {
                 post: post
@@ -97,8 +99,9 @@ export class PostController implements ControllerType {
                 console.log('updatePost.err', err);
                 return sendFailure(response, {
                         message: "Post could not be updated.", 
-                        err
-                     }, 501);
+                        origMessage: err._message, 
+                        origErrorDetail: err.errors
+                     }, 400);
             }
             if (!post) {
                 return sendFailure(response, {
@@ -110,18 +113,21 @@ export class PostController implements ControllerType {
                 post.author = data.author;
                 post.title = data.title;
                 post.content = data.content;
+                post.packifiles = data.packifiles;
                 post.save().then(post => 
                 
                     sendSuccess(response, {
-                        message: 'Post update complete.'
+                        message: 'Post update complete.', 
+                        post: post
                      })
                 ).catch((err) => {
                 
                     console.log('updatePost.err', err);
                     sendFailure(response, {
                         message: 'Post could not be updated.', 
-                        err
-                     }, 501)
+                        origMessage: err._message, 
+                        origErrorDetail: err.errors
+                     }, 400)
                 }
                 )
             }
@@ -141,12 +147,14 @@ export class PostController implements ControllerType {
                 console.log('deletePost.err', err);
                 return sendFailure(response, {
                         message: "Post could not be deleted.", 
-                        err
-                     }, 501);
+                        origMessage: err._message, 
+                        origErrorDetail: err.errors
+                     }, 400);
             }
             else {
                 sendSuccess(response, {
-                    message: 'Post successfully removed'
+                    message: 'Post successfully removed', 
+                    post: post
                  })
             }
         }

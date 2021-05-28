@@ -30,10 +30,8 @@ module
                             => 
                                 param matchProps
                                 < DashboardLayout 
-                                    h1 Hello
-                                    $*
+                                    $$h1 Hello
                                     < Comp 
                                         @ {...matchProps}
-                                    *$
 
     export-default DashboardLayoutRoute

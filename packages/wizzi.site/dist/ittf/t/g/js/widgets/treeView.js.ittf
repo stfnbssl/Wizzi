@@ -208,7 +208,7 @@
 		m selectTreeNode
 			param treeNode
 			set this.selectedTreeNode = treeNode
-			emit( select-tree-node
+			event_emit( select-tree-node
 				@ key this.key
 				@ treeNode treeNode
 
@@ -327,7 +327,7 @@
 				@ newContent
 				a_cb_throw( result
 					set treeNode.item.content = newContent
-					emit( tree-node-updated
+					event_emit( tree-node-updated
 						@ key this.key
 						@ treeNode treeNode
 

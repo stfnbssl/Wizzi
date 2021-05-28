@@ -8,7 +8,15 @@
 		param key
 		return this.keyprefix + '.' + key
 
-	m get
+	m getAllKeys
+        var ret = []
+        var lskeys = Object.keys(localStorage)
+        foreach key in lskeys
+            if key.startsWith(this.keyprefix + '.')
+                _ ret.push(key.substring((this.keyprefix + '.').length))
+        return ret
+
+    m get
 		param key
 		param defaultValue
 		param setDefault

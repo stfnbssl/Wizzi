@@ -1,5 +1,5 @@
 module
-    import cookies from 'js-cookie'
+    $$ import cookies from 'js-cookie'
     import 
         as React
         from 'react'
@@ -24,6 +24,7 @@ module
         @ QueryParams
         from './features/app'
     import Router from './components/Router'
+    import AphroditeTheme from './components/AphroditeTheme'
     +
     const __INITIAL_DATA__
         { 
@@ -45,10 +46,11 @@ module
                 < HelmetProvider 
                     < Provider
                         @ store {store}
-                        < BrowserRouter 
-                            < Router 
-                                @ data {__INITIAL_DATA__.data}
-                                @ queryParams {__INITIAL_DATA__.queryParams}
+                        < AphroditeTheme
+                            < BrowserRouter 
+                                < Router 
+                                    @ data {__INITIAL_DATA__.data}
+                                    @ queryParams {__INITIAL_DATA__.queryParams}
     $*
     _ ReactDOM.hydrate
         < AccountApp 

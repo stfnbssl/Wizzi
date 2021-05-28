@@ -10,7 +10,7 @@
 
 		m initialize
 			
-			on( schema-selected-ready
+			event_on( schema-selected-ready
 				_ this.getSchemaTreeView
 					@ data.name
 					@ data.json

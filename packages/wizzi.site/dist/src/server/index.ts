@@ -2,12 +2,11 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\index.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import {ControllerType, AppInitializerType, MiddlewareType} from './features/app/types';
 import {ModelBuilderType} from './features/app';
 import {config} from './features/config/index';
-import filesystemStart from './services/filesystem';
 import { mongodbStart } from './services/mongodb';
 import wizziStart from './services/wizzi';
 import {authenticationControllers, authenticationModelBuilders} from './features/auth/index';
@@ -34,14 +33,12 @@ async function start() {
         ...packiControllers
     ];
     console.log('Starting app. Config:', config);
-    const fsDb = await filesystemStart(config);
     await wizziStart(config);
     const appInitializer: AppInitializerType = {
         config, 
         middlewaresPre, 
         controllers, 
         middlewaresPost, 
-        fsDb, 
         auth0Secured
      };
     const app = new App(appInitializer);

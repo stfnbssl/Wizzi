@@ -47,6 +47,8 @@ $group
         classnames "^2.2.6"
     $if wzCtx.Build.useMongoDb
         connect-mongo "^3.2.0"
+    $if wzCtx.Build.useReact && wzCtx.Build.react.useRouter && wzCtx.Build.react.useRedux
+        connected-react-router "latest"
     $if wzCtx.Build.useExpress
         $if wzCtx.Build.useCompression
             compression "^1.7.2"
@@ -60,7 +62,7 @@ $group
     $if wzCtx.Build.useCrypto
         crypto "^1.0.1"
     
-    $if wzCtx.Build.utils.useDateFns
+    $if wzCtx.Build.utils.useDateFns || wzCtx.Build.useReact && wzCtx.Build.react.useDate
         date-fns "^2.0.0"
     $elif wzCtx.Build.useReact
         $if wzCtx.Build.react.useMaterialUI
@@ -155,7 +157,7 @@ $group
     $if wzCtx.Build.utils.useNullThrows
         nullthrows "^1.1.1"
     
-    $if wzCtx.Build.styles.usePalx
+    $if wzCtx.Build.styles.usePalx || wzCtx.Build.useStorybook
         palx '^1.0.3'
     $if wzCtx.Build.utils.useParseUrl
         parseurl "^1.3.3"
@@ -180,15 +182,22 @@ $group
             $if wzCtx.Build.react.useV16
                 react "^16.8.1"
                 react-dom "^16.8.1"
+            $if wzCtx.Build.react.useV17
+                react "^17.0.1"
+                react-dom "^17.0.1"
             $else
                 react "^17.0.2"
-                react-dom "^17.0.1"
+                react-dom "^17.0.2"
+            $if wzCtx.Build.react.useDate
+                react-datepicker "latest"
             $if wzCtx.Build.react.useFontawesome
                 react-fontawesome "^1.6.1"
             $if wzCtx.Build.react.useHelmetAsync
                 react-helmet-async "^1.0.9"
             $if wzCtx.Build.react.usePerfectScrollbar
                 react-perfect-scrollbar "^1.4.4"
+            $if wzCtx.Build.react.useRange
+                react-range "latest"
             $if wzCtx.Build.react.useRedux
                 react-redux "^7.2.2"
                 $if wzCtx.Build.react.redux.useFirestore
@@ -197,10 +206,8 @@ $group
                 react-router-dom "^5.2.0"
             $if wzCtx.Build.useReactCreateApp
                 react-scripts "^4.0.3"
-            $if wzCtx.Build.react.useMaterialUI
-                $if wzCtx.Build.react.materialUI.useAutocomplete
-                    $if wzCtx.Build.react.materialUI.autocomplete.useReactSelect
-                        react-select "^4.3.0"
+            $if wzCtx.Build.react.useSelect
+                react-select "^4.3.0"
             $if wzCtx.Build.react.useSimpleCodeEditor
                 react-simple-code-editor "^0.11.0"
             $if wzCtx.Build.react.useTextareaAutosize
@@ -247,6 +254,8 @@ $group
     
     $if wzCtx.Build.useTailwindcss
         tailwindcss "^2.0.4"
+    $if wzCtx.Build.useTypescript
+        tslib "^2.2.0"
     $if wzCtx.Build.useReact
         $if wzCtx.Build.react.useRedux
             $if wzCtx.Build.react.redux.useSaga
@@ -263,7 +272,7 @@ $group
         vue "^2.5.17"
         vue-server-renderer "^2.5.17"
     
-    $if (wzCtx.Build.useReactCreateApp || wzCtx.Build.useTypescript) && !! wzCtx.Build.useExpress
+    $if wzCtx.Build.utils.useWebVitals
         web-vitals "^1.0.1"
     $if wzCtx.Build.useWizzi
         wizzi-tools "file:../../wizzi-tools/dist"

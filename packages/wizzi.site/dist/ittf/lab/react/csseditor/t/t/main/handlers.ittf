@@ -1,0 +1,66 @@
+$group
+
+    => handleEditHtmlRequest
+        _ this.setState
+            {
+                @ editHtmlModalOpen true
+                @ htmlEdit this.state.htmlData
+
+    => handleEditHtmlClose
+        let sampleData = this.storeSamples.get(this.props.sampleName)
+        set sampleData = sampleData ? JSON.parse(sampleData) : null
+        let ruleData = sampleData ? sampleData.ruleData : this.props.ruleData
+        var changed
+            _ updateRuleData
+                @ ruleData
+                @ this.state.htmlData
+        if changed
+            _ this.executeValuesChangeDebounced
+                @ ruleData
+                @ null
+            _ this.setState
+                {
+                    @ editHtmlModalOpen false
+                    @ ruleData ruleData
+        else
+            _ this.setState
+                {
+                    @ editHtmlModalOpen false
+
+    => handleEditHtmlChange
+        param value
+        
+        _ this.setState
+            {
+                @ htmlData value
+            =>
+                let sampleData = this.storeSamples.get(this.props.sampleName)
+                set sampleData = sampleData ? JSON.parse(sampleData) : null
+                let ruleData = sampleData ? sampleData.ruleData : this.props.ruleData
+                _ this.executeValuesChangeDebounced
+                    @ ruleData
+                    @ null
+
+    => handleCreateNewSampleRequest
+        _ this.setState
+            {
+                @ createNewSampleOpen true
+
+    => handleNewSampleNameChange
+        param ev
+        _ this.setState
+            {
+                @ newSampleName ev.target.value
+
+    => handleCreateNewSampleConfirm
+        # TODO
+        _ this.setState
+            {
+                @ createNewSampleOpen false
+                @ newSampleName ''
+
+    => handleCreateNewSampleClose
+        _ this.setState
+            {
+                @ createNewSampleOpen false
+                @ newSampleName ''

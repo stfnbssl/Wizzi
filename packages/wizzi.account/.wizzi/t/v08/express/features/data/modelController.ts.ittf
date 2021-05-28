@@ -66,8 +66,9 @@ $group
                                 @ response
                                 {
                                     @ message "${schema.Name} could not be created."
-                                    @ err
-                                @ 501
+                                    @ origMessage err._message
+                                    @ origErrorDetail err.errors
+                                @ 400
             handler( get${schema.Name}ById )
                 let id = request.params.id
                 _ this.${schema.name}Model.findById
@@ -84,8 +85,9 @@ $group
                                     @ response
                                     {
                                         @ message "${schema.Name} could not be retrieved."
-                                        @ err
-                                    @ 501
+                                        @ origMessage err._message
+                                        @ origErrorDetail err.errors
+                                    @ 400
                         _ sendSuccess
                             @ response
                             {
@@ -106,8 +108,9 @@ $group
                                     @ response
                                     {
                                         @ message "${schema.Name} could not be updated."
-                                        @ err
-                                    @ 501
+                                        @ origMessage err._message
+                                        @ origErrorDetail err.errors
+                                    @ 400
                         if !${schema.name}
                             return
                                 _ sendFailure
@@ -128,6 +131,7 @@ $group
                                             @ response
                                             {
                                                 @ message '${schema.Name} update complete.'
+                                                @ ${schema.name} ${schema.name}
                                 ._ catch
                                     =>
                                         param err
@@ -136,8 +140,9 @@ $group
                                             @ response
                                             {
                                                 @ message '${schema.Name} could not be updated.'
-                                                @ err
-                                            @ 501
+                                                @ origMessage err._message
+                                                @ origErrorDetail err.errors
+                                            @ 400
             handler( delete${schema.Name} )
                 const id = request.params.id;
                 _ this.${schema.name}Model.findByIdAndRemove
@@ -155,10 +160,12 @@ $group
                                     @ response
                                     {
                                         @ message "${schema.Name} could not be deleted."
-                                        @ err
-                                    @ 501
+                                        @ origMessage err._message
+                                        @ origErrorDetail err.errors
+                                    @ 400
                         else
                             _ sendSuccess
                                 @ response
                                 {
                                     @ message '${schema.Name} successfully removed'
+                                    @ ${schema.name} ${schema.name}

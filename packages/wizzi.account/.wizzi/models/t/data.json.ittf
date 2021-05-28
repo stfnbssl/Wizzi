@@ -14,22 +14,23 @@ $group
                         name "_id"
                         type "oid"
                         isListItem true
-                        ctrlId "fd_1_post_id"
                         test "id"
                     {
                         name "author"
                         type "string"
                         isListItem true
-                        ctrlId "fd_1_post_author"
                         test "Stefi"
                     {
                         name "title"
                         type "string"
                         isListItem true
-                        ctrlId "fd_1_post_title"
                         test "My postulates"
                     {
                         name "content"
                         type "string"
-                        ctrlId "fd_1_post_content"
+                        test "Bla bla"
+                    {
+                        name "packifiles"
+                        type "string"
+                        formControlType "folder"
                         test "Bla bla"

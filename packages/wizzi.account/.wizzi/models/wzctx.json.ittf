@@ -241,7 +241,7 @@
             { reactCreateApp
             useReact true
             { react
-                useV16 true
+                useV17 true
                 useMaterialUI false
                 { materialUI
                     useIcons true
@@ -258,10 +258,9 @@
                                 title "React & Redux in TypeScript - Complete Guide"
                 useRouter true
                 useHelmetAsync true
-                useSimpleCodeEditor true
-                useTextareaAutosize true
-                useVirtualized true
-                useHelmetAsync true
+                useSimpleCodeEditor false
+                useTextareaAutosize false
+                useVirtualized false
                 useSelect true
                 useRange true
                 useDate true
@@ -270,9 +269,9 @@
         $group
             { styles
                 usePalx true
-            useStyledComponents true
+            useStyledComponents false
             { styledComponents
-            useStyledSystem true
+            useStyledSystem false
             { styledSystem
             useAphrodite true
             { aphrodite
@@ -323,22 +322,23 @@
                                 name "_id"
                                 type "oid"
                                 isListItem true
-                                ctrlId "fd_1_post_id"
                                 test "id"
                             {
                                 name "author"
                                 type "string"
                                 isListItem true
-                                ctrlId "fd_1_post_author"
                                 test "Stefi"
                             {
                                 name "title"
                                 type "string"
                                 isListItem true
-                                ctrlId "fd_1_post_title"
                                 test "My postulates"
                             {
                                 name "content"
                                 type "string"
-                                ctrlId "fd_1_post_content"
+                                test "Bla bla"
+                            {
+                                name "packifiles"
+                                type "string"
+                                formControlType "folder"
                                 test "Bla bla"

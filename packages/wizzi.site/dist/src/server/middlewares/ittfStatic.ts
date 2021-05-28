@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\middlewares\ittfStatic.ts.ittf
-    utc time: Mon, 10 May 2021 17:56:08 GMT
+    utc time: Fri, 28 May 2021 20:54:57 GMT
 */
 import util from 'util';
 import path from 'path';
@@ -26,6 +26,7 @@ const extContentTypeMap: {
     '.css': 'text/css', 
     '.gif': 'image/gif', 
     '.html': 'text/html', 
+    '.ittf': 'text/plain', 
     '.jpeg': 'image/jpeg', 
     '.jpg': 'image/jpg', 
     '.js': 'text/javascript', 

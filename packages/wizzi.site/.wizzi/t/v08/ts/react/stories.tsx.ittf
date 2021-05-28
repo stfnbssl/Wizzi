@@ -15,6 +15,10 @@ $group
         @ ${name}
         @ ${name}Props
         from '${from}'
+    $foreach ximport in md.imports
+        import
+            @ ${ximport}
+            from '${from}'
     $hook imports1
     $hook imports2
     +

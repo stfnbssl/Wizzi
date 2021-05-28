@@ -38,7 +38,7 @@ $group
                 _ next()
         _ this.router.get
             `lit
-                + /auth/github
+                + /github
             _ authenticate
                 @ 'github'
                 {
@@ -48,7 +48,7 @@ $group
             _ this.githubConnect.bind(this)
         _ this.router.get
             `lit
-                + /auth/github/callback
+                + /github/callback
             _ authenticate
                 @ 'github'
                 {
@@ -63,15 +63,16 @@ $group
                 +
                 @ this.path
                 + /github/loggedin/:uid
-            @expr this.getGithubLoggedIn
+            _ this.getGithubLoggedIn.bind(this)
         $append handlers
             handler( githubConnect )
             handler( githubConnectCallback )
+                log '============================================================'
+                log 'Successful authentication'
                 # Successful authentication
                 $if wzCtx.Build.useSocketIO
-                    log 'features.auth.controllers.auth.githubCallback' 'request.originalUrl, request.originalUrl, 'session.socketId, request.session.socketId, 'socketUserId', request.session.socketUserId
-                log 'features.auth.controllers.auth.githubCallback.request.sessionID,session', request.sessionID, request.session
-                log 'features.auth.controllers.auth.githubCallback.request.user', request.user
+                    log 'features.auth.controllers.auth.githubCallback', 'request.originalUrl, request.originalUrl, 'session.socketId, request.session.socketId, 'socketUserId', request.session.socketUserId
+                log 'features.auth.controllers.auth.githubCallback', 'request.sessionID', request.sessionID, 'request.session', request.session, 'request.user', request.user
                 $if wzCtx.Build.useSocketIO
                     const io = request.app.get('io')
                 const ruser: any = (request.user as any)
@@ -83,7 +84,7 @@ $group
                         @ displayName ruser.displayName
                         @ picture ruser.avatar_url
                 $if wzCtx.Build.useSocketIO
-                    log 'features.auth.controllers.auth.githubCallback.sending user via socket', 'github', request.session.socketId, ruser
+                    log 'features.auth.controllers.auth.githubCallback.sending user via socket', 'github', 'request.session.socketId', request.session.socketId, 'ruser', ruser
                     _ io.in(request.session.socketId).emit('github', user)
                 set (request.session as any).token = ruser.tokens[0]
                 const account
@@ -103,15 +104,15 @@ $group
                     const AccountModel = GetAccountModel()
                     const result
                         await
-                            _ AccountModel.update
+                            _ AccountModel.updateOne
                                 {
                                     @ uid ruser.uid
                                     @ domain 'github.com'
                                 @ account
                                 {
                                     @ upsert true
-                    log 'features.auth.controllers.auth.githubCallback.account.save.result', result
-                _ response.end()
+                    log 'features.auth.controllers.auth.githubCallback.account.save', 'result', result
+                _ response.redirect('/account/profile')
             +
             handler( getGithubLoggedIn )
                 const uid = request.params.uid

@@ -4,17 +4,18 @@ $group
         @ ControllerType
         from '../features/app'
     $if wzCtx.Build.useSite
-        import
-            @ HomeController
-            from './controllers/home'
-        $if wzCtx.Build.useWizziViewEngine
+        $if wzCtx.Build.useDemoControllers
             import
-                @ WizziController
-                from './controllers/wizzi'
-        $if wzCtx.Build.useAuth
-            import
-                @ AccountController
-                from './controllers/account'
+                @ DemoHomeController
+                from './controllers/demoHome'
+            $if wzCtx.Build.useWizziViewEngine
+                import
+                    @ DemoWizziController
+                    from './controllers/demoWizzi'
+            $if wzCtx.Build.useAuthentication
+                import
+                    @ DemoAccountController
+                    from './controllers/demoAccount'
         $hook imports
     const siteControllers
         :[
@@ -22,11 +23,12 @@ $group
         =
             [
                 $if wzCtx.Build.useSite
-                    @ new HomeController()
-                    $if wzCtx.Build.useWizziViewEngine
-                        @ new WizziController()
-                    $if wzCtx.Build.useAuth
-                        @ new AccountController()
+                    $if wzCtx.Build.useDemoControllers
+                        @ new DemoHomeController()
+                        $if wzCtx.Build.useWizziViewEngine
+                            @ new DemoWizziController()
+                        $if wzCtx.Build.useAuthentication
+                            @ new DemoAccountController()
                 $hook controllers
     export
         @ siteControllers

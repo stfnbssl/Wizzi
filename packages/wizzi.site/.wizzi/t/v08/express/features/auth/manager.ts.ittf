@@ -41,16 +41,20 @@ $group
                     :any
                 param done
                     :any
-                log 'features.auth.manager.serializeUser.user', user
-                _ done(null, user.id)
+                log '============================================================'
+                log 'features.auth.manager.serializeUser', 'user', user
+                _ done(null, user)
         _ passport.deserializeUser
             function
                 param id
                     :string
                 param done
                     :any
-                log 'features.auth.manager.deserializeUser.id', id
+                log '============================================================'
+                log 'features.auth.manager.deserializeUser', 'id', id
                 $if wzCtx.Build.useMongoDb
+                    return
+                        _ done(null, id)
                     _ userModel.findById
                         @ id
                         function
@@ -58,7 +62,7 @@ $group
                                 :any
                             param user
                                 :any
-                            log 'features.auth.manager.deserializeUser.err, user', err, user
+                            log 'features.auth.manager.deserializeUser', 'err', err, 'user', user
                             _ done(err, user || false)
                 $else
                     _ done(null, { id: id })
@@ -91,6 +95,8 @@ $group
             param callback
                 :any
                 :optional
+            log '============================================================'
+            log 'auth.manager.authenticate', 'strategyName', strategyName, 'options', options
             return passport.authenticate(strategyName, options, callback)
     $if wzCtx.Build.useMongoDb
         +

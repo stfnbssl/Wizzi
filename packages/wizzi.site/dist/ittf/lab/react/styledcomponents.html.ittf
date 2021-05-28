@@ -1,0 +1,48 @@
+html
+
+    $include wzctx/react.init
+    
+    $
+        wzCtx.title = 'React with styled components example'
+        // wzCtx.Build.react.useRouter = true;
+        // wzCtx.Build.react.useMaterialUi = true;
+        wzCtx.Build.react.useStyledComponents = true;
+        // wzCtx.Build.useTailwind = true;
+
+    html/pages/basic(&wzCtx)
+
+        html/layouts/lab(&wzCtx)
+
+            # root
+
+            script
+                type text/babel
+                module
+                    kind react
+
+                    const Hello
+                        _ styled.div
+                            => 
+                                param props
+                                (
+                                    { 
+                                        @ background props.background
+                                        @ padding props.padding
+
+                    function App
+                        param props
+
+                        return
+                            div
+                                style {{ background: '#cacaca', width: '300px', height: '500px'}}
+                                < Hello
+                                    @ {...props}
+                                    + Hello
+
+                    _ ReactDOM.render
+                        < App
+                            @ padding '4px'
+                            @ background '#ff0000'
+                        _ document.getElementById
+                            @ 'root'
+

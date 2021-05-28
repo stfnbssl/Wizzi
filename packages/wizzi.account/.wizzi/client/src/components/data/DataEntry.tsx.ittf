@@ -3,19 +3,32 @@ module
     $
         var md = {
             name: "DataEntry",
+            autoId: false,
             props: [
                 { name: "formDef", type: "FormDef", ref: true },
                 { name: "listDef", type: "ListDef", ref: true },
                 { name: "items", type: "object[]", ref: true },
+                { name: "onCreate", type: "handler", params: [
+                    {name: "item", type: "any"},
+                ]},
+                { name: "onUpdate", type: "handler", params: [
+                    {name: "id", type: "string"},
+                    {name: "item", type: "any"},
+                ]},
+                { name: "onDelete", type: "handler", params: [
+                    {name: "id", type: "string"},
+                ]},
             ],
             stateProps: [
                 { name: "isEditing", type: "boolean" },
-                { name: "idCounter", type: "number" },
+                { name: "isUpdating", type: "boolean" },
+                // { name: "idCounter", type: "number" },
                 { name: "items", type: "object[]", ref: true },
                 { name: "workItems", type: "object[]", ref: true },
                 { name: "formValues", type: "object" }
             ],
-            styled: true
+            //styled: true,
+            aphrodite: true,
         }
 
     v08/react/component(&md)
@@ -34,7 +47,9 @@ module
             set this.state
                 {
                     @ isEditing false
-                    @ idCounter 0
+                    @ isUpdating false
+                    $if md.autoId
+                        @ idCounter 0
                     { formValues
                     [ items
                     [ workItems
@@ -46,17 +61,23 @@ module
             param state
                 :ref ${md.name}State
             if props.items !== state.items
-                let idCounter = 0
+                $if md.autoId
+                    let idCounter = 0
                 const workItems
                     _ props.items.map
                         => 
                             param item
-                            _ Object.assign({}, item, { _id: ++idCounter} )
+                            $if md.autoId
+                                _ Object.assign({}, item, { _id: ++idCounter} )
+                            $else
+                                _ Object.assign({}, item )
                 # log 'getDerivedStateFromProps.workItems', workItems
                 return 
                     { 
-                        @ idCounter
+                        $if md.autoId
+                            @ idCounter
                         @ isEditing false
+                        @ isUpdating false
                         { formValues
                         @ items props.items
                         @ workItems workItems
@@ -86,14 +107,25 @@ module
                             iif item._id == this.state.formValues._id 
                                 then this.state.formValues
                                 else item
+            if this.state.isUpdating
+                _ this.props.onUpdate
+                    @ this.state.formValues._id
+                    @ this.state.formValues
+            else
+                delete this.state.formValues._id
+                _ this.props.onCreate
+                    @ this.state.formValues
             _ this.setState
                 =>
                     param state
                     (
                         {
                             @ isEditing false
+                            @ isUpdating false
                             @ workItems newItems
                             { formValues
+
+            
 
         => handleFormCancel
             _ this.setState
@@ -102,6 +134,7 @@ module
                     (
                         {
                             @ isEditing false
+                            @ isUpdating false
                             { formValues
 
         => handleEditItem
@@ -113,12 +146,15 @@ module
                     (
                         {
                             @ isEditing true
+                            @ isUpdating true
                             @ formValues item
             # _ alert('Edit: ' + JSON.stringify(item))
        
         => handleRemoveItem
             param item
                 :ref object
+            _ this.props.onDelete
+                @ item._id
             const newItems = this.state.workItems
             var removeIndex = newItems.map(a => a._id).indexOf(item._id)
             + ~removeIndex && newItems.splice(removeIndex, 1)                
@@ -131,11 +167,13 @@ module
             # _ alert('Remove: ' + JSON.stringify(item))
 
         => handleAddItem
-            let idCounter = this.state.idCounter
+            $if md.autoId
+                let idCounter = this.state.idCounter
             const newItem
                 :any
                 {
-                    @ _id ++idCounter
+                    $if md.autoId
+                        @ _id ++idCounter
             _ this.props.formDef.controls.map
                 =>
                     param control
@@ -148,7 +186,8 @@ module
                     param state
                     (
                         {
-                            @ idCounter idCounter
+                            $if md.autoId
+                                @ idCounter idCounter
                             @ workItems 
                                 [
                                     ... this.state.workItems
@@ -158,7 +197,8 @@ module
         
         m render
             return
-                < StyledRoot
+                div 
+                    @ className {css(styles.root)}
                     {
                         iif this.state.isEditing
                             then
@@ -170,7 +210,8 @@ module
                                     @ onCancel {this.handleFormCancel}
                             else
                                 div
-                                    < StyledAdd
+                                    button
+                                        @ className {css(styles.add)}
                                         @ onClick {this.handleAddItem}
                                         + Add
                                     < DataList
@@ -178,9 +219,17 @@ module
                                         @ items {this.state.workItems}
                                         @ onEdit {this.handleEditItem}
                                         @ onRemove {this.handleRemoveItem}
+        $append styles_aphrodite
+            { root
+                @ border "1px solid #ff0000"
+                @ padding "20px"
+            { add
+                @ color "green"
+        $*
         $append styles
             styled StyledRoot .div
                 border 1px solid #ff0000
                 padding 20px
             styled StyledAdd .button
                 color green
+        *$

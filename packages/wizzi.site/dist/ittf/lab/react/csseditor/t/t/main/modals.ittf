@@ -1,0 +1,20 @@
+$group
+
+    < FlexibleModal 
+        @ isOpen {this.state.editHtmlModalOpen}
+        @ onRequestClose {this.handleEditHtmlClose}
+        @ className {"my-modal-custom-class"}
+        @ initWidth {800}
+        @ initHeight {400}
+        h1 
+            + Edit sample html
+        div
+            < ReactAce 
+                @ mode {'html'}
+                @ code {this.state.htmlEdit}
+                @ onChange {this.handleEditHtmlChange}
+        div
+            button
+                @ onClick {this.handleEditHtmlClose}
+                + Close
+

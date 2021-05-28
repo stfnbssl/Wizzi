@@ -6,7 +6,7 @@ module
             props: [
                 { name: "children", type: "node" },
             ],
-            styled: true
+            // styled: true
         }
 
     v08/react/function(&md)

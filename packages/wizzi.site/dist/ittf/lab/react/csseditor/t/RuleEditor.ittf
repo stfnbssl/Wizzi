@@ -1,0 +1,164 @@
+$group
+
+    react RuleEditor
+    
+        ctor
+            set this.state
+                {
+                    @ rule ''
+                    @ category 'box'
+                    @ values null
+                    
+        did-mount
+            const selectedRule = this.props.ruleData[0]
+            const values = {}
+            _ this.props.ruleData.map
+                =>
+                    param rule
+                    set values[rule.name] = {}
+                    _ this.props.cssDefs.categories.map
+                        =>
+                            param cat
+                            _ cat.styles.map
+                                =>
+                                    param style
+                                    if rule.styles[style.name] && rule.styles[style.name].length > 0
+                                        set values[rule.name][style.name] = rule.styles[style.name]
+                                    else
+                                        set values[rule.name][style.name] = ''
+            log 'ctor.values', values            
+            _ this.setState
+                {
+                    @ rule selectedRule.name
+                    @ category 'box'
+                    @ values values
+                =>
+                    _ this.props.onChange
+                        @ this.state.values
+
+        => handleChange
+            param ev
+            log 'ev.target.type', ev.target.type
+            if ev.target.type == 'text' || ev.target.type == 'select-one'
+                _ this.setState
+                    =>
+                        param state
+                        var newState = Object.assign({}, state)
+                        var styleValues = newState.values[state.rule]
+                        if !styleValues
+                            # rule (for className) has been added editing htmlData
+                            set styleValues = {}
+                            set newState.values[state.rule] = styleValues
+                        set styleValues[ev.target.name] = ev.target.value
+                        _ this.props.onChange
+                            @ newState.values
+                        return newState
+                        
+        => handleChangeRule
+            param ev
+            _ this.setState
+                =>
+                    param state
+                    return
+                        {
+                            @ rule ev.target.value
+
+        => handleChangeCategory
+            param ev
+            _ this.setState
+                =>
+                    param state
+                    return
+                        {
+                            @ category ev.target.value
+
+        render
+            if !this.state.values
+                return
+                    h1 
+                        + ...loading...
+            
+            const category
+                _ this.props.cssDefs.categories.find
+                    =>
+                        param cat
+                        return cat.name === this.state.category
+
+            # log 'selected category', category
+            return
+                div
+                    div
+                        fieldset
+                            label Rule
+                                style {{ width: '100px', display: 'inline-block' }}
+                            select
+                                style {{ width: '150px' }}
+                                @ onChange {this.handleChangeRule}
+                                @ value {this.state.rule}
+                                {
+                                    _ this.props.ruleData.map
+                                        =>
+                                            param rule
+                                            param ndx 
+                                            option
+                                                @ key {ndx}
+                                                @ value {rule.name}
+                                                + {rule.name}
+                    div
+                        fieldset
+                            label Style category
+                                style {{ width: '100px', display: 'inline-block' }}
+                            select
+                                style {{ width: '150px' }}
+                                @ onChange {this.handleChangeCategory}
+                                @ value {this.state.category}
+                                {
+                                    _ this.props.cssDefs.categories.map
+                                        =>
+                                            param cat
+                                            param ndx 
+                                            option
+                                                @ key {ndx}
+                                                @ value {cat.name}
+                                                + {cat.name}
+                    {
+                        _ category.styles.map
+                            =>
+                                param style
+                                param ndx 
+                                div
+                                    @ key {ndx}
+                                    fieldset
+                                        label
+                                            style {{ width: '100px', display: 'inline-block' }}
+                                            + {style.name}
+                                        {
+                                            &&
+                                                + Array.isArray(style.enum)
+                                                select
+                                                    style {{ width: '150px' }}
+                                                    name {style.name}
+                                                    value {this.state.values[this.state.rule][style.name]}
+                                                    @ onChange {this.handleChange}
+                                                    {
+                                                        _ style.enum.map
+                                                            =>
+                                                                param val
+                                                                param ndx 
+                                                                option
+                                                                    @ key {ndx}
+                                                                    @ value {val}
+                                                                    + {val}
+                                        {
+                                            &&
+                                                + Array.isArray(style.enum) == false
+                                                input
+                                                    style {{ width: '150px' }}
+                                                    type 'text'
+                                                    name {style.name}
+                                                    value {this.state.values[this.state.rule][style.name]}
+                                                    @ onChange {this.handleChange}
+                        
+                
+                        
+

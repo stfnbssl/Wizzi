@@ -52,8 +52,9 @@ $group
             @types/escape-html "^1.0.1"
         $if wzCtx.Build.utils.useGitUrlParse
             @types/git-url-parse "^9.0.0"
-        $if wzCtx.Build.express.useHelmet
-            @types/helmet "^4.0.0"
+        $if wzCtx.Build.useExpress
+            $if wzCtx.Build.express.useHelmet
+                @types/helmet "^4.0.0"
         $if wzCtx.Build.useJest
             @types/jest "^26.0.15"
         $if wzCtx.Build.utils.useJsCookie
@@ -89,7 +90,7 @@ $group
                 @types/passport-local "^1.0.33"
             $if wzCtx.Build.authentication.useGithub
                 @types/passport-github2 "^1.2.4"
-        $if wzCtx.Build.styles.usePalx
+        $if wzCtx.Build.styles.usePalx || wzCtx.Build.useStorybook
             @types/palx "^1.0.1"
         $if wzCtx.Build.usePrettier
             @types/prettier "^2.0.0"
@@ -102,13 +103,20 @@ $group
                 $if wzCtx.Build.react.useV16
                     @types/react "^16.8.2"
                     @types/react-dom "^16.8.0"
-                $else
+                $if wzCtx.Build.react.useV17
                     @types/react "^17.0.3"
                     @types/react-dom "^17.0.3"
+                $else
+                    @types/react "^17.0.6"
+                    @types/react-dom "^17.0.6"
+                $if wzCtx.Build.react.useDate
+                    @types/react-datepicker "latest"
                 $if wzCtx.Build.react.useRedux
                     @types/react-redux "^7.0.1"
                 $if wzCtx.Build.react.useRouter
                     @types/react-router-dom "^4.3.1"
+                $if wzCtx.Build.react.useSelect
+                    @types/react-select "latest"
                 $if wzCtx.Build.react.useTextareaAutosize
                     @types/react-textarea-autosize "^4.3.3"
                 $if wzCtx.Build.react.useVirtualized
@@ -139,10 +147,12 @@ $group
         babel-jest "^23.4.2"
     $if wzCtx.Build.useBabel || wzCtx.Build.useWebpack
         babel-loader "^8.2.2"
-    $if (wzCtx.Build.useBabel || wzCtx.Build.useWebpack) && wzCtx.Build.utils.useLodash
-        babel-plugin-lodash "^3.3.4"
     $if wzCtx.Build.useBabel || wzCtx.Build.useWebpack
         babel-plugin-add-module-exports "^1.0.4"
+    $if wzCtx.Build.isClientServer
+        babel-plugin-file-loader "latest"
+    $if (wzCtx.Build.useBabel || wzCtx.Build.useWebpack) && wzCtx.Build.utils.useLodash
+        babel-plugin-lodash "^3.3.4"
     $if wzCtx.Build.useBabel
         $if wzCtx.Build.useWebpack
             $if wzCtx.Build.webpack.useCodeSplitting
@@ -156,9 +166,8 @@ $group
         css-loader "^5.0.1"
         $if wzCtx.Build.useTypescript
             css-modules-typescript-loader "^4.0.1"
-    $if wzCtx.Build.useWebpack
-        $if wzCtx.Build.webpack.useEnv
-            env-cmd "^10.1.0"
+    $if wzCtx.Build.useEnvCmd
+        env-cmd "^10.1.0"
     $if wzCtx.Build.useTest && wzCtx.Build.test.useEnzime
         enzyme "^3.3.0"
         enzyme-adapter-react-16 "^1.1.1"

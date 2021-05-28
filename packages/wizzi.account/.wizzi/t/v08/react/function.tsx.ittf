@@ -50,6 +50,11 @@ $group
                     $ if (prop.xdefault) { defaultProps.push(prop); }
                     $include setPropType
     +
+    $if md.aphrodite
+        const styles
+            _ StyleSheet.create
+                {
+                    $hook styles_aphrodite
     $hook styles
     export
         const ${md.name}
@@ -57,9 +62,12 @@ $group
                 :param
                     :ref ${md.name}Props
             =>
-                {
-                    $foreach prop in myProps
-                        @ ${prop.name}
+                $if md.connected
+                    param props
+                $else
+                    {
+                        $foreach prop in myProps
+                            @ ${prop.name}
                 $hook
     $if defaultProps.length > 0
         set ${md.name}.defaultProps

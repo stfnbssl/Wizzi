@@ -1,0 +1,92 @@
+html
+
+    $include wzctx/react.init
+    
+    $
+        wzCtx.title = 'React css editor sample';
+        wzCtx.Build.react.useStyledComponents = true;
+        wzCtx.Build.react.useTransitionGroup = true;
+        wzCtx.Build.useAce = true;
+        wzCtx.Build.mainJs = './main.js.ittf';
+        wzCtx.Build.mainCss = './main.css.ittf';
+
+    html/pages/basic(&wzCtx)
+
+        $append head-styles
+            @style 
+                type text-css
+                data-noprefix 
+                class demo-styles
+                id demo_styles
+                contenteditable true
+
+        $append body-scripts
+            script
+                type text/babel
+                module
+                    kind react
+
+                    $include g/js/wz/react/Resize
+                    $include g/js/wz/react/Modal
+                    $include g/js/wz/react/ReactAce
+                    $include cssDefs
+                    $include samplesData
+                    $include RuleEditor
+                    $include Main
+                    $include StyleSample
+
+                    const styles
+                        [
+                            {
+                                @ name 'padding'
+                            {
+                                @ name 'background'
+
+                    const Hello
+                        _ styled.div
+                            => 
+                                param props
+                                (
+                                    { 
+                                        @ background props.background
+                                        @ padding props.padding
+
+                    function App
+                        param props
+
+                        return
+                            div
+                                style {{ background: '#cacaca', width: '100%'}}
+                                $*
+                                < Hello
+                                    @ {...props}
+                                    + Hello
+                                *$
+                                < StyleSample
+
+                    $*
+                    _ document.addEventListener
+                        @ "DOMContentLoaded"
+                        =>
+                    *$
+                    _ ReactDOM.render
+                        < App
+                            @ padding '4px'
+                            @ background '#ff0000'
+                        _ document.getElementById
+                            @ 'root'
+
+
+        html/layouts/lab(&wzCtx)
+
+            # root
+
+            h2 References
+
+            div
+                a CSS Schema Store
+                    href https://www.schemastore.org/css/
+            div
+                a Json CSSSchema
+                    href https://github.com/rcorp/css-schema
+

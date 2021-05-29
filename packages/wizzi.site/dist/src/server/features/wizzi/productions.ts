@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\wizzi\productions.ts.ittf
-    utc time: Fri, 28 May 2021 20:54:57 GMT
+    utc time: Sat, 29 May 2021 11:12:38 GMT
 */
 import path from 'path';
 import fs from 'fs';
@@ -36,12 +36,12 @@ export async function mTreeDebugInfo(filePath: string, files: packiTypes.PackiFi
         );
 }
 
-export async function generateArtifact(filePath: string, files: packiTypes.PackiFiles):  Promise<GeneratedArtifact> {
+export async function generateArtifact(filePath: string, files: packiTypes.PackiFiles, context?: any, options?: any):  Promise<GeneratedArtifact> {
 
     return new Promise(async (resolve, reject) => {
         
-            const generator = generatorFor(filePath);
-            console.log('wizzi.productions.using artifact generator', generator);
+            const generator = options && options.generator ? options.generator : generatorFor(filePath);
+            console.log('wizzi.productions.generateArtifact.using artifact generator', generator);
             if (generator) {
                 let jsonwf: any = {};
                 let context: any = {};
@@ -89,11 +89,11 @@ export async function generateArtifact(filePath: string, files: packiTypes.Packi
         );
 }
 
-export async function generateArtifactFs(filePath: string, context?: any):  Promise<GeneratedArtifact> {
+export async function generateArtifactFs(filePath: string, context?: any, options?: any):  Promise<GeneratedArtifact> {
 
     return new Promise(async (resolve, reject) => {
         
-            const generator = generatorFor(filePath);
+            const generator = options && options.generator ? options.generator : generatorFor(filePath);
             if (generator) {
                 console.log('wizzi.productions.using artifact generator', generator);
                 const wf = await createFilesystemFactory();

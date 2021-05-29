@@ -10,6 +10,7 @@ $group
                             {
                                 @ name 'display'
                                 [ enum
+                                    @ ''
                                     @ "inline" 
                                     @ "table-row-group" 
                                     @ "table-row" 
@@ -29,15 +30,52 @@ $group
                                     @ "flex" 
                                     @ "compact" 
                                     @ "block" 
-
                             {
                                 @ name 'flex-direction'
+                                [ enum
+                                    @ ''
+                                    @ 'column'
+                                    @ 'column-reverse'
+                                    @ 'row'
+                                    @ 'row-reverse'
                             {
                                 @ name 'justify-content'
-                            {
-                                @ name 'align-items'
+                                [ enum
+                                    @ ''
+                                    @ 'flex-start'
+                                    @ 'space-between'
+                                    @ 'space-around'
+                                    @ 'flex-end'
+                                    @ 'center'                                    
                             {
                                 @ name 'align-content'
+                                [ enum
+                                    @ ''
+                                    @ 'stretch'
+                                    @ 'space-between'
+                                    @ 'space-around'
+                                    @ 'flex-start'
+                                    @ 'flex-end'
+                                    @ 'center'
+                            {
+                                @ name 'align-items'
+                                [ enum
+                                    @ ''
+                                    @ 'stretch'
+                                    @ 'flex-start'
+                                    @ 'flex-end'
+                                    @ 'center'
+                                    @ 'baseline'
+                            {
+                                @ name 'align-self'
+                                [ enum
+                                    @ ''
+                                    @ 'auto'
+                                    @ 'stretch'
+                                    @ 'flex-start'
+                                    @ 'flex-end'
+                                    @ 'center'
+                                    @ 'baseline'
                     {
                         @ name 'layout'
                         [ styles
@@ -47,10 +85,40 @@ $group
                                 @ name 'margin'
                             {
                                 @ name 'position'
+                                [ enum
+                                    @ ''
+                                    @ 'static'
+                                    @ 'sticky '
+                                    @ 'relative'
+                                    @ 'page'
+                                    @ 'fixed'
+                                    @ 'center'
+                                    @ 'absolute'
                             {
                                 @ name 'height'
                             {
+                                @ name 'min-height'
+                            {
+                                @ name 'max-height'
+                            {
                                 @ name 'width'
+                            {
+                                @ name 'min-width'
+                            {
+                                @ name 'max-width'
+                            {
+                                @ name 'overflow'
+                            {
+                                @ name 'overflow-wrap'
+                                [ enum
+                                    @ ''
+                                    @ 'normal'
+                                    @ 'break-word'
+                            {
+                                @ name 'overflow-x'
+                            {
+                                @ name 'overflow-y'
+
                     {
                         @ name 'colors'
                         [ styles
@@ -62,6 +130,32 @@ $group
                                 @ name 'opacity'
                             {
                                 @ name 'border'
+                            {
+                                @ name 'outline-color'
+                                @ isColor true
+                            {
+                                @ name 'outline-offset'
+                            {
+                                @ name 'outline-style'
+                                [ enum
+                                    @ ''
+                                    @ 'none'
+                                    @ 'solid'
+                                    @ 'ridge'
+                                    @ 'outset'
+                                    @ 'inset'
+                                    @ 'groove'
+                                    @ 'double'
+                                    @ 'dotted'
+                                    @ 'dashed'
+                                    @ 'auto'
+                            {
+                                @ name 'outline-width'
+                                [ enum
+                                    @ ''
+                                    @ 'medium'
+                                    @ 'thin'
+                                    @ 'thick'
                     {
                         @ name 'text'
                         [ styles
@@ -79,6 +173,15 @@ $group
                                 @ name 'text-shadow'
                             {
                                 @ name 'text-align'
+                                [ enum
+                                    @ ''
+                                    @ 'start'
+                                    @ 'right'
+                                    @ 'left'
+                                    @ 'match-parent'
+                                    @ 'justify'
+                                    @ 'end'
+                                    @ 'center'
                             {
                                 @ name 'line-height'
                             {
@@ -86,3 +189,1134 @@ $group
                             {
                                 @ name 'letter-spacing'
 
+    $*
+ittf
+    name
+    value 1__________2
+    aaaa
+    bbbb
+    {
+        @ name 'align-content'
+        [ enum
+            @ ''
+            @ 'stretch'
+            @ 'space-between'
+            @ 'space-around'
+            @ 'flex-start'
+            @ 'flex-end'
+            @ 'center'
+    {
+        @ name 'align-items'
+        [ enum
+            @ ''
+            @ 'stretch'
+            @ 'flex-start'
+            @ 'flex-end'
+            @ 'center'
+            @ 'baseline'
+    {
+        @ name 'align-self'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'stretch'
+            @ 'flex-start'
+            @ 'flex-end'
+            @ 'center'
+            @ 'baseline'
+    {
+        @ name 'all'
+        [ enum
+            @ ''
+            @ 'initial'
+            @ 'unset'
+            @ 'inherit'
+    {
+        @ name 'animation-delay'
+    {
+        @ name 'animation-direction'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'reverse'
+            @ 'alternate-reverse'
+            @ 'alternate'
+    {
+        @ name 'animation-duration'
+    {
+        @ name 'animation-fill-mode'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'forwards'
+            @ 'both'
+            @ 'backwards'
+    {
+        @ name 'animation-iteration-count'
+        [ enum
+            @ ''
+            @ '1'
+            @ 'infinite'
+    {
+        @ name 'animation-name'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'animation-play-mode'
+        [ enum
+            @ ''
+            @ 'running'
+            @ 'paused'
+    {
+        @ name 'animation-timing-function'
+        [ enum
+            @ ''
+            @ 'ease'
+            @ 'step-start'
+            @ 'step-end'
+            @ 'linear'
+            @ 'ease-out'
+            @ 'ease-in-out'
+            @ 'ease-in'
+        [ enum
+            @ ''
+            @ 'start'
+            @ 'end'
+    {
+        @ name 'backface-visibility'
+        [ enum
+            @ ''
+            @ 'visible'
+            @ 'hidden'
+    {
+        @ name 'background-attachment'
+        [ enum
+            @ ''
+            @ 'scroll'
+            @ 'local'
+            @ 'fixed'
+    {
+        @ name 'background-clip'
+        [ enum
+            @ ''
+            @ 'border-box'
+            @ 'padding-box'
+            @ 'content-box'
+    {
+        @ name 'background-color'
+    {
+        @ name 'background-image'
+    {
+        @ name 'background-origin'
+        [ enum
+            @ ''
+            @ 'padding-box'
+            @ 'content-box'
+            @ 'border-box'
+    {
+        @ name 'background-position'
+    {
+        @ name 'background-repeat'
+        [ enum
+            @ ''
+            @ 'repeat'
+            @ 'space'
+            @ 'round'
+            @ 'repeat-y'
+            @ 'repeat-x'
+            @ 'repeat no-repeat'
+            @ 'no-repeat'
+    {
+        @ name 'background-size'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'cover'
+            @ 'contain'
+    {
+        @ name 'border-bottom-color'
+        [ enum
+            @ ''
+            @ 'transparent'
+    {
+        @ name 'border-bottom-left-radius'
+    {
+        @ name 'border-bottom-right-radius'
+    {
+        @ name 'border-bottom-style'
+    {
+        @ name 'border-bottom-width'
+    {
+        @ name 'border-collapse'
+        [ enum
+            @ ''
+            @ 'separate'
+            @ 'collapse'
+    {
+        @ name 'border-color'
+    {
+        @ name 'border-image-outset'
+    {
+        @ name 'border-image-repeat'
+        [ enum
+            @ ''
+            @ 'stretch'
+            @ 'space'
+            @ 'round'
+            @ 'repeat'
+    {
+        @ name 'border-image-slice'
+    {
+        @ name 'border-image-source'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'border-image-width'
+    {
+        @ name 'border-left-color'
+        [ enum
+            @ ''
+            @ 'transparent'
+    {
+        @ name 'border-left-style'
+    {
+        @ name 'border-left-width'
+    {
+        @ name 'border-radius'
+    {
+        @ name 'border-right-color'
+        [ enum
+            @ ''
+            @ 'transparent'
+    {
+        @ name 'border-right-style'
+    {
+        @ name 'border-right-width'
+    {
+        @ name 'border-spacing'
+    {
+        @ name 'border-style'
+    {
+        @ name 'border-top-color'
+        [ enum
+            @ ''
+            @ 'transparent'
+    {
+        @ name 'border-top-left-radius'
+    {
+        @ name 'border-top-right-radius'
+    {
+        @ name 'border-top-style'
+    {
+        @ name 'border-top-width'
+    {
+        @ name 'border-width'
+    {
+        @ name 'bottom'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'box-decoration-break'
+        [ enum
+            @ ''
+            @ 'slice'
+            @ 'clone'
+    {
+        @ name 'box-sizing'
+        [ enum
+            @ ''
+            @ 'content-box'
+            @ 'padding-box'
+            @ 'border-box'
+    {
+        @ name 'break-after'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'right'
+            @ 'page'
+            @ 'left'
+            @ 'column'
+            @ 'avoid-page'
+            @ 'avoid-column'
+            @ 'avoid'
+            @ 'always'
+    {
+        @ name 'break-before'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'right'
+            @ 'page'
+            @ 'left'
+            @ 'column'
+            @ 'avoid-page'
+            @ 'avoid-column'
+            @ 'avoid'
+            @ 'always'
+    {
+        @ name 'break-inside'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'avoid-page'
+            @ 'avoid-column'
+            @ 'avoid'
+    {
+        @ name 'caption-side'
+        [ enum
+            @ ''
+            @ 'top'
+            @ 'bottom'
+    {
+        @ name 'clear'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'right'
+            @ 'left'
+            @ 'both'
+    {
+        @ name 'clear-after'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'top'
+            @ 'start'
+            @ 'right'
+            @ 'outside'
+            @ 'left'
+            @ 'inside'
+            @ 'end'
+            @ 'descendants'
+            @ 'bottom'
+            @ 'both'
+    {
+        @ name 'clip'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'color'
+    {
+        @ name 'column-count'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'column-fill'
+        [ enum
+            @ ''
+            @ 'balance'
+            @ 'auto'
+    {
+        @ name 'column-gap'
+        [ enum
+            @ ''
+            @ 'normal'
+    {
+        @ name 'column-rule-color'
+    {
+        @ name 'column-rule-style'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'solid'
+            @ 'ridge'
+            @ 'outset'
+            @ 'inset'
+            @ 'hidden'
+            @ 'groove'
+            @ 'double'
+            @ 'dotted'
+            @ 'dashed'
+    {
+        @ name 'column-rule-width'
+        [ enum
+            @ ''
+            @ 'medium'
+            @ 'thin'
+            @ 'thick'
+    {
+        @ name 'column-span'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'all'
+    {
+        @ name 'column-width'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'content'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'open-quote'
+            @ 'none'
+            @ 'no-open-quote'
+            @ 'no-close-quote'
+            @ 'icon'
+            @ 'close-quote'
+    {
+        @ name 'counter-increment'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'counter-reset'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'cursor'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'zoom-out'
+            @ 'zoom-in'
+            @ 'wait'
+            @ 'w-resize'
+            @ 'vertical-text'
+            @ 'text'
+            @ 'sw-resize'
+            @ 'se-resize'
+            @ 's-resize'
+            @ 'row-resize'
+            @ 'progress'
+            @ 'pointer'
+            @ 'nwse-resize'
+            @ 'nw-resize'
+            @ 'ns-resize'
+            @ 'not-allowed'
+            @ 'none'
+            @ 'no-drop'
+            @ 'nesw-resize'
+            @ 'ne-resize'
+            @ 'n-resize'
+            @ 'move'
+            @ 'help'
+            @ 'ew-resize'
+            @ 'e-resize'
+            @ 'default'
+            @ 'crosshair'
+            @ 'copy'
+            @ 'context-menu'
+            @ 'col-resize'
+            @ 'cell'
+            @ 'all-scroll'
+            @ 'alias'
+    {
+        @ name 'display'
+        [ enum
+            @ ''
+            @ 'inline'
+            @ 'table-row-group'
+            @ 'table-row'
+            @ 'table-header-group'
+            @ 'table-footer-group'
+            @ 'table-column-group'
+            @ 'table-column'
+            @ 'table-cell'
+            @ 'table-caption'
+            @ 'table'
+            @ 'run-in'
+            @ 'none'
+            @ 'list-item'
+            @ 'inline-table'
+            @ 'inline-flex'
+            @ 'inline-block'
+            @ 'flex'
+            @ 'compact'
+            @ 'block'
+    {
+        @ name 'empty-cells'
+        [ enum
+            @ ''
+            @ 'show'
+            @ 'hide'
+    {
+        @ name 'flex-basis'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'flex-direction'
+        [ enum
+            @ ''
+            @ 'row'
+            @ 'row-reverse'
+            @ 'column-reverse'
+            @ 'column'
+    {
+        @ name 'flex-grow'
+    {
+        @ name 'flex-shrink'
+    {
+        @ name 'flex-wrap'
+        [ enum
+            @ ''
+            @ 'nowrap'
+            @ 'wrap-reverse'
+            @ 'wrap'
+    {
+        @ name 'float'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'right'
+            @ 'left'
+    {
+        @ name 'font-family'
+    {
+        @ name 'font-kerning'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'normal'
+            @ 'none'
+    {
+        @ name 'font-size'
+        [ enum
+            @ ''
+            @ 'medium'
+            @ 'xx-small'
+            @ 'xx-large'
+            @ 'x-small'
+            @ 'x-large'
+            @ 'smaller'
+            @ 'small'
+            @ 'larger'
+            @ 'large'
+    {
+        @ name 'font-size-adjust'
+    {
+        @ name 'font-stretch'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'ultra-expanded'
+            @ 'ultra-condensed'
+            @ 'semi-expanded'
+            @ 'semi-condensed'
+            @ 'extra-expanded'
+            @ 'extra-condensed'
+            @ 'expanded'
+            @ 'condensed'
+    {
+        @ name 'font-style'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'oblique'
+            @ 'italic'
+    {
+        @ name 'font-synthesis'
+        [ enum
+            @ ''
+            @ 'weight style'
+            @ 'weight'
+            @ 'style'
+            @ 'none'
+    {
+        @ name 'font-variant'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'unicase'
+            @ 'titling-caps'
+            @ 'small-caps'
+            @ 'petite-caps'
+            @ 'all-small-caps'
+            @ 'all-petite-caps'
+    {
+        @ name 'font-variant-caps'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'unicase'
+            @ 'titling-caps'
+            @ 'small-caps'
+            @ 'petite-caps'
+            @ 'all-small-caps'
+            @ 'all-petite-caps'
+    {
+        @ name 'font-weight'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'lighter'
+            @ 'bolder'
+            @ 'bold'
+            @ '900'
+            @ '800'
+            @ '700'
+            @ '600'
+            @ '500'
+            @ '400'
+            @ '300'
+            @ '200'
+            @ '100'
+    {
+        @ name 'hanging-punctuation'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'last force-end'
+            @ 'last allow-end'
+            @ 'last'
+            @ 'force-end'
+            @ 'first force-end'
+            @ 'first allow-end'
+            @ 'first'
+            @ 'allow-end'
+    {
+        @ name 'height'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'hyphens'
+        [ enum
+            @ ''
+            @ 'manual'
+            @ 'none'
+            @ 'auto'
+    {
+        @ name 'icon'
+    {
+        @ name 'image-orientation'
+    {
+        @ name 'image-resolution'
+        [ enum
+            @ ''
+            @ '1dppx'
+            @ 'from-image'
+    {
+        @ name 'integer'
+    {
+        @ name 'justify-content'
+        [ enum
+            @ ''
+            @ 'flex-start'
+            @ 'space-between'
+            @ 'space-around'
+            @ 'flex-end'
+            @ 'center'
+    {
+        @ name 'left'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'letter-spacing'
+        [ enum
+            @ ''
+            @ 'normal'
+    {
+        @ name 'line-break'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'strict'
+            @ 'normal'
+            @ 'loose'
+    {
+        @ name 'line-height'
+        [ enum
+            @ ''
+            @ 'normal'
+    {
+        @ name 'list-style-image'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'list-style-position'
+        [ enum
+            @ ''
+            @ 'outside'
+            @ 'inside'
+    {
+        @ name 'list-style-type'
+        [ enum
+            @ ''
+            @ 'disc'
+            @ 'upper-roman'
+            @ 'upper-latin'
+            @ 'upper-alpha'
+            @ 'square'
+            @ 'none'
+            @ 'lower-roman'
+            @ 'lower-latin'
+            @ 'lower-greek'
+            @ 'lower-alpha'
+            @ 'georgian'
+            @ 'decimal-leading-zero'
+            @ 'decimal'
+            @ 'circle'
+            @ 'armenian'
+    {
+        @ name 'margin-bottom'
+    {
+        @ name 'margin-left'
+    {
+        @ name 'margin-right'
+    {
+        @ name 'margin-top'
+    {
+        @ name 'max-height'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'max-width'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'min-height'
+        [ enum
+            @ ''
+            @ '0'
+            @ 'auto'
+    {
+        @ name 'min-width'
+        [ enum
+            @ ''
+            @ '0'
+            @ 'auto'
+    {
+        @ name 'object-fit'
+        [ enum
+            @ ''
+            @ 'fill'
+            @ 'scale-down'
+            @ 'none'
+            @ 'cover'
+            @ 'contain'
+    {
+        @ name 'object-position'
+    {
+        @ name 'opacity'
+    {
+        @ name 'orphans'
+    {
+        @ name 'outline-color'
+        [ enum
+            @ ''
+            @ 'invert'
+    {
+        @ name 'outline-offset'
+        [ enum
+            @ ''
+            @ '0'
+    {
+        @ name 'outline-style'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'solid'
+            @ 'ridge'
+            @ 'outset'
+            @ 'inset'
+            @ 'groove'
+            @ 'double'
+            @ 'dotted'
+            @ 'dashed'
+            @ 'auto'
+    {
+        @ name 'outline-width'
+        [ enum
+            @ ''
+            @ 'medium'
+            @ 'thin'
+            @ 'thick'
+    {
+        @ name 'overflow'
+    {
+        @ name 'overflow-wrap'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'break-word'
+    {
+        @ name 'overflow-x'
+    {
+        @ name 'overflow-y'
+    {
+        @ name 'padding-bottom'
+    {
+        @ name 'padding-left'
+    {
+        @ name 'padding-right'
+    {
+        @ name 'padding-top'
+    {
+        @ name 'page-break-after'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'right'
+            @ 'left'
+            @ 'avoid'
+            @ 'always'
+    {
+        @ name 'page-break-before'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'right'
+            @ 'left'
+            @ 'avoid'
+            @ 'always'
+    {
+        @ name 'page-break-inside'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'avoid'
+    {
+        @ name 'perspective'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'perspective-origin'
+    {
+        @ name 'pointer-events'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'none'
+    {
+        @ name 'position'
+        [ enum
+            @ ''
+            @ 'static'
+            @ 'sticky '
+            @ 'relative'
+            @ 'page'
+            @ 'fixed'
+            @ 'center'
+            @ 'absolute'
+    {
+        @ name 'quotes'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'resize'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'vertical'
+            @ 'horizontal'
+            @ 'alwbothays'
+    {
+        @ name 'right'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'tab-size'
+    {
+        @ name 'table-layout'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'fixed'
+    {
+        @ name 'text-align'
+        [ enum
+            @ ''
+            @ 'start'
+            @ 'right'
+            @ 'left'
+            @ 'match-parent'
+            @ 'justify'
+            @ 'end'
+            @ 'center'
+    {
+        @ name 'text-align-last'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'start'
+            @ 'right'
+            @ 'left'
+            @ 'justify'
+            @ 'end'
+            @ 'center'
+    {
+        @ name 'text-combine-horizontal'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'all'
+    {
+        @ name 'text-decoration-line'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'underline'
+            @ 'overline'
+            @ 'line-through'
+            @ 'blink'
+    {
+        @ name 'text-decoration-position'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'under right'
+            @ 'under left'
+            @ 'under'
+            @ 'right'
+            @ 'left'
+    {
+        @ name 'text-decoration-skip'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'spaces'
+            @ 'objects'
+            @ 'ink'
+            @ 'edges'
+            @ 'box-decoration'
+    {
+        @ name 'text-decoration-style'
+        [ enum
+            @ ''
+            @ 'solid'
+            @ 'wavy'
+            @ 'double'
+            @ 'dotted'
+            @ 'dashed'
+    {
+        @ name 'text-emphasis-color'
+    {
+        @ name 'text-emphasis-position'
+        [ enum
+            @ ''
+            @ 'over right'
+            @ 'over left'
+            @ 'below right'
+            @ 'below left'
+    {
+        @ name 'text-emphasis-style'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'triangle'
+            @ 'sesame'
+            @ 'open'
+            @ 'filled'
+            @ 'double-circle'
+            @ 'dot'
+            @ 'circle'
+    {
+        @ name 'text-indent'
+        [ enum
+            @ ''
+            @ '0'
+        [ enum
+            @ ''
+            @ '%'
+    {
+        @ name 'text-justify'
+        [ enum
+            @ ''
+            @ 'auto'
+            @ 'none'
+            @ 'inter-word'
+            @ 'distribute'
+    {
+        @ name 'text-orientation'
+        [ enum
+            @ ''
+            @ 'mixed'
+            @ 'use-glyph-orientation'
+            @ 'upright'
+            @ 'sideways-right'
+            @ 'sideways-left'
+            @ 'sideways'
+    {
+        @ name 'text-overflow'
+        [ enum
+            @ ''
+            @ 'clip'
+            @ 'ellipsis'
+    {
+        @ name 'text-shadow'
+        [ enum
+            @ ''
+            @ 'none'
+    {
+        @ name 'text-transform'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'uppercase'
+            @ 'lowercase'
+            @ 'full-width'
+            @ 'capitalize'
+    {
+        @ name 'top'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'transform'
+        [ enum
+            @ ''
+            @ 'none'
+        [ enum
+            @ ''
+            @ 'deg'
+            @ 'grad'
+            @ 'rad'
+            @ 'turn'
+        [ enum
+            @ ''
+            @ 'deg'
+            @ 'grad'
+            @ 'rad'
+            @ 'turn'
+        [ enum
+            @ ''
+            @ 'deg'
+            @ 'grad'
+            @ 'rad'
+            @ 'turn'
+        [ enum
+            @ ''
+            @ 'deg'
+            @ 'grad'
+            @ 'rad'
+            @ 'turn'
+        [ enum
+            @ ''
+            @ 'deg'
+            @ 'grad'
+            @ 'rad'
+            @ 'turn'
+        [ enum
+            @ ''
+            @ 'deg'
+            @ 'grad'
+            @ 'rad'
+            @ 'turn'
+    {
+        @ name 'transform-origin'
+    {
+        @ name 'transform-style'
+        [ enum
+            @ ''
+            @ 'flat'
+            @ 'preserve-3d'
+    {
+        @ name 'transition-duration'
+    {
+        @ name 'transition-property'
+        [ enum
+            @ ''
+            @ 'none'
+            @ 'all'
+    {
+        @ name 'transition-timing-function'
+        [ enum
+            @ ''
+            @ 'ease'
+            @ 'step-start'
+            @ 'step-end'
+            @ 'linear'
+            @ 'ease-out'
+            @ 'ease-in-out'
+            @ 'ease-in'
+        [ enum
+            @ ''
+            @ 'start'
+            @ 'end'
+    {
+        @ name 'unicode-bidi'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'embed'
+            @ 'bidi-override'
+    {
+        @ name 'vertical-align'
+        [ enum
+            @ ''
+            @ 'baseline'
+            @ 'top'
+            @ 'text-top'
+            @ 'text-bottom'
+            @ 'super'
+            @ 'sub'
+            @ 'middle'
+            @ 'bottom'
+        [ enum
+            @ ''
+            @ '%'
+    {
+        @ name 'visibility'
+        [ enum
+            @ ''
+            @ 'visible'
+            @ 'hidden'
+            @ 'collapse'
+    {
+        @ name 'white-space'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'pre-wrap'
+            @ 'pre-line'
+            @ 'pre'
+            @ 'nowrap'
+    {
+        @ name 'widows'
+    {
+        @ name 'width'
+        [ enum
+            @ ''
+            @ 'auto'
+    {
+        @ name 'word-break'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'keep-all'
+            @ 'break-all'
+    {
+        @ name 'word-spacing'
+        [ enum
+            @ ''
+            @ 'normal'
+        [ enum
+            @ ''
+            @ '%'
+    {
+        @ name 'word-wrap'
+        [ enum
+            @ ''
+            @ 'normal'
+            @ 'break-word'
+    {
+        @ name 'writing-mode'
+        [ enum
+            @ ''
+            @ 'horizontal-tb'
+            @ 'vertical-rl'
+            @ 'vertical-lr'
+    {
+        @ name 'z-index'
+        [ enum
+            @ ''
+            @ 'auto'
+    *$    

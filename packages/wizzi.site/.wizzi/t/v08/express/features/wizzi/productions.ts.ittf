@@ -80,6 +80,12 @@ $group
                     :string
                 param files
                     :ref packiTypes.PackiFiles
+                param context
+                    :any
+                    :optional
+                param options
+                    :any
+                    :optional
                 :return
                     :ref Promise
                         :param
@@ -89,8 +95,8 @@ $group
                         async=>
                             param resolve
                             param reject
-                            const generator = generatorFor(filePath)
-                            log 'wizzi.productions.using artifact generator', generator
+                            const generator = options && options.generator ? options.generator : generatorFor(filePath)
+                            log 'wizzi.productions.generateArtifact.using artifact generator', generator
                             if generator
                                 let jsonwf
                                     :any
@@ -159,6 +165,9 @@ $group
             param context
                 :any
                 :optional
+            param options
+                :any
+                :optional
             :return
                 :ref Promise
                     :param
@@ -168,7 +177,7 @@ $group
                     async=>
                         param resolve
                         param reject
-                        const generator = generatorFor(filePath)
+                        const generator = options && options.generator ? options.generator : generatorFor(filePath)
                         if generator
                             log 'wizzi.productions.using artifact generator', generator
                             const wf

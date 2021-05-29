@@ -1,0 +1,23 @@
+$group
+
+    => handleHelpRequest
+        param ev
+        log 'handleHelpRequest.ev.target', ev.target
+        const href
+            _ getCssPropertyHelpHRef
+                @ ev.target.name
+        if href
+            _ this.setState
+                {
+                    @ helpModalOpen true
+                    @ helpHRef href
+                    @ helpTitle ev.target.name
+        else
+            _ alert
+                @ 'Help not found for property ' + ev.target.name
+
+    => handleHelpClose
+        _ this.setState
+            {
+                @ helpModalOpen false
+

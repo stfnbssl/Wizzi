@@ -14,9 +14,11 @@ ittf
                 $foreach item in mpage.properties[prop].oneOf
                     $if item.enum
                         [ enum
+                            @ ''
                             $foreach ev in item.enum
-                                @ ${ev}
+                                @ '${ev}'
             $elif mpage.properties[prop].enum
                 [ enum
+                    @ ''
                     $foreach ev in mpage.properties[prop].enum
-                        @ ${ev}
+                        @ '${ev}'

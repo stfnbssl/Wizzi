@@ -1,8 +1,44 @@
 $group
 	$params &wzCtx
 
+    style
+        . top-nav
+            display flex
+            flex-direction column
+            align-content stretch
+        . banner
+            padding 5px 10px
+            max-height 20px
+            color #fff
+            background #42494f
+        . banner-descr
+            text-align center
+        . top-nav-box
+            display flex
+            justify-content space-between
+            padding 10px
+            height 20px
+            font-weight 100
+        . top-nav-item
+            font-family arial
+            font-size 1.2em    
+
     . h-screen w-screen
 
+        . top-nav
+            . banner
+                . banner-descr
+                    + One machinery many productions
+            . top-nav-box
+                . top-nav-item
+                    a Get started
+                        href #
+                . top-nav-item
+                    a Docs
+                        href #
+                . top-nav-item
+                    a Github
+                        href #
         . p-2
             style height: 5vh
             h1 

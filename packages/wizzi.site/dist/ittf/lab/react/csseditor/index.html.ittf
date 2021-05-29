@@ -30,6 +30,7 @@ html
                     $include g/js/wz/react/Modal
                     $include g/js/wz/react/ReactAce
                     $include cssDefs
+                    $include help
                     $include samplesData
                     $include RuleEditor
                     $include Main

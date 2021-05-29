@@ -8,8 +8,16 @@ $group
                     { 
                         @ display 'flex'
                         @ ['flex-direction'] 'row'
-                        @ border '2px solid red'
                         @ width '100%'
+
+    const RuleContainer
+        _ styled.div
+            => 
+                param props
+                (
+                    { 
+                        @ width '30%'
+                        @ overflow 'auto'
 
     const HtmlPreview
         _ styled.div
@@ -19,8 +27,9 @@ $group
                     { 
                         @ padding '30px'
                         @ background '#fff'
-                        @ border '1px solid gray'
+                        @ border '1px solid #dedede'
                         @ width '50%'
+                        @ overflow 'auto'
 
     const CssPreview
         _ styled.div
@@ -30,7 +39,9 @@ $group
                     { 
                         @ padding '30px'
                         @ background '#aaa'
-                        @ border '1px solid green'
+                        @ border '1px solid #007700'
+                        @ width '30%'
+                        @ overflow 'auto'
 
     $include main/functions
     
@@ -94,6 +105,7 @@ $group
             param values
             const newRuleData = []
             const cssStyles = []
+            const cssStylesIttf = []
             _ this.state.ruleData.map
                 =>
                     param rule
@@ -102,22 +114,25 @@ $group
                             @ name rule.name
                             { styles
                     _ cssStyles.push('.' + rule.name + ' {')
+                    _ cssStylesIttf.push('. ' + rule.name)
                     const styleValues = values[rule.name]
                     _ Object.keys(styleValues).map
                         =>
                             param styleName
                             if styleValues[styleName] && styleValues[styleName].length > 0
                                 _ cssStyles.push('\t' + styleName + ':' + styleValues[styleName] + ';')
+                                _ cssStylesIttf.push('\t' + styleName + ' ' + styleValues[styleName])
                                 set newRuleStyles.styles[styleName] = styleValues[styleName]
                     _ cssStyles.push('}')
                     _ newRuleData.push(newRuleStyles)
             const cssRule = cssStyles.join('\n')
+            const cssRuleIttf = cssStylesIttf.join('\n')
             _ this.setState
                 =>
                     param state
                     return
                         {
-                            @ cssRule cssRule
+                            @ cssRule cssRule + '\n\n' + cssRuleIttf
                             @ values values
             _ this.executeValuesChangeDebounced
                 @ newRuleData

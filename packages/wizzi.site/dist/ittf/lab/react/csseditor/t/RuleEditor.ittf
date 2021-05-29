@@ -10,6 +10,13 @@ $group
                     @ values null
                     
         did-mount
+            _ this.setValues
+
+        did-update
+            if this.props.ruleData != prevProps.ruleData
+                _ this.setValues
+        
+        m setValues
             const selectedRule = this.props.ruleData[0]
             const values = {}
             _ this.props.ruleData.map
@@ -35,7 +42,7 @@ $group
                 =>
                     _ this.props.onChange
                         @ this.state.values
-
+        
         => handleChange
             param ev
             log 'ev.target.type', ev.target.type
@@ -72,6 +79,8 @@ $group
                         {
                             @ category ev.target.value
 
+        $include rule/handlers
+
         render
             if !this.state.values
                 return
@@ -86,78 +95,84 @@ $group
 
             # log 'selected category', category
             return
-                div
+                < React.Fragment
                     div
-                        fieldset
-                            label Rule
-                                style {{ width: '100px', display: 'inline-block' }}
-                            select
-                                style {{ width: '150px' }}
-                                @ onChange {this.handleChangeRule}
-                                @ value {this.state.rule}
-                                {
-                                    _ this.props.ruleData.map
-                                        =>
-                                            param rule
-                                            param ndx 
-                                            option
-                                                @ key {ndx}
-                                                @ value {rule.name}
-                                                + {rule.name}
-                    div
-                        fieldset
-                            label Style category
-                                style {{ width: '100px', display: 'inline-block' }}
-                            select
-                                style {{ width: '150px' }}
-                                @ onChange {this.handleChangeCategory}
-                                @ value {this.state.category}
-                                {
-                                    _ this.props.cssDefs.categories.map
-                                        =>
-                                            param cat
-                                            param ndx 
-                                            option
-                                                @ key {ndx}
-                                                @ value {cat.name}
-                                                + {cat.name}
-                    {
-                        _ category.styles.map
-                            =>
-                                param style
-                                param ndx 
-                                div
-                                    @ key {ndx}
-                                    fieldset
-                                        label
-                                            style {{ width: '100px', display: 'inline-block' }}
-                                            + {style.name}
-                                        {
-                                            &&
-                                                + Array.isArray(style.enum)
-                                                select
-                                                    style {{ width: '150px' }}
-                                                    name {style.name}
-                                                    value {this.state.values[this.state.rule][style.name]}
-                                                    @ onChange {this.handleChange}
-                                                    {
-                                                        _ style.enum.map
-                                                            =>
-                                                                param val
-                                                                param ndx 
-                                                                option
-                                                                    @ key {ndx}
-                                                                    @ value {val}
-                                                                    + {val}
-                                        {
-                                            &&
-                                                + Array.isArray(style.enum) == false
-                                                input
-                                                    style {{ width: '150px' }}
-                                                    type 'text'
-                                                    name {style.name}
-                                                    value {this.state.values[this.state.rule][style.name]}
-                                                    @ onChange {this.handleChange}
+                        div
+                            fieldset
+                                label Rule
+                                    style {{ width: '100px', display: 'inline-block' }}
+                                select
+                                    style {{ width: '150px' }}
+                                    @ onChange {this.handleChangeRule}
+                                    @ value {this.state.rule}
+                                    {
+                                        _ this.props.ruleData.map
+                                            =>
+                                                param rule
+                                                param ndx 
+                                                option
+                                                    @ key {ndx}
+                                                    @ value {rule.name}
+                                                    + {rule.name}
+                        div
+                            fieldset
+                                label Style category
+                                    style {{ width: '100px', display: 'inline-block' }}
+                                select
+                                    style {{ width: '150px' }}
+                                    @ onChange {this.handleChangeCategory}
+                                    @ value {this.state.category}
+                                    {
+                                        _ this.props.cssDefs.categories.map
+                                            =>
+                                                param cat
+                                                param ndx 
+                                                option
+                                                    @ key {ndx}
+                                                    @ value {cat.name}
+                                                    + {cat.name}
+                        {
+                            _ category.styles.map
+                                =>
+                                    param style
+                                    param ndx 
+                                    div
+                                        @ key {ndx}
+                                        fieldset
+                                            label
+                                                style {{ width: '100px', display: 'inline-block' }}
+                                                + {style.name}
+                                            {
+                                                &&
+                                                    + Array.isArray(style.enum)
+                                                    select
+                                                        style {{ width: '150px' }}
+                                                        name {style.name}
+                                                        value {this.state.values[this.state.rule][style.name]}
+                                                        @ onChange {this.handleChange}
+                                                        {
+                                                            _ style.enum.map
+                                                                =>
+                                                                    param val
+                                                                    param ndx 
+                                                                    option
+                                                                        @ key {ndx}
+                                                                        @ value {val}
+                                                                        + {val}
+                                            {
+                                                &&
+                                                    + Array.isArray(style.enum) == false
+                                                    input
+                                                        style {{ width: '150px' }}
+                                                        type 'text'
+                                                        name {style.name}
+                                                        value {this.state.values[this.state.rule][style.name]}
+                                                        @ onChange {this.handleChange}
+                                            button
+                                                @ name {style.name}
+                                                @ onClick {this.handleHelpRequest}
+                                                + ?
+                    $include rule/modals
                         
                 
                         

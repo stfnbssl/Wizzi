@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\middlewares\ittfStatic.ts.ittf
-    utc time: Fri, 28 May 2021 20:54:57 GMT
+    utc time: Sat, 29 May 2021 11:12:38 GMT
 */
 import util from 'util';
 import path from 'path';
@@ -43,11 +43,20 @@ const extContentTypeMap: {
     '.xml': 'text/xml'
  };
 
-function contentTypeFor(file: string):  string | undefined {
+function ittfSchemaOf(file: string):  string | undefined {
 
     const nameParts = path.basename(file).split('.');
     if (nameParts[nameParts.length - 1] === 'ittf') {
-        return extContentTypeMap['.' + nameParts[nameParts.length - 2]];
+        return nameParts[nameParts.length - 2];
+    }
+    return undefined;
+}
+
+function contentTypeFor(file: string):  string | undefined {
+
+    const ittfSchema = ittfSchemaOf(file);
+    if (ittfSchema) {
+        return extContentTypeMap['.' + ittfSchema];
     }
     return undefined;
 }
@@ -99,8 +108,9 @@ function ittfMiddleware(basePath: string, routePath: string):  RequestHandler {
                 console.log('filePath is directory', filePath);
                 return sendFolderScan(filePath, basePath, queryMeta, res);
             }
+            let ittfSchema = ittfSchemaOf(filePath);
             let contentType = contentTypeFor(filePath);
-            console.log('contentType', contentType);
+            console.log('contentType', contentType, 'ittfSchema', ittfSchema, 'queryMeta', queryMeta);
             if (contentType) {
                 if (queryMeta && queryMeta === 'html') {
                     try {
@@ -126,49 +136,57 @@ function ittfMiddleware(basePath: string, routePath: string):  RequestHandler {
                          })
                     } 
                 }
-                return contextLoader(filePath, req, function(err: any, modelContext: WizziModel) {
+                else if (queryMeta && queryMeta === 'json' && ittfSchema == 'ittf') {
+                    wizziProds.generateArtifactFs(filePath, {}, {
+                        generator: 'ittf/tojson'
+                     }).then((generated) => {
                     
-                        if (err) {
-                            return sendError(res, err, {
-                                    format: 'json'
-                                 });
-                        }
-                        wizziProds.generateArtifactFs(filePath, modelContext).then(
-                        // log 'generated.artifactContent', generated.artifactContent
-                        (generated) => {
+                        console.log('generated.meta.ittf.json', filePath);
+                        res.writeHead(200, {
+                            'Content-Type': 'application/json', 
+                            'Content-Length': generated.artifactContent.length
+                         })
+                        res.end(generated.artifactContent);
+                    }
+                    ).catch((err) => {
+                    
+                        return sendError(res, err, {
+                                format: 'json'
+                             });
+                    }
+                    )
+                }
+                else {
+                    return contextLoader(filePath, req, function(err: any, modelContext: WizziModel) {
                         
-                            res.writeHead(200, {
-                                'Content-Type': contentType, 
-                                'Content-Length': generated.artifactContent.length
-                             })
-                            res.end(generated.artifactContent);
-                        }
-                        ).catch((err) => {
-                        
-                            return sendError(res, err, {
-                                    format: 'json'
-                                 });
-                        }
-                        )
-                    });
+                            if (err) {
+                                return sendError(res, err, {
+                                        format: 'json'
+                                     });
+                            }
+                            wizziProds.generateArtifactFs(filePath, modelContext).then(
+                            // log 'generated.artifactContent', generated.artifactContent
+                            (generated) => {
+                            
+                                res.writeHead(200, {
+                                    'Content-Type': contentType, 
+                                    'Content-Length': generated.artifactContent.length
+                                 })
+                                res.end(generated.artifactContent);
+                            }
+                            ).catch((err) => {
+                            
+                                return sendError(res, err, {
+                                        format: 'json'
+                                     });
+                            }
+                            )
+                        });
+                }
             }
-            /**
-                // 
-                // contentType = extContentTypeMap[extname];
-                // console.log('contentType', contentType);
-                // if (contentType) {
-                // var stat = fs.statSync(filePath);
-                // res.writeHead(200, {
-                // 'Content-Type': contentType,
-                // 'Content-Length': stat.size
-                // });
-                // const readStream = fs.createReadStream(filePath);
-                // return readStream.pipe(res);
-                // }
-                // next();
-                // 
-            */
-            next();
+            else {
+                next();
+            }
         }
     ;
 }

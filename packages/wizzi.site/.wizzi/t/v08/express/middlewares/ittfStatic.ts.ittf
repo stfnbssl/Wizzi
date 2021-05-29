@@ -59,7 +59,7 @@ $group
                 @ '.yml' 'text/yanl'
                 @ '.xml' 'text/xml'
     +
-    function contentTypeFor
+    function ittfSchemaOf
         param file
             :string
         :return
@@ -68,7 +68,19 @@ $group
                 :undefined
         const nameParts = path.basename(file).split('.')
         if nameParts[nameParts.length - 1] === 'ittf'
-            return extContentTypeMap['.' + nameParts[nameParts.length - 2]]
+            return nameParts[nameParts.length - 2]
+        return undefined
+    +
+    function contentTypeFor
+        param file
+            :string
+        :return
+            :union
+                :string
+                :undefined
+        const ittfSchema = ittfSchemaOf(file)
+        if ittfSchema
+            return extContentTypeMap['.' + ittfSchema]
         return undefined
     +
     function ittfMiddleware
@@ -105,8 +117,9 @@ $group
                 if fs.statSync(filePath).isDirectory()
                     log 'filePath is directory', filePath
                     return sendFolderScan(filePath, basePath, queryMeta, res)
+                let ittfSchema = ittfSchemaOf(filePath)
                 let contentType = contentTypeFor(filePath)
-                log 'contentType', contentType
+                log 'contentType', contentType, 'ittfSchema', ittfSchema, 'queryMeta', queryMeta
                 if contentType
                     if queryMeta && queryMeta === 'html'
                         try
@@ -136,57 +149,69 @@ $group
                                 @ ex
                                 {
                                     @ format 'json'
-                    return
-                        _ contextLoader
+                    elif queryMeta && queryMeta === 'json' && ittfSchema == 'ittf'
+                        _ wizziProds.generateArtifactFs
                             @ filePath
-                            @ req
-                            function
-                                param err
-                                    :any
-                                param modelContext
-                                    :ref WizziModel
-                                if err
+                            {
+                            {
+                                @ generator 'ittf/tojson'
+                            ._ then
+                                =>
+                                    param generated
+                                    log 'generated.meta.ittf.json', filePath
+                                    _ res.writeHead
+                                        @ 200
+                                        {
+                                            @ 'Content-Type' 'application/json'
+                                            @ 'Content-Length' generated.artifactContent.length
+                                    _ res.end(generated.artifactContent)
+                            ._ catch
+                                =>
+                                    param err
                                     return
                                         _ sendError
                                             @ res
                                             @ err
                                             {
                                                 @ format 'json'
-                                _ wizziProds.generateArtifactFs(filePath, modelContext).then
-                                    =>
-                                        param generated
-                                        # log 'generated.artifactContent', generated.artifactContent
-                                        _ res.writeHead
-                                            @ 200
-                                            {
-                                                @ 'Content-Type' contentType
-                                                @ 'Content-Length' generated.artifactContent.length
-                                        _ res.end(generated.artifactContent)
-                                    ._ catch
+                    else
+                        return
+                            _ contextLoader
+                                @ filePath
+                                @ req
+                                function
+                                    param err
+                                        :any
+                                    param modelContext
+                                        :ref WizziModel
+                                    if err
+                                        return
+                                            _ sendError
+                                                @ res
+                                                @ err
+                                                {
+                                                    @ format 'json'
+                                    _ wizziProds.generateArtifactFs(filePath, modelContext).then
                                         =>
-                                            param err
-                                            return
-                                                _ sendError
-                                                    @ res
-                                                    @ err
-                                                    {
-                                                        @ format 'json'
-                _ next()
-                    #
-                        #
-                        # contentType = extContentTypeMap[extname];
-                        # console.log('contentType', contentType);
-                        # if (contentType) {
-                        # var stat = fs.statSync(filePath);
-                        # res.writeHead(200, {
-                        # 'Content-Type': contentType,
-                        # 'Content-Length': stat.size
-                        # });
-                        # const readStream = fs.createReadStream(filePath);
-                        # return readStream.pipe(res);
-                        # }
-                        # next();
-                        #
+                                            param generated
+                                            # log 'generated.artifactContent', generated.artifactContent
+                                            _ res.writeHead
+                                                @ 200
+                                                {
+                                                    @ 'Content-Type' contentType
+                                                    @ 'Content-Length' generated.artifactContent.length
+                                            _ res.end(generated.artifactContent)
+                                        ._ catch
+                                            =>
+                                                param err
+                                                return
+                                                    _ sendError
+                                                        @ res
+                                                        @ err
+                                                        {
+                                                            @ format 'json'
+                else
+                    _ next()
         #
             #
             # req.query._context contains a semicolon separated list of context models export names.

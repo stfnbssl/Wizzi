@@ -2,7 +2,7 @@ $group
 
     $if wzCtx.Build.useGoogleFonts
         $foreach item in wzCtx.Build.googleFonts
-            css https://fonts.googleapis.com/css?family=${item}
+            css https://fonts.googleapis.com/css2?family=${item.name}:wght@${item.weights.join(';')}&display=swap
 
     $if wzCtx.Build.useBootstrap
         css https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css

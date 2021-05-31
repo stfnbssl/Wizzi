@@ -1,5 +1,45 @@
 $group
 
+    => handleAddSampleRequest
+        _ this.setState
+            {
+                @ addSampleOpen true
+
+    => handleNewSampleNameChange
+        param ev
+        _ this.setState
+            {
+                @ newSampleName ev.target.value
+
+    => handleNewSampleHtmlChange
+        param value
+        _ this.setState
+            {
+                @ newSampleHtml value
+
+    => handleAddSampleConfirm
+        _ this.addSample
+            @ this.state.newSampleName
+            @ this.state.newSampleHtml
+        _ this.setState
+            {
+                @ addSampleOpen false
+                @ newSampleName ''
+                @ newSampleHtml ''
+
+    => handleAddSampleClose
+        _ this.setState
+            {
+                @ addSampleOpen false
+                @ newSampleName ''
+                @ newSampleHtml ''
+
+    => handleChangeSample   
+        param ev
+        log 'handleChangeSample', ev.target.value
+        _ this.setSample
+            @ ev.target.value
+
     => handleEditHtmlRequest
         _ this.setState
             {
@@ -41,26 +81,5 @@ $group
                     @ ruleData
                     @ null
 
-    => handleCreateNewSampleRequest
-        _ this.setState
-            {
-                @ createNewSampleOpen true
-
-    => handleNewSampleNameChange
+    => handleSelectCssPreviewMode                    
         param ev
-        _ this.setState
-            {
-                @ newSampleName ev.target.value
-
-    => handleCreateNewSampleConfirm
-        # TODO
-        _ this.setState
-            {
-                @ createNewSampleOpen false
-                @ newSampleName ''
-
-    => handleCreateNewSampleClose
-        _ this.setState
-            {
-                @ createNewSampleOpen false
-                @ newSampleName ''

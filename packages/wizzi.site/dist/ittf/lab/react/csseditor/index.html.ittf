@@ -3,12 +3,16 @@ html
     $include wzctx/react.init
     
     $
-        wzCtx.title = 'React css editor sample';
+        wzCtx.title = 'React / Css editor sample';
         wzCtx.Build.react.useStyledComponents = true;
         wzCtx.Build.react.useTransitionGroup = true;
         wzCtx.Build.useAce = true;
         wzCtx.Build.mainJs = './main.js.ittf';
         wzCtx.Build.mainCss = './main.css.ittf';
+        wzCtx.Build.useGoogleFonts = true;
+        wzCtx.Build.googleFonts = [
+            { name: 'Roboto', weights: [100, 300, 700] }
+        ];
 
     html/pages/basic(&wzCtx)
 
@@ -32,55 +36,36 @@ html
                     $include cssDefs
                     $include help
                     $include samplesData
+                    $include common/styled
                     $include RuleEditor
                     $include Main
-                    $include StyleSample
 
-                    const styles
-                        [
-                            {
-                                @ name 'padding'
-                            {
-                                @ name 'background'
-
-                    const Hello
+                    const AppRoot
                         _ styled.div
                             => 
                                 param props
                                 (
                                     { 
-                                        @ background props.background
-                                        @ padding props.padding
+                                        @ width '100%'
+                                        @ height '100%'
 
                     function App
                         param props
 
                         return
-                            div
-                                style {{ background: '#cacaca', width: '100%'}}
-                                $*
-                                < Hello
-                                    @ {...props}
-                                    + Hello
-                                *$
-                                < StyleSample
+                            < AppRoot
+                                < Main
+                                    @ cssDefs {__constants.cssDefs}
 
-                    $*
-                    _ document.addEventListener
-                        @ "DOMContentLoaded"
-                        =>
-                    *$
                     _ ReactDOM.render
                         < App
-                            @ padding '4px'
-                            @ background '#ff0000'
                         _ document.getElementById
                             @ 'root'
-
 
         html/layouts/lab(&wzCtx)
 
             # root
+                style height: 100%; width: 100%
 
             h2 References
 

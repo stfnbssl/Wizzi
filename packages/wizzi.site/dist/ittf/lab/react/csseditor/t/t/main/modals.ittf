@@ -1,9 +1,38 @@
 $group
 
     < FlexibleModal 
+        @ isOpen {this.state.addSampleOpen}
+        @ onRequestClose {this.handleAddSampleClose}
+        @ className {"new-sample-modal"}
+        @ initWidth {800}
+        @ initHeight {400}
+        h1 
+            style {{ fontSize: '18px', padding: '10px' }}
+            + Create a new sample
+        div
+            fieldset
+                label Sample name
+                    style {{ width: '100px', display: 'inline-block' }}
+                input
+                    style {{ width: '150px', display: 'inline-block' }}
+                    type 'text'
+                    @ value {this.state.newSampleName}
+                    @ onChange {this.handleNewSampleNameChange}
+            < ReactAce 
+                @ mode {'html'}
+                @ code {'<div></div>'}
+                @ onChange {this.handleNewSampleHtmlChange}
+        div
+            button
+                @ onClick {this.handleAddSampleConfirm}
+                + Confirm create
+            button
+                @ onClick {this.handleAddSampleClose}
+                + Cancel
+
+    < FlexibleModal 
         @ isOpen {this.state.editHtmlModalOpen}
         @ onRequestClose {this.handleEditHtmlClose}
-        @ className {"my-modal-custom-class"}
         @ initWidth {800}
         @ initHeight {400}
         h1 
@@ -17,4 +46,3 @@ $group
             button
                 @ onClick {this.handleEditHtmlClose}
                 + Close
-

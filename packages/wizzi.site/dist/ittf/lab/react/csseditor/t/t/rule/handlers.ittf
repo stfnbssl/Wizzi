@@ -20,4 +20,16 @@ $group
         _ this.setState
             {
                 @ helpModalOpen false
+    
+    => handleStyleFilterChange
+        param ev
+        const filter = ev.target.value
+        _ this.updateFilteredStyles
+            @ filter
+
+    => handleChangePseudoClass
+        param ev
+        _ this.setState
+            {
+                @ pseudoClass ev.target.value
 

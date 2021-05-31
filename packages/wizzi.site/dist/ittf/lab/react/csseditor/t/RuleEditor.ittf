@@ -1,16 +1,24 @@
 $group
 
+    $include rule/styled
+
     react RuleEditor
     
         ctor
             set this.state
                 {
                     @ rule ''
+                    @ pseudoClass ''
                     @ category 'box'
                     @ values null
+                    @ styleFilter ''
+                    [ filteredStyles
                     
         did-mount
             _ this.setValues
+            # todo from local storage
+            _ this.updateFilteredStyles
+                @ 'color'
 
         did-update
             if this.props.ruleData != prevProps.ruleData
@@ -79,6 +87,7 @@ $group
                         {
                             @ category ev.target.value
 
+        $include rule/methods
         $include rule/handlers
 
         render
@@ -96,82 +105,123 @@ $group
             # log 'selected category', category
             return
                 < React.Fragment
-                    div
-                        div
-                            fieldset
-                                label Rule
-                                    style {{ width: '100px', display: 'inline-block' }}
-                                select
-                                    style {{ width: '150px' }}
-                                    @ onChange {this.handleChangeRule}
-                                    @ value {this.state.rule}
-                                    {
-                                        _ this.props.ruleData.map
-                                            =>
-                                                param rule
-                                                param ndx 
-                                                option
-                                                    @ key {ndx}
-                                                    @ value {rule.name}
-                                                    + {rule.name}
-                        div
-                            fieldset
-                                label Style category
-                                    style {{ width: '100px', display: 'inline-block' }}
-                                select
-                                    style {{ width: '150px' }}
-                                    @ onChange {this.handleChangeCategory}
-                                    @ value {this.state.category}
-                                    {
-                                        _ this.props.cssDefs.categories.map
-                                            =>
-                                                param cat
-                                                param ndx 
-                                                option
-                                                    @ key {ndx}
-                                                    @ value {cat.name}
-                                                    + {cat.name}
-                        {
-                            _ category.styles.map
-                                =>
-                                    param style
-                                    param ndx 
-                                    div
-                                        @ key {ndx}
-                                        fieldset
-                                            label
-                                                style {{ width: '100px', display: 'inline-block' }}
-                                                + {style.name}
-                                            {
-                                                &&
-                                                    + Array.isArray(style.enum)
-                                                    select
-                                                        style {{ width: '150px' }}
-                                                        name {style.name}
-                                                        value {this.state.values[this.state.rule][style.name]}
-                                                        @ onChange {this.handleChange}
-                                                        {
-                                                            _ style.enum.map
-                                                                =>
-                                                                    param val
-                                                                    param ndx 
-                                                                    option
-                                                                        @ key {ndx}
-                                                                        @ value {val}
-                                                                        + {val}
-                                            {
-                                                &&
-                                                    + Array.isArray(style.enum) == false
-                                                    input
-                                                        style {{ width: '150px' }}
-                                                        type 'text'
-                                                        name {style.name}
-                                                        value {this.state.values[this.state.rule][style.name]}
-                                                        @ onChange {this.handleChange}
-                                            button
-                                                @ name {style.name}
-                                                @ onClick {this.handleHelpRequest}
-                                                + ?
+                    < RuleEditorRoot
+                        < FlexColumn
+                            < RuleSelector
+                                fieldset
+                                    < SelectorLabel
+                                        @ size 'h2'
+                                        + Rule
+                                    < SelectorSelectValue
+                                        @ onChange {this.handleChangeRule}
+                                        @ value {this.state.rule}
+                                        {
+                                            _ this.props.ruleData.map
+                                                =>
+                                                    param rule
+                                                    param ndx 
+                                                    option
+                                                        @ key {ndx}
+                                                        @ value {rule.name}
+                                                        + {rule.name}
+                                fieldset
+                                    < SelectorLabel
+                                        @ size 'h3'
+                                        + Pseudo class
+                                    < SelectorSelectValue
+                                        @ onChange {this.handleChangePseudoClass}
+                                        @ value {this.state.pseudoClass}
+                                        option
+                                            value ''
+                                            + {''}
+                                        {
+                                            _ __constants.cssDefs.pseudoClasses.map
+                                                =>
+                                                    param pc
+                                                    param ndx
+                                                    if !!pc.isExperimental == false
+                                                        return
+                                                            option
+                                                                @ key {ndx}
+                                                                @ value {pc.name}
+                                                                + :{pc.name}
+                        < FlexColumn
+                            < PropertiesSelector
+                                fieldset
+                                    < SelectorLabel
+                                        @ size 'h3'
+                                        + Category
+                                    < SelectorSelectValue
+                                        @ onChange {this.handleChangeCategory}
+                                        @ value {this.state.category}
+                                        option
+                                            value ''
+                                        {
+                                            _ this.props.cssDefs.categories.map
+                                                =>
+                                                    param cat
+                                                    param ndx 
+                                                    option
+                                                        @ key {ndx}
+                                                        @ value {cat.name}
+                                                        + {cat.name}
+                                fieldset
+                                    style {{ marginTop: '5px' }}
+                                    < SelectorLabel
+                                        + Filter
+                                    < SelectorInputValue
+                                        type text
+                                        value { this.state.styleFilter }
+                                        @ onChange { this.handleStyleFilterChange }
+                        < PropertiesEditPanel
+                            {
+                                _ this.state.filteredStyles.map
+                                    =>
+                                        param category
+                                        param ndx 
+                                        return
+                                            div
+                                                @ key {ndx}
+                                                < PropertyCategory
+                                                    + {category.name}
+                                                {
+                                                    _ category.styles.map
+                                                        =>
+                                                            param style
+                                                            param ndx 
+                                                            div
+                                                                @ key {ndx}
+                                                                < PropertyFieldset
+                                                                    < PropertyLabel
+                                                                        + {style.name}
+                                                                    {
+                                                                        &&
+                                                                            + Array.isArray(style.enum)
+                                                                            < PropertySelect
+                                                                                name {style.name}
+                                                                                value {this.state.values[this.state.rule][style.name]}
+                                                                                @ onChange {this.handleChange}
+                                                                                {
+                                                                                    _ style.enum.map
+                                                                                        =>
+                                                                                            param val
+                                                                                            param ndx 
+                                                                                            option
+                                                                                                @ key {ndx}
+                                                                                                @ value {val}
+                                                                                                + {val}
+                                                                    {
+                                                                        &&
+                                                                            + Array.isArray(style.enum) == false
+                                                                            < PropertyInput
+                                                                                type 'text'
+                                                                                name {style.name}
+                                                                                value {this.state.values[this.state.rule][style.name]}
+                                                                                @ onChange {this.handleChange}
+                                                                    < PropertyInfoButton
+                                                                        @ name {style.name}
+                                                                        @ onClick {this.handleHelpRequest}
+                                                                        + ?
                     $include rule/modals
                         
                 

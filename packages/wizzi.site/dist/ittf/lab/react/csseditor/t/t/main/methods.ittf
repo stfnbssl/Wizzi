@@ -1,2 +1,54 @@
 $group
 
+    m setSample
+        param sampleName
+        const currentSampleText = this.storeSamples.get(sampleName)
+        log 'currentSampleText', currentSampleText
+        const currentSample
+            _ JSON.parse
+                @ currentSampleText
+        log 'currentSample', currentSample
+        _ this.store.set
+            @ 'recentSample'
+            @ sampleName
+        const storedSamplesNames = this.storeSamples.getAllKeys()
+        _ this.setState
+            {
+                @ currentSampleName currentSample.sampleName
+                @ currentSample currentSample
+                @ storedSamplesNames storedSamplesNames
+                @ ruleData currentSample.ruleData
+                @ htmlData currentSample.htmlData
+    
+    m addSample
+        param name
+        param html
+        const newSample = Object.assign({}, __initial.samplesData[0])
+        set newSample.sampleName = name
+        if html
+            set newSample.htmlData = html
+        elif Array.isArray(newSample.htmlData)
+            set newSample.htmlData = newSample.htmlData.join('\n')
+        const changed
+            _ updateRuleData
+                @ newSample.ruleData
+                @ newSample.htmlData
+        _ this.storeSamples.set
+            @ newSample.sampleName
+            _ JSON.stringify
+                @ newSample
+        _ this.store.set
+            @ 'recentSample'
+            @ newSample.sampleName
+        const storedSamplesNames = this.storeSamples.getAllKeys()
+        _ this.setState
+            {
+                @ currentSampleName newSample.sampleName
+                @ currentSample newSample
+                @ storedSamplesNames storedSamplesNames       
+                @ ruleData newSample.ruleData
+                @ htmlData newSample.htmlData
+
+
+
+                

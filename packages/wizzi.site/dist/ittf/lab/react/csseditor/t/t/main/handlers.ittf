@@ -47,21 +47,33 @@ $group
                 @ htmlEdit this.state.htmlData
 
     => handleEditHtmlClose
-        let sampleData = this.storeSamples.get(this.props.sampleName)
+        let sampleData = this.storeSamples.get(this.state.currentSampleName)
         set sampleData = sampleData ? JSON.parse(sampleData) : null
-        let ruleData = sampleData ? sampleData.ruleData : this.props.ruleData
+        let ruleData = sampleData ? sampleData.ruleData : this.state.ruleData
         var changed
             _ updateRuleData
                 @ ruleData
                 @ this.state.htmlData
+                @ this.state.rulesNoClassData
         if changed
-            _ this.executeValuesChangeDebounced
-                @ ruleData
-                @ null
             _ this.setState
                 {
                     @ editHtmlModalOpen false
                     @ ruleData ruleData
+                =>
+                    const newStateValues
+                        _ this.updateValues
+                            @ this.state.values
+                    _ this.setState
+                        {
+                            @ cssRule newStateValues.cssRule
+                            @ cssRuleIttf newStateValues.cssRuleIttf
+                            @ cssRuleInJs newStateValues.cssRuleInJs
+                        =>
+                            _ this.saveSample
+                                @ newStateValues.ruleData
+                            _ this.executeValuesChangeDebounced
+                                @ newStateValues.cssRule
         else
             _ this.setState
                 {
@@ -73,13 +85,58 @@ $group
         _ this.setState
             {
                 @ htmlData value
-            =>
-                let sampleData = this.storeSamples.get(this.props.sampleName)
-                set sampleData = sampleData ? JSON.parse(sampleData) : null
-                let ruleData = sampleData ? sampleData.ruleData : this.props.ruleData
-                _ this.executeValuesChangeDebounced
-                    @ ruleData
-                    @ null
 
-    => handleSelectCssPreviewMode                    
+    => handleSelectCssPreviewMode
         param ev
+        log 'handleSelectCssPreviewMode', ev.target, ev.target.id
+        _ this.setState
+            {
+                @ cssPreviewMode ev.target.id
+
+    => handleEditRulesRequest
+        _ this.setState
+            {
+                @ editRulesModalOpen true
+                @ rulesEdit this.state.rulesNoClassData.join('\n')
+
+    => handleEditRulesChange
+        param value
+        const rulesArray = value.trim().length == 0 ? [] : value.trim().split('\n')
+        log 'handleEditRulesChange', value, rulesArray
+        _ this.setState
+            {
+                @ rulesNoClassData rulesArray
+
+    => handleEditRulesClose
+        let sampleData = this.storeSamples.get(this.state.currentSampleName)
+        set sampleData = sampleData ? JSON.parse(sampleData) : null
+        let ruleData = sampleData ? sampleData.ruleData : this.state.ruleData
+        var changed
+            _ updateRuleData
+                @ ruleData
+                @ this.state.htmlData
+                @ this.state.rulesNoClassData
+        log 'handleEditRulesClose.ruleData', ruleData
+        if changed
+            _ this.setState
+                {
+                    @ editRulesModalOpen false
+                    @ ruleData ruleData
+                =>
+                    const newStateValues
+                        _ this.updateValues
+                            @ this.state.values
+                    _ this.setState
+                        {
+                            @ cssRule newStateValues.cssRule
+                            @ cssRuleIttf newStateValues.cssRuleIttf
+                            @ cssRuleInJs newStateValues.cssRuleInJs
+                        =>
+                            _ this.saveSample
+                                @ newStateValues.ruleData
+                            _ this.executeValuesChangeDebounced
+                                @ newStateValues.cssRule
+        else
+            _ this.setState
+                {
+                    @ editRulesModalOpen false

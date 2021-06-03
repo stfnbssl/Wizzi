@@ -1,0 +1,21 @@
+$group
+    
+    m generate
+        param value
+        _ wz.genFromText
+            @ value
+            {
+                @ schema this.props.schema || 'js'
+            =>
+                param err
+                param result
+                if err
+                    _ this.setState
+                        {
+                            @ generationError err
+                            @ generated null
+                else
+                    _ this.setState
+                        {
+                            @ generated result
+                            @ generationError null

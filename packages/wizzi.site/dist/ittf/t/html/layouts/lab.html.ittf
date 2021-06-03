@@ -133,10 +133,9 @@ $group
         . l1-lab
         
             . l2-lab-header
-                + Lab - ${wzCtx.title}
+                + Lab / ${wzCtx.title}
             
             . l2-lab-content
                 $hook
         
         . l1-lab-footer
-            + Press CTRL+h to see ittf source documents.

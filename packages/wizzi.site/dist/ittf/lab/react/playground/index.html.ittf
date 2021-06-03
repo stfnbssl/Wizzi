@@ -3,7 +3,7 @@ html
     $include wzctx/react.init
     
     $
-        wzCtx.title = 'React / Css editor sample';
+        wzCtx.title = 'React / Wizzi playground';
         wzCtx.Build.react.useStyledComponents = true;
         wzCtx.Build.react.useTransitionGroup = true;
         wzCtx.Build.useAce = true;
@@ -34,11 +34,10 @@ html
                     $include g/js/wz/react/Modal
                     $include g/js/wz/react/FlexibleModal
                     $include g/js/wz/react/ReactAce
-                    $include cssDefs
-                    $include help
                     $include samplesData
                     $include common/styled
-                    $include RuleEditor
+                    $include Generator
+                    $include Wizzifier
                     $include Main
                     $include Docs
 
@@ -57,7 +56,6 @@ html
                         return
                             < AppRoot
                                 < Main
-                                    @ cssDefs {__constants.cssDefs}
 
                     _ ReactDOM.render
                         < App

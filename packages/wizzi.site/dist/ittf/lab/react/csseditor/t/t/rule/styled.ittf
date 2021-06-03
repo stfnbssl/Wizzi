@@ -56,52 +56,6 @@ $group
                         @ padding '1px 2px'
                         @ marginBottom '2px'
     
-    const PropertyFieldset
-        _ styled.fieldset
-            => 
-                param props
-                (
-                    { 
-                        @ border 'none'
-                        @ width '100%'
-                        @ marginBottom '3px'
-
-    const PropertyLabel
-        _ styled.label
-            => 
-                param props
-                (
-                    { 
-                        @ width '44%'
-                        @ display 'inline-block'
-
-    const PropertyInput
-        _ styled.input
-            => 
-                param props
-                (
-                    { 
-                        @ width '49%'
-                        @ backgroundColor '#defdef'
-                        @ border 'none'
-                        @ borderRadius '5px'
-                        @ padding '3px 5px'
-                        @ outlineColor '#dedede'
-                        @ fontWeight '700'
-
-    const PropertySelect
-        _ styled.select
-            => 
-                param props
-                (
-                    { 
-                        @ width '49%'
-                        @ backgroundColor '#defdef'
-                        @ border 'none'
-                        @ borderRadius '5px'
-                        @ padding '3px 5px'
-                        @ outlineColor '#dedede'
-                        @ fontWeight '700'
 
     const PropertyInfoButton
         _ styled.button

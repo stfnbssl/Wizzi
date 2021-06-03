@@ -3,46 +3,106 @@ $group
     < FlexibleModal 
         @ isOpen {this.state.addSampleOpen}
         @ onRequestClose {this.handleAddSampleClose}
-        @ className {"new-sample-modal"}
         @ initWidth {800}
-        @ initHeight {400}
+        @ initHeight {500}
+        @ disableResize {true}
         h1 
-            style {{ fontSize: '18px', padding: '10px' }}
+            style {{ fontSize: '18px', padding: '15px' }}
             + Create a new sample
-        div
-            fieldset
-                label Sample name
-                    style {{ width: '100px', display: 'inline-block' }}
-                input
-                    style {{ width: '150px', display: 'inline-block' }}
-                    type 'text'
-                    @ value {this.state.newSampleName}
-                    @ onChange {this.handleNewSampleNameChange}
-            < ReactAce 
-                @ mode {'html'}
-                @ code {'<div></div>'}
-                @ onChange {this.handleNewSampleHtmlChange}
-        div
-            button
-                @ onClick {this.handleAddSampleConfirm}
-                + Confirm create
-            button
-                @ onClick {this.handleAddSampleClose}
-                + Cancel
+        < FormRoot
+            < FlexRow
+                < FormControl
+                    < ControlLabel
+                        + Sample name
+                    input
+                        style {{ width: '150px', display: 'inline-block' }}
+                        type 'text'
+                        @ value {this.state.newSampleName}
+                        @ onChange {this.handleNewSampleNameChange}
+                < FormControl
+                    + {'|'}
+            < FlexRow
+                < FormControl
+                    < ControlLabel
+                        + Html
+                    < ReactAce 
+                        @ mode {'html'}
+                        @ code {'<div></div>'}
+                        @ onChange {this.handleNewSampleHtmlChange}
+                < FormControl
+                    < ControlLabel
+                        + Rules
+                    < ReactAce 
+                        @ mode {'html'}
+                        @ code {''}
+                        @ width '100%'
+                        @ height '100%'
+                        @ onChange {this.handleNewSampleRulesChange}
+            < FlexRow
+                < Button
+                    @ size 'h1'
+                    @ onClick {this.handleAddSampleConfirm}
+                    + Confirm create
+                < Button
+                    @ size 'h1'
+                    @ onClick {this.handleAddSampleClose}
+                    + Cancel
 
     < FlexibleModal 
         @ isOpen {this.state.editHtmlModalOpen}
         @ onRequestClose {this.handleEditHtmlClose}
         @ initWidth {800}
-        @ initHeight {400}
+        @ initHeight {500}
+        @ disableResize {true}
         h1 
+            style {{ fontSize: '18px', padding: '15px' }}
             + Edit sample html
-        div
-            < ReactAce 
-                @ mode {'html'}
-                @ code {this.state.htmlEdit}
-                @ onChange {this.handleEditHtmlChange}
-        div
-            button
-                @ onClick {this.handleEditHtmlClose}
-                + Close
+        < FormRoot
+            < FlexRow
+                < FormControl
+                    < ControlLabel
+                        + Html
+                    < ReactAce 
+                        @ mode {'html'}
+                        @ code {this.state.htmlEdit}
+                        @ onChange {this.handleEditHtmlChange}
+            < FlexRow
+                < Button
+                    @ size 'h1'
+                    @ onClick {this.handleEditHtmlClose}
+                    + Close
+
+    < FlexibleModal 
+        @ isOpen {this.state.editRulesModalOpen}
+        @ onRequestClose {this.handleEditRulesClose}
+        @ initWidth {800}
+        @ initHeight {500}
+        @ disableResize {true}
+        h1 
+            style {{ fontSize: '18px', padding: '15px' }}
+            + Edit sample rules
+        < FormRoot
+            < FormControl
+                < ControlLabel
+                    + Rules
+                < FlexRow
+                    div
+                        + You can add Css rules that are not class rules.
+                            \b Add a line for each rule name.
+                        br
+                        + Example:
+                        pre
+                            code
+                                + {'*\n'}
+                                + {'body\n'}
+                                + {'table\n'}
+                                + {'...\n'}
+                    < ReactAce 
+                        @ mode {'html'}
+                        @ code {this.state.rulesEdit}
+                        @ onChange {this.handleEditRulesChange}
+            < FlexRow
+                < Button
+                    @ size 'h1'
+                    @ onClick {this.handleEditRulesClose}
+                    + Close

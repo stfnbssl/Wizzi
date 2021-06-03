@@ -11,6 +11,7 @@ $group
             set this.storeSamples = new LocalStorage('cssEditorSamples')
             set this.state
                 {
+                    @ mainView 'view-editor'
                     @ currentSampleName ''
                     @ currentSample null
                     @ storedSamplesNames []
@@ -22,6 +23,10 @@ $group
                     @ cssRule ''
                     @ editHtmlModalOpen false
                     @ htmlEdit ''
+                    @ editRulesModalOpen false
+                    @ rulesNoClassData []
+                    @ rulesEdit ''
+                    @ cssPreviewMode 'css'
                     { values
 
         did-mount
@@ -39,73 +44,80 @@ $group
             set this.executeValuesChangeDebounced
                 _ wz.debounce
                     =>
-                        param newRuleData
                         param cssRule
-                        if newRuleData
-                            const newSampleData
-                                {
-                                    @ sampleName this.props.currentSampleName
-                                    @ ruleData newRuleData
-                                    @ htmlData this.state.htmlData
-                            _ this.storeSamples.set
-                                @ this.props.currentSampleName
-                                _ JSON.stringify
-                                    @ newSampleData
-                        if cssRule
-                            var sheetToBeRemoved = document.getElementById('demo_styles')
-                            var sheetParent = sheetToBeRemoved.parentNode
-                            _ sheetParent.removeChild(sheetToBeRemoved)                           
-                            var sheetToBeAdded = document.createElement('style')
-                            set sheetToBeAdded.id = 'demo_styles'
-                            set sheetToBeAdded.innerHTML = cssRule
-                            _ sheetParent.appendChild(sheetToBeAdded);            
+                        var sheetToBeRemoved = document.getElementById('demo_styles')
+                        var sheetParent = sheetToBeRemoved.parentNode
+                        _ sheetParent.removeChild(sheetToBeRemoved)                           
+                        var sheetToBeAdded = document.createElement('style')
+                        set sheetToBeAdded.id = 'demo_styles'
+                        set sheetToBeAdded.innerHTML = cssRule
+                        _ sheetParent.appendChild(sheetToBeAdded);            
                     @ 1000
 
-        did-update
-            if this.props.currentSampleName != prevProps.currentSampleName
-                log 'Main.did-update', prevProps.currentSampleName, 'changed to ',this.props.currentSampleName
-                _ this.setState
-                    {
-                        @ currentSampleName this.props.currentSampleName
-                        @ ruleData this.props.ruleData 
-                        @ htmlData this.props.htmlData 
+        => handleMainViewChange                    
+            param ev
+            log 'handleMainViewChange', ev.target.id
+            _ this.setState
+                {
+                    @ mainView ev.target.id
 
         => handleValuesChange
             param values
-            const newRuleData = []
-            const cssStyles = []
-            const cssStylesIttf = []
-            _ this.state.ruleData.map
-                =>
-                    param rule
-                    const newRuleStyles
-                        {
-                            @ name rule.name
-                            { styles
-                    _ cssStyles.push('.' + rule.name + ' {')
-                    _ cssStylesIttf.push('. ' + rule.name)
-                    const styleValues = values[rule.name]
-                    _ Object.keys(styleValues).map
-                        =>
-                            param styleName
-                            if styleValues[styleName] && styleValues[styleName].length > 0
-                                _ cssStyles.push('\t' + styleName + ':' + styleValues[styleName] + ';')
-                                _ cssStylesIttf.push('\t' + styleName + ' ' + styleValues[styleName])
-                                set newRuleStyles.styles[styleName] = styleValues[styleName]
-                    _ cssStyles.push('}')
-                    _ newRuleData.push(newRuleStyles)
-            const cssRule = cssStyles.join('\n')
-            const cssRuleIttf = cssStylesIttf.join('\n')
+            log 'Main.handleValuesChange', values
+            const newStateValues
+                _ this.updateValues
+                    @ values
             _ this.setState
+                {
+                    @ values values
+                    @ cssRule newStateValues.cssRule
+                    @ cssRuleIttf newStateValues.cssRuleIttf
+                    @ cssRuleInJs newStateValues.cssRuleInJs
                 =>
-                    param state
+                    _ this.saveSample
+                        @ newStateValues.ruleData
+                    _ this.executeValuesChangeDebounced
+                        @ newStateValues.cssRule    
+
+        => handlePseudoRemove
+            param ruleId
+            const ruleIdObj = unpackRuleName(ruleId)
+            let changed = false
+            const newRuleData = []
+            foreach r in this.state.ruleData
+                if r.name == ruleIdObj.name && r.kind == ruleIdObj.kind && r.pseudo == ruleIdObj.pseudo
+                    set changed = true
+                else
+                    _ newRuleData.push(r)
+            if changed
+                _ this.setState
+                    {
+                        @ ruleData newRuleData
+                    =>
+                        _ this.saveSample
+                            @ newRuleData
+
+        => handlePseudoAdd
+            param ruleId
+            const ruleIdObj = unpackRuleName(ruleId)
+            const newRuleData = []
+            foreach r in this.state.ruleData
+                if r.name == ruleIdObj.name && r.kind == ruleIdObj.kind && r.pseudo == ruleIdObj.pseudo
                     return
-                        {
-                            @ cssRule cssRule + '\n\n' + cssRuleIttf
-                            @ values values
-            _ this.executeValuesChangeDebounced
-                @ newRuleData
-                @ cssRule
+                else
+                    _ newRuleData.push(r)
+            _ newRuleData.push
+                {
+                    @ name ruleIdObj.name
+                    @ kind ruleIdObj.kind
+                    @ pseudo ruleIdObj.pseudo
+                    { styles
+            _ this.setState
+                {
+                    @ ruleData newRuleData
+                =>
+                    _ this.saveSample
+                        @ newRuleData
 
         $include main/methods
         $include main/handlers
@@ -117,81 +129,116 @@ $group
                     h1
                         + ...loading...
 
+            const cssRulePreview
+                iif this.state.cssPreviewMode == 'css'
+                    then this.state.cssRule
+                    else
+                        iif this.state.cssPreviewMode == 'css-ittf'
+                            then this.state.cssRuleIttf
+                            else this.state.cssRuleInJs
+
             return
                 < React.Fragment
                     < StyleSampleRoot
                         < SampleTitleBar
-                            < FlexColumn
-                                @ width '20%'
-                                fieldset
-                                    < SelectorLabel
-                                        @ size 'h1'
-                                        + Sample
-                                    < SelectorSelectValue
-                                        @ onChange {this.handleChangeSample}
-                                        @ value {this.state.currentSampleName}
-                                        {
-                                            _ this.state.storedSamplesNames.map
-                                                =>
-                                                    param sampleName
-                                                    param ndx 
-                                                    option
-                                                        @ key {ndx}
-                                                        @ value {sampleName}
-                                                        + {sampleName}
-                            < FlexRow
-                                < FlexColumn
-                                    < Button
-                                        @ size 'h1'
-                                        @ onClick {this.handleAddSampleRequest}
-                                        + Add sample
-                                < FlexColumn
-                                    < Button
-                                        @ size 'h1'
-                                        @ onClick {this.handleEditHtmlRequest}
-                                        + Edit html
-                                < FlexColumn
-                                    < Button
-                                        @ size 'h1'
-                                        @ onClick {this.handleEditRulesRequest}
-                                        + Edit rules
-                            < FlexRow
-                                < FlexColumn
-                                    < Button
-                                        @ size 'h1'
-                                        @ onClick {this.handleShowDocs}
-                                        + Docs
+                            {
+                                &&
+                                    + this.state.mainView == 'view-editor'
+                                    < React.Fragment
+                                        < FlexColumn
+                                            @ width '20%'
+                                            fieldset
+                                                < SelectorLabel
+                                                    @ size 'h1'
+                                                    + Sample
+                                                < SelectorSelectValue
+                                                    @ onChange {this.handleChangeSample}
+                                                    @ value {this.state.currentSampleName}
+                                                    {
+                                                        _ this.state.storedSamplesNames.map
+                                                            =>
+                                                                param sampleName
+                                                                param ndx 
+                                                                option
+                                                                    @ key {ndx}
+                                                                    @ value {sampleName}
+                                                                    + {sampleName}
+                                        < FlexRow
+                                            < FlexColumn
+                                                < Button
+                                                    @ size 'h1'
+                                                    @ onClick {this.handleAddSampleRequest}
+                                                    + Add sample
+                                            < FlexColumn
+                                                < Button
+                                                    @ size 'h1'
+                                                    @ onClick {this.handleEditHtmlRequest}
+                                                    + Edit html
+                                            < FlexColumn
+                                                < Button
+                                                    @ size 'h1'
+                                                    @ onClick {this.handleEditRulesRequest}
+                                                    + Edit rules
+                                        < FlexRow
+                                            < FlexColumn
+                                                < Button
+                                                    @ size 'h1'
+                                                    @ id 'view-docs'
+                                                    @ onClick {this.handleMainViewChange}
+                                                    + Docs
+                            {
+                                &&
+                                    + this.state.mainView == 'view-docs'
+                                    < FlexRow
+                                        < FlexColumn
+                                            < Button
+                                                @ size 'h1'
+                                                @ id 'view-editor'
+                                                @ onClick {this.handleMainViewChange}
+                                                + Editor
+
                         < SampleBody
-                            < RuleEditor
-                                @ cssDefs {this.props.cssDefs}
-                                @ ruleData {this.state.ruleData}
-                                @ onChange {this.handleValuesChange}
-                            < HtmlPreview
-                                
-                                @ dangerouslySetInnerHTML {{__html: this.state.htmlData}}
-                            < CssPreview
-                                < CssPreviewTb
-                                    < FlexColumn
-                                        < Button
-                                            @ size 'h6'
-                                            @ name 'css-preview'
-                                            @ onClick {this.handleSelectCssPreviewMode}
-                                            + Css
-                                    < FlexColumn
-                                        < Button
-                                            @ size 'h6'
-                                            @ name 'css-ittf'
-                                            @ onClick {this.handleSelectCssPreviewMode}
-                                            + Ittf
-                                    < FlexColumn
-                                        < Button
-                                            @ size 'h6'
-                                            @ name 'css-in-js'
-                                            @ onClick {this.handleSelectCssPreviewMode}
-                                            + Css-in-Js
-                                < CssPreviewBody
-                                    pre
-                                        code
-                                            + {this.state.cssRule}
+                            {
+                                &&
+                                    + this.state.mainView == 'view-editor'
+                                    < React.Fragment
+                                        < RuleEditor
+                                            @ cssDefs {this.props.cssDefs}
+                                            @ ruleData {this.state.ruleData}
+                                            @ onChange {this.handleValuesChange}
+                                            @ onPseudoAdd {this.handlePseudoAdd}
+                                            @ onPseudoRemove {this.handlePseudoRemove}
+                                        < HtmlPreview
+                                            @ dangerouslySetInnerHTML {{__html: this.state.htmlData}}
+                                        < CssPreview
+                                            < CssPreviewTb
+                                                < FlexColumn
+                                                    < Button
+                                                        @ size 'h6'
+                                                        @ id 'css'
+                                                        @ onClick {this.handleSelectCssPreviewMode}
+                                                        + Css
+                                                < FlexColumn
+                                                    < Button
+                                                        @ size 'h6'
+                                                        @ id 'css-ittf'
+                                                        @ onClick {this.handleSelectCssPreviewMode}
+                                                        + Ittf
+                                                < FlexColumn
+                                                    < Button
+                                                        @ size 'h6'
+                                                        @ id 'css-in-js'
+                                                        @ onClick {this.handleSelectCssPreviewMode}
+                                                        + Css-in-Js
+                                            < CssPreviewBody
+                                                pre
+                                                    code
+                                                        + {cssRulePreview}
+                            {
+                                &&
+                                    + this.state.mainView == 'view-docs'
+                                    < React.Fragment
+                                        < Docs
+
                         $include main/modals           
 

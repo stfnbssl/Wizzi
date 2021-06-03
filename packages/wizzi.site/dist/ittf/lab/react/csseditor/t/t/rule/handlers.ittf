@@ -29,7 +29,17 @@ $group
 
     => handleChangePseudoClass
         param ev
+        const pseudoClass = ev.target.value
+        const ruleIdObj = unpackRuleName(this.state.ruleId)
+        if ruleIdObj.pseudo && ruleIdObj.pseudo.length > 0
+            _ this.props.onPseudoRemove
+                @ this.state.ruleId
+        const ruleId = packRuleName(ruleIdObj.name, ruleIdObj.kind, pseudoClass)
         _ this.setState
             {
-                @ pseudoClass ev.target.value
-
+                @ ruleId ruleId
+                @ pseudoClass pseudoClass
+            =>
+                if ev.target.value && ev.target.value.length > 0
+                    _ this.props.onPseudoAdd
+                        @ ruleId

@@ -11,7 +11,7 @@ $group
                         @ "  <div class='list-item'>Item 2</div>"
                         @ "  <div class='list-item'>Item 3</div>"
                         @ "</div>"
-                    
+                    [ rulesData
                     [ ruleData
                         {
                             @ name 'list-box'
@@ -24,4 +24,3 @@ $group
                             @ name 'list-item'
                             { styles
                                 @ background '#909090'
-

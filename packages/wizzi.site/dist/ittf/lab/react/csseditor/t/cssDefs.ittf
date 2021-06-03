@@ -100,6 +100,8 @@ $group
                                     @ 'auto'
                                     @ 'cover'
                                     @ 'contain'
+                            {
+                                @ name 'opacity'
                     {
                         @ name 'border'
                         [ styles
@@ -174,6 +176,34 @@ $group
                                 @ name 'border-top-width'
                             {
                                 @ name 'border-width'
+                            {
+                                @ name 'outline'
+                            {
+                                @ name 'outline-color'
+                                @ isColor true
+                            {
+                                @ name 'outline-offset'
+                            {
+                                @ name 'outline-style'
+                                [ enum
+                                    @ ''
+                                    @ 'none'
+                                    @ 'solid'
+                                    @ 'ridge'
+                                    @ 'outset'
+                                    @ 'inset'
+                                    @ 'groove'
+                                    @ 'double'
+                                    @ 'dotted'
+                                    @ 'dashed'
+                                    @ 'auto'
+                            {
+                                @ name 'outline-width'
+                                [ enum
+                                    @ ''
+                                    @ 'medium'
+                                    @ 'thin'
+                                    @ 'thick'
                     {
                         @ name 'box'
                         [ styles
@@ -371,37 +401,6 @@ $group
                                     @ 'decimal'
                                     @ 'circle'
                                     @ 'armenian'
-                    {
-                        @ name 'colors'
-                        [ styles
-                            {
-                                @ name 'opacity'
-                            {
-                                @ name 'outline-color'
-                                @ isColor true
-                            {
-                                @ name 'outline-offset'
-                            {
-                                @ name 'outline-style'
-                                [ enum
-                                    @ ''
-                                    @ 'none'
-                                    @ 'solid'
-                                    @ 'ridge'
-                                    @ 'outset'
-                                    @ 'inset'
-                                    @ 'groove'
-                                    @ 'double'
-                                    @ 'dotted'
-                                    @ 'dashed'
-                                    @ 'auto'
-                            {
-                                @ name 'outline-width'
-                                [ enum
-                                    @ ''
-                                    @ 'medium'
-                                    @ 'thin'
-                                    @ 'thick'
                     {
                         @ name 'table'
                         [ styles

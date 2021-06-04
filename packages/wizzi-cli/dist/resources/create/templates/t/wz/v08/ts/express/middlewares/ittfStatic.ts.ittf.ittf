@@ -119,6 +119,7 @@ $group
                 const extname = path.extname(filePath)
                 
                 var queryMeta = (req.query.meta as string)
+                var queryTransform = (req.query.transform as string)
 
                 log 'middleware.ittfStatic',
                     \b 'urlPathName', urlPathName,
@@ -134,6 +135,9 @@ $group
                 if fs.statSync(filePath).isDirectory()
                     log 'filePath is directory', filePath
                     return sendFolderScan(filePath, basePath, queryMeta, res)
+
+                if queryTransform && queryTransform.indexOf('/') > 0
+                    return sendTransform(filePath, queryTransform, res)
                 
                 let ittfSchema = ittfSchemaOf(filePath)
                 let contentType = contentTypeFor(filePath)
@@ -414,6 +418,36 @@ $group
                 @ ex
                 { 
                     @ format 'json'
+    +
+    function sendTransform
+        param filePath
+            :string 
+        param transformer
+            :string 
+        param res
+            :ref Response
+        
+        _ wizziProds.transformModelFs
+            @ filePath
+            { 
+            {
+                @ transformer transformer
+            ._ then
+                => 
+                    param model
+                    _ res.send
+                        _ stringify
+                            @ model
+                            @ null
+                            @ 2                    
+            ._ catch
+                => 
+                    param err
+                    _ sendError
+                        @ res
+                        @ err
+                        { 
+                            @ format 'json'
     +
     function sendJSONStringified
         param res

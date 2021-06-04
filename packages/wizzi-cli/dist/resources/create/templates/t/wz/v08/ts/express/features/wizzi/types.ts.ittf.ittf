@@ -28,3 +28,12 @@ $group
                     :string 
                 :p artifactGenerator
                     :string 
+    export 
+        :type TransformedModel
+            :{ 
+                :p transformResult
+                    :any
+                :p sourcePath
+                    :string 
+                :p modelTransformer
+                    :string 

@@ -78,9 +78,13 @@
 
     stm( or
         set model = writeComments(model, ctx)
+		if model.__templateChild
+			_ ctx.write('${' + (model.wzName || ''))
 		if model.statements.length != 2
 			if model.statements.length == 0 && ctx.__allowSingleLineOp
 				_ ctx.write(' || ' + (model.wzName || ''))
+                if model.__templateChild
+                    _ ctx.write('}')
 				r_cb()
 			else
 				return
@@ -98,13 +102,19 @@
 					@ ctx
 					f_cb()
 						set ctx.parenRequired = saveParenRequired
+                        if model.__templateChild
+                            _ ctx.write('}')
 						r_cb()
     
 	stm( and
         set model = writeComments(model, ctx)
+		if model.__templateChild
+			_ ctx.write('${' + (model.wzName || ''))
 		if model.statements.length != 2
 			if model.statements.length == 0 && ctx.__allowSingleLineOp
 				_ ctx.write(' && ' + (model.wzName || ''))
+                if model.__templateChild
+                    _ ctx.write('}')
 				r_cb()
 			else
 				return
@@ -126,6 +136,8 @@
                         if model.statements[1].wzElement == 'htmlelement'
                             _ ctx.deindent
 						set ctx.parenRequired = saveParenRequired
+                        if model.__templateChild
+                            _ ctx.write('}')
 						r_cb()
     
 	stm( iif

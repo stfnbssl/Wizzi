@@ -223,9 +223,15 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.and. Got: ' + callback);
         }
         model = writeComments(model, ctx);
+        if (model.__templateChild) {
+            ctx.write('${' + (model.wzName || ''));
+        }
         if (model.statements.length != 2) {
             if (model.statements.length == 0 && ctx.__allowSingleLineOp) {
                 ctx.write(' && ' + (model.wzName || ''));
+                if (model.__templateChild) {
+                    ctx.write('}');
+                }
                 return callback(null, null);
             }
             else {
@@ -250,6 +256,9 @@ md.load = function(cnt) {
                     ctx.deindent();
                 }
                 ctx.parenRequired = saveParenRequired;
+                if (model.__templateChild) {
+                    ctx.write('}');
+                }
                 return callback(null, null);
             })
         })

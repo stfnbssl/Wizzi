@@ -10,6 +10,7 @@ $group
                     @ content null
                     @ generated null
                     @ generationError null
+                    @ productionMode 'production-code'
                     
         did-mount
             _ this.setValues
@@ -19,40 +20,32 @@ $group
                     =>
                         param value
                         _ this.generate
-                            @ value
                     @ 1000
 
         did-update
-            if this.props.packiFiles != prevProps.packiFiles
+            if this.props.packiFiles != prevProps.packiFiles ||
+                \b this.props.selectedEditPackiPath != prevProps.selectedEditPackiPath
                 _ this.setValues
         
         m setValues
             if this.props.packiFiles
                 log 'Generator.setValues.this.props.packiFiles', this.props.packiFiles
-                log 'Generator.setValues.this.props.selectedEditPath', this.props.selectedEditPath
-                const ittfContentFile = this.props.packiFiles[this.props.selectedEditPath]
+                log 'Generator.setValues.this.props.selectedEditPackiPath', this.props.selectedEditPackiPath
+                const ittfContentPackiFile = this.props.packiFiles[this.props.selectedEditPackiPath]
+                log 'Generator.setValues..props.selectedEditPackiPath', ittfContentPackiFile
                 _ this.setState
                     {
-                        @ content ittfContentFile.contents
+                        @ content ittfContentPackiFile.contents
                         @ generated null
                         @ generationError null
                     =>
                         _ this.executeValuesChangeDebounced
-                            @ ittfContentFile.contents
         
-        => handleChange
-            param value
-            _ this.props.onChange
-                @ this.props.selectedEditPath
-                @ value
-            _ this.executeValuesChangeDebounced
-                @ value
-
         $include generator/methods
-        $$ $include generator/handlers
+        $include generator/handlers
 
         render
-            if !this.state.content
+            if !this.props.selectedEditPackiPath
                 return
                     h1 
                         + ...loading...
@@ -66,59 +59,123 @@ $group
                         h1 
                             + Generator
                         < FlexRow
-                            < FlexColumn
-                                @ width '12%'
-                                < PropertyFieldset
-                                    < PropertyLabel
-                                        + main ittf
-                                    < PropertyInput
-                                        @ type 'checkbox'
-                                {
-                                    && 
-                                        + this.props.fragmentList && this.props.fragmentList.length > 0
-                                        div
-                                            < FileListTitle
-                                                + Fragments
-                                            {
-                                                _ this.props.fragmentList.map
-                                                    =>
-                                                        param frag
-                                                        param ndx
-                                                        < FileListItem
-                                                            @ key {ndx}
-                                                            + {frag}
-                                {
-                                    && 
-                                        + this.props.contextList && this.props.contextList.length > 0
-                                        div
-                                            < FileListTitle
-                                                + Contexts
-                                            {
-                                                _ this.props.contextList.map
-                                                    =>
-                                                        param ctx
-                                                        param ndx
-                                                        < FileListItem
-                                                            @ key {ndx}
-                                                            + {ctx.path}
+                            div
+                                style
+                                    {
+                                        @ padding '5px'
+                                        @ border '1px solid #efefef'
+                                        @ borderRadius '10px' 
+                                        @ width '12%'
+                                < FlexColumn
+                                    < FileListTitle
+                                        + Main ittf
+                                    < FileListItem
+                                        @ onClick {this.handleSelectFileItem}
+                                        + {this.props.selectedMainIttfContentPath}
+                                    {
+                                        && 
+                                            + this.props.fragmentList && this.props.fragmentList.length > 0
+                                            div
+                                                < FileListTitle
+                                                    + Fragments
+                                                {
+                                                    _ this.props.fragmentList.map
+                                                        =>
+                                                            param frag
+                                                            param ndx
+                                                            < FileListItem
+                                                                @ key {ndx}
+                                                                @ onClick {this.handleSelectFileItem}
+                                                                + {frag.path}
+                                    {
+                                        && 
+                                            + this.props.contextList && this.props.contextList.length > 0
+                                            div
+                                                < FileListTitle
+                                                    + Contexts
+                                                {
+                                                    _ this.props.contextList.map
+                                                        =>
+                                                            param ctx
+                                                            param ndx
+                                                            < FileListItem
+                                                                @ key {ndx}
+                                                                @ onClick {this.handleSelectFileItem}
+                                                                + {ctx.path}
                             < FormControl
                                 @ width '44%'
+                                @ padding '5px'
                                 < ControlLabel
                                     + Ittf content
+                                div
+                                    style
+                                        {
+                                            @ padding '5px'
+                                            @ background '#efefef'
+                                            @ borderRadius '10px'
+                                    < FlexRow
+                                        < FlexColumn
+                                            < Button
+                                                @ size 'h6'
+                                                @ id 'production-code'
+                                                @ onClick {this.handleHintRequest}
+                                                + Hints
                                 < ReactAce 
                                     @ mode {'text'}
-                                    @ code {this.state.content}
+                                    @ value {this.state.content}
                                     @ width '100%'
                                     @ height '100%'
+                                    @ minLines {40}
+                                    @ maxLines {40}
                                     @ onChange {this.handleChange}
                             < FormControl
                                 @ width '44%'
+                                @ padding '5px'
                                 < ControlLabel
-                                    + Generated
-                                < ReactAce 
-                                    @ mode {'text'}
-                                    @ code {this.state.generated}
-                                    @ width '100%'
-                                    @ height '100%'
+                                    + Production
+                                div
+                                    style
+                                        {
+                                            @ padding '5px'
+                                            @ background '#efefef'
+                                            @ borderRadius '10px'
+                                    < FlexRow
+                                        < FlexColumn
+                                            < Button
+                                                @ size 'h6'
+                                                @ id 'production-code'
+                                                @ onClick {this.handleProductionModeRequest}
+                                                + Code
+                                        < FlexColumn
+                                            < Button
+                                                @ size 'h6'
+                                                @ id 'production-preview'
+                                                @ onClick {this.handleProductionModeRequest}
+                                                + Preview
+                                        < FlexColumn
+                                            < Button
+                                                @ size 'h6'
+                                                @ id 'production-mtree'
+                                                @ onClick {this.handleProductionModeRequest}
+                                                + Debug mTree
+                                p 
+                                    + {this.state.productionMode == 'production-code'}
+                                {
+                                    &&
+                                        + ['production-code', 'production-mtree'].indexOf(this.state.productionMode) > -1
+                                        < ReactAce
+                                            @ mode {'text'}
+                                            @ value {this.state.generated || JSON.stringify(this.state.generationError, null, 2)}
+                                            @ width '100%'
+                                            @ height '100%'
+                                            @ minLines {40}
+                                            @ maxLines {40}
+
+                                {
+                                    &&
+                                        + this.state.productionMode == 'production-preview'
+                                        < IFramePage
+                                            @ content {this.state.generated}
+                                            @ error {JSON.stringify(this.state.generationError, null, 2)}
 
                     $$ $include rule/modals

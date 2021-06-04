@@ -60,7 +60,7 @@ $group
         param value
         _ this.setState
             {
-                @ genFragmentListEdit textToList(value)
+                @ genFragmentListEdit textToFragmentList(value)
 
     => handleEditDependencyListChange
         param value
@@ -73,7 +73,7 @@ $group
         log 'handleEditContextListChange', value
         _ this.setState
             {
-                @ genContextListEdit textToPairList(value)
+                @ genContextListEdit textToContextList(value)
 
     => handleModalEditConfirm
         if this.state.currentModalEdit == 'gen-fragment-list' 
@@ -110,16 +110,36 @@ $group
             {
                 @ currentModalEdit ''
 
-    => handleIttfContentChange                
-        param path
+    => handleGenFileContentChange
         param value
+        const packiPath = this.state.genSelectedEditPackiPath
         const packiFiles = this.state.genPackiFiles
-        set packiFiles[path]
+        set packiFiles[packiPath]
             {
-                @ type packiFiles[path].type
+                @ type packiFiles[packiPath].type
                 @ contents value 
         _ this.setState
             {
                 @ genPackiFiles packiFiles
             =>
-                _ this.saveSample
+                _ this.executeSaveSampleDebounced
+
+    => handleSelectGenFileItem
+        param path
+        const packiPath = this.getPackiPath(path)
+        if !this.state.genPackiFiles[packiPath]
+            const pf = Object.assign({}, this.state.genPackiFiles)
+            set pf[packiPath]
+                {
+                    @ type 'CODE'
+                    @ contents ''
+            _ this.setState
+                {
+                    @ genPackiFiles pf
+                    @ genSelectedEditPath path
+                    @ genSelectedEditPackiPath packiPath
+        else
+            _ this.setState
+                {
+                    @ genSelectedEditPath path
+                    @ genSelectedEditPackiPath packiPath

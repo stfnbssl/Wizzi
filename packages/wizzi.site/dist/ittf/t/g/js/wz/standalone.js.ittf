@@ -6,6 +6,9 @@ $group
 		
 		if !window.wz
 			set window.wz = {}
+
+        if !wz.isString
+            throw new Error('wz/standalone require wz/core')
 	
 		set wz.canGen
 			function
@@ -40,9 +43,18 @@ $group
                     ._ then
                         =>
                             param result
-                            _ callback
-                                @ null
-                                @ result['x'].contents
+                            if wz.isString(result)
+                                const json = JSON.parse(result)
+                                if json.__is_error
+                                    return
+                                        _ callback
+                                            @ json
+                                else
+                                    throw new Error('Invalid result: ' + result)
+                            else
+                                _ callback
+                                    @ null
+                                    @ result['x'].contents
                     ._ catch
                         => 
                             param err
@@ -74,17 +86,90 @@ $group
                     ._ then
                         =>
                             param result
-                            var json = result
-                            log 'wz.genFromText.json', json
-                            _ callback
-                                @ null
-                                @ json.generatedArtifact.artifactContent
+                            if wz.isString(result)
+                                const json = JSON.parse(result)
+                                if json.__is_error
+                                    return
+                                        _ callback
+                                            @ json
+                                else
+                                    throw new Error('Invalid result: ' + result)
+                            else
+                                # log 'wz.genFromText.result', result
+                                _ callback
+                                    @ null
+                                    @ result.generatedArtifact.artifactContent
                     ._ catch
                         => 
                             param err
                             _ callback
                                 @ err
 		
+		
+        set wz.genArtifact
+			function
+				param filePath
+				param packiFiles
+				param callback
+
+                _ callApi
+                    @ 'POST'
+                    @ 'productions/artifact/' + encodeURIComponent(filePath)
+                    @ packiFiles
+                    ._ then
+                        =>
+                            param result
+                            if wz.isString(result)
+                                const json = JSON.parse(result)
+                                if json.__is_error
+                                    return
+                                        _ callback
+                                            @ json
+                                else
+                                    throw new Error('Invalid result: ' + result)
+                            else
+                                return
+                                    _ callback
+                                        @ null
+                                        @ result.generatedArtifact.artifactContent
+                    ._ catch
+                        => 
+                            param err
+                            _ callback
+                                @ err
+
+        set wz.mTreeDebugInfo
+			function
+				param filePath
+				param packiFiles
+				param callback
+
+                _ callApi
+                    @ 'POST'
+                    @ 'productions/mtreedebuginfo/' + encodeURIComponent(filePath)
+                    @ packiFiles
+                    ._ then
+                        =>
+                            param result
+                            if wz.isString(result)
+                                const json = JSON.parse(result)
+                                if json.__is_error
+                                    return
+                                        _ callback
+                                            @ json
+                                else
+                                    throw new Error('Invalid result: ' + result)
+                            else
+                                return
+                                    _ callback
+                                        @ null
+                                        @ result.mTreeBuildUpScript
+                    ._ catch
+                        => 
+                            param err
+                            _ callback
+                                @ err
+
         set wz.canWizzify
 			function
 				param schemaName
@@ -103,6 +188,7 @@ $group
                             { 
                                 @ type 'CODE'
                                 @ contents snippet
+                
                 _ callApi
                     @ 'POST'
                     @ 'productions/wizzify'
@@ -110,11 +196,20 @@ $group
                     ._ then
                         =>
                             param result
-                            var json = result.packiResult
-                            log 'wz.wizzify.json', json
-                            _ callback
-                                @ null
-                                @ json['x.' + schemaName + '.ittf'].contents
+                            if wz.isString(result)
+                                const json = JSON.parse(result)
+                                if json.__is_error
+                                    return
+                                        _ callback
+                                            @ json
+                                else
+                                    throw new Error('Invalid result: ' + result)
+                            else
+                                var json = result.packiResult
+                                log 'wz.wizzify.json', json
+                                _ callback
+                                    @ null
+                                    @ json['x.' + schemaName + '.ittf'].contents
                     ._ catch
                         => 
                             param err

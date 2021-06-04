@@ -24,6 +24,8 @@ $group
                     @ genDependencyList []
                     @ genContextList []
                     @ genPackiFiles null
+                    @ genSelectedEditPath null
+                    @ genSelectedEditPackiPath null
                     @ wizContent null
                     @ storedSamplesNames []
                     @ createNewSampleOpen false
@@ -32,6 +34,7 @@ $group
                     @ newSampleContent null
                     @ newSampleDescription null
                     @ currentModalEdit ''
+                    
 
         did-mount
             let recentView = this.store.get('recentView')
@@ -57,9 +60,10 @@ $group
                         _ this.setSample
                             @ recentSample
 
-            set this.executeValuesChangeDebounced
+            set this.executeSaveSampleDebounced
                 _ wz.debounce
                     =>
+                        _ this.saveSample
                     @ 1000
 
         => handleMainViewChange                    
@@ -175,12 +179,13 @@ $group
                                     < React.Fragment
                                         < Generator
                                             @ schema {this.state.currentSampleSchema}
-                                            @ content {this.state.genMainIttfContent}
                                             @ fragmentList {this.state.genFragmentList}
                                             @ contextList {this.state.genContextList}
-                                            @ selectedEditPath {this.state.genSelectedEditPath}
+                                            @ selectedEditPackiPath {this.state.genSelectedEditPackiPath}
+                                            @ selectedMainIttfContentPath {this.getSelectedMainIttfContentPath()}
                                             @ packiFiles {this.state.genPackiFiles}
-                                            @ onChange {this.handleIttfContentChange}
+                                            @ onChange {this.handleGenFileContentChange}
+                                            @ onSelectFileItem {this.handleSelectGenFileItem}
                             {
                                 &&
                                     + this.state.mainView == 'view-wizzifier'

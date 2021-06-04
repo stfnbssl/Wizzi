@@ -26,12 +26,14 @@ $group
         from './factory'
     import 
         @ GeneratedArtifact
+        @ TransformedModel
         from './types'
     import 
         @ FsJson
         from 'wizzi-repo'
     $include productions/loadMTree.ts
     $include productions/generate.ts
+    $include productions/transform.ts
     $include productions/executeJob.ts
     $include productions/wizzify.ts
     +
@@ -281,6 +283,28 @@ $group
         const pf = parseFilePath(filePath)
         if pf.isIttfDocument
             return schemaModuleMap[pf.schema]
+        return undefined
+    +
+    const schemaTransformerMap
+        :{ 
+            :index 
+                :string 
+                param k
+                    :string 
+        =
+            { 
+                @ meta 'ittf/cheatsheet'
+    +
+    function transformerFor
+        param filePath
+            :string 
+        :return
+            :union 
+                :string 
+                :undefined 
+        const pf = parseFilePath(filePath)
+        if pf.isIttfDocument
+            return schemaTransformerMap[pf.schema]
         return undefined
     +
     function schemaFromFilePath

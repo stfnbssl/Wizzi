@@ -4,4 +4,4 @@
 	$include call
 	$include loops
 	$include arrays
-	$include react
+	$include reactnode

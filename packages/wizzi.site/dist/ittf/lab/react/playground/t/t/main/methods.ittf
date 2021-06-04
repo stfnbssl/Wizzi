@@ -82,6 +82,7 @@ $group
                 @ genContextList newSample.contextList
                 @ genPackiFiles newSample.packiFiles
                 @ genSelectedEditPath mainIttfPath
+                @ genSelectedEditPackiPath mainIttfPath
 
     m createNewWizSample
         param sampleName
@@ -154,6 +155,7 @@ $group
                 @ genContextList currentSample.contextList || []
                 @ genPackiFiles currentSample.packiFiles
                 @ genSelectedEditPath mainIttfPath
+                @ genSelectedEditPackiPath mainIttfPath
     
     m setWizSample
         param sampleName
@@ -202,3 +204,49 @@ $group
                 @ this.state.currentSampleName
                 _ JSON.stringify
                     @ newSampleData
+
+    m getSampleMainIttfContentPath
+        return 'index.' + this.state.currentSampleSchema + '.ittf'
+
+    m getSelectedMainIttfContentPath
+        param showGeneratedContext
+        if this.state.genSelectedEditPath == this.getSampleMainIttfContentPath()
+            return this.getSampleMainIttfContentPath()
+        const fragment
+            _ this.state.genFragmentList.find
+                =>
+                    param item
+                    return item.path == this.state.genSelectedEditPath
+        if fragment
+            return this.getSampleMainIttfContentPath()
+        const context
+            _ this.state.genContextList.find
+                =>
+                    param item
+                    return item.path == this.state.genSelectedEditPath
+        if context && context.isFragment
+            return this.getSampleMainIttfContentPath()
+        else
+            return showGeneratedContext ? context.packiPath : this.getSampleMainIttfContentPath()
+
+    m getPackiPath
+        param path
+        if path == this.getSampleMainIttfContentPath()
+            return path
+        const fragment
+            _ this.state.genFragmentList.find
+                =>
+                    param item
+                    return item.path == path
+        if fragment
+            return fragment.packiPath
+        const context
+            _ this.state.genContextList.find
+                =>
+                    param item
+                    return item.path == this.state.genSelectedEditPath
+        if context
+            return context.packiPath
+        else
+            throw new Error('getPackiPath failed, is a bug.')
+

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\packi\controllers\productions.ts.ittf
-    utc time: Sat, 29 May 2021 11:12:38 GMT
+    utc time: Fri, 04 Jun 2021 20:07:21 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
@@ -24,6 +24,7 @@ export class ProductionsController implements ControllerType {
         console.log('Entering ProductionsController.initialize');
         this.router.post(`/mtreedebuginfo/:id`, this.mTreeDebugInfo)
         this.router.post(`/artifact/:id`, this.generateArtifact)
+        this.router.post(`/transform/:id/:transformer`, this.transformModel)
         this.router.post(`/job`, this.executeJob)
         this.router.post(`/wizzify`, this.wizzify)
     };
@@ -55,6 +56,30 @@ export class ProductionsController implements ControllerType {
         const files: PackiFiles = request.body;
         console.log('generateArtifact.received files', Object.keys(files));
         wizziProds.generateArtifact(id, files).then((value) => {
+        
+            console.log('generateArtifact.result', value);
+            sendSuccess(response, {
+                generatedArtifact: value
+             })
+        }
+        ).catch((err) => {
+        
+            console.log('features.packi.controllers.production.generateArtifact.err', err);
+            sendFailure(response, err, 501);
+        }
+        )
+    }
+    ;
+    
+    private transformModel = async (request: Request, response: Response) => {
+    
+        const id = request.params.id;
+        const transformer = request.params.transformer;
+        const files: PackiFiles = request.body;
+        console.log('transformModel.received files', Object.keys(files));
+        wizziProds.transformModel(id, files, {}, {
+            transformer: transformer
+         }).then((value) => {
         
             console.log('generateArtifact.result', value);
             sendSuccess(response, {

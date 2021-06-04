@@ -110,6 +110,7 @@ $group
                     # ??? urlPathName.substr(routePath.length);
                 const extname = path.extname(filePath)
                 var queryMeta = (req.query.meta as string)
+                var queryTransform = (req.query.transform as string)
                 log 'middleware.ittfStatic', 'urlPathName', urlPathName, 'pathname', pathname, 'filePath', filePath, 'path.extname(filePath)', path.extname(filePath), 'queryMeta', queryMeta
                 if fs.existsSync(filePath) === false
                     log 'filePath do not exists', filePath
@@ -117,6 +118,8 @@ $group
                 if fs.statSync(filePath).isDirectory()
                     log 'filePath is directory', filePath
                     return sendFolderScan(filePath, basePath, queryMeta, res)
+                if queryTransform && queryTransform.indexOf('/') > 0
+                    return sendTransform(filePath, queryTransform, res)
                 let ittfSchema = ittfSchemaOf(filePath)
                 let contentType = contentTypeFor(filePath)
                 log 'contentType', contentType, 'ittfSchema', ittfSchema, 'queryMeta', queryMeta
@@ -391,6 +394,35 @@ $group
                 @ ex
                 {
                     @ format 'json'
+    +
+    function sendTransform
+        param filePath
+            :string
+        param transformer
+            :string
+        param res
+            :ref Response
+        _ wizziProds.transformModelFs
+            @ filePath
+            {
+            {
+                @ transformer transformer
+            ._ then
+                =>
+                    param model
+                    _ res.send
+                        _ stringify
+                            @ model
+                            @ null
+                            @ 2
+            ._ catch
+                =>
+                    param err
+                    _ sendError
+                        @ res
+                        @ err
+                        {
+                            @ format 'json'
     +
     function sendJSONStringified
         param res

@@ -646,6 +646,57 @@ var WizziFactory = (function () {
         context.wizziFactory = this;
         transformer.trans(model, context, callback)
     }
+    WizziFactory.prototype.loadAndTransformModel = function(ittfDocumentUri, requestContext, transformName, callback) {
+        if (typeof(callback) !== 'function') {
+            throw new Error(
+                error('InvalidArgument', 'loadAndTransformModel', 'The callback parameter must be a function. Received: ' + callback)
+            );
+        };
+        if (verify.isNotEmpty(ittfDocumentUri) === false) {
+            return callback(error(
+                'InvalidArgument', 'loadAndTransformModel', { parameter: 'ittfDocumentUri', message: 'The ittfDocumentUri parameter must be a string. Received: ' + ittfDocumentUri }
+            ));
+        }
+        if (verify.isObject(requestContext) === false) {
+            return callback(error(
+                'InvalidArgument', 'loadAndTransformModel', { parameter: 'requestContext', message: 'The requestContext parameter must be an object. Received: ' + requestContext }
+            ));
+        }
+        if (verify.isNullOrUndefined(requestContext.modelRequestContext) === false) {
+            if (verify.isObject(requestContext.modelRequestContext) === false) {
+                return callback(error(
+                    'InvalidArgument', 'loadAndTransformModel', { parameter: 'requestContext.modelRequestContext', message: 'The requestContext.modelRequestContext parameter must be an object. Received: ' + requestContext.modelRequestContext }
+                ));
+            }
+        }
+        if (verify.isNullOrUndefined(requestContext.transformRequestContext) === false) {
+            if (verify.isObject(requestContext.transformRequestContext) === false) {
+                return callback(error(
+                    'InvalidArgument', 'loadAndTransformModel', { parameter: 'requestContext.transformRequestContext', message: 'The requestContext.transformRequestContext parameter must be an object. Received: ' + requestContext.transformRequestContext }
+                ));
+            }
+        }
+        if (verify.isNotEmpty(transformName) === false) {
+            return callback(error(
+                'InvalidArgument', 'loadAndTransformModel', { parameter: 'transformName', message: 'The transformName parameter must be a string. Received: ' + transformName }
+            ));
+        }
+        
+        // log 'wizzi.wizziFactory.loadAndTransformModel.requestContext.modelRequestContext', requestContext.modelRequestContext, 'transformRequestContext', requestContext.transformRequestContext
+        
+        var that = this;
+        // load the wizzi model from an ittfDocument
+        this.loadModel(ittfDocumentUri, {
+            mTreeBuildUpContext: requestContext.modelRequestContext
+        }, function(err, wizziModel) {
+            if (err) {
+                return callback(err);
+            }
+            // log 'wizzi.wizziFactory.loadAndTransformModel', 'model loaded', wizziModel
+            // the loaded wizzi model becomes the wizziModel of the transformation
+            that.transformModel(wizziModel, transformName, requestContext.transformRequestContext || requestContext.modelRequestContext, callback)
+        })
+    }
     WizziFactory.prototype.loadAndTransformModelAndGenerateArtifact = function(ittfDocumentUri, requestContext, transformName, artifactName, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -694,7 +745,7 @@ var WizziFactory = (function () {
             ));
         }
         
-        // log 'wizzi.wizziFactory.loadModelAndGenerateArtifact.requestContext.modelRequestContext', requestContext.modelRequestContext, 'transformRequestContext', requestContext.transformRequestContext, 'artifactRequestContext', requestContext.artifactRequestContext
+        // log 'wizzi.wizziFactory.loadAndTransformModelAndGenerateArtifact.requestContext.modelRequestContext', requestContext.modelRequestContext, 'transformRequestContext', requestContext.transformRequestContext, 'artifactRequestContext', requestContext.artifactRequestContext
         
         var that = this;
         // load the wizzi model from an ittfDocument
@@ -704,7 +755,7 @@ var WizziFactory = (function () {
             if (err) {
                 return callback(err);
             }
-            // log 'wizzi.wizziFactory.loadModelAndGenerateArtifact', 'model loaded', wizziModel
+            // log 'wizzi.wizziFactory.loadAndTransformModelAndGenerateArtifact', 'model loaded', wizziModel
             // the loaded wizzi model becomes the wizziModel of the transformation
             that.transformModel(wizziModel, transformName, requestContext.transformRequestContext || requestContext.modelRequestContext, function(err, artifactModel) {
                 if (err) {

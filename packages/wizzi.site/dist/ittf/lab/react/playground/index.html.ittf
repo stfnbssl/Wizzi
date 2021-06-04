@@ -34,6 +34,7 @@ html
                     $include g/js/wz/react/Modal
                     $include g/js/wz/react/FlexibleModal
                     $include g/js/wz/react/ReactAce
+                    $include g/js/wz/react/IFramePage
                     $include samplesData
                     $include common/styled
                     $include Generator

@@ -26,14 +26,14 @@ $group
                         + { this.state.mainView == 'view-generate' ? 'Main ittf content' : 'Content' }
                     < ReactAce 
                         @ mode {'text'}
-                        @ code {''}
+                        @ value {''}
                         @ onChange {this.handleNewSampleContentChange}
                 < FormControl
                     < ControlLabel
                         + Sample description
                     < ReactAce 
                         @ mode {'text'}
-                        @ code {''}
+                        @ value {''}
                         @ width '100%'
                         @ height '100%'
                         @ onChange {this.handleNewSampleDocChange}
@@ -80,7 +80,7 @@ $group
                                 \b 'fragments' drop down control.
                     < ReactAce 
                         @ mode {'html'}
-                        @ code {listToText(this.state.genFragmentList)}
+                        @ value {fragmentListToText(this.state.genFragmentList)}
                         @ onChange {this.handleEditFragmentListChange}
             < FlexRow
                 < Button
@@ -127,7 +127,7 @@ $group
                                 + 3 {'...\n'}
                     < ReactAce 
                         @ mode {'html'}
-                        @ code {listToText(this.state.genDependencyList)}
+                        @ value {listToText(this.state.genDependencyList)}
                         @ onChange {this.handleEditDependencyListChange}
                 < FlexRow
                     < Button
@@ -172,7 +172,7 @@ $group
                                 \b 'contexts' drop down control.
                     < ReactAce 
                         @ mode {'html'}
-                        @ code {pairsToText(this.state.genContextList)}
+                        @ value {contextListToText(this.state.genContextList)}
                         @ onChange {this.handleEditContextListChange}
             < FlexRow
                 < Button

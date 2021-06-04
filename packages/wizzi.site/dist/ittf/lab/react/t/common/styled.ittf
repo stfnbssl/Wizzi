@@ -113,6 +113,7 @@ $group
                     {
                         @ width props.width || '100%'
                         @ height props.height || 'auto'
+                        @ padding props.padding || 'auto'
 
     const ControlLabel
         _ styled.label

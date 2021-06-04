@@ -39,6 +39,34 @@ $group
 			@ context
 			@ callback
 
+	m loadAndTransformModel
+		string ittfDocumentUri
+		{ requestContext
+			{ modelRequestContext
+				optional
+			{ transformRequestContext
+				optional
+		string transformName
+		callback
+		+
+		# log 'wizzi.wizziFactory.loadAndTransformModel.requestContext.modelRequestContext', requestContext.modelRequestContext, 
+			\b 'transformRequestContext', requestContext.transformRequestContext
+		+
+		var that = this
+		# load the wizzi model from an ittfDocument
+        _ this.loadModel
+            @ ittfDocumentUri
+            {
+                @ mTreeBuildUpContext requestContext.modelRequestContext
+            f_cb( wizziModel )
+                # log 'wizzi.wizziFactory.loadAndTransformModel', 'model loaded', wizziModel
+                # the loaded wizzi model becomes the wizziModel of the transformation
+                _ that.transformModel
+                    @ wizziModel
+                    @ transformName
+                    @ requestContext.transformRequestContext || requestContext.modelRequestContext
+                    @ callback
+
 	m loadAndTransformModelAndGenerateArtifact
 		string ittfDocumentUri
 		{ requestContext
@@ -52,7 +80,7 @@ $group
         string artifactName
 		callback
 		+
-		# log 'wizzi.wizziFactory.loadModelAndGenerateArtifact.requestContext.modelRequestContext', requestContext.modelRequestContext, 
+		# log 'wizzi.wizziFactory.loadAndTransformModelAndGenerateArtifact.requestContext.modelRequestContext', requestContext.modelRequestContext, 
 			\b 'transformRequestContext', requestContext.transformRequestContext,
             \b 'artifactRequestContext', requestContext.artifactRequestContext
 		+
@@ -63,7 +91,7 @@ $group
             {
                 @ mTreeBuildUpContext requestContext.modelRequestContext
             f_cb( wizziModel )
-                # log 'wizzi.wizziFactory.loadModelAndGenerateArtifact', 'model loaded', wizziModel
+                # log 'wizzi.wizziFactory.loadAndTransformModelAndGenerateArtifact', 'model loaded', wizziModel
                 # the loaded wizzi model becomes the wizziModel of the transformation
                 _ that.transformModel
                     @ wizziModel

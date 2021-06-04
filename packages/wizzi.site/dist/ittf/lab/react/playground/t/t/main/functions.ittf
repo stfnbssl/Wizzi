@@ -16,7 +16,29 @@ $group
         param list
         return list ? list.join('\n') : ''
 
-    function textToPairList
+    function textToFragmentList
+        param text
+        const ret = []
+        if text && text.trim().length > 0
+            const items = text.trim().split('\n')
+            foreach item in items
+                if item && item.trim().length > 0
+                    _ ret.push
+                        {
+                            @ path item.trim()
+                            @ packiPath 't/' + item.trim()
+        log 'textToFragmentList', ret
+        return ret
+    
+    function fragmentListToText
+        param list
+        const ret = []
+        foreach item in list
+            _ ret.push
+                @ item.path
+        return ret.join('\n')
+
+    function textToContextList
         param text
         const ret = []
         if text && text.trim().length > 0
@@ -30,19 +52,23 @@ $group
                             _ pair.push
                                 _ val.trim
                     if pair.length == 2
+                        const isFragment = pair[1].indexOf('/') > 0
                         _ ret.push
                             {
-                                @ config pair[0]
+                                @ name pair[0]
                                 @ path pair[1]
+                                @ packiPath '__contexts/' + (isFragment ? 't/' + pair[1] : pair[1]) + '.json.ittf'
+                                @ isFragment isFragment
+        log 'textToContextList', ret
         return ret
 
-    function pairsToText
+    function contextListToText
         param pairs
         if pairs
             const lines = []
             foreach val in pairs
                 _ lines.push
-                    @ val.config + ',' + val.path
+                    @ val.name + ',' + val.path
             return lines.join('\n') 
         else
             return ''

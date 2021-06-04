@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\middlewares\ittfStatic.ts.ittf
-    utc time: Sat, 29 May 2021 11:12:38 GMT
+    utc time: Fri, 04 Jun 2021 20:07:21 GMT
 */
 import util from 'util';
 import path from 'path';
@@ -99,6 +99,7 @@ function ittfMiddleware(basePath: string, routePath: string):  RequestHandler {
             const filePath = path.join(basePath, pathname);
             const extname = path.extname(filePath);
             var queryMeta = (req.query.meta as string);
+            var queryTransform = (req.query.transform as string);
             console.log('middleware.ittfStatic', 'urlPathName', urlPathName, 'pathname', pathname, 'filePath', filePath, 'path.extname(filePath)', path.extname(filePath), 'queryMeta', queryMeta);
             if (fs.existsSync(filePath) === false) {
                 console.log('filePath do not exists', filePath);
@@ -107,6 +108,9 @@ function ittfMiddleware(basePath: string, routePath: string):  RequestHandler {
             if (fs.statSync(filePath).isDirectory()) {
                 console.log('filePath is directory', filePath);
                 return sendFolderScan(filePath, basePath, queryMeta, res);
+            }
+            if (queryTransform && queryTransform.indexOf('/') > 0) {
+                return sendTransform(filePath, queryTransform, res);
             }
             let ittfSchema = ittfSchemaOf(filePath);
             let contentType = contentTypeFor(filePath);
@@ -326,6 +330,21 @@ async function sendFolderScan(folderPath: string, root: string, meta: string, re
             format: 'json'
          })
     } 
+}
+
+function sendTransform(filePath: string, transformer: string, res: Response) {
+
+    wizziProds.transformModelFs(filePath, {}, {
+        transformer: transformer
+     }).then(model => 
+    
+        res.send(stringify(model, null, 2))
+    ).catch(err => 
+    
+        sendError(res, err, {
+            format: 'json'
+         })
+    )
 }
 
 function sendJSONStringified(res: Response, wizziModelInstance: any) {

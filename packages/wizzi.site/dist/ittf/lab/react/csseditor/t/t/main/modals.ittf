@@ -27,14 +27,14 @@ $group
                         + Html
                     < ReactAce 
                         @ mode {'html'}
-                        @ code {'<div></div>'}
+                        @ value {'<div></div>'}
                         @ onChange {this.handleNewSampleHtmlChange}
                 < FormControl
                     < ControlLabel
                         + Rules
                     < ReactAce 
                         @ mode {'html'}
-                        @ code {''}
+                        @ value {''}
                         @ width '100%'
                         @ height '100%'
                         @ onChange {this.handleNewSampleRulesChange}
@@ -64,7 +64,7 @@ $group
                         + Html
                     < ReactAce 
                         @ mode {'html'}
-                        @ code {this.state.htmlEdit}
+                        @ value {this.state.htmlEdit}
                         @ onChange {this.handleEditHtmlChange}
             < FlexRow
                 < Button
@@ -99,7 +99,7 @@ $group
                                 + {'...\n'}
                     < ReactAce 
                         @ mode {'html'}
-                        @ code {this.state.rulesEdit}
+                        @ value {this.state.rulesEdit}
                         @ onChange {this.handleEditRulesChange}
             < FlexRow
                 < Button

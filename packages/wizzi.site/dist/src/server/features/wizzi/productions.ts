@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\wizzi\productions.ts.ittf
-    utc time: Sat, 29 May 2021 11:12:38 GMT
+    utc time: Fri, 04 Jun 2021 20:07:21 GMT
 */
 import path from 'path';
 import fs from 'fs';
@@ -12,7 +12,7 @@ import {ittfDocumentScanner, folderBrowse, IttfMTreeState, FolderBrowseResult} f
 import {packiTypes} from '../packi';
 import {config} from '../config';
 import {createFsJsonAndFactory, ensurePackiFilePrefix, createFilesystemFactory} from './factory';
-import {GeneratedArtifact} from './types';
+import {GeneratedArtifact, TransformedModel} from './types';
 import {FsJson} from 'wizzi-repo';
 
 export async function mTreeDebugInfo(filePath: string, files: packiTypes.PackiFiles, context: any):  Promise<string> {
@@ -116,6 +116,91 @@ export async function generateArtifactFs(filePath: string, context?: any, option
             }
             else {
                 reject('No artifact generator available for document ' + filePath);
+            }
+        }
+        );
+}
+
+export async function transformModel(filePath: string, files: packiTypes.PackiFiles, context?: any, options?: any):  Promise<TransformedModel> {
+
+    return new Promise(async (resolve, reject) => {
+        
+            const transformer = options && options.transformer ? options.transformer : transformerFor(filePath);
+            console.log('wizzi.productions.transformModel.using artifact transformer', transformer);
+            if (transformer) {
+                let jsonwf: any = {};
+                let transformationContext: any = {};
+                const ittfDocumentUri = ensurePackiFilePrefix(filePath) as string
+                ;
+                const siteDocumentUri = Object.keys(files).find(k => 
+                
+                    k.endsWith('site.json.ittf')
+                );
+                try {
+                    jsonwf = await createFsJsonAndFactory(files);
+                    ;
+                    transformationContext = {
+                        site: siteDocumentUri ? await loadModelJson(jsonwf.wf, ensurePackiFilePrefix(siteDocumentUri), {}) : null, 
+                        ...(await inferAndLoadContextJson(jsonwf.wf, files, ittfDocumentUri, 'twin'))
+                        
+                     };
+                    console.log('wizzi.productions.transformModel.transformationContext', Object.keys(transformationContext));
+                    jsonwf.wf.loadAndTransformModel(ittfDocumentUri, {
+                        modelRequestContext: transformationContext
+                     }, transformer, (err: any, result: any) => {
+                    
+                        if (err) {
+                            return reject(err);
+                        }
+                        // console.log('Transformed result', result);
+                        resolve({
+                            transformResult: result, 
+                            sourcePath: filePath, 
+                            modelTransformer: transformer
+                         })
+                    }
+                    )
+                } 
+                catch (ex) {
+                    return reject(ex);
+                } 
+            }
+            else {
+                reject('No model transformer available for document ' + filePath);
+            }
+        }
+        );
+}
+
+export async function transformModelFs(filePath: string, context?: any, options?: any):  Promise<TransformedModel> {
+
+    return new Promise(async (resolve, reject) => {
+        
+            const transformer = options && options.transformer ? options.transformer : transformerFor(filePath);
+            if (transformer) {
+                console.log('wizzi.productions.using model transformer', transformer);
+                const wf = await createFilesystemFactory();
+                const transformationContext = {
+                    modelRequestContext: context || {}
+                 };
+                wf.loadAndTransformModel(filePath, {
+                    modelRequestContext: transformationContext
+                 }, transformer, (err: any, result: any) => {
+                
+                    if (err) {
+                        return reject(err);
+                    }
+                    // console.log('Transformed model', result);
+                    resolve({
+                        transformResult: result, 
+                        sourcePath: filePath, 
+                        modelTransformer: transformer
+                     })
+                }
+                )
+            }
+            else {
+                reject('No model transformer available for document ' + filePath);
             }
         }
         );
@@ -411,6 +496,21 @@ function generatorFor(filePath: string):  string | undefined {
     const pf = parseFilePath(filePath);
     if (pf.isIttfDocument) {
         return schemaModuleMap[pf.schema];
+    }
+    return undefined;
+}
+
+const schemaTransformerMap: { 
+    [k: string]: string;
+} = {
+    meta: 'ittf/cheatsheet'
+ };
+
+function transformerFor(filePath: string):  string | undefined {
+
+    const pf = parseFilePath(filePath);
+    if (pf.isIttfDocument) {
+        return schemaTransformerMap[pf.schema];
     }
     return undefined;
 }

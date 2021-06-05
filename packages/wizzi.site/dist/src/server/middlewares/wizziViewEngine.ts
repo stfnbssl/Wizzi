@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\middlewares\wizziViewEngine.ts.ittf
-    utc time: Fri, 04 Jun 2021 20:07:21 GMT
+    utc time: Sat, 05 Jun 2021 04:08:41 GMT
 */
 import path from 'path';
 import {Application} from 'express';

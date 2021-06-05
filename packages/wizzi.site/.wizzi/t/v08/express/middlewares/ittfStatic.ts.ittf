@@ -410,6 +410,9 @@ $group
             ._ then
                 =>
                     param model
+                    _ res.type('application/json')
+                    _ res.send(model)
+                    return
                     _ res.send
                         _ stringify
                             @ model

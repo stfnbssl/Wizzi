@@ -1,0 +1,145 @@
+$group
+
+    => handleAddSheetRequest
+        _ this.setState
+            {
+                @ addSheetOpen true
+
+    => handleNewSheetNameChange
+        param ev
+        _ this.setState
+            {
+                @ newSheetName ev.target.value
+
+    => handleNewSheetContentChange
+        param value
+        _ this.setState
+            {
+                @ newSheetContent value
+
+    => handleNewSheetDocChange
+        param value
+        _ this.setState
+            {
+                @ newSheetDoc value
+
+    => handleAddSheetConfirm
+        _ this.addSheet
+            @ this.state.newSheetName
+            @ this.state.newSheetContent
+            @ this.state.newSheetDoc
+        _ this.setState
+            {
+                @ addSheetOpen false
+                @ newSheetName ''
+                @ newSheetContent ''
+                @ newSheetDoc ''
+
+    => handleAddSheetClose
+        _ this.setState
+            {
+                @ addSheetOpen false
+                @ newSheetName ''
+                @ newSheetContent ''
+                @ newSheetDoc ''
+
+    => handleChangeSheet
+        param ev
+        log 'handleChangeSheet', ev.target.value
+        _ this.setSheet
+            @ ev.target.value
+
+    => handleEditRequest
+        param ev
+        log 'handleEditRequest', ev.target.id
+        _ this.setState
+            {
+                @ currentModalEdit ev.target.id
+
+    => handleEditFragmentListChange
+        param value
+        _ this.setState
+            {
+                @ genFragmentListEdit textToFragmentList(value)
+
+    => handleEditDependencyListChange
+        param value
+        _ this.setState
+            {
+                @ genDependencyListEdit textToList(value)
+    
+    => handleEditContextListChange
+        param value
+        log 'handleEditContextListChange', value
+        _ this.setState
+            {
+                @ genContextListEdit textToContextList(value)
+
+    => handleModalEditConfirm
+        if this.state.currentModalEdit == 'gen-fragment-list' 
+            if this.state.genFragmentListEdit != null
+                const fl = this.state.genFragmentListEdit
+                _ this.setState
+                    {
+                        @ genFragmentList fl
+                        @ genFragmentListEdit null
+                        @ currentModalEdit ''
+                    =>
+                        _ this.saveSheet
+            else
+                _ this.setState
+                    {
+                        @ currentModalEdit ''
+        elif this.state.currentModalEdit == 'gen-context-list' 
+            if this.state.genContextListEdit != null
+                const cl = this.state.genContextListEdit
+                _ this.setState
+                    {
+                        @ genContextList cl
+                        @ genContextListEdit null
+                        @ currentModalEdit ''
+                    =>
+                        _ this.saveSheet
+            else
+                _ this.setState
+                    {
+                        @ currentModalEdit ''
+
+    => handleModalEditCancel
+        _ this.setState
+            {
+                @ currentModalEdit ''
+
+    => handleGenFileContentChange
+        param value
+        const packiPath = this.state.genSelectedEditPackiPath
+        const packiFiles = this.state.genPackiFiles
+        set packiFiles[packiPath]
+            {
+                @ type packiFiles[packiPath].type
+                @ contents value 
+        _ this.setState
+            {
+                @ genPackiFiles packiFiles
+            =>
+                _ this.executeSaveSheetDebounced
+
+    => handleSelectItem
+        param path
+        const packiPath = this.getPackiPath(path)
+        if !this.state.genPackiFiles[packiPath]
+            const pf = Object.assign({}, this.state.genPackiFiles)
+            set pf[packiPath]
+                {
+                    @ type 'CODE'
+                    @ contents ''
+            _ this.setState
+                {
+                    @ genPackiFiles pf
+                    @ genSelectedEditPath path
+                    @ genSelectedEditPackiPath packiPath
+        else
+            _ this.setState
+                {
+                    @ genSelectedEditPath path
+                    @ genSelectedEditPackiPath packiPath

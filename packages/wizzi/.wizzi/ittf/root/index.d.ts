@@ -398,6 +398,15 @@ type GenerationContext = {
 }
 
 /**
+* An artifact generation context.
+*/
+type TransformationContext = {
+    // This become the mTreeBuildUpContext of the ModelLoadContext
+    modelRequestContext?: {};
+    transformRequestContext?: {};
+}
+
+/**
 * Job production options.
 */
 type ProductionOptions = {
@@ -467,6 +476,9 @@ declare interface WizziFactory {
     loadModelAndGenerateArtifact(
         ittfDocumentUri: string, context: GenerationContext, artifactName: string, callback?: cb<string>
     ): void;
+    loadAndTransformModel(
+        ittfDocumentUri: string, context: TransformationContext, transformName: string, callback?: cb<object>
+    )
     generateModelTypes(
         wfschemaIttfDocumentUri: string, outputPackagePath: string, wfschemaName: string, mTreeBuildUpContext: object, callback: cb<object>
     ): void;

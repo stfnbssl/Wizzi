@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\glob\inflight.js.ittf
 */
 'use strict';
@@ -36,7 +37,7 @@ function makeres(key) {
                     cbs.splice(0, len);
                     process.nextTick(function() {
                         RES.apply(null, args);
-                    });
+                    })
                 }
                 else {
                     delete (reqs[key]);

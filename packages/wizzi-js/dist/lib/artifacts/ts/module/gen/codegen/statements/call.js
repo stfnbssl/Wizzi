@@ -99,7 +99,7 @@ md.load = function(cnt) {
             ctx.write(')');
             var ptype = u.extractTSSimpleType(model);
             if (ptype) {
-                console.log('property', ptype.wzElement);
+                // log 'property', ptype.wzElement
                 ctx.write(': ');
                 cnt.stm[ptype.wzElement](ptype, ctx, () => {});
             }

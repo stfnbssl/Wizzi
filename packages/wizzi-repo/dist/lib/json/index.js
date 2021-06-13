@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\json\index.js.ittf
 */
 'use strict';
@@ -10,15 +11,7 @@ var Collection = require('../utils/collection');
 md.directoryTree = require('./directoryTree');
 md.FsJson = require('./fs/fsjson');
 md.DocumentManager = require('./fs/documentmanager');
-/**
-     params
-     { jsonFsData
-     [ items
-     [ documents
-     jsonFsData is simply a transport (DTO)
-     to get the updated jsonFsData you
-     must call the toJson method of the DocumentManager instance
-*/
+//
 md.createDocumentManager = function(fsJsonDataOrFsJson) {
     if (fsJsonDataOrFsJson && fsJsonDataOrFsJson.classType === 'wizzi-repo.json.FsJson') {
         return new md.DocumentManager(fsJsonDataOrFsJson);
@@ -37,7 +30,7 @@ md.createFsJson = function(documents, callback) {
         }
         var fsJson = new md.FsJson(jsonFsData);
         return callback(null, fsJson);
-    });
+    })
 };
 md.createFsJsonByJsonFsData = function(jsonFsData, callback) {
     var fsJson = new md.FsJson(jsonFsData);
@@ -50,8 +43,8 @@ md.createJsonFsData = function(documents, callback) {
         if (err) {
             return callback(err);
         }
-        doc.toJson(callback);
-    });
+        doc.toJson(callback)
+    })
 };
 md.addToJsonFsData = function(jsonFsData, documents, callback) {
     const doc = this.createDocumentManager(jsonFsData);
@@ -60,6 +53,6 @@ md.addToJsonFsData = function(jsonFsData, documents, callback) {
         if (err) {
             return callback(err);
         }
-        doc.toJson(callback);
-    });
+        doc.toJson(callback)
+    })
 };

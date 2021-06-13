@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\scanners\ittfDocumentScanner.js.ittf
 */
 'use strict';
@@ -31,15 +32,15 @@ md.scan = function(documentPath, options, callback) {
         options = {};
     }
     if (options.file) {
-        scanExec(options.file, documentPath, options, callback);
+        scanExec(options.file, documentPath, options, callback)
     }
     else {
         vfile(function(err, file) {
             if (err) {
                 return callback(err);
             }
-            scanExec(file, documentPath, options, callback);
-        });
+            scanExec(file, documentPath, options, callback)
+        })
     }
 };
 function scanMTree(file, documentPath, options, callback) {
@@ -71,9 +72,9 @@ function scanMTree(file, documentPath, options, callback) {
                         ittfReferences: mTree.ittfReferences, 
                         errorFragments: mTree.errorFragments
                     });
-            });
-        });
-    });
+            })
+        })
+    })
 }
 function scanExec(file, documentPath, options, callback) {
     var idCounter = options.baseIdCounter || 1;
@@ -93,7 +94,7 @@ function scanExec(file, documentPath, options, callback) {
                 breadCrumbs.push({
                     uri: partUri, 
                     name: item
-                });
+                })
             }
         }
         breadCrumbs[breadCrumbs.length-1].isLast = true;
@@ -107,7 +108,7 @@ function scanExec(file, documentPath, options, callback) {
         ittfDocumentState.setIttfContent(primary.content);
         var pretty = mTreeHtmlPrettifier(primary);
         ittfDocumentState.setIttfPretty(pretty.prettyLines.join(''));
-        ittfDocumentState.setFromScanResult(scanResult);
+        ittfDocumentState.setFromScanResult(scanResult)
         var msg = stringify(ittfDocumentState, null, 2);
         // log 'related', msg
         var guard = 0;
@@ -124,10 +125,10 @@ function scanExec(file, documentPath, options, callback) {
                 if (err) {
                     return callback(err);
                 }
-                loopNext(result);
-            });
+                loopNext(result)
+            })
         }
-        loopNext(false);
+        loopNext(false)
         function scanState(callback) {
             // log 'scanState.ittfDocumentState.hasUnscanned()', ittfDocumentState.hasUnscanned()
             if (ittfDocumentState.hasUnscanned() == false) {
@@ -142,8 +143,8 @@ function scanExec(file, documentPath, options, callback) {
                         return callback(err);
                     }
                     return callback(null, false);
-                });
-            });
+                })
+            })
         }
         function scanStateFragments(callback) {
             // log 'scanStateFragments.getUnscannedFragments.length', ittfDocumentState.getUnscannedFragments().length
@@ -156,13 +157,13 @@ function scanExec(file, documentPath, options, callback) {
                     var primary = scanResult.mTree;
                     var msg = stringify(scanResult, null, 2);
                     // log 'scanResult', fragment.uri, msg
-                    ittfDocumentState.setFromScanResult(scanResult);
+                    ittfDocumentState.setFromScanResult(scanResult)
                     fragment.ittfContent = primary.content;
                     var pretty = mTreeHtmlPrettifier(primary);
                     fragment.ittfPretty = pretty.prettyLines.join('');
                     return callback(null);
-                });
-            }, callback);
+                })
+            }, callback)
         }
         function scanStateIttfReferences(callback) {
             // log 'scanStateFragments.getUnscannedIttfReferences.length', ittfDocumentState.getUnscannedIttfReferences()
@@ -177,10 +178,10 @@ function scanExec(file, documentPath, options, callback) {
                     }
                     reference.documentState = documentState;
                     return callback(null);
-                });
-            }, callback);
+                })
+            }, callback)
         }
-    });
+    })
 }
 /**
   params

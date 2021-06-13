@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\coder.js.ittf
 */
 'use strict';
@@ -34,7 +35,7 @@ var Coder = (function () {
     }
     Coder.prototype.do_indent = function() {
         if (this.needIndent) {
-            this.buffer.push((new Array(1 + this.indentValue * 4)).join(' '));
+            this.buffer.push((new Array(1 + this.indentValue * 4)).join(' '))
             this.needIndent = false;
         }
     }

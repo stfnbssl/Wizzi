@@ -1,15 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\examples\json\step_3.js.ittf
 */
 'use strict';
 //
 // Example skeleton specific for the 'wizzi-repo' kernel package
 //
-/**
-     Examples: Json_Step_3
-    
-*/
+//
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
@@ -31,11 +29,11 @@ var MongoFsImpl = require('../../lib/mongodb/mongoFsimpl');
 var FsMongo = require('../../lib/mongodb/fs/fsmongo');
 var Document = require('../../lib/mongodb/fs/document');
 function dump(fsJson) {
-    printValue('fsJson.items', fsJson.items);
-    printValue('fsJson.documents', fsJson.documents);
+    printValue('fsJson.items', fsJson.items)
+    printValue('fsJson.documents', fsJson.documents)
 }
 var Json_Step_3 = function(step_callback) {
-    heading1('EXAMPLE');
+    heading1('EXAMPLE')
     heading1('start');
     var fsJson = new json.FsJson();
     var doc = new json.DocumentManager(fsJson);
@@ -57,21 +55,21 @@ var Json_Step_3 = function(step_callback) {
             throw new Error(err.message);
         }
         heading2('clear');
-        printValue('isFile.file_1', result);
+        printValue('isFile.file_1', result)
         if (result) {
             doc.deleteFile(file_1_path, function(err, result) {
                 if (err) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                printValue('deleted.file_1', result);
+                printValue('deleted.file_1', result)
                 _clear2();
-            });
+            })
         }
         else {
             _clear2();
         }
-    });
+    })
     function _clear2() {
         heading2('clear2');
         doc.isFile(file_2_path, function(err, result) {
@@ -79,21 +77,21 @@ var Json_Step_3 = function(step_callback) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            printValue('isFile.file_2', result);
+            printValue('isFile.file_2', result)
             if (result) {
                 doc.deleteFile(file_2_path, function(err, result) {
                     if (err) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printValue('deleted.file_2', result);
+                    printValue('deleted.file_2', result)
                     _clear3();
-                });
+                })
             }
             else {
                 _clear3();
             }
-        });
+        })
     }
     function _clear3() {
         heading2('clear3');
@@ -102,21 +100,21 @@ var Json_Step_3 = function(step_callback) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            printValue('isFile.file_3', result);
+            printValue('isFile.file_3', result)
             if (result) {
                 doc.deleteFile(file_3_path, function(err, result) {
                     if (err) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printValue('deleted.file_3', result);
+                    printValue('deleted.file_3', result)
                     _clear4();
-                });
+                })
             }
             else {
                 _clear4();
             }
-        });
+        })
     }
     function _clear4() {
         heading2('clear4');
@@ -125,21 +123,21 @@ var Json_Step_3 = function(step_callback) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            printValue('isFile.file_4', result);
+            printValue('isFile.file_4', result)
             if (result) {
                 doc.deleteFile(file_4_path, function(err, result) {
                     if (err) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printValue('deleted.file_4', result);
+                    printValue('deleted.file_4', result)
                     _clear5();
-                });
+                })
             }
             else {
                 _clear5();
             }
-        });
+        })
     }
     function _clear5() {
         heading2('clear5');
@@ -148,21 +146,21 @@ var Json_Step_3 = function(step_callback) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            printValue('isFile.file_5', result);
+            printValue('isFile.file_5', result)
             if (result) {
                 doc.deleteFile(file_5_path, function(err, result) {
                     if (err) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printValue('deleted.file_5', result);
+                    printValue('deleted.file_5', result)
                     _clear6();
-                });
+                })
             }
             else {
                 _clear6();
             }
-        });
+        })
     }
     function _clear6() {
         heading2('clear6');
@@ -171,21 +169,21 @@ var Json_Step_3 = function(step_callback) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            printValue('isFile.file_6', result);
+            printValue('isFile.file_6', result)
             if (result) {
                 doc.deleteFile(file_6_path, function(err, result) {
                     if (err) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printValue('deleted.file_6', result);
+                    printValue('deleted.file_6', result)
                     _writeFile();
-                });
+                })
             }
             else {
                 _writeFile();
             }
-        });
+        })
     }
     function _writeFile() {
         heading2('_writeFile');
@@ -195,14 +193,14 @@ var Json_Step_3 = function(step_callback) {
                 throw new Error(err.message);
             }
             heading2('writeFile');
-            printValue('result', result);
+            printValue('result', result)
             _createWriteStream();
-        });
+        })
     }
     function _createWriteStream() {
         heading2('_createWriteStream');
         var stream = doc.createWriteStream(file_7_path);
-        printValue('stream', stream);
+        printValue('stream', stream)
         stream.write('Hello createWriteStream\n');
         stream.write('Welcome\n');
         stream.end(function(err, result) {
@@ -210,9 +208,9 @@ var Json_Step_3 = function(step_callback) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            printValue('result', result);
+            printValue('result', result)
             _readFile();
-        });
+        })
     }
     function _readFile() {
         heading2('_readFile');
@@ -222,16 +220,16 @@ var Json_Step_3 = function(step_callback) {
                 throw new Error(err.message);
             }
             heading2('readFile');
-            printValue('content', content);
+            printValue('content', content)
             doc.readFile(file_7_path, function(err, content) {
                 if (err) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                printValue('content', content);
+                printValue('content', content)
                 _uploadFolder();
-            });
-        });
+            })
+        })
     }
     function _uploadFolder() {
         heading2('uploadFolder');
@@ -240,9 +238,9 @@ var Json_Step_3 = function(step_callback) {
                 console.log('err', err);
                 throw new Error(err.message);
             }
-            printValue('result', result);
+            printValue('result', result)
             _renameFile();
-        });
+        })
     }
     function _renameFile() {
         heading2('_renameFile');
@@ -252,23 +250,23 @@ var Json_Step_3 = function(step_callback) {
                 throw new Error(err.message);
             }
             heading2('renameFile');
-            printValue('isFile.before.rename', result);
+            printValue('isFile.before.rename', result)
             doc.renameFile(file_1_path, file_2_path, function(err, result) {
                 if (err) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                printValue('rename.result', result);
+                printValue('rename.result', result)
                 doc.isFile(file_2_path, function(err, result) {
                     if (err) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printValue('isFile.after.rename', result);
+                    printValue('isFile.after.rename', result)
                     _copyFile();
-                });
-            });
-        });
+                })
+            })
+        })
     }
     function _copyFile() {
         doc.isFile(file_3_path, function(err, result) {
@@ -277,23 +275,23 @@ var Json_Step_3 = function(step_callback) {
                 throw new Error(err.message);
             }
             heading2('copyFile');
-            printValue('isFile.before.copy', result);
+            printValue('isFile.before.copy', result)
             doc.copyFile(file_2_path, file_3_path, function(err, result) {
                 if (err) {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                printValue('copy.result', result);
+                printValue('copy.result', result)
                 doc.isFile(file_3_path, function(err, result) {
                     if (err) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printValue('isFile.after.copy', result);
+                    printValue('isFile.after.copy', result)
                     _copyFolder();
-                });
-            });
-        });
+                })
+            })
+        })
     }
     function _copyFolder() {
         heading2('copyFolder');
@@ -304,9 +302,9 @@ var Json_Step_3 = function(step_callback) {
             }
             printArray('copied', result, [
                 'newid'
-            ]);
+            ])
             _getDir();
-        });
+        })
     }
     function _getDir() {
         doc.copyFile(file_2_path, file_4_path, function(err, result) {
@@ -315,7 +313,7 @@ var Json_Step_3 = function(step_callback) {
                 throw new Error(err.message);
             }
             heading2('getDir');
-            printValue('copied.file_4_path', result);
+            printValue('copied.file_4_path', result)
             doc.getDir(folder_1_path, function(err, result) {
                 if (err) {
                     console.log('err', err);
@@ -325,14 +323,14 @@ var Json_Step_3 = function(step_callback) {
                     '_id', 
                     'path', 
                     'kind'
-                ]);
+                ])
                 doc.close();
                 terminate();
-            });
-        });
+            })
+        })
     }
     function terminate() {
-        dump(fsJson);
+        dump(fsJson)
     }
 };
 Json_Step_3.__name = 'Json_Step_3';
@@ -363,11 +361,12 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }
 function printValue(k, v, format, p1) {
+    console.log('--- value ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -401,8 +400,10 @@ function printValue(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- value ------------------------------------------------------ end');
 }
 function printObject(k, v, format, p1) {
+    console.log('--- object ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -411,6 +412,7 @@ function printObject(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- object ------------------------------------------------------ end');
 }
 function __printObject(v, level, limit) {
     if (level < limit) {
@@ -463,7 +465,7 @@ function printNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printNodes_deep(c, indent + 1);
+        printNodes_deep(c, indent + 1)
     }
 }
 function printNodes(nodes, title) {
@@ -486,7 +488,7 @@ function printNodes(nodes, title) {
                 console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
             }
         }
-        printNodes_deep(nodes[0], 1);
+        printNodes_deep(nodes[0], 1)
     }
     console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
@@ -495,7 +497,7 @@ function printEvaluatedNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
+        printEvaluatedNodes_deep(c, indent + 1)
     }
 }
 function printEvaluatedNodes(evaluated, title) {
@@ -504,7 +506,7 @@ function printEvaluatedNodes(evaluated, title) {
         if (evaluated.frontMatter) {
             console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
         }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1)
     }
     else {
         console.log('Invalid evaluated object', evaluated);

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\tests\json\fsimpl.js.ittf
 */
 'use strict';
@@ -35,7 +36,7 @@ describe("json.fsimpl", function() {
                 throw new Error(err.message);
             }
             done();
-        });
+        })
     });
     describe("fs write a file", function() {
         it("should write an hello file", function(done) {
@@ -50,7 +51,7 @@ describe("json.fsimpl", function() {
                 expect(result.item.content).to.be.a('string');
                 expect(result.item.content).to.be('Hello wizzi factory');
                 done();
-            });
+            })
         });
         it("should read an hello file", function(done) {
             fsimpl.readFile('c:/folder1/hello.js.ittf', function(err, content) {
@@ -62,7 +63,7 @@ describe("json.fsimpl", function() {
                 expect(content).to.be.a('string');
                 expect(content).to.be('Hello wizzi factory');
                 done();
-            });
+            })
         });
         it("hello.js.ittf should be a file not a directory", function(done) {
             fsimpl.stat('c:/folder1/hello.js.ittf', function(err, stat) {
@@ -74,7 +75,7 @@ describe("json.fsimpl", function() {
                 expect(stat.isFile()).to.be(true);
                 expect(stat.isDirectory()).to.be(false);
                 done();
-            });
+            })
         });
         it("c: should be a directory not a file", function(done) {
             fsimpl.stat('c:', function(err, stat) {
@@ -86,7 +87,7 @@ describe("json.fsimpl", function() {
                 expect(stat.isFile()).to.be(false);
                 expect(stat.isDirectory()).to.be(true);
                 done();
-            });
+            })
         });
     });
     after(function(done) {
@@ -100,9 +101,9 @@ describe("json.fsimpl", function() {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                console.log(JSON.stringify(json, null, 2));
+                console.log(JSON.stringify(json, null, 2))
                 done();
-            });
+            })
         }
         else {
             fsJson.toJson(function(err, json) {
@@ -110,9 +111,9 @@ describe("json.fsimpl", function() {
                     console.log('err', err);
                     throw new Error(err.message);
                 }
-                console.log(JSON.stringify(json, null, 2));
+                console.log(JSON.stringify(json, null, 2))
                 done();
-            });
+            })
         }
     });
 });

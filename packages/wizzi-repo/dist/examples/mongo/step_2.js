@@ -1,15 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\examples\mongo\step_2.js.ittf
 */
 'use strict';
 //
 // Example skeleton specific for the 'wizzi-repo' kernel package
 //
-/**
-     Examples: Mongo_Step_2
-    
-*/
+//
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
@@ -31,7 +29,7 @@ var MongoFsImpl = require('../../lib/mongodb/mongoFsimpl');
 var FsMongo = require('../../lib/mongodb/fs/fsmongo');
 var Document = require('../../lib/mongodb/fs/document');
 var Mongo_Step_2 = function(step_callback) {
-    heading1('EXAMPLE');
+    heading1('EXAMPLE')
     var fsimpl = new MongoFsImpl(null, 'c:/wz/users');
     heading1('start');
     fsimpl.open(function(err, notUsed) {
@@ -46,9 +44,9 @@ var Mongo_Step_2 = function(step_callback) {
                 throw new Error(err.message);
             }
             heading2('write');
-            printValue('result', result);
+            printValue('result', result)
             _openWrite();
-        });
+        })
         function _openWrite() {
             heading2('openWrite');
             file.openWrite('db://stefi/wf/folder1/helloOpenWrite.js.ittf', function(err, stream) {
@@ -57,7 +55,7 @@ var Mongo_Step_2 = function(step_callback) {
                     throw new Error(err.message);
                 }
                 heading2('openWrite');
-                printValue('stream', stream);
+                printValue('stream', stream)
                 stream.write('Hello openWrite\n');
                 stream.write('Welcome\n');
                 stream.end(function(err, result) {
@@ -65,10 +63,10 @@ var Mongo_Step_2 = function(step_callback) {
                         console.log('err', err);
                         throw new Error(err.message);
                     }
-                    printValue('result', result);
+                    printValue('result', result)
                     _read();
-                });
-            });
+                })
+            })
         }
         function _read() {
             file.read('db://stefi/wf/folder1/hello.js.ittf', function(err, content) {
@@ -77,9 +75,9 @@ var Mongo_Step_2 = function(step_callback) {
                     throw new Error(err.message);
                 }
                 heading2('read');
-                printValue('content', content);
+                printValue('content', content)
                 _getFiles();
-            });
+            })
         }
         function _getFiles() {
             file.getFiles('db://stefi/wf', {
@@ -95,9 +93,9 @@ var Mongo_Step_2 = function(step_callback) {
                 printArray('files', files, [
                     'fullPath', 
                     'content'
-                ]);
+                ])
                 _getFolders();
-            });
+            })
         }
         function _getFolders() {
             file.getFolders('db://stefi/wf', {
@@ -111,11 +109,11 @@ var Mongo_Step_2 = function(step_callback) {
                 heading2('getFolders');
                 printArray('folders', folders, [
                     'fullPath'
-                ]);
+                ])
                 fsimpl.close();
-            });
+            })
         }
-    });
+    })
 };
 Mongo_Step_2.__name = 'Mongo_Step_2';
 function heading1(text) {
@@ -145,11 +143,12 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }
 function printValue(k, v, format, p1) {
+    console.log('--- value ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -183,8 +182,10 @@ function printValue(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- value ------------------------------------------------------ end');
 }
 function printObject(k, v, format, p1) {
+    console.log('--- object ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -193,6 +194,7 @@ function printObject(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- object ------------------------------------------------------ end');
 }
 function __printObject(v, level, limit) {
     if (level < limit) {
@@ -245,7 +247,7 @@ function printNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printNodes_deep(c, indent + 1);
+        printNodes_deep(c, indent + 1)
     }
 }
 function printNodes(nodes, title) {
@@ -268,7 +270,7 @@ function printNodes(nodes, title) {
                 console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
             }
         }
-        printNodes_deep(nodes[0], 1);
+        printNodes_deep(nodes[0], 1)
     }
     console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
@@ -277,7 +279,7 @@ function printEvaluatedNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
+        printEvaluatedNodes_deep(c, indent + 1)
     }
 }
 function printEvaluatedNodes(evaluated, title) {
@@ -286,7 +288,7 @@ function printEvaluatedNodes(evaluated, title) {
         if (evaluated.frontMatter) {
             console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
         }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1)
     }
     else {
         console.log('Invalid evaluated object', evaluated);

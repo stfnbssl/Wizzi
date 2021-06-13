@@ -98,7 +98,7 @@ md.fieldDef = function(ctx) {
                     type = '[' + model.itemType.wzName + requiredChar + ']';
                 }
                 var args = [];
-                console.log('fieldDef', model.wzElement, model.wzName);
+                // log 'fieldDef', model.wzElement, model.wzName
                 var i, i_items=model.argumentDefs, i_len=model.argumentDefs.length, item;
                 for (i=0; i<i_len; i++) {
                     item = model.argumentDefs[i];
@@ -193,14 +193,14 @@ md.objectValueDef = function(model, ctx, callback) {
 };
 md.valueDef = function(ctx) {
     return function(model, callback) {
-            console.log('valueDef', model.wzElement, model.wzName);
+            // log 'valueDef', model.wzElement, model.wzName
             ctx.w( model.wzName + ': ' + model.type);
             return callback(null);
         };
 };
 md.directiveDef = function(model, ctx, callback) {
     var args = [];
-    console.log('fieldDef', model.wzElement, model.wzName);
+    // log 'fieldDef', model.wzElement, model.wzName
     var i, i_items=model.argumentDefs, i_len=model.argumentDefs.length, item;
     for (i=0; i<i_len; i++) {
         item = model.argumentDefs[i];
@@ -523,7 +523,7 @@ function error(code, method, message, innerError) {
     }
     return verify.error(innerError, {
         name: ( verify.isNumber(code) ? 'Err-' + code : code ),
-        method: 'wizzi-web@0.7.8.lib.artifacts.graphql.document.gen.main.' + method,
+        method: 'wizzi-web@0.7.9.lib.artifacts.graphql.document.gen.main.' + method,
         parameter: parameter,
         sourcePath: __filename
     }, message || 'Error message unavailable');

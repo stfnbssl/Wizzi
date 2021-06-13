@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\ittfTree\asIsLoader\index.js.ittf
 */
 'use strict';
@@ -47,19 +48,19 @@ function AsisLoader(ittfDocumentUri, options, callback) {
         }
         if (asisMTree.nodes && asisMTree.nodes.length > 0) {
             if (options.clean) {
-                clean(asisMTree.nodes[0]);
+                clean(asisMTree.nodes[0])
             }
             else if (options.clean_remove) {
                 asisMTree = clean(asisMTree.nodes[0]);
             }
         }
         if (callback) {
-            callback(null, asisMTree);
+            callback(null, asisMTree)
         }
         else {
             return asisMTree;
         }
-    });
+    })
 }
 function clean(node) {
     delete node.parent

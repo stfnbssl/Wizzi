@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\repo\mongoDbStore.js.ittf
 */
 'use strict';
@@ -53,8 +54,8 @@ var MongoDbStore = (function () {
                 }
                 that.file = file;
                 return callback(null, file);
-            });
-        });
+            })
+        })
     }
     MongoDbStore.prototype.close = function() {
         if (this.fsimpl) {
@@ -80,7 +81,7 @@ var MongoDbStore = (function () {
                     }, err));
             }
             return callback(null, result);
-        });
+        })
     }
     MongoDbStore.prototype.getModelContent = function(documentPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -102,7 +103,7 @@ var MongoDbStore = (function () {
             }
             // log 'getModelContent.received', result
             return callback(null, result);
-        });
+        })
     }
     return MongoDbStore;
 })();

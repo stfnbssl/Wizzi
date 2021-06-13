@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\scanners\ittfFsNode.js.ittf
 */
 'use strict';
@@ -15,45 +16,7 @@ var verify = require('../verify');
 var IttfMTreeEx = require('../ittfTree/ittfMTreeEx');
 var ittfHtmlPrettifier = require('../prettifiers/ittfHtmlPrettifier');
 var mTreeHtmlPrettifier = require('../prettifiers/mTreeHtmlPrettifier');
-/**
-    
-     File or directory in a folder tree structure of ittf documents.
-     Is the result of a folderScanner(folderPath, option) execution.
-     Can export its content to a wizzi.utils.ittfMTreeEx, calling
-     the method 'toIttf'
-     The root node collects mixed or included ittf fragments that are
-     outside (up) of root.ittfBasePath.
-    
-     { IttfFsNode
-     { parent
-     ref IttfFsNode || null
-     string path
-     string basename
-     string dirname
-     boolean isDirectory
-     [ parts
-     string schema
-     # schema of ittf document file
-     boolean isFragment
-     # ittf document file is inside a t-folder
-     boolean isTFolder
-     # folder basename is t
-     boolean isInsideTFolder
-     # folder is descendant of a t-folder
-     [ folders
-     [ documents
-     # if method 'setSourcePaths' is called
-     string ittfBasePath
-     string jsCodeBasePath
-     # if method 'analize' is called
-     boolean isTest
-     boolean isExample
-     boolean isUtil
-     boolean isTest
-     boolean isJobFolder
-     boolean isPackageRoot
-    
-*/
+//
 var IttfFsNode = (function () {
     function IttfFsNode(nodePath, parent, options) {
         _classCallCheck(this, IttfFsNode);
@@ -424,20 +387,20 @@ var IttfFsNode = (function () {
         var that = this;
         if (this.isDirectory) {
             async.map(this.folders, function(folder, callback) {
-                folder.analize2(callback);
+                folder.analize2(callback)
             }, function(err, folderResult) {
                 if (err) {
                     return callback(err);
                 }
                 async.map(that.documents, function(d, callback) {
-                    d.analize2(callback);
+                    d.analize2(callback)
                 }, function(err, dResult) {
                     if (err) {
                         return callback(err);
                     }
                     return callback(null);
-                });
-            });
+                })
+            })
         }
         else {
             IttfMTreeEx.createFrom(path.join(r.ittfBasePath, this.parts.join('/')), {
@@ -477,21 +440,21 @@ var IttfFsNode = (function () {
                                 }
                                 ctx.fragments = {};
                                 ctx.externalFragments = {};
-                                mTreeEx.analize(ctx);
+                                mTreeEx.analize(ctx)
                                 this.fragments = ctx.fragments;
                                 // log 'wizzi-utils.ittfFsNode.analize2.externalFragments', ctx.externalFragments
                                 return callback(null);
-                            });
+                            })
                         }, function(err, result) {
                             if (err) {
                                 return callback(err);
                             }
                             repeat(count + 1);
-                        });
+                        })
                     }
                     repeat(1);
-                });
-            });
+                })
+            })
         }
     }
     IttfFsNode.prototype.toIttfRoot2 = function(ittf) {
@@ -547,33 +510,33 @@ var IttfFsNode = (function () {
             this.toIttfRoot2(ittf);
         }
         var n = ittf.add(this.isDirectory ? 'f' : 'd', this.basename);
-        n.add('id', this.id);
+        n.add('id', this.id)
         if (this.isDirectory) {
             if (this.isPackageRoot || this.root() === this.parent) {
-                n.add('is-package-root');
+                n.add('is-package-root')
             }
             if (this.isJobFolder) {
-                n.add('is-job-folder');
+                n.add('is-job-folder')
             }
             if (this.isTFolder) {
-                n.add('is-t-folder');
+                n.add('is-t-folder')
             }
             if (this.isInsideTFolder) {
-                n.add('is-inside-t-folder');
+                n.add('is-inside-t-folder')
             }
         }
         else {
             if (this.isFragment) {
-                n.add('is-fragment');
+                n.add('is-fragment')
             }
             if (this.isExternal) {
-                n.add('is-external');
+                n.add('is-external')
             }
             var usedFragments = this.mTreeEx.fragments;
             var ittfReferences = this.mTreeEx.ittfReferences;
             var pretty = mTreeHtmlPrettifier(this.mTreeEx);
             if (pretty.__is_error) {
-                n.add('ittf', 'Error: not loaded');
+                n.add('ittf', 'Error: not loaded')
             }
             else {
                 var ittfSource = n.add('ittf', verify.makeInline(pretty.prettyLines.join('')));
@@ -583,29 +546,29 @@ var IttfFsNode = (function () {
                 for (i=0; i<i_len; i++) {
                     item = Object.keys(usedFragments)[i];
                     var ittfFragmentsNode = ittfSource.add('fragment', item);
-                    ittfFragmentsNode.add('d-id', usedFragments[item].id);
-                    ittfFragmentsNode.add('rel-uri', unixifyPath(path.relative(ittfBasePath, usedFragments[item].uri)));
+                    ittfFragmentsNode.add('d-id', usedFragments[item].id)
+                    ittfFragmentsNode.add('rel-uri', unixifyPath(path.relative(ittfBasePath, usedFragments[item].uri)))
                 }
                 var i, i_items=Object.keys(ittfReferences), i_len=Object.keys(ittfReferences).length, item;
                 for (i=0; i<i_len; i++) {
                     item = Object.keys(ittfReferences)[i];
                     var ittfFragmentsNode = ittfSource.add('reference', item);
-                    ittfFragmentsNode.add('d-id', ittfReferences[item].id);
-                    ittfFragmentsNode.add('rel-uri', unixifyPath(path.relative(ittfBasePath, ittfReferences[item].uri)));
+                    ittfFragmentsNode.add('d-id', ittfReferences[item].id)
+                    ittfFragmentsNode.add('rel-uri', unixifyPath(path.relative(ittfBasePath, ittfReferences[item].uri)))
                 }
             }
         }
         if (this.isTest) {
-            n.add('is-test');
+            n.add('is-test')
         }
         if (this.isExample) {
-            n.add('is-example');
+            n.add('is-example')
         }
         if (this.isUtil) {
-            n.add('is-util');
+            n.add('is-util')
         }
-        n.add('rel-dirname', this.dirname);
-        n.add('rel-uri', this.path);
+        n.add('rel-dirname', this.dirname)
+        n.add('rel-uri', this.path)
         if (this.isDirectory) {
             var i, i_items=this.folders, i_len=this.folders.length, f;
             for (i=0; i<i_len; i++) {
@@ -624,7 +587,7 @@ var IttfFsNode = (function () {
             }
         }
         else {
-            n.add('schema', this.schema);
+            n.add('schema', this.schema)
         }
     }
     return IttfFsNode;

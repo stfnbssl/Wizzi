@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\scanners\folderScanner.js.ittf
 */
 'use strict';
@@ -10,28 +11,7 @@ var vfile = require('../fs/vfile');
 var IttfMTreeEx = require('../ittfTree/ittfMTreeEx');
 var IttfFsNode = require('./ittfFsNode');
 var md = module.exports = {};
-/**
-    
-     Scans a folder searching for *.ittf files
-     Returns a wizzi.utils.IttfMTreeEx instance
-     loaded with an mTree conformant to the
-     'wzpackage' schema.
-    
-     params
-     string folderPath
-     { options
-     string name
-     # the name of the 'wzpackage' wizzi model that
-     # will be generated from this folder
-     string gitPath
-     # the base path to the 'main' generated artifact
-     # in the future, could be used for linking the ittf document
-     # of a language type to the generated code.
-     { file
-     virtual filesystem
-     optional
-    
-*/
+//
 md.scan = function(folderPath, options, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -53,15 +33,15 @@ md.scan = function(folderPath, options, callback) {
         options = {};
     }
     if (options.file) {
-        md.scanExec(options.file, folderPath, options, callback);
+        md.scanExec(options.file, folderPath, options, callback)
     }
     else {
         vfile(function(err, file) {
             if (err) {
                 return callback(err);
             }
-            md.scanExec(file, folderPath, options, callback);
-        });
+            md.scanExec(file, folderPath, options, callback)
+        })
     }
 };
 md.scanExec = function(file, folderPath, options, callback) {
@@ -93,7 +73,7 @@ md.scanExec = function(file, folderPath, options, callback) {
             root.setSourcePaths({
                 ittfBasePath: removeRoot, 
                 jsCodeBasePath: options.gitPath
-            });
+            })
             // create the IttfFsNode tree structure of the scanned folder
             var i, i_items=ittfs, i_len=ittfs.length, ittf;
             for (i=0; i<i_len; i++) {
@@ -101,7 +81,7 @@ md.scanExec = function(file, folderPath, options, callback) {
                 root.addDocument(( ittf[0] === '/' ? ittf.substr(1) : ittf ), {
                     basePath: removeRoot, 
                     gitPath: options.gitPath
-                });
+                })
             }
             // analize all IttfFsNode(s) starting from root
             // this also searches mixed or included ittf fragments that are
@@ -116,9 +96,9 @@ md.scanExec = function(file, folderPath, options, callback) {
                 root.toIttf2(ittfMTreeEx);
                 // log 'IttfFsNode.ittfMTreeEx\n', ittfMTreeEx.toString()
                 return callback(null, ittfMTreeEx);
-            });
-        });
-    });
+            })
+        })
+    })
 };
 /**
   params

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\fs\file.js.ittf
 */
 'use strict';
@@ -64,10 +65,10 @@ md.readFile = function(path_string, options, callback) {
         if (err) {
             return callback(err);
         }
-        console.log('readFile.contents', contents);
+        // log 'readFile.contents', contents
         if (options.encoding !== null) {
             if (verify.isString(contents)) {
-                console.log('wizzi-utils.file.read.isString', path_string, content);
+                // log 'wizzi-utils.file.read.isString', path_string, content
             }
             contents = iconv.decode(contents, (options.encoding || md.defaultEncoding));
             if (!md.preserveBOM && contents.charCodeAt(0) === 0xFEFF) {
@@ -75,7 +76,7 @@ md.readFile = function(path_string, options, callback) {
             }
         }
         return callback(null, contents);
-    });
+    })
 };
 md.readLines = function(path_string, options) {
     var contents = md.read(path_string, options);
@@ -92,7 +93,7 @@ md.splitLines = function(contents) {
         chprev = ch;
         ch = contents[i];
         if ((ch === '\n' && chprev !== '\r') || (ch === '\r' && chprev !== '\n')) {
-            result.push(line.join(''));
+            result.push(line.join(''))
             line = [];
         }
         else if ((ch === '\n' && chprev === '\r') || (ch === '\r' && chprev === '\n')) {
@@ -102,7 +103,7 @@ md.splitLines = function(contents) {
         }
     }
     if (line.length > 0) {
-        result.push(line.join(''));
+        result.push(line.join(''))
     }
     return result;
 };
@@ -115,7 +116,7 @@ md.openWrite = function(path_string, callback) {
             }
             stream = fs.createWriteStream(path_string);
             return callback(null, stream);
-        });
+        })
     }
     else {
         md.mkpath(path_string);
@@ -152,10 +153,10 @@ md.writeFile = function(path_string, contents, options, callback) {
     if (!Buffer.isBuffer(contents)) {
         contents = iconv.encode(contents, (options.encoding || md.defaultEncoding));
     }
-    fs.writeFile(path_string, contents, callback);
+    fs.writeFile(path_string, contents, callback)
 };
 md.writeJSON = function(path_string, contentObject) {
-    md.write(path_string, JSON.stringify(contentObject, null, 2));
+    md.write(path_string, JSON.stringify(contentObject, null, 2))
 };
 md.mkpath = function(path_string) {
     var dir = path.dirname(path_string);
@@ -203,7 +204,7 @@ md.copyFile = function(sourcepath_string, destpath_string, callback) {
         return callback(null, {
                 copied: true
             });
-    });
+    })
 };
 md.moveFile = function(sourcepath_string, destpath_string, callback) {
     if (!md.isFile(sourcepath_string)) {
@@ -219,7 +220,7 @@ md.moveFile = function(sourcepath_string, destpath_string, callback) {
         return callback(null, {
                 moved: true
             });
-    });
+    })
 };
 var getFilesDefaults = {
     deep: true, 
@@ -227,7 +228,7 @@ var getFilesDefaults = {
     documentContent: false
 };
 md.getFiles = function(path_string, options) {
-    console.log('wizzi-utils.file.getFiles', path_string, options);
+    // log 'wizzi-utils.file.getFiles', path_string, options
     options = _.assign({}, getFilesDefaults, (options || {}));
     var result;
     if (md.isDirectory(path_string)) {
@@ -252,7 +253,7 @@ md.getFiles = function(path_string, options) {
             newResult.push({
                 file: item, 
                 content: content
-            });
+            })
         }
         return newResult;
     }
@@ -260,7 +261,7 @@ md.getFiles = function(path_string, options) {
 };
 md._appendFiles = function(path_string, files, relPath, options) {
     var dir = fs.readdirSync(String(path_string));
-    console.log('wizzi-utils.file.appendFiles', dir);
+    // log 'wizzi-utils.file.appendFiles', dir
     var folders = [];
     var i, i_items=dir, i_len=dir.length, item;
     for (i=0; i<i_len; i++) {
@@ -273,7 +274,7 @@ md._appendFiles = function(path_string, files, relPath, options) {
         }
         else {
             if (!options.extension || verify.endsWith(item, options.extension)) {
-                files.push(md.unixifyPath(path.join(relPath.join('/'), item)));
+                files.push(md.unixifyPath(path.join(relPath.join('/'), item)))
             }
         }
     }
@@ -323,7 +324,7 @@ md.getFolders = function(path_string, options) {
             newResult.push({
                 folder: item, 
                 documents: files
-            });
+            })
         }
         return newResult;
     }
@@ -338,12 +339,12 @@ md._appendFolders = function(path_string, folders, relPath, options) {
         if (md.isDirectory(filePath)) {
             if (options.tFoldersOnly) {
                 if (item.toLowerCase() === 't') {
-                    folders.push(md.unixifyPath(path.join(relPath.join('/'), item)));
+                    folders.push(md.unixifyPath(path.join(relPath.join('/'), item)))
                     return ;
                 }
             }
             else {
-                folders.push(md.unixifyPath(path.join(relPath.join('/'), item)));
+                folders.push(md.unixifyPath(path.join(relPath.join('/'), item)))
             }
             if (options.deep) {
                 var newRelPath = relPath.slice(0);
@@ -364,7 +365,7 @@ md.getGlobbedFiles = function(globPatterns, removeRoot, options) {
     if (verify.isArray(globPatterns)) {
         globPatterns.forEach(function(globPattern) {
             output = _.union(output, this.getGlobbedFiles(globPattern, removeRoot, options));
-        });
+        })
     }
     else if (verify.isString(globPatterns)) {
         if (urlRegex.test(globPatterns)) {
@@ -439,7 +440,7 @@ md.emptyDirectory = function(path, fn) {
             throw err;
         }
         fn(!files || !files.length);
-    });
+    })
 };
 md.deleteFile = function(path_string, callback) {
     if (!md.isFile(path_string)) {
@@ -455,7 +456,7 @@ md.deleteFile = function(path_string, callback) {
         return callback(null, {
                 deleted: true
             });
-    });
+    })
 };
 md.getDir = function(path_string, callback) {
     var dir = fs.readdirSync(String(path_string));
@@ -463,7 +464,7 @@ md.getDir = function(path_string, callback) {
     var i, i_items=dir, i_len=dir.length, item;
     for (i=0; i<i_len; i++) {
         item = dir[i];
-        ret.push(path.join(path_string, item));
+        ret.push(path.join(path_string, item))
     }
     return callback(null, ret);
 };
@@ -481,8 +482,8 @@ md.deleteFolder = function(path_string, callback) {
         }
         callback(null, {
             deleted: true
-        });
-    });
+        })
+    })
 };
 // async copyFolder
 md.copyFolder = function(sourcepath_string, destpath_string, callback) {
@@ -499,7 +500,7 @@ md.copyFolder = function(sourcepath_string, destpath_string, callback) {
         return callback(null, {
                 copied: true
             });
-    });
+    })
 };
 // async moveFolder
 md.moveFolder = function(sourcepath_string, destpath_string, callback) {
@@ -515,8 +516,8 @@ md.moveFolder = function(sourcepath_string, destpath_string, callback) {
         }
         callback(null, {
             moved: true
-        });
-    });
+        })
+    })
 };
 // async rename
 md.rename = function(oldpath_string, newpath_string, callback) {
@@ -533,7 +534,7 @@ md.rename = function(oldpath_string, newpath_string, callback) {
         return callback(null, {
                 renamed: true
             });
-    });
+    })
 };
 // async duplicate
 md.duplicate = function(oldpath_string, newpath_string, callback) {
@@ -557,7 +558,7 @@ md.duplicate = function(oldpath_string, newpath_string, callback) {
             return callback(null, {
                     duplicated: true
                 });
-        });
+        })
     }
     else {
         md.copyFolder(oldpath_string, newpath_string, function(err, notUsed) {
@@ -567,6 +568,6 @@ md.duplicate = function(oldpath_string, newpath_string, callback) {
             return callback(null, {
                     duplicated: true
                 });
-        });
+        })
     }
 };

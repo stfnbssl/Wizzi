@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\repo\jsonDbStore.js.ittf
 */
 'use strict';
@@ -64,8 +65,8 @@ var JsonDbStore = (function () {
                 }
                 that.file = file;
                 return callback(null, file);
-            });
-        });
+            })
+        })
     }
     JsonDbStore.prototype.close = function() {
         if (this.fsimpl) {
@@ -91,7 +92,7 @@ var JsonDbStore = (function () {
                     }, err));
             }
             return callback(null, result);
-        });
+        })
     }
     JsonDbStore.prototype.getModelContent = function(documentPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -113,7 +114,7 @@ var JsonDbStore = (function () {
             }
             // log 'getModelContent.received', result
             return callback(null, result);
-        });
+        })
     }
     return JsonDbStore;
 })();

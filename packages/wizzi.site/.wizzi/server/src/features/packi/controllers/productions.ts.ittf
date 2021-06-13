@@ -1,6 +1,3 @@
 module
-    $
-        var md = {
-        }
     $if wzCtx.Build.useConfig
-        v08/express/features/packi/controllers/productions(&md)
+        v08/express/features/packi/controllers/productions()

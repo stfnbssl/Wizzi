@@ -138,6 +138,40 @@ $group
                             _ callback
                                 @ err
 
+        set wz.transformModel
+			function
+				param filePath
+                param transformationName
+				param packiFiles
+				param callback
+
+                _ callApi
+                    @ 'POST'
+                    @ 'productions/transform/' + encodeURIComponent(filePath) + '/' + encodeURIComponent(transformationName)
+                    @ packiFiles
+                    ._ then
+                        =>
+                            param result
+                            log 'wz.transformModel', result
+                            if wz.isString(result)
+                                const json = JSON.parse(result)
+                                if json.__is_error
+                                    return
+                                        _ callback
+                                            @ json
+                                else
+                                    throw new Error('Invalid result: ' + result)
+                            else
+                                return
+                                    _ callback
+                                        @ null
+                                        @ result.transformedModel
+                    ._ catch
+                        => 
+                            param err
+                            _ callback
+                                @ err
+
         set wz.mTreeDebugInfo
 			function
 				param filePath
@@ -164,6 +198,38 @@ $group
                                     _ callback
                                         @ null
                                         @ result.mTreeBuildUpScript
+                    ._ catch
+                        => 
+                            param err
+                            _ callback
+                                @ err
+
+        set wz.genWithRequest
+			function
+				param request
+				param callback
+
+                _ callApi
+                    @ 'POST'
+                    @ 'wizzi/productions/artifact'
+                    @ request
+                    ._ then
+                        =>
+                            param result
+                            log 'result', result
+                            if wz.isString(result)
+                                const json = JSON.parse(result)
+                                if json.__is_error
+                                    return
+                                        _ callback
+                                            @ json
+                                else
+                                    throw new Error('Invalid result: ' + result)
+                            else
+                                return
+                                    _ callback
+                                        @ null
+                                        @ result $$ .generatedArtifact.artifactContent
                     ._ catch
                         => 
                             param err

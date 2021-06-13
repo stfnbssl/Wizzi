@@ -304,7 +304,7 @@ var ModelInfo = (function () {
                 error('InvalidArgument', 'getSource', 'The callback parameter must be a function. Received: ' + callback)
             );
         };
-        console.log('wizzi.modelinfo.getsource', this.srcFullPath());
+        // log 'wizzi.modelinfo.getsource', this.srcFullPath()
         var fileService = this.getFileService();
         var that = this;
         this.exists(function(err, exists) {
@@ -331,7 +331,7 @@ var ModelInfo = (function () {
                 error('InvalidArgument', 'getSources', 'The callback parameter must be a function. Received: ' + callback)
             );
         };
-        console.log('wizzi.modelinfo.getsources', this.srcFullPath());
+        // log 'wizzi.modelinfo.getsources', this.srcFullPath()
         var fileService = this.getFileService();
         var that = this;
         this.exists(function(err, exists) {

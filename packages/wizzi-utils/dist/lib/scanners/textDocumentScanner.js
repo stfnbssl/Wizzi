@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\scanners\textDocumentScanner.js.ittf
 */
 'use strict';
@@ -26,15 +27,15 @@ md.scan = function(documentPath, options, callback) {
         options = {};
     }
     if (options.file) {
-        md.scanExec(options.file, documentPath, options, callback);
+        md.scanExec(options.file, documentPath, options, callback)
     }
     else {
         vfile(function(err, file) {
             if (err) {
                 return callback(err);
             }
-            md.scanExec(file, documentPath, options, callback);
-        });
+            md.scanExec(file, documentPath, options, callback)
+        })
     }
 };
 md.scanExec = function(file, documentPath, options, callback) {
@@ -45,7 +46,7 @@ md.scanExec = function(file, documentPath, options, callback) {
         if (result == false) {
             return callback(error('999', 'scan', 'Parameter documentPath must be an existing file. Received: ' + documentPath));
         }
-    });
+    })
     documentPath = verify.unixifyPath(documentPath);
     var documentUri = '';
     var breadCrumbs = [];
@@ -61,7 +62,7 @@ md.scanExec = function(file, documentPath, options, callback) {
                 breadCrumbs.push({
                     uri: partUri, 
                     name: item
-                });
+                })
             }
         }
         breadCrumbs[breadCrumbs.length-1].isLast = true;
@@ -87,7 +88,7 @@ md.scanExec = function(file, documentPath, options, callback) {
                     
                 ]
             });
-    });
+    })
 };
 /**
   params

@@ -2,37 +2,24 @@ $group
     
     m generate
         param value
-        if this.state.productionMode == 'production-mtree'
-            _ wz.mTreeDebugInfo
-                @ this.props.selectedMainIttfContentPath
-                @ this.props.packiFiles
-                =>
-                    param err
-                    param result
-                    if err
-                        _ this.setState
-                            {
-                                @ generationError err
-                                @ generated null
-                    else
-                        _ this.setState
-                            {
-                                @ generated result
-                                @ generationError null        
-        else
-            _ wz.genArtifact
-                @ this.props.selectedMainIttfContentPath
-                @ this.props.packiFiles
-                =>
-                    param err
-                    param result
-                    if err
-                        _ this.setState
-                            {
-                                @ generationError err
-                                @ generated null
-                    else
-                        _ this.setState
-                            {
-                                @ generated result
-                                @ generationError null
+        # TODO
+        # wz.transform(... ittf/cheatsheet) -> transformed
+        # wz.genArtifact(... resources/cheatsheet.html.ittf, context=transformed
+        # _ wz.genArtifact
+        _ wz.transformModel
+            @ this.props.selectedMainIttfContentPath
+            @ 'ittf/cheatsheet'
+            @ this.props.packiFiles
+            =>
+                param err
+                param result
+                if err
+                    _ this.setState
+                        {
+                            @ generationError err
+                            @ generated null
+                else
+                    _ this.setState
+                        {
+                            @ generated JSON.stringify(result, null, 2)
+                            @ generationError null

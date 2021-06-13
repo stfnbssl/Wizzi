@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\repo\ittfDocumentFinder.js.ittf
 */
 'use strict';
@@ -26,14 +27,7 @@ var IttfDocumentFinder = (function () {
         this.store = store;
         this.schema = schema;
     }
-    /**
-         params
-         { options
-         string ittfDocumentUri
-         |
-         string basedir
-         string relpath
-    */
+    //
     IttfDocumentFinder.prototype.resolvePath = function(options, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -83,9 +77,9 @@ var IttfDocumentFinder = (function () {
                         // log 'IttfDocumentFinder.resolvePath options', options, that.schema
                         return callback(error('IttfNotFound', 'resolvePath', 'Cannot find ittf document: ' + ittfDocumentUri));
                     }
-                });
+                })
             }
-        });
+        })
     }
     IttfDocumentFinder.prototype.resolvePathInTFolders = function(basePath, relPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -135,7 +129,7 @@ var IttfDocumentFinder = (function () {
                                     });
                             }
                         }
-                    });
+                    })
                 });
         }
         recurserTFolder(basePath, relPath).then(function(result) {
@@ -193,9 +187,9 @@ var IttfDocumentFinder = (function () {
                                                 found: false
                                             });
                                     }
-                                });
+                                })
                             }
-                        });
+                        })
                     }
                     else {
                         return callback(null, {
@@ -209,7 +203,7 @@ var IttfDocumentFinder = (function () {
                         });
                 }
             }
-        });
+        })
     }
     return IttfDocumentFinder;
 })();

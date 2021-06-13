@@ -27,7 +27,7 @@ $group
                     _ ret.push
                         {
                             @ name item.trim()
-                            @ packiPath sheetName + 't/' + item.trim() + '.ittf.ittf'
+                            @ packiPath sheetName + '/t/' + item.trim() + '.ittf.ittf'
         log 'textToItemList', ret
         return ret
     

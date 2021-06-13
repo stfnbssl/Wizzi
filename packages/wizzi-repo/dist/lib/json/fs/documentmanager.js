@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\json\fs\documentmanager.js.ittf
 */
 'use strict';
@@ -20,14 +21,7 @@ var FsStream = require('../../utils/fsstream');
 var Promise = require('promise');
 var JSZip = require('jszip');
 var FsJson = null;
-/**
-     class DocumentManager (Manager)
-     implements standard file operations (wizzi-utils/vfile interface) on a json\FsJson instance
-    
-     ctor params
-     fsCommon
-     # instance of json/FsJson
-*/
+//
 var DocumentManager = (function () {
     function DocumentManager(fsCommon) {
         _classCallCheck(this, DocumentManager);
@@ -97,8 +91,8 @@ var DocumentManager = (function () {
                 parentFsItemId = insertedId;
                 process.nextTick(function() {
                     repeater(index + 1);
-                });
-            });
+                })
+            })
         }
         repeater(0);
     }
@@ -125,7 +119,7 @@ var DocumentManager = (function () {
             else {
                 return callback(null, r);
             }
-        });
+        })
     }
     DocumentManager.prototype.getDir = function(folderPath, options, callback) {
         if (verify.isFunction(callback) === false && verify.isFunction(options) === true) {
@@ -157,12 +151,12 @@ var DocumentManager = (function () {
                         return callback(err);
                     }
                     return callback(null, fsitems);
-                });
+                })
             }
             else {
                 return callback(null, []);
             }
-        });
+        })
     }
     DocumentManager.prototype.getFiles = function(folderPath, options, callback) {
         if (verify.isFunction(callback) === false && verify.isFunction(options) === true) {
@@ -203,12 +197,12 @@ var DocumentManager = (function () {
                         else {
                             return callback(null, r2);
                         }
-                    });
+                    })
                 }
                 else {
                     return callback(null, null);
                 }
-            });
+            })
         }
         function recurser(folderPaths, files, ids, basenames) {
             return new Promise(function(resolve, reject) {
@@ -246,7 +240,7 @@ var DocumentManager = (function () {
                         else {
                             resolve();
                         }
-                    });
+                    })
                 });
         }
         var files = [];
@@ -270,10 +264,10 @@ var DocumentManager = (function () {
                             path: files[i], 
                             fullPath: files[i], 
                             content: contents[i]
-                        });
+                        })
                     }
                     return callback(null, ret);
-                });
+                })
             }
         }).catch(function(err) {
             return callback(err);
@@ -296,8 +290,8 @@ var DocumentManager = (function () {
         
         async.map(ids, function(id, callback) {
             console.log('wizzi-repo.fs.json.document.getContentsByIds', id);
-            fsCommon.readDocument(id, callback);
-        }, callback);
+            fsCommon.readDocument(id, callback)
+        }, callback)
     }
     DocumentManager.prototype.exists = function(itemPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -321,7 +315,7 @@ var DocumentManager = (function () {
             else {
                 return callback(null, false);
             }
-        });
+        })
     }
     DocumentManager.prototype.isFolder = function(folderPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -345,7 +339,7 @@ var DocumentManager = (function () {
             else {
                 return callback(null, false);
             }
-        });
+        })
     }
     DocumentManager.prototype.isFile = function(filePath, callback) {
         if (typeof(callback) !== 'function') {
@@ -369,7 +363,7 @@ var DocumentManager = (function () {
             else {
                 return callback(null, false);
             }
-        });
+        })
     }
     DocumentManager.prototype.copyFile = function(sourcePath, destPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -414,10 +408,10 @@ var DocumentManager = (function () {
                         return callback(null, {
                                 code: "DOCUMENT_COPIED"
                             });
-                    });
+                    })
                 }
-            });
-        });
+            })
+        })
     }
     DocumentManager.prototype.copyFolder = function(sourcePath, destPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -467,11 +461,11 @@ var DocumentManager = (function () {
                     copies.push(r);
                     process.nextTick(function() {
                         repeater(index + 1);
-                    });
-                });
+                    })
+                })
             }
             repeater(0);
-        });
+        })
     }
     DocumentManager.prototype.deleteFile = function(filePath, callback) {
         if (typeof(callback) !== 'function') {
@@ -502,8 +496,8 @@ var DocumentManager = (function () {
                 }
                 // log 'wizzi-repo.fs.json.document.deleteFile.r', r
                 return callback(null, r);
-            });
-        });
+            })
+        })
     }
     DocumentManager.prototype.deleteFolder = function(folderPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -544,10 +538,10 @@ var DocumentManager = (function () {
                         console.log('wizzi-repo.fs.json.document.deleteFolder.r', r);
                         assert( true, r.deleted );
                         return callback(null, r);
-                    });
+                    })
                 }
-            });
-        });
+            })
+        })
     }
     DocumentManager.prototype.renameFile = function(oldPath, newPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -613,10 +607,10 @@ var DocumentManager = (function () {
                                 code: "DOCUMENT_RENAMED", 
                                 id: r.item._id
                             });
-                    });
+                    })
                 }
-            });
-        });
+            })
+        })
     }
     DocumentManager.prototype.renameFolder = function(oldPath, newPath, callback) {
         if (typeof(callback) !== 'function') {
@@ -684,11 +678,11 @@ var DocumentManager = (function () {
                                 return callback(err);
                             }
                             return callback(null, r);
-                        });
-                    });
+                        })
+                    })
                 }
-            });
-        });
+            })
+        })
     }
     DocumentManager.prototype._changeParentFolder = function(fsitemParent, callback) {
         var that = this;
@@ -707,13 +701,13 @@ var DocumentManager = (function () {
                         return callback(err);
                     }
                     return callback(null, r.item);
-                });
+                })
             }, function(err, newfsitems) {
                 if (err) {
                     return callback(err);
                 }
                 return callback(null, newfsitems);
-            });
+            })
         }
         function recurser(fsitemParent, changes) {
             return new Promise(function(resolve) {
@@ -737,13 +731,13 @@ var DocumentManager = (function () {
                                         resolve();
                                     })
                                 }
-                            });
+                            })
                         }
                         else {
                             console.log('wizzi-repo.fs.json.document.renameFolder.last resolve');
                             resolve();
                         }
-                    });
+                    })
                 });
         }
         var changes = [];
@@ -803,18 +797,18 @@ var DocumentManager = (function () {
                             relPath: d.relPath, 
                             dest: destFilePath, 
                             result: r
-                        });
+                        })
                         process.nextTick(function() {
                             repeater(index + 1);
-                        });
-                    });
+                        })
+                    })
                 }
                 else {
                     repeater(index + 1);
                 }
             }
             repeater(0);
-        });
+        })
     }
     DocumentManager.prototype.downloadFolder = function(folderPath, options, callback) {
         if (verify.isFunction(callback) === false && verify.isFunction(options) === true) {
@@ -845,7 +839,7 @@ var DocumentManager = (function () {
                         path: singleFilePath, 
                         content: content
                     });
-            });
+            })
         }
         this.getFiles(folderPath, {
             deep: true
@@ -862,11 +856,11 @@ var DocumentManager = (function () {
                 var i, i_items=fileContents, i_len=fileContents.length, item;
                 for (i=0; i<i_len; i++) {
                     item = fileContents[i];
-                    zip.file(item.path, item.content);
+                    zip.file(item.path, item.content)
                 }
                 return callback(null, zip);
-            });
-        });
+            })
+        })
     }
     DocumentManager.prototype._createFile = function(parentId, dirname, basename, content, callback) {
         var that = this;
@@ -882,16 +876,16 @@ var DocumentManager = (function () {
             }
             // log 'wizzi-repo.fs.json.document.writeFile._createFile.r', r
             if (r.code === 'FSITEM_EXISTS') {
-                that.fsCommon.writeDocument(r.item._id, content, callback);
+                that.fsCommon.writeDocument(r.item._id, content, callback)
             }
             else {
-                that.fsCommon.writeDocument(r.insertedId, content, callback);
+                that.fsCommon.writeDocument(r.insertedId, content, callback)
             }
-        });
+        })
     }
     DocumentManager.prototype._updateFile = function(id, content, callback) {
         // log 'wizzi-repo.fs.json.document.writeFile._updateFile', id, content
-        this.fsCommon.writeDocument(id, content, callback);
+        this.fsCommon.writeDocument(id, content, callback)
     }
     DocumentManager.prototype.writeFile = function(filePath, content, callback) {
         if (typeof(callback) !== 'function') {
@@ -942,11 +936,11 @@ var DocumentManager = (function () {
                             }
                             // log 'wizzi-repo.fs.json.document.writeFile.writeFile.5.dirname created. so create file', fsitem.item._id, dirname, path.basename(filePath)
                             return that._createFile(fsitem.item._id, dirname, path.basename(filePath), content, callback);
-                        });
+                        })
                     }
-                });
+                })
             }
-        });
+        })
     }
     DocumentManager.prototype.createWriteStream = function(filePath) {
         if (verify.isNotEmpty(filePath) === false) {
@@ -984,15 +978,15 @@ var DocumentManager = (function () {
                     }
                     // log 'fsJson.readFile not found', JSON.stringify(json, null, 4)
                     return callback(error('JsonFSRepoError', 'readFile', 'Document read file error. Not found: ' + filePath));
-                });
+                })
             }
             else if (fsitem.kind == 0) {
                 return callback(error('JsonFSRepoError', 'readFile', 'Document read file error. Cannot read a folder: ' + filePath));
             }
             else {
-                that.fsCommon.readDocument(fsitem._id, callback);
+                that.fsCommon.readDocument(fsitem._id, callback)
             }
-        });
+        })
     }
     DocumentManager.prototype.stat = function(filePath, callback) {
         if (typeof(callback) !== 'function') {
@@ -1030,7 +1024,7 @@ var DocumentManager = (function () {
                         }
                     });
             }
-        });
+        })
     }
     DocumentManager.prototype.toJson = function(callback) {
         return this.fsCommon.toJson(callback);
@@ -1044,9 +1038,7 @@ var DocumentManager = (function () {
     return DocumentManager;
 })();
 
-/**
-     Creates a DocumentManager instance
-*/
+//
 DocumentManager.create = function(fsJsonData, callback) {
     
     if (verify.isUndefined(callback) && verify.isFunction(fsJsonData)) {

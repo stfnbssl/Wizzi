@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\examples\asisLoader\index.js.ittf
 */
 'use strict';
@@ -23,8 +24,8 @@ vfile(function(err, file) {
         throw new Error(err.message);
     }
     console.log('example.asIsLoader file', file);
-    step_1(file);
-});
+    step_1(file)
+})
 function step_1(file) {
     asIsLoader.createFromString([
         'module', 
@@ -40,9 +41,9 @@ function step_1(file) {
             throw new Error(err.message);
         }
         console.log('step_1.tree', tree);
-        file.write(path.join(__dirname, 'result', 'basic.sample.clean.json'), stringify(tree, null, 2));
-        step_2(file);
-    });
+        file.write(path.join(__dirname, 'result', 'basic.sample.clean.json'), stringify(tree, null, 2))
+        step_2(file)
+    })
 }
 function step_2(file) {
     asIsLoader.createFromString([
@@ -59,9 +60,9 @@ function step_2(file) {
             throw new Error(err.message);
         }
         console.log('step_2.tree', tree);
-        file.write(path.join(__dirname, 'result', 'basic.sample.clean_remove.json'), stringify(tree, null, 2));
-        step_3(file);
-    });
+        file.write(path.join(__dirname, 'result', 'basic.sample.clean_remove.json'), stringify(tree, null, 2))
+        step_3(file)
+    })
 }
 function step_3(file) {
     asIsLoader(path.join(__dirname, 'ittf', 'root.sample.ittf'), {
@@ -73,6 +74,6 @@ function step_3(file) {
             throw new Error(err.message);
         }
         console.log('step_3.tree', tree);
-        file.write(path.join(__dirname, 'result', 'basic.sample.clean_remove.json'), stringify(tree, null, 2));
-    });
+        file.write(path.join(__dirname, 'result', 'basic.sample.clean_remove.json'), stringify(tree, null, 2))
+    })
 }

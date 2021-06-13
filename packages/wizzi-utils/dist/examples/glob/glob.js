@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\examples\glob\glob.js.ittf
 */
 'use strict';
@@ -17,15 +18,15 @@ var glob = require('../../lib/glob');
 var file = vfile();
 
 
-file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_1.ittf'), 'globbed 1');
-file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_2.ittf'), 'globbed 2');
+file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_1.ittf'), 'globbed 1')
+file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_2.ittf'), 'globbed 2')
 glob(path.join(__dirname, 'ittf', 'globs2', '**/*.ittf'), file, function(err, result) {
     if (err) {
         console.log('err', err);
         throw new Error(err.message);
     }
     console.log('result', result);
-});
+})
 var result = glob(path.join(__dirname, 'ittf', 'globs2', '**/*.ittf'), file, {
     sync: true
 });

@@ -11,9 +11,6 @@ $group
     import
         @ I${md.Name}Model
         from "../types"
-    import
-        @ TokenSchema
-        from "./token"
     +
     # see https://mongoosejs.com/docs/schematypes.html
     +
@@ -22,7 +19,16 @@ $group
             :param I${md.Name}Model
             {
                 $foreach field in md.fields
-                    $if field.type != 'oid'
+                    $if field.type == 'arrayRef'
+                        [ ${field.name}
+                            {
+                                @ type Schema.Types.ObjectId
+                                @ ref '${field.refSchema}'
+                    $elif field.type == 'objectRef'
+                        { ${field.name}
+                            @ type Schema.Types.ObjectId
+                            @ ref '${field.refSchema}'
+                    $elif field.type != 'oid'
                         { ${field.name}
                             $if field.type == 'string'
                                 @ type String
@@ -46,6 +52,14 @@ $group
                                 @ type Map
                             $elif field.type == 'schema'
                                 @ type Schema
+                            $if field.required
+                                @ required true
+                            $if field.unique || field.sparse
+                                { index
+                                    $if field.unique
+                                        @ unique true
+                                    $if field.sparse
+                                        @ sparse true
                 $if md.setUpdatedAt
                     { updated_at
                         @ type Date
@@ -56,8 +70,21 @@ $group
             @ 'save'
             function
                 param next
-                set this.updated_at = Date.now()
+                set this.updated_at = new Date()
                 _ next()
+    $if md.indexes
+        # see https://docs.mongodb.com/manual/core/index-compound/
+        $foreach index in md.indexes
+            $if index.fields.length > 1
+                _ ${md.Name}Schema.index
+                    {
+                        $foreach field in index.fields
+                            @ ${field.name} 1
+                    {
+                        $if index.unique
+                            @ unique true
+                        $if index.sparse
+                            @ sparse true
     +
     export
         :type ${md.Name}ModelType
@@ -87,6 +114,6 @@ $group
                                         :ref I${md.Name}Model
                                     @ '${md.Name}'
                                     @ ${md.Name}Schema
-        # mongoose models creation is centralized at the app level
-        # after connection has been established, the mongodb service calls buildModel(),
-        # then the controllers when initializing call Get${md.Name}Model()
+            # mongoose models creation is centralized at the app level
+            # after connection has been established, the mongodb service calls buildModel(),
+            # then the controllers when initializing call Get${md.Name}Model()

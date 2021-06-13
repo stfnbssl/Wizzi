@@ -1,5 +1,4 @@
 $group
-    $params &md
     $
         var ctrl = {
             name: 'Packi',

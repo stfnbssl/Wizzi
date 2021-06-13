@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\glob\index.js.ittf
 */
 'use strict';
@@ -75,7 +76,7 @@ var Glob  = (function ( EE) {
             this.on('end', function(matches) {
                 // log 'on.end.cb.matches', matches.length
                 cb(null, matches);
-            });
+            })
         }
         var self = this;
         this._processing = 0;
@@ -87,7 +88,7 @@ var Glob  = (function ( EE) {
         }
         var sync = true;
         for (var i = 0; i < n; i++) {
-            this._process(this.minimatch.set[i], i, false, done);
+            this._process(this.minimatch.set[i], i, false, done)
         }
         sync = false;
         function done() {
@@ -97,7 +98,7 @@ var Glob  = (function ( EE) {
                 if (sync) {
                     process.nextTick(function() {
                         self._finish();
-                    });
+                    })
                 }
                 else {
                     self._finish();
@@ -108,7 +109,7 @@ var Glob  = (function ( EE) {
     Glob .prototype._finish = function() {
         assert(this instanceof Glob);
         common.finish(this);
-        this.emit('end', this.found);
+        this.emit('end', this.found)
     }
     Glob .prototype._mark = function(p) {
         return common.mark(this, p);
@@ -130,7 +131,7 @@ var Glob  = (function ( EE) {
         switch (n) {
             case pattern.length: {
                 // log '_process.prefix.case._processSimple'
-                this._processSimple(pattern.join('/'), index, cbDone);
+                this._processSimple(pattern.join('/'), index, cbDone)
                 return ;
             }
             case 0: {
@@ -176,7 +177,7 @@ var Glob  = (function ( EE) {
         var self = this;
         this._readdir(abs, inGlobStar, function(er, entries) {
             return self._processReaddir2(prefix, read, abs, remain, index, inGlobStar, entries, cbDone);
-        });
+        })
     }
     Glob .prototype._processReaddir2 = function(prefix, read, abs, remain, index, inGlobStar, entries, cbDone) {
         if (!entries) {
@@ -247,7 +248,7 @@ var Glob  = (function ( EE) {
             }
             this._process([
                 ePath
-            ].concat(remain), index, inGlobStar, cbDone);
+            ].concat(remain), index, inGlobStar, cbDone)
         }
         cbDone();
     }
@@ -322,7 +323,7 @@ var Glob  = (function ( EE) {
         }
         var self = this;
         // log 'wizzi-utils.Glob._readdir.abs', abs
-        this.virtFS.readdir(abs, readdirCb(this, abs, cb));
+        this.virtFS.readdir(abs, readdirCb(this, abs, cb))
         function readdirCb(self, abs, cb) {
             return function(er, entries) {
                     if (er) {
@@ -393,7 +394,7 @@ var Glob  = (function ( EE) {
         // log '_processGlobStar'
         this._readdir(abs, inGlobStar, function(er, entries) {
             self._processGlobStar2(prefix, read, abs, remain, index, inGlobStar, entries, cbDone);
-        });
+        })
     }
     Glob .prototype._processGlobStar2 = function(prefix, read, abs, remain, index, inGlobStar, entries, cbDone) {
         // log '_processGlobStar2.entries', entries
@@ -426,7 +427,7 @@ var Glob  = (function ( EE) {
         var self = this;
         this._stat(prefix, function(er, exists) {
             self._processSimple2(prefix, index, er, exists, cbDone);
-        });
+        })
     }
     Glob .prototype._processSimple2 = function(prefix, index, er, exists, cbDone) {
         if (!this.matches[index]) {

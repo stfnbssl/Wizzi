@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\glob\sync.js.ittf
 */
 'use strict';
@@ -56,7 +57,7 @@ var GlobSync = (function () {
         // log 'pattern,this.minimatch.set', pattern, this.minimatch.set
         this.matches = new Array(n);
         for (var i = 0; i < n; i++) {
-            this._process(this.minimatch.set[i], i, false);
+            this._process(this.minimatch.set[i], i, false)
         }
         this._finish();
     }
@@ -81,7 +82,7 @@ var GlobSync = (function () {
                         }
                     } 
                 }
-            });
+            })
         }
         common.finish(this);
     }
@@ -94,7 +95,7 @@ var GlobSync = (function () {
         var prefix;
         switch (n) {
             case pattern.length: {
-                this._processSimple(pattern.join('/'), index);
+                this._processSimple(pattern.join('/'), index)
                 return ;
             }
             case 0: {
@@ -194,7 +195,7 @@ var GlobSync = (function () {
             else {
                 newPattern = [e];
             }
-            this._process(newPattern.concat(remain), index, inGlobStar);
+            this._process(newPattern.concat(remain), index, inGlobStar)
         }
     }
     GlobSync.prototype._emitMatch = function(index, e) {

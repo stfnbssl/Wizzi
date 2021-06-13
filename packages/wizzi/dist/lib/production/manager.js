@@ -492,11 +492,11 @@ var AsyncInitializeJobRequests = {
             if (err) {
                 return callback(err);
             }
-            console.log('AsyncRecurseWfjobLoad.globalModelInfoConfigs', result.globalModelInfoConfigs.length, 'artifactInfoConfigs', result.artifactInfoConfigs.length);
+            // log 'AsyncRecurseWfjobLoad.globalModelInfoConfigs', result.globalModelInfoConfigs.length, 'artifactInfoConfigs', result.artifactInfoConfigs.length
             var i, i_items=result.globalModelInfoConfigs, i_len=result.globalModelInfoConfigs.length, globalModelInfoConfig;
             for (i=0; i<i_len; i++) {
                 globalModelInfoConfig = result.globalModelInfoConfigs[i];
-                console.log('wizzi.production.asyncInitializeJobRequests.globalModelInfoConfig', util.inspect(globalModelInfoConfig, { depth: 2 }));
+                // log 'wizzi.production.asyncInitializeJobRequests.globalModelInfoConfig', util.inspect(globalModelInfoConfig, { depth: 2 })
                 globalModelInfoConfig.wfjob = wfjobIttfDocumentUri;
                 if (pman.options.trace) {
                     console.log('ProductionManager.initialize.globalModelInfoConfig', globalModelInfoConfig.toString());

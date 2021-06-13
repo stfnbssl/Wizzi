@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\features\wizzi\productions.ts.ittf
-    utc time: Sat, 05 Jun 2021 04:08:41 GMT
+    utc time: Wed, 09 Jun 2021 05:04:16 GMT
 */
 import path from 'path';
 import fs from 'fs';
@@ -14,6 +14,75 @@ import {config} from '../config';
 import {createFsJsonAndFactory, ensurePackiFilePrefix, createFilesystemFactory} from './factory';
 import {GeneratedArtifact, TransformedModel} from './types';
 import {FsJson} from 'wizzi-repo';
+const myname = 'features/wizzi/productions';
+
+export async function loadModel(filePath: string, files: packiTypes.PackiFiles, context?: any):  Promise<wizzi.WizziModel> {
+
+    return new Promise(async (resolve, reject) => {
+        
+            let jsonwf: any = {};
+            const ittfDocumentUri = ensurePackiFilePrefix(filePath) as string
+            ;
+            jsonwf = await createFsJsonAndFactory(files);
+            ;
+            jsonwf.wf.loadModel(ittfDocumentUri, {
+                mTreeBuildUpContext: context
+             }, (err: any, result: any) => {
+            
+                if (err) {
+                    return reject(err);
+                }
+                resolve(result);
+            }
+            )
+        }
+        );
+}
+
+export async function loadModelFs(filePath: string, context: any):  Promise<wizzi.WizziModel> {
+
+    return new Promise(async (resolve, reject) => {
+        
+            const schemaName = schemaFromFilePath(filePath);
+            if (!schemaName) {
+                return reject('File is not a known ittf document: ' + filePath);
+            }
+            const wf = await createFilesystemFactory();
+            wf.loadModel(schemaName, filePath, {
+                mTreeBuildUpContext: context
+             }, (err, result) => {
+            
+                if (err) {
+                    return reject(err);
+                }
+                resolve(result);
+            }
+            )
+        }
+        );
+}
+
+async function loadModelInternal(wf: wizzi.WizziFactory, filePath: string, context: any):  Promise<wizzi.WizziModel> {
+
+    return new Promise(async (resolve, reject) => {
+        
+            const schemaName = schemaFromFilePath(filePath);
+            if (!schemaName) {
+                return reject('File is not a known ittf document: ' + filePath);
+            }
+            wf.loadModel(schemaName, filePath, {
+                mTreeBuildUpContext: context
+             }, (err, result) => {
+            
+                if (err) {
+                    return reject(err);
+                }
+                resolve(result);
+            }
+            )
+        }
+        );
+}
 
 export async function mTreeDebugInfo(filePath: string, files: packiTypes.PackiFiles, context: any):  Promise<string> {
 
@@ -44,7 +113,7 @@ export async function generateArtifact(filePath: string, files: packiTypes.Packi
             console.log('wizzi.productions.generateArtifact.using artifact generator', generator);
             if (generator) {
                 let jsonwf: any = {};
-                let context: any = {};
+                let generationContext: any = {};
                 const ittfDocumentUri = ensurePackiFilePrefix(filePath) as string
                 ;
                 const siteDocumentUri = Object.keys(files).find(k => 
@@ -54,16 +123,16 @@ export async function generateArtifact(filePath: string, files: packiTypes.Packi
                 try {
                     jsonwf = await createFsJsonAndFactory(files);
                     ;
-                    context = {
-                        site: siteDocumentUri ? await loadModelJson(jsonwf.wf, ensurePackiFilePrefix(siteDocumentUri), {}) : null, 
+                    generationContext = Object.assign(context || {}, {
+                        site: siteDocumentUri ? await loadModelInternal(jsonwf.wf, ensurePackiFilePrefix(siteDocumentUri), {}) : null, 
                         ...(await inferAndLoadContextJson(jsonwf.wf, files, ittfDocumentUri, 'twin'))
                         
-                     };
-                    console.log('wizzi.productions.generateArtifact.context', Object.keys(context));
+                     })
+                    ;
+                    console.log(myname + 'generateArtifact.context', Object.keys(generationContext));
                     jsonwf.wf.loadModelAndGenerateArtifact(ittfDocumentUri, {
-                        modelRequestContext: {
-                            mTreeBuildUpContext: context
-                         }
+                        modelRequestContext: generationContext || {}, 
+                        artifactRequestContext: generationContext || {}
                      }, generator, (err: any, result: string) => {
                     
                         if (err) {
@@ -97,22 +166,29 @@ export async function generateArtifactFs(filePath: string, context?: any, option
             if (generator) {
                 console.log('wizzi.productions.using artifact generator', generator);
                 const wf = await createFilesystemFactory();
-                const generationContext = {
-                    modelRequestContext: context || {}
-                 };
-                wf.loadModelAndGenerateArtifact(filePath, generationContext, generator, (err, result) => {
-                
-                    if (err) {
-                        return reject(err);
+                console.log(myname + '.generateArtifactFs.context', Object.keys(context || {}));
+                try {
+                    wf.loadModelAndGenerateArtifact(filePath, {
+                        modelRequestContext: context || {}, 
+                        artifactRequestContext: context || {}
+                     }, generator, (err, result) => {
+                    
+                        console.log(myname + '.generateArtifactFs.err', err);
+                        if (err) {
+                            return reject(err);
+                        }
+                        // console.log('Generated artifact', result);
+                        resolve({
+                            artifactContent: result, 
+                            sourcePath: filePath, 
+                            artifactGenerator: generator
+                         })
                     }
-                    // console.log('Generated artifact', result);
-                    resolve({
-                        artifactContent: result, 
-                        sourcePath: filePath, 
-                        artifactGenerator: generator
-                     })
-                }
-                )
+                    )
+                } 
+                catch (ex) {
+                    return reject(ex);
+                } 
             }
             else {
                 reject('No artifact generator available for document ' + filePath);
@@ -140,7 +216,7 @@ export async function transformModel(filePath: string, files: packiTypes.PackiFi
                     jsonwf = await createFsJsonAndFactory(files);
                     ;
                     transformationContext = {
-                        site: siteDocumentUri ? await loadModelJson(jsonwf.wf, ensurePackiFilePrefix(siteDocumentUri), {}) : null, 
+                        site: siteDocumentUri ? await loadModelInternal(jsonwf.wf, ensurePackiFilePrefix(siteDocumentUri), {}) : null, 
                         ...(await inferAndLoadContextJson(jsonwf.wf, files, ittfDocumentUri, 'twin'))
                         
                      };
@@ -271,143 +347,6 @@ export async function executeJobs(files: packiTypes.PackiFiles):  Promise<FsJson
         );
 }
 
-export async function wizzify(files: packiTypes.PackiFiles):  Promise<packiTypes.PackiFiles> {
-
-    return new Promise(async (resolve, reject) => {
-        
-            var result: packiTypes.PackiFiles = {};
-            for (const k of Object.keys(files)) {
-                var extension = path.extname(k);
-                console.log('productions.wizzify', k, extension);
-                const ittfResult = await handleWizzify(extension, files[k].contents);
-                result[k + '.ittf'] = {
-                    type: 'CODE', 
-                    contents: ittfResult
-                 };
-            }
-            return resolve(result);
-        }
-        );
-}
-
-const extSchemaMap: { 
-    [k: string]: string;
-} = {
-    '.js': 'js', 
-    '.jsx': 'js', 
-    '.ts': 'ts', 
-    '.tsx': 'ts', 
-    '.html': 'html', 
-    '.css': 'css', 
-    '.svg': 'svg', 
-    '.md': 'md', 
-    '.xml': 'xml', 
-    '.json': 'json', 
-    '.graphql': 'graphql'
- };
-
-function handleWizzify(extension: string, codeSnippet: string):  Promise<string> {
-
-    return new Promise(async (resolve, reject) => {
-        
-            var schema = extSchemaMap[extension];
-            if (schema) {
-                wizziTools.wizzify(schema, codeSnippet, {}, function(err: any, ittfResult: string) {
-                
-                    if (err) {
-                        reject(err)
-                    }
-                    resolve(ittfResult)
-                })
-            }
-            else {
-                reject(new Error('Extension "' + extension + '" has no wizzifier'))
-            }
-        }
-        );
-}
-
-export async function loadModelJson(wf: wizzi.WizziFactory, filePath: string, context: any):  Promise<wizzi.WizziModel> {
-
-    return new Promise(async (resolve, reject) => {
-        
-            const schemaName = schemaFromFilePath(filePath);
-            if (!schemaName) {
-                return reject('File is not a known ittf document: ' + filePath);
-            }
-            wf.loadModel(schemaName, filePath, {
-                mTreeBuildUpContext: context
-             }, (err, result) => {
-            
-                if (err) {
-                    return reject(err);
-                }
-                // console.log('Generated artifact', result);
-                resolve(result);
-            }
-            )
-        }
-        );
-}
-
-export async function loadModelFs(filePath: string, context: any):  Promise<wizzi.WizziModel> {
-
-    return new Promise(async (resolve, reject) => {
-        
-            const schemaName = schemaFromFilePath(filePath);
-            if (!schemaName) {
-                return reject('File is not a known ittf document: ' + filePath);
-            }
-            const wf = await createFilesystemFactory();
-            wf.loadModel(schemaName, filePath, {
-                mTreeBuildUpContext: context
-             }, (err, result) => {
-            
-                if (err) {
-                    return reject(err);
-                }
-                // console.log('Generated artifact', result);
-                resolve(result);
-            }
-            )
-        }
-        );
-}
-
-export async function scanIttfDocument(filePath: string, rootFolder: string):  Promise<IttfMTreeState> {
-
-    return new Promise((resolve, reject) => 
-        
-            ittfDocumentScanner.scan(filePath, {
-                rootFolder
-             }, (err, result) => {
-            
-                if (err) {
-                    return reject(err);
-                }
-                resolve(result);
-            }
-            )
-        );
-}
-
-export async function scanIttfFolder(filePath: string, rootFolder: string):  Promise<FolderBrowseResult> {
-
-    return new Promise((resolve, reject) => 
-        
-            folderBrowse.scan(filePath, {
-                rootFolder
-             }, (err, result) => {
-            
-                if (err) {
-                    return reject(err);
-                }
-                resolve(result);
-            }
-            )
-        );
-}
-
 export async function inferAndLoadContextJson(wf: wizzi.WizziFactory, files: packiTypes.PackiFiles, filePath: string, exportName: string):  Promise<any> {
 
     return new Promise((resolve, reject) => {
@@ -422,7 +361,7 @@ export async function inferAndLoadContextJson(wf: wizzi.WizziFactory, files: pac
                 );
                 console.log('features.wizzi.productions.inferAndLoadContextJson.twinDocumentUri', twinDocumentUri, Object.keys(files));
                 if (twinDocumentUri) {
-                    loadModelJson(wf, ensurePackiFilePrefix(twinDocumentUri), {}).then(model => 
+                    loadModelInternal(wf, ensurePackiFilePrefix(twinDocumentUri), {}).then(model => 
                     
                         resolve({
                             [exportName]: model
@@ -471,6 +410,96 @@ export async function inferAndLoadContextFs(filePath: string, exportName: string
         }
         );
 }
+
+export async function scanIttfDocument(filePath: string, rootFolder: string):  Promise<IttfMTreeState> {
+
+    return new Promise((resolve, reject) => 
+        
+            ittfDocumentScanner.scan(filePath, {
+                rootFolder
+             }, (err, result) => {
+            
+                if (err) {
+                    return reject(err);
+                }
+                resolve(result);
+            }
+            )
+        );
+}
+
+export async function scanIttfFolder(filePath: string, rootFolder: string):  Promise<FolderBrowseResult> {
+
+    return new Promise((resolve, reject) => 
+        
+            folderBrowse.scan(filePath, {
+                rootFolder
+             }, (err, result) => {
+            
+                if (err) {
+                    return reject(err);
+                }
+                resolve(result);
+            }
+            )
+        );
+}
+
+export async function wizzify(files: packiTypes.PackiFiles):  Promise<packiTypes.PackiFiles> {
+
+    return new Promise(async (resolve, reject) => {
+        
+            var result: packiTypes.PackiFiles = {};
+            for (const k of Object.keys(files)) {
+                var extension = path.extname(k);
+                console.log('productions.wizzify', k, extension);
+                const ittfResult = await handleWizzify(extension, files[k].contents);
+                result[k + '.ittf'] = {
+                    type: 'CODE', 
+                    contents: ittfResult
+                 };
+            }
+            return resolve(result);
+        }
+        );
+}
+
+function handleWizzify(extension: string, codeSnippet: string):  Promise<string> {
+
+    return new Promise(async (resolve, reject) => {
+        
+            var schema = extSchemaMap[extension];
+            if (schema) {
+                wizziTools.wizzify(schema, codeSnippet, {}, function(err: any, ittfResult: string) {
+                
+                    if (err) {
+                        reject(err)
+                    }
+                    resolve(ittfResult)
+                })
+            }
+            else {
+                reject(new Error('Extension "' + extension + '" has no wizzifier'))
+            }
+        }
+        );
+}
+
+const extSchemaMap: { 
+    [k: string]: string;
+} = {
+    '.js': 'js', 
+    '.jsx': 'js', 
+    '.ts': 'ts', 
+    '.tsx': 'ts', 
+    '.html': 'html', 
+    '.css': 'css', 
+    '.svg': 'svg', 
+    '.md': 'md', 
+    '.xml': 'xml', 
+    '.json': 'json', 
+    '.graphql': 'graphql'
+ };
 
 const schemaModuleMap: { 
     [k: string]: string;

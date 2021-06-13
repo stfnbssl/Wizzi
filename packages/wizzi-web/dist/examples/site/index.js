@@ -24,7 +24,7 @@ function executeExample() {
     for (i=0; i<i_len; i++) {
         item = getFiles(ittfPath,'site')[i];
         item = item.substring(0, item.length - '.site.ittf'.length);
-        console.log('item', item);
+        // log 'item', item
         execute(item);
     }
     
@@ -46,11 +46,11 @@ function executeExample() {
                 console.log('-------------------------------------------------------------------');
                 throw 'Test error';
             }
-            console.log('site wizziModel', wizziModel);
+            // log 'site wizziModel', wizziModel
             var demos = wizziModel.getDemosByPath('javascript/bundlers');
-            console.log('demos(Javascript/Bundlers)', demos);
+            // log 'demos(Javascript/Bundlers)', demos
             var cats = wizziModel.getCategoriesByPath('javascript');
-            console.log('categories(Javascript/Bundlers)', cats);
+            // log 'categories(Javascript/Bundlers)', cats
         })
     }
 }

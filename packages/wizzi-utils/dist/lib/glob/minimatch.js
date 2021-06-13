@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\glob\minimatch.js.ittf
 */
 'use strict';
@@ -153,19 +154,19 @@ function make() {
     if (options.debug) {
         this.debug = console.error;
     }
-    this.debug(this.pattern, set);
+    this.debug(this.pattern, set)
     set = this.globParts = set.map(function(s) {
         return s.split(slashSplit);
     });
-    this.debug(this.pattern, set);
+    this.debug(this.pattern, set)
     set = set.map(function(s, si, set) {
         return s.map(this.parse, this);
     }, this);
-    this.debug(this.pattern, set);
+    this.debug(this.pattern, set)
     set = set.filter(function(s) {
         return s.indexOf(false) === - (1);
     });
-    this.debug(this.pattern, set);
+    this.debug(this.pattern, set)
     this.set = set;
 }
 Minimatch.prototype.parseNegate = parseNegate;
@@ -309,7 +310,7 @@ function parse(pattern, isSub) {
                     reStart: re.length, 
                     open: plTypes[stateChar].open, 
                     close: plTypes[stateChar].close
-                });
+                })
                 re += stateChar === '!' ? '(?:(?!(?:' : '(?:';
                 this.debug('plType %j %j', stateChar, re);
                 stateChar = false;
@@ -515,7 +516,7 @@ minimatch.match = function(list, pattern, options) {
 };
 Minimatch.prototype.match = match;
 function match(f, partial) {
-    this.debug('match', f, this.pattern);
+    this.debug('match', f, this.pattern)
     if (this.comment) {
         return false;
     }
@@ -530,9 +531,9 @@ function match(f, partial) {
         f = f.split(path.sep).join('/');
     }
     f = f.split(slashSplit);
-    this.debug(this.pattern, 'split', f);
+    this.debug(this.pattern, 'split', f)
     var set = this.set;
-    this.debug(this.pattern, 'set', set);
+    this.debug(this.pattern, 'set', set)
     var filename;
     var i;
     for (i = (f.length - 1); i >= 0; i--) {
@@ -566,8 +567,8 @@ Minimatch.prototype.matchOne = function(file, pattern, partial) {
         'this': this, 
         file: file, 
         pattern: pattern
-    });
-    this.debug('matchOne', file.length, pattern.length);
+    })
+    this.debug('matchOne', file.length, pattern.length)
     for (var fi = 0, pi = 0, fl = file.length, pl = pattern.length; ((fi < fl) && (pi < pl)); fi++, pi++) {
         this.debug('matchOne loop');
         var p = pattern[pi];
@@ -581,7 +582,7 @@ Minimatch.prototype.matchOne = function(file, pattern, partial) {
                 pattern, 
                 p, 
                 f
-            ]);
+            ])
             var fr = fi;
             var pr = (pi + 1);
             if (pr === pl) {

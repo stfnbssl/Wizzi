@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\examples\ittfTree\index.js.ittf
 */
 'use strict';
@@ -26,9 +27,9 @@ function step_1() {
             console.log('err', err);
             throw new Error(err.message);
         }
-        file.write(path.join(__dirname, 'ittf', 'basic.sample.json'), stringify(result, null, 2));
+        file.write(path.join(__dirname, 'ittf', 'basic.sample.json'), stringify(result, null, 2))
         step_2();
-    });
+    })
 }
 function step_2() {
     ittfMTreeEx.createFrom([
@@ -46,9 +47,9 @@ function step_2() {
             throw new Error(err.message);
         }
         console.log('result.findByRow(3). should be react node.', result.findByRow(3));
-        file.write(path.join(__dirname, 'ittf', 'basic.sample.fromstring.json'), stringify(result, null, 2));
+        file.write(path.join(__dirname, 'ittf', 'basic.sample.fromstring.json'), stringify(result, null, 2))
         step_3();
-    });
+    })
 }
 function step_3() {
     ittfMTreeEx.createFrom(path.join(__dirname, 'ittf', 'complex.sample.ittf'), {}, function(err, result) {
@@ -59,7 +60,7 @@ function step_3() {
         result.analize();
         var msg = stringify(result, null, 2);
         console.log('step_3', msg);
-    });
+    })
 }
 function step_4() {
     ittfMTreeEx.createFrom(path.join("C:/My/wizzi/v5/apps/wizzi-studio/dist/server/ittf/repo/stefi/studio/wizzi/r_long_page", 'index.html.ittf'), {}, function(err, result) {
@@ -70,7 +71,7 @@ function step_4() {
         result.analize();
         var msg = stringify(result, null, 2);
         console.log('step_4', msg);
-    });
+    })
 }
 function ittfFinder_step_1() {
     console.log('wizzi-utils.examples.ittfTree.ittfFinder_step_1');
@@ -85,6 +86,6 @@ function ittfFinder_step_1() {
             fragmentName: 'frag_1'
         }, function(err, result) {
             console.log('ittfFinder_step_1.result.2', err, result);
-        });
-    });
+        })
+    })
 }

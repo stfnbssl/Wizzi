@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\verify.js.ittf
 */
 'use strict';
@@ -140,11 +141,7 @@ md.isCssLength = function(test) {
     }
     return num > 0 && ['px', 'em', 'rem', 'vh', 'vw'].indexOf(unit) > -1;
 };
-/**
-     TODO these Regex(s) are too ingenuous
-     research stronger solutions
-    
-*/
+//
 var ipRegex = /^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})$/i,
     emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     base64Regex = /[^a-zA-Z0-9\/\+=]/i,
@@ -270,9 +267,9 @@ function _getValidDate(date) {
             validDateArray;
         if (!date.match('today')) {
             validDateArray = date.split('-');
-            validDate.setFullYear(validDateArray[0]);
+            validDate.setFullYear(validDateArray[0])
             validDate.setMonth((validDateArray[1] - 1));
-            validDate.setDate(validDateArray[2]);
+            validDate.setDate(validDateArray[2])
         }
         return validDate;
     }
@@ -395,7 +392,7 @@ md.splitLines = function(text, options) {
                 num: i, 
                 numFmt: i < 10 ? '000' + i : i <100 ? '00' + i : '0' + i, 
                 text: line
-            });
+            })
         }
         return ret;
     }
@@ -761,7 +758,7 @@ wzError.prototype.name = 'wzError';
 md.assert = {
     notEmpty: function(test, message) {
         if (md.isNotEmpty(test) === false) {
-            md.fatal(message);
+            md.fatal(message)
         }
     }
 };
@@ -788,7 +785,7 @@ md.error = function() {
         else if (typeof (arg) === 'object' && sprintf_args.length == 0) {
             for (var k in arg) {
                 if (k === 'name') {
-                    md.assert.notEmpty(arg[k], 'error\'s "name" must be a string. Received: ' + util.inspect(arg[k], { depth: null }));
+                    md.assert.notEmpty(arg[k], 'error\'s "name" must be a string. Received: ' + util.inspect(arg[k], { depth: null }))
                     name = arg[k];
                 }
                 else {
@@ -806,7 +803,7 @@ md.error = function() {
         }
     }
     if (sprintf_args.length > 0) {
-        md.assert.notEmpty(sprintf_args[0], 'First sprintf argument to wzError ' + 'constructor must be a string. Received: ' + util.inspect(sprintf_args[0], { depth: null }));
+        md.assert.notEmpty(sprintf_args[0], 'First sprintf argument to wzError ' + 'constructor must be a string. Received: ' + util.inspect(sprintf_args[0], { depth: null }))
     }
     shortmessage = sprintf_args.length === 0 ? '' : sprintf.apply(null, sprintf_args);
     message = shortmessage;
@@ -819,39 +816,39 @@ md.error = function() {
 md.fatal = function(err, errcode) {
     console.log('wizzi-utils.errors.fatal', util.inspect(err, { depth: null }));
     throw new Error(err);
-    md.logError("Fatal error: " + String(err.message || err));
-    dumpStack(err);
+    md.logError("Fatal error: " + String(err.message || err))
+    dumpStack(err)
     var code = typeof(errcode) === 'number' ? errcode : md.code.FATAL_ERROR;
     ;
-    process.exit(code);
+    process.exit(code)
 };
 md.logInfo = function() {
     var sb = [];
     Array.from(arguments).forEach((item) =>
-        sb.push(item && item.toString()));
-    console.log(chalk.gray(sb.join(' ')));
+        sb.push(item && item.toString()))
+    console.log(chalk.gray(sb.join(' ')))
 };
 md.logWarning = function() {
     var sb = [];
     Array.from(arguments).forEach((item) =>
-        sb.push(item && item.toString()));
-    console.log(chalk.yellow(sb.join(' ')));
+        sb.push(item && item.toString()))
+    console.log(chalk.yellow(sb.join(' ')))
 };
 md.logError = function() {
     var sb = [];
     Array.from(arguments).forEach((item) =>
-        sb.push(item && item.toString()));
-    console.log(chalk.red(sb.join(' ')));
+        sb.push(item && item.toString()))
+    console.log(chalk.red(sb.join(' ')))
 };
 function dumpStack(e) {
     if (e.origError && e.origError.stack) {
-        md.logInfo(e.origError.stack);
+        md.logInfo(e.origError.stack)
     }
     else if (e.stack) {
-        md.logInfo(e.stack);
+        md.logInfo(e.stack)
     }
     else {
-        md.logInfo(new Error().stack());
+        md.logInfo(new Error().stack())
     }
 }
 function error(code, method, message, innerError) {

@@ -1,6 +1,3 @@
 module
-    $
-        var md = {
-        }
     $if wzCtx.Build.useMongoDb
-        v08/express/features/packi/controllers/github(&md)
+        v08/express/features/packi/controllers/github()

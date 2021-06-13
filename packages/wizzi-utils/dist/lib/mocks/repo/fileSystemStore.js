@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\mocks\repo\fileSystemStore.js.ittf
 */
 'use strict';
@@ -17,7 +18,7 @@ var FileSystemStore = (function () {
         this.storeKind = 'filesystem';
     }
     FileSystemStore.prototype.parseUri = function(ittfDocumentUri, callback) {
-        uriparser(ittfDocumentUri, callback);
+        uriparser(ittfDocumentUri, callback)
     }
     FileSystemStore.prototype.documentExists = function(filepath, callback) {
         var documentExists;
@@ -36,7 +37,7 @@ var FileSystemStore = (function () {
             folderExists = file.isDirectory(folderpath);
         } 
         catch (ex) {
-            return(this.error(ex.message, folderpath, 'folderExistsSync'));
+            return(this.error(ex.message, folderpath, 'folderExistsSync'))
         } 
         return folderExists;
     }
@@ -46,7 +47,7 @@ var FileSystemStore = (function () {
             folders = file.getFolders(parentFolderPath, options);
         } 
         catch (ex) {
-            return(this.error(ex.message, parentFolderPath, 'getFolders'));
+            return(this.error(ex.message, parentFolderPath, 'getFolders'))
         } 
         return folders;
     }

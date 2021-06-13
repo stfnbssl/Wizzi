@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\json\fs\fsjson.js.ittf
 */
 'use strict';
@@ -14,31 +15,7 @@ var path = require('path');
 var util = require('util');
 var verify = require('wizzi-utils').verify;
 var Collection = require('../../utils/collection');
-/**
-     class FsJson
-     implements an in-memory json Filesystem (a set of documents organized in a tree of folders)
-    
-     Filesystem item
-     { fsitem
-     ObjectId _id
-     string basename
-     ObjectId parentId
-     string dirname
-     string path
-     integer kind
-     one-of 0 (directory), 1 (file)
-    
-     Document
-     { document
-     ObjectId _id
-     string content
-     ISODate lastModified
-    
-     ctor params
-     { fsJsonData
-     [ items
-     [ documents
-*/
+//
 var FsJson = (function () {
     function FsJson(fsJsonData) {
         _classCallCheck(this, FsJson);
@@ -107,7 +84,7 @@ var FsJson = (function () {
         }
         this.getItem({
             _id: id
-        }, callback);
+        }, callback)
     }
     FsJson.prototype.getItemByPath = function(path, callback) {
         if (typeof(callback) !== 'function') {
@@ -122,7 +99,7 @@ var FsJson = (function () {
         }
         this.getItem({
             path: path
-        }, callback);
+        }, callback)
     }
     FsJson.prototype.getItemByNameAndParent = function(basename, parentId, callback) {
         if (typeof(callback) !== 'function') {
@@ -145,7 +122,7 @@ var FsJson = (function () {
         this.getItem({
             basename: basename, 
             parentId: parentId
-        }, callback);
+        }, callback)
     }
     FsJson.prototype.getItemChildren = function(parentId, callback) {
         if (typeof(callback) !== 'function') {
@@ -215,7 +192,7 @@ var FsJson = (function () {
                             insertedCount: r.insertedCount, 
                             item: r.ops[0]
                         });
-                });
+                })
             }
             else {
                 // log 'wizzi-repo.json.FsJson.insertItem. Item exists. So return it'
@@ -224,7 +201,7 @@ var FsJson = (function () {
                         item: item
                     });
             }
-        });
+        })
     }
     FsJson.prototype.updateItem = function(fsitem, callback) {
         if (typeof(callback) !== 'function') {
@@ -261,7 +238,7 @@ var FsJson = (function () {
             else {
                 return callback(error('JsonRepoError', 'updateItem', util.inspect( r_upd.result )));
             }
-        });
+        })
     }
     FsJson.prototype.updateItemLastModified = function(id, lastModified, callback) {
         if (typeof(callback) !== 'function') {
@@ -298,12 +275,12 @@ var FsJson = (function () {
                     else {
                         return callback(error('JsonRepoError', 'updateItemLastModified', util.inspect( r_upd.result )));
                     }
-                });
+                })
             }
             else {
                 return callback(error('JsonRepoError', 'updateItemLastModified', 'FsJson item not found, id: ' + id));
             }
-        });
+        })
     }
     FsJson.prototype.deleteItem = function(id, callback) {
         if (typeof(callback) !== 'function') {
@@ -345,9 +322,9 @@ var FsJson = (function () {
                     else {
                         return callback(error('JsonRepoError', 'deleteItem', 'FsJson error deleting item. Result: ' + util.inspect( r )));
                     }
-                });
-            });
-        });
+                })
+            })
+        })
     }
     FsJson.prototype._deleteDocument = function(id, callback) {
         this.documents.deleteOne({
@@ -365,7 +342,7 @@ var FsJson = (function () {
                 // log 'wizzi-repo.json.FsJson._deleteDocument', false
                 return callback(null, false);
             }
-        });
+        })
     }
     FsJson.prototype.readDocument = function(id, callback) {
         if (typeof(callback) !== 'function') {
@@ -449,9 +426,9 @@ var FsJson = (function () {
                             code: 'DOCUMENT_WRITTEN', 
                             item: r.ops[0]
                         });
-                });
-            });
-        });
+                })
+            })
+        })
     }
     FsJson.prototype.toJson = function(callback) {
         if (typeof(callback) !== 'function') {
@@ -471,9 +448,9 @@ var FsJson = (function () {
                 callback(null, {
                     items: items, 
                     documents: documents
-                });
-            });
-        });
+                })
+            })
+        })
     }
     FsJson.prototype.toFiles = function(options, callback) {
         if (typeof(callback) !== 'function') {
@@ -513,13 +490,13 @@ var FsJson = (function () {
                                 fullPath: item.path, 
                                 relPath: options.removeRoot ? item.path.substr(options.removeRoot.length) : '', 
                                 content: d.content
-                            });
+                            })
                         }
                     }
                 }
-                callback(null, ret);
-            });
-        });
+                callback(null, ret)
+            })
+        })
     }
     FsJson.prototype.close = function() {
         // nothing to do
@@ -527,14 +504,7 @@ var FsJson = (function () {
     return FsJson;
 })();
 
-/**
-     Creates a FsJson instance
-     params
-     { fsJsonData
-     [ items
-     [ documents
-     callback
-*/
+//
 FsJson.create = function(fsJsonData, callback) {
     
     if (verify.isUndefined(callback)) {

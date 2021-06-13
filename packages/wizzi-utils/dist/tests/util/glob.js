@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\util\glob.js.ittf
 */
 'use strict';
@@ -20,9 +21,9 @@ var file = vfile();
 
 describe("glob", function() {
     it("should glob a folder", function(done) {
-        file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_1.ittf'), 'globbed 1');
-        file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_2.ittf'), 'globbed 2');
-        file.write(path.join(__dirname, 'ittf', 'globs2', 'one', 'globbed_2_one.ittf'), 'globbed 2 one');
+        file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_1.ittf'), 'globbed 1')
+        file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_2.ittf'), 'globbed 2')
+        file.write(path.join(__dirname, 'ittf', 'globs2', 'one', 'globbed_2_one.ittf'), 'globbed 2 one')
         glob(path.join(__dirname, 'ittf', 'globs2', '**/*.ittf'), file, function(err, result) {
             if (err) {
                 console.log('err', err);
@@ -31,7 +32,7 @@ describe("glob", function() {
             expect(result).to.be.an('array');
             expect(result.length).to.be(3);
             done();
-        });
+        })
     });
     it("should sync glob a folder", function() {
         var result = glob(path.join(__dirname, 'ittf', 'globs2', '**/*.ittf'), file, {

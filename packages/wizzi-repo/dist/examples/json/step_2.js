@@ -1,15 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\examples\json\step_2.js.ittf
 */
 'use strict';
 //
 // Example skeleton specific for the 'wizzi-repo' kernel package
 //
-/**
-     Examples: Json_Step_1
-    
-*/
+//
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
@@ -31,10 +29,10 @@ var MongoFsImpl = require('../../lib/mongodb/mongoFsimpl');
 var FsMongo = require('../../lib/mongodb/fs/fsmongo');
 var Document = require('../../lib/mongodb/fs/document');
 var Json_Step_1 = function(step_callback) {
-    heading1('EXAMPLE');
+    heading1('EXAMPLE')
     heading1('start');
     var jsonDirectoryTree = json.directoryTree(path.join(__dirname, '..'));
-    printValue('json DirectoryTree', jsonDirectoryTree);
+    printValue('json DirectoryTree', jsonDirectoryTree)
 };
 Json_Step_1.__name = 'Json_Step_1';
 function heading1(text) {
@@ -64,11 +62,12 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }
 function printValue(k, v, format, p1) {
+    console.log('--- value ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -102,8 +101,10 @@ function printValue(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- value ------------------------------------------------------ end');
 }
 function printObject(k, v, format, p1) {
+    console.log('--- object ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -112,6 +113,7 @@ function printObject(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- object ------------------------------------------------------ end');
 }
 function __printObject(v, level, limit) {
     if (level < limit) {
@@ -164,7 +166,7 @@ function printNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printNodes_deep(c, indent + 1);
+        printNodes_deep(c, indent + 1)
     }
 }
 function printNodes(nodes, title) {
@@ -187,7 +189,7 @@ function printNodes(nodes, title) {
                 console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
             }
         }
-        printNodes_deep(nodes[0], 1);
+        printNodes_deep(nodes[0], 1)
     }
     console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
@@ -196,7 +198,7 @@ function printEvaluatedNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
+        printEvaluatedNodes_deep(c, indent + 1)
     }
 }
 function printEvaluatedNodes(evaluated, title) {
@@ -205,7 +207,7 @@ function printEvaluatedNodes(evaluated, title) {
         if (evaluated.frontMatter) {
             console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
         }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1)
     }
     else {
         console.log('Invalid evaluated object', evaluated);

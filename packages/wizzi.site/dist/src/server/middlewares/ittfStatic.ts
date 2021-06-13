@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\middlewares\ittfStatic.ts.ittf
-    utc time: Sat, 05 Jun 2021 04:08:41 GMT
+    utc time: Wed, 09 Jun 2021 05:04:16 GMT
 */
 import util from 'util';
 import path from 'path';
@@ -336,13 +336,9 @@ function sendTransform(filePath: string, transformer: string, res: Response) {
 
     wizziProds.transformModelFs(filePath, {}, {
         transformer: transformer
-     }).then((model) => {
+     }).then(model => 
     
-        res.type('application/json');
-        res.send(model);
-        return ;
         res.send(stringify(model, null, 2))
-    }
     ).catch(err => 
     
         sendError(res, err, {

@@ -1,8 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\root\index.js.ittf
 */
 'use strict';
+// isWebpackTarget false
 var ittfMTreeEx = require('./lib/ittfTree/ittfMTreeEx');
 var asIsLoader = require('./lib/ittfTree/asIsLoader');
 var ittfWriter = require('./lib/ittfTree/ittfWriter');
@@ -90,6 +92,6 @@ md.prettifyFromString = function(ittfContent, callback) {
                 return callback(err);
             }
             return callback(null, pretty.prettyLines.join('\n'));
-        });
-    });
+        })
+    })
 };

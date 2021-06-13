@@ -1,10 +1,11 @@
 {
     "name": "wizzi-utils",
-    "version": "0.7.12",
+    "sideEffects": false,
+    "version": "0.7.13",
     "description": "Utility library for the wizzi factory.",
     "author": {
         "name": "Stefano Bassoli",
-        "email": "wizzi.team@gmail.com"
+        "email": "stfn.bssl@gmail.com"
     },
     "private": false,
     "licenses": [

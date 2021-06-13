@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\errors.js.ittf
 */
 'use strict';
@@ -57,12 +58,7 @@ NodeError.prototype = Object.create(Error.prototype);
 NodeError.prototype.constructor = NodeError;
 md.NodeError = NodeError;
 
-/**
-     params
-     { node
-     @ description
-    
-*/
+//
 md.getErrorLinesFromMTreeNode = function(node, description) {
     var errorData = {
         row: node.r, 
@@ -75,16 +71,7 @@ md.getErrorLinesFromMTreeNode = function(node, description) {
     var data = node.__mTree.loadHistory.ittfDocumentDatas[node.u];
     return md.getErrorLines(errorData, data.content, true);
 };
-/**
-     params
-     { errorData
-     @ row
-     @ col
-     @ description
-     string source
-     boolean json
-    
-*/
+//
 md.getErrorLines = function(errorData, source, json) {
     var statements = source.split('\n');
     var start = Math.max(0, (errorData.row - 4));

@@ -6,7 +6,7 @@ html
         wzCtx.title = 'React / Wizzi cheatsheets';
         wzCtx.Build.react.useStyledComponents = true;
         // wzCtx.Build.react.useTransitionGroup = true;
-        // wzCtx.Build.useAce = true;
+        wzCtx.Build.useAce = true;
         wzCtx.Build.mainJs = './main.js.ittf';
         wzCtx.Build.mainCss = './main.css.ittf';
         wzCtx.Build.useGoogleFonts = true;
@@ -30,17 +30,15 @@ html
                 module
                     kind react
 
-                    $*
                     $include g/js/wz/react/Resize
                     $include g/js/wz/react/Modal
                     $include g/js/wz/react/FlexibleModal
                     $include g/js/wz/react/ReactAce
                     $include g/js/wz/react/IFramePage
-                    $include samplesData
+                    $include initialData
                     $include common/styled
-                    $include Generator
-                    $include Wizzifier
-                    *$
+                    $include Browser
+                    $include Editor
                     $include Main
                     $include Docs
 

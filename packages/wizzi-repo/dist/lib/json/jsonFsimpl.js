@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\json\jsonFsimpl.js.ittf
 */
 'use strict';
@@ -12,19 +13,7 @@ var verify = require('wizzi-utils').verify;
 var FsJson = require('./fs/fsjson'),
     DocumentManager = require('./fs/documentmanager'),
     jsonUriParser = require('wizzi-utils').uriParser;
-/**
-     class JsonFsImpl
-    
-     Implements the `fsimpl` interface for a json backed file system.
-     It is used by repo/jsonDbStore that implements the json repo store.
-     uses a json/DocumentManager instance to manage an in-memory json filesystem (json/fs/FsJson)
-     ctor params
-     { fsJsonData
-     [ items
-     # simple javascript array
-     [ documents
-     # simple javascript array
-*/
+//
 var JsonFsImpl = (function () {
     function JsonFsImpl(fsJsonData) {
         _classCallCheck(this, JsonFsImpl);
@@ -95,13 +84,13 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            docManager.stat(parsedUri.internalPath, function(err, result) {
+            jsonDb.stat(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     JsonFsImpl.prototype.lstat = function(documentUri, callback) {
         // log 'wizzi-repo.json.jsonFsimpl.lstat.documentUri', documentUri
@@ -125,13 +114,13 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            docManager.stat(parsedUri.internalPath, function(err, result) {
+            jsonDb.stat(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     JsonFsImpl.prototype.readFile = function(documentUri, options, callback) {
         // log 'wizzi-repo.json.jsonFsimpl.readFile.documentUri', documentUri
@@ -159,13 +148,13 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            docManager.readFile(parsedUri.internalPath, function(err, result) {
+            jsonDb.readFile(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     JsonFsImpl.prototype.writeFile = function(documentUri, content, options, callback) {
         // log 'wizzi-repo.json.jsonFsimpl.writeFile.documentUri', documentUri
@@ -193,13 +182,13 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            docManager.writeFile(parsedUri.internalPath, content, function(err, result) {
+            jsonDb.writeFile(parsedUri.internalPath, content, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     JsonFsImpl.prototype.readdir = function(documentUri, options, callback) {
         // log 'wizzi-repo.json.jsonFsimpl.readdir.documentUri', documentUri
@@ -227,7 +216,7 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            docManager.getDir(parsedUri.internalPath, options, function(err, result) {
+            jsonDb.getDir(parsedUri.internalPath, options, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -239,8 +228,8 @@ var JsonFsImpl = (function () {
                     dir.push(item.basename);
                 }
                 callback(null, dir);
-            });
-        });
+            })
+        })
     }
     JsonFsImpl.prototype.mkdir = function(documentUri, options, callback) {
         // log 'wizzi-repo.json.jsonFsimpl.mkdir.documentUri', documentUri
@@ -268,13 +257,13 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            docManager.createFolder(parsedUri.internalPath, function(err, result) {
+            jsonDb.createFolder(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     JsonFsImpl.prototype.unlink = function(documentUri, callback) {
         // log 'wizzi-repo.json.jsonFsimpl.unlink.documentUri', documentUri
@@ -298,13 +287,13 @@ var JsonFsImpl = (function () {
             if (err) {
                 return callback(err);
             }
-            docManager.deleteFile(parsedUri.internalPath, function(err, result) {
+            jsonDb.deleteFile(parsedUri.internalPath, function(err, result) {
                 if (err) {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     JsonFsImpl.prototype.createWriteStream = function(documentUri) {
         if (verify.isNotEmpty(documentUri) === false) {
@@ -325,7 +314,7 @@ var JsonFsImpl = (function () {
                 throw new Error(err.message);
             }
             return callback(null, json);
-        });
+        })
     }
     return JsonFsImpl;
 })();

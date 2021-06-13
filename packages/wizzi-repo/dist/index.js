@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\root\index.js.ittf
 */
 'use strict';
@@ -19,10 +20,7 @@ md.ObjectId = require('./lib/utils/objectId');
 
 md.MongoFsImpl = MongoFsImpl;
 
-/**
-     Filesystem virtual file service
-     noparams
-*/
+//
 md.fsfile = function fsfile(callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -34,10 +32,7 @@ md.fsfile = function fsfile(callback) {
     return callback(null, fsfile);
 };
 
-/**
-     Create an instance of the mongoDb Document class
-     for managing files and directory
-*/
+//
 md.mongoDbDocumentManager = function mongoDbDocumentManager(mongoUri, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -54,16 +49,10 @@ md.mongoDbDocumentManager = function mongoDbDocumentManager(mongoUri, callback) 
             return callback(err);
         }
         return callback(null, docman);
-    });
+    })
 };
 
-/**
-     mongoDb virtual file service
-     params
-     { options
-     string mongoUri
-     string mongodbBaseFolder
-*/
+//
 md.dbfile = function dbfile(options, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -95,21 +84,14 @@ md.dbfile = function dbfile(options, callback) {
                 return callback(err);
             }
             return callback(null, dbfile);
-        });
-    });
+        })
+    })
 };
 
-/**
-     Create a json directory tree from a filesystem folder
-*/
+//
 md.jsonDirectoryTreeFromFilesystem = JsonFsImpl.directoryTree;
 
-/**
-     json virtual file service
-     params
-     { options
-     { jsonFsData
-*/
+//
 md.jsonfile = function jsonfile(options, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -148,8 +130,8 @@ md.jsonfile = function jsonfile(options, callback) {
                     return callback(err);
                 }
                 return callback(null, _jsonfile);
-            });
-        });
+            })
+        })
     }
     else {
         var fsimpl = new JsonFsImpl(options.jsonFsData);
@@ -162,24 +144,15 @@ md.jsonfile = function jsonfile(options, callback) {
                     return callback(err);
                 }
                 return callback(null, _jsonfile);
-            });
-        });
+            })
+        })
     }
 };
 
 
 md.JsonComponents = require('./lib/json/index');
 
-/**
-     params
-     { options
-     string storeKind
-     oneOf filesystem, mongodb, localstorage
-     string storeUri
-     when storeKind == mongodb
-     string storeBaseFolder
-     when storeKind == mongodb
-*/
+//
 md.createStoreFactory = function createStoreFactory(options, callback) {
     if (typeof(callback) !== 'function') {
         throw new Error(
@@ -248,7 +221,7 @@ function getCreateStore(storeKind, options) {
                     return callback(err);
                 }
                 return callback(null, store);
-            });
+            })
         };
 }
 function checkStoreKind(kind) {
@@ -264,10 +237,10 @@ md.folderFilesInfoByPath = function(folderPath, fileService) {
         var i, i_items=files, i_len=files.length, f;
         for (i=0; i<i_len; i++) {
             f = files[i];
-            result.push(fileInfoByPath(f.fullPath));
+            result.push(fileInfoByPath(f.fullPath))
         }
         return result;
-    });
+    })
 };
 md.ittfDocumentInfoByPath = function(filePath) {
     var result = fileInfoByPath(filePath);

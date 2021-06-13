@@ -2754,6 +2754,30 @@
           ]
         },
         {
+          "name": "stroke",
+          "tags": [
+            "stroke"
+          ]
+        },
+        {
+          "name": "stroke_dasharray",
+          "tags": [
+            "stroke-dasharray"
+          ]
+        },
+        {
+          "name": "stroke_dashoffset",
+          "tags": [
+            "stroke-dashoffset"
+          ]
+        },
+        {
+          "name": "stroke_linecap",
+          "tags": [
+            "stroke-linecap"
+          ]
+        },
+        {
           "name": "stroke_width",
           "tags": [
             "stroke-width"
@@ -10448,6 +10472,122 @@
       "isRoot": false,
       "tags": [
         "stress"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke_dasharray",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke-dasharray"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke_dashoffset",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke-dashoffset"
+      ],
+      "flags": "",
+      "attributes": [],
+      "relations": [
+        {
+          "name": "property",
+          "role": "properties",
+          "tags": [
+            "@"
+          ],
+          "cardinality": "one-to-many",
+          "flags": "",
+          "inheritedFrom": "property",
+          "comments": [
+            "Nested property"
+          ]
+        }
+      ],
+      "derived": [],
+      "restricts": [],
+      "methods": [],
+      "comments": []
+    },
+    {
+      "name": "stroke_linecap",
+      "super": "property",
+      "isRoot": false,
+      "tags": [
+        "stroke-linecap"
       ],
       "flags": "",
       "attributes": [],

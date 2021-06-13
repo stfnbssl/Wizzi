@@ -113,7 +113,7 @@ $group
                             _ sendSuccess
                                 @ response
                                 { 
-                                    @ generatedArtifact value
+                                    @ transformedModel value.transformResult
                     ._ catch
                         => 
                             param err

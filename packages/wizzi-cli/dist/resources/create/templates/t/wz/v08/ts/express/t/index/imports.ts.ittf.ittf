@@ -67,6 +67,11 @@ $group
             @ packiControllers
             from './features/packi/index'
 
+    ${'$'}if wzCtx.Build.useWizzi
+        import 
+            @ wizziControllers
+            from './features/wizzi/index'
+
     import 
         @ appMiddlewaresPre
         @ appMiddlewaresPost

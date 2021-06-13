@@ -244,7 +244,7 @@ md.load = function(cnt) {
             ctx.__is_react_class = true;
             var async_str = model.wzElement == 'asyncarrowfunction' || model.xasync ? 'async ' : '';
             var onlyChildIsArrowFunction = u.onlyChildIs(model, 'arrowfunction');
-            console.log("onlyChildIsArrowFunction", onlyChildIsArrowFunction);
+            // log "onlyChildIsArrowFunction", onlyChildIsArrowFunction
             if (onlyChildIsArrowFunction) {
                 ctx.write(model.wzName + ' = ' + async_str + '(' + model.paramNames.join(', ') + ') => ');
             }

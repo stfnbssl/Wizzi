@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\examples\prettifiers\index.js.ittf
 */
 'use strict';
@@ -26,9 +27,9 @@ function step_1() {
             throw new Error(err.message);
         }
         var pretty = ittfHtmlPrettifier(result, {});
-        file.write(path.join(__dirname, 'outputs', 'basic.sample.pretty.html'), pretty.prettyLines.join('\n'));
+        file.write(path.join(__dirname, 'outputs', 'basic.sample.pretty.html'), pretty.prettyLines.join('\n'))
         step_2();
-    });
+    })
 }
 function step_2() {
     var pretty = ittfHtmlPrettifier(path.join(__dirname, 'ittf', 'basic.sample.ittf'), {});
@@ -45,5 +46,5 @@ function step_3() {
             throw new Error(err.message);
         }
         console.log('step_3', pretty);
-    });
+    })
 }

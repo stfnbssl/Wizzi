@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\fs\vfile.js.ittf
 */
 'use strict';
@@ -8,10 +9,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-/**
-     virtual file manager
-     WORK IN PROGRESS
-*/
+//
 var path = require('path');
 var iconv = require('iconv-lite');
 var async = require('async');
@@ -78,8 +76,8 @@ module.exports = function(options, callback) {
                 return callback(err);
             }
             // log 'wizzi-utils.lib.fs.vfile. Got fsimpl', fsimpl
-            callback(null, new VFile(fsimpl));
-        });
+            callback(null, new VFile(fsimpl))
+        })
     }
     else {
         default_fs(function(err, fsimpl) {
@@ -87,8 +85,8 @@ module.exports = function(options, callback) {
                 return callback(err);
             }
             // log 'wizzi-utils.lib.fs.vfile. Got fsimpl', fsimpl
-            callback(null, new VFile(fsimpl));
-        });
+            callback(null, new VFile(fsimpl))
+        })
     }
 };
 var VFile = (function () {
@@ -191,7 +189,7 @@ var VFile = (function () {
                 contents = contents.toString('utf8');
             }
             return callback(null, contents);
-        });
+        })
     }
     VFile.prototype.readSync = function(path_string, options) {
         if (verify.isFunction(this.fsimpl.readFileSync) === false) {
@@ -246,7 +244,7 @@ var VFile = (function () {
             }
             // log 'write async', path_string, that.fsimpl.writeFile, callback
             return that.fsimpl.writeFile(path_string, contents, callback);
-        });
+        })
     }
     VFile.prototype.writeSync = function(path_string, contents, options) {
         if (verify.isFunction(this.fsimpl.writeFileSync) === false) {
@@ -291,7 +289,7 @@ var VFile = (function () {
                             return callback(stream);
                         }
                         callback(null, stream);
-                    });
+                    })
                 }
                 else {
                     that.mkpath(path_string, function(err, notUsed) {
@@ -304,10 +302,10 @@ var VFile = (function () {
                             return callback(stream);
                         }
                         callback(null, stream);
-                    });
+                    })
                 }
-            });
-        });
+            })
+        })
     }
     VFile.prototype.mkpath = function(path_string, callback) {
         
@@ -321,7 +319,7 @@ var VFile = (function () {
     }
     VFile.prototype.mkpathAsync = function(path_string, callback) {
         // log 'mkpath async', path_string
-        this.ensureParentDir(path_string, callback);
+        this.ensureParentDir(path_string, callback)
     }
     VFile.prototype.mkpathSync = function(path_string) {
         if (verify.isFunction(this.fsimpl.mkdirSync) === false) {
@@ -353,9 +351,9 @@ var VFile = (function () {
                 return callback(null);
             }
             else {
-                that.mkdir(pathParent, callback);
+                that.mkdir(pathParent, callback)
             }
-        });
+        })
     }
     VFile.prototype.ensureParentDirSync = function(path_string) {
         if (verify.isFunction(this.fsimpl.mkdirSync) === false) {
@@ -430,14 +428,14 @@ var VFile = (function () {
                         return process.nextTick(function() {
                                 repeater(index + 1);
                             });
-                    });
+                    })
                 }
                 else {
                     return process.nextTick(function() {
                             repeater(index + 1);
                         });
                 }
-            });
+            })
         }
         repeater(0);
     }
@@ -481,7 +479,7 @@ var VFile = (function () {
                 }
             }
             return callback(null, stats.isDirectory() || stats.isFile());
-        });
+        })
     }
     VFile.prototype.existsSync = function(path_string) {
         if (verify.isFunction(this.fsimpl.statSync) === false) {
@@ -524,7 +522,7 @@ var VFile = (function () {
             else {
                 return callback(null, stats.isDirectory());
             }
-        });
+        })
     }
     VFile.prototype.isDirectorySync = function(path_string) {
         if (verify.isFunction(this.fsimpl.statSync) === false) {
@@ -565,7 +563,7 @@ var VFile = (function () {
                 }
             }
             return callback(null, stats.isFile());
-        });
+        })
     }
     VFile.prototype.isFileSync = function(path_string) {
         if (verify.isFunction(this.fsimpl.statSync) === false) {
@@ -596,8 +594,8 @@ var VFile = (function () {
             if (err) {
                 return callback(err);
             }
-            that.write(dest, content, callback);
-        });
+            that.write(dest, content, callback)
+        })
     }
     VFile.prototype.exec_copyFolder = function(src, dest, options, callback) {
         var that = this;
@@ -606,7 +604,7 @@ var VFile = (function () {
                 return callback(err);
             }
             return that.copyFolderItems(items, src, dest, options, callback);
-        });
+        })
     }
     VFile.prototype.copyFolderItems = function(items, src, dest, options, callback) {
         const item = items.pop();
@@ -629,7 +627,7 @@ var VFile = (function () {
                         return callback(err);
                     }
                     return that.copyFolderItems(items, src, dest, options, callback);
-                });
+                })
             }
             else {
                 that.exec_copyFolder(srcItem, destItem, options, function(err, notUsed) {
@@ -637,9 +635,9 @@ var VFile = (function () {
                         return callback(err);
                     }
                     return that.copyFolderItems(items, src, dest, options, callback);
-                });
+                })
             }
-        });
+        })
     }
     VFile.prototype.rimraf = function(path_string, options, callback) {
         if (typeof options === 'function') {
@@ -663,7 +661,7 @@ var VFile = (function () {
                 }
             }
             callback(err);
-        });
+        })
     }
     VFile.prototype.rimraf_try = function(path_string, options, callback) {
         var that = this;
@@ -691,8 +689,8 @@ var VFile = (function () {
                     }
                 }
                 return callback(err);
-            });
-        });
+            })
+        })
     }
     VFile.prototype.rimraf_rmdir = function(path_string, options, originalEr, callback) {
         // try to rmdir first, and only readdir on ENOTEMPTY or EEXIST (SunOS)
@@ -710,7 +708,7 @@ var VFile = (function () {
                     callback(err);
                 }
             }
-        });
+        })
     }
     VFile.prototype.rimraf_rmchildren = function(path_string, options, callback) {
         var that = this;
@@ -733,19 +731,19 @@ var VFile = (function () {
                     }
                     if (--n === 0) {
                         that.fsimpl.rmdir(path_string, callback)}
-                }));
-        });
+                }))
+        })
     }
     VFile.prototype.rimraf_fixWinEPERM = function(path_string, options, tofixErr, callback) {
         var that = this;
         this.fsimpl.chmod(path_string, 438, function(err, notUsed) {
             if (err) {
-                callback(err.code === 'ENOENT' ? null : tofixErr);
+                callback(err.code === 'ENOENT' ? null : tofixErr)
             }
             else {
                 that.fsimpl.stat(path_string, function(err, stats) {
                     if (err) {
-                        callback(err.code === 'ENOENT' ? null : tofixErr);
+                        callback(err.code === 'ENOENT' ? null : tofixErr)
                     }
                     else {
                         if (stats.isDirectory()) {
@@ -755,9 +753,9 @@ var VFile = (function () {
                             that.fsimpl.unlink(path_string, callback);
                         }
                     }
-                });
+                })
             }
-        });
+        })
     }
     VFile.prototype.copyFile = function(path_string, dest, options, callback) {
         
@@ -804,7 +802,7 @@ var VFile = (function () {
                                 return callback(err);
                             }
                             return that.exec_copyFile(src, dest, options, callback);
-                        });
+                        })
                     }
                     else {
                         if (options.errorOnExist) {
@@ -815,8 +813,8 @@ var VFile = (function () {
                         }
                     }
                 }
-            });
-        });
+            })
+        })
     }
     VFile.prototype.copyFileSync = function(path_string, dest, options) {
         if (verify.isFunction(this.fsimpl.writeFileSync) === false) {
@@ -876,8 +874,8 @@ var VFile = (function () {
                     // do not allow folder overwrite
                     return callback(null, new Error(`Destination '${dest}' already exists.`));
                 }
-            });
-        });
+            })
+        })
     }
     VFile.prototype.copyFolderSync = function(path_string, dest, options) {
         if (verify.isFunction(this.fsimpl.writeFileSync) === false) {
@@ -910,8 +908,8 @@ var VFile = (function () {
             if (err) {
                 return callback(err);
             }
-            that.unlink(src, callback);
-        });
+            that.unlink(src, callback)
+        })
     }
     VFile.prototype.moveFileSync = function(path_string, dest, options) {
         if (verify.isFunction(this.fsimpl.writeFileSync) === false) {
@@ -944,8 +942,8 @@ var VFile = (function () {
             if (err) {
                 return callback(err);
             }
-            that.deleteFolder(src, callback);
-        });
+            that.deleteFolder(src, callback)
+        })
     }
     VFile.prototype.moveFolderSync = function(path_string, dest, options) {
         if (verify.isFunction(this.fsimpl.writeFileSync) === false) {
@@ -980,8 +978,8 @@ var VFile = (function () {
             if (result == false) {
                 return callback(null, new Error(`'${path_string}' is not a directory`));
             }
-            that.rimraf(path_string, options, callback);
-        });
+            that.rimraf(path_string, options, callback)
+        })
     }
     VFile.prototype.deleteFolderSync = function(path_string, options) {
         if (verify.isFunction(this.fsimpl.rmdir) === false) {
@@ -1027,7 +1025,7 @@ var VFile = (function () {
                 return callback(new errors.FileError('Unable to JSON parse "' + path_string + '" file (' + ex.message + ').', ex));
             } 
             return callback(null, result);
-        });
+        })
     }
     VFile.prototype.readJSONSync = function(path_string, options) {
         if (verify.isFunction(this.fsimpl.readFileSync) === false) {
@@ -1108,7 +1106,7 @@ var VFile = (function () {
                         }
                         // log 'wizzi-utils.vfile.getFiles.after_appendFiles.files', files
                         return callback(null, files);
-                    });
+                    })
                 }
                 else {
                     that.isFile(path_string, function(err, isFile) {
@@ -1127,9 +1125,9 @@ var VFile = (function () {
                         else {
                             return callback(null, []);
                         }
-                    });
+                    })
                 }
-            });
+            })
         }
         getItems(function(err, items) {
             if (err) {
@@ -1147,18 +1145,18 @@ var VFile = (function () {
                                 relPath: item.relPath, 
                                 content: content
                             });
-                    });
+                    })
                 }, function(err, itemsWithContent) {
                     if (err) {
                         return callback(err);
                     }
                     return callback(null, itemsWithContent);
-                });
+                })
             }
             else {
                 return callback(null, items);
             }
-        });
+        })
     }
     VFile.prototype.getFilesSync = function(path_string, options) {
         if (verify.isFunction(this.fsimpl.readdirSync) === false) {
@@ -1172,7 +1170,7 @@ var VFile = (function () {
         if (this.isDirectory(path_string)) {
             var files = [];
             var relPath = [];
-            this._appendFiles(path_string, files, relPath, options);
+            this._appendFiles(path_string, files, relPath, options)
             result = files;
         }
         else if (this.isFile(path_string)) {
@@ -1197,7 +1195,7 @@ var VFile = (function () {
                     fullPath: item.fullPath, 
                     relPath: item.relPath, 
                     content: content
-                });
+                })
             }
             return resultWithContents;
         }
@@ -1243,11 +1241,11 @@ var VFile = (function () {
                             files.push({
                                 fullPath: filePath, 
                                 relPath: unixifyPath(path.join(relPath.join('/'), item))
-                            });
+                            })
                         }
                         return callback(null, null);
                     }
-                });
+                })
             }, function(err, items) {
                 if (err) {
                     return callback(err);
@@ -1271,15 +1269,15 @@ var VFile = (function () {
                             }
                             // log 'wizzi-utils.vfile._appendFiles.deep.async.files', files
                             return repeat(index + 1);
-                        });
+                        })
                     }
                     else {
                         return repeat(index + 1);
                     }
                 }
                 repeat(0);
-            });
-        });
+            })
+        })
     }
     VFile.prototype._appendFilesSync = function(path_string, files, relPath, options) {
         if (verify.isFunction(this.fsimpl.readdirSync) === false) {
@@ -1306,7 +1304,7 @@ var VFile = (function () {
                     files.push({
                         fullPath: filePath, 
                         relPath: unixifyPath(path.join(relPath.join('/'), item))
-                    });
+                    })
                 }
             }
         }
@@ -1351,12 +1349,12 @@ var VFile = (function () {
                         }
                         // log 'wizzi-utils.vfile.getFolders.folders', folders
                         return callback(null, folders);
-                    });
+                    })
                 }
                 else {
                     return callback(null, []);
                 }
-            });
+            })
         }
         getItems(function(err, items) {
             if (err) {
@@ -1377,7 +1375,7 @@ var VFile = (function () {
                                     relPath: item.relPath, 
                                     documents: files
                                 });
-                        });
+                        })
                     }
                     else {
                         return callback(null, {
@@ -1390,12 +1388,12 @@ var VFile = (function () {
                         return callback(err);
                     }
                     return callback(null, itemsWithNames);
-                });
+                })
             }
             else {
                 return callback(null, items);
             }
-        });
+        })
     }
     VFile.prototype.getFoldersSync = function(path_string, options) {
         if (verify.isFunction(this.fsimpl.readdirSync) === false) {
@@ -1426,7 +1424,7 @@ var VFile = (function () {
                     folderFullPath: item.fullPath, 
                     folderRelPath: item.relPath, 
                     documents: files
-                });
+                })
             }
             return resultWithFileNames;
         }
@@ -1465,10 +1463,10 @@ var VFile = (function () {
                         folders.push({
                             fullPath: filePath, 
                             relPath: unixifyPath(path.join(relPath.join('/'), item))
-                        });
+                        })
                     }
-                    callback(null, ( isDirectory && options.deep ? item : null ));
-                });
+                    callback(null, ( isDirectory && options.deep ? item : null ))
+                })
             }, function(err, items) {
                 if (err) {
                     return callback(err);
@@ -1489,15 +1487,15 @@ var VFile = (function () {
                                 return callback(err);
                             }
                             return repeat(index + 1);
-                        });
+                        })
                     }
                     else {
                         return repeat(index + 1);
                     }
                 }
                 repeat(0);
-            });
-        });
+            })
+        })
     }
     VFile.prototype._appendFoldersSync = function(path_string, folders, relPath, options) {
         if (verify.isFunction(this.fsimpl.readdirSync) === false) {
@@ -1518,7 +1516,7 @@ var VFile = (function () {
                         folders.push({
                             fullPath: filePath, 
                             relPath: unixifyPath(path.join(relPath.join('/'), item))
-                        });
+                        })
                         return ;
                     }
                 }
@@ -1526,7 +1524,7 @@ var VFile = (function () {
                     folders.push({
                         fullPath: filePath, 
                         relPath: unixifyPath(path.join(relPath.join('/'), item))
-                    });
+                    })
                 }
                 if (options.deep) {
                     var newRelPath = relPath.slice(0);
@@ -1570,7 +1568,7 @@ var VFile = (function () {
                         return callback(err);
                     }
                     return callback(null, globbed);
-                });
+                })
             }, function(err, globbeds) {
                 if (err) {
                     return callback(err);
@@ -1578,10 +1576,10 @@ var VFile = (function () {
                 var i, i_items=globbeds, i_len=globbeds.length, globbed;
                 for (i=0; i<i_len; i++) {
                     globbed = globbeds[i];
-                    _.union(output, globbed);
+                    _.union(output, globbed)
                 }
                 return callback(null, output);
-            });
+            })
         }
         else if (verify.isString(path_string)) {
             if (urlRegex.test(path_string)) {
@@ -1616,7 +1614,7 @@ var VFile = (function () {
                     else {
                         return callback(null, files);
                     }
-                });
+                })
             }
         }
     }
@@ -1700,9 +1698,7 @@ function stringify(obj, options) {
     var str = JSON.stringify(obj, options ? options.replacer : null, spaces);
     return str.replace(/\n/g, EOL) + EOL;
 }
-/**
-     The default fsimpl is 'filesystem'
-*/
+//
 function default_fs(options, callback) {
     if (typeof callback === 'undefined') {
         callback = options;

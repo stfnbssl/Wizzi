@@ -1,12 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\examples\scanners\index.js.ittf
 */
 'use strict';
-/**
-     Example: scanners_Step_1
-    
-*/
+//
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
@@ -64,7 +62,7 @@ function ittfFsNode_step_1() {
             root.setSourcePaths({
                 ittfBasePath: removeRoot, 
                 jsCodeBasePath: options.gitPath
-            });
+            })
             // create the IttfFsNode tree structure of the scanned folder
             var i, i_items=ittfs, i_len=ittfs.length, ittf;
             for (i=0; i<i_len; i++) {
@@ -72,7 +70,7 @@ function ittfFsNode_step_1() {
                 root.addDocument(( ittf[0] === '/' ? ittf.substr(1) : ittf ), {
                     basePath: removeRoot, 
                     gitPath: options.gitPath
-                });
+                })
             }
             // analize all IttfFsNode(s) starting from root
             // this also searches mixed or included ittf fragments that are
@@ -86,9 +84,9 @@ function ittfFsNode_step_1() {
                 // 'wzpackage' schema.
                 root.toIttf2(ittfMTreeEx);
                 console.log('IttfFsNode.ittfMTreeEx\n', ittfMTreeEx.toString());
-            });
-        });
-    });
+            })
+        })
+    })
 }
 function folderBrowse_step_1() {
     console.log('wizzi-utils.examples.folderBrowse_step_1 START');
@@ -100,7 +98,7 @@ function folderBrowse_step_1() {
             throw new Error(err.message);
         }
         console.log('result\n', JSON.stringify(result, null, 2));
-    });
+    })
 }
 function ittfDocumentScanner_step_1() {
     console.log('wizzi-utils.examples.ittfDocumentScanner_step_1 START');
@@ -114,11 +112,11 @@ function ittfDocumentScanner_step_1() {
         console.log('ittfDocumentScanner_step_1 err', err);
         var msg = stringify(result, null, 2);
         // log 'step_4 result', msg
-        file.write(path.join(__dirname, 'outputs', 'ittfDocumentScanner.json'), msg);
-    });
+        file.write(path.join(__dirname, 'outputs', 'ittfDocumentScanner.json'), msg)
+    })
 }
 var scanners_Step_1 = function(step_callback) {
-    heading1('EXAMPLE');
+    heading1('EXAMPLE')
     step_1();
     // _ ittfFsNode_step_1
     // _ folderBrowse_step_1
@@ -139,8 +137,8 @@ var scanners_Step_1 = function(step_callback) {
                 }
                 console.log('err, result', err, result);
                 step_2();
-            });
-        });
+            })
+        })
     }
     function step_2() {
         var ittfMTreeEx;
@@ -159,8 +157,8 @@ var scanners_Step_1 = function(step_callback) {
                 }
                 console.log('err, result', err, result);
                 step_4();
-            });
-        });
+            })
+        })
     }
     function step_4() {
         ittfDocumentScanner.scan(path.join(wizziStudioFolder, 'dist/server/ittf/demo/ttech/css/layouts/step_1', 'index.html.ittf'), {
@@ -173,9 +171,9 @@ var scanners_Step_1 = function(step_callback) {
             console.log('step_4 err', err);
             var msg = stringify(result, null, 2);
             // log 'step_4 result', msg
-            file.write(path.join(__dirname, 'outputs', 'ittfDocumentScanner.json'), msg);
+            file.write(path.join(__dirname, 'outputs', 'ittfDocumentScanner.json'), msg)
             step_5();
-        });
+        })
     }
     function step_5() {
         textDocumentScanner.scan(path.join(wizziStudioFolder, "dist/server/ittf/labs/netlify", 'config.yml'), {
@@ -188,7 +186,7 @@ var scanners_Step_1 = function(step_callback) {
             console.log('step_4 err', err);
             var msg = stringify(result, null, 2);
             console.log('step_5 result', msg);
-        });
+        })
     }
 };
 scanners_Step_1.__name = 'scanners_Step_1';
@@ -219,7 +217,7 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }
@@ -323,7 +321,7 @@ function printNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printNodes_deep(c, indent + 1);
+        printNodes_deep(c, indent + 1)
     }
 }
 function printNodes(nodes, title) {
@@ -346,7 +344,7 @@ function printNodes(nodes, title) {
                 console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
             }
         }
-        printNodes_deep(nodes[0], 1);
+        printNodes_deep(nodes[0], 1)
     }
     console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
@@ -355,7 +353,7 @@ function printEvaluatedNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
+        printEvaluatedNodes_deep(c, indent + 1)
     }
 }
 function printEvaluatedNodes(evaluated, title) {
@@ -364,7 +362,7 @@ function printEvaluatedNodes(evaluated, title) {
         if (evaluated.frontMatter) {
             console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
         }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1)
     }
     else {
         console.log('Invalid evaluated object', evaluated);

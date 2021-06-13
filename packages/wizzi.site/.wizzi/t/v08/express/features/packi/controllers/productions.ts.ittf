@@ -1,5 +1,4 @@
 $group
-    $params &md
     $
         var ctrl = {
             name: 'Productions',
@@ -104,7 +103,7 @@ $group
                             _ sendSuccess
                                 @ response
                                 {
-                                    @ generatedArtifact value
+                                    @ transformedModel value.transformResult
                     ._ catch
                         =>
                             param err

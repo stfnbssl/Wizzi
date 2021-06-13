@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\ittfTree\ittfMTreeEx.js.ittf
 */
 'use strict';
@@ -38,7 +39,7 @@ describe("ittfMTreeEx", function() {
             expect(result.children[1].children).to.be.an('array');
             expect(result.children[1].children.length).to.be(1);
             done();
-        });
+        })
     });
     it("should load an evaluated mTree object into an IttfMOdelEx instance class", function(done) {
         ittfMTreeEx.createFrom({
@@ -81,7 +82,7 @@ describe("ittfMTreeEx", function() {
             expect(result.children[1].children).to.be.an('array');
             expect(result.children[1].children.length).to.be(1);
             done();
-        });
+        })
     });
     it("should load a tree structure of named-value nodes into an IttfMOdelEx instance class", function(done) {
         ittfMTreeEx.createFrom({
@@ -120,7 +121,7 @@ describe("ittfMTreeEx", function() {
             expect(result.children[1].children).to.be.an('array');
             expect(result.children[1].children.length).to.be(1);
             done();
-        });
+        })
     });
     it("should parse a node value containing an interpolation", function(done) {
         ittfMTreeEx.createFrom({
@@ -159,6 +160,6 @@ describe("ittfMTreeEx", function() {
             expect(result.children[0].getValueParsed()[2].v).to.be.a('string');
             expect(result.children[0].getValueParsed()[2].v).to.be('.');
             done();
-        });
+        })
     });
 });

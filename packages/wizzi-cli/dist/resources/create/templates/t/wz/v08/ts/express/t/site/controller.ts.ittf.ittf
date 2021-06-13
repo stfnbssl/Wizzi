@@ -32,6 +32,12 @@ $group
             from '../../utils/sendResponse'
         $elif level == 3
             from '../../../utils/sendResponse'
+
+    ${'$'}if ctrl.modelName
+        import
+            @ I${'$'}{ctrl.modelName}
+            from '../types'
+    
     ${'$'}hook imports
     +
     export

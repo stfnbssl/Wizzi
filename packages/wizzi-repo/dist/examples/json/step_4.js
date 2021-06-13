@@ -1,15 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\examples\json\step_4.js.ittf
 */
 'use strict';
 //
 // Example skeleton specific for the 'wizzi-repo' kernel package
 //
-/**
-     Examples: Json_Step_4
-    
-*/
+//
 var util = require('util');
 var path = require('path');
 var fs = require('fs');
@@ -31,11 +29,11 @@ var MongoFsImpl = require('../../lib/mongodb/mongoFsimpl');
 var FsMongo = require('../../lib/mongodb/fs/fsmongo');
 var Document = require('../../lib/mongodb/fs/document');
 function dump(fsJson) {
-    printValue('fsJson.items', fsJson.items);
-    printValue('fsJson.documents', fsJson.documents);
+    printValue('fsJson.items', fsJson.items)
+    printValue('fsJson.documents', fsJson.documents)
 }
 var Json_Step_4 = function(step_callback) {
-    heading1('EXAMPLE');
+    heading1('EXAMPLE')
     heading1('start');
     // create an array of document data for test
     var documents = [];
@@ -48,7 +46,7 @@ var Json_Step_4 = function(step_callback) {
             '            lia( stefi )', 
             '            lia_img( annie, photo.jpg )'
         ].join('\n')
-    });
+    })
     documents.push({
         path: 'c:/root/folder1/t/lia.html.ittf', 
         content: [
@@ -56,7 +54,7 @@ var Json_Step_4 = function(step_callback) {
             '    a', 
             '        href'
         ].join('\n')
-    });
+    })
     documents.push({
         path: 'c:/root/folder1/t/lia_img.html.ittf', 
         content: [
@@ -65,16 +63,16 @@ var Json_Step_4 = function(step_callback) {
             '        href', 
             '        img'
         ].join('\n')
-    });
+    })
     json.createJsonFsData(documents, function(err, jsonFsData) {
         console.log('err', err);
         if (err) {
             throw new Error(JSON.stringify(err, null, 2));
         }
         heading2('created JsonFilesystem');
-        printValue(jsonFsData);
-        addDocuments(jsonFsData);
-    });
+        printValue(jsonFsData)
+        addDocuments(jsonFsData)
+    })
     function addDocuments(jsonFsData) {
         heading2('write documents to JsonFilesystem');
         var documents = [];
@@ -84,15 +82,15 @@ var Json_Step_4 = function(step_callback) {
                 'module', 
                 '    kind react'
             ].join('\n')
-        });
+        })
         json.addToJsonFsData(jsonFsData, documents, function(err, jsonFsData) {
             console.log('err', err);
             if (err) {
                 throw new Error(JSON.stringify(err, null, 2));
             }
-            printValue(jsonFsData);
-            extractDocuments(jsonFsData);
-        });
+            printValue(jsonFsData)
+            extractDocuments(jsonFsData)
+        })
     }
     function extractDocuments(jsonFsData) {
         heading2('read documents from JsonFilesystem');
@@ -105,8 +103,8 @@ var Json_Step_4 = function(step_callback) {
             if (err) {
                 throw new Error(JSON.stringify(err, null, 2));
             }
-            printValue(files);
-        });
+            printValue(files)
+        })
     }
 };
 Json_Step_4.__name = 'Json_Step_4';
@@ -137,11 +135,12 @@ function printArray(name, arr, fields, format) {
         var j, j_items=keys, j_len=keys.length, k;
         for (j=0; j<j_len; j++) {
             k = keys[j];
-            printValue(k, item[k]);
+            printValue(k, item[k])
         }
     }
 }
 function printValue(k, v, format, p1) {
+    console.log('--- value ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -175,8 +174,10 @@ function printValue(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- value ------------------------------------------------------ end');
 }
 function printObject(k, v, format, p1) {
+    console.log('--- object ------------------------------------------------------ start');
     if (format === 'dashes' || format === 'meter') {
         console.log('   ', '-'.repeat(100));
     }
@@ -185,6 +186,7 @@ function printObject(k, v, format, p1) {
     if (format === 'meter') {
         meterLine(p1, '     ' + new Array(1 + k.length).join(' '));
     }
+    console.log('--- object ------------------------------------------------------ end');
 }
 function __printObject(v, level, limit) {
     if (level < limit) {
@@ -237,7 +239,7 @@ function printNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printNodes_deep(c, indent + 1);
+        printNodes_deep(c, indent + 1)
     }
 }
 function printNodes(nodes, title) {
@@ -260,7 +262,7 @@ function printNodes(nodes, title) {
                 console.log(' ', 'nodes.frontMatter', mTreeModel.frontMatter);
             }
         }
-        printNodes_deep(nodes[0], 1);
+        printNodes_deep(nodes[0], 1)
     }
     console.log('--- nodes ' + (title || '') + ' --------------------------------------------------- end');
 }
@@ -269,7 +271,7 @@ function printEvaluatedNodes_deep(n, indent) {
     var i, i_items=n.children, i_len=n.children.length, c;
     for (i=0; i<i_len; i++) {
         c = n.children[i];
-        printEvaluatedNodes_deep(c, indent + 1);
+        printEvaluatedNodes_deep(c, indent + 1)
     }
 }
 function printEvaluatedNodes(evaluated, title) {
@@ -278,7 +280,7 @@ function printEvaluatedNodes(evaluated, title) {
         if (evaluated.frontMatter) {
             console.log(' ', 'evaluated.frontMatter', evaluated.frontMatter);
         }
-        printEvaluatedNodes_deep(evaluated.nodes[0], 1);
+        printEvaluatedNodes_deep(evaluated.nodes[0], 1)
     }
     else {
         console.log('Invalid evaluated object', evaluated);

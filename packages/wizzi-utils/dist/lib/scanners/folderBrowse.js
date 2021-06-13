@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\scanners\folderBrowse.js.ittf
 */
 'use strict';
@@ -26,15 +27,15 @@ md.scan = function(folderPath, options, callback) {
         options = {};
     }
     if (options.file) {
-        md.scanExec(options.file, folderPath, options, callback);
+        md.scanExec(options.file, folderPath, options, callback)
     }
     else {
         vfile(function(err, file) {
             if (err) {
                 return callback(err);
             }
-            md.scanExec(file, folderPath, options, callback);
-        });
+            md.scanExec(file, folderPath, options, callback)
+        })
     }
 };
 md.scanExec = function(file, folderPath, options, callback) {
@@ -59,7 +60,7 @@ md.scanExec = function(file, folderPath, options, callback) {
                     breadCrumbs.push({
                         uri: partUri, 
                         name: item
-                    });
+                    })
                 }
             }
             breadCrumbs[breadCrumbs.length-1].isLast = true;
@@ -100,9 +101,9 @@ md.scanExec = function(file, folderPath, options, callback) {
                                     mime: ss[ss.length-2], 
                                     hash: encdec.encrypt(fullPath), 
                                     content: content
-                                });
+                                })
                                 return callback(null);
-                            });
+                            })
                         }
                         else {
                             fsitems.push({
@@ -114,7 +115,7 @@ md.scanExec = function(file, folderPath, options, callback) {
                                 schema: null, 
                                 mime: ss[ss.length-1], 
                                 hash: encdec.encrypt(fullPath)
-                            });
+                            })
                             return callback(null);
                         }
                     }
@@ -125,10 +126,10 @@ md.scanExec = function(file, folderPath, options, callback) {
                             basename: item, 
                             isFolder: true, 
                             hash: encdec.encrypt(fullPath)
-                        });
+                        })
                         return callback(null);
                     }
-                });
+                })
             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
@@ -139,9 +140,9 @@ md.scanExec = function(file, folderPath, options, callback) {
                         breadCrumbs: breadCrumbs, 
                         fsitems: fsitems
                     });
-            });
-        });
-    });
+            })
+        })
+    })
 };
 /**
   params

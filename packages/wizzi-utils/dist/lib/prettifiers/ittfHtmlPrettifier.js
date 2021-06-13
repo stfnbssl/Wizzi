@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\prettifiers\ittfHtmlPrettifier.js.ittf
 */
 'use strict';
@@ -14,19 +15,7 @@ var STYLE_DOCS_ITTF_NODE_ARG = 'pp-arg';
 var verify = require('../verify');
 var HtmlBuilder = require('./utils/htmlbuilder').HtmlBuilder;
 var IttfMTreeEx = require('../ittfTree/ittfMTreeEx');
-/**
-     prettify an mTree for documentation pourposes
-     params
-     choice rootNode
-     { api-ref wizzi-utils.ittfMTreeEx
-     string ittf document uri
-     { options
-     { ittfFsNode
-     string ittfBasePath
-     number indentSpaces
-     default 2
-    
-*/
+//
 module.exports = function(rootNode, options, callback) {
     getRootNode(rootNode, options, function(err, rootNode) {
         if (err) {
@@ -47,23 +36,23 @@ module.exports = function(rootNode, options, callback) {
             if (err) {
                 return callback(err);
             }
-            toHtmlPretty(rootNode, ctx);
+            toHtmlPretty(rootNode, ctx)
             return callback(null, {
                     prettyLines: ctx.hb.toLines(), 
                     ittfMTreeEx: rootNode, 
                     fragments: ctx.fragments
                 });
-        });
-    });
+        })
+    })
 };
 function getRootNode(rootNode, options, callback) {
     if (verify.isObject(rootNode) == false && verify.isNotEmpty(rootNode)) {
         // 'rootNode' should be an ittf document uri
         // load from source ittf document
-        IttfMTreeEx.createFrom(rootNode, options, callback);
+        IttfMTreeEx.createFrom(rootNode, options, callback)
     }
     else {
-        callback(null, rootNode);
+        callback(null, rootNode)
     }
 }
 function toHtmlPretty(node, ctx) {
@@ -183,7 +172,7 @@ function toHtmlPretty(node, ctx) {
     var i, i_items=children, i_len=children.length, child;
     for (i=0; i<i_len; i++) {
         child = children[i];
-        toHtmlPretty(child, ctx);
+        toHtmlPretty(child, ctx)
     }
     ctx.__ittfNode.indent--;
 }

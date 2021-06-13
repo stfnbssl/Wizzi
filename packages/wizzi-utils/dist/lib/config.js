@@ -1,18 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\config.js.ittf
 */
 'use strict';
-/**
-     TODO eliminate this
-    
-     Config properties can be changed during the startup of the runnerServer,
-     using the onConfig method of a wizzifile.js.
-    
-     property wfBaseFolder
-     property wfJobsFolder
-    
-*/
+//
 var path = require('path');
 var md = module.exports = {};
 md.wfBaseFolder = 'c:/my/wizzi/v3';

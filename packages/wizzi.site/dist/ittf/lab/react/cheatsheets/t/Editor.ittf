@@ -32,7 +32,7 @@ $group
                 log 'Editor.setValues.this.props.packiFiles', this.props.packiFiles
                 log 'Editor.setValues.this.props.selectedEditPackiPath', this.props.selectedEditPackiPath
                 const ittfContentPackiFile = this.props.packiFiles[this.props.selectedEditPackiPath]
-                log 'Editor.setValues..props.selectedEditPackiPath', ittfContentPackiFile
+                log 'Editor.setValues.props.selectedEditPackiPath', ittfContentPackiFile
                 _ this.setState
                     {
                         @ content ittfContentPackiFile.contents
@@ -131,7 +131,6 @@ $group
                                             @ height '100%'
                                             @ minLines {40}
                                             @ maxLines {40}
-
                                 {
                                     &&
                                         + ['production-preview'].indexOf(this.state.productionMode) > -1

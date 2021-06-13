@@ -138,17 +138,17 @@ on [Twitter](https://twitter.com/wizziteam) and [Facebook](https://www.facebook.
 ## jsHtmlPrettifier(script[, options])
 * `script` `String` javascript code 
 * `options` `Object` 
-## The Wizzi Factory
+## Wizzi
 
-A model driven artifact factory.
+One machinery, many productions.
 
 
-<p><a href="https://wizzifactory.github.io/">Project page</a></p>
+<p><a href="https://stfnbssl.github.io/wizzi">Project page</a></p>
 
 ## Built With
 * [Nodejs](https://nodejs.org)
 
-* [Wizzi Factory](https://github.com/wizzifactory)
+* [Wizzi](https://github.com/stfnbssl/wizzi)
 
 
 ## License

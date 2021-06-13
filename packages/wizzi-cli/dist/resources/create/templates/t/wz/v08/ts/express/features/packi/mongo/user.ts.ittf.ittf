@@ -1,5 +1,20 @@
 $group
 
+    $
+        var call_md = '(&md)';
+
+    ${'$'}
+        var schemas = wzCtx.Build.mongoDb.schemas
+        function getSchema(name) {
+            for (var i=0; i<schemas.length; i++) {
+                if (schemas[i].name == name) { return schemas[i]; }
+            }
+        }
+        var md = getSchema('user')
+
+    v08/mongo/model${call_md}
+
+    $*
     import 
         @ Schema
         @ Model
@@ -60,3 +75,4 @@ $group
                                         :ref IUserModel
                                     @ "User"
                                     @ UserSchema
+    *$

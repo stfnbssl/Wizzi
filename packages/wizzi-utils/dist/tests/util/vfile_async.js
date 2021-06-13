@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\util\vfile_async.js.ittf
 */
 'use strict';
@@ -25,7 +26,7 @@ describe("vfile", function() {
             path.join(__dirname, 'ittf')
         ], {
             force: true
-        });
+        })
     });
     it("should async create the first file in the ittf folder", function(done) {
         file.write(path.join(__dirname, 'ittf', 'gc_one.ittf'), 'first one\nsecond one', function(err, result) {
@@ -39,8 +40,8 @@ describe("vfile", function() {
                     throw new Error(err.message);
                 }
                 done();
-            });
-        });
+            })
+        })
     });
     it("should async check existence of file", function(done) {
         file.exists(path.join(__dirname, 'ittf', 'gc_one.ittf'), function(err, exists) {
@@ -80,12 +81,12 @@ describe("vfile", function() {
                                 }
                                 expect(isDirectory).to.be(false);
                                 done();
-                            });
-                        });
-                    });
-                });
-            });
-        });
+                            })
+                        })
+                    })
+                })
+            })
+        })
     });
     it("should async check existence of folder", function(done) {
         file.exists(path.join(__dirname, 'ittf', 'folder_one'), function(err, exists) {
@@ -119,11 +120,11 @@ describe("vfile", function() {
                             }
                             expect(isFile).to.be(false);
                             done();
-                        });
-                    });
-                });
-            });
-        });
+                        })
+                    })
+                })
+            })
+        })
     });
     it("should async create folder", function(done) {
         file.mkdir(path.join(__dirname, 'ittf', 'folder_created_one'), function(err, result) {
@@ -149,10 +150,10 @@ describe("vfile", function() {
                         }
                         expect(isDirectory).to.be(true);
                         done();
-                    });
-                });
-            });
-        });
+                    })
+                })
+            })
+        })
     });
     it("should async write/read a file", function(done) {
         file.write(path.join(__dirname, 'ittf', 'gc_one.ittf'), 'first one\nsecond one', function(err, result) {
@@ -168,8 +169,8 @@ describe("vfile", function() {
                 expect(contents).to.be.a('string');
                 expect(contents).to.be('first one\nsecond one');
                 done();
-            });
-        });
+            })
+        })
     });
     it("should async write/read a file on a new folder", function(done) {
         file.write(path.join(__dirname, 'ittf', 'alca', 'traz', 'gc_one.ittf'), 'first one\nsecond one', function(err, result) {
@@ -185,8 +186,8 @@ describe("vfile", function() {
                 expect(contents).to.be.a('string');
                 expect(contents).to.be('first one\nsecond one');
                 done();
-            });
-        });
+            })
+        })
     });
     it("should async write/read a json file", function(done) {
         var obj = {
@@ -213,12 +214,12 @@ describe("vfile", function() {
                 // loose equality works for objects
                 expect(obj).to.eql(obj_read);
                 done();
-            });
-        });
+            })
+        })
     });
     it("should async get files in a basefolder", function(done) {
-        file.write(path.join(__dirname, 'ittf', 'globs', 'globbed_1.ittf'), 'globbed 1');
-        file.write(path.join(__dirname, 'ittf', 'globs', 'globbed_2.ittf'), 'globbed 2');
+        file.write(path.join(__dirname, 'ittf', 'globs', 'globbed_1.ittf'), 'globbed 1')
+        file.write(path.join(__dirname, 'ittf', 'globs', 'globbed_2.ittf'), 'globbed 2')
         file.getFiles(path.join(__dirname, 'ittf', 'globs'), {
             deep: false, 
             extension: null, 
@@ -232,7 +233,7 @@ describe("vfile", function() {
             expect(files).to.be.an('array');
             expect(files.length).to.be(2);
             done();
-        });
+        })
     });
     it("should get async files with content in a basefolder", function(done) {
         file.getFiles(path.join(__dirname, 'ittf', 'globs'), {
@@ -255,11 +256,11 @@ describe("vfile", function() {
             expect(files[1].relPath).to.be.a('string');
             expect(files[1].relPath).to.be('globbed_2.ittf');
             done();
-        });
+        })
     });
     it("should async get folders in a basefolder", function(done) {
-        file.write(path.join(__dirname, 'ittf', 'globs', 'one', 'globbed_1.ittf'), 'globbed 1');
-        file.write(path.join(__dirname, 'ittf', 'globs', 'two', 'globbed_2.ittf'), 'globbed 2');
+        file.write(path.join(__dirname, 'ittf', 'globs', 'one', 'globbed_1.ittf'), 'globbed 1')
+        file.write(path.join(__dirname, 'ittf', 'globs', 'two', 'globbed_2.ittf'), 'globbed 2')
         file.getFolders(path.join(__dirname, 'ittf', 'globs'), {
             deep: false, 
             tFoldersOnly: false, 
@@ -273,11 +274,11 @@ describe("vfile", function() {
             expect(folders).to.be.an('array');
             expect(folders.length).to.be(2);
             done();
-        });
+        })
     });
     it("should async get folders in a basefolder deep", function(done) {
-        file.write(path.join(__dirname, 'ittf', 'globs', 'one', 'deep', 'globbed_1deep.ittf'), 'globbed 1 deep');
-        file.write(path.join(__dirname, 'ittf', 'globs', 'two', 'deep', 'globbed_2deep.ittf'), 'globbed 2 deep');
+        file.write(path.join(__dirname, 'ittf', 'globs', 'one', 'deep', 'globbed_1deep.ittf'), 'globbed 1 deep')
+        file.write(path.join(__dirname, 'ittf', 'globs', 'two', 'deep', 'globbed_2deep.ittf'), 'globbed 2 deep')
         file.getFolders(path.join(__dirname, 'ittf', 'globs'), {
             deep: true, 
             tFoldersOnly: false, 
@@ -299,11 +300,11 @@ describe("vfile", function() {
             expect(folders[3].relPath).to.be.a('string');
             expect(folders[3].relPath).to.be('two/deep');
             done();
-        });
+        })
     });
     it("should async get folders in a basefolder deep with document names", function(done) {
-        file.write(path.join(__dirname, 'ittf', 'globs', 'one', 'deep', 'globbed_1deep.ittf'), 'globbed 1 deep');
-        file.write(path.join(__dirname, 'ittf', 'globs', 'two', 'deep', 'globbed_2deep.ittf'), 'globbed 2 deep');
+        file.write(path.join(__dirname, 'ittf', 'globs', 'one', 'deep', 'globbed_1deep.ittf'), 'globbed 1 deep')
+        file.write(path.join(__dirname, 'ittf', 'globs', 'two', 'deep', 'globbed_2deep.ittf'), 'globbed 2 deep')
         file.getFolders(path.join(__dirname, 'ittf', 'globs'), {
             deep: true, 
             tFoldersOnly: false, 
@@ -327,12 +328,12 @@ describe("vfile", function() {
             expect(folders[3].documents).to.be.an('array');
             expect(folders[3].documents.length).to.be(1);
             done();
-        });
+        })
     });
     it("should async glob a folder", function(done) {
-        file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_1.ittf'), 'globbed 1');
-        file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_2.ittf'), 'globbed 2');
-        file.write(path.join(__dirname, 'ittf', 'globs2', 'one', 'globbed_2_one.ittf'), 'globbed 2 one');
+        file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_1.ittf'), 'globbed 1')
+        file.write(path.join(__dirname, 'ittf', 'globs2', 'globbed_2.ittf'), 'globbed 2')
+        file.write(path.join(__dirname, 'ittf', 'globs2', 'one', 'globbed_2_one.ittf'), 'globbed 2 one')
         file.getGlobbedFilesEx(path.join(__dirname, 'ittf', 'globs2', '**/*.ittf'), file, function(err, result) {
             if (err) {
                 console.log('err', err);
@@ -352,7 +353,7 @@ describe("vfile", function() {
                 expect(result[0]).to.be.a('string');
                 expect(result[0]).to.be('/globs2/globbed_1.ittf');
                 done();
-            });
-        });
+            })
+        })
     });
 });

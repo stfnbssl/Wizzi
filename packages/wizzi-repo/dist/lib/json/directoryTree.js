@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\json\directoryTree.js.ittf
 */
 'use strict';
@@ -69,7 +70,7 @@ function directoryTree(path) {
         var i, i_items=dirData, i_len=dirData.length, child;
         for (i=0; i<i_len; i++) {
             child = dirData[i];
-            item.children.push(directoryTree(PATH.join(path, child)));
+            item.children.push(directoryTree(PATH.join(path, child)))
         }
     }
     else {

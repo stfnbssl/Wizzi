@@ -12,19 +12,17 @@ $group
             set this.state
                 {
                     @ mainView 'view-cs-editor'
-                    @ currentSheetName null
-                    @ currentSheetSchema null
-                    @ currentSheetDescription null
-                    @ sheetElementListEdit null
-                    @ sheetElementList null
-                    @ sheetItemListEdit null
-                    @ sheetItemList null
+                    @ sheetName null
+                    @ schema null
+                    @ description null
+                    @ itemListEdit null
+                    @ itemList null
                     @ storedSheetsNames []
                     @ createNewSheetOpen false
-                    @ newSheetName null
-                    @ newSheetSchema null
-                    @ newSheetDescription null
-                    @ newSheetContent null
+                    @ newSheetName ''
+                    @ newSheetSchema ''
+                    @ newSheetDescription ''
+                    @ newSheetIttfMainContent ''
                     @ currentModalEdit ''
 
         did-mount
@@ -72,12 +70,12 @@ $group
         
         render
 
-            if (this.state.genMainIttfContent == null && this.state.wizContent == null)
+            if (this.state.mainIttfContent == null)
                 return
                     h1
                         + ...loading...
 
-            const curSheetName = this.state.currentSheetName
+            const curSheetName = this.state.sheetName
             const storedSheetsNames = this.state.storedSheetsNames 
             const handleChangeSheet = this.handleChangeSheet
 
@@ -122,7 +120,7 @@ $group
                                             < FlexColumn
                                                 < Button
                                                     @ size 'h1'
-                                                    @ id 'items-list'
+                                                    @ id 'item-list'
                                                     @ onClick {this.handleEditRequest}
                                                     + Items list
                                         < FlexRow
@@ -155,11 +153,13 @@ $group
                                     + this.state.mainView == 'view-cs-editor'
                                     < React.Fragment
                                         < Editor
-                                            @ schema {this.state.currentSheetSchema}
-                                            @ sheetItemList {this.state.sheetItemList}
-                                            @ selectedSheetItem {this.state.selectedSheetItem}
-                                            @ onChange {this.handleItemContentChange}
-                                            @ onSelectSheetItem {this.handleSelectSheetItem}
+                                            @ schema {this.state.schema}
+                                            @ itemList {this.state.itemList}
+                                            @ selectedEditPackiPath {this.state.selectedEditPackiPath}
+                                            @ selectedMainIttfContentPath {this.getSelectedMainIttfContentPath()}
+                                            @ packiFiles {this.state.packiFiles}
+                                            @ onChange {this.handleItffContentChange}
+                                            @ onSelectFileItem {this.handleSelectFileItem}
                             {
                                 &&
                                     + this.state.mainView == 'view-cs-browser'

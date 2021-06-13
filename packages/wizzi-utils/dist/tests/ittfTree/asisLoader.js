@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\tests\ittfTree\asisLoader.js.ittf
 */
 'use strict';
@@ -28,6 +29,6 @@ describe("asIsLoader", function() {
             console.log("result" + " " + util.inspect(result, { depth: null } ))
             expect(result).to.be.an('object');
             done();
-        });
+        })
     });
 });

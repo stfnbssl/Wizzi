@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\mongodb\mongoFsimpl.js.ittf
 */
 'use strict';
@@ -9,9 +10,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var verify = require('wizzi-utils').verify;
-/**
-     Implements the `fsimpl` interface for a mongodb backed file system.
-*/
+//
 var MongoClient = require('mongodb').MongoClient
 ,
     FsMongo = require('./fs/fsmongo'),
@@ -62,7 +61,7 @@ var MongoFsImpl = (function () {
             that.mongoDb = new Document(fsmongo);
             // log '***** mongodb connected'
             return callback(null, that.mongoDb);
-        });
+        })
     }
     MongoFsImpl.prototype.close = function() {
         if (this.mounted_db) {
@@ -99,8 +98,8 @@ var MongoFsImpl = (function () {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     MongoFsImpl.prototype.lstat = function(documentUri, callback) {
         // log 'wizzi-repo.mongodb.mongoFsImpl.lstat.documentUri', documentUri
@@ -128,8 +127,8 @@ var MongoFsImpl = (function () {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     MongoFsImpl.prototype.readFile = function(documentUri, options, callback) {
         // log 'wizzi-repo.mongodb.mongoFsImpl.readFile.documentUri', documentUri
@@ -161,8 +160,8 @@ var MongoFsImpl = (function () {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     MongoFsImpl.prototype.writeFile = function(documentUri, content, options, callback) {
         // log 'wizzi-repo.mongodb.mongoFsImpl.writeFile.documentUri', documentUri
@@ -194,8 +193,8 @@ var MongoFsImpl = (function () {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     MongoFsImpl.prototype.readdir = function(documentUri, options, callback) {
         // log 'wizzi-repo.mongodb.mongoFsImpl.readdir.documentUri', documentUri
@@ -234,8 +233,8 @@ var MongoFsImpl = (function () {
                     dir.push(item.basename);
                 }
                 callback(null, dir);
-            });
-        });
+            })
+        })
     }
     MongoFsImpl.prototype.mkdir = function(documentUri, options, callback) {
         // log 'wizzi-repo.mongodb.mongoFsImpl.mkdir.documentUri', documentUri
@@ -267,8 +266,8 @@ var MongoFsImpl = (function () {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     MongoFsImpl.prototype.unlink = function(documentUri, callback) {
         // log 'wizzi-repo.mongodb.mongoFsImpl.unlink.documentUri', documentUri
@@ -296,8 +295,8 @@ var MongoFsImpl = (function () {
                     return callback(err);
                 }
                 callback(null, result);
-            });
-        });
+            })
+        })
     }
     MongoFsImpl.prototype.createWriteStream = function(documentUri) {
         if (verify.isNotEmpty(documentUri) === false) {

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\utils\collection.js.ittf
 */
 'use strict';
@@ -112,10 +113,10 @@ var Collection = (function () {
                 _id: doc._id
             });
             if (items.count() > 0) {
-                callback(new errors.RepoCollectionError('Duplicated key'));
+                callback(new errors.RepoCollectionError('Duplicated key'))
             }
         }
-        this.items.push(doc);
+        this.items.push(doc)
         return callback(null, {
                 insertedCount: 1, 
                 insertedId: doc._id, 

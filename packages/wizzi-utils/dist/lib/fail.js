@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\fail.js.ittf
 */
 'use strict';
@@ -21,10 +22,10 @@ md.code = {
 function dumpStack(e) {
     if (option('stack')) {
         if (e.origError && e.origError.stack) {
-            loginfo(e.origError.stack);
+            loginfo(e.origError.stack)
         }
         else if (e.stack) {
-            loginfo(e.stack);
+            loginfo(e.stack)
         }
     }
 }
@@ -34,7 +35,7 @@ md.fatal = function(e, errcode) {
     dumpStack(e);
     var code = typeof(errcode) === 'number' ? errcode : md.code.FATAL_ERROR;
     ;
-    process.exit(code);
+    process.exit(code)
 };
 md.errorcount = 0;
 md.warncount = 0;
@@ -49,7 +50,7 @@ md.warn = function(e, errcode) {
             logerror('Aborted due to warnings.');
             var code = typeof (errcode) === 'number' ? errcode : md.code.WARNING;
             ;
-            process.exit(code);
+            process.exit(code)
         }
     }
 };
@@ -65,11 +66,11 @@ function loginfo(msg) {
     console.log(msg);
 }
 function logsuccess(msg) {
-    console.log(chalk.green(msg));
+    console.log(chalk.green(msg))
 }
 function logwarn(msg) {
-    console.log(chalk.yellow(msg));
+    console.log(chalk.yellow(msg))
 }
 function logerror(msg) {
-    console.log(chalk.red(msg));
+    console.log(chalk.red(msg))
 }

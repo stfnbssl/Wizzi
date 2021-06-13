@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\mocks\artifact\genContext.js.ittf
 */
 'use strict';
@@ -52,7 +53,7 @@ var GenContext = (function () {
             throw new Error('Cannot write when a file write has been requested: ' + this.writeFilePath);
         }
         if (verify.isString(text)) {
-            this.block.w(text.indexOf('{') > -1 ? interpolate(text, this.values) : text);
+            this.block.w(text.indexOf('{') > -1 ? interpolate(text, this.values) : text)
         }
         else {
             this.block.w('');
@@ -66,7 +67,7 @@ var GenContext = (function () {
         if (!verify.isString(text)) {
             return ;
         }
-        this.block.write(text.indexOf('{') > -1 ? interpolate(text, this.values) : text);
+        this.block.write(text.indexOf('{') > -1 ? interpolate(text, this.values) : text)
         this.isEmpty = false;
     }
     GenContext.prototype.writeAligned = function(text) {
@@ -80,13 +81,13 @@ var GenContext = (function () {
         for (i=0; i<i_len; i++) {
             line = text.split('\n')[i];
             if (i < i_len - 1 || line.length > 0) {
-                this.block.w(line.indexOf('{') > -1 ? interpolate(line, this.values) : line);
+                this.block.w(line.indexOf('{') > -1 ? interpolate(line, this.values) : line)
             }
         }
         this.isEmpty = false;
     }
     GenContext.prototype.appendFile = function(filePath) {
-        this.block.appendFile(interpolate(filePath, this.values));
+        this.block.appendFile(interpolate(filePath, this.values))
         this.isEmpty = false;
     }
     GenContext.prototype.writeFile = function(filePath) {
@@ -98,7 +99,7 @@ var GenContext = (function () {
     GenContext.prototype.toStream = function(stream) {
         if (this.writeFilePath != null) {
             // log 'wizzi.artifact.genContext.toStream. this.writeFilePath', this.writeFilePath
-            stream.write(file.read(this.writeFilePath));
+            stream.write(file.read(this.writeFilePath))
         }
         else {
             this.block.toStream(stream);
@@ -133,7 +134,7 @@ var GenContext = (function () {
     GenContext.prototype.hydrate = function(blockData, options) {
         options = options || this.block.options;
         this.block = new block(options);
-        this.block.hydrate(blockData.lines, options);
+        this.block.hydrate(blockData.lines, options)
     }
     GenContext.prototype.toStringFromJSON = function(block, options) {
         if (!block || !block.lines) {
@@ -142,7 +143,7 @@ var GenContext = (function () {
         var gw = new GenContext({
             options: options
         });
-        gw.block.hydrate(block.lines, options);
+        gw.block.hydrate(block.lines, options)
         return gw.getContent();
     }
     return GenContext;

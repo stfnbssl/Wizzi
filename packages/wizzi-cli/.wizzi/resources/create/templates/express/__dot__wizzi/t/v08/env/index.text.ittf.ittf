@@ -16,6 +16,6 @@ ${'$'}group
             GITHUB_CALLBACK_URL=${'$'}{wzCtx.Build.authentication.github.callbackURL}
 
     ${'$'}if wzCtx.Build.useMongoDb
-        MONGO_USER=${'$'}{wzCtx.Build.mongodb.user}
-        MONGO_PASSWORD=${'$'}{wzCtx.Build.mongodb.password}
-        MONGO_PATH=${'$'}{wzCtx.Build.mongodb.dbPath}/${'$'}{wzCtx.Build.mongodb.dbName}
+        MONGO_USER=${'$'}{wzCtx.Build.mongoDb.user}
+        MONGO_PASSWORD=${'$'}{wzCtx.Build.mongoDb.password}
+        MONGO_PATH=${'$'}{wzCtx.Build.mongoDb.dbPath}/${'$'}{wzCtx.Build.mongoDb.dbName}

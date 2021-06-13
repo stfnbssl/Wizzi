@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\repo\ittfDocumentStore.js.ittf
 */
 'use strict';
@@ -17,10 +18,7 @@ var FileSystemStore = require('./fileSystemStore');
 var MongoDbStore = require('./mongoDbStore');
 var BrowserFSStore = {};
 var JsonDbStore = require('./jsonDbStore');
-/**
-    
-    
-*/
+//
 var IttfDocumentStore = (function () {
     function IttfDocumentStore() {
         _classCallCheck(this, IttfDocumentStore);
@@ -36,20 +34,9 @@ var IttfDocumentStore = (function () {
                 'InvalidArgument', 'parseUri', { parameter: 'ittfDocumentUri', message: 'The ittfDocumentUri parameter must be a string. Received: ' + ittfDocumentUri }
             ));
         }
-        uriParser(ittfDocumentUri, callback);
+        uriParser(ittfDocumentUri, callback)
     }
-    /**
-         params
-         { storeInfo
-         string storeKind
-         oneOf filesystem, mongodb, json, browser
-         string storeUri
-         # when storeKind === 'mongodb'
-         string storeBaseFolder
-         # when storeKind === 'mongodb'
-         string storeJsonFsData
-         # when storeKind === 'json'
-    */
+    //
     IttfDocumentStore.prototype.init = function(storeInfo, callback) {
         if (typeof(callback) !== 'function') {
             throw new Error(
@@ -83,7 +70,7 @@ var IttfDocumentStore = (function () {
                 }
                 that.storeKind = that.storeImpl.storeKind;
                 return callback(null);
-            });
+            })
         }
         else if (storeInfo.storeKind === 'json') {
             // log 'storeInfo', storeInfo
@@ -98,7 +85,7 @@ var IttfDocumentStore = (function () {
                 }
                 that.storeKind = that.storeImpl.storeKind;
                 return callback(null);
-            });
+            })
         }
         else {
             return callback(error('InvalidArgument', 'init', {
@@ -191,7 +178,7 @@ var IttfDocumentStore = (function () {
         var ret = new IttfDocumentStore();
         ret.initSync({
             storeKind: "filesystem"
-        });
+        })
         return ret;
     }
     IttfDocumentStore.prototype.getInfo = function() {

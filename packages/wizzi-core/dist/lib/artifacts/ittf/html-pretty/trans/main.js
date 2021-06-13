@@ -16,7 +16,7 @@ var myname = 'ittf.document.main';
 md.trans = function(model, ctx, callback) {
     var transformedModel = {};
     if (model.wzElement !== 'ittf') {
-        console.log('wizzi-core', 'transformer', 'model', model);
+        // log 'wizzi-core', 'transformer', 'model', model
         callback(error('Invalid model schema. Expected "ittf". Received: ' + model.wzElement))
     }
     ctx.__ittfNode = {

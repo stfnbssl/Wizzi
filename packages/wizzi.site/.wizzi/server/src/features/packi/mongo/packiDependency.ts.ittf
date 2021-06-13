@@ -1,0 +1,8 @@
+module
+
+    $include mongoData
+    $
+        var md = getSchema('packiDependency')
+
+    $if wzCtx.Build.useMongoDb
+        v08/mongo/model(&md)

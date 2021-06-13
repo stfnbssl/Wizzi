@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\utils\_ild_objectId.js.ittf
 */
 'use strict';
@@ -18,12 +19,7 @@ var ObjectId = (function () {
             this.generationTime = new Date();
             return ;
         }
-        /**
-             Generates a MongoDB-style ObjectId in Node.js. Uses nanosecond timestamp in place of counter;
-             should be impossible for same process to generate multiple objectId in same nanosecond? (clock
-             drift can result in an *extremely* remote possibility of id conflicts).
-             @returns {string} Id in same format as MongoDB ObjectId.
-        */
+        //
         const seconds = Math.floor(new Date()/1000).toString(16);
         const machineId = crypto.createHash('md5').update(os.hostname()).digest('hex').slice(0, 6);
         const processId = process.pid.toString(16).slice(0, 4).padStart(4, '0');

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\ittfTree\ittfMTreeEx.js.ittf
 */
 'use strict';
@@ -14,43 +15,7 @@ var vfile = require('../fs/vfile');
 var verify = require('../verify');
 var asIsLoader = require('./asIsLoader');
 var IttfFinder = require('./ittfFinder');
-/**
-    
-     Simple mTreeBrick structure
-     { mTreeNode
-     string name
-     string value
-     integer id?
-     [ children
-     { mTreeNode
-    
-     That can be used to build or analize an mTreeBrick.
-     Usefull for
-     - analizing raw ittf documents, before composition and evaluation, for
-     documentation purposes;
-     - building mTreeBricks by code.
-    
-     can be loaded
-     - from a source ittf document (loaded as is, no composition and evaluation)
-     - from a loaded mTree (less usefull)
-     - calling the 'add' and 'insertAt' methods
-    
-     can be analized to detect
-     - path of called mixins and includes
-     - ittf node commands
-     - nodes with jswizzi statements
-     - nodes commented out
-    
-     can be exported to
-     - a new mTreeBrick
-     - appended to an existing mTreeNode
-    
-     Is Used by ittfHtmlPrettifier to analize and prettify
-    
-     The default store kind is 'filesystem' or 'browser'.
-     Otherwise a vfile instance must be passed in the property 'file' of
-     the 'options' param of the 'loadFrom' method.
-*/
+//
 var IttfMTreeEx = (function () {
     function IttfMTreeEx(name, value, parent) {
         _classCallCheck(this, IttfMTreeEx);
@@ -93,7 +58,7 @@ var IttfMTreeEx = (function () {
     }
     IttfMTreeEx.prototype.append = function(sb, indent) {
         // log 'sb',sb
-        sb.push(indentTabs(indent) + this.name + (this.value && this.value.length > 0 ? ' ' + this.value : ''));
+        sb.push(indentTabs(indent) + this.name + (this.value && this.value.length > 0 ? ' ' + this.value : ''))
         var i, i_items=this.children, i_len=this.children.length, node;
         for (i=0; i<i_len; i++) {
             node = this.children[i];
@@ -103,7 +68,7 @@ var IttfMTreeEx = (function () {
     IttfMTreeEx.prototype.writeFile = function(string_path, callback) {
         var sb = [];
         this.append(sb, 0);
-        this.file.write(string_path, sb.join('\n'));
+        this.file.write(string_path, sb.join('\n'))
         callback(null);
     }
     IttfMTreeEx.prototype.toString = function() {
@@ -137,7 +102,7 @@ var IttfMTreeEx = (function () {
                     added.id = node.id;
                 }
                 added.commentState = node.commentState;
-                added.__importChilds(node.children);
+                added.__importChilds(node.children)
             }
         }
     }
@@ -196,9 +161,9 @@ var IttfMTreeEx = (function () {
                         }
                         that.content = asisMTree.content;
                         // log 'ittfMTreeEx.asis.loader.asisMTree.nodes.length', asisMTree.nodes.length, !asisMTree.nodes[0]
-                        that.loadFromNode(asisMTree.nodes[0], asisMTree.$params);
+                        that.loadFromNode(asisMTree.nodes[0], asisMTree.$params)
                         return callback(null, that);
-                    });
+                    })
                 }
                 else {
                     // log 'ittfMTreeEx.__loadMTree. Loading from file'
@@ -221,7 +186,7 @@ var IttfMTreeEx = (function () {
                                 }
                                 that.content = asisMTree.content;
                                 // log 'ittfMTreeEx.asis.loader.asisMTree.nodes.length', asisMTree.nodes.length, !asisMTree.nodes[0]
-                                that.loadFromNode(asisMTree.nodes[0], asisMTree.$params);
+                                that.loadFromNode(asisMTree.nodes[0], asisMTree.$params)
                                 that.model.basename = path.basename(objFrom);
                                 var ss = that.model.basename.split('.');
                                 that.model.isIttf = ss[ss.length-1] === 'ittf';
@@ -234,9 +199,9 @@ var IttfMTreeEx = (function () {
                                 }
                                 // log 'ittfMTreeEx.loadFrom.ittf.model', that.model
                                 return callback(null, that);
-                            });
+                            })
                         }
-                    });
+                    })
                 }
             }
             else {
@@ -246,7 +211,7 @@ var IttfMTreeEx = (function () {
                         message: 'Invalid parameter: objFrom'
                     });
             }
-        });
+        })
     }
     IttfMTreeEx.createFrom = function(objFrom, options, callback) {
         if (typeof(callback) === 'undefined' && verify.isFunction(options)) {
@@ -277,8 +242,8 @@ var IttfMTreeEx = (function () {
             if (options.clean) {
                 clean(mTree);
             }
-            callback(null, mTree);
-        });
+            callback(null, mTree)
+        })
     }
     IttfMTreeEx.prototype.toMTreePiece = function(parent) {
         if (!parent) {
@@ -426,13 +391,13 @@ var IttfMTreeEx = (function () {
                     parts.push({
                         t: 0, 
                         v: text.join('')
-                    });
+                    })
                     text = [];
                 }
                 parts.push({
                     t: 1, 
                     v: expr.join('')
-                });
+                })
                 expr = [];
                 state = 0;
             }
@@ -452,7 +417,7 @@ var IttfMTreeEx = (function () {
             parts.push({
                 t: 0, 
                 v: text.join('')
-            });
+            })
             text = [];
         }
         return parts;
@@ -491,13 +456,13 @@ var IttfMTreeEx = (function () {
                             return callback(err);
                         }
                         return callback();
-                    });
+                    })
                 }
                 else {
                     return callback();
                 }
-            });
-        });
+            })
+        })
     }
     IttfMTreeEx.prototype.analizeRoot = function(ctx, callback) {
         var r = this.root();
@@ -518,7 +483,7 @@ var IttfMTreeEx = (function () {
                     r.ittfReferences[fragment.name] = fragment;
                 }
                 return callback();
-            });
+            })
         }
         else {
             return callback();
@@ -613,7 +578,7 @@ var IttfMTreeEx = (function () {
                 }
                 return callback();
             }
-        });
+        })
     }
     IttfMTreeEx.prototype.__getFragmentPath = function(ctx, callback) {
         var r = this.root(),
@@ -640,7 +605,7 @@ var IttfMTreeEx = (function () {
                             uri: fragmentPath
                         });
                 }
-            });
+            })
         }
         else {
             var ittfFinder = new IttfFinder(r.file);
@@ -659,7 +624,7 @@ var IttfMTreeEx = (function () {
                 else {
                     return callback(null, result);
                 }
-            });
+            })
         }
     }
     IttfMTreeEx.prototype.find = function(name) {

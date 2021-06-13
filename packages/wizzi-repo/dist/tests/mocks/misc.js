@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\tests\mocks\misc.js.ittf
 */
 'use strict';
@@ -35,7 +36,7 @@ module.exports = {
                 script: script
             };
             if (this.dump) {
-                file.write(path.join(path.dirname(uri), '_debug', path.basename(uri) + '.js.dump'), script);
+                file.write(path.join(path.dirname(uri), '_debug', path.basename(uri) + '.js.dump'), script)
             }
         }, 
         raiseIttfEvaluationScriptError: function(uri, exception) {

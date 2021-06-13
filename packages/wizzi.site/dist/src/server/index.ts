@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.site\.wizzi\server\src\index.ts.ittf
-    utc time: Sat, 05 Jun 2021 04:08:41 GMT
+    utc time: Wed, 09 Jun 2021 05:04:16 GMT
 */
 import {ControllerType, AppInitializerType, MiddlewareType} from './features/app/types';
 import {ModelBuilderType} from './features/app';
@@ -12,6 +12,7 @@ import wizziStart from './services/wizzi';
 import {authenticationControllers, authenticationModelBuilders} from './features/auth/index';
 import {siteControllers} from './site/index';
 import {packiControllers} from './features/packi/index';
+import {wizziControllers} from './features/wizzi/index';
 import {appMiddlewaresPre, appMiddlewaresPost, auth0Secured} from './middlewares/index';
 import App from './App';
 async function start() {
@@ -30,7 +31,8 @@ async function start() {
     let controllers: ControllerType[] = [
         ...siteControllers, 
         ...authenticationControllers, 
-        ...packiControllers
+        ...packiControllers, 
+        ...wizziControllers
     ];
     console.log('Starting app. Config:', config);
     await wizziStart(config);

@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\regexpExt.js.ittf
 */
 'use strict';
@@ -45,7 +46,7 @@ md.namedRegExp = function(regexp) {
             if (!captures[name]) {
                 captures[name] = [];
             }
-            captures[name].push(matched[i + 1]);
+            captures[name].push(matched[i + 1])
         }
         matched.captures = captures;
         matched.capture = function(name) {

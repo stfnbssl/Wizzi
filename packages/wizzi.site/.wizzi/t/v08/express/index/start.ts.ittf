@@ -47,6 +47,8 @@ $group
                     @ ...postControllers
                 $if wzCtx.Build.usePacki
                     @ ...packiControllers
+                $if wzCtx.Build.useWizzi
+                    @ ...wizziControllers
         +
     log 'Starting app. Config:', config
     $if wzCtx.Build.useFilesystem

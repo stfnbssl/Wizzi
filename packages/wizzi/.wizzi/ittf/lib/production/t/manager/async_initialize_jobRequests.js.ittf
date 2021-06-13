@@ -41,10 +41,10 @@
 						@ wfjobLoadRequest
 						f_cb( result )
 							
-							log 'AsyncRecurseWfjobLoad.globalModelInfoConfigs', result.globalModelInfoConfigs.length, 'artifactInfoConfigs', result.artifactInfoConfigs.length
+							# log 'AsyncRecurseWfjobLoad.globalModelInfoConfigs', result.globalModelInfoConfigs.length, 'artifactInfoConfigs', result.artifactInfoConfigs.length
 
                             foreach globalModelInfoConfig in result.globalModelInfoConfigs
-                                log 'wizzi.production.asyncInitializeJobRequests.globalModelInfoConfig', util.inspect(globalModelInfoConfig, { depth: 2 })
+                                # log 'wizzi.production.asyncInitializeJobRequests.globalModelInfoConfig', util.inspect(globalModelInfoConfig, { depth: 2 })
                                 set globalModelInfoConfig.wfjob = wfjobIttfDocumentUri
 								if pman.options.trace
 									log 'ProductionManager.initialize.globalModelInfoConfig', globalModelInfoConfig.toString()

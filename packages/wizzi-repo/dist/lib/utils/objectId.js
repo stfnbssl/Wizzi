@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-repo\.wizzi\ittf\lib\utils\objectId.js.ittf
 */
 'use strict';
@@ -225,7 +226,7 @@ Object.defineProperty(ObjectID.prototype, 'generationTime', {
         this.id[1] = (((value >> 16)) & 0xff);
         this.id[0] = (((value >> 24)) & 0xff);
     }
-});
+})
 module.exports = ObjectID;
 module.exports.ObjectID = ObjectID;
 module.exports.ObjectId = ObjectID;

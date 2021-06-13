@@ -1,5 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\prettifiers\mTreeHtmlPrettifier.js.ittf
 */
 'use strict';
@@ -14,16 +15,7 @@ var STYLE_DOCS_ITTF_NODE_MIX = 'pp-mix';
 var STYLE_DOCS_ITTF_NODE_ARG = 'pp-arg';
 var verify = require('../verify');
 var HtmlBuilder = require('./utils/htmlbuilder').HtmlBuilder;
-/**
-     prettify an mTree
-     params
-     { ittfMTreeExRoot
-     api-ref wizzi-utils.ittfMTreeEx
-     [ children
-     { fragments
-     string id
-    
-*/
+//
 module.exports = function(ittfMTreeExRoot) {
     if (verify.isObject(ittfMTreeExRoot) === false) {
         return error(
@@ -48,7 +40,7 @@ module.exports = function(ittfMTreeExRoot) {
         hb: new HtmlBuilder(true), 
         fragments: ittfMTreeExRoot.fragments
     };
-    toHtmlPretty(ittfMTreeExRoot, ctx);
+    toHtmlPretty(ittfMTreeExRoot, ctx)
     return {
             prettyLines: ctx.hb.toLines()
         };
@@ -170,7 +162,7 @@ function toHtmlPretty(node, ctx) {
     var i, i_items=children, i_len=children.length, child;
     for (i=0; i<i_len; i++) {
         child = children[i];
-        toHtmlPretty(child, ctx);
+        toHtmlPretty(child, ctx)
     }
     ctx.__ittfNode.indent--;
 }

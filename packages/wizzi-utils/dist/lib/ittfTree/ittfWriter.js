@@ -1,25 +1,26 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
+    package: wizzi-js@0.7.7
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-utils\.wizzi\ittf\lib\ittfTree\ittfWriter.js.ittf
 */
 'use strict';
 function ittfWriter(node) {
     var sb = [];
-    writeNode(node, sb, 0);
+    writeNode(node, sb, 0)
     return sb.join('');
 }
 function writeNode(node, sb, indent) {
-    sb.push(new Array(1 + indent * 4).join(' '));
+    sb.push(new Array(1 + indent * 4).join(' '))
     if (node.tag) {
-        sb.push(node.tag);
+        sb.push(node.tag)
         if (node.name) {
-            sb.push(' ', node.name);
+            sb.push(' ', node.name)
         }
     }
     else if (node.name) {
-        sb.push(node.name);
+        sb.push(node.name)
         if (node.value) {
-            sb.push(' ', node.value);
+            sb.push(' ', node.value)
         }
     }
     else {
@@ -30,7 +31,7 @@ function writeNode(node, sb, indent) {
         var i, i_items=node.children, i_len=node.children.length, item;
         for (i=0; i<i_len; i++) {
             item = node.children[i];
-            writeNode(item, sb, indent + 1);
+            writeNode(item, sb, indent + 1)
         }
     }
     else {

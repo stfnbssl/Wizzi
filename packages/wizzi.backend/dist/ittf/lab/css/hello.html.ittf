@@ -1,0 +1,24 @@
+html
+
+    $include wzctx/css.init
+    
+    $
+        wzCtx.Build.useTailwind = true;
+
+    html/pages/basic(&wzCtx)
+
+        html/layouts/lab(&wzCtx)
+
+            $include sampledata/nav
+
+            div
+                ul
+                    $foreach g in nav.groups
+                        li 
+                            h5 ${g.title}
+                            ul
+                                $foreach item in g.items
+                                    li
+                                        a ${item.title} 
+                                            href ${item.href} 
+

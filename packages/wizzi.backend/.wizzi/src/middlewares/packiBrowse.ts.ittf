@@ -1,0 +1,212 @@
+module
+    
+    import util from 'util'
+    import path from 'path'
+    import stringify from 'json-stringify-safe'
+    import parseUrl from 'parseurl'
+    import
+        @ Application
+        @ RequestHandler
+        @ Request
+        @ Response
+        from 'express'
+    import wizziProto
+        from 'wizzi.proto'
+    import
+        @ MiddlewareType
+        from '../features/app/types'
+    import
+        @ config
+        from '../features/config'
+    import
+        @ sendFailure
+        from '../utils/sendResponse'
+    +
+    const myname = 'express.middleware.packiBrowse'
+    const packiUserBrowsePath = '/~'
+    const packiSiteBrowsePath = '/~-'
+    +
+    export
+        const PackiBrowseMiddleware
+            :ref MiddlewareType
+            =
+                =>
+                    param app
+                        :ref Application
+                    _ app.use(packiUserBrowsePath, packiUserBrowseMiddleware())
+                    _ app.use(packiSiteBrowsePath, packiSiteBrowseMiddleware())
+                    _ wizziProto.start
+                        @ 'stfnbssl'
+                        {
+                        =>
+    
+    function packiUserBrowseMiddleware
+        :return
+            :ref RequestHandler
+        return
+            async=>
+                param request
+                    :ref Request
+                param response
+                    :ref Response
+                param next
+                    :ref Function
+                if request.method !== 'GET' && request.method !== 'HEAD'
+                    return next()
+                const parsedUrl = parseUrl(request)
+                if !parsedUrl || !parsedUrl.pathname
+                    return next()
+                log myname + '.parsedUrl', parsedUrl
+                const pathname = decodeURIComponent(parsedUrl.pathname)
+
+                const parts = pathname.split('/')
+                const owner = parts[1] 
+                const packiName = parts.slice(2).join('/')
+                log myname + '.owner', owner, 'packiName', packiName, 'context', request.query.context
+                +
+                _ wizziProto.getPackiContext
+                    @ owner
+                    @ request.query.context as string
+                    @ wizziProto.getDefaultContext()
+                    ._ then
+                        => 
+                            param resultContext
+                            log myname + '.resultContext:', Object.keys(resultContext)
+                            _ wizziProto.getPackiGeneration
+                                @ owner
+                                @ packiName
+                                @ resultContext
+                                ._ then
+                                    => 
+                                        param result
+                                        _ response.status(200)
+                                        _ response.set('Content-Type', result.contentType)
+                                        _ response.set('Content-Length', result.contentLength.toString())
+                                        _ response.set('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+                                        _ response.set('Expires', '-1')
+                                        _ response.set('Pragma', 'no-cache')
+                                        _ response.send(result.content)
+                                ._ catch
+                                    =>
+                                        param err
+                                            :any
+                                        log myname + '.getPackiGeneration.err', Object.keys(err)
+                                        _ sendFailure(response, err, 501)
+                        ._ catch
+                            => 
+                                param err
+                                log myname + '.getPackiContext.err', Object.keys(err)
+                                _ sendFailure(response, err, 501)
+    
+    function packiSiteBrowseMiddleware
+        :return
+            :ref RequestHandler
+        return
+            async=>
+                param request
+                    :ref Request
+                param response
+                    :ref Response
+                param next
+                    :ref Function
+                if request.method !== 'GET' && request.method !== 'HEAD'
+                    return next()
+                const parsedUrl = parseUrl(request)
+                if !parsedUrl || !parsedUrl.pathname
+                    return next()
+                log myname + '.parsedUrl', parsedUrl
+                const pathname = decodeURIComponent(parsedUrl.pathname)
+
+                const parts = pathname.split('/')
+                const owner = "stfnbssl"
+                const packiName = parts.slice(1).join('/')
+                log myname + '.owner', owner, 'packiName', packiName, 'context', request.query.context
+                +
+                _ wizziProto.getPackiContext
+                    @ owner
+                    @ request.query.context as string
+                    @ wizziProto.getDefaultContext()
+                    ._ then
+                        => 
+                            param resultContext
+                            log myname + '.resultContext:', Object.keys(resultContext)
+                            _ wizziProto.getPackiGeneration
+                                @ owner
+                                @ packiName
+                                @ resultContext
+                                ._ then
+                                    => 
+                                        param result
+                                        _ response.status(200)
+                                        _ response.set('Content-Type', result.contentType)
+                                        _ response.set('Content-Length', result.contentLength.toString())
+                                        _ response.set('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+                                        _ response.set('Expires', '-1')
+                                        _ response.set('Pragma', 'no-cache')
+                                        _ response.send(result.content)
+                                ._ catch
+                                    =>
+                                        param err
+                                            :any
+                                        log myname + '.getPackiGeneration.err', Object.keys(err)
+                                        _ sendFailure(response, err, 501)
+                        ._ catch
+                            => 
+                                param err
+                                log myname + '.getPackiContext.err', Object.keys(err)
+                                _ sendFailure(response, err, 501)
+
+    $*
+    +
+    function sendError
+        param response
+            :ref Response
+        param err
+            :any
+        param options
+            :any
+        set options =
+            ||
+                + options
+                {
+        const code = options.code || 999
+        let errEmit
+            :any
+            = err
+        delete errEmit.__is_error
+        if options.format === 'string'
+            if typeof err !== 'string'
+                set err =
+                    _ util.inspect
+                        @ err
+                        {
+                            @ depth null
+            set errEmit = err.replace(RegExp('\n', 'g'), '<br>')
+        else
+            if err.stack && err.stack.split
+                const stackArray
+                    :[
+                        :string
+                    = []
+                _
+                    (
+                        @expr err.stack
+                            :as
+                                :string
+                    ._ split
+                        @ '\n'
+                    ._ forEach
+                        =>
+                            param element
+                            _ stackArray.push('    ' + element)
+                set errEmit.stack = stackArray
+        _ response.setHeader('Content-Type', 'application/json')
+        _ response.send
+            _ stringify
+                {
+                    @ code
+                    @ error errEmit
+                @ null
+                @ 4
+    *$
+

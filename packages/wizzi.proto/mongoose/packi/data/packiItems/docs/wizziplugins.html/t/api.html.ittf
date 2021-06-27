@@ -132,7 +132,7 @@
             html/docs/high-code( wizzi-plugin.FactoryPlugin )
             span API is implemented in the \b
 			a `wizzi-js` plugin
-				href https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-js/dist/index.js
+				href ${wzCtx.Github.baseUrl}/packages/wizzi-js/dist/index.js
             span . See the \b
 			a ITTF source
 				href https://github.com/wizzifactory/wizzi/blob/master/packages/wizzi-js/.wizzi/ittf/root/index.js.ittf

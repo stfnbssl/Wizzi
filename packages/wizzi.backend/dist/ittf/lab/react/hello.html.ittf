@@ -1,0 +1,34 @@
+html
+
+    $include wzctx/react.init
+    
+    $
+        // wzCtx.Build.react.useRouter = true;
+        // wzCtx.Build.react.useMaterialUi = true;
+        wzCtx.Build.useTailwind = true;
+
+    html/pages/basic(&wzCtx)
+
+        html/layouts/lab(&wzCtx)
+
+            # root
+
+            script
+                type text/babel
+                module
+                    kind react
+
+                    function Hello
+                        param props
+
+                        return
+                            div
+                                h1 
+                                    + Hello world {props.name}
+
+                    _ ReactDOM.render
+                        < Hello
+                            @ name 'Stefi'
+                        _ document.getElementById
+                            @ 'root'
+

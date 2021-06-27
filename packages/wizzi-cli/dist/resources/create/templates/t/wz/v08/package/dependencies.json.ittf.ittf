@@ -18,6 +18,8 @@ $group
         aphrodite "^2.4.0"
     ${'$'}if wzCtx.Build.useTailwindcss
         autoprefixer "^10.0.2"
+    ${'$'}if wzCtx.Build.utils.useAxios
+        axios "^0.21.1"
     ${'$'}if wzCtx.Build.useExpress
         ${'$'}if wzCtx.Build.useNetlify
             aws-serverless-express "^3.2.0"
@@ -31,7 +33,7 @@ $group
     ${'$'}if wzCtx.Build.useMongoDb
         connect-mongo "^3.2.0"
     ${'$'}if wzCtx.Build.useReact && wzCtx.Build.react.useRouter && wzCtx.Build.react.useRedux
-        connected-react-router "latest"
+        connected-react-router "^6.9.1"
     ${'$'}if wzCtx.Build.useExpress
         ${'$'}if wzCtx.Build.useCompression
             compression "^1.7.2"
@@ -103,8 +105,8 @@ $group
     ---
     ${'$'}if wzCtx.Build.utils.useJsCookie
         js-cookie "^2.2.1"
-    ${'$'}if wzCtx.Build.isClientServer
-        jsesc "latest"
+    ${'$'}if wzCtx.Build.isClientServer || wzCtx.Build.isServer
+        jsesc "^2.5.2"
     ${'$'}if wzCtx.Build.utils.useStringifySafe
         json-stringify-safe "^5.0.1"
     ${'$'}if wzCtx.Build.utils.useJsonToAst
@@ -182,10 +184,11 @@ $group
         tailwindcss "^2.0.4"
     ${'$'}if wzCtx.Build.useTypescript
         tslib "^2.2.0"
+        tsconfig-paths "^3.9.0"
     ${'$'}if wzCtx.Build.useReact
         ${'$'}if wzCtx.Build.react.useRedux
             ${'$'}if wzCtx.Build.react.redux.useSaga
-                typesafe-actions "latest"
+                typesafe-actions "^5.1.0"
     ${'$'}if wzCtx.Build.useTypescript
         typescript "^4.2.3"
     ---    
@@ -201,6 +204,7 @@ $group
     ${'$'}if wzCtx.Build.utils.useWebVitals
         web-vitals "^1.0.1"
     ${'$'}if wzCtx.Build.useWizzi
+        wizzi.proto "file:../../wizzi.proto"
         wizzi-tools "file:../../wizzi-tools/dist"
     ---
     ${'$'}if wzCtx.Build.useYup

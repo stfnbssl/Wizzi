@@ -1,0 +1,196 @@
+$group
+
+    $if false
+        m getDerivedStateFromProps
+            static
+            param props
+                :ref Props
+            param state
+                :ref State
+            log 'getDerivedStateFromProps', 'state', state
+            if props.currentPacki && props.currentPacki.id !== state.packiStoreId
+                const 
+                    { 
+                        @ files
+                    = props.currentPacki
+                if files
+                    const fileEntries = packiToEntryArray(files)
+                    log "App.getDerivedStateFromProps.Loaded packi", props.currentPacki.id
+                    return 
+                        { 
+                            @ fileEntries
+                            @ packiStoreId props.currentPacki.id
+                            @ isWizziJobWaiting
+                                iif 
+                                    test
+                                        op> 
+                                            _ fileEntries.filter
+                                                => 
+                                                    param e
+                                                    _ e.item.path.endsWith('.wfjob.ittf')
+                                                . length
+                                            + 0
+                                    then true
+                                    else false
+                            @ lastJobfileEntries fileEntries
+            if props.jobGeneratedArtifacts && props.jobGeneratedArtifacts !== state.jobGeneratedArtifacts
+                const notGenerated
+                    _ entryArrayToPacki
+                        _ state.fileEntries.filter
+                            => 
+                                param e
+                                + !e.item.generated
+                log "App.getDerivedStateFromProps.notGenerated", notGenerated, 'jobGeneratedArtifacts', props.jobGeneratedArtifacts
+                return 
+                    { 
+                        @ fileEntries mixPreviousAndGeneratedPackiFilesToEntryArray(notGenerated, props.jobGeneratedArtifacts)
+                        @ jobGeneratedArtifacts props.jobGeneratedArtifacts
+            if props.jobError !== state.jobError
+                return 
+                    { 
+                        @ jobError props.jobError
+            return null
+        +
+        m componentDidMount
+            _ this._initializePackiSession()
+                # Raven
+                # Session worker
+                # this.props.dispatchFetchPacki(packiDefaults.DEFAULT_PACKI_NAME);
+            _ this.props.dispatchInitPacki(this.props.preferences)
+                # this.props.dispatchFetchPacki(packiDefaults.DEFAULT_PACKI_NAME);
+            _ getEventServiceInstance().on
+                @ 'EXECUTE_JOB'
+                => 
+                    param payload
+                        :any 
+        +
+        m componentDidUpdate
+            param _
+                :ref Props
+            param prevState
+                :ref State
+            if this.state.fileEntries === prevState.fileEntries
+                return 
+            let diff = entryArrayDiff(prevState.fileEntries, this.state.fileEntries)
+            let didFilesChange = false
+            _ Object.keys(diff).forEach
+                => 
+                    param k
+                    if diff[k].kind === '+' || diff[k].kind === '-'
+                        set didFilesChange = true
+                    else
+                        if 
+                            test
+                                && 
+                                    + diff[k].b
+                                    @expr 
+                                        ( 
+                                            @expr diff[k].b
+                                                :as 
+                                                    :[] 
+                                                        :ref FileSystemEntry
+                                                        :literal 'item'
+                                        . virtual
+                            set didFilesChange = true
+            set diff = entryArrayDiff(prevState.fileEntries, this.state.lastJobfileEntries)
+            let didIttfFilesChange = false
+            _ Object.keys(diff).forEach
+                => 
+                    param k
+                    if k.endsWith('.ittf')
+                        set didIttfFilesChange = true
+            if didFilesChange
+                if prevState.fileEntries.length > 0
+                if didIttfFilesChange
+                    _ this.setState
+                        { 
+                            @ isWizziJobWaiting true
+        +
+        m componentWillUnmount
+    +
+    m _initializePackiSession
+        async=> 
+            _ this.setState
+                { 
+                    @ packiSessionReady true
+                # lots of inits
+
+    +
+    p _generateArtifactNotDebounced
+        => 
+            param files
+                :{
+                    :index
+                        :union
+                            :ref PackiFile
+                            :null
+                        param path
+                            :string
+            log '_generateArtifactNotDebounced', 'state.selectedFile', this.state.selectedFile
+            log '_generateArtifactNotDebounced', 'Object.keys(files)', Object.keys(files)
+            log '_generateArtifactNotDebounced', 'state.session.files', this.state.session.files
+            if Object.keys(files).length
+                const filePath = Object.keys(files)[0]
+                if filePath.endsWith('.ittf')
+                    log '_generateArtifactNotDebounced', 'filePath', filePath
+                    _ this.props.dispatchGenerateArtifact
+                        @ filePath
+                        _ fileConversions.packiFilterIttf
+                            @ this.state.session.files
+                        $*
+                        _ entryArrayToPacki
+                            _ this.state.fileEntries.filter
+                                => 
+                                    param e
+                                    _ e.item.path.endsWith('.ittf')
+                        *$
+                        # TODO send only fileEntries of the same schema of focusedEntry + json schema
+            $*
+            const focusedEntry = this._findFocusedEntry(this.state.fileEntries)
+            log '_generateArtifactNotDebounced', 'focusedEntry', focusedEntry
+            if focusedEntry && focusedEntry.item.path.endsWith('.ittf')
+                log '_generateArtifactNotDebounced', 'focusedEntry.item.path', focusedEntry.item.path
+                _ this.props.dispatchGenerateArtifact
+                    @ focusedEntry.item.path
+                    _ entryArrayToPacki
+                        _ this.state.fileEntries.filter
+                            => 
+                                param e
+                                _ e.item.path.endsWith('.ittf')
+                    # TODO send only fileEntries of the same schema of focusedEntry + json schema
+            *$
+    p _generateArtifact
+        _ debounce(this._generateArtifactNotDebounced, 1000)
+    +
+    p _executeJobNotDebounced
+        => 
+            const jobEntries
+                _ this.state.fileEntries.filter
+                    => 
+                        param e
+                        _ e.item.path.endsWith('.wfjob.ittf')
+            if jobEntries.length > 0
+                _ this.setState
+                    { 
+                        @ lastJobfileEntries this.state.fileEntries
+                        @ isWizziJobWaiting false
+                _ this.props.dispatchExecuteJob
+                    _ entryArrayToPacki(this.state.fileEntries)
+                        # 20/4 entryArrayToPacki(this.state.fileEntries.filter(e => e.item.path.endsWith('.ittf')))
+    p _executeJob
+        _ debounce(this._executeJobNotDebounced, 5000)
+    +
+    p _saveCodeNotDebounced
+        => 
+            _ this.props.dispatchSavePacki
+                @expr this.state.packiStoreId
+                    :as 
+                        :string 
+                _ entryArrayToPacki
+                    _ this.state.fileEntries.filter
+                        => 
+                            param e
+                            @expr !e.item.virtual && !e.item.generated
+                _ entryArrayToPacki(this.state.fileEntries)
+    p _saveCode
+        _ debounce(this._saveCodeNotDebounced, 1000)

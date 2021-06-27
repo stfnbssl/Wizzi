@@ -5,6 +5,21 @@ $group
 		if !window.wz
 			set window.wz = {}
 
+        if !window.wz.packi
+            set window.wz.packi
+                {
+                    @ apiUrl "http://localhost:3000/api/v1"
+                    @ webUrl "http://localhost:3000"
+
+		set wz.initPacki
+			function
+                param options
+                set wz.packi
+                    _ Object.assign
+                        {
+                        @ wz.packi
+                        @ options
+
 		set wz.fileListToPacki
 			function
 				param fileList
@@ -61,3 +76,52 @@ $group
                     else
                         delete packiFiles[fileOrPath]
                 return packiFiles
+
+        set wz.uploadPackiItem
+            function
+				param owner
+                param name
+                param schema
+                param mainIttf
+				param packiFiles
+				param callback
+
+                _ fetch
+                    `lit 
+                        + 
+                        @ wz.packi.apiUrl
+                        + /
+                        @ 'packi/item'
+                    { 
+                        @ method 'POST'
+                        { headers
+                            @ Accept 'application/json'
+                            @ 'Content-Type' 'application/json'
+                        @ body 
+                            _ JSON.stringify
+                                {
+                                    @ owner
+                                    @ name
+                                    @ schema
+                                    @ mainIttf
+                                    @ packiFiles
+                    ._ then
+                        =>
+                            param response
+                            log 'uploadPackiItem.response', response
+                            if response.ok
+                                _ resolve
+                                    _ response.json
+                            else
+                                _ response.json
+                                    ._ then
+                                        =>
+                                            param errorText
+                                            _ reject
+                                                @ errorText
+                    ._ catch
+                        =>
+                            param err
+                            log 'uploadPackiItem.err', err
+                            _ reject
+                                _ err

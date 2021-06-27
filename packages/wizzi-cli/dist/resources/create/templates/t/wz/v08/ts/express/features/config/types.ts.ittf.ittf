@@ -13,11 +13,13 @@ $group
                     :p corsClientOrigin
                         :string 
                 ${'$'}if wzCtx.Build.useMongoDb
-                    :p mongoPath
+                    :p mongoHost
                         :string 
                     :p mongoUser
                         :string 
                     :p mongoPassword
+                        :string 
+                    :p mongoPath
                         :string 
                 ${'$'}if wzCtx.Build.useAuthentication
                     :p auth0Domain

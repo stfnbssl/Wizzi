@@ -3,7 +3,6 @@
         var sect = {
             title: 'Wizzi models'
         };
-        var wizziCoreGithubPath = 'https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-core';
 
     html/docs/section(&sect)
 
@@ -20,7 +19,7 @@
         p A Wizzi schema is declared by an ITTF Document of type `wfschema`,
 			\b implemented by the \b
 			a `wizzi-core`
-				href https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-core
+				href ${wzCtx.Github.baseUrl}/packages/wizzi-core
 			span \b plugin. A wizzi schema is a Wizzi model description.
         *$
 

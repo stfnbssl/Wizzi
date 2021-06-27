@@ -1,0 +1,343 @@
+module
+    import
+        @ deprecated 
+        from "typesafe-actions"
+    const 
+        {
+            @ createStandardAction
+        = deprecated
+    import 
+        @ ResponsePayload
+        from '../../store'
+    import 
+        @ PreferencesType
+        from '../preferences'
+    import 
+        @ GitRepositoryMeta
+        @ ClonedGitRepository
+        from '../github'
+    import 
+        @ PackiFiles
+        @ PackiTemplate
+        @ CreatePackiOptions
+        from './types'
+    const FETCH_PACKI_LIST_REQUEST = '@@packi/FETCH_PACKI_LIST_REQUEST'
+    const FETCH_PACKI_LIST_SUCCESS = '@@packi/FETCH_PACKI_LIST_SUCCESS'
+    const FETCH_PACKI_LIST_ERROR = '@@packi/FETCH_PACKI_LIST_ERROR'
+    const INIT_PACKI_REQUEST = '@@packi/INIT_PACKI_REQUEST'
+    const INIT_PACKI_SUCCESS = '@@packi/INIT_PACKI_SUCCESS'
+    const INIT_PACKI_ERROR = '@@packi/INIT_PACKI_ERROR'
+    const SELECT_PACKI_REQUEST = '@@packi/SELECT_PACKI_REQUEST'
+    const SELECT_PACKI_SUCCESS = '@@packi/SELECT_PACKI_SUCCESS'
+    const SELECT_PACKI_ERROR = '@@packi/SELECT_PACKI_ERROR'
+    const CREATE_PACKI_REQUEST = '@@packi/CREATE_PACKI_REQUEST'
+    const CREATE_PACKI_SUCCESS = '@@packi/CREATE_PACKI_SUCCESS'
+    const CREATE_PACKI_ERROR = '@@packi/CREATE_PACKI_ERROR'
+    const SAVE_PACKI_REQUEST = '@@packi/SAVE_PACKI_REQUEST'
+    const SAVE_PACKI_SUCCESS = '@@packi/SAVE_PACKI_SUCCESS'
+    const SAVE_PACKI_ERROR = '@@packi/SAVE_PACKI_ERROR'
+    const DELETE_PACKI_REQUEST = '@@packi/DELETE_PACKI_REQUEST'
+    const DELETE_PACKI_SUCCESS = '@@packi/DELETE_PACKI_SUCCESS'
+    const DELETE_PACKI_ERROR = '@@packi/DELETE_PACKI_ERROR'
+    const FETCH_PACKI_TEMPLATE_LIST_REQUEST = '@@packi/FETCH_PACKI_TEMPLATE_LIST_REQUEST'
+    const FETCH_PACKI_TEMPLATE_LIST_SUCCESS = '@@packi/FETCH_PACKI_TEMPLATE_LIST_SUCCESS'
+    const FETCH_PACKI_TEMPLATE_LIST_ERROR = '@@packi/FETCH_PACKI_TEMPLATE_LIST_ERROR'
+    const FETCH_OWNED_GIT_REPOSITORIES_REQUEST = '@@packi/FETCH_OWNED_GIT_REPOSITORIES_REQUEST'
+    const FETCH_OWNED_GIT_REPOSITORIES_SUCCESS = '@@packi/FETCH_OWNED_GIT_REPOSITORIES_SUCCESS'
+    const FETCH_OWNED_GIT_REPOSITORIES_ERROR = '@@packi/FETCH_OWNED_GIT_REPOSITORIES_ERROR'
+    const CLONE_GIT_REPOSITORY_REQUEST = '@@packi/CLONE_GIT_REPOSITORY_REQUEST'
+    const CLONE_GIT_REPOSITORY_SUCCESS = '@@packi/CLONE_GIT_REPOSITORY_SUCCESS'
+    const CLONE_GIT_REPOSITORY_ERROR = '@@packi/CLONE_GIT_REPOSITORY_ERROR'
+    const COMMIT_GIT_REPOSITORY_REQUEST = '@@packi/COMMIT_GIT_REPOSITORY_REQUEST'
+    const COMMIT_GIT_REPOSITORY_SUCCESS = '@@packi/COMMIT_GIT_REPOSITORY_SUCCESS'
+    const COMMIT_GIT_REPOSITORY_ERROR = '@@packi/COMMIT_GIT_REPOSITORY_ERROR'
+    const UPLOAD_PACKI_TEMPLATE_REQUEST = '@@packi/UPLOAD_PACKI_TEMPLATE_REQUEST'
+    const UPLOAD_PACKI_TEMPLATE_SUCCESS = '@@packi/UPLOAD_PACKI_TEMPLATE_SUCCESS'
+    const UPLOAD_PACKI_TEMPLATE_ERROR = '@@packi/UPLOAD_PACKI_TEMPLATE_ERROR'
+    const EXECUTE_JOB_SUCCESS = '@@packi/EXECUTE_JOB_SUCCESS'
+    +
+    export 
+        :interface AuthRequestPayload
+            :p uid
+                :string 
+    +
+    export 
+        :interface InitPackiRequestPayload
+            :p preferences
+                :ref PreferencesType
+    +
+    export 
+        :interface PackiListPayload
+            :extends ResponsePayload
+            :p packiNames
+                :[ 
+                    :string 
+    +
+    export 
+        :interface PackiIdPayload
+            :p id
+                :string 
+    +
+    export 
+        :interface SelectedPackiPayload
+            :extends ResponsePayload
+            :p id
+                :string 
+            :p files
+                :ref PackiFiles
+    +
+    export 
+        :interface CreatePackiPayload
+            :p id
+                :string 
+            :p options
+                :ref CreatePackiOptions
+    +
+    export 
+        :interface CreatedPackiPayload
+            :extends ResponsePayload
+            :p id
+                :string 
+            :p files
+                :ref PackiFiles
+    +
+    export 
+        :interface PackiTemplatePayload
+            :extends ResponsePayload
+            :p packi
+                :ref PackiTemplate
+    +
+    export 
+        :interface GitRepositoryListPayload
+            :extends ResponsePayload
+            :p repositories
+                :[ 
+                    :ref GitRepositoryMeta
+    +
+    export 
+        :interface CloneGitRepositoryPayload
+            :extends AuthRequestPayload
+            :p owner
+                :string 
+            :p name
+                :string 
+            :p branch
+                :string 
+            :p ittfOnly
+                :boolean 
+    +
+    export 
+        :interface ClonedGitRepositoryPayload
+            :extends ResponsePayload
+            :p repository
+                :ref ClonedGitRepository
+    +
+    export 
+        :interface CommitGitRepositoryPayload
+            :extends AuthRequestPayload
+            :p owner
+                :string 
+            :p name
+                :string 
+            :p branch
+                :string 
+            :p files
+                :ref PackiFiles
+    +
+    export 
+        :interface CommittedGitRepositoryPayload
+            :extends ResponsePayload
+    +
+    export 
+        :interface SavePackiPayload
+            :extends ResponsePayload
+            :p id
+                :string 
+            :p filesToSave
+                :ref PackiFiles
+            :p packiEntryFiles
+                :ref PackiFiles
+    +
+    export 
+        :interface JobResponsePayload
+            :extends ResponsePayload
+            :p generatedArtifacts
+                :ref PackiFiles
+            :p previousArtifacts
+                :ref PackiFiles
+    +
+    export 
+        :interface UploadPackiTemplatePayload
+            :extends AuthRequestPayload
+            :p templateId
+                :string 
+            :p files
+                :ref PackiFiles
+    +
+    export 
+        :interface UploadPackiTemplateResponsePayload
+            :extends ResponsePayload
+            :p writtenFiles
+                :optional 
+                :number 
+            :p deletedFiles
+                :optional 
+                :number 
+    +
+    export 
+        const fetchPackiListRequest
+            _ createStandardAction(FETCH_PACKI_LIST_REQUEST)
+                :param void
+    export 
+        const fetchPackiListSuccess
+            _ createStandardAction(FETCH_PACKI_LIST_SUCCESS)
+                :param 
+                    :ref PackiListPayload
+    export 
+        const fetchPackiListError
+            _ createStandardAction(FETCH_PACKI_LIST_ERROR)
+                :param string
+    export 
+        const initPackiRequest
+            _ createStandardAction(INIT_PACKI_REQUEST)
+                :param 
+                    :ref InitPackiRequestPayload
+    export 
+        const initPackiSuccess
+            _ createStandardAction(INIT_PACKI_SUCCESS)
+                :param 
+                    :ref SelectedPackiPayload
+    export 
+        const initPackiError
+            _ createStandardAction(INIT_PACKI_ERROR)
+                :param string
+    export 
+        const selectPackiRequest
+            _ createStandardAction(SELECT_PACKI_REQUEST)
+                :param 
+                    :ref PackiIdPayload
+    export 
+        const selectPackiSuccess
+            _ createStandardAction(SELECT_PACKI_SUCCESS)
+                :param 
+                    :ref SelectedPackiPayload
+    export 
+        const selectPackiError
+            _ createStandardAction(SELECT_PACKI_ERROR)
+                :param string
+    export 
+        const createPackiRequest
+            _ createStandardAction(CREATE_PACKI_REQUEST)
+                :param 
+                    :ref CreatePackiPayload
+    export 
+        const createPackiSuccess
+            _ createStandardAction(CREATE_PACKI_SUCCESS)
+                :param 
+                    :ref CreatedPackiPayload
+    export 
+        const createPackiError
+            _ createStandardAction(CREATE_PACKI_ERROR)
+                :param string
+    export 
+        const savePackiRequest
+            _ createStandardAction(SAVE_PACKI_REQUEST)
+                :param 
+                    :ref SavePackiPayload
+    export 
+        const savePackiSuccess
+            _ createStandardAction(SAVE_PACKI_SUCCESS)
+                :param 
+                    :ref SavePackiPayload
+    export 
+        const savePackiError
+            _ createStandardAction(SAVE_PACKI_ERROR)
+                :param string
+    export 
+        const deletePackiRequest
+            _ createStandardAction(DELETE_PACKI_REQUEST)
+                :param 
+                    :ref PackiIdPayload
+    export 
+        const deletePackiSuccess
+            _ createStandardAction(DELETE_PACKI_SUCCESS)
+                :param 
+                    :ref PackiIdPayload
+    export 
+        const deletePackiError
+            _ createStandardAction(DELETE_PACKI_ERROR)
+                :param string
+    export 
+        const fetchPackiTemplateListRequest
+            _ createStandardAction(FETCH_PACKI_TEMPLATE_LIST_REQUEST)
+                :param void
+    export 
+        const fetchPackiTemplateListSuccess
+            _ createStandardAction(FETCH_PACKI_TEMPLATE_LIST_SUCCESS)
+                :param 
+                    :ref PackiListPayload
+    export 
+        const fetchPackiTemplateListError
+            _ createStandardAction(FETCH_PACKI_TEMPLATE_LIST_ERROR)
+                :param string
+    export 
+        const fetchOwnedGitRepositoriesRequest
+            _ createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_REQUEST)
+                :param 
+                    :ref AuthRequestPayload
+    export 
+        const fetchOwnedGitRepositoriesSuccess
+            _ createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_SUCCESS)
+                :param 
+                    :ref GitRepositoryListPayload
+    export 
+        const fetchOwnedGitRepositoriesError
+            _ createStandardAction(FETCH_OWNED_GIT_REPOSITORIES_ERROR)
+                :param string
+    export 
+        const cloneGitRepositoryRequest
+            _ createStandardAction(CLONE_GIT_REPOSITORY_REQUEST)
+                :param 
+                    :ref CloneGitRepositoryPayload
+    export 
+        const cloneGitRepositorySuccess
+            _ createStandardAction(CLONE_GIT_REPOSITORY_SUCCESS)
+                :param 
+                    :ref ClonedGitRepositoryPayload
+    export 
+        const cloneGitRepositoryError
+            _ createStandardAction(CLONE_GIT_REPOSITORY_ERROR)
+                :param string
+    export 
+        const commitGitRepositoryRequest
+            _ createStandardAction(COMMIT_GIT_REPOSITORY_REQUEST)
+                :param 
+                    :ref CommitGitRepositoryPayload
+    export 
+        const commitGitRepositorySuccess
+            _ createStandardAction(COMMIT_GIT_REPOSITORY_SUCCESS)
+                :param 
+                    :ref CommittedGitRepositoryPayload
+    export 
+        const commitGitRepositoryError
+            _ createStandardAction(COMMIT_GIT_REPOSITORY_ERROR)
+                :param string
+    export 
+        const uploadPackiTemplateRequest
+            _ createStandardAction(UPLOAD_PACKI_TEMPLATE_REQUEST)
+                :param 
+                    :ref UploadPackiTemplatePayload
+    export 
+        const uploadPackiTemplateSuccess
+            _ createStandardAction(UPLOAD_PACKI_TEMPLATE_SUCCESS)
+                :param 
+                    :ref UploadPackiTemplateResponsePayload
+    export 
+        const uploadPackiTemplateError
+            _ createStandardAction(UPLOAD_PACKI_TEMPLATE_ERROR)
+                :param string
+    export 
+        const executeJobSuccess
+            _ createStandardAction(EXECUTE_JOB_SUCCESS)
+                :param 
+                    :ref JobResponsePayload

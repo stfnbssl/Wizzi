@@ -1,0 +1,218 @@
+$group
+    +
+    :interface PackiStateProps
+        :p loggedUser
+            :optional 
+            :ref LoggedUser
+        :p packiNames
+            :optional 
+            :[ 
+                :string 
+        :p currentPacki
+            :optional 
+            :ref Packi
+        :p packiTemplateNames
+            :optional 
+            :[ 
+                :string 
+        :p ownedGitRepositories
+            :optional 
+            :[ 
+                :ref GitRepositoryMeta
+        :p generatedArtifact
+            :optional 
+            :ref GeneratedArtifact
+        :p jobGeneratedArtifacts
+            :optional 
+            :ref PackiFiles
+        :p jobError
+            :optional 
+            :ref JobError
+    +
+    :interface PackiDispatchProps
+        :p dispatchLoggedOn
+            :=> 
+                :void 
+                param user
+                    :ref LoggedUser
+        :p dispatchLoggedOff
+            :=> 
+                :void 
+        :p dispatchInitPacki
+            :=> 
+                :void 
+                param preferences
+                    :ref PreferencesType
+        :p dispatchSelectPacki
+            :=> 
+                :void 
+                param packiId
+                    :string 
+        :p dispatchSavePacki
+            :=> 
+                :void 
+                param packiId
+                    :string 
+                param filesToSave
+                    :ref PackiFiles
+                param packiEntryFiles
+                    :ref PackiFiles
+        :p dispatchCreatePacki
+            :=> 
+                :void 
+                param packiId
+                    :string 
+                param packiKind
+                    :string 
+        :p dispatchDeletePacki
+            :=> 
+                :void 
+                param packiId
+                    :string 
+        :p dispatchGenerateArtifact
+            :=> 
+                :void 
+                param fileName
+                    :string 
+                param files
+                    :ref PackiFiles
+        :p dispatchExecuteJob
+            :=> 
+                :void 
+                param files
+                    :ref PackiFiles
+        :p dispatchSetTimedService
+            :=> 
+                :void 
+                param name
+                    :string 
+                param onOff
+                    :boolean 
+                param payload
+                    :any 
+                    :optional 
+                param frequence
+                    :number 
+                    :optional 
+    +
+    const packiMapStateToProps
+        => 
+            param state
+                :ref StoreState
+            :return
+                :ref PackiStateProps
+            (
+                { 
+                    @ loggedUser state.app.loggedUser
+                    @ currentPacki state.packi.currentPacki
+                    @ packiNames state.packi.packiNames
+                    @ packiTemplateNames state.packi.packiTemplateNames
+                    @ ownedGitRepositories state.packi.ownedGitRepositories
+                    @ generatedArtifact state.wizzi.generatedArtifact
+                    @ jobGeneratedArtifacts state.wizzi.jobGeneratedArtifacts
+                    @ jobError state.wizzi.jobError
+    const packiMapDispatchToProps
+        => 
+            param dispatch
+                :ref Dispatch
+            :return
+                :ref PackiDispatchProps
+            (
+                { 
+                    @ dispatchLoggedOn
+                        => 
+                            param user
+                                :ref LoggedUser
+                            _ dispatch(appActions.updateLoggedUser(user))
+                    @ dispatchLoggedOff
+                        => 
+                            _ dispatch(appActions.updateLoggedUser(undefined))
+                    @ dispatchInitPacki
+                        => 
+                            param preferences
+                                :ref PreferencesType
+                            _ dispatch
+                                _ packiActions.initPackiRequest
+                                    { 
+                                        @ preferences
+                    @ dispatchSelectPacki
+                        => 
+                            param packiId
+                                :string 
+                            _ dispatch
+                                _ packiActions.selectPackiRequest
+                                    { 
+                                        @ id packiId
+                    @ dispatchSavePacki
+                        => 
+                            param packiId
+                                :string 
+                            param filesToSave
+                                :ref PackiFiles
+                            param packiEntryFiles
+                                :ref PackiFiles
+                            _ dispatch
+                                _ packiActions.savePackiRequest
+                                    { 
+                                        @ id packiId
+                                        @ filesToSave
+                                        @ packiEntryFiles
+                    @ dispatchCreatePacki
+                        => 
+                            param packiId
+                                :string 
+                            param packiKind
+                                :string 
+                            _ dispatch
+                                _ packiActions.createPackiRequest
+                                    { 
+                                        @ id packiId
+                                        { options
+                                            @ data packiKind
+                    @ dispatchDeletePacki
+                        => 
+                            param packiId
+                                :string 
+                            _ dispatch
+                                _ packiActions.deletePackiRequest
+                                    { 
+                                        @ id packiId
+                    @ dispatchGenerateArtifact
+                        => 
+                            param filePath
+                                :string 
+                            param files
+                                :ref PackiFiles
+                            if filePath.endsWith('.ittf') && !filePath.endsWith('wfjob.ittf')
+                                _ dispatch
+                                    _ wizziActions.generateArtifactRequest
+                                        { 
+                                            @ filePath
+                                            @ files
+                    @ dispatchExecuteJob
+                        => 
+                            param files
+                                :ref PackiFiles
+                            _ dispatch
+                                _ wizziActions.executeJobRequest
+                                    { 
+                                        @ files
+                    @ dispatchSetTimedService
+                        => 
+                            param name
+                                :string 
+                            param onOff
+                                :boolean 
+                            param payload
+                                :any 
+                                :optional 
+                            param frequence
+                                :number 
+                                :optional 
+                            _ dispatch
+                                _ wizziActions.setTimedService
+                                    { 
+                                        @ serviceName name
+                                        @ onOff
+                                        @ payload
+                                        @ frequence

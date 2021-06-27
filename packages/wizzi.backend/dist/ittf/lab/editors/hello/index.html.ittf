@@ -1,0 +1,31 @@
+html
+
+    $include wzctx/editors.init
+    
+    $
+        wzCtx.Build.useTailwind = true;
+        wzCtx.Build.useEventEmitter = true;
+        wzCtx.Build.mainJs = './index.js.ittf';
+
+    html/pages/basic(&wzCtx)
+
+        html/layouts/lab(&wzCtx)
+
+            . box-border h-32 w-32 p-4 border-4
+                # ace-editor
+
+        $append body-scripts
+
+            script
+                module
+                    kind es6
+
+                    const editor
+                        new EditorControl
+                            {
+                                @ key 'gen-ittf'
+                                @ elementId 'ace-editor'
+                    _ editor.initialize
+
+
+                    

@@ -339,6 +339,7 @@
         
         $group
             { utils
+                useAxios true
                 useEscapeRegexp true
                 useEscapeHtml true
                 useNullThrows true

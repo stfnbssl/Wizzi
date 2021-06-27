@@ -28,15 +28,15 @@
     "scripts": {
         "test": "mocha tests/**/*.js --full-trace"
     },
-    "dependencies": {},
     "devDependencies": {
         "del": "^2.2.2",
         "expect.js": "^0.3.1",
         "mocha": "^5.2.0",
-        "wizzi": "^0.7.21",
-        "wizzi-core": "^0.7.2",
-        "wizzi-js": "^0.7.7",
-        "wizzi-utils": "^0.7.12",
-        "wizzi-web": "^0.7.7"
+        "wizzi": "^0.7.22",
+        "wizzi-core": "^0.7.3",
+        "wizzi-js": "^0.7.8",
+        "wizzi-utils": "^0.7.13",
+        "wizzi-web": "^0.7.9",
+        "wizzi.proto": "./packages/wizzi.proto"
     }
 }

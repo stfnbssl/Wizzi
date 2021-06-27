@@ -1,0 +1,54 @@
+module
+    import 
+        @ all
+        @ fork
+        @ put
+        @ takeEvery
+        @ call
+        from 'redux-saga/effects'
+    import 
+        @ getType
+        from 'typesafe-actions'
+    import 
+        @ config
+        from '../config'
+    import 
+        @ packiActions
+        from '../packi'
+    import 
+        as appActions
+        from './actions'
+    import 
+        @ callApi
+        from '../../utils/api'
+    +
+    saga_handler( app, loginUserByStoredUid
+        const res
+            yield call(callApi, 'get', config.API_URL, 
+                \b 'auth/github/loggedin/' + encodeURIComponent(action.payload.uid))
+        log 'sagas.handleLoginUserByStoredUid.res', res
+        yield put(appActions.loginUserByStoredUidSuccess(res))
+        if action.payload.selectedPackiId
+            yield 
+                _ put
+                    _ packiActions.selectPackiRequest
+                        { 
+                            @ id action.payload.selectedPackiId
+        else
+            yield 
+                _ put
+                    _ packiActions.selectPackiSuccess
+                        { 
+                            @ id config.DEFAULT_PACKI_NAME
+                            @ files config.DEFAULT_PACKI_CODE
+    +
+    function* appRequest
+        yield takeEvery(getType(appActions.loginUserByStoredUid), handleLoginUserByStoredUid)
+    +
+    function* appSaga
+        yield 
+            _ all
+                [ 
+                    @ fork(appRequest)
+    +
+    export-default appSaga

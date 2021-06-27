@@ -1,6 +1,7 @@
 {
     $
         var baseUrl = 'http://127.0.0.1:3000';
+        var githubUrl = 'https://github.com/stfnbssl/wizzi/tree/master';
         // var baseUrl = "https://stfnbssl.github.io/wizzi";
 
 	name "stfnbssl.github.io/wizzi"
@@ -14,19 +15,20 @@
         baseUrl "${baseUrl}"
 
     { Github
-        wizziCorePath "https://github.com/stfnbssl/wizzi/tree/master/packages/wizzi-core"
+        baseUrl "${githubUrl}"
+        wizziCorePath "${githubUrl}/packages/wizzi-core"
 
     { Section
         [ items
             {
                 title "Home"
-                url "/"
+                url "/~-/home.html?context=mpage;home.model"
             {
                 title "Docs"
-                url "/docs/concepts.html"
+                url "/~-/docs/concepts.html?context=mpage;home.model"
             {
                 title "Resources"
-                url "/resources/index.html"
+                url "/~-/resources.html?context=mpage;home.model"
             {
                 title "Packy"
                 url "/packy/index.html"
@@ -39,73 +41,73 @@
             {
                 title "Concepts"
                 name "concepts"
-                url "/packi/docs/concepts.html?context=mpage;home.model"
+                url "/~-/docs/concepts.html?context=mpage;home.model"
             {
                 title "Ittf documents"
                 name "ittfDocuments"
-                url "/packi/docs/ittfdocuments.html?context=mpage;home.model"
+                url "/~-/docs/ittfdocuments.html?context=mpage;home.model"
             {
                 title "JsWizzi"
                 name "jsWizzi"
-                url "/packi/docs/jswizzi.html?context=mpage;home.model"
+                url "/~-/docs/jswizzi.html?context=mpage;home.model"
             {
                 title "mTrees"
                 name "mTrees"
-                url "/packi/docs/mtrees.html?context=mpage;home.model"
+                url "/~-/docs/mtrees.html?context=mpage;home.model"
             {
                 title "Wizzi schemas"
                 name "wizziSchemas"
-                url "/packi/docs/wizzischemas.html?context=mpage;home.model"
+                url "/~-/docs/wizzischemas.html?context=mpage;home.model"
             {
                 title "Wizzi models"
                 name "wizziModels"
-                url "/packi/docs/wizzimodels.html?context=mpage;home.model"
+                url "/~-/docs/wizzimodels.html?context=mpage;home.model"
             {
                 title "Artifacts"
                 name "artifacts"
-                url "/packi/docs/artifacts.html?context=mpage;home.model"
+                url "/~-/docs/artifacts.html?context=mpage;home.model"
             {
                 title "Wizzi factory class"
                 name "wizziFactory"
-                url "/packi/docs/wizziFactory.html?context=mpage;home.model"
+                url "/~-/docs/wizziFactory.html?context=mpage;home.model"
             {
                 title "Wizzi jobs"
                 name "wizziJobs"
-                url "/packi/docs/wizzijobs.html?context=mpage;home.model"
+                url "/~-/docs/wizzijobs.html?context=mpage;home.model"
             {
                 title "Wizzi plugins"
                 name "wizziPlugins"
-                url "/packi/docs/wizziplugins.html?context=mpage;home.model"
+                url "/~-/docs/wizziplugins.html?context=mpage;home.model"
 
     { Starter
         [ items
             {
                 title "wizzi-starter-wizzi-plugin"
-                url "https://github.com/wizzifactory/wizzi-examples/tree/master/packages/wizzi-starter-wizzi-plugin"
+                url "${githubUrl}/wizzi-examples/tree/master/packages/wizzi-starter-wizzi-plugin"
             {
                 title "wizzi-starter-webpack-react"
-                url "https://github.com/wizzifactory/wizzi-examples/tree/master/packages/wizzi-starter-webpack-react"
+                url "${githubUrl}/wizzi-examples/tree/master/packages/wizzi-starter-webpack-react"
             {
                 title "wizzi-starter-mern"
-                url "https://github.com/wizzifactory/wizzi-examples/tree/master/packages/wizzi-starter-mern"
+                url "${githubUrl}/wizzi-examples/tree/master/packages/wizzi-starter-mern"
             {
                 title "wizzi-starter-nextjs"
-                url "https://github.com/wizzifactory/wizzi-examples/tree/master/packages/wizzi-starter-nextjs"
+                url "${githubUrl}/wizzi-examples/tree/master/packages/wizzi-starter-nextjs"
             {
                 title "wizzi-starter-gatsby"
-                url "https://github.com/wizzifactory/wizzi-examples/tree/master/packages/wizzi-starter-gatsby"
+                url "${githubUrl}/wizzi-examples/tree/master/packages/wizzi-starter-gatsby"
 
     { Plugin
         [ items
             {
                 title "wizzi-js"
-                url "https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-js/dist"
+                url "${githubUrl}/wizzi/tree/master/packages/wizzi-js/dist"
             {
                 title "wizzi-web"
-                url "https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-web/dist"
+                url "${githubUrl}/wizzi/tree/master/packages/wizzi-web/dist"
             {
                 title "wizzi-lab"
-                url "https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-lab/dist"
+                url "${githubUrl}/wizzi/tree/master/packages/wizzi-lab/dist"
 
     { Colors
         bg_0 "#ccc"

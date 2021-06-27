@@ -17,7 +17,7 @@ ${'$'}group
             react-dom "^17.0.2"
         ${'$'}if wzCtx.Build.react.useDate
             $$ react-dates "latest"
-            react-datepicker "latest"
+            react-datepicker "^4.1.1"
         ${'$'}if wzCtx.Build.react.useFontawesome
             react-fontawesome "^1.6.1"
         ${'$'}if wzCtx.Build.react.useHelmetAsync
@@ -25,7 +25,7 @@ ${'$'}group
         ${'$'}if wzCtx.Build.react.usePerfectScrollbar
             react-perfect-scrollbar "^1.4.4"
 		${'$'}if wzCtx.Build.react.useRange
-            react-range "latest"
+            react-range "^1.8.9"
         ${'$'}if wzCtx.Build.react.useRedux
                 react-redux "^7.2.2"
                 ${'$'}if wzCtx.Build.react.redux.useFirestore
@@ -38,6 +38,8 @@ ${'$'}group
             react-select "^4.3.0"
         ${'$'}if wzCtx.Build.react.useSimpleCodeEditor
             react-simple-code-editor "^0.11.0"
+        ${'$'}if wzCtx.Build.react.useSyntaxHighlighter
+            react-syntax-highlighter "^15.4.3"
         ${'$'}if wzCtx.Build.react.useTextareaAutosize
             react-textarea-autosize "^8.3.2"
         ${'$'}if wzCtx.Build.react.transition

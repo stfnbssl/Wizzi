@@ -2,7 +2,7 @@ $group
     $params &md
 
     head
-        css /packi/css.reset
+        css /~-/css.reset
         $hook head-styles
 
     body

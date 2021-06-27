@@ -19,12 +19,12 @@
         p A Wizzi schema has its own Wizzi model, of type `wfschema`, 
             \b implemented by the `
             a wizzi-core
-                href https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi-core/dist
+                href ${wzCtx.Github.baseUrl}/packages/wizzi-core/dist
             span ` plugin.
                 \b It is used by the artifacts of the `wizzi-core` plugin to generate the javascript modules
                 \b of the Wizzi model it describes.
 
-		p Wizzi schemas are codified as ITTF documents of type `wfschema`.
+		p Wizzi schemas are ITTF documents of type `wfschema`.
 
         ittf-panel
             title Sample 'rdbms' wizzi schema
@@ -66,5 +66,4 @@
                             type string
                         index Student-PK
                             primary true
-                            column Id
-                            
+                            column Id                            

@@ -1,0 +1,45 @@
+$group
+    
+    react IWebFrame
+        ctor
+            set this.ifr = null
+        
+        did-mount
+            if this.props.url
+                _ this._updateSrc
+                    @ this.props.url
+        
+        did-update
+            if this.props.url != prevProps.url || this.props.refreshCount != prevProps.refreshCount
+                _ this._updateSrc
+                    @ this.props.url
+        
+        m _updateSrc
+            param url
+            set this.ifr.src = url
+                
+        render
+            return
+                div
+                    @ style
+                        {
+                            @ position 'relative'
+                            @ display 'flex'
+                            @ flex 1
+                            @ width '100%'
+                            @ height '100%'
+                    iframe
+                        @ frameBorder {0}
+                        @ sandbox "allow-scripts"
+                        @ style
+                            {
+                                @ position 'relative' 
+                                @ border 0 
+                                @ zIndex 1 
+                                $$ @ backgroundColor c('content', 'light')
+                                @ width '100%'
+                                @ height '100%'
+                        @ ref
+                            =>
+                                param f
+                                set this.ifr = f

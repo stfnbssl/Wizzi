@@ -1,0 +1,57 @@
+module
+    import
+        @ PackiFiles
+        from '../packi'
+    export
+        const DEFAULT_PACKI_NAME = 'starter/packi.html'
+    export
+        const DEFAULT_PACKI_DESCRIPTION_SAVED
+            `lit
+                + ... saved packi description ...
+    export
+        const DEFAULT_PACKI_DESCRIPTION_EMPTY
+            `lit
+                + ... empty packi description ...
+    export
+        const DEFAULT_PACKI_DESCRIPTION = 'No description'
+    export
+        const DEFAULT_PACKI_DEPENDENCIES
+            {
+                { 'starter.html'
+                    @ version '0.0.1'
+                    @ isUserSpecified true
+    export
+        const DEFAULT_PACKI_CODE
+            :ref PackiFiles
+            =
+                {
+                    { '.wizzi/index.html.ittf'
+                        @ contents
+                            `lit
+                                + html&lf;
+                                + &nbsp; body&lf;
+                                + &nbsp;   h1 Hello world&lf;
+                                + &nbsp;&nbsp;
+                        @ type 'CODE'
+                    { '.wizzi/main.js.ittf'
+                        @ contents
+                            `lit
+                                + module&lf;
+                                + &nbsp; kind es6&lf;
+                                + &nbsp; log 'Hello world'&lf;
+                                + &nbsp;&nbsp;
+                        @ type 'CODE'
+                    { '.wizzi/main.wfjob.ittf'
+                        @ contents
+                            `lit
+                                + wfjob&lf;
+                                + &nbsp;&nbsp;
+                        @ type 'CODE'
+                    { 'README.md'
+                        @ contents
+                            `lit
+                                + # Sample Packi&lf;
+                                + &nbsp;&nbsp;
+                        @ type 'CODE'
+    export
+        const EDITOR_LOAD_FALLBACK_TIMEOUT = 3000

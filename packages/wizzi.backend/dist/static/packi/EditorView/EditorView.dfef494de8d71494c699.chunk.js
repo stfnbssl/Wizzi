@@ -1,0 +1,13 @@
+(self["webpackChunkwizzi_editor"] = self["webpackChunkwizzi_editor"] || []).push([["EditorView/EditorView"],{
+
+/***/ "./src/components/EditorView/EditorView.tsx":
+/*!**************************************************!*\
+  !*** ./src/components/EditorView/EditorView.tsx ***!
+  \**************************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\src\\components\\EditorView\\EditorView.tsx: Unexpected token, expected \",\" (739:14)\n\n\u001b[0m \u001b[90m 737 |\u001b[39m     editorComponentOuter\u001b[33m:\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 738 |\u001b[39m         border\u001b[33m:\u001b[39m \u001b[32m'0.3em solid rgb(122, 102, 82)'\u001b[39m\u001b[33m,\u001b[39m \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 739 |\u001b[39m         border\u001b[33m-\u001b[39mradius\u001b[33m:\u001b[39m \u001b[32m'0.5em'\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 740 |\u001b[39m      }\u001b[0m\n\u001b[0m \u001b[90m 741 |\u001b[39m  })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 742 |\u001b[39m\u001b[0m\n    at Object._raise (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:816:17)\n    at Object.raiseWithData (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:809:17)\n    at Object.raise (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:770:17)\n    at Object.unexpected (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:9905:16)\n    at Object.expect (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:9879:28)\n    at Object.parseObjectLike (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:11694:14)\n    at Object.parseExprAtom (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:11222:23)\n    at Object.parseExprAtom (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:5245:20)\n    at Object.parseExprSubscripts (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:10878:23)\n    at Object.parseUpdate (C:\\My\\wizzi\\stfnbssl\\wizzi\\packages\\wizzi.editor\\dist\\node_modules\\@babel\\parser\\lib\\index.js:10858:21)");
+
+/***/ })
+
+}]);

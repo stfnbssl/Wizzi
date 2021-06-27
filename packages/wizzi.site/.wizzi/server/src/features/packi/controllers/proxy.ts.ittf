@@ -1,0 +1,33 @@
+module
+    $
+        var ctrl = {
+            name: 'Proxy',
+            path: '/api/v1/packi/proxy'
+        }
+    
+    controller( &ctrl )
+        $append imports
+            import axios
+                from 'axios'
+            const myname = 'features/packi/controller/proxy'
+
+        _ this.router.post('/packiitem', this.packiItem)
+        
+        $append handlers
+            handler( packiItem )
+                _ axios.post
+                    @ 'http://localhost:3000/packiitem'
+                    @ request.body
+                    ._ then
+                        =>
+                            param res
+                                :any
+                            _ sendSuccess
+                                @ response
+                                @ res
+                    ._ catch
+                        =>
+                            param err
+                                :any
+                            log myname + '.packiItem.err', err
+                            _ sendFailure(response, err, 501)

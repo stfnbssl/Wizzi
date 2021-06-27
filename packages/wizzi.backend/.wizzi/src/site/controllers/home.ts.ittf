@@ -1,0 +1,21 @@
+module
+    $
+        var ctrl = {
+            name: 'Home',
+            path: ''
+        }    
+
+    controller( &ctrl )
+        
+        $append imports
+        _ this.router.get
+            `lit
+                + /
+            @expr this.home
+        
+        $append handlers
+            handler( home )
+                _ response.render
+                    @ 'home/index.html.ittf'
+                    {
+                        @ title 'Wizzi site'

@@ -1,0 +1,11 @@
+module
+    import 
+        @ LoggedUser
+        from './types'
+    import 
+        as appActions
+        from './actions'
+    export 
+        @ appActions
+    :export-type
+        @ LoggedUser

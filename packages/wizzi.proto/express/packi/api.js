@@ -1,11 +1,18 @@
 const path = require('path')
 const mongoose = require('mongoose');
+const NodeCache = require( "node-cache" );
 const wizziProds = require('../../wizzi/productions');
 const pDependency = require('../../mongoose/packi/packiDependency');
 const pItem = require('../../mongoose/packi/packiItem');
+const pActivity = require('../../mongoose/packi/userActivity');
+const pUser = require('../../mongoose/packi/user');
+
+const apiCache = new NodeCache({ stdTTL: 120, checkperiod: 60 });
 
 let PackiDependency;
 let PackiItem;
+let UserActivity;
+let User;
 let DefaultContext;
 
 function merge(a, b) {
@@ -15,17 +22,26 @@ function merge(a, b) {
     return ret;
 }
 
+let started = false;
+let db;
 let md;
 module.exports = md = {
     start: function(defaultOwner, defaultContext, callback) {
         mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true, useUnifiedTopology: true});
+        if (started) {
+            // already started
+            return callback(null);
+        }
+        started = true;
         mongoose.set('useFindAndModify', false);
-        const db = mongoose.connection;
+        db = mongoose.connection;
         db.on('error', console.error.bind(console, 'connection error:'));
         db.once('open', function() {
             PackiDependency = pDependency.getPackiDependency();
             PackiItem = pItem.getPackiItem();
-            md.getPackiContextItem(defaultOwner, 'wzCtx;wzctx', {}).then(resultItemContext=>{
+            UserActivity = pActivity.getUserActivity();
+            User = pUser.getUser();
+            md._getPackiContextItem(defaultOwner, 'wzCtx;wzctx', {}).then(resultItemContext=>{
                 DefaultContext = Object.assign({}, defaultContext, resultItemContext);
                 callback(null);
             });
@@ -34,10 +50,33 @@ module.exports = md = {
     getDefaultContext: function() {
         return DefaultContext;
     },
+    getPackiList: function(owner) {
+        var query = { owner: owner };
+        console.log('getPackiList', query);
+        return new Promise((resolve, reject) => {        
+            PackiItem.find(query, function(err, result) {
+                if (err) return reject(err);
+                console.log('getPackiList.result.length', result.length);
+                if (result.length == 0) {
+                    User.find(query, function(err, result) {
+                        if (err) return reject(err);
+                        if (result.length == 0) {
+                        }
+                    });
+                    return reject({ found: false, message: 'User not found'});
+                } 
+                else
+                    return resolve(result);
+            });
+        });
+    },
     getPacki: function(owner, name) {
         var query = { owner: owner, name: name};
+        var cacheKey = owner + '|' + name;
         console.log('getPacki', query);
         return new Promise((resolve, reject) => {        
+            let packiValue = apiCache.get( cacheKey );
+            if (packiValue) return resolve(packiValue);
             PackiItem.find(query, function(err, result) {
                 if (err) return reject(err);
                 console.log('getPacki.result.length', result.length);
@@ -54,23 +93,31 @@ module.exports = md = {
                             if (result.length == 1) {
                                 dep = result[0];
                                 // console.log('PackiDependency.dep', dep);
-                                return resolve({
+                                packiValue = {
                                     mainIttf: item.mainIttf,
                                     packiFiles:  merge(dep.get('packiFiles', {}), item.get('packiFiles', {}))
-                                })
+                                };
+                                apiCache.set( cacheKey, packiValue );
+                                return resolve(packiValue);
                             } else {
-                                return resolve({
+                                packiValue = {
                                     mainIttf: item.mainIttf,
                                     packiFiles: item.packiFiles
-                                })
+                                };
+                                apiCache.set( cacheKey, packiValue );
+                                return resolve(packiValue);
                             }
                         });
                     } else {
-                        return resolve({
+                        packiValue = {
                             mainIttf: item.mainIttf,
                             packiFiles: item.packiFiles
-                        })
+                        };
+                        apiCache.set( cacheKey, packiValue );
+                        return resolve(packiValue);
                     }
+                } else {
+                    return reject({ found: false, message: 'Packi not found'});
                 }
             });
         });
@@ -87,7 +134,7 @@ module.exports = md = {
                         console.log('done getPackiContext', Object.keys(resultContext));
                         return resolve(resultContext);
                     }
-                    md.getPackiContextItem(owner, contextItem, defaultContext).then(resultItemContext=>{
+                    md._getPackiContextItem(owner, contextItem, defaultContext).then(resultItemContext=>{
                         resultContext = Object.assign({}, resultContext, resultItemContext);
                         next();
                     }).catch(err=> reject(err));
@@ -97,17 +144,17 @@ module.exports = md = {
             }
         });
     },
-    getPackiContextItem: function(owner, queryContext, defaultContext) {
+    _getPackiContextItem: function(owner, queryContext, defaultContext) {
         return new Promise((resolve, reject) => { 
             if (queryContext && queryContext.length > 0) {
                 const parts = queryContext.split(';');
                 const contextName = parts[0];
                 const contextPackiName = parts[1];
                 const contextTransformation = parts.length > 2 ? parts[2] : null;
-                console.log('getPackiContextItem: contextName', contextName, 'contextPackiName', contextPackiName, 'contextTransformation', contextTransformation);
+                console.log('_getPackiContextItem: contextName', contextName, 'contextPackiName', contextPackiName, 'contextTransformation', contextTransformation);
                 if (contextTransformation) {
-                    md.getPackiTransformation(owner, contextPackiName, contextTransformation, defaultContext).then(result => {
-                        console.log('getPackiContextItem: typeof result', typeof result.transformResult);
+                    md.getPackiTransformation(owner, contextPackiName, defaultContext, contextTransformation).then(result => {
+                        console.log('_getPackiContextItem: typeof result', typeof result.transformResult);
                         // const contextObject = JSON.parse(result.transformResult);
                         resolve(Object.assign(
                             {}, 
@@ -119,7 +166,7 @@ module.exports = md = {
                     })
                 } else {
                     md.getPackiGeneration(owner, contextPackiName, defaultContext).then(result => {
-                        console.log('getPackiContextItem', result.content.length);
+                        console.log('_getPackiContextItem', result.content.length);
                         const contextObject = JSON.parse(result.content);
                         resolve(Object.assign(
                             {}, 
@@ -153,12 +200,12 @@ module.exports = md = {
                             return reject(err);
                         });
                     })
-                })/*.catch(err => {
+                }).catch(err => {
                     console.log('err', err);
                     reject(err)
-                })*/;
+                });
     },
-    getPackiTransformation: function(owner, name, transformerName, context) {
+    getPackiTransformation: function(owner, name, context, transformerName) {
         return new Promise((resolve, reject) => {
             md.getPacki(owner, name)
                 .then(packiItem => {
@@ -174,6 +221,121 @@ module.exports = md = {
                 console.log('err', err);
                 reject(err)
             });
+    },
+    getUserActivity: function(id) {
+        var query = { _id: id};
+        return new Promise((resolve, reject) => {        
+            UserActivity.find(query, function(err, result) {
+                if (err) return reject(err);
+                if (result.length == 1) return resolve(result[0]._doc);
+                return reject(result);
+            });
+        });
+    },
+    saveUserActivity: function(id, items) {
+        var query = { _id: id};
+        return new Promise((resolve, reject) => {        
+            UserActivity.find(query, function(err, result) {
+                if (err) return reject(err);
+                const saveItem = result.length == 1 ? result[0]._doc : { _id: id, openPackies: [], openFiles: [] };
+                if (items.openPacki){
+                    saveItem.openPackies.unshift(items.openPacki);
+                    if (saveItem.openPackies.length > 10) saveItem.openPackies.splice(10)
+                } 
+                if (items.openFile){
+                    saveItem.openFiles.unshift(items.openFile);
+                    if (saveItem.openFiles.length > 20) saveItem.openFiles.splice(20)
+                } 
+                UserActivity.findOneAndUpdate(query, saveItem, {upsert: true, new: true}, function(err, doc) {
+                    if (err) {
+                        console.log('saveUserActivity err', err);
+                        return reject(err);
+                    }
+                    return resolve({ upserted: true, message: 'useractivity', doc: doc._doc });
+                });
+            });
+        });
+    },
+    getLastPackiActivity: function(userid) {
+        var query = { _id: userid};
+        return new Promise((resolve, reject) => {        
+            UserActivity.find(query, function(err, result) {
+                if (err) return reject(err);
+                if (result.length == 1) {
+                    const activity = result[0]._doc;
+                    if (activity.openPackies.length > 0) {
+                        md.getPackiItem_Object_By_Owner_Name(userid, activity.openPackies[0]).then( packiItem => {
+                            resolve({
+                                found: true,
+                                _id: packiItem._id,
+                                owner: packiItem.owner,
+                                name: packiItem.name,
+                                selectedFile: activity.openFiles[0],
+                                packiFiles: packiItem.packiFiles,
+                                mainIttf: packiItem.mainIttf,
+                                wizziSchema: packiItem.wizziSchema,
+                            })
+                        })
+                    }
+                    else resolve({found: false})
+                }
+                else resolve({found: false})
+            });
+        });
+    },
+    getPackiItem_Object_By_Owner_Name: function(owner, name) {
+        var query = { owner: owner, name: name};
+        console.log('getPackiItem_Object_By_Owner_Name', query);
+        return new Promise((resolve, reject) => {        
+            PackiItem.find(query, function(err, result) {
+                if (err) return reject(err);
+                console.log('getPackiItem_Object_By_Owner_Name.result.length', result.length);
+                if (result.length == 1) {
+                    const obj = {
+                        ...result[0]._doc,
+                        packiFiles: JSON.parse(result[0]._doc.packiFiles)
+                    }
+                    return resolve(
+                    {
+                        ...obj,
+                        _id: obj._id.toString()
+                    })
+                }
+                return reject({message: "packi item not found", query});
+            });
+        });
+    },
+    getPackiItem_Object_By_Id: function(id) {
+        var query = { _id: id};
+        console.log('getPackiItem_Object_By_Id', query);
+        return new Promise((resolve, reject) => {        
+            PackiItem.find(query, function(err, result) {
+                if (err) return reject(err);
+                console.log('getPackiItem_Object_By_Id.result.length', result.length);
+                if (result.length == 1) return resolve(result[0]._doc);
+                return reject({message: "packi item not found", query});
+            });
+        });
+    },
+    savePacki: function(owner, name, mainIttf, wizziSchema, packiFiles) {
+        return new Promise((resolve, reject) => {
+            const item = {
+                owner, name, mainIttf, wizziSchema, packiFiles
+            };
+            item.userUpdated = true;
+            var cacheKey = owner + '|' + name;
+            var query = { owner: item.owner, name: item.name};
+            // console.log('savePacki', item);
+            PackiItem.findOneAndUpdate(query, item, {upsert: true, new: true}, function(err, doc) {
+                if (err) {
+                    console.log('savePacki err', err);
+                    return reject(err);
+                }
+                apiCache.del( cacheKey);
+                console.log('savePacki success doc', Object.keys(doc), 'doc._doc', doc._doc);
+                return resolve({ upserted: true, message: 'packiitem updated', doc: doc._doc });
+            });
+        });
     }
 }
 

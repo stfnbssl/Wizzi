@@ -26,7 +26,7 @@ $group
                             \b path.resolve(${'$'}{wzCtx.Build.express.staticFiles.basePath}, 'ittf')
                         _ app.use('/ittf', expressStatic(path.resolve(${'$'}{wzCtx.Build.express.staticFiles.basePath}, 'ittf')))
                             # simply browse ittfs when IttfDocumentsMiddleware is not used
-                ${'$'}if wzCtx.Build.isClientServer
+                ${'$'}if wzCtx.Build.isClientServer || wzCtx.Build.isServer
                     log 'StaticFilesMiddleware. Folder served from ', 
                         \b path.resolve(${'$'}{wzCtx.Build.express.staticFiles.basePath}, 'dist')
                     _ app.use('/dist', expressStatic(path.resolve(${'$'}{wzCtx.Build.express.staticFiles.basePath}, 'dist')))

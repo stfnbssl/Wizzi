@@ -1,0 +1,10 @@
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-web\dist\lib\artifacts\css\document\gen\main.js
+    package: wizzi-web@0.7.9
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\styles\tailwind.css.ittf
+    utc time: Fri, 25 Jun 2021 04:12:12 GMT
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

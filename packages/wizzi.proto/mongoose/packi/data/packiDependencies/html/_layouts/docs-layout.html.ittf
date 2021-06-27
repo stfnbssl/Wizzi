@@ -3,7 +3,7 @@ $group
 
     $
         var opt = {
-            mainCss: '/packi/docs/styles/main.css?context=mpage;home.model',
+            mainCss: '/~-/docs/styles/main.css?context=mpage;home.model',
             mainJs: null,
         }
         var page = {

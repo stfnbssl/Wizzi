@@ -35,6 +35,8 @@ $group
         aphrodite "^2.4.0"
     $if wzCtx.Build.useTailwindcss
         autoprefixer "^10.0.2"
+    $if wzCtx.Build.utils.useAxios
+        axios "latest"
     $if wzCtx.Build.useExpress
         $if wzCtx.Build.useNetlify
             aws-serverless-express "^3.2.0"

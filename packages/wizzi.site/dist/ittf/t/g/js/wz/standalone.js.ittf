@@ -112,6 +112,7 @@ $group
 				param packiFiles
 				param callback
 
+                log 100
                 _ callApi
                     @ 'POST'
                     @ 'productions/artifact/' + encodeURIComponent(filePath)
@@ -119,15 +120,21 @@ $group
                     ._ then
                         =>
                             param result
+                            log 101
                             if wz.isString(result)
+                                log 1011
                                 const json = JSON.parse(result)
+                                log 1012
                                 if json.__is_error
+                                    log 1013
                                     return
                                         _ callback
                                             @ json
                                 else
+                                    log 1014
                                     throw new Error('Invalid result: ' + result)
                             else
+                                log 1015
                                 return
                                     _ callback
                                         @ null
@@ -135,6 +142,7 @@ $group
                     ._ catch
                         => 
                             param err
+                            log 102, err
                             _ callback
                                 @ err
 

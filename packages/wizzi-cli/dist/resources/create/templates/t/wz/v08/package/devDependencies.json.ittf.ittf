@@ -5,7 +5,7 @@ $group
             @babel/cli "^7.12.16"
             @babel/core "^7.12.16"
         ${'$'}else
-            @babel/cli "latest"
+            @babel/cli "^7.14.5"
             @babel/core "^7.13.10"
         ${'$'}if wzCtx.Build.useVExpo
             @babel/plugin-proposal-class-properties "^7.12.13"
@@ -66,7 +66,7 @@ $group
             @types/jest "^26.0.15"
         ${'$'}if wzCtx.Build.utils.useJsCookie
             @types/js-cookie "^2.2.0"
-        ${'$'}if wzCtx.Build.isClientServer
+        ${'$'}if wzCtx.Build.isClientServer || wzCtx.Build.isServer
             @types/jsesc "latest"
         ${'$'}if wzCtx.Build.utils.useJsonToAst
             @types/json-to-ast "^2.1.1"
@@ -118,13 +118,15 @@ $group
                     @types/react-dom "^17.0.6"
                 ${'$'}if wzCtx.Build.react.useDate
                     $$ @types/react-dates "latest"
-                    @types/react-datepicker "latest"
+                    @types/react-datepicker "^3.1.8"
                 ${'$'}if wzCtx.Build.react.useRedux
                     @types/react-redux "^7.0.1"
                 ${'$'}if wzCtx.Build.react.useRouter
                     @types/react-router-dom "^4.3.1"
                 ${'$'}if wzCtx.Build.react.useSelect
-                    @types/react-select "latest"
+                    @types/react-select "^4.0.15"
+                ${'$'}if wzCtx.Build.react.useSyntaxHighlighter
+                    @types/react-syntax-highlighter "^13.5.1"
                 ${'$'}if wzCtx.Build.react.useTextareaAutosize
                     @types/react-textarea-autosize "^4.3.3"
                 ${'$'}if wzCtx.Build.react.useVirtualized
@@ -164,7 +166,7 @@ $group
     ${'$'}if wzCtx.Build.useBabel
         ${'$'}if wzCtx.Build.useWebpack 
             ${'$'}if wzCtx.Build.webpack.useCodeSplitting
-                babel-plugin-webpack-chunkname "latest"
+                babel-plugin-webpack-chunkname "^1.2.0"
     ${'$'}if wzCtx.Build.usePrismjs
 		babel-plugin-prismjs "^2.0.1"
     ${'$'}if wzCtx.Build.useWebpack
@@ -224,7 +226,7 @@ $group
     ${'$'}if wzCtx.Build.useWebpack
         ${'$'}if wzCtx.Build.webpack.useSass
             node-sass "5.0.0"
-    ${'$'}if wzCtx.Build.useExpress
+    ${'$'}if wzCtx.Build.useExpress || (wzCtx.Build.isClient && wzCtx.Build.useExistingDevServer)
         nodemon "^1.19.2"
     ${'$'}if wzCtx.Build.useWebpack
         ${'$'}if wzCtx.Build.webpack.useOptimizeCss

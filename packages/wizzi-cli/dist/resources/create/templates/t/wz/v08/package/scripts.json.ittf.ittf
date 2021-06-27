@@ -15,6 +15,20 @@ $group
                 start "set NODE_ENV=development && nodemon --watch src/** --ext ts,json --ignore src/**/*.spec.ts --exec ts-node src/server/index.ts"
                 watch "env-cmd -f deploy/client/development.env tsnd --require tsconfig-paths/register --inspect=9211 --quiet src/server/index.ts"
                 build:server "babel --source-maps --extensions '.ts,.tsx' --out-dir build/ src/"
+    ${'$'}if wzCtx.Build.isServer
+        ${'$'}if wzCtx.Build.useExpress
+            ${'$'}if wzCtx.Build.useTypescript
+                start "set NODE_ENV=development && nodemon --watch src/** --ext ts,json --ignore src/**/*.spec.ts --exec ts-node src/index.ts"
+                watch "env-cmd -f deploy/development.env tsnd --require tsconfig-paths/register --inspect=9211 --quiet src/index.ts"
+                build:server "babel --source-maps --extensions '.ts,.tsx' --out-dir build/ src/"
+    ${'$'}if wzCtx.Build.isClient
+        ${'$'}if wzCtx.Build.useTypescript
+            serve:client "env-cmd -f deploy/client/development.env webpack serve --open --mode development"
+            build:client "env-cmd -f deploy/client/development.env webpack --mode development"
+            build:client:prod "env-cmd -f deploy/client/production.env webpack --mode production"
+        ${'$'}if wzCtx.Build.useExistingDevServer
+            start "set NODE_ENV=development && nodemon --watch server/** --ext js,json --ignore src/**/*.spec.ts --exec node ${'$'}{wzCtx.Build.existingDevServer.execPath}"
+
     ${'$'}elif wzCtx.Build.useWebpack
         ${'$'}if wzCtx.Build.webpack.useDevAndProd
             start "webpack serve --mode development --config ./webpack.base.config.js --open --hot --history-api-fallback --env.PLATFORM=local --env.VERSION=stag"
@@ -88,6 +102,9 @@ $group
         ${'$'}if wzCtx.Build.isClientServer
             build-css "tailwindcss build src/server/styles/tailwind.css -o static/styles/tailwind.css"
             postcss "postcss src/server/styles/tailwind.css -o static/styles/tailwind.css"
+        ${'$'}elif wzCtx.Build.isServer
+            build-css "tailwindcss build src/styles/tailwind.css -o static/styles/tailwind.css"
+            postcss "postcss src/styles/tailwind.css -o static/styles/tailwind.css"
         ${'$'}else
             build-css "tailwindcss build src/styles/tailwind.css -o static/styles/tailwind.css"
             postcss "postcss src/styles/tailwind.css -o static/styles/tailwind.css"

@@ -54,4 +54,4 @@
             html/docs/high-code( wizzi.PluginsManager )
             span is implemented in the \b
 			a `wizzi` package
-				href https://github.com/wizzifactory/wizzi/tree/master/packages/wizzi/dist/lib/services/pluginsManager.js
+				href ${wzCtx.Github.baseUrl}/packages/wizzi/dist/lib/services/pluginsManager.js

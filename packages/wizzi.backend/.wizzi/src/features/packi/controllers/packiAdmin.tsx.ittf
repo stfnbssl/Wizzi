@@ -1,0 +1,93 @@
+module
+    $
+        var ctrl = {
+            name: 'PackiAdmin',
+            path: '/packi/admin',
+        }
+    
+    controller( &ctrl )
+            
+        $append imports
+            import ReactDOMServer 
+                from 'react-dom/server'
+            import wizziProto
+                from 'wizzi.proto'
+            import PageFormDocument 
+                from '../pages/PageFormDocument' 
+            const myname = 'features/packi/controller/packiAdmin'
+            +
+            function renderPackiPageForm
+                param req
+                    :ref Request
+                param res
+                    :ref Response
+                param data
+                    :object
+                param queryParams
+                    :object
+
+                const index
+                    op+
+                        + '<!DOCTYPE html>'
+                        _ ReactDOMServer.renderToStaticMarkup
+                            < PageFormDocument 
+                                @ data {data}
+                                @ queryParams {queryParams}
+                _ res.set('Content-Type', 'text/html')
+                _ res.set('Content-Length', index.length.toString())
+                log "renderPackiPageForm.before sending", index.length
+                _ res.send(index)
+                log "renderPackiPageForm.after sending"
+
+        _ wizziProto.start
+            @ 'stfnbssl'
+            {
+            =>
+        
+        _ this.router.get('/newpacki', this.getNewPackiPageForm)
+        _ this.router.post('/newpacki', this.postNewPacki)
+        _ this.router.get('/newtfolder', this.getNewTFolderPageForm)
+        _ this.router.post('/newtfolder', this.postNewTFolder)
+        _ this.router.get('/theme', this.getThemesDemo)
+        
+        $append handlers
+            handler( postNewPacki )
+            handler( postNewTFolder )
+            handler( getNewPackiPageForm )
+            
+                # TODO
+                # log myname + '.getNewPackiPageForm', 
+                _ renderPackiPageForm
+                    @ request
+                    @ response
+                    {
+                        @ type 'success'
+                        @ formName 'CreatePacki'
+                        { formData 
+                    {
+
+            handler( getNewTFolderPageForm )
+            
+                # TODO
+                # log myname + '.getNewTFolderPageForm', 
+                _ renderPackiPageForm
+                    @ request
+                    @ response
+                    {
+                        @ type 'success'
+                        @ formName 'CreateTFolder'
+                        { formData 
+                    {
+
+            handler( getThemesDemo )
+            
+                # TODO
+                # log myname + '.getThemesDemo', 
+                _ renderPackiPageForm
+                    @ request
+                    @ response
+                    {
+                        @ type 'success'
+                        @ formName 'ThemeDemo'
+                        { formData 
+                    {

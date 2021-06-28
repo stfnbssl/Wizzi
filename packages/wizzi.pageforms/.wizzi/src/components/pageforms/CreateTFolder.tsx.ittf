@@ -1,0 +1,115 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "CreateTFolder",
+            props: [
+                { name: "data", type: "any", ref: true },
+            ],
+            stateProps: [
+                { name: "tfolder_name", type: "string" },
+                { name: "tfolder_description", type: "string" },
+                { name: "tfolder_schema", type: "string" },
+                { name: "tfolder_type", type: "string" },
+                { name: "tfolder_add_context", type: "boolean" },
+                { name: "tfolder_add_tfolder", type: "boolean" },
+            ]
+        }
+
+    v08/ts/react/component(&md)
+        $append imports
+            import HR from './widgets/HR'
+            import FormContainer from './widgets/FormContainer'
+            import FormTitle from './widgets/FormTitle'
+            import FormGroup from './widgets/FormGroup'
+            import FormCheckBox from './widgets/FormCheckBox'
+            import FormRadioBox from './widgets/FormRadioBox'
+            import FormButton from './widgets/FormButton'
+        
+        $append styles
+            :interface RootStyleProps
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+
+        +
+        m componentDidMount
+        +
+        => handleInputChange
+            param ev
+                :ref React.ChangeEvent
+                    :param 
+                        :ref HTMLInputElement
+            log 'handleInputChange', ev.target.type, ev.target.checked, ev.target.value
+            _ this.setState
+                { 
+                    @ [ev.target.name] (ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value)
+        +
+        m render
+            log 'CreatePacki.render', 'state', this.state
+            return
+                < FormContainer
+                    < FormTitle
+                        @ title 'Create a new tfolder'
+                        @ subtitle 'A tfolder contains ittf fragments
+                            \b of a single wizzi schema or of many wizzi schemas.'
+                    < HR
+                    < FormGroup
+                        @ label 'TFolder name'
+                        @ name 'tfolder_name'
+                        @ id 'tfolder_name'
+                        @ required {true}
+                        @ value {this.state.tfolder_name}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormGroup
+                        @ label 'Description'
+                        @ name 'tfolder_description'
+                        @ id 'tfolder_description'
+                        @ required {true}
+                        @ value {this.state.tfolder_description}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormRadioBox
+                        @ label 'Single wizzi schema'
+                        @ name 'tfolder_type'
+                        @ id 'tfolder_type_single_artifact'
+                        @ checked {this.state.tfolder_type == 'single_artifact'}
+                        @ value 'single_artifact'
+                        @ onChange {this.handleInputChange}
+                    < FormRadioBox
+                        @ label 'Many wizzi schemas'
+                        @ name 'tfolder_type'
+                        @ id 'tfolder_type_project_artifacts'
+                        @ checked {this.state.tfolder_type == 'project_artifacts'}
+                        @ value 'project_artifacts'
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    {
+                        &&
+                            + this.state.tfolder_type == 'single_artifact'
+                            < React.Fragment
+                                < FormGroup
+                                    @ label 'Wizzi schema'
+                                    @ name 'tfolder_schema'
+                                    @ id 'tfolder_schema'
+                                    @ required {true}
+                                    @ value {this.state.tfolder_schema}
+                                    @ onChange {this.handleInputChange}
+                                < HR
+                    < FormCheckBox
+                        @ label 'Add a context packi'
+                        @ name 'tfolder_add_context'
+                        @ id 'tfolder_add_context'
+                        @ value {this.state.tfolder_add_context}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormCheckBox
+                        @ label 'Add a tfolder dependency'
+                        @ name 'tfolder_add_tfolder'
+                        @ id 'tfolder_add_tfolder'
+                        @ value {this.state.tfolder_add_tfolder}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormButton
+                        @ label 'Create tfolder'
+                        @ id 'btn_create_tfolder'

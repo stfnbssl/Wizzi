@@ -1,0 +1,22 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "DeletePacki",
+            props: [
+                { name: "data", type: "any", ref: true },
+            ],
+            stateItems: [
+                { name: "name", type: "string" },
+            ]
+        }
+    v08/ts/react/component(&md)
+        +
+        m handleChangeName
+        +
+        m componentDidMount
+        +
+        m render
+            return
+                h1
+                    + Delete packi

@@ -1,0 +1,53 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "App",
+            props: []
+        }
+        
+    v08/ts/react/component(&md)
+        
+        $append imports
+            import
+                @ c
+                from '../ThemeProvider'
+            import CreatePacki
+                from './pageforms/CreatePacki'
+            import CreateTFolder
+                from './pageforms/CreateTFolder'
+            import ThemeDemo
+                from './pageforms/widgets/ThemeDemo'
+        
+        $append styles
+            :interface RootStyleProps
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+
+        m render
+            log 'App.render', 'props', this.props, 'state', this.state
+            let Comp
+            if this.props.formName == 'CreatePacki'
+                set Comp = CreatePacki
+            elif this.props.formName == 'DeletePacki'
+                set Comp = DeletePacki
+            elif this.props.formName == 'CreateTFolder'
+                set Comp = CreateTFolder
+            elif this.props.formName == 'DeleteTFolder'
+                set Comp = DeleteTFolder
+            elif this.props.formName == 'ThemeDemo'
+                set Comp
+                    =>
+                        return
+                            < ThemeDemo
+            else
+                set Comp 
+                    =>
+                        return
+                            h1
+                                + Unknown page form: {this.props.formName}
+
+            return
+                < StyledRoot
+                    < Comp
+                        @ data {this.props.formData}

@@ -2,48 +2,12 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\packi\pages\EditorDocument.tsx.ittf
-    utc time: Fri, 25 Jun 2021 04:12:06 GMT
+    utc time: Mon, 28 Jun 2021 20:09:52 GMT
 */
 import jsesc from 'jsesc';
 import React from 'react';
-type EditorDocumentProps = { 
-    data: object;
-    queryParams: object;
-    content?: { 
-        html: string;
-        css: { 
-            content: string;
-            renderedClassNames: string[];
-        };
-    };
-};
-
-export default function EditorDocument(props: EditorDocumentProps) {
-    
-        const {
-            data, 
-            queryParams, 
-            content
-         } = props;
-        const css = String.raw;
-        return  (
-            <html
-            >
-                <head
-                >
-                    <meta
-                     charSet="utf-8" />
-                    <meta
-                     httpEquiv="X-UA-Compatible" content="IE=edge" />
-                    <meta
-                     name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-                    <link
-                     rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,500,600" />
-                    <link
-                     rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" />
-                    <style
-                     type="text/css" dangerouslySetInnerHTML={{
-                            __html: css`
+const css = String.raw;
+const PageCss = css`
               :root {
                 --font-normal: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 --font-monospace: 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New',
@@ -124,7 +88,44 @@ export default function EditorDocument(props: EditorDocumentProps) {
               a {
                 color: #4099ff;
               }
-            `
+            `;
+type EditorDocumentProps = { 
+    data: object;
+    queryParams: object;
+    content?: { 
+        html: string;
+        css: { 
+            content: string;
+            renderedClassNames: string[];
+        };
+    };
+};
+
+export default function EditorDocument(props: EditorDocumentProps) {
+    
+        const {
+            data, 
+            queryParams, 
+            content
+         } = props;
+        return  (
+            <html
+            >
+                <head
+                >
+                    <meta
+                     charSet="utf-8" />
+                    <meta
+                     httpEquiv="X-UA-Compatible" content="IE=edge" />
+                    <meta
+                     name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+                    <link
+                     rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,500,600" />
+                    <link
+                     rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" />
+                    <style
+                     type="text/css" dangerouslySetInnerHTML={{
+                            __html: PageCss
                          }} />
                     <script
                      dangerouslySetInnerHTML={{

@@ -12,7 +12,10 @@ module
                 { name: "tfolder_schema", type: "string" },
                 { name: "tfolder_type", type: "string" },
                 { name: "tfolder_add_context", type: "boolean" },
+                { name: "tfolder_contexts", type: "array" },
                 { name: "tfolder_add_tfolder", type: "boolean" },
+                { name: "tfolder_dependencies", type: "array" },
+                { name: "tfolder_upload_files", type: "array" },
             ]
         }
 
@@ -24,6 +27,8 @@ module
             import FormGroup from './widgets/FormGroup'
             import FormCheckBox from './widgets/FormCheckBox'
             import FormRadioBox from './widgets/FormRadioBox'
+            import FormRow from './widgets/FormRow'
+            import FormFile from './widgets/FormFile'
             import FormButton from './widgets/FormButton'
         
         $append styles
@@ -34,15 +39,25 @@ module
         +
         m componentDidMount
         +
-        => handleInputChange
-            param ev
-                :ref React.ChangeEvent
-                    :param 
-                        :ref HTMLInputElement
-            log 'handleInputChange', ev.target.type, ev.target.checked, ev.target.value
+        
+        $include handle_input_change
+        add_context_handlers( tfolder )
+        add_tfolder_handlers( tfolder )
+        
+        => handleTFolderUploadChange
+            param files
+            log 'CreateTFolder.handleTFolderUploadChange', files
+            const uploadfiles = []
+            foreach file in files
+                if file.webkitRelativePath.endsWith('.ittf')
+                    _ uploadfiles.push
+                        {
+                            @ relPath file.webkitRelativePath
+                            @ file file
             _ this.setState
                 { 
-                    @ [ev.target.name] (ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value)
+                    @ tfolder_upload_files uploadfiles
+
         +
         m render
             log 'CreatePacki.render', 'state', this.state
@@ -83,11 +98,12 @@ module
                         @ checked {this.state.tfolder_type == 'project_artifacts'}
                         @ value 'project_artifacts'
                         @ onChange {this.handleInputChange}
-                    < HR
+                    
                     {
                         &&
                             + this.state.tfolder_type == 'single_artifact'
                             < React.Fragment
+                                < HR
                                 < FormGroup
                                     @ label 'Wizzi schema'
                                     @ name 'tfolder_schema'
@@ -95,20 +111,17 @@ module
                                     @ required {true}
                                     @ value {this.state.tfolder_schema}
                                     @ onChange {this.handleInputChange}
-                                < HR
-                    < FormCheckBox
-                        @ label 'Add a context packi'
-                        @ name 'tfolder_add_context'
-                        @ id 'tfolder_add_context'
-                        @ value {this.state.tfolder_add_context}
-                        @ onChange {this.handleInputChange}
+                    
+                    add_context_render( tfolder )
+                    add_tfolder_render( tfolder )
+                    
                     < HR
-                    < FormCheckBox
-                        @ label 'Add a tfolder dependency'
-                        @ name 'tfolder_add_tfolder'
-                        @ id 'tfolder_add_tfolder'
-                        @ value {this.state.tfolder_add_tfolder}
-                        @ onChange {this.handleInputChange}
+                    < FormFile
+                        @ label 'Upload fragments'
+                        @ name 'tfolder_upload'
+                        @ id 'tfolder_upload'
+                        @ value {this.state.tfolder_upload_files}
+                        @ onChange {this.handleTFolderUploadChange}
                     < HR
                     < FormButton
                         @ label 'Create tfolder'

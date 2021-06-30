@@ -13,5 +13,6 @@ obj/
 bin/ 
 Properties/ 
 private/ 
+.env 
 dist/ 
 build/ 

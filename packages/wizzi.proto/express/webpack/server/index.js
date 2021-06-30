@@ -11,7 +11,7 @@ var api = require('../../packi/api');
 
 const defaultOwner = 'stfnbssl';
 const defaultContext = {
-    wzConfigBaseUrl: 'http://127.0.0.1:5500/docs'
+    wzConfigBaseUrl:  'http://127.0.0.1:5500/docs'
 }
 
 import App from '../src/App';

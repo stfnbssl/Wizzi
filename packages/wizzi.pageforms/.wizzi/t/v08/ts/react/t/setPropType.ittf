@@ -39,6 +39,11 @@ $group
                             $else
                                 :${param.type}
                 :void
+        $elif prop.type == 'array'
+            :[
+                :any
+        $elif prop.type == 'object'
+            :{
         $elif prop.ref
             :ref ${prop.type}
         $else

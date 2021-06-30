@@ -11,7 +11,7 @@ $group
                     { title: 'Target technologies', href: '/ittf/demo/ttech' },
                     { title: 'Lab', href: '/ittf/lab' },
                     { title: 'Packi', href: '/static/packi/index.html' },
-                    
+                    { title: 'Productions', href: '/ittf/test/productions.html.ittf' },
                 ]}, 
                 { title: 'Packi', items: [
                     { title: 'Html packi starter', href: '/~-/html.starter' },

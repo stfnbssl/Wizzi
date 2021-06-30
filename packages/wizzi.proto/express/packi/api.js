@@ -6,6 +6,7 @@ const pDependency = require('../../mongoose/packi/packiDependency');
 const pItem = require('../../mongoose/packi/packiItem');
 const pActivity = require('../../mongoose/packi/userActivity');
 const pUser = require('../../mongoose/packi/user');
+const userApi = require('./userApi');
 
 const apiCache = new NodeCache({ stdTTL: 120, checkperiod: 60 });
 
@@ -41,15 +42,22 @@ module.exports = md = {
             PackiItem = pItem.getPackiItem();
             UserActivity = pActivity.getUserActivity();
             User = pUser.getUser();
+            userApi.start(pUser);
             md._getPackiContextItem(defaultOwner, 'wzCtx;wzctx', {}).then(resultItemContext=>{
                 DefaultContext = Object.assign({}, defaultContext, resultItemContext);
+                console.log('packi.api.start', 'got PackiContextItem wzCtx;wzctx')
                 callback(null);
+            }).catch(err=>{
+                console.log('packi.api.start', 'error getting PackiContextItem wzCtx;wzctx', err)
+                callback(err)
             });
         });
     },
     getDefaultContext: function() {
         return DefaultContext;
     },
+    getByGithubLogin: userApi.getByGithubLogin,
+    saveFromGithubLogin: userApi.saveFromGithubLogin,
     getPackiList: function(owner) {
         var query = { owner: owner };
         console.log('getPackiList', query);
@@ -151,10 +159,10 @@ module.exports = md = {
                 const contextName = parts[0];
                 const contextPackiName = parts[1];
                 const contextTransformation = parts.length > 2 ? parts[2] : null;
-                console.log('_getPackiContextItem: contextName', contextName, 'contextPackiName', contextPackiName, 'contextTransformation', contextTransformation);
+                console.log('packi.api._getPackiContextItem: contextName', contextName, 'contextPackiName', contextPackiName, 'contextTransformation', contextTransformation);
                 if (contextTransformation) {
                     md.getPackiTransformation(owner, contextPackiName, defaultContext, contextTransformation).then(result => {
-                        console.log('_getPackiContextItem: typeof result', typeof result.transformResult);
+                        console.log('packi.api._getPackiContextItem: typeof result', typeof result.transformResult);
                         // const contextObject = JSON.parse(result.transformResult);
                         resolve(Object.assign(
                             {}, 
@@ -166,7 +174,7 @@ module.exports = md = {
                     })
                 } else {
                     md.getPackiGeneration(owner, contextPackiName, defaultContext).then(result => {
-                        console.log('_getPackiContextItem', result.content.length);
+                        console.log('packi.api._getPackiContextItem', result.content.length);
                         const contextObject = JSON.parse(result.content);
                         resolve(Object.assign(
                             {}, 

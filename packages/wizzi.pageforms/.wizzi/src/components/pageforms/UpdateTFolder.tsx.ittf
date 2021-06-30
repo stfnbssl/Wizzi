@@ -1,0 +1,100 @@
+module
+    
+    $
+        var md = {
+            styled: true,
+            name: "UpdateTFolder",
+            props: [
+                { name: "data", type: "any", ref: true },
+            ],
+            stateProps: [
+                { name: "tf_name", type: "string" },
+                { name: "tf_description", type: "string" },
+                { name: "tf_schema", type: "string" },
+                { name: "tf_add_context", type: "boolean" },
+                { name: "tf_contexts", type: "array" },
+                { name: "tf_add_tfolder", type: "boolean" },
+                { name: "tf_dependencies", type: "array" },
+            ]
+        }
+
+    v08/ts/react/component(&md)
+        
+        $append imports
+            $include common_imports
+        
+        $append styles
+            :interface RootStyleProps
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+
+        +
+        $include handle_input_change
+        +
+        
+        m componentDidMount
+            const
+                {
+                    @ name
+                    @ description
+                    @ wizziSchema
+                    @ contexts
+                    @ dependencies
+                = this.props.data
+            
+            const tf_contexts = contexts || []
+            const tf_dependencies = dependencies || []
+            
+            _ this.setState
+                {
+                    @ tf_name name
+                    @ tf_description description
+                    @ tf_wizziSchema wizziSchema
+                    @ tf_add_context tf_contexts.length > 0
+                    @ tf_contexts
+                    @ tf_add_tfolder tf_dependencies.length > 0
+                    @ tf_dependencies 
+        
+        +
+        m render
+            log 'UpdatePacki.render', 'state', this.state
+            return
+                < FormContainer
+                    < FormTitle
+                        @ title 'Update tfolder'
+                    < HR
+                    < FormGroup
+                        @ label 'TFolder name'
+                        @ name 'tf_name'
+                        @ id 'tf_name'
+                        @ required {true}
+                        @ value {this.state.tf_name}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormGroup
+                        @ label 'Description'
+                        @ name 'tf_description'
+                        @ id 'tf_description'
+                        @ required {true}
+                        @ value {this.state.tf_description}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormGroup
+                        @ label 'Wizzi schema'
+                        @ name 'ap_schema'
+                        @ id 'ap_schema'
+                        @ required {true}
+                        @ value {this.state.ap_schema}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormGroup
+                        @ label 'Main ittf'
+                        @ name 'ap_main_ittf'
+                        @ id 'ap_main_ittf'
+                        @ required {true}
+                        @ value {this.state.ap_main_ittf}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormButton
+                        @ label 'Update tfolder'
+                        @ id 'btn_update_tf'

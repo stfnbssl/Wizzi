@@ -1,0 +1,61 @@
+module
+    
+    $
+        var md = {
+            styled: true,
+            name: "CreateUser",
+            props: [
+                { name: "data", type: "any", ref: true },
+            ],
+            stateProps: [
+                { name: "u_username", type: "string" },
+            ]
+        }
+
+    v08/ts/react/component(&md)
+        $append imports
+            $include common_imports
+            import FormAvatar from './widgets/FormAvatar'
+            import FormStatic from './widgets/FormStatic'
+        
+        $append styles
+            :interface RootStyleProps
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+
+        +
+        m componentDidMount
+        
+        $include handle_input_change
+        
+        +
+        m render
+            log 'CreateUser.render', 'state', this.state
+            return
+                < FormContainer
+                    < FormTitle
+                        @ title 'Create a new user'
+                        @ subtitle {'Hello ' + this.props.data.name + '.'}
+                        @ subtitle2 {'It seems that you are not a registered user yet.
+                            \b Choose your unique Wizzi user name to sign up.'}
+                    < HR
+                    < FormAvatar
+                        @ avatar_url {this.props.data.avatar_url}
+                    < HR
+                    < FormStatic
+                        @ label 'Email'
+                        @ name 'u_email'
+                        @ id 'u_email'
+                        @ value {this.props.data.email}
+                    < HR
+                    < FormGroup
+                        @ label 'User name'
+                        @ name 'u_username'
+                        @ id 'u_username'
+                        @ required {true}
+                        @ value {this.state.u_username}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormButton
+                        @ label 'Sign up'
+                        @ id 'btn_create_u'

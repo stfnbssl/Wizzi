@@ -1,0 +1,106 @@
+module
+    
+    $
+        var md = {
+            styled: true,
+            name: "UpdateArtifactProduction",
+            props: [
+                { name: "data", type: "any", ref: true },
+            ],
+            stateProps: [
+                { name: "ap_name", type: "string" },
+                { name: "ap_description", type: "string" },
+                { name: "ap_schema", type: "string" },
+                { name: "ap_main_ittf", type: "string" },
+                { name: "ap_add_context", type: "boolean" },
+                { name: "ap_contexts", type: "array" },
+                { name: "ap_add_tfolder", type: "boolean" },
+                { name: "ap_dependencies", type: "array" },
+            ]
+        }
+
+    v08/ts/react/component(&md)
+        
+        $append imports
+            $include common_imports
+        
+        $append styles
+            :interface RootStyleProps
+            styled StyledRoot .div<RootStyleProps>
+                display flex
+
+        +
+        $include handle_input_change
+        +
+        
+        m componentDidMount
+            log 'UpdateArtifactProduction.componentDidMount.props', this.props
+            const
+                {
+                    @ name
+                    @ description
+                    @ wizziSchema
+                    @ mainIttf
+                    @ contexts
+                    @ dependencies
+                = this.props.data
+            
+            const ap_contexts = contexts || []
+            const ap_dependencies = dependencies || []
+            
+            _ this.setState
+                {
+                    @ ap_name name
+                    @ ap_description description
+                    @ ap_wizziSchema wizziSchema
+                    @ ap_mainIttf mainIttf
+                    @ ap_add_context ap_contexts.length > 0
+                    @ ap_contexts
+                    @ ap_add_tfolder ap_dependencies.length > 0
+                    @ ap_dependencies 
+
+        +
+        m render
+            log 'UpdatePacki.render', 'state', this.state
+            return
+                < FormContainer
+                    < FormTitle
+                        @ title 'Update artifact production'
+                        @ subtitle 'An artifact production contains the ittf documents 
+                            \b for a single software artifact.'
+                    < HR
+                    < FormGroup
+                        @ label 'Artifact name'
+                        @ name 'ap_name'
+                        @ id 'ap_name'
+                        @ required {true}
+                        @ value {this.state.ap_name}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormGroup
+                        @ label 'Description'
+                        @ name 'ap_description'
+                        @ id 'ap_description'
+                        @ required {true}
+                        @ value {this.state.ap_description}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormGroup
+                        @ label 'Wizzi schema'
+                        @ name 'ap_schema'
+                        @ id 'ap_schema'
+                        @ required {true}
+                        @ value {this.state.ap_schema}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormGroup
+                        @ label 'Main ittf'
+                        @ name 'ap_main_ittf'
+                        @ id 'ap_main_ittf'
+                        @ required {true}
+                        @ value {this.state.ap_main_ittf}
+                        @ onChange {this.handleInputChange}
+                    < HR
+                    < FormButton
+                        @ label 'Update artifact production'
+                        @ id 'btn_update_ap'

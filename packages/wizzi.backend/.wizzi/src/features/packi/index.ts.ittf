@@ -21,6 +21,15 @@ module
     import 
         @ PackiAdminController
         from './controllers/packiAdmin'
+    import
+        @ ArtifactProductionController
+        from './controllers/artifactProduction'
+    import
+        @ TFolderController
+        from './controllers/tfolder'
+    import
+        @ UserController
+        from './controllers/user'
     import 
         @ PackiController
         from './controllers/packi'
@@ -57,6 +66,9 @@ module
             [ 
                 @ new PackiEditingController()
                 @ new PackiAdminController()
+                @ new ArtifactProductionController()
+                @ new TFolderController()
+                @ new UserController()
                 @ new PackiController()
                 @ new ProductionsController()
                 @ new ProxyController()

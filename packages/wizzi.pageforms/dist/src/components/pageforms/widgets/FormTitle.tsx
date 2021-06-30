@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormTitle.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
 import React, {FunctionComponent} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -13,6 +13,7 @@ import {c} from '../../ThemeProvider';
 export interface FormTitleProps {
     title: string;
     subtitle?: string;
+    subtitle2?: string;
 }
 
 interface RootStyleProps {
@@ -40,7 +41,8 @@ const StyledSubTitle = styled.span<RootStyleProps>`
 `
 export const FormTitle: FunctionComponent<FormTitleProps> = ({
     title, 
-    subtitle
+    subtitle, 
+    subtitle2
  }) => {
 
     return  (
@@ -56,6 +58,16 @@ export const FormTitle: FunctionComponent<FormTitleProps> = ({
                     <StyledSubTitle
                     >
                         {subtitle}
+                    </StyledSubTitle>
+                    )
+                
+            }
+            {
+                subtitle2 && subtitle2.length > 0
+                 &&  (
+                    <StyledSubTitle
+                    >
+                        {subtitle2}
                     </StyledSubTitle>
                     )
                 

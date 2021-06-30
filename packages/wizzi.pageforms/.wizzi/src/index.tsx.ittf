@@ -64,7 +64,7 @@ module
                         @ ...rest
                         @ query props.queryParams
                         @ formName data.formName
-                        @ formValues data.formValues
+                        @ formData data.formData
                 return 
                     < App 
                         @ {...appProps}

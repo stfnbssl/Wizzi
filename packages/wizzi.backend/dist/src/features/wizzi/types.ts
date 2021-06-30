@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\wizzi\types.ts.ittf
-    utc time: Mon, 28 Jun 2021 20:09:52 GMT
+    utc time: Wed, 30 Jun 2021 15:18:36 GMT
 */
 import * as wizzi from 'wizzi';
 import {FsJson} from 'wizzi-repo';

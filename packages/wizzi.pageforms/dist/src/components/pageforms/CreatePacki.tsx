@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\CreatePacki.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Tue, 29 Jun 2021 16:30:19 GMT
 */
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
@@ -14,6 +14,8 @@ import FormTitle from './widgets/FormTitle';
 import FormGroup from './widgets/FormGroup';
 import FormCheckBox from './widgets/FormCheckBox';
 import FormRadioBox from './widgets/FormRadioBox';
+import FormRow from './widgets/FormRow';
+import FormFile from './widgets/FormFile';
 import FormButton from './widgets/FormButton';
 
 export interface CreatePackiProps {
@@ -27,7 +29,10 @@ type CreatePackiState = {
     packi_main_ittf: string;
     packi_type: string;
     packi_add_context: boolean;
+    packi_contexts: any[];
     packi_add_tfolder: boolean;
+    packi_dependencies: any[];
+    packi_upload_files: any[];
 };
 
 interface RootStyleProps {
@@ -50,19 +55,67 @@ export class CreatePacki extends Component<CreatePackiProps, CreatePackiState> {
             packi_main_ittf: "", 
             packi_type: "", 
             packi_add_context: false, 
-            packi_add_tfolder: false
+            packi_contexts: [], 
+            packi_add_tfolder: false, 
+            packi_dependencies: [], 
+            packi_upload_files: []
          };
     }
     
     componentDidMount() {
     }
-    
     handleInputChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
         console.log('handleInputChange', ev.target.type, ev.target.checked, ev.target.value);
         this.setState({
             [ev.target.name]: (ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value)
          })
     };
+    handleContextAdd = context => 
+        this.setState((state) => 
+        
+            ({
+                packi_contexts: [context, ...state.packi_contexts]
+             })
+        );
+    handleContextDelete = delcontext => 
+        this.setState((state) => {
+        
+            const contexts = [];
+            var i, i_items=this.state.packi_contexts, i_len=this.state.packi_contexts.length, context;
+            for (i=0; i<i_len; i++) {
+                context = this.state.packi_contexts[i];
+                if (context.name !== delcontext.name) {
+                    contexts.push(context)
+                }
+            }
+            return {
+                    packi_contexts: contexts
+                 };
+        }
+        );
+    handleTFolderAdd = tfolder => 
+        this.setState((state) => 
+        
+            ({
+                packi_dependencies: [tfolder, ...state.packi_dependencies]
+             })
+        );
+    handleTFolderDelete = deltfolder => 
+        this.setState((state) => {
+        
+            const tfolders = [];
+            var i, i_items=this.state.packi_dependencies, i_len=this.state.packi_dependencies.length, tfolder;
+            for (i=0; i<i_len; i++) {
+                tfolder = this.state.packi_dependencies[i];
+                if (tfolder.name !== deltfolder.name) {
+                    tfolders.push(tfolder)
+                }
+            }
+            return {
+                    packi_dependencies: tfolders
+                 };
+        }
+        );
     
     render() {
         console.log('CreatePacki.render', 'state', this.state);
@@ -140,6 +193,8 @@ export class CreatePacki extends Component<CreatePackiProps, CreatePackiState> {
                         )
                     
                 }
+                <HR
+                 />
                 <FormCheckBox 
                     label='Add a context packi'
                     name='packi_add_context'
@@ -147,6 +202,32 @@ export class CreatePacki extends Component<CreatePackiProps, CreatePackiState> {
                     value={this.state.packi_add_context}
                     onChange={this.handleInputChange}
                  />
+                {
+                    this.state.packi_add_context
+                     &&  (
+                        <div
+                        >
+                            {
+                                this.state.packi_contexts.map((context, ndx) => {
+                                
+                                    console.log('Createpacki.context', context);
+                                    return  (
+                                        <div
+                                         key={ndx}>
+                                            <FormRow
+                                             type='delete' value={context} onDelete={this.handleContextDelete} />
+                                        </div>
+                                        )
+                                    ;
+                                }
+                                )
+                            }
+                            <FormRow
+                             type='add' onAdd={this.handleContextAdd} />
+                        </div>
+                        )
+                    
+                }
                 <HR
                  />
                 <FormCheckBox 
@@ -156,6 +237,32 @@ export class CreatePacki extends Component<CreatePackiProps, CreatePackiState> {
                     value={this.state.packi_add_tfolder}
                     onChange={this.handleInputChange}
                  />
+                {
+                    this.state.packi_add_tfolder
+                     &&  (
+                        <div
+                        >
+                            {
+                                this.state.packi_dependencies.map((tfolder, ndx) => {
+                                
+                                    console.log('Createpacki.tfolder', tfolder);
+                                    return  (
+                                        <div
+                                         key={ndx}>
+                                            <FormRow
+                                             type='delete' value={tfolder} onDelete={this.handleTFolderDelete} />
+                                        </div>
+                                        )
+                                    ;
+                                }
+                                )
+                            }
+                            <FormRow
+                             type='add' onAdd={this.handleTFolderAdd} />
+                        </div>
+                        )
+                    
+                }
                 <HR
                  />
                 <FormButton

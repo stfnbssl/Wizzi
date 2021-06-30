@@ -2,12 +2,15 @@ module
     $
         var md = {
             styled: true,
-            name: "DeletePacki",
+            name: "DeleteArtifactProduction",
             props: [
                 { name: "data", type: "any", ref: true },
             ],
-            stateItems: [
-                { name: "name", type: "string" },
+            stateProps: [
+                { name: "ap_name", type: "string" },
+                { name: "ap_description", type: "string" },
+                { name: "ap_schema", type: "string" },
+                { name: "ap_main_ittf", type: "string" },
             ]
         }
     v08/ts/react/component(&md)
@@ -19,4 +22,4 @@ module
         m render
             return
                 h1
-                    + Delete packi
+                    + Delete artifact production

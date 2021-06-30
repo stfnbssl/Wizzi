@@ -1,0 +1,93 @@
+module
+    $
+        var ctrl = {
+            name: 'User',
+            path: '/user',
+        }
+    
+    controller( &ctrl )
+            
+        $append imports
+            import ReactDOMServer 
+                from 'react-dom/server'
+            import wizziProto
+                from 'wizzi.proto'
+            import PageFormDocument 
+                from '../pages/PageFormDocument' 
+            +
+            const myname = 'features/packi/controller/user'
+            +
+            function renderPackiPageForm
+                param req
+                    :ref Request
+                param res
+                    :ref Response
+                param data
+                    :object
+                param queryParams
+                    :object
+
+                const index
+                    op+
+                        + '<!DOCTYPE html>'
+                        _ ReactDOMServer.renderToStaticMarkup
+                            < PageFormDocument 
+                                @ data {data}
+                                @ queryParams {queryParams}
+                _ res.set('Content-Type', 'text/html')
+                _ res.set('Content-Length', index.length.toString())
+                _ res.send(index)
+
+        _ wizziProto.start
+            @ 'stfnbssl'
+            {
+            =>
+        
+        _ this.router.get('/new', this.getNewUserForm)
+        _ this.router.post('/new', this.postNewUser)
+        _ this.router.get('/update', this.getUpdateUserForm)
+        _ this.router.post('/update', this.postUpdateUser)
+        _ this.router.get('/delete', this.getDeleteUserForm)
+        _ this.router.delete('/delete', this.deleteUser)
+        
+        $append handlers
+            
+            handler( getNewUserForm )
+            
+                # log myname + '.getNewUserForm', 
+                _ renderPackiPageForm
+                    @ request
+                    @ response
+                    {
+                        @ type 'success'
+                        @ formName 'CreateUser'
+                        { formData 
+                            @ name 'joe dummy'
+                            @ email 'dummy.for.test@gmail.com'
+                            @ avatar_url 'https://avatars.githubusercontent.com/u/728956?v=4'
+                    {
+
+            handler( postNewUser )
+                # log myname + '.postNewUser', 
+
+            handler( getUpdateUserForm )
+            
+                # log myname + '.getUpdateUserForm', 
+                _ renderPackiPageForm
+                    @ request
+                    @ response
+                    {
+                        @ type 'success'
+                        @ formName 'UpdateUser'
+                        { formData 
+                            @ website 'http://dummy.com'
+                    {
+
+            handler( postUpdateUser )
+                # log myname + '.postUpdateUser', 
+
+            handler( getDeleteUserForm )
+                # log myname + '.getDeleteUserForm', 
+
+            handler( deleteUser )
+                # log myname + '.deleteUser', 

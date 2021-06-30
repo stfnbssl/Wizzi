@@ -5528,6 +5528,130 @@ rawAsap.makeRequestCallFromTimer = makeRequestCallFromTimer;
 
 /***/ }),
 
+/***/ "./src/assets/AddIcon.tsx":
+/*!********************************!*\
+  !*** ./src/assets/AddIcon.tsx ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AddIcon": () => (/* binding */ AddIcon)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const _excluded = ["height", "width", "theme"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\assets\AddIcon.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+const AddIcon = _ref => {
+  let {
+    height = 24,
+    width = 24,
+    theme = "light"
+  } = _ref,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  const fill = theme == 'light' ? '#ffffff' : '#000000';
+  const stroke = theme == 'light' ? '#000000' : '#ffffff';
+
+  function r(v) {
+    return v * (height + width) / 200;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: width + 'px',
+    height: height + 'px',
+    viewBox: '0 0 ' + width + ' ' + height
+  }, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("polyline", {
+    stroke: stroke,
+    fill: fill,
+    points: r(48) + ' ' + r(2) + ' ' + r(52) + ' ' + r(2) + ' ' + r(52) + ' ' + r(96) + ' ' + r(48) + ' ' + r(96) + ' ' + r(48) + ' ' + r(2),
+    strokeWidth: "2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("polyline", {
+    stroke: stroke,
+    fill: fill,
+    points: r(2) + ' ' + r(48) + ' ' + r(2) + ' ' + r(52) + ' ' + r(96) + ' ' + r(52) + ' ' + r(96) + ' ' + r(48) + ' ' + r(2) + ' ' + r(48),
+    strokeWidth: "2"
+  }));
+};
+
+/***/ }),
+
+/***/ "./src/assets/DeleteIcon.tsx":
+/*!***********************************!*\
+  !*** ./src/assets/DeleteIcon.tsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DeleteIcon": () => (/* binding */ DeleteIcon)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+const _excluded = ["height", "width", "theme"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\assets\DeleteIcon.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+const DeleteIcon = _ref => {
+  let {
+    height = 24,
+    width = 24,
+    theme = "light"
+  } = _ref,
+      props = _objectWithoutProperties(_ref, _excluded);
+
+  const fill = theme == 'light' ? '#ffffff' : '#000000';
+  const stroke = theme == 'light' ? '#000000' : '#ffffff';
+
+  function r(v) {
+    return v * (height + width) / 200;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: width + 'px',
+    height: height + 'px',
+    viewBox: '0 0 ' + width + ' ' + height
+  }, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("polyline", {
+    stroke: stroke,
+    fill: fill,
+    points: r(4) + ' ' + r(2) + ' ' + r(98) + ' ' + r(96) + ' ' + r(96) + ' ' + r(98) + ' ' + r(2) + ' ' + r(4) + ' ' + r(4) + ' ' + r(2),
+    strokeWidth: "2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("polyline", {
+    stroke: stroke,
+    fill: fill,
+    points: r(96) + ' ' + r(2) + ' ' + r(98) + ' ' + r(4) + ' ' + r(4) + ' ' + r(98) + ' ' + r(2) + ' ' + r(96) + ' ' + r(96) + ' ' + r(2),
+    strokeWidth: "2"
+  }));
+};
+
+/***/ }),
+
 /***/ "./src/components/App.tsx":
 /*!********************************!*\
   !*** ./src/components/App.tsx ***!
@@ -5541,10 +5665,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _pageforms_CreatePacki__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pageforms/CreatePacki */ "./src/components/pageforms/CreatePacki.tsx");
-/* harmony import */ var _pageforms_CreateTFolder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pageforms/CreateTFolder */ "./src/components/pageforms/CreateTFolder.tsx");
-/* harmony import */ var _pageforms_widgets_ThemeDemo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pageforms/widgets/ThemeDemo */ "./src/components/pageforms/widgets/ThemeDemo.tsx");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _pageforms_CreateUser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pageforms/CreateUser */ "./src/components/pageforms/CreateUser.tsx");
+/* harmony import */ var _pageforms_UpdateUser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pageforms/UpdateUser */ "./src/components/pageforms/UpdateUser.tsx");
+/* harmony import */ var _pageforms_DeleteUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pageforms/DeleteUser */ "./src/components/pageforms/DeleteUser.tsx");
+/* harmony import */ var _pageforms_CreateArtifactProduction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pageforms/CreateArtifactProduction */ "./src/components/pageforms/CreateArtifactProduction.tsx");
+/* harmony import */ var _pageforms_UpdateArtifactProduction__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pageforms/UpdateArtifactProduction */ "./src/components/pageforms/UpdateArtifactProduction.tsx");
+/* harmony import */ var _pageforms_DeleteArtifactProduction__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pageforms/DeleteArtifactProduction */ "./src/components/pageforms/DeleteArtifactProduction.tsx");
+/* harmony import */ var _pageforms_CreateTFolder__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pageforms/CreateTFolder */ "./src/components/pageforms/CreateTFolder.tsx");
+/* harmony import */ var _pageforms_UpdateTFolder__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pageforms/UpdateTFolder */ "./src/components/pageforms/UpdateTFolder.tsx");
+/* harmony import */ var _pageforms_DeleteTFolder__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pageforms/DeleteTFolder */ "./src/components/pageforms/DeleteTFolder.tsx");
+/* harmony import */ var _pageforms_widgets_ThemeDemo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pageforms/widgets/ThemeDemo */ "./src/components/pageforms/widgets/ThemeDemo.tsx");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -5569,7 +5700,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\App.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
 
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -5577,7 +5708,14 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div`
+
+
+
+
+
+
+
+const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div`
     display: -ms-flexbox;
     display: -webkit-box;
     display: -webkit-flex;
@@ -5601,17 +5739,29 @@ let App = /*#__PURE__*/function (_Component) {
       console.log('App.render', 'props', this.props, 'state', this.state);
       let Comp;
 
-      if (this.props.formName == 'CreatePacki') {
-        Comp = _pageforms_CreatePacki__WEBPACK_IMPORTED_MODULE_1__.default;
-      } else if (this.props.formName == 'DeletePacki') {
-        Comp = DeletePacki;
+      if (this.props.formName == '***') {
+        throw new Error("Don't make me laugh!");
+      } else if (this.props.formName == 'CreateUser') {
+        Comp = _pageforms_CreateUser__WEBPACK_IMPORTED_MODULE_1__.default;
+      } else if (this.props.formName == 'DeleteUser') {
+        Comp = _pageforms_DeleteUser__WEBPACK_IMPORTED_MODULE_3__.default;
+      } else if (this.props.formName == 'UpdateUser') {
+        Comp = _pageforms_UpdateUser__WEBPACK_IMPORTED_MODULE_2__.default;
+      } else if (this.props.formName == 'CreateArtifactProduction') {
+        Comp = _pageforms_CreateArtifactProduction__WEBPACK_IMPORTED_MODULE_4__.default;
+      } else if (this.props.formName == 'DeleteArtifactProduction') {
+        Comp = _pageforms_DeleteArtifactProduction__WEBPACK_IMPORTED_MODULE_6__.default;
+      } else if (this.props.formName == 'UpdateArtifactProduction') {
+        Comp = _pageforms_UpdateArtifactProduction__WEBPACK_IMPORTED_MODULE_5__.default;
       } else if (this.props.formName == 'CreateTFolder') {
-        Comp = _pageforms_CreateTFolder__WEBPACK_IMPORTED_MODULE_2__.default;
+        Comp = _pageforms_CreateTFolder__WEBPACK_IMPORTED_MODULE_7__.default;
       } else if (this.props.formName == 'DeleteTFolder') {
-        Comp = DeleteTFolder;
+        Comp = _pageforms_DeleteTFolder__WEBPACK_IMPORTED_MODULE_9__.default;
+      } else if (this.props.formName == 'UpdateTFolder') {
+        Comp = _pageforms_UpdateTFolder__WEBPACK_IMPORTED_MODULE_8__.default;
       } else if (this.props.formName == 'ThemeDemo') {
         Comp = () => {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_pageforms_widgets_ThemeDemo__WEBPACK_IMPORTED_MODULE_3__.default, null);
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_pageforms_widgets_ThemeDemo__WEBPACK_IMPORTED_MODULE_10__.default, null);
         };
       } else {
         Comp = () => {
@@ -5648,7 +5798,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\NonExistent.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
 
 
@@ -5729,7 +5879,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\ThemeProvider.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
 // taken from https://github.com/expo/snack/blob/main/website/src/client/components/ThemeProvider.tsx
 // modified
@@ -5854,16 +6004,16 @@ const ThemeProvider = ({
 
 /***/ }),
 
-/***/ "./src/components/pageforms/CreatePacki.tsx":
-/*!**************************************************!*\
-  !*** ./src/components/pageforms/CreatePacki.tsx ***!
-  \**************************************************/
+/***/ "./src/components/pageforms/CreateArtifactProduction.tsx":
+/*!***************************************************************!*\
+  !*** ./src/components/pageforms/CreateArtifactProduction.tsx ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CreatePacki": () => (/* binding */ CreatePacki),
+/* harmony export */   "CreateArtifactProduction": () => (/* binding */ CreateArtifactProduction),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -5873,7 +6023,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./widgets/FormTitle */ "./src/components/pageforms/widgets/FormTitle.tsx");
 /* harmony import */ var _widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./widgets/FormGroup */ "./src/components/pageforms/widgets/FormGroup.tsx");
 /* harmony import */ var _widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./widgets/FormCheckBox */ "./src/components/pageforms/widgets/FormCheckBox.tsx");
-/* harmony import */ var _widgets_FormRadioBox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./widgets/FormRadioBox */ "./src/components/pageforms/widgets/FormRadioBox.tsx");
+/* harmony import */ var _widgets_FormRow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./widgets/FormRow */ "./src/components/pageforms/widgets/FormRow.tsx");
 /* harmony import */ var _widgets_FormButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./widgets/FormButton */ "./src/components/pageforms/widgets/FormButton.tsx");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5900,8 +6050,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
-    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\CreatePacki.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\CreateArtifactProduction.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
 
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -5920,15 +6070,15 @@ const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div`
     display: flex;
     
 `;
-let CreatePacki = /*#__PURE__*/function (_Component) {
-  _inherits(CreatePacki, _Component);
+let CreateArtifactProduction = /*#__PURE__*/function (_Component) {
+  _inherits(CreateArtifactProduction, _Component);
 
-  var _super = _createSuper(CreatePacki);
+  var _super = _createSuper(CreateArtifactProduction);
 
-  function CreatePacki(props) {
+  function CreateArtifactProduction(props) {
     var _this;
 
-    _classCallCheck(this, CreatePacki);
+    _classCallCheck(this, CreateArtifactProduction);
 
     _this = _super.call(this, props);
 
@@ -5940,92 +6090,153 @@ let CreatePacki = /*#__PURE__*/function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleContextAdd", context => _this.setState(state => ({
+      ap_contexts: [context, ...state.ap_contexts]
+    })));
+
+    _defineProperty(_assertThisInitialized(_this), "handleContextDelete", delcontext => _this.setState(state => {
+      const contexts = [];
+      var i,
+          i_items = _this.state.ap_contexts,
+          i_len = _this.state.ap_contexts.length,
+          context;
+
+      for (i = 0; i < i_len; i++) {
+        context = _this.state.ap_contexts[i];
+
+        if (context.name !== delcontext.name) {
+          contexts.push(context);
+        }
+      }
+
+      return {
+        ap_contexts: contexts
+      };
+    }));
+
+    _defineProperty(_assertThisInitialized(_this), "handleTFolderAdd", tfolder => _this.setState(state => ({
+      ap_dependencies: [tfolder, ...state.ap_dependencies]
+    })));
+
+    _defineProperty(_assertThisInitialized(_this), "handleTFolderDelete", deltfolder => _this.setState(state => {
+      const tfolders = [];
+      var i,
+          i_items = _this.state.ap_dependencies,
+          i_len = _this.state.ap_dependencies.length,
+          tfolder;
+
+      for (i = 0; i < i_len; i++) {
+        tfolder = _this.state.ap_dependencies[i];
+
+        if (tfolder.name !== deltfolder.name) {
+          tfolders.push(tfolder);
+        }
+      }
+
+      return {
+        ap_dependencies: tfolders
+      };
+    }));
+
     _this.state = {
-      packi_name: "",
-      packi_description: "",
-      packi_schema: "",
-      packi_main_ittf: "",
-      packi_type: "",
-      packi_add_context: false,
-      packi_add_tfolder: false
+      ap_name: "",
+      ap_description: "",
+      ap_schema: "",
+      ap_main_ittf: "",
+      ap_type: "",
+      ap_add_context: false,
+      ap_contexts: [],
+      ap_add_tfolder: false,
+      ap_dependencies: [],
+      ap_upload_files: []
     };
     return _this;
   }
 
-  _createClass(CreatePacki, [{
+  _createClass(CreateArtifactProduction, [{
     key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
     key: "render",
     value: function render() {
-      console.log('CreatePacki.render', 'state', this.state);
+      console.log('CreateArtifactProduction.render', 'state', this.state);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__.default, {
-        title: "Create a new packi",
-        subtitle: "A packi contains the ittf documents for a single software artifact or for an entire project."
+        title: "Create a new artifact production",
+        subtitle: "An artifact production contains the ittf documents for a single software artifact."
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
-        label: "Packi name",
-        name: "packi_name",
-        id: "packi_name",
+        label: "Artifact name",
+        name: "ap_name",
+        id: "ap_name",
         required: true,
-        value: this.state.packi_name,
+        value: this.state.ap_name,
         onChange: this.handleInputChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
         label: "Description",
-        name: "packi_description",
-        id: "packi_description",
+        name: "ap_description",
+        id: "ap_description",
         required: true,
-        value: this.state.packi_description,
+        value: this.state.ap_description,
         onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRadioBox__WEBPACK_IMPORTED_MODULE_6__.default, {
-        label: "Single artifact",
-        name: "packi_type",
-        id: "packi_type_single_artifact",
-        checked: this.state.packi_type == 'single_artifact',
-        value: "single_artifact",
-        onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRadioBox__WEBPACK_IMPORTED_MODULE_6__.default, {
-        label: "Project artifacts",
-        name: "packi_type",
-        id: "packi_type_project_artifacts",
-        checked: this.state.packi_type == 'project_artifacts',
-        value: "project_artifacts",
-        onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), this.state.packi_type == 'single_artifact' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
         label: "Wizzi schema",
-        name: "packi_schema",
-        id: "packi_schema",
+        name: "ap_schema",
+        id: "ap_schema",
         required: true,
-        value: this.state.packi_schema,
+        value: this.state.ap_schema,
         onChange: this.handleInputChange
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
         label: "Main ittf",
-        name: "packi_main_ittf",
-        id: "packi_main_ittf",
+        name: "ap_main_ittf",
+        id: "ap_main_ittf",
         required: true,
-        value: this.state.packi_main_ittf,
+        value: this.state.ap_main_ittf,
         onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__.default, {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__.default, {
         label: "Add a context packi",
-        name: "packi_add_context",
-        id: "packi_add_context",
-        value: this.state.packi_add_context,
+        name: "ap_add_context",
+        id: "ap_add_context",
+        value: this.state.ap_add_context,
         onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__.default, {
+      }), this.state.ap_add_context && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.state.ap_contexts.map((context, ndx) => {
+        console.log('Createap.context', context);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          key: ndx
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRow__WEBPACK_IMPORTED_MODULE_6__.default, {
+          type: "delete",
+          value: context,
+          onDelete: this.handleContextDelete
+        }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRow__WEBPACK_IMPORTED_MODULE_6__.default, {
+        type: "add",
+        onAdd: this.handleContextAdd
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__.default, {
         label: "Add a tfolder dependency",
-        name: "packi_add_tfolder",
-        id: "packi_add_tfolder",
-        value: this.state.packi_add_tfolder,
+        name: "ap_add_tfolder",
+        id: "ap_add_tfolder",
+        value: this.state.ap_add_tfolder,
         onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormButton__WEBPACK_IMPORTED_MODULE_7__.default, {
-        label: "Create packi",
-        id: "btn_create_packi"
+      }), this.state.ap_add_tfolder && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.state.ap_dependencies.map((tfolder, ndx) => {
+        console.log('Createap.tfolder', tfolder);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          key: ndx
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRow__WEBPACK_IMPORTED_MODULE_6__.default, {
+          type: "delete",
+          value: tfolder,
+          onDelete: this.handleTFolderDelete
+        }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRow__WEBPACK_IMPORTED_MODULE_6__.default, {
+        type: "add",
+        onAdd: this.handleTFolderAdd
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormButton__WEBPACK_IMPORTED_MODULE_7__.default, {
+        label: "Create artifact production",
+        id: "btn_create_ap"
       }));
     }
   }]);
 
-  return CreatePacki;
+  return CreateArtifactProduction;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CreatePacki);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CreateArtifactProduction);
 
 /***/ }),
 
@@ -6042,14 +6253,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _widgets_HR__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/HR */ "./src/components/pageforms/widgets/HR.tsx");
 /* harmony import */ var _widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./widgets/FormContainer */ "./src/components/pageforms/widgets/FormContainer.tsx");
 /* harmony import */ var _widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./widgets/FormTitle */ "./src/components/pageforms/widgets/FormTitle.tsx");
 /* harmony import */ var _widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./widgets/FormGroup */ "./src/components/pageforms/widgets/FormGroup.tsx");
 /* harmony import */ var _widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./widgets/FormCheckBox */ "./src/components/pageforms/widgets/FormCheckBox.tsx");
 /* harmony import */ var _widgets_FormRadioBox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./widgets/FormRadioBox */ "./src/components/pageforms/widgets/FormRadioBox.tsx");
-/* harmony import */ var _widgets_FormButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./widgets/FormButton */ "./src/components/pageforms/widgets/FormButton.tsx");
+/* harmony import */ var _widgets_FormRow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./widgets/FormRow */ "./src/components/pageforms/widgets/FormRow.tsx");
+/* harmony import */ var _widgets_FormFile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./widgets/FormFile */ "./src/components/pageforms/widgets/FormFile.tsx");
+/* harmony import */ var _widgets_FormButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./widgets/FormButton */ "./src/components/pageforms/widgets/FormButton.tsx");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -6076,7 +6289,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\CreateTFolder.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
 
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -6088,7 +6301,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div`
+
+
+const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div`
     display: -ms-flexbox;
     display: -webkit-box;
     display: -webkit-flex;
@@ -6115,13 +6330,88 @@ let CreateTFolder = /*#__PURE__*/function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "handleContextAdd", context => _this.setState(state => ({
+      tfolder_contexts: [context, ...state.tfolder_contexts]
+    })));
+
+    _defineProperty(_assertThisInitialized(_this), "handleContextDelete", delcontext => _this.setState(state => {
+      const contexts = [];
+      var i,
+          i_items = _this.state.tfolder_contexts,
+          i_len = _this.state.tfolder_contexts.length,
+          context;
+
+      for (i = 0; i < i_len; i++) {
+        context = _this.state.tfolder_contexts[i];
+
+        if (context.name !== delcontext.name) {
+          contexts.push(context);
+        }
+      }
+
+      return {
+        tfolder_contexts: contexts
+      };
+    }));
+
+    _defineProperty(_assertThisInitialized(_this), "handleTFolderAdd", tfolder => _this.setState(state => ({
+      tfolder_dependencies: [tfolder, ...state.tfolder_dependencies]
+    })));
+
+    _defineProperty(_assertThisInitialized(_this), "handleTFolderDelete", deltfolder => _this.setState(state => {
+      const tfolders = [];
+      var i,
+          i_items = _this.state.tfolder_dependencies,
+          i_len = _this.state.tfolder_dependencies.length,
+          tfolder;
+
+      for (i = 0; i < i_len; i++) {
+        tfolder = _this.state.tfolder_dependencies[i];
+
+        if (tfolder.name !== deltfolder.name) {
+          tfolders.push(tfolder);
+        }
+      }
+
+      return {
+        tfolder_dependencies: tfolders
+      };
+    }));
+
+    _defineProperty(_assertThisInitialized(_this), "handleTFolderUploadChange", files => {
+      console.log('CreateTFolder.handleTFolderUploadChange', files);
+      const uploadfiles = [];
+      var i,
+          i_items = files,
+          i_len = files.length,
+          file;
+
+      for (i = 0; i < i_len; i++) {
+        file = files[i];
+
+        if (file.webkitRelativePath.endsWith('.ittf')) {
+          uploadfiles.push({
+            relPath: file.webkitRelativePath,
+            file: file
+          });
+        }
+      }
+
+      _this.setState({
+        tfolder_upload_files: uploadfiles
+      });
+    });
+
     _this.state = {
       tfolder_name: "",
       tfolder_description: "",
       tfolder_schema: "",
       tfolder_type: "",
       tfolder_add_context: false,
-      tfolder_add_tfolder: false
+      tfolder_contexts: [],
+      tfolder_add_tfolder: false,
+      tfolder_dependencies: [],
+      tfolder_upload_files: []
     };
     return _this;
   }
@@ -6164,26 +6454,56 @@ let CreateTFolder = /*#__PURE__*/function (_Component) {
         checked: this.state.tfolder_type == 'project_artifacts',
         value: "project_artifacts",
         onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), this.state.tfolder_type == 'single_artifact' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+      }), this.state.tfolder_type == 'single_artifact' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
         label: "Wizzi schema",
         name: "tfolder_schema",
         id: "tfolder_schema",
         required: true,
         value: this.state.tfolder_schema,
         onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__.default, {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__.default, {
         label: "Add a context packi",
         name: "tfolder_add_context",
         id: "tfolder_add_context",
         value: this.state.tfolder_add_context,
         onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__.default, {
+      }), this.state.tfolder_add_context && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.state.tfolder_contexts.map((context, ndx) => {
+        console.log('Createtfolder.context', context);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          key: ndx
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRow__WEBPACK_IMPORTED_MODULE_7__.default, {
+          type: "delete",
+          value: context,
+          onDelete: this.handleContextDelete
+        }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRow__WEBPACK_IMPORTED_MODULE_7__.default, {
+        type: "add",
+        onAdd: this.handleContextAdd
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormCheckBox__WEBPACK_IMPORTED_MODULE_5__.default, {
         label: "Add a tfolder dependency",
         name: "tfolder_add_tfolder",
         id: "tfolder_add_tfolder",
         value: this.state.tfolder_add_tfolder,
         onChange: this.handleInputChange
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormButton__WEBPACK_IMPORTED_MODULE_7__.default, {
+      }), this.state.tfolder_add_tfolder && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, this.state.tfolder_dependencies.map((tfolder, ndx) => {
+        console.log('Createtfolder.tfolder', tfolder);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+          key: ndx
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRow__WEBPACK_IMPORTED_MODULE_7__.default, {
+          type: "delete",
+          value: tfolder,
+          onDelete: this.handleTFolderDelete
+        }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormRow__WEBPACK_IMPORTED_MODULE_7__.default, {
+        type: "add",
+        onAdd: this.handleTFolderAdd
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormFile__WEBPACK_IMPORTED_MODULE_8__.default, {
+        label: "Upload fragments",
+        name: "tfolder_upload",
+        id: "tfolder_upload",
+        value: this.state.tfolder_upload_files,
+        onChange: this.handleTFolderUploadChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormButton__WEBPACK_IMPORTED_MODULE_9__.default, {
         label: "Create tfolder",
         id: "btn_create_tfolder"
       }));
@@ -6193,6 +6513,868 @@ let CreateTFolder = /*#__PURE__*/function (_Component) {
   return CreateTFolder;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CreateTFolder);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/CreateUser.tsx":
+/*!*************************************************!*\
+  !*** ./src/components/pageforms/CreateUser.tsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CreateUser": () => (/* binding */ CreateUser),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _widgets_HR__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/HR */ "./src/components/pageforms/widgets/HR.tsx");
+/* harmony import */ var _widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./widgets/FormContainer */ "./src/components/pageforms/widgets/FormContainer.tsx");
+/* harmony import */ var _widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./widgets/FormTitle */ "./src/components/pageforms/widgets/FormTitle.tsx");
+/* harmony import */ var _widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./widgets/FormGroup */ "./src/components/pageforms/widgets/FormGroup.tsx");
+/* harmony import */ var _widgets_FormButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./widgets/FormButton */ "./src/components/pageforms/widgets/FormButton.tsx");
+/* harmony import */ var _widgets_FormAvatar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./widgets/FormAvatar */ "./src/components/pageforms/widgets/FormAvatar.tsx");
+/* harmony import */ var _widgets_FormStatic__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./widgets/FormStatic */ "./src/components/pageforms/widgets/FormStatic.tsx");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\CreateUser.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+
+
+
+
+
+
+
+
+const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div`
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    
+`;
+let CreateUser = /*#__PURE__*/function (_Component) {
+  _inherits(CreateUser, _Component);
+
+  var _super = _createSuper(CreateUser);
+
+  function CreateUser(props) {
+    var _this;
+
+    _classCallCheck(this, CreateUser);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleInputChange", ev => {
+      console.log('handleInputChange', ev.target.type, ev.target.checked, ev.target.value);
+
+      _this.setState({
+        [ev.target.name]: ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value
+      });
+    });
+
+    _this.state = {
+      u_username: ""
+    };
+    return _this;
+  }
+
+  _createClass(CreateUser, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "render",
+    value: function render() {
+      console.log('CreateUser.render', 'state', this.state);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__.default, {
+        title: "Create a new user",
+        subtitle: 'Hello ' + this.props.data.name + '.',
+        subtitle2: 'It seems that you are not a registered user yet. Choose your unique Wizzi user name to sign up.'
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormAvatar__WEBPACK_IMPORTED_MODULE_6__.default, {
+        avatar_url: this.props.data.avatar_url
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormStatic__WEBPACK_IMPORTED_MODULE_7__.default, {
+        label: "Email",
+        name: "u_email",
+        id: "u_email",
+        value: this.props.data.email
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "User name",
+        name: "u_username",
+        id: "u_username",
+        required: true,
+        value: this.state.u_username,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormButton__WEBPACK_IMPORTED_MODULE_5__.default, {
+        label: "Sign up",
+        id: "btn_create_u"
+      }));
+    }
+  }]);
+
+  return CreateUser;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CreateUser);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/DeleteArtifactProduction.tsx":
+/*!***************************************************************!*\
+  !*** ./src/components/pageforms/DeleteArtifactProduction.tsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DeleteArtifactProduction": () => (/* binding */ DeleteArtifactProduction),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\DeleteArtifactProduction.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+let DeleteArtifactProduction = /*#__PURE__*/function (_Component) {
+  _inherits(DeleteArtifactProduction, _Component);
+
+  var _super = _createSuper(DeleteArtifactProduction);
+
+  function DeleteArtifactProduction(props) {
+    var _this;
+
+    _classCallCheck(this, DeleteArtifactProduction);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      ap_name: "",
+      ap_description: "",
+      ap_schema: "",
+      ap_main_ittf: ""
+    };
+    return _this;
+  }
+
+  _createClass(DeleteArtifactProduction, [{
+    key: "handleChangeName",
+    value: function handleChangeName() {}
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Delete artifact production");
+    }
+  }]);
+
+  return DeleteArtifactProduction;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeleteArtifactProduction);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/DeleteTFolder.tsx":
+/*!****************************************************!*\
+  !*** ./src/components/pageforms/DeleteTFolder.tsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DeleteTFolder": () => (/* binding */ DeleteTFolder),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\DeleteTFolder.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+let DeleteTFolder = /*#__PURE__*/function (_Component) {
+  _inherits(DeleteTFolder, _Component);
+
+  var _super = _createSuper(DeleteTFolder);
+
+  function DeleteTFolder(props) {
+    var _this;
+
+    _classCallCheck(this, DeleteTFolder);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      ap_name: "",
+      ap_description: "",
+      ap_schema: "",
+      ap_main_ittf: ""
+    };
+    return _this;
+  }
+
+  _createClass(DeleteTFolder, [{
+    key: "handleChangeName",
+    value: function handleChangeName() {}
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Delete tfolder");
+    }
+  }]);
+
+  return DeleteTFolder;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeleteTFolder);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/DeleteUser.tsx":
+/*!*************************************************!*\
+  !*** ./src/components/pageforms/DeleteUser.tsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DeleteUser": () => (/* binding */ DeleteUser),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\DeleteUser.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+let DeleteUser = /*#__PURE__*/function (_Component) {
+  _inherits(DeleteUser, _Component);
+
+  var _super = _createSuper(DeleteUser);
+
+  function DeleteUser() {
+    _classCallCheck(this, DeleteUser);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(DeleteUser, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Delete user");
+    }
+  }]);
+
+  return DeleteUser;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DeleteUser);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/UpdateArtifactProduction.tsx":
+/*!***************************************************************!*\
+  !*** ./src/components/pageforms/UpdateArtifactProduction.tsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UpdateArtifactProduction": () => (/* binding */ UpdateArtifactProduction),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _widgets_HR__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/HR */ "./src/components/pageforms/widgets/HR.tsx");
+/* harmony import */ var _widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./widgets/FormContainer */ "./src/components/pageforms/widgets/FormContainer.tsx");
+/* harmony import */ var _widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./widgets/FormTitle */ "./src/components/pageforms/widgets/FormTitle.tsx");
+/* harmony import */ var _widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./widgets/FormGroup */ "./src/components/pageforms/widgets/FormGroup.tsx");
+/* harmony import */ var _widgets_FormButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./widgets/FormButton */ "./src/components/pageforms/widgets/FormButton.tsx");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\UpdateArtifactProduction.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+
+
+
+
+
+
+const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div`
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    
+`;
+let UpdateArtifactProduction = /*#__PURE__*/function (_Component) {
+  _inherits(UpdateArtifactProduction, _Component);
+
+  var _super = _createSuper(UpdateArtifactProduction);
+
+  function UpdateArtifactProduction(props) {
+    var _this;
+
+    _classCallCheck(this, UpdateArtifactProduction);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleInputChange", ev => {
+      console.log('handleInputChange', ev.target.type, ev.target.checked, ev.target.value);
+
+      _this.setState({
+        [ev.target.name]: ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value
+      });
+    });
+
+    _this.state = {
+      ap_name: "",
+      ap_description: "",
+      ap_schema: "",
+      ap_main_ittf: "",
+      ap_add_context: false,
+      ap_contexts: [],
+      ap_add_tfolder: false,
+      ap_dependencies: []
+    };
+    return _this;
+  }
+
+  _createClass(UpdateArtifactProduction, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('UpdateArtifactProduction.componentDidMount.props', this.props);
+      const {
+        name,
+        description,
+        wizziSchema,
+        mainIttf,
+        contexts,
+        dependencies
+      } = this.props.data;
+      const ap_contexts = contexts || [];
+      const ap_dependencies = dependencies || [];
+      this.setState({
+        ap_name: name,
+        ap_description: description,
+        ap_wizziSchema: wizziSchema,
+        ap_mainIttf: mainIttf,
+        ap_add_context: ap_contexts.length > 0,
+        ap_contexts,
+        ap_add_tfolder: ap_dependencies.length > 0,
+        ap_dependencies
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log('UpdatePacki.render', 'state', this.state);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__.default, {
+        title: "Update artifact production",
+        subtitle: "An artifact production contains the ittf documents for a single software artifact."
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "Artifact name",
+        name: "ap_name",
+        id: "ap_name",
+        required: true,
+        value: this.state.ap_name,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "Description",
+        name: "ap_description",
+        id: "ap_description",
+        required: true,
+        value: this.state.ap_description,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "Wizzi schema",
+        name: "ap_schema",
+        id: "ap_schema",
+        required: true,
+        value: this.state.ap_schema,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "Main ittf",
+        name: "ap_main_ittf",
+        id: "ap_main_ittf",
+        required: true,
+        value: this.state.ap_main_ittf,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormButton__WEBPACK_IMPORTED_MODULE_5__.default, {
+        label: "Update artifact production",
+        id: "btn_update_ap"
+      }));
+    }
+  }]);
+
+  return UpdateArtifactProduction;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpdateArtifactProduction);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/UpdateTFolder.tsx":
+/*!****************************************************!*\
+  !*** ./src/components/pageforms/UpdateTFolder.tsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UpdateTFolder": () => (/* binding */ UpdateTFolder),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _widgets_HR__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/HR */ "./src/components/pageforms/widgets/HR.tsx");
+/* harmony import */ var _widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./widgets/FormContainer */ "./src/components/pageforms/widgets/FormContainer.tsx");
+/* harmony import */ var _widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./widgets/FormTitle */ "./src/components/pageforms/widgets/FormTitle.tsx");
+/* harmony import */ var _widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./widgets/FormGroup */ "./src/components/pageforms/widgets/FormGroup.tsx");
+/* harmony import */ var _widgets_FormButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./widgets/FormButton */ "./src/components/pageforms/widgets/FormButton.tsx");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\UpdateTFolder.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+
+
+
+
+
+
+const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div`
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    
+`;
+let UpdateTFolder = /*#__PURE__*/function (_Component) {
+  _inherits(UpdateTFolder, _Component);
+
+  var _super = _createSuper(UpdateTFolder);
+
+  function UpdateTFolder(props) {
+    var _this;
+
+    _classCallCheck(this, UpdateTFolder);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleInputChange", ev => {
+      console.log('handleInputChange', ev.target.type, ev.target.checked, ev.target.value);
+
+      _this.setState({
+        [ev.target.name]: ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value
+      });
+    });
+
+    _this.state = {
+      tf_name: "",
+      tf_description: "",
+      tf_schema: "",
+      tf_add_context: false,
+      tf_contexts: [],
+      tf_add_tfolder: false,
+      tf_dependencies: []
+    };
+    return _this;
+  }
+
+  _createClass(UpdateTFolder, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      const {
+        name,
+        description,
+        wizziSchema,
+        contexts,
+        dependencies
+      } = this.props.data;
+      const tf_contexts = contexts || [];
+      const tf_dependencies = dependencies || [];
+      this.setState({
+        tf_name: name,
+        tf_description: description,
+        tf_wizziSchema: wizziSchema,
+        tf_add_context: tf_contexts.length > 0,
+        tf_contexts,
+        tf_add_tfolder: tf_dependencies.length > 0,
+        tf_dependencies
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log('UpdatePacki.render', 'state', this.state);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__.default, {
+        title: "Update tfolder"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "TFolder name",
+        name: "tf_name",
+        id: "tf_name",
+        required: true,
+        value: this.state.tf_name,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "Description",
+        name: "tf_description",
+        id: "tf_description",
+        required: true,
+        value: this.state.tf_description,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "Wizzi schema",
+        name: "ap_schema",
+        id: "ap_schema",
+        required: true,
+        value: this.state.ap_schema,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "Main ittf",
+        name: "ap_main_ittf",
+        id: "ap_main_ittf",
+        required: true,
+        value: this.state.ap_main_ittf,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormButton__WEBPACK_IMPORTED_MODULE_5__.default, {
+        label: "Update tfolder",
+        id: "btn_update_tf"
+      }));
+    }
+  }]);
+
+  return UpdateTFolder;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpdateTFolder);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/UpdateUser.tsx":
+/*!*************************************************!*\
+  !*** ./src/components/pageforms/UpdateUser.tsx ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UpdateUser": () => (/* binding */ UpdateUser),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _widgets_HR__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/HR */ "./src/components/pageforms/widgets/HR.tsx");
+/* harmony import */ var _widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./widgets/FormContainer */ "./src/components/pageforms/widgets/FormContainer.tsx");
+/* harmony import */ var _widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./widgets/FormTitle */ "./src/components/pageforms/widgets/FormTitle.tsx");
+/* harmony import */ var _widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./widgets/FormGroup */ "./src/components/pageforms/widgets/FormGroup.tsx");
+/* harmony import */ var _widgets_FormButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./widgets/FormButton */ "./src/components/pageforms/widgets/FormButton.tsx");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\UpdateUser.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+
+
+
+
+
+
+const StyledRoot = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div`
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    
+`;
+let UpdateUser = /*#__PURE__*/function (_Component) {
+  _inherits(UpdateUser, _Component);
+
+  var _super = _createSuper(UpdateUser);
+
+  function UpdateUser(props) {
+    var _this;
+
+    _classCallCheck(this, UpdateUser);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleInputChange", ev => {
+      console.log('handleInputChange', ev.target.type, ev.target.checked, ev.target.value);
+
+      _this.setState({
+        [ev.target.name]: ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value
+      });
+    });
+
+    _this.state = {
+      u_web_url: ""
+    };
+    return _this;
+  }
+
+  _createClass(UpdateUser, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "render",
+    value: function render() {
+      console.log('UpdateUser.render', 'state', this.state);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormContainer__WEBPACK_IMPORTED_MODULE_2__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormTitle__WEBPACK_IMPORTED_MODULE_3__.default, {
+        title: "Update user profile",
+        subtitle: ""
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        label: "User name",
+        name: "u_userid",
+        id: "u_userid",
+        disabled: true
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_HR__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_widgets_FormButton__WEBPACK_IMPORTED_MODULE_5__.default, {
+        label: "Update user profile",
+        id: "btn_update_u"
+      }));
+    }
+  }]);
+
+  return UpdateUser;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpdateUser);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/widgets/FormAvatar.tsx":
+/*!*********************************************************!*\
+  !*** ./src/components/pageforms/widgets/FormAvatar.tsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FormAvatar": () => (/* binding */ FormAvatar),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormAvatar.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+ // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+
+
+const StyledImg = styled_components__WEBPACK_IMPORTED_MODULE_1__.default.img`
+    -webkit-border-radius: 50%!important;
+    -khtml-border-radius: 50%!important;
+    -moz-border-radius: 50%!important;
+    -o-border-radius: 50%!important;
+    border-radius: 50%!important;
+    -webkit-box-shadow: 0 0 0 1px var(--color-avatar-border);
+    -moz-box-shadow: 0 0 0 1px var(--color-avatar-border);
+    -o-box-shadow: 0 0 0 1px var(--color-avatar-border);
+    box-shadow: 0 0 0 1px var(--color-avatar-border);
+    display: inline-block;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    line-height: 1;
+    overflow: hidden;
+    vertical-align: middle;
+    
+`;
+const FormAvatar = ({
+  title,
+  subtitle,
+  avatar_url
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledImg, {
+    style: {
+      height: "auto",
+      width: "260",
+      height: "260"
+    },
+    src: avatar_url
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormAvatar);
 
 /***/ }),
 
@@ -6214,7 +7396,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormButton.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
  // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 
@@ -6275,7 +7457,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormCheckBox.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
  // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 
@@ -6343,7 +7525,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormContainer.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
  // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 
@@ -6371,6 +7553,111 @@ const FormContainer = ({
 
 /***/ }),
 
+/***/ "./src/components/pageforms/widgets/FormFile.tsx":
+/*!*******************************************************!*\
+  !*** ./src/components/pageforms/widgets/FormFile.tsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FormFile": () => (/* binding */ FormFile),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../ThemeProvider */ "./src/components/ThemeProvider.tsx");
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormFile.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+ // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+
+
+
+
+function giveCustomAttributes(input) {
+  input.setAttribute('webkitdirectory', '');
+  input.setAttribute('moz-directory', '');
+}
+
+const StyledFormGroup = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.dl`
+    
+`;
+const StyledInputLabel = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.dt`
+    font-weight: 600;
+    
+`;
+const StyledLabelSpan = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.span`
+    color: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('secondary-text')};
+    font-size: 12px;
+    margin: 4px 4px 2px;
+    min-height: 17px;
+`;
+const StyledInputBox = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.dd`
+    margin: 2px 0;
+    
+`;
+const StyledInput = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input`
+    background-color: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('background')};
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    border: ${props => '1px solid ' + (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('border')};
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.s)('small')};
+    -moz-box-shadow: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.s)('small')};
+    -o-box-shadow: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.s)('small')};
+    box-shadow: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.s)('small')};
+    color: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('primary-text')};
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+    padding: 5px 12px;
+    vertical-align: middle;
+`;
+const FormFile = ({
+  id,
+  name,
+  label,
+  required,
+  value,
+  onChange
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledFormGroup, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledInputLabel, {
+    htmlFor: name
+  }, label, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledLabelSpan, null, required ? '(*)' : '(optional)')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledInputBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledInput, {
+    type: "file",
+    ref: giveCustomAttributes,
+    multiple: true,
+    name: name,
+    id: name,
+    onChange: ev => onChange([...ev.target.files])
+  }), value && value.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    style: {
+      fontWeight: 600
+    }
+  }, "Files to upload"), value.map((file, ndx) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("dl", {
+    key: ndx,
+    style: {
+      margin: 0
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("dd", {
+    style: {
+      margin: 0
+    }
+  }, file.relPath))))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormFile);
+
+/***/ }),
+
 /***/ "./src/components/pageforms/widgets/FormGroup.tsx":
 /*!********************************************************!*\
   !*** ./src/components/pageforms/widgets/FormGroup.tsx ***!
@@ -6390,7 +7677,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormGroup.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
  // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 
@@ -6477,7 +7764,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormRadioBox.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
  // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 
@@ -6531,6 +7818,256 @@ const FormRadioBox = ({
 
 /***/ }),
 
+/***/ "./src/components/pageforms/widgets/FormRow.tsx":
+/*!******************************************************!*\
+  !*** ./src/components/pageforms/widgets/FormRow.tsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FormRow": () => (/* binding */ FormRow),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../ThemeProvider */ "./src/components/ThemeProvider.tsx");
+/* harmony import */ var _assets_AddIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../assets/AddIcon */ "./src/assets/AddIcon.tsx");
+/* harmony import */ var _assets_DeleteIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../assets/DeleteIcon */ "./src/assets/DeleteIcon.tsx");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormRow.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+
+// see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+
+
+
+
+const StyledInput = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input`
+    background-color: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('background')};
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    border: ${props => '1px solid ' + (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('border')};
+    -webkit-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.s)('small')};
+    -moz-box-shadow: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.s)('small')};
+    -o-box-shadow: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.s)('small')};
+    box-shadow: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.s)('small')};
+    color: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('primary-text')};
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+    padding: 5px 12px;
+    vertical-align: middle;
+`;
+const StyledButton = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.button`
+    margin-left: 5px;
+    margin-top: 6px;
+    line-height: 20px;
+    padding: 3px;
+    
+`;
+let FormRow = /*#__PURE__*/function (_Component) {
+  _inherits(FormRow, _Component);
+
+  var _super = _createSuper(FormRow);
+
+  function FormRow(props) {
+    var _this;
+
+    _classCallCheck(this, FormRow);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "handleInputChange", ev => {
+      console.log('handleInputChange', ev.target.type, ev.target.checked, ev.target.value);
+
+      _this.setState({
+        [ev.target.name]: ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleContextAdd", () => {
+      _this.props.onAdd({
+        name: _this.state.name
+      });
+
+      _this.setState({
+        name: ''
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleContextDelete", () => {
+      _this.props.onDelete({
+        name: _this.state.name
+      });
+
+      _this.setState({
+        name: ''
+      });
+    });
+
+    _this.state = {
+      name: ""
+    };
+    return _this;
+  }
+
+  _createClass(FormRow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.type == 'delete') {
+        console.log('FormRow.componentDidMount.props.value.name', this.props.value.name);
+        this.setState({
+          name: this.props.value.name
+        });
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.type == 'delete' && prevProps.value !== this.props.value) {
+        console.log('FormRow.componentDidUpdate.props.value.name', this.props.value.name);
+        this.setState({
+          name: this.props.value.name
+        });
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      console.log('FormRow.state', this.state, 'props', this.props);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledInput, {
+        type: "text",
+        name: "name",
+        id: "name",
+        value: this.state.name,
+        disabled: this.props.type == 'delete',
+        onChange: this.handleInputChange
+      }), this.props.type == 'add' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledButton, {
+        onClick: this.handleContextAdd
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_assets_AddIcon__WEBPACK_IMPORTED_MODULE_2__.AddIcon, {
+        theme: 'light',
+        width: 16,
+        height: 16
+      })), this.props.type == 'delete' && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledButton, {
+        onClick: this.handleContextDelete
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_assets_DeleteIcon__WEBPACK_IMPORTED_MODULE_3__.DeleteIcon, {
+        theme: 'light',
+        width: 16,
+        height: 16
+      })));
+    }
+  }]);
+
+  return FormRow;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormRow);
+
+/***/ }),
+
+/***/ "./src/components/pageforms/widgets/FormStatic.tsx":
+/*!*********************************************************!*\
+  !*** ./src/components/pageforms/widgets/FormStatic.tsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FormStatic": () => (/* binding */ FormStatic),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../ThemeProvider */ "./src/components/ThemeProvider.tsx");
+/*
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
+    package: wizzi-js@0.7.8
+    primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormStatic.tsx.ittf
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+*/
+ // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
+
+
+
+const StyledFormGroup = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.dl`
+    
+`;
+const StyledInputLabel = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.dt`
+    font-weight: 600;
+    
+`;
+const StyledLabelSpan = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.span`
+    color: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('secondary-text')};
+    font-size: 12px;
+    margin: 4px 4px 2px;
+    min-height: 17px;
+`;
+const StyledInputBox = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.dd`
+    margin: 2px 0;
+    
+`;
+const StyledInput = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input`
+    color: ${props => (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_1__.c)('primary-text')};
+    border: none;
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+    padding: 5px 12px;
+    vertical-align: middle;
+`;
+const FormStatic = ({
+  id,
+  name,
+  label,
+  value
+}) => {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledFormGroup, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledInputLabel, {
+    autocomplete: "off"
+  }, label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledInputBox, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledInput, {
+    autocomplete: "off",
+    type: "text",
+    name: name,
+    id: name,
+    value: value,
+    enabled: false
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormStatic);
+
+/***/ }),
+
 /***/ "./src/components/pageforms/widgets/FormTitle.tsx":
 /*!********************************************************!*\
   !*** ./src/components/pageforms/widgets/FormTitle.tsx ***!
@@ -6549,7 +8086,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormTitle.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
  // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 
@@ -6577,9 +8114,10 @@ const StyledSubTitle = styled_components__WEBPACK_IMPORTED_MODULE_1__.default.sp
 `;
 const FormTitle = ({
   title,
-  subtitle
+  subtitle,
+  subtitle2
 }) => {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledRoot, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledH1, null, title), subtitle && subtitle.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledSubTitle, null, subtitle));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledRoot, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledH1, null, title), subtitle && subtitle.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledSubTitle, null, subtitle), subtitle2 && subtitle2.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(StyledSubTitle, null, subtitle2));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormTitle);
 
@@ -6604,7 +8142,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\HR.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
  // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 
@@ -6644,7 +8182,7 @@ __webpack_require__.r(__webpack_exports__);
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\ThemeDemo.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
  // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
 
@@ -42923,7 +44461,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @emotion/is-prop-valid */ "./node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js");
 /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! hoist-non-react-statics */ "./node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js");
 /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6__);
-function v(){return(v=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var g=function(e,t){for(var n=[e[0]],r=0,o=t.length;r<o;r+=1)n.push(t[r],e[r+1]);return n},S=function(t){return null!==t&&"object"==typeof t&&"[object Object]"===(t.toString?t.toString():Object.prototype.toString.call(t))&&!(0,react_is__WEBPACK_IMPORTED_MODULE_0__.typeOf)(t)},w=Object.freeze([]),E=Object.freeze({});function b(e){return"function"==typeof e}function _(e){return true&&"string"==typeof e&&e||e.displayName||e.name||"Component"}function N(e){return e&&"string"==typeof e.styledComponentId}var A="undefined"!=typeof process&&(({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).REACT_APP_SC_ATTR||({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).SC_ATTR)||"data-styled",C="5.3.0",I="undefined"!=typeof window&&"HTMLElement"in window,P=Boolean("boolean"==typeof SC_DISABLE_SPEEDY?SC_DISABLE_SPEEDY:"undefined"!=typeof process&&void 0!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).REACT_APP_SC_DISABLE_SPEEDY&&""!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).REACT_APP_SC_DISABLE_SPEEDY?"false"!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).REACT_APP_SC_DISABLE_SPEEDY&&({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).REACT_APP_SC_DISABLE_SPEEDY:"undefined"!=typeof process&&void 0!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).SC_DISABLE_SPEEDY&&""!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).SC_DISABLE_SPEEDY?"false"!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).SC_DISABLE_SPEEDY&&({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1624911433504}).SC_DISABLE_SPEEDY:"production"!=="development"),O={},R= true?{1:"Cannot create styled-component for component: %s.\n\n",2:"Can't collect styles once you've consumed a `ServerStyleSheet`'s styles! `ServerStyleSheet` is a one off instance for each server-side render cycle.\n\n- Are you trying to reuse it across renders?\n- Are you accidentally calling collectStyles twice?\n\n",3:"Streaming SSR is only supported in a Node.js environment; Please do not try to call this method in the browser.\n\n",4:"The `StyleSheetManager` expects a valid target or sheet prop!\n\n- Does this error occur on the client and is your target falsy?\n- Does this error occur on the server and is the sheet falsy?\n\n",5:"The clone method cannot be used on the client!\n\n- Are you running in a client-like environment on the server?\n- Are you trying to run SSR on the client?\n\n",6:"Trying to insert a new style tag, but the given Node is unmounted!\n\n- Are you using a custom target that isn't mounted?\n- Does your document not have a valid head element?\n- Have you accidentally removed a style tag manually?\n\n",7:'ThemeProvider: Please return an object from your "theme" prop function, e.g.\n\n```js\ntheme={() => ({})}\n```\n\n',8:'ThemeProvider: Please make your "theme" prop an object.\n\n',9:"Missing document `<head>`\n\n",10:"Cannot find a StyleSheet instance. Usually this happens if there are multiple copies of styled-components loaded at once. Check out this issue for how to troubleshoot and fix the common cases where this situation can happen: https://github.com/styled-components/styled-components/issues/1941#issuecomment-417862021\n\n",11:"_This error was replaced with a dev-time warning, it will be deleted for v4 final._ [createGlobalStyle] received children which will not be rendered. Please use the component without passing children elements.\n\n",12:"It seems you are interpolating a keyframe declaration (%s) into an untagged string. This was supported in styled-components v3, but is not longer supported in v4 as keyframes are now injected on-demand. Please wrap your string in the css\\`\\` helper which ensures the styles are injected correctly. See https://www.styled-components.com/docs/api#css\n\n",13:"%s is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details.\n\n",14:'ThemeProvider: "theme" prop is required.\n\n',15:"A stylis plugin has been supplied that is not named. We need a name for each plugin to be able to prevent styling collisions between different stylis configurations within the same app. Before you pass your plugin to `<StyleSheetManager stylisPlugins={[]}>`, please make sure each plugin is uniquely-named, e.g.\n\n```js\nObject.defineProperty(importedPlugin, 'name', { value: 'some-unique-name' });\n```\n\n",16:"Reached the limit of how many styled components may be created at group %s.\nYou may only create up to 1,073,741,824 components. If you're creating components dynamically,\nas for instance in your render method then you may be running into this limitation.\n\n",17:"CSSStyleSheet could not be found on HTMLStyleElement.\nHas styled-components' style tag been unmounted or altered by another script?\n"}:0;function D(){for(var e=arguments.length<=0?void 0:arguments[0],t=[],n=1,r=arguments.length;n<r;n+=1)t.push(n<0||arguments.length<=n?void 0:arguments[n]);return t.forEach((function(t){e=e.replace(/%[a-z]/,t)})),e}function j(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];throw false?0:new Error(D.apply(void 0,[R[e]].concat(n)).trim())}var T=function(){function e(e){this.groupSizes=new Uint32Array(512),this.length=512,this.tag=e}var t=e.prototype;return t.indexOfGroup=function(e){for(var t=0,n=0;n<e;n++)t+=this.groupSizes[n];return t},t.insertRules=function(e,t){if(e>=this.groupSizes.length){for(var n=this.groupSizes,r=n.length,o=r;e>=o;)(o<<=1)<0&&j(16,""+e);this.groupSizes=new Uint32Array(o),this.groupSizes.set(n),this.length=o;for(var i=r;i<o;i++)this.groupSizes[i]=0}for(var s=this.indexOfGroup(e+1),a=0,c=t.length;a<c;a++)this.tag.insertRule(s,t[a])&&(this.groupSizes[e]++,s++)},t.clearGroup=function(e){if(e<this.length){var t=this.groupSizes[e],n=this.indexOfGroup(e),r=n+t;this.groupSizes[e]=0;for(var o=n;o<r;o++)this.tag.deleteRule(n)}},t.getGroup=function(e){var t="";if(e>=this.length||0===this.groupSizes[e])return t;for(var n=this.groupSizes[e],r=this.indexOfGroup(e),o=r+n,i=r;i<o;i++)t+=this.tag.getRule(i)+"/*!sc*/\n";return t},e}(),k=new Map,x=new Map,V=1,B=function(e){if(k.has(e))return k.get(e);for(;x.has(V);)V++;var t=V++;return true&&((0|t)<0||t>1<<30)&&j(16,""+t),k.set(e,t),x.set(t,e),t},M=function(e){return x.get(e)},z=function(e,t){k.set(e,t),x.set(t,e)},L="style["+A+'][data-styled-version="5.3.0"]',G=new RegExp("^"+A+'\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),F=function(e,t,n){for(var r,o=n.split(","),i=0,s=o.length;i<s;i++)(r=o[i])&&e.registerName(t,r)},Y=function(e,t){for(var n=t.innerHTML.split("/*!sc*/\n"),r=[],o=0,i=n.length;o<i;o++){var s=n[o].trim();if(s){var a=s.match(G);if(a){var c=0|parseInt(a[1],10),u=a[2];0!==c&&(z(u,c),F(e,u,a[3]),e.getTag().insertRules(c,r)),r.length=0}else r.push(s)}}},q=function(){return"undefined"!=typeof window&&void 0!==window.__webpack_nonce__?window.__webpack_nonce__:null},H=function(e){var t=document.head,n=e||t,r=document.createElement("style"),o=function(e){for(var t=e.childNodes,n=t.length;n>=0;n--){var r=t[n];if(r&&1===r.nodeType&&r.hasAttribute(A))return r}}(n),i=void 0!==o?o.nextSibling:null;r.setAttribute(A,"active"),r.setAttribute("data-styled-version","5.3.0");var s=q();return s&&r.setAttribute("nonce",s),n.insertBefore(r,i),r},$=function(){function e(e){var t=this.element=H(e);t.appendChild(document.createTextNode("")),this.sheet=function(e){if(e.sheet)return e.sheet;for(var t=document.styleSheets,n=0,r=t.length;n<r;n++){var o=t[n];if(o.ownerNode===e)return o}j(17)}(t),this.length=0}var t=e.prototype;return t.insertRule=function(e,t){try{return this.sheet.insertRule(t,e),this.length++,!0}catch(e){return!1}},t.deleteRule=function(e){this.sheet.deleteRule(e),this.length--},t.getRule=function(e){var t=this.sheet.cssRules[e];return void 0!==t&&"string"==typeof t.cssText?t.cssText:""},e}(),W=function(){function e(e){var t=this.element=H(e);this.nodes=t.childNodes,this.length=0}var t=e.prototype;return t.insertRule=function(e,t){if(e<=this.length&&e>=0){var n=document.createTextNode(t),r=this.nodes[e];return this.element.insertBefore(n,r||null),this.length++,!0}return!1},t.deleteRule=function(e){this.element.removeChild(this.nodes[e]),this.length--},t.getRule=function(e){return e<this.length?this.nodes[e].textContent:""},e}(),U=function(){function e(e){this.rules=[],this.length=0}var t=e.prototype;return t.insertRule=function(e,t){return e<=this.length&&(this.rules.splice(e,0,t),this.length++,!0)},t.deleteRule=function(e){this.rules.splice(e,1),this.length--},t.getRule=function(e){return e<this.length?this.rules[e]:""},e}(),J=I,X={isServer:!I,useCSSOMInjection:!P},Z=function(){function e(e,t,n){void 0===e&&(e=E),void 0===t&&(t={}),this.options=v({},X,{},e),this.gs=t,this.names=new Map(n),!this.options.isServer&&I&&J&&(J=!1,function(e){for(var t=document.querySelectorAll(L),n=0,r=t.length;n<r;n++){var o=t[n];o&&"active"!==o.getAttribute(A)&&(Y(e,o),o.parentNode&&o.parentNode.removeChild(o))}}(this))}e.registerId=function(e){return B(e)};var t=e.prototype;return t.reconstructWithOptions=function(t,n){return void 0===n&&(n=!0),new e(v({},this.options,{},t),this.gs,n&&this.names||void 0)},t.allocateGSInstance=function(e){return this.gs[e]=(this.gs[e]||0)+1},t.getTag=function(){return this.tag||(this.tag=(n=(t=this.options).isServer,r=t.useCSSOMInjection,o=t.target,e=n?new U(o):r?new $(o):new W(o),new T(e)));var e,t,n,r,o},t.hasNameForId=function(e,t){return this.names.has(e)&&this.names.get(e).has(t)},t.registerName=function(e,t){if(B(e),this.names.has(e))this.names.get(e).add(t);else{var n=new Set;n.add(t),this.names.set(e,n)}},t.insertRules=function(e,t,n){this.registerName(e,t),this.getTag().insertRules(B(e),n)},t.clearNames=function(e){this.names.has(e)&&this.names.get(e).clear()},t.clearRules=function(e){this.getTag().clearGroup(B(e)),this.clearNames(e)},t.clearTag=function(){this.tag=void 0},t.toString=function(){return function(e){for(var t=e.getTag(),n=t.length,r="",o=0;o<n;o++){var i=M(o);if(void 0!==i){var s=e.names.get(i),a=t.getGroup(o);if(void 0!==s&&0!==a.length){var c=A+".g"+o+'[id="'+i+'"]',u="";void 0!==s&&s.forEach((function(e){e.length>0&&(u+=e+",")})),r+=""+a+c+'{content:"'+u+'"}/*!sc*/\n'}}}return r}(this)},e}(),K=/(a)(d)/gi,Q=function(e){return String.fromCharCode(e+(e>25?39:97))};function ee(e){var t,n="";for(t=Math.abs(e);t>52;t=t/52|0)n=Q(t%52)+n;return(Q(t%52)+n).replace(K,"$1-$2")}var te=function(e,t){for(var n=t.length;n;)e=33*e^t.charCodeAt(--n);return e},ne=function(e){return te(5381,e)};function re(e){for(var t=0;t<e.length;t+=1){var n=e[t];if(b(n)&&!N(n))return!1}return!0}var oe=ne("5.3.0"),ie=function(){function e(e,t,n){this.rules=e,this.staticRulesId="",this.isStatic= false&&0,this.componentId=t,this.baseHash=te(oe,t),this.baseStyle=n,Z.registerId(t)}return e.prototype.generateAndInjectStyles=function(e,t,n){var r=this.componentId,o=[];if(this.baseStyle&&o.push(this.baseStyle.generateAndInjectStyles(e,t,n)),this.isStatic&&!n.hash)if(this.staticRulesId&&t.hasNameForId(r,this.staticRulesId))o.push(this.staticRulesId);else{var i=Ne(this.rules,e,t,n).join(""),s=ee(te(this.baseHash,i.length)>>>0);if(!t.hasNameForId(r,s)){var a=n(i,"."+s,void 0,r);t.insertRules(r,s,a)}o.push(s),this.staticRulesId=s}else{for(var c=this.rules.length,u=te(this.baseHash,n.hash),l="",d=0;d<c;d++){var h=this.rules[d];if("string"==typeof h)l+=h, true&&(u=te(u,h+d));else if(h){var p=Ne(h,e,t,n),f=Array.isArray(p)?p.join(""):p;u=te(u,f+d),l+=f}}if(l){var m=ee(u>>>0);if(!t.hasNameForId(r,m)){var y=n(l,"."+m,void 0,r);t.insertRules(r,m,y)}o.push(m)}}return o.join(" ")},e}(),se=/^\s*\/\/.*$/gm,ae=[":","[",".","#"];function ce(e){var t,n,r,o,i=void 0===e?E:e,s=i.options,a=void 0===s?E:s,c=i.plugins,u=void 0===c?w:c,l=new _emotion_stylis__WEBPACK_IMPORTED_MODULE_3__.default(a),d=[],h=function(e){function t(t){if(t)try{e(t+"}")}catch(e){}}return function(n,r,o,i,s,a,c,u,l,d){switch(n){case 1:if(0===l&&64===r.charCodeAt(0))return e(r+";"),"";break;case 2:if(0===u)return r+"/*|*/";break;case 3:switch(u){case 102:case 112:return e(o[0]+r),"";default:return r+(0===d?"/*|*/":"")}case-2:r.split("/*|*/}").forEach(t)}}}((function(e){d.push(e)})),f=function(e,r,i){return 0===r&&-1!==ae.indexOf(i[n.length])||i.match(o)?e:"."+t};function m(e,i,s,a){void 0===a&&(a="&");var c=e.replace(se,""),u=i&&s?s+" "+i+" { "+c+" }":c;return t=a,n=i,r=new RegExp("\\"+n+"\\b","g"),o=new RegExp("(\\"+n+"\\b){2,}"),l(s||!i?"":i,u)}return l.use([].concat(u,[function(e,t,o){2===e&&o.length&&o[0].lastIndexOf(n)>0&&(o[0]=o[0].replace(r,f))},h,function(e){if(-2===e){var t=d;return d=[],t}}])),m.hash=u.length?u.reduce((function(e,t){return t.name||j(15),te(e,t.name)}),5381).toString():"",m}var ue=react__WEBPACK_IMPORTED_MODULE_1__.createContext(),le=ue.Consumer,de=react__WEBPACK_IMPORTED_MODULE_1__.createContext(),he=(de.Consumer,new Z),pe=ce();function fe(){return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ue)||he}function me(){return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(de)||pe}function ye(e){var t=(0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(e.stylisPlugins),n=t[0],i=t[1],c=fe(),u=(0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)((function(){var t=c;return e.sheet?t=e.sheet:e.target&&(t=t.reconstructWithOptions({target:e.target},!1)),e.disableCSSOMInjection&&(t=t.reconstructWithOptions({useCSSOMInjection:!1})),t}),[e.disableCSSOMInjection,e.sheet,e.target]),l=(0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)((function(){return ce({options:{prefix:!e.disableVendorPrefixes},plugins:n})}),[e.disableVendorPrefixes,n]);return (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)((function(){shallowequal__WEBPACK_IMPORTED_MODULE_2___default()(n,e.stylisPlugins)||i(e.stylisPlugins)}),[e.stylisPlugins]),react__WEBPACK_IMPORTED_MODULE_1__.createElement(ue.Provider,{value:u},react__WEBPACK_IMPORTED_MODULE_1__.createElement(de.Provider,{value:l}, true?react__WEBPACK_IMPORTED_MODULE_1__.Children.only(e.children):0))}var ve=function(){function e(e,t){var n=this;this.inject=function(e,t){void 0===t&&(t=pe);var r=n.name+t.hash;e.hasNameForId(n.id,r)||e.insertRules(n.id,r,t(n.rules,r,"@keyframes"))},this.toString=function(){return j(12,String(n.name))},this.name=e,this.id="sc-keyframes-"+e,this.rules=t}return e.prototype.getName=function(e){return void 0===e&&(e=pe),this.name+e.hash},e}(),ge=/([A-Z])/,Se=/([A-Z])/g,we=/^ms-/,Ee=function(e){return"-"+e.toLowerCase()};function be(e){return ge.test(e)?e.replace(Se,Ee).replace(we,"-ms-"):e}var _e=function(e){return null==e||!1===e||""===e};function Ne(e,n,r,o){if(Array.isArray(e)){for(var i,s=[],a=0,c=e.length;a<c;a+=1)""!==(i=Ne(e[a],n,r,o))&&(Array.isArray(i)?s.push.apply(s,i):s.push(i));return s}if(_e(e))return"";if(N(e))return"."+e.styledComponentId;if(b(e)){if("function"!=typeof(l=e)||l.prototype&&l.prototype.isReactComponent||!n)return e;var u=e(n);return true&&(0,react_is__WEBPACK_IMPORTED_MODULE_0__.isElement)(u)&&console.warn(_(e)+" is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details."),Ne(u,n,r,o)}var l;return e instanceof ve?r?(e.inject(r,o),e.getName(o)):e:S(e)?function e(t,n){var r,o,i=[];for(var s in t)t.hasOwnProperty(s)&&!_e(t[s])&&(S(t[s])?i.push.apply(i,e(t[s],s)):b(t[s])?i.push(be(s)+":",t[s],";"):i.push(be(s)+": "+(r=s,null==(o=t[s])||"boolean"==typeof o||""===o?"":"number"!=typeof o||0===o||r in _emotion_unitless__WEBPACK_IMPORTED_MODULE_4__.default?String(o).trim():o+"px")+";"));return n?[n+" {"].concat(i,["}"]):i}(e):e.toString()}function Ae(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];return b(e)||S(e)?Ne(g(w,[e].concat(n))):0===n.length&&1===e.length&&"string"==typeof e[0]?e:Ne(g(e,n))}var Ce=/invalid hook call/i,Ie=new Set,Pe=function(e,t){if(true){var n="The component "+e+(t?' with the id of "'+t+'"':"")+" has been created dynamically.\nYou may see this warning because you've called styled inside another component.\nTo resolve this only create new StyledComponents outside of any render method and function component.";try{(0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(),Ie.has(n)||(console.warn(n),Ie.add(n))}catch(e){Ce.test(e.message)&&Ie.delete(n)}}},Oe=function(e,t,n){return void 0===n&&(n=E),e.theme!==n.theme&&e.theme||t||n.theme},Re=/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,De=/(^-|-$)/g;function je(e){return e.replace(Re,"-").replace(De,"")}var Te=function(e){return ee(ne(e)>>>0)};function ke(e){return"string"==typeof e&&( false||e.charAt(0)===e.charAt(0).toLowerCase())}var xe=function(e){return"function"==typeof e||"object"==typeof e&&null!==e&&!Array.isArray(e)},Ve=function(e){return"__proto__"!==e&&"constructor"!==e&&"prototype"!==e};function Be(e,t,n){var r=e[n];xe(t)&&xe(r)?Me(r,t):e[n]=t}function Me(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];for(var o=0,i=n;o<i.length;o++){var s=i[o];if(xe(s))for(var a in s)Ve(a)&&Be(e,s[a],a)}return e}var ze=react__WEBPACK_IMPORTED_MODULE_1__.createContext(),Le=ze.Consumer;function Ge(e){var t=(0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze),n=(0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)((function(){return function(e,t){if(!e)return j(14);if(b(e)){var n=e(t);return false||null!==n&&!Array.isArray(n)&&"object"==typeof n?n:j(7)}return Array.isArray(e)||"object"!=typeof e?j(8):t?v({},t,{},e):e}(e.theme,t)}),[e.theme,t]);return e.children?react__WEBPACK_IMPORTED_MODULE_1__.createElement(ze.Provider,{value:n},e.children):null}var Fe={};function Ye(e,t,n){var o=N(e),s=!ke(e),a=t.attrs,c=void 0===a?w:a,d=t.componentId,h=void 0===d?function(e,t){var n="string"!=typeof e?"sc":je(e);Fe[n]=(Fe[n]||0)+1;var r=n+"-"+Te("5.3.0"+n+Fe[n]);return t?t+"-"+r:r}(t.displayName,t.parentComponentId):d,p=t.displayName,f=void 0===p?function(e){return ke(e)?"styled."+e:"Styled("+_(e)+")"}(e):p,g=t.displayName&&t.componentId?je(t.displayName)+"-"+t.componentId:t.componentId||h,S=o&&e.attrs?Array.prototype.concat(e.attrs,c).filter(Boolean):c,A=t.shouldForwardProp;o&&e.shouldForwardProp&&(A=t.shouldForwardProp?function(n,r,o){return e.shouldForwardProp(n,r,o)&&t.shouldForwardProp(n,r,o)}:e.shouldForwardProp);var C,I=new ie(n,g,o?e.componentStyle:void 0),P=I.isStatic&&0===c.length,O=function(e,t){return function(e,t,n,r){var o=e.attrs,s=e.componentStyle,a=e.defaultProps,c=e.foldedComponentIds,d=e.shouldForwardProp,h=e.styledComponentId,p=e.target; true&&(0,react__WEBPACK_IMPORTED_MODULE_1__.useDebugValue)(h);var f=function(e,t,n){void 0===e&&(e=E);var r=v({},t,{theme:e}),o={};return n.forEach((function(e){var t,n,i,s=e;for(t in b(s)&&(s=s(r)),s)r[t]=o[t]="className"===t?(n=o[t],i=s[t],n&&i?n+" "+i:n||i):s[t]})),[r,o]}(Oe(t,(0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze),a)||E,t,o),y=f[0],g=f[1],S=function(e,t,n,r){var o=fe(),i=me(),s=t?e.generateAndInjectStyles(E,o,i):e.generateAndInjectStyles(n,o,i);return true&&(0,react__WEBPACK_IMPORTED_MODULE_1__.useDebugValue)(s), true&&!t&&r&&r(s),s}(s,r,y, true?e.warnTooManyClasses:0),w=n,_=g.$as||t.$as||g.as||t.as||p,N=ke(_),A=g!==t?v({},t,{},g):t,C={};for(var I in A)"$"!==I[0]&&"as"!==I&&("forwardedAs"===I?C.as=A[I]:(d?d(I,_emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__.default,_):!N||(0,_emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__.default)(I))&&(C[I]=A[I]));return t.style&&g.style!==t.style&&(C.style=v({},t.style,{},g.style)),C.className=Array.prototype.concat(c,h,S!==h?S:null,t.className,g.className).filter(Boolean).join(" "),C.ref=w,(0,react__WEBPACK_IMPORTED_MODULE_1__.createElement)(_,C)}(C,e,t,P)};return O.displayName=f,(C=react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(O)).attrs=S,C.componentStyle=I,C.displayName=f,C.shouldForwardProp=A,C.foldedComponentIds=o?Array.prototype.concat(e.foldedComponentIds,e.styledComponentId):w,C.styledComponentId=g,C.target=o?e.target:e,C.withComponent=function(e){var r=t.componentId,o=function(e,t){if(null==e)return{};var n,r,o={},i=Object.keys(e);for(r=0;r<i.length;r++)n=i[r],t.indexOf(n)>=0||(o[n]=e[n]);return o}(t,["componentId"]),i=r&&r+"-"+(ke(e)?e:je(_(e)));return Ye(e,v({},o,{attrs:S,componentId:i}),n)},Object.defineProperty(C,"defaultProps",{get:function(){return this._foldedDefaultProps},set:function(t){this._foldedDefaultProps=o?Me({},e.defaultProps,t):t}}), true&&(Pe(f,g),C.warnTooManyClasses=function(e,t){var n={},r=!1;return function(o){if(!r&&(n[o]=!0,Object.keys(n).length>=200)){var i=t?' with the id of "'+t+'"':"";console.warn("Over 200 classes were generated for component "+e+i+".\nConsider using the attrs method, together with a style object for frequently changed styles.\nExample:\n  const Component = styled.div.attrs(props => ({\n    style: {\n      background: props.background,\n    },\n  }))`width: 100%;`\n\n  <Component />"),r=!0,n={}}}}(f,g)),C.toString=function(){return"."+C.styledComponentId},s&&hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6___default()(C,e,{attrs:!0,componentStyle:!0,displayName:!0,foldedComponentIds:!0,shouldForwardProp:!0,styledComponentId:!0,target:!0,withComponent:!0}),C}var qe=function(e){return function e(t,r,o){if(void 0===o&&(o=E),!(0,react_is__WEBPACK_IMPORTED_MODULE_0__.isValidElementType)(r))return j(1,String(r));var i=function(){return t(r,o,Ae.apply(void 0,arguments))};return i.withConfig=function(n){return e(t,r,v({},o,{},n))},i.attrs=function(n){return e(t,r,v({},o,{attrs:Array.prototype.concat(o.attrs,n).filter(Boolean)}))},i}(Ye,e)};["a","abbr","address","area","article","aside","audio","b","base","bdi","bdo","big","blockquote","body","br","button","canvas","caption","cite","code","col","colgroup","data","datalist","dd","del","details","dfn","dialog","div","dl","dt","em","embed","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","iframe","img","input","ins","kbd","keygen","label","legend","li","link","main","map","mark","marquee","menu","menuitem","meta","meter","nav","noscript","object","ol","optgroup","option","output","p","param","picture","pre","progress","q","rp","rt","ruby","s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","u","ul","var","video","wbr","circle","clipPath","defs","ellipse","foreignObject","g","image","line","linearGradient","marker","mask","path","pattern","polygon","polyline","radialGradient","rect","stop","svg","text","textPath","tspan"].forEach((function(e){qe[e]=qe(e)}));var He=function(){function e(e,t){this.rules=e,this.componentId=t,this.isStatic=re(e),Z.registerId(this.componentId+1)}var t=e.prototype;return t.createStyles=function(e,t,n,r){var o=r(Ne(this.rules,t,n,r).join(""),""),i=this.componentId+e;n.insertRules(i,i,o)},t.removeStyles=function(e,t){t.clearRules(this.componentId+e)},t.renderStyles=function(e,t,n,r){e>2&&Z.registerId(this.componentId+e),this.removeStyles(e,n),this.createStyles(e,t,n,r)},e}();function $e(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),o=1;o<t;o++)n[o-1]=arguments[o];var s=Ae.apply(void 0,[e].concat(n)),a="sc-global-"+Te(JSON.stringify(s)),u=new He(s,a);function l(e){var t=fe(),n=me(),o=(0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze),l=(0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(t.allocateGSInstance(a)).current;return true&&react__WEBPACK_IMPORTED_MODULE_1__.Children.count(e.children)&&console.warn("The global style component "+a+" was given child JSX. createGlobalStyle does not render children."), true&&s.some((function(e){return"string"==typeof e&&-1!==e.indexOf("@import")}))&&console.warn("Please do not use @import CSS syntax in createGlobalStyle at this time, as the CSSOM APIs we use in production do not handle it well. Instead, we recommend using a library such as react-helmet to inject a typical <link> meta tag to the stylesheet, or simply embedding it manually in your index.html <head> section for a simpler app."),(0,react__WEBPACK_IMPORTED_MODULE_1__.useLayoutEffect)((function(){return h(l,e,t,o,n),function(){return u.removeStyles(l,t)}}),[l,e,t,o,n]),null}function h(e,t,n,r,o){if(u.isStatic)u.renderStyles(e,O,n,o);else{var i=v({},t,{theme:Oe(t,r,l.defaultProps)});u.renderStyles(e,i,n,o)}}return true&&Pe(a),react__WEBPACK_IMPORTED_MODULE_1__.memo(l)}function We(e){ true&&"undefined"!=typeof navigator&&"ReactNative"===navigator.product&&console.warn("`keyframes` cannot be used on ReactNative, only on the web. To do animation in ReactNative please use Animated.");for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];var o=Ae.apply(void 0,[e].concat(n)).join(""),i=Te(o);return new ve(i,o)}var Ue=function(){function e(){var e=this;this._emitSheetCSS=function(){var t=e.instance.toString(),n=q();return"<style "+[n&&'nonce="'+n+'"',A+'="true"','data-styled-version="5.3.0"'].filter(Boolean).join(" ")+">"+t+"</style>"},this.getStyleTags=function(){return e.sealed?j(2):e._emitSheetCSS()},this.getStyleElement=function(){var t;if(e.sealed)return j(2);var n=((t={})[A]="",t["data-styled-version"]="5.3.0",t.dangerouslySetInnerHTML={__html:e.instance.toString()},t),o=q();return o&&(n.nonce=o),[react__WEBPACK_IMPORTED_MODULE_1__.createElement("style",v({},n,{key:"sc-0-0"}))]},this.seal=function(){e.sealed=!0},this.instance=new Z({isServer:!0}),this.sealed=!1}var t=e.prototype;return t.collectStyles=function(e){return this.sealed?j(2):react__WEBPACK_IMPORTED_MODULE_1__.createElement(ye,{sheet:this.instance},e)},t.interleaveWithNodeStream=function(e){return j(3)},e}(),Je=function(e){var t=react__WEBPACK_IMPORTED_MODULE_1__.forwardRef((function(t,n){var o=(0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze),s=e.defaultProps,a=Oe(t,o,s);return true&&void 0===a&&console.warn('[withTheme] You are not using a ThemeProvider nor passing a theme prop or a theme in defaultProps in component class "'+_(e)+'"'),react__WEBPACK_IMPORTED_MODULE_1__.createElement(e,v({},t,{theme:a,ref:n}))}));return hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6___default()(t,e),t.displayName="WithTheme("+_(e)+")",t},Xe=function(){return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze)},Ze={StyleSheet:Z,masterSheet:he}; true&&"undefined"!=typeof navigator&&"ReactNative"===navigator.product&&console.warn("It looks like you've imported 'styled-components' on React Native.\nPerhaps you're looking to import 'styled-components/native'?\nRead more about this at https://www.styled-components.com/docs/basics#react-native"), true&&(window["__styled-components-init__"]=window["__styled-components-init__"]||0,1===window["__styled-components-init__"]&&console.warn("It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.\n\nSee https://s-c.sh/2BAXzed for more info."),window["__styled-components-init__"]+=1);/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (qe);
+function v(){return(v=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var g=function(e,t){for(var n=[e[0]],r=0,o=t.length;r<o;r+=1)n.push(t[r],e[r+1]);return n},S=function(t){return null!==t&&"object"==typeof t&&"[object Object]"===(t.toString?t.toString():Object.prototype.toString.call(t))&&!(0,react_is__WEBPACK_IMPORTED_MODULE_0__.typeOf)(t)},w=Object.freeze([]),E=Object.freeze({});function b(e){return"function"==typeof e}function _(e){return true&&"string"==typeof e&&e||e.displayName||e.name||"Component"}function N(e){return e&&"string"==typeof e.styledComponentId}var A="undefined"!=typeof process&&(({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).REACT_APP_SC_ATTR||({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).SC_ATTR)||"data-styled",C="5.3.0",I="undefined"!=typeof window&&"HTMLElement"in window,P=Boolean("boolean"==typeof SC_DISABLE_SPEEDY?SC_DISABLE_SPEEDY:"undefined"!=typeof process&&void 0!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).REACT_APP_SC_DISABLE_SPEEDY&&""!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).REACT_APP_SC_DISABLE_SPEEDY?"false"!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).REACT_APP_SC_DISABLE_SPEEDY&&({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).REACT_APP_SC_DISABLE_SPEEDY:"undefined"!=typeof process&&void 0!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).SC_DISABLE_SPEEDY&&""!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).SC_DISABLE_SPEEDY?"false"!==({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).SC_DISABLE_SPEEDY&&({"NODE_ENV":"development","API_SERVER_URL":"http://localhost:5000","BUILD_TIMESTAMP":1625066959301}).SC_DISABLE_SPEEDY:"production"!=="development"),O={},R= true?{1:"Cannot create styled-component for component: %s.\n\n",2:"Can't collect styles once you've consumed a `ServerStyleSheet`'s styles! `ServerStyleSheet` is a one off instance for each server-side render cycle.\n\n- Are you trying to reuse it across renders?\n- Are you accidentally calling collectStyles twice?\n\n",3:"Streaming SSR is only supported in a Node.js environment; Please do not try to call this method in the browser.\n\n",4:"The `StyleSheetManager` expects a valid target or sheet prop!\n\n- Does this error occur on the client and is your target falsy?\n- Does this error occur on the server and is the sheet falsy?\n\n",5:"The clone method cannot be used on the client!\n\n- Are you running in a client-like environment on the server?\n- Are you trying to run SSR on the client?\n\n",6:"Trying to insert a new style tag, but the given Node is unmounted!\n\n- Are you using a custom target that isn't mounted?\n- Does your document not have a valid head element?\n- Have you accidentally removed a style tag manually?\n\n",7:'ThemeProvider: Please return an object from your "theme" prop function, e.g.\n\n```js\ntheme={() => ({})}\n```\n\n',8:'ThemeProvider: Please make your "theme" prop an object.\n\n',9:"Missing document `<head>`\n\n",10:"Cannot find a StyleSheet instance. Usually this happens if there are multiple copies of styled-components loaded at once. Check out this issue for how to troubleshoot and fix the common cases where this situation can happen: https://github.com/styled-components/styled-components/issues/1941#issuecomment-417862021\n\n",11:"_This error was replaced with a dev-time warning, it will be deleted for v4 final._ [createGlobalStyle] received children which will not be rendered. Please use the component without passing children elements.\n\n",12:"It seems you are interpolating a keyframe declaration (%s) into an untagged string. This was supported in styled-components v3, but is not longer supported in v4 as keyframes are now injected on-demand. Please wrap your string in the css\\`\\` helper which ensures the styles are injected correctly. See https://www.styled-components.com/docs/api#css\n\n",13:"%s is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details.\n\n",14:'ThemeProvider: "theme" prop is required.\n\n',15:"A stylis plugin has been supplied that is not named. We need a name for each plugin to be able to prevent styling collisions between different stylis configurations within the same app. Before you pass your plugin to `<StyleSheetManager stylisPlugins={[]}>`, please make sure each plugin is uniquely-named, e.g.\n\n```js\nObject.defineProperty(importedPlugin, 'name', { value: 'some-unique-name' });\n```\n\n",16:"Reached the limit of how many styled components may be created at group %s.\nYou may only create up to 1,073,741,824 components. If you're creating components dynamically,\nas for instance in your render method then you may be running into this limitation.\n\n",17:"CSSStyleSheet could not be found on HTMLStyleElement.\nHas styled-components' style tag been unmounted or altered by another script?\n"}:0;function D(){for(var e=arguments.length<=0?void 0:arguments[0],t=[],n=1,r=arguments.length;n<r;n+=1)t.push(n<0||arguments.length<=n?void 0:arguments[n]);return t.forEach((function(t){e=e.replace(/%[a-z]/,t)})),e}function j(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];throw false?0:new Error(D.apply(void 0,[R[e]].concat(n)).trim())}var T=function(){function e(e){this.groupSizes=new Uint32Array(512),this.length=512,this.tag=e}var t=e.prototype;return t.indexOfGroup=function(e){for(var t=0,n=0;n<e;n++)t+=this.groupSizes[n];return t},t.insertRules=function(e,t){if(e>=this.groupSizes.length){for(var n=this.groupSizes,r=n.length,o=r;e>=o;)(o<<=1)<0&&j(16,""+e);this.groupSizes=new Uint32Array(o),this.groupSizes.set(n),this.length=o;for(var i=r;i<o;i++)this.groupSizes[i]=0}for(var s=this.indexOfGroup(e+1),a=0,c=t.length;a<c;a++)this.tag.insertRule(s,t[a])&&(this.groupSizes[e]++,s++)},t.clearGroup=function(e){if(e<this.length){var t=this.groupSizes[e],n=this.indexOfGroup(e),r=n+t;this.groupSizes[e]=0;for(var o=n;o<r;o++)this.tag.deleteRule(n)}},t.getGroup=function(e){var t="";if(e>=this.length||0===this.groupSizes[e])return t;for(var n=this.groupSizes[e],r=this.indexOfGroup(e),o=r+n,i=r;i<o;i++)t+=this.tag.getRule(i)+"/*!sc*/\n";return t},e}(),k=new Map,x=new Map,V=1,B=function(e){if(k.has(e))return k.get(e);for(;x.has(V);)V++;var t=V++;return true&&((0|t)<0||t>1<<30)&&j(16,""+t),k.set(e,t),x.set(t,e),t},M=function(e){return x.get(e)},z=function(e,t){k.set(e,t),x.set(t,e)},L="style["+A+'][data-styled-version="5.3.0"]',G=new RegExp("^"+A+'\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),F=function(e,t,n){for(var r,o=n.split(","),i=0,s=o.length;i<s;i++)(r=o[i])&&e.registerName(t,r)},Y=function(e,t){for(var n=t.innerHTML.split("/*!sc*/\n"),r=[],o=0,i=n.length;o<i;o++){var s=n[o].trim();if(s){var a=s.match(G);if(a){var c=0|parseInt(a[1],10),u=a[2];0!==c&&(z(u,c),F(e,u,a[3]),e.getTag().insertRules(c,r)),r.length=0}else r.push(s)}}},q=function(){return"undefined"!=typeof window&&void 0!==window.__webpack_nonce__?window.__webpack_nonce__:null},H=function(e){var t=document.head,n=e||t,r=document.createElement("style"),o=function(e){for(var t=e.childNodes,n=t.length;n>=0;n--){var r=t[n];if(r&&1===r.nodeType&&r.hasAttribute(A))return r}}(n),i=void 0!==o?o.nextSibling:null;r.setAttribute(A,"active"),r.setAttribute("data-styled-version","5.3.0");var s=q();return s&&r.setAttribute("nonce",s),n.insertBefore(r,i),r},$=function(){function e(e){var t=this.element=H(e);t.appendChild(document.createTextNode("")),this.sheet=function(e){if(e.sheet)return e.sheet;for(var t=document.styleSheets,n=0,r=t.length;n<r;n++){var o=t[n];if(o.ownerNode===e)return o}j(17)}(t),this.length=0}var t=e.prototype;return t.insertRule=function(e,t){try{return this.sheet.insertRule(t,e),this.length++,!0}catch(e){return!1}},t.deleteRule=function(e){this.sheet.deleteRule(e),this.length--},t.getRule=function(e){var t=this.sheet.cssRules[e];return void 0!==t&&"string"==typeof t.cssText?t.cssText:""},e}(),W=function(){function e(e){var t=this.element=H(e);this.nodes=t.childNodes,this.length=0}var t=e.prototype;return t.insertRule=function(e,t){if(e<=this.length&&e>=0){var n=document.createTextNode(t),r=this.nodes[e];return this.element.insertBefore(n,r||null),this.length++,!0}return!1},t.deleteRule=function(e){this.element.removeChild(this.nodes[e]),this.length--},t.getRule=function(e){return e<this.length?this.nodes[e].textContent:""},e}(),U=function(){function e(e){this.rules=[],this.length=0}var t=e.prototype;return t.insertRule=function(e,t){return e<=this.length&&(this.rules.splice(e,0,t),this.length++,!0)},t.deleteRule=function(e){this.rules.splice(e,1),this.length--},t.getRule=function(e){return e<this.length?this.rules[e]:""},e}(),J=I,X={isServer:!I,useCSSOMInjection:!P},Z=function(){function e(e,t,n){void 0===e&&(e=E),void 0===t&&(t={}),this.options=v({},X,{},e),this.gs=t,this.names=new Map(n),!this.options.isServer&&I&&J&&(J=!1,function(e){for(var t=document.querySelectorAll(L),n=0,r=t.length;n<r;n++){var o=t[n];o&&"active"!==o.getAttribute(A)&&(Y(e,o),o.parentNode&&o.parentNode.removeChild(o))}}(this))}e.registerId=function(e){return B(e)};var t=e.prototype;return t.reconstructWithOptions=function(t,n){return void 0===n&&(n=!0),new e(v({},this.options,{},t),this.gs,n&&this.names||void 0)},t.allocateGSInstance=function(e){return this.gs[e]=(this.gs[e]||0)+1},t.getTag=function(){return this.tag||(this.tag=(n=(t=this.options).isServer,r=t.useCSSOMInjection,o=t.target,e=n?new U(o):r?new $(o):new W(o),new T(e)));var e,t,n,r,o},t.hasNameForId=function(e,t){return this.names.has(e)&&this.names.get(e).has(t)},t.registerName=function(e,t){if(B(e),this.names.has(e))this.names.get(e).add(t);else{var n=new Set;n.add(t),this.names.set(e,n)}},t.insertRules=function(e,t,n){this.registerName(e,t),this.getTag().insertRules(B(e),n)},t.clearNames=function(e){this.names.has(e)&&this.names.get(e).clear()},t.clearRules=function(e){this.getTag().clearGroup(B(e)),this.clearNames(e)},t.clearTag=function(){this.tag=void 0},t.toString=function(){return function(e){for(var t=e.getTag(),n=t.length,r="",o=0;o<n;o++){var i=M(o);if(void 0!==i){var s=e.names.get(i),a=t.getGroup(o);if(void 0!==s&&0!==a.length){var c=A+".g"+o+'[id="'+i+'"]',u="";void 0!==s&&s.forEach((function(e){e.length>0&&(u+=e+",")})),r+=""+a+c+'{content:"'+u+'"}/*!sc*/\n'}}}return r}(this)},e}(),K=/(a)(d)/gi,Q=function(e){return String.fromCharCode(e+(e>25?39:97))};function ee(e){var t,n="";for(t=Math.abs(e);t>52;t=t/52|0)n=Q(t%52)+n;return(Q(t%52)+n).replace(K,"$1-$2")}var te=function(e,t){for(var n=t.length;n;)e=33*e^t.charCodeAt(--n);return e},ne=function(e){return te(5381,e)};function re(e){for(var t=0;t<e.length;t+=1){var n=e[t];if(b(n)&&!N(n))return!1}return!0}var oe=ne("5.3.0"),ie=function(){function e(e,t,n){this.rules=e,this.staticRulesId="",this.isStatic= false&&0,this.componentId=t,this.baseHash=te(oe,t),this.baseStyle=n,Z.registerId(t)}return e.prototype.generateAndInjectStyles=function(e,t,n){var r=this.componentId,o=[];if(this.baseStyle&&o.push(this.baseStyle.generateAndInjectStyles(e,t,n)),this.isStatic&&!n.hash)if(this.staticRulesId&&t.hasNameForId(r,this.staticRulesId))o.push(this.staticRulesId);else{var i=Ne(this.rules,e,t,n).join(""),s=ee(te(this.baseHash,i.length)>>>0);if(!t.hasNameForId(r,s)){var a=n(i,"."+s,void 0,r);t.insertRules(r,s,a)}o.push(s),this.staticRulesId=s}else{for(var c=this.rules.length,u=te(this.baseHash,n.hash),l="",d=0;d<c;d++){var h=this.rules[d];if("string"==typeof h)l+=h, true&&(u=te(u,h+d));else if(h){var p=Ne(h,e,t,n),f=Array.isArray(p)?p.join(""):p;u=te(u,f+d),l+=f}}if(l){var m=ee(u>>>0);if(!t.hasNameForId(r,m)){var y=n(l,"."+m,void 0,r);t.insertRules(r,m,y)}o.push(m)}}return o.join(" ")},e}(),se=/^\s*\/\/.*$/gm,ae=[":","[",".","#"];function ce(e){var t,n,r,o,i=void 0===e?E:e,s=i.options,a=void 0===s?E:s,c=i.plugins,u=void 0===c?w:c,l=new _emotion_stylis__WEBPACK_IMPORTED_MODULE_3__.default(a),d=[],h=function(e){function t(t){if(t)try{e(t+"}")}catch(e){}}return function(n,r,o,i,s,a,c,u,l,d){switch(n){case 1:if(0===l&&64===r.charCodeAt(0))return e(r+";"),"";break;case 2:if(0===u)return r+"/*|*/";break;case 3:switch(u){case 102:case 112:return e(o[0]+r),"";default:return r+(0===d?"/*|*/":"")}case-2:r.split("/*|*/}").forEach(t)}}}((function(e){d.push(e)})),f=function(e,r,i){return 0===r&&-1!==ae.indexOf(i[n.length])||i.match(o)?e:"."+t};function m(e,i,s,a){void 0===a&&(a="&");var c=e.replace(se,""),u=i&&s?s+" "+i+" { "+c+" }":c;return t=a,n=i,r=new RegExp("\\"+n+"\\b","g"),o=new RegExp("(\\"+n+"\\b){2,}"),l(s||!i?"":i,u)}return l.use([].concat(u,[function(e,t,o){2===e&&o.length&&o[0].lastIndexOf(n)>0&&(o[0]=o[0].replace(r,f))},h,function(e){if(-2===e){var t=d;return d=[],t}}])),m.hash=u.length?u.reduce((function(e,t){return t.name||j(15),te(e,t.name)}),5381).toString():"",m}var ue=react__WEBPACK_IMPORTED_MODULE_1__.createContext(),le=ue.Consumer,de=react__WEBPACK_IMPORTED_MODULE_1__.createContext(),he=(de.Consumer,new Z),pe=ce();function fe(){return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ue)||he}function me(){return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(de)||pe}function ye(e){var t=(0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(e.stylisPlugins),n=t[0],i=t[1],c=fe(),u=(0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)((function(){var t=c;return e.sheet?t=e.sheet:e.target&&(t=t.reconstructWithOptions({target:e.target},!1)),e.disableCSSOMInjection&&(t=t.reconstructWithOptions({useCSSOMInjection:!1})),t}),[e.disableCSSOMInjection,e.sheet,e.target]),l=(0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)((function(){return ce({options:{prefix:!e.disableVendorPrefixes},plugins:n})}),[e.disableVendorPrefixes,n]);return (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)((function(){shallowequal__WEBPACK_IMPORTED_MODULE_2___default()(n,e.stylisPlugins)||i(e.stylisPlugins)}),[e.stylisPlugins]),react__WEBPACK_IMPORTED_MODULE_1__.createElement(ue.Provider,{value:u},react__WEBPACK_IMPORTED_MODULE_1__.createElement(de.Provider,{value:l}, true?react__WEBPACK_IMPORTED_MODULE_1__.Children.only(e.children):0))}var ve=function(){function e(e,t){var n=this;this.inject=function(e,t){void 0===t&&(t=pe);var r=n.name+t.hash;e.hasNameForId(n.id,r)||e.insertRules(n.id,r,t(n.rules,r,"@keyframes"))},this.toString=function(){return j(12,String(n.name))},this.name=e,this.id="sc-keyframes-"+e,this.rules=t}return e.prototype.getName=function(e){return void 0===e&&(e=pe),this.name+e.hash},e}(),ge=/([A-Z])/,Se=/([A-Z])/g,we=/^ms-/,Ee=function(e){return"-"+e.toLowerCase()};function be(e){return ge.test(e)?e.replace(Se,Ee).replace(we,"-ms-"):e}var _e=function(e){return null==e||!1===e||""===e};function Ne(e,n,r,o){if(Array.isArray(e)){for(var i,s=[],a=0,c=e.length;a<c;a+=1)""!==(i=Ne(e[a],n,r,o))&&(Array.isArray(i)?s.push.apply(s,i):s.push(i));return s}if(_e(e))return"";if(N(e))return"."+e.styledComponentId;if(b(e)){if("function"!=typeof(l=e)||l.prototype&&l.prototype.isReactComponent||!n)return e;var u=e(n);return true&&(0,react_is__WEBPACK_IMPORTED_MODULE_0__.isElement)(u)&&console.warn(_(e)+" is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details."),Ne(u,n,r,o)}var l;return e instanceof ve?r?(e.inject(r,o),e.getName(o)):e:S(e)?function e(t,n){var r,o,i=[];for(var s in t)t.hasOwnProperty(s)&&!_e(t[s])&&(S(t[s])?i.push.apply(i,e(t[s],s)):b(t[s])?i.push(be(s)+":",t[s],";"):i.push(be(s)+": "+(r=s,null==(o=t[s])||"boolean"==typeof o||""===o?"":"number"!=typeof o||0===o||r in _emotion_unitless__WEBPACK_IMPORTED_MODULE_4__.default?String(o).trim():o+"px")+";"));return n?[n+" {"].concat(i,["}"]):i}(e):e.toString()}function Ae(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];return b(e)||S(e)?Ne(g(w,[e].concat(n))):0===n.length&&1===e.length&&"string"==typeof e[0]?e:Ne(g(e,n))}var Ce=/invalid hook call/i,Ie=new Set,Pe=function(e,t){if(true){var n="The component "+e+(t?' with the id of "'+t+'"':"")+" has been created dynamically.\nYou may see this warning because you've called styled inside another component.\nTo resolve this only create new StyledComponents outside of any render method and function component.";try{(0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(),Ie.has(n)||(console.warn(n),Ie.add(n))}catch(e){Ce.test(e.message)&&Ie.delete(n)}}},Oe=function(e,t,n){return void 0===n&&(n=E),e.theme!==n.theme&&e.theme||t||n.theme},Re=/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,De=/(^-|-$)/g;function je(e){return e.replace(Re,"-").replace(De,"")}var Te=function(e){return ee(ne(e)>>>0)};function ke(e){return"string"==typeof e&&( false||e.charAt(0)===e.charAt(0).toLowerCase())}var xe=function(e){return"function"==typeof e||"object"==typeof e&&null!==e&&!Array.isArray(e)},Ve=function(e){return"__proto__"!==e&&"constructor"!==e&&"prototype"!==e};function Be(e,t,n){var r=e[n];xe(t)&&xe(r)?Me(r,t):e[n]=t}function Me(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];for(var o=0,i=n;o<i.length;o++){var s=i[o];if(xe(s))for(var a in s)Ve(a)&&Be(e,s[a],a)}return e}var ze=react__WEBPACK_IMPORTED_MODULE_1__.createContext(),Le=ze.Consumer;function Ge(e){var t=(0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze),n=(0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)((function(){return function(e,t){if(!e)return j(14);if(b(e)){var n=e(t);return false||null!==n&&!Array.isArray(n)&&"object"==typeof n?n:j(7)}return Array.isArray(e)||"object"!=typeof e?j(8):t?v({},t,{},e):e}(e.theme,t)}),[e.theme,t]);return e.children?react__WEBPACK_IMPORTED_MODULE_1__.createElement(ze.Provider,{value:n},e.children):null}var Fe={};function Ye(e,t,n){var o=N(e),s=!ke(e),a=t.attrs,c=void 0===a?w:a,d=t.componentId,h=void 0===d?function(e,t){var n="string"!=typeof e?"sc":je(e);Fe[n]=(Fe[n]||0)+1;var r=n+"-"+Te("5.3.0"+n+Fe[n]);return t?t+"-"+r:r}(t.displayName,t.parentComponentId):d,p=t.displayName,f=void 0===p?function(e){return ke(e)?"styled."+e:"Styled("+_(e)+")"}(e):p,g=t.displayName&&t.componentId?je(t.displayName)+"-"+t.componentId:t.componentId||h,S=o&&e.attrs?Array.prototype.concat(e.attrs,c).filter(Boolean):c,A=t.shouldForwardProp;o&&e.shouldForwardProp&&(A=t.shouldForwardProp?function(n,r,o){return e.shouldForwardProp(n,r,o)&&t.shouldForwardProp(n,r,o)}:e.shouldForwardProp);var C,I=new ie(n,g,o?e.componentStyle:void 0),P=I.isStatic&&0===c.length,O=function(e,t){return function(e,t,n,r){var o=e.attrs,s=e.componentStyle,a=e.defaultProps,c=e.foldedComponentIds,d=e.shouldForwardProp,h=e.styledComponentId,p=e.target; true&&(0,react__WEBPACK_IMPORTED_MODULE_1__.useDebugValue)(h);var f=function(e,t,n){void 0===e&&(e=E);var r=v({},t,{theme:e}),o={};return n.forEach((function(e){var t,n,i,s=e;for(t in b(s)&&(s=s(r)),s)r[t]=o[t]="className"===t?(n=o[t],i=s[t],n&&i?n+" "+i:n||i):s[t]})),[r,o]}(Oe(t,(0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze),a)||E,t,o),y=f[0],g=f[1],S=function(e,t,n,r){var o=fe(),i=me(),s=t?e.generateAndInjectStyles(E,o,i):e.generateAndInjectStyles(n,o,i);return true&&(0,react__WEBPACK_IMPORTED_MODULE_1__.useDebugValue)(s), true&&!t&&r&&r(s),s}(s,r,y, true?e.warnTooManyClasses:0),w=n,_=g.$as||t.$as||g.as||t.as||p,N=ke(_),A=g!==t?v({},t,{},g):t,C={};for(var I in A)"$"!==I[0]&&"as"!==I&&("forwardedAs"===I?C.as=A[I]:(d?d(I,_emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__.default,_):!N||(0,_emotion_is_prop_valid__WEBPACK_IMPORTED_MODULE_5__.default)(I))&&(C[I]=A[I]));return t.style&&g.style!==t.style&&(C.style=v({},t.style,{},g.style)),C.className=Array.prototype.concat(c,h,S!==h?S:null,t.className,g.className).filter(Boolean).join(" "),C.ref=w,(0,react__WEBPACK_IMPORTED_MODULE_1__.createElement)(_,C)}(C,e,t,P)};return O.displayName=f,(C=react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(O)).attrs=S,C.componentStyle=I,C.displayName=f,C.shouldForwardProp=A,C.foldedComponentIds=o?Array.prototype.concat(e.foldedComponentIds,e.styledComponentId):w,C.styledComponentId=g,C.target=o?e.target:e,C.withComponent=function(e){var r=t.componentId,o=function(e,t){if(null==e)return{};var n,r,o={},i=Object.keys(e);for(r=0;r<i.length;r++)n=i[r],t.indexOf(n)>=0||(o[n]=e[n]);return o}(t,["componentId"]),i=r&&r+"-"+(ke(e)?e:je(_(e)));return Ye(e,v({},o,{attrs:S,componentId:i}),n)},Object.defineProperty(C,"defaultProps",{get:function(){return this._foldedDefaultProps},set:function(t){this._foldedDefaultProps=o?Me({},e.defaultProps,t):t}}), true&&(Pe(f,g),C.warnTooManyClasses=function(e,t){var n={},r=!1;return function(o){if(!r&&(n[o]=!0,Object.keys(n).length>=200)){var i=t?' with the id of "'+t+'"':"";console.warn("Over 200 classes were generated for component "+e+i+".\nConsider using the attrs method, together with a style object for frequently changed styles.\nExample:\n  const Component = styled.div.attrs(props => ({\n    style: {\n      background: props.background,\n    },\n  }))`width: 100%;`\n\n  <Component />"),r=!0,n={}}}}(f,g)),C.toString=function(){return"."+C.styledComponentId},s&&hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6___default()(C,e,{attrs:!0,componentStyle:!0,displayName:!0,foldedComponentIds:!0,shouldForwardProp:!0,styledComponentId:!0,target:!0,withComponent:!0}),C}var qe=function(e){return function e(t,r,o){if(void 0===o&&(o=E),!(0,react_is__WEBPACK_IMPORTED_MODULE_0__.isValidElementType)(r))return j(1,String(r));var i=function(){return t(r,o,Ae.apply(void 0,arguments))};return i.withConfig=function(n){return e(t,r,v({},o,{},n))},i.attrs=function(n){return e(t,r,v({},o,{attrs:Array.prototype.concat(o.attrs,n).filter(Boolean)}))},i}(Ye,e)};["a","abbr","address","area","article","aside","audio","b","base","bdi","bdo","big","blockquote","body","br","button","canvas","caption","cite","code","col","colgroup","data","datalist","dd","del","details","dfn","dialog","div","dl","dt","em","embed","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","iframe","img","input","ins","kbd","keygen","label","legend","li","link","main","map","mark","marquee","menu","menuitem","meta","meter","nav","noscript","object","ol","optgroup","option","output","p","param","picture","pre","progress","q","rp","rt","ruby","s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","u","ul","var","video","wbr","circle","clipPath","defs","ellipse","foreignObject","g","image","line","linearGradient","marker","mask","path","pattern","polygon","polyline","radialGradient","rect","stop","svg","text","textPath","tspan"].forEach((function(e){qe[e]=qe(e)}));var He=function(){function e(e,t){this.rules=e,this.componentId=t,this.isStatic=re(e),Z.registerId(this.componentId+1)}var t=e.prototype;return t.createStyles=function(e,t,n,r){var o=r(Ne(this.rules,t,n,r).join(""),""),i=this.componentId+e;n.insertRules(i,i,o)},t.removeStyles=function(e,t){t.clearRules(this.componentId+e)},t.renderStyles=function(e,t,n,r){e>2&&Z.registerId(this.componentId+e),this.removeStyles(e,n),this.createStyles(e,t,n,r)},e}();function $e(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),o=1;o<t;o++)n[o-1]=arguments[o];var s=Ae.apply(void 0,[e].concat(n)),a="sc-global-"+Te(JSON.stringify(s)),u=new He(s,a);function l(e){var t=fe(),n=me(),o=(0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze),l=(0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(t.allocateGSInstance(a)).current;return true&&react__WEBPACK_IMPORTED_MODULE_1__.Children.count(e.children)&&console.warn("The global style component "+a+" was given child JSX. createGlobalStyle does not render children."), true&&s.some((function(e){return"string"==typeof e&&-1!==e.indexOf("@import")}))&&console.warn("Please do not use @import CSS syntax in createGlobalStyle at this time, as the CSSOM APIs we use in production do not handle it well. Instead, we recommend using a library such as react-helmet to inject a typical <link> meta tag to the stylesheet, or simply embedding it manually in your index.html <head> section for a simpler app."),(0,react__WEBPACK_IMPORTED_MODULE_1__.useLayoutEffect)((function(){return h(l,e,t,o,n),function(){return u.removeStyles(l,t)}}),[l,e,t,o,n]),null}function h(e,t,n,r,o){if(u.isStatic)u.renderStyles(e,O,n,o);else{var i=v({},t,{theme:Oe(t,r,l.defaultProps)});u.renderStyles(e,i,n,o)}}return true&&Pe(a),react__WEBPACK_IMPORTED_MODULE_1__.memo(l)}function We(e){ true&&"undefined"!=typeof navigator&&"ReactNative"===navigator.product&&console.warn("`keyframes` cannot be used on ReactNative, only on the web. To do animation in ReactNative please use Animated.");for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];var o=Ae.apply(void 0,[e].concat(n)).join(""),i=Te(o);return new ve(i,o)}var Ue=function(){function e(){var e=this;this._emitSheetCSS=function(){var t=e.instance.toString(),n=q();return"<style "+[n&&'nonce="'+n+'"',A+'="true"','data-styled-version="5.3.0"'].filter(Boolean).join(" ")+">"+t+"</style>"},this.getStyleTags=function(){return e.sealed?j(2):e._emitSheetCSS()},this.getStyleElement=function(){var t;if(e.sealed)return j(2);var n=((t={})[A]="",t["data-styled-version"]="5.3.0",t.dangerouslySetInnerHTML={__html:e.instance.toString()},t),o=q();return o&&(n.nonce=o),[react__WEBPACK_IMPORTED_MODULE_1__.createElement("style",v({},n,{key:"sc-0-0"}))]},this.seal=function(){e.sealed=!0},this.instance=new Z({isServer:!0}),this.sealed=!1}var t=e.prototype;return t.collectStyles=function(e){return this.sealed?j(2):react__WEBPACK_IMPORTED_MODULE_1__.createElement(ye,{sheet:this.instance},e)},t.interleaveWithNodeStream=function(e){return j(3)},e}(),Je=function(e){var t=react__WEBPACK_IMPORTED_MODULE_1__.forwardRef((function(t,n){var o=(0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze),s=e.defaultProps,a=Oe(t,o,s);return true&&void 0===a&&console.warn('[withTheme] You are not using a ThemeProvider nor passing a theme prop or a theme in defaultProps in component class "'+_(e)+'"'),react__WEBPACK_IMPORTED_MODULE_1__.createElement(e,v({},t,{theme:a,ref:n}))}));return hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_6___default()(t,e),t.displayName="WithTheme("+_(e)+")",t},Xe=function(){return (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(ze)},Ze={StyleSheet:Z,masterSheet:he}; true&&"undefined"!=typeof navigator&&"ReactNative"===navigator.product&&console.warn("It looks like you've imported 'styled-components' on React Native.\nPerhaps you're looking to import 'styled-components/native'?\nRead more about this at https://www.styled-components.com/docs/basics#react-native"), true&&(window["__styled-components-init__"]=window["__styled-components-init__"]||0,1===window["__styled-components-init__"]&&console.warn("It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.\n\nSee https://s-c.sh/2BAXzed for more info."),window["__styled-components-init__"]+=1);/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (qe);
 //# sourceMappingURL=styled-components.browser.esm.js.map
 
 
@@ -43051,7 +44589,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\index.tsx.ittf
-    utc time: Mon, 28 Jun 2021 20:17:07 GMT
+    utc time: Wed, 30 Jun 2021 15:29:13 GMT
 */
 
 
@@ -43070,7 +44608,7 @@ function AppContainer(props) {
     const appProps = _objectSpread(_objectSpread(_objectSpread({}, props), rest), {}, {
       query: props.queryParams,
       formName: data.formName,
-      formValues: data.formValues
+      formData: data.formData
     });
 
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_App__WEBPACK_IMPORTED_MODULE_3__.default, appProps);

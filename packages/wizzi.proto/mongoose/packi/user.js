@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
    
 const userSchema = new mongoose.Schema({
-    _id: { type: String, unique: true },
+    userid: { type: String, unique: true },
     email: { type: String, unique: true },
     name: String,
-});    
+    location: String,
+    avatar_url: String,
+    provider: String,
+    created_at: Date,
+    updated_at: Date
+});
 
-const User;
+let User;
 
 module.exports = {
     getUser: function() {

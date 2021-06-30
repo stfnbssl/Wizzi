@@ -1,0 +1,25 @@
+module
+    $
+        var md = {
+            styled: true,
+            name: "DeleteTFolder",
+            props: [
+                { name: "data", type: "any", ref: true },
+            ],
+            stateProps: [
+                { name: "ap_name", type: "string" },
+                { name: "ap_description", type: "string" },
+                { name: "ap_schema", type: "string" },
+                { name: "ap_main_ittf", type: "string" },
+            ]
+        }
+    v08/ts/react/component(&md)
+        +
+        m handleChangeName
+        +
+        m componentDidMount
+        +
+        m render
+            return
+                h1
+                    + Delete tfolder

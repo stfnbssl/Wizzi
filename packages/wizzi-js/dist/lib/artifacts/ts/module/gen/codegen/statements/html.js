@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\html.js.ittf
 */
 'use strict';
@@ -113,7 +113,8 @@ md.load = function(cnt) {
             // log 'exit statements/html/htmlelement', tag, text
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.js = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.js');
@@ -123,7 +124,8 @@ md.load = function(cnt) {
         }
         ctx.w("__html.push('<script src=\"" + model.wzName + "\"></script>')");
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.css = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.css');
@@ -133,7 +135,8 @@ md.load = function(cnt) {
         }
         ctx.w("__html.push('<link href=\"" + model.wzName + "\" rel=\"stylesheet\">')");
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.doctype = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.doctype');
@@ -143,7 +146,8 @@ md.load = function(cnt) {
         }
         ctx.w("__html.push('<doctype " + model.wzName + ">')");
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.ready = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.ready');
@@ -155,7 +159,7 @@ md.load = function(cnt) {
             ctx.w('$(function() {');
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -167,7 +171,7 @@ md.load = function(cnt) {
             ctx.w('window.onload = function() {');
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -175,7 +179,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
-    };
+    }
+    ;
     md._htmlelement = function(cnt, model, tag, text, ctx, callback) {
         if (typeof (callback) === 'undefined') {
             callback = text;
@@ -217,7 +222,7 @@ md.load = function(cnt) {
                     name: name, 
                     value: value, 
                     statements: statements
-                })
+                 })
             }
             else if (item_1.wzElement === '_style') {
                 name = 'style';
@@ -233,7 +238,7 @@ md.load = function(cnt) {
                     name: name, 
                     value: value, 
                     statements: statements
-                })
+                 })
             }
             else if (item_1.wzElement === 'jsPropertyOrValue') {
                 var p = lineParser.parseNameValueRaw(item_1.wzName, item_1),
@@ -244,10 +249,11 @@ md.load = function(cnt) {
                     name: name, 
                     value: value.trim(), 
                     statements: statements
-                })
+                 })
             }
+            
+            // will be written by u.writeComments
             else if (['comment','commentmultiline'].indexOf(item_1.wzElement) > -1) {
-                // will be written by u.writeComments
                 childStatements.push(item_1)
             }
             else if (['htmlelement','statement','jsObject','iif','call'].indexOf(item_1.wzElement) > -1) {
@@ -278,7 +284,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
-    };
+    }
+    ;
     function _htmlelement_end(cnt, model, tag, text, ctx, attrs, comments, callback) {
         var save___inside_html = ctx.__inside_html;
         ctx.__inside_html = true;
@@ -325,7 +332,7 @@ md.load = function(cnt) {
                 retval.push({
                     name: name, 
                     value: value
-                })
+                 })
             }
         }
         return retval;
@@ -347,4 +354,5 @@ md.load = function(cnt) {
         'wzSourceLineInfo', 
         '___exportName'
     ];
-};
+}
+;

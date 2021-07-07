@@ -1,0 +1,29 @@
+module
+    
+    $
+        var ctrl = {
+            name: 'TFolders',
+            path: '/tfolders'
+        } 
+
+    controller( &ctrl )
+        
+        $append imports
+            import
+                @ tFolderApi
+                from '../../features/tfolder'
+
+        _ this.router.get('/tfolders', this.tfolders)
+
+        $append handlers
+            handler( tfolders )
+                _ tFolderApi.getListTFolder
+                    ._ then
+                        =>
+                            param result
+                            _ response.render
+                                @ 'tfolders/tfolders.html.ittf'
+                                {
+                                    @ title 'tFolder · Wizzi'
+                                    @ tfolders result.item
+                    catch_fail( tFolders )

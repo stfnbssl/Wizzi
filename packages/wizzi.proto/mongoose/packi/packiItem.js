@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
-   
+
+const modelName = 'ArtifactProduction';
+
 const packiItemSchema = new mongoose.Schema({
     owner: { type: String},
     name: { type: String},
+    description: { type: String},
     wizziSchema: { type: String},
     mainIttf: { type: String},
     packiFiles: { 
@@ -15,6 +18,8 @@ const packiItemSchema = new mongoose.Schema({
             return JSON.stringify(data);
         }
     },
+    created_at: { type: Date},
+    updated_at: { type: Date},
     userUpdated: Boolean
 });    
 
@@ -27,7 +32,7 @@ let PackiItem = null;
 
 module.exports = {
     getPackiItem: function() {
-        if (!PackiItem) { PackiItem = mongoose.model('PackiItem', packiItemSchema); }
+        if (!PackiItem) { PackiItem = mongoose.model(modelName, packiItemSchema); }
         return PackiItem;
     }
 }

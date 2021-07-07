@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\config\types.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 export type ConfigType = { 
     port: number;
@@ -13,6 +13,7 @@ export type ConfigType = {
     mongoUser: string;
     mongoPassword: string;
     mongoPath: string;
+    mongoConnectUrl: string;
     auth0Domain: string;
     auth0PackiClientId: string;
     auth0PackiClientSecret: string;
@@ -27,6 +28,9 @@ export type ConfigType = {
     githubClientId: string;
     githubClientSecret: string;
     githubCallbackURL: string;
+    googleClientId: string;
+    googleClientSecret: string;
+    googleCallbackURL: string;
     isWizziDev: boolean;
     ittfPath: string;
     dataPath: string;

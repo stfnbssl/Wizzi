@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\types.tsx.ittf
-    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+    utc time: Mon, 05 Jul 2021 16:18:01 GMT
 */
 
 export type $SetComplement<A, A1 extends A> = A extends A1 ? never : A;

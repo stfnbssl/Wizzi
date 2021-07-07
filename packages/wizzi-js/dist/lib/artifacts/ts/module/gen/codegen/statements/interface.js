@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\interface.js.ittf
 */
 'use strict';
@@ -89,6 +89,7 @@ md.load = function(cnt) {
         var model = writeComments(model, ctx);
         ctx.write('interface ' + model.wzName);
         u.genTSTypeParameters(model, ctx, cnt, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
@@ -100,8 +101,10 @@ md.load = function(cnt) {
                 ctx.w('}');
                 return callback(null, null);
             })
-        })
-    };
+        }
+        )
+    }
+    ;
     cnt.stm.typeProperty = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeProperty');
@@ -119,6 +122,7 @@ md.load = function(cnt) {
         if (ptype) {
             ctx.write(': ');
             cnt.stm[ptype.wzElement](ptype, ctx, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -126,12 +130,14 @@ md.load = function(cnt) {
                 if (ivalue) {
                     ctx.write(' = ');
                     statement.stm[ivalue.wzElement](ivalue, ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         ctx.w(';');
                         return callback(null, null);
-                    })
+                    }
+                    )
                 }
                 else if (model.statements.length > 0) {
                     ctx.indent();
@@ -150,7 +156,8 @@ md.load = function(cnt) {
                     ctx.w(";");
                     return callback(null, null);
                 }
-            })
+            }
+            )
         }
         else if (model.statements.length == 1) {
             ctx.write(': ');
@@ -165,7 +172,8 @@ md.load = function(cnt) {
         else {
             callback(ctx.error(':type typeProperty must have one children. found: ' + model.statements.length, model))
         }
-    };
+    }
+    ;
     cnt.stm.typeMethod = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeMethod');
@@ -180,6 +188,7 @@ md.load = function(cnt) {
         ctx.write(model.wzName);
         ctx.write('(');
         u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
@@ -190,6 +199,7 @@ md.load = function(cnt) {
                 }
                 ctx.write(': ');
                 cnt.stm[atype.wzElement](atype, ctx, (err, notUsed) => {
+                
                     if (err) {
                         return callback(err);
                     }
@@ -200,7 +210,8 @@ md.load = function(cnt) {
                         ctx.w(';');
                         return callback(null, null);
                     })
-                })
+                }
+                )
             }
             else {
                 cnt.genItems(model.statements, ctx, function(err, notUsed) {
@@ -211,6 +222,9 @@ md.load = function(cnt) {
                     return callback(null, null);
                 })
             }
-        })
-    };
-};
+        }
+        )
+    }
+    ;
+}
+;

@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\main.js.ittf
 */
 'use strict';
@@ -79,7 +79,8 @@ md.gen = function(model, ctx, callback) {
             return callback(null, ctx);
         }
     }
-};
+}
+;
 function main_init(model, ctx) {
     if (model.kind === 'nodejs.bin') {
         ctx.w('#!/usr/bin/env node');
@@ -88,7 +89,7 @@ function main_init(model, ctx) {
     if ((!!ctx.values.noGeneratorComments) == false) {
         ctx.w('/*');
         ctx.w('    artifact generator: ' + __filename);
-        ctx.w('    package: wizzi-js@0.7.8');
+        ctx.w('    package: wizzi-js@0.7.9');
         ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'));
         if ((!!ctx.values.isPackageDeploy) == false) {
             ctx.w('    utc time: ' + new Date().toUTCString());
@@ -130,6 +131,8 @@ function main_close(model, ctx) {
     if (ctx.__wzModule && ctx.__wzModule.seen) {
         emit_top_WzModule(model, ctx);
     }
+    
+    // _ ctx.w('    innerError = innerError || new Error(\'Error created for trace.\');')
     if (model.hasFeature('argument-check') && !!ctx.values.isBrowserTarget == false) {
         ctx.w('/**');
         ctx.w('  params');
@@ -147,7 +150,6 @@ function main_close(model, ctx) {
         ctx.w('        parameter = message.parameter;');
         ctx.w('        message = message.message;');
         ctx.w('    }');
-        // _ ctx.w('    innerError = innerError || new Error(\'Error created for trace.\');')
         ctx.w("    return verify.error(innerError, {");
         ctx.w("        name: ( verify.isNumber(code) ? 'Err-' + code : code ),");
         ctx.w("        method: '" + model.wzName + ".' + method,");
@@ -246,5 +248,5 @@ function error(code, method, message, innerError) {
             name: ( verify.isNumber(code) ? 'Err-' + code : code ), 
             method: myname + '.' + method, 
             sourcePath: __filename
-        }, message || 'Error message unavailable');
+         }, message || 'Error message unavailable');
 }

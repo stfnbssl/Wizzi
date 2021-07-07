@@ -18,6 +18,7 @@
         siteUrl "${md.http}://localhost"
         port ${md.port}
         baseUrl "${md.http}://localhost:${md.port}"
+        apiVersion "1"
         { constants
             { preview
                 minWidth 700

@@ -10,6 +10,8 @@ $group
         @ MiddlewareType
         from '../features/app/types'
     +
+    # TODO replace with express.json, express.urlencoded ?
+    +
     export
         const BodyParserMiddleware
             :ref MiddlewareType

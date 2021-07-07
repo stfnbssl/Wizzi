@@ -155,3 +155,24 @@ export function saveUserActivity(
 * Get the last activities of an user on a packi.
 */
 export function getLastPackiActivity(): Promise<LastPackiActivity>;
+
+/**
+* Validate a new username
+*/
+export function validateUsername(username: string): Promise<any>;
+
+/**
+* Validate that an username and an email are not used
+*/
+export function validateUserNotUsed(username: string, email: string): Promise<any>;
+
+/**
+* Get an existing user by the profile of a github signon
+*/
+export function getUserByGithubLogin(profile: any): Promise<any>;
+
+/**
+* Save a new user from the profile of a github signon
+*/
+export function saveUserFromGithubLogin(username: string, profile: any): Promise<any>;
+

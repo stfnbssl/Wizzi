@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\class.js.ittf
 */
 'use strict';
@@ -25,6 +25,7 @@ md.gen = function(model, ctx, callback) {
     // log 'ts.es6.class', model
     u.writeComments(model, ctx);
     classDecorators(model, ctx, (err, notUsed) => {
+    
         if (err) {
             return callback(err);
         }
@@ -32,14 +33,17 @@ md.gen = function(model, ctx, callback) {
         ctx.write('class ' + zclass);
         // log myname, zclass, model.extends
         u.genTSTypeParameters(model, ctx, statement, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
             classSuper(model, ctx, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
                 classImplements(model, ctx, (err, notUsed) => {
+                
                     if (err) {
                         return callback(err);
                     }
@@ -58,11 +62,16 @@ md.gen = function(model, ctx, callback) {
                             return callback(null, null);
                         })
                     })
-                })
-            })
-        })
-    })
-};
+                }
+                )
+            }
+            )
+        }
+        )
+    }
+    )
+}
+;
 function classDecorators(model, ctx, callback) {
     if (typeof callback === 'undefined') {
         throw new Error('Missing callback parameter in fn: ' + myname + '.classDecorators');
@@ -80,6 +89,7 @@ function classDecorators(model, ctx, callback) {
             }
             count++;
             statement.genItem(item_1, ctx, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -87,7 +97,8 @@ function classDecorators(model, ctx, callback) {
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
-            })
+            }
+            )
         }
         else {
             process.nextTick(function() {
@@ -131,9 +142,10 @@ function classSuper(model, ctx, callback) {
     if (typeof callback === 'undefined') {
         throw new Error('Missing callback parameter in fn: ' + myname + '.classSuper');
     }
+    
+    // log 'classSuper', 'model.superType',
     if (model.super) {
         ctx.write(' extends ' + model.super);
-        // log 'classSuper', 'model.superType',
         if (model.superType && model.superType.typeParameterInsts.length > 0) {
             ctx.write('<');
             var len_1 = model.superType.typeParameterInsts.length;
@@ -153,13 +165,15 @@ function classSuper(model, ctx, callback) {
                 }
                 else if (item_1.statements.length == 1) {
                     statement.genItem(item_1.statements[0], ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         process.nextTick(function() {
                             repeater_1(index_1 + 1);
                         })
-                    })
+                    }
+                    )
                 }
                 else {
                     ctx.write('x');
@@ -193,11 +207,13 @@ function classCTor(model, ctx, callback) {
         u.genAccessorsAndExtra(ctor, ctx)
         ctx.write('constructor');
         u.genTSTypeParameters(ctor, ctx, statement, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
             ctx.write('(');
             u.genTSParams(ctor, ctx, statement, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -205,8 +221,10 @@ function classCTor(model, ctx, callback) {
                 ctx.w(' {');
                 ctx.indent();
                 classCTor_end(model, ctx, callback)
-            })
-        })
+            }
+            )
+        }
+        )
     }
     else {
         return callback(null, null);
@@ -256,12 +274,14 @@ function classMembers(model, ctx, callback) {
         // log 'ts.es6.class.classMembers', item_1.wzElement
         var generator = null;
         var done = false;
+        
+        // done already
         if (item_1.wzElement === 'ctor') {
-            // done already
             done = true;
         }
+        
+        // done already
         else if (item_1.wzElement === 'decoratorCall') {
-            // done already
             done = true;
         }
         else if (item_1.wzElement === 'method' || item_1.wzElement === 'typeMethod') {
@@ -295,13 +315,15 @@ function classMembers(model, ctx, callback) {
         else {
             if (done == false) {
                 statement.genItem(item_1, ctx, (err, notUsed) => {
+                
                     if (err) {
                         return callback(err);
                     }
                     process.nextTick(function() {
                         repeater_1(index_1 + 1);
                     })
-                })
+                }
+                )
             }
             else {
                 process.nextTick(function() {

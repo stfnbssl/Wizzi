@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\handler.js.ittf
 */
 'use strict';
@@ -26,12 +26,14 @@ md.gen = function(model, ctx, callback) {
     }
     ctx.write(method);
     u.genTSTypeParameters(model, ctx, statement, (err, notUsed) => {
+    
         if (err) {
             return callback(err);
         }
         var isSingleParam = u.isSingleParamForArrowFunction(model);
         ctx.write(' = ' + (isSingleParam ? '' : '('));
         u.genTSParams(model, ctx, statement, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
@@ -42,6 +44,7 @@ md.gen = function(model, ctx, callback) {
                 ctx.w(' => ' + (ir ? '' : '{'));
                 ctx.indent();
                 statement.genMany(model.statements, ctx, (err, notUsed) => {
+                
                     if (err) {
                         return callback(err);
                     }
@@ -49,20 +52,26 @@ md.gen = function(model, ctx, callback) {
                     ctx.write(ir ? '' : '}');
                     ctx.w(ts ? ';' : '');
                     return callback(null, null);
-                })
+                }
+                )
             }
             if (model.typeReturn) {
                 ctx.write(': ');
                 statement.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                
                     if (err) {
                         return callback(err);
                     }
                     writeBody();
-                })
+                }
+                )
             }
             else {
                 writeBody();
             }
-        })
-    })
-};
+        }
+        )
+    }
+    )
+}
+;

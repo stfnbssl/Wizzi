@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\objects.js.ittf
 */
 'use strict';
@@ -91,8 +91,9 @@ md.load = function(cnt) {
         var statements = jstparser.getStatements(model);
         cnt.genItems(statements, ctx, {
             indent: false
-        }, callback)
-    };
+         }, callback)
+    }
+    ;
     cnt.stm.jsPropertyOrValue = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.jsPropertyOrValue');
@@ -104,7 +105,7 @@ md.load = function(cnt) {
             ctx.write('${' + (model.wzName || ''));
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -120,7 +121,8 @@ md.load = function(cnt) {
                 jsPropertyOrValue_no_stm_children(model, ctx, callback)
             }
         }
-    };
+    }
+    ;
     cnt.stm.jsPropertyOrValueComputed = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.jsPropertyOrValueComputed');
@@ -136,7 +138,8 @@ md.load = function(cnt) {
             ctx.write(']: ');
             cnt.genItems(model.statements.slice(1), ctx, {}, callback)
         })
-    };
+    }
+    ;
     cnt.stm.jsRest = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.jsRest');
@@ -164,15 +167,17 @@ md.load = function(cnt) {
             ctx.write(model.wzName);
             return callback(null, null);
         }
-    };
+    }
+    ;
     function jsPropertyOrValue_with_stm_children(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.jsPropertyOrValue_with_stm_children');
         }
         // log 'js.module.statements.object.model.wzName, model.statements.length', model.wzName, model.statements.length
         var colon = ((ctx.isGraphql && !ctx.isNamedCallParam) || model.wzParent.wzElement == 'call') ? ' ' : ': ';
+        
+        // Attributes have been already processed
         if (u.parentIsHtmlElement(model)) {
-            // Attributes have been already processed
             return callback(null, null);
         }
         else if (model.isDslCall) {
@@ -180,7 +185,7 @@ md.load = function(cnt) {
             ctx.write(model.wzName + '(');
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -188,15 +193,16 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
+        
+        // log 4, model.wzName + colon
         else if (u.isObjectProperty(model) || u.isParamValue(model) || u.isValue(model)) {
-            // log 4, model.wzName + colon
             u.writeComments(model, ctx);
             colon = u.onlyChildIs(model, 'initValue') ? '=' : colon;
             if (model.wzName.length > 0) {
                 ctx.write(model.wzName + colon);
                 cnt.genItems(model.statements, ctx, {
                     indent: false
-                }, callback)
+                 }, callback)
             }
             else if (model.statements.length == 2) {
                 cnt.genItem(model.statements[0], ctx, function(err, notUsed) {
@@ -210,7 +216,7 @@ md.load = function(cnt) {
             else {
                 cnt.genItems(model.statements, ctx, {
                     indent: false
-                }, callback)
+                 }, callback)
             }
         }
         else if (ctx.__ecma === 'es6') {
@@ -218,7 +224,7 @@ md.load = function(cnt) {
             ctx.w('@' + model.wzName + '(');
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -243,7 +249,7 @@ md.load = function(cnt) {
             u.writeComments(model, ctx);
             var p = lineParser.parseNameValueRaw(model.wzName, model, {
                 objectProperty: true
-            });
+             });
             ctx.write(p.name())
             if (p.value()) {
                 ctx.write(' = ' + p.value())
@@ -255,7 +261,7 @@ md.load = function(cnt) {
             var tk,
                 p = lineParser.parseNameValueRaw(model.wzName, model, {
                     objectProperty: true
-                });
+                 });
             if (p.hasValue()) {
                 ctx.write(p.name() + colon);
                 ctx.write(p.value())
@@ -271,7 +277,7 @@ md.load = function(cnt) {
             }
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, callback)
+             }, callback)
         }
         else if (u.parentIsHtmlElement(model)) {
             return callback(null, null);
@@ -320,9 +326,11 @@ md.load = function(cnt) {
                 jsObject_close(model, ctx, callback)
             })
         }
+        // log '++++ start', ctx.__ecma
         else {
+            
+            // is an object property
             if (model.wzName && model.wzName.length > 0) {
-                // is an object property
                 ctx.w(model.wzName + colon + '{');
             }
             else {
@@ -339,7 +347,6 @@ md.load = function(cnt) {
                 }
             }
             ctx.indent();
-            // log '++++ start', ctx.__ecma
             if (ctx.__ecma === 'es6') {
                 ctx.__is_react_class = true;
             }
@@ -347,15 +354,17 @@ md.load = function(cnt) {
                 if (err) {
                     return callback(err);
                 }
+                
+                // log '++++ end', ctx.__ecma
                 if (ctx.__ecma === 'es6') {
-                    // log '++++ end', ctx.__ecma
                     ctx.__is_react_class = save__is_react_class;
                 }
                 u.checkInlineExit(model, ctx);
                 return callback(null, null);
             })
         }
-    };
+    }
+    ;
     function jsObject_is_dslCall(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.jsObject_is_dslCall');
@@ -413,17 +422,20 @@ md.load = function(cnt) {
                 return next_1();
             }
             var item_1 = model.statements[index_1];
+            
+            // skip
+            
+            // log 'jsObject_close 2'
             if (model.isDslCall && item_1.wzElement == 'namedCallParam') {
-                // skip
-                // log 'jsObject_close 2'
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
             }
+            // log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
             else {
-                // log 'js.module.gen.jsObject_close.item_1', item_1.wzElement, u.isMemberAccessOrCall(item_1)
+                
+                // log 'jsObject_close 3'
                 if (u.isMemberAccessOrCall(item_1)) {
-                    // log 'jsObject_close 3'
                     if (!!ctx.__inline == false) {
                         ctx.w('');
                     }
@@ -522,14 +534,16 @@ md.load = function(cnt) {
         u.checkInlineEnter(model, ctx);
         var colon = (ctx.isGraphql && !ctx.isNamedCallParam) ? ' ' : ': ';
         // log '600 jsArray'
+        
+        // is an array property
         if (model.wzName && model.wzName.length > 0) {
-            // is an array property
             ctx.w(model.wzName + colon + '[');
         }
         else {
+            
+            // log '601 jsArray'
             if (model.statements.length == 0) {
                 ctx.write('[' + (model.wzName || '') + ']');
-                // log '601 jsArray'
                 u.checkInlineExit(model, ctx);
                 return callback(null, null);
             }
@@ -550,13 +564,14 @@ md.load = function(cnt) {
             }
             var item_1 = model.statements[index_1];
             // log '607 jsArray'
+            
+            // log '605 jsArray'
             if (u.isMemberAccessOrCall(item_1)) {
                 if (!!ctx.__inline == false) {
                     ctx.w('');
                 }
                 ctx.deindent();
                 ctx.write(']');
-                // log '605 jsArray'
                 return cnt.genItem(item_1, ctx, function(err, notUsed) {
                         if (err) {
                             return callback(err);
@@ -621,7 +636,8 @@ md.load = function(cnt) {
             u.checkInlineExit(model, ctx);
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.get = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.get');
@@ -642,5 +658,7 @@ md.load = function(cnt) {
             u.checkInlineExit(model, ctx);
             return callback(null, null);
         })
-    };
-};
+    }
+    ;
+}
+;

@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\template.js.ittf
 */
 'use strict';
@@ -90,7 +90,7 @@ md.load = function(cnt) {
         ctx.write('`');
         cnt.genItems(model.statements, ctx, {
             indent: false
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -101,7 +101,8 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.taggedTemplate = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.taggedTemplate');
@@ -113,7 +114,7 @@ md.load = function(cnt) {
         ctx.write('`');
         cnt.genItems(model.statements, ctx, {
             indent: false
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -124,7 +125,8 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.tagFunctionCall = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.tagFunctionCall');
@@ -136,7 +138,7 @@ md.load = function(cnt) {
         ctx.write( model.wzName + '`');
         cnt.genItems(model.statements, ctx, {
             indent: false
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -149,7 +151,8 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.macroExpr = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.macroExpr');
@@ -161,7 +164,7 @@ md.load = function(cnt) {
         ctx.write('${' + (model.wzName || ''));
         cnt.genItems(model.statements, ctx, {
             indent: false
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -171,5 +174,7 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         })
-    };
-};
+    }
+    ;
+}
+;

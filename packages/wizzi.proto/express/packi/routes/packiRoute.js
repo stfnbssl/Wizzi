@@ -17,12 +17,12 @@ router.get('/:id', function (req, res) {
     render(req, res);
 })
 
-router.get('/:userid/:name', function (req, res) {
+router.get('/:username/:name', function (req, res) {
     render(req, res);
 })
 
 function render(req, res) {
-    let index = '<html><h1>Hello ' + req.params.id + '/' + req.params.userid + '/' + req.params.name + '</h1></html>'
+    let index = '<html><h1>Hello ' + req.params.id + '/' + req.params.username + '/' + req.params.name + '</h1></html>'
     res.set('Content-Type', 'text/html');
     res.set('Content-Length', index.length);
     res.send(index)

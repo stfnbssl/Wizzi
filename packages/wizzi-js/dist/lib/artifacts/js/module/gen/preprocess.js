@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\preprocess.js.ittf
 */
 'use strict';
@@ -14,7 +14,7 @@ md.exec = function(model, ctx) {
         functions: [], 
         classes: [], 
         requires: []
-    };
+     };
     ctx.__wzItems = [];
     var i, i_items=model.statements, i_len=model.statements.length, topitem;
     for (i=0; i<i_len; i++) {
@@ -25,7 +25,8 @@ md.exec = function(model, ctx) {
             ctx.__wzItems.push(wzTopLevel(topitem))
         }
     }
-};
+}
+;
 function wzTopLevel(topitem) {
     var wzItems = topitem.__wzItems = wzItems = {
         seen: false, 
@@ -34,7 +35,7 @@ function wzTopLevel(topitem) {
         functions: [], 
         classes: [], 
         requires: []
-    };
+     };
     var i, i_items=topitem.statements, i_len=topitem.statements.length, item;
     for (i=0; i<i_len; i++) {
         item = topitem.statements[i];

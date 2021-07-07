@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\react.js.ittf
 */
 'use strict';
@@ -121,7 +121,8 @@ md.load = function(cnt) {
                 reactComponent_close(model, ctx, childrenInfo, callback)
             }
         })
-    };
+    }
+    ;
     function reactComponent_style(model, ctx, childrenInfo, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.reactComponent_style');
@@ -258,8 +259,9 @@ md.load = function(cnt) {
                 })
             })
         }
+        
+        // already done
         else if (model.wzElement == 'prop' || model.wzElement == 'style') {
-            // already done
             return callback(null, null);
         }
         else {
@@ -346,8 +348,9 @@ md.load = function(cnt) {
                 return next_1();
             }
             var item_1 = model.statements[index_1];
+            
+            // already done
             if (item_1.wzElement == 'prop') {
-                // already done
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
@@ -371,7 +374,8 @@ md.load = function(cnt) {
             writePropTypes(model, childrenInfo, ctx)
             return callback(null, null);
         }
-    };
+    }
+    ;
     function writeMethod(name, model, ctx, cnt, callback) {
         ctx.w(name + '() {');
         ctx.indent();
@@ -394,8 +398,9 @@ md.load = function(cnt) {
             }
             var item_1 = statements[index_1];
             // log 'writeIndented', item_1.wzElement
+            
+            // done in writeMethodProps
             if (item_1.wzElement == 'prop') {
-                // done in writeMethodProps
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
@@ -422,13 +427,14 @@ md.load = function(cnt) {
             items: [], 
             itemsWithDefault: [], 
             style: null
-        };
+         };
         var i, i_items=react.statements, i_len=react.statements.length, item;
         for (i=0; i<i_len; i++) {
             item = react.statements[i];
+            
+            // log 'item.defaultValue', item.defaultValue
             if (item.wzElement == 'prop') {
                 ret.items.push(item);
-                // log 'item.defaultValue', item.defaultValue
                 if (item.defaultValue) {
                     ret.itemsWithDefault.push(item);
                 }
@@ -530,7 +536,8 @@ md.load = function(cnt) {
             else {
                 ctx.w('])');
             }
-        };
+        }
+        ;
         lc.oneOfTypeParam = function(model, ctx, cnt) {
             // log 'wizzi-codegen.statemts.t.reactPropTypes oneOfTypeParam model: ', model
             ctx.w(model.wzName + ': PropTypes.oneOfType([');
@@ -541,7 +548,8 @@ md.load = function(cnt) {
             else {
                 ctx.w('])');
             }
-        };
+        }
+        ;
         lc.arrayOf = function(model, ctx, cnt) {
             ctx.write(model.wzName + ': PropTypes.arrayOf([');
             writeTypeList(model, ctx);
@@ -551,7 +559,8 @@ md.load = function(cnt) {
             else {
                 ctx.w('])');
             }
-        };
+        }
+        ;
         lc.instanceOf = function(model, ctx, cnt) {
             ctx.write(model.wzName + ': PropTypes.instanceOf(');
             writeTypeList(model, ctx);
@@ -561,7 +570,8 @@ md.load = function(cnt) {
             else {
                 ctx.w(')');
             }
-        };
+        }
+        ;
         lc.objectOf = function(model, ctx, cnt) {
             ctx.write(model.wzName + ': PropTypes.objectOf(');
             writeTypeList(model, ctx);
@@ -571,7 +581,8 @@ md.load = function(cnt) {
             else {
                 ctx.w(')');
             }
-        };
+        }
+        ;
         lc.shapeParam = function(model, ctx, cnt) {
             // log 'wizzi-codegen.statemts.t.reactPropTypes shapeParam model: ', model
             ctx.w(model.wzName + ': PropTypes.shape({');
@@ -582,21 +593,24 @@ md.load = function(cnt) {
             else {
                 ctx.w('})');
             }
-        };
+        }
+        ;
         return function genReactPropType(prop, ctx, cnt) {
                 // log 'wizzi-codegen.reactPropTypes', prop.wzName
+                
+                // default to string
+                
+                // log 'wizzi-codegen.statemts.t.reactPropTypes < 1, prop.wzName:', prop.wzName, 'string'
                 if (!prop.param) {
-                    // default to string
-                    // log 'wizzi-codegen.statemts.t.reactPropTypes < 1, prop.wzName:', prop.wzName, 'string'
                     ctx.write(prop.wzName + ': PropTypes.string');
                     if (prop.isRequired) {
                         ctx.write('.isRequired');
                     }
                 }
+                // log 'wizzi-codegen.statemts.t.reactPropTypes prop.wzName: ', prop.wzName, 'prop.param.wzElement', propParam.wzElement
+                // log 'prop', propParam.wzElement, lc[propParam.wzElement]
                 else {
                     var propParam = prop.param;
-                    // log 'wizzi-codegen.statemts.t.reactPropTypes prop.wzName: ', prop.wzName, 'prop.param.wzElement', propParam.wzElement
-                    // log 'prop', propParam.wzElement, lc[propParam.wzElement]
                     if (lc[propParam.wzElement]) {
                         lc[propParam.wzElement](prop, ctx, cnt)
                     }
@@ -670,7 +684,8 @@ md.load = function(cnt) {
             }
             var name = 'string';
             if (prop.param) {
-                name = propTypeFromWzElement(prop.param.wzElement);
+                name = propTypeFromWzElement(prop.param.wzElement)
+                ;
             }
             ctx.write(prop.wzName + ': PropTypes.' + name)
             if (prop.isRequired) {
@@ -733,4 +748,5 @@ md.load = function(cnt) {
     function generateParams(methodName, parameters, hasCallback, hasOptionsCallback, ctx, callback) {
         return callback(null, null);
     }
-};
+}
+;

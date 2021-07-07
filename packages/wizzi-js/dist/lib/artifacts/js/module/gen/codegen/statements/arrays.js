@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\arrays.js.ittf
 */
 'use strict';
@@ -110,7 +110,7 @@ md.load = function(cnt) {
             cnt.genItems(model.statements, ctx, {
                 indent: false, 
                 sep: ', '
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -122,7 +122,8 @@ md.load = function(cnt) {
             ctx.w(');');
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.each = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.each');
@@ -131,7 +132,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.each. Got: ' + callback);
         }
         arrayMethod('forEach', model, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.filter = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.filter');
@@ -140,7 +142,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.filter. Got: ' + callback);
         }
         arrayMethod('filter', model, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.find = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.find');
@@ -149,7 +152,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.find. Got: ' + callback);
         }
         arrayMethod('find', model, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.reduce = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.reduce');
@@ -168,14 +172,15 @@ md.load = function(cnt) {
         ctx.w(coll + '.reduce( (acc, ' + item + ', ' + item + '_index, array) => {');
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
             ctx.w('}' + (_initValue ? ', ' + _initValue : '') + ');');
             return callback(null, null);
         })
-    };
+    }
+    ;
     function arrayMethod(method, model, ctx, callback) {
         var ss = model.wzName.trim().split(' ')
         ;
@@ -188,7 +193,7 @@ md.load = function(cnt) {
         ctx.w(coll + '.' + method + '(function(' + item + ', ' + item + '_index, array) {');
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -196,4 +201,5 @@ md.load = function(cnt) {
             return callback(null, null);
         })
     }
-};
+}
+;

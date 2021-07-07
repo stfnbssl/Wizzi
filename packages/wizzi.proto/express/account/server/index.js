@@ -121,6 +121,14 @@ app.get('/logoff', (req, res) => {
     res.redirect('/');
 });
 
+app.get('/user/checkusername/:username', function(req, res) {
+    api.validateUsername(req.params.username).then(result=>{
+        res.json(result);
+    }).catch(err=>{
+        res.json(err);
+    });
+});
+
 function ensureAuthenticated(req, res, next) {
     if (req.session.user) {
       return next();

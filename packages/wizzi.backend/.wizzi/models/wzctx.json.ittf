@@ -18,6 +18,7 @@
         siteUrl "${md.http}://localhost"
         port ${md.port}
         baseUrl "${md.http}://localhost:${md.port}"
+        apiVersion "1"
         { constants
             { preview
                 minWidth 700
@@ -51,9 +52,15 @@
             clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
             callbackURL "http://localhost:5000/authenticate/github/callback"
         
-        useAccount false
+        useAccount true
         { account
         
+        useProduction true
+        { production
+        
+        useTFolder true
+        { tFolder
+
         useConfig true
         { config
             useEnvalid true

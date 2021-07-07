@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\packi\controllers\user.tsx.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Fri, 02 Jul 2021 09:09:26 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
@@ -53,18 +53,18 @@ export class UserController implements ControllerType {
             type: 'success', 
             formName: 'CreateUser', 
             formData: {
-                name: 'joe dummy', 
-                email: 'dummy.for.test@gmail.com', 
-                avatar_url: 'https://avatars.githubusercontent.com/u/728956?v=4'
+                name: request.query.name, 
+                email: request.query.email, 
+                avatar_url: request.query.avatar_url
              }
          }, {})
     
     ;
     
-    private postNewUser = 
-    // log myname + '.postNewUser',
-    async (request: Request, response: Response) => {
+    private postNewUser = async (request: Request, response: Response) => {
     
+        console.log(myname + '.postNewUser.request.body', JSON.stringify(request.body, null, 2));
+        response.json(JSON.stringify(request.body, null, 2));
     }
     ;
     

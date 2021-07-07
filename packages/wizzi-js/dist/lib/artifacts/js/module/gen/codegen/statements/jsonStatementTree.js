@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\jsonStatementTree.js.ittf
 */
 'use strict';
@@ -26,10 +26,12 @@ md.getStatements = function(model) {
         ret.push(normalizeJSTNode(json, model.wzParent))
     }
     return ret;
-};
+}
+;
 function normalizeJSTNode(node, parent) {
+    
+    // log 'normalizeJSTNode 2', node
     if (node.n === 'function') {
-        // log 'normalizeJSTNode 2', node
         node.paramNames = [];
         node.constrainedParams = [];
     }
@@ -53,8 +55,9 @@ function normalizeJSTNode(node, parent) {
             node.statements.push(normalizeJSTNode(item, node))
         }
     }
+    
+    // log 'normalizeJSTNode 2 ended'
     if (node.n === 'function') {
-        // log 'normalizeJSTNode 2 ended'
     }
     return node;
 }

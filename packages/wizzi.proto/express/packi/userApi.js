@@ -6,7 +6,7 @@ module.exports = md = {
         User = pUser.getUser();
     },
 
-    getByGithubLogin: function(profile) {
+    getUserByGithubLogin: function(profile) {
         var query = { email: profile.email };
         return new Promise((resolve, reject) => {        
             User.find(query, function(err, result) {
@@ -17,13 +17,24 @@ module.exports = md = {
         });
     },
     
-    validateNotUsed: function(chosenUserid, profile) {
+    validateUsername: function(chosenUsername) {
         return new Promise((resolve, reject) => {
-            let query = { userid: chosenUserid };
+            let query = { username: chosenUsername };
             User.find(query, function(err, result) {
                 if (err) return reject(err);
-                if (result.length == 1) return reject({message: 'userid already in use'});
-                let query = { email: profile.email };
+                if (result.length == 1) return resolve({isValid:false, message: 'username already in use'});
+                resolve({isValid: true});
+            })
+        })
+    },
+
+    validateUserNotUsed: function(chosenUsername, email) {
+        return new Promise((resolve, reject) => {
+            let query = { username: chosenUsername };
+            User.find(query, function(err, result) {
+                if (err) return reject(err);
+                if (result.length == 1) return reject({message: 'username already in use'});
+                let query = { email: email };
                 User.find(query, function(err, result) {
                     if (err) return reject(err);
                     if (result.length == 1) return reject({message: 'email already in use'});
@@ -33,16 +44,15 @@ module.exports = md = {
         })
     },
     
-    saveFromGithubLogin: function(chosenUserid, profile) {
+    createUserFromLogin: function(chosenUsername, userData) {
         return new Promise((resolve, reject) => {        
-            md.validateNotUsed(chosenUserid, profile.email).then(result=> {
+            md.validateNotUsed(chosenUsername, userData.email).then(result=> {
                 const newUser = new User({
-                    userid: chosenUserid,
-                    email: profile.email,
+                    username: chosenUsername,
+                    email: userData.email,
                     provider: 'github',
-                    name: profile.name,
-                    avatar_url: profile.avatar_url,
-                    developer_url: profile.html_url,
+                    name: userData.name,
+                    avatar_url: userData.avatar_url,
                     created_at: new Date(),
                     updated_at: new Date()
                 });

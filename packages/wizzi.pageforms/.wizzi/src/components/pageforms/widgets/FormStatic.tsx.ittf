@@ -55,5 +55,6 @@ module
                         @ id {name}                    
                         @ value {value}                    
                         @ enabled {false}
+                        @ readOnly {true}
 
 

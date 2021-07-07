@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\config\env.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import path from 'path';
 import dotenv from 'dotenv';
@@ -34,6 +34,9 @@ function validateEnv() {
         GITHUB_CLIENT_ID: str(), 
         GITHUB_CLIENT_SECRET: str(), 
         GITHUB_CALLBACK_URL: str(), 
+        GOOGLE_CLIENT_ID: str(), 
+        GOOGLE_CLIENT_SECRET: str(), 
+        GOOGLE_CALLBACK_URL: str(), 
         IS_WIZZI_DEV: bool(), 
         PACKI_STORE_FOLDER: str(), 
         PACKI_TEMPLATES_FOLDER: str(), 
@@ -61,6 +64,7 @@ export default function create():  ConfigType {
                 mongoUser: checkedEnv.MONGO_USER, 
                 mongoPassword: checkedEnv.MONGO_PASSWORD, 
                 mongoPath: checkedEnv.MONGO_PATH, 
+                mongoConnectUrl: '', 
                 auth0Domain: checkedEnv.AUTH0_DOMAIN, 
                 auth0PackiClientId: checkedEnv.AUTH0_PACKI_CLIENT_ID, 
                 auth0PackiClientSecret: checkedEnv.AUTH0_PACKI_CLIENT_SECRET, 
@@ -75,6 +79,9 @@ export default function create():  ConfigType {
                 githubClientId: checkedEnv.GITHUB_CLIENT_ID, 
                 githubClientSecret: checkedEnv.GITHUB_CLIENT_SECRET, 
                 githubCallbackURL: checkedEnv.GITHUB_CALLBACK_URL, 
+                googleClientId: checkedEnv.GOOGLE_CLIENT_ID, 
+                googleClientSecret: checkedEnv.GOOGLE_CLIENT_SECRET, 
+                googleCallbackURL: checkedEnv.GOOGLE_CALLBACK_URL, 
                 isWizziDev: checkedEnv.IS_WIZZI_DEV, 
                 ittfPath: __ittfPath, 
                 dataPath: __dataPath, 
@@ -85,6 +92,14 @@ export default function create():  ConfigType {
                 packiTemplatesFolder: checkedEnv.PACKI_TEMPLATES_FOLDER, 
                 packiApiEndpoint: checkedEnv.PACKI_API_ENDPOINT
              };
+            const { mongoHost, mongoUser, mongoPassword, mongoPath } = config;
+            if (mongoUser && mongoUser.length > 0 && mongoPassword && mongoPassword.length > 0 && mongoHost && mongoHost.length > 0) {
+                config.mongoConnectUrl = `${mongoHost}://${mongoUser}:${mongoPassword}${mongoPath}`;
+            }
+            // example 'mongodb://localhost/test'
+            else {
+                config.mongoConnectUrl = `${mongoPath}`;
+            }
             Object.keys(config).forEach((element) => {
             
                 if (element.indexOf("Pass") < 0 && element.indexOf("Secr") < 0) {

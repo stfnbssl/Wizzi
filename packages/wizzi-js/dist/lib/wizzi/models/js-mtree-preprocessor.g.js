@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\wizzi\models\js-mtree-preprocessor.g.js.ittf
 */
 'use strict';
@@ -54,7 +54,7 @@ module.exports = function(mTree, context) {
         actions: [
             
         ]
-    };
+     };
     var i, i_items=mTree.nodes[0].children, i_len=mTree.nodes[0].children.length, item;
     for (i=0; i<i_len; i++) {
         item = mTree.nodes[0].children[i];
@@ -76,7 +76,7 @@ module.exports = function(mTree, context) {
                     children: [
                         
                     ]
-                }
+                 }
             ];
             var j, j_items=children, j_len=children.length, c;
             for (j=0; j<j_len; j++) {
@@ -86,7 +86,8 @@ module.exports = function(mTree, context) {
         }
     }
     return mTree;
-};
+}
+;
 function traverse(node, state) {
     if (preprocessNode(node, state)) {
         return ;
@@ -124,15 +125,19 @@ function preprocessNode(node, state) {
         addAttr(state, node, 'async')
         addAttr(state, node, 'generator')
     }
+    
+    // log 'js-mtree-processor svgOn', node.n, node.v
     if (state.svgOn) {
-        // log 'js-mtree-processor svgOn', node.n, node.v
     }
+    
+    // log "node.n === 'p' && state.parent && (state.parent.n === 'class' || state.parent.n === 'react'"
+    
+    // do nothing
     if (node.n === 'p' && state.parent && (state.parent.n === 'class' || state.parent.n === 'react')) {
-        // log "node.n === 'p' && state.parent && (state.parent.n === 'class' || state.parent.n === 'react'"
-        // do nothing
     }
+    
+    // literal var 'set' is an error by 'wizzi-tools/wizzify/js'
     else if (node.n === 'set' && state.parent && (state.parent.n === '`lit')) {
-        // literal var 'set' is an error by 'wizzi-tools/wizzify/js'
         node.n = '@';
     }
     else if (state.svgOn && svg_supported_attrs.indexOf(node.n) > -1) {
@@ -158,10 +163,11 @@ function preprocessNode(node, state) {
             state.svgOn = true;
         }
     }
+    
+    // log 'js-mtree-processor svgOn'
     else if (node.n === 'svg') {
         state.htmlOn = true;
         state.svgOn = true;
-        // log 'js-mtree-processor svgOn'
     }
     else if (node.n === 'if' && state.styledOn) {
         var nCssStyled = createNode(node, '<', '--styled--', node.children);
@@ -207,9 +213,9 @@ function preprocessNode(node, state) {
                     s: node.s, 
                     u: node.u, 
                     children: savedchildren
-                }
+                 }
             ]
-        };
+         };
         if (node.n == 'css') {
             node.n == 'styled-css';
         }
@@ -231,7 +237,7 @@ function addAttr(state, node, attr) {
         to: node, 
         n: attr, 
         v: ''
-    })
+     })
 }
 function createNode(node, name, value, childrenFrom) {
     return {
@@ -242,5 +248,5 @@ function createNode(node, name, value, childrenFrom) {
             s: node.s, 
             u: node.u, 
             children: childrenFrom || []
-        };
+         };
 }

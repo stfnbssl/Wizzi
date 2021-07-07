@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\react\class.js.ittf
 */
 'use strict';
@@ -15,4 +15,5 @@ md.gen = function(model, ctx, callback) {
         throw new Error('The callback parameter must be a function. In ' + myname + '.gen. Got: ' + callback);
     }
     new es6_class.gen(model, ctx, callback);
-};
+}
+;

@@ -1,0 +1,76 @@
+module
+    
+    $
+        var ctrl = {
+            name: 'ApiV1TFolder',
+            path: '/api/v1/tfolder',
+        }
+    
+    controller( &ctrl )
+            
+        $append imports
+            import
+                @ validateTFolder
+                @ getTFolder
+                @ updateTFolder
+                from '../api/tfolder'
+            +
+            const myname = 'features/tfolder/controllers/apiv1tfolder'
+
+        _ this.router.get('/checkname/:name', this.getCheckArtifactName)
+        _ this.router.get('/:owner/:name', this.getTFolder)
+        _ this.router.put('/:owner/:name', this.putTFolder)
+        
+        $append handlers
+            
+            handler( getCheckArtifactName )
+
+                log 'getCheckArtifactName.request.params', request.params
+                log 'getCheckArtifactName.request.session.user.username', (request.session as any).user.username
+                _ validateTFolder
+                    @ (request.session as any).user.username
+                    @ request.params.name
+                    ._ then
+                        =>
+                            param result
+                                :any
+                            log 'getCheckArtifactName.result', result
+                            _ sendSuccess
+                                @ response
+                                @ result
+                    catch_fail( getCheckArtifactName )
+
+            handler( getTFolder )
+
+                log 'getTFolder.request.params', request.params
+                _ getTFolder
+                    @ request.params.owner
+                    @ request.params.name
+                    ._ then
+                        =>
+                            param result
+                                :any
+                            log 'getTFolder.result', result
+                            _ sendSuccess
+                                @ response
+                                @ result
+                    catch_fail( getTFolder )
+
+            handler( putTFolder )
+
+                log 'putTFolder.request.params', request.params
+                log 'putTFolder.request.body', request.body
+                _ updateTFolder
+                    @ request.params.owner
+                    @ request.params.name
+                    @ request.body.description
+                    @ request.body.packiFiles
+                    ._ then
+                        =>
+                            param result
+                                :any
+                            log 'putTFolder.result', result
+                            _ sendSuccess
+                                @ response
+                                @ result
+                    catch_fail( putTFolder )

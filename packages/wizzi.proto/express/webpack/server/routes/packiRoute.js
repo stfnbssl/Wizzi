@@ -21,12 +21,12 @@ router.get('/:id', function (req, res) {
     renderBy_id(req, res);
 })
 
-router.get('/:userid/:name', function (req, res) {
+router.get('/:username/:name', function (req, res) {
     console.log('req.path', req.path)
     renderBy_owner_name(req, res);
 })
 
-router.get('/:userid/:name/*', function (req, res) {
+router.get('/:username/:name/*', function (req, res) {
     console.log('req.path', req.path)
     renderBy_owner_name(req, res);
 })
@@ -54,7 +54,7 @@ function renderPackiEditor(req, res, packiItemObject) {
     const index = '<!DOCTYPE html>' + (ReactDOMServer.renderToStaticMarkup(
         <Document 
             id={req.params.id} 
-            userid={req.params.userid}
+            username={req.params.username}
             name={req.params.name}
             data={packiItemObject}
         />
@@ -70,7 +70,7 @@ function render(req, res) {
     const index = '<!DOCTYPE html>' + (ReactDOMServer.renderToStaticMarkup(
         <Document 
             id={req.params.id} 
-            userid={req.params.userid}
+            username={req.params.username}
             name={req.params.name}
         />
     ));
@@ -93,7 +93,7 @@ const Document = (props) => (
             }} />
         </head>
         <body>
-            <h1>{'Hello ' + props.id + '/' + props.userid + '/' + props.name}</h1>
+            <h1>{'Hello ' + props.id + '/' + props.username + '/' + props.name}</h1>
             <pre><code>{JSON.stringify(props.data, null, 2)}</code></pre>
             <section id="index"></section>
             <script src="/static/index.js"></script>

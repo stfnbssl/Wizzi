@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
-   
+
+const modelName = 'TFolder';
+
 const packiDependencySchema = new mongoose.Schema({
     owner: { type: String},
     name: { type: String},
+    description: { type: String},
     packiFiles: { 
         type: String,
         get: function(data) {
@@ -12,6 +15,8 @@ const packiDependencySchema = new mongoose.Schema({
             return JSON.stringify(data);
         }        
     },
+    created_at: { type: Date},
+    updated_at: { type: Date},
     userUpdated: Boolean
 });
 
@@ -24,7 +29,7 @@ let PackiDependency = null;
 
 module.exports = {
     getPackiDependency: function() {
-        if (!PackiDependency) { PackiDependency = mongoose.model('PackiDependency', packiDependencySchema); }
+        if (!PackiDependency) { PackiDependency = mongoose.model(modelName, packiDependencySchema); }
         return PackiDependency;
     }
 }

@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\index.js.ittf
 */
 'use strict';
@@ -14,23 +14,23 @@ function example(test, expected, options) {
         test: test, 
         expected: expected, 
         options: options || {}
-    })
+     })
 }
 function getCtx() {
     return new genContext({
             options: {
                 CRLF: '\n', 
                 indentSpaces: 4
-            }, 
+             }, 
             pman: {
                 globalContext: function() {
                     return {};
                 }, 
                 wizziFactory: {
                     
-                }
-            }
-        });
+                 }
+             }
+         });
 }
 example({
     nodes: [
@@ -40,9 +40,9 @@ example({
             children: [
                 
             ]
-        }
+         }
     ]
-}, 'var = tau;')
+ }, 'var = tau;')
 example({
     nodes: [
         {
@@ -51,9 +51,9 @@ example({
             children: [
                 
             ]
-        }
+         }
     ]
-}, "var = beta = 'astra';")
+ }, "var = beta = 'astra';")
 example({
     nodes: [
         {
@@ -66,11 +66,11 @@ example({
                     children: [
                         
                     ]
-                }
+                 }
             ]
-        }
+         }
     ]
-}, "var alpha = getAlpha();")
+ }, "var alpha = getAlpha();")
 example({
     nodes: [
         {
@@ -83,25 +83,25 @@ example({
                     children: [
                         
                     ]
-                }, 
+                 }, 
                 {
                     n: "decl", 
                     v: "k = 10", 
                     children: [
                         
                     ]
-                }, 
+                 }, 
                 {
                     n: "decl", 
                     v: "name", 
                     children: [
                         
                     ]
-                }
+                 }
             ]
-        }
+         }
     ]
-}, "var i, k = 10, name;")
+ }, "var i, k = 10, name;")
 example({
     nodes: [
         {
@@ -110,9 +110,9 @@ example({
             children: [
                 
             ]
-        }
+         }
     ]
-}, 'let sigma = 1;')
+ }, 'let sigma = 1;')
 example({
     nodes: [
         {
@@ -121,9 +121,9 @@ example({
             children: [
                 
             ]
-        }
+         }
     ]
-}, 'let omega = 1;')
+ }, 'let omega = 1;')
 example({
     nodes: [
         {
@@ -140,13 +140,13 @@ example({
                             children: [
                                 
                             ]
-                        }
+                         }
                     ]
-                }
+                 }
             ]
-        }
+         }
     ]
-}, "const ossian = buuh('wash')")
+ }, "const ossian = buuh('wash')")
 example({
     nodes: [
         {
@@ -163,16 +163,16 @@ example({
                             children: [
                                 
                             ]
-                        }, 
+                         }, 
                         {
                             n: "default", 
                             v: "stefi", 
                             children: [
                                 
                             ]
-                        }
+                         }
                     ]
-                }, 
+                 }, 
                 {
                     n: "prop", 
                     v: "onClick", 
@@ -183,9 +183,9 @@ example({
                             children: [
                                 
                             ]
-                        }
+                         }
                     ]
-                }, 
+                 }, 
                 {
                     n: "style", 
                     v: "", 
@@ -204,11 +204,11 @@ example({
                                             children: [
                                                 
                                             ]
-                                        }
+                                         }
                                     ]
-                                }
+                                 }
                             ]
-                        }, 
+                         }, 
                         {
                             n: "@", 
                             v: "appBarHome", 
@@ -223,20 +223,20 @@ example({
                                             children: [
                                                 
                                             ]
-                                        }, 
+                                         }, 
                                         {
                                             n: "@", 
                                             v: "boxShadow 'none'", 
                                             children: [
                                                 
                                             ]
-                                        }
+                                         }
                                     ]
-                                }
+                                 }
                             ]
-                        }
+                         }
                     ]
-                }, 
+                 }, 
                 {
                     n: "state", 
                     v: "", 
@@ -247,9 +247,9 @@ example({
                             children: [
                                 
                             ]
-                        }
+                         }
                     ]
-                }, 
+                 }, 
                 {
                     n: "did-mount", 
                     v: "", 
@@ -260,9 +260,9 @@ example({
                             children: [
                                 
                             ]
-                        }
+                         }
                     ]
-                }, 
+                 }, 
                 {
                     n: "will-unmount", 
                     v: "", 
@@ -273,9 +273,9 @@ example({
                             children: [
                                 
                             ]
-                        }
+                         }
                     ]
-                }, 
+                 }, 
                 {
                     n: "render", 
                     v: "", 
@@ -294,19 +294,19 @@ example({
                                             children: [
                                                 
                                             ]
-                                        }
+                                         }
                                     ]
-                                }
+                                 }
                             ]
-                        }
+                         }
                     ]
-                }
+                 }
             ]
-        }
+         }
     ]
-}, '', {
+ }, '', {
     __jskind: 'react'
-})
+ })
 var len_1 = examples.length;
 function repeater_1(index_1) {
     if (index_1 === len_1) {

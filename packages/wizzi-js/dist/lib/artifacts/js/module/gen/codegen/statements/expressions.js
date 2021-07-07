@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\expressions.js.ittf
 */
 'use strict';
@@ -95,7 +95,8 @@ md.load = function(cnt) {
         else {
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.expressionMember = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.expressionMember');
@@ -105,7 +106,8 @@ md.load = function(cnt) {
         }
         ctx.write( model.wzName || '');
         cnt.genItems(model.statements, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.xvoid = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xvoid');
@@ -124,7 +126,8 @@ md.load = function(cnt) {
         else {
             return callback(ctx.error('void statement element requires zero or one child elements', model));
         }
-    };
+    }
+    ;
     cnt.stm.not = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.not');
@@ -152,7 +155,8 @@ md.load = function(cnt) {
         else {
             return callback(ctx.error('not/! statement element requires zero or one child elements', model));
         }
-    };
+    }
+    ;
     cnt.stm.notnot = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.notnot');
@@ -181,7 +185,8 @@ md.load = function(cnt) {
         else {
             return callback(ctx.error('not/! statement element requires zero or one child elements', model));
         }
-    };
+    }
+    ;
     cnt.stm.or = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.or');
@@ -223,7 +228,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         })
-    };
+    }
+    ;
     cnt.stm.and = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.and');
@@ -271,7 +277,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         })
-    };
+    }
+    ;
     cnt.stm.iif = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.iif');
@@ -306,8 +313,8 @@ md.load = function(cnt) {
             else if (item.wzElement == 'xelse') {
                 m_else = item;
             }
+            // TODO error
             else {
-                // TODO error
             }
         }
         function doTest(callback) {
@@ -335,8 +342,9 @@ md.load = function(cnt) {
             }
         }
         function doThen(callback) {
+            
+            // log 'doThen', Object.keys(ctx), 'forceInLine', ctx.forceInLine, '__inside_expr', ctx.__inside_expr, '__inside_html', ctx.__inside_html
             if (m_then) {
-                // log 'doThen', Object.keys(ctx), 'forceInLine', ctx.forceInLine, '__inside_expr', ctx.__inside_expr, '__inside_html', ctx.__inside_html
                 cnt.genItem(m_then, ctx, function(err, notUsed) {
                     if (err) {
                         return callback(err);
@@ -348,8 +356,8 @@ md.load = function(cnt) {
                     return callback(null, null);
                 })
             }
+            // TODO error
             else {
-                // TODO error
                 return callback(null, null);
             }
         }
@@ -362,8 +370,8 @@ md.load = function(cnt) {
                     return callback(null, null);
                 })
             }
+            // TODO error
             else {
-                // TODO error
                 return callback(null, null);
             }
         }
@@ -383,7 +391,8 @@ md.load = function(cnt) {
                 })
             })
         })
-    };
+    }
+    ;
     function iif_end(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.iif_end');
@@ -396,9 +405,10 @@ md.load = function(cnt) {
         if (model.wzParent.wzElement == 'template' || model.wzParent.wzElement == 'htmlelement') {
             ctx.w('}');
         }
+        
+        // 21/3/21 (waiting for damage) _ ctx.w(';')
         if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
             console.log('iif', model.wzParent.wzElement, model.wzParent.wzParent ? model.wzParent.wzParent.wzElement : '')
-            // 21/3/21 (waiting for damage) _ ctx.w(';')
         }
         return callback(null, null);
     }
@@ -412,14 +422,15 @@ md.load = function(cnt) {
         ctx.write('(');
         cnt.genItems(model.statements, ctx, {
             indent: false
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
             ctx.write(')');
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.then = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.then');
@@ -434,8 +445,9 @@ md.load = function(cnt) {
         }
         cnt.genItems(xmodel.statements, ctx, {
             indent: true
-        }, callback)
-    };
+         }, callback)
+    }
+    ;
     cnt.stm.op_typeof = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_typeof');
@@ -448,19 +460,22 @@ md.load = function(cnt) {
             ctx.write('typeof(')
             cnt.genItems(xmodel.statements, ctx, {
                 indent: true
-            }, (err, notUsed) => {
+             }, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
                 ctx.write(')')
                 return callback(null, null);
-            })
+            }
+            )
         }
         else {
             ctx.write('typeof(' + model.wzName + ')')
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.op_nullish = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_nullish');
@@ -469,7 +484,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_nullish. Got: ' + callback);
         }
         emitOperators(cnt, '??', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_eq = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_eq');
@@ -478,7 +494,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_eq. Got: ' + callback);
         }
         emitOperators(cnt, '==', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_noteq = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_noteq');
@@ -487,7 +504,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_noteq. Got: ' + callback);
         }
         emitOperators(cnt, '!=', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_eq_strict = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_eq_strict');
@@ -496,7 +514,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_eq_strict. Got: ' + callback);
         }
         emitOperators(cnt, '===', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_noteq_strict = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_noteq_strict');
@@ -505,7 +524,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_noteq_strict. Got: ' + callback);
         }
         emitOperators(cnt, '!==', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_xor = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_xor');
@@ -514,7 +534,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_xor. Got: ' + callback);
         }
         emitOperators(cnt, '|', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_xand = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_xand');
@@ -523,7 +544,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_xand. Got: ' + callback);
         }
         emitOperators(cnt, '&', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_minus = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_minus');
@@ -545,7 +567,8 @@ md.load = function(cnt) {
         else {
             return callback(ctx.artifactGenerationError("Invalid model. One or two child statements are required. Model: " + util.inspect(model, {depth: 2}), "wizzi-codegen/lib/js/statements/expressions/op_minus", model));
         }
-    };
+    }
+    ;
     cnt.stm.op_plus = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_plus');
@@ -554,7 +577,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_plus. Got: ' + callback);
         }
         emitOperators(cnt, '+', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_times = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_times');
@@ -563,7 +587,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_times. Got: ' + callback);
         }
         emitOperators(cnt, '*', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_div = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_div');
@@ -572,7 +597,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_div. Got: ' + callback);
         }
         emitOperators(cnt, '/', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_power = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_power');
@@ -581,7 +607,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_power. Got: ' + callback);
         }
         emitOperators(cnt, '^', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_mod = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_mod');
@@ -590,7 +617,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_mod. Got: ' + callback);
         }
         emitOperators(cnt, '%', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_lt = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_lt');
@@ -599,7 +627,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_lt. Got: ' + callback);
         }
         emitOperators(cnt, '<', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_le = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_le');
@@ -608,7 +637,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_le. Got: ' + callback);
         }
         emitOperators(cnt, '<=', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_gt = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_gt');
@@ -617,7 +647,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_gt. Got: ' + callback);
         }
         emitOperators(cnt, '>', model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.op_ge = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.op_ge');
@@ -626,7 +657,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.op_ge. Got: ' + callback);
         }
         emitOperators(cnt, '>=', model, ctx, callback);
-    };
+    }
+    ;
     function emitOperators(cnt, op, model, ctx, callback) {
         // log 'emitOperators', op
         model = writeComments(model, ctx);
@@ -703,4 +735,5 @@ md.load = function(cnt) {
             }
         }
     }
-};
+}
+;

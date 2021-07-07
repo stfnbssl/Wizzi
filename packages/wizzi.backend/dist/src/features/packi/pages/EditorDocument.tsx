@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\packi\pages\EditorDocument.tsx.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Fri, 02 Jul 2021 09:09:26 GMT
 */
 import jsesc from 'jsesc';
 import React from 'react';

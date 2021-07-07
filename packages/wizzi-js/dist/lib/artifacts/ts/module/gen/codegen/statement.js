@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statement.js.ittf
 */
 'use strict';
@@ -60,7 +60,8 @@ xittf.load(md);
 
 md.gen = function(model, ctx, callback) {
     md.genItem(model, ctx, callback);
-};
+}
+;
 md.genMany = function(models, ctx, callback) {
     var len_1 = models.length;
     function repeater_1(index_1) {
@@ -81,7 +82,8 @@ md.genMany = function(models, ctx, callback) {
     function next_1() {
         return callback(null, null);
     }
-};
+}
+;
 md.genItem = function(model, ctx, callback) {
     var key = model.wzElement;
     if (['styleJsx'].indexOf(key) >= 0 && model.get_css) {
@@ -184,7 +186,8 @@ md.genItem = function(model, ctx, callback) {
             throw ctx.error(myname + '. Unknown statement tag/element: ' + model.wzTag + '/' + model.wzElement, model);
         }
     }
-};
+}
+;
 md.genItemAs = function(model, asWzElement, ctx, callback) {
     var save = model.wzElement;
     model.wzElement = asWzElement;
@@ -195,7 +198,8 @@ md.genItemAs = function(model, asWzElement, ctx, callback) {
         model.wzElement = save;
         return callback(null, null);
     })
-};
+}
+;
 md.genItems = function(statements, ctx, options, callback) {
     if (typeof callback === 'undefined') {
         callback = options;
@@ -234,10 +238,12 @@ md.genItems = function(statements, ctx, options, callback) {
         }
         return callback(null, null);
     }
-};
+}
+;
 md.stm.codeline = function(model, ctx, callback) {
     console.log('codeline ', model.wzName);
     // 4/2/19 _ ctx.write(model.wzName)
     ctx.w(model.wzName);
     md.genItems(model.items, ctx, callback);
-};
+}
+;

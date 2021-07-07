@@ -1,18 +1,22 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\middlewares\session.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import {Application, CookieOptions} from 'express';
 import {MiddlewareType} from '../features/app/types';
 import session from 'express-session';
-import mongoSessionStore from 'connect-mongo';
+import MongoStore from 'connect-mongo';
 import mongoose from 'mongoose';
 import {config} from '../features/config';
-export const SessionMiddleware: MiddlewareType = (app: Application) => {
+export const SessionMiddleware: MiddlewareType = 
+// const MongoStore = mongoSessionStore(session)
 
-    const MongoStore = mongoSessionStore(session);
+// log 'SessionMiddleware.config.sessionSecret', config.sessionSecret
+(app: Application) => {
+
+    console.log('SessionMiddleware', 'init');
     const cookieOptions: CookieOptions = {
         
         // serve secure cookies, requires https
@@ -22,34 +26,19 @@ export const SessionMiddleware: MiddlewareType = (app: Application) => {
         // expires in 14 days
         maxAge: 14 * 24 * 60 * 60 * 1000
      };
-    
-    /**
-        * 
-        * if (!dev) {
-        * server.set('trust proxy', 1); // trust first proxy
-        * }
-        * 
-    */
     const sessionOptions: session.SessionOptions = {
         name: 'wizzi.backend.sid', 
         secret: config.sessionSecret, 
-        store: new MongoStore(
+        store: MongoStore.create(
         // save session 14 days
         {
-            mongooseConnection: mongoose.connection, 
+            mongoUrl: config.mongoConnectUrl, 
             ttl: 14 * 24 * 60 * 60
          }), 
         cookie: cookieOptions, 
         resave: false, 
         saveUninitialized: false
      };
-    /**
-        // 
-        // if (!dev) {
-        // server.set('trust proxy', 1); // trust first proxy
-        // }
-        // 
-    */
     app.use(session(sessionOptions));
 }
 ;

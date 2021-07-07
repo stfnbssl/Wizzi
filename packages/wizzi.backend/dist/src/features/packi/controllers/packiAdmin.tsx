@@ -1,15 +1,15 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\packi\controllers\packiAdmin.tsx.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:37 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
 import {sendHtml, sendSuccess, sendPromiseResult, sendFailure} from '../../../utils/sendResponse';
 import ReactDOMServer from 'react-dom/server';
 import wizziProto from 'wizzi.proto';
-import PageFormDocument from '../pages/PageFormDocument';
+import PageFormDocument from '../../../pages/PageFormDocument';
 const myname = 'features/packi/controller/packiAdmin';
 
 function renderPackiPageForm(req: Request, res: Response, data: object, queryParams: object) {

@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\call.js.ittf
 */
 'use strict';
@@ -93,18 +93,23 @@ md.load = function(cnt) {
         }
         ctx.write('(');
         u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
             ctx.write(')');
             var ptype = u.extractTSSimpleType(model);
+            
+            // log 'property', ptype.wzElement
             if (ptype) {
-                // log 'property', ptype.wzElement
                 ctx.write(': ');
                 cnt.stm[ptype.wzElement](ptype, ctx, () => {});
             }
             ctx.w(';');
             return callback(null, null);
-        })
-    };
-};
+        }
+        )
+    }
+    ;
+}
+;

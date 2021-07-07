@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\var.js.ittf
 */
 'use strict';
@@ -87,7 +87,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xlet. Got: ' + callback);
         }
         cnt.stm._letvarconst(model, ctx, 'let', callback);
-    };
+    }
+    ;
     cnt.stm.xconst = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xconst');
@@ -96,7 +97,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xconst. Got: ' + callback);
         }
         cnt.stm._letvarconst(model, ctx, 'const', callback);
-    };
+    }
+    ;
     cnt.stm.xvar = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xvar');
@@ -105,7 +107,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xvar. Got: ' + callback);
         }
         cnt.stm._letvarconst(model, ctx, 'var', callback);
-    };
+    }
+    ;
     cnt.stm._letvarconst = function(model, ctx, symbol, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '._letvarconst');
@@ -144,8 +147,9 @@ md.load = function(cnt) {
                     ctx.write(',');
                     ctx.__needs_comma = false;
                 }
+                
+                // log 1001
                 if (ctx.__needs_crlf) {
-                    // log 1001
                     ctx.w();
                     ctx.__needs_crlf = false;
                 }
@@ -177,7 +181,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             }
         })
-    };
+    }
+    ;
     cnt.stm.decl = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.decl');
@@ -216,7 +221,8 @@ md.load = function(cnt) {
             ctx.__needs_crlf = true;
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.initValue = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.initValue');
@@ -233,7 +239,8 @@ md.load = function(cnt) {
         else {
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.xnew = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xnew');
@@ -307,7 +314,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             }
         })
-    };
+    }
+    ;
     function xnew_type(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.xnew_type');
@@ -336,5 +344,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.type. Got: ' + callback);
         }
         cnt.genItems(model.statements, ctx, callback)
-    };
-};
+    }
+    ;
+}
+;

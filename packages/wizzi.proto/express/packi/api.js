@@ -56,8 +56,10 @@ module.exports = md = {
     getDefaultContext: function() {
         return DefaultContext;
     },
-    getByGithubLogin: userApi.getByGithubLogin,
-    saveFromGithubLogin: userApi.saveFromGithubLogin,
+    getUserByGithubLogin: userApi.getUserByGithubLogin,
+    saveUserFromGithubLogin: userApi.saveUserFromGithubLogin,
+    validateUsername: userApi.validateUsername,
+    validateUserNotUsed: userApi.validateUserNotUsed,
     getPackiList: function(owner) {
         var query = { owner: owner };
         console.log('getPackiList', query);
@@ -264,15 +266,15 @@ module.exports = md = {
             });
         });
     },
-    getLastPackiActivity: function(userid) {
-        var query = { _id: userid};
+    getLastPackiActivity: function(username) {
+        var query = { _id: username};
         return new Promise((resolve, reject) => {        
             UserActivity.find(query, function(err, result) {
                 if (err) return reject(err);
                 if (result.length == 1) {
                     const activity = result[0]._doc;
                     if (activity.openPackies.length > 0) {
-                        md.getPackiItem_Object_By_Owner_Name(userid, activity.openPackies[0]).then( packiItem => {
+                        md.getPackiItem_Object_By_Owner_Name(username, activity.openPackies[0]).then( packiItem => {
                             resolve({
                                 found: true,
                                 _id: packiItem._id,

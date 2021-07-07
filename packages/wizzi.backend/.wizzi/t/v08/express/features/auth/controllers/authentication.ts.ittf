@@ -18,7 +18,8 @@ $group
                     from '../mongo/account'
             import
                 @ authenticate
-                @ jwtAuth
+                $if wzCtx.Build.useJwt
+                    @ jwtAuth
                 $if wzCtx.Build.useMongoDb
                     @ getLoggedUserFromAccount
                 from '../manager'

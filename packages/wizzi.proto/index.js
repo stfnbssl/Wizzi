@@ -1,4 +1,5 @@
 var api = require('./express/packi/api');
+var userApi = require('./express/packi/userApi');
 
 var md = module.exports = {};
 
@@ -15,3 +16,7 @@ md.getPackiGeneration = api.getPackiGeneration;
 md.getUserActivity = api.getUserActivity;
 md.saveUserActivity = api.saveUserActivity;
 md.getLastPackiActivity = api.getLastPackiActivity;
+md.validateUsername = userApi.validateUsername;
+md.validateUserNotUsed = userApi.validateUserNotUsed;
+md.getUserByGithubLogin = userApi.getUserByGithubLogin;
+md.saveUserFromGithubLogin = userApi.saveUserFromGithubLogin;

@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\wizzi\models\ts-mtree-preprocessor.g.js.ittf
 */
 'use strict';
@@ -51,14 +51,15 @@ module.exports = function(mTree, context) {
         svgOn: false, 
         htmlOn: false, 
         styledOn: false
-    };
+     };
     var i, i_items=mTree.nodes[0].children, i_len=mTree.nodes[0].children.length, item;
     for (i=0; i<i_len; i++) {
         item = mTree.nodes[0].children[i];
         traverse(item, state);
     }
     return mTree;
-};
+}
+;
 function traverse(node, state) {
     if (preprocessNode(node, state)) {
         return ;
@@ -79,8 +80,9 @@ function traverse(node, state) {
     state.parent = saveParent;
 }
 function preprocessNode(node, state) {
+    
+    // do nothing
     if (node.n === 'p' && state.parent.n === 'class') {
-        // do nothing
     }
     else if (state.svgOn && svg_supported_attrs.indexOf(node.n) > -1) {
         var name = svg_supported_attrs_map[node.n] || node.n;
@@ -157,9 +159,9 @@ function preprocessNode(node, state) {
                     s: node.s, 
                     u: node.u, 
                     children: savedchildren
-                }
+                 }
             ]
-        };
+         };
         if (node.n == 'css') {
             node.n == 'styled-css';
         }
@@ -184,5 +186,5 @@ function createNode(node, name, value, childrenFrom) {
             s: node.s, 
             u: node.u, 
             children: childrenFrom || []
-        };
+         };
 }

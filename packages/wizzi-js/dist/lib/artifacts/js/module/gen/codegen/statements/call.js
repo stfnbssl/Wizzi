@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\call.js.ittf
 */
 'use strict';
@@ -112,10 +112,10 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
+        // log 'call', 'u.isTopStatement(xmodel, ctx)', u.isTopStatement(xmodel, ctx), "u.isDescendentOf(xmodel, 'iif')", u.isDescendentOf(xmodel, 'iif')
         else {
             name = hasParens ? name : (name + '()');
             ctx.write(name);
-            // log 'call', 'u.isTopStatement(xmodel, ctx)', u.isTopStatement(xmodel, ctx), "u.isDescendentOf(xmodel, 'iif')", u.isDescendentOf(xmodel, 'iif')
             if (u.isTopStatement(xmodel, ctx) && u.isChildOf(xmodel, 'iif') == false) {
                 ctx.w(u.semicolon(name))
             }
@@ -124,7 +124,8 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.memberCall = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.memberCall');
@@ -146,7 +147,8 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.decoratorCall = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.decoratorCall');
@@ -168,7 +170,8 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.callOnValue = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.callOnValue');
@@ -211,7 +214,8 @@ md.load = function(cnt) {
             ctx.write('()');
             return callback(null, null);
         }
-    };
+    }
+    ;
     function doCallChildStatements_one(model, name, hasParens, ctx, callback) {
         // log 'doCallChildStatements_one.model', model
         ctx.write(name);
@@ -234,13 +238,15 @@ md.load = function(cnt) {
                 }
                 else if (item_1.statements.length == 1) {
                     cnt.genItem(item_1.statements[0], ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         process.nextTick(function() {
                             repeater_1(index_1 + 1);
                         })
-                    })
+                    }
+                    )
                 }
                 else {
                     ctx.write('*** js.module.statements.call.doCallChildStatements_two not managed ***');
@@ -261,10 +267,13 @@ md.load = function(cnt) {
     }
     function doCallChildStatements_two(model, name, hasParens, ctx, callback) {
         // log 'doCallChildStatements_two', name, hasParens
+        
+        // log 'doCallChildStatements_two 1', model.wzElement
+        
+        // VIA 20/2/19 if name.length > 0
+        
+        // restored 19/3/21 for call template (`lit), waiting for damage
         if (hasParens === false) {
-            // log 'doCallChildStatements_two 1', model.wzElement
-            // VIA 20/2/19 if name.length > 0
-            // restored 19/3/21 for call template (`lit), waiting for damage
             if (name.length > 0 || model.wzElement == 'callOnValue') {
                 ctx.write('(');
             }
@@ -320,8 +329,8 @@ md.load = function(cnt) {
             if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false) {
                 ctx.w();
             }
+            // 2/11/17 _ ctx.w()
             else {
-                // 2/11/17 _ ctx.w()
             }
             return callback(null, null);
         }
@@ -351,15 +360,16 @@ md.load = function(cnt) {
             }
             repeater_1(0);
             function next_1() {
+                
+                // log 'doCallChildStatements_call. w()', model.wzElement, model.wzName
                 if (u.isTopStatement(model, ctx) && u.isDescendentOf(model, 'iif') == false && model.wzElement !== 'decoratorCall' && !u.parentIs(model, 'arrowfunction')) {
-                    // log 'doCallChildStatements_call. w()', model.wzElement, model.wzName
                     ctx.w(';');
                 }
+                // log 'doCallChildStatements_call. w()', model.wzElement, model.wzName
+                // TODO when inside a statement // 13/6/2018
+                // _ ctx.write()
                 else {
-                    // log 'doCallChildStatements_call. w()', model.wzElement, model.wzName
                     ctx.w();
-                    // TODO when inside a statement // 13/6/2018
-                    // _ ctx.write()
                 }
                 return callback(null, null);
             }
@@ -378,7 +388,7 @@ md.load = function(cnt) {
                 wzElement: 'jsPropertyOrValue', 
                 wzName: classTag + ' ' + model.wzName, 
                 wzParent: model
-            })
+             })
             model.wzElement = 'htmlelement';
             model.wzName = 'div';
             cnt.stm.htmlelement(model, ctx, callback);
@@ -387,7 +397,8 @@ md.load = function(cnt) {
             ctx.write('.' + model.wzName);
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.memberAccessComputed = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.memberAccessComputed');
@@ -439,5 +450,7 @@ md.load = function(cnt) {
             ctx.write(']');
             return callback(null, null);
         }
-    };
-};
+    }
+    ;
+}
+;

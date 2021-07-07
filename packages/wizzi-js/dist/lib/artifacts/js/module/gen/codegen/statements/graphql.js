@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\graphql.js.ittf
 */
 'use strict';
@@ -93,7 +93,7 @@ md.load = function(cnt) {
             ctx.w("{");
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -110,7 +110,7 @@ md.load = function(cnt) {
             ctx.w("query " + (model.wzName || "") + " {");
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -121,7 +121,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
-    };
+    }
+    ;
     cnt.stm.graphqlMutation = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.graphqlMutation');
@@ -134,7 +135,7 @@ md.load = function(cnt) {
         ctx.indent();
         ctx.w("mutation " + (model.wzName || "") + " {").cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -144,7 +145,8 @@ md.load = function(cnt) {
             ctx.isGraphql = false;
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.namedCallParam = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.namedCallParam');
@@ -157,7 +159,7 @@ md.load = function(cnt) {
             ctx.write( model.wzName + ': ');
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -172,5 +174,7 @@ md.load = function(cnt) {
             ctx.isNamedCallParam = false;
             return callback(null, null);
         }
-    };
-};
+    }
+    ;
+}
+;

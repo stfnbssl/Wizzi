@@ -1,5 +1,5 @@
 svg
-    $params color|#000, bgcolor|#fff
+    $params color|#000, bgcolor|#fff, viewBox|0 0 660 280
 	$
 		var opt = {};
 		opt.y0 = 10;
@@ -9,9 +9,12 @@ svg
 		opt.ybottom = 250;
         opt.color = color;
 	
-	width 660
+	$*
+    width 660
 	height 260
+    *$
 	preserve-aspect-ratio xMidYMid meet
+    viewBox ${viewBox}
 	rect
 		x 0
 		y 0

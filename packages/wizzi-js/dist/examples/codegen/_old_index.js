@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\_old_index.js.ittf
 */
 'use strict';
@@ -51,8 +51,8 @@ function execute(name, callback) {
             options: {
                 CRLF: '\n', 
                 indentSpaces: 4
-            }
-        });
+             }
+         });
         index.js_Statement.gen(js, ctx, function(err, notUsed) {
             if (err) {
                 return callback(err);
@@ -65,7 +65,9 @@ function execute(name, callback) {
 }
 function getFiles(srcpath) {
     return fs.readdirSync(srcpath).filter((file) => {
+        
             return fs.lstatSync(path.join(srcpath, file)).isFile() && verify.endsWith(file, '.js.ittf');
-        })
+        }
+        )
     ;
 }

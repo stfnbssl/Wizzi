@@ -6,8 +6,8 @@ var api = require('../../../packi/api');
 var {PackiItemList} = require('../components/PackiItemList');
 
 var router = express.Router()
-router.get('/:userid', function (req, res) {
-    api.getPackiList(req.params.userid).then(list=>{
+router.get('/:username', function (req, res) {
+    api.getPackiList(req.params.username).then(list=>{
         const index = '<!DOCTYPE html>' + (ReactDOMServer.renderToStaticMarkup(
             <body><PackiItemList items={list} /></body>
         ));

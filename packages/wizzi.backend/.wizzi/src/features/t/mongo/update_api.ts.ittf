@@ -1,0 +1,57 @@
+$group
+    $params &md
+
+    +
+    export
+        async-function update${md.Name}
+            $foreach item in md.fields
+                param ${item.name}
+                    :${item.type}
+            :return
+                :ref Promise
+                    :param
+                        :ref CRUDResult
+            +
+            _ console.log
+                @ myname
+                @ 'update${md.Name}' 
+                $foreach item in md.fields
+                    @ ${item.name}
+            +
+            const ${md.Name} = Get${md.Name}Model()
+            +
+            return
+                new Promise
+                    =>
+                        param resolve
+                        param reject
+                        +
+                        let query
+                            { 
+                                $foreach item in md.query
+                                    @ ${item.name} ${item.name}
+                        let update
+                            { 
+                                $foreach item in md.fields
+                                    @ ${item.name} ${item.name}
+                                $if md.updated_at
+                                    @ updated_at new Date()
+                        +
+                        _ ${md.Name}.findOneAndUpdate
+                            @ query
+                            @ update
+                            {
+                            =>
+                                param err
+                                param result
+                                if err
+                                    log myname, 'update${md.Name}', '${md.Name}.findOneAndUpdate', 'error', err
+                                    return reject(err)
+                                +
+                                log myname, 'update${md.Name}', '${md.Name}.findOneAndUpdate', 'result', result
+                                return
+                                    _ resolve
+                                        {
+                                            @ oper 'update'
+                                            @ ok true
+                                            @ message '${md.descr} updated'

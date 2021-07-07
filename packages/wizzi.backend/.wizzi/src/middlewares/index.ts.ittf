@@ -12,7 +12,7 @@ module
         import { CorsMiddleware } from './cors'
     $if wzCtx.Build.useSession
         import { SessionMiddleware } from './session'
-    $if wzCtx.Build.useAuthentication
+    $if wzCtx.Build.usePassport
         import { PassportMiddleware } from './passport'
     $if wzCtx.Build.usePassportAuth0
         import { PassportAuth0Middleware } from './passportAuth0'
@@ -52,10 +52,10 @@ module
                     @ CorsMiddleware
                 $if wzCtx.Build.useSession
                     @ SessionMiddleware
-                $if wzCtx.Build.useAuthentication
+                $if wzCtx.Build.usePassport
                     @ PassportMiddleware
-                    $if wzCtx.Build.usePassportAuth0
-                        @ PassportAuth0Middleware
+                $if wzCtx.Build.usePassportAuth0
+                    @ PassportAuth0Middleware
                 $if wzCtx.Build.useIttfStatic
                     @ IttfStaticMiddleware
                 $if wzCtx.Build.usePackiBrowse

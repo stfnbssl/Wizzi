@@ -1,14 +1,13 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\middlewares\index.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import {MiddlewareType} from '../features/app';
 import { AuthenticationMiddleware } from './authentication';
 import { CorsMiddleware } from './cors';
 import { SessionMiddleware } from './session';
-import { PassportMiddleware } from './passport';
 import { IttfStaticMiddleware } from './ittfStatic';
 import { PackiBrowseMiddleware } from './packiBrowse';
 import { BodyParserMiddleware } from './bodyParser';
@@ -20,7 +19,6 @@ const appMiddlewaresPre: MiddlewareType[] = [
     AuthenticationMiddleware, 
     CorsMiddleware, 
     SessionMiddleware, 
-    PassportMiddleware, 
     IttfStaticMiddleware, 
     PackiBrowseMiddleware, 
     BodyParserMiddleware, 

@@ -1,12 +1,11 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\auth\manager.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import passport from 'passport';
-import jwt from 'express-jwt';
-import {GetUserModel} from './mongo/user';
+import {GetAuthUserModel} from './mongo/authuser';
 import {GetAccountModel, AccountModelType} from './mongo/account';
 import {IAccount} from './types';
 import {createStrategy as createLocalStrategy} from './strategies/local';
@@ -18,7 +17,7 @@ let initialized = false;
 // https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
 function initPassport() {
 
-    const userModel = GetUserModel();
+    const authUserModel = GetAuthUserModel();
     passport.use(createLocalStrategy());
     passport.use(createGithubStrategy());
     passport.serializeUser(function(user: any, done: any) {
@@ -32,7 +31,7 @@ function initPassport() {
         console.log('============================================================');
         console.log('features.auth.manager.deserializeUser', 'id', id);
         return done(null, id);
-        userModel.findById(id, function(err: any, user: any) {
+        authUserModel.findById(id, function(err: any, user: any) {
         
             console.log('features.auth.manager.deserializeUser', 'err', err, 'user', user);
             done(err, user || false);
@@ -122,22 +121,3 @@ export async function getLoggedUserFromAccount(uid: string, domain: string):  Pr
             )
         );
 }
-export const jwtAuth = {
-    required: jwt({
-        secret: 'secret', 
-        userProperty: 'payload', 
-        getToken: getTokenFromHeaders, 
-        algorithms: [
-            'HS256'
-        ]
-     }), 
-    optional: jwt({
-        secret: 'secret', 
-        userProperty: 'payload', 
-        getToken: getTokenFromHeaders, 
-        credentialsRequired: false, 
-        algorithms: [
-            'HS256'
-        ]
-     })
- };

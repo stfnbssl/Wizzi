@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\module.js.ittf
 */
 'use strict';
@@ -95,19 +95,22 @@ md.load = function(cnt) {
             var item_1 = xmodel.statements[index_1];
             ctx.write('declare ');
             cnt.genItem(item_1, ctx, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
-            })
+            }
+            )
         }
         repeater_1(0);
         function next_1() {
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.typeModule = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeModule');
@@ -125,7 +128,8 @@ md.load = function(cnt) {
             ctx.w('}');
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.typeTypeAlias = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeTypeAlias');
@@ -136,6 +140,7 @@ md.load = function(cnt) {
         var xmodel = writeComments(model, ctx);
         ctx.write('type ' + xmodel.wzName);
         u.genTSTypeParameters(xmodel, ctx, cnt, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
@@ -152,8 +157,10 @@ md.load = function(cnt) {
             else {
                 return callback(ctx.error(':type typeTypeAlias must have one children. found: ' + xmodel.statements.length, xmodel));
             }
-        })
-    };
+        }
+        )
+    }
+    ;
     cnt.stm.typeFunctionDeclare = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeFunctionDeclare');
@@ -165,34 +172,43 @@ md.load = function(cnt) {
         ctx.write('function ' + xmodel.wzName);
         // log 'typeFunctionDeclare enter 1'
         u.genTSTypeParameters(xmodel, ctx, cnt, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
             // log 'typeFunctionDeclare enter 2'
             ctx.write('(');
             u.genTSParams(xmodel, ctx, cnt, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
                 // log 'typeFunctionDeclare cb 1'
                 ctx.write(')');
+                
+                // log 'typeFunctionDeclare typeReturn', xmodel.typeReturn.wzElement
                 if (xmodel.typeReturn) {
-                    // log 'typeFunctionDeclare typeReturn', xmodel.typeReturn.wzElement
                     ctx.write(': ');
                     cnt.stm.typeReturn(xmodel.typeReturn, ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         ctx.w(';');
                         // log 'typeFunctionDeclare exit 1'
                         return callback(null, null);
-                    })
+                    }
+                    )
                 }
+                // log 'typeFunctionDeclare exit 2'
                 else {
-                    // log 'typeFunctionDeclare exit 2'
                     return callback(null, null);
                 }
-            })
-        })
-    };
-};
+            }
+            )
+        }
+        )
+    }
+    ;
+}
+;

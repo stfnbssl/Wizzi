@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\es6\class.js.ittf
 */
 'use strict';
@@ -43,7 +43,8 @@ md.gen = function(model, ctx, callback) {
             return callback(null, null);
         })
     })
-};
+}
+;
 function classCTor(model, ctx, callback) {
     if (typeof callback === 'undefined') {
         throw new Error('Missing callback parameter in fn: ' + myname + '.classCTor');
@@ -59,8 +60,9 @@ function classCTor(model, ctx, callback) {
     if (zsuper) {
         ctx.w('super(' + superArgs + ');');
     }
+    
+    // log 102
     if (ctor) {
-        // log 102
         generateParamConstraints('ctor', ctor.constrainedParams, ctor.hasCallbackParam, ctor.hasOptionsCallbackParam, ctx, function(err, notUsed) {
             if (err) {
                 return callback(err);
@@ -77,15 +79,17 @@ function classCTor(model, ctx, callback) {
             })
         })
     }
+    
+    // log 104
+    
+    // VIA _ ctx.w('')
     else if (zsuper) {
-        // log 104
         ctx.deindent();
         ctx.w('}');
-        // VIA _ ctx.w('')
         return callback(null, null);
     }
+    // log 105
     else {
-        // log 105
         return callback(null, null);
     }
 }
@@ -100,8 +104,9 @@ function classMembers(model, ctx, callback) {
             return next_1();
         }
         var item_1 = model.statements[index_1];
+        
+        // done already
         if (item_1.wzElement === 'ctor') {
-            // done already
             generator = null;
         }
         else if (item_1.wzElement === 'method') {
@@ -131,13 +136,15 @@ function classMembers(model, ctx, callback) {
         }
         else {
             statement.genItem(item_1, ctx, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
-            })
+            }
+            )
         }
     }
     repeater_1(0);
@@ -210,16 +217,21 @@ function generateParamConstraints(methodName, parameters, hasCallback, hasOption
                         ctx.w("if (verify.isFunction(" + c.accessPath + ") === false) {");
                         invalidParam(methodName, c.accessPath, 'a function', hasCallback, ctx);
                     }
+                    
+                    // do nothing
                     else if (c.paramType === 'any') {
-                        // do nothing
                     }
+                    
+                    // done already
+                    
+                    // see above "if hasOptionsCallback" statement
                     else if (c.paramType === 'optionsCallback') {
-                        // done already
-                        // see above "if hasOptionsCallback" statement
                     }
+                    
+                    // done already
+                    
+                    // see above "if hasCallback" statement
                     else if (c.paramType === 'callback') {
-                        // done already
-                        // see above "if hasCallback" statement
                     }
                     else {
                         return callback(ctx.error(myname + '.generateParamConstraints. Unknown param type: ' + c.paramType, item.prm));
@@ -290,16 +302,21 @@ function generateParamConstraints(methodName, parameters, hasCallback, hasOption
                         ctx.deindent();
                         ctx.w("}");
                     }
+                    
+                    // do nothing
                     else if (c.paramType === 'any') {
-                        // do nothing
                     }
+                    
+                    // done already
+                    
+                    // see above "if hasOptionsCallback" statement
                     else if (c.paramType === 'optionsCallback') {
-                        // done already
-                        // see above "if hasOptionsCallback" statement
                     }
+                    
+                    // done already
+                    
+                    // see above "if hasCallback" statement
                     else if (c.paramType === 'callback') {
-                        // done already
-                        // see above "if hasCallback" statement
                     }
                     else {
                         return callback(ctx.error(myname + '.generateParamConstraints. Unknown param type: ' + c.paramType, item.prm));
@@ -334,14 +351,14 @@ function invalidParam(methodName, name, type, hasCallback, ctx) {
 function prmAnalizeParam(prm) {
     var state = {
         candidates: []
-    };
+     };
     var candidate = {
         prm: prm, 
         accessPath: prm.wzName, 
         parent: null, 
         isRequired: false, 
         constraints: []
-    };
+     };
     state.candidates.push(candidate);
     prmSelectAnalizer(candidate, state);
     return state;
@@ -370,15 +387,16 @@ function prmAnalizeObject(candidate, state) {
             parent: candidate, 
             isRequired: false, 
             constraints: []
-        };
+         };
         state.candidates.push(subcandidate);
         prmSelectAnalizer(subcandidate, state);
     }
 }
 function prmAnalizeArray(candidate, state) {
     prmAnalizeLeaf(candidate, state);
+    
+    // TODO assume arrayOf ???
     if (candidate.prm.params.length == 1) {
-        // TODO assume arrayOf ???
     }
 }
 function prmAnalizeLeaf(candidate, state) {
@@ -389,7 +407,7 @@ function prmAnalizeLeaf(candidate, state) {
             paramName: candidate.prm.wzName, 
             paramType: prmTypeFromElement(candidate.prm.wzElement), 
             accessPath: candidate.accessPath
-        })
+         })
         candidate.isRequired = true;
         if (candidate.prm.isRequired) {
             requireParents(candidate);
@@ -405,7 +423,7 @@ function requireParents(candidate) {
                 paramName: ancestor.prm.wzName, 
                 paramType: prmTypeFromElement(ancestor.prm.wzElement), 
                 accessPath: ancestor.accessPath
-            })
+             })
             ancestor.isRequired = true;
         }
         ancestor = ancestor.parent;

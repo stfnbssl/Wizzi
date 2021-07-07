@@ -1,6 +1,5 @@
 /*
-    artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\dist\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-tools\.wizzi\ittf\lib\wizzifiers\cssparser\css\wizzifier.js.ittf
 */
 'use strict';
@@ -223,9 +222,10 @@ format['keyframe'] = function(ast) {
     return ret;
 };
 format['import'] = function(ast) {
-    console.log('import', util.inspect(ast, {
-        depth: null
-    }))
+    /**
+        console.log('import', util.inspect(ast, {
+            depth: null
+        }))*/
     var ret = {
         tag: 'import', 
         name: ast.import, 
@@ -234,15 +234,21 @@ format['import'] = function(ast) {
     return ret;
 };
 format['charset'] = function(ast) {
-    console.log('charset', util.inspect(ast, {
-        depth: null
-    }))
+    /**
+        console.log('charset', util.inspect(ast, {
+            depth: null
+        }))*/
     var ret = {
         tag: 'charset', 
         name: ast.charset, 
         children: []
     };
     return ret;
+};
+format['supports'] = function(ast) {
+    console.log('supports', util.inspect(ast, {
+        depth: null
+    }))
 };
 function wizzify(css, options, callback) {
     parseInternal(css, {}, function(err, syntax) {

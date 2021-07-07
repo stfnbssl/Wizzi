@@ -1,0 +1,9 @@
+html
+    $
+        var md = {}
+    layout(&md)
+        . w3-container
+            h1 Profile
+            pre
+                code
+                    + ${JSON.stringify(locals.user, null,2)}

@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\react.js.ittf
 */
 'use strict';
@@ -123,7 +123,8 @@ md.load = function(cnt) {
                 reactComponent_close(model, ctx, childrenInfo, callback)
             }
         })
-    };
+    }
+    ;
     function reactComponent_style(model, ctx, childrenInfo, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.reactComponent_style');
@@ -219,8 +220,9 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
+        
+        // log 'react.js - render §§§§§§§§§§§§§§§§§§§§§§§§§§§§§'
         else if (model.wzElement == 'render') {
-            // log 'react.js - render §§§§§§§§§§§§§§§§§§§§§§§§§§§§§'
             writeMethod('render', model, ctx, cnt, callback);
         }
         else if (model.wzElement == 'method') {
@@ -240,11 +242,12 @@ md.load = function(cnt) {
             ctx.w(model.wzName + ';');
             return callback(null, null);
         }
+        
+        // log "onlyChildIsArrowFunction", onlyChildIsArrowFunction
         else if (model.wzElement == 'arrowfunction' || model.wzElement == 'asyncarrowfunction') {
             ctx.__is_react_class = true;
             var async_str = model.wzElement == 'asyncarrowfunction' || model.xasync ? 'async ' : '';
             var onlyChildIsArrowFunction = u.onlyChildIs(model, 'arrowfunction');
-            // log "onlyChildIsArrowFunction", onlyChildIsArrowFunction
             if (onlyChildIsArrowFunction) {
                 ctx.write(model.wzName + ' = ' + async_str + '(' + model.paramNames.join(', ') + ') => ');
             }
@@ -271,8 +274,9 @@ md.load = function(cnt) {
                 })
             })
         }
+        
+        // already done
         else if (model.wzElement == 'prop' || model.wzElement == 'style') {
-            // already done
             return callback(null, null);
         }
         else {
@@ -360,8 +364,9 @@ md.load = function(cnt) {
                 return next_1();
             }
             var item_1 = model.statements[index_1];
+            
+            // already done
             if (item_1.wzElement == 'prop') {
-                // already done
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
@@ -385,7 +390,8 @@ md.load = function(cnt) {
             writePropTypes(model, childrenInfo, ctx)
             return callback(null, null);
         }
-    };
+    }
+    ;
     function writeMethod(name, model, ctx, cnt, callback) {
         ctx.w(name + '() {');
         ctx.indent();
@@ -408,8 +414,9 @@ md.load = function(cnt) {
             }
             var item_1 = statements[index_1];
             // log 'writeIndented', item_1.wzElement
+            
+            // done in writeMethodProps
             if (item_1.wzElement == 'prop') {
-                // done in writeMethodProps
                 process.nextTick(function() {
                     repeater_1(index_1 + 1);
                 })
@@ -436,13 +443,14 @@ md.load = function(cnt) {
             items: [], 
             itemsWithDefault: [], 
             style: null
-        };
+         };
         var i, i_items=react.statements, i_len=react.statements.length, item;
         for (i=0; i<i_len; i++) {
             item = react.statements[i];
+            
+            // log 'item.defaultValue', item.defaultValue
             if (item.wzElement == 'prop') {
                 ret.items.push(item);
-                // log 'item.defaultValue', item.defaultValue
                 if (item.defaultValue) {
                     ret.itemsWithDefault.push(item);
                 }
@@ -544,7 +552,8 @@ md.load = function(cnt) {
             else {
                 ctx.w('])');
             }
-        };
+        }
+        ;
         lc.oneOfTypeParam = function(model, ctx, cnt) {
             // log 'wizzi-codegen.statemts.t.reactPropTypes oneOfTypeParam model: ', model
             ctx.w(model.wzName + ': PropTypes.oneOfType([');
@@ -555,7 +564,8 @@ md.load = function(cnt) {
             else {
                 ctx.w('])');
             }
-        };
+        }
+        ;
         lc.arrayOf = function(model, ctx, cnt) {
             ctx.write(model.wzName + ': PropTypes.arrayOf([');
             writeTypeList(model, ctx);
@@ -565,7 +575,8 @@ md.load = function(cnt) {
             else {
                 ctx.w('])');
             }
-        };
+        }
+        ;
         lc.instanceOf = function(model, ctx, cnt) {
             ctx.write(model.wzName + ': PropTypes.instanceOf(');
             writeTypeList(model, ctx);
@@ -575,7 +586,8 @@ md.load = function(cnt) {
             else {
                 ctx.w(')');
             }
-        };
+        }
+        ;
         lc.objectOf = function(model, ctx, cnt) {
             ctx.write(model.wzName + ': PropTypes.objectOf(');
             writeTypeList(model, ctx);
@@ -585,7 +597,8 @@ md.load = function(cnt) {
             else {
                 ctx.w(')');
             }
-        };
+        }
+        ;
         lc.instanceOfParam = function(model, ctx, cnt) {
             var p = lineParser.parseNameValueRaw(model.wzName, model);
             ctx.write(p.name() + ': PropTypes.instanceOf(');
@@ -596,7 +609,8 @@ md.load = function(cnt) {
             else {
                 ctx.w(')');
             }
-        };
+        }
+        ;
         lc.shapeParam = function(model, ctx, cnt) {
             // log 'wizzi-codegen.statemts.t.reactPropTypes shapeParam model: ', model
             ctx.w(model.wzName + ': PropTypes.shape({');
@@ -607,24 +621,28 @@ md.load = function(cnt) {
             else {
                 ctx.w('})');
             }
-        };
+        }
+        ;
         lc.reactStyleParam = function(model, ctx, cnt) {
             ctx.w('style: stylePropType');
-        };
+        }
+        ;
         return function genReactPropType(prop, ctx, cnt) {
                 // log 'wizzi-codegen.reactPropTypes', prop.wzName
+                
+                // default to string
+                
+                // log 'wizzi-codegen.statemts.t.reactPropTypes < 1, prop.wzName:', prop.wzName, 'string'
                 if (!prop.param) {
-                    // default to string
-                    // log 'wizzi-codegen.statemts.t.reactPropTypes < 1, prop.wzName:', prop.wzName, 'string'
                     ctx.write(prop.wzName + ': PropTypes.string');
                     if (prop.isRequired) {
                         ctx.write('.isRequired');
                     }
                 }
+                // log 'wizzi-codegen.statemts.t.reactPropTypes prop.wzName: ', prop.wzName, 'prop.param.wzElement', propParam.wzElement
+                // log 'prop', propParam.wzElement, lc[propParam.wzElement]
                 else {
                     var propParam = prop.param;
-                    // log 'wizzi-codegen.statemts.t.reactPropTypes prop.wzName: ', prop.wzName, 'prop.param.wzElement', propParam.wzElement
-                    // log 'prop', propParam.wzElement, lc[propParam.wzElement]
                     if (lc[propParam.wzElement]) {
                         lc[propParam.wzElement](prop, ctx, cnt)
                     }
@@ -698,7 +716,8 @@ md.load = function(cnt) {
             }
             var name = 'string';
             if (prop.param) {
-                name = propTypeFromWzElement(prop.param.wzElement);
+                name = propTypeFromWzElement(prop.param.wzElement)
+                ;
             }
             ctx.write(prop.wzName + ': PropTypes.' + name)
             if (prop.isRequired) {
@@ -817,16 +836,21 @@ md.load = function(cnt) {
                             ctx.w("if (verify.isFunction(" + c.accessPath + ") === false) {");
                             invalidParam(methodName, c.accessPath, 'a function', hasCallback, ctx);
                         }
+                        
+                        // do nothing
                         else if (c.paramType === 'any') {
-                            // do nothing
                         }
+                        
+                        // done already
+                        
+                        // see above "if hasOptionsCallback" statement
                         else if (c.paramType === 'optionsCallback') {
-                            // done already
-                            // see above "if hasOptionsCallback" statement
                         }
+                        
+                        // done already
+                        
+                        // see above "if hasCallback" statement
                         else if (c.paramType === 'callback') {
-                            // done already
-                            // see above "if hasCallback" statement
                         }
                         else {
                             return callback(ctx.error(myname + '.generateParamConstraints. Unknown param type: ' + c.paramType, item.prm));
@@ -897,16 +921,21 @@ md.load = function(cnt) {
                             ctx.deindent();
                             ctx.w("}");
                         }
+                        
+                        // do nothing
                         else if (c.paramType === 'any') {
-                            // do nothing
                         }
+                        
+                        // done already
+                        
+                        // see above "if hasOptionsCallback" statement
                         else if (c.paramType === 'optionsCallback') {
-                            // done already
-                            // see above "if hasOptionsCallback" statement
                         }
+                        
+                        // done already
+                        
+                        // see above "if hasCallback" statement
                         else if (c.paramType === 'callback') {
-                            // done already
-                            // see above "if hasCallback" statement
                         }
                         else {
                             return callback(ctx.error(myname + '.generateParamConstraints. Unknown param type: ' + c.paramType, item.prm));
@@ -941,14 +970,14 @@ md.load = function(cnt) {
     function prmAnalizeParam(prm) {
         var state = {
             candidates: []
-        };
+         };
         var candidate = {
             prm: prm, 
             accessPath: prm.wzName, 
             parent: null, 
             isRequired: false, 
             constraints: []
-        };
+         };
         state.candidates.push(candidate);
         prmSelectAnalizer(candidate, state);
         return state;
@@ -977,15 +1006,16 @@ md.load = function(cnt) {
                 parent: candidate, 
                 isRequired: false, 
                 constraints: []
-            };
+             };
             state.candidates.push(subcandidate);
             prmSelectAnalizer(subcandidate, state);
         }
     }
     function prmAnalizeArray(candidate, state) {
         prmAnalizeLeaf(candidate, state);
+        
+        // TODO assume arrayOf ???
         if (candidate.prm.params.length == 1) {
-            // TODO assume arrayOf ???
         }
     }
     function prmAnalizeLeaf(candidate, state) {
@@ -996,7 +1026,7 @@ md.load = function(cnt) {
                 paramName: candidate.prm.wzName, 
                 paramType: prmTypeFromElement(candidate.prm.wzElement), 
                 accessPath: candidate.accessPath
-            })
+             })
             candidate.isRequired = true;
             if (candidate.prm.isRequired) {
                 requireParents(candidate);
@@ -1012,7 +1042,7 @@ md.load = function(cnt) {
                     paramName: ancestor.prm.wzName, 
                     paramType: prmTypeFromElement(ancestor.prm.wzElement), 
                     accessPath: ancestor.accessPath
-                })
+                 })
                 ancestor.isRequired = true;
             }
             ancestor = ancestor.parent;
@@ -1050,4 +1080,5 @@ md.load = function(cnt) {
             return 'optionsCallback';
         }
     }
-};
+}
+;

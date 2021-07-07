@@ -13,7 +13,7 @@ module
             import wizziProto
                 from 'wizzi.proto'
             import PageFormDocument 
-                from '../pages/PageFormDocument' 
+                from '../../../pages/PageFormDocument' 
             const myname = 'features/packi/controller/packiAdmin'
             +
             function renderPackiPageForm

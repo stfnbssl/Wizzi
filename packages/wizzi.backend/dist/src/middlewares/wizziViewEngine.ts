@@ -1,27 +1,29 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\middlewares\wizziViewEngine.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import path from 'path';
 import {Application} from 'express';
 import {MiddlewareType} from '../features/app/types';
 import {wizziProds} from '../features/wizzi';
-export const WizziViewEngineMiddleware: MiddlewareType = (app: Application) => {
+export const WizziViewEngineMiddleware: MiddlewareType = 
+// log 'WizziViewEngineMiddleware.views folder', viewsFolder
+(app: Application) => {
 
-    app.engine('ittf', async function(filePath: string, options: any, callback: any) {
+    app.engine('ittf', // log 'WizziViewEngineMiddleware.options', JSON.stringify(options, null, 2)
+    async function(filePath: string, options: any, callback: any) {
     
         try {
             const twinJsonContext = await wizziProds.inferAndLoadContextFs(filePath, 'mpage');
-            
-            // console.log('WizziViewEngineMiddleware.context', JSON.stringify(context, null, 2));
             const context = {
                 ...options, 
                 locals: options._locals, 
                 ...twinJsonContext
              };
-            // console.log('WizziViewEngineMiddleware.context', JSON.stringify(context, null, 2));
+            // log 'WizziViewEngineMiddleware.context', JSON.stringify(context, null, 2)
+            // log 'WizziViewEngineMiddleware.context', JSON.stringify(context, null, 2)
             wizziProds.generateArtifactFs(filePath, context).then((generated) => {
             
                 return callback(null, generated.artifactContent);
@@ -37,8 +39,6 @@ export const WizziViewEngineMiddleware: MiddlewareType = (app: Application) => {
         } 
     })
     const viewsFolder = path.resolve(__dirname, '..', 'site', 'views');
-    console.log('WizziViewEngineMiddleware.views folder', viewsFolder);
-    // specify the views directory
     app.set('views', viewsFolder);
     // specify the views directory
     // register the template engine

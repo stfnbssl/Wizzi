@@ -1,11 +1,12 @@
 $group
     $params &md
     import passport from 'passport'
-    import jwt from 'express-jwt'
+    $if wzCtx.Build.useJwt
+        import jwt from 'express-jwt'
     $if wzCtx.Build.useMongoDb
         import
-            @ GetUserModel
-            from './mongo/user'
+            @ GetAuthUserModel
+            from './mongo/authuser'
         import
             @ GetAccountModel
             @ AccountModelType
@@ -32,7 +33,7 @@ $group
     function initPassport
         # https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
         $if wzCtx.Build.useMongoDb
-            const userModel = GetUserModel()
+            const authUserModel = GetAuthUserModel()
         _ passport.use(createLocalStrategy())
         _ passport.use(createGithubStrategy())
         _ passport.serializeUser
@@ -55,7 +56,7 @@ $group
                 $if wzCtx.Build.useMongoDb
                     return
                         _ done(null, id)
-                    _ userModel.findById
+                    _ authUserModel.findById
                         @ id
                         function
                             param err
@@ -168,23 +169,24 @@ $group
                                                     @ picture account.avatar_url
                                     else
                                         return reject('Account not found')
-    export
-        const jwtAuth
-            {
-                @ required
-                    _ jwt
-                        {
-                            @ secret 'secret'
-                            @ userProperty 'payload'
-                            @ getToken getTokenFromHeaders
-                            [ algorithms
-                                @ 'HS256'
-                @ optional
-                    _ jwt
-                        {
-                            @ secret 'secret'
-                            @ userProperty 'payload'
-                            @ getToken getTokenFromHeaders
-                            @ credentialsRequired false
-                            [ algorithms
-                                @ 'HS256'
+    $if wzCtx.Build.useJwt
+        export
+            const jwtAuth
+                {
+                    @ required
+                        _ jwt
+                            {
+                                @ secret 'secret'
+                                @ userProperty 'payload'
+                                @ getToken getTokenFromHeaders
+                                [ algorithms
+                                    @ 'HS256'
+                    @ optional
+                        _ jwt
+                            {
+                                @ secret 'secret'
+                                @ userProperty 'payload'
+                                @ getToken getTokenFromHeaders
+                                @ credentialsRequired false
+                                [ algorithms
+                                    @ 'HS256'

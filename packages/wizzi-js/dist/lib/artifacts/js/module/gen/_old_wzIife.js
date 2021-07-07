@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\_old_wzIife.js.ittf
 */
 'use strict';
@@ -75,4 +75,5 @@ md.gen = function(model, ctx) {
         ], model.getArgs());
         ctx.w('})(' + args.join(',') + ');');
     })
-};
+}
+;

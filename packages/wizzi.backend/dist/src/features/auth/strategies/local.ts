@@ -1,16 +1,16 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\auth\strategies\local.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import {Strategy} from 'passport-local';
-import {GetUserModel, UserModelType} from '../mongo/user';
+import {GetAuthUserModel, AuthUserModelType} from '../mongo/authuser';
 import {config} from '../../config';
-let userModel: UserModelType;
+let authUserModel: AuthUserModelType;
 export function createStrategy() {
 
-    userModel = GetUserModel();
+    authUserModel = GetAuthUserModel();
     console.log('features.auth.strategies.local.createStrategy');
     return new Strategy({
             usernameField: 'user[email]', 
@@ -18,7 +18,7 @@ export function createStrategy() {
          }, (email: string, password: string, done: any) => {
         
             console.log('features.auth.strategies.local.verify.email,password', email, password);
-            userModel.findOne({
+            authUserModel.findOne({
                 email
              }).then((user: any) => {
             

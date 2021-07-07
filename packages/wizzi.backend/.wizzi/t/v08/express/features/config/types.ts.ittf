@@ -21,6 +21,8 @@ $group
                         :string
                     :p mongoPath
                         :string
+                    :p mongoConnectUrl
+                        :string 
                 $if wzCtx.Build.useAuthentication
                     :p auth0Domain
                         :string
@@ -51,6 +53,13 @@ $group
                         :p githubClientSecret
                             :string
                         :p githubCallbackURL
+                            :string
+                    $if wzCtx.Build.authentication.useGoogle
+                        :p googleClientId
+                            :string
+                        :p googleClientSecret
+                            :string
+                        :p googleCallbackURL
                             :string
                 $if wzCtx.Build.useWizzi
                     :p isWizziDev

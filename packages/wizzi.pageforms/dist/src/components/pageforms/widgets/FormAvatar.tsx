@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormAvatar.tsx.ittf
-    utc time: Wed, 30 Jun 2021 15:29:13 GMT
+    utc time: Mon, 05 Jul 2021 16:18:01 GMT
 */
 import React, {FunctionComponent} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -16,25 +16,22 @@ export interface FormAvatarProps {
     avatar_url: string;
 }
 
-const StyledImg = styled.img`
-    -webkit-border-radius: 50%!important;
-    -khtml-border-radius: 50%!important;
-    -moz-border-radius: 50%!important;
-    -o-border-radius: 50%!important;
-    border-radius: 50%!important;
-    -webkit-box-shadow: 0 0 0 1px var(--color-avatar-border);
-    -moz-box-shadow: 0 0 0 1px var(--color-avatar-border);
-    -o-box-shadow: 0 0 0 1px var(--color-avatar-border);
-    box-shadow: 0 0 0 1px var(--color-avatar-border);
-    display: inline-block;
-    -webkit-flex-shrink: 0;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    line-height: 1;
-    overflow: hidden;
-    vertical-align: middle;
-    
-`
+const StyledImg = styled.img((props: any) => {
+
+    return {
+            borderRadius: '50%!important', 
+            boxShadow: '0 0 0 1px ' + c('avatar-border'), 
+            display: 'inline-block', 
+            flexShrink: 0, 
+            lineHeight: 1, 
+            overflow: 'hidden', 
+            verticalAlign: 'middle', 
+            width: props.width || "260px", 
+            height: props.width || "260px", 
+            aspectRatio: props.aspectRatio || "auto 260 / 260"
+         };
+}
+);
 export const FormAvatar: FunctionComponent<FormAvatarProps> = ({
     title, 
     subtitle, 
@@ -43,11 +40,7 @@ export const FormAvatar: FunctionComponent<FormAvatarProps> = ({
 
     return  (
         <StyledImg
-         style={{
-                height: "auto", 
-                width: "260", 
-                height: "260"
-             }} src={avatar_url} />
+         src={avatar_url} />
         )
     ;
 }

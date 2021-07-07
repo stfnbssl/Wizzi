@@ -27,9 +27,6 @@ module
     import
         @ TFolderController
         from './controllers/tfolder'
-    import
-        @ UserController
-        from './controllers/user'
     import 
         @ PackiController
         from './controllers/packi'
@@ -68,7 +65,6 @@ module
                 @ new PackiAdminController()
                 @ new ArtifactProductionController()
                 @ new TFolderController()
-                @ new UserController()
                 @ new PackiController()
                 @ new ProductionsController()
                 @ new ProxyController()

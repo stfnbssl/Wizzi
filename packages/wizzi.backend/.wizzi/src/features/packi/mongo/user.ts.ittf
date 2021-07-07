@@ -1,4 +1,5 @@
 module
+    $* VIA see account feature
     $if wzCtx.Build.useMongoDb
         $
             var schemas = wzCtx.Build.mongoDb.schemas
@@ -9,3 +10,4 @@ module
             }
             var md = getSchema('user')
         v08/mongo/model(&md)
+    *$

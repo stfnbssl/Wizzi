@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\react\html.js.ittf
 */
 'use strict';
@@ -45,7 +45,8 @@ md.htmlelement = function(cnt, model, tag, text, ctx, attrs, callback) {
             })
         }
     })
-};
+}
+;
 function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
     ctx.indent();
     // begin open tag and write attributes
@@ -68,14 +69,15 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, callback) {
     repeater_1(0);
     function next_1() {
         // log 'htmlelement_open.model.statements.length', model.statements.length
+        
+        // end of open tag
         if (model.statements.length > 0) {
             ctx.w(">");
-            // end of open tag
             return callback(null, false);
         }
+        // end of tag
         else {
             ctx.w(" />");
-            // end of tag
             return callback(null, true);
         }
     }
@@ -85,7 +87,7 @@ function htmlelement_attribute(cnt, a, ctx, callback) {
         ctx.write(' ' + a.name + '={');
         cnt.genItems(a.statements, ctx, {
             indent: false
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -114,7 +116,7 @@ function htmlelement_end(cnt, model, ctx, tag, text, callback) {
     }
     cnt.genItems(model.statements, ctx, {
         indent: false
-    }, function(err, notUsed) {
+     }, function(err, notUsed) {
         if (err) {
             return callback(err);
         }
@@ -124,11 +126,12 @@ function htmlelement_end(cnt, model, ctx, tag, text, callback) {
             ctx.w();
         }
         else {
+            
+            // _ ctx.write(')')
             if (u.isArgumentOfCall(model)) {
-                // _ ctx.write(')')
             }
+            // _ ctx.w(');') // 7/4/2017
             else {
-                // _ ctx.w(');') // 7/4/2017
                 ctx.w(')');
             }
         }

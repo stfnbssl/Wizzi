@@ -111,7 +111,8 @@
             _ ctx.write
                 @ model.unary_prefix
         
-		_ ctx.w('(function(' + model.paramNames.join(', ') + ') {')
+		var iifeName = model.wzName.length > 0 ? ' ' + model.wzName : ''
+        _ ctx.w('(function' + iifeName + '(' + model.paramNames.join(', ') + ') {')
 		# constraints
 		_ ctx.indent()
 		_ generateParamConstraints

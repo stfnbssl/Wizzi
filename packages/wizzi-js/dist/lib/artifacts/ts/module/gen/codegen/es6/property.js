@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\property.js.ittf
 */
 'use strict';
@@ -25,28 +25,33 @@ md.gen = function(model, ctx, callback) {
     if (ptype) {
         ctx.write(': ');
         statement.stm[ptype.wzElement](ptype, ctx, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
             property_step_1(model, ctx, callback)
-        })
+        }
+        )
     }
     else {
         property_step_1(model, ctx, callback)
     }
-};
+}
+;
 function property_step_1(model, ctx, callback) {
     // log 'property_step_1', model
     var ivalue = u.extractTS(model, 'typeInitValue');
     if (ivalue) {
         ctx.write(' = ');
         statement.stm[ivalue.wzElement](ivalue, ctx, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
             ctx.w(';');
             return callback(null, null);
-        })
+        }
+        )
     }
     else if (model.statements.length > 0 && model.statements[0].wzElement === 'jsPropertyOrValue') {
         ctx.indent();

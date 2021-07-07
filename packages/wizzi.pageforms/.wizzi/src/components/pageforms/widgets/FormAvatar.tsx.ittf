@@ -18,25 +18,24 @@ module
                 from '../../ThemeProvider'
         
         $append styles
-            styled StyledImg .img
-                border-radius 50%!important
-                box-shadow 0 0 0 1px var(--color-avatar-border)
-                display inline-block
-                flex-shrink 0
-                line-height 1
-                overflow hidden
-                vertical-align middle
-                $*
-                width 100%!important
-                background-color var(--color-bg-primary)!important
-                border 1px solid var(--color-border-primary)!important
-                *$
+            const StyledImg
+                _ styled.img
+                    => 
+                        param props
+                            :any
+                        return
+                            {
+                                @ borderRadius '50%!important'
+                                @ boxShadow '0 0 0 1px ' + c('avatar-border')
+                                @ display 'inline-block'
+                                @ flexShrink 0
+                                @ lineHeight 1
+                                @ overflow 'hidden'
+                                @ verticalAlign 'middle'
+                                @ width props.width || "260px"
+                                @ height props.width || "260px"
+                                @ aspectRatio props.aspectRatio || "auto 260 / 260"
 
         return
             < StyledImg
-                @ style
-                    {
-                        @ height "auto" 
-                        @ width "260"
-                        @ height "260"
                 @ src {avatar_url}

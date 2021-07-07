@@ -1,0 +1,51 @@
+module
+    
+    $
+        var ctrl = {
+            name: 'Productions',
+            path: '/productions'
+        } 
+
+    controller( &ctrl )
+        
+        $append imports
+            import
+                @ artifactApi
+                @ packageApi
+                from '../../features/production'
+
+        _ this.router.get('/artifacts', this.artifacts)
+        _ this.router.get('/packages', this.packages)
+        _ this.router.get('/metas', this.metas)
+
+        $append handlers
+            handler( artifacts )
+                _ artifactApi.getListArtifactProduction
+                    ._ then
+                        =>
+                            param result
+                            _ response.render
+                                @ 'productions/artifacts.html.ittf'
+                                {
+                                    @ title 'Artifact productions · Wizzi'
+                                    @ artifacts result.item
+                    catch_fail( artifact productions )
+
+            handler( packages )
+                _ packageApi.getListPackageProduction
+                    ._ then
+                        =>
+                            param result
+                            _ response.render
+                                @ 'productions/packages.html.ittf'
+                                {
+                                    @ title 'Package productions · Wizzi'
+                                    @ packages result.item
+                    catch_fail( package productions )
+
+            handler( metas )
+            
+                _ response.render
+                    @ 'productions/metas.html.ittf'
+                    {
+                        @ title 'Meta productions · Wizzi'

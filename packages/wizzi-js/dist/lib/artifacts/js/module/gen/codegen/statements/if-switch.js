@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\if-switch.js.ittf
 */
 'use strict';
@@ -88,7 +88,8 @@ md.load = function(cnt) {
         }
         u.writeComments(model, ctx);
         u.emitBlock(cnt, 'if', model, model.statements, model.statements.length, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.elif = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.elif');
@@ -98,7 +99,8 @@ md.load = function(cnt) {
         }
         u.writeComments(model, ctx);
         u.emitBlock(cnt, 'else if', model, model.statements, model.statements.length, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.xelse = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xelse');
@@ -111,7 +113,7 @@ md.load = function(cnt) {
             if (xmodel.statements.length > 0) {
                 cnt.genItems(xmodel.statements, ctx, {
                     indent: true
-                }, callback)
+                 }, callback)
             }
             else {
                 ctx.write(xmodel.wzName)
@@ -121,7 +123,8 @@ md.load = function(cnt) {
         else {
             u.emitBlock(cnt, 'else', xmodel, xmodel.statements, xmodel.statements.length, ctx, callback)
         }
-    };
+    }
+    ;
     cnt.stm.xswitch = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xswitch');
@@ -132,7 +135,7 @@ md.load = function(cnt) {
         function doCases() {
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -168,7 +171,8 @@ md.load = function(cnt) {
             ctx.w('switch (' + u.unparen(model.wzName) + ') {');
             doCases();
         }
-    };
+    }
+    ;
     cnt.stm.xcase = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xcase');
@@ -196,7 +200,7 @@ md.load = function(cnt) {
         }
         cnt.genItems(items, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -213,7 +217,8 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xdefault = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xdefault');
@@ -237,7 +242,7 @@ md.load = function(cnt) {
         }
         cnt.genItems(items, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -254,5 +259,7 @@ md.load = function(cnt) {
             }
             return callback(null, null);
         })
-    };
-};
+    }
+    ;
+}
+;

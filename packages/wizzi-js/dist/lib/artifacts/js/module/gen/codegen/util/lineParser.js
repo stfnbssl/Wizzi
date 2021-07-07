@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\util\lineParser.js.ittf
 */
 'use strict';
@@ -16,7 +16,7 @@ md.parse = function(text, node) {
                 join: function() {
                     return '';
                 }
-            };
+             };
     }
     var ch,
         l = text.length,
@@ -25,7 +25,7 @@ md.parse = function(text, node) {
             quote: null, 
             text: '', 
             raw: ''
-        };
+         };
     for (var i = 0; i < l; i++) {
         ch = text[i];
         if (token.quote != null) {
@@ -35,7 +35,7 @@ md.parse = function(text, node) {
                     quote: null, 
                     text: '', 
                     raw: ''
-                };
+                 };
             }
             else {
                 token.text += ch;
@@ -56,12 +56,12 @@ md.parse = function(text, node) {
                 quote: null, 
                 text: ch, 
                 raw: ch
-            })
+             })
             token = {
                 quote: null, 
                 text: '', 
                 raw: ''
-            };
+             };
         }
         else if (ch == ' ' || ch == '\t') {
             if (token.text.length > 0) {
@@ -71,7 +71,7 @@ md.parse = function(text, node) {
                     quote: null, 
                     text: '', 
                     raw: ''
-                };
+                 };
             }
         }
         else {
@@ -85,7 +85,7 @@ md.parse = function(text, node) {
             quote: null, 
             text: '', 
             raw: ''
-        };
+         };
     }
     return {
             tokens: tokens, 
@@ -133,7 +133,7 @@ md.parse = function(text, node) {
                 var ret = {
                     name: '', 
                     value: ''
-                };
+                 };
                 if (this.tokens.length >= 2) {
                     tk = this.tokens[0];
                     ret.name = tk.text;
@@ -146,8 +146,9 @@ md.parse = function(text, node) {
                 }
                 return ret;
             }
-        };
-};
+         };
+}
+;
 md.parseInterpolation = function(text, node, handlebar, ng) {
     if (!verify.isString(text)) {
         return {
@@ -155,7 +156,7 @@ md.parseInterpolation = function(text, node, handlebar, ng) {
                 join: function() {
                     return '';
                 }
-            };
+             };
     }
     var openMacro = ng ? '[' : '{';
     var closeMacro = ng ? ']' : '}';
@@ -166,7 +167,7 @@ md.parseInterpolation = function(text, node, handlebar, ng) {
         token = {
             kind: 0, 
             text: ''
-        };
+         };
     for (var i = 0; i < l; i++) {
         ch = text[i];
         if (ch == openMacro) {
@@ -180,7 +181,7 @@ md.parseInterpolation = function(text, node, handlebar, ng) {
                 token = {
                     kind: 1, 
                     text: ''
-                };
+                 };
                 state = 2;
             }
             else if (state === 2) {
@@ -209,7 +210,7 @@ md.parseInterpolation = function(text, node, handlebar, ng) {
                 token = {
                     kind: 0, 
                     text: ''
-                };
+                 };
                 state = 0;
             }
         }
@@ -261,8 +262,9 @@ md.parseInterpolation = function(text, node, handlebar, ng) {
                 }
                 return t.join('');
             }
-        };
-};
+         };
+}
+;
 var STATE_WAIT_NAME = 0;
 var STATE_NAME = 1;
 var STATE_WAIT_VALUE = 2;
@@ -299,16 +301,17 @@ md.parseNameValueRaw = function(text, node, options) {
                 state = STATE_NAME_BRACKET;
                 bracketLevel++;
             }
+            
+            // state MUST BE STATE_NAME or STATE_VALUE
             else if (q != null) {
-                // state MUST BE STATE_NAME or STATE_VALUE
                 if (state === STATE_NAME) {
                     name_buf.push(ch);
                 }
                 else if (state === STATE_VALUE) {
                     value_buf.push(ch);
                 }
+                // this is a bug
                 else {
-                    // this is a bug
                     throw new Error('BUG. parseNameValue invalid state ' + state);
                 }
                 if (ch == '\\') {
@@ -328,8 +331,9 @@ md.parseNameValueRaw = function(text, node, options) {
                     }
                 }
             }
+            
+            // state MUST BE STATE_WAIT_NAME or STATE_WAIT_VALUE
             else if (ch == '"' || ch == '\'') {
-                // state MUST BE STATE_WAIT_NAME or STATE_WAIT_VALUE
                 if (state === STATE_NAME) {
                     throw new errors.NodeError("parseNameValue error. Invalid use of quote inside a name part. Source: " + text, node);
                 }
@@ -357,8 +361,8 @@ md.parseNameValueRaw = function(text, node, options) {
                 else if (state === STATE_VALUE) {
                     value_buf.push(ch);
                 }
+                // ok. no action.
                 else {
-                    // ok. no action.
                 }
             }
             else if (ch == '\r' || ch == '\n') {
@@ -385,8 +389,9 @@ md.parseNameValueRaw = function(text, node, options) {
             }
         }
     }
+    
+    // This almost surely is an error, but we cannot judge.
     if (q !== null && state === STATE_NAME) {
-        // This almost surely is an error, but we cannot judge.
     }
     return {
             name: function() {
@@ -398,8 +403,9 @@ md.parseNameValueRaw = function(text, node, options) {
             hasValue: function() {
                 return value_buf.length > 0;
             }
-        };
-};
+         };
+}
+;
 function escapename(value) {
     if (verify.isNotEmpty(value)) {
         return verify.replaceAll(verify.replaceAll(value, "\\", "\\\\"), '"', '\\"');

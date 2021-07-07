@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\function.js.ittf
 */
 'use strict';
@@ -97,7 +97,7 @@ md.load = function(cnt) {
             }
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -106,7 +106,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         })
-    };
+    }
+    ;
     cnt.stm.xfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xfunction');
@@ -126,7 +127,7 @@ md.load = function(cnt) {
             iifeInvoke = model.statements[(model.statements.length - 1)];
             iifeInvoke.wzParent = {
                 wzElement: 'call'
-            };
+             };
             model.statements.splice((model.statements.length - 1), 1);
         }
         else {
@@ -134,11 +135,13 @@ md.load = function(cnt) {
         }
         ctx.write(f);
         u.genTSTypeParameters(model, ctx, cnt, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
             ctx.write('(');
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -146,18 +149,23 @@ md.load = function(cnt) {
                 if (model.typeReturn) {
                     ctx.write(': ');
                     cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         xfunction_end(model, ctx, iife, callback)
-                    })
+                    }
+                    )
                 }
                 else {
                     xfunction_end(model, ctx, iife, callback)
                 }
-            })
-        })
-    };
+            }
+            )
+        }
+        )
+    }
+    ;
     function xfunction_end(model, ctx, iife, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in fn: ' + myname + '.xfunction_end');
@@ -167,7 +175,7 @@ md.load = function(cnt) {
         ctx.indent();
         cnt.genItems(model.statements, ctx, {
             indent: false
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -178,7 +186,7 @@ md.load = function(cnt) {
                         iifeInvoke
                     ], ctx, {
                         indent: false
-                    }, function(err, notUsed) {
+                     }, function(err, notUsed) {
                         if (err) {
                             return callback(err);
                         }
@@ -211,8 +219,10 @@ md.load = function(cnt) {
         if (model.unary_prefix) {
             ctx.write(model.unary_prefix)
         }
-        ctx.write('(function(');
+        var iifeName = model.wzName.length > 0 ? ' ' + model.wzName : '';
+        ctx.write('(function' + iifeName + '(');
         u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+        
             if (err) {
                 return callback(err);
             }
@@ -226,7 +236,8 @@ md.load = function(cnt) {
             ctx.indent();
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, (err, notUsed) => {
+             }, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -245,9 +256,12 @@ md.load = function(cnt) {
                     ctx.w('();');
                     return callback(null, null);
                 }
-            })
-        })
-    };
+            }
+            )
+        }
+        )
+    }
+    ;
     cnt.stm.generatorfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.generatorfunction');
@@ -264,7 +278,8 @@ md.load = function(cnt) {
             ctx.__aster = null;
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.asyncfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.asyncfunction');
@@ -281,7 +296,8 @@ md.load = function(cnt) {
             ctx.__aster = null;
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xyield = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xyield');
@@ -310,7 +326,8 @@ md.load = function(cnt) {
             u.checkInlineExit(model, ctx);
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xawait = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xawait');
@@ -342,7 +359,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
-    };
+    }
+    ;
     cnt.stm.asyncarrowfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.asyncarrowfunction');
@@ -354,7 +372,8 @@ md.load = function(cnt) {
         u.checkInlineEnter(model, ctx);
         model.xasync = true;
         cnt.stm.arrowfunction(model, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.arrowfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.arrowfunction');
@@ -371,6 +390,7 @@ md.load = function(cnt) {
             var firstChildIsTemplate = u.firstChildIs(model, ['template']);
             ctx.w(async_str + model.wzName + ' = (');
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -378,20 +398,24 @@ md.load = function(cnt) {
                 if (model.typeReturn) {
                     ctx.write(': ');
                     cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         arrowfunction_body(model, ctx, cnt, implicitReturn, firstChildIsTemplate, callback)
-                    })
+                    }
+                    )
                 }
                 else {
                     arrowfunction_body(model, ctx, cnt, implicitReturn, firstChildIsTemplate, callback)
                 }
-            })
+            }
+            )
         }
         else if (u.onlyChildIs(model, 'callOnValue') || u.onlyChildIsHtmlElement(model)) {
             ctx.write(async_str + '(');
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -400,20 +424,24 @@ md.load = function(cnt) {
                 if (model.typeReturn) {
                     ctx.write(': ');
                     cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         arrowfunction_body(model, ctx, cnt, true, false, callback)
-                    })
+                    }
+                    )
                 }
                 else {
                     arrowfunction_body(model, ctx, cnt, true, false, callback)
                 }
-            })
+            }
+            )
         }
         else if (u.onlyChildIs(model, 'arrowfunction')) {
             ctx.write(async_str + '(');
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -421,25 +449,32 @@ md.load = function(cnt) {
                 if (model.typeReturn) {
                     ctx.write(': ');
                     cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         arrowfunction_body(model, ctx, cnt, false, false, callback)
-                    })
+                    }
+                    )
                 }
                 else {
                     arrowfunction_body(model, ctx, cnt, false, false, callback)
                 }
-            })
+            }
+            )
         }
+        
+        // log 'isImplicitReturn', model.wzElement, model.wzName
+        
+        // log 'function.isSingleParam', isSingleParam
+        
+        // log 'function.firstChildIs template', firstChildIsTemplate
         else if (u.isImplicitReturn(model)) {
-            // log 'isImplicitReturn', model.wzElement, model.wzName
             var isSingleParam = u.isSingleParamForArrowFunction(model);
             var firstChildIsTemplate = u.firstChildIs(model, ['template']);
-            // log 'function.isSingleParam', isSingleParam
-            // log 'function.firstChildIs template', firstChildIsTemplate
             ctx.write(async_str + (isSingleParam ? '' : '('));
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -447,20 +482,24 @@ md.load = function(cnt) {
                 if (model.typeReturn) {
                     ctx.write(': ');
                     cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         arrowfunction_body(model, ctx, cnt, true, firstChildIsTemplate, callback)
-                    })
+                    }
+                    )
                 }
                 else {
                     arrowfunction_body(model, ctx, cnt, true, firstChildIsTemplate, callback)
                 }
-            })
+            }
+            )
         }
         else {
             ctx.write(async_str + '(');
             u.genTSParams(model, ctx, cnt, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
@@ -468,18 +507,22 @@ md.load = function(cnt) {
                 if (model.typeReturn) {
                     ctx.write(': ');
                     cnt.stm.typeReturn(model.typeReturn, ctx, (err, notUsed) => {
+                    
                         if (err) {
                             return callback(err);
                         }
                         arrowfunction_body(model, ctx, cnt, false, false, callback)
-                    })
+                    }
+                    )
                 }
                 else {
                     arrowfunction_body(model, ctx, cnt, false, false, callback)
                 }
-            })
+            }
+            )
         }
-    };
+    }
+    ;
     function arrowfunction_body(model, ctx, cnt, implicitReturn, firstChildIsTemplate, callback) {
         if (firstChildIsTemplate) {
             ctx.write(' => ' + (implicitReturn ? '' : '{'));
@@ -490,7 +533,7 @@ md.load = function(cnt) {
         }
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -542,7 +585,7 @@ md.load = function(cnt) {
             iifeInvoke = model.statements[(model.statements.length - 1)];
             iifeInvoke.wzParent = {
                 wzElement: 'call'
-            };
+             };
             model.statements.splice((model.statements.length - 1), 1);
         }
         else {
@@ -557,7 +600,7 @@ md.load = function(cnt) {
             }
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -568,7 +611,7 @@ md.load = function(cnt) {
                             iifeInvoke
                         ], ctx, {
                             indent: false
-                        }, function(err, notUsed) {
+                         }, function(err, notUsed) {
                             if (err) {
                                 return callback(err);
                             }
@@ -585,7 +628,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         })
-    };
+    }
+    ;
     cnt.stm.iife = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.iife');
@@ -601,7 +645,8 @@ md.load = function(cnt) {
         if (model.unary_prefix) {
             ctx.write(model.unary_prefix)
         }
-        ctx.w('(function(' + model.paramNames.join(', ') + ') {');
+        var iifeName = model.wzName.length > 0 ? ' ' + model.wzName : '';
+        ctx.w('(function' + iifeName + '(' + model.paramNames.join(', ') + ') {');
         // constraints
         ctx.indent();
         generateParamConstraints('iife', model.constrainedParams, model.hasCallbackParam, model.hasOptionsCallbackParam, ctx, function(err, notUsed) {
@@ -610,7 +655,7 @@ md.load = function(cnt) {
             }
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -631,7 +676,8 @@ md.load = function(cnt) {
                 }
             })
         })
-    };
+    }
+    ;
     cnt.stm.generatorfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.generatorfunction');
@@ -647,7 +693,8 @@ md.load = function(cnt) {
             ctx.__aster = null;
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.asyncfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.asyncfunction');
@@ -663,7 +710,8 @@ md.load = function(cnt) {
             ctx.__aster = null;
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xyield = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xyield');
@@ -684,7 +732,8 @@ md.load = function(cnt) {
             ctx.w(u.semicolon(name));
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xawait = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xawait');
@@ -712,7 +761,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
-    };
+    }
+    ;
     cnt.stm.asyncarrowfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.asyncarrowfunction');
@@ -722,7 +772,8 @@ md.load = function(cnt) {
         }
         model.xasync = true;
         cnt.stm.arrowfunction(model, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.arrowfunction = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.arrowfunction');
@@ -750,7 +801,7 @@ md.load = function(cnt) {
                 }
                 cnt.genItems(model.statements, ctx, {
                     indent: false
-                }, function(err, notUsed) {
+                 }, function(err, notUsed) {
                     if (err) {
                         return callback(err);
                     }
@@ -760,40 +811,48 @@ md.load = function(cnt) {
                 })
             })
         }
+        
+        // TODO what if it needs generateParamConstraints ?
         else if (u.onlyChildIs(model, 'callOnValue') || u.onlyChildIsHtmlElement(model)) {
             ctx.write(async_str + '(' + model.paramNames.join(', ') + ') => ');
-            // TODO what if it needs generateParamConstraints ?
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, callback)
+             }, callback)
         }
+        
+        // log "u.onlyChildIs(model, 'arrowfunction')", model.statements[0].paramNames
         else if (u.onlyChildIs(model, 'arrowfunction')) {
-            // log "u.onlyChildIs(model, 'arrowfunction')", model.statements[0].paramNames
             ctx.write(async_str + '(' + model.paramNames.join(', ') + ') => ');
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, callback)
+             }, callback)
         }
+        
+        // log 'isImplicitReturn', model.wzElement, model.wzName
+        
+        // log 'function.isSingleParam', isSingleParam
+        
+        // log 'function.firstChildIs template', firstChildIsTemplate
         else if (u.isImplicitReturn(model)) {
-            // log 'isImplicitReturn', model.wzElement, model.wzName
             var isSingleParam = u.isSingleParamForArrowFunction(model);
             var firstChildIsTemplate = u.firstChildIs(model, ['template']);
-            // log 'function.isSingleParam', isSingleParam
-            // log 'function.firstChildIs template', firstChildIsTemplate
             ctx.write(async_str + (isSingleParam ? '' : '('));
             u.genParams(model, ctx, cnt, (err, notUsed) => {
+            
                 if (err) {
                     return callback(err);
                 }
                 ctx.write(isSingleParam ? '' : ')');
                 arrowfunction_body(model, ctx, cnt, true, firstChildIsTemplate, callback)
-            })
+            }
+            )
         }
         else {
             ctx.write(async_str + '(' + model.paramNames.join(', ') + ')');
             arrowfunction_body(model, ctx, cnt, false, false, callback)
         }
-    };
+    }
+    ;
     function arrowfunction_body(model, ctx, cnt, implicitReturn, firstChildIsTemplate, callback) {
         if (firstChildIsTemplate) {
             ctx.write(' => ' + (implicitReturn ? '' : '{'));
@@ -804,7 +863,7 @@ md.load = function(cnt) {
         }
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -830,7 +889,7 @@ md.load = function(cnt) {
         ctx.write('return ');
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -840,7 +899,8 @@ md.load = function(cnt) {
             u.checkInlineExit(model, ctx);
             return callback(null, null);
         })
-    };
+    }
+    ;
     function generateParamConstraints(methodName, parameters, hasCallback, hasOptionsCallback, ctx, callback) {
         if (hasCallback) {
             ctx.w("if (typeof(callback) !== 'function') {");
@@ -906,16 +966,21 @@ md.load = function(cnt) {
                             ctx.w("if (verify.isFunction(" + c.accessPath + ") === false) {");
                             invalidParam(methodName, c.accessPath, 'a function', hasCallback, ctx);
                         }
+                        
+                        // do nothing
                         else if (c.paramType === 'any') {
-                            // do nothing
                         }
+                        
+                        // done already
+                        
+                        // see above "if hasOptionsCallback" statement
                         else if (c.paramType === 'optionsCallback') {
-                            // done already
-                            // see above "if hasOptionsCallback" statement
                         }
+                        
+                        // done already
+                        
+                        // see above "if hasCallback" statement
                         else if (c.paramType === 'callback') {
-                            // done already
-                            // see above "if hasCallback" statement
                         }
                         else {
                             return callback(ctx.error(myname + '.generateParamConstraints. Unknown param type: ' + c.paramType, item.prm));
@@ -986,16 +1051,21 @@ md.load = function(cnt) {
                             ctx.deindent();
                             ctx.w("}");
                         }
+                        
+                        // do nothing
                         else if (c.paramType === 'any') {
-                            // do nothing
                         }
+                        
+                        // done already
+                        
+                        // see above "if hasOptionsCallback" statement
                         else if (c.paramType === 'optionsCallback') {
-                            // done already
-                            // see above "if hasOptionsCallback" statement
                         }
+                        
+                        // done already
+                        
+                        // see above "if hasCallback" statement
                         else if (c.paramType === 'callback') {
-                            // done already
-                            // see above "if hasCallback" statement
                         }
                         else {
                             return callback(ctx.error(myname + '.generateParamConstraints. Unknown param type: ' + c.paramType, item.prm));
@@ -1030,14 +1100,14 @@ md.load = function(cnt) {
     function prmAnalizeParam(prm) {
         var state = {
             candidates: []
-        };
+         };
         var candidate = {
             prm: prm, 
             accessPath: prm.wzName, 
             parent: null, 
             isRequired: false, 
             constraints: []
-        };
+         };
         state.candidates.push(candidate);
         prmSelectAnalizer(candidate, state);
         return state;
@@ -1066,15 +1136,16 @@ md.load = function(cnt) {
                 parent: candidate, 
                 isRequired: false, 
                 constraints: []
-            };
+             };
             state.candidates.push(subcandidate);
             prmSelectAnalizer(subcandidate, state);
         }
     }
     function prmAnalizeArray(candidate, state) {
         prmAnalizeLeaf(candidate, state);
+        
+        // TODO assume arrayOf ???
         if (candidate.prm.params.length == 1) {
-            // TODO assume arrayOf ???
         }
     }
     function prmAnalizeLeaf(candidate, state) {
@@ -1085,7 +1156,7 @@ md.load = function(cnt) {
                 paramName: candidate.prm.wzName, 
                 paramType: prmTypeFromElement(candidate.prm.wzElement), 
                 accessPath: candidate.accessPath
-            })
+             })
             candidate.isRequired = true;
             if (candidate.prm.isRequired) {
                 requireParents(candidate);
@@ -1101,7 +1172,7 @@ md.load = function(cnt) {
                     paramName: ancestor.prm.wzName, 
                     paramType: prmTypeFromElement(ancestor.prm.wzElement), 
                     accessPath: ancestor.accessPath
-                })
+                 })
                 ancestor.isRequired = true;
             }
             ancestor = ancestor.parent;
@@ -1139,4 +1210,5 @@ md.load = function(cnt) {
             return 'optionsCallback';
         }
     }
-};
+}
+;

@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\examples\codegen\jsmodel\jsnode.js.ittf
 */
 'use strict';
@@ -126,8 +126,9 @@ var JsNode = (function () {
             var i, i_items=this.statements, i_len=this.statements.length, item;
             for (i=0; i<i_len; i++) {
                 item = this.statements[i];
+                
+                // log 'param', item.wzName
                 if (item.wzElement == 'param') {
-                    // log 'param', item.wzName
                     this.params.push(item.wzName);
                     this.paramNames.push(item.wzName);
                 }
@@ -151,8 +152,9 @@ var JsNode = (function () {
             var i, i_items=this.statements, i_len=this.statements.length, item;
             for (i=0; i<i_len; i++) {
                 item = this.statements[i];
+                
+                // log 'base', item.wzName
                 if (item.wzElement == 'base') {
-                    // log 'base', item.wzName
                     this.bases.push(item);
                 }
                 else {

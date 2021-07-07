@@ -1,21 +1,21 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\auth\strategies\github.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import {Strategy} from 'passport-github2';
-import {GetUserModel, UserModelType} from '../mongo/user';
+import {GetAuthUserModel, AuthUserModelType} from '../mongo/authuser';
 import {GetAccountModel, AccountModelType} from '../mongo/account';
 import {config} from '../../config';
 import {AuthRequest} from '../types';
 
-// let userModel: UserModelType;
+// let authUserModel: AuthUserModelType;
 let accountModel: AccountModelType;
 export function createStrategy() {
 
     
-    // userModel = GetUserModel();
+    // authUserModel = GetAuthUserModel();
     accountModel = GetAccountModel();
     console.log('============================================================');
     console.log('features.auth.strategies.github.createStrategy', 'config.githubClientId', config.githubClientId, 'config.clientSecret', config.githubClientSecret, 'config.githubCallbackURL', config.githubCallbackURL);

@@ -1,15 +1,15 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\middlewares\packiBrowse.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import util from 'util';
 import path from 'path';
 import stringify from 'json-stringify-safe';
 import parseUrl from 'parseurl';
 import {Application, RequestHandler, Request, Response} from 'express';
-import wizziProto from 'wizzi.proto';
+import {artifactApi} from '../features/production';
 import {MiddlewareType} from '../features/app/types';
 import {config} from '../features/config';
 import {sendFailure} from '../utils/sendResponse';
@@ -22,10 +22,6 @@ export const PackiBrowseMiddleware: MiddlewareType = (app: Application) => {
 
     app.use(packiUserBrowsePath, packiUserBrowseMiddleware());
     app.use(packiSiteBrowsePath, packiSiteBrowseMiddleware());
-    wizziProto.start('stfnbssl', {}, () => {
-    
-    }
-    )
 }
 ;
 function packiUserBrowseMiddleware():  RequestHandler {
@@ -46,33 +42,49 @@ function packiUserBrowseMiddleware():  RequestHandler {
             const packiName = parts.slice(2).join('/');
             console.log(myname + '.owner', owner, 'packiName', packiName, 'context', request.query.context);
             
-            wizziProto.getPackiContext(owner, request.query.context as string, wizziProto.getDefaultContext()).then((resultContext) => {
+            artifactApi.getDefaultContext_withCache(owner).then((defaultContext: any) => {
             
-                console.log(myname + '.resultContext:', Object.keys(resultContext));
-                wizziProto.getPackiGeneration(owner, packiName, resultContext).then((result) => {
+                console.log(myname + '.defaultContext:', Object.keys(defaultContext));
+                artifactApi.getArtifactContext(owner, request.query.context as string, defaultContext).then((resultContext: any) => {
                 
-                    response.status(200);
-                    response.set('Content-Type', result.contentType);
-                    response.set('Content-Length', result.contentLength.toString());
-                    response.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-                    response.set('Expires', '-1');
-                    response.set('Pragma', 'no-cache');
-                    response.send(result.content);
+                    console.log(myname + '.resultContext:', Object.keys(resultContext));
+                    artifactApi.getArtifactGeneration(owner, packiName, resultContext).then((result: any) => {
+                    
+                        console.log(myname + '.result.length:', result.length);
+                        response.status(200);
+                        response.set('Content-Type', result.contentType);
+                        response.set('Content-Length', result.contentLength.toString());
+                        response.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+                        response.set('Expires', '-1');
+                        response.set('Pragma', 'no-cache');
+                        response.send(result.content);
+                    }
+                    ).catch((err) => {
+                    
+                        console.log('artifactApi.getPackiGeneration.error', err);
+                        sendFailure(response, {
+                            err: err
+                         }, 501)
+                    }
+                    )
                 }
-                ).catch((err: any) => {
+                ).catch((err) => {
                 
-                    console.log(myname + '.getPackiGeneration.err', Object.keys(err));
-                    sendFailure(response, err, 501);
+                    console.log('artifactApi.getArtifactContext.error', err);
+                    sendFailure(response, {
+                        err: err
+                     }, 501)
                 }
                 )
             }
             ).catch((err) => {
             
-                console.log(myname + '.getPackiContext.err', Object.keys(err));
-                sendFailure(response, err, 501);
+                console.log('artifactApi.getDefaultContext.error', err);
+                sendFailure(response, {
+                    err: err
+                 }, 501)
             }
             )
-            
         }
     ;
 }
@@ -94,33 +106,49 @@ function packiSiteBrowseMiddleware():  RequestHandler {
             const packiName = parts.slice(1).join('/');
             console.log(myname + '.owner', owner, 'packiName', packiName, 'context', request.query.context);
             
-            wizziProto.getPackiContext(owner, request.query.context as string, wizziProto.getDefaultContext()).then((resultContext) => {
+            artifactApi.getDefaultContext_withCache(owner).then((defaultContext: any) => {
             
-                console.log(myname + '.resultContext:', Object.keys(resultContext));
-                wizziProto.getPackiGeneration(owner, packiName, resultContext).then((result) => {
+                console.log(myname + '.defaultContext:', Object.keys(defaultContext));
+                artifactApi.getArtifactContext(owner, request.query.context as string, defaultContext).then((resultContext: any) => {
                 
-                    response.status(200);
-                    response.set('Content-Type', result.contentType);
-                    response.set('Content-Length', result.contentLength.toString());
-                    response.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-                    response.set('Expires', '-1');
-                    response.set('Pragma', 'no-cache');
-                    response.send(result.content);
+                    console.log(myname + '.resultContext:', Object.keys(resultContext));
+                    artifactApi.getArtifactGeneration(owner, packiName, resultContext).then((result: any) => {
+                    
+                        console.log(myname + '.result.length:', result.length);
+                        response.status(200);
+                        response.set('Content-Type', result.contentType);
+                        response.set('Content-Length', result.contentLength.toString());
+                        response.set('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+                        response.set('Expires', '-1');
+                        response.set('Pragma', 'no-cache');
+                        response.send(result.content);
+                    }
+                    ).catch((err) => {
+                    
+                        console.log('artifactApi.getPackiGeneration.error', err);
+                        sendFailure(response, {
+                            err: err
+                         }, 501)
+                    }
+                    )
                 }
-                ).catch((err: any) => {
+                ).catch((err) => {
                 
-                    console.log(myname + '.getPackiGeneration.err', Object.keys(err));
-                    sendFailure(response, err, 501);
+                    console.log('artifactApi.getArtifactContext.error', err);
+                    sendFailure(response, {
+                        err: err
+                     }, 501)
                 }
                 )
             }
             ).catch((err) => {
             
-                console.log(myname + '.getPackiContext.err', Object.keys(err));
-                sendFailure(response, err, 501);
+                console.log('artifactApi.getDefaultContext.error', err);
+                sendFailure(response, {
+                    err: err
+                 }, 501)
             }
             )
-            
         }
     ;
 }

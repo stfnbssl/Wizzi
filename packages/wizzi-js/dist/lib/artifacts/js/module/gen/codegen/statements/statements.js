@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\statements.js.ittf
 */
 'use strict';
@@ -90,7 +90,8 @@ md.load = function(cnt) {
         // log 'wizzi-js.module.statements.statement', model.wzParent.wzElement, u.isTopStatement(model, ctx), model.wzName, model.__templateChild
         var text = model.wzName;
         if (model.__templateChild || ctx.__inside_html) {
-            text = verify.replaceAll(verify.replaceAll(text, '&nbsp;', ' '), '&lf;', '\n');
+            text = verify.replaceAll(verify.replaceAll(text, '&nbsp;', ' '), '&lf;', '\n')
+            ;
         }
         if (model.__templateChild) {
             ctx.write(text)
@@ -102,20 +103,23 @@ md.load = function(cnt) {
             ctx.w("__html.push(" + ip.join() + ");");
         }
         else {
+            
+            // 4/2/19 _ ctx.write(model.wzName)
+            
+            // 22/3/21 _ ctx.w(model.wzName)
             if (u.isTopStatement(model, ctx) || ctx.__inside_html == true) {
-                // 4/2/19 _ ctx.write(model.wzName)
-                // 22/3/21 _ ctx.w(model.wzName)
                 ctx.w(text);
             }
+            // 22/3/21 _ ctx.write(text)
             else {
-                // 22/3/21 _ ctx.write(text)
                 ctx.write(text);
             }
         }
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, callback)
-    };
+         }, callback)
+    }
+    ;
     cnt.stm.statementmultiline = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.statementmultiline');
@@ -133,8 +137,9 @@ md.load = function(cnt) {
         }
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, callback)
-    };
+         }, callback)
+    }
+    ;
     cnt.stm.require = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.require');
@@ -164,7 +169,8 @@ md.load = function(cnt) {
             }
         }
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.ximport = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.ximport');
@@ -221,7 +227,8 @@ md.load = function(cnt) {
             ctx.w(u.semicolon(name));
         }
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.typeRequire = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeRequire');
@@ -231,7 +238,8 @@ md.load = function(cnt) {
         }
         ctx.write('require ' + model.wzName);
         cnt.genItems(model.statements, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.exportDefault = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.exportDefault');
@@ -239,8 +247,9 @@ md.load = function(cnt) {
         if (typeof callback !== 'function') {
             throw new Error('The callback parameter must be a function. In ' + myname + '.exportDefault. Got: ' + callback);
         }
+        
+        // log 'wizzi-codegen.js2.statements.ecma,jskind', ctx.__ecma, ctx.__jskind
         if (ctx.__ecma === 'es5') {
-            // log 'wizzi-codegen.js2.statements.ecma,jskind', ctx.__ecma, ctx.__jskind
             ctx.artifactGenerationError('export statement invalid in ecma 5', 'js/module', model);
             return callback(null, null);
         }
@@ -252,14 +261,15 @@ md.load = function(cnt) {
             ctx.write('export default ');
             return cnt.genItems(model.statements, ctx, {
                     indent: true
-                }, callback);
+                 }, callback);
         }
         if (model.__function) {
             cnt.stm.exportfunction(model, ctx, callback);
             return callback(null, null);
         }
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.xexport = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xexport');
@@ -268,8 +278,9 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xexport. Got: ' + callback);
         }
         var typekey = model.__isType ? 'type ' : '';
+        
+        // log 'wizzi-codegen.js2.statements.ecma,jskind', ctx.__ecma, ctx.__jskind
         if (ctx.__ecma === 'es5') {
-            // log 'wizzi-codegen.js2.statements.ecma,jskind', ctx.__ecma, ctx.__jskind
             ctx.artifactGenerationError('export statement invalid in ecma 5', 'js/module', model);
             return callback(null, null);
         }
@@ -359,7 +370,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             }
         }
-    };
+    }
+    ;
     function exportSpecifiers(model, ctx, name) {
         if (model.specifiers.length > 0) {
             if (name.length > 0) {
@@ -389,7 +401,8 @@ md.load = function(cnt) {
         }
         model.__isType = true;
         cnt.stm.xexport(model, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.typeExportNamespace = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.typeExportNamespace');
@@ -400,7 +413,8 @@ md.load = function(cnt) {
         ctx.w('export as namespace ');
         ctx.w(u.semicolon(model.wzName));
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.comment = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.comment');
@@ -434,7 +448,7 @@ md.load = function(cnt) {
         ctx.__inside_comment = true;
         cnt.genItems(model.statements, ctx, {
             indent: false
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -446,7 +460,8 @@ md.load = function(cnt) {
             ctx.__needs_crlf = false;
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.commentmultiline = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.commentmultiline');
@@ -461,7 +476,7 @@ md.load = function(cnt) {
         ctx.__inside_comment = true;
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -469,7 +484,8 @@ md.load = function(cnt) {
             ctx.__inside_comment = false;
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xdelete = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xdelete');
@@ -479,7 +495,8 @@ md.load = function(cnt) {
         }
         ctx.w('delete ' + model.wzName);
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.set = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.set');
@@ -498,7 +515,8 @@ md.load = function(cnt) {
         else {
             text = node.inlinedTextToTextLines(model.wzName, {
                 singleLine: true
-            });
+             })
+            ;
         }
         if (hasStatements(model) == false) {
             if (u.isDeclare(model)) {
@@ -554,7 +572,7 @@ md.load = function(cnt) {
             ctx.write(u.setOperator(text, model.statements))
             cnt.genItems(model.statements, ctx, {
                 indent: false
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -565,7 +583,8 @@ md.load = function(cnt) {
                 return callback(null, null);
             })
         }
-    };
+    }
+    ;
     cnt.stm.block = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.block');
@@ -574,7 +593,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.block. Got: ' + callback);
         }
         cnt.genItems(model.statements, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.sequence = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.sequence');
@@ -583,5 +603,7 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.sequence. Got: ' + callback);
         }
         cnt.genItems(model.statements, ctx, { sep: ',' }, callback);
-    };
-};
+    }
+    ;
+}
+;

@@ -35,9 +35,14 @@ $group
             clientId "6a42cd4cb7247bb4e823"
             clientSecret "dedced0ac262cae62557e4c3f567a6227b17bfb7"
             callbackURL "${md.http}://localhost:${md.port}/api/${md.apiVersion}/authenticate/github/callback"
+        useGoogle true
+        { google
+            clientId "676985835415-5lo6b334003o4uv96rl4ese9sngla78r.apps.googleusercontent.com"
+            clientSecret "0ZHGXB6gPh-S1mRFBu7zY2KV"
+            callbackURL "${md.http}://localhost:${md.port}/api/${md.apiVersion}/authenticate/google/callback"
     useAuthorization false
     { authorization
     useCrypto false
     { crypto
-    useJwt true
+    useJwt false
     { jwt

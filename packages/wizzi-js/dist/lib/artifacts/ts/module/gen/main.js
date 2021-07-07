@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\main.js.ittf
 */
 'use strict';
@@ -76,13 +76,14 @@ md.gen = function(model, ctx, callback) {
             return callback(null, ctx);
         }
     }
-};
+}
+;
 function main_init(model, ctx) {
     // log myname, 'ctx.values', ctx.values
     if ((!!ctx.values.noGeneratorComments) == false) {
         ctx.w('/*');
         ctx.w('    artifact generator: ' + __filename);
-        ctx.w('    package: wizzi-js@0.7.8');
+        ctx.w('    package: wizzi-js@0.7.9');
         ctx.w('    primary source IttfDocument: ' + model.wzSourceFilepath('f1'));
         if ((!!ctx.values.isPackageDeploy) == false) {
             ctx.w('    utc time: ' + new Date().toUTCString());
@@ -96,5 +97,5 @@ function error(code, method, message, innerError) {
             name: ( verify.isNumber(code) ? 'Err-' + code : code ), 
             method: myname + '.' + method, 
             sourcePath: __filename
-        }, message || 'Error message unavailable');
+         }, message || 'Error message unavailable');
 }

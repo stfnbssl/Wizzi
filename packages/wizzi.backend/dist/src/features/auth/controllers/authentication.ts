@@ -1,15 +1,15 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\auth\controllers\authentication.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
 import {sendHtml, sendSuccess, sendPromiseResult, sendFailure} from '../../../utils/sendResponse';
 import {AuthRequest, IAccount} from '../types';
 import {GetAccountModel, AccountModelType} from '../mongo/account';
-import {authenticate, jwtAuth, getLoggedUserFromAccount} from '../manager';
+import {authenticate, getLoggedUserFromAccount} from '../manager';
 
 export class AuthenticationController implements ControllerType {
     

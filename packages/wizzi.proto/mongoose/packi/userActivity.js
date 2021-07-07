@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
    
 const userActivitySchema = new mongoose.Schema({
-    _id: { type: String, unique: true },
+    username: { type: String, unique: true },
     openPackies: { type: Array},
     openFiles: { type: Array},
 });

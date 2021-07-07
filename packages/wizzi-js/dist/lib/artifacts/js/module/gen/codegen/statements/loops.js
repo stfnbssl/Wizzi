@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\loops.js.ittf
 */
 'use strict';
@@ -105,7 +105,7 @@ md.load = function(cnt) {
                     ctx.w(') {');
                     cnt.genItems(bodystatementes, ctx, {
                         indent: true
-                    }, function(err, notUsed) {
+                     }, function(err, notUsed) {
                         if (err) {
                             return callback(err);
                         }
@@ -118,7 +118,8 @@ md.load = function(cnt) {
         else {
             u.emitBlock(cnt, 'for', model, model.statements, model.statements.length, ctx, callback)
         }
-    };
+    }
+    ;
     cnt.stm.xleft = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xleft');
@@ -133,7 +134,8 @@ md.load = function(cnt) {
             ctx.write(model.wzName);
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.xof = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xof');
@@ -148,7 +150,8 @@ md.load = function(cnt) {
             ctx.write(model.wzName);
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.xin = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xin');
@@ -163,7 +166,8 @@ md.load = function(cnt) {
             ctx.write(model.wzName);
             return callback(null, null);
         }
-    };
+    }
+    ;
     cnt.stm.foreach = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.foreach');
@@ -191,7 +195,7 @@ md.load = function(cnt) {
         ctx.w('    ' + item + ' = ' + coll + '[' + letter + '];');
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -199,7 +203,8 @@ md.load = function(cnt) {
             ctx.__for_nidif = (ctx.__for_nidif - 1);
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.backeach = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.backeach');
@@ -226,7 +231,7 @@ md.load = function(cnt) {
         ctx.w('    ' + item + ' = ' + coll + '[' + letter + '];');
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -234,7 +239,8 @@ md.load = function(cnt) {
             ctx.__for_nidif = ctx.__for_nidif - 1;
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xbreak = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xbreak');
@@ -246,7 +252,8 @@ md.load = function(cnt) {
         ctx.write((model.wzName || '').trim().length > 0 ? (' ' + model.wzName) : '');
         ctx.w(';');
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.xcontinue = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xcontinue');
@@ -258,7 +265,8 @@ md.load = function(cnt) {
         ctx.write((model.wzName || '').trim().length > 0 ? (' ' + model.wzName) : '');
         ctx.w(';');
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.xwhile = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xwhile');
@@ -267,7 +275,8 @@ md.load = function(cnt) {
             throw new Error('The callback parameter must be a function. In ' + myname + '.xwhile. Got: ' + callback);
         }
         u.emitBlock(cnt, 'while', model, model.statements, model.statements.length, ctx, callback)
-    };
+    }
+    ;
     cnt.stm.xdo = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xdo');
@@ -291,7 +300,7 @@ md.load = function(cnt) {
         }
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -306,7 +315,8 @@ md.load = function(cnt) {
             ctx.w(' while (' + u.unparen(model.wzName) + ')');
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xlabel = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xlabel');
@@ -317,8 +327,10 @@ md.load = function(cnt) {
         ctx.w(model.wzName + ':');
         cnt.genItems(model.statements, ctx, {
             indent: false
-        }, callback)
-    };
+         }, callback)
+    }
+    ;
     var forloopLetters = "ijklmn";
     var max_for_nidif = forloopLetters.length;
-};
+}
+;

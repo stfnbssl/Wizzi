@@ -96,6 +96,9 @@ function upsertPackiDependency(item, callback) {
         console.log('upsertPackiDependency.find.result', result.length, result && result.length > 0 && result[0].userUpdated, Object.keys(result))
         if (result.length == 0 || !result[0].userUpdated) {
             item.userUpdated = false;
+            item.description = '...';
+            item.created_at = new Date();
+            item.updated_at = new Date();
             PackiDependency.findOneAndUpdate(query, item, {upsert: true, new: true}, function(err, doc) {
                 if (err) return callback(err);
                 return callback(null, { upserted: true, doc: doc });
@@ -115,6 +118,9 @@ function upsertPackiItem(item, callback) {
         console.log('upsertPackiItem.find.result', result.length, result && result.length > 0 && result[0].userUpdated, Object.keys(result))
         if (result.length == 0 || !result[0].userUpdated) {
             item.userUpdated = false;
+            item.description = '...';
+            item.created_at = new Date();
+            item.updated_at = new Date();
             PackiItem.findOneAndUpdate(query, item, {upsert: true, new: true}, function(err, doc) {
                 if (err) return callback(err);
                 return callback(null, { upserted: true, doc: doc });

@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\statements\class.js.ittf
 */
 'use strict';
@@ -94,7 +94,8 @@ md.load = function(cnt) {
             xclass_es6 = require('../es6/class');
         }
         xclass_es6.gen(model, ctx, callback);
-    };
+    }
+    ;
     cnt.stm.ctor = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.ctor');
@@ -104,7 +105,8 @@ md.load = function(cnt) {
         }
         // done by zclass
         return callback(null, null);
-    };
+    }
+    ;
     cnt.stm.method = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.method');
@@ -116,5 +118,7 @@ md.load = function(cnt) {
             method_es6 = require('../es6/method');
         }
         method_es6.gen(model, ctx, callback);
-    };
-};
+    }
+    ;
+}
+;

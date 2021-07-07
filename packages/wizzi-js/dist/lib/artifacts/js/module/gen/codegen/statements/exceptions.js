@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\js\module\gen\codegen\statements\exceptions.js.ittf
 */
 'use strict';
@@ -89,14 +89,15 @@ md.load = function(cnt) {
         ctx.w('try {');
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
             ctx.w('} ');
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xcatch = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xcatch');
@@ -107,14 +108,15 @@ md.load = function(cnt) {
         ctx.w('catch (' + model.wzName + ') {');
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
             ctx.w('} ');
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xfinally = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xfinally');
@@ -125,14 +127,15 @@ md.load = function(cnt) {
         ctx.w('finally {');
         cnt.genItems(model.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
             ctx.w('} ');
             return callback(null, null);
         })
-    };
+    }
+    ;
     cnt.stm.xthrow = function(model, ctx, callback) {
         if (typeof callback === 'undefined') {
             throw new Error('Missing callback parameter in cnt.stm: ' + myname + '.xthrow');
@@ -144,7 +147,7 @@ md.load = function(cnt) {
             ctx.write('throw ' + (model.wzName || ''));
             cnt.genItems(model.statements, ctx, {
                 indent: true
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
@@ -156,5 +159,7 @@ md.load = function(cnt) {
             ctx.w('throw ' + model.wzName + u.semicolon(model.wzName));
             return callback(null, null);
         }
-    };
-};
+    }
+    ;
+}
+;

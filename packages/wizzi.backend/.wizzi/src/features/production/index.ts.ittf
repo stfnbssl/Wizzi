@@ -1,0 +1,65 @@
+module
+    import
+        @ ModelBuilderType
+        @ ControllerType
+        from '../app/types'
+    import
+        as productionTypes
+        from './types'
+    import
+        @ ArtifactProductionModelBuilder
+        @ GetArtifactProductionModel
+        from './mongo/artifact'
+    import
+        @ PackageProductionModelBuilder
+        @ GetPackageProductionModel
+        from './mongo/package'
+    import
+        @ ArtifactProductionController
+        from './controllers/artifact'
+    import
+        @ ApiV1ArtifactProductionController
+        from './controllers/apiv1artifact'
+    import
+        @ PackageProductionController
+        from './controllers/package'
+    import
+        @ ApiV1PackageProductionController
+        from './controllers/apiv1package'
+    import
+        as artifactApi
+        from './api/artifact'
+    import
+        as packageApi
+        from './api/package'
+    +
+    const productionModelGetters
+        {
+            @ GetArtifactProductionModel
+            @ GetPackageProductionModel
+    +
+    const productionModelBuilders
+        :[
+            :ref ModelBuilderType
+        =
+            [
+                @ ArtifactProductionModelBuilder
+                @ PackageProductionModelBuilder
+    +
+    const productionControllers
+        :[
+            :ref ControllerType
+        =
+            [
+                @ new ArtifactProductionController()
+                @ new ApiV1ArtifactProductionController()
+                @ new PackageProductionController()
+                @ new ApiV1PackageProductionController()
+
+    export
+        @ productionTypes
+        @ productionModelGetters
+        @ productionModelBuilders
+        @ productionControllers
+        @ artifactApi
+        @ packageApi

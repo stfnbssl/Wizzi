@@ -121,7 +121,9 @@
         if model.unary_prefix
             _ ctx.write
                 @ model.unary_prefix
-		_ ctx.write('(function(')
+
+		var iifeName = model.wzName.length > 0 ? ' ' + model.wzName : ''
+		_ ctx.write('(function' + iifeName + '(')
 		_ u.genTSParams
 			@ model
 			@ ctx

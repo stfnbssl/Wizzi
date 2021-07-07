@@ -1,6 +1,6 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\node_modules\wizzi-js\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.7
+    package: wizzi-js@0.7.8
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\.wizzi\ittf\lib\artifacts\ts\module\gen\codegen\es6\htmlReact.js.ittf
 */
 'use strict';
@@ -53,16 +53,19 @@ md.htmlelement = function(cnt, model, tag, text, ctx, attrs, comments, callback)
             })
         }
     })
-};
+}
+;
 function htmlelement_open(cnt, model, ctx, tag, attrs, comments, callback) {
     const singleline = attrs.length > 3 || comments.length > 0;
+    
+    // _ ctx.indent() // 23/3/21
     if (u.parentIsHtmlElement(model) == true) {
-        // _ ctx.indent() // 23/3/21
     }
     // begin open tag and write attributes
     // log 'htmlelement_open.tag', tag
     ctx.write("<" + tag);
     u.genTSTypeParameterInsts(model, ctx, cnt, (err, notUsed) => {
+    
         if (err) {
             return callback(err);
         }
@@ -94,24 +97,26 @@ function htmlelement_open(cnt, model, ctx, tag, attrs, comments, callback) {
             // log 'htmlelement_open.model.statements.length', model.statements.length
             cnt.genItems(comments, ctx, {
                 indent: false
-            }, function(err, notUsed) {
+             }, function(err, notUsed) {
                 if (err) {
                     return callback(err);
                 }
+                
+                // end of open tag
                 if (model.__hasChildElements == true) {
                     ctx.w(">");
-                    // end of open tag
                     return callback(null, false);
                 }
+                // end of tag
                 else {
                     ctx.w(" />");
-                    // end of tag
                     htmlelement_tagclose(model, ctx)
                     return callback(null, true);
                 }
             })
         }
-    })
+    }
+    )
 }
 function htmlelement_attribute(cnt, a, ctx, singleline, callback) {
     const writer = singleline ? 'w' : 'write';
@@ -124,7 +129,7 @@ function htmlelement_attribute(cnt, a, ctx, singleline, callback) {
         ctx.write(aindent + a.name + '={');
         cnt.genItems(a.statements, ctx, {
             indent: true
-        }, function(err, notUsed) {
+         }, function(err, notUsed) {
             if (err) {
                 return callback(err);
             }
@@ -153,7 +158,7 @@ function htmlelement_end(cnt, model, ctx, tag, text, callback) {
     }
     cnt.genItems(model.statements, ctx, {
         indent: true
-    }, function(err, notUsed) {
+     }, function(err, notUsed) {
         if (err) {
             return callback(err);
         }
@@ -163,16 +168,19 @@ function htmlelement_end(cnt, model, ctx, tag, text, callback) {
     })
 }
 function htmlelement_tagclose(model, ctx) {
+    
+    // _ ctx.deindent() // 23/3/21
+    
+    // _ ctx.w() // 20/3/21
     if (u.parentIsHtmlElement(model)) {
-        // _ ctx.deindent() // 23/3/21
-        // _ ctx.w() // 20/3/21
     }
     else {
+        
+        // _ ctx.write(')')
         if (u.isArgumentOfCall(model)) {
-            // _ ctx.write(')')
         }
+        // _ ctx.w(');') // 7/4/2017
         else {
-            // _ ctx.w(');') // 7/4/2017
             var ind = ctx.indent > 0;
             if (ind) {
                 ctx.deindent();

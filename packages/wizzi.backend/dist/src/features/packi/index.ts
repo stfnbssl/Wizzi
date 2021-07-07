@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\packi\index.ts.ittf
-    utc time: Wed, 30 Jun 2021 15:18:36 GMT
+    utc time: Wed, 07 Jul 2021 15:52:36 GMT
 */
 import {ModelBuilderType, ControllerType} from '../app/types';
 import * as packiTypes from './types';
@@ -11,7 +11,6 @@ import {PackiEditingController} from './controllers/packiEditing';
 import {PackiAdminController} from './controllers/packiAdmin';
 import {ArtifactProductionController} from './controllers/artifactProduction';
 import {TFolderController} from './controllers/tfolder';
-import {UserController} from './controllers/user';
 import {PackiController} from './controllers/packi';
 import {ProductionsController} from './controllers/productions';
 import {ProxyController} from './controllers/proxy';
@@ -31,7 +30,6 @@ const packiControllers: ControllerType[] = [
     new PackiAdminController(), 
     new ArtifactProductionController(), 
     new TFolderController(), 
-    new UserController(), 
     new PackiController(), 
     new ProductionsController(), 
     new ProxyController()

@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\features\form\EditorForm.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import * as React from 'react';
 import {StyleSheet, css} from 'aphrodite';
@@ -12,7 +12,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import classnames from 'classnames';
-import {Form, withStatus, withValidation} from './index';
+import Form from './Form';
+import withStatus from './withStatus';
+import withValidation from './withValidation';
 import {ThemeName, withThemeName} from '../preferences';
 import LargeInput from '../../components/widgets/LargeInput';
 import {c} from '../../components/ThemeProvider';

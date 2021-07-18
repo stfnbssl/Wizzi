@@ -1,12 +1,11 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\PageMetadata.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import * as React from 'react';
 import {Helmet} from 'react-helmet-async';
-import {DEFAULT_PACKI_NAME, DEFAULT_PACKI_DESCRIPTION, DEFAULT_PACKI_DESCRIPTION_EMPTY, DEFAULT_PACKI_DESCRIPTION_SAVED} from '../features/config';
 import {isIntentionallyNamed} from '../features/packi';
 type Props = { 
     name: string;
@@ -15,8 +14,8 @@ type Props = {
 };
 export function getPageMetadata(props: Props) {
 
-    const title = props.id || isIntentionallyNamed(props.name) ? `${props.name} - Packi` : DEFAULT_PACKI_NAME;
-    const description = props.description === DEFAULT_PACKI_DESCRIPTION ? props.id ? DEFAULT_PACKI_DESCRIPTION_SAVED : DEFAULT_PACKI_DESCRIPTION_EMPTY : props.description;
+    const title = `${props.name} - Packi`;
+    const description = props.description;
     const url = `${process.env.PACKI_SERVER_URL}${
     props.id
      ? `/${props.id}`

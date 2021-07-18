@@ -7,11 +7,6 @@ $group
         @ MuiThemeProvider
         from '@material-ui/core/styles'
     import 
-        @ LoggedUser
-        @ appActions
-        from '../features/app'
-        # TODO LoggedUser should go to features/auth
-    import 
         @ Packi
         @ packiActions
         from '../features/packi'

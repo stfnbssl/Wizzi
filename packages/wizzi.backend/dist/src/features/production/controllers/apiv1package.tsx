@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\production\controllers\apiv1package.tsx.ittf
-    utc time: Wed, 07 Jul 2021 15:52:37 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
@@ -34,7 +34,7 @@ export class ApiV1PackageProductionController implements ControllerType {
             console.log('getCheckPackageName.result', result);
             sendSuccess(response, result)
         }
-        ).catch((err) => {
+        ).catch((err: any) => {
         
             console.log('getCheckPackageName.error', err);
             sendFailure(response, {
@@ -53,7 +53,7 @@ export class ApiV1PackageProductionController implements ControllerType {
             console.log('getPackageProduction.result', result);
             sendSuccess(response, result)
         }
-        ).catch((err) => {
+        ).catch((err: any) => {
         
             console.log('getPackageProduction.error', err);
             sendFailure(response, {
@@ -73,7 +73,7 @@ export class ApiV1PackageProductionController implements ControllerType {
             console.log('putPackageProduction.result', result);
             sendSuccess(response, result)
         }
-        ).catch((err) => {
+        ).catch((err: any) => {
         
             console.log('putPackageProduction.error', err);
             sendFailure(response, {

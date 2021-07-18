@@ -25,6 +25,8 @@ module
                 @ s
                 from './ThemeProvider'
             $foreach comp in comps
+                import List${comp}
+                    from './pageforms/List${comp}'
                 import Create${comp}
                     from './pageforms/Create${comp}'
                 import Update${comp}
@@ -45,6 +47,8 @@ module
             if this.props.formName == '***'
                 throw new Error("Don't make me laugh!")
             $foreach comp in comps
+                elif this.props.formName == 'List${comp}'
+                    set Comp = List${comp}
                 elif this.props.formName == 'Create${comp}'
                     set Comp = Create${comp}
                 elif this.props.formName == 'Delete${comp}'

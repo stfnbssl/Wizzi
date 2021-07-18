@@ -226,6 +226,8 @@ module
                         #
                         # Files that make up the content (code & assets) of the Packi. 
                         #
+                :p owner
+                    :string
                 :p name
                     :string
                     #
@@ -240,6 +242,15 @@ module
                         # Additional description of the Packi. The description is used when saving the Packi
                         # and may also be used for searching purposes.
                         #
+                :p packiProduction
+                    :optional
+                    :ref PackiProduction
+                :p mainIttf
+                    :optional
+                    :string
+                :p wizziSchema
+                    :optional
+                    :string
                 :p url
                     :string
                     #
@@ -272,7 +283,7 @@ module
                         # URL of the saved Packi.
                         # The URL is empty when no save "id" is available.
                         #
-                :p webPreviewURL
+                :p previewURL
                     :optional
                     :string
                     #
@@ -313,19 +324,6 @@ module
                     :p isDraft
                         :optional
                         :boolean
-    +
-    export
-        :type SaveOptions
-            :{
-                :p isDraft
-                    :optional
-                    :boolean
-                :p ignoreUser
-                    :optional
-                    :boolean
-                :p excludeFromHistory
-                    :optional
-                    :boolean
     +
     export
         :type PackiListenerSubscription
@@ -390,6 +388,12 @@ module
                 :p description
                     :optional
                     :string
+                :p mainIttf
+                    :optional
+                    :string
+                :p wizziSchema
+                    :optional
+                    :string
                 :p dependencies
                     :optional
                     :ref PackiDependencies
@@ -400,9 +404,6 @@ module
                     :optional
                     :string
                 :p host
-                    :optional
-                    :string
-                :p packierURL
                     :optional
                     :string
                 :p verbose
@@ -427,12 +428,12 @@ module
                 :p id
                     :optional
                     :string
-                :p webPlayerURL
-                    :optional
-                    :string
                 :p webPreviewRef
                     :optional
                     :ref PackiWindowRef
+                :p packiProduction
+                    :optional
+                    :ref PackiProduction
     +
     export
         :type PackiSaveOptions
@@ -441,6 +442,9 @@ module
                     :optional
                     :boolean
                 :p ignoreUser
+                    :optional
+                    :boolean
+                :p excludeFromHistory
                     :optional
                     :boolean
     +
@@ -543,7 +547,27 @@ module
             = PackiFiles | string
     +
     export
-        :type CreatePackiOptions
-            :{
-                :p data
-                    :ref PackiFilesOrKind
+        :type PackiProduction
+            :union
+                :literal 'artifact'
+                :literal 'package'
+                :literal 'meta'
+    +
+    export
+        :type PackiUploadPayload
+            :{        
+                :p name
+                    :optional
+                    :string
+                :p description
+                    :optional
+                    :string
+                :p mainIttf
+                    :optional
+                    :string
+                :p wizziSchema
+                    :optional
+                    :string
+                :p files
+                    :optional
+                    :ref PackiFiles

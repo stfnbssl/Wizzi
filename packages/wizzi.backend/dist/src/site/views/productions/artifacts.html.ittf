@@ -4,9 +4,17 @@ html
 
     +
     layout(&md)
+        $append head-scripts
+            < script
+                + ${__INITIAL_DATA__}
         . flex-row flex-justify-center
             profile-sidebar(s)
             . flex-column width-full
+                # root
+
+        script
+            src "/static/pageforms/main.bundle.js"            
+                $*
                 . flex-row flex-items-start
                     form 
                         class width-full
@@ -49,12 +57,13 @@ html
                             a-icon( New, /artifact/new
                                 $include assets/add.svg
                 
-                
                 $foreach item in artifacts
                     . flex-row flex-items-start m-m
                         . flex-column border-b-s p-b-s width-full m-w-xxl
                             . font-xl
-                                + ${item.name}
+                                a ${item.name}
+                                    $$ href /~~/${locals.user.username}/${item.name}
+                                    href /~~/stfnbssl/${item.name}
                             . font-m m-b-m
                                 + ${item.description}
                             . flex-row 
@@ -66,3 +75,4 @@ html
                                     + schema:
                                 . font-m
                                     + ${item.wizziSchema}
+                *$                                    

@@ -7,9 +7,6 @@ module
         as React
         from 'react'
     import 
-        @ DEFAULT_PACKI_DESCRIPTION
-        from '../../features/config'
-    import 
         @ withThemeName
         @ ThemeName
         from '../../features/preferences'
@@ -157,7 +154,7 @@ module
                                 < React.Fragment
                                     p 
                                         @ className {css(styles.description)}
-                                        + {description ?? DEFAULT_PACKI_DESCRIPTION}
+                                        + {description}
                                     button 
                                         @ onClick {onShowEditModal}
                                         @ className {css(styles.editButton)}

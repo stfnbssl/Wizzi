@@ -12,6 +12,7 @@ module
             @ description String
             @ wizziSchema String
             @ mainIttf String
+            @ sdkVersion String
             @ packiFiles String
             @ created_at Date
             @ updated_at Date

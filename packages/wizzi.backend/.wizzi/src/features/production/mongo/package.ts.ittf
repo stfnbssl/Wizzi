@@ -10,6 +10,7 @@ module
             @ owner String
             @ name String
             @ description String
+            @ sdkVersion String
             @ packiFiles String
             @ created_at Date
             @ updated_at Date

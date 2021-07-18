@@ -5,8 +5,6 @@ module
             :{ 
                 :p id
                     :string 
-                :p uid
-                    :string 
                 :p username
                     :string 
                 :p displayName

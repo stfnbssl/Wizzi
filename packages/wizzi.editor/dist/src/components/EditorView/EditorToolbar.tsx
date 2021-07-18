@@ -1,13 +1,12 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\EditorView\EditorToolbar.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import * as React from 'react';
-import {SaveStatus, SaveHistory, SaveOptions} from '../../features/packi';
-import {Viewer} from '../../features/account';
+import {SaveStatus, SaveHistory, PackiSaveOptions} from '../../features/packi';
 import EditorTitle from './EditorTitle';
 import {usePreferences} from '../../features/preferences';
 import {ToolbarShell} from '../shell/ToolbarShell';
@@ -15,6 +14,7 @@ import {ToolbarTitleShell} from '../shell/ToolbarTitleShell';
 import UserMenu from './UserMenu';
 import {Button} from '../widgets/Button';
 import {PackiIcon} from '../../assets/PackiIcon';
+import {BrowserIcon} from '../../assets/BrowserIcon';
 import IconButton from '../widgets/IconButton';
 import {LoggedUser} from '../../features/app';
 import {Packi} from '../../features/packi';
@@ -26,7 +26,6 @@ export type EditorToolbarProps = {
     createdAt: string | undefined;
     saveStatus: SaveStatus;
     saveHistory: SaveHistory;
-    viewer: Viewer | undefined;
     isDownloading: boolean;
     isEditModalVisible: boolean;
     onSubmitMetadata: (details: { 
@@ -36,19 +35,15 @@ export type EditorToolbarProps = {
     onShowEditModal: () => void;
     onDismissEditModal: () => void;
     onDownloadCode: () => Promise<void>;
-    onPublishAsync: (options?: SaveOptions) => Promise<void>;
-    currentPacki?: Packi;
+    onPublishAsync: (options?: PackiSaveOptions) => Promise<void>;
     loggedUser: LoggedUser | undefined;
     splitViewKind: string;
     // isResolving: boolean;
     isAuthModalVisible: boolean;
     isWizziJobWaiting: boolean;
-    onLoggedOn: (user: LoggedUser) => void;
-    onLoggedOff: () => void;
     onChangeSplitViewKind: (e: any) => void;
     onExecuteWizziJob: () => void;
     onShowPackiManager: () => void;
-    onSaveCode: () => void;
     creatorUsername?: string;
 };
 export function EditorToolbar(props: EditorToolbarProps) {
@@ -57,10 +52,11 @@ export function EditorToolbar(props: EditorToolbarProps) {
     const {
         name, 
         description, 
+        mainIttf, 
+        wizziSchema, 
         createdAt, 
         saveHistory, 
         saveStatus, 
-        viewer, 
         isDownloading, 
         isEditModalVisible, 
         onSubmitMetadata, 
@@ -70,11 +66,10 @@ export function EditorToolbar(props: EditorToolbarProps) {
         onPublishAsync, 
         splitViewKind, 
         onChangeSplitViewKind, 
-        onLoggedOn, 
-        onLoggedOff, 
         loggedUser, 
         isAuthModalVisible, 
         isWizziJobWaiting, 
+        generatedPreviewURL, 
         onExecuteWizziJob, 
         onShowPackiManager
      } = props;
@@ -83,6 +78,7 @@ export function EditorToolbar(props: EditorToolbarProps) {
      } = preferences;
     const isPublishing = saveStatus === 'publishing';
     const isPublished = saveStatus === 'published';
+    console.log('EditorToolbar.props', props, mainIttf, wizziSchema);
     return  (
         <ToolbarShell
         >
@@ -96,10 +92,12 @@ export function EditorToolbar(props: EditorToolbarProps) {
                 <EditorTitle 
                     name={name}
                     description={description}
+                    mainIttf={mainIttf}
+                    wizziSchema={wizziSchema}
                     createdAt={createdAt}
                     saveHistory={saveHistory}
                     saveStatus={saveStatus}
-                    viewer={viewer}
+                    loggedUser={loggedUser}
                     isEditModalVisible={isEditModalVisible}
                     onSubmitMetadata={onSubmitMetadata}
                     onShowEditModal={onShowEditModal}
@@ -108,35 +106,14 @@ export function EditorToolbar(props: EditorToolbarProps) {
             </ToolbarTitleShell>
             <div
              className={css(styles.buttons)}>
-                <Button 
-                    variant="secondary"
-                    onClick={() => 
-                        
-                            onPublishAsync()
-                    }
-                    disabled={isPublishing || isPublished}
-                    loading={isPublishing}
-                    className={css(styles.saveButton)}
-                >
-                    {
-                        isPublishing ? 'Saving…' : isPublished ? 'Saved' : 'Save'
-                    }
-                </Button>
-                <Select
-                 value={splitViewKind} onChange={onChangeSplitViewKind}>
-                    <MenuItem
-                     value={'left'}>
-                        Left
-                    </MenuItem>
-                    <MenuItem
-                     value={'right'}>
-                        Right
-                    </MenuItem>
-                    <MenuItem
-                     value={'both'}>
-                        Both
-                    </MenuItem>
-                </Select>
+                <IconButton
+                 responsive title="Browse generated" onClick={() => 
+                    
+                        window.open(generatedPreviewURL)
+                }>
+                    <BrowserIcon
+                     />
+                </IconButton>
                 <IconButton 
                     responsive
                     title="Download as zip"
@@ -152,7 +129,7 @@ export function EditorToolbar(props: EditorToolbarProps) {
                     </svg>
                 </IconButton>
                 <UserMenu
-                 />
+                 loggedUser={loggedUser} />
             </div>
         </ToolbarShell>
         )

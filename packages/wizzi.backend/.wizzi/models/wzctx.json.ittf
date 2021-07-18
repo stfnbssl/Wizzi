@@ -58,9 +58,6 @@
         useProduction true
         { production
         
-        useTFolder true
-        { tFolder
-
         useConfig true
         { config
             useEnvalid true

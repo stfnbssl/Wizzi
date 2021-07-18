@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\features\wizzi\sagas.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import {all, fork, put, takeEvery, call} from 'redux-saga/effects';
 import {getType} from 'typesafe-actions';
@@ -19,7 +19,42 @@ function* handleGenerateArtifactRequest(action: ReturnType<typeof wizziActions.g
         const res = yield call(callApi, 'post', config.API_URL, 'productions/artifact/' + encodeURIComponent(action.payload.filePath), action.payload.files);
         console.log('sagas.handleGenerateArtifactRequest.res', res);
         yield put(wizziActions.generateArtifactSuccess(res));
-        // import { getInstance } from '../../services/EventService';
+    } 
+    catch (err) {
+        if (err instanceof Error) {
+            yield put(wizziActions.generateArtifactError(err.stack!));
+        }
+        else {
+            yield put(wizziActions.generateArtifactError('An unknown error occured.'));
+        }
+    } 
+}
+//
+function* handleMTreeDebugInfoRequest(action: ReturnType<typeof wizziActions.mTreeDebugInfoRequest>):  any {
+
+    try {
+        console.log('sagas.handleMTreeDebugInfoRequest.action', action);
+        const res = yield call(callApi, 'post', config.API_URL, 'productions/mtreedebuginfo/' + encodeURIComponent(action.payload.filePath), action.payload.files);
+        console.log('sagas.handleMTreeDebugInfoRequest.res', res);
+        yield put(wizziActions.mTreeDebugInfoSuccess(res));
+    } 
+    catch (err) {
+        if (err instanceof Error) {
+            yield put(wizziActions.generateArtifactError(err.stack!));
+        }
+        else {
+            yield put(wizziActions.generateArtifactError('An unknown error occured.'));
+        }
+    } 
+}
+//
+function* handleMTreeRequest(action: ReturnType<typeof wizziActions.mTreeRequest>):  any {
+
+    try {
+        console.log('sagas.handleMTreeRequest.action', action);
+        const res = yield call(callApi, 'post', config.API_URL, 'productions/mtree/' + encodeURIComponent(action.payload.filePath), action.payload.files);
+        console.log('sagas.handleMTreeRequest.res', res);
+        yield put(wizziActions.mTreeSuccess(res));
     } 
     catch (err) {
         if (err instanceof Error) {
@@ -56,6 +91,8 @@ function* handleExecuteJobRequest(action: ReturnType<typeof wizziActions.execute
 function* wizziRequest() {
 
     yield takeEvery(getType(wizziActions.generateArtifactRequest), handleGenerateArtifactRequest);
+    yield takeEvery(getType(wizziActions.mTreeDebugInfoRequest), handleMTreeDebugInfoRequest);
+    yield takeEvery(getType(wizziActions.mTreeRequest), handleMTreeRequest);
     yield takeEvery(getType(wizziActions.executeJobRequest), handleExecuteJobRequest);
 }
 //

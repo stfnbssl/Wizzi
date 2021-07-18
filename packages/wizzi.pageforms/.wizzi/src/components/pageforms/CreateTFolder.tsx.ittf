@@ -39,7 +39,7 @@ module
             const endpoint
                 `lit
                     _ nullthrows(process.env.API_SERVER_URL)
-                    + /tfolder/checkname/
+                    + /production/tfolder/checkname/
                     @ tf_checked
             log 'CreateTFolder._checkAvalibleTFolderName.endpoint', endpoint
             const response

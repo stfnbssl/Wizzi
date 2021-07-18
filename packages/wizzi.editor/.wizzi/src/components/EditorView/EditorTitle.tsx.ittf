@@ -14,30 +14,29 @@ module
     import 
         @ c
         from '../ThemeProvider'
-    $if true
-        import 
-            @ SaveStatus
-            @ SaveHistory
-            from '../../features/packi'
-        import 
-            @ Viewer
-            from '../../features/account'
-    $else
-        import 
-            @ SaveStatus
-            @ SaveHistory
-            from './mocks'
-        import 
-            @ Viewer
-            from './mocks'
+    import 
+        @ SaveStatus
+        @ SaveHistory
+        from '../../features/packi'
+    import 
+        @ LoggedUser
+        from '../../features/app'
     import EditorTitleName from './EditorTitleName'
-    import ModalEditTitleAndDescription from './ModalEditTitleAndDescription'
+    import ModalProductionDetails from './ModalProductionDetails'
     export
         :type EditorTitleProps
             :{ 
                 :p name
                     :string 
                 :p description
+                    :union 
+                        :string 
+                        :undefined 
+                :p mainIttf
+                    :union 
+                        :string 
+                        :undefined 
+                :p wizziSchema
                     :union 
                         :string 
                         :undefined 
@@ -49,9 +48,9 @@ module
                     :ref SaveHistory
                 :p saveStatus
                     :ref SaveStatus
-                :p viewer
+                :p loggedUser
                     :union 
-                        :ref Viewer
+                        :ref LoggedUser
                         :undefined 
                 :p isEditModalVisible
                     :boolean 
@@ -74,6 +73,10 @@ module
                                     :string 
                                 :p description
                                     :string 
+                                :p mainIttf
+                                    :string 
+                                :p wizziSchema
+                                    :string 
     export
         function EditorTitle
             param props
@@ -94,10 +97,12 @@ module
                 { 
                     @ description
                     @ name
+                    @ mainIttf
+                    @ wizziSchema
                     @ createdAt
                     @ saveHistory
                     @ saveStatus
-                    @ viewer
+                    @ loggedUser
                     @ isEditModalVisible
                     $if wzCtx.Build.useExpo
                         @ onShowPreviousSaves
@@ -122,7 +127,7 @@ module
                                 + !item.isDraft
                     else false
             let statusText
-            if viewer
+            if loggedUser
                 if saveStatus === 'saving-draft' || saveStatus === 'publishing'
                     set statusText = 'Saving changes…'
                 else
@@ -202,13 +207,13 @@ module
                                 @ className {css(styles.status)}
                                 + {statusText}
                             { 
-                                iif viewer && saveStatus === 'saving-draft'
+                                iif loggedUser && saveStatus === 'saving-draft'
                                     then
                                         div 
                                             @ className {css(styles.spinner)}
                                     else null
                             { 
-                                iif (viewer && saveStatus === 'saved-draft') || saveStatus === 'published'
+                                iif (loggedUser && saveStatus === 'saved-draft') || saveStatus === 'published'
                                     then
                                         svg 
                                             @ className {css(styles.check)}
@@ -219,7 +224,7 @@ module
                                                 @ fill {c('success')}
                                                 @ points "3.34328358 6.32835821 0.835820896 3.82089552 0 4.65671642 3.34328358 8 10.5074627 0.835820896 9.67164179 0"
                                     else null
-                    < ModalEditTitleAndDescription 
+                    < ModalProductionDetails 
                         @ title "Edit Packi Details"
                         @ action "Done"
                         @ visible {isEditModalVisible}
@@ -231,6 +236,8 @@ module
                                 _ onDismissEditModal()
                         @ description {description}
                         @ name {name}
+                        @ mainIttf {mainIttf}
+                        @ wizziSchema {wizziSchema}
     +
     const spin
         { 

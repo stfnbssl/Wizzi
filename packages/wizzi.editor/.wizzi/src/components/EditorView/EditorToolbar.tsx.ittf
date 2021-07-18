@@ -6,22 +6,11 @@ module
     import 
         as React
         from 'react'
-    $if true
-        import 
-            @ SaveStatus
-            @ SaveHistory
-            @ SaveOptions
-            from '../../features/packi'
-        import 
-            @ Viewer
-            from '../../features/account'
-    $else
-        import 
-            @ SaveStatus
-            @ SaveHistory
-            @ SaveOptions
-            @ Viewer
-            from './mocks'
+    import 
+        @ SaveStatus
+        @ SaveHistory
+        @ PackiSaveOptions
+        from '../../features/packi'
     import EditorTitle from './EditorTitle'
     import
         @ usePreferences 
@@ -41,6 +30,9 @@ module
     import 
         @ PackiIcon
         from '../../assets/PackiIcon'
+    import 
+        @ BrowserIcon
+        from '../../assets/BrowserIcon'
     import IconButton from '../widgets/IconButton'
     $if wzCtx.Build.usePackiAspects
         import
@@ -66,10 +58,6 @@ module
                     :ref SaveStatus
                 :p saveHistory
                     :ref SaveHistory
-                :p viewer
-                    :union 
-                        :ref Viewer
-                        :undefined 
                 :p isDownloading
                     :boolean 
                 $if wzCtx.Build.useExpo
@@ -109,12 +97,9 @@ module
                         :ref Promise
                             :param void
                         param options
-                            :ref SaveOptions
+                            :ref PackiSaveOptions
                             :optional 
                 $if wzCtx.Build.usePackiAspects
-                    :p currentPacki
-                        :ref Packi
-                        :optional
                     $*
                     :p saveStatus
                         :ref SaveStatus
@@ -132,14 +117,6 @@ module
                         # isResolving: boolean;
                     :p isWizziJobWaiting
                         :boolean 
-                    :p onLoggedOn
-                        :=>
-                            :void
-                            param user
-                                :ref LoggedUser
-                    :p onLoggedOff
-                        :=> 
-                            :void 
                     $if wzCtx.Build.usePackiAspectsAuth
                         :p onShowAuthModal
                             :=> 
@@ -165,9 +142,11 @@ module
                         :p onShowGithubCreate
                             :=> 
                                 :void 
+                    $*
                     :p onSaveCode
                         :=> 
                             :void 
+                    *$
                     :p creatorUsername
                         :optional 
                         :string 
@@ -180,10 +159,11 @@ module
                 { 
                     @ name
                     @ description
+                    @ mainIttf
+                    @ wizziSchema
                     @ createdAt
                     @ saveHistory
                     @ saveStatus
-                    @ viewer
                     @ isDownloading
                     $if wzCtx.Build.useExpo
                         @ isResolving
@@ -197,20 +177,18 @@ module
                         @ onShowEmbedCode
                     @ onDownloadCode
                     @ onPublishAsync
-                    $if wzCtx.Build.usePackiAspects
-                        @ splitViewKind
-                        @ onChangeSplitViewKind
-                        @ onLoggedOn
-                        @ onLoggedOff
-                        @ loggedUser
-                        @ isAuthModalVisible
-                        @ isWizziJobWaiting
-                        @ onExecuteWizziJob
-                        @ onShowPackiManager
+                    @ splitViewKind
+                    @ onChangeSplitViewKind
+                    @ loggedUser
+                    @ isAuthModalVisible
+                    @ isWizziJobWaiting
+                    @ generatedPreviewURL
+                    @ onExecuteWizziJob
+                    @ onShowPackiManager
                     $if wzCtx.Build.usePackiAspectsGithub
                         @ onShowGithubCommit
                         @ onShowGithubCreate
-                        @ onSaveCode
+                        $$ @ onSaveCode
                 = props
             const 
                 { 
@@ -218,6 +196,7 @@ module
                 = preferences
             const isPublishing = saveStatus === 'publishing'
             const isPublished = saveStatus === 'published'
+            log 'EditorToolbar.props', props, mainIttf, wizziSchema
             return 
                 < ToolbarShell 
                     < ToolbarTitleShell 
@@ -225,22 +204,15 @@ module
                             @ className {css(styles.logo)}
                             < PackiIcon
                                 @ theme {theme}
-                        $*
-                        img 
-                            @ src
-                                iif theme === 'dark'
-                                    then require('../../assets/packi-icon-dark.svg')
-                                    else require('../../assets/packi-icon.svg')
-                            @ alt "Packi"
-                            @ className {css(styles.logo)}
-                        *$
                         < EditorTitle 
                             @ name {name}
                             @ description {description}
+                            @ mainIttf {mainIttf}
+                            @ wizziSchema {wizziSchema}
                             @ createdAt {createdAt}
                             @ saveHistory {saveHistory}
                             @ saveStatus {saveStatus}
-                            @ viewer {viewer}
+                            @ loggedUser {loggedUser}
                             @ isEditModalVisible {isEditModalVisible}
                             @ onSubmitMetadata {onSubmitMetadata}
                             $if wzCtx.Build.useExpo
@@ -249,25 +221,26 @@ module
                             @ onDismissEditModal {onDismissEditModal}
                     div 
                         @ className {css(styles.buttons)}
-                        < Button 
-                            @ variant "secondary"
-                            @ onClick
-                                => 
-                                    _ onPublishAsync()
-                            $if wzCtx.Build.useExpo
-                                @ disabled {isPublishing || isResolving || isPublished}
-                            $else
-                                @ disabled {isPublishing || isPublished}
-                            @ loading {isPublishing}
-                            @ className {css(styles.saveButton)}
-                            { 
-                                iif isPublishing
-                                    then 'Saving…'
-                                    else
-                                        iif isPublished
-                                            then 'Saved'
-                                            else 'Save'
-                        $if wzCtx.Build.usePackiAspects
+                        $if wzCtx.Build.useExpo
+                            < Button 
+                                @ variant "secondary"
+                                @ onClick
+                                    => 
+                                        _ onPublishAsync()
+                                $if wzCtx.Build.useExpo
+                                    @ disabled {isPublishing || isResolving || isPublished}
+                                $else
+                                    @ disabled {isPublishing || isPublished}
+                                @ loading {isPublishing}
+                                @ className {css(styles.saveButton)}
+                                { 
+                                    iif isPublishing
+                                        then 'Saving…'
+                                        else
+                                            iif isPublished
+                                                then 'Saved'
+                                                else 'Save'
+                        $if wzCtx.Build.usePackiAspects_stop
                             < Select 
                                 @ value {splitViewKind}
                                 @ onChange {onChangeSplitViewKind}
@@ -280,6 +253,15 @@ module
                                 < MenuItem 
                                     @ value {'both'}
                                     + Both
+                        < IconButton 
+                            @ responsive
+                            @ title "Browse generated"
+                            @ onClick
+                                =>
+                                    _ window.open
+                                        @ generatedPreviewURL
+                            $$ @ disabled {isDownloading || isPublishing}
+                            < BrowserIcon
                         < IconButton 
                             @ responsive
                             @ title "Download as zip"
@@ -313,6 +295,7 @@ module
                             < SearchButton 
                                 @ responsive
                         < UserMenu 
+                            @ loggedUser {loggedUser}
     export-default EditorToolbar
     const styles
         _ StyleSheet.create

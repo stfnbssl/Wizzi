@@ -388,10 +388,7 @@ module
             $if wzCtx.Build.useExpo
                 _ this._updateMarkers(annotations, selectedFile)
                 _ this._fetchTypings()
-            for 
-                left
-                    const path
-                in files
+            for const path in files
                 const file = files[path]
                 if file.type === 'CODE'
                     _ this._initializeFile(path, file.contents)
@@ -475,10 +472,7 @@ module
                         @ theme
                         @ selectedFile
             if prevProps.files !== this.props.files
-                for 
-                    left
-                        const path
-                    in this.props.files
+                for const path in this.props.files
                     const file = this.props.files[path]
                     if file.type === 'CODE' && file.contents !== prevProps.files[path]?.contents && path !== selectedFile
                         _ this._initializeFile(path, file.contents)
@@ -539,6 +533,7 @@ module
             param focus
                 :boolean 
                 :optional 
+            log 'MonacoEditor', '_openFile', path, value
             _ this._initializeFile(path, value)
             const model = findModel(path)
             if this._editor && model

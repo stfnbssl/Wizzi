@@ -1,30 +1,34 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\EditorView\EditorTitle.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import formatDistance from 'date-fns/formatDistance';
 import * as React from 'react';
 import {c} from '../ThemeProvider';
 import {SaveStatus, SaveHistory} from '../../features/packi';
-import {Viewer} from '../../features/account';
+import {LoggedUser} from '../../features/app';
 import EditorTitleName from './EditorTitleName';
-import ModalEditTitleAndDescription from './ModalEditTitleAndDescription';
+import ModalProductionDetails from './ModalProductionDetails';
 export type EditorTitleProps = { 
     name: string;
     description: string | undefined;
+    mainIttf: string | undefined;
+    wizziSchema: string | undefined;
     createdAt: string | undefined;
     saveHistory: SaveHistory;
     saveStatus: SaveStatus;
-    viewer: Viewer | undefined;
+    loggedUser: LoggedUser | undefined;
     isEditModalVisible: boolean;
     onShowEditModal: () => void;
     onDismissEditModal: () => void;
     onSubmitMetadata: (details: { 
         name: string;
         description: string;
+        mainIttf: string;
+        wizziSchema: string;
     }) => void;
 };
 export function EditorTitle(props: EditorTitleProps) {
@@ -45,10 +49,12 @@ export function EditorTitle(props: EditorTitleProps) {
     const {
         description, 
         name, 
+        mainIttf, 
+        wizziSchema, 
         createdAt, 
         saveHistory, 
         saveStatus, 
-        viewer, 
+        loggedUser, 
         isEditModalVisible, 
         onShowEditModal, 
         onSubmitMetadata, 
@@ -61,7 +67,7 @@ export function EditorTitle(props: EditorTitleProps) {
             !item.isDraft
         ) : false;
     let statusText;
-    if (viewer) {
+    if (loggedUser) {
         if (saveStatus === 'saving-draft' || saveStatus === 'publishing') {
             statusText = 'Saving changes…';
         }
@@ -133,14 +139,14 @@ export function EditorTitle(props: EditorTitleProps) {
                         {statusText}
                     </p>
                     {
-                        viewer && saveStatus === 'saving-draft' ?  (
+                        loggedUser && saveStatus === 'saving-draft' ?  (
                             <div
                              className={css(styles.spinner)} />
                             )
                          : null
                     }
                     {
-                        (viewer && saveStatus === 'saved-draft') || saveStatus === 'published' ?  (
+                        (loggedUser && saveStatus === 'saved-draft') || saveStatus === 'published' ?  (
                             <svg 
                                 className={css(styles.check)}
                                 width="11px"
@@ -155,7 +161,7 @@ export function EditorTitle(props: EditorTitleProps) {
                     }
                 </div>
             </div>
-            <ModalEditTitleAndDescription 
+            <ModalProductionDetails 
                 title="Edit Packi Details"
                 action="Done"
                 visible={isEditModalVisible}
@@ -168,6 +174,8 @@ export function EditorTitle(props: EditorTitleProps) {
                 }
                 description={description}
                 name={name}
+                mainIttf={mainIttf}
+                wizziSchema={wizziSchema}
              />
         </div>
         )

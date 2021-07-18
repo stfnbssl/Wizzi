@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\features\wizzi\reducer.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import {Reducer} from 'redux';
 import {ActionType, getType} from 'typesafe-actions';
@@ -24,6 +24,8 @@ export interface WizziState {
 const initialState: WizziState = {
     loading: false, 
     generatedArtifact: undefined, 
+    mTreeBuildUpScript: undefined, 
+    mTreeIttf: undefined, 
     jobGeneratedArtifacts: {
         
      }, 
@@ -41,6 +43,7 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
             console.log("wizziActions.generateArtifactRequest");
             return {
                     ...state, 
+                    generatedArtifact: undefined, 
                     loading: true
                  };
         }
@@ -73,6 +76,54 @@ const reducer: Reducer<WizziState, WizziAction> = (state = initialState, action)
         }
         case getType(wizziActions.generateArtifactError): {
             console.log("wizziActions.generateArtifactError", action);
+            return {
+                    ...state, 
+                    loading: false, 
+                    errors: action.payload
+                 };
+        }
+        case getType(wizziActions.mTreeDebugInfoRequest): {
+            console.log("wizziActions.mTreeDebugInfoRequest");
+            return {
+                    ...state, 
+                    mTreeBuildUpScript: undefined, 
+                    loading: true
+                 };
+        }
+        case getType(wizziActions.mTreeDebugInfoSuccess): {
+            console.log("wizziActions.mTreeDebugInfoSuccess", action);
+            return {
+                    ...state, 
+                    loading: false, 
+                    ...action.payload.mTreeBuildUpScript
+                 };
+        }
+        case getType(wizziActions.mTreeDebugInfoError): {
+            console.log("wizziActions.mTreeDebugInfoError", action);
+            return {
+                    ...state, 
+                    loading: false, 
+                    errors: action.payload
+                 };
+        }
+        case getType(wizziActions.mTreeRequest): {
+            console.log("wizziActions.mTreeRequest");
+            return {
+                    ...state, 
+                    mTreeIttf: undefined, 
+                    loading: true
+                 };
+        }
+        case getType(wizziActions.mTreeSuccess): {
+            console.log("wizziActions.mTreeSuccess", action);
+            return {
+                    ...state, 
+                    loading: false, 
+                    ...action.payload.mTreeIttf
+                 };
+        }
+        case getType(wizziActions.mTreeError): {
+            console.log("wizziActions.mTreeError", action);
             return {
                     ...state, 
                     loading: false, 

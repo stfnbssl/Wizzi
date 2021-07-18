@@ -1,11 +1,12 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\EditorView\EditorFooter.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import * as React from 'react';
+import {LoggedUser} from '../../features/app';
 import {SDKVersion} from '../../features/packi';
 import {Annotation} from '../../features/annotations';
 import {Shortcuts} from './KeyboardShortcuts';
@@ -24,6 +25,7 @@ export type EditorFooterProps = PreferencesContextType & {
     previewShown: boolean;
     panelsShown: boolean;
     sendCodeOnChangeEnabled: boolean;
+    loggedUser: LoggedUser;
     sdkVersion: SDKVersion;
     isLocalWebPreview: boolean;
     onToggleTheme: () => void;
@@ -35,15 +37,14 @@ export type EditorFooterProps = PreferencesContextType & {
     onShowShortcuts: () => void;
     onSendCode: () => void;
     theme: string;
-    loggedUid: string;
     autoGenSingleDoc: boolean;
     autoExecJob: boolean;
-    trustLocalStorage: boolean;
 };
 function EditorFooterComp(props: EditorFooterProps) {
 
     const {
         annotations, 
+        loggedUser, 
         fileTreeShown, 
         previewShown, 
         panelsShown, 
@@ -58,10 +59,8 @@ function EditorFooterComp(props: EditorFooterProps) {
         onToggleSendCode, 
         onShowShortcuts, 
         theme, 
-        loggedUid, 
         autoGenSingleDoc, 
-        autoExecJob, 
-        trustLocalStorage
+        autoExecJob
      } = props;
     const _toggleAutoGenSingleDoc = () => 
     
@@ -73,12 +72,6 @@ function EditorFooterComp(props: EditorFooterProps) {
     
         props.setPreferences({
             autoExecJob: !props.preferences.autoExecJob
-         })
-    ;
-    const _toggleTrustLocalStorage = () => 
-    
-        props.setPreferences({
-            trustLocalStorage: !props.preferences.trustLocalStorage
          })
     ;
     const loadingItems = annotations.filter(a => 
@@ -190,11 +183,8 @@ function EditorFooterComp(props: EditorFooterProps) {
                      style={{
                             paddingLeft: '15px'
                          }}>
-                        Logged uid:
-                        {loggedUid}
+                        Logged uid: {loggedUser}
                     </div>
-                    <ToggleSwitch
-                     checked={trustLocalStorage} onChange={_toggleTrustLocalStorage} label="Trust local storage" />
                 </React.Fragment>
                 )
             } />

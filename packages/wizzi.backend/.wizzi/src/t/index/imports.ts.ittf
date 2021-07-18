@@ -44,11 +44,6 @@ $group
             @ productionControllers
             @ productionModelBuilders
             from './features/production/index'
-    $if wzCtx.Build.useTFolder
-        import
-            @ tFolderControllers
-            @ tFolderModelBuilders
-            from './features/tfolder/index'
     $if wzCtx.Build.useBlog
         import
             @ postControllers

@@ -2,13 +2,13 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\wizzi\productions.ts.ittf
-    utc time: Wed, 07 Jul 2021 15:52:36 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import path from 'path';
 import fs from 'fs';
 import wizzi from 'wizzi';
 import wizziTools from 'wizzi-tools';
-import {ittfDocumentScanner, folderBrowse, IttfMTreeState, FolderBrowseResult} from 'wizzi-utils';
+import {ittfDocumentScanner, folderBrowse, IttfMTreeState, FolderBrowseResult, verify} from 'wizzi-utils';
 import {packiTypes} from '../packi';
 import {config} from '../config';
 import {createFsJsonAndFactory, ensurePackiFilePrefix, createFilesystemFactory} from './factory';
@@ -20,6 +20,12 @@ export async function loadModel(filePath: string, files: packiTypes.PackiFiles, 
 
     return new Promise(async (resolve, reject) => {
         
+            if (!verify.isObject(files)) {
+                return reject({
+                        message: 'files parameter must be an object of type PackiFiles', 
+                        files
+                     });
+            }
             let jsonwf: any = {};
             const ittfDocumentUri = ensurePackiFilePrefix(filePath) as string
             ;
@@ -84,10 +90,16 @@ async function loadModelInternal(wf: wizzi.WizziFactory, filePath: string, conte
         );
 }
 
-export async function mTreeDebugInfo(filePath: string, files: packiTypes.PackiFiles, context: any):  Promise<string> {
+export async function mTreeDebugInfo(filePath: string, files: packiTypes.PackiFiles, context: any):  Promise<any> {
 
     return new Promise(async (resolve, reject) => {
         
+            if (!verify.isObject(files)) {
+                return reject({
+                        message: 'files parameter must be an object of type PackiFiles', 
+                        files
+                     });
+            }
             const ittfDocumentUri = ensurePackiFilePrefix(filePath) as string
             ;
             let jsonwf: any = {};
@@ -105,10 +117,45 @@ export async function mTreeDebugInfo(filePath: string, files: packiTypes.PackiFi
         );
 }
 
+export async function mTree(filePath: string, files: packiTypes.PackiFiles, context: any):  Promise<any> {
+
+    return new Promise(async (resolve, reject) => {
+        
+            if (!verify.isObject(files)) {
+                return reject({
+                        message: 'files parameter must be an object of type PackiFiles', 
+                        files
+                     });
+            }
+            const ittfDocumentUri = ensurePackiFilePrefix(filePath) as string
+            ;
+            let jsonwf: any = {};
+            jsonwf = await createFsJsonAndFactory(files);
+            ;
+            jsonwf.wf.loadMTree(ittfDocumentUri, context, (err: any, mTree: any) => {
+            
+                if (err) {
+                    return reject(err);
+                }
+                resolve({
+                    mTreeIttf: mTree.toIttf()
+                 })
+            }
+            )
+        }
+        );
+}
+
 export async function generateArtifact(filePath: string, files: packiTypes.PackiFiles, context?: any, options?: any):  Promise<GeneratedArtifact> {
 
     return new Promise(async (resolve, reject) => {
         
+            if (!verify.isObject(files)) {
+                return reject({
+                        message: 'files parameter must be an object of type PackiFiles', 
+                        files
+                     });
+            }
             const generator = options && options.generator ? options.generator : generatorFor(filePath);
             console.log('wizzi.productions.generateArtifact.using artifact generator', generator);
             if (generator) {
@@ -201,6 +248,12 @@ export async function transformModel(filePath: string, files: packiTypes.PackiFi
 
     return new Promise(async (resolve, reject) => {
         
+            if (!verify.isObject(files)) {
+                return reject({
+                        message: 'files parameter must be an object of type PackiFiles', 
+                        files
+                     });
+            }
             const transformer = options && options.transformer ? options.transformer : transformerFor(filePath);
             console.log('wizzi.productions.transformModel.using artifact transformer', transformer);
             if (transformer) {
@@ -286,6 +339,12 @@ export async function executeJob(filePath: string, files: packiTypes.PackiFiles)
 
     return new Promise(async (resolve, reject) => {
         
+            if (!verify.isObject(files)) {
+                return reject({
+                        message: 'files parameter must be an object of type PackiFiles', 
+                        files
+                     });
+            }
             const ittfDocumentUri = ensurePackiFilePrefix(filePath);
             const jsonwf = await createFsJsonAndFactory(files);
             jsonwf.wf.executeJob({
@@ -351,6 +410,12 @@ export async function inferAndLoadContextJson(wf: wizzi.WizziFactory, files: pac
 
     return new Promise((resolve, reject) => {
         
+            if (!verify.isObject(files)) {
+                return reject({
+                        message: 'files parameter must be an object of type PackiFiles', 
+                        files
+                     });
+            }
             const pf = parseFilePath(filePath);
             if (pf.isIttfDocument && pf.schema !== 'json') {
                 var twinJsonBaseName = pf.seedname + '.json.ittf';

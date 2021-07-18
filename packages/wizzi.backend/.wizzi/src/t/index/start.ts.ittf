@@ -14,8 +14,6 @@ $group
                         @ ...accountModelBuilders
                     $if wzCtx.Build.useProduction
                         @ ...productionModelBuilders
-                    $if wzCtx.Build.useTFolder
-                        @ ...tFolderModelBuilders
                     $if wzCtx.Build.useBlog
                         @ ...postModelBuilders
         await mongodbStart(config, modelBuilders)
@@ -49,8 +47,6 @@ $group
                     @ ...accountControllers
                 $if wzCtx.Build.useProduction
                     @ ...productionControllers
-                $if wzCtx.Build.useTFolder
-                    @ ...tFolderControllers
                 $if wzCtx.Build.useBlog
                     @ ...postControllers
                 $if wzCtx.Build.usePacki

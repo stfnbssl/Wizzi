@@ -1,5 +1,6 @@
 module
     import mapValues from 'lodash/mapValues'
+    $$ import debounce from 'lodash/debounce'    
     import nullthrows from 'nullthrows'
     $if wzCtx.Build.useExpo
         import DependencyResolver
@@ -77,6 +78,24 @@ module
         @ createError
         @ createUserHeader
         from './utils'
+
+
+    const debounce
+        =>
+            param func
+            param timeout
+            param context
+            let timer
+            return
+                =>
+                    param ...args
+                    _ clearTimeout(timer)
+                    set timer 
+                        _ setTimeout
+                            =>
+                                _ func.apply(context || this, args)
+                            @ timeout        
+    
     export-default
         class PackiSession
             p state
@@ -140,10 +159,6 @@ module
                     :readonly
                     :private
                     :number
-            p webPlayerURL
-                :readonly
-                :private
-                :string
             ctor
                 param options
                     :ref PackiOptions
@@ -163,47 +178,23 @@ module
                         iif options.verbose
                             then createLogger(true)
                             else undefined
-                set this.codeChangesDelay = options.codeChangesDelay ?? 0
+                set this.codeChangesDelay = options.codeChangesDelay ?? 2000
                 $if wzCtx.Build.useExpo
                     set this.reloadTimeout = options.reloadTimeout ?? 0
                     set this.previewTimeout = options.previewTimeout ?? 10000
                 $if wzCtx.Build.useExpo
                     set this.createTransport = options.createTransport ?? createTransport
-                set this.webPlayerURL = options.webPlayerURL ?? defaultConfig.webPlayerURL
-                $if wzCtx.Build.useExpo
-                    let transports
-                        ??
-                            + options.transports
-                            {
-                    if options.webPreviewRef
-                        set transports =
-                            _ State.addObject
-                                @ transports
-                                @ 'webplayer'
-                                _ createWebPlayerTransport
-                                    {
-                                        @ ref options.webPreviewRef
-                                        @ verbose options.verbose
-                                        @ createTransport this.createTransport
-                                        @ window
-                                            _ nullthrows
-                                                iif typeof window !== 'undefined'
-                                                    then window
-                                                    else
-                                                        (
-                                                            + global
-                                                                :as
-                                                                    :any
-                                        @ webPlayerURL this.webPlayerURL
                 set this.state =
                     _ this.updateDerivedState
                         {
                             @ disabled !!options.disabled
                             @ unsaved false
+                            @ owner options.owner ?? ''
                             @ name options.name ?? ''
                             @ description options.description ?? ''
-                            $if wzCtx.Build.useExpo
-                                @ sdkVersion
+                            @ mainIttf options.mainIttf ?? ''
+                            @ wizziSchema options.wizziSchema ?? ''
+                            @ sdkVersion
                             @ files
                                 ??
                                     + options.files
@@ -214,7 +205,9 @@ module
                                 { connectedClients
                                 @ transports
                             @ user options.user
+                            @ packiProduction options.packiProduction
                             @ id options.id
+                            @ saveCount 0
                             @ saveURL
                                 iif options.id
                                     then
@@ -236,14 +229,7 @@ module
                             @ channel
                         @ PackiIdentityState
                 set this.state.unsaved = false
-                $if wzCtx.Build.useExpo
-                    set this.wantedDependencyVersions = new WantedDependencyVersions()
-                    set this.dependencyResolver =
-                        new DependencyResolver
-                            {
-                                @ packierURL options.packierURL ?? defaultConfig.packierURL
-                                @ logger this.logger
-                                @ callback this.onDependencyResolved
+                _ this.setPreviewUrl
                 set this.fileUploader =
                     new FileUploader
                         {
@@ -260,6 +246,11 @@ module
                                 @ onSendBeaconCloseRequest this.onDevSessionSendBeaconCloseRequest
                     _ this.logger?.info?.('Packi created', this.getState())
                 _ this.onStateChanged(this.state, PackiIdentityState)
+                set this.debouncedUploadUpdates
+                    _ debounce
+                        @ this.uploadUpdates
+                        @ 2000 $$ this.codeChangesDelay
+                        @ this
             +
             m setName
                 param name
@@ -277,7 +268,6 @@ module
                 #
                     #
                     # Sets the name of the Packi.
-                    # @param name E.g. "conspicious orange"
                     #
             +
             m setDescription
@@ -296,8 +286,35 @@ module
                 #
                     #
                     # Sets the description of the Packi.
-                    # @param name E.g. "My awesome Packi"
                     #
+            +
+            m setMainIttf
+                param mainIttf
+                    :string
+                return
+                    _ this.setState
+                        =>
+                            param state
+                            (
+                                iif state.mainIttf !== mainIttf
+                                    then
+                                        {
+                                            @ mainIttf
+                                    else null
+            +
+            m setWizziSchema
+                param wizziSchema
+                    :string
+                return
+                    _ this.setState
+                        =>
+                            param state
+                            (
+                                iif state.wizziSchema !== wizziSchema
+                                    then
+                                        {
+                                            @ wizziSchema
+                                    else null
             +
             m setUser
                 param user
@@ -321,6 +338,23 @@ module
                     # "Recently in Development" section of all Wizzi clients that are signed
                     # in with that account.
                     #
+            +
+            m setPreviewUrl
+                return
+                    _ this.setState
+                        =>
+                            param state
+                            (
+                                {
+                                    @ previewURL
+                                        `lit
+                                            @ process.env.API_SERVER_URL
+                                            + /~/
+                                            @ encodeURIComponent(state.owner)
+                                            + /
+                                            @ encodeURIComponent(state.name)
+                                            + ?savecount=
+                                            @ state.saveCount
             +
             m getState
                 :return
@@ -385,6 +419,7 @@ module
                         param state
                             :ref PackiState
                 const update = stateFn(this.state)
+                log '_PackiSession.setState.update', update
                 if update
                     const oldState = this.state
                     const newState
@@ -394,6 +429,7 @@ module
                                 @ ...oldState
                                 @ ...update
                     set this.state = this.updateDerivedState(newState, oldState)
+                    log '_PackiSession.setState.state', this.state
                     _ this.onStateChanged(newState, oldState)
                     _ this.stateListeners.forEach
                         =>
@@ -410,7 +446,6 @@ module
                     :ref PackiState
                 set state.unsaved = state.unsaved || State.isUnsaved(state, prevState)
                     # Set unsaved to true whenever files or dependencies change
-                    # Update other derived states
                 _ this.updateDerivedOnlineState(state, prevState)
                     # Update other derived states
                 $if wzCtx.Build.useExpo
@@ -616,13 +651,7 @@ module
             +
             m updateFiles
                 param files
-                    :{
-                        :index
-                            :union
-                                :ref PackiFile
-                                :null
-                            param path
-                                :string
+                    :ref PackiFiles
                 return
                     _ this.setState
                         =>
@@ -794,34 +823,46 @@ module
                 param options
                     :ref PackiSaveOptions
                     :optional
+                log 'PackiSession.saveAsync.options', options
                 const prevState = this.state
                 await
                     _ this.fileUploader.waitForCompletion()
                     # Wait for any pending asset uploads to complete before saving
                 const
                     {
+                        @ owner
                         @ name
                         @ description
+                        @ mainIttf
+                        @ wizziSchema
                         @ sdkVersion
                         @ files
                         @ dependencies
                         @ user
+                        @ packiProduction
                     = this.state
                 const payload
                     :any
-                    = files
+                    {
+                        @ description
+                        @ mainIttf
+                        @ schema wizziSchema
+                        @ packiFiles files 
+
                 const url
                     `lit
                         @ this.apiURL
-                        + /api/v1/packi/save/
-                        @ encodeURIComponent('guest/test')
+                        + /api/v1/production/artifact/
+                        @ encodeURIComponent(owner)
+                        + /
+                        @ encodeURIComponent(name)
                 log 'PackiSession.saveAsync', url
                 const response
                     await
                         _ fetch
                             @ url
                             {
-                                @ method 'POST'
+                                @ method 'PUT'
                                 @ body JSON.stringify(payload)
                                 { headers
                                     @ 'Content-Type' 'application/json'
@@ -835,7 +876,9 @@ module
                 const data
                     await
                         _ response.json()
-                log 'PackiSession.saveAsync.response.data', url
+                set this.state.saveCount++
+                _ this.setPreviewUrl
+                log 'PackiSession.saveAsync.response.data', data
             +
             m saveAsync_Old
                 async
@@ -954,28 +997,6 @@ module
                                             iif options?.isDraft && state.savedSDKVersion
                                                 then state.savedSDKVersion
                                                 else sdkVersion
-                    $if wzCtx.Build.useExpo
-                        _ previewPromise.then
-                            =>
-                                param connectedClients
-                                const conns
-                                    _ Object.values(connectedClients).filter
-                                        =>
-                                            param c
-                                            +
-                                                @expr c.previewURL
-                                        ._ sort
-                                            =>
-                                                param a
-                                                param b
-                                                set (a.previewTimestamp ?? 0) - (b.previewTimestamp ?? 0)
-                                if conns.length
-                                    _ this.uploadPreview
-                                        @ id
-                                        @expr conns[0].previewURL
-                                            :as
-                                                :string
-                                        set conns[0].status !== 'error'
                     return
                         {
                             @ id
@@ -989,8 +1010,8 @@ module
                 # Save
                 #
                 #
-                    # *
-                    # * Uploads the current code to Wizzi's servers and return a url that points to that version of the code.
+                    # 
+                    # Uploads the current code to Wizzi's servers and return a url that points to that version of the code.
                     #
             +
             m getDownloadURLAsync
@@ -1062,3 +1083,5 @@ module
                 catch e
                     $if wzCtx.Build.useExpo
                         _ this.logger?.error?.('Failed to upload preview', e)
+
+            session/updates()

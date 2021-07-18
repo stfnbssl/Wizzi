@@ -23,7 +23,6 @@ module
         }
     v08/ts/react/function(&md)
         < StyledRoot
-            @ type "button"
             @ className {className}
             @ disabled {disabled}
             @ onClick {onClick}
@@ -60,7 +59,7 @@ module
                     transform rotate(0deg)
                 to
                     transform rotate(360deg)
-            styled StyledRoot .div<RootStyleProps>
+            styled StyledRoot .button<RootStyleProps>
                 appearance none
                 color
                     => props.primary ? c('primary-text') : props.secondary ? c('secondary-text') : c('text')
@@ -99,6 +98,7 @@ module
                         => s('small')
                 background-image
                     => props.icon ? "url(" + props.icon + ")" : "none"
+                cursor pointer
                 if props.isLoading
                     & :before
                         display inline-block

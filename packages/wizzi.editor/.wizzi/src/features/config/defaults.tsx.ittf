@@ -3,24 +3,6 @@ module
         @ PackiFiles
         from '../packi'
     export
-        const DEFAULT_PACKI_NAME = 'starter/packi.html'
-    export
-        const DEFAULT_PACKI_DESCRIPTION_SAVED
-            `lit
-                + ... saved packi description ...
-    export
-        const DEFAULT_PACKI_DESCRIPTION_EMPTY
-            `lit
-                + ... empty packi description ...
-    export
-        const DEFAULT_PACKI_DESCRIPTION = 'No description'
-    export
-        const DEFAULT_PACKI_DEPENDENCIES
-            {
-                { 'starter.html'
-                    @ version '0.0.1'
-                    @ isUserSpecified true
-    export
         const DEFAULT_PACKI_CODE
             :ref PackiFiles
             =

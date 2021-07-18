@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\CreateArtifactProduction.tsx.ittf
-    utc time: Mon, 05 Jul 2021 16:18:01 GMT
+    utc time: Sun, 18 Jul 2021 15:04:16 GMT
 */
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
@@ -95,21 +95,6 @@ export class CreateArtifactProduction extends Component<CreateArtifactProduction
             [ev.target.name]: (ev.target.type == 'checkbox' ? ev.target.checked : ev.target.value)
          })
     };
-    
-    handleArtifactNameChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('handleArtifactNameChange', ev.target.type, ev.target.checked, ev.target.value);
-        this.setState({
-            ap_name: ev.target.value
-         })
-        this._checkAvalibleArtifactName();
-    };
-    
-    handleSubmitCreate = (ev: React.MouseEvent<HTMLElement>) => {
-        ev.preventDefault();
-        if (this.state.ap_name_available) {
-            this.formRef.dispatchEvent(new Event('submit'));
-        }
-    };
     handleContextAdd = context => 
         this.setState((state) => 
         
@@ -156,6 +141,21 @@ export class CreateArtifactProduction extends Component<CreateArtifactProduction
                  };
         }
         );
+    
+    handleArtifactNameChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+        console.log('handleArtifactNameChange', ev.target.type, ev.target.checked, ev.target.value);
+        this.setState({
+            ap_name: ev.target.value
+         })
+        this._checkAvalibleArtifactName();
+    };
+    
+    handleSubmitCreate = (ev: React.MouseEvent<HTMLElement>) => {
+        ev.preventDefault();
+        if (this.state.ap_name_available) {
+            this.formRef.dispatchEvent(new Event('submit'));
+        }
+    };
     
     render() {
         console.log('CreateArtifactProduction.render', 'state', this.state);

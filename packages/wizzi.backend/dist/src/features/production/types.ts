@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\production\types.ts.ittf
-    utc time: Wed, 07 Jul 2021 15:52:36 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 
 import {Document} from "mongoose";
@@ -41,4 +41,21 @@ type IPackageProduction_doc = {
 };
 
 export interface IPackageProductionModel extends IPackageProduction, IPackageProduction_doc, Document {
+}
+
+export type ITFolder = { 
+    owner: string;
+    name: string;
+    description: string;
+    packiFiles: string;
+    created_at: Date;
+    updated_at: Date;
+};
+
+
+type ITFolder_doc = { 
+    _doc: ITFolder;
+};
+
+export interface ITFolderModel extends ITFolder, ITFolder_doc, Document {
 }

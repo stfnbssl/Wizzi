@@ -1,10 +1,10 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\EditorView\EditorViewProps.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
-import {SDKVersion, SaveStatus, SaveHistory, SaveOptions, PackiFiles, PackiFile, PackiDependencies, PackiDependency, PackiMissingDependencies} from '../../features/packi';
+import {SDKVersion, SaveStatus, SaveHistory, PackiSaveOptions, PackiFiles, PackiFile, PackiDependencies, PackiDependency, PackiMissingDependencies} from '../../features/packi';
 import {GeneratedArtifact, JobError} from '../../features/wizzi';
 import {Packi} from '../../features/packi';
 import {FileSystemEntry, TextFileEntry, AssetFileEntry} from '../../features/file';
@@ -15,8 +15,11 @@ export type EditorViewProps = {
     saveStatus: SaveStatus;
     selectedFile: string;
     files: PackiFiles;
+    owner: string;
     name: string;
     description: string;
+    mainIttf: string;
+    wizziSchema: string;
     dependencies: PackiDependencies;
     missingDependencies: PackiMissingDependencies;
     id?: string;
@@ -32,7 +35,7 @@ export type EditorViewProps = {
         name: string;
         description: string;
     }) => void;
-    onPublishAsync: (options?: SaveOptions) => Promise<void>;
+    onPublishAsync: (options?: PackiSaveOptions) => Promise<void>;
     onDownloadAsync: () => Promise<void>;
     onSelectFile: (path: string) => void;
     updateFiles: (updateFn: (files: PackiFiles) => { 
@@ -45,24 +48,23 @@ export type EditorViewProps = {
     previewShown: boolean;
     previewURL: string;
     verbose: boolean;
-    packierURL: string;
+    loggedUser?: LoggedUser;
     creatorUsername?: string;
-    currentPacki?: Packi;
     fileEntries: FileSystemEntry[];
     entry: TextFileEntry | AssetFileEntry | undefined;
     params: { 
         id?: string;
     };
     generatedArtifact?: GeneratedArtifact;
+    mTreeDebugInfo?: string;
+    mTreeIttf?: string;
     // loadingMessage: string | undefined;
     jobError?: JobError;
     isWizziJobWaiting: boolean;
     onSelectPacki: (packiId: string) => void;
-    onCreatePacki: (packiId: string, packiKind: string) => void;
-    onDeletePacki: (packiId: string) => void;
     onFileEntriesChange: (entries: FileSystemEntry[]) => Promise<void>;
-    onChangeCode: (code: string) => void;
     onEntrySelected: (entry: FileSystemEntry) => void;
     onExecuteWizziJob: () => void;
-    onSaveCode: () => void;
+    onMTreePreview: () => void;
+    onMTreeDebugInfoPreview: () => void;
 };

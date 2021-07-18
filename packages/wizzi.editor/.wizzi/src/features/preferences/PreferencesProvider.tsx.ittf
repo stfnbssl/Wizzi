@@ -58,9 +58,6 @@ module
                 $if wzCtx.Build.usePackiAspects
                     @ autoGenSingleDoc false
                     @ autoExecJob false
-                    @ loggedUid undefined
-                    @ connectGithubRepos false
-                    @ trustLocalStorage false
     +
     class PreferencesProvider
         super React.Component

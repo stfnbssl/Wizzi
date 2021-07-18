@@ -1,4 +1,5 @@
 module
+    
     $
         var ctrl = {
             name: 'PackiEditing',
@@ -9,12 +10,15 @@ module
     controller( &ctrl )
             
         $append imports
-            import ReactDOMServer 
+            import ReactDOMServer
                 from 'react-dom/server'
-            import wizziProto
-                from 'wizzi.proto'
+            import
+                @ artifactApi
+                @ packageApi
+                @ tFolderApi
+                from '../../production' 
             import EditorDocument 
-                from '../pages/EditorDocument' 
+                from '../../../pages/EditorDocument' 
             import PackiItemList 
                 from '../components/PackiItemList' 
             const myname = 'features/packi/controller/packiEditing'
@@ -26,82 +30,146 @@ module
                     :ref Response
                 param packiItemObject
                     :object
+                param loggedUser
+                    :object
                 param queryParams
                     :object
-
                 const index
                     op+
                         + '<!DOCTYPE html>'
                         _ ReactDOMServer.renderToStaticMarkup
                             < EditorDocument 
-                                $*
-                                @ id {req.params.id} 
-                                @ userid {req.params.userid}
-                                @ name {req.params.name}
-                                *$
                                 @ data {packiItemObject}
                                 @ queryParams {queryParams}
+                                @ loggedUser {loggedUser}
                 _ res.set('Content-Type', 'text/html')
                 _ res.set('Content-Length', index.length.toString())
-                _ console.log("renderPackiEditor.before sending", index.length)
                 _ res.send(index)
-                _ console.log("renderPackiEditor.after sending")
-
-        _ wizziProto.start
-            @ 'stfnbssl'
-            {
-            =>
+        
         _ this.router.get('/:userid', this.getPackiItemList)
-        _ this.router.get('/:userid/:name', this.getPackiEditorByUserid_Name)
-        _ this.router.get('/:userid/:name/*', this.getPackiEditorByUserid_Name)
+        _ this.router.get('/a/:userid/:name', this.getPackiArtifactProductionByUsername_Name)
+        _ this.router.get('/a/:userid/:name/*', this.getPackiArtifactProductionByUsername_Name)
+        _ this.router.get('/p/:userid/:name', this.getPackiPackageProductionByUsername_Name)
+        _ this.router.get('/p/:userid/:name/*', this.getPackiPackageProductionByUsername_Name)
+        _ this.router.get('/t/:userid/:name', this.getPackiTFolderByUsername_Name)
+        _ this.router.get('/t/:userid/:name/*', this.getPackiTFolderByUsername_Name)
         
         $append handlers
-            handler( getPackiItemList )
-                _ wizziProto.getPackiList
-                    @ request.params.userid
-                    ._ then
-                        =>
-                            param list
-                            const index
-                                op+
-                                    + '<!DOCTYPE html>'
-                                    _ ReactDOMServer.renderToStaticMarkup
-                                        html
-                                            body
-                                                < PackiItemList
-                                                    @ items {list}
-                            _ response.set('Content-Type', 'text/html');
-                            _ response.set('Content-Length', index.length.toString());
-                            _ response.send(index)
-                    ._ catch
-                        =>
-                            param err
-                                :any
-                            log myname + '.getPackiItemList.err', Object.keys(err)
-                            _ sendFailure(response, err, 501)
             
-            handler( getPackiEditorByUserid_Name )
+            handler( getPackiItemList )
+                return
+                    _ response.redirect
+                        @ '/productions/artifacts'
+            
+            handler( getPackiArtifactProductionByUsername_Name )
                 # TODO
-                # log myname + '.getPackiEditorByUserid_Name', request
+                log myname + '.getPackiArtifactProductionByUsername_Name', request.path 
                 const queryParams = {}
                 const parts = request.path.split('/')
-                _ wizziProto.getPackiItem_Object_By_Owner_Name
-                    @ parts[1] 
-                    @ parts.slice(2).join('/')
+                log myname + '.getPackiArtifactProductionByUsername_Name', parts[1], parts.slice(2).join('/')
+                _ artifactApi.getArtifactProductionObject
+                    @ parts[2]
+                    @ parts.slice(3).join('/')
                     ._ then
                         =>
                             param result
-                                :object
+                                :any
+                            log myname + '.getPackiArtifactProductionByUsername_Name.result', result
+                            const user = (request.session as any).user
+                            const loggedUser
+                                {
+                                    @ id user._id
+                                    @ username user.username
+                                    @ displayName user.name
+                                    @ picture user.avatar_url
                             _ renderPackiEditor
                                 @ request
                                 @ response
                                 {
                                     @ type 'success'
-                                    @ packi result
+                                    { packi
+                                        @ _id result._id
+                                        @ owner result.owner
+                                        @ name result.name
+                                        @ description result.description
+                                        @ mainIttf result.mainIttf
+                                        @ wizziSchema result.wizziSchema
+                                        @ packiFiles result.packiFiles
+                                        @ packiProduction 'artifact'
+                                @ loggedUser
                                 @ queryParams
-                    ._ catch
+                    catch_fail( getPackiArtifactProductionByUsername_Name )
+
+            handler( getPackiPackageProductionByUsername_Name )
+                # TODO
+                log myname + '.getPackiPackageProductionByUsername_Name', request.path 
+                const queryParams = {}
+                const parts = request.path.split('/')
+                log myname + '.getPackiPackageProductionByUsername_Name', parts[1], parts.slice(2).join('/')
+                _ packageApi.getPackageProductionObject
+                    @ parts[2]
+                    @ parts.slice(3).join('/')
+                    ._ then
                         =>
-                            param err
+                            param result
                                 :any
-                            log myname + '.getPackiEditorByUserid_Name.err', Object.keys(err)
-                            _ sendFailure(response, err, 501)
+                            log myname + '.getPackiPackageProductionByUsername_Name.result', result
+                            const user = (request.session as any).user
+                            const loggedUser
+                                {
+                                    @ id user._id
+                                    @ username user.username
+                                    @ displayName user.name
+                                    @ picture user.avatar_url
+                            _ renderPackiEditor
+                                @ request
+                                @ response
+                                {
+                                    @ type 'success'
+                                    { packi
+                                        @ _id result._id
+                                        @ owner result.owner
+                                        @ name result.name
+                                        @ description result.description
+                                        @ packiFiles result.packiFiles
+                                        @ packiProduction 'package'
+                                @ loggedUser
+                                @ queryParams
+                    catch_fail( getPackiPackageProductionByUsername_Name )
+
+            handler( getPackiTFolderByUsername_Name )
+                # TODO
+                log myname + '.getPackiTFolderByUsername_Name', request.path 
+                const queryParams = {}
+                const parts = request.path.split('/')
+                log myname + '.getPackiTFolderByUsername_Name', parts[1], parts.slice(2).join('/')
+                _ tFolderApi.getTFolderObject
+                    @ parts[2]
+                    @ parts.slice(3).join('/')
+                    ._ then
+                        =>
+                            param result
+                                :any
+                            log myname + '.getPackiTFolderByUsername_Name.result', result
+                            const user = (request.session as any).user
+                            const loggedUser
+                                {
+                                    @ id user._id
+                                    @ username user.username
+                                    @ displayName user.name
+                                    @ picture user.avatar_url
+                            _ renderPackiEditor
+                                @ request
+                                @ response
+                                {
+                                    @ type 'success'
+                                    { packi
+                                        @ _id result._id
+                                        @ owner result.owner
+                                        @ name result.name
+                                        @ description result.description
+                                        @ packiFiles result.packiFiles
+                                        @ packiProduction 'tfolder'
+                                @ loggedUser
+                                @ queryParams
+                    catch_fail( getPackiTFolderByUsername_Name )

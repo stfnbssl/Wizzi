@@ -10,8 +10,6 @@ module
         $append imports
             import ReactDOMServer 
                 from 'react-dom/server'
-            import wizziProto
-                from 'wizzi.proto'
             import PageFormDocument 
                 from '../../../pages/PageFormDocument' 
             +
@@ -38,11 +36,6 @@ module
                 _ res.set('Content-Length', index.length.toString())
                 _ res.send(index)
 
-        _ wizziProto.start
-            @ 'stfnbssl'
-            {
-            =>
-        
         _ this.router.get('/new', this.getNewTFolderForm)
         _ this.router.post('/new', this.postNewTFolder)
         _ this.router.get('/update', this.getUpdateTFolderForm)

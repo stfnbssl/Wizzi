@@ -12,8 +12,16 @@ module
     import Tooltip from '@material-ui/core/Tooltip'
     import IconButton from '@material-ui/core/IconButton'
     import ViewListIcon from '@material-ui/icons/ViewList'
-    import HelpIcon from '@material-ui/icons/Help'
-    import InfoIcon from '@material-ui/icons/Info'
+    import AccountTreeIcon from '@material-ui/icons/AccountTree'
+    import 
+        @ BrowserIcon
+        from '../../assets/BrowserIcon'
+    import 
+        @ TreeIcon
+        from '../../assets/TreeIcon'
+    import 
+        @ DebugIcon
+        from '../../assets/DebugIcon'
     import SyntaxHighlighter from '../CodeView/SyntaxHighlighter'
     import WebFrame from '../widgets/WebFrame'
     $if wzCtx.TODO
@@ -21,8 +29,8 @@ module
     :type ViewKindType
         :union 
             :literal 'generated'
-            :literal 'mtree'
-            :literal 'debug'
+            :literal 'mtreeIttf'
+            :literal 'mTreeDebugInfo'
             :literal 'browser'
     :type Props
         :{ 
@@ -33,11 +41,24 @@ module
             :p generatedSourcePath
                 :string 
                 :optional
+            :p mTreeBuildUpScript
+                :string 
+                :optional
+            :p mTreeIttf
+                :string 
+                :optional
             :p generatedPreviewURL
                 :string 
                 :optional
             :p splitViewKind
                 :string 
+            :p onMTreePreview
+                :=> 
+                    :void 
+            :p onMTreeDebugInfoPreview
+                :=> 
+                    :void 
+
     :type State
         :{ 
             :p view
@@ -63,14 +84,16 @@ module
                         @ view 'generated'
         p _handleMTree
             => 
+                _ this.props.onMTreePreview
                 _ this.setState
                     { 
-                        @ view 'mtree'
-        p _handleDebug
+                        @ view 'mtreeIttf'
+        p _handleMTreeDebugInfo
             => 
+                _ this.props.onMTreeDebugInfoPreview
                 _ this.setState
                     { 
-                        @ view 'debug'
+                        @ view 'mTreeDebugInfo'
         p _handleBrowser
             => 
                 _ this.setState
@@ -111,6 +134,26 @@ module
                                     @ lineNumbers {true}
                     { 
                         && 
+                            + view === 'mtreeIttf'
+                            div 
+                                @ className {classes.editor}
+                                < SyntaxHighlighter 
+                                    @ className {classes.syntaxHigh}
+                                    @ code {this.props.mTreeIttf || ''}
+                                    @ filePath {'mTree.ittf'}
+                                    @ lineNumbers {true}
+                    { 
+                        && 
+                            + view === 'mTreeDebugInfo'
+                            div 
+                                @ className {classes.editor}
+                                < SyntaxHighlighter 
+                                    @ className {classes.syntaxHigh}
+                                    @ code {this.props.mTreeBuildUpScript || ''}
+                                    @ filePath {'mTreeBuildUpScript.js'}
+                                    @ lineNumbers {true}
+                    { 
+                        && 
                             + view === 'browser'
                             div 
                                 @ className {classes.browserOuter}
@@ -131,7 +174,7 @@ module
                                                             + {this.props.generatedSourcePath}
                                             $else
                                                 h1 
-                                                    + No viewer for document
+                                                    + No viewer for document &nbsp;
                                                     + {this.props.generatedSourcePath}
 
                     div 
@@ -155,17 +198,17 @@ module
                                     @ classes
                                         { 
                                             @ root classes.iconButton
-                                    < HelpIcon 
+                                    < AccountTreeIcon 
                         div
                             @ className {classes.sbItem}
                             < Tooltip 
                                 @ title "View mTree build script"
                                 < IconButton 
-                                    @ onClick {this._handleDebug}
+                                    @ onClick {this._handleMTreeDebugInfo}
                                     @ classes
                                         { 
                                             @ root classes.iconButton
-                                    < InfoIcon 
+                                    < DebugIcon 
                         div
                             @ className {classes.sbItem}
                             < Tooltip 
@@ -175,7 +218,7 @@ module
                                     @ classes
                                         { 
                                             @ root classes.iconButton
-                                    < InfoIcon 
+                                    < BrowserIcon 
     const muiStyles
         => 
             param theme

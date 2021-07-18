@@ -21,6 +21,12 @@ $group
                     async=>
                         param resolve
                         param reject
+                        if !verify.isObject(files)
+                            return
+                                _ reject
+                                    {
+                                        @ message 'files parameter must be an object of type PackiFiles'
+                                        @ files
                         const transformer = options && options.transformer ? options.transformer : transformerFor(filePath)
                         log 'wizzi.productions.transformModel.using artifact transformer', transformer
                         if transformer

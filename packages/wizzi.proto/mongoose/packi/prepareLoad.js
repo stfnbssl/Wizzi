@@ -175,6 +175,20 @@ function loadPackiItems(packiItemsFolder, owner, callback) {
                 loadDirContents(packiItemPaths.packiFilesPath, function(err, filesData) {
                     if (err) { return callback(err); }
                     packiItem.packiFiles = /*JSON.stringify(*/dataToPackiFiles(filesData, basePath, false)/*)*/;
+                    packiItem.packiFiles['wizzi.json.ittf'] = {
+                        type: 'CODE',
+                        contents: [
+                            '{',
+                            '    [ fragments',
+                            '        {',
+                            '            name "' + packiItem.wizziSchema + '"',
+                            '            path "' + owner + '/' + packiItem.wizziSchema + '"',
+                            '    [ contexts',
+                            '        {',
+                            '            name "wzCtx"',
+                            '            path "' + owner + '/wzctx"',
+                        ].join('\n')
+                    };
                     packiItems.push(packiItem)
                     next();
                 });
@@ -264,4 +278,8 @@ module.exports = {
             });
         });
     }
+}
+
+if (require.main === module) {
+    module.exports.exec();
 }

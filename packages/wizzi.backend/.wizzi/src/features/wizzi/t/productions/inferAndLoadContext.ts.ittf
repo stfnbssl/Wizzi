@@ -19,6 +19,12 @@ $group
                     =>
                         param resolve
                         param reject
+                        if !verify.isObject(files)
+                            return
+                                _ reject
+                                    {
+                                        @ message 'files parameter must be an object of type PackiFiles'
+                                        @ files
                         const pf = parseFilePath(filePath)
                         if pf.isIttfDocument && pf.schema !== 'json'
                             var twinJsonBaseName = pf.seedname + '.json.ittf'

@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\production\mongo\package.ts.ittf
-    utc time: Wed, 07 Jul 2021 15:52:36 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import {Schema, Model, model} from "mongoose";
 import {ModelBuilderType} from "../../app/types";
@@ -12,6 +12,7 @@ const PackageProductionSchema: Schema<IPackageProductionModel> = new Schema({
     owner: String, 
     name: String, 
     description: String, 
+    sdkVersion: String, 
     packiFiles: String, 
     created_at: Date, 
     updated_at: Date

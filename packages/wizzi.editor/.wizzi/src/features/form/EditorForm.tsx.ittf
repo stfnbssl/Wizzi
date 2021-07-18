@@ -16,11 +16,9 @@ module
     import Typography from '@material-ui/core/Typography'
     import Fab from '@material-ui/core/Fab'
     import classnames from 'classnames'
-    import 
-        @ Form
-        @ withStatus
-        @ withValidation
-        from './index'
+    import Form from './Form'
+    import withStatus from './withStatus'
+    import withValidation from './withValidation'
     import 
         @ ThemeName
         @ withThemeName

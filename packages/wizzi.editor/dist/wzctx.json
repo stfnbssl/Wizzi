@@ -132,10 +132,6 @@
                         "value": "env('PACKI_WEBPLAYER_URL')"
                     },
                     {
-                        "name": "IMPORT_SERVER_URL",
-                        "value": "env('IMPORT_SERVER_URL')"
-                    },
-                    {
                         "name": "DEPLOY_ENVIRONMENT",
                         "value": "env('DEPLOY_ENVIRONMENT')"
                     },
@@ -257,7 +253,8 @@
             "useSelect": true,
             "useRange": true,
             "useDate": true,
-            "useSyntaxHighlighter": true
+            "useSyntaxHighlighter": true,
+            "useSplit": true
         },
         "useHoistNonReactStatic": true,
         "styles": {

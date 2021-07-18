@@ -11,12 +11,18 @@ $group
             :return
                 :ref Promise
                     :param
-                        :string
+                        :any
             return
                 new Promise
                     async=>
                         param resolve
                         param reject
+                        if !verify.isObject(files)
+                            return
+                                _ reject
+                                    {
+                                        @ message 'files parameter must be an object of type PackiFiles'
+                                        @ files
                         const ittfDocumentUri
                             _ ensurePackiFilePrefix(filePath)
                                 :as

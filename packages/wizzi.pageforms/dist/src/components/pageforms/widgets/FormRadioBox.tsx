@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.pageforms\.wizzi\src\components\pageforms\widgets\FormRadioBox.tsx.ittf
-    utc time: Mon, 05 Jul 2021 16:18:01 GMT
+    utc time: Sun, 18 Jul 2021 15:04:16 GMT
 */
 import React, {FunctionComponent} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/

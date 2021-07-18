@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\features\form\withStatus.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import * as React from 'react';
 import {FormValidationContext} from './Form';
@@ -17,7 +17,7 @@ type InjectedProps = {
 
 export default function withStatus<P extends InjectedProps>(Comp: React.ComponentType<P>):  React.ComponentType<$Subtract<P, InjectedProps>> {
     
-        function withStatus(props: any) {
+        function withStatusFn(props: any) {
         
             return  (
                 <FormValidationContext.Consumer
@@ -40,6 +40,6 @@ export default function withStatus<P extends InjectedProps>(Comp: React.Componen
                 )
             ;
         }
-        withStatus.displayName = `withValidation(${Comp.displayName || Comp.name})`;
-        return withStatus;
+        withStatusFn.displayName = `withValidation(${Comp.displayName || Comp.name})`;
+        return withStatusFn;
     }

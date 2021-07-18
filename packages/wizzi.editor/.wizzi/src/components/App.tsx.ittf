@@ -18,10 +18,11 @@ module
         @ getFilesFromQuery 
         @ fileConversions
         from '../features/file'
-    import
-        @ withAuth
-        @ AuthProps
-        from '../features/auth'
+    $if wzCtx.Build.useAuth
+        import
+            @ withAuth
+            @ AuthProps
+            from '../features/auth'
     import
         @ withPreferences
         @ PreferencesContextType
@@ -29,12 +30,15 @@ module
     import
         @ Annotation
         from '../features/annotations'
+    import
+        @ LoggedUser
+        from '../features/app'
     import 
         @ SavedPacki
         @ QueryParams
         @ SaveStatus
         @ SaveHistory
-        @ SaveOptions
+        @ PackiSaveOptions
         @ SDKVersion
         @ PackiState
         @ PackiFile
@@ -42,6 +46,7 @@ module
         @ PackiDependencies
         @ PackiDependency
         @ PackiDefaults
+        @ PackiProduction
         from '../features/packi'
     import 
         @ PackiSession
@@ -83,26 +88,16 @@ module
         from '../features/config'
     const 
         {
-            @ DEFAULT_PACKI_NAME
-            @ DEFAULT_PACKI_DESCRIPTION
             @ DEFAULT_PACKI_CODE
-            @ DEFAULT_DEPENDENCIES
-            @ versions
+            @ VERSIONS
             @ DEFAULT_SDK_VERSION
         = config
-    $*
-    import 
-        @ DEFAULT_PACKI_DESCRIPTION
-        @ DEFAULT_PACKI_CODE
-        $if wzCtx.Build.useExpo
-            @ DEFAULT_DEPENDENCIES
-        from '../configs/defaults'
-    *$
     
     $if wzCtx.Build.usePackiAspects
         +
         $include app/packi/state_dispacth_props
 
+    $* VIA
     :type Params
         :{ 
             :p id
@@ -117,10 +112,12 @@ module
             :p repoName
                 :optional 
                 :string 
+    *$
     
     :type AppProps
-        :intersect 
-            :ref AuthProps
+        :intersect
+            $if wzCtx.Build.useAutht 
+                :ref AuthProps
             :ref PreferencesContextType
             $if wzCtx.Build.usePackiAspects
                 :ref PropsFromRedux
@@ -128,6 +125,10 @@ module
                 :p Packi
                     :optional 
                     :ref SavedPacki
+                :p loggedUser
+                    :optional 
+                    :ref LoggedUser
+                $* VIA
                 :p history
                     :{ 
                         :p push
@@ -147,6 +148,7 @@ module
                     :{ 
                         :p search
                             :string 
+                *$
                 :p query
                     :ref QueryParams
                 :p userAgent
@@ -185,8 +187,6 @@ module
                     :boolean 
                 :p devicePreviewShown
                     :boolean 
-                :p webPreviewURL
-                    :string 
                 :p isLocalWebPreview
                     :boolean 
                 :p verbose
@@ -194,8 +194,6 @@ module
                 :p annotations
                     :[ 
                         :ref Annotation
-                :p packierURL
-                    :string 
                 $if wzCtx.Build.usePackiAspects
                     $include app/packi/state_def
 
@@ -250,6 +248,7 @@ module
                         const dep = this.state.session.dependencies[name]
                         if !dep.handle && !dep.error && !isResolving && !this.state.session.disabled && !isModulePreloaded(name, this.state.session.sdkVersion)
                             set isResolving = true
+                log 'App.state.session.files', this.state.session.files
                 return 
                     < LazyLoad 
                         :ref React.ComponentType
@@ -269,6 +268,7 @@ module
                                     then
                                         < Comp 
                                             @ annotations {this.state.annotations}
+                                            @ loggedUser {this.props.loggedUser}
                                             @ autosaveEnabled {this.state.autosaveEnabled}
                                             @ createdAt
                                                 iif this.props.Packi
@@ -277,12 +277,15 @@ module
                                             @ dependencies {this.state.session.dependencies}
                                             @ missingDependencies {this.state.session.missingDependencies}
                                             @ description {this.state.session.description}
+                                            @ mainIttf {this.state.session.mainIttf}
+                                            @ wizziSchema {this.state.session.wizziSchema}
                                             @ experienceURL {experienceURL}
                                             @ files {this.state.session.files}
                                             @ isDownloading {this.state.isDownloading}
                                             $if wzCtx.Build.useExpo
                                                 @ isLocalWebPreview {this.state.isLocalWebPreview}
                                                 @ isResolving {isResolving}
+                                            @ owner {this.state.session.owner}
                                             @ name {this.state.session.name}
                                             @ id {this.state.session.id}
                                             $if wzCtx.Build.useExpo
@@ -298,13 +301,12 @@ module
                                             @ onSelectFile {this._handleSelectFile}
                                             @ previewRef {this._previewRef}
                                             @ previewShown {this.state.devicePreviewShown}
-                                            @ previewURL {this.state.webPreviewURL}
+                                            @ previewURL {this.state.session.previewURL}
                                             @ saveHistory {this.state.saveHistory}
                                             @ saveStatus {this.state.saveStatus}
                                             @ sdkVersion {this.state.session.sdkVersion}
                                             @ selectedFile {this.state.selectedFile}
                                             @ sendCodeOnChangeEnabled {this.state.sendCodeOnChangeEnabled}
-                                            @ packierURL {this.state.packierURL}
                                             @ updateDependencies {this._updateDependencies}
                                             @ updateFiles {this._updateFiles}
                                             @ uploadFileAsync {this._uploadAssetAsync}
@@ -312,23 +314,20 @@ module
                                             @ verbose {this.state.verbose}
                                             $if wzCtx.Build.useExpo
                                                 @ wasUpgraded {this.state.wasUpgraded}
-                                            $if wzCtx.Build.usePackiAspects
-                                                @ currentPacki {this.props.currentPacki}
-                                                @ generatedArtifact {this.props.generatedArtifact}
-                                                @ fileEntries {this.state.fileEntries}
-                                                @ entry {this._findFocusedEntry(this.state.fileEntries)}
-                                                @ isWizziJobWaiting {this.state.isWizziJobWaiting}
-                                                @ jobError {this.state.jobError}
-                                                $$ VIA @ onLoggedOn {this._handleLoggedOn}
-                                                $$ VIA @ onLoggedOff {this._handleLoggedOff}
-                                                @ onChangeCode {this._handleChangeCode}
-                                                @ onFileEntriesChange {this._handleFileEntriesChange}
-                                                @ onEntrySelected {this._handleEntrySelected}
-                                                @ onSelectPacki {this._handleSelectPacki}
-                                                @ onCreatePacki {this._handleCreatePacki}
-                                                @ onDeletePacki {this._handleDeletePacki}
-                                                @ onExecuteWizziJob {this._executeJobNotDebounced}
-                                                @ onSaveCode {this._saveCode}
+                                            @ generatedArtifact {this.props.generatedArtifact}
+                                            @ mTreeBuildUpScript {this.props.mTreeBuildUpScript}
+                                            @ mTreeIttf {this.props.mTreeIttf}
+                                            $$ @ fileEntries {this.state.fileEntries}
+                                            $$ @ entry {this._findFocusedEntry(this.state.fileEntries)}
+                                            @ isWizziJobWaiting {this.state.isWizziJobWaiting}
+                                            @ jobError {this.state.jobError}
+                                            $$ @ onFileEntriesChange {this._handleFileEntriesChange}
+                                            $$ @ onEntrySelected {this._handleEntrySelected}
+                                            @ onSelectPacki {this._handleSelectPacki}
+                                            @ onExecuteWizziJob {this._executeJobNotDebounced}
+                                            $$ @ onSaveCode {this._saveCode}
+                                            @ onMTreePreview {this._handleMTreePreview}
+                                            @ onMTreeDebugInfoPreview {this._handleMTreeDebugInfoPreview}
                                     else
                                         < AppShell 
                                             @ title {this.state.session.name}
@@ -346,21 +345,19 @@ module
                     :typeof connector
         const AppMainContainer
             _ withPreferences
-                _ withAuth
+                $if wzCtx.Build.useAuth
+                    _ withAuth
+                        _ connector(AppMain)
+                $else
                     _ connector(AppMain)
     $else
         const AppMainContainer
             _ withPreferences
-                _ connect
-                    => 
-                        param state
-                            :any 
-                        (
-                            { 
-                                @ viewer state.viewer
-                    (
-                        _ withAuth(AppMain)
-    
+                $if wzCtx.Build.useAuth
+                    _ withAuth(AppMain)
+                $else
+                    @ AppMain
+
     export-default AppMainContainer
     $$ $include app/asyncApp
 

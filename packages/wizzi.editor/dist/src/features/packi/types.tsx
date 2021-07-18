@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\features\packi\types.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import {ThemeName} from '../preferences/index';
 import {SDKVersion} from './sdks/types';
@@ -106,6 +106,7 @@ export type PackiState = {
         // 
     */
     files: PackiFiles;
+    owner: string;
     /**
         // 
         // Optional name. The name is used when saving or downloading the Packi; and is used
@@ -120,6 +121,9 @@ export type PackiState = {
         // 
     */
     description: string;
+    packiProduction?: PackiProduction;
+    mainIttf?: string;
+    wizziSchema?: string;
     /**
         // 
         // Unique experience url which can be used to open the Wizzi client and connect
@@ -157,7 +161,7 @@ export type PackiState = {
         // of the iframe.
         // 
     */
-    webPreviewURL?: string;
+    previewURL?: string;
     /**
         // 
         // Disabled state. When the Packi is disabled it will not resolve any dependencies
@@ -174,12 +178,6 @@ export type SaveHistory = {
     savedAt: string;
     isDraft?: boolean;
 }[];
-
-export type SaveOptions = { 
-    isDraft?: boolean;
-    ignoreUser?: boolean;
-    excludeFromHistory?: boolean;
-};
 
 export type PackiListenerSubscription = () => any;
 
@@ -210,23 +208,25 @@ export type PackiOptions = {
     sdkVersion?: SDKVersion;
     name?: string;
     description?: string;
+    mainIttf?: string;
+    wizziSchema?: string;
     dependencies?: PackiDependencies;
     files?: PackiFiles;
     apiURL?: string;
     host?: string;
-    packierURL?: string;
     verbose?: boolean;
     disabled?: boolean;
     codeChangesDelay?: number;
     user?: PackiUser;
     id?: string;
-    webPlayerURL?: string;
     webPreviewRef?: PackiWindowRef;
+    packiProduction?: PackiProduction;
 };
 
 export type PackiSaveOptions = { 
     isDraft?: boolean;
     ignoreUser?: boolean;
+    excludeFromHistory?: boolean;
 };
 
 export type PackiStateListener = (state: PackiState, prevState: PackiState) => any;
@@ -267,6 +267,12 @@ export type RouterData = {
 
 export type PackiFilesOrKind = PackiFiles | string;
 
-export type CreatePackiOptions = { 
-    data: PackiFilesOrKind;
+export type PackiProduction = 'artifact' | 'package' | 'meta';
+
+export type PackiUploadPayload = { 
+    name?: string;
+    description?: string;
+    mainIttf?: string;
+    wizziSchema?: string;
+    files?: PackiFiles;
 };

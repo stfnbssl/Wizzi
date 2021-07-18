@@ -10,7 +10,7 @@ module
     
     common(false)
 
-    :type EditorDocumentProps
+    :type PageFormDocumentProps
         :{ 
             :p data
                 :object
@@ -30,9 +30,9 @@ module
                 :optional
     +
     export-default 
-        function EditorDocument
+        function PageFormDocument
             param props
-                :ref EditorDocumentProps
+                :ref PageFormDocumentProps
             const 
                 { 
                     @ data

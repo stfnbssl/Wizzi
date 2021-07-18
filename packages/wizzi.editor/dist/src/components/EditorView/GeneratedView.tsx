@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\EditorView\GeneratedView.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import * as React from 'react';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
@@ -11,17 +11,23 @@ import ListItem from '@material-ui/core/ListItem';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import ViewListIcon from '@material-ui/icons/ViewList';
-import HelpIcon from '@material-ui/icons/Help';
-import InfoIcon from '@material-ui/icons/Info';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import {BrowserIcon} from '../../assets/BrowserIcon';
+import {TreeIcon} from '../../assets/TreeIcon';
+import {DebugIcon} from '../../assets/DebugIcon';
 import SyntaxHighlighter from '../CodeView/SyntaxHighlighter';
 import WebFrame from '../widgets/WebFrame';
-type ViewKindType = 'generated' | 'mtree' | 'debug' | 'browser';
+type ViewKindType = 'generated' | 'mtreeIttf' | 'mTreeDebugInfo' | 'browser';
 type Props = { 
     classes: any;
     generatedContent: string;
     generatedSourcePath?: string;
+    mTreeBuildUpScript?: string;
+    mTreeIttf?: string;
     generatedPreviewURL?: string;
     splitViewKind: string;
+    onMTreePreview: () => void;
+    onMTreeDebugInfoPreview: () => void;
 };
 type State = { 
     view: ViewKindType | null;
@@ -37,17 +43,21 @@ class GeneratedView extends React.Component<Props, State> {
             view: 'generated'
          })
     ;
-    _handleMTree = () => 
+    _handleMTree = () => {
     
+        this.props.onMTreePreview();
         this.setState({
-            view: 'mtree'
+            view: 'mtreeIttf'
          })
+    }
     ;
-    _handleDebug = () => 
+    _handleMTreeDebugInfo = () => {
     
+        this.props.onMTreeDebugInfoPreview();
         this.setState({
-            view: 'debug'
+            view: 'mTreeDebugInfo'
          })
+    }
     ;
     _handleBrowser = () => 
     
@@ -89,6 +99,36 @@ class GeneratedView extends React.Component<Props, State> {
                     
                 }
                 {
+                    view === 'mtreeIttf'
+                     &&  (
+                        <div
+                         className={classes.editor}>
+                            <SyntaxHighlighter 
+                                className={classes.syntaxHigh}
+                                code={this.props.mTreeIttf || ''}
+                                filePath={'mTree.ittf'}
+                                lineNumbers={true}
+                             />
+                        </div>
+                        )
+                    
+                }
+                {
+                    view === 'mTreeDebugInfo'
+                     &&  (
+                        <div
+                         className={classes.editor}>
+                            <SyntaxHighlighter 
+                                className={classes.syntaxHigh}
+                                code={this.props.mTreeBuildUpScript || ''}
+                                filePath={'mTreeBuildUpScript.js'}
+                                lineNumbers={true}
+                             />
+                        </div>
+                        )
+                    
+                }
+                {
                     view === 'browser'
                      &&  (
                         <div
@@ -101,7 +141,7 @@ class GeneratedView extends React.Component<Props, State> {
                                  :  (
                                     <h1
                                     >
-                                        No viewer for document
+                                        No viewer for document  
                                         {this.props.generatedSourcePath}
                                     </h1>
                                     )
@@ -134,7 +174,7 @@ class GeneratedView extends React.Component<Props, State> {
                              onClick={this._handleMTree} classes={{
                                     root: classes.iconButton
                                  }}>
-                                <HelpIcon
+                                <AccountTreeIcon
                                  />
                             </IconButton>
                         </Tooltip>
@@ -144,10 +184,10 @@ class GeneratedView extends React.Component<Props, State> {
                         <Tooltip
                          title="View mTree build script">
                             <IconButton
-                             onClick={this._handleDebug} classes={{
+                             onClick={this._handleMTreeDebugInfo} classes={{
                                     root: classes.iconButton
                                  }}>
-                                <InfoIcon
+                                <DebugIcon
                                  />
                             </IconButton>
                         </Tooltip>
@@ -160,7 +200,7 @@ class GeneratedView extends React.Component<Props, State> {
                              onClick={this._handleBrowser} classes={{
                                     root: classes.iconButton
                                  }}>
-                                <InfoIcon
+                                <BrowserIcon
                                  />
                             </IconButton>
                         </Tooltip>

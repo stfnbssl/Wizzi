@@ -6,30 +6,6 @@ $group
             :ref Props
         param state
             :ref State
-        $if wzCtx.Build.useExpoPreview
-            if typeof window !== 'undefined'
-                let webPreviewURL = state.session.webPreviewURL
-                if state.isLocalWebPreview
-                    set webPreviewURL =
-                        `lit 
-                            + 
-                            @ window.location.origin
-                            + /web-player/localhost/index.html?initialUrl=
-                            _ encodeURIComponent(state.session.url)
-                            + &origin=
-                            _ encodeURIComponent(window.location.origin)
-                            + &verbose=true
-                if state.webPreviewURL !== webPreviewURL
-                    _ state.session.transports['webplayer']?.updateOrigin?.(new URL(webPreviewURL).origin)
-                        # Dirty hack to update the origin that the transport uses to communicate
-                        # with the web-player. The transport origin is initialized from the initial
-                        # `webPreviewURL` value, but is re-written here to use the origin from the
-                        # actual in use `webPreviewURL`.
-                        # TODO: Remove this one SDK 39 has been deprecated
-                        # @ts-ignore See above
-                    return 
-                        { 
-                            @ webPreviewURL
         return null
     +
     m componentDidMount
@@ -72,19 +48,23 @@ $group
                 @ 'LOADED_PACKI'
                 { 
                     @ sdkVersion this.state.session.sdkVersion
+        
         set this._PackiStateListener = this._PackiSession.addStateListener(this._handleSessionStateChange)
+        
         $if wzCtx.Build.useExpoLog
             set this._packiLogListener = this._packi.addLogListener(this._handleSessionLog)
         _ this._PackiSession.setDisabled(false)
         set this._isFocused = document.hasFocus()
         set this._focusTimer = window.setInterval(this._handleFocusChangeInterval, 500)
+        
         $if wzCtx.Build.useExpo
             _ window.addEventListener('unload', this._handleUnload)
             if this.props.query.saveToAccount === 'true'
                 if this._PackiSession.getState().user
                     _ this._saveAsync()
 
-        _ this.generateSelectedFile
+        if this.props.preferences.autoGenSingleDoc
+            _ this._generateArtifact
 
     +
     m componentWillUnmount
@@ -103,22 +83,4 @@ $group
             :ref Props
         param prevState
             :ref State
-        if this.props.viewer !== prevProps.viewer
-            const sessionSecret = this.props.getSessionSecret()
-            if this.state.session.user?.sessionSecret !== sessionSecret
-                _ this._PackiSession.setUser
-                    iif sessionSecret
-                        then
-                            { 
-                                @ sessionSecret
-                        else undefined
 
-    m generateSelectedFile
-        const path = this.state.selectedFile
-        if path && path.length > 0
-            if this.props.preferences.autoGenSingleDoc
-                if path.endsWith('.ittf') && ('/'+path).indexOf('/t/') < 0
-                    # TODO filter *.ittf of type == 'CODE'
-                    _ this.props.dispatchGenerateArtifact
-                        @ path
-                        @ this.state.session.files

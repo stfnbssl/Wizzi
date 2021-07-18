@@ -5,27 +5,23 @@ $group
         :string 
     :p packiSessionReady
         :boolean 
-    :p loggedUser
-        :optional 
-        :ref LoggedUser
     :p packiNames
         :optional 
         :[ 
             :string 
-    :p currentPacki
-        :optional 
-        :ref Packi
     :p packiTemplateNames
         :optional 
         :[ 
             :string 
-    :p ownedGitRepositories
-        :optional 
-        :[ 
-            :ref GitRepositoryMeta
     :p generatedArtifact
         :optional 
         :ref GeneratedArtifact
+    :p mTreeBuildUpScript
+        :optional 
+        :string 
+    :p mTreeIttf
+        :optional 
+        :string 
     :p jobGeneratedArtifacts
         :optional 
         :ref PackiFiles

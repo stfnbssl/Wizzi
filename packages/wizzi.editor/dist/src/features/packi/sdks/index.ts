@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\features\packi\sdks\index.ts.ittf
-    utc time: Sun, 27 Jun 2021 11:22:04 GMT
+    utc time: Sat, 17 Jul 2021 06:24:01 GMT
 */
 import {SDKSpec} from './types';
 const sdks: { 

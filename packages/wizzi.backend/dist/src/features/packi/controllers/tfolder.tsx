@@ -2,13 +2,12 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\packi\controllers\tfolder.tsx.ittf
-    utc time: Wed, 07 Jul 2021 15:52:37 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
 import {sendHtml, sendSuccess, sendPromiseResult, sendFailure} from '../../../utils/sendResponse';
 import ReactDOMServer from 'react-dom/server';
-import wizziProto from 'wizzi.proto';
 import PageFormDocument from '../../../pages/PageFormDocument';
 
 const myname = 'features/packi/controller/tfolder';
@@ -33,10 +32,6 @@ export class TFolderController implements ControllerType {
     
     initialize = (initValues: AppInitializerType) => {
         console.log('Entering TFolderController.initialize');
-        wizziProto.start('stfnbssl', {}, () => {
-        
-        }
-        )
         this.router.get('/new', this.getNewTFolderForm);
         this.router.post('/new', this.postNewTFolder);
         this.router.get('/update', this.getUpdateTFolderForm);

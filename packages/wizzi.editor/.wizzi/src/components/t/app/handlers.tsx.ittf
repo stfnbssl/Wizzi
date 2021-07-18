@@ -31,13 +31,14 @@ $group
         _ this._PackiSession.sendCodeChanges()
     
     => _handleSessionStateChange
-        param state
+        param packiState
             :ref PackiState
-        param prevState
+        param prevPackiState
             :ref PackiState
+        
         _ this.setState
             => 
-                param st
+                param state
                 let annotations
                     :union 
                         :[ 
@@ -46,33 +47,35 @@ $group
                 const saveStatus
                     :ref SaveStatus
                     =
-                        iif state.unsaved && (st.saveStatus === 'saved-draft' || st.saveStatus === 'published' || st.saveStatus === 'unsaved')
+                        iif state.unsaved && (state.saveStatus === 'saved-draft' || state.saveStatus === 'published' || state.saveStatus === 'unsaved')
                             then
                                 iif this.edited
                                     then 'edited'
                                     else 'unsaved'
-                            else st.saveStatus
+                            else state.saveStatus
                     # Set save-status to changed if needed
                 log 'App._handleSessionStateChange', 'saveStatus', saveStatus
                 return 
                     { 
-                        @ session state
+                        @ session packiState
                         @ saveStatus
-                        @ annotations annotations ?? st.annotations
+                        @ annotations annotations ?? state.annotations
                     # Update session state
             => 
-                log 'App._handleSessionStateChange', 'calling _saveDraftIfNeeded'
-                _ this._saveDraftIfNeeded(true)
-            # console.log('Session state change: ', diff(prevState, state), state); // deep-object-diff
+                # 15/7/21 Disactivated
+                # for changes uploaded see
+                # - _PackiSession.updatePackiData
+                # - _PackiSession.updatePackiFiles
+                $if false
+                    log 'App._handleSessionStateChange', 'calling _saveDraftIfNeeded'
+                    _ this._saveDraftIfNeeded(true)
+            # log 'Session state change: ', diff(prevPackiState, packiState), packiState $$ deep-object-diff
         $if wzCtx.Build.useExpo
             # Record any dependency errors
-            if state.dependencies !== prevState.dependencies
-                for 
-                    left
-                        const name
-                    in state.dependencies
-                    const dep = state.dependencies[name]
-                    if dep.error && dep.error !== prevState.dependencies[name]?.error
+            if packiState.dependencies !== prevPackiState.dependencies
+                for const name in packiState.dependencies
+                    const dep = packiState.dependencies[name]
+                    if dep.error && dep.error !== prevPackiState.dependencies[name]?.error
                         _ Raven.captureMessage(dep.error.message)
     +
     => _handleSubmitMetadata
@@ -82,9 +85,15 @@ $group
                     :string 
                 :p description
                     :string 
+                :p mainIttf
+                    :string 
+                :p wizziSchema
+                    :string 
         set this.edited = true
         _ this._PackiSession.setName(details.name)
         _ this._PackiSession.setDescription(details.description)
+        _ this._PackiSession.setMainIttf(details.mainIttf)
+        _ this._PackiSession.setWizziSchema(details.wizziSchema)
     
     +
     => _handleChangeSDKVersion
@@ -173,7 +182,7 @@ $group
     p _saveAsync
         async=> 
             param options
-                :ref SaveOptions
+                :ref PackiSaveOptions
                 = 
                     { 
             const 
@@ -283,6 +292,7 @@ $group
                 (
                     { 
                         @ devicePreviewShown !state.devicePreviewShown
+    +
     => _handleSelectFile
         param path
             :string 
@@ -292,11 +302,15 @@ $group
                 if state.selectedFile !== path
                     log 'App._handleSelectFile', this.props.preferences.autoGenSingleDoc, path
                     if this.props.preferences.autoGenSingleDoc
+                        _ this._generateArtifact
+                            @ path
+                        $* VIA
                         if path.endsWith('.ittf') && ('/'+path).indexOf('/t/') < 0
                             # TODO filter *.ittf of type == 'CODE'
                             _ this.props.dispatchGenerateArtifact
                                 @ path
                                 @ this.state.session.files
+                        *$
                     return
                         { 
                             @ selectedFile path
@@ -318,11 +332,13 @@ $group
                     :ref PackiFiles
         const state = this._PackiSession.getState()
         const filesUpdate = updateFn(state.files)
-        log 'App._updateFiles', filesUpdate
+        # log 'App._updateFiles.filesUpdate', filesUpdate
         if Object.keys(filesUpdate).length
             set this.edited = true
-            _ this._PackiSession.updateFiles(filesUpdate)
-            _ this._generateArtifact(filesUpdate)
+            _ this._PackiSession.updatePackiFiles
+                @ filesUpdate
+                =>
+                    _ this._generateArtifact()
     
     +
     => _updateDependencies

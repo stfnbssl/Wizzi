@@ -17,7 +17,8 @@ module
             created_at: true,
             updated_at: true
         }
-
+    
+    import NodeCache from 'node-cache'        
     import
         @ GetPackageProductionModel
         from '../mongo/package'
@@ -30,6 +31,12 @@ module
         from '../../types'
     +
     const myname = 'features.production.api.package'
+    +
+    const packageCache
+        new NodeCache
+            { 
+                @ stdTTL 120
+                @ checkperiod 60
     +
     export
         async-function validatePackageProduction
@@ -66,3 +73,4 @@ module
     mongo/get_api(&md)
     mongo/create_api(&md)
     mongo/update_api(&md)
+    $include package/cached_get_save

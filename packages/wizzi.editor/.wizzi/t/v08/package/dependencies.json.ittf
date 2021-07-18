@@ -212,6 +212,8 @@ $group
                 react-select "^4.3.0"
             $if wzCtx.Build.react.useSimpleCodeEditor
                 react-simple-code-editor "^0.11.0"
+            $if wzCtx.Build.react.useSplit
+                react-split "^2.0.11"
             $if wzCtx.Build.react.useSyntaxHighlighter
                 react-syntax-highlighter "^15.4.3"
             $if wzCtx.Build.react.useTextareaAutosize

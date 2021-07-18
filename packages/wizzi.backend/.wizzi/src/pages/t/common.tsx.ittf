@@ -29,8 +29,8 @@ $group
             + &nbsp;               outline: auto;&lf;
             + &nbsp;             }&lf;
             + &lf;
-            + &nbsp;             html,&lf;
             $if fullpage
+                + &nbsp;             html,&lf;
                 + &nbsp;             body {&lf;
                 + &nbsp;               height: 100%;&lf;
                 + &nbsp;               width: 100%;&lf;

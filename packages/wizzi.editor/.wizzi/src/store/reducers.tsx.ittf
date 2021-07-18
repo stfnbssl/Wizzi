@@ -5,12 +5,8 @@ module
     import 
         @ StoreState
         from './types'
-    import appReducer from '../features/app/reducer'
     import packiReducer from '../features/packi/reducer'
     import wizziReducer from '../features/wizzi/reducer'
-    import
-        @ viewer
-        from './createRedux'
     export 
         const createRootReducer
             => 
@@ -18,7 +14,5 @@ module
                     :param 
                         :ref StoreState
                     { 
-                        @ app appReducer
                         @ packi packiReducer
                         @ wizzi wizziReducer
-                        @ viewer

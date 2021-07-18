@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\index.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import cookies from 'js-cookie';
 import * as React from 'react';
@@ -17,19 +17,11 @@ import createStore from './store/createStore';
 import type {RouterData, QueryParams} from './features/packi';
 declare const __INITIAL_DATA__: { 
     data: any;
+    loggedUser: any;
     queryParams: any;
 };
 
 const store = createStore({
-    app: {
-        loggedUser: {
-            id: 'stfnbssl', 
-            uid: 'stfnbssl', 
-            username: 'stfnbssl', 
-            displayName: 'Stefano Bassoli', 
-            picture: 'https://avatars.githubusercontent.com/u/728956?s=400&v=4'
-         }
-     }, 
     packi: {
         loading: false
      }, 
@@ -37,14 +29,15 @@ const store = createStore({
         loading: false, 
         jobError: undefined, 
         generatedArtifact: undefined, 
+        mTreeBuildUpScript: undefined, 
+        mTreeIttf: undefined, 
         jobGeneratedArtifacts: {
             
          }, 
         timedServices: {
             
          }
-     }, 
-    viewer: null
+     }
  });
 
 function AppContainer(props: any) {
@@ -57,10 +50,10 @@ function AppContainer(props: any) {
         const appProps = {
             ...props, 
             ...rest, 
-            query: props.queryParams, 
             packi: data.packi, 
             defaults: data.defaults
          };
+        console.log('index.data.loggedUser', data.loggedUser);
         return  (
             <App
              {...appProps} />
@@ -89,7 +82,7 @@ function PackiApp() {
                         <ThemeProvider
                         >
                             <AppContainer
-                             data={__INITIAL_DATA__.data} queryParams={__INITIAL_DATA__.queryParams} />
+                             data={window.__INITIAL_DATA__.data} loggedUser={window.__INITIAL_DATA__.loggedUser} queryParams={window.__INITIAL_DATA__.queryParams} />
                         </ThemeProvider>
                     </PreferencesProvider>
                 </Provider>

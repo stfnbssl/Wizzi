@@ -37,12 +37,13 @@ module
         from '../../packi'
     import
         @ tFolderApi
-        @ tFolderTypes
-        from '../../tfolder'
+        from '../index'
+    import
+        @ ITFolderModel
+        from '../types'
     import
         @ wizziProds
         from '../../wizzi'
-    
     +
     const myname = 'features.production.api.artifact'
     +
@@ -91,3 +92,4 @@ module
     $include artifact/get_context
     $include artifact/transformation
     $include artifact/generation
+    $include artifact/prepare

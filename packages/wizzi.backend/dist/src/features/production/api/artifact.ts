@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\production\api\artifact.ts.ittf
-    utc time: Wed, 07 Jul 2021 15:52:36 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import path from 'path';
 import NodeCache from 'node-cache';
@@ -10,7 +10,8 @@ import {GetArtifactProductionModel} from '../mongo/artifact';
 import {IArtifactProductionModel} from '../types';
 import {ValidateResult, CRUDResult} from '../../types';
 import {packiTypes} from '../../packi';
-import {tFolderApi, tFolderTypes} from '../../tfolder';
+import {tFolderApi} from '../index';
+import {ITFolderModel} from '../types';
 import {wizziProds} from '../../wizzi';
 
 const myname = 'features.production.api.artifact';
@@ -71,11 +72,25 @@ export async function getListArtifactProduction(options?: any):  Promise<CRUDRes
                     console.log(myname, 'getListArtifactProduction', 'ArtifactProduction.find', 'error', err);
                     return reject(err);
                 }
-                console.log(myname, 'getListArtifactProduction', 'ArtifactProduction.find', 'result', result);
+                console.log(myname, 'getListArtifactProduction', 'ArtifactProduction.find', 'Object.keys(result)', Object.keys(result));
+                const resultItem = [];
+                var i, i_items=result, i_len=result.length, item;
+                for (i=0; i<i_len; i++) {
+                    item = result[i];
+                    const item_obj = {
+                        owner: item.owner, 
+                        name: item.name, 
+                        description: item.description, 
+                        mainIttf: item.mainIttf, 
+                        wizziSchema: item.wizziSchema, 
+                        packiFiles: item.packiFiles
+                     };
+                    resultItem.push(item_obj)
+                }
                 resolve({
                     oper: 'getList', 
                     ok: true, 
-                    item: result
+                    item: resultItem
                  })
             }
             )
@@ -190,19 +205,30 @@ export async function updateArtifactProduction(owner: string, name: string, desc
     return new Promise((resolve, reject) => {
         
             
-            let query = {
+            const query = {
                 owner: owner, 
                 name: name
              };
-            let update = {
-                owner: owner, 
-                name: name, 
-                description: description, 
-                mainIttf: mainIttf, 
-                wizziSchema: wizziSchema, 
-                packiFiles: packiFiles, 
-                updated_at: new Date()
-             };
+            const update: any = {};
+            if (typeof owner !== 'undefined') {
+                update['owner'] = owner;
+            }
+            if (typeof name !== 'undefined') {
+                update['name'] = name;
+            }
+            if (typeof description !== 'undefined') {
+                update['description'] = description;
+            }
+            if (typeof mainIttf !== 'undefined') {
+                update['mainIttf'] = mainIttf;
+            }
+            if (typeof wizziSchema !== 'undefined') {
+                update['wizziSchema'] = wizziSchema;
+            }
+            if (typeof packiFiles !== 'undefined') {
+                update['packiFiles'] = packiFiles;
+            }
+            update['updated_at'] = new Date();
             
             ArtifactProduction.findOneAndUpdate(query, update, {}, (err, result) => {
             
@@ -234,6 +260,37 @@ function mergePackiFiles(a: any, b: any) {
     return ret;
 }
 
+export async function getArtifactProductionObject(owner: string, name: string) {
+
+    return new Promise((resolve, reject) => 
+        
+            getArtifactProduction(owner, name).then((result) => {
+            
+                if (!result.ok) {
+                    return reject(result);
+                }
+                const ap: IArtifactProductionModel = result.item;
+                console.log('myname', 'getArtifactProductionObject.ap', ap);
+                const ap_packiFiles_object: packiTypes.PackiFiles = JSON.parse(ap.packiFiles);
+                console.log('myname', 'getArtifactProductionObject.ap_packiFiles_object', ap_packiFiles_object);
+                const obj = {
+                    ...ap._doc, 
+                    packiFiles: ap_packiFiles_object, 
+                    _id: ap._id.toString()
+                 };
+                console.log('myname', 'getArtifactProductionObject', obj);
+                return resolve(obj);
+            }
+            ).catch((err: any) => {
+            
+                console.log('getArtifactProduction_withCache.getTFolder.error', err);
+                return reject(err);
+            }
+            )
+        
+        );
+}
+
 export async function getArtifactProduction_withCache(owner: string, name: string) {
 
     var cacheKey = owner + '|' + name;
@@ -263,7 +320,7 @@ export async function getArtifactProduction_withCache(owner: string, name: strin
                             artifactCache.set(cacheKey, apValue);
                             return resolve(apValue);
                         }
-                        const tf: tFolderTypes.ITFolderModel = result.item;
+                        const tf: ITFolderModel = result.item;
                         const tf_packiFiles_object: packiTypes.PackiFiles = JSON.parse(tf.packiFiles);
                         apValue = {
                             mainIttf: ap.mainIttf, 
@@ -296,6 +353,12 @@ export async function getArtifactProduction_withCache(owner: string, name: strin
             )
         }
         );
+}
+
+export function invalidateCache(owner: string, name: string) {
+
+    var cacheKey = owner + '|' + name;
+    artifactCache.del(cacheKey);
 }
 
 export async function getDefaultContext_withCache(owner: string, sysContext?: any) {
@@ -510,4 +573,137 @@ function contentTypeFor(file: string) {
         return extContentTypeMap['.' + ittfSchema];
     }
     return undefined;
+}
+
+export async function prepareGenerationFromWizziJson(req_files: packiTypes.PackiFiles):  Promise<any> {
+
+    
+    return new Promise((resolve, reject) => {
+        
+            
+            let retPackiFiles: packiTypes.PackiFiles = req_files;
+            
+            const wizziJson = req_files['wizzi.json.ittf'];
+            if (wizziJson) {
+                wizziProds.generateArtifact('wizzi.json.ittf', {
+                    'wizzi.json.ittf': {
+                        type: wizziJson.type, 
+                        contents: wizziJson.contents
+                     }
+                 }, {}).then((result: any) => {
+                
+                    const wizziJsonObj = JSON.parse(result.artifactContent);
+                    getFragmentsFromWizziJson(wizziJsonObj).then((resultPackiFiles: packiTypes.PackiFiles) => {
+                    
+                        console.log(myname, 'prepareGenerationFromWizziJson', 'resultPackiFiles', Object.keys(resultPackiFiles));
+                        retPackiFiles = mergePackiFiles(retPackiFiles, resultPackiFiles)
+                        ;
+                        getContextFromWizziJson(wizziJsonObj).then((resultContext) => {
+                        
+                            console.log(myname, 'prepareGenerationFromWizziJson', 'resultContext', resultContext);
+                            return resolve({
+                                    packiFiles: retPackiFiles, 
+                                    context: resultContext
+                                 });
+                        }
+                        )
+                    }
+                    ).catch((err: any) => {
+                    
+                        console.log('getArtifactGeneration.getFragmentsFromWizziJson.error', err);
+                        return reject(err);
+                    }
+                    )
+                }
+                ).catch((err: any) => {
+                
+                    console.log('getArtifactGeneration.generateArtifact.error', err);
+                    return reject(err);
+                }
+                )
+            }
+            else {
+                resolve({
+                    packiFiles: req_files, 
+                    context: {
+                        
+                     }
+                 })
+            }
+        }
+        );
+}
+
+export async function getFragmentsFromWizziJson(wizziJsonObj: any):  Promise<packiTypes.PackiFiles> {
+
+    
+    return new Promise((resolve, reject) => {
+        
+            
+            let retPackiFiles: packiTypes.PackiFiles = {};
+            if (!!(wizziJsonObj && wizziJsonObj.fragments && wizziJsonObj.fragments.length > 0) == false) {
+                return resolve(retPackiFiles);
+            }
+            var j = 0;
+            (function next() {
+            
+                var tfolder = wizziJsonObj.fragments[j++];
+                if (!tfolder) {
+                    console.log('getFragmentsFromWizziJson.done.keys', Object.keys(retPackiFiles));
+                    return resolve(retPackiFiles);
+                }
+                const parts = tfolder.path.split('/');
+                tFolderApi.getTFolder(parts[0], parts.slice(1).join('/')).then((result: CRUDResult) => {
+                
+                    const tf: ITFolderModel = result.item;
+                    const tf_packiFiles_object: packiTypes.PackiFiles = JSON.parse(tf.packiFiles);
+                    retPackiFiles = mergePackiFiles(retPackiFiles, tf_packiFiles_object)
+                    ;
+                    next();
+                }
+                ).catch((err: any) => {
+                
+                    console.log('getFragmentsFromWizziJson.getTFolder.error', err);
+                    return reject(err);
+                }
+                )
+            })();
+        }
+        );
+}
+
+export async function getContextFromWizziJson(wizziJsonObj: any):  Promise<any> {
+
+    
+    return new Promise((resolve, reject) => {
+        
+            
+            let retContext: any = {};
+            if (!!(wizziJsonObj && wizziJsonObj.fragments && wizziJsonObj.fragments.length > 0) == false) {
+                return resolve(retContext);
+            }
+            var j = 0;
+            (function next() {
+            
+                var contextDef = wizziJsonObj.contexts[j++];
+                if (!contextDef) {
+                    console.log('getContextFromWizziJson.done.keys', Object.keys(retContext));
+                    return resolve(retContext);
+                }
+                const parts = contextDef.path.split('/');
+                getArtifactContextItem(parts[0], contextDef.name + ';' + parts.slice(1).join('/')).then((contextObject: any) => {
+                
+                    retContext = Object.assign({}, retContext, contextObject)
+                    ;
+                    next();
+                }
+                ).catch((err: any) => {
+                
+                    console.log('getContextFromWizziJson.getArtifactContextItem.error', err);
+                    return reject(err);
+                }
+                )
+            })();
+        }
+        );
 }

@@ -6,12 +6,6 @@ module
         @ Helmet 
         from 'react-helmet-async'
     import 
-        @ DEFAULT_PACKI_NAME
-        @ DEFAULT_PACKI_DESCRIPTION
-        @ DEFAULT_PACKI_DESCRIPTION_EMPTY
-        @ DEFAULT_PACKI_DESCRIPTION_SAVED
-        from '../features/config'
-    import 
         @ isIntentionallyNamed
         from '../features/packi'
     :type Props
@@ -28,20 +22,11 @@ module
             param props
                 :ref Props
             const title
-                iif props.id || isIntentionallyNamed(props.name)
-                    then
-                        `lit 
-                            + 
-                            @ props.name
-                            + &nbsp;- Packi
-                    else DEFAULT_PACKI_NAME
-            const description
-                iif props.description === DEFAULT_PACKI_DESCRIPTION
-                    then
-                        iif props.id
-                            then DEFAULT_PACKI_DESCRIPTION_SAVED
-                            else DEFAULT_PACKI_DESCRIPTION_EMPTY
-                    else props.description
+                `lit 
+                    + 
+                    @ props.name
+                    + &nbsp;- Packi
+            const description = props.description
             const url
                 `lit 
                     + 

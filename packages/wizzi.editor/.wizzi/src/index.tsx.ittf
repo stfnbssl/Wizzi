@@ -45,6 +45,9 @@ module
                 :p data
                     :any
                     $$ :ref RouterData
+                :p loggedUser
+                    :any
+                    $$ :ref LoggedUser
                 :p queryParams
                     :any
                     $$ :ref QueryParams
@@ -59,17 +62,16 @@ module
     const store
         _ createStore
             { 
-                { app
-                    starter/initial_loggedUser( loggedUser )
                 { packi
                     @ loading false
                 { wizzi
                     @ loading false
                     @ jobError undefined
                     @ generatedArtifact undefined
+                    @ mTreeBuildUpScript undefined
+                    @ mTreeIttf undefined
                     { jobGeneratedArtifacts
                     { timedServices
-                @ viewer null
     +
     $if !useRouter
         function AppContainer
@@ -85,9 +87,9 @@ module
                     { 
                         @ ...props
                         @ ...rest
-                        @ query props.queryParams
                         @ packi data.packi
                         @ defaults data.defaults
+                log 'index.data.loggedUser', data.loggedUser
                 return 
                     < App 
                         @ {...appProps}
@@ -110,13 +112,15 @@ module
                                 $if useRouter
                                     < BrowserRouter 
                                         < Router 
-                                            @ data {__INITIAL_DATA__.data}
-                                            @ queryParams {__INITIAL_DATA__.queryParams}
+                                            @ data {window.__INITIAL_DATA__.data}
+                                            @ loggedUser {window.__INITIAL_DATA__.loggedUser}
+                                            @ queryParams {window.__INITIAL_DATA__.queryParams}
                                             @ userAgent {navigator.userAgent}
                                 $else
                                     < AppContainer
-                                        @ data {__INITIAL_DATA__.data}
-                                        @ queryParams {__INITIAL_DATA__.queryParams}
+                                        @ data {window.__INITIAL_DATA__.data}
+                                        @ loggedUser {window.__INITIAL_DATA__.loggedUser}
+                                        @ queryParams {window.__INITIAL_DATA__.queryParams}
 
     $*
     _ ReactDOM.hydrate

@@ -26,16 +26,18 @@ $group
                         param resolve
                         param reject
                         +
-                        let query
+                        const query
                             { 
                                 $foreach item in md.query
                                     @ ${item.name} ${item.name}
-                        let update
+                        const update
+                            :any
                             { 
-                                $foreach item in md.fields
-                                    @ ${item.name} ${item.name}
-                                $if md.updated_at
-                                    @ updated_at new Date()
+                        $foreach item in md.fields
+                            if typeof ${item.name} !== 'undefined'
+                                set update['${item.name}'] = ${item.name}
+                        $if md.updated_at
+                            set update['updated_at'] = new Date()
                         +
                         _ ${md.Name}.findOneAndUpdate
                             @ query

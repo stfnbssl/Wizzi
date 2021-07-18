@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\middlewares\packiBrowse.ts.ittf
-    utc time: Wed, 07 Jul 2021 15:52:36 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import util from 'util';
 import path from 'path';
@@ -59,7 +59,7 @@ function packiUserBrowseMiddleware():  RequestHandler {
                         response.set('Pragma', 'no-cache');
                         response.send(result.content);
                     }
-                    ).catch((err) => {
+                    ).catch((err: any) => {
                     
                         console.log('artifactApi.getPackiGeneration.error', err);
                         sendFailure(response, {
@@ -68,7 +68,7 @@ function packiUserBrowseMiddleware():  RequestHandler {
                     }
                     )
                 }
-                ).catch((err) => {
+                ).catch((err: any) => {
                 
                     console.log('artifactApi.getArtifactContext.error', err);
                     sendFailure(response, {
@@ -77,7 +77,7 @@ function packiUserBrowseMiddleware():  RequestHandler {
                 }
                 )
             }
-            ).catch((err) => {
+            ).catch((err: any) => {
             
                 console.log('artifactApi.getDefaultContext.error', err);
                 sendFailure(response, {
@@ -123,7 +123,7 @@ function packiSiteBrowseMiddleware():  RequestHandler {
                         response.set('Pragma', 'no-cache');
                         response.send(result.content);
                     }
-                    ).catch((err) => {
+                    ).catch((err: any) => {
                     
                         console.log('artifactApi.getPackiGeneration.error', err);
                         sendFailure(response, {
@@ -132,7 +132,7 @@ function packiSiteBrowseMiddleware():  RequestHandler {
                     }
                     )
                 }
-                ).catch((err) => {
+                ).catch((err: any) => {
                 
                     console.log('artifactApi.getArtifactContext.error', err);
                     sendFailure(response, {
@@ -141,7 +141,7 @@ function packiSiteBrowseMiddleware():  RequestHandler {
                 }
                 )
             }
-            ).catch((err) => {
+            ).catch((err: any) => {
             
                 console.log('artifactApi.getDefaultContext.error', err);
                 sendFailure(response, {

@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\features\packi\session.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import mapValues from 'lodash/mapValues';
 import nullthrows from 'nullthrows';
@@ -12,6 +12,21 @@ import defaultConfig, {PackiIdentityState} from './defaultConfig';
 import {validateSDKVersion, isModulePreloaded} from './sdk';
 import {SDKVersion, PackiDependencies, PackiFiles, PackiFile, PackiState, PackiUser, PackiDependency, PackiWindowRef, PackiOptions, PackiStateListener, PackiListenerSubscription, PackiSaveOptions} from './types';
 import {createChannel, fetch, createURL, createError, createUserHeader} from './utils';
+const debounce = (func, timeout, context) => {
+
+    let timer;
+    return (...args) => {
+        
+            clearTimeout(timer);
+            timer = setTimeout(() => 
+            
+                func.apply(context || this, args)
+            , timeout)
+            ;
+        }
+    ;
+}
+;
 export default class PackiSession {
         constructor(options: PackiOptions) {
             const channel = createChannel(options.channel);
@@ -21,28 +36,36 @@ export default class PackiSession {
                  } : {};
             this.apiURL = options.apiURL ?? defaultConfig.apiURL;
             this.host = options.host ?? defaultConfig.host;
-            this.codeChangesDelay = options.codeChangesDelay ?? 0;
-            this.webPlayerURL = options.webPlayerURL ?? defaultConfig.webPlayerURL;
+            this.codeChangesDelay = options.codeChangesDelay ?? 2000;
             this.state = this.updateDerivedState({
                 disabled: !!options.disabled, 
                 unsaved: false, 
+                owner: options.owner ?? '', 
                 name: options.name ?? '', 
                 description: options.description ?? '', 
+                mainIttf: options.mainIttf ?? '', 
+                wizziSchema: options.wizziSchema ?? '', 
+                sdkVersion, 
                 files: options.files ?? {}, 
                 user: options.user, 
+                packiProduction: options.packiProduction, 
                 id: options.id, 
+                saveCount: 0, 
                 saveURL: options.id ? createURL(this.host, sdkVersion, options.id) : undefined, 
                 url: createURL(this.host, sdkVersion, options.id), 
                 channel
              }, PackiIdentityState)
             ;
             this.state.unsaved = false;
+            this.setPreviewUrl();
             this.fileUploader = new FileUploader({
                 apiURL: this.apiURL, 
                 callback: this.onFileUploaded
              });
             ;
             this.onStateChanged(this.state, PackiIdentityState);
+            this.debouncedUploadUpdates = debounce(this.uploadUpdates, 2000, this)
+            ;
         }
         private state: PackiState;
         private stateListeners: Set<PackiStateListener> = new Set();
@@ -51,13 +74,11 @@ export default class PackiSession {
         private readonly fileUploader: FileUploader;
         private codeChangesDelay: number;
         private codeChangesTimer: any;
-        private readonly webPlayerURL: string;
         
         
         /**
             * 
             * Sets the name of the Packi.
-            * @param name E.g. "conspicious orange"
             * 
         */
         setName(name: string) {
@@ -73,7 +94,6 @@ export default class PackiSession {
         /**
             * 
             * Sets the description of the Packi.
-            * @param name E.g. "My awesome Packi"
             * 
         */
         setDescription(description: string) {
@@ -81,6 +101,24 @@ export default class PackiSession {
                 
                     (state.description !== description ? {
                             description
+                         } : null)
+                );
+        }
+        
+        setMainIttf(mainIttf: string) {
+            return this.setState((state) => 
+                
+                    (state.mainIttf !== mainIttf ? {
+                            mainIttf
+                         } : null)
+                );
+        }
+        
+        setWizziSchema(wizziSchema: string) {
+            return this.setState((state) => 
+                
+                    (state.wizziSchema !== wizziSchema ? {
+                            wizziSchema
                          } : null)
                 );
         }
@@ -101,6 +139,15 @@ export default class PackiSession {
                     (state.user !== user ? {
                             user
                          } : null)
+                );
+        }
+        
+        setPreviewUrl() {
+            return this.setState((state) => 
+                
+                    ({
+                        previewURL: `${process.env.API_SERVER_URL}/~/${encodeURIComponent(state.owner)}/${encodeURIComponent(state.name)}?savecount=${state.saveCount}`
+                     })
                 );
         }
         
@@ -161,6 +208,7 @@ export default class PackiSession {
         }
         private setState(stateFn: (state: PackiState) => any) {
             const update = stateFn(this.state);
+            console.log('_PackiSession.setState.update', update);
             if (update) {
                 const oldState = this.state;
                 const newState: PackiState = {
@@ -168,6 +216,7 @@ export default class PackiSession {
                     ...update
                  };
                 this.state = this.updateDerivedState(newState, oldState);
+                console.log('_PackiSession.setState.state', this.state);
                 this.onStateChanged(newState, oldState);
                 this.stateListeners.forEach(listener => 
                 
@@ -179,8 +228,6 @@ export default class PackiSession {
         private updateDerivedState(state: PackiState, prevState: PackiState):  PackiState {
             
             // Set unsaved to true whenever files or dependencies change
-            
-            // Update other derived states
             state.unsaved = state.unsaved || State.isUnsaved(state, prevState);
             // Update other derived states
             this.updateDerivedOnlineState(state, prevState);
@@ -360,9 +407,7 @@ export default class PackiSession {
             * ```
             * 
         */
-        updateFiles(files: { 
-            [path: string]: PackiFile | null;
-        }) {
+        updateFiles(files: PackiFiles) {
             return this.setState((state) => {
                 
                     const newFiles = State.updateObjects(state.files, files);
@@ -452,30 +497,42 @@ export default class PackiSession {
         ;
         
         async saveAsync(options?: PackiSaveOptions) {
+            console.log('PackiSession.saveAsync.options', options);
             const prevState = this.state;
             
             // Wait for any pending asset uploads to complete before saving
             await this.fileUploader.waitForCompletion();
             const {
+                owner, 
                 name, 
                 description, 
+                mainIttf, 
+                wizziSchema, 
                 sdkVersion, 
                 files, 
                 dependencies, 
-                user
+                user, 
+                packiProduction
              } = this.state;
-            const payload: any = files;
-            const url = `${this.apiURL}/api/v1/packi/save/${encodeURIComponent('guest/test')}`;
+            const payload: any = {
+                description, 
+                mainIttf, 
+                schema: wizziSchema, 
+                packiFiles: files
+             };
+            const url = `${this.apiURL}/api/v1/production/artifact/${encodeURIComponent(owner)}/${encodeURIComponent(name)}`;
             console.log('PackiSession.saveAsync', url);
             const response = await fetch(url, {
-                    method: 'POST', 
+                    method: 'PUT', 
                     body: JSON.stringify(payload), 
                     headers: {
                         'Content-Type': 'application/json'
                      }
                  });
             const data = await response.json();
-            console.log('PackiSession.saveAsync.response.data', url);
+            this.state.saveCount++;
+            this.setPreviewUrl();
+            console.log('PackiSession.saveAsync.response.data', data);
         }
         
         
@@ -486,8 +543,8 @@ export default class PackiSession {
         // 
         
         /**
-            * *
-            * * Uploads the current code to Wizzi's servers and return a url that points to that version of the code.
+            * 
+            * Uploads the current code to Wizzi's servers and return a url that points to that version of the code.
             * 
         */
         async saveAsync_Old(options?: PackiSaveOptions) {
@@ -595,5 +652,55 @@ export default class PackiSession {
             } 
             catch (e) {
             } 
+        }
+        updatePackiData(packiData: PackiData) {
+            return this.setState((state) => {
+                
+                    this.uploadUpdates(packiData)
+                    return packiData;
+                }
+                );
+        }
+        updatePackiFiles(files: PackiFiles, done: () => any) {
+            console.log('PackiSession.updatePackiFiles.files', files);
+            return this.setState((state) => {
+                
+                    const newFiles = State.updateObjects(state.files, files);
+                    if (newFiles !== state.files) {
+                        console.log('PackiSession.calling.debounce.uploadUpdates');
+                        this.debouncedUploadUpdates({
+                            packiFiles: newFiles
+                         }, done)
+                    }
+                    return newFiles !== state.files ? {
+                                files: newFiles
+                             } : null;
+                }
+                );
+        }
+        async uploadUpdates(payload: PackiUploadPayload, done: () => any) {
+            console.log('PackiSession.uploadUpdates.payload', payload);
+            
+            // Wait for any pending asset uploads to complete before saving
+            await this.fileUploader.waitForCompletion();
+            const {
+                owner, 
+                name, 
+                packiProduction
+             } = this.state;
+            const url = `${this.apiURL}/api/v1/production/artifact/${encodeURIComponent(owner)}/${encodeURIComponent(name)}`;
+            console.log('PackiSession.uploadUpdates', url);
+            const response = await fetch(url, {
+                    method: 'PUT', 
+                    body: JSON.stringify(payload), 
+                    headers: {
+                        'Content-Type': 'application/json'
+                     }
+                 });
+            const data = await response.json();
+            console.log('PackiSession.uploadUpdates.response.data', data);
+            this.state.saveCount++;
+            done();
+            this.setPreviewUrl();
         }
     }

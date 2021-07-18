@@ -7,6 +7,9 @@ module
         as React
         from 'react'
     import 
+        @ LoggedUser
+        from '../../features/app'
+    import 
         @ SDKVersion
         from '../../features/packi'
     import 
@@ -50,6 +53,8 @@ module
                         :boolean 
                     :p sendCodeOnChangeEnabled
                         :boolean 
+                    :p loggedUser
+                        :ref LoggedUser
                     :p sdkVersion
                         :ref SDKVersion
                     :p isLocalWebPreview
@@ -93,16 +98,9 @@ module
                     :p theme
                         :string 
                     $if wzCtx.Build.usePackiAspects
-                        :p loggedUid
-                            :string 
                         :p autoGenSingleDoc
                             :boolean 
                         :p autoExecJob
-                            :boolean 
-                        $if wzCtx.Build.usePackiAspectsGithub
-                            :p connectGithubRepos
-                                :boolean 
-                        :p trustLocalStorage
                             :boolean 
     function EditorFooterComp
         param props
@@ -110,6 +108,7 @@ module
         const 
             { 
                 @ annotations
+                @ loggedUser
                 @ fileTreeShown
                 @ previewShown
                 @ panelsShown
@@ -129,12 +128,8 @@ module
                 @ onShowShortcuts
                 @ theme
                 $if wzCtx.Build.usePackiAspects
-                    @ loggedUid
                     @ autoGenSingleDoc
                     @ autoExecJob
-                    $if wzCtx.Build.usePackiAspectsGithub
-                        @ connectGithubRepos
-                    @ trustLocalStorage
             = props
         $if wzCtx.Build.usePackiAspects
             const _toggleAutoGenSingleDoc
@@ -147,17 +142,6 @@ module
                     _ props.setPreferences
                         { 
                             @ autoExecJob !props.preferences.autoExecJob
-            const _toggleTrustLocalStorage
-                => 
-                    _ props.setPreferences
-                        { 
-                            @ trustLocalStorage !props.preferences.trustLocalStorage
-            $if wzCtx.Build.usePackiAspectsGithub
-                const _toggleConnectGithubRepos
-                    => 
-                        _ props.setPreferences
-                            { 
-                                @ connectGithubRepos !props.preferences.connectGithubRepos
         $if wzCtx.Build.useExpo
             const appText
                 iif connectedDevices.length > 1
@@ -329,17 +313,7 @@ module
                                     @ style
                                         { 
                                             @ paddingLeft '15px'
-                                    + Logged uid:
-                                    + {loggedUid}
-                                < ToggleSwitch 
-                                    @ checked {trustLocalStorage}
-                                    @ onChange {_toggleTrustLocalStorage}
-                                    @ label "Trust local storage"
-                                $if wzCtx.Build.usePackiAspectsGithub
-                                    < ToggleSwitch 
-                                        @ checked {connectGithubRepos}
-                                        @ onChange {_toggleConnectGithubRepos}
-                                        @ label "Github repos connect"
+                                    + Logged uid: {loggedUser}
                     < MenuButton 
                         @ icon {require('../../assets/settings-icon.png')}
                         @ label

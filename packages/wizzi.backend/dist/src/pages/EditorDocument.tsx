@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\pages\EditorDocument.tsx.ittf
-    utc time: Wed, 07 Jul 2021 15:52:37 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import jsesc from 'jsesc';
 import React from 'react';
@@ -91,6 +91,7 @@ const PageCss = css`
             `;
 type EditorDocumentProps = { 
     data: object;
+    loggedUser: object;
     queryParams: object;
     content?: { 
         html: string;
@@ -105,6 +106,7 @@ export default function EditorDocument(props: EditorDocumentProps) {
     
         const {
             data, 
+            loggedUser, 
             queryParams, 
             content
          } = props;
@@ -131,11 +133,14 @@ export default function EditorDocument(props: EditorDocumentProps) {
                      dangerouslySetInnerHTML={{
                             __html: `  window.__INITIAL_DATA__ = ${jsesc({
                                 data, 
+                                loggedUser, 
                                 queryParams
                              }, {
                                 quotes: 'double', 
                                 isScriptContext: true
-                             })}`
+                             })}
+ console.log(window.__INITIAL_DATA__) 
+`
                          }} />
                 </head>
                 <body

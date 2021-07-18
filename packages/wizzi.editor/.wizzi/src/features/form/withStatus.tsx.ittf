@@ -35,7 +35,7 @@ module
                                 :ref P
                             :param 
                                 :ref InjectedProps
-            function withStatus
+            function withStatusFn
                 param props
                     :any 
                 return 
@@ -54,9 +54,9 @@ module
                                 < Comp 
                                     @ disabled {!value.valid}
                                     @ {...props}
-            set withStatus.displayName =
+            set withStatusFn.displayName =
                 `lit 
                     + withValidation(
                     @ Comp.displayName || Comp.name
                     + )
-            return withStatus
+            return withStatusFn

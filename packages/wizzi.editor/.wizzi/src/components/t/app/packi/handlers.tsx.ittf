@@ -1,36 +1,39 @@
 $group
     
-    p _handleLoggedOn
-        async=> 
-            param user
-                :ref LoggedUser
-            _ this.props.dispatchLoggedOn(user)
-            _ this.props.setPreferences
-                { 
-                    @ loggedUid user.uid
-    p _handleLoggedOff
-        async=> 
-            _ this.props.dispatchLoggedOff()
-            _ this.props.setPreferences
-                { 
-                    @ loggedUid undefined
+    +
     p _handleSelectPacki
         async=> 
             param packiId
                 :string 
             _ this.props.dispatchSelectPacki(packiId)
-    p _handleCreatePacki
+    +
+    p _handleMTreePreview
         async=> 
-            param packiId
-                :string 
-            param packiKind
-                :string 
-            _ this.props.dispatchCreatePacki(packiId, packiKind)
-    p _handleDeletePacki
+            const files = this.state.session.files
+            if Object.keys(files).length
+                const filePath = this.state.selectedFile || Object.keys(files)[0]
+                if filePath.endsWith('.ittf')
+                    log '_handleMTreePreview.filePath', filePath
+                    log '_handleMTreePreview', 'state.session.files', files
+                    _ this.props.dispatchMTree
+                        @ filePath
+                        _ fileConversions.packiFilterIttf
+                            @ this.state.session.files
+
+    p _handleMTreeDebugInfoPreview
         async=> 
-            param packiId
-                :string 
-            _ this.props.dispatchDeletePacki(packiId)
+            const files = this.state.session.files
+            if Object.keys(files).length
+                const filePath = this.state.selectedFile || Object.keys(files)[0]
+                if filePath.endsWith('.ittf')
+                    log '_handleMTreeDebugInfoPreview.filePath', filePath
+                    log '_handleMTreeDebugInfoPreview', 'state.session.files', files
+                    _ this.props.dispatchMTreeDebugInfo
+                        @ filePath
+                        _ fileConversions.packiFilterIttf
+                            @ this.state.session.files
+
+    $*
     p _findFocusedEntry
         => 
             param entries
@@ -48,37 +51,6 @@ $group
                         @ state
                     @expr item.type === 'file' && state.isFocused === true
                 # @ts-ignore
-    p _handleChangeCode
-        => 
-            param content
-                :string 
-            $* VIA olf version 
-            let focusedEntry
-                :ref FileSystemEntry
-            log '_handleChangeCode', 'content', content
-            _ this.setState
-                => 
-                    param state
-                        :ref State
-                    return 
-                        { 
-                            @ saveStatus 'changed'
-                            @ fileEntries
-                                _ state.fileEntries.map
-                                    => 
-                                        param entry
-                                        if entry.item.type === 'file' && entry.state.isFocused
-                                            set focusedEntry = entry
-                                            return 
-                                                _ updateEntry
-                                                    @ entry
-                                                    { 
-                                                        { item
-                                                            @ content
-                                        return entry
-                => 
-                    _ this._generateArtifact()
-            *$
     p _handleFileEntriesChange
         => 
             param nextFileEntries
@@ -99,5 +71,5 @@ $group
                                     { 
                                         @ fileEntries
                             @ resolve
-
+    *$
 

@@ -4,15 +4,15 @@ module
         var ctrl = {
             name: 'TFolders',
             path: '/tfolders'
-        } 
+        }
 
     controller( &ctrl )
         
         $append imports
+            import jsesc from 'jsesc'
             import
                 @ tFolderApi
-                from '../../features/tfolder'
-
+                from '../../features/production'
         _ this.router.get('/tfolders', this.tfolders)
 
         $append handlers
@@ -26,4 +26,19 @@ module
                                 {
                                     @ title 'tFolder · Wizzi'
                                     @ tfolders result.item
+                                    @ __INITIAL_DATA__
+                                        `lit 
+                                            + &nbsp; window.__INITIAL_DATA__ =&nbsp;
+                                            _ jsesc
+                                                { 
+                                                    { data
+                                                        @ type 'success'
+                                                        @ formName 'ListTFolder'
+                                                        { formData 
+                                                            @ tfolders result.item
+                                                    { queryParams
+                                                { 
+                                                    @ quotes 'double'
+                                                    @ isScriptContext true
+
                     catch_fail( tFolders )

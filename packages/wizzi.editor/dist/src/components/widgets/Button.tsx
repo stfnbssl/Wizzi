@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\widgets\Button.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import React, {FunctionComponent} from 'react';
 // see https://mxstbr.blog/2016/11/styled-components-magic-explained/
@@ -42,7 +42,7 @@ const buttonKeyframes = keyframes`
     }
     
 `
-const StyledRoot = styled.div<RootStyleProps>`
+const StyledRoot = styled.button<RootStyleProps>`
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -123,7 +123,6 @@ export const Button: FunctionComponent<ButtonProps> = ({
 
      (
     <StyledRoot 
-        type="button"
         className={className}
         disabled={disabled}
         onClick={onClick}

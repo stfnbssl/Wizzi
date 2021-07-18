@@ -178,10 +178,7 @@ module
                             :ref T
                     :null
                 = null
-            for
-                left
-                    const key
-                in content
+            for const key in content
                 const val = content[key]
                 if val === null
                     if state[key]

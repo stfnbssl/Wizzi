@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\production\api\package.ts.ittf
-    utc time: Wed, 07 Jul 2021 15:52:36 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import {GetPackageProductionModel} from '../mongo/package';
 import {IPackageProductionModel} from '../types';
@@ -61,11 +61,23 @@ export async function getListPackageProduction(options?: any):  Promise<CRUDResu
                     console.log(myname, 'getListPackageProduction', 'PackageProduction.find', 'error', err);
                     return reject(err);
                 }
-                console.log(myname, 'getListPackageProduction', 'PackageProduction.find', 'result', result);
+                console.log(myname, 'getListPackageProduction', 'PackageProduction.find', 'Object.keys(result)', Object.keys(result));
+                const resultItem = [];
+                var i, i_items=result, i_len=result.length, item;
+                for (i=0; i<i_len; i++) {
+                    item = result[i];
+                    const item_obj = {
+                        owner: item.owner, 
+                        name: item.name, 
+                        description: item.description, 
+                        packiFiles: item.packiFiles
+                     };
+                    resultItem.push(item_obj)
+                }
                 resolve({
                     oper: 'getList', 
                     ok: true, 
-                    item: result
+                    item: resultItem
                  })
             }
             )
@@ -178,17 +190,24 @@ export async function updatePackageProduction(owner: string, name: string, descr
     return new Promise((resolve, reject) => {
         
             
-            let query = {
+            const query = {
                 owner: owner, 
                 name: name
              };
-            let update = {
-                owner: owner, 
-                name: name, 
-                description: description, 
-                packiFiles: packiFiles, 
-                updated_at: new Date()
-             };
+            const update: any = {};
+            if (typeof owner !== 'undefined') {
+                update['owner'] = owner;
+            }
+            if (typeof name !== 'undefined') {
+                update['name'] = name;
+            }
+            if (typeof description !== 'undefined') {
+                update['description'] = description;
+            }
+            if (typeof packiFiles !== 'undefined') {
+                update['packiFiles'] = packiFiles;
+            }
+            update['updated_at'] = new Date();
             
             PackageProduction.findOneAndUpdate(query, update, {}, (err, result) => {
             

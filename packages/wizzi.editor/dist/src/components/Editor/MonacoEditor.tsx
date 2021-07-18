@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\Editor\MonacoEditor.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import classnames from 'classnames';
@@ -286,6 +286,7 @@ class MonacoEditorComp extends React.Component<MonacoEditorProps, State> {
     };
     
     _openFile = (path: string, value: string, focus?: boolean) => {
+        console.log('MonacoEditor', '_openFile', path, value);
         this._initializeFile(path, value);
         const model = findModel(path);
         if (this._editor && model) {

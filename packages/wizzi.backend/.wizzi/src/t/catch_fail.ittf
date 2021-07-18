@@ -4,6 +4,7 @@ $group
     ._ catch
         => 
             param err
+                :any
             log '${method}.error', err
             _ sendFailure
                 @ response

@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\features\preferences\types.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import React from 'react';
 export type ThemeName = 'light' | 'dark';
@@ -16,11 +16,8 @@ export type PreferencesType = {
     panelType: PanelType;
     theme: ThemeName;
     verbose: boolean;
-    connectGithubRepos: boolean;
     autoGenSingleDoc: boolean;
     autoExecJob: boolean;
-    loggedUid?: string;
-    trustLocalStorage: boolean;
 };
 
 export type SetPreferencesType = (overrides: Partial<PreferencesType>) => void;

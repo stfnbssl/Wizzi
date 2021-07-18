@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\js\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\root\webpack.config.js.ittf
-    utc time: Sun, 27 Jun 2021 11:22:03 GMT
+    utc time: Sat, 17 Jul 2021 06:23:58 GMT
 */
 'use strict';
 const path = require('path');
@@ -140,7 +140,6 @@ module.exports = {
                 PACKI_SEGMENT_KEY: JSON.stringify(env('PACKI_SEGMENT_KEY')), 
                 PACKI_AMPLITUDE_KEY: JSON.stringify(env('PACKI_AMPLITUDE_KEY')), 
                 PACKI_WEBPLAYER_URL: JSON.stringify(env('PACKI_WEBPLAYER_URL')), 
-                IMPORT_SERVER_URL: JSON.stringify(env('IMPORT_SERVER_URL')), 
                 DEPLOY_ENVIRONMENT: JSON.stringify(env('DEPLOY_ENVIRONMENT')), 
                 BUILD_TIMESTAMP: JSON.stringify(Date.now())
              }

@@ -8,6 +8,7 @@ module
         @ folderBrowse
         @ IttfMTreeState
         @ FolderBrowseResult
+        @ verify
         from 'wizzi-utils'
     import
         @ packiTypes
@@ -32,6 +33,7 @@ module
 
     $include productions/loadModel
     $include productions/debugInfo
+    $include productions/mTree
     $include productions/generateArtifact
     $include productions/transformModel
     $include productions/executeJob

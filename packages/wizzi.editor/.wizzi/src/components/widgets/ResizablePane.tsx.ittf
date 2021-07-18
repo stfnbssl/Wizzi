@@ -57,12 +57,10 @@ module
             m componentDidMount
                 _ document.addEventListener('mouseup', this._handleMouseUp)
                     # @ts-ignore
-                    # @ts-ignore
                 _ document.addEventListener('mousemove', this._handleMouseMove)
                     # @ts-ignore
             m componentWillUnmount
                 _ document.removeEventListener('mouseup', this._handleMouseUp)
-                    # @ts-ignore
                     # @ts-ignore
                 _ document.removeEventListener('mousemove', this._handleMouseMove)
                     # @ts-ignore
@@ -157,16 +155,14 @@ module
                         @ ref {this._pane}
                         @ className
                             `lit
-                                +
                                 _ css(styles.container)
                                 + &nbsp;
                                 @ className ?? ''
-                                +
                         + {children}
                         div
                             @ className
                                 _ css
-                                    @expr styles.handle
+                                    @ styles.handle
                                     iif direction === 'horizontal'
                                         then styles.horizontal
                                         else styles.vertical

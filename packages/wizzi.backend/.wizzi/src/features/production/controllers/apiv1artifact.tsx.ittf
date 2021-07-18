@@ -13,6 +13,7 @@ module
                 @ validateArtifactProduction
                 @ getArtifactProduction
                 @ updateArtifactProduction
+                @ invalidateCache
                 from '../api/artifact'
             +
             const myname = 'features/production/controllers/apiv1artifactproduction'
@@ -66,12 +67,15 @@ module
                     @ request.body.description
                     @ request.body.mainIttf
                     @ request.body.schema
-                    @ request.body.packiFiles
+                    @ JSON.stringify(request.body.packiFiles)
                     ._ then
                         =>
                             param result
                                 :any
                             log 'putArtifactProduction.result', result
+                            _ invalidateCache
+                                @ request.params.owner
+                                @ request.params.name
                             _ sendSuccess
                                 @ response
                                 @ result

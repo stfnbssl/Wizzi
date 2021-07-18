@@ -2,12 +2,12 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\features\production\controllers\apiv1artifact.tsx.ittf
-    utc time: Wed, 07 Jul 2021 15:52:37 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import {Router, Request, Response} from 'express';
 import {ControllerType, AppInitializerType} from '../../../features/app/types';
 import {sendHtml, sendSuccess, sendPromiseResult, sendFailure} from '../../../utils/sendResponse';
-import {validateArtifactProduction, getArtifactProduction, updateArtifactProduction} from '../api/artifact';
+import {validateArtifactProduction, getArtifactProduction, updateArtifactProduction, invalidateCache} from '../api/artifact';
 
 const myname = 'features/production/controllers/apiv1artifactproduction';
 
@@ -34,7 +34,7 @@ export class ApiV1ArtifactProductionController implements ControllerType {
             console.log('getCheckArtifactName.result', result);
             sendSuccess(response, result)
         }
-        ).catch((err) => {
+        ).catch((err: any) => {
         
             console.log('getCheckArtifactName.error', err);
             sendFailure(response, {
@@ -53,7 +53,7 @@ export class ApiV1ArtifactProductionController implements ControllerType {
             console.log('getArtifactProduction.result', result);
             sendSuccess(response, result)
         }
-        ).catch((err) => {
+        ).catch((err: any) => {
         
             console.log('getArtifactProduction.error', err);
             sendFailure(response, {
@@ -68,12 +68,13 @@ export class ApiV1ArtifactProductionController implements ControllerType {
     
         console.log('putArtifactProduction.request.params', request.params);
         console.log('putArtifactProduction.request.body', request.body);
-        updateArtifactProduction(request.params.owner, request.params.name, request.body.description, request.body.mainIttf, request.body.schema, request.body.packiFiles).then((result: any) => {
+        updateArtifactProduction(request.params.owner, request.params.name, request.body.description, request.body.mainIttf, request.body.schema, JSON.stringify(request.body.packiFiles)).then((result: any) => {
         
             console.log('putArtifactProduction.result', result);
+            invalidateCache(request.params.owner, request.params.name)
             sendSuccess(response, result)
         }
-        ).catch((err) => {
+        ).catch((err: any) => {
         
             console.log('putArtifactProduction.error', err);
             sendFailure(response, {

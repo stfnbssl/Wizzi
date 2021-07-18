@@ -47,6 +47,8 @@ module
             { 
                 @ loading false
                 @ generatedArtifact undefined
+                @ mTreeBuildUpScript undefined
+                @ mTreeIttf undefined
                 { jobGeneratedArtifacts
                 { timedServices
     +
@@ -66,11 +68,13 @@ module
             param state = initialState
             param action
             switch action.type
+                +
                 case getType(wizziActions.generateArtifactRequest)
                     log "wizziActions.generateArtifactRequest"
                     return 
                         { 
                             @ ...state
+                            @ generatedArtifact undefined
                             @ loading true
                 case getType(wizziActions.generateArtifactSuccess)
                     log "wizziActions.generateArtifactSuccess", action
@@ -101,6 +105,51 @@ module
                             @ ...state
                             @ loading false
                             @ errors action.payload
+                +
+                case getType(wizziActions.mTreeDebugInfoRequest)
+                    log "wizziActions.mTreeDebugInfoRequest"
+                    return 
+                        { 
+                            @ ...state
+                            @ mTreeBuildUpScript undefined
+                            @ loading true
+                case getType(wizziActions.mTreeDebugInfoSuccess)
+                    log "wizziActions.mTreeDebugInfoSuccess", action
+                    return 
+                        { 
+                            @ ...state
+                            @ loading false
+                            @ ...action.payload.mTreeBuildUpScript
+                case getType(wizziActions.mTreeDebugInfoError)
+                    log "wizziActions.mTreeDebugInfoError", action
+                    return 
+                        { 
+                            @ ...state
+                            @ loading false
+                            @ errors action.payload
+                +
+                case getType(wizziActions.mTreeRequest)
+                    log "wizziActions.mTreeRequest"
+                    return 
+                        { 
+                            @ ...state
+                            @ mTreeIttf undefined
+                            @ loading true
+                case getType(wizziActions.mTreeSuccess)
+                    log "wizziActions.mTreeSuccess", action
+                    return 
+                        { 
+                            @ ...state
+                            @ loading false
+                            @ ...action.payload.mTreeIttf
+                case getType(wizziActions.mTreeError)
+                    log "wizziActions.mTreeError", action
+                    return 
+                        { 
+                            @ ...state
+                            @ loading false
+                            @ errors action.payload
+                +
                 case getType(wizziActions.executeJobRequest)
                     log "wizziActions.executeJobRequest"
                     return 

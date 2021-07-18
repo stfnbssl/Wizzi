@@ -67,9 +67,6 @@ $group
                     name "PACKI_WEBPLAYER_URL"
                     value "env('PACKI_WEBPLAYER_URL')"
                 {
-                    name "IMPORT_SERVER_URL"
-                    value "env('IMPORT_SERVER_URL')"
-                {
                     name "DEPLOY_ENVIRONMENT"
                     value "env('DEPLOY_ENVIRONMENT')"
                 {

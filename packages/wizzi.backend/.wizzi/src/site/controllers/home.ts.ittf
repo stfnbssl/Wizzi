@@ -19,10 +19,8 @@ module
             import
                 @ artifactApi
                 @ packageApi
-                from '../../features/production'
-            import
                 @ tFolderApi
-                from '../../features/tfolder'
+                from '../../features/production'
             import
                 @ config
                 from '../../features/config'

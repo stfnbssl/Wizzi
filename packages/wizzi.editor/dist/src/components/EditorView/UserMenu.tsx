@@ -1,16 +1,18 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\EditorView\UserMenu.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import * as React from 'react';
-import {withAuth, getLoginHref, AuthProps} from '../../features/auth';
+import {loggedUser} from '../../features/app';
 import {c} from '../ThemeProvider';
 import {Avatar} from '../widgets/Avatar';
 import ContextMenu from '../widgets/ContextMenu';
-export type UserMenuProps = AuthProps;
+export type UserMenuProps = { 
+    loggedUser: LoggedUser;
+};
 type State = { 
     visible: boolean;
 };
@@ -57,7 +59,7 @@ export class UserMenuComp extends React.Component<UserMenuProps, State> {
     _avatar = React.createRef<HTMLButtonElement>();
     render() {
         const {
-            viewer
+            loggedUser
          } = this.props;
         return  (
             <div
@@ -65,17 +67,38 @@ export class UserMenuComp extends React.Component<UserMenuProps, State> {
                 <button
                  ref={this._avatar} className={css(styles.button)}>
                     <Avatar
-                     source={viewer?.picture ? viewer.picture : null} size={26} />
+                     source={loggedUser?.picture ? loggedUser.picture : null} size={26} />
                 </button>
                 <ContextMenu 
                     ref={this._menu}
                     visible={this.state.visible}
-                    actions={viewer ? [
+                    actions={loggedUser ? [
                                 {
-                                    label: 'My Packies', 
+                                    label: 'My artifacts', 
                                     handler: () => 
                                     
-                                        window.open(`${process.env.SERVER_URL}/@${viewer.username}/packies`)
+                                        window.open(`${process.env.SERVER_URL}/productions/artifacts`)
+                                    
+                                 }, 
+                                {
+                                    label: 'My packages', 
+                                    handler: () => 
+                                    
+                                        window.open(`${process.env.SERVER_URL}/productions/packages`)
+                                    
+                                 }, 
+                                {
+                                    label: 'My metas', 
+                                    handler: () => 
+                                    
+                                        window.open(`${process.env.SERVER_URL}/productions/metas`)
+                                    
+                                 }, 
+                                {
+                                    label: 'My fragments', 
+                                    handler: () => 
+                                    
+                                        window.open(`${process.env.SERVER_URL}/productions/fragments`)
                                     
                                  }, 
                                 {
@@ -102,8 +125,8 @@ export class UserMenuComp extends React.Component<UserMenuProps, State> {
         ;
     }
 }
-export const UserMenu = withAuth(UserMenuComp);
-export default withAuth(UserMenuComp);
+export const UserMenu = UserMenuComp;
+export default UserMenu;
 const styles = StyleSheet.create({
     container: {
         marginRight: 16

@@ -9,6 +9,7 @@ module
     controller( &ctrl )
         
         $append imports
+            import jsesc from 'jsesc'
             import
                 @ artifactApi
                 @ packageApi
@@ -29,6 +30,21 @@ module
                                 {
                                     @ title 'Artifact productions · Wizzi'
                                     @ artifacts result.item
+                                    @ __INITIAL_DATA__
+                                        `lit 
+                                            + &nbsp; window.__INITIAL_DATA__ =&nbsp;
+                                            _ jsesc
+                                                { 
+                                                    { data
+                                                        @ type 'success'
+                                                        @ formName 'ListArtifactProduction'
+                                                        { formData 
+                                                            @ artifacts result.item
+                                                    { queryParams
+                                                { 
+                                                    @ quotes 'double'
+                                                    @ isScriptContext true
+
                     catch_fail( artifact productions )
 
             handler( packages )

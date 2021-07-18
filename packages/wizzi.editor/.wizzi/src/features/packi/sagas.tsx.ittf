@@ -47,27 +47,6 @@ module
                         { 
                             @ packiNames res
         +
-        saga_handler( packi, initPackiRequest, initPackiError
-            const packiId = getSelectedPacki()
-            if action.payload.preferences.trustLocalStorage && action.payload.preferences.loggedUid
-                log 'sagas.handleInitPackiRequest.uid', action.payload.preferences.loggedUid
-                yield 
-                    _ put
-                        _ appActions.loginUserByStoredUid
-                            { 
-                                @ uid action.payload.preferences.loggedUid
-                                @ selectedPackiId packiId
-            else
-                log 'sagas.handleInitPackiRequest.starterPAcky', config.DEFAULT_PACKI_NAME
-                const res
-                    yield packiData.assertDefaultPacki()
-                log 'sagas.handleInitPackiRequest.assertDefaultPacki.res', res
-                yield 
-                    _ put
-                        _ packiActions.selectPackiRequest
-                            { 
-                                @ id config.DEFAULT_PACKI_NAME
-        +
         saga_handler( packi, selectPackiRequest, selectPackiError
             const res
                 :ref packiTypes.PackiFiles
@@ -79,29 +58,6 @@ module
                         { 
                             @ id action.payload.id
                             @ files res
-        +
-        saga_handler( packi, createPackiRequest, createPackiError
-            const res
-                :ref packiTypes.PackiFiles
-                =
-                    yield packiData.createPacki(action.payload.id, action.payload.options)
-            yield 
-                _ put
-                    _ packiActions.createPackiSuccess
-                        { 
-                            @ id action.payload.id
-                            @ files res
-        +
-        saga_handler( packi, deletePackiRequest, deletePackiError
-            const res
-                :ref packiTypes.PackiFiles
-                =
-                    yield packiData.deletePacki(action.payload.id)
-            yield 
-                _ put
-                    _ packiActions.deletePackiSuccess
-                        { 
-                            @ id action.payload.id
         +
         saga_handler( packi, savePackiRequest, savePackiError
             yield 
@@ -129,76 +85,6 @@ module
                     { 
                         @ packiNames res
     +
-    saga_handler( packi, fetchOwnedGitRepositoriesRequest, fetchOwnedGitRepositoriesError
-        const res
-            yield 
-                _ call
-                    @ callApi
-                    @ 'get'
-                    @expr config.API_URL
-                    `lit 
-                        + github/ownedrepos/
-                        @ action.payload.uid
-                        + 
-        log 'sagas.handleFetchOwnedGitRepositoriesRequest.res', res
-        yield 
-            _ put
-                _ packiActions.fetchOwnedGitRepositoriesSuccess
-                    { 
-                        @ repositories res
-    +
-    saga_handler( packi, cloneGitRepositoryRequest, cloneGitRepositoryError
-        const res
-            yield 
-                _ call
-                    @ callApi
-                    @ 'get'
-                    @expr config.API_URL
-                    `lit 
-                        + github/clone/
-                        @ action.payload.uid
-                        + /
-                        @ action.payload.owner
-                        + /
-                        @ action.payload.name
-                        + /
-                        @ action.payload.branch
-                        + /
-                        iif action.payload.ittfOnly
-                            then 'ittf'
-                            else 'all'
-                        + 
-        log 'sagas.handleCloneGitRepositoryRequest.res', res
-        yield 
-            _ put
-                _ packiActions.cloneGitRepositorySuccess
-                    { 
-                        @ repository res
-    +
-    saga_handler( packi, commitGitRepositoryRequest, commitGitRepositoryError
-        const res
-            yield 
-                _ call
-                    @ callApi
-                    @ 'post'
-                    @expr config.API_URL
-                    `lit 
-                        + github/commit/
-                        @ action.payload.uid
-                        + /
-                        @ action.payload.owner
-                        + /
-                        @ action.payload.name
-                        + /
-                        @ action.payload.branch
-                    { 
-                        @ files action.payload.files
-        log 'sagas.handleCommitGitRepositoryRequest.res', res
-        yield 
-            _ put
-                _ packiActions.commitGitRepositorySuccess
-                    { 
-    +
     saga_handler( packi, uploadPackiTemplateRequest, uploadPackiTemplateError
         const res
             yield 
@@ -223,18 +109,12 @@ module
     function* watchFetchRequest
         $if wzCtx.Build.usePackiLocal
             yield takeEvery(getType(packiActions.fetchPackiListRequest), handleFetchPackiListRequest)
-            yield takeEvery(getType(packiActions.initPackiRequest), handleInitPackiRequest)
             yield takeEvery(getType(packiActions.selectPackiRequest), handleSelectPackiRequest)
         yield takeEvery(getType(packiActions.fetchPackiTemplateListRequest), handleFetchPackiTemplateListRequest)
-        yield takeEvery(getType(packiActions.fetchOwnedGitRepositoriesRequest), handleFetchOwnedGitRepositoriesRequest)
-        yield takeEvery(getType(packiActions.cloneGitRepositoryRequest), handleCloneGitRepositoryRequest)
     +
     function* watchCrudRequest
         $if wzCtx.Build.usePackiLocal
-            yield takeEvery(getType(packiActions.createPackiRequest), handleCreatePackiRequest)
             yield takeEvery(getType(packiActions.savePackiRequest), handleSavePackiRequest)
-            yield takeEvery(getType(packiActions.deletePackiRequest), handleDeletePackiRequest)
-        yield takeEvery(getType(packiActions.commitGitRepositoryRequest), handleCommitGitRepositoryRequest)
         yield takeEvery(getType(packiActions.uploadPackiTemplateRequest), handleUploadPackiTemplateRequest)
     +
     function* packiSaga

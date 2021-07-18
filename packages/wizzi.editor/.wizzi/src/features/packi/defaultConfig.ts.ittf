@@ -12,19 +12,9 @@ module
             = 'https://exp.host'
     +
     export
-        const packierURL
-            :string
-            = 'https://packier.expo.io'
-    +
-    export
         const host
             :string
             = 'expo.io'
-    +
-    export
-        const webPlayerURL
-            :string
-            = 'https://packi-web-player.s3.us-west-1.amazonaws.com/v2/%%SDK_VERSION%%'
     +
     export
         const sdkVersion
@@ -37,6 +27,7 @@ module
             =
                 {
                     @ sdkVersion
+                    @ owner ''
                     @ name ''
                     @ description ''
                     { dependencies
@@ -49,9 +40,7 @@ module
     const defaultConfig
         {
             @ apiURL
-            @ packierURL
             @ host
             @ sdkVersion
-            @ webPlayerURL
     +
     export-default defaultConfig

@@ -1,8 +1,8 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\App.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Sat, 17 Jul 2021 06:24:07 GMT
 */
 import * as React from 'react';
 // Redux
@@ -11,10 +11,10 @@ import {connect, ConnectedProps} from 'react-redux';
 import {StyleSheet, css} from 'aphrodite';
 // Features
 import {getFilesFromQuery, fileConversions} from '../features/file';
-import {withAuth, AuthProps} from '../features/auth';
 import {withPreferences, PreferencesContextType} from '../features/preferences';
 import {Annotation} from '../features/annotations';
-import {SavedPacki, QueryParams, SaveStatus, SaveHistory, SaveOptions, SDKVersion, PackiState, PackiFile, PackiFiles, PackiDependencies, PackiDependency, PackiDefaults} from '../features/packi';
+import {LoggedUser} from '../features/app';
+import {SavedPacki, QueryParams, SaveStatus, SaveHistory, PackiSaveOptions, SDKVersion, PackiState, PackiFile, PackiFiles, PackiDependencies, PackiDependency, PackiDefaults, PackiProduction} from '../features/packi';
 import {PackiSession, PackiListenerSubscription} from '../features/packi';
 // Utils
 import nullthrows from 'nullthrows';
@@ -30,7 +30,6 @@ import {EditorViewProps} from './EditorView/EditorViewProps';
 import LazyLoad from './widgets/LazyLoad';
 import {Dispatch} from 'redux';
 import {MuiThemeProvider} from '@material-ui/core/styles';
-import {LoggedUser, appActions} from '../features/app';
 import {Packi, packiActions} from '../features/packi';
 import {GitRepositoryMeta} from '../features/github';
 import {GeneratedArtifact, JobError, wizziActions} from '../features/wizzi';
@@ -43,63 +42,49 @@ import updateEntry from './FileList/actions/updateEntry';
 // Defaults
 import {config} from '../features/config';
 const {
-    DEFAULT_PACKI_NAME, 
-    DEFAULT_PACKI_DESCRIPTION, 
     DEFAULT_PACKI_CODE, 
-    DEFAULT_DEPENDENCIES, 
-    versions, 
+    VERSIONS, 
     DEFAULT_SDK_VERSION
  } = config;
 
 
 interface PackiStateProps {
-    loggedUser?: LoggedUser;
     packiNames?: string[];
-    currentPacki?: Packi;
     packiTemplateNames?: string[];
-    ownedGitRepositories?: GitRepositoryMeta[];
     generatedArtifact?: GeneratedArtifact;
     jobGeneratedArtifacts?: PackiFiles;
     jobError?: JobError;
 }
 
 interface PackiDispatchProps {
-    dispatchLoggedOn: (user: LoggedUser) => void;
-    dispatchLoggedOff: () => void;
     dispatchInitPacki: (preferences: PreferencesType) => void;
     dispatchSelectPacki: (packiId: string) => void;
     dispatchSavePacki: (packiId: string, filesToSave: PackiFiles, packiEntryFiles: PackiFiles) => void;
-    dispatchCreatePacki: (packiId: string, packiKind: string) => void;
-    dispatchDeletePacki: (packiId: string) => void;
     dispatchGenerateArtifact: (fileName: string, files: PackiFiles) => void;
+    dispatchMTree: (fileName: string, files: PackiFiles) => void;
+    dispatchMTreeDebugInfo: (fileName: string, files: PackiFiles) => void;
     dispatchExecuteJob: (files: PackiFiles) => void;
     dispatchSetTimedService: (name: string, onOff: boolean, payload?: any, frequence?: number) => void;
 }
 
-const packiMapStateToProps = (state: StoreState):  PackiStateProps => 
+const packiMapStateToProps = (state: StoreState):  PackiStateProps => {
 
-    ({
-        loggedUser: state.app.loggedUser, 
-        currentPacki: state.packi.currentPacki, 
-        packiNames: state.packi.packiNames, 
-        packiTemplateNames: state.packi.packiTemplateNames, 
-        ownedGitRepositories: state.packi.ownedGitRepositories, 
-        generatedArtifact: state.wizzi.generatedArtifact, 
-        jobGeneratedArtifacts: state.wizzi.jobGeneratedArtifacts, 
-        jobError: state.wizzi.jobError
-     })
+    console.log('packiMapStateToProps.wizzi.mTreeIttf', state.wizzi.mTreeIttf);
+    return {
+            packiNames: state.packi.packiNames, 
+            packiTemplateNames: state.packi.packiTemplateNames, 
+            generatedArtifact: state.wizzi.generatedArtifact, 
+            mTreeBuildUpScript: state.wizzi.mTreeBuildUpScript, 
+            mTreeIttf: state.wizzi.mTreeIttf, 
+            jobGeneratedArtifacts: state.wizzi.jobGeneratedArtifacts, 
+            jobError: state.wizzi.jobError
+         };
+}
 ;
+
 const packiMapDispatchToProps = (dispatch: Dispatch):  PackiDispatchProps => 
 
     ({
-        dispatchLoggedOn: (user: LoggedUser) => 
-        
-            dispatch(appActions.updateLoggedUser(user))
-        , 
-        dispatchLoggedOff: () => 
-        
-            dispatch(appActions.updateLoggedUser(undefined))
-        , 
         dispatchInitPacki: (preferences: PreferencesType) => 
         
             dispatch(packiActions.initPackiRequest({
@@ -120,25 +105,30 @@ const packiMapDispatchToProps = (dispatch: Dispatch):  PackiDispatchProps =>
                 packiEntryFiles
              }))
         , 
-        dispatchCreatePacki: (packiId: string, packiKind: string) => 
-        
-            dispatch(packiActions.createPackiRequest({
-                id: packiId, 
-                options: {
-                    data: packiKind
-                 }
-             }))
-        , 
-        dispatchDeletePacki: (packiId: string) => 
-        
-            dispatch(packiActions.deletePackiRequest({
-                id: packiId
-             }))
-        , 
         dispatchGenerateArtifact: (filePath: string, files: PackiFiles) => {
         
             if (filePath.endsWith('.ittf') && !filePath.endsWith('wfjob.ittf')) {
                 dispatch(wizziActions.generateArtifactRequest({
+                    filePath, 
+                    files
+                 }))
+            }
+        }
+        , 
+        dispatchMTree: (filePath: string, files: PackiFiles) => {
+        
+            if (filePath.endsWith('.ittf') && !filePath.endsWith('wfjob.ittf')) {
+                dispatch(wizziActions.mTreeRequest({
+                    filePath, 
+                    files
+                 }))
+            }
+        }
+        , 
+        dispatchMTreeDebugInfo: (filePath: string, files: PackiFiles) => {
+        
+            if (filePath.endsWith('.ittf') && !filePath.endsWith('wfjob.ittf')) {
+                dispatch(wizziActions.mTreeDebugInfoRequest({
                     filePath, 
                     files
                  }))
@@ -162,26 +152,9 @@ const packiMapDispatchToProps = (dispatch: Dispatch):  PackiDispatchProps =>
         
      })
 ;
-type Params = { 
-    id?: string;
-    username?: string;
-    projectName?: string;
-    repoName?: string;
-};
-type AppProps = AuthProps & PreferencesContextType & PropsFromRedux & { 
+type AppProps = PreferencesContextType & PropsFromRedux & { 
     Packi?: SavedPacki;
-    history: { 
-        push: (props: { 
-            pathname: string;
-            search: string;
-        }) => void;
-    };
-    match: { 
-        params: Params;
-    };
-    location: { 
-        search: string;
-    };
+    loggedUser?: LoggedUser;
     query: QueryParams;
     userAgent: string;
     files: PackiFiles;
@@ -198,19 +171,16 @@ type State = PackiStateProps & {
     isPreview: boolean;
     isDownloading: boolean;
     devicePreviewShown: boolean;
-    webPreviewURL: string;
     isLocalWebPreview: boolean;
     verbose: boolean;
     annotations: Annotation[];
-    packierURL: string;
     packiStoreId?: string;
     packiSessionReady: boolean;
-    loggedUser?: LoggedUser;
     packiNames?: string[];
-    currentPacki?: Packi;
     packiTemplateNames?: string[];
-    ownedGitRepositories?: GitRepositoryMeta[];
     generatedArtifact?: GeneratedArtifact;
+    mTreeBuildUpScript?: string;
+    mTreeIttf?: string;
     jobGeneratedArtifacts?: PackiFiles;
     jobError?: JobError;
     params: Params;
@@ -219,66 +189,53 @@ type State = PackiStateProps & {
     lastJobfileEntries: FileSystemEntry[];
 };
 class AppMain extends React.Component<AppProps, State> {
-    constructor(props: Props) {
+    constructor(props: AppProps) {
         super(props);
-        let name = DEFAULT_PACKI_NAME;
-        let description = DEFAULT_PACKI_DESCRIPTION;
+        console.log('App.ctor.props', props);
+        let id = props.packi._id;
+        let files = props.packi.packiFiles;
+        let dependencies = props.packi.dependencies;
+        const owner = props.packi.owner;
+        const name = props.packi.name;
+        const mainIttf = props.packi.mainIttf;
+        const wizziSchema = props.packi.wizziSchema;
+        const description = props.packi.description;
+        const packiProduction: PackiProduction = props.packi.packiProduction;
+        // sdkVersion
         let sdkVersion: SDKVersion = DEFAULT_SDK_VERSION;
-        let files = props.files;
-        let dependencies = props.files === DEFAULT_PACKI_CODE && !props.packi?.packiFiles ? DEFAULT_DEPENDENCIES : {};
-        let id = undefined;
-        if (props.packi) {
-            id = props.packi._id ?? id;
-            files = props.packi.packiFiles ?? code;
-            dependencies = props.packi.dependencies ?? dependencies;
-            if (props.packi.manifest) {
-                const {
-                    manifest
-                 } = props.packi;
-                name = manifest.name;
-                description = manifest.description;
-                sdkVersion = manifest.sdkVersion ?? sdkVersion;
-            }
-            else {
-                name = props.packi.name;
-            }
-        }
+        sdkVersion = props.packi.sdkVersion ?? sdkVersion;
         const initialSdkVersion = sdkVersion;
         let wasUpgraded = false;
-        if (!versions.hasOwnProperty(sdkVersion)) {
+        if (!VERSIONS.hasOwnProperty(sdkVersion)) {
             sdkVersion = DEFAULT_SDK_VERSION;
             wasUpgraded = true;
         }
         const verbose = props.preferences.verbose;
         const sendCodeOnChangeEnabled = true;
         const sessionSecret = null;
-        const packierURL = nullthrows(process.env.IMPORT_SERVER_URL);
         const isLocalWebPreview = false;
         this._PackiSession = new PackiSession({
             disabled: true, 
+            id, 
+            owner, 
             name, 
             description, 
+            mainIttf, 
+            wizziSchema, 
             files, 
             dependencies, 
+            packiProduction, 
             sdkVersion, 
             verbose, 
             codeChangesDelay: sendCodeOnChangeEnabled ? 1000 : -1, 
-            id, 
-            user: sessionSecret ? {
-                    sessionSecret
-                 } : undefined, 
+            user: props.loggedUser, 
             apiURL: nullthrows(process.env.API_SERVER_URL), 
-            packierURL, 
-            host: // Use staging server in development, otherwise Wizzi Go and appetize
-            // can't access the runtime. Replace with ngrok url to test locally.
-            process.env.NODE_ENV === 'development' ? 'staging.packi.expo.io' : new URL(nullthrows(process.env.SERVER_URL)).host, 
-            webPreviewRef: typeof window !== 'undefined' ? this._previewRef : undefined, 
-            
-            // Serve local web-player through `/web-player` end-point to prevent CORS issues
-            webPlayerURL: typeof window !== 'undefined' && isLocalWebPreview ? `${window.location.origin}/web-player/%%SDK_VERSION%%` : nullthrows(process.env.PACKI_WEBPLAYER_URL) + '/v2/%%SDK_VERSION%%'
+            host: new URL(nullthrows(process.env.SERVER_URL)).host, 
+            webPreviewRef: typeof window !== 'undefined' ? this._previewRef : undefined
          });
         ;
         const devicePreviewShown = props.preferences.devicePreviewShown;
+        
         // TODO preserve selected from history
         const selectedFile = Object.keys(files).length ? Object.keys(files)[0] : '';
         this.state = {
@@ -296,8 +253,6 @@ class AppMain extends React.Component<AppProps, State> {
             devicePreviewShown, 
             verbose, 
             annotations: [], 
-            packierURL, 
-            webPreviewURL: '', 
             packiStoreId: undefined, 
             packiSessionReady: false, 
             fileEntries: [], 
@@ -314,7 +269,6 @@ class AppMain extends React.Component<AppProps, State> {
     _PackiStateListener?: PackiListenerSubscription;
     _isFocused: boolean = false;
     _focusTimer: number | undefined;
-    
     _initializePackiSession() {
         async () => 
         
@@ -325,24 +279,17 @@ class AppMain extends React.Component<AppProps, State> {
         
     }
     
-    _generateArtifactNotDebounced = (files: { 
-        [path: string]: PackiFile | null;
-    }) => {
-    
-        console.log('_generateArtifactNotDebounced', 'state.selectedFile', this.state.selectedFile);
-        console.log('_generateArtifactNotDebounced', 'Object.keys(files)', Object.keys(files));
-        console.log('_generateArtifactNotDebounced', 'state.session.files', this.state.session.files);
+    _generateArtifact(filePath) {
+        const files = this.state.session.files;
         if (Object.keys(files).length) {
-            const filePath = Object.keys(files)[0];
+            filePath = filePath || this.state.selectedFile || Object.keys(files)[0];
             if (filePath.endsWith('.ittf')) {
-                console.log('_generateArtifactNotDebounced', 'filePath', filePath);
-                // TODO send only fileEntries of the same schema of focusedEntry + json schema
+                console.log('_generateArtifact.filePath', filePath);
+                console.log('_generateArtifact', 'state.session.files', files);
                 this.props.dispatchGenerateArtifact(filePath, fileConversions.packiFilterIttf(this.state.session.files))
             }
         }
     }
-    ;
-    _generateArtifact = debounce(this._generateArtifactNotDebounced, 1000);
     
     _executeJobNotDebounced = () => {
     
@@ -362,14 +309,6 @@ class AppMain extends React.Component<AppProps, State> {
     ;
     _executeJob = debounce(this._executeJobNotDebounced, 5000);
     
-    _saveCodeNotDebounced = () => 
-    
-        this.props.dispatchSavePacki(this.state.packiStoreId as string, entryArrayToPacki(this.state.fileEntries.filter(e => 
-        
-            !e.item.virtual && !e.item.generated
-        )), entryArrayToPacki(this.state.fileEntries))
-    ;
-    _saveCode = debounce(this._saveCodeNotDebounced, 1000);
     static getDerivedStateFromProps(_props: Props, state: State) {
         return null;
     }
@@ -379,7 +318,9 @@ class AppMain extends React.Component<AppProps, State> {
         this._PackiSession.setDisabled(false);
         this._isFocused = document.hasFocus();
         this._focusTimer = window.setInterval(this._handleFocusChangeInterval, 500);
-        this.generateSelectedFile();
+        if (this.props.preferences.autoGenSingleDoc) {
+            this._generateArtifact();
+        }
     }
     
     componentWillUnmount() {
@@ -391,26 +332,6 @@ class AppMain extends React.Component<AppProps, State> {
     }
     
     componentDidUpdate(prevProps: Props, prevState: State) {
-        if (this.props.viewer !== prevProps.viewer) {
-            const sessionSecret = this.props.getSessionSecret();
-            if (this.state.session.user?.sessionSecret !== sessionSecret) {
-                this._PackiSession.setUser(sessionSecret ? {
-                        sessionSecret
-                     } : undefined)
-            }
-        }
-    }
-    generateSelectedFile() {
-        const path = this.state.selectedFile;
-        if (path && path.length > 0) {
-            if (this.props.preferences.autoGenSingleDoc) {
-                
-                // TODO filter *.ittf of type == 'CODE'
-                if (path.endsWith('.ittf') && ('/'+path).indexOf('/t/') < 0) {
-                    this.props.dispatchGenerateArtifact(path, this.state.session.files)
-                }
-            }
-        }
     }
     _handleFocusChangeInterval = () => {
         const isFocused = document.hasFocus();
@@ -445,37 +366,47 @@ class AppMain extends React.Component<AppProps, State> {
         );
     _handleSendCode = () => 
         this._PackiSession.sendCodeChanges();
-    _handleSessionStateChange = (state: PackiState, prevState: PackiState) => 
-        // console.log('Session state change: ', diff(prevState, state), state); // deep-object-diff
-        this.setState((st) => {
+    _handleSessionStateChange = (packiState: PackiState, prevPackiState: PackiState) => 
+        // log 'Session state change: ', diff(prevPackiState, packiState), packiState
+        this.setState((state) => {
         
             let annotations: Annotation[] | undefined;
             
             // Set save-status to changed if needed
-            const saveStatus: SaveStatus = state.unsaved && (st.saveStatus === 'saved-draft' || st.saveStatus === 'published' || st.saveStatus === 'unsaved') ? this.edited ? 'edited' : 'unsaved' : st.saveStatus;
+            const saveStatus: SaveStatus = state.unsaved && (state.saveStatus === 'saved-draft' || state.saveStatus === 'published' || state.saveStatus === 'unsaved') ? this.edited ? 'edited' : 'unsaved' : state.saveStatus;
             console.log('App._handleSessionStateChange', 'saveStatus', saveStatus);
             
             // Update session state
             return {
-                    session: state, 
+                    session: packiState, 
                     saveStatus, 
-                    annotations: annotations ?? st.annotations
+                    annotations: annotations ?? state.annotations
                  };
         }
-        , () => {
+        , 
+        // 15/7/21 Disactivated
         
-            console.log('App._handleSessionStateChange', 'calling _saveDraftIfNeeded');
-            this._saveDraftIfNeeded(true);
+        // for changes uploaded see
+        
+        // - _PackiSession.updatePackiData
+        
+        // - _PackiSession.updatePackiFiles
+        () => {
+        
         }
         );
     
     _handleSubmitMetadata = (details: { 
         name: string;
         description: string;
+        mainIttf: string;
+        wizziSchema: string;
     }) => {
         this.edited = true;
         this._PackiSession.setName(details.name);
         this._PackiSession.setDescription(details.description);
+        this._PackiSession.setMainIttf(details.mainIttf);
+        this._PackiSession.setWizziSchema(details.wizziSchema);
     };
     
     _handleChangeSDKVersion = (sdkVersion: SDKVersion, isLocalWebPreview?: boolean) => {
@@ -557,7 +488,7 @@ class AppMain extends React.Component<AppProps, State> {
     };
     _saveDraftIfNeededDebounced = debounce(this._saveDraftIfNeeded, 3000);
     
-    _saveAsync = async (options: SaveOptions = {}) => {
+    _saveAsync = async (options: PackiSaveOptions = {}) => {
     
         const {
             isDraft, 
@@ -623,17 +554,14 @@ class AppMain extends React.Component<AppProps, State> {
              })
         )
     };
+    
     _handleSelectFile = (path: string) => 
         this.setState((state) => {
         
             if (state.selectedFile !== path) {
                 console.log('App._handleSelectFile', this.props.preferences.autoGenSingleDoc, path);
                 if (this.props.preferences.autoGenSingleDoc) {
-                    
-                    // TODO filter *.ittf of type == 'CODE'
-                    if (path.endsWith('.ittf') && ('/'+path).indexOf('/t/') < 0) {
-                        this.props.dispatchGenerateArtifact(path, this.state.session.files)
-                    }
+                    this._generateArtifact(path)
                 }
                 return {
                         selectedFile: path
@@ -645,16 +573,19 @@ class AppMain extends React.Component<AppProps, State> {
         }
         );
     
+    
+    // log 'App._updateFiles.filesUpdate', filesUpdate
     _updateFiles = (updateFn: (files: PackiFiles) => { 
         [path: string]: PackiFile | null;
     }) => {
         const state = this._PackiSession.getState();
         const filesUpdate = updateFn(state.files);
-        console.log('App._updateFiles', filesUpdate);
         if (Object.keys(filesUpdate).length) {
             this.edited = true;
-            this._PackiSession.updateFiles(filesUpdate);
-            this._generateArtifact(filesUpdate);
+            this._PackiSession.updatePackiFiles(filesUpdate, () => 
+            
+                this._generateArtifact()
+            )
         }
     };
     
@@ -669,65 +600,37 @@ class AppMain extends React.Component<AppProps, State> {
         }
         return this._packi.getState().dependencies;
     };
-    _handleLoggedOn = async (user: LoggedUser) => {
     
-        this.props.dispatchLoggedOn(user);
-        this.props.setPreferences({
-            loggedUid: user.uid
-         })
-    }
-    ;
-    _handleLoggedOff = async () => {
-    
-        this.props.dispatchLoggedOff();
-        this.props.setPreferences({
-            loggedUid: undefined
-         })
-    }
-    ;
     _handleSelectPacki = async (packiId: string) => 
     
         this.props.dispatchSelectPacki(packiId);
     
     ;
-    _handleCreatePacki = async (packiId: string, packiKind: string) => 
     
-        this.props.dispatchCreatePacki(packiId, packiKind);
+    _handleMTreePreview = async () => {
     
-    ;
-    _handleDeletePacki = async (packiId: string) => 
-    
-        this.props.dispatchDeletePacki(packiId);
-    
-    ;
-    _findFocusedEntry = (entries: FileSystemEntry[]):  TextFileEntry | AssetFileEntry | undefined => 
-    
-        // @ts-ignore
-        entries.find(({
-            item, 
-            state
-         }) => 
-        
-            item.type === 'file' && state.isFocused === true
-        )
-    ;
-    _handleChangeCode = (content: string) => {
-    
+        const files = this.state.session.files;
+        if (Object.keys(files).length) {
+            const filePath = this.state.selectedFile || Object.keys(files)[0];
+            if (filePath.endsWith('.ittf')) {
+                console.log('_handleMTreePreview.filePath', filePath);
+                console.log('_handleMTreePreview', 'state.session.files', files);
+                this.props.dispatchMTree(filePath, fileConversions.packiFilterIttf(this.state.session.files))
+            }
+        }
     }
     ;
-    _handleFileEntriesChange = (nextFileEntries: FileSystemEntry[]):  Promise<void> => {
+    _handleMTreeDebugInfoPreview = async () => {
     
-        return new Promise(resolve => 
-            
-                this.setState((state) => {
-                
-                    let fileEntries = nextFileEntries;
-                    return {
-                            fileEntries
-                         };
-                }
-                , resolve)
-            );
+        const files = this.state.session.files;
+        if (Object.keys(files).length) {
+            const filePath = this.state.selectedFile || Object.keys(files)[0];
+            if (filePath.endsWith('.ittf')) {
+                console.log('_handleMTreeDebugInfoPreview.filePath', filePath);
+                console.log('_handleMTreeDebugInfoPreview', 'state.session.files', files);
+                this.props.dispatchMTreeDebugInfo(filePath, fileConversions.packiFilterIttf(this.state.session.files))
+            }
+        }
     }
     ;
     render() {
@@ -745,6 +648,7 @@ class AppMain extends React.Component<AppProps, State> {
                     )
                 ;
             }
+            console.log('App.state.session.files', this.state.session.files);
             return  (
                 <LazyLoad<React.ComponentType<EditorViewProps>>
                  load={() => 
@@ -760,14 +664,18 @@ class AppMain extends React.Component<AppProps, State> {
                             loaded && Comp ?  (
                                 <Comp 
                                     annotations={this.state.annotations}
+                                    loggedUser={this.props.loggedUser}
                                     autosaveEnabled={this.state.autosaveEnabled}
                                     createdAt={this.props.Packi ? this.props.Packi.created : undefined}
                                     dependencies={this.state.session.dependencies}
                                     missingDependencies={this.state.session.missingDependencies}
                                     description={this.state.session.description}
+                                    mainIttf={this.state.session.mainIttf}
+                                    wizziSchema={this.state.session.wizziSchema}
                                     experienceURL={experienceURL}
                                     files={this.state.session.files}
                                     isDownloading={this.state.isDownloading}
+                                    owner={this.state.session.owner}
                                     name={this.state.session.name}
                                     id={this.state.session.id}
                                     onDownloadAsync={this._handleDownloadAsync}
@@ -779,32 +687,26 @@ class AppMain extends React.Component<AppProps, State> {
                                     onSelectFile={this._handleSelectFile}
                                     previewRef={this._previewRef}
                                     previewShown={this.state.devicePreviewShown}
-                                    previewURL={this.state.webPreviewURL}
+                                    previewURL={this.state.session.previewURL}
                                     saveHistory={this.state.saveHistory}
                                     saveStatus={this.state.saveStatus}
                                     sdkVersion={this.state.session.sdkVersion}
                                     selectedFile={this.state.selectedFile}
                                     sendCodeOnChangeEnabled={this.state.sendCodeOnChangeEnabled}
-                                    packierURL={this.state.packierURL}
                                     updateDependencies={this._updateDependencies}
                                     updateFiles={this._updateFiles}
                                     uploadFileAsync={this._uploadAssetAsync}
                                     userAgent={this.props.userAgent}
                                     verbose={this.state.verbose}
-                                    currentPacki={this.props.currentPacki}
                                     generatedArtifact={this.props.generatedArtifact}
-                                    fileEntries={this.state.fileEntries}
-                                    entry={this._findFocusedEntry(this.state.fileEntries)}
+                                    mTreeBuildUpScript={this.props.mTreeBuildUpScript}
+                                    mTreeIttf={this.props.mTreeIttf}
                                     isWizziJobWaiting={this.state.isWizziJobWaiting}
                                     jobError={this.state.jobError}
-                                    onChangeCode={this._handleChangeCode}
-                                    onFileEntriesChange={this._handleFileEntriesChange}
-                                    onEntrySelected={this._handleEntrySelected}
                                     onSelectPacki={this._handleSelectPacki}
-                                    onCreatePacki={this._handleCreatePacki}
-                                    onDeletePacki={this._handleDeletePacki}
                                     onExecuteWizziJob={this._executeJobNotDebounced}
-                                    onSaveCode={this._saveCode}
+                                    onMTreePreview={this._handleMTreePreview}
+                                    onMTreeDebugInfoPreview={this._handleMTreeDebugInfoPreview}
                                  />
                                 )
                              :  (
@@ -831,7 +733,7 @@ class AppMain extends React.Component<AppProps, State> {
 }
 const connector = connect(packiMapStateToProps, packiMapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
-const AppMainContainer = withPreferences(withAuth(connector(AppMain)));
+const AppMainContainer = withPreferences(connector(AppMain));
 export default AppMainContainer;
 const styles = StyleSheet.create({
     container: {

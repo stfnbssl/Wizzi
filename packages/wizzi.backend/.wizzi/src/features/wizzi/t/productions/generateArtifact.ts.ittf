@@ -22,6 +22,12 @@ $group
                     async=> 
                         param resolve
                         param reject
+                        if !verify.isObject(files)
+                            return
+                                _ reject
+                                    {
+                                        @ message 'files parameter must be an object of type PackiFiles'
+                                        @ files
                         const generator = options && options.generator 
                             \b ? options.generator 
                             \b : generatorFor(filePath)

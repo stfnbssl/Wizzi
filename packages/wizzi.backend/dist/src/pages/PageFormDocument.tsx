@@ -2,7 +2,7 @@
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
     package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.backend\.wizzi\src\pages\PageFormDocument.tsx.ittf
-    utc time: Wed, 07 Jul 2021 15:52:37 GMT
+    utc time: Sun, 18 Jul 2021 15:08:53 GMT
 */
 import jsesc from 'jsesc';
 import React from 'react';
@@ -32,7 +32,6 @@ const PageCss = css`
                 outline: auto;
               }
 
-              html,
 
               body {
                 font-family: var(--font-normal);
@@ -80,7 +79,7 @@ const PageCss = css`
                 color: #4099ff;
               }
             `;
-type EditorDocumentProps = { 
+type PageFormDocumentProps = { 
     data: object;
     queryParams: object;
     content?: { 
@@ -92,7 +91,7 @@ type EditorDocumentProps = {
     };
 };
 
-export default function EditorDocument(props: EditorDocumentProps) {
+export default function PageFormDocument(props: PageFormDocumentProps) {
     
         const {
             data, 

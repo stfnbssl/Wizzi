@@ -112,7 +112,7 @@ module
                     < HR
                     form
                         action /user/new
-                        @ accept-charset UTF-8
+                        @ acceptCharset UTF-8
                         method POST
                         @ ref
                             =>

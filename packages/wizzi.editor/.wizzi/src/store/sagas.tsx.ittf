@@ -3,7 +3,6 @@ module
         @ all
         @ fork
         from 'redux-saga/effects'
-    import appSagas from '../features/app/sagas'
     import packiSagas from '../features/packi/sagas'
     import wizziSagas from '../features/wizzi/sagas'
     +
@@ -15,6 +14,5 @@ module
                         yield 
                             _ all
                                 [ 
-                                    @ fork(appSagas)
                                     @ fork(packiSagas)
                                     @ fork(wizziSagas)

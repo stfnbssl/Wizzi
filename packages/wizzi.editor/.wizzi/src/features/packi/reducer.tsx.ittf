@@ -7,9 +7,6 @@ module
         @ getType
         from 'typesafe-actions'
     import 
-        @ GitRepositoryMeta
-        from '../github'
-    import 
         @ Packi
         $if wzCtx.Build.usePackiLocal
             @ LocalPackiData
@@ -17,7 +14,6 @@ module
     $if wzCtx.Build.usePackiLocal
         import 
             @ packiCreatedFromTemplate
-            @ packiCreatedFromGithubClone
             @ getPackiData
             @ savePackiData
             @ deletePackiData
@@ -44,9 +40,6 @@ module
                 :optional 
                 :[ 
                     :string 
-            :p currentPacki
-                :optional 
-                :ref Packi
             $if wzCtx.Build.usePackiLocal
                 :p localPackiData
                     :optional 
@@ -55,10 +48,6 @@ module
                 :optional 
                 :[ 
                     :string 
-            :p ownedGitRepositories
-                :optional 
-                :[ 
-                    :ref GitRepositoryMeta
             :p generatedArtifactContent
                 :optional 
                 :string 
@@ -69,9 +58,7 @@ module
                 @ loading false
                 @ errors undefined
                 @ packiNames undefined
-                @ currentPacki undefined
                 @ packiTemplateNames undefined
-                @ ownedGitRepositories undefined
                 @ generatedArtifactContent undefined
     export 
         :type PackiAction
@@ -127,78 +114,6 @@ module
                             { 
                                 @ ...state
                                 @ loading false
-                    case getType(packiActions.selectPackiRequest)
-                        log "packiActions.selectPackiRequest"
-                        return 
-                            { 
-                                @ ...state
-                                @ loading true
-                    case getType(packiActions.selectPackiSuccess)
-                        log "packiActions.selectPackiSuccess", action
-                        $if wzCtx.Build.usePackiLocal
-                            let localPackiData = getPackiData(action.payload.id)
-                            if !localPackiData
-                                set localPackiData =
-                                    { 
-                                        @ origin 'template'
-                                        @ id action.payload.id
-                                        @ owner undefined
-                                        @ repoName undefined
-                                        @ branch undefined
-                                        @ description undefined
-                                        @ localCreatedAt Date.now()
-                                        @ githubCreatedAt -1
-                                        @ lastCommitAt -1
-                                _ savePackiData(action.payload.id, localPackiData)
-                            _ setSelectedPacki(action.payload.id)
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                { currentPacki
-                                    @ id action.payload.id
-                                    @ files action.payload.files
-                                    $if wzCtx.Build.usePackiLocal
-                                        @ localPackiData
-                    case getType(packiActions.selectPackiError)
-                        log "packiActions.selectPackiError", action
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                @ errors action.payload
-                    case getType(packiActions.createPackiRequest)
-                        log "packiActions.createPackiRequest", action
-                        return 
-                            { 
-                                @ ...state
-                                @ loading true
-                                @ tobeCreatedPackiName action.payload.id
-                    case getType(packiActions.createPackiSuccess)
-                        log "packiActions.createPackiSuccess", action
-                        $if wzCtx.Build.usePackiLocal
-                            const localPackiData = packiCreatedFromTemplate(action.payload.id)
-                            _ savePackiData(action.payload.id, localPackiData)
-                            _ setSelectedPacki(action.payload.id)
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                { currentPacki
-                                    @ id action.payload.id
-                                    @ files action.payload.files
-                                    $if wzCtx.Build.usePackiLocal
-                                        @ localPackiData
-                                [ packiNames
-                                    @ ...state.packiNames || []
-                                    @ action.payload.id
-                    case getType(packiActions.createPackiError)
-                        log "packiActions.createPackiError", action
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                @ errors action.payload
                     case getType(packiActions.savePackiSuccess)
                         log "packiActions.savePackiSuccess", action
                         return 
@@ -209,34 +124,6 @@ module
                                     @ files action.payload.packiEntryFiles
                                     $if wzCtx.Build.usePackiLocal
                                         @ localPackiData state.currentPacki.localPackiData
-                    case getType(packiActions.deletePackiRequest)
-                        log "packiActions.deletePackiRequest", action
-                        return 
-                            { 
-                                @ ...state
-                                @ loading true
-                                @ tobeDeletedPackiId action.payload.id
-                    case getType(packiActions.deletePackiSuccess)
-                        log "packiActions.deletePackiSuccess", action
-                        $if wzCtx.Build.usePackiLocal
-                            _ deletePacki(action.payload.id)
-                            _ deletePackiData(action.payload.id)
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                @ packiNames
-                                    _ state.packiNames && state.packiNames.filter
-                                        => 
-                                            param item
-                                            set item !== action.payload.id
-                    case getType(packiActions.deletePackiError)
-                        log "packiActions.deletePackiError", action
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                @ errors action.payload
                     case getType(packiActions.fetchPackiTemplateListRequest)
                         log "packiActions.fetchPackiTemplateListRequest"
                         return 
@@ -252,58 +139,6 @@ module
                                 @ packiTemplateNames action.payload.packiNames
                     case getType(packiActions.fetchPackiTemplateListError)
                         log "packiActions.fetchPackiTemplateListError", action
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                @ errors action.payload
-                    case getType(packiActions.fetchOwnedGitRepositoriesRequest)
-                        log "packiActions.fetchOwnedGitRepositoriesRequest"
-                        return 
-                            { 
-                                @ ...state
-                                @ loading true
-                    case getType(packiActions.fetchOwnedGitRepositoriesSuccess)
-                        log "packiActions.fetchOwnedGitRepositoriesSuccess", action
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                @ ownedGitRepositories action.payload.repositories
-                    case getType(packiActions.fetchOwnedGitRepositoriesError)
-                        log "packiActions.fetchOwnedGitRepositoriesError", action
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                @ errors action.payload
-                    case getType(packiActions.cloneGitRepositoryRequest)
-                        log "packiActions.cloneGitRepositoryRequest"
-                        return 
-                            { 
-                                @ ...state
-                                @ loading true
-                    case getType(packiActions.cloneGitRepositorySuccess)
-                        log "packiActions.cloneGitRepositorySuccess", action
-                        $if wzCtx.Build.usePackiLocal
-                            const localPackiData = packiCreatedFromGithubClone(action.payload.repository.owner, action.payload.repository.name)
-                            _ setSelectedPacki(localPackiData.id)
-                        return 
-                            { 
-                                @ ...state
-                                @ loading false
-                                { currentPacki
-                                    @ id
-                                        `lit 
-                                            @ action.payload.repository.owner
-                                            + _
-                                            @ action.payload.repository.name
-                                    @ files action.payload.repository.files
-                                    $if wzCtx.Build.usePackiLocal
-                                        @ localPackiData
-                                @ currentPackiTemplate undefined
-                    case getType(packiActions.cloneGitRepositoryError)
-                        log "packiActions.cloneGitRepositoryError", action
                         return 
                             { 
                                 @ ...state

@@ -40,9 +40,17 @@ $group
                                 if err
                                     log myname, 'getList${md.Name}', '${md.Name}.find', 'error', err
                                     return reject(err)
-                                log myname, 'getList${md.Name}', '${md.Name}.find', 'result', result
+                                log myname, 'getList${md.Name}', '${md.Name}.find', 'Object.keys(result)', Object.keys(result)
+                                const resultItem = []
+                                foreach item in result
+                                    const item_obj
+                                        {
+                                            $foreach item in md.fields
+                                                @ ${item.name} item.${item.name}
+                                    _ resultItem.push
+                                        @ item_obj
                                 _ resolve
                                     {
                                         @ oper 'getList'
                                         @ ok true
-                                        @ item result
+                                        @ item resultItem

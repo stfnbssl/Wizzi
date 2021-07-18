@@ -14,22 +14,6 @@ $group
                     => 
                         param resolve
                         param reject
-                        $*
-                        _ getArtifactProduction
-                            @ owner
-                            @ name
-                            ._ then
-                                => 
-                                    param result
-                                    if !result.ok
-                                        return reject(result)
-                                    const ap
-                                        :ref IArtifactProductionModel
-                                        = result.item
-                                    const packiFiles
-                                        :ref packiTypes.PackiFiles
-                                        _ JSON.parse(ap.packiFiles)
-                        *$
                         _ getArtifactProduction_withCache
                             @ owner
                             @ name

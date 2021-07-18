@@ -4,7 +4,7 @@ module
         @ SDKVersion
         @ SaveStatus
         @ SaveHistory
-        @ SaveOptions
+        @ PackiSaveOptions
         @ PackiFiles
         @ PackiFile
         @ PackiDependencies
@@ -57,9 +57,15 @@ module
                     :string 
                 :p files
                     :ref PackiFiles
+                :p owner
+                    :string 
                 :p name
                     :string 
                 :p description
+                    :string
+                :p mainIttf
+                    :string
+                :p wizziSchema
                     :string
                 :p dependencies
                     :ref PackiDependencies
@@ -121,7 +127,7 @@ module
                         :ref Promise
                             :param void
                         param options
-                            :ref SaveOptions
+                            :ref PackiSaveOptions
                             :optional 
                 :p onDownloadAsync
                     :=> 
@@ -186,19 +192,13 @@ module
                     :string 
                 :p verbose
                     :boolean 
-                :p packierURL
-                    :string 
                 $if wzCtx.Build.usePackiAspects
-                    $if false
-                        :p loggedUser
-                            :optional 
-                            :ref LoggedUser
+                    :p loggedUser
+                        :optional 
+                        :ref LoggedUser
                     :p creatorUsername
                         :optional 
                         :string 
-                    :p currentPacki
-                        :optional 
-                        :ref Packi
                     :p fileEntries
                         :[ 
                             :ref FileSystemEntry
@@ -215,6 +215,12 @@ module
                     :p generatedArtifact
                         :optional 
                         :ref GeneratedArtifact
+                    :p mTreeDebugInfo
+                        :optional 
+                        :string
+                    :p mTreeIttf
+                        :optional 
+                        :string
                     :p jobError
                         :optional 
                         :ref JobError
@@ -226,18 +232,6 @@ module
                             :void 
                             param packiId
                                 :string 
-                    :p onCreatePacki
-                        :=> 
-                            :void 
-                            param packiId
-                                :string 
-                            param packiKind
-                                :string 
-                    :p onDeletePacki
-                        :=> 
-                            :void 
-                            param packiId
-                                :string 
                     :p onFileEntriesChange
                         :=> 
                             :ref Promise
@@ -245,11 +239,6 @@ module
                             param entries
                                 :[ 
                                     :ref FileSystemEntry
-                    :p onChangeCode
-                        :=> 
-                            :void 
-                            param code
-                                :string 
                     :p onEntrySelected
                         :=> 
                             :void 
@@ -258,6 +247,15 @@ module
                     :p onExecuteWizziJob
                         :=> 
                             :void 
+                    :p onMTreePreview
+                        :=> 
+                            :void 
+                    :p onMTreeDebugInfoPreview
+                        :=> 
+                            :void 
+
+                    $*
                     :p onSaveCode
                         :=> 
                             :void 
+                    *$

@@ -6,11 +6,15 @@ module
     import 
         as React
         from 'react'
+    $if wzCtx.Build.useAuth
+        import 
+            @ withAuth
+            @ getLoginHref
+            @ AuthProps
+            from '../../features/auth'
     import 
-        @ withAuth
-        @ getLoginHref
-        @ AuthProps
-        from '../../features/auth'
+        @ loggedUser
+        from '../../features/app'
     import 
         @ c
         from '../ThemeProvider'
@@ -20,7 +24,12 @@ module
     import ContextMenu from '../widgets/ContextMenu'
     export
         :type UserMenuProps
-            :ref AuthProps
+            $if wzCtx.Build.useAuth
+                :ref AuthProps
+            $else
+                :{
+                    :p loggedUser
+                        :ref LoggedUser
     :type State
         :{ 
             :p visible
@@ -92,7 +101,7 @@ module
             m render
                 const 
                     { 
-                        @ viewer
+                        @ loggedUser
                     = this.props
                 return 
                     div 
@@ -102,28 +111,49 @@ module
                             @ className {css(styles.button)}
                             < Avatar 
                                 @ source
-                                    iif viewer?.picture
-                                        then viewer.picture
+                                    iif loggedUser?.picture
+                                        then loggedUser.picture
                                         else null
                                 @ size {26}
                         < ContextMenu 
                             @ ref {this._menu}
                             @ visible {this.state.visible}
                             @ actions
-                                iif viewer
+                                iif loggedUser
                                     then
                                         [ 
                                             { 
-                                                @ label 'My Packies'
+                                                @ label 'My artifacts'
                                                 @ handler
                                                     => 
                                                         _ window.open
                                                             `lit 
-                                                                + 
                                                                 @ process.env.SERVER_URL
-                                                                + /@
-                                                                @ viewer.username
-                                                                + /packies
+                                                                + /productions/artifacts
+                                            { 
+                                                @ label 'My packages'
+                                                @ handler
+                                                    => 
+                                                        _ window.open
+                                                            `lit 
+                                                                @ process.env.SERVER_URL
+                                                                + /productions/packages
+                                            { 
+                                                @ label 'My metas'
+                                                @ handler
+                                                    => 
+                                                        _ window.open
+                                                            `lit 
+                                                                @ process.env.SERVER_URL
+                                                                + /productions/metas
+                                            { 
+                                                @ label 'My fragments'
+                                                @ handler
+                                                    => 
+                                                        _ window.open
+                                                            `lit 
+                                                                @ process.env.SERVER_URL
+                                                                + /productions/fragments
                                             { 
                                                 @ label 'Account Settings'
                                                 @ handler
@@ -139,15 +169,18 @@ module
                                                 @ label 'Log in to Wizzi'
                                                 @ handler
                                                     => 
-                                                        $if wzCtx.Build.useOk
+                                                        $if wzCtx.Build.useAuth
                                                             set window.location.href = getLoginHref()
                                                         $else
                                                             set window.location.href = '#'
                             @ onHide {this._hideMenu}
                             @ className {css(styles.menu)}
     export 
-        const UserMenu = withAuth(UserMenuComp)
-    export-default withAuth(UserMenuComp)
+        $if wzCtx.Build.useAuth
+            const UserMenu = withAuth(UserMenuComp)
+        $else
+            const UserMenu = UserMenuComp
+    export-default UserMenu
     const styles
         _ StyleSheet.create
             { 

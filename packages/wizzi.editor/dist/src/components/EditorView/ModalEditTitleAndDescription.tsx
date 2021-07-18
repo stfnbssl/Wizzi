@@ -1,15 +1,12 @@
 /*
     artifact generator: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi-js\dist\lib\artifacts\ts\module\gen\main.js
-    package: wizzi-js@0.7.8
+    package: wizzi-js@0.7.9
     primary source IttfDocument: C:\My\wizzi\stfnbssl\wizzi\packages\wizzi.editor\.wizzi\src\components\EditorView\ModalEditTitleAndDescription.tsx.ittf
-    utc time: Sun, 27 Jun 2021 11:22:09 GMT
+    utc time: Mon, 12 Jul 2021 16:01:41 GMT
 */
 import {StyleSheet, css} from 'aphrodite';
 import * as React from 'react';
-import {DEFAULT_PACKI_DESCRIPTION} from '../../features/config';
-import Form from '../Form/Form';
-import withStatus from '../Form/withStatus';
-import withValidation from '../Form/withValidation';
+import {Form, withStatus, withValidation} from '../../features/form';
 import {c} from '../ThemeProvider';
 import {Button} from '../widgets/Button';
 import LargeInput from '../widgets/LargeInput';
@@ -22,16 +19,21 @@ type Props = {
     onSubmit: (details: { 
         name: string;
         description: string;
+        mainIttf: string;
+        wizziSchema: string;
     }) => void;
     onDismiss: () => void;
     description: string | undefined;
     name: string;
+    mainIttf?: string;
+    wizziSchema?: string;
     isWorking?: boolean;
 };
-// @ts-ignore
 type State = { 
     name: string;
     description: string;
+    mainIttf: string;
+    wizziSchema: string;
     visible: boolean;
 };
 
@@ -47,6 +49,8 @@ export default class ModalEditTitleAndDescription extends React.Component<Props,
                     return {
                             name: props.name || '', 
                             description: props.description ?? '', 
+                            mainIttf: props.mainIttf ?? '', 
+                            wizziSchema: props.wizziSchema ?? '', 
                             visible: props.visible
                          };
                 }
@@ -61,13 +65,17 @@ export default class ModalEditTitleAndDescription extends React.Component<Props,
         state = {
             name: this.props.name || '', 
             description: this.props.description ?? '', 
+            mainIttf: this.props.mainIttf ?? '', 
+            wizziSchema: this.props.wizziSchema ?? '', 
             visible: this.props.visible
         }
         ;
         _handleSubmit = () => 
             this.props.onSubmit({
                 name: this.state.name, 
-                description: this.state.description
+                description: this.state.description, 
+                mainIttf: this.state.mainIttf, 
+                wizziSchema: this.state.wizziSchema
              });
         _validateName = (name: string) => 
             name ? /^[a-z_\-\d\s]+$/i.test(name) ? null : new Error('Name can only contain letters, numbers, space, hyphen (-) and underscore (_).') : new Error('Name cannot be empty.');
@@ -105,17 +113,35 @@ export default class ModalEditTitleAndDescription extends React.Component<Props,
                          className={css(styles.subtitle)}>
                             Description
                         </h4>
-                        <LargeTextArea 
-                            value={this.state.description}
-                            onChange={e => 
-                                
-                                    this.setState({
-                                        description: e.target.value
-                                     })
-                            }
-                            minRows={4}
-                            placeholder={DEFAULT_PACKI_DESCRIPTION}
-                         />
+                        <LargeTextArea
+                         value={this.state.description} onChange={e => 
+                            
+                                this.setState({
+                                    description: e.target.value
+                                 })
+                        } minRows={4} />
+                        <h4
+                         className={css(styles.subtitle)}>
+                            Main ittf
+                        </h4>
+                        <LargeInput
+                         value={this.state.mainIttf} onChange={e => 
+                            
+                                this.setState({
+                                    mainIttf: e.target.value
+                                 })
+                        } />
+                        <h4
+                         className={css(styles.subtitle)}>
+                            Wizzi schema
+                        </h4>
+                        <LargeInput
+                         value={this.state.wizziSchema} onChange={e => 
+                            
+                                this.setState({
+                                    mainIttf: e.target.value
+                                 })
+                        } />
                         <div
                          className={css(styles.buttons)}>
                             <FormButton 

@@ -29,16 +29,9 @@ module
                 :p verbose
                     :boolean
                 $if wzCtx.Build.usePackiAspects
-                    :p connectGithubRepos
-                        :boolean
                     :p autoGenSingleDoc
                         :boolean
                     :p autoExecJob
-                        :boolean
-                    :p loggedUid
-                        :string
-                        :optional
-                    :p trustLocalStorage
                         :boolean
     +
     export

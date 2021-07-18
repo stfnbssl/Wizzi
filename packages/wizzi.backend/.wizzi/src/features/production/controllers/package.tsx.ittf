@@ -80,7 +80,7 @@ module
                     @ (request.session as any).user.username
                     @ request.body.ap_name
                     @ request.body.ap_description
-                    @ JSON.stringify(getPackiFiles(request.body.ap_main_ittf))
+                    @ JSON.stringify(getPackiFiles('.wizzi/generate.wfjob.ittf'))
                     ._ then
                         =>
                             param result
